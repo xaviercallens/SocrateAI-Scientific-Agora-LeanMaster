@@ -93,12 +93,18 @@ RAG_CONTEXT: dict[str, list[str]] = {
 def get_block(block_id: str) -> Optional[BlockNode]:
     return next((b for b in FORMALIZATION_DAG if b.id == block_id), None)
 
+import re
+
 def count_sorry(lean_file: Path) -> int:
-    """Count remaining sorry axioms in a Lean file."""
+    """Count remaining sorry axioms in a Lean file outside of comments."""
     if not lean_file.exists():
         return 0
     text = lean_file.read_text()
-    return text.count("sorry")
+    # Strip block comments /- ... -/
+    text = re.sub(r'/-.*?-\/', '', text, flags=re.DOTALL)
+    # Strip line comments -- ...
+    text = re.sub(r'--.*', '', text)
+    return len(re.findall(r'\bsorry\b', text))
 
 def scan_sorry_counts() -> dict[str, int]:
     """Re-scan all Lean files and update sorry counts."""
