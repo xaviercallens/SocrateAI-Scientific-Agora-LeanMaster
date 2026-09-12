@@ -1,0 +1,33 @@
+-- StringTheoryFormalization.lean
+-- Root module: re-exports the full K3 × T² EFT pipeline.
+-- Every import here corresponds to one of the 29 macroscopic blocks.
+
+import StringTheoryFormalization.Foundations.MathlibCore
+import StringTheoryFormalization.NSMath.FractionalSobolev
+import StringTheoryFormalization.NSMath.FourierMultipliers
+import StringTheoryFormalization.NSMath.MildPDEs
+import StringTheoryFormalization.NSMath.EnergyBounds
+import StringTheoryFormalization.StringDynamics.VertexOperators
+import StringTheoryFormalization.StringDynamics.PicardSpectral
+import StringTheoryFormalization.StringDynamics.KummerBlowup
+import StringTheoryFormalization.StringDynamics.TadpoleConstraint
+import StringTheoryFormalization.StringDynamics.MathieuM24
+import StringTheoryFormalization.StringDynamics.BPSMultiplicities
+import StringTheoryFormalization.StringDynamics.MukaiLattice
+import StringTheoryFormalization.StringDynamics.FourierMukai
+import StringTheoryFormalization.StringDynamics.TDualityGysin
+import StringTheoryFormalization.StringDynamics.ODDMetric
+import StringTheoryFormalization.StringDynamics.InvariantLocks
+import StringTheoryFormalization.StringDynamics.StiffIntegrators
+import StringTheoryFormalization.StringDynamics.SwamplandSafe
+import StringTheoryFormalization.StringDynamics.MukhanovSasaki
+import StringTheoryFormalization.StringDynamics.AutoEvolve
+import StringTheoryFormalization.StringDynamics.TDAMapper
+import StringTheoryFormalization.Frontier.CentralCharge
+import StringTheoryFormalization.Frontier.ChiralPrimaries
+import StringTheoryFormalization.Frontier.SL2CSymmetry
+import StringTheoryFormalization.Frontier.HodgeNumbers
+import StringTheoryFormalization.Frontier.FTermPotential
+import StringTheoryFormalization.Frontier.ModuliGeodesics
+import StringTheoryFormalization.Pipeline.DAGOrchestrator
+import StringTheoryFormalization.Pipeline.TacticSearch
