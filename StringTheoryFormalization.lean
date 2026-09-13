@@ -7,6 +7,7 @@ import StringTheoryFormalization.NSMath.FractionalSobolev
 import StringTheoryFormalization.NSMath.FourierMultipliers
 import StringTheoryFormalization.NSMath.MildPDEs
 import StringTheoryFormalization.NSMath.EnergyBounds
+import StringTheoryFormalization.NSMath.OpenAIBridging
 import StringTheoryFormalization.StringDynamics.VertexOperators
 import StringTheoryFormalization.StringDynamics.PicardSpectral
 import StringTheoryFormalization.StringDynamics.KummerBlowup

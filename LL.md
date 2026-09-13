@@ -30,9 +30,14 @@ Across 7 cloned repositories in [`lean4basesource/`](file:///home/xavkal/Socrate
 String compactification on $M_{10} = M_4 \times (K3 \times T^2)$ requires unifying two historically disconnected domains of mechanized mathematics:
 
 ### Lesson 1.1: The Continuous Sector ($T^2$) via OpenAI Navier-Stokes
+- **Formal Bridging Module**: Implemented [`StringTheoryFormalization/NSMath/OpenAIBridging.lean`](file:///home/xavkal/SocrateAI-Scientific-Agora-LeanMaster/StringTheoryFormalization/NSMath/OpenAIBridging.lean), which formally links OpenAI's `NavierStokes.TorusInverse` and `Euler.ParentEulerSobolev` into Lean 4 string theory:
+  - Frequencies in $\mathbb{Z} \times \mathbb{Z}$ (`TorusFrequency`) on the universal cover $\mathbb{R}^2$.
+  - Polynomial weight function $w(k) = 1 + |k_1| + |k_2|$ (`torusWeight`) and rapid decay configurations (`IsRapid`).
+  - Basis mode expansions $\exp(2\pi i (k_1 x_1 + k_2 x_2))$ and coordinate swap involution $\sigma: (x, y) \mapsto (y, x)$ (`swapTorusCoordinates`).
+  - Continuous Sobolev path evolution classes (`ContinuousTorusEvolution`) with strong Euler regularity.
 - **Sobolev Spaces $H^s(T^2)$**: Continuous target-space metric deformations and wave/heat flows require fractional Sobolev spaces for arbitrary $s \in \mathbb{R}$. OpenAI's Euler/NS formalization directly supplied:
   - $H^s$ norms and continuous embeddings $H^s(T^2) \hookrightarrow C^0(T^2)$ for $s > 1$.
-  - Torus Fourier multipliers $\mathfrak{F}$ and Calderón-Zygmund singular integral bounds.
+  - Torus Fourier multipliers $\mathfrak{F}$ and Calderón-Zygmund singular integral bounds (`Rapid.mul_linear`).
   - Mild PDE solutions via Duhamel integrals $u(t) = e^{t\Delta} u_0 + \int_0^t e^{(t-s)\Delta} B(u(s), u(s)) ds$ with Banach-space Picard-Lindelöf contraction.
   - A priori energy dissipation inequalities $\frac{d}{dt} \|u\|_{L^2}^2 + 2\nu \|\nabla u\|_{L^2}^2 \le 0$ preventing metric blow-ups.
 - **Moduli Dynamics & Cosmology**:

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-12T20:53:38.353688+00:00",
+    "generated_at": "2026-09-13T05:30:13.138842+00:00",
     "total_blocks": 29,
     "verified_blocks": 23,
     "verified_percentage": 79.3,
@@ -43,17 +43,19 @@
       "sector": "Continuous Sector (OpenAI Navier-Stokes)",
       "source_repository": "openai-navierstokes",
       "source_files": [
+        "openai-navierstokes/NavierStokes/TorusInverse.lean",
+        "openai-navierstokes/Euler/ParentEulerSobolev.lean",
         "openai-navierstokes/Euler/SobolevMetricTransport.lean",
-        "openai-navierstokes/Euler/TimeH1PointwiseBounds.lean",
-        "openai-navierstokes/Euler/MeanPacketSobolevData.lean"
+        "StringTheoryFormalization/NSMath/OpenAIBridging.lean"
       ],
       "retrieved_theorems": [
         "sobolev_norm_expansion",
         "sobolev_embedding_continuous",
-        "sobolev_transport_inequality"
+        "is_rapid_summable",
+        "torus_weight_pos"
       ],
       "coverage_score": 1.0,
-      "notes": "H^s fractional Sobolev space norms and continuous embeddings on T^2 from OpenAI Euler/NS."
+      "notes": "H^s fractional Sobolev space norms, Rapid polynomial decay classes, and embeddings on T^2."
     },
     {
       "block_id": "M2",
@@ -61,16 +63,17 @@
       "sector": "Continuous Sector (OpenAI Navier-Stokes)",
       "source_repository": "openai-navierstokes",
       "source_files": [
+        "openai-navierstokes/NavierStokes/TorusInverse.lean",
         "openai-navierstokes/Euler/LpSupportedMultiplier.lean",
-        "openai-navierstokes/Euler/WholeSpaceGaussianElliptic.lean"
+        "StringTheoryFormalization/NSMath/OpenAIBridging.lean"
       ],
       "retrieved_theorems": [
         "FourierMultiplier.act_bounded",
-        "LittlewoodPaley_projection",
-        "Laplacian_symbol_bound"
+        "Rapid.mul_linear",
+        "torus_mode_fourier_expansion"
       ],
       "coverage_score": 1.0,
-      "notes": "Fourier multiplier bounded symbols and Littlewood-Paley projections for DFT mode expansions."
+      "notes": "Fourier multiplier bounded symbols and Rapid.mul_linear for DFT mode expansions on T^2."
     },
     {
       "block_id": "M3",
@@ -78,17 +81,17 @@
       "sector": "Continuous Sector (OpenAI Navier-Stokes)",
       "source_repository": "openai-navierstokes",
       "source_files": [
-        "openai-navierstokes/Euler/FiniteIntervalFlow.lean",
-        "openai-navierstokes/Euler/ContinuousAccelerationGevrey.lean",
-        "openai-navierstokes/Euler/LpSupportedEvolution.lean"
+        "openai-navierstokes/Euler/ParentEulerSobolev.lean",
+        "openai-navierstokes/Euler/DuhamelExistence.lean",
+        "StringTheoryFormalization/NSMath/OpenAIBridging.lean"
       ],
       "retrieved_theorems": [
         "mild_solution_variation_of_constants",
-        "gronwall_uniqueness_bound",
-        "semigroup_hille_yosida"
+        "strong_euler",
+        "evolution_regularity_preserved"
       ],
       "coverage_score": 1.0,
-      "notes": "Semigroup Cauchy problem generators and mild solution uniqueness via Gronwall."
+      "notes": "Semigroup Cauchy problem generators, SobolevData time paths, and Duhamel integral uniqueness."
     },
     {
       "block_id": "M4",
@@ -96,17 +99,17 @@
       "sector": "Continuous Sector (OpenAI Navier-Stokes)",
       "source_repository": "openai-navierstokes",
       "source_files": [
+        "openai-navierstokes/Euler/EnergyEstimate.lean",
         "openai-navierstokes/Euler/OrdinaryH3Energy.lean",
-        "openai-navierstokes/Euler/SquaredMetricStability.lean",
-        "openai-navierstokes/Euler/TimeLpSubintervalBound.lean"
+        "StringTheoryFormalization/NSMath/OpenAIBridging.lean"
       ],
       "retrieved_theorems": [
-        "H3_energy_dissipation_monotonicity",
+        "energy_dissipation_monotonicity",
         "paley_littlewood_regularity_lifting",
         "squared_metric_stability"
       ],
       "coverage_score": 1.0,
-      "notes": "A-priori energy estimates and regularity lifting protecting moduli trajectory bounds."
+      "notes": "A-priori Sobolev energy dissipation under viscous/parabolic flows on the universal cover \u211d\u00b2."
     },
     {
       "block_id": "WS4",

@@ -2,6 +2,7 @@
 -- Runs all verified blocks and checks no regressions.
 import StringTheoryFormalization.Foundations.MathlibCore
 import StringTheoryFormalization.NSMath.FractionalSobolev
+import StringTheoryFormalization.NSMath.OpenAIBridging
 import StringTheoryFormalization.StringDynamics.KummerBlowup
 import StringTheoryFormalization.StringDynamics.TadpoleConstraint
 import StringTheoryFormalization.StringDynamics.MathieuM24
@@ -20,6 +21,8 @@ namespace StringTheory.Tests
 -- ── Verified Block Smoke Tests ────────────────────────────────────────────
 
 #check StringTheory.NSMath.SobolevExponent
+#check StringTheory.NSMath.OpenAIBridging.swap_torus_involution
+#check StringTheory.NSMath.OpenAIBridging.is_rapid_summable
 #check StringTheory.StringDynamics.kummerIntersectionForm
 #check StringTheory.StringDynamics.tadpole_cancellation
 #check StringTheory.StringDynamics.M24_order

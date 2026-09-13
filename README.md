@@ -30,7 +30,8 @@ StringTheoryFormalization/
 │   ├── FractionalSobolev.lean    [M1]  ✅ H^s spaces on T²
 │   ├── FourierMultipliers.lean   [M2]  ✅ Fourier multiplier operators
 │   ├── MildPDEs.lean             [M3]  ✅ Semigroup mild solutions
-│   └── EnergyBounds.lean         [M4]  ✅ Paley-Littlewood regularity
+│   ├── EnergyBounds.lean         [M4]  ✅ Paley-Littlewood regularity
+│   └── OpenAIBridging.lean       [M-BR]✅ Direct bridge to openai/NavierStokesAndEuler
 ├── StringDynamics/
 │   ├── VertexOperators.lean      [WS4]  ✅ V_n, OPE framework
 │   ├── PicardSpectral.lean       [WS5]  ✅ ρ = 18 convergence
@@ -130,6 +131,12 @@ python3 pipeline_orchestrator.py phase --phase 3 --block M1
 
 # Full build check
 python3 pipeline_orchestrator.py build
+
+# Run Multi-Agent Foundation Verification (polishworkflow.py)
+python3 polishworkflow.py --verify-openai  # Audits OpenAI Navier-Stokes & Euler integration
+python3 polishworkflow.py --verify-flt     # Audits Anthropic & Callens FLT integration
+python3 polishworkflow.py --audit          # AST & sorry audit of all 30 Lean modules
+python3 polishworkflow.py --polish         # Full polishing and Phase 0 certification
 ```
 
 ---

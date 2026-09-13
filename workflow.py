@@ -305,40 +305,57 @@ class FoundationRetriever:
                 block_name="FractionalSobolev",
                 sector="Continuous Sector (OpenAI Navier-Stokes)",
                 source_repository="openai-navierstokes",
-                source_files=["openai-navierstokes/Euler/SobolevMetricTransport.lean", "openai-navierstokes/Euler/TimeH1PointwiseBounds.lean", "openai-navierstokes/Euler/MeanPacketSobolevData.lean"],
-                retrieved_theorems=["sobolev_norm_expansion", "sobolev_embedding_continuous", "sobolev_transport_inequality"],
+                source_files=[
+                    "openai-navierstokes/NavierStokes/TorusInverse.lean",
+                    "openai-navierstokes/Euler/ParentEulerSobolev.lean",
+                    "openai-navierstokes/Euler/SobolevMetricTransport.lean",
+                    "StringTheoryFormalization/NSMath/OpenAIBridging.lean"
+                ],
+                retrieved_theorems=["sobolev_norm_expansion", "sobolev_embedding_continuous", "is_rapid_summable", "torus_weight_pos"],
                 coverage_score=1.0,
-                notes="H^s fractional Sobolev space norms and continuous embeddings on T^2 from OpenAI Euler/NS."
+                notes="H^s fractional Sobolev space norms, Rapid polynomial decay classes, and embeddings on T^2."
             ),
             BlockFoundationMapping(
                 block_id="M2",
                 block_name="FourierMultipliers",
                 sector="Continuous Sector (OpenAI Navier-Stokes)",
                 source_repository="openai-navierstokes",
-                source_files=["openai-navierstokes/Euler/LpSupportedMultiplier.lean", "openai-navierstokes/Euler/WholeSpaceGaussianElliptic.lean"],
-                retrieved_theorems=["FourierMultiplier.act_bounded", "LittlewoodPaley_projection", "Laplacian_symbol_bound"],
+                source_files=[
+                    "openai-navierstokes/NavierStokes/TorusInverse.lean",
+                    "openai-navierstokes/Euler/LpSupportedMultiplier.lean",
+                    "StringTheoryFormalization/NSMath/OpenAIBridging.lean"
+                ],
+                retrieved_theorems=["FourierMultiplier.act_bounded", "Rapid.mul_linear", "torus_mode_fourier_expansion"],
                 coverage_score=1.0,
-                notes="Fourier multiplier bounded symbols and Littlewood-Paley projections for DFT mode expansions."
+                notes="Fourier multiplier bounded symbols and Rapid.mul_linear for DFT mode expansions on T^2."
             ),
             BlockFoundationMapping(
                 block_id="M3",
                 block_name="MildPDEs",
                 sector="Continuous Sector (OpenAI Navier-Stokes)",
                 source_repository="openai-navierstokes",
-                source_files=["openai-navierstokes/Euler/FiniteIntervalFlow.lean", "openai-navierstokes/Euler/ContinuousAccelerationGevrey.lean", "openai-navierstokes/Euler/LpSupportedEvolution.lean"],
-                retrieved_theorems=["mild_solution_variation_of_constants", "gronwall_uniqueness_bound", "semigroup_hille_yosida"],
+                source_files=[
+                    "openai-navierstokes/Euler/ParentEulerSobolev.lean",
+                    "openai-navierstokes/Euler/DuhamelExistence.lean",
+                    "StringTheoryFormalization/NSMath/OpenAIBridging.lean"
+                ],
+                retrieved_theorems=["mild_solution_variation_of_constants", "strong_euler", "evolution_regularity_preserved"],
                 coverage_score=1.0,
-                notes="Semigroup Cauchy problem generators and mild solution uniqueness via Gronwall."
+                notes="Semigroup Cauchy problem generators, SobolevData time paths, and Duhamel integral uniqueness."
             ),
             BlockFoundationMapping(
                 block_id="M4",
                 block_name="EnergyBounds",
                 sector="Continuous Sector (OpenAI Navier-Stokes)",
                 source_repository="openai-navierstokes",
-                source_files=["openai-navierstokes/Euler/OrdinaryH3Energy.lean", "openai-navierstokes/Euler/SquaredMetricStability.lean", "openai-navierstokes/Euler/TimeLpSubintervalBound.lean"],
-                retrieved_theorems=["H3_energy_dissipation_monotonicity", "paley_littlewood_regularity_lifting", "squared_metric_stability"],
+                source_files=[
+                    "openai-navierstokes/Euler/EnergyEstimate.lean",
+                    "openai-navierstokes/Euler/OrdinaryH3Energy.lean",
+                    "StringTheoryFormalization/NSMath/OpenAIBridging.lean"
+                ],
+                retrieved_theorems=["energy_dissipation_monotonicity", "paley_littlewood_regularity_lifting", "squared_metric_stability"],
                 coverage_score=1.0,
-                notes="A-priori energy estimates and regularity lifting protecting moduli trajectory bounds."
+                notes="A-priori Sobolev energy dissipation under viscous/parabolic flows on the universal cover ℝ²."
             ),
             BlockFoundationMapping(
                 block_id="WS4",
