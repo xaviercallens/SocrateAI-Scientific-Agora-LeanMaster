@@ -15,6 +15,7 @@ import StringTheoryFormalization.Frontier.ChiralPrimaries
 import StringTheoryFormalization.Frontier.SL2CSymmetry
 import StringTheoryFormalization.Frontier.HodgeNumbers
 import StringTheoryFormalization.Pipeline.DAGOrchestrator
+import StringTheoryFoundation
 
 namespace StringTheory.Tests
 
@@ -29,6 +30,17 @@ namespace StringTheory.Tests
 #check StringTheory.StringDynamics.bpsRatio
 #check StringTheory.StringDynamics.mukai_rank
 #check StringTheory.StringDynamics.tDualityAction
+
+-- ── Foundation Library Smoke Tests ────────────────────────────────────────
+
+#check StringTheory.Foundation.Core.Topology.euler_char_K3
+#check StringTheory.Foundation.Core.Topology.euler_char_T2
+#check StringTheory.Foundation.Duality.DualScale.dual_pair_symmetric
+#check StringTheory.Foundation.Duality.T_Duality.t_duality_involution
+#check StringTheory.Foundation.K3.K3Surfaces.k3_b2_is_22
+#check StringTheory.Foundation.StringTheory.K3xT2.dim_real_k3xt2_is_6
+#check StringTheory.Foundation.StringTheory.TadpoleCancellation.d7_tadpole_cancellation
+#check StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity
 
 -- ── Arithmetic Spot Checks ───────────────────────────────────────────────
 
