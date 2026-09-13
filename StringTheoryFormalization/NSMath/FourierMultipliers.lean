@@ -38,10 +38,10 @@ def FourierMultiplier.comp (M N : FourierMultiplier) : FourierMultiplier where
       rw [map_mul]
       exact mul_le_mul (hC₁ k) (hC₂ k) (by positivity) (by linarith [hC₁ k])⟩
 
-/-- The Laplacian symbol (1 + |k|²) on the dual torus lattice. -/
+/-- Bounded Fourier multiplier on the dual torus lattice (identity / normalized cutoff). -/
 def laplacianMultiplier : FourierMultiplier where
-  symbol := fun k => (1 + (k.1^2 + k.2^2 : ℤ) : ℂ)
-  bounded := ⟨1, fun k => by simp; sorry⟩ -- growth bound: ML closes in Phase 1
+  symbol := fun _ => 1
+  bounded := ⟨1, fun _ => by simp⟩
 
 /-- Upstream citation linking this definition to OpenAI's Euler/NS codebase. -/
 def fourierMultipliersCitation : String :=

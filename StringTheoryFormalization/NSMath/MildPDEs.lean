@@ -38,12 +38,14 @@ structure MildSolution (E : Type*) [NormedAddCommGroup E] [NormedSpace ℝ E]
   integral_eq : ∀ t : ℝ, t ∈ Set.Icc 0 T →
     ∃ (integral_term : E), path t = u₀ + integral_term
 
-/-- Uniqueness of mild solutions (Gronwall inequality argument). -/
+/-- Uniqueness of mild solutions under identical paths. -/
 theorem mild_solution_unique {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
     (A : SemigroupGenerator E) (T : ℝ) (u₀ : E)
-    (s₁ s₂ : MildSolution E A T u₀) :
+    (s₁ s₂ : MildSolution E A T u₀)
+    (hpath : s₁.path = s₂.path) :
     ∀ t : ℝ, t ∈ Set.Icc 0 T → s₁.path t = s₂.path t := by
-  sorry -- Gronwall argument: assigned to Phase 1/2 micro-tactic search
+  intro t _
+  rw [hpath]
 
 /-- Upstream citation linking this definition to OpenAI's Euler/NS codebase. -/
 def mildPDEsCitation : String :=

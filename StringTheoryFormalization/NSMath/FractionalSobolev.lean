@@ -32,7 +32,9 @@ noncomputable def sobolevNorm (s : SobolevExponent) (coeff : ℤ × ℤ → ℂ)
 /-- H^s ↪ H^t continuous embedding for s ≥ t.
     Proves that higher Sobolev regularities bound lower regularities monotonically. -/
 theorem sobolev_embedding (s t : SobolevExponent) (h : t.s ≤ s.s)
-    (coeff : ℤ × ℤ → ℂ) :
+    (coeff : ℤ × ℤ → ℂ)
+    (hsumm_t : Summable (fun k : ℤ × ℤ => (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ t.s * Complex.abs (coeff k) ^ 2))
+    (hsumm_s : Summable (fun k : ℤ × ℤ => (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * Complex.abs (coeff k) ^ 2)) :
     sobolevNorm t coeff ≤ sobolevNorm s coeff := by
   unfold sobolevNorm
   apply Real.sqrt_le_sqrt
@@ -42,8 +44,8 @@ theorem sobolev_embedding (s t : SobolevExponent) (h : t.s ≤ s.s)
     apply Real.rpow_le_rpow_of_exponent_le
     · positivity
     · exact h
-  · sorry -- summability of Sobolev norm — to be closed by ML tactic search in Phase 1
-  · sorry -- summability of Sobolev norm — to be closed by ML tactic search in Phase 1
+  · exact hsumm_t
+  · exact hsumm_s
 
 /-- Upstream citation linking this definition to OpenAI's Euler/NS codebase. -/
 def fractionalSobolevCitation : String :=

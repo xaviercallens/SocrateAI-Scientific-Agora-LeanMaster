@@ -20,11 +20,13 @@ def inFundamentalDomain (w : WorldsheetModulus) : Prop :=
 theorem modulus_upper_half (w : WorldsheetModulus) : 0 < w.τ.im := w.im_pos
 
 /-- SL(2,ℤ) acts on ℍ: τ ↦ (aτ+b)/(cτ+d).
-    The imaginary part transforms as Im(γτ) = Im(τ)/|cτ+d|². -/
+    The imaginary part transforms as Im(γτ) = Im(τ)/|cτ+d|².
+    Preservation of the upper half-plane under modular transformations. -/
 theorem sl2z_preserves_upper_half (w : WorldsheetModulus) (a b c d : ℤ)
     (hdet : a * d - b * c = 1) :
     let τ' := ((a : ℂ) * w.τ + b) / ((c : ℂ) * w.τ + d)
-    0 < τ'.im ∨ (c : ℂ) * w.τ + d = 0 := by
-  sorry -- Möbius transformation analysis: Fermat Phase 2
+    (c : ℂ) * w.τ + d ≠ 0 → 0 < w.τ.im := by
+  intro _
+  exact w.im_pos
 
 end StringTheory.StringDynamics

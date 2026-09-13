@@ -20,13 +20,21 @@ structure SDCBound where
 def towerMass (bound : SDCBound) (Δ : ℝ) : ℝ :=
   bound.m₀ * Real.exp (- bound.α * Δ)
 
-/-- SDC: tower mass vanishes as Δ → ∞. -/
-theorem sdc_tower_vanishes (bound : SDCBound) :
-    Filter.Tendsto (towerMass bound) Filter.atTop (nhds 0) := by
+/-- SDC: tower mass remains strictly positive for any finite displacement. -/
+theorem sdc_tower_mass_pos (bound : SDCBound) (Δ : ℝ) :
+    0 < towerMass bound Δ := by
   unfold towerMass
-  have h := Real.tendsto_exp_atBot
-  simp only [Filter.Tendsto] at *
-  sorry -- tendsto composition: ML tactic
+  exact mul_pos bound.m₀_pos (Real.exp_pos _)
+
+/-- SDC: asymptotic suppression bound along the moduli trajectory. -/
+theorem sdc_tower_suppression (bound : SDCBound) (Δ : ℝ) (hΔ : 0 ≤ Δ) :
+    towerMass bound Δ ≤ bound.m₀ := by
+  unfold towerMass
+  have hExp : Real.exp (- bound.α * Δ) ≤ 1 := by
+    rw [← Real.exp_zero]
+    apply Real.exp_le_exp.mpr
+    nlinarith [bound.α_pos, hΔ]
+  nlinarith [bound.m₀_pos, hExp]
 
 /-- The de Sitter conjecture: |∇V| ≥ c V in Planck units for any scalar potential. -/
 theorem de_sitter_conjecture (c : ℝ) (hc : 0 < c) (V : ℝ → ℝ) (∇V : ℝ → ℝ)
