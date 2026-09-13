@@ -19,4 +19,8 @@ import StringTheoryFoundation.K3.K3Surfaces
 import StringTheoryFoundation.StringTheory.K3xT2
 import StringTheoryFoundation.StringTheory.TadpoleCancellation
 import StringTheoryFoundation.StringTheory.Swampland
+import StringTheoryFoundation.StringTheory.WittenDuality
+import StringTheoryFoundation.StringTheory.VafaSwampland
+import StringTheoryFoundation.StringTheory.StromingerSYZ
+import StringTheoryFoundation.Atlas.AtlasGeometryBridge
 import StringTheoryFormalization.NSMath.OpenAIBridging

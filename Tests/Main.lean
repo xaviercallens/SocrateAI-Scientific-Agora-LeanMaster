@@ -41,6 +41,10 @@ namespace StringTheory.Tests
 #check StringTheory.Foundation.StringTheory.K3xT2.dim_real_k3xt2_is_6
 #check StringTheory.Foundation.StringTheory.TadpoleCancellation.d7_tadpole_cancellation
 #check StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity
+#check StringTheory.Foundation.StringTheory.WittenDuality.witten_duality_rank_match
+#check StringTheory.Foundation.StringTheory.VafaSwampland.vafa_sdc_4d_decay_rate
+#check StringTheory.Foundation.StringTheory.StromingerSYZ.strominger_syz_dim_sum
+#check StringTheory.Foundation.Atlas.atlas_k3_euler_characteristic
 
 -- ── Arithmetic Spot Checks ───────────────────────────────────────────────
 
