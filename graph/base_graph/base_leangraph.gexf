@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2">
+  <graph defaultedgetype="directed">
+    <nodes>
+      <node id="paper:Witten1995" label="String Theory Dynamics In Various Dimensions" />
+      <node id="paper:Vafa2005" label="The String Landscape and the Swampland" />
+      <node id="paper:StromingerSYZ1996" label="Mirror Symmetry is T-Duality" />
+      <node id="paper:MetaATLAS2025" label="Formalizing Mathematics at Scale with AutoformBot" />
+      <node id="paper:OpenAINavierStokes2025" label="Navier-Stokes and Euler Equations on the Torus in Lean 4" />
+      <node id="paper:AnthropicFLT2025" label="Formalizing Fermat's Last Theorem &amp; Modular Curves in Lean 4" />
+      <node id="paper:CallensKummer2026" label="Mechanized Kummer Divisors and Mukai Lattice Γ^{4,20} on K3 Surfaces" />
+      <node id="paper:PhysLib2024" label="PhysLib: Formal Physics in Lean 4" />
+      <node id="paper:TNLean2024" label="TNLean: Holographic Tensor Networks in Lean 4" />
+      <node id="paper:LeanStatLearning2024" label="Statistical Learning Theory &amp; PAC Generalization Bounds in Lean 4" />
+      <node id="repo:openai-navierstokes" label="OpenAI Navier-Stokes &amp; Euler" />
+      <node id="repo:anthropics-flt" label="Anthropic Fermat's Last Theorem" />
+      <node id="repo:xaviercallens-xflt" label="Callens Kummer Divisors &amp; Mukai Lattice" />
+      <node id="repo:atlas-lean" label="Meta AI ATLAS-Lean AutoformBot" />
+      <node id="repo:physlib" label="Lean Community PhysLib" />
+      <node id="repo:tnlean" label="Oxford TNLean Tensor Networks" />
+      <node id="repo:lean-quantum" label="inQWIRE LeanQuantum" />
+      <node id="repo:lean-stat-learning" label="Lean Statistical Learning Theory" />
+      <node id="module:StringTheoryFoundation.StringTheory.WittenDuality" label="WittenDuality" />
+      <node id="module:StringTheoryFoundation.StringTheory.VafaSwampland" label="VafaSwampland" />
+      <node id="module:StringTheoryFoundation.StringTheory.StromingerSYZ" label="StromingerSYZ" />
+      <node id="module:StringTheoryFoundation.Atlas.AtlasGeometryBridge" label="AtlasGeometryBridge" />
+      <node id="module:StringTheoryFoundation.FluidDynamics.NavierStokesBridge" label="NavierStokesBridge" />
+      <node id="module:StringTheoryFoundation.ModularForms.FermatModularBridge" label="FermatModularBridge" />
+      <node id="module:DualScaleM24Formalization.Moonshine.MathieuRigidity" label="MathieuRigidity" />
+      <node id="module:StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge" label="PhysLibKinematicsBridge" />
+      <node id="module:StringTheoryFoundation.Quantum.TensorNetworkBridge" label="TensorNetworkBridge" />
+      <node id="module:StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge" label="StatisticalLearningBridge" />
+      <node id="decl:omega" label="omega" />
+      <node id="decl:dx" label="dx" />
+      <node id="decl:dy" label="dy" />
+      <node id="decl:liftX" label="liftX" />
+      <node id="decl:liftY" label="liftY" />
+      <node id="decl:omega_ne_zero" label="omega_ne_zero" />
+      <node id="decl:torusMeasure" label="torusMeasure" />
+      <node id="decl:flt_mathlib" label="flt_mathlib" />
+      <node id="decl:defaultK3" label="defaultK3" />
+      <node id="decl:defaultK3Lattice" label="defaultK3Lattice" />
+      <node id="decl:defaultPoincareMetric" label="defaultPoincareMetric" />
+      <node id="decl:zero_mode_laplacian" label="zero_mode_laplacian" />
+      <node id="decl:fundamental_mode_positive" label="fundamental_mode_positive" />
+      <node id="decl:sound_speed_squared_dim2" label="sound_speed_squared_dim2" />
+      <node id="decl:kummer_fixed_points_count" label="kummer_fixed_points_count" />
+      <node id="decl:exceptional_divisor_self_intersection" label="exceptional_divisor_self_intersection" />
+      <node id="decl:mukai_lattice_rank" label="mukai_lattice_rank" />
+      <node id="decl:defaultMukaiSig" label="defaultMukaiSig" />
+      <node id="decl:dft_doubled_dim4" label="dft_doubled_dim4" />
+      <node id="decl:odd_metric_sign_squared" label="odd_metric_sign_squared" />
+      <node id="decl:lorentz_signature_index" label="lorentz_signature_index" />
+      <node id="decl:defaultGolay" label="defaultGolay" />
+      <node id="decl:defaultPAC" label="defaultPAC" />
+      <node id="decl:ODD_Eta" label="ODD_Eta" />
+      <node id="decl:InversionGen" label="InversionGen" />
+      <node id="decl:odd_inversion_generator" label="odd_inversion_generator" />
+      <node id="decl:Identity2" label="Identity2" />
+      <node id="decl:ModS" label="ModS" />
+      <node id="decl:ModT" label="ModT" />
+      <node id="decl:NegI" label="NegI" />
+      <node id="decl:MathieuDegree" label="MathieuDegree" />
+      <node id="decl:HolonomyDimSO4" label="HolonomyDimSO4" />
+      <node id="decl:HolonomyDimSU2" label="HolonomyDimSU2" />
+    </nodes>
+    <edges>
+      <edge id="0" source="paper:Witten1995" target="repo:physlib" label="Formalized In" />
+      <edge id="1" source="paper:Vafa2005" target="repo:physlib" label="Formalized In" />
+      <edge id="2" source="paper:StromingerSYZ1996" target="repo:atlas-lean" label="Formalized In" />
+      <edge id="3" source="paper:MetaATLAS2025" target="repo:atlas-lean" label="Formalized In" />
+      <edge id="4" source="paper:OpenAINavierStokes2025" target="repo:openai-navierstokes" label="Formalized In" />
+      <edge id="5" source="paper:AnthropicFLT2025" target="repo:anthropics-flt" label="Formalized In" />
+      <edge id="6" source="paper:CallensKummer2026" target="repo:xaviercallens-xflt" label="Formalized In" />
+      <edge id="7" source="paper:PhysLib2024" target="repo:physlib" label="Formalized In" />
+      <edge id="8" source="paper:TNLean2024" target="repo:tnlean" label="Formalized In" />
+      <edge id="9" source="paper:LeanStatLearning2024" target="repo:lean-stat-learning" label="Formalized In" />
+      <edge id="10" source="paper:Witten1995" target="module:StringTheoryFoundation.StringTheory.WittenDuality" label="Bridges To" />
+      <edge id="11" source="paper:Vafa2005" target="module:StringTheoryFoundation.StringTheory.VafaSwampland" label="Bridges To" />
+      <edge id="12" source="paper:StromingerSYZ1996" target="module:StringTheoryFoundation.StringTheory.StromingerSYZ" label="Bridges To" />
+      <edge id="13" source="paper:MetaATLAS2025" target="module:StringTheoryFoundation.Atlas.AtlasGeometryBridge" label="Bridges To" />
+      <edge id="14" source="paper:OpenAINavierStokes2025" target="module:StringTheoryFoundation.FluidDynamics.NavierStokesBridge" label="Bridges To" />
+      <edge id="15" source="paper:AnthropicFLT2025" target="module:StringTheoryFoundation.ModularForms.FermatModularBridge" label="Bridges To" />
+      <edge id="16" source="paper:CallensKummer2026" target="module:DualScaleM24Formalization.Moonshine.MathieuRigidity" label="Bridges To" />
+      <edge id="17" source="paper:PhysLib2024" target="module:StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge" label="Bridges To" />
+      <edge id="18" source="paper:TNLean2024" target="module:StringTheoryFoundation.Quantum.TensorNetworkBridge" label="Bridges To" />
+      <edge id="19" source="paper:LeanStatLearning2024" target="module:StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge" label="Bridges To" />
+      <edge id="20" source="repo:openai-navierstokes" target="decl:omega" label="Defines" />
+      <edge id="21" source="repo:openai-navierstokes" target="decl:dx" label="Defines" />
+      <edge id="22" source="repo:openai-navierstokes" target="decl:dy" label="Defines" />
+      <edge id="23" source="repo:openai-navierstokes" target="decl:liftX" label="Defines" />
+      <edge id="24" source="repo:openai-navierstokes" target="decl:liftY" label="Defines" />
+      <edge id="25" source="repo:openai-navierstokes" target="decl:omega_ne_zero" label="Defines" />
+      <edge id="26" source="repo:openai-navierstokes" target="decl:torusMeasure" label="Defines" />
+      <edge id="27" source="repo:anthropics-flt" target="decl:flt_mathlib" label="Defines" />
+      <edge id="28" source="repo:atlas-lean" target="decl:defaultK3" label="Defines" />
+      <edge id="29" source="repo:atlas-lean" target="decl:defaultK3Lattice" label="Defines" />
+      <edge id="30" source="repo:atlas-lean" target="decl:defaultPoincareMetric" label="Defines" />
+      <edge id="31" source="repo:openai-navierstokes" target="decl:zero_mode_laplacian" label="Defines" />
+      <edge id="32" source="repo:openai-navierstokes" target="decl:fundamental_mode_positive" label="Defines" />
+      <edge id="33" source="repo:openai-navierstokes" target="decl:sound_speed_squared_dim2" label="Defines" />
+      <edge id="34" source="repo:anthropics-flt" target="decl:kummer_fixed_points_count" label="Defines" />
+      <edge id="35" source="repo:anthropics-flt" target="decl:exceptional_divisor_self_intersection" label="Defines" />
+      <edge id="36" source="repo:anthropics-flt" target="decl:mukai_lattice_rank" label="Defines" />
+      <edge id="37" source="repo:anthropics-flt" target="decl:defaultMukaiSig" label="Defines" />
+      <edge id="38" source="repo:physlib" target="decl:dft_doubled_dim4" label="Defines" />
+      <edge id="39" source="repo:physlib" target="decl:odd_metric_sign_squared" label="Defines" />
+      <edge id="40" source="repo:physlib" target="decl:lorentz_signature_index" label="Defines" />
+      <edge id="41" source="repo:tnlean" target="decl:defaultGolay" label="Defines" />
+      <edge id="42" source="repo:lean-stat-learning" target="decl:defaultPAC" label="Defines" />
+      <edge id="43" source="repo:dft" target="decl:ODD_Eta" label="Defines" />
+      <edge id="44" source="repo:dft" target="decl:InversionGen" label="Defines" />
+      <edge id="45" source="repo:dft" target="decl:odd_inversion_generator" label="Defines" />
+      <edge id="46" source="repo:dft" target="decl:Identity2" label="Defines" />
+      <edge id="47" source="repo:dft" target="decl:ModS" label="Defines" />
+      <edge id="48" source="repo:dft" target="decl:ModT" label="Defines" />
+      <edge id="49" source="repo:dft" target="decl:NegI" label="Defines" />
+      <edge id="50" source="repo:dft" target="decl:MathieuDegree" label="Defines" />
+      <edge id="51" source="repo:dft" target="decl:HolonomyDimSO4" label="Defines" />
+      <edge id="52" source="repo:dft" target="decl:HolonomyDimSU2" label="Defines" />
+    </edges>
+  </graph>
+</gexf>

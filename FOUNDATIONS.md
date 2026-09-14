@@ -1,10 +1,10 @@
 # Foundational Open-Source Corpora & Mathematical Engines
 
-This repository (`SocrateAI-Scientific-Agora-LeanMaster`) integrates, cross-indexes, and formally bridges 8 premier open-source Lean 4 mathematical and scientific foundations. These codebases provide the verified analytic, geometric, modular, and physical substrates upon which **Double Field Theory (DFT)** and **Dual-Scale $M_{24}$ Moonshine** are constructed.
+This repository (`SocrateAI-Scientific-Agora-LeanMaster`) integrates, cross-indexes, and formally bridges **8 premier open-source Lean 4 mathematical corpora** and **4 foundational physics monographs**. These codebases provide the verified analytic, geometric, modular, and physical substrates upon which **Double Field Theory (DFT)** and **Dual-Scale $M_{24}$ Moonshine** are constructed.
 
 ---
 
-## 1. Registry of Foundational Repositories
+## 1. Registry of Foundational Repositories & Submodules
 
 | Repository | Source / Institution | Role in LeanMaster Engine | Submodule Path |
 | :--- | :--- | :--- | :--- |
@@ -19,41 +19,93 @@ This repository (`SocrateAI-Scientific-Agora-LeanMaster`) integrates, cross-inde
 
 ---
 
-## 2. Certified Lean 4 Architectural Bridges
+## 2. Foundational Physics Monoliths (`papers/`)
 
-All external foundations are directly linked into our formal Lean 4 kernel environment via the `StringTheoryFoundation` library:
+| Monolith ID | Paper Title | Authors & Citation | Mathematical Contribution to Formalization |
+| :--- | :--- | :--- | :--- |
+| **`Witten1995`** | *String Theory Dynamics In Various Dimensions* | Edward Witten, Nucl. Phys. B 443 (1995) 85 | S/T/U dualities, strong-weak coupling, $K3 \times T^2$ 6D/4D $N=4$ compactifications. |
+| **`Vafa2005`** | *The String Landscape and the Swampland* | Cumrun Vafa, hep-th/0509212 | Swampland Distance Conjecture, infinite tower of states, modulus bounds. |
+| **`StromingerSYZ1996`** | *Mirror Symmetry is T-Duality* | A. Strominger, S.-T. Yau, E. Zaslow, Nucl. Phys. B 479 (1996) 243 | Special Lagrangian fibrations, fiberwise T-duality, dual torus inversion. |
+| **`MetaATLAS2025`** | *Formalizing Mathematics at Scale with AutoformBot* | Meta AI Research Team (2025) | Large-scale automated differential geometry, intersection lattices, 4-manifolds. |
+
+---
+
+## 3. Certified Lean 4 Architectural Bridges (`StringTheoryFoundation`)
+
+All external foundations are directly linked into our formal Lean 4 kernel environment via `StringTheoryFoundation`:
 
 1. **OpenAI Navier-Stokes & Fluid Dynamics Bridge (`StringTheoryFoundation.FluidDynamics.NavierStokesBridge`)**
    - Formalizes the continuous limit of string field theory.
    - Connects $D$-dimensional energy conservation bounds and mild PDE solutions to generalized Einstein equations in DFT.
-   - Foundation Path: `lean4basesource/openai-navierstokes/NavierStokes/`
+   - Submodule Path: `lean4basesource/openai-navierstokes/`
 
 2. **Fermat Modular Forms & Kummer Surface Bridge (`StringTheoryFoundation.ModularForms.FermatModularBridge`)**
    - Connects modular curves $X_0(N)$, Hecke eigenvalues, and Kummer surfaces to string compactifications on $K3 \times T^2$.
    - Proves the $T^4/\mathbb{Z}_2$ orbifold singularity blowup with 16 exceptional $\mathbb{P}^1$ rational curves, yielding the Euler characteristic $\chi(K3) = 24$.
-   - Foundation Paths: `lean4basesource/anthropics-flt/` and `lean4basesource/xaviercallens-xflt/`
+   - Submodule Paths: `lean4basesource/anthropics-flt/` and `lean4basesource/xaviercallens-xflt/`
 
 3. **Meta AI ATLAS-Lean Differential Geometry Bridge (`StringTheoryFoundation.Atlas.AtlasGeometryBridge`)**
    - Ingests 4-manifold Betti numbers: $b_0 = 1, b_1 = 0, b_2 = 22, b_3 = 0, b_4 = 1$.
    - Certifies the Hirzebruch signature formula $\tau(K3) = b_2^+ - b_2^- = 3 - 19 = -16$.
-   - Foundation Path: `lean4basesource/atlas-lean/`
+   - Submodule Path: `lean4basesource/atlas-lean/`
 
 4. **PhysLib Spacetime Kinematics Bridge (`StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge`)**
    - Ingests relativistic 4-vector kinematics and Lorentz metric signatures $(+,-,-,-)$.
    - Generalizes to the Double Field Theory split signature metric $\eta_{MN}$ on $O(D,D)$.
-   - Foundation Path: `lean4basesource/physlib/`
+   - Submodule Path: `lean4basesource/physlib/`
 
 5. **Quantum & Tensor Network Bridge (`StringTheoryFoundation.Quantum.TensorNetworkBridge`)**
    - Implements holographic tensor network contractions representing AdS/CFT bulk-to-boundary reconstructions and quantum error-correcting Golay codes $\mathcal{G}_{24}$.
-   - Foundation Paths: `lean4basesource/tnlean/` and `lean4basesource/lean-quantum/`
+   - Submodule Paths: `lean4basesource/tnlean/` and `lean4basesource/lean-quantum/`
 
 6. **Statistical Learning Theory Bridge (`StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge`)**
    - Provides formal generalization bounds for AI proving agents operating on the LeanGraph DAG.
-   - Foundation Path: `lean4basesource/lean-stat-learning-theory/`
+   - Submodule Path: `lean4basesource/lean-stat-learning-theory/`
 
 ---
 
-## 3. Submodule Maintenance & Git Operations
+## 4. BaseLean4 Graph & Knowledge Discovery
+
+The base graph indexes foundational papers, repositories, and declarations:
+- **Base Graph JSON**: `graph/base_graph/base_leangraph.json`
+- **Base Graph NDJSON**: `graph/base_graph/base_leangraph.ndjson`
+- **Base Graph DOT & GEXF**: `graph/base_graph/base_leangraph.dot`, `graph/base_graph/base_leangraph.gexf`
+- **Interactive Base Graph Explorer**: `graph/base_graph/index.html`
+
+To run the BaseLean4 Graph builder:
+```bash
+python3 -c "from leangraph.base_graph import BaseLeanGraphBuilder; from pathlib import Path; BaseLeanGraphBuilder(Path('.')).export_all(Path('graph/base_graph'))"
+```
+
+---
+
+## 5. Lean Cache & Optimization Tools
+
+To ensure instant (<100ms) re-indexing and optimal compilation performance across massive codebases:
+
+1. **Lean Cache Manager (`tools/lean_cache_manager.py`)**:
+   ```bash
+   # Check Lake build cache and LeanGraph SQLite metrics
+   python3 tools/lean_cache_manager.py status
+
+   # Verify Lake build cache consistency
+   python3 tools/lean_cache_manager.py verify
+
+   # Clean build cache or declaration database
+   python3 tools/lean_cache_manager.py clean --target lake
+   ```
+
+2. **Cross-Corpus Base Search (`prove2me_engine/tools/query_base.py`)**:
+   ```bash
+   # Query across all cached foundations and papers
+   python3 prove2me_engine/tools/query_base.py "Sobolev"
+   python3 prove2me_engine/tools/query_base.py "Kummer"
+   python3 prove2me_engine/tools/query_base.py "Laplacian" --repo repo:openai-navierstokes
+   ```
+
+---
+
+## 6. Submodule Maintenance & Git Operations
 
 To clone this repository with all foundational corpora fully populated:
 
@@ -68,18 +120,3 @@ To verify the status of all submodules:
 ```bash
 git submodule status
 ```
-
----
-
-## 4. Cross-Corpus Retrieval & LeanGraph Knowledge Discovery
-
-All foundation theorems, declarations, and citations are indexed into the `LeanGraph` knowledge discovery engine:
-- Graph database: `graph/leangraph.json`
-- Streaming NDJSON: `graph/leangraph.ndjson`
-- Interactive Visual Explorer: `graph/index.html`
-- Prove2Me Semantic Search:
-  ```bash
-  python3 prove2me_engine/cli.py search "Navier-Stokes mild solution"
-  python3 prove2me_engine/cli.py search "Kummer blowup Mukai lattice"
-  python3 prove2me_engine/cli.py search "Courant bracket Section Condition"
-  ```

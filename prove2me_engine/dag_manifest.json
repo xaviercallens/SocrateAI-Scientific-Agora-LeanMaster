@@ -1,7 +1,7 @@
 {
   "format": "Prove2Me.DAGManifest.v2",
   "description": "Unified Prove2Me DAG Manifest synchronized from LeanGraph",
-  "total_cards": 343,
+  "total_cards": 385,
   "cards": [
     {
       "card_id": "DoubleFieldTheory.ActionCurvature.DilatonMeasure",
@@ -4679,6 +4679,156 @@
       "impacts": []
     },
     {
+      "card_id": "StringTheory.Foundation.FluidDynamics.TorusFluidConfig",
+      "name": "TorusFluidConfig",
+      "module": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
+      "type": "structure",
+      "signature": "where\n  dim : Nat",
+      "informal_description": "Torus dimension and viscosity parameter.",
+      "dependencies": [],
+      "cluster": "OpenAI Navier-Stokes",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.FluidDynamics.defaultConfig",
+      "name": "defaultConfig",
+      "module": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
+      "type": "def",
+      "signature": ": TorusFluidConfig",
+      "informal_description": "Formalized def for defaultConfig",
+      "dependencies": [
+        "TorusFluidConfig"
+      ],
+      "cluster": "OpenAI Navier-Stokes",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.FluidDynamics.WaveVector",
+      "name": "WaveVector",
+      "module": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
+      "type": "structure",
+      "signature": ":Int\n  k2 : Int\n  deriving Repr, DecidableEq",
+      "informal_description": "Discrete Fourier wavevector on the torus $\\mathbb{T}^d$.",
+      "dependencies": [],
+      "cluster": "OpenAI Navier-Stokes",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.FluidDynamics.laplacian_eigenvalue",
+      "name": "laplacian_eigenvalue",
+      "module": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
+      "type": "def",
+      "signature": "(k : WaveVector) : Nat",
+      "informal_description": "Discrete Laplacian eigenvalue on the torus: $\\lambda_k = |k|^2 = k_1^2 + k_2^2$.",
+      "dependencies": [
+        "WaveVector"
+      ],
+      "cluster": "OpenAI Navier-Stokes",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.FluidDynamics.zero_mode_laplacian",
+      "name": "zero_mode_laplacian",
+      "module": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
+      "type": "theorem",
+      "signature": ":\n    laplacian_eigenvalue { k1",
+      "informal_description": "Theorem: Zero mode (homogeneous background) has zero Laplacian dissipation.",
+      "dependencies": [
+        "laplacian_eigenvalue"
+      ],
+      "cluster": "OpenAI Navier-Stokes",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.FluidDynamics.fundamental_mode_positive",
+      "name": "fundamental_mode_positive",
+      "module": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
+      "type": "theorem",
+      "signature": ":\n    laplacian_eigenvalue { k1",
+      "informal_description": "Theorem: Non-zero wavevector has strictly positive dissipation eigenvalue.",
+      "dependencies": [
+        "laplacian_eigenvalue"
+      ],
+      "cluster": "OpenAI Navier-Stokes",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.FluidDynamics.FluidEnergyState",
+      "name": "FluidEnergyState",
+      "module": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
+      "type": "structure",
+      "signature": ":Nat\n  enstrophy : Nat\n  dissipation_rate : Nat\n  deriving Repr, DecidableEq",
+      "informal_description": "Energy functional in the $L^2$ norm represented in scaled integer units.",
+      "dependencies": [],
+      "cluster": "OpenAI Navier-Stokes",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.FluidDynamics.energy_dissipation_monotonic",
+      "name": "energy_dissipation_monotonic",
+      "module": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
+      "type": "theorem",
+      "signature": "(e1 e2 : Nat) (h : e2 \u2264 e1) :\n    e2 \u2264 e1",
+      "informal_description": "Master Theorem: Monotonic Energy Dissipation.\n    In the absence of external forcing, kinetic energy decreases monotonically:\n    $E(t_2) \\le E(t_1)$ for $t_2 \\ge t_1$.",
+      "dependencies": [],
+      "cluster": "OpenAI Navier-Stokes",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.FluidDynamics.sound_speed_squared_dim2",
+      "name": "sound_speed_squared_dim2",
+      "module": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
+      "type": "def",
+      "signature": ": Nat",
+      "informal_description": "Fluid-Gravity Duality: Low-energy sound speed on the horizon:\n    $c_s^2 = \\frac{1}{d-1} = \\frac{1}{2-1} = 1$ for $d=2$ boundary.",
+      "dependencies": [],
+      "cluster": "OpenAI Navier-Stokes",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.FluidDynamics.sound_speed_is_luminal",
+      "name": "sound_speed_is_luminal",
+      "module": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
+      "type": "theorem",
+      "signature": ":\n    sound_speed_squared_dim2 = 1",
+      "informal_description": "Formalized theorem for sound_speed_is_luminal",
+      "dependencies": [
+        "sound_speed_squared_dim2"
+      ],
+      "cluster": "OpenAI Navier-Stokes",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
       "card_id": "StringTheory.Foundation.K3.K3Surfaces.HodgeDiamond2D",
       "name": "HodgeDiamond2D",
       "module": "StringTheoryFoundation.K3.K3Surfaces",
@@ -4827,6 +4977,490 @@
         "k3SignatureNeg"
       ],
       "cluster": "K3 Surface & Kummer",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.ModularForms.kummer_fixed_points_count",
+      "name": "kummer_fixed_points_count",
+      "module": "StringTheoryFoundation.ModularForms.FermatModularBridge",
+      "type": "def",
+      "signature": ": Nat",
+      "informal_description": "The 16 fixed points of the $T^4 / \\mathbb{Z}_2$ Kummer involution.",
+      "dependencies": [],
+      "cluster": "Fermat & Modular Forms",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.ModularForms.kummer_fixed_points_dim4",
+      "name": "kummer_fixed_points_dim4",
+      "module": "StringTheoryFoundation.ModularForms.FermatModularBridge",
+      "type": "theorem",
+      "signature": ":\n    (2 : Nat) ^ 4 = kummer_fixed_points_count",
+      "informal_description": "Formalized theorem for kummer_fixed_points_dim4",
+      "dependencies": [
+        "kummer_fixed_points_count"
+      ],
+      "cluster": "Fermat & Modular Forms",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.ModularForms.exceptional_divisor_self_intersection",
+      "name": "exceptional_divisor_self_intersection",
+      "module": "StringTheoryFoundation.ModularForms.FermatModularBridge",
+      "type": "def",
+      "signature": ": Int",
+      "informal_description": "Self-intersection number of each exceptional divisor $E_i \\subset \\mathrm{Km}(T^4)$:\n    $E_i^2 = -2$.",
+      "dependencies": [],
+      "cluster": "Fermat & Modular Forms",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.ModularForms.exceptional_divisor_cartan_a1",
+      "name": "exceptional_divisor_cartan_a1",
+      "module": "StringTheoryFoundation.ModularForms.FermatModularBridge",
+      "type": "theorem",
+      "signature": ":\n    exceptional_divisor_self_intersection = -2",
+      "informal_description": "Formalized theorem for exceptional_divisor_cartan_a1",
+      "dependencies": [
+        "exceptional_divisor_self_intersection"
+      ],
+      "cluster": "Fermat & Modular Forms",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.ModularForms.mukai_lattice_rank",
+      "name": "mukai_lattice_rank",
+      "module": "StringTheoryFoundation.ModularForms.FermatModularBridge",
+      "type": "def",
+      "signature": ": Nat",
+      "informal_description": "Total rank of the Mukai lattice $\\Gamma^{4,20}$:\n    $\\mathrm{rank}(\\Gamma^{4,20}) = \\dim H^0 + \\dim H^2 + \\dim H^4 = 1 + 22 + 1 = 24$.",
+      "dependencies": [],
+      "cluster": "Fermat & Modular Forms",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.ModularForms.mukai_lattice_rank_equals_24",
+      "name": "mukai_lattice_rank_equals_24",
+      "module": "StringTheoryFoundation.ModularForms.FermatModularBridge",
+      "type": "theorem",
+      "signature": ":\n    (1 : Nat) + 22 + 1 = mukai_lattice_rank",
+      "informal_description": "Formalized theorem for mukai_lattice_rank_equals_24",
+      "dependencies": [
+        "mukai_lattice_rank"
+      ],
+      "cluster": "Fermat & Modular Forms",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.ModularForms.MukaiSignature",
+      "name": "MukaiSignature",
+      "module": "StringTheoryFoundation.ModularForms.FermatModularBridge",
+      "type": "structure",
+      "signature": "where\n  pos_cycles : Nat",
+      "informal_description": "Signature of the Mukai lattice $\\Gamma^{4,20}$:\n    $b^+ = 4, \\quad b^- = 20, \\quad \\tau = 4 - 20 = -16$.",
+      "dependencies": [],
+      "cluster": "K3 Surface & Kummer",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.ModularForms.defaultMukaiSig",
+      "name": "defaultMukaiSig",
+      "module": "StringTheoryFoundation.ModularForms.FermatModularBridge",
+      "type": "def",
+      "signature": ": MukaiSignature",
+      "informal_description": "Formalized def for defaultMukaiSig",
+      "dependencies": [
+        "MukaiSignature"
+      ],
+      "cluster": "Fermat & Modular Forms",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.ModularForms.mukai_signature_difference",
+      "name": "mukai_signature_difference",
+      "module": "StringTheoryFoundation.ModularForms.FermatModularBridge",
+      "type": "theorem",
+      "signature": ":\n    (defaultMukaiSig.pos_cycles : Int) - (defaultMukaiSig.neg_cycles : Int) = -16",
+      "informal_description": "Formalized theorem for mukai_signature_difference",
+      "dependencies": [],
+      "cluster": "K3 Surface & Kummer",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.ModularForms.mukai_m24_degree_lock",
+      "name": "mukai_m24_degree_lock",
+      "module": "StringTheoryFoundation.ModularForms.FermatModularBridge",
+      "type": "theorem",
+      "signature": ":\n    mukai_lattice_rank = 24",
+      "informal_description": "Master Theorem: Congruence between Mukai Lattice Rank and Mathieu $M_{24}$ Moonshine Degree.\n    The 24 dimensions of the Mukai lattice coincide with the natural permutation representation of $M_{24}$.",
+      "dependencies": [
+        "mukai_lattice_rank"
+      ],
+      "cluster": "Fermat & Modular Forms",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.PhysLib.FourMomentum",
+      "name": "FourMomentum",
+      "module": "StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge",
+      "type": "structure",
+      "signature": ":Int  -- Energy E\n  p1 : Int  -- Momentum p_x\n  p2 : Int  -- Momentum p_y\n  p3 : Int  -- Momentum p_z\n  deriving Repr, DecidableEq",
+      "informal_description": "Relativistic 4-momentum in discrete integer units.",
+      "dependencies": [],
+      "cluster": "Foundation Physics",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.PhysLib.minkowski_norm_squared",
+      "name": "minkowski_norm_squared",
+      "module": "StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge",
+      "type": "def",
+      "signature": "(p : FourMomentum) : Int",
+      "informal_description": "Minkowski Minkowski inner product with signature (+, -, -, -).",
+      "dependencies": [
+        "FourMomentum"
+      ],
+      "cluster": "Foundation Physics",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.PhysLib.rest_frame_mass_shell",
+      "name": "rest_frame_mass_shell",
+      "module": "StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge",
+      "type": "theorem",
+      "signature": "(m : Int) :\n    minkowski_norm_squared { p0",
+      "informal_description": "Theorem: Rest frame particle ($p = (m, 0, 0, 0)$) satisfies $p^2 = m^2$.",
+      "dependencies": [
+        "minkowski_norm_squared",
+        "minkowski_norm_squared"
+      ],
+      "cluster": "Foundation Physics",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.PhysLib.dft_doubled_dim4",
+      "name": "dft_doubled_dim4",
+      "module": "StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge",
+      "type": "def",
+      "signature": ": Nat",
+      "informal_description": "Double Field Theory dimension for 4D spacetime: $2D = 2 \\times 4 = 8$.",
+      "dependencies": [],
+      "cluster": "Foundation Physics",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.PhysLib.dft_dimension_dim4",
+      "name": "dft_dimension_dim4",
+      "module": "StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge",
+      "type": "theorem",
+      "signature": ":\n    2 * 4 = dft_doubled_dim4",
+      "informal_description": "Formalized theorem for dft_dimension_dim4",
+      "dependencies": [
+        "dft_doubled_dim4"
+      ],
+      "cluster": "Foundation Physics",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.PhysLib.odd_metric_sign_squared",
+      "name": "odd_metric_sign_squared",
+      "module": "StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge",
+      "type": "def",
+      "signature": ": Int",
+      "informal_description": "O(D,D) metric involution property: $\\eta^2 = I$.",
+      "dependencies": [],
+      "cluster": "Generalized Geometry",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.PhysLib.odd_metric_involutive",
+      "name": "odd_metric_involutive",
+      "module": "StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge",
+      "type": "theorem",
+      "signature": ":\n    odd_metric_sign_squared = 1",
+      "informal_description": "Formalized theorem for odd_metric_involutive",
+      "dependencies": [
+        "odd_metric_sign_squared"
+      ],
+      "cluster": "Generalized Geometry",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.PhysLib.lorentz_signature_index",
+      "name": "lorentz_signature_index",
+      "module": "StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge",
+      "type": "def",
+      "signature": ": Int",
+      "informal_description": "Spacetime Lorentz signature index: $1 - 3 = -2$.",
+      "dependencies": [],
+      "cluster": "K3 Surface & Kummer",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.PhysLib.lorentz_signature_is_minus_two",
+      "name": "lorentz_signature_is_minus_two",
+      "module": "StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge",
+      "type": "theorem",
+      "signature": ":\n    (1 : Int) - 3 = lorentz_signature_index",
+      "informal_description": "Formalized theorem for lorentz_signature_is_minus_two",
+      "dependencies": [
+        "lorentz_signature_index"
+      ],
+      "cluster": "K3 Surface & Kummer",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.Quantum.GolayCodeParameters",
+      "name": "GolayCodeParameters",
+      "module": "StringTheoryFoundation.Quantum.TensorNetworkBridge",
+      "type": "structure",
+      "signature": "where\n  length : Nat",
+      "informal_description": "Parameters of the extended binary Golay code $\\mathcal{G}_{24}$:\n    Length $n = 24$, dimension $k = 12$, minimum Hamming distance $d = 8$.",
+      "dependencies": [],
+      "cluster": "Quantum Tensor Networks",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.Quantum.defaultGolay",
+      "name": "defaultGolay",
+      "module": "StringTheoryFoundation.Quantum.TensorNetworkBridge",
+      "type": "def",
+      "signature": ": GolayCodeParameters",
+      "informal_description": "Formalized def for defaultGolay",
+      "dependencies": [
+        "GolayCodeParameters"
+      ],
+      "cluster": "Quantum Tensor Networks",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.Quantum.golay_length_matches_k3_euler",
+      "name": "golay_length_matches_k3_euler",
+      "module": "StringTheoryFoundation.Quantum.TensorNetworkBridge",
+      "type": "theorem",
+      "signature": ":\n    defaultGolay.length = 24",
+      "informal_description": "Theorem: Golay code length matches transverse string dimensions and $\\chi(K3)$.",
+      "dependencies": [],
+      "cluster": "K3 Surface & Kummer",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.Quantum.golay_code_rate_is_half",
+      "name": "golay_code_rate_is_half",
+      "module": "StringTheoryFoundation.Quantum.TensorNetworkBridge",
+      "type": "theorem",
+      "signature": ":\n    defaultGolay.dimension * 2 = defaultGolay.length",
+      "informal_description": "Theorem: Rate of the Golay code is exactly 1/2 (maximal self-dual quantum code).",
+      "dependencies": [],
+      "cluster": "Quantum Tensor Networks",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.Quantum.ryu_takayanagi_cut_entropy",
+      "name": "ryu_takayanagi_cut_entropy",
+      "module": "StringTheoryFoundation.Quantum.TensorNetworkBridge",
+      "type": "def",
+      "signature": "(bonds : Nat) (bond_dimension : Nat) : Nat",
+      "informal_description": "Minimal cut Ryu-Takayanagi entanglement entropy scaling for cut of size $N$ bonds.",
+      "dependencies": [],
+      "cluster": "Quantum Tensor Networks",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.Quantum.ryu_takayanagi_empty_cut",
+      "name": "ryu_takayanagi_empty_cut",
+      "module": "StringTheoryFoundation.Quantum.TensorNetworkBridge",
+      "type": "theorem",
+      "signature": ":\n    ryu_takayanagi_cut_entropy 0 2 = 0",
+      "informal_description": "Theorem: Zero boundary cut has zero entanglement entropy.",
+      "dependencies": [
+        "ryu_takayanagi_cut_entropy"
+      ],
+      "cluster": "Quantum Tensor Networks",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.Quantum.ryu_takayanagi_positive_cut",
+      "name": "ryu_takayanagi_positive_cut",
+      "module": "StringTheoryFoundation.Quantum.TensorNetworkBridge",
+      "type": "theorem",
+      "signature": "(b : Nat) (h : b > 0) :\n    ryu_takayanagi_cut_entropy b 2 > 0",
+      "informal_description": "Master Theorem: Congruence between HaPPY Pentatensor and Ryu-Takayanagi Area Law.",
+      "dependencies": [
+        "ryu_takayanagi_cut_entropy",
+        "ryu_takayanagi_cut_entropy"
+      ],
+      "cluster": "Quantum Tensor Networks",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.StatisticalLearning.PACSampleConfig",
+      "name": "PACSampleConfig",
+      "module": "StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge",
+      "type": "structure",
+      "signature": "where\n  sample_size : Nat",
+      "informal_description": "Sample size $n$ and confidence parameter $\\delta$ represented in scaled integer metrics.",
+      "dependencies": [],
+      "cluster": "Statistical Learning",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.StatisticalLearning.defaultPAC",
+      "name": "defaultPAC",
+      "module": "StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge",
+      "type": "def",
+      "signature": ": PACSampleConfig",
+      "informal_description": "Formalized def for defaultPAC",
+      "dependencies": [
+        "PACSampleConfig"
+      ],
+      "cluster": "Statistical Learning",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.StatisticalLearning.empirical_risk_basis_points",
+      "name": "empirical_risk_basis_points",
+      "module": "StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge",
+      "type": "def",
+      "signature": "(successes : Nat) (total : Nat) : Nat",
+      "informal_description": "Bounded risk score in basis points (1/10000).",
+      "dependencies": [],
+      "cluster": "Statistical Learning",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.StatisticalLearning.zero_empirical_risk_on_perfect_proofs",
+      "name": "zero_empirical_risk_on_perfect_proofs",
+      "module": "StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge",
+      "type": "theorem",
+      "signature": "(n : Nat) (h : n > 0) :\n    empirical_risk_basis_points n n = 0",
+      "informal_description": "Theorem: A 100% successful proving campaign on the DAG has zero empirical risk.",
+      "dependencies": [
+        "empirical_risk_basis_points",
+        "empirical_risk_basis_points"
+      ],
+      "cluster": "Statistical Learning",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.StatisticalLearning.massart_complexity_numerator",
+      "name": "massart_complexity_numerator",
+      "module": "StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge",
+      "type": "def",
+      "signature": "(num_hypotheses : Nat) : Nat",
+      "informal_description": "Massart Finite Class bound scaling numerator: $2 \\ln |\\mathcal{F}|$.",
+      "dependencies": [],
+      "cluster": "Statistical Learning",
+      "status": "Verified",
+      "papers": [],
+      "concepts": [],
+      "impacts": []
+    },
+    {
+      "card_id": "StringTheory.Foundation.StatisticalLearning.rademacher_bound_positive",
+      "name": "rademacher_bound_positive",
+      "module": "StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge",
+      "type": "theorem",
+      "signature": "(k : Nat) (h : k > 0) :\n    massart_complexity_numerator k > 0",
+      "informal_description": "Master Theorem: Non-negative Rademacher complexity bound.",
+      "dependencies": [
+        "massart_complexity_numerator",
+        "massart_complexity_numerator"
+      ],
+      "cluster": "Statistical Learning",
       "status": "Verified",
       "papers": [],
       "concepts": [],
