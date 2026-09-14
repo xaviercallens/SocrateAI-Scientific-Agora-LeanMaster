@@ -23,4 +23,3 @@ import StringTheoryFoundation.StringTheory.WittenDuality
 import StringTheoryFoundation.StringTheory.VafaSwampland
 import StringTheoryFoundation.StringTheory.StromingerSYZ
 import StringTheoryFoundation.Atlas.AtlasGeometryBridge
-import StringTheoryFormalization.NSMath.OpenAIBridging

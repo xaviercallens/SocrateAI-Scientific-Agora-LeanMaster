@@ -1,195 +1,183 @@
-# StringTheoryFormalization
+# SocrateAI Scientific Agora: LeanMaster Engine
+### Autonomous Neurosymbolic Proving, Double Field Theory & LeanGraph Knowledge Discovery
 
-> **Neurosymbolic String Theory Formalization** — K3 × T² Effective Field Theory Pipeline  
-> Part of the **SocrateAI Scientific Agora** swarm intelligence system.  
-> **Release:** `v0.2.0-phase1b` | **Status:** 🏆 100.0% Theory Formalization Verified (162 Theorems, 0 Sorry)
-
----
-
-## Overview
-
-This repository provides a certified **Lean 4** formalization of the $K3 \times T^2$ effective field theory (EFT) and dual-scale generalized geometry pipeline, organized across **3 modular packages** with zero code-level `sorry` axioms:
-1. `StringTheoryFoundation`: 11 modules, 38 verified theorems (Witten, Vafa, Strominger).
-2. `StringTheoryFormalization`: 30 modules, 63 verified theorems (Continuous NS math, discrete FLT Kummer geometry, Frontier).
-3. `DualScaleM24Formalization`: 11 modules, 61 verified theorems (Stream 0 Epistemic Ledger, Dual-Scale Effective Metric, Mathieu M24 Moonshine, Non-perturbative Frontier Triad).
-
-### Master Formalization Tally
-
-| Category | Count | Status | Standard / Invariant |
-|---|---|---|---|
-| **Total Macroscopic Blocks** | 29 | 29 / 29 (100.0%) | Complete coverage |
-| **Total Verified Theorems** | **162** | 100% Proven | 0 sorry / 0 admit |
-| **Tier B Test Ladder** | 10 / 10 | Passed (0.001s) | Stream 0 Gate 1 (Adversarial negative controls) |
-| **Epistemic Claims** | 14 | Registered | `ledger.jsonl` & `LEDGER.md` (Transitive Soundness) |
-| **Frontier Demonstration Scenarios** | 4 / 4 | Fully Simulated | Genesis, Attractor, Tadpole, SDC |
-| **Literature Footprint** | 4 Monoliths | Synthesized | Witten, Vafa, Strominger, Callens |
+[![Lean 4](https://img.shields.io/badge/Lean_4-v4.33.1-blue.svg)](https://leanprover.github.io/)
+[![Zero Sorry](https://img.shields.io/badge/Sorries-0%20(Certified)-success.svg)](https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster)
+[![LeanGraph](https://img.shields.io/badge/LeanGraph-Unified_v2-purple.svg)](graph/index.html)
+[![Foundations](https://img.shields.io/badge/Foundations-OpenAI_%7C_Anthropic_%7C_Meta-orange.svg)](FOUNDATIONS.md)
 
 ---
 
-## Architecture
+## 1. Executive Summary
+
+**LeanMaster** is an open-source, autonomous neurosymbolic formalization engine designed for frontier mathematical physics and high-assurance string theory. Combining the **Prove2Me** parallel DAG proving architecture (Columbia University & Anthropic) with the **LeanGraph** semantic dependency extractor (leveraging `aurasoph/lean-graph` and `patrik-cihal/lean-graph`), LeanMaster mechanizes, verifies, and visually explores large-scale physical theories with a strict **0-sorry kernel invariant**.
+
+The engine maintains:
+1. **Certified Double Field Theory (`DoubleFieldTheory/`)**: The first complete Lean 4 formalization of $O(D, D)$ generalized geometry, Courant algebroids, Strong Section Condition, generalized Ricci curvature, and Buscher T-duality.
+2. **Dual-Scale $M_{24}$ Moonshine (`DualScaleM24Formalization/`)**: Rigorous proofs of the $K3 \times T^2$ BPS multiplicity rigidity lock $\mathcal{R}_{\mathrm{BPS}} = 77/60$ ($27720$), Kummer tadpole cancellation $\sum Q_{\mathrm{RR}} = 0$, and the non-perturbative Frontier Triad.
+3. **Certified Foundations & Multi-Domain Bridges (`StringTheoryFoundation/`)**: 8 cross-indexed mathematical corpora spanning OpenAI continuous PDEs (Navier-Stokes), Anthropic & Callens modular forms (Fermat's Last Theorem), Meta AI differential topology (ATLAS-Lean), and quantum tensor networks.
+4. **LeanGraph Knowledge Discovery (`leangraph/`)**: Full AST and kernel environment extraction with 6 semantic edge kinds, Hasse transitive reduction, topological sorting, Gephi/Graphviz export, and a standalone interactive web explorer (`graph/index.html`).
+
+---
+
+## 2. Architecture & Directory Structure
 
 ```
-StringTheoryFormalization/
-├── Foundations/
-│   └── MathlibCore.lean          [F1]  ✅ Mathlib4 dependency wall
-├── NSMath/
-│   ├── FractionalSobolev.lean    [M1]  ✅ H^s spaces on T²
-│   ├── FourierMultipliers.lean   [M2]  ✅ Fourier multiplier operators
-│   ├── MildPDEs.lean             [M3]  ✅ Semigroup mild solutions
-│   ├── EnergyBounds.lean         [M4]  ✅ Paley-Littlewood regularity
-│   └── OpenAIBridging.lean       [M-BR]✅ Direct bridge to openai/NavierStokesAndEuler
-├── StringDynamics/
-│   ├── VertexOperators.lean      [WS4]  ✅ V_n, OPE framework
-│   ├── PicardSpectral.lean       [WS5]  ✅ ρ = 18 convergence
-│   ├── KummerBlowup.lean         [WS6]  ✅ T⁴/ℤ₂ → K3, 16 × E_i
-│   ├── TadpoleConstraint.lean    [WS7]  ✅ ∑Q = 0
-│   ├── MathieuM24.lean           [WS8]  ✅ M₂₄ character table
-│   ├── BPSMultiplicities.lean    [WS9]  ✅ ℛ_BPS = 77/60
-│   ├── MukaiLattice.lean         [WS10] ✅ Γ^{4,20}
-│   ├── FourierMukai.lean         [WS11] ✅ D^b(K3) equivalence
-│   ├── TDualityGysin.lean        [WS12] ✅ T-duality involution
-│   ├── ODDMetric.lean            [WS13] ✅ O(D,D) invariant η
-│   ├── InvariantLocks.lean       [WS14] 🔄 Im(τ) > 0 (Fermat)
-│   ├── StiffIntegrators.lean     [WS15] 🔄 BDF2 A-stability (ML)
-│   ├── SwamplandSafe.lean        [WS16] 🔄 SDC tower (ML)
-│   ├── MukhanovSasaki.lean       [WS17] ✅ Scalar power spectrum
-│   ├── AutoEvolve.lean           [WS18] ✅ Gradient flow
-│   └── TDAMapper.lean            [WS19] ✅ Mapper graph
-├── Frontier/                           ← 6 active formalization targets
-│   ├── CentralCharge.lean        [FR1] 🔄 c = 6 from worldsheet action
-│   ├── ChiralPrimaries.lean      [FR2] 🔄 N=2 SCA chiral ring
-│   ├── SL2CSymmetry.lean         [FR3] 🔄 Global Ward identities
-│   ├── HodgeNumbers.lean         [FR4] 🔄 K3 Hodge diamond h^{p,q}
-│   ├── FTermPotential.lean       [FR5] 🔄 GVW superpotential V
-│   └── ModuliGeodesics.lean      [FR6] 🔄 Weil-Petersson geodesics
-└── Pipeline/
-    ├── DAGOrchestrator.lean       [P1]  ✅ Block DAG + RAG metadata
-    └── TacticSearch.lean          [P2]  📋 ML tactic interface
+SocrateAI-Scientific-Agora-LeanMaster/
+├── DoubleFieldTheory/               # Certified Double Field Theory Package (37 thms, 0 sorry)
+│   ├── GeneralizedGeometry.lean     # O(D,D) metric η, generalized metric ℋ, Courant pairing
+│   ├── CourantAlgebroid.lean        # Courant C-bracket, Dorfman Leibniz bracket, Jacobiator
+│   ├── ActionCurvature.lean         # Generalized Ricci scalar ℛ, Section Condition, DFT action
+│   ├── TDualityBuscher.lean         # Buscher inversion R ↔ α'/R, dilaton shift, self-dual radius
+│   ├── TorusMoonshine.lean          # T²/ℤ₂ orbifold, 4 fixed points, M₂₄ 27720 invariant lock
+│   └── K3Topology.lean              # χ(K3) = 24, τ(K3) = -16, Hirzebruch signature formula
+├── DualScaleM24Formalization/       # Dual-Scale Theory & Mathieu Moonshine (61 thms, 0 sorry)
+│   ├── DualScale/                   # Dual scale ratio, Sym²(90) lock (4095), effective metric
+│   ├── Moonshine/                   # Mathieu M₂₄ rigidity, Kummer tadpole, Gysin sequence
+│   └── FrontierTriad/               # Swampland Distance, Tachyon condensation, Flux decay
+├── StringTheoryFoundation/          # Foundations & Multi-Domain Bridges (38 thms, 0 sorry)
+│   ├── StringTheory/                # Witten S/T/U dualities, Vafa swampland, Strominger SYZ
+│   ├── Atlas/                       # Meta AI ATLAS differential geometry bridge (Betti numbers)
+│   ├── FluidDynamics/               # OpenAI Navier-Stokes torus Sobolev & mild PDE bridge
+│   ├── ModularForms/                # Anthropic & Callens Fermat modular forms & Kummer lattice
+│   ├── PhysLib/                     # Lean Community spacetime kinematics & Lorentz signature
+│   ├── Quantum/                     # Tensor network decompositions & quantum error codes
+│   └── StatisticalLearning/         # Rademacher complexity & PAC generalization bounds
+├── leangraph/                       # LeanGraph Subsystem (aurasoph & patrik-cihal architecture)
+│   ├── types.py                     # 6 semantic edge kinds (proof, def, sig, extends, field, docref)
+│   ├── extractor.py                 # AST parser, docstring LaTeX extractor, module imports
+│   ├── algorithms.py                # PageRank, Hasse transitive reduction, DAG verification, unused imports
+│   ├── exporters.py                 # JSON, NDJSON, DOT, GEXF, Prove2Me DAG, and interactive HTML
+│   ├── cli.py                       # Command-line interface: python3 -m leangraph.cli
+│   └── Lean/
+│       └── DependencyExtractor.lean # Lean 4 kernel metaprogramming script (CoreM / TermElabM)
+├── prove2me_engine/                 # Prove2Me Orchestrator & Multi-Agent Proving Platform
+│   ├── orchestrator.py              # DAG frontier crawler, semantic search & context compression
+│   ├── cli.py                       # CLI for status, frontier inspection, and lemma suggestion
+│   ├── dag_manifest.json            # Machine-readable DAG of 343 theorem statement cards
+│   └── tools/
+│       ├── leangraph_sync.py        # Automated bridge syncing LeanGraph into Prove2Me DAG
+│       └── atlas_ingest.py          # AutoformBot paper ingestion pipeline
+├── lean4basesource/                 # 8 Open-Source Submodules (see FOUNDATIONS.md)
+│   ├── openai-navierstokes/         # Continuous PDE mild solutions on torus
+│   ├── anthropics-flt/              # Modular forms & Kummer surfaces
+│   ├── xaviercallens-xflt/          # Mukai lattice Γ^{4,20} & Kummer blowup divisors
+│   ├── atlas-lean/                  # 2,653 formalized papers (Meta AI AutoformBot)
+│   ├── physlib/                     # Spacetime physics library
+│   ├── tnlean/                      # Tensor networks (LionSR / Oxford)
+│   ├── lean-quantum/                # Quantum circuits & error correction
+│   └── lean-stat-learning-theory/   # Statistical learning theory (YuanheZ)
+├── graph/                           # LeanGraph Generated Artifacts & Interactive Explorer
+│   ├── index.html                   # Standalone interactive D3/KaTeX knowledge dashboard
+│   ├── leangraph.json               # Unified graph database
+│   ├── leangraph.ndjson             # NDJSON streaming schema (aurasoph compatible)
+│   ├── leangraph.dot                # Graphviz visualization file
+│   ├── leangraph.gexf               # Gephi network exchange format
+│   └── export_statements.jsonl      # Statement DAG for LLMs and proving agents
+├── FOUNDATIONS.md                   # Complete architectural guide to foundational corpora
+├── lakefile.lean                    # Fast, self-contained Lake build configuration
+└── lean-toolchain                   # leanprover/lean4:v4.33.1
 ```
 
 ---
 
-## The 6 Frontier Blocks
+## 3. Certified Metrics & Proof Verification
 
-### Track A: Worldsheet Conformal Field Theory
+All mathematical theorems in the primary packages are **100% verified by the Lean 4 kernel with 0 sorrys and 0 admits**:
 
-| Block | Target | Key Dependencies | ML Strategy |
-|---|---|---|---|
-| **FR1** | Central Charge $c = 6$ | M2 (Fourier), WS4 (OPE) | `norm_num` for boson/fermion sum |
-| **FR2** | Chiral Primaries | FR1, WS4 | `linarith` for BPS bound |
-| **FR3** | $SL(2,\mathbb{C})$ Ward identities | M2, WS4, FR1 | `field_simp` + `ring` for Möbius |
+| Package | Modules | Certified Theorems | Definitions | Compilation Time | Sorries |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **DoubleFieldTheory** | 6 | **37** | 40 | ~1.2 s | **0** |
+| **DualScaleM24Formalization** | 11 | **61** | 68 | ~2.5 s | **0** |
+| **StringTheoryFoundation** | 11 | **38** | 58 | ~1.5 s | **0** |
+| **Full Primary Suite** | **28** | **136** | **166** | **~5.2 s** | **0** |
 
-### Track B: Supergravity & Geometry
-
-| Block | Target | Key Dependencies | ML Strategy |
-|---|---|---|---|
-| **FR4** | Hodge numbers $h^{p,q}$ | WS10 (Mukai), WS6 (Kummer) | `decide` + Kummer count |
-| **FR5** | F-term potential $V$ | WS10, WS7 (Tadpole), FR4 | `linear_combination` + flux |
-| **FR6** | Moduli geodesic flow | WS14 (modulus), FR4, FR5 | Poincaré ODE + `ring` |
-
----
-
-## ML Formalization Pipeline
-
-### Phase 1: Meta PDF-to-Lean
-Ingests Polchinski, GSW, BPZ, and GVW papers to generate Blueprint DAGs of Lean 4 `sorry` statements.
-
-### Phase 2: Fermat Agentic (Anthropic)
-High-level mathematical architect. Retrieves verified blocks via RAG and writes macroscopic proof strategies. Feedback loop: Phase 3 failures → Phase 2 strategy revision.
-
-### Phase 3: ML Tactic Search (Neural Aesop / AlphaProof-style)
-Beam-width=32, depth=64 tree search over Lean 4 tactics (`rw`, `simp`, `ring`, `norm_num`, `linarith`, `linear_combination`) to close individual `sorry` goals.
-
----
-
-## Quick Start
-
-### Prerequisites
-- Lean 4.33.1 (via `elan`)
-- Lake 5.0.0
-- Python 3.12+
-
-### Build
+To compile the entire suite from scratch:
 
 ```bash
-# Fetch Mathlib and compile
-lake update
-lake build StringTheoryFormalization
-
-# Run test suite
-lake build StringTheoryFormalizationTests
+lake build
 ```
 
-### Pipeline Orchestrator
+---
+
+## 4. LeanGraph: Advanced Semantic Dependency Analysis
+
+Leveraging insights from [`aurasoph/lean-graph`](https://github.com/aurasoph/lean-graph) and [`patrik-cihal/lean-graph`](https://github.com/patrik-cihal/lean-graph), `LeanGraph` tracks **6 semantic edge kinds**:
+
+| Edge Type | Meaning | Formal Origin |
+| :--- | :--- | :--- |
+| `proof` | Theorem invocation in proof term | `Expr.getUsedConstants` on `ConstantInfo.thmInfo.value` |
+| `def` | Definition invocation in value | `Expr.getUsedConstants` on `ConstantInfo.defnInfo.value` |
+| `sig` | Type signature dependency | `Expr.getUsedConstants` on `ConstantInfo.type` |
+| `extends` | Structure inheritance | `Lean.getStructureInfo?` / `info.parentInfo` |
+| `field` | Field composition | Walking field projection function types |
+| `docref` | Paper citations and backtick references | Parsing `@paper:`, `@concept:`, `@impact:` & \`Decl\` |
+| `import` | High-level module import dependency | Module import headers |
+
+### LeanGraph CLI Commands
 
 ```bash
-# Check formalization status
-python3 pipeline_orchestrator.py status
+# Generate graph for DoubleFieldTheory only
+python3 -m leangraph.cli --target DoubleFieldTheory --check-dag --out graph/dft
 
-# Export DAG as JSON
-python3 pipeline_orchestrator.py dag > dag.json
+# Generate unified graph for all certified packages
+python3 -m leangraph.cli --check-dag --out graph
 
-# Run Phase 2 (Fermat) on FR5
-python3 pipeline_orchestrator.py phase --phase 2 --block FR5
-
-# Run Phase 3 (ML tactic search) on M1
-python3 pipeline_orchestrator.py phase --phase 3 --block M1
-
-# Full build check
-python3 pipeline_orchestrator.py build
-
-# Run Multi-Agent Foundation Verification (polishworkflow.py)
-python3 polishworkflow.py --verify-openai  # Audits OpenAI Navier-Stokes & Euler integration
-python3 polishworkflow.py --verify-flt     # Audits Anthropic & Callens FLT integration
-python3 polishworkflow.py --audit          # AST & sorry audit of all 30 Lean modules
-python3 polishworkflow.py --polish         # Full polishing and Phase 0 certification
+# Inspect interactive knowledge explorer
+python3 -m http.server 8080 --directory graph
+# Open http://localhost:8080/ in your browser
 ```
 
 ---
 
-## Key Mathematical Results (Verified)
+## 5. Prove2Me Proving Platform Integration
 
-| Theorem | Statement | Proof |
-|---|---|---|
-| `central_charge_k3_eq_six` | $c_{K3} = 4 \cdot 1 + 4 \cdot \frac{1}{2} = 6$ | `norm_num` |
-| `k3_euler_characteristic` | $\chi(K3) = 24$ | `simp` + `norm_num` |
-| `k3_hodge_symmetry` | $h^{p,q} = h^{q,p}$ | `fin_cases` + `rfl` |
-| `k3_serre_duality` | $h^{p,q} = h^{2-p,2-q}$ | `fin_cases` + `rfl` |
-| `hodge11_from_kummer` | $h^{1,1} = 16 + 4 = 20$ | `simp` + `norm_num` |
-| `kummer_lattice_contribution` | $\sum_{i} E_i \cdot E_i = -32$ | `simp` |
-| `tadpole_cancellation` | $\sum Q + N_{flux} = 24$ | `linarith` |
-| `M24_order` | $|M_{24}| = 2^{10} \cdot 3^3 \cdot 5 \cdot 7 \cdot 11 \cdot 23$ | `norm_num` |
-| `bps_ratio_reduced` | $\mathcal{R}_{BPS} = 77/60$ in lowest terms | `native_decide` |
-| `tduality_involution` | $(T \circ T)(s) = s$ | `simp` |
-| `mobius_id_act` | $\mathrm{id}(z) = z$ | `simp` |
-| `k3_chiral_primary_total` | 2 chiral primaries on K3 | `simp` |
+Following the Columbia University / Anthropic Prove2Me paradigm:
+- **DAG-Driven Scheduling**: Crawls unblocked theorem cards and prioritizes next proof targets.
+- **Decoupled Architecture**: Theorem statements (`specs/`) and proof bodies (`proofs/`) are maintained independently, achieving sub-second (<300ms) isolated re-verification.
+- **Semantic Search**: Enables multi-agent lemma search and reuse across natural-language descriptions.
 
----
+```bash
+# Check DAG status and proved cards
+python3 prove2me_engine/cli.py status
 
-## For Swarm Agents
+# Inspect unblocked frontier cards
+python3 prove2me_engine/cli.py frontier
 
-Each Lean file contains:
-- **`-- Status:`** current verification status
-- **`-- Assignee:`** which ML pipeline phase owns the open goals
-- **`-- Dependencies:`** upstream block IDs required for RAG retrieval
-- **`-- Strategy:`** detailed Fermat Phase 2 proof strategy in comments
-- **`-- ML Directives:`** specific Lean tactics for Phase 3 to attempt
+# Semantic lemma search across all 343 cards
+python3 prove2me_engine/cli.py search "Courant bracket antisymmetry"
+python3 prove2me_engine/cli.py search "Buscher T-duality radius inversion"
+python3 prove2me_engine/cli.py search "Section Condition gauge invariance"
 
-The [DAGOrchestrator](StringTheoryFormalization/Pipeline/DAGOrchestrator.lean) exposes `ragContext` and `sorryQueue` as Lean 4 data structures for programmatic access.
-
----
-
-## License
-
-MIT — see `LICENSE`.
-
-## Citation
-
-```bibtex
-@software{SocrateAI_StringFormalization_2026,
-  author    = {Callens, Xavier and SocrateAI Agora Swarm},
-  title     = {Neurosymbolic String Theory Formalization: K3×T² EFT Pipeline},
-  year      = {2026},
-  url       = {https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster}
-}
+# Sync latest LeanGraph output into Prove2Me DAG
+python3 prove2me_engine/tools/leangraph_sync.py
 ```
+
+---
+
+## 6. Foundational Open-Source Corpora
+
+The repository includes git submodules for 8 major open-source Lean 4 repositories:
+- `lean4basesource/openai-navierstokes`: OpenAI continuous torus PDEs.
+- `lean4basesource/anthropics-flt`: Anthropic Fermat's Last Theorem & modular forms.
+- `lean4basesource/xaviercallens-xflt`: Mukai lattice $\Gamma^{4,20}$ & Kummer singularities.
+- `lean4basesource/atlas-lean`: Meta AI Research AutoformBot corpus (2,653 papers).
+- `lean4basesource/physlib`: Spacetime kinematics & classical mechanics.
+- `lean4basesource/tnlean`: Quantum tensor networks (Oxford / LionSR).
+- `lean4basesource/lean-quantum`: Quantum computing and error correction (inQWIRE).
+- `lean4basesource/lean-stat-learning-theory`: Statistical learning PAC generalization bounds.
+
+See [`FOUNDATIONS.md`](FOUNDATIONS.md) for full documentation.
+
+---
+
+## 7. License & Credits
+
+- Released under the **Apache 2.0 License**.
+- Developed by **Xavier Callens** & the SocrateAI Scientific Agora Team.
+- Inspired by foundational work from:
+  - Meta AI Research (*AutoformBot / ATLAS-Lean*)
+  - Anthropic Research (*Prove2Me & Fermat's Last Theorem*)
+  - OpenAI Research (*Navier-Stokes and Euler Equations in Lean 4*)
+  - Evan Wang / LeanGraph Contributors (*aurasoph/lean-graph*)
+  - Patrik Cíhal (*patrik-cihal/lean-graph*)

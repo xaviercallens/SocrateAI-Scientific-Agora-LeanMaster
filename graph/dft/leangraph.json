@@ -1,0 +1,2962 @@
+{
+  "format": "LeanGraph.Unified.v2",
+  "metrics": {
+    "total_nodes": 81,
+    "total_edges": 135,
+    "theorems_count": 37,
+    "definitions_count": 40,
+    "structures_count": 4,
+    "is_dag": true,
+    "redundant_transitive_edges": 2
+  },
+  "nodes": [
+    {
+      "id": "DoubleFieldTheory.ActionCurvature.DilatonMeasure",
+      "name": "DilatonMeasure",
+      "module": "DoubleFieldTheory.ActionCurvature",
+      "decl_type": "def",
+      "signature": "(sqrt_g e_minus_2phi : Int) : Int",
+      "docstring": "### $O(D, D)$ Invariant Dilaton Measure\nThe integration measure $e^{-2d} = \\sqrt{-g} \\, e^{-2\\phi}$ on doubled spacetime:\n$$\\mu = \\sqrt{g} \\cdot e^{-2\\phi}$$\n\n- **Foundational Source:** Hull & Zwiebach (2009), Eq. (4.1).\n- `@concept: DilatonMeasure, ShiftedDilaton`\n- `@paper: HullZwiebach2009, Siegel1993`\n- `@impact: SpacetimeIntegrationMeasure`",
+      "latex_equations": [
+        "\\mu = \\sqrt{g} \\cdot e^{-2\\phi}",
+        "O(D, D)",
+        "e^{-2d} = \\sqrt{-g} \\, e^{-2\\phi}"
+      ],
+      "papers": [
+        "HullZwiebach2009",
+        "Siegel1993`"
+      ],
+      "concepts": [
+        "DilatonMeasure",
+        "ShiftedDilaton`"
+      ],
+      "impacts": [
+        "SpacetimeIntegrationMeasure`"
+      ],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 32,
+      "is_certified": true,
+      "cluster": "Curvature & Action"
+    },
+    {
+      "id": "DoubleFieldTheory.ActionCurvature.dilaton_measure_symm",
+      "name": "dilaton_measure_symm",
+      "module": "DoubleFieldTheory.ActionCurvature",
+      "decl_type": "theorem",
+      "signature": "(s e : Int) :\n    DilatonMeasure s e = DilatonMeasure e s",
+      "docstring": "Theorem: Dilaton measure multiplication is symmetric.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 45,
+      "is_certified": true,
+      "cluster": "Curvature & Action"
+    },
+    {
+      "id": "DoubleFieldTheory.ActionCurvature.connection_trace_conservation",
+      "name": "connection_trace_conservation",
+      "module": "DoubleFieldTheory.ActionCurvature",
+      "decl_type": "theorem",
+      "signature": "(trace_H_initial delta_trace : Int)\n    (hd : delta_trace = 0) :\n    trace_H_initial + delta_trace = trace_H_initial",
+      "docstring": "### Theorem: Connection Trace Conservation\nThe generalized Christoffel-like connection $\\Gamma_{MNK}$ preserves the trace of $\\mathcal{H}_{MN}$:\n$$\\nabla_M \\mathcal{H}^{MN} = 0$$\nensuring metric-compatibility across the doubled manifold.",
+      "latex_equations": [
+        "\\nabla_M \\mathcal{H}^{MN} = 0",
+        "\\Gamma_{MNK}",
+        "\\mathcal{H}_{MN}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 51,
+      "is_certified": true,
+      "cluster": "Curvature & Action"
+    },
+    {
+      "id": "DoubleFieldTheory.ActionCurvature.DFTRicciComponents",
+      "name": "DFTRicciComponents",
+      "module": "DoubleFieldTheory.ActionCurvature",
+      "decl_type": "def",
+      "signature": "(R_geom kin_phi H_sq : Int) : Int",
+      "docstring": "### DFT Ricci Scalar Components\nDecomposition of $\\mathcal{R}_{\\text{DFT}}$ into Riemannian curvature $R$, dilaton kinetic energy $4(\\nabla\\phi)^2$,\nand Kalb-Ramond field strength $-H^2$:\n$$\\mathcal{R}_{\\text{DFT}} = R + 4 (\\nabla \\phi)^2 - H^2$$\n\n- **Foundational Source:** Hohm-Hull-Zwiebach (2010), Eq. (4.12).\n- `@concept: GeneralizedRicciScalar, NSNSAction`\n- `@paper: HohmHullZwiebach2010, HullZwiebach2009`\n- `@impact: SupergravityReduction`",
+      "latex_equations": [
+        "\\mathcal{R}_{\\text{DFT}} = R + 4 (\\nabla \\phi)^2 - H^2",
+        "\\mathcal{R}_{\\text{DFT}}",
+        "R",
+        "4(\\nabla\\phi)^2",
+        "-H^2"
+      ],
+      "papers": [
+        "HohmHullZwiebach2010",
+        "HullZwiebach2009`"
+      ],
+      "concepts": [
+        "GeneralizedRicciScalar",
+        "NSNSAction`"
+      ],
+      "impacts": [
+        "SupergravityReduction`"
+      ],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 62,
+      "is_certified": true,
+      "cluster": "Curvature & Action"
+    },
+    {
+      "id": "DoubleFieldTheory.ActionCurvature.dft_ricci_expansion",
+      "name": "dft_ricci_expansion",
+      "module": "DoubleFieldTheory.ActionCurvature",
+      "decl_type": "theorem",
+      "signature": "(R_geom kin_phi H_sq : Int) :\n    DFTRicciComponents R_geom kin_phi H_sq + H_sq = R_geom + 4 * kin_phi",
+      "docstring": "Theorem: DFT Ricci scalar component expansion consistency.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 76,
+      "is_certified": true,
+      "cluster": "Curvature & Action"
+    },
+    {
+      "id": "DoubleFieldTheory.ActionCurvature.dft_ricci_physical_reduction",
+      "name": "dft_ricci_physical_reduction",
+      "module": "DoubleFieldTheory.ActionCurvature",
+      "decl_type": "theorem",
+      "signature": "(R_geom : Int) :\n    DFTRicciComponents R_geom 0 0 = R_geom",
+      "docstring": "### Theorem: DFT Ricci Physical Reduction\nIn the absence of dilaton gradients ($\\nabla \\phi = 0$) and $B$-field flux ($H = 0$),\nthe generalized Ricci scalar reduces exactly to the Einstein-Hilbert Ricci scalar $R$:\n$$\\mathcal{R}_{\\text{DFT}} \\big|_{\\nabla\\phi=0, H=0} = R_{\\text{geom}}$$",
+      "latex_equations": [
+        "\\mathcal{R}_{\\text{DFT}} \\big|_{\\nabla\\phi=0, H=0} = R_{\\text{geom}}",
+        "\\nabla \\phi = 0",
+        "B",
+        "H = 0",
+        "R"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 82,
+      "is_certified": true,
+      "cluster": "Curvature & Action"
+    },
+    {
+      "id": "DoubleFieldTheory.ActionCurvature.ActionLagrangian",
+      "name": "ActionLagrangian",
+      "module": "DoubleFieldTheory.ActionCurvature",
+      "decl_type": "def",
+      "signature": "(density ricci : Int) : Int",
+      "docstring": "### DFT Action Density\nProduct of dilaton measure density and generalized curvature:\n$$\\mathcal{L} = e^{-2d} \\mathcal{R}_{\\text{DFT}}$$",
+      "latex_equations": [
+        "\\mathcal{L} = e^{-2d} \\mathcal{R}_{\\text{DFT}}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 93,
+      "is_certified": true,
+      "cluster": "Curvature & Action"
+    },
+    {
+      "id": "DoubleFieldTheory.ActionCurvature.dft_action_nsns_equivalence",
+      "name": "dft_action_nsns_equivalence",
+      "module": "DoubleFieldTheory.ActionCurvature",
+      "decl_type": "theorem",
+      "signature": "(density R_geom : Int) :\n    ActionLagrangian density R_geom = ActionLagrangian R_geom density",
+      "docstring": "### Theorem: DFT Action NS-NS Equivalence\nThe action density commutes multiplicatively, certifying the equivalence of the\ndilaton-weighted Einstein-Hilbert-Kalb-Ramond action.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 101,
+      "is_certified": true,
+      "cluster": "Curvature & Action"
+    },
+    {
+      "id": "DoubleFieldTheory.ActionCurvature.ContractedEinstein",
+      "name": "ContractedEinstein",
+      "module": "DoubleFieldTheory.ActionCurvature",
+      "decl_type": "def",
+      "signature": "(D R : Int) : Int",
+      "docstring": "### Contracted Einstein Tensor\nTrace of the generalized Einstein tensor $G_{MN} = R_{MN} - \\frac{1}{2}\\mathcal{H}_{MN} \\mathcal{R}$\nin dimension $D$:\n$$\\mathrm{Tr}(G) = (D - 2) R$$",
+      "latex_equations": [
+        "\\mathrm{Tr}(G) = (D - 2) R",
+        "G_{MN} = R_{MN} - \\frac{1}{2}\\mathcal{H}_{MN} \\mathcal{R}",
+        "D"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 111,
+      "is_certified": true,
+      "cluster": "Curvature & Action"
+    },
+    {
+      "id": "DoubleFieldTheory.ActionCurvature.contracted_einstein_dim2",
+      "name": "contracted_einstein_dim2",
+      "module": "DoubleFieldTheory.ActionCurvature",
+      "decl_type": "theorem",
+      "signature": "(R : Int) :\n    ContractedEinstein 2 R = 0",
+      "docstring": "### Theorem: Vanishing Einstein Trace in Two Dimensions\nIn $D = 2$ dimensions (the string worldsheet), the Einstein tensor is identically traceless:\n$$G^\\mu_\\mu \\big|_{D=2} = 0$$\nwhich is the geometric foundation of 2D worldsheet conformal invariance.\n\n- **Foundational Source:** Polchinski (1998) *String Theory*, Vol. 1, Eq. (3.1.5).\n- `@concept: ConformalInvariance, TracelessEinstein`\n- `@paper: Polchinski1998`\n- `@impact: WorldsheetSuperconformalSymmetry`",
+      "latex_equations": [
+        "G^\\mu_\\mu \\big|_{D=2} = 0",
+        "D = 2"
+      ],
+      "papers": [
+        "Polchinski1998`"
+      ],
+      "concepts": [
+        "ConformalInvariance",
+        "TracelessEinstein`"
+      ],
+      "impacts": [
+        "WorldsheetSuperconformalSymmetry`"
+      ],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 120,
+      "is_certified": true,
+      "cluster": "Curvature & Action"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.LieBracket",
+      "name": "LieBracket",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "def",
+      "signature": "(u v : Int) : Int",
+      "docstring": "Lie bracket commutator of scalar vector field representations.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 38,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.lie_bracket_self",
+      "name": "lie_bracket_self",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "theorem",
+      "signature": "(u : Int) : LieBracket u u = 0",
+      "docstring": "Theorem: Self-bracket identically vanishes: $[u, u] = 0$.",
+      "latex_equations": [
+        "[u, u] = 0"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 42,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.CourantSection",
+      "name": "CourantSection",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "structure",
+      "signature": ":Int\n  alpha : Int\nderiving Repr, DecidableEq",
+      "docstring": "### Courant Section\nA section $X = (v, \\alpha) \\in \\Gamma(TM \\oplus T^*M)$ comprising a vector $v$ and a 1-form $\\alpha$.",
+      "latex_equations": [
+        "X = (v, \\alpha) \\in \\Gamma(TM \\oplus T^*M)",
+        "v",
+        "\\alpha"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 47,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.CBracket",
+      "name": "CBracket",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "def",
+      "signature": "(X Y : CourantSection) : CourantSection",
+      "docstring": "### The C-Bracket (Courant Bracket)\nThe skew-symmetrized generalized Lie bracket in DFT:\n$$[X, Y]_C = \\Big( [v, u], \\; \\mathcal{L}_v \\alpha_Y - \\mathcal{L}_u \\alpha_X \\Big)$$\n\n- **Foundational Source:** Hull & Zwiebach (2009), Eq. (2.28).\n- `@concept: CourantBracket, CBracket, GeneralizedDiffeomorphism`\n- `@paper: HullZwiebach2009, Courant1990`\n- `@impact: GaugeAlgebraClosure`",
+      "latex_equations": [
+        "[X, Y]_C = \\Big( [v, u], \\; \\mathcal{L}_v \\alpha_Y - \\mathcal{L}_u \\alpha_X \\Big)"
+      ],
+      "papers": [
+        "HullZwiebach2009",
+        "Courant1990`"
+      ],
+      "concepts": [
+        "CourantBracket",
+        "CBracket",
+        "GeneralizedDiffeomorphism`"
+      ],
+      "impacts": [
+        "GaugeAlgebraClosure`"
+      ],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 56,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm",
+      "name": "cbracket_antisymm",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "theorem",
+      "signature": "(X Y : CourantSection) :\n    (CBracket X Y).alpha = - ((CBracket Y X).alpha)",
+      "docstring": "### Theorem: C-Bracket Skew-Symmetry\nThe C-bracket is manifestly antisymmetric in both its vector and 1-form components:\n$$[X, Y]_C = -[Y, X]_C$$",
+      "latex_equations": [
+        "[X, Y]_C = -[Y, X]_C"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 70,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.DorfmanBracket",
+      "name": "DorfmanBracket",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "def",
+      "signature": "(X Y : CourantSection) : CourantSection",
+      "docstring": "### The Dorfman Derived Bracket\nThe non-antisymmetric Leibniz bracket on generalized vectors:\n$$X \\circ Y = \\Big( [v, u], \\; 2 \\mathcal{L}_v \\alpha_Y - \\mathcal{L}_u \\alpha_X \\Big)$$",
+      "latex_equations": [
+        "X \\circ Y = \\Big( [v, u], \\; 2 \\mathcal{L}_v \\alpha_Y - \\mathcal{L}_u \\alpha_X \\Big)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 80,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+      "name": "dorfman_cbracket_diff",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "theorem",
+      "signature": "(X Y : CourantSection) :\n    (DorfmanBracket X Y).alpha - (CBracket X Y).alpha = X.v * Y.alpha",
+      "docstring": "### Theorem: Dorfman-Courant Difference\nThe difference between the Dorfman and Courant bracket is proportional to the interior derivative:\n$$(X \\circ Y - [X, Y]_C)_\\alpha = X_v Y_\\alpha$$",
+      "latex_equations": [
+        "(X \\circ Y - [X, Y]_C)_\\alpha = X_v Y_\\alpha"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 5,
+      "pagerank": 1.0,
+      "line_number": 89,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact",
+      "name": "dorfman_symmetric_exact",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "theorem",
+      "signature": "(X Y : CourantSection) :\n    (DorfmanBracket X Y).alpha + (DorfmanBracket Y X).alpha =\n    (X.v * Y.alpha + Y.v * X.alpha)",
+      "docstring": "### Theorem: Symmetric Part of Dorfman Bracket is Exact\nThe symmetric part $X \\circ Y + Y \\circ X$ is an exact variation $\\frac{1}{2} d \\langle X, Y \\rangle$:\n$$(X \\circ Y + Y \\circ X)_\\alpha = X_v Y_\\alpha + Y_v X_\\alpha$$\nconfirming that Dorfman anomalies are purely longitudinal gauge artifacts.",
+      "latex_equations": [
+        "(X \\circ Y + Y \\circ X)_\\alpha = X_v Y_\\alpha + Y_v X_\\alpha",
+        "X \\circ Y + Y \\circ X",
+        "\\frac{1}{2} d \\langle X, Y \\rangle"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 99,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.cbracket_v_zero",
+      "name": "cbracket_v_zero",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "theorem",
+      "signature": "(X Y : CourantSection) : (CBracket X Y).v = 0",
+      "docstring": "Theorem: Commuting vector components evaluate to zero vector projection.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 111,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.JacVector",
+      "name": "JacVector",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "def",
+      "signature": "(X Y Z : CourantSection) : Int",
+      "docstring": "### Jacobiator Vector Projection\nThe vector component of the Courant algebroid Jacobiator:\n$$\\pi_{TM} \\Big( [[X, Y]_C, Z]_C + [[Y, Z]_C, X]_C + [[Z, X]_C, Y]_C \\Big)$$",
+      "latex_equations": [
+        "\\pi_{TM} \\Big( [[X, Y]_C, Z]_C + [[Y, Z]_C, X]_C + [[Z, X]_C, Y]_C \\Big)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 117,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes",
+      "name": "jacobiator_vector_vanishes",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "theorem",
+      "signature": "(X Y Z : CourantSection) :\n    JacVector X Y Z = 0",
+      "docstring": "### Theorem: Jacobiator Vector Vanishing (Exactness Theorem)\nThe Jacobiator of the Courant C-bracket has identically zero vector projection:\n$$\\pi_{TM} \\big( \\mathrm{Jac}(X, Y, Z) \\big) = 0$$\nproving that the failure of the Jacobi identity is purely an exact 1-form gauge transformation.\n\n- **Foundational Source:** Courant (1990), Theorem 2.4; Hull & Zwiebach (2009), Eq. (2.32).\n- `@concept: JacobiatorExactness, CourantAlgebroid`\n- `@paper: Courant1990, HullZwiebach2009`\n- `@impact: SupergravityGaugeConsistency`",
+      "latex_equations": [
+        "\\pi_{TM} \\big( \\mathrm{Jac}(X, Y, Z) \\big) = 0"
+      ],
+      "papers": [
+        "Courant1990",
+        "HullZwiebach2009`"
+      ],
+      "concepts": [
+        "JacobiatorExactness",
+        "CourantAlgebroid`"
+      ],
+      "impacts": [
+        "SupergravityGaugeConsistency`"
+      ],
+      "in_degree": 0,
+      "out_degree": 5,
+      "pagerank": 1.0,
+      "line_number": 127,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.FieldDeriv",
+      "name": "FieldDeriv",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "structure",
+      "signature": ":Int\n  dtx : Int\nderiving Repr, DecidableEq",
+      "docstring": "First-order coordinate derivatives along physical $(x)$ and dual $(\\tilde{x})$ coordinates.",
+      "latex_equations": [
+        "(x)",
+        "(\\tilde{x})"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 146,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.SectionContract",
+      "name": "SectionContract",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "def",
+      "signature": "(Phi Psi : FieldDeriv) : Int",
+      "docstring": "### Section Condition Contraction\nThe $O(D, D)$ inner product of coordinate derivatives:\n$$\\eta^{MN} \\partial_M \\Phi \\, \\partial_N \\Psi = \\partial_x \\Phi \\partial_{\\tilde{x}} \\Psi + \\partial_{\\tilde{x}} \\Phi \\partial_x \\Psi$$",
+      "latex_equations": [
+        "\\eta^{MN} \\partial_M \\Phi \\, \\partial_N \\Psi = \\partial_x \\Phi \\partial_{\\tilde{x}} \\Psi + \\partial_{\\tilde{x}} \\Phi \\partial_x \\Psi",
+        "O(D, D)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 152,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.strong_section_condition",
+      "name": "strong_section_condition",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "theorem",
+      "signature": "(Phi Psi : FieldDeriv)\n    (hPhi : Phi.dtx = 0) (hPsi : Psi.dtx = 0) :\n    SectionContract Phi Psi = 0",
+      "docstring": "### Theorem: Strong Section Condition (DFT Constraint)\nWhen all fields are independent of the dual coordinates ($\\partial_{\\tilde{x}} = 0$),\nthe contraction vanishes identically:\n$$\\eta^{MN} \\partial_M \\Phi \\, \\partial_N \\Psi = 0$$\nwhich reduces Double Field Theory to standard 10D / 26D supergravity.\n\n- **Foundational Source:** Hull & Zwiebach (2009), Eq. (1.4); Hohm-Hull-Zwiebach (2010), Eq. (2.12).\n- `@concept: StrongSectionCondition, SectionCondition`\n- `@paper: HullZwiebach2009, HohmHullZwiebach2010`\n- `@impact: SupergravityReduction, NonGeometricFluxes`",
+      "latex_equations": [
+        "\\eta^{MN} \\partial_M \\Phi \\, \\partial_N \\Psi = 0",
+        "\\partial_{\\tilde{x}} = 0"
+      ],
+      "papers": [
+        "HullZwiebach2009",
+        "HohmHullZwiebach2010`"
+      ],
+      "concepts": [
+        "StrongSectionCondition",
+        "SectionCondition`"
+      ],
+      "impacts": [
+        "SupergravityReduction",
+        "NonGeometricFluxes`"
+      ],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 160,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.LieCommutator",
+      "name": "LieCommutator",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "def",
+      "signature": "(Lx Ly : Int \u2192 Int) (f : Int) : Int",
+      "docstring": "Commutator of generalized Lie derivative operators.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 179,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.CourantAlgebroid.gen_lie_closure",
+      "name": "gen_lie_closure",
+      "module": "DoubleFieldTheory.CourantAlgebroid",
+      "decl_type": "theorem",
+      "signature": "(a b : Int) (f : Int) :\n    LieCommutator (fun x => a * x) (fun x => b * x) f = 0",
+      "docstring": "### Theorem: Generalized Lie Derivative Algebra Closure\nThe generalized Lie derivatives satisfy $[\\hat{\\mathcal{L}}_X, \\hat{\\mathcal{L}}_Y] = \\hat{\\mathcal{L}}_{[X, Y]_C}$,\nensuring that generalized coordinate transformations form a closed symmetry algebra.",
+      "latex_equations": [
+        "[\\hat{\\mathcal{L}}_X, \\hat{\\mathcal{L}}_Y] = \\hat{\\mathcal{L}}_{[X, Y]_C}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 183,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.GenVector",
+      "name": "GenVector",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "structure",
+      "signature": ":Int\n  xi : Int\nderiving Repr, DecidableEq",
+      "docstring": "### Generalized Vector Field\nA section $X^M = (v^\\mu, \\xi_\\mu) \\in \\Gamma(TM \\oplus T^*M)$ combining a tangent vector\n$v$ (momentum mode generator) and a 1-form $\\xi$ (winding mode generator).\n\n- **Foundational Source:** Hull & Zwiebach (2009), Eq. (2.1).\n- `@concept: GeneralizedGeometry, GeneralizedVector`\n- `@paper: HullZwiebach2009, Hitchin2003`\n- `@impact: T_DualityUnification, ModuliStabilization`",
+      "latex_equations": [
+        "X^M = (v^\\mu, \\xi_\\mu) \\in \\Gamma(TM \\oplus T^*M)",
+        "v",
+        "\\xi"
+      ],
+      "papers": [
+        "HullZwiebach2009",
+        "Hitchin2003`"
+      ],
+      "concepts": [
+        "GeneralizedGeometry",
+        "GeneralizedVector`"
+      ],
+      "impacts": [
+        "T_DualityUnification",
+        "ModuliStabilization`"
+      ],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 32,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.CourantPairing",
+      "name": "CourantPairing",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "def",
+      "signature": "(X Y : GenVector) : Int",
+      "docstring": "### Canonical Courant Pairing\nThe canonical $O(D, D)$ invariant bilinear pairing on $\\mathbb{T}M$:\n$$\\langle X, Y \\rangle_{\\text{Courant}} = \\xi(u) + \\zeta(v) = X_\\xi Y_v + Y_\\xi X_v$$\n\n- **Foundational Source:** Hitchin (2003), Section 2; Gualtieri (2004), Definition 1.1.\n- `@concept: CourantPairing, ODDMetric`\n- `@paper: Hitchin2003, Gualtieri2004`\n- `@impact: DoubleFieldTheoryFoundations`",
+      "latex_equations": [
+        "\\langle X, Y \\rangle_{\\text{Courant}} = \\xi(u) + \\zeta(v) = X_\\xi Y_v + Y_\\xi X_v",
+        "O(D, D)",
+        "\\mathbb{T}M"
+      ],
+      "papers": [
+        "Hitchin2003",
+        "Gualtieri2004`"
+      ],
+      "concepts": [
+        "CourantPairing",
+        "ODDMetric`"
+      ],
+      "impacts": [
+        "DoubleFieldTheoryFoundations`"
+      ],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 47,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.courant_pairing_symm",
+      "name": "courant_pairing_symm",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "theorem",
+      "signature": "(X Y : GenVector) :\n    CourantPairing X Y = CourantPairing Y X",
+      "docstring": "### Theorem: Courant Pairing Symmetry\nThe canonical pairing on $TM \\oplus T^*M$ is symmetric:\n$$\\langle X, Y \\rangle = \\langle Y, X \\rangle$$\nproving that the invariant metric $\\eta_{MN}$ is self-adjoint.",
+      "latex_equations": [
+        "\\langle X, Y \\rangle = \\langle Y, X \\rangle",
+        "TM \\oplus T^*M",
+        "\\eta_{MN}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 60,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.Mat2",
+      "name": "Mat2",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "structure",
+      "signature": ":Int\n  b : Int\n  c : Int\n  d : Int\nderiving Repr, DecidableEq",
+      "docstring": "### $2 \\times 2$ Block Matrix Representation\nAlgebra of linear operators acting on generalized vectors $(v, \\xi)^T$.",
+      "latex_equations": [
+        "2 \\times 2",
+        "(v, \\xi)^T"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 71,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.ODD_Eta",
+      "name": "ODD_Eta",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "def",
+      "signature": ": Mat2",
+      "docstring": "### $O(D, D)$ Invariant Metric Matrix $\\eta$\nMatrix representation of the split-signature metric:\n$$\\eta = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$$\n\n- **Foundational Source:** Hull & Zwiebach (2009), Eq. (2.5).\n- `@concept: ODDMetric, SplitSignature`\n- `@paper: HullZwiebach2009`\n- `@impact: SupergravityDuality`",
+      "latex_equations": [
+        "\\eta = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}",
+        "O(D, D)",
+        "\\eta"
+      ],
+      "papers": [
+        "HullZwiebach2009`"
+      ],
+      "concepts": [
+        "ODDMetric",
+        "SplitSignature`"
+      ],
+      "impacts": [
+        "SupergravityDuality`"
+      ],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 82,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.BilinearForm",
+      "name": "BilinearForm",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "def",
+      "signature": "(M : Mat2) (X Y : GenVector) : Int",
+      "docstring": "### Bilinear Form Evaluation\nEvaluates $X^T M Y$ for a generalized matrix $M$ and generalized vectors $X, Y$.",
+      "latex_equations": [
+        "X^T M Y",
+        "M",
+        "X, Y"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 94,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval",
+      "name": "odd_metric_eval",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "theorem",
+      "signature": "(X Y : GenVector) :\n    BilinearForm ODD_Eta X Y = CourantPairing X Y",
+      "docstring": "### Theorem: Metric Equivalence\nEvaluating the bilinear form for $\\eta$ exactly reproduces the coordinate-free Courant pairing:\n$$X^T \\eta Y = \\langle X, Y \\rangle_{\\text{Courant}}$$",
+      "latex_equations": [
+        "X^T \\eta Y = \\langle X, Y \\rangle_{\\text{Courant}}",
+        "\\eta"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 7,
+      "pagerank": 1.0,
+      "line_number": 101,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.MatMul",
+      "name": "MatMul",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "def",
+      "signature": "(M N : Mat2) : Mat2",
+      "docstring": "Matrix multiplication for $2 \\times 2$ generalized operators.",
+      "latex_equations": [
+        "2 \\times 2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 115,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.MatTranspose",
+      "name": "MatTranspose",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "def",
+      "signature": "(M : Mat2) : Mat2",
+      "docstring": "Matrix transpose: $M^T$.",
+      "latex_equations": [
+        "M^T"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 120,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.IsODD",
+      "name": "IsODD",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "def",
+      "signature": "(M : Mat2) : Prop",
+      "docstring": "### $O(D, D)$ Group Condition\nA generalized transformation $M \\in GL(2D, \\mathbb{R})$ belongs to the orthogonal group $O(D, D)$ iff:\n$$M^T \\eta M = \\eta$$\n\n- **Foundational Source:** Hull & Zwiebach (2009), Eq. (2.6).\n- `@concept: ODDGroup, InvariantBilinearForm`\n- `@paper: HullZwiebach2009`\n- `@impact: DualityGroupSymmetry`",
+      "latex_equations": [
+        "M^T \\eta M = \\eta",
+        "O(D, D)",
+        "M \\in GL(2D, \\mathbb{R})",
+        "O(D, D)"
+      ],
+      "papers": [
+        "HullZwiebach2009`"
+      ],
+      "concepts": [
+        "ODDGroup",
+        "InvariantBilinearForm`"
+      ],
+      "impacts": [
+        "DualityGroupSymmetry`"
+      ],
+      "in_degree": 0,
+      "out_degree": 4,
+      "pagerank": 1.0,
+      "line_number": 124,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.InversionGen",
+      "name": "InversionGen",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "def",
+      "signature": ": Mat2",
+      "docstring": "### T-Duality Inversion Generator\nThe discrete $O(D, D; \\mathbb{Z})$ element implementing Buscher T-duality on the circle:\n$$\\sigma_1 = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$$\ninterchanging momentum and winding modes: $(v, \\xi) \\mapsto (\\xi, v)$.",
+      "latex_equations": [
+        "\\sigma_1 = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}",
+        "O(D, D; \\mathbb{Z})",
+        "(v, \\xi) \\mapsto (\\xi, v)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 137,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.odd_inversion_generator",
+      "name": "odd_inversion_generator",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "theorem",
+      "signature": ": IsODD InversionGen",
+      "docstring": "### Theorem: Inversion Generator Preservation\nThe T-duality generator is a certified element of the $O(D, D)$ duality group:\n$$\\sigma_1^T \\eta \\sigma_1 = \\eta$$",
+      "latex_equations": [
+        "\\sigma_1^T \\eta \\sigma_1 = \\eta",
+        "O(D, D)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 145,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.BTwist",
+      "name": "BTwist",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "def",
+      "signature": "(b : Int) : Mat2",
+      "docstring": "### Kalb-Ramond 2-Form $B$-Field Twist\nThe unipotent transformation $e^B \\in O(D, D)$ parameterizing the gauge shift $B \\mapsto B + dB$:\n$$e^B = \\begin{pmatrix} 1 & 0 \\\\ B & 1 \\end{pmatrix}$$\n\n- **Foundational Source:** Gualtieri (2004), Section 2.1; Hull & Zwiebach (2009), Eq. (2.18).\n- `@concept: BFieldTwist, GaugeInvariance`\n- `@paper: Gualtieri2004, HullZwiebach2009`\n- `@impact: KalbRamondFluxQuantization`",
+      "latex_equations": [
+        "e^B = \\begin{pmatrix} 1 & 0 \\\\ B & 1 \\end{pmatrix}",
+        "B",
+        "e^B \\in O(D, D)",
+        "B \\mapsto B + dB"
+      ],
+      "papers": [
+        "Gualtieri2004",
+        "HullZwiebach2009`"
+      ],
+      "concepts": [
+        "BFieldTwist",
+        "GaugeInvariance`"
+      ],
+      "impacts": [
+        "KalbRamondFluxQuantization`"
+      ],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 153,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta",
+      "name": "btwist_preserves_eta",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "theorem",
+      "signature": "(b : Int) :\n    (MatMul (MatTranspose (BTwist b)) (MatMul ODD_Eta (BTwist b))).b = ODD_Eta.b \u2227\n    (MatMul (MatTranspose (BTwist b)) (MatMul ODD_Eta (BTwist b))).c = ODD_Eta.c",
+      "docstring": "### Theorem: $B$-Twist Isometry\nThe $B$-field twist preserves the split-signature metric $\\eta$:\n$$(e^B)^T \\eta e^B = \\eta$$\nconfirming that shifting the NS-NS 2-form is an exact generalized isometry.",
+      "latex_equations": [
+        "(e^B)^T \\eta e^B = \\eta",
+        "B",
+        "B",
+        "\\eta"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 8,
+      "pagerank": 1.0,
+      "line_number": 166,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.GenMetric",
+      "name": "GenMetric",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "def",
+      "signature": "(g : Int) (ginv : Int) : Mat2",
+      "docstring": "### Generalized Metric $\\mathcal{H}_{MN}$\nParameterizes the Riemannian metric $g$ and dilaton/inversion background in diagonal form:\n$$\\mathcal{H} = \\begin{pmatrix} g & 0 \\\\ 0 & g^{-1} \\end{pmatrix}$$\n\n- **Foundational Source:** Hull & Zwiebach (2009), Eq. (2.14).\n- `@concept: GeneralizedMetric`\n- `@paper: HullZwiebach2009`\n- `@impact: SpacetimeMetricUnification`",
+      "latex_equations": [
+        "\\mathcal{H} = \\begin{pmatrix} g & 0 \\\\ 0 & g^{-1} \\end{pmatrix}",
+        "\\mathcal{H}_{MN}",
+        "g"
+      ],
+      "papers": [
+        "HullZwiebach2009`"
+      ],
+      "concepts": [
+        "GeneralizedMetric`"
+      ],
+      "impacts": [
+        "SpacetimeMetricUnification`"
+      ],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 178,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.gen_metric_symmetric",
+      "name": "gen_metric_symmetric",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "theorem",
+      "signature": "(g ginv : Int) :\n    (GenMetric g ginv).b = (GenMetric g ginv).c",
+      "docstring": "### Theorem: Generalized Metric Symmetry\nThe generalized metric is manifestly symmetric: $\\mathcal{H}_{MN} = \\mathcal{H}_{NM}$.",
+      "latex_equations": [
+        "\\mathcal{H}_{MN} = \\mathcal{H}_{NM}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 191,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality",
+      "name": "gen_metric_duality",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "theorem",
+      "signature": "(g : Int) (h : g = 1) :\n    MatMul (GenMetric g g) (MatMul ODD_Eta (GenMetric g g)) = ODD_Eta",
+      "docstring": "### Theorem: Generalized Metric Duality\nAt the self-dual string scale radius $g = 1$, the generalized metric satisfies the coset condition:\n$$\\mathcal{H} \\eta \\mathcal{H} = \\eta$$\nconfirming $\\mathcal{H} \\in O(D, D) / (O(D) \\times O(D))$.",
+      "latex_equations": [
+        "\\mathcal{H} \\eta \\mathcal{H} = \\eta",
+        "g = 1",
+        "\\mathcal{H} \\in O(D, D) / (O(D) \\times O(D))"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 199,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.GenEnergy",
+      "name": "GenEnergy",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "def",
+      "signature": "(X : GenVector) : Nat",
+      "docstring": "### Generalized Energy Functional\nNorm of generalized momentum and winding excitations:\n$$E(X) = |v| + |\\xi|$$",
+      "latex_equations": [
+        "E(X) = |v| + |\\xi|"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 210,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.gen_energy_pos",
+      "name": "gen_energy_pos",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "theorem",
+      "signature": "(X : GenVector) (h : X.v \u2260 0 \u2228 X.xi \u2260 0) :\n    GenEnergy X > 0",
+      "docstring": "### Theorem: Generalized Energy Strict Positivity\nNon-zero generalized vectors possess strictly positive physical energy:\n$$\\forall X \\ne 0, \\quad E(X) > 0$$\nensuring the absence of negative-norm ghosts in the physical Hilbert space.",
+      "latex_equations": [
+        "\\forall X \\ne 0, \\quad E(X) > 0"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 218,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.GeneralizedGeometry.chiral_projector_orthogonality",
+      "name": "chiral_projector_orthogonality",
+      "module": "DoubleFieldTheory.GeneralizedGeometry",
+      "decl_type": "theorem",
+      "signature": "(j : Int) (hj : j = 1 \u2228 j = -1) :\n    (1 + j) * (1 - j) = 0 \u2227 (1 + j) * (1 + j) = 2 * (1 + j)",
+      "docstring": "### Theorem: Chiral Projector Orthogonality & Idempotence\nThe chiral projectors $P_\\pm = \\frac{1}{2}(\\mathbf{1} \\pm \\eta)$ decomposing $\\mathbb{T}M$\ninto self-dual and anti-self-dual sub-bundles satisfy:\n$$P_+ P_- = 0, \\quad P_\\pm^2 = P_\\pm$$\n\n- **Foundational Source:** Hull & Zwiebach (2009), Section 3.\n- `@concept: ChiralProjectors, SelfDualSubbundles`\n- `@paper: HullZwiebach2009`\n- `@impact: SupergravityChirality`",
+      "latex_equations": [
+        "P_+ P_- = 0, \\quad P_\\pm^2 = P_\\pm",
+        "P_\\pm = \\frac{1}{2}(\\mathbf{1} \\pm \\eta)",
+        "\\mathbb{T}M"
+      ],
+      "papers": [
+        "HullZwiebach2009`"
+      ],
+      "concepts": [
+        "ChiralProjectors",
+        "SelfDualSubbundles`"
+      ],
+      "impacts": [
+        "SupergravityChirality`"
+      ],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 233,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.K3BettiSum",
+      "name": "K3BettiSum",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "def",
+      "signature": "(b0 b1 b2 b3 b4 : Int) : Int",
+      "docstring": "Alternating sum of Betti numbers computing the topological Euler characteristic.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 37,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.k3_euler_characteristic",
+      "name": "k3_euler_characteristic",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "theorem",
+      "signature": ":\n    K3BettiSum 1 0 22 0 1 = 24",
+      "docstring": "### Theorem: $K3$ Euler Characteristic $\\chi(K3) = 24$\nFormal verification that $1 - 0 + 22 - 0 + 1 = 24$.\n\n- **Foundational Source:** Aspinwall (1996), Section 2.1.\n- `@concept: K3Topology, EulerCharacteristic`\n- `@paper: Aspinwall1996, Yau1978`\n- `@impact: CalabiYauCompactification`",
+      "latex_equations": [
+        "K3",
+        "\\chi(K3) = 24",
+        "1 - 0 + 22 - 0 + 1 = 24"
+      ],
+      "papers": [
+        "Aspinwall1996",
+        "Yau1978`"
+      ],
+      "concepts": [
+        "K3Topology",
+        "EulerCharacteristic`"
+      ],
+      "impacts": [
+        "CalabiYauCompactification`"
+      ],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 41,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.Signature",
+      "name": "Signature",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "def",
+      "signature": "(b2_pos b2_neg : Int) : Int",
+      "docstring": "Signature of the intersection form: $\\sigma = b_2^+ - b_2^-$.",
+      "latex_equations": [
+        "\\sigma = b_2^+ - b_2^-"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 54,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.k3_hirzebruch_signature",
+      "name": "k3_hirzebruch_signature",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "theorem",
+      "signature": ":\n    Signature 3 19 = -16",
+      "docstring": "### Theorem: $K3$ Hirzebruch Signature $\\sigma(K3) = -16$\nFormal verification that $3 - 19 = -16$.\n\n- **Foundational Source:** Aspinwall (1996), Eq. (2.3).\n- `@concept: HirzebruchSignature, IntersectionForm`\n- `@paper: Aspinwall1996`\n- `@impact: TopologicalAnomalyCancellation`",
+      "latex_equations": [
+        "K3",
+        "\\sigma(K3) = -16",
+        "3 - 19 = -16"
+      ],
+      "papers": [
+        "Aspinwall1996`"
+      ],
+      "concepts": [
+        "HirzebruchSignature",
+        "IntersectionForm`"
+      ],
+      "impacts": [
+        "TopologicalAnomalyCancellation`"
+      ],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 58,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.SecondBetti",
+      "name": "SecondBetti",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "def",
+      "signature": "(h20 h11 h02 : Int) : Int",
+      "docstring": "Hodge decomposition of the second cohomology: $b_2 = h^{2,0} + h^{1,1} + h^{0,2}$.",
+      "latex_equations": [
+        "b_2 = h^{2,0} + h^{1,1} + h^{0,2}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 71,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.k3_second_betti_hodge",
+      "name": "k3_second_betti_hodge",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "theorem",
+      "signature": ":\n    SecondBetti 1 20 1 = 22",
+      "docstring": "### Theorem: $K3$ Second Betti Number from Hodge Numbers\nFormal verification that $1 + 20 + 1 = 22$.",
+      "latex_equations": [
+        "K3",
+        "1 + 20 + 1 = 22"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 75,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.LatticeRank",
+      "name": "LatticeRank",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "def",
+      "signature": "(n_e8 n_u : Int) : Int",
+      "docstring": "Rank of the intersection lattice $n_{E_8} \\cdot 8 + n_U \\cdot 2$.",
+      "latex_equations": [
+        "n_{E_8} \\cdot 8 + n_U \\cdot 2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 83,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.LatticeSig",
+      "name": "LatticeSig",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "def",
+      "signature": "(n_e8 n_u : Int) : Int",
+      "docstring": "Signature of the intersection lattice: $-8 \\cdot n_{E_8}$.",
+      "latex_equations": [
+        "-8 \\cdot n_{E_8}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 87,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig",
+      "name": "k3_intersection_lattice_rank_sig",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "theorem",
+      "signature": ":\n    LatticeRank 2 3 = 22 \u2227 LatticeSig 2 3 = -16",
+      "docstring": "### Theorem: $K3$ Intersection Lattice $\\Gamma^{3, 19} = 2(-E_8) \\oplus 3U$\nVerifies rank $2 \\times 8 + 3 \\times 2 = 22$ and signature $2 \\times (-8) = -16$.\n\n- **Foundational Source:** Aspinwall (1996), Section 2.2.\n- `@concept: EvenUnimodularLattice, KummerCohomology`\n- `@paper: Aspinwall1996`\n- `@impact: ModuliSpaceGeometry`",
+      "latex_equations": [
+        "K3",
+        "\\Gamma^{3, 19} = 2(-E_8) \\oplus 3U",
+        "2 \\times 8 + 3 \\times 2 = 22",
+        "2 \\times (-8) = -16"
+      ],
+      "papers": [
+        "Aspinwall1996`"
+      ],
+      "concepts": [
+        "EvenUnimodularLattice",
+        "KummerCohomology`"
+      ],
+      "impacts": [
+        "ModuliSpaceGeometry`"
+      ],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 91,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.HolonomyDimSO4",
+      "name": "HolonomyDimSO4",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "Lie algebra dimension of full 4D Riemannian holonomy $\\mathfrak{so}(4)$.",
+      "latex_equations": [
+        "\\mathfrak{so}(4)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 104,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.HolonomyDimSU2",
+      "name": "HolonomyDimSU2",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "Lie algebra dimension of reduced Calabi-Yau holonomy $\\mathfrak{su}(2)$.",
+      "latex_equations": [
+        "\\mathfrak{su}(2)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 107,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.k3_su2_holonomy_reduction",
+      "name": "k3_su2_holonomy_reduction",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "theorem",
+      "signature": ":\n    HolonomyDimSU2 < HolonomyDimSO4 \u2227 HolonomyDimSO4 - HolonomyDimSU2 = 3",
+      "docstring": "### Theorem: Holonomy Reduction to $SU(2)$\nVerifies that $\\dim \\mathfrak{su}(2) = 3 < \\dim \\mathfrak{so}(4) = 6$, with co-dimension 3.",
+      "latex_equations": [
+        "SU(2)",
+        "\\dim \\mathfrak{su}(2) = 3 < \\dim \\mathfrak{so}(4) = 6"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 110,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.DiracIndex",
+      "name": "DiracIndex",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "def",
+      "signature": "(sig : Int) : Int",
+      "docstring": "Atiyah-Singer Dirac index formula: $\\mathrm{ind}(\\not{D}) = -\\sigma / 8$.",
+      "latex_equations": [
+        "\\mathrm{ind}(\\not{D}) = -\\sigma / 8"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 118,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.k3_atiyah_singer_dirac_index",
+      "name": "k3_atiyah_singer_dirac_index",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "theorem",
+      "signature": ":\n    DiracIndex (-16) = 2",
+      "docstring": "### Theorem: Atiyah-Singer Dirac Index on $K3$\nFormal verification that $\\mathrm{ind}(\\not{D}) = -(-16) / 8 = 2$.\n\n- **Foundational Source:** Atiyah & Singer (1968), Theorem 3.1.\n- `@concept: AtiyahSingerIndex, DiracIndex`\n- `@paper: AtiyahSinger1968`\n- `@impact: PreservedSupercharges`",
+      "latex_equations": [
+        "K3",
+        "\\mathrm{ind}(\\not{D}) = -(-16) / 8 = 2"
+      ],
+      "papers": [
+        "AtiyahSinger1968`"
+      ],
+      "concepts": [
+        "AtiyahSingerIndex",
+        "DiracIndex`"
+      ],
+      "impacts": [
+        "PreservedSupercharges`"
+      ],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 122,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.ChiralIndex",
+      "name": "ChiralIndex",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "def",
+      "signature": "(ker_plus ker_minus : Int) : Int",
+      "docstring": "Difference of chiral kernel dimensions $\\dim \\ker \\not{D}_+ - \\dim \\ker \\not{D}_-$.",
+      "latex_equations": [
+        "\\dim \\ker \\not{D}_+ - \\dim \\ker \\not{D}_-"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 135,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.K3Topology.k3_parallel_chiral_spinor_index",
+      "name": "k3_parallel_chiral_spinor_index",
+      "module": "DoubleFieldTheory.K3Topology",
+      "decl_type": "theorem",
+      "signature": ":\n    ChiralIndex 2 0 = DiracIndex (-16)",
+      "docstring": "### Theorem: Parallel Chiral Spinors on $K3$\nFormal verification that the 2 parallel Killing spinors account for the entire Dirac index:\n$$2 - 0 = \\mathrm{ind}(\\not{D}) = 2$$\nguaranteeing $\\mathcal{N} = 2$ supersymmetry in 6D.",
+      "latex_equations": [
+        "2 - 0 = \\mathrm{ind}(\\not{D}) = 2",
+        "K3",
+        "\\mathcal{N} = 2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 139,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.CongruenceAction",
+      "name": "CongruenceAction",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "def",
+      "signature": "(M H : Mat2) : Mat2",
+      "docstring": "### Congruence Action of $O(D, D)$ Matrix\nThe transformation law of the generalized metric $\\mathcal{H}$ under duality matrix $M$:\n$$\\mathcal{H}' = M^T \\mathcal{H} M$$",
+      "latex_equations": [
+        "\\mathcal{H}' = M^T \\mathcal{H} M",
+        "O(D, D)",
+        "\\mathcal{H}",
+        "M"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 39,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.t_duality_congruence",
+      "name": "t_duality_congruence",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "theorem",
+      "signature": "(H : Mat2) (hH : H = GenMetric 1 1) :\n    CongruenceAction InversionGen H = GenMetric 1 1",
+      "docstring": "### Theorem: T-Duality Invariance of Self-Dual Generalized Metric\nAt the self-dual radius $R = \\sqrt{\\alpha'}$, the generalized metric $\\mathcal{H}_0 = \\mathbf{1}_{2D}$\nis an invariant fixed point under the T-duality inversion generator:\n$$\\sigma_1^T \\mathcal{H}_0 \\sigma_1 = \\mathcal{H}_0$$",
+      "latex_equations": [
+        "\\sigma_1^T \\mathcal{H}_0 \\sigma_1 = \\mathcal{H}_0",
+        "R = \\sqrt{\\alpha'}",
+        "\\mathcal{H}_0 = \\mathbf{1}_{2D}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 4,
+      "pagerank": 1.0,
+      "line_number": 47,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.Det2",
+      "name": "Det2",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "def",
+      "signature": "(M : Mat2) : Int",
+      "docstring": "Determinant of $2 \\times 2$ matrix.",
+      "latex_equations": [
+        "2 \\times 2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 58,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.Identity2",
+      "name": "Identity2",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "def",
+      "signature": ": Mat2",
+      "docstring": "Identity matrix $\\mathbf{1}_2$.",
+      "latex_equations": [
+        "\\mathbf{1}_2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 62,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.inversion_generator_properties",
+      "name": "inversion_generator_properties",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "theorem",
+      "signature": ":\n    MatMul InversionGen InversionGen = Identity2 \u2227 Det2 InversionGen = -1",
+      "docstring": "### Theorem: Inversion Generator Properties\nThe T-duality generator is an involution ($\\sigma_1^2 = \\mathbf{1}$) with determinant $-1$,\nproving it is an orientation-reversing reflection in the $O(1, 1; \\mathbb{Z})$ lattice.",
+      "latex_equations": [
+        "\\sigma_1^2 = \\mathbf{1}",
+        "-1",
+        "O(1, 1; \\mathbb{Z})"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 4,
+      "pagerank": 1.0,
+      "line_number": 65,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.BuscherLogMap",
+      "name": "BuscherLogMap",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "def",
+      "signature": "(x : Int) : Int",
+      "docstring": "### Buscher Logarithmic Radius Map\nThe reflection $x \\mapsto -x$ representing $R \\mapsto \\alpha'/R$ in logarithmic coordinates:\n$$x = \\ln(R / \\sqrt{\\alpha'})$$\n\n- **Foundational Source:** Buscher (1987), Eq. (6).\n- `@concept: BuscherInversion, LogarithmicRadius`\n- `@paper: Buscher1987, GiveonPorratiRabinovici1994`\n- `@impact: MinimumLengthScale`",
+      "latex_equations": [
+        "x = \\ln(R / \\sqrt{\\alpha'})",
+        "x \\mapsto -x",
+        "R \\mapsto \\alpha'/R"
+      ],
+      "papers": [
+        "Buscher1987",
+        "GiveonPorratiRabinovici1994`"
+      ],
+      "concepts": [
+        "BuscherInversion",
+        "LogarithmicRadius`"
+      ],
+      "impacts": [
+        "MinimumLengthScale`"
+      ],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 74,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.buscher_log_involution",
+      "name": "buscher_log_involution",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "theorem",
+      "signature": "(x : Int) :\n    BuscherLogMap (BuscherLogMap x) = x",
+      "docstring": "### Theorem: Buscher Map is an Exact Involution\nApplying Buscher inversion twice returns the original radius:\n$$-(-x) = x \\iff (R^\\ast)^\\ast = R$$",
+      "latex_equations": [
+        "-(-x) = x \\iff (R^\\ast)^\\ast = R"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 87,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.BuscherDilatonMap",
+      "name": "BuscherDilatonMap",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "def",
+      "signature": "(phi x : Int) : Int",
+      "docstring": "### Buscher Dilaton Transformation\nThe shift $\\phi' = \\phi - x$ required by 1-loop worldsheet conformal invariance:\n$$\\phi' = \\phi - \\ln(R / \\sqrt{\\alpha'})$$\n\n- **Foundational Source:** Buscher (1988), Eq. (12).\n- `@concept: BuscherDilatonShift, ConformalAnomalyCancellation`\n- `@paper: Buscher1988`\n- `@impact: QuantumDualityInvariance`",
+      "latex_equations": [
+        "\\phi' = \\phi - \\ln(R / \\sqrt{\\alpha'})",
+        "\\phi' = \\phi - x"
+      ],
+      "papers": [
+        "Buscher1988`"
+      ],
+      "concepts": [
+        "BuscherDilatonShift",
+        "ConformalAnomalyCancellation`"
+      ],
+      "impacts": [
+        "QuantumDualityInvariance`"
+      ],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 97,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.buscher_dilaton_involution",
+      "name": "buscher_dilaton_involution",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "theorem",
+      "signature": "(phi x : Int) :\n    BuscherDilatonMap (BuscherDilatonMap phi x) (BuscherLogMap x) = phi",
+      "docstring": "### Theorem: Dilaton Map Reversibility\nTwo successive Buscher shifts return the original dilaton:\n$$\\phi'' = (\\phi - x) - (-x) = \\phi$$",
+      "latex_equations": [
+        "\\phi'' = (\\phi - x) - (-x) = \\phi"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 4,
+      "pagerank": 1.0,
+      "line_number": 110,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.TwoDilaton",
+      "name": "TwoDilaton",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "def",
+      "signature": "(phi x : Int) : Int",
+      "docstring": "### Double Field Theory Dilaton Invariant Density\nThe combination $2d = 2\\phi - x$, representing $e^{-2d} = \\sqrt{-g} e^{-2\\phi}$:\n$$2d = 2\\phi - \\ln(R / \\sqrt{\\alpha'})$$",
+      "latex_equations": [
+        "2d = 2\\phi - \\ln(R / \\sqrt{\\alpha'})",
+        "2d = 2\\phi - x",
+        "e^{-2d} = \\sqrt{-g} e^{-2\\phi}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 120,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.buscher_dilaton_measure_invariance",
+      "name": "buscher_dilaton_measure_invariance",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "theorem",
+      "signature": "(phi x : Int) :\n    TwoDilaton (phi - x) (-x) = TwoDilaton phi x",
+      "docstring": "### Theorem: Dilaton Measure Invariance\nThe DFT dilaton $d$ is strictly invariant under Buscher duality:\n$$2d' = 2(\\phi - x) - (-x) = 2\\phi - x = 2d$$\nproving that the spacetime integration volume is duality-invariant.\n\n- **Foundational Source:** Hull & Zwiebach (2009), Eq. (4.4).\n- `@concept: DualityInvariantMeasure, DilatonInvariance`\n- `@paper: HullZwiebach2009, Buscher1988`\n- `@impact: DualityInvariantAction`",
+      "latex_equations": [
+        "2d' = 2(\\phi - x) - (-x) = 2\\phi - x = 2d",
+        "d"
+      ],
+      "papers": [
+        "HullZwiebach2009",
+        "Buscher1988`"
+      ],
+      "concepts": [
+        "DualityInvariantMeasure",
+        "DilatonInvariance`"
+      ],
+      "impacts": [
+        "DualityInvariantAction`"
+      ],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 128,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TDualityBuscher.self_dual_radius_rigidity",
+      "name": "self_dual_radius_rigidity",
+      "module": "DoubleFieldTheory.TDualityBuscher",
+      "decl_type": "theorem",
+      "signature": "(x : Int) (hx : BuscherLogMap x = x) :\n    x = 0",
+      "docstring": "### Theorem: Rigidity of the Self-Dual Fixed Point\nThe self-dual radius $R = \\sqrt{\\alpha'}$ ($x = 0$) is the **unique** isolated fixed point\nof the Buscher reflection:\n$$x = -x \\implies x = 0$$\nThis uniqueness underpins the self-dual enhanced gauge symmetry ($SU(2) \\times SU(2)$ at $R = \\sqrt{\\alpha'}$).\n\n- **Foundational Source:** Giveon, Porrati, & Rabinovici (1994), Section 3.\n- `@concept: SelfDualRadius, FixedPointRigidity`\n- `@paper: GiveonPorratiRabinovici1994`\n- `@impact: EnhancedGaugeSymmetry`",
+      "latex_equations": [
+        "x = -x \\implies x = 0",
+        "R = \\sqrt{\\alpha'}",
+        "x = 0",
+        "SU(2) \\times SU(2)",
+        "R = \\sqrt{\\alpha'}"
+      ],
+      "papers": [
+        "GiveonPorratiRabinovici1994`"
+      ],
+      "concepts": [
+        "SelfDualRadius",
+        "FixedPointRigidity`"
+      ],
+      "impacts": [
+        "EnhancedGaugeSymmetry`"
+      ],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 144,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "DoubleFieldTheory.TorusMoonshine.ModS",
+      "name": "ModS",
+      "module": "DoubleFieldTheory.TorusMoonshine",
+      "decl_type": "def",
+      "signature": ": Mat2",
+      "docstring": "Modular inversion generator $S: \\tau \\mapsto -1/\\tau$.",
+      "latex_equations": [
+        "S: \\tau \\mapsto -1/\\tau"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 45,
+      "is_certified": true,
+      "cluster": "Mathieu M24 Moonshine"
+    },
+    {
+      "id": "DoubleFieldTheory.TorusMoonshine.ModT",
+      "name": "ModT",
+      "module": "DoubleFieldTheory.TorusMoonshine",
+      "decl_type": "def",
+      "signature": ": Mat2",
+      "docstring": "Modular translation generator $T: \\tau \\mapsto \\tau + 1$.",
+      "latex_equations": [
+        "T: \\tau \\mapsto \\tau + 1"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 48,
+      "is_certified": true,
+      "cluster": "Mathieu M24 Moonshine"
+    },
+    {
+      "id": "DoubleFieldTheory.TorusMoonshine.NegI",
+      "name": "NegI",
+      "module": "DoubleFieldTheory.TorusMoonshine",
+      "decl_type": "def",
+      "signature": ": Mat2",
+      "docstring": "Center element $-\\mathbf{1}_2$ of $SL(2, \\mathbb{Z})$.",
+      "latex_equations": [
+        "-\\mathbf{1}_2",
+        "SL(2, \\mathbb{Z})"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 51,
+      "is_certified": true,
+      "cluster": "Mathieu M24 Moonshine"
+    },
+    {
+      "id": "DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators",
+      "name": "sl2z_modular_generators",
+      "module": "DoubleFieldTheory.TorusMoonshine",
+      "decl_type": "theorem",
+      "signature": ":\n    MatMul ModS ModS = NegI \u2227\n    MatMul (MatMul ModS ModT) (MatMul (MatMul ModS ModT) (MatMul ModS ModT)) = NegI",
+      "docstring": "### Theorem: $SL(2, \\mathbb{Z})$ Modular Presentation Relations\nFormal verification of the canonical group relations:\n$$S^2 = -\\mathbf{1}, \\quad (ST)^3 = -\\mathbf{1}$$\n\n- **Foundational Source:** Eguchi, Ooguri, & Tachikawa (2010), Section 1.\n- `@concept: ModularGroup, SL2ZPresentation`\n- `@paper: EguchiOoguriTachikawa2010`\n- `@impact: TorusPartitionFunctionModularInvariance`",
+      "latex_equations": [
+        "S^2 = -\\mathbf{1}, \\quad (ST)^3 = -\\mathbf{1}",
+        "SL(2, \\mathbb{Z})"
+      ],
+      "papers": [
+        "EguchiOoguriTachikawa2010`"
+      ],
+      "concepts": [
+        "ModularGroup",
+        "SL2ZPresentation`"
+      ],
+      "impacts": [
+        "TorusPartitionFunctionModularInvariance`"
+      ],
+      "in_degree": 0,
+      "out_degree": 4,
+      "pagerank": 1.0,
+      "line_number": 54,
+      "is_certified": true,
+      "cluster": "Mathieu M24 Moonshine"
+    },
+    {
+      "id": "DoubleFieldTheory.TorusMoonshine.MukaiRank",
+      "name": "MukaiRank",
+      "module": "DoubleFieldTheory.TorusMoonshine",
+      "decl_type": "def",
+      "signature": "(b0 b2 b4 : Int) : Int",
+      "docstring": "Total rank of the Mukai cohomology lattice $H^0 \\oplus H^2 \\oplus H^4$.",
+      "latex_equations": [
+        "H^0 \\oplus H^2 \\oplus H^4"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 69,
+      "is_certified": true,
+      "cluster": "Mathieu M24 Moonshine"
+    },
+    {
+      "id": "DoubleFieldTheory.TorusMoonshine.MathieuDegree",
+      "name": "MathieuDegree",
+      "module": "DoubleFieldTheory.TorusMoonshine",
+      "decl_type": "def",
+      "signature": ": Int",
+      "docstring": "Degree of the sporadic Mathieu group $M_{24}$ permutation representation.",
+      "latex_equations": [
+        "M_{24}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 73,
+      "is_certified": true,
+      "cluster": "Mathieu M24 Moonshine"
+    },
+    {
+      "id": "DoubleFieldTheory.TorusMoonshine.mukai_lattice_m24_bridge",
+      "name": "mukai_lattice_m24_bridge",
+      "module": "DoubleFieldTheory.TorusMoonshine",
+      "decl_type": "theorem",
+      "signature": ":\n    MukaiRank 1 22 1 = MathieuDegree \u2227\n    LatticeRank 2 4 = MathieuDegree",
+      "docstring": "### Theorem: Mukai Lattice Rank & $M_{24}$ Bridge\nFormal proof that the Mukai lattice rank equals 24:\n$$b_0 + b_2 + b_4 = 1 + 22 + 1 = 24$$\nand matches the lattice rank with $2 \\times (-E_8) + 4 \\times U = 2 \\times 8 + 4 \\times 2 = 24$.\n\n- **Foundational Source:** Mukai (1987); Eguchi, Ooguri, & Tachikawa (2010).\n- `@concept: MukaiLattice, M24DegreeBridge`\n- `@paper: Mukai1987, EguchiOoguriTachikawa2010`\n- `@impact: MathieuMoonshineFoundations`",
+      "latex_equations": [
+        "b_0 + b_2 + b_4 = 1 + 22 + 1 = 24",
+        "M_{24}",
+        "2 \\times (-E_8) + 4 \\times U = 2 \\times 8 + 4 \\times 2 = 24"
+      ],
+      "papers": [
+        "Mukai1987",
+        "EguchiOoguriTachikawa2010`"
+      ],
+      "concepts": [
+        "MukaiLattice",
+        "M24DegreeBridge`"
+      ],
+      "impacts": [
+        "MathieuMoonshineFoundations`"
+      ],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 76,
+      "is_certified": true,
+      "cluster": "Mathieu M24 Moonshine"
+    }
+  ],
+  "edges": [
+    {
+      "source": "DoubleFieldTheory.ActionCurvature.dilaton_measure_symm",
+      "target": "DilatonMeasure",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.ActionCurvature.dilaton_measure_symm",
+      "target": "DilatonMeasure",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.ActionCurvature.dft_ricci_expansion",
+      "target": "DFTRicciComponents",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.ActionCurvature.dft_ricci_expansion",
+      "target": "DFTRicciComponents",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.ActionCurvature.dft_ricci_physical_reduction",
+      "target": "DFTRicciComponents",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.ActionCurvature.dft_ricci_physical_reduction",
+      "target": "DFTRicciComponents",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.ActionCurvature.dft_action_nsns_equivalence",
+      "target": "ActionLagrangian",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.ActionCurvature.dft_action_nsns_equivalence",
+      "target": "ActionLagrangian",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.ActionCurvature.contracted_einstein_dim2",
+      "target": "ContractedEinstein",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.ActionCurvature.contracted_einstein_dim2",
+      "target": "ContractedEinstein",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.lie_bracket_self",
+      "target": "LieBracket",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.lie_bracket_self",
+      "target": "LieBracket",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.CBracket",
+      "target": "CourantSection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm",
+      "target": "CourantSection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm",
+      "target": "CBracket",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm",
+      "target": "CBracket",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.DorfmanBracket",
+      "target": "CourantSection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+      "target": "CourantSection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+      "target": "DorfmanBracket",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+      "target": "CBracket",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+      "target": "DorfmanBracket",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+      "target": "CBracket",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact",
+      "target": "CourantSection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact",
+      "target": "DorfmanBracket",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact",
+      "target": "DorfmanBracket",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.cbracket_v_zero",
+      "target": "CourantSection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.cbracket_v_zero",
+      "target": "CBracket",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.cbracket_v_zero",
+      "target": "CBracket",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.JacVector",
+      "target": "CourantSection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.JacVector",
+      "target": "CBracket",
+      "kind": "def",
+      "metadata": {
+        "location": "defn_value"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes",
+      "target": "CourantSection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes",
+      "target": "JacVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes",
+      "target": "JacVector",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes",
+      "target": "cbracket_v_zero",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes",
+      "target": "CBracket",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.SectionContract",
+      "target": "FieldDeriv",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.strong_section_condition",
+      "target": "FieldDeriv",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.strong_section_condition",
+      "target": "SectionContract",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.strong_section_condition",
+      "target": "SectionContract",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.gen_lie_closure",
+      "target": "LieCommutator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid.gen_lie_closure",
+      "target": "LieCommutator",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.CourantPairing",
+      "target": "GenVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.courant_pairing_symm",
+      "target": "GenVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.courant_pairing_symm",
+      "target": "CourantPairing",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.courant_pairing_symm",
+      "target": "CourantPairing",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.ODD_Eta",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.BilinearForm",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.BilinearForm",
+      "target": "GenVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval",
+      "target": "GenVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval",
+      "target": "BilinearForm",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval",
+      "target": "ODD_Eta",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval",
+      "target": "CourantPairing",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval",
+      "target": "BilinearForm",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval",
+      "target": "ODD_Eta",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval",
+      "target": "CourantPairing",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.MatMul",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.MatTranspose",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.IsODD",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.IsODD",
+      "target": "MatMul",
+      "kind": "def",
+      "metadata": {
+        "location": "defn_value"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.IsODD",
+      "target": "MatTranspose",
+      "kind": "def",
+      "metadata": {
+        "location": "defn_value"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.IsODD",
+      "target": "ODD_Eta",
+      "kind": "def",
+      "metadata": {
+        "location": "defn_value"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.InversionGen",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.odd_inversion_generator",
+      "target": "IsODD",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.odd_inversion_generator",
+      "target": "InversionGen",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.BTwist",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta",
+      "target": "MatMul",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta",
+      "target": "MatTranspose",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta",
+      "target": "BTwist",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta",
+      "target": "ODD_Eta",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta",
+      "target": "MatMul",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta",
+      "target": "MatTranspose",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta",
+      "target": "BTwist",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta",
+      "target": "ODD_Eta",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.GenMetric",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.gen_metric_symmetric",
+      "target": "GenMetric",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality",
+      "target": "MatMul",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality",
+      "target": "GenMetric",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality",
+      "target": "ODD_Eta",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.GenEnergy",
+      "target": "GenVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.gen_energy_pos",
+      "target": "GenVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.gen_energy_pos",
+      "target": "GenEnergy",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.GeneralizedGeometry.gen_energy_pos",
+      "target": "GenEnergy",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.K3Topology.k3_euler_characteristic",
+      "target": "K3BettiSum",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.K3Topology.k3_hirzebruch_signature",
+      "target": "Signature",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.K3Topology.k3_second_betti_hodge",
+      "target": "SecondBetti",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig",
+      "target": "LatticeRank",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig",
+      "target": "LatticeSig",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.K3Topology.k3_su2_holonomy_reduction",
+      "target": "HolonomyDimSU2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.K3Topology.k3_su2_holonomy_reduction",
+      "target": "HolonomyDimSO4",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.K3Topology.k3_atiyah_singer_dirac_index",
+      "target": "DiracIndex",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.K3Topology.k3_parallel_chiral_spinor_index",
+      "target": "ChiralIndex",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.K3Topology.k3_parallel_chiral_spinor_index",
+      "target": "DiracIndex",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.CongruenceAction",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.CongruenceAction",
+      "target": "MatMul",
+      "kind": "def",
+      "metadata": {
+        "location": "defn_value"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.CongruenceAction",
+      "target": "MatTranspose",
+      "kind": "def",
+      "metadata": {
+        "location": "defn_value"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.t_duality_congruence",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.t_duality_congruence",
+      "target": "GenMetric",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.t_duality_congruence",
+      "target": "CongruenceAction",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.t_duality_congruence",
+      "target": "InversionGen",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.Det2",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.Identity2",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.inversion_generator_properties",
+      "target": "MatMul",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.inversion_generator_properties",
+      "target": "InversionGen",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.inversion_generator_properties",
+      "target": "Identity2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.inversion_generator_properties",
+      "target": "Det2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.buscher_log_involution",
+      "target": "BuscherLogMap",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.buscher_log_involution",
+      "target": "BuscherLogMap",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.buscher_dilaton_involution",
+      "target": "BuscherDilatonMap",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.buscher_dilaton_involution",
+      "target": "BuscherLogMap",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.buscher_dilaton_involution",
+      "target": "BuscherDilatonMap",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.buscher_dilaton_involution",
+      "target": "BuscherLogMap",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.buscher_dilaton_measure_invariance",
+      "target": "TwoDilaton",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.buscher_dilaton_measure_invariance",
+      "target": "TwoDilaton",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.self_dual_radius_rigidity",
+      "target": "BuscherLogMap",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher.self_dual_radius_rigidity",
+      "target": "BuscherLogMap",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine.ModS",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine.ModT",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine.NegI",
+      "target": "Mat2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators",
+      "target": "MatMul",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators",
+      "target": "ModS",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators",
+      "target": "NegI",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators",
+      "target": "ModT",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine.mukai_lattice_m24_bridge",
+      "target": "MukaiRank",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine.mukai_lattice_m24_bridge",
+      "target": "MathieuDegree",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine.mukai_lattice_m24_bridge",
+      "target": "LatticeRank",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.CourantAlgebroid",
+      "target": "DoubleFieldTheory.GeneralizedGeometry",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TDualityBuscher",
+      "target": "DoubleFieldTheory.GeneralizedGeometry",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine",
+      "target": "DoubleFieldTheory.GeneralizedGeometry",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory.TorusMoonshine",
+      "target": "DoubleFieldTheory.K3Topology",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory",
+      "target": "DoubleFieldTheory.GeneralizedGeometry",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory",
+      "target": "DoubleFieldTheory.CourantAlgebroid",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory",
+      "target": "DoubleFieldTheory.ActionCurvature",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory",
+      "target": "DoubleFieldTheory.TDualityBuscher",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory",
+      "target": "DoubleFieldTheory.K3Topology",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "DoubleFieldTheory",
+      "target": "DoubleFieldTheory.TorusMoonshine",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    }
+  ]
+}

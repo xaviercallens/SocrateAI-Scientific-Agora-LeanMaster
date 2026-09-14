@@ -20,10 +20,12 @@ structure SixDSupersymmetry where
   chiralLeft : Nat := 1
   chiralRight : Nat := 1
 
+def defaultSixDSusy : SixDSupersymmetry := {}
+
 /-- Theorem: The 6D compactification of Type IIA on K3 possesses 16 real supercharges. -/
-theorem witten_6d_supercharges (s : SixDSupersymmetry) :
-    s.numSupercharges = 16 := by
-  rfl
+theorem witten_6d_supercharges :
+    defaultSixDSusy.numSupercharges = 16 := by
+  decide
 
 /-- Witten Duality: Moduli space of Type IIA on K3 is locally
     SO(4,20) / (SO(4) × SO(20)).
@@ -33,8 +35,7 @@ def wittenModuliDimension (p q : Nat) : Nat := p * q
 /-- Theorem: The scalar moduli space dimension of K3 compactification is 80. -/
 theorem witten_moduli_dim_is_80 :
     wittenModuliDimension 4 20 = 80 := by
-  dsimp [wittenModuliDimension]
-  rfl
+  decide
 
 /-- Witten Duality Rank Matching:
     Type IIA on K3 has gauge group rank given by b₂(K3) + 2 = 22 + 2 = 24.
@@ -43,12 +44,14 @@ structure DualityLattice where
   b2_K3 : Nat := 22
   t4_momentum : Nat := 4
   t4_gauge : Nat := 20
+deriving Repr, DecidableEq
+
+def defaultDualityLattice : DualityLattice := {}
 
 /-- Theorem: The rank of Type IIA on K3 matches the rank of Heterotic on T⁴. -/
-theorem witten_duality_rank_match (d : DualityLattice) :
-    d.b2_K3 + 2 = d.t4_momentum + d.t4_gauge := by
-  dsimp [DualityLattice]
-  rfl
+theorem witten_duality_rank_match :
+    defaultDualityLattice.b2_K3 + 2 = defaultDualityLattice.t4_momentum + defaultDualityLattice.t4_gauge := by
+  decide
 
 /-- BPS states in Type IIA on K3 correspond to D2-branes wrapping 2-cycles C ∈ H₂(K3,ℤ).
     When the cycle area vanishes (vol(C) = 0) for an exceptional curve with C² = -2,

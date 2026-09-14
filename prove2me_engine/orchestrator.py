@@ -98,7 +98,10 @@ class Prove2MeOrchestrator:
 
         scored = []
         for card_id, card in self.cards.items():
-            text = f"{card['label']} {card['natural_language_summary']} {card['domain']}".lower()
+            label = card.get("label") or card.get("name") or card_id
+            summary = card.get("natural_language_summary") or card.get("informal_description") or ""
+            domain = card.get("domain") or card.get("cluster") or ""
+            text = f"{label} {summary} {domain}".lower()
             score = 0.0
             for t in tokens:
                 # Exact word match

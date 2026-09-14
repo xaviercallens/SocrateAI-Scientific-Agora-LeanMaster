@@ -48,7 +48,6 @@ def gvwSuperpotentialPairing (s : GVWFluxState) : Int :=
 /-- Theorem: Vanishing flux quanta yields vanishing superpotential (unfluxed vacuum). -/
 theorem vafa_gvw_zero_flux :
     gvwSuperpotentialPairing ⟨0, 0, 10, 10⟩ = 0 := by
-  dsimp [gvwSuperpotentialPairing]
   rfl
 
 /-- Magnetic Weak Gravity Conjecture (WGC):
@@ -71,6 +70,7 @@ theorem vafa_wgc_weak_coupling_cutoff_monotone (g1 g2 mPl : Nat)
     let w2 : MagneticWGC := { gaugeCouplingNumerator := g2, gaugeCouplingDenominator := 1, mPlanck := mPl, hPos := by decide }
     magneticCutoff w1 ≤ magneticCutoff w2 := by
   dsimp [magneticCutoff]
+  rw [Nat.div_one, Nat.div_one]
   exact Nat.mul_le_mul_right mPl hLe
 
 /-- Swampland Principle: Absence of Global Symmetries.

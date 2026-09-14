@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2">
+  <graph defaultedgetype="directed">
+    <nodes>
+      <node id="DoubleFieldTheory.ActionCurvature.DilatonMeasure" label="DilatonMeasure" />
+      <node id="DoubleFieldTheory.ActionCurvature.dilaton_measure_symm" label="dilaton_measure_symm" />
+      <node id="DoubleFieldTheory.ActionCurvature.connection_trace_conservation" label="connection_trace_conservation" />
+      <node id="DoubleFieldTheory.ActionCurvature.DFTRicciComponents" label="DFTRicciComponents" />
+      <node id="DoubleFieldTheory.ActionCurvature.dft_ricci_expansion" label="dft_ricci_expansion" />
+      <node id="DoubleFieldTheory.ActionCurvature.dft_ricci_physical_reduction" label="dft_ricci_physical_reduction" />
+      <node id="DoubleFieldTheory.ActionCurvature.ActionLagrangian" label="ActionLagrangian" />
+      <node id="DoubleFieldTheory.ActionCurvature.dft_action_nsns_equivalence" label="dft_action_nsns_equivalence" />
+      <node id="DoubleFieldTheory.ActionCurvature.ContractedEinstein" label="ContractedEinstein" />
+      <node id="DoubleFieldTheory.ActionCurvature.contracted_einstein_dim2" label="contracted_einstein_dim2" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.LieBracket" label="LieBracket" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.lie_bracket_self" label="lie_bracket_self" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.CourantSection" label="CourantSection" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.CBracket" label="CBracket" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm" label="cbracket_antisymm" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.DorfmanBracket" label="DorfmanBracket" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff" label="dorfman_cbracket_diff" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact" label="dorfman_symmetric_exact" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.cbracket_v_zero" label="cbracket_v_zero" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.JacVector" label="JacVector" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes" label="jacobiator_vector_vanishes" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.FieldDeriv" label="FieldDeriv" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.SectionContract" label="SectionContract" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.strong_section_condition" label="strong_section_condition" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.LieCommutator" label="LieCommutator" />
+      <node id="DoubleFieldTheory.CourantAlgebroid.gen_lie_closure" label="gen_lie_closure" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.GenVector" label="GenVector" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.CourantPairing" label="CourantPairing" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.courant_pairing_symm" label="courant_pairing_symm" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.Mat2" label="Mat2" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.ODD_Eta" label="ODD_Eta" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.BilinearForm" label="BilinearForm" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval" label="odd_metric_eval" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.MatMul" label="MatMul" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.MatTranspose" label="MatTranspose" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.IsODD" label="IsODD" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.InversionGen" label="InversionGen" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.odd_inversion_generator" label="odd_inversion_generator" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.BTwist" label="BTwist" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta" label="btwist_preserves_eta" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.GenMetric" label="GenMetric" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.gen_metric_symmetric" label="gen_metric_symmetric" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality" label="gen_metric_duality" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.GenEnergy" label="GenEnergy" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.gen_energy_pos" label="gen_energy_pos" />
+      <node id="DoubleFieldTheory.GeneralizedGeometry.chiral_projector_orthogonality" label="chiral_projector_orthogonality" />
+      <node id="DoubleFieldTheory.K3Topology.K3BettiSum" label="K3BettiSum" />
+      <node id="DoubleFieldTheory.K3Topology.k3_euler_characteristic" label="k3_euler_characteristic" />
+      <node id="DoubleFieldTheory.K3Topology.Signature" label="Signature" />
+      <node id="DoubleFieldTheory.K3Topology.k3_hirzebruch_signature" label="k3_hirzebruch_signature" />
+      <node id="DoubleFieldTheory.K3Topology.SecondBetti" label="SecondBetti" />
+      <node id="DoubleFieldTheory.K3Topology.k3_second_betti_hodge" label="k3_second_betti_hodge" />
+      <node id="DoubleFieldTheory.K3Topology.LatticeRank" label="LatticeRank" />
+      <node id="DoubleFieldTheory.K3Topology.LatticeSig" label="LatticeSig" />
+      <node id="DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig" label="k3_intersection_lattice_rank_sig" />
+      <node id="DoubleFieldTheory.K3Topology.HolonomyDimSO4" label="HolonomyDimSO4" />
+      <node id="DoubleFieldTheory.K3Topology.HolonomyDimSU2" label="HolonomyDimSU2" />
+      <node id="DoubleFieldTheory.K3Topology.k3_su2_holonomy_reduction" label="k3_su2_holonomy_reduction" />
+      <node id="DoubleFieldTheory.K3Topology.DiracIndex" label="DiracIndex" />
+      <node id="DoubleFieldTheory.K3Topology.k3_atiyah_singer_dirac_index" label="k3_atiyah_singer_dirac_index" />
+      <node id="DoubleFieldTheory.K3Topology.ChiralIndex" label="ChiralIndex" />
+      <node id="DoubleFieldTheory.K3Topology.k3_parallel_chiral_spinor_index" label="k3_parallel_chiral_spinor_index" />
+      <node id="DoubleFieldTheory.TDualityBuscher.CongruenceAction" label="CongruenceAction" />
+      <node id="DoubleFieldTheory.TDualityBuscher.t_duality_congruence" label="t_duality_congruence" />
+      <node id="DoubleFieldTheory.TDualityBuscher.Det2" label="Det2" />
+      <node id="DoubleFieldTheory.TDualityBuscher.Identity2" label="Identity2" />
+      <node id="DoubleFieldTheory.TDualityBuscher.inversion_generator_properties" label="inversion_generator_properties" />
+      <node id="DoubleFieldTheory.TDualityBuscher.BuscherLogMap" label="BuscherLogMap" />
+      <node id="DoubleFieldTheory.TDualityBuscher.buscher_log_involution" label="buscher_log_involution" />
+      <node id="DoubleFieldTheory.TDualityBuscher.BuscherDilatonMap" label="BuscherDilatonMap" />
+      <node id="DoubleFieldTheory.TDualityBuscher.buscher_dilaton_involution" label="buscher_dilaton_involution" />
+      <node id="DoubleFieldTheory.TDualityBuscher.TwoDilaton" label="TwoDilaton" />
+      <node id="DoubleFieldTheory.TDualityBuscher.buscher_dilaton_measure_invariance" label="buscher_dilaton_measure_invariance" />
+      <node id="DoubleFieldTheory.TDualityBuscher.self_dual_radius_rigidity" label="self_dual_radius_rigidity" />
+      <node id="DoubleFieldTheory.TorusMoonshine.ModS" label="ModS" />
+      <node id="DoubleFieldTheory.TorusMoonshine.ModT" label="ModT" />
+      <node id="DoubleFieldTheory.TorusMoonshine.NegI" label="NegI" />
+      <node id="DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators" label="sl2z_modular_generators" />
+      <node id="DoubleFieldTheory.TorusMoonshine.MukaiRank" label="MukaiRank" />
+      <node id="DoubleFieldTheory.TorusMoonshine.MathieuDegree" label="MathieuDegree" />
+      <node id="DoubleFieldTheory.TorusMoonshine.mukai_lattice_m24_bridge" label="mukai_lattice_m24_bridge" />
+      <node id="SocrateAI.DualScale.PosScale" label="PosScale" />
+      <node id="SocrateAI.DualScale.scaleEq" label="scaleEq" />
+      <node id="SocrateAI.DualScale.scaleLt" label="scaleLt" />
+      <node id="SocrateAI.DualScale.buscherDual" label="buscherDual" />
+      <node id="SocrateAI.DualScale.buscher_involution" label="buscher_involution" />
+      <node id="SocrateAI.DualScale.effectiveRadius" label="effectiveRadius" />
+      <node id="SocrateAI.DualScale.genesis_no_singularity" label="genesis_no_singularity" />
+      <node id="SocrateAI.DualScale.self_dual_symmetric" label="self_dual_symmetric" />
+      <node id="SocrateAI.DualScale.MicroL2Operator" label="MicroL2Operator" />
+      <node id="SocrateAI.DualScale.stepL2" label="stepL2" />
+      <node id="SocrateAI.DualScale.MacroL3Operator" label="MacroL3Operator" />
+      <node id="SocrateAI.DualScale.stepL3" label="stepL3" />
+      <node id="SocrateAI.DualScale.sym2Lock" label="sym2Lock" />
+      <node id="SocrateAI.DualScale.sym2_fibonacci_verification" label="sym2_fibonacci_verification" />
+      <node id="SocrateAI.DualScale.sym2_pell_verification" label="sym2_pell_verification" />
+      <node id="SocrateAI.DualScale.sym2_modular_attractor_verification" label="sym2_modular_attractor_verification" />
+      <node id="SocrateAI.DualScale.sym2Det" label="sym2Det" />
+      <node id="SocrateAI.DualScale.sym2_det_identity" label="sym2_det_identity" />
+      <node id="SocrateAI.Epistemic.Claim" label="Claim" />
+      <node id="SocrateAI.Epistemic.Sound" label="Sound" />
+      <node id="SocrateAI.Epistemic.Depends" label="Depends" />
+      <node id="SocrateAI.Epistemic.trans" label="trans" />
+      <node id="SocrateAI.Epistemic.tier_le_of_depends" label="tier_le_of_depends" />
+      <node id="SocrateAI.Epistemic.no_kernel_claim_rests_on_weaker" label="no_kernel_claim_rests_on_weaker" />
+      <node id="SocrateAI.Epistemic.not_A_of_weak_support" label="not_A_of_weak_support" />
+      <node id="SocrateAI.Epistemic.witnessSound" label="witnessSound" />
+      <node id="SocrateAI.Epistemic.witnessSound_sound" label="witnessSound_sound" />
+      <node id="SocrateAI.Epistemic.witnessUnsound" label="witnessUnsound" />
+      <node id="SocrateAI.Epistemic.witnessUnsound_not_sound" label="witnessUnsound_not_sound" />
+      <node id="SocrateAI.Epistemic.Tier" label="Tier" />
+      <node id="SocrateAI.Epistemic.Tier.toNat" label="Tier.toNat" />
+      <node id="SocrateAI.Epistemic.Tier.le" label="Tier.le" />
+      <node id="SocrateAI.Epistemic.tier_refl" label="tier_refl" />
+      <node id="SocrateAI.Epistemic.tier_trans" label="tier_trans" />
+      <node id="SocrateAI.Epistemic.tier_antisymm" label="tier_antisymm" />
+      <node id="SocrateAI.Epistemic.tier_A_is_maximal" label="tier_A_is_maximal" />
+      <node id="SocrateAI.Epistemic.tier_X_is_minimal" label="tier_X_is_minimal" />
+      <node id="SocrateAI.Epistemic.eq_A_of_A_le" label="eq_A_of_A_le" />
+      <node id="SocrateAI.FrontierTriad.FluxVacuum" label="FluxVacuum" />
+      <node id="SocrateAI.FrontierTriad.standardFluxVacuum" label="standardFluxVacuum" />
+      <node id="SocrateAI.FrontierTriad.CDLInstanton" label="CDLInstanton" />
+      <node id="SocrateAI.FrontierTriad.unitFluxDecay" label="unitFluxDecay" />
+      <node id="SocrateAI.FrontierTriad.cdl_action_strictly_positive" label="cdl_action_strictly_positive" />
+      <node id="SocrateAI.FrontierTriad.true_vacuum_energy_is_lower" label="true_vacuum_energy_is_lower" />
+      <node id="SocrateAI.FrontierTriad.holographic_c_theorem_decay" label="holographic_c_theorem_decay" />
+      <node id="SocrateAI.FrontierTriad.k3_moduli_dim" label="k3_moduli_dim" />
+      <node id="SocrateAI.FrontierTriad.k3_moduli_dim_eq_58" label="k3_moduli_dim_eq_58" />
+      <node id="SocrateAI.FrontierTriad.total_k3t2_moduli_dim" label="total_k3t2_moduli_dim" />
+      <node id="SocrateAI.FrontierTriad.total_k3t2_moduli_dim_eq_80" label="total_k3t2_moduli_dim_eq_80" />
+      <node id="SocrateAI.FrontierTriad.max_picard_uv" label="max_picard_uv" />
+      <node id="SocrateAI.FrontierTriad.min_picard_ds" label="min_picard_ds" />
+      <node id="SocrateAI.FrontierTriad.ModuliGeometry" label="ModuliGeometry" />
+      <node id="SocrateAI.FrontierTriad.isSwamplandSafe" label="isSwamplandSafe" />
+      <node id="SocrateAI.FrontierTriad.CooperS10" label="CooperS10" />
+      <node id="SocrateAI.FrontierTriad.KummerM24" label="KummerM24" />
+      <node id="SocrateAI.FrontierTriad.cooper_s10_swampland_safe" label="cooper_s10_swampland_safe" />
+      <node id="SocrateAI.FrontierTriad.kummer_m24_swampland_safe" label="kummer_m24_swampland_safe" />
+      <node id="SocrateAI.FrontierTriad.fricke_N" label="fricke_N" />
+      <node id="SocrateAI.FrontierTriad.fricke_square" label="fricke_square" />
+      <node id="SocrateAI.FrontierTriad.fricke_involution_property" label="fricke_involution_property" />
+      <node id="SocrateAI.FrontierTriad.fricke_discriminant" label="fricke_discriminant" />
+      <node id="SocrateAI.FrontierTriad.fricke_discriminant_is_minus_four" label="fricke_discriminant_is_minus_four" />
+      <node id="SocrateAI.FrontierTriad.sdc_decay_alpha_squared_num" label="sdc_decay_alpha_squared_num" />
+      <node id="SocrateAI.FrontierTriad.sdc_decay_alpha_squared_den" label="sdc_decay_alpha_squared_den" />
+      <node id="SocrateAI.FrontierTriad.sdc_decay_coefficient_identity" label="sdc_decay_coefficient_identity" />
+      <node id="SocrateAI.FrontierTriad.KClass" label="KClass" />
+      <node id="SocrateAI.FrontierTriad.kSub" label="kSub" />
+      <node id="SocrateAI.FrontierTriad.BraneAntiBraneSystem" label="BraneAntiBraneSystem" />
+      <node id="SocrateAI.FrontierTriad.systemKTheoryClass" label="systemKTheoryClass" />
+      <node id="SocrateAI.FrontierTriad.SenSolitonDefect" label="SenSolitonDefect" />
+      <node id="SocrateAI.FrontierTriad.condenseTachyon" label="condenseTachyon" />
+      <node id="SocrateAI.FrontierTriad.sen_conjecture_k_theory_conservation" label="sen_conjecture_k_theory_conservation" />
+      <node id="SocrateAI.FrontierTriad.rrCharge" label="rrCharge" />
+      <node id="SocrateAI.FrontierTriad.tachyon_condensation_preserves_rr_charge" label="tachyon_condensation_preserves_rr_charge" />
+      <node id="SocrateAI.FrontierTriad.checkMetricPositivity" label="checkMetricPositivity" />
+      <node id="SocrateAI.FrontierTriad.checkWeakEnergyCondition" label="checkWeakEnergyCondition" />
+      <node id="SocrateAI.FrontierTriad.checkSymmetronScreening" label="checkSymmetronScreening" />
+      <node id="SocrateAI.FrontierTriad.TDAMapperGraph" label="TDAMapperGraph" />
+      <node id="SocrateAI.FrontierTriad.mapperBetti1WithComponents" label="mapperBetti1WithComponents" />
+      <node id="SocrateAI.FrontierTriad.mapperEulerChar" label="mapperEulerChar" />
+      <node id="SocrateAI.FrontierTriad.KummerLangevinMapperGraph" label="KummerLangevinMapperGraph" />
+      <node id="SocrateAI.FrontierTriad.kummer_defect_clusters" label="kummer_defect_clusters" />
+      <node id="SocrateAI.FrontierTriad.kummer_mapper_betti1_eq_376" label="kummer_mapper_betti1_eq_376" />
+      <node id="SocrateAI.FrontierTriad.kummer_mapper_euler_eq_minus_370" label="kummer_mapper_euler_eq_minus_370" />
+      <node id="SocrateAI.FrontierTriad.symmetron_screening_cassini_pass" label="symmetron_screening_cassini_pass" />
+      <node id="SocrateAI.Moonshine.GysinSequence.CohomologyRing" label="CohomologyRing" />
+      <node id="SocrateAI.Moonshine.GysinSequence.CircleBundle" label="CircleBundle" />
+      <node id="SocrateAI.Moonshine.GysinSequence.cupEuler" label="cupEuler" />
+      <node id="SocrateAI.Moonshine.GysinSequence.GysinExactSequence" label="GysinExactSequence" />
+      <node id="SocrateAI.Moonshine.GysinSequence.BEMDualPair" label="BEMDualPair" />
+      <node id="SocrateAI.Moonshine.GysinSequence.bem_derived_exchange" label="bem_derived_exchange" />
+      <node id="SocrateAI.Moonshine.GysinSequence.bem_characteristic_vanishing" label="bem_characteristic_vanishing" />
+      <node id="SocrateAI.Moonshine.k3_b0" label="k3_b0" />
+      <node id="SocrateAI.Moonshine.k3_b1" label="k3_b1" />
+      <node id="SocrateAI.Moonshine.k3_b2" label="k3_b2" />
+      <node id="SocrateAI.Moonshine.k3_b3" label="k3_b3" />
+      <node id="SocrateAI.Moonshine.k3_b4" label="k3_b4" />
+      <node id="SocrateAI.Moonshine.k3_euler" label="k3_euler" />
+      <node id="SocrateAI.Moonshine.k3_euler_eq_24" label="k3_euler_eq_24" />
+      <node id="SocrateAI.Moonshine.num_kummer_singularities" label="num_kummer_singularities" />
+      <node id="SocrateAI.Moonshine.exceptional_self_intersection" label="exceptional_self_intersection" />
+      <node id="SocrateAI.Moonshine.kummer_exceptional_intersection" label="kummer_exceptional_intersection" />
+      <node id="SocrateAI.Moonshine.k3t2_b0" label="k3t2_b0" />
+      <node id="SocrateAI.Moonshine.k3t2_b1" label="k3t2_b1" />
+      <node id="SocrateAI.Moonshine.k3t2_b2" label="k3t2_b2" />
+      <node id="SocrateAI.Moonshine.k3t2_b3" label="k3t2_b3" />
+      <node id="SocrateAI.Moonshine.k3t2_b4" label="k3t2_b4" />
+      <node id="SocrateAI.Moonshine.k3t2_b5" label="k3t2_b5" />
+      <node id="SocrateAI.Moonshine.k3t2_b6" label="k3t2_b6" />
+      <node id="SocrateAI.Moonshine.k3t2_euler" label="k3t2_euler" />
+      <node id="SocrateAI.Moonshine.k3t2_euler_char_eq_zero" label="k3t2_euler_char_eq_zero" />
+      <node id="SocrateAI.Moonshine.kuenneth_b3_derivation" label="kuenneth_b3_derivation" />
+      <node id="SocrateAI.Moonshine.transcendental_rank" label="transcendental_rank" />
+      <node id="SocrateAI.Moonshine.picard_rank_kummer_maximal" label="picard_rank_kummer_maximal" />
+      <node id="SocrateAI.Moonshine.hodge_h20" label="hodge_h20" />
+      <node id="SocrateAI.Moonshine.hodge_h11_eq_20" label="hodge_h11_eq_20" />
+      <node id="SocrateAI.Moonshine.d7_charge" label="d7_charge" />
+      <node id="SocrateAI.Moonshine.d7_count" label="d7_count" />
+      <node id="SocrateAI.Moonshine.o7_charge" label="o7_charge" />
+      <node id="SocrateAI.Moonshine.o7_count" label="o7_count" />
+      <node id="SocrateAI.Moonshine.total_d7_charge" label="total_d7_charge" />
+      <node id="SocrateAI.Moonshine.total_o7_charge" label="total_o7_charge" />
+      <node id="SocrateAI.Moonshine.net_tadpole_charge" label="net_tadpole_charge" />
+      <node id="SocrateAI.Moonshine.rr_tadpole_cancellation" label="rr_tadpole_cancellation" />
+      <node id="SocrateAI.Moonshine.d7_positive_charge" label="d7_positive_charge" />
+      <node id="SocrateAI.Moonshine.o7_negative_charge" label="o7_negative_charge" />
+      <node id="SocrateAI.Moonshine.Frac" label="Frac" />
+      <node id="SocrateAI.Moonshine.addFrac" label="addFrac" />
+      <node id="SocrateAI.Moonshine.subFrac" label="subFrac" />
+      <node id="SocrateAI.Moonshine.eqFrac" label="eqFrac" />
+      <node id="SocrateAI.Moonshine.h1" label="h1" />
+      <node id="SocrateAI.Moonshine.h2" label="h2" />
+      <node id="SocrateAI.Moonshine.delta1" label="delta1" />
+      <node id="SocrateAI.Moonshine.delta2" label="delta2" />
+      <node id="SocrateAI.Moonshine.delta1_is_half" label="delta1_is_half" />
+      <node id="SocrateAI.Moonshine.delta2_is_five_halves" label="delta2_is_five_halves" />
+      <node id="SocrateAI.Moonshine.delta12" label="delta12" />
+      <node id="SocrateAI.Moonshine.delta23" label="delta23" />
+      <node id="SocrateAI.Moonshine.delta13" label="delta13" />
+      <node id="SocrateAI.Moonshine.delta12_value" label="delta12_value" />
+      <node id="SocrateAI.Moonshine.totalChiralWeight" label="totalChiralWeight" />
+      <node id="SocrateAI.Moonshine.total_chiral_weight_value" label="total_chiral_weight_value" />
+      <node id="SocrateAI.Moonshine.conformal_exponent_sum" label="conformal_exponent_sum" />
+      <node id="SocrateAI.Moonshine.dimA1" label="dimA1" />
+      <node id="SocrateAI.Moonshine.dimA2" label="dimA2" />
+      <node id="SocrateAI.Moonshine.dimA3" label="dimA3" />
+      <node id="SocrateAI.Moonshine.dimA1_decomposition" label="dimA1_decomposition" />
+      <node id="SocrateAI.Moonshine.dimA2_decomposition" label="dimA2_decomposition" />
+      <node id="SocrateAI.Moonshine.dimA3_decomposition" label="dimA3_decomposition" />
+      <node id="SocrateAI.Moonshine.dimSym2A1" label="dimSym2A1" />
+      <node id="SocrateAI.Moonshine.sym2_A1_dimension_is_4095" label="sym2_A1_dimension_is_4095" />
+      <node id="SocrateAI.Moonshine.numSupercharges" label="numSupercharges" />
+      <node id="SocrateAI.Moonshine.numFixedPointsT2Z2" label="numFixedPointsT2Z2" />
+      <node id="SocrateAI.Moonshine.superconformal_geometric_congruence" label="superconformal_geometric_congruence" />
+      <node id="SocrateAI.Moonshine.rBPSNum" label="rBPSNum" />
+      <node id="SocrateAI.Moonshine.rBPSDen" label="rBPSDen" />
+      <node id="SocrateAI.Moonshine.r_bps_cross_multiplication" label="r_bps_cross_multiplication" />
+      <node id="SocrateAI.Moonshine.r_bps_is_irreducible" label="r_bps_is_irreducible" />
+      <node id="SocrateAI.Moonshine.product_value_check" label="product_value_check" />
+      <node id="SocrateAI.Moonshine.denominator_product_check" label="denominator_product_check" />
+      <node id="SocrateAI.Moonshine.rBPSPartsPerThousand" label="rBPSPartsPerThousand" />
+      <node id="SocrateAI.Moonshine.r_bps_parts_per_thousand_value" label="r_bps_parts_per_thousand_value" />
+      <node id="SocrateAI.Moonshine.isMathieuConsistent" label="isMathieuConsistent" />
+      <node id="SocrateAI.Moonshine.nominal_value_is_consistent" label="nominal_value_is_consistent" />
+      <node id="DualScaleM24Formalization.library_status" label="library_status" />
+      <node id="StringTheory.Foundation.Atlas.AtlasFourManifold" label="AtlasFourManifold" />
+      <node id="StringTheory.Foundation.Atlas.defaultK3" label="defaultK3" />
+      <node id="StringTheory.Foundation.Atlas.atlas_k3_euler_characteristic" label="atlas_k3_euler_characteristic" />
+      <node id="StringTheory.Foundation.Atlas.AtlasIntersectionLattice" label="AtlasIntersectionLattice" />
+      <node id="StringTheory.Foundation.Atlas.defaultK3Lattice" label="defaultK3Lattice" />
+      <node id="StringTheory.Foundation.Atlas.atlas_k3_signature" label="atlas_k3_signature" />
+      <node id="StringTheory.Foundation.Atlas.AtlasHyperbolicMetric" label="AtlasHyperbolicMetric" />
+      <node id="StringTheory.Foundation.Atlas.defaultPoincareMetric" label="defaultPoincareMetric" />
+      <node id="StringTheory.Foundation.Atlas.atlas_poincare_curvature_negative" label="atlas_poincare_curvature_negative" />
+      <node id="StringTheory.Foundation.Core.Topology.Betti4D" label="Betti4D" />
+      <node id="StringTheory.Foundation.Core.Topology.eulerChar4D" label="eulerChar4D" />
+      <node id="StringTheory.Foundation.Core.Topology.Betti2D" label="Betti2D" />
+      <node id="StringTheory.Foundation.Core.Topology.eulerChar2D" label="eulerChar2D" />
+      <node id="StringTheory.Foundation.Core.Topology.bettiT2" label="bettiT2" />
+      <node id="StringTheory.Foundation.Core.Topology.euler_char_T2" label="euler_char_T2" />
+      <node id="StringTheory.Foundation.Core.Topology.bettiK3" label="bettiK3" />
+      <node id="StringTheory.Foundation.Core.Topology.euler_char_K3" label="euler_char_K3" />
+      <node id="StringTheory.Foundation.Duality.DualScale.dualLength" label="dualLength" />
+      <node id="StringTheory.Foundation.Duality.DualScale.isDualPair" label="isDualPair" />
+      <node id="StringTheory.Foundation.Duality.DualScale.dual_pair_symmetric" label="dual_pair_symmetric" />
+      <node id="StringTheory.Foundation.Duality.DualScale.self_dual_at_crossover" label="self_dual_at_crossover" />
+      <node id="StringTheory.Foundation.Duality.DualScale.dual_product_invariant" label="dual_product_invariant" />
+      <node id="StringTheory.Foundation.Duality.T_Duality.CircleState" label="CircleState" />
+      <node id="StringTheory.Foundation.Duality.T_Duality.tDualState" label="tDualState" />
+      <node id="StringTheory.Foundation.Duality.T_Duality.t_duality_involution" label="t_duality_involution" />
+      <node id="StringTheory.Foundation.Duality.T_Duality.selfDualMassFactor" label="selfDualMassFactor" />
+      <node id="StringTheory.Foundation.Duality.T_Duality.self_dual_mass_symmetry" label="self_dual_mass_symmetry" />
+      <node id="StringTheory.Foundation.Duality.T_Duality.t_duality_spectrum_invariance" label="t_duality_spectrum_invariance" />
+      <node id="StringTheory.Foundation.K3.K3Surfaces.HodgeDiamond2D" label="HodgeDiamond2D" />
+      <node id="StringTheory.Foundation.K3.K3Surfaces.k3HodgeDiamond" label="k3HodgeDiamond" />
+      <node id="StringTheory.Foundation.K3.K3Surfaces.b2FromHodge" label="b2FromHodge" />
+      <node id="StringTheory.Foundation.K3.K3Surfaces.k3_b2_is_22" label="k3_b2_is_22" />
+      <node id="StringTheory.Foundation.K3.K3Surfaces.K3LatticeDecomp" label="K3LatticeDecomp" />
+      <node id="StringTheory.Foundation.K3.K3Surfaces.k3LatticeRank" label="k3LatticeRank" />
+      <node id="StringTheory.Foundation.K3.K3Surfaces.k3_lattice_rank_valid" label="k3_lattice_rank_valid" />
+      <node id="StringTheory.Foundation.K3.K3Surfaces.k3SignaturePos" label="k3SignaturePos" />
+      <node id="StringTheory.Foundation.K3.K3Surfaces.k3SignatureNeg" label="k3SignatureNeg" />
+      <node id="StringTheory.Foundation.K3.K3Surfaces.k3_signature_is_minus_16" label="k3_signature_is_minus_16" />
+      <node id="StringTheory.Foundation.StringTheory.K3xT2.dimRealK3xT2" label="dimRealK3xT2" />
+      <node id="StringTheory.Foundation.StringTheory.K3xT2.dim_real_k3xt2_is_6" label="dim_real_k3xt2_is_6" />
+      <node id="StringTheory.Foundation.StringTheory.K3xT2.targetSpacetimeDim" label="targetSpacetimeDim" />
+      <node id="StringTheory.Foundation.StringTheory.K3xT2.target_spacetime_is_4d" label="target_spacetime_is_4d" />
+      <node id="StringTheory.Foundation.StringTheory.K3xT2.typeII_4D_supercharges" label="typeII_4D_supercharges" />
+      <node id="StringTheory.Foundation.StringTheory.K3xT2.typeII_4D_N" label="typeII_4D_N" />
+      <node id="StringTheory.Foundation.StringTheory.K3xT2.typeII_k3xt2_susy_N4" label="typeII_k3xt2_susy_N4" />
+      <node id="StringTheory.Foundation.StringTheory.K3xT2.heterotic_T6_supercharges" label="heterotic_T6_supercharges" />
+      <node id="StringTheory.Foundation.StringTheory.K3xT2.string_duality_susy_match" label="string_duality_susy_match" />
+      <node id="StringTheory.Foundation.StringTheory.K3xT2.euler_char_vanishes" label="euler_char_vanishes" />
+      <node id="StringTheory.Foundation.StringTheory.StromingerSYZ.SYZFibration" label="SYZFibration" />
+      <node id="StringTheory.Foundation.StringTheory.StromingerSYZ.defaultSYZ" label="defaultSYZ" />
+      <node id="StringTheory.Foundation.StringTheory.StromingerSYZ.strominger_syz_dim_sum" label="strominger_syz_dim_sum" />
+      <node id="StringTheory.Foundation.StringTheory.StromingerSYZ.EllipticK3Fibration" label="EllipticK3Fibration" />
+      <node id="StringTheory.Foundation.StringTheory.StromingerSYZ.defaultEllipticK3" label="defaultEllipticK3" />
+      <node id="StringTheory.Foundation.StringTheory.StromingerSYZ.strominger_nodal_fibers_match_euler" label="strominger_nodal_fibers_match_euler" />
+      <node id="StringTheory.Foundation.StringTheory.StromingerSYZ.SYZFiberDual" label="SYZFiberDual" />
+      <node id="StringTheory.Foundation.StringTheory.StromingerSYZ.strominger_syz_dual_symmetric" label="strominger_syz_dual_symmetric" />
+      <node id="StringTheory.Foundation.StringTheory.StromingerSYZ.HyperKahlerMetric" label="HyperKahlerMetric" />
+      <node id="StringTheory.Foundation.StringTheory.StromingerSYZ.defaultHyperKahler" label="defaultHyperKahler" />
+      <node id="StringTheory.Foundation.StringTheory.StromingerSYZ.strominger_hyperkahler_signature" label="strominger_hyperkahler_signature" />
+      <node id="StringTheory.Foundation.StringTheory.Swampland.DistanceConjecture" label="DistanceConjecture" />
+      <node id="StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity" label="distance_conjecture_monotonicity" />
+      <node id="StringTheory.Foundation.StringTheory.Swampland.WGCState" label="WGCState" />
+      <node id="StringTheory.Foundation.StringTheory.Swampland.satisfiesWGC" label="satisfiesWGC" />
+      <node id="StringTheory.Foundation.StringTheory.Swampland.unit_state_satisfies_wgc" label="unit_state_satisfies_wgc" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.numFixedPointsT4Z2" label="numFixedPointsT4Z2" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.num_fixed_points_is_16" label="num_fixed_points_is_16" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.chargeO7Minus" label="chargeO7Minus" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.totalO7Charge" label="totalO7Charge" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.total_O7_charge_is_minus_64" label="total_O7_charge_is_minus_64" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.numD7Branes" label="numD7Branes" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.chargeD7Brane" label="chargeD7Brane" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.totalD7Charge" label="totalD7Charge" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.total_D7_charge_is_64" label="total_D7_charge_is_64" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.d7_tadpole_cancellation" label="d7_tadpole_cancellation" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.k3EulerChar" label="k3EulerChar" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.d3TadpoleTarget" label="d3TadpoleTarget" />
+      <node id="StringTheory.Foundation.StringTheory.TadpoleCancellation.d3_tadpole_target_is_one" label="d3_tadpole_target_is_one" />
+      <node id="StringTheory.Foundation.StringTheory.VafaSwampland.SwamplandTower" label="SwamplandTower" />
+      <node id="StringTheory.Foundation.StringTheory.VafaSwampland.vafa_sdc_4d_decay_rate" label="vafa_sdc_4d_decay_rate" />
+      <node id="StringTheory.Foundation.StringTheory.VafaSwampland.GVWFluxState" label="GVWFluxState" />
+      <node id="StringTheory.Foundation.StringTheory.VafaSwampland.gvwSuperpotentialPairing" label="gvwSuperpotentialPairing" />
+      <node id="StringTheory.Foundation.StringTheory.VafaSwampland.vafa_gvw_zero_flux" label="vafa_gvw_zero_flux" />
+      <node id="StringTheory.Foundation.StringTheory.VafaSwampland.MagneticWGC" label="MagneticWGC" />
+      <node id="StringTheory.Foundation.StringTheory.VafaSwampland.magneticCutoff" label="magneticCutoff" />
+      <node id="StringTheory.Foundation.StringTheory.VafaSwampland.vafa_wgc_weak_coupling_cutoff_monotone" label="vafa_wgc_weak_coupling_cutoff_monotone" />
+      <node id="StringTheory.Foundation.StringTheory.VafaSwampland.QuantumGravitySymmetry" label="QuantumGravitySymmetry" />
+      <node id="StringTheory.Foundation.StringTheory.VafaSwampland.satisfiesNoGlobalSymmetries" label="satisfiesNoGlobalSymmetries" />
+      <node id="StringTheory.Foundation.StringTheory.VafaSwampland.vafa_u1_gauge_consistent" label="vafa_u1_gauge_consistent" />
+      <node id="StringTheory.Foundation.StringTheory.WittenDuality.SixDSupersymmetry" label="SixDSupersymmetry" />
+      <node id="StringTheory.Foundation.StringTheory.WittenDuality.defaultSixDSusy" label="defaultSixDSusy" />
+      <node id="StringTheory.Foundation.StringTheory.WittenDuality.witten_6d_supercharges" label="witten_6d_supercharges" />
+      <node id="StringTheory.Foundation.StringTheory.WittenDuality.wittenModuliDimension" label="wittenModuliDimension" />
+      <node id="StringTheory.Foundation.StringTheory.WittenDuality.witten_moduli_dim_is_80" label="witten_moduli_dim_is_80" />
+      <node id="StringTheory.Foundation.StringTheory.WittenDuality.DualityLattice" label="DualityLattice" />
+      <node id="StringTheory.Foundation.StringTheory.WittenDuality.defaultDualityLattice" label="defaultDualityLattice" />
+      <node id="StringTheory.Foundation.StringTheory.WittenDuality.witten_duality_rank_match" label="witten_duality_rank_match" />
+      <node id="StringTheory.Foundation.StringTheory.WittenDuality.TwoCycle" label="TwoCycle" />
+      <node id="StringTheory.Foundation.StringTheory.WittenDuality.exhibitsGaugeEnhancement" label="exhibitsGaugeEnhancement" />
+      <node id="StringTheory.Foundation.StringTheory.WittenDuality.witten_gauge_enhancement_at_singularity" label="witten_gauge_enhancement_at_singularity" />
+    </nodes>
+    <edges>
+      <edge id="0" source="DoubleFieldTheory.ActionCurvature.dilaton_measure_symm" target="DilatonMeasure" label="sig" />
+      <edge id="1" source="DoubleFieldTheory.ActionCurvature.dilaton_measure_symm" target="DilatonMeasure" label="proof" />
+      <edge id="2" source="DoubleFieldTheory.ActionCurvature.dft_ricci_expansion" target="DFTRicciComponents" label="sig" />
+      <edge id="3" source="DoubleFieldTheory.ActionCurvature.dft_ricci_expansion" target="DFTRicciComponents" label="proof" />
+      <edge id="4" source="DoubleFieldTheory.ActionCurvature.dft_ricci_physical_reduction" target="DFTRicciComponents" label="sig" />
+      <edge id="5" source="DoubleFieldTheory.ActionCurvature.dft_ricci_physical_reduction" target="DFTRicciComponents" label="proof" />
+      <edge id="6" source="DoubleFieldTheory.ActionCurvature.dft_action_nsns_equivalence" target="ActionLagrangian" label="sig" />
+      <edge id="7" source="DoubleFieldTheory.ActionCurvature.dft_action_nsns_equivalence" target="ActionLagrangian" label="proof" />
+      <edge id="8" source="DoubleFieldTheory.ActionCurvature.contracted_einstein_dim2" target="ContractedEinstein" label="sig" />
+      <edge id="9" source="DoubleFieldTheory.ActionCurvature.contracted_einstein_dim2" target="ContractedEinstein" label="proof" />
+      <edge id="10" source="DoubleFieldTheory.CourantAlgebroid.lie_bracket_self" target="LieBracket" label="sig" />
+      <edge id="11" source="DoubleFieldTheory.CourantAlgebroid.lie_bracket_self" target="LieBracket" label="proof" />
+      <edge id="12" source="DoubleFieldTheory.CourantAlgebroid.CBracket" target="CourantSection" label="sig" />
+      <edge id="13" source="DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm" target="CourantSection" label="sig" />
+      <edge id="14" source="DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm" target="CBracket" label="sig" />
+      <edge id="15" source="DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm" target="CBracket" label="proof" />
+      <edge id="16" source="DoubleFieldTheory.CourantAlgebroid.DorfmanBracket" target="CourantSection" label="sig" />
+      <edge id="17" source="DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff" target="CourantSection" label="sig" />
+      <edge id="18" source="DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff" target="DorfmanBracket" label="sig" />
+      <edge id="19" source="DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff" target="CBracket" label="sig" />
+      <edge id="20" source="DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff" target="DorfmanBracket" label="proof" />
+      <edge id="21" source="DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff" target="CBracket" label="proof" />
+      <edge id="22" source="DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact" target="CourantSection" label="sig" />
+      <edge id="23" source="DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact" target="DorfmanBracket" label="sig" />
+      <edge id="24" source="DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact" target="DorfmanBracket" label="proof" />
+      <edge id="25" source="DoubleFieldTheory.CourantAlgebroid.cbracket_v_zero" target="CourantSection" label="sig" />
+      <edge id="26" source="DoubleFieldTheory.CourantAlgebroid.cbracket_v_zero" target="CBracket" label="sig" />
+      <edge id="27" source="DoubleFieldTheory.CourantAlgebroid.cbracket_v_zero" target="CBracket" label="proof" />
+      <edge id="28" source="DoubleFieldTheory.CourantAlgebroid.JacVector" target="CourantSection" label="sig" />
+      <edge id="29" source="DoubleFieldTheory.CourantAlgebroid.JacVector" target="CBracket" label="def" />
+      <edge id="30" source="DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes" target="CourantSection" label="sig" />
+      <edge id="31" source="DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes" target="JacVector" label="sig" />
+      <edge id="32" source="DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes" target="JacVector" label="proof" />
+      <edge id="33" source="DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes" target="cbracket_v_zero" label="proof" />
+      <edge id="34" source="DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes" target="CBracket" label="proof" />
+      <edge id="35" source="DoubleFieldTheory.CourantAlgebroid.SectionContract" target="FieldDeriv" label="sig" />
+      <edge id="36" source="DoubleFieldTheory.CourantAlgebroid.strong_section_condition" target="FieldDeriv" label="sig" />
+      <edge id="37" source="DoubleFieldTheory.CourantAlgebroid.strong_section_condition" target="SectionContract" label="sig" />
+      <edge id="38" source="DoubleFieldTheory.CourantAlgebroid.strong_section_condition" target="SectionContract" label="proof" />
+      <edge id="39" source="DoubleFieldTheory.CourantAlgebroid.gen_lie_closure" target="LieCommutator" label="sig" />
+      <edge id="40" source="DoubleFieldTheory.CourantAlgebroid.gen_lie_closure" target="LieCommutator" label="proof" />
+      <edge id="41" source="DoubleFieldTheory.GeneralizedGeometry.CourantPairing" target="GenVector" label="sig" />
+      <edge id="42" source="DoubleFieldTheory.GeneralizedGeometry.courant_pairing_symm" target="GenVector" label="sig" />
+      <edge id="43" source="DoubleFieldTheory.GeneralizedGeometry.courant_pairing_symm" target="CourantPairing" label="sig" />
+      <edge id="44" source="DoubleFieldTheory.GeneralizedGeometry.courant_pairing_symm" target="CourantPairing" label="proof" />
+      <edge id="45" source="DoubleFieldTheory.GeneralizedGeometry.ODD_Eta" target="Mat2" label="sig" />
+      <edge id="46" source="DoubleFieldTheory.GeneralizedGeometry.BilinearForm" target="Mat2" label="sig" />
+      <edge id="47" source="DoubleFieldTheory.GeneralizedGeometry.BilinearForm" target="GenVector" label="sig" />
+      <edge id="48" source="DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval" target="GenVector" label="sig" />
+      <edge id="49" source="DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval" target="BilinearForm" label="sig" />
+      <edge id="50" source="DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval" target="ODD_Eta" label="sig" />
+      <edge id="51" source="DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval" target="CourantPairing" label="sig" />
+      <edge id="52" source="DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval" target="BilinearForm" label="proof" />
+      <edge id="53" source="DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval" target="ODD_Eta" label="proof" />
+      <edge id="54" source="DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval" target="CourantPairing" label="proof" />
+      <edge id="55" source="DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval" target="h1" label="proof" />
+      <edge id="56" source="DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval" target="h2" label="proof" />
+      <edge id="57" source="DoubleFieldTheory.GeneralizedGeometry.MatMul" target="Mat2" label="sig" />
+      <edge id="58" source="DoubleFieldTheory.GeneralizedGeometry.MatTranspose" target="Mat2" label="sig" />
+      <edge id="59" source="DoubleFieldTheory.GeneralizedGeometry.IsODD" target="Mat2" label="sig" />
+      <edge id="60" source="DoubleFieldTheory.GeneralizedGeometry.IsODD" target="MatMul" label="def" />
+      <edge id="61" source="DoubleFieldTheory.GeneralizedGeometry.IsODD" target="MatTranspose" label="def" />
+      <edge id="62" source="DoubleFieldTheory.GeneralizedGeometry.IsODD" target="ODD_Eta" label="def" />
+      <edge id="63" source="DoubleFieldTheory.GeneralizedGeometry.InversionGen" target="Mat2" label="sig" />
+      <edge id="64" source="DoubleFieldTheory.GeneralizedGeometry.odd_inversion_generator" target="IsODD" label="sig" />
+      <edge id="65" source="DoubleFieldTheory.GeneralizedGeometry.odd_inversion_generator" target="InversionGen" label="sig" />
+      <edge id="66" source="DoubleFieldTheory.GeneralizedGeometry.BTwist" target="Mat2" label="sig" />
+      <edge id="67" source="DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta" target="MatMul" label="sig" />
+      <edge id="68" source="DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta" target="MatTranspose" label="sig" />
+      <edge id="69" source="DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta" target="BTwist" label="sig" />
+      <edge id="70" source="DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta" target="ODD_Eta" label="sig" />
+      <edge id="71" source="DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta" target="MatMul" label="proof" />
+      <edge id="72" source="DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta" target="MatTranspose" label="proof" />
+      <edge id="73" source="DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta" target="BTwist" label="proof" />
+      <edge id="74" source="DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta" target="ODD_Eta" label="proof" />
+      <edge id="75" source="DoubleFieldTheory.GeneralizedGeometry.GenMetric" target="Mat2" label="sig" />
+      <edge id="76" source="DoubleFieldTheory.GeneralizedGeometry.gen_metric_symmetric" target="GenMetric" label="sig" />
+      <edge id="77" source="DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality" target="MatMul" label="sig" />
+      <edge id="78" source="DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality" target="GenMetric" label="sig" />
+      <edge id="79" source="DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality" target="ODD_Eta" label="sig" />
+      <edge id="80" source="DoubleFieldTheory.GeneralizedGeometry.GenEnergy" target="GenVector" label="sig" />
+      <edge id="81" source="DoubleFieldTheory.GeneralizedGeometry.gen_energy_pos" target="GenVector" label="sig" />
+      <edge id="82" source="DoubleFieldTheory.GeneralizedGeometry.gen_energy_pos" target="GenEnergy" label="sig" />
+      <edge id="83" source="DoubleFieldTheory.GeneralizedGeometry.gen_energy_pos" target="GenEnergy" label="proof" />
+      <edge id="84" source="DoubleFieldTheory.K3Topology.k3_euler_characteristic" target="K3BettiSum" label="sig" />
+      <edge id="85" source="DoubleFieldTheory.K3Topology.k3_hirzebruch_signature" target="Signature" label="sig" />
+      <edge id="86" source="DoubleFieldTheory.K3Topology.k3_second_betti_hodge" target="SecondBetti" label="sig" />
+      <edge id="87" source="DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig" target="LatticeRank" label="sig" />
+      <edge id="88" source="DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig" target="LatticeSig" label="sig" />
+      <edge id="89" source="DoubleFieldTheory.K3Topology.k3_su2_holonomy_reduction" target="HolonomyDimSU2" label="sig" />
+      <edge id="90" source="DoubleFieldTheory.K3Topology.k3_su2_holonomy_reduction" target="HolonomyDimSO4" label="sig" />
+      <edge id="91" source="DoubleFieldTheory.K3Topology.k3_atiyah_singer_dirac_index" target="DiracIndex" label="sig" />
+      <edge id="92" source="DoubleFieldTheory.K3Topology.k3_parallel_chiral_spinor_index" target="ChiralIndex" label="sig" />
+      <edge id="93" source="DoubleFieldTheory.K3Topology.k3_parallel_chiral_spinor_index" target="DiracIndex" label="sig" />
+      <edge id="94" source="DoubleFieldTheory.TDualityBuscher.CongruenceAction" target="Mat2" label="sig" />
+      <edge id="95" source="DoubleFieldTheory.TDualityBuscher.CongruenceAction" target="MatMul" label="def" />
+      <edge id="96" source="DoubleFieldTheory.TDualityBuscher.CongruenceAction" target="MatTranspose" label="def" />
+      <edge id="97" source="DoubleFieldTheory.TDualityBuscher.t_duality_congruence" target="Mat2" label="sig" />
+      <edge id="98" source="DoubleFieldTheory.TDualityBuscher.t_duality_congruence" target="GenMetric" label="sig" />
+      <edge id="99" source="DoubleFieldTheory.TDualityBuscher.t_duality_congruence" target="CongruenceAction" label="sig" />
+      <edge id="100" source="DoubleFieldTheory.TDualityBuscher.t_duality_congruence" target="InversionGen" label="sig" />
+      <edge id="101" source="DoubleFieldTheory.TDualityBuscher.Det2" target="Mat2" label="sig" />
+      <edge id="102" source="DoubleFieldTheory.TDualityBuscher.Identity2" target="Mat2" label="sig" />
+      <edge id="103" source="DoubleFieldTheory.TDualityBuscher.inversion_generator_properties" target="MatMul" label="sig" />
+      <edge id="104" source="DoubleFieldTheory.TDualityBuscher.inversion_generator_properties" target="InversionGen" label="sig" />
+      <edge id="105" source="DoubleFieldTheory.TDualityBuscher.inversion_generator_properties" target="Identity2" label="sig" />
+      <edge id="106" source="DoubleFieldTheory.TDualityBuscher.inversion_generator_properties" target="Det2" label="sig" />
+      <edge id="107" source="DoubleFieldTheory.TDualityBuscher.buscher_log_involution" target="BuscherLogMap" label="sig" />
+      <edge id="108" source="DoubleFieldTheory.TDualityBuscher.buscher_log_involution" target="BuscherLogMap" label="proof" />
+      <edge id="109" source="DoubleFieldTheory.TDualityBuscher.buscher_dilaton_involution" target="BuscherDilatonMap" label="sig" />
+      <edge id="110" source="DoubleFieldTheory.TDualityBuscher.buscher_dilaton_involution" target="BuscherLogMap" label="sig" />
+      <edge id="111" source="DoubleFieldTheory.TDualityBuscher.buscher_dilaton_involution" target="BuscherDilatonMap" label="proof" />
+      <edge id="112" source="DoubleFieldTheory.TDualityBuscher.buscher_dilaton_involution" target="BuscherLogMap" label="proof" />
+      <edge id="113" source="DoubleFieldTheory.TDualityBuscher.buscher_dilaton_measure_invariance" target="TwoDilaton" label="sig" />
+      <edge id="114" source="DoubleFieldTheory.TDualityBuscher.buscher_dilaton_measure_invariance" target="TwoDilaton" label="proof" />
+      <edge id="115" source="DoubleFieldTheory.TDualityBuscher.self_dual_radius_rigidity" target="BuscherLogMap" label="sig" />
+      <edge id="116" source="DoubleFieldTheory.TDualityBuscher.self_dual_radius_rigidity" target="BuscherLogMap" label="proof" />
+      <edge id="117" source="DoubleFieldTheory.TorusMoonshine.ModS" target="Mat2" label="sig" />
+      <edge id="118" source="DoubleFieldTheory.TorusMoonshine.ModT" target="Mat2" label="sig" />
+      <edge id="119" source="DoubleFieldTheory.TorusMoonshine.NegI" target="Mat2" label="sig" />
+      <edge id="120" source="DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators" target="MatMul" label="sig" />
+      <edge id="121" source="DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators" target="ModS" label="sig" />
+      <edge id="122" source="DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators" target="NegI" label="sig" />
+      <edge id="123" source="DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators" target="ModT" label="sig" />
+      <edge id="124" source="DoubleFieldTheory.TorusMoonshine.mukai_lattice_m24_bridge" target="MukaiRank" label="sig" />
+      <edge id="125" source="DoubleFieldTheory.TorusMoonshine.mukai_lattice_m24_bridge" target="MathieuDegree" label="sig" />
+      <edge id="126" source="DoubleFieldTheory.TorusMoonshine.mukai_lattice_m24_bridge" target="LatticeRank" label="sig" />
+      <edge id="127" source="SocrateAI.DualScale.scaleEq" target="PosScale" label="sig" />
+      <edge id="128" source="SocrateAI.DualScale.scaleEq" target="PosScale" label="def" />
+      <edge id="129" source="SocrateAI.DualScale.scaleLt" target="PosScale" label="sig" />
+      <edge id="130" source="SocrateAI.DualScale.scaleLt" target="PosScale" label="def" />
+      <edge id="131" source="SocrateAI.DualScale.buscherDual" target="PosScale" label="sig" />
+      <edge id="132" source="SocrateAI.DualScale.buscher_involution" target="PosScale" label="sig" />
+      <edge id="133" source="SocrateAI.DualScale.buscher_involution" target="scaleEq" label="sig" />
+      <edge id="134" source="SocrateAI.DualScale.buscher_involution" target="buscherDual" label="sig" />
+      <edge id="135" source="SocrateAI.DualScale.buscher_involution" target="scaleEq" label="proof" />
+      <edge id="136" source="SocrateAI.DualScale.buscher_involution" target="buscherDual" label="proof" />
+      <edge id="137" source="SocrateAI.DualScale.effectiveRadius" target="PosScale" label="sig" />
+      <edge id="138" source="SocrateAI.DualScale.effectiveRadius" target="scaleLt" label="def" />
+      <edge id="139" source="SocrateAI.DualScale.effectiveRadius" target="buscherDual" label="def" />
+      <edge id="140" source="SocrateAI.DualScale.genesis_no_singularity" target="PosScale" label="sig" />
+      <edge id="141" source="SocrateAI.DualScale.genesis_no_singularity" target="effectiveRadius" label="sig" />
+      <edge id="142" source="SocrateAI.DualScale.genesis_no_singularity" target="effectiveRadius" label="proof" />
+      <edge id="143" source="SocrateAI.DualScale.genesis_no_singularity" target="buscherDual" label="proof" />
+      <edge id="144" source="SocrateAI.DualScale.self_dual_symmetric" target="PosScale" label="sig" />
+      <edge id="145" source="SocrateAI.DualScale.self_dual_symmetric" target="scaleEq" label="sig" />
+      <edge id="146" source="SocrateAI.DualScale.self_dual_symmetric" target="buscherDual" label="sig" />
+      <edge id="147" source="SocrateAI.DualScale.self_dual_symmetric" target="scaleEq" label="proof" />
+      <edge id="148" source="SocrateAI.DualScale.self_dual_symmetric" target="buscherDual" label="proof" />
+      <edge id="149" source="SocrateAI.DualScale.stepL2" target="MicroL2Operator" label="sig" />
+      <edge id="150" source="SocrateAI.DualScale.stepL3" target="MacroL3Operator" label="sig" />
+      <edge id="151" source="SocrateAI.DualScale.sym2Lock" target="MicroL2Operator" label="sig" />
+      <edge id="152" source="SocrateAI.DualScale.sym2Lock" target="MacroL3Operator" label="sig" />
+      <edge id="153" source="SocrateAI.DualScale.sym2_fibonacci_verification" target="MicroL2Operator" label="sig" />
+      <edge id="154" source="SocrateAI.DualScale.sym2_fibonacci_verification" target="sym2Lock" label="proof" />
+      <edge id="155" source="SocrateAI.DualScale.sym2_fibonacci_verification" target="stepL3" label="proof" />
+      <edge id="156" source="SocrateAI.DualScale.sym2_pell_verification" target="MicroL2Operator" label="sig" />
+      <edge id="157" source="SocrateAI.DualScale.sym2_pell_verification" target="sym2Lock" label="proof" />
+      <edge id="158" source="SocrateAI.DualScale.sym2_pell_verification" target="stepL3" label="proof" />
+      <edge id="159" source="SocrateAI.DualScale.sym2_modular_attractor_verification" target="MicroL2Operator" label="sig" />
+      <edge id="160" source="SocrateAI.DualScale.sym2_modular_attractor_verification" target="sym2Lock" label="proof" />
+      <edge id="161" source="SocrateAI.DualScale.sym2_modular_attractor_verification" target="stepL3" label="proof" />
+      <edge id="162" source="SocrateAI.DualScale.sym2Det" target="MicroL2Operator" label="sig" />
+      <edge id="163" source="SocrateAI.DualScale.sym2Det" target="sym2Lock" label="def" />
+      <edge id="164" source="SocrateAI.DualScale.sym2_det_identity" target="MicroL2Operator" label="sig" />
+      <edge id="165" source="SocrateAI.DualScale.sym2_det_identity" target="sym2Det" label="sig" />
+      <edge id="166" source="SocrateAI.DualScale.sym2_det_identity" target="sym2Det" label="proof" />
+      <edge id="167" source="SocrateAI.DualScale.sym2_det_identity" target="sym2Lock" label="proof" />
+      <edge id="168" source="SocrateAI.Epistemic.Claim" target="Tier" label="sig" />
+      <edge id="169" source="SocrateAI.Epistemic.trans" target="Depends" label="sig" />
+      <edge id="170" source="SocrateAI.Epistemic.trans" target="Depends" label="proof" />
+      <edge id="171" source="SocrateAI.Epistemic.tier_le_of_depends" target="Sound" label="sig" />
+      <edge id="172" source="SocrateAI.Epistemic.tier_le_of_depends" target="Depends" label="sig" />
+      <edge id="173" source="SocrateAI.Epistemic.tier_le_of_depends" target="tier_trans" label="proof" />
+      <edge id="174" source="SocrateAI.Epistemic.no_kernel_claim_rests_on_weaker" target="Sound" label="sig" />
+      <edge id="175" source="SocrateAI.Epistemic.no_kernel_claim_rests_on_weaker" target="Depends" label="sig" />
+      <edge id="176" source="SocrateAI.Epistemic.no_kernel_claim_rests_on_weaker" target="tier_le_of_depends" label="proof" />
+      <edge id="177" source="SocrateAI.Epistemic.no_kernel_claim_rests_on_weaker" target="eq_A_of_A_le" label="proof" />
+      <edge id="178" source="SocrateAI.Epistemic.not_A_of_weak_support" target="Sound" label="sig" />
+      <edge id="179" source="SocrateAI.Epistemic.not_A_of_weak_support" target="Depends" label="sig" />
+      <edge id="180" source="SocrateAI.Epistemic.not_A_of_weak_support" target="no_kernel_claim_rests_on_weaker" label="proof" />
+      <edge id="181" source="SocrateAI.Epistemic.witnessSound_sound" target="Sound" label="sig" />
+      <edge id="182" source="SocrateAI.Epistemic.witnessSound_sound" target="witnessSound" label="sig" />
+      <edge id="183" source="SocrateAI.Epistemic.witnessUnsound_not_sound" target="Sound" label="sig" />
+      <edge id="184" source="SocrateAI.Epistemic.witnessUnsound_not_sound" target="witnessUnsound" label="sig" />
+      <edge id="185" source="SocrateAI.Epistemic.witnessUnsound_not_sound" target="witnessUnsound" label="proof" />
+      <edge id="186" source="SocrateAI.Epistemic.Tier.toNat" target="Tier" label="sig" />
+      <edge id="187" source="SocrateAI.Epistemic.Tier.le" target="Tier" label="sig" />
+      <edge id="188" source="SocrateAI.Epistemic.Tier.le" target="Tier" label="def" />
+      <edge id="189" source="SocrateAI.Epistemic.tier_refl" target="Tier" label="sig" />
+      <edge id="190" source="SocrateAI.Epistemic.tier_trans" target="Tier" label="sig" />
+      <edge id="191" source="SocrateAI.Epistemic.tier_trans" target="h1" label="proof" />
+      <edge id="192" source="SocrateAI.Epistemic.tier_trans" target="h2" label="proof" />
+      <edge id="193" source="SocrateAI.Epistemic.tier_antisymm" target="Tier" label="sig" />
+      <edge id="194" source="SocrateAI.Epistemic.tier_antisymm" target="h1" label="proof" />
+      <edge id="195" source="SocrateAI.Epistemic.tier_antisymm" target="h2" label="proof" />
+      <edge id="196" source="SocrateAI.Epistemic.tier_A_is_maximal" target="Tier" label="sig" />
+      <edge id="197" source="SocrateAI.Epistemic.tier_X_is_minimal" target="Tier" label="sig" />
+      <edge id="198" source="SocrateAI.Epistemic.eq_A_of_A_le" target="Tier" label="sig" />
+      <edge id="199" source="SocrateAI.FrontierTriad.standardFluxVacuum" target="FluxVacuum" label="sig" />
+      <edge id="200" source="SocrateAI.FrontierTriad.CDLInstanton" target="FluxVacuum" label="sig" />
+      <edge id="201" source="SocrateAI.FrontierTriad.unitFluxDecay" target="CDLInstanton" label="sig" />
+      <edge id="202" source="SocrateAI.FrontierTriad.unitFluxDecay" target="standardFluxVacuum" label="def" />
+      <edge id="203" source="SocrateAI.FrontierTriad.cdl_action_strictly_positive" target="unitFluxDecay" label="sig" />
+      <edge id="204" source="SocrateAI.FrontierTriad.cdl_action_strictly_positive" target="unitFluxDecay" label="proof" />
+      <edge id="205" source="SocrateAI.FrontierTriad.true_vacuum_energy_is_lower" target="unitFluxDecay" label="sig" />
+      <edge id="206" source="SocrateAI.FrontierTriad.true_vacuum_energy_is_lower" target="unitFluxDecay" label="proof" />
+      <edge id="207" source="SocrateAI.FrontierTriad.true_vacuum_energy_is_lower" target="standardFluxVacuum" label="proof" />
+      <edge id="208" source="SocrateAI.FrontierTriad.holographic_c_theorem_decay" target="unitFluxDecay" label="sig" />
+      <edge id="209" source="SocrateAI.FrontierTriad.holographic_c_theorem_decay" target="unitFluxDecay" label="proof" />
+      <edge id="210" source="SocrateAI.FrontierTriad.holographic_c_theorem_decay" target="standardFluxVacuum" label="proof" />
+      <edge id="211" source="SocrateAI.FrontierTriad.k3_moduli_dim_eq_58" target="k3_moduli_dim" label="sig" />
+      <edge id="212" source="SocrateAI.FrontierTriad.total_k3t2_moduli_dim" target="k3_moduli_dim" label="def" />
+      <edge id="213" source="SocrateAI.FrontierTriad.total_k3t2_moduli_dim_eq_80" target="total_k3t2_moduli_dim" label="sig" />
+      <edge id="214" source="SocrateAI.FrontierTriad.isSwamplandSafe" target="ModuliGeometry" label="sig" />
+      <edge id="215" source="SocrateAI.FrontierTriad.isSwamplandSafe" target="max_picard_uv" label="def" />
+      <edge id="216" source="SocrateAI.FrontierTriad.isSwamplandSafe" target="min_picard_ds" label="def" />
+      <edge id="217" source="SocrateAI.FrontierTriad.CooperS10" target="ModuliGeometry" label="sig" />
+      <edge id="218" source="SocrateAI.FrontierTriad.KummerM24" target="ModuliGeometry" label="sig" />
+      <edge id="219" source="SocrateAI.FrontierTriad.cooper_s10_swampland_safe" target="isSwamplandSafe" label="sig" />
+      <edge id="220" source="SocrateAI.FrontierTriad.cooper_s10_swampland_safe" target="CooperS10" label="sig" />
+      <edge id="221" source="SocrateAI.FrontierTriad.kummer_m24_swampland_safe" target="isSwamplandSafe" label="sig" />
+      <edge id="222" source="SocrateAI.FrontierTriad.kummer_m24_swampland_safe" target="KummerM24" label="sig" />
+      <edge id="223" source="SocrateAI.FrontierTriad.fricke_square" target="fricke_N" label="def" />
+      <edge id="224" source="SocrateAI.FrontierTriad.fricke_involution_property" target="fricke_square" label="sig" />
+      <edge id="225" source="SocrateAI.FrontierTriad.fricke_discriminant_is_minus_four" target="fricke_discriminant" label="sig" />
+      <edge id="226" source="SocrateAI.FrontierTriad.sdc_decay_coefficient_identity" target="sdc_decay_alpha_squared_num" label="sig" />
+      <edge id="227" source="SocrateAI.FrontierTriad.sdc_decay_coefficient_identity" target="sdc_decay_alpha_squared_den" label="sig" />
+      <edge id="228" source="SocrateAI.FrontierTriad.kSub" target="KClass" label="sig" />
+      <edge id="229" source="SocrateAI.FrontierTriad.BraneAntiBraneSystem" target="KClass" label="sig" />
+      <edge id="230" source="SocrateAI.FrontierTriad.systemKTheoryClass" target="BraneAntiBraneSystem" label="sig" />
+      <edge id="231" source="SocrateAI.FrontierTriad.systemKTheoryClass" target="KClass" label="sig" />
+      <edge id="232" source="SocrateAI.FrontierTriad.systemKTheoryClass" target="kSub" label="def" />
+      <edge id="233" source="SocrateAI.FrontierTriad.SenSolitonDefect" target="KClass" label="sig" />
+      <edge id="234" source="SocrateAI.FrontierTriad.condenseTachyon" target="BraneAntiBraneSystem" label="sig" />
+      <edge id="235" source="SocrateAI.FrontierTriad.condenseTachyon" target="SenSolitonDefect" label="sig" />
+      <edge id="236" source="SocrateAI.FrontierTriad.condenseTachyon" target="systemKTheoryClass" label="def" />
+      <edge id="237" source="SocrateAI.FrontierTriad.sen_conjecture_k_theory_conservation" target="BraneAntiBraneSystem" label="sig" />
+      <edge id="238" source="SocrateAI.FrontierTriad.sen_conjecture_k_theory_conservation" target="condenseTachyon" label="sig" />
+      <edge id="239" source="SocrateAI.FrontierTriad.sen_conjecture_k_theory_conservation" target="systemKTheoryClass" label="sig" />
+      <edge id="240" source="SocrateAI.FrontierTriad.rrCharge" target="KClass" label="sig" />
+      <edge id="241" source="SocrateAI.FrontierTriad.tachyon_condensation_preserves_rr_charge" target="BraneAntiBraneSystem" label="sig" />
+      <edge id="242" source="SocrateAI.FrontierTriad.tachyon_condensation_preserves_rr_charge" target="rrCharge" label="sig" />
+      <edge id="243" source="SocrateAI.FrontierTriad.tachyon_condensation_preserves_rr_charge" target="condenseTachyon" label="sig" />
+      <edge id="244" source="SocrateAI.FrontierTriad.tachyon_condensation_preserves_rr_charge" target="systemKTheoryClass" label="sig" />
+      <edge id="245" source="SocrateAI.FrontierTriad.mapperBetti1WithComponents" target="TDAMapperGraph" label="sig" />
+      <edge id="246" source="SocrateAI.FrontierTriad.mapperEulerChar" target="TDAMapperGraph" label="sig" />
+      <edge id="247" source="SocrateAI.FrontierTriad.KummerLangevinMapperGraph" target="TDAMapperGraph" label="sig" />
+      <edge id="248" source="SocrateAI.FrontierTriad.kummer_mapper_betti1_eq_376" target="mapperBetti1WithComponents" label="sig" />
+      <edge id="249" source="SocrateAI.FrontierTriad.kummer_mapper_betti1_eq_376" target="KummerLangevinMapperGraph" label="sig" />
+      <edge id="250" source="SocrateAI.FrontierTriad.kummer_mapper_betti1_eq_376" target="kummer_defect_clusters" label="sig" />
+      <edge id="251" source="SocrateAI.FrontierTriad.kummer_mapper_euler_eq_minus_370" target="mapperEulerChar" label="sig" />
+      <edge id="252" source="SocrateAI.FrontierTriad.kummer_mapper_euler_eq_minus_370" target="KummerLangevinMapperGraph" label="sig" />
+      <edge id="253" source="SocrateAI.FrontierTriad.symmetron_screening_cassini_pass" target="checkSymmetronScreening" label="sig" />
+      <edge id="254" source="SocrateAI.Moonshine.GysinSequence.CircleBundle" target="CohomologyRing" label="sig" />
+      <edge id="255" source="SocrateAI.Moonshine.GysinSequence.cupEuler" target="CohomologyRing" label="sig" />
+      <edge id="256" source="SocrateAI.Moonshine.GysinSequence.cupEuler" target="CircleBundle" label="sig" />
+      <edge id="257" source="SocrateAI.Moonshine.GysinSequence.GysinExactSequence" target="CohomologyRing" label="sig" />
+      <edge id="258" source="SocrateAI.Moonshine.GysinSequence.GysinExactSequence" target="CircleBundle" label="sig" />
+      <edge id="259" source="SocrateAI.Moonshine.GysinSequence.GysinExactSequence" target="cupEuler" label="sig" />
+      <edge id="260" source="SocrateAI.Moonshine.GysinSequence.BEMDualPair" target="CohomologyRing" label="sig" />
+      <edge id="261" source="SocrateAI.Moonshine.GysinSequence.BEMDualPair" target="CircleBundle" label="sig" />
+      <edge id="262" source="SocrateAI.Moonshine.GysinSequence.bem_derived_exchange" target="CohomologyRing" label="sig" />
+      <edge id="263" source="SocrateAI.Moonshine.GysinSequence.bem_derived_exchange" target="BEMDualPair" label="sig" />
+      <edge id="264" source="SocrateAI.Moonshine.GysinSequence.bem_characteristic_vanishing" target="CohomologyRing" label="sig" />
+      <edge id="265" source="SocrateAI.Moonshine.GysinSequence.bem_characteristic_vanishing" target="BEMDualPair" label="sig" />
+      <edge id="266" source="SocrateAI.Moonshine.k3_euler" target="k3_b0" label="def" />
+      <edge id="267" source="SocrateAI.Moonshine.k3_euler" target="k3_b1" label="def" />
+      <edge id="268" source="SocrateAI.Moonshine.k3_euler" target="k3_b2" label="def" />
+      <edge id="269" source="SocrateAI.Moonshine.k3_euler" target="k3_b3" label="def" />
+      <edge id="270" source="SocrateAI.Moonshine.k3_euler" target="k3_b4" label="def" />
+      <edge id="271" source="SocrateAI.Moonshine.k3_euler_eq_24" target="k3_euler" label="sig" />
+      <edge id="272" source="SocrateAI.Moonshine.kummer_exceptional_intersection" target="exceptional_self_intersection" label="sig" />
+      <edge id="273" source="SocrateAI.Moonshine.k3t2_euler" target="k3t2_b0" label="def" />
+      <edge id="274" source="SocrateAI.Moonshine.k3t2_euler" target="k3t2_b1" label="def" />
+      <edge id="275" source="SocrateAI.Moonshine.k3t2_euler" target="k3t2_b2" label="def" />
+      <edge id="276" source="SocrateAI.Moonshine.k3t2_euler" target="k3t2_b3" label="def" />
+      <edge id="277" source="SocrateAI.Moonshine.k3t2_euler" target="k3t2_b4" label="def" />
+      <edge id="278" source="SocrateAI.Moonshine.k3t2_euler" target="k3t2_b5" label="def" />
+      <edge id="279" source="SocrateAI.Moonshine.k3t2_euler" target="k3t2_b6" label="def" />
+      <edge id="280" source="SocrateAI.Moonshine.k3t2_euler_char_eq_zero" target="k3t2_euler" label="sig" />
+      <edge id="281" source="SocrateAI.Moonshine.kuenneth_b3_derivation" target="k3_b2" label="sig" />
+      <edge id="282" source="SocrateAI.Moonshine.kuenneth_b3_derivation" target="k3_b3" label="sig" />
+      <edge id="283" source="SocrateAI.Moonshine.kuenneth_b3_derivation" target="k3t2_b3" label="sig" />
+      <edge id="284" source="SocrateAI.Moonshine.picard_rank_kummer_maximal" target="k3_b2" label="sig" />
+      <edge id="285" source="SocrateAI.Moonshine.picard_rank_kummer_maximal" target="transcendental_rank" label="sig" />
+      <edge id="286" source="SocrateAI.Moonshine.hodge_h11_eq_20" target="k3_b2" label="sig" />
+      <edge id="287" source="SocrateAI.Moonshine.hodge_h11_eq_20" target="hodge_h20" label="sig" />
+      <edge id="288" source="SocrateAI.Moonshine.total_d7_charge" target="d7_count" label="def" />
+      <edge id="289" source="SocrateAI.Moonshine.total_d7_charge" target="d7_charge" label="def" />
+      <edge id="290" source="SocrateAI.Moonshine.total_o7_charge" target="o7_count" label="def" />
+      <edge id="291" source="SocrateAI.Moonshine.total_o7_charge" target="o7_charge" label="def" />
+      <edge id="292" source="SocrateAI.Moonshine.net_tadpole_charge" target="total_d7_charge" label="def" />
+      <edge id="293" source="SocrateAI.Moonshine.net_tadpole_charge" target="total_o7_charge" label="def" />
+      <edge id="294" source="SocrateAI.Moonshine.rr_tadpole_cancellation" target="net_tadpole_charge" label="sig" />
+      <edge id="295" source="SocrateAI.Moonshine.d7_positive_charge" target="total_d7_charge" label="sig" />
+      <edge id="296" source="SocrateAI.Moonshine.o7_negative_charge" target="total_o7_charge" label="sig" />
+      <edge id="297" source="SocrateAI.Moonshine.addFrac" target="Frac" label="sig" />
+      <edge id="298" source="SocrateAI.Moonshine.subFrac" target="Frac" label="sig" />
+      <edge id="299" source="SocrateAI.Moonshine.eqFrac" target="Frac" label="sig" />
+      <edge id="300" source="SocrateAI.Moonshine.eqFrac" target="Frac" label="def" />
+      <edge id="301" source="SocrateAI.Moonshine.h1" target="Frac" label="sig" />
+      <edge id="302" source="SocrateAI.Moonshine.h2" target="Frac" label="sig" />
+      <edge id="303" source="SocrateAI.Moonshine.delta1" target="Frac" label="sig" />
+      <edge id="304" source="SocrateAI.Moonshine.delta1" target="addFrac" label="def" />
+      <edge id="305" source="SocrateAI.Moonshine.delta1" target="h1" label="def" />
+      <edge id="306" source="SocrateAI.Moonshine.delta2" target="Frac" label="sig" />
+      <edge id="307" source="SocrateAI.Moonshine.delta2" target="addFrac" label="def" />
+      <edge id="308" source="SocrateAI.Moonshine.delta2" target="h2" label="def" />
+      <edge id="309" source="SocrateAI.Moonshine.delta1_is_half" target="delta1" label="sig" />
+      <edge id="310" source="SocrateAI.Moonshine.delta2_is_five_halves" target="delta2" label="sig" />
+      <edge id="311" source="SocrateAI.Moonshine.delta12" target="Frac" label="sig" />
+      <edge id="312" source="SocrateAI.Moonshine.delta12" target="subFrac" label="def" />
+      <edge id="313" source="SocrateAI.Moonshine.delta12" target="addFrac" label="def" />
+      <edge id="314" source="SocrateAI.Moonshine.delta12" target="h1" label="def" />
+      <edge id="315" source="SocrateAI.Moonshine.delta12" target="h2" label="def" />
+      <edge id="316" source="SocrateAI.Moonshine.delta23" target="Frac" label="sig" />
+      <edge id="317" source="SocrateAI.Moonshine.delta23" target="h2" label="def" />
+      <edge id="318" source="SocrateAI.Moonshine.delta13" target="Frac" label="sig" />
+      <edge id="319" source="SocrateAI.Moonshine.delta13" target="h2" label="def" />
+      <edge id="320" source="SocrateAI.Moonshine.delta12_value" target="delta12" label="sig" />
+      <edge id="321" source="SocrateAI.Moonshine.totalChiralWeight" target="Frac" label="sig" />
+      <edge id="322" source="SocrateAI.Moonshine.totalChiralWeight" target="addFrac" label="def" />
+      <edge id="323" source="SocrateAI.Moonshine.totalChiralWeight" target="h1" label="def" />
+      <edge id="324" source="SocrateAI.Moonshine.totalChiralWeight" target="h2" label="def" />
+      <edge id="325" source="SocrateAI.Moonshine.total_chiral_weight_value" target="totalChiralWeight" label="sig" />
+      <edge id="326" source="SocrateAI.Moonshine.conformal_exponent_sum" target="addFrac" label="sig" />
+      <edge id="327" source="SocrateAI.Moonshine.conformal_exponent_sum" target="delta12" label="sig" />
+      <edge id="328" source="SocrateAI.Moonshine.conformal_exponent_sum" target="delta23" label="sig" />
+      <edge id="329" source="SocrateAI.Moonshine.conformal_exponent_sum" target="delta13" label="sig" />
+      <edge id="330" source="SocrateAI.Moonshine.conformal_exponent_sum" target="totalChiralWeight" label="sig" />
+      <edge id="331" source="SocrateAI.Moonshine.dimA1_decomposition" target="dimA1" label="sig" />
+      <edge id="332" source="SocrateAI.Moonshine.dimA2_decomposition" target="dimA2" label="sig" />
+      <edge id="333" source="SocrateAI.Moonshine.dimA3_decomposition" target="dimA3" label="sig" />
+      <edge id="334" source="SocrateAI.Moonshine.dimSym2A1" target="dimA1" label="def" />
+      <edge id="335" source="SocrateAI.Moonshine.sym2_A1_dimension_is_4095" target="dimSym2A1" label="sig" />
+      <edge id="336" source="SocrateAI.Moonshine.superconformal_geometric_congruence" target="numSupercharges" label="sig" />
+      <edge id="337" source="SocrateAI.Moonshine.superconformal_geometric_congruence" target="numFixedPointsT2Z2" label="sig" />
+      <edge id="338" source="SocrateAI.Moonshine.r_bps_cross_multiplication" target="dimA2" label="sig" />
+      <edge id="339" source="SocrateAI.Moonshine.r_bps_cross_multiplication" target="rBPSDen" label="sig" />
+      <edge id="340" source="SocrateAI.Moonshine.r_bps_cross_multiplication" target="numSupercharges" label="sig" />
+      <edge id="341" source="SocrateAI.Moonshine.r_bps_cross_multiplication" target="dimA1" label="sig" />
+      <edge id="342" source="SocrateAI.Moonshine.r_bps_cross_multiplication" target="rBPSNum" label="sig" />
+      <edge id="343" source="SocrateAI.Moonshine.r_bps_is_irreducible" target="rBPSNum" label="sig" />
+      <edge id="344" source="SocrateAI.Moonshine.r_bps_is_irreducible" target="rBPSDen" label="sig" />
+      <edge id="345" source="SocrateAI.Moonshine.product_value_check" target="dimA2" label="sig" />
+      <edge id="346" source="SocrateAI.Moonshine.product_value_check" target="rBPSDen" label="sig" />
+      <edge id="347" source="SocrateAI.Moonshine.denominator_product_check" target="numSupercharges" label="sig" />
+      <edge id="348" source="SocrateAI.Moonshine.denominator_product_check" target="dimA1" label="sig" />
+      <edge id="349" source="SocrateAI.Moonshine.denominator_product_check" target="rBPSNum" label="sig" />
+      <edge id="350" source="SocrateAI.Moonshine.rBPSPartsPerThousand" target="rBPSNum" label="def" />
+      <edge id="351" source="SocrateAI.Moonshine.rBPSPartsPerThousand" target="rBPSDen" label="def" />
+      <edge id="352" source="SocrateAI.Moonshine.r_bps_parts_per_thousand_value" target="rBPSPartsPerThousand" label="sig" />
+      <edge id="353" source="SocrateAI.Moonshine.isMathieuConsistent" target="rBPSPartsPerThousand" label="def" />
+      <edge id="354" source="SocrateAI.Moonshine.nominal_value_is_consistent" target="isMathieuConsistent" label="sig" />
+      <edge id="355" source="StringTheory.Foundation.Atlas.defaultK3" target="AtlasFourManifold" label="sig" />
+      <edge id="356" source="StringTheory.Foundation.Atlas.defaultK3Lattice" target="AtlasIntersectionLattice" label="sig" />
+      <edge id="357" source="StringTheory.Foundation.Atlas.defaultPoincareMetric" target="AtlasHyperbolicMetric" label="sig" />
+      <edge id="358" source="StringTheory.Foundation.Core.Topology.eulerChar4D" target="Betti4D" label="sig" />
+      <edge id="359" source="StringTheory.Foundation.Core.Topology.eulerChar2D" target="Betti2D" label="sig" />
+      <edge id="360" source="StringTheory.Foundation.Core.Topology.bettiT2" target="Betti2D" label="sig" />
+      <edge id="361" source="StringTheory.Foundation.Core.Topology.euler_char_T2" target="eulerChar2D" label="sig" />
+      <edge id="362" source="StringTheory.Foundation.Core.Topology.euler_char_T2" target="bettiT2" label="sig" />
+      <edge id="363" source="StringTheory.Foundation.Core.Topology.bettiK3" target="Betti4D" label="sig" />
+      <edge id="364" source="StringTheory.Foundation.Core.Topology.euler_char_K3" target="eulerChar4D" label="sig" />
+      <edge id="365" source="StringTheory.Foundation.Core.Topology.euler_char_K3" target="bettiK3" label="sig" />
+      <edge id="366" source="StringTheory.Foundation.Duality.DualScale.dual_pair_symmetric" target="isDualPair" label="sig" />
+      <edge id="367" source="StringTheory.Foundation.Duality.DualScale.dual_pair_symmetric" target="isDualPair" label="proof" />
+      <edge id="368" source="StringTheory.Foundation.Duality.DualScale.self_dual_at_crossover" target="isDualPair" label="sig" />
+      <edge id="369" source="StringTheory.Foundation.Duality.DualScale.dual_product_invariant" target="isDualPair" label="sig" />
+      <edge id="370" source="StringTheory.Foundation.Duality.T_Duality.tDualState" target="CircleState" label="sig" />
+      <edge id="371" source="StringTheory.Foundation.Duality.T_Duality.t_duality_involution" target="CircleState" label="sig" />
+      <edge id="372" source="StringTheory.Foundation.Duality.T_Duality.t_duality_involution" target="tDualState" label="sig" />
+      <edge id="373" source="StringTheory.Foundation.Duality.T_Duality.t_duality_involution" target="tDualState" label="proof" />
+      <edge id="374" source="StringTheory.Foundation.Duality.T_Duality.self_dual_mass_symmetry" target="selfDualMassFactor" label="sig" />
+      <edge id="375" source="StringTheory.Foundation.Duality.T_Duality.self_dual_mass_symmetry" target="selfDualMassFactor" label="proof" />
+      <edge id="376" source="StringTheory.Foundation.K3.K3Surfaces.k3HodgeDiamond" target="HodgeDiamond2D" label="sig" />
+      <edge id="377" source="StringTheory.Foundation.K3.K3Surfaces.b2FromHodge" target="HodgeDiamond2D" label="sig" />
+      <edge id="378" source="StringTheory.Foundation.K3.K3Surfaces.k3_b2_is_22" target="b2FromHodge" label="sig" />
+      <edge id="379" source="StringTheory.Foundation.K3.K3Surfaces.k3_b2_is_22" target="k3HodgeDiamond" label="sig" />
+      <edge id="380" source="StringTheory.Foundation.K3.K3Surfaces.k3LatticeRank" target="K3LatticeDecomp" label="sig" />
+      <edge id="381" source="StringTheory.Foundation.K3.K3Surfaces.k3_lattice_rank_valid" target="k3LatticeRank" label="sig" />
+      <edge id="382" source="StringTheory.Foundation.K3.K3Surfaces.k3_signature_is_minus_16" target="k3SignaturePos" label="sig" />
+      <edge id="383" source="StringTheory.Foundation.K3.K3Surfaces.k3_signature_is_minus_16" target="k3SignatureNeg" label="sig" />
+      <edge id="384" source="StringTheory.Foundation.StringTheory.K3xT2.dim_real_k3xt2_is_6" target="dimRealK3xT2" label="sig" />
+      <edge id="385" source="StringTheory.Foundation.StringTheory.K3xT2.targetSpacetimeDim" target="dimRealK3xT2" label="def" />
+      <edge id="386" source="StringTheory.Foundation.StringTheory.K3xT2.target_spacetime_is_4d" target="targetSpacetimeDim" label="sig" />
+      <edge id="387" source="StringTheory.Foundation.StringTheory.K3xT2.typeII_4D_N" target="typeII_4D_supercharges" label="def" />
+      <edge id="388" source="StringTheory.Foundation.StringTheory.K3xT2.typeII_k3xt2_susy_N4" target="typeII_4D_N" label="sig" />
+      <edge id="389" source="StringTheory.Foundation.StringTheory.K3xT2.string_duality_susy_match" target="typeII_4D_supercharges" label="sig" />
+      <edge id="390" source="StringTheory.Foundation.StringTheory.K3xT2.string_duality_susy_match" target="heterotic_T6_supercharges" label="sig" />
+      <edge id="391" source="StringTheory.Foundation.StringTheory.K3xT2.euler_char_vanishes" target="eulerChar4D" label="sig" />
+      <edge id="392" source="StringTheory.Foundation.StringTheory.K3xT2.euler_char_vanishes" target="bettiK3" label="sig" />
+      <edge id="393" source="StringTheory.Foundation.StringTheory.K3xT2.euler_char_vanishes" target="eulerChar2D" label="sig" />
+      <edge id="394" source="StringTheory.Foundation.StringTheory.K3xT2.euler_char_vanishes" target="bettiT2" label="sig" />
+      <edge id="395" source="StringTheory.Foundation.StringTheory.K3xT2.euler_char_vanishes" target="euler_char_K3" label="proof" />
+      <edge id="396" source="StringTheory.Foundation.StringTheory.K3xT2.euler_char_vanishes" target="euler_char_T2" label="proof" />
+      <edge id="397" source="StringTheory.Foundation.StringTheory.StromingerSYZ.defaultSYZ" target="SYZFibration" label="sig" />
+      <edge id="398" source="StringTheory.Foundation.StringTheory.StromingerSYZ.defaultEllipticK3" target="EllipticK3Fibration" label="sig" />
+      <edge id="399" source="StringTheory.Foundation.StringTheory.StromingerSYZ.strominger_syz_dual_symmetric" target="SYZFiberDual" label="sig" />
+      <edge id="400" source="StringTheory.Foundation.StringTheory.StromingerSYZ.defaultHyperKahler" target="HyperKahlerMetric" label="sig" />
+      <edge id="401" source="StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity" target="DistanceConjecture" label="sig" />
+      <edge id="402" source="StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity" target="DistanceConjecture" label="proof" />
+      <edge id="403" source="StringTheory.Foundation.StringTheory.Swampland.satisfiesWGC" target="WGCState" label="sig" />
+      <edge id="404" source="StringTheory.Foundation.StringTheory.Swampland.unit_state_satisfies_wgc" target="satisfiesWGC" label="sig" />
+      <edge id="405" source="StringTheory.Foundation.StringTheory.Swampland.unit_state_satisfies_wgc" target="satisfiesWGC" label="proof" />
+      <edge id="406" source="StringTheory.Foundation.StringTheory.TadpoleCancellation.num_fixed_points_is_16" target="numFixedPointsT4Z2" label="sig" />
+      <edge id="407" source="StringTheory.Foundation.StringTheory.TadpoleCancellation.totalO7Charge" target="numFixedPointsT4Z2" label="def" />
+      <edge id="408" source="StringTheory.Foundation.StringTheory.TadpoleCancellation.totalO7Charge" target="chargeO7Minus" label="def" />
+      <edge id="409" source="StringTheory.Foundation.StringTheory.TadpoleCancellation.total_O7_charge_is_minus_64" target="totalO7Charge" label="sig" />
+      <edge id="410" source="StringTheory.Foundation.StringTheory.TadpoleCancellation.totalD7Charge" target="numD7Branes" label="def" />
+      <edge id="411" source="StringTheory.Foundation.StringTheory.TadpoleCancellation.totalD7Charge" target="chargeD7Brane" label="def" />
+      <edge id="412" source="StringTheory.Foundation.StringTheory.TadpoleCancellation.total_D7_charge_is_64" target="totalD7Charge" label="sig" />
+      <edge id="413" source="StringTheory.Foundation.StringTheory.TadpoleCancellation.d7_tadpole_cancellation" target="totalD7Charge" label="sig" />
+      <edge id="414" source="StringTheory.Foundation.StringTheory.TadpoleCancellation.d7_tadpole_cancellation" target="totalO7Charge" label="sig" />
+      <edge id="415" source="StringTheory.Foundation.StringTheory.TadpoleCancellation.d3TadpoleTarget" target="k3EulerChar" label="def" />
+      <edge id="416" source="StringTheory.Foundation.StringTheory.TadpoleCancellation.d3_tadpole_target_is_one" target="d3TadpoleTarget" label="sig" />
+      <edge id="417" source="StringTheory.Foundation.StringTheory.VafaSwampland.vafa_sdc_4d_decay_rate" target="SwamplandTower" label="sig" />
+      <edge id="418" source="StringTheory.Foundation.StringTheory.VafaSwampland.gvwSuperpotentialPairing" target="GVWFluxState" label="sig" />
+      <edge id="419" source="StringTheory.Foundation.StringTheory.VafaSwampland.vafa_gvw_zero_flux" target="gvwSuperpotentialPairing" label="sig" />
+      <edge id="420" source="StringTheory.Foundation.StringTheory.VafaSwampland.magneticCutoff" target="MagneticWGC" label="sig" />
+      <edge id="421" source="StringTheory.Foundation.StringTheory.VafaSwampland.vafa_wgc_weak_coupling_cutoff_monotone" target="MagneticWGC" label="sig" />
+      <edge id="422" source="StringTheory.Foundation.StringTheory.VafaSwampland.vafa_wgc_weak_coupling_cutoff_monotone" target="MagneticWGC" label="proof" />
+      <edge id="423" source="StringTheory.Foundation.StringTheory.VafaSwampland.vafa_wgc_weak_coupling_cutoff_monotone" target="magneticCutoff" label="proof" />
+      <edge id="424" source="StringTheory.Foundation.StringTheory.VafaSwampland.satisfiesNoGlobalSymmetries" target="QuantumGravitySymmetry" label="sig" />
+      <edge id="425" source="StringTheory.Foundation.StringTheory.VafaSwampland.vafa_u1_gauge_consistent" target="satisfiesNoGlobalSymmetries" label="sig" />
+      <edge id="426" source="StringTheory.Foundation.StringTheory.WittenDuality.defaultSixDSusy" target="SixDSupersymmetry" label="sig" />
+      <edge id="427" source="StringTheory.Foundation.StringTheory.WittenDuality.witten_moduli_dim_is_80" target="wittenModuliDimension" label="sig" />
+      <edge id="428" source="StringTheory.Foundation.StringTheory.WittenDuality.defaultDualityLattice" target="DualityLattice" label="sig" />
+      <edge id="429" source="StringTheory.Foundation.StringTheory.WittenDuality.exhibitsGaugeEnhancement" target="TwoCycle" label="sig" />
+      <edge id="430" source="StringTheory.Foundation.StringTheory.WittenDuality.witten_gauge_enhancement_at_singularity" target="exhibitsGaugeEnhancement" label="sig" />
+      <edge id="431" source="StringTheory.Foundation.StringTheory.WittenDuality.witten_gauge_enhancement_at_singularity" target="exhibitsGaugeEnhancement" label="proof" />
+      <edge id="432" source="DoubleFieldTheory.CourantAlgebroid" target="DoubleFieldTheory.GeneralizedGeometry" label="import" />
+      <edge id="433" source="DoubleFieldTheory.TDualityBuscher" target="DoubleFieldTheory.GeneralizedGeometry" label="import" />
+      <edge id="434" source="DoubleFieldTheory.TorusMoonshine" target="DoubleFieldTheory.GeneralizedGeometry" label="import" />
+      <edge id="435" source="DoubleFieldTheory.TorusMoonshine" target="DoubleFieldTheory.K3Topology" label="import" />
+      <edge id="436" source="DoubleFieldTheory" target="DoubleFieldTheory.GeneralizedGeometry" label="import" />
+      <edge id="437" source="DoubleFieldTheory" target="DoubleFieldTheory.CourantAlgebroid" label="import" />
+      <edge id="438" source="DoubleFieldTheory" target="DoubleFieldTheory.ActionCurvature" label="import" />
+      <edge id="439" source="DoubleFieldTheory" target="DoubleFieldTheory.TDualityBuscher" label="import" />
+      <edge id="440" source="DoubleFieldTheory" target="DoubleFieldTheory.K3Topology" label="import" />
+      <edge id="441" source="DoubleFieldTheory" target="DoubleFieldTheory.TorusMoonshine" label="import" />
+      <edge id="442" source="DualScaleM24Formalization.Epistemic.Ledger" target="DualScaleM24Formalization.Epistemic.Tier" label="import" />
+      <edge id="443" source="DualScaleM24Formalization.lakefile" target="Lake" label="import" />
+      <edge id="444" source="DualScaleM24Formalization" target="DualScaleM24Formalization.Epistemic.Tier" label="import" />
+      <edge id="445" source="DualScaleM24Formalization" target="DualScaleM24Formalization.Epistemic.Ledger" label="import" />
+      <edge id="446" source="DualScaleM24Formalization" target="DualScaleM24Formalization.DualScale.EffectiveMetric" label="import" />
+      <edge id="447" source="DualScaleM24Formalization" target="DualScaleM24Formalization.DualScale.Sym2Lock" label="import" />
+      <edge id="448" source="DualScaleM24Formalization" target="DualScaleM24Formalization.Moonshine.MathieuRigidity" label="import" />
+      <edge id="449" source="DualScaleM24Formalization" target="DualScaleM24Formalization.Moonshine.KummerTadpole" label="import" />
+      <edge id="450" source="DualScaleM24Formalization" target="DualScaleM24Formalization.Moonshine.GysinBEMSequence" label="import" />
+      <edge id="451" source="DualScaleM24Formalization" target="DualScaleM24Formalization.FrontierTriad.SwamplandDistance" label="import" />
+      <edge id="452" source="DualScaleM24Formalization" target="DualScaleM24Formalization.FrontierTriad.TachyonCondensation" label="import" />
+      <edge id="453" source="DualScaleM24Formalization" target="DualScaleM24Formalization.FrontierTriad.FluxVacuumDecay" label="import" />
+      <edge id="454" source="DualScaleM24Formalization" target="DualScaleM24Formalization.FrontierTriad.TriadContract" label="import" />
+      <edge id="455" source="StringTheoryFoundation.K3.K3Surfaces" target="StringTheoryFoundation.Core.Topology" label="import" />
+      <edge id="456" source="StringTheoryFoundation.StringTheory.K3xT2" target="StringTheoryFoundation.Core.Topology" label="import" />
+      <edge id="457" source="StringTheoryFoundation.StringTheory.K3xT2" target="StringTheoryFoundation.K3.K3Surfaces" label="import" />
+      <edge id="458" source="StringTheoryFoundation" target="StringTheoryFoundation.Core.Topology" label="import" />
+      <edge id="459" source="StringTheoryFoundation" target="StringTheoryFoundation.Duality.DualScale" label="import" />
+      <edge id="460" source="StringTheoryFoundation" target="StringTheoryFoundation.Duality.T_Duality" label="import" />
+      <edge id="461" source="StringTheoryFoundation" target="StringTheoryFoundation.K3.K3Surfaces" label="import" />
+      <edge id="462" source="StringTheoryFoundation" target="StringTheoryFoundation.StringTheory.K3xT2" label="import" />
+      <edge id="463" source="StringTheoryFoundation" target="StringTheoryFoundation.StringTheory.TadpoleCancellation" label="import" />
+      <edge id="464" source="StringTheoryFoundation" target="StringTheoryFoundation.StringTheory.Swampland" label="import" />
+      <edge id="465" source="StringTheoryFoundation" target="StringTheoryFoundation.StringTheory.WittenDuality" label="import" />
+      <edge id="466" source="StringTheoryFoundation" target="StringTheoryFoundation.StringTheory.VafaSwampland" label="import" />
+      <edge id="467" source="StringTheoryFoundation" target="StringTheoryFoundation.StringTheory.StromingerSYZ" label="import" />
+      <edge id="468" source="StringTheoryFoundation" target="StringTheoryFoundation.Atlas.AtlasGeometryBridge" label="import" />
+    </edges>
+  </graph>
+</gexf>

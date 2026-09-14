@@ -33,13 +33,16 @@ def cmd_status(args, orch: Prove2MeOrchestrator):
     proved = 0
     total_latency = 0.0
 
-    for card in orch.cards.values():
-        status = card.get("status", "OPEN")
+    for idx, (cid, card) in enumerate(orch.cards.items(), 1):
+        status = card.get("status", "OPEN").upper()
         if status in ["PROVED", "VERIFIED"]:
             proved += 1
         lat = card.get("latency_ms", 0.0)
         total_latency += lat
-        print(f"  {card['number']:02d}  | {card['card_id']:<11} | {card['label']:<32} | {card['tier']:<4} | {status:<8} | {lat:.1f} ms")
+        num = card.get("number", idx)
+        label = (card.get("label") or card.get("name") or cid)[:32]
+        tier = (card.get("tier") or card.get("cluster") or "DFT")[:4]
+        print(f"  {num:02d}  | {cid[:11]:<11} | {label:<32} | {tier:<4} | {status:<8} | {lat:.1f} ms")
 
     avg_lat = total_latency / proved if proved > 0 else 0.0
     print("-" * 80)
@@ -48,9 +51,14 @@ def cmd_status(args, orch: Prove2MeOrchestrator):
 def cmd_frontier(args, orch: Prove2MeOrchestrator):
     frontier = orch.get_frontier()
     print(f"\nFrontier contains {len(frontier)} unblocked cards:")
-    for c_id in frontier:
+    for c_id in frontier[:30]:
         card = orch.cards[c_id]
-        print(f"  - [{c_id}] {card['label']} ({card['domain']}) -> {card['natural_language_summary']}")
+        label = card.get('label') or card.get('name') or c_id
+        dom = card.get('domain') or card.get('cluster') or 'DFT'
+        desc = (card.get('natural_language_summary') or card.get('informal_description') or '')[:80]
+        print(f"  - [{c_id[:20]:<20}] {label[:25]:<25} ({dom}) -> {desc}")
+    if len(frontier) > 30:
+        print(f"  ... and {len(frontier) - 30} more cards.")
     print()
 
 def cmd_search(args, orch: Prove2MeOrchestrator):
@@ -62,9 +70,12 @@ def cmd_search(args, orch: Prove2MeOrchestrator):
         print("  No matching cards found.")
     for score, card in results:
         status_tag = f"[{card.get('status')}]"
-        print(f"  [Score: {score:4.1f}] {status_tag:<10} {card['card_id']} ({card['label']})")
-        print(f"               Domain : {card['domain']}")
-        print(f"               Summary: {card['natural_language_summary']}")
+        label = card.get('label') or card.get('name') or card['card_id']
+        dom = card.get('domain') or card.get('cluster') or 'DFT'
+        desc = (card.get('natural_language_summary') or card.get('informal_description') or '')[:120]
+        print(f"  [Score: {score:4.1f}] {status_tag:<10} {card['card_id']} ({label})")
+        print(f"               Domain : {dom}")
+        print(f"               Summary: {desc}")
         print()
 
 def cmd_suggest(args, orch: Prove2MeOrchestrator):
@@ -75,9 +86,12 @@ def cmd_suggest(args, orch: Prove2MeOrchestrator):
     if not suggestions:
         print("  No matching lemmas found in DAG.")
     for s in suggestions:
-        print(f"  * [{s['card_id']}] {s['label']} (Relevance Score: {s['score']})")
-        print(f"    Symbol : {s['statement_symbol']}")
-        print(f"    Summary: {s['summary']}\n")
+        label = s.get('label') or s.get('name') or s['card_id']
+        sym = s.get('statement_symbol') or s.get('name') or s['card_id']
+        summ = s.get('summary') or s.get('informal_description') or ''
+        print(f"  * [{s['card_id']}] {label} (Relevance Score: {s.get('score', 1.0)})")
+        print(f"    Symbol : {sym}")
+        print(f"    Summary: {summ[:100]}\n")
 
 def cmd_verify(args, orch: Prove2MeOrchestrator):
     card_id = args.card_id

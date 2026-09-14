@@ -48,7 +48,8 @@ def satisfiesWGC (s : WGCState) : Prop :=
 
 /-- Theorem: A unit charge state with unit mass strictly satisfies WGC. -/
 theorem unit_state_satisfies_wgc :
-    satisfiesWGC ⟨1, 1, by norm_num⟩ := by
+    satisfiesWGC ⟨1, 1, by decide⟩ := by
   dsimp [satisfiesWGC]
+  decide
 
 end StringTheory.Foundation.StringTheory.Swampland
