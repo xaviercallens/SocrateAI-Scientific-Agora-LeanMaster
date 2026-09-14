@@ -15,3 +15,7 @@ lean_lib «DualScaleM24Formalization» where
 @[default_target]
 lean_lib «DoubleFieldTheory» where
   roots := #[`DoubleFieldTheory]
+
+@[default_target]
+lean_lib «DualScaleValidation» where
+  roots := #[`DualScaleValidation]
