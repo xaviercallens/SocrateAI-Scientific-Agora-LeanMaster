@@ -17,6 +17,7 @@ import os
 import re
 import subprocess
 import time
+import concurrent.futures
 from collections import defaultdict, deque
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
@@ -184,13 +185,31 @@ Goal:
         else:
             return False, latency_ms, res.stderr
 
-    def run_full_schedule(self, force_reprove: bool = False) -> dict:
+    def suggest_lemmas(self, query: str, top_k: int = 3) -> List[dict]:
+        """
+        Suggests pre-proven lemmas from the DAG to resolve a target goal.
+        """
+        results = self.search(query, top_k=top_k)
+        suggestions = []
+        for score, card in results:
+            if card.get("status") in ["PROVED", "VERIFIED"]:
+                suggestions.append({
+                    "card_id": card["card_id"],
+                    "label": card["label"],
+                    "statement_symbol": f"Prove2Me.Specs.Card{card['number']:02d}Statement",
+                    "summary": card["natural_language_summary"],
+                    "score": round(score, 2)
+                })
+        return suggestions
+
+    def run_full_schedule(self, force_reprove: bool = False, max_workers: int = 8) -> dict:
         """
         Executes the full DAG crawl from leaves to root, verifying each card at the frontier.
+        Supports multi-worker parallel verification across CPU cores.
         """
         print(f"\n=======================================================")
         print(f"  Prove2Me DAG Execution: {self.manifest.get('sprint')}")
-        print(f"  Total Cards: {len(self.cards)}")
+        print(f"  Total Cards: {len(self.cards)} | Workers: {max_workers}")
         print(f"=======================================================\n")
 
         if force_reprove:
@@ -225,16 +244,31 @@ Goal:
                 break
 
             print(f"--- Iteration {step}: Frontier contains {len(frontier)} unblocked cards ---")
-            for card_id in frontier:
-                card = self.cards[card_id]
-                ok, lat_ms, msg = self.verify_card(card_id)
-                latencies.append(lat_ms)
-                if ok:
-                    proved_cards += 1
-                    print(f"  [OK] Card {card['number']:02d} ({card_id} - {card['label']}): {lat_ms:.1f} ms")
-                else:
-                    print(f"  [FAIL] Card {card['number']:02d} ({card_id}): {msg}")
-                    return {"success": False, "failed_card": card_id, "error": msg}
+            if max_workers > 1 and len(frontier) > 1:
+                with concurrent.futures.ThreadPoolExecutor(max_workers=min(max_workers, len(frontier))) as executor:
+                    futures = {executor.submit(self.verify_card, c_id): c_id for c_id in frontier}
+                    for fut in concurrent.futures.as_completed(futures):
+                        c_id = futures[fut]
+                        ok, lat_ms, msg = fut.result()
+                        latencies.append(lat_ms)
+                        card = self.cards[c_id]
+                        if ok:
+                            proved_cards += 1
+                            print(f"  [OK] Card {card['number']:02d} ({c_id} - {card['label']}): {lat_ms:.1f} ms [Worker Pool]")
+                        else:
+                            print(f"  [FAIL] Card {card['number']:02d} ({c_id}): {msg}")
+                            return {"success": False, "failed_card": c_id, "error": msg}
+            else:
+                for card_id in frontier:
+                    card = self.cards[card_id]
+                    ok, lat_ms, msg = self.verify_card(card_id)
+                    latencies.append(lat_ms)
+                    if ok:
+                        proved_cards += 1
+                        print(f"  [OK] Card {card['number']:02d} ({card_id} - {card['label']}): {lat_ms:.1f} ms")
+                    else:
+                        print(f"  [FAIL] Card {card['number']:02d} ({card_id}): {msg}")
+                        return {"success": False, "failed_card": card_id, "error": msg}
 
             step += 1
 

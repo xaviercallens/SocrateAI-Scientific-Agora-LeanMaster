@@ -67,6 +67,18 @@ def cmd_search(args, orch: Prove2MeOrchestrator):
         print(f"               Summary: {card['natural_language_summary']}")
         print()
 
+def cmd_suggest(args, orch: Prove2MeOrchestrator):
+    query = " ".join(args.query)
+    suggestions = orch.suggest_lemmas(query, top_k=args.top_k)
+    print(f"\nRecommended Pre-Proven Lemmas for: '{query}'")
+    print("-" * 75)
+    if not suggestions:
+        print("  No matching lemmas found in DAG.")
+    for s in suggestions:
+        print(f"  * [{s['card_id']}] {s['label']} (Relevance Score: {s['score']})")
+        print(f"    Symbol : {s['statement_symbol']}")
+        print(f"    Summary: {s['summary']}\n")
+
 def cmd_verify(args, orch: Prove2MeOrchestrator):
     card_id = args.card_id
     print(f"\nCompiling isolated card: {card_id}...")
@@ -104,6 +116,10 @@ def main():
     search_p.add_argument("query", nargs="+", help="Query string")
     search_p.add_argument("--top-k", type=int, default=5, help="Number of results")
 
+    suggest_p = subparsers.add_parser("suggest", help="Suggest pre-proven lemmas for a goal")
+    suggest_p.add_argument("query", nargs="+", help="Goal query string")
+    suggest_p.add_argument("--top-k", type=int, default=3, help="Number of suggestions")
+
     verify_p = subparsers.add_parser("verify", help="Verify single card")
     verify_p.add_argument("card_id", help="Card ID to verify")
 
@@ -123,6 +139,7 @@ def main():
         "status": cmd_status,
         "frontier": cmd_frontier,
         "search": cmd_search,
+        "suggest": cmd_suggest,
         "verify": cmd_verify,
         "prompt": cmd_prompt,
         "run": cmd_run,
