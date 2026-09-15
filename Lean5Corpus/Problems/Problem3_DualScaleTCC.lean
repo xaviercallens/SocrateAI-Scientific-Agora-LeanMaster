@@ -59,6 +59,7 @@ namespace Lean5Corpus.Problems.DualScaleTCC
 
 **RAG & Graph Indexing:**
 - `@concept: PlanckLength`
+- `@rag_query: "What is the Planck length in the dual-scale integer unit convention?"`
 - `@graph_node: planck_length`
 -/
 def planck_length : Nat := 1
@@ -69,6 +70,7 @@ def planck_length : Nat := 1
 
 **RAG & Graph Indexing:**
 - `@concept: StringScale`
+- `@rag_query: "What is the string length scale sqrt(alpha') in Planck units?"`
 - `@graph_node: string_scale`
 -/
 def string_scale : Nat := 1
@@ -80,6 +82,7 @@ $$\lambda_{\mathrm{num}}(R, \lambda_0) = (R^2 + 1) \cdot \lambda_0$$
 
 **RAG & Graph Indexing:**
 - `@concept: EffectiveWavelength`
+- `@rag_query: "How is the physical wavelength of a comoving mode computed from the dual-scale radius?"`
 - `@graph_node: effective_wavelength_num`
 -/
 def effective_wavelength_num (R : Nat) (lambda_0 : Nat) : Nat :=
@@ -150,6 +153,7 @@ and Hubble expansion rate $H_{\mathrm{inf}}$, requiring $H_{\mathrm{inf}} < M_{\
 
 **RAG & Graph Indexing:**
 - `@concept: InflationParameters, HubbleScale`
+- `@rag_query: "What data defines the inflationary Hubble scale relative to the Planck mass?"`
 - `@graph_node: InflationParameters`
 -/
 structure InflationParameters where

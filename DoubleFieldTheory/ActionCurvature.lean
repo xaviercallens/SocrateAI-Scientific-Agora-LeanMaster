@@ -115,6 +115,7 @@ demonstrating that the Kalb-Ramond field contributes with negative definite sign
 
 **RAG & Graph Indexing:**
 - `@concept: KalbRamondContribution, CurvatureIdentity`
+- `@rag_query: "How does the Kalb-Ramond H-flux contribute to the generalized Ricci scalar?", "DFT Ricci scalar expansion consistency check"`
 - `@graph_node: dft_ricci_expansion`
 - `@graph_edge: [DFTRicciComponents]`
 -/
@@ -154,6 +155,7 @@ $$\mathcal{L} = e^{-2d} \mathcal{R}_{\text{DFT}}$$
 
 **RAG & Graph Indexing:**
 - `@concept: ActionLagrangian, DFTAction`
+- `@rag_query: "What is the DFT action Lagrangian density?", "dilaton-weighted Einstein-Hilbert-Kalb-Ramond Lagrangian formula"`
 - `@graph_node: ActionLagrangian`
 -/
 def ActionLagrangian (density ricci : Int) : Int :=
@@ -169,6 +171,7 @@ certifying the mathematical equivalence of the dilaton-weighted Einstein-Hilbert
 
 **RAG & Graph Indexing:**
 - `@concept: ActionCommutativity`
+- `@rag_query: "Does the DFT action Lagrangian commute under multiplication?", "dilaton times curvature multiplication order equivalence"`
 - `@graph_node: dft_action_nsns_equivalence`
 - `@graph_edge: [ActionLagrangian]`
 -/
@@ -184,6 +187,7 @@ $$\mathrm{Tr}(G) = (D - 2) R$$
 
 **RAG & Graph Indexing:**
 - `@concept: ContractedEinstein, EinsteinTrace`
+- `@rag_query: "What is the trace of the Einstein tensor in D dimensions?", "contracted Einstein tensor formula (D-2)R"`
 - `@graph_node: ContractedEinstein`
 -/
 def ContractedEinstein (D R : Int) : Int :=

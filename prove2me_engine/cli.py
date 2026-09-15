@@ -59,6 +59,19 @@ def cmd_frontier(args, orch: Prove2MeOrchestrator):
         print(f"  - [{c_id[:20]:<20}] {label[:25]:<25} ({dom}) -> {desc}")
     if len(frontier) > 30:
         print(f"  ... and {len(frontier) - 30} more cards.")
+    blocked = orch.get_blocked()
+    if blocked:
+        print(f"\n{len(blocked)} card(s) blocked (not done, not in frontier) -- see 'blocked' command.")
+    print()
+
+def cmd_blocked(args, orch: Prove2MeOrchestrator):
+    blocked = orch.get_blocked()
+    print(f"\n{len(blocked)} card(s) are blocked and cannot currently enter the frontier:")
+    print("-" * 75)
+    for c_id, reason in list(blocked.items())[:args.limit]:
+        print(f"  - {c_id}\n      {reason}")
+    if len(blocked) > args.limit:
+        print(f"  ... and {len(blocked) - args.limit} more (increase --limit to see them).")
     print()
 
 def cmd_search(args, orch: Prove2MeOrchestrator):
@@ -104,7 +117,11 @@ def cmd_verify(args, orch: Prove2MeOrchestrator):
 
 def cmd_prompt(args, orch: Prove2MeOrchestrator):
     card_id = args.card_id
-    prompt = orch.format_agent_prompt(card_id)
+    try:
+        prompt = orch.format_agent_prompt(card_id)
+    except ValueError as e:
+        print(f"\n[ERROR] {e}")
+        return
     print(f"\nCompressed Agent Prompt for Card {card_id}:")
     print("=" * 60)
     print(prompt)
@@ -125,6 +142,9 @@ def main():
 
     subparsers.add_parser("status", help="Show DAG status")
     subparsers.add_parser("frontier", help="Show current DAG frontier")
+
+    blocked_p = subparsers.add_parser("blocked", help="Show cards blocked from the frontier, and why")
+    blocked_p.add_argument("--limit", type=int, default=30, help="Max cards to list")
     
     search_p = subparsers.add_parser("search", help="Semantic search for lemmas")
     search_p.add_argument("query", nargs="+", help="Query string")
@@ -152,6 +172,7 @@ def main():
     dispatch = {
         "status": cmd_status,
         "frontier": cmd_frontier,
+        "blocked": cmd_blocked,
         "search": cmd_search,
         "suggest": cmd_suggest,
         "verify": cmd_verify,

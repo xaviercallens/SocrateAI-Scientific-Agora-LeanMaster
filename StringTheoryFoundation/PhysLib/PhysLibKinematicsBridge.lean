@@ -36,6 +36,24 @@ which satisfies the $O(D, D)$ coset condition $\mathcal{H}^T \eta \mathcal{H} = 
 - `@impact: SpacetimeToDoubleFieldTheory, RelativisticKinematics, InvariantMetric`
 -/
 
+-- SCOPE NOTE (added after review): this file's name and docstring above invoke
+-- PhysLib (leanprover-community/physlib, vendored read-only as a git
+-- submodule at lean4basesource/physlib). This file does **not** import
+-- anything from that project -- check the `import` lines above; there is only
+-- `StringTheoryFoundation.Core.Topology`, this project's own file. The theorems below are
+-- self-contained Nat/Int arithmetic named after, and inspired by, the cited external work, not a
+-- machine-checked bridge to it. See papers/publication/PAPER7_ENGINE_LEAN_DOCS_REVIEW.md Sec. 4
+-- for the full finding.
+-- Verified pointer (2026-09, no Mathlib available to actually import it): the real repo's
+-- `Physlib/Relativity/MinkowskiMatrix.lean` genuinely defines the Minkowski matrix
+-- eta = diag(1,-1,-1,...) and proves its properties (theorems `minkowskiMatrix`,
+-- `minkowskiMatrix.dual`) -- the real, machine-checked version of what this file's
+-- `minkowski_norm_squared`/`odd_metric_sign_squared` only assert by analogy. Note also:
+-- `Physlib/StringTheory/Basic.lean` is explicitly a placeholder per its own author's docstring
+-- ("currently a place holder... feel free to contribute") -- there is no real string-theory
+-- content in physlib to bridge to yet, only the general-relativity/kinematics modules this file
+-- draws on.
+
 namespace StringTheory.Foundation.PhysLib
 
 /-- Relativistic 4-momentum in discrete integer units. -/
@@ -63,8 +81,10 @@ theorem dft_dimension_dim4 :
     2 * 4 = dft_doubled_dim4 := by
   rfl
 
-/-- O(D,D) metric involution property: $\eta^2 = I$. -/
-def odd_metric_sign_squared : Int := 1
+/-- O(D,D) metric involution property: $\eta^2 = I$, i.e. any diagonal $\pm 1$ eigenvalue squares
+    to $1$ -- represented here by the eigenvalue $-1$ (an earlier revision defined this constant as
+    the bare literal `1`, so the theorem below checked `1 = 1` instead of squaring anything). -/
+def odd_metric_sign_squared : Int := (-1) * (-1)
 
 theorem odd_metric_involutive :
     odd_metric_sign_squared = 1 := by

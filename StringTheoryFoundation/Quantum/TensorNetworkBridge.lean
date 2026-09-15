@@ -36,7 +36,24 @@ first non-trivial Mathieu Moonshine representation $A_1 = 90 = \mathbf{45} \oplu
 - `@impact: HolographicSpacetimeEmergence, QuantumErrorCorrection, BulkToBoundaryDictionary`
 -/
 
+-- SCOPE NOTE (added after review): this file's name and docstring above invoke
+-- tensor-network / quantum-information formalization (LionSR/TNLean, vendored read-only as a git
+-- submodule at lean4basesource/TNLean). This file does **not** import
+-- anything from that project -- check the `import` lines above; there is only
+-- `StringTheoryFoundation.Core.Topology`, this project's own file. The theorems below are
+-- self-contained Nat/Int arithmetic named after, and inspired by, the cited external work, not a
+-- machine-checked bridge to it. See papers/publication/PAPER7_ENGINE_LEAN_DOCS_REVIEW.md Sec. 4
+-- for the full finding.
+-- Verified pointer (2026-09, no Mathlib available to actually import it): the real repo's
+-- `TNLean/MPS/FundamentalTheorem.lean`, `ParentHamiltonian.lean`, `OpenBoundary.lean` etc. are a
+-- genuine Matrix-Product-State/tensor-network formalization (1,229 .lean files total), plus 16 real
+-- cited arXiv papers under `Papers/`. It requires Mathlib and two further dependencies
+-- (`checkdecls`, a game-theory repo) plus `QICLean`, on toolchain v4.34.0-rc1 (one point release
+-- ahead of this project's v4.33.1) -- registering it would need more than just adding Mathlib.
+
 namespace StringTheory.Foundation.Quantum
+
+open StringTheory.Foundation.Core.Topology
 
 /-- Parameters of the extended binary Golay code $\mathcal{G}_{24}$:
     Length $n = 24$, dimension $k = 12$, minimum Hamming distance $d = 8$. -/
@@ -48,10 +65,13 @@ structure GolayCodeParameters where
 
 def defaultGolay : GolayCodeParameters := {}
 
-/-- Theorem: Golay code length matches transverse string dimensions and $\chi(K3)$. -/
+/-- Theorem: Golay code length equals $\chi(K3)$, computed independently in
+    `StringTheoryFoundation.Core.Topology` from the K3 Betti numbers (not merely asserted as a
+    second, disconnected hardcoded `24` -- an earlier revision compared `defaultGolay.length` only
+    to the bare literal `24`, which checked nothing beyond the code parameter's own default). -/
 theorem golay_length_matches_k3_euler :
-    defaultGolay.length = 24 := by
-  rfl
+    (defaultGolay.length : Int) = eulerChar4D bettiK3 := by
+  decide
 
 /-- Theorem: Rate of the Golay code is exactly 1/2 (maximal self-dual quantum code). -/
 theorem golay_code_rate_is_half :

@@ -92,6 +92,7 @@ theorem vafa_sdc_4d_decay_rate :
 
 **RAG & Graph Indexing:**
 - `@concept: GVWFluxState, FluxCompactification`
+- `@rag_query: "What data defines a GVW flux superpotential state?", "3-form flux quanta and period integrals on K3 x T^2"`
 - `@graph_node: GVWFluxState`
 -/
 structure GVWFluxState where
@@ -143,6 +144,7 @@ gauge coupling $g$ and Planck mass $M_{\mathrm{Pl}}$.
 
 **RAG & Graph Indexing:**
 - `@concept: MagneticWGC, GaugeCoupling`
+- `@rag_query: "What data defines a magnetic Weak Gravity Conjecture configuration?", "gauge coupling and Planck mass in the WGC bound"`
 - `@graph_node: MagneticWGC`
 -/
 structure MagneticWGC where
@@ -200,6 +202,7 @@ it is gauged by dynamical gauge bosons.
 
 **RAG & Graph Indexing:**
 - `@concept: QuantumGravitySymmetry, GaugedGroup`
+- `@rag_query: "What data represents a continuous symmetry group in the no-global-symmetries conjecture?", "Lie group dimension and gauging status"`
 - `@graph_node: QuantumGravitySymmetry`
 -/
 structure QuantumGravitySymmetry where

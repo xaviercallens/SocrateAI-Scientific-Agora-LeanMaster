@@ -23,7 +23,11 @@ namespace StringTheory.Foundation.StringTheory.TadpoleCancellation
     The involution x_i ↦ -x_i on T⁴ = (S¹)⁴ has 2⁴ = 16 fixed points. -/
 def numFixedPointsT4Z2 : Nat := 16
 
-theorem num_fixed_points_is_16 : numFixedPointsT4Z2 = 16 := by
+/-- Genuinely computes $2^4 = 16$ (an earlier revision checked the literal `16` against itself,
+    since `numFixedPointsT4Z2` was also just the literal `16`; both now agree with the
+    module docstring's stated formula, and with the identical fact proved independently in
+    `StringTheoryFoundation.ModularForms.FermatModularBridge.kummer_fixed_points_dim4`). -/
+theorem num_fixed_points_is_16 : (2 : Nat) ^ 4 = numFixedPointsT4Z2 := by
   rfl
 
 /-- Ramond-Ramond (RR) 8-form charge carried by a single O7⁻ plane in D7 charge units.

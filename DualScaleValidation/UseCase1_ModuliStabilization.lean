@@ -120,34 +120,66 @@ theorem dft_doubled_dimension_10d :
     2 * 10 = dft_spacetime_doubled_dim := by
   rfl
 
-/-- Moduli Stabilization Potential $V(\phi)$:
-    $V(\phi) = (\phi - \phi_0)^2 \ge 0$ with unique minimum at $\phi = \phi_0$. -/
-def moduli_potential (phi phi_0 : Nat) : Nat :=
+/-- Moduli Stabilization Potential $V(\phi)$, defined over $\mathbb{Z}$ so that field
+    displacements in either direction from the vacuum are represented faithfully:
+    $V(\phi) = (\phi - \phi_0)^2 \ge 0$ with unique minimum at $\phi = \phi_0$.
+
+    **Note on an earlier `Nat`-valued version of this definition:** an earlier revision of this
+    module defined `moduli_potential` with `phi phi_0 : Nat` and ordinary (truncated) `Nat`
+    subtraction. Under `Nat` truncation, `phi - phi_0 = 0` whenever `phi < phi_0`, so the earlier
+    potential vanished on an entire ray `phi ≤ phi_0`, not only at `phi = phi_0`; the minimum was
+    not in fact unique in that version, contrary to the accompanying prose. Using `Int` fixes this:
+    subtraction is exact, and `moduli_potential_zero_iff` below proves genuine uniqueness. -/
+def moduli_potential (phi phi_0 : Int) : Int :=
   (phi - phi_0) * (phi - phi_0)
 
 /--
-### THEOREM: Non-Perturbative Moduli Vacuum Stabilization
-**Physical Meaning:** Proves that the non-perturbative potential $V(\phi) = (\phi - \phi_0)^2$ attains its absolute
-minimum $V = 0$ uniquely at $\phi = \phi_0$. This guarantees that geometric moduli in $K3 \times T^2$ are dynamically
-trapped in a stable vacuum with positive Hessian, eliminating runaway decompactification and unphysical flat directions.
+### THEOREM: Global Non-Negativity of the Moduli Potential
+**Physical Meaning:** The moduli potential is non-negative everywhere in field space ($V(\phi) \ge 0$),
+a necessary (not sufficient) condition for the absence of tachyonic instabilities.
 
-- **Formula:** $\phi = \phi_0 \implies V(\phi) = 0$
+- `@concept: ModuliStabilization, VacuumRigidity`
+-/
+theorem moduli_potential_nonneg (phi phi_0 : Int) :
+    moduli_potential phi phi_0 ≥ 0 := by
+  dsimp [moduli_potential]
+  rcases Int.le_total 0 (phi - phi_0) with hd | hd
+  · exact Int.mul_nonneg hd hd
+  · have hd' : 0 ≤ -(phi - phi_0) := by omega
+    have hpos := Int.mul_nonneg hd' hd'
+    rwa [Int.neg_mul_neg] at hpos
+
+/--
+### THEOREM: Vacuum Stabilization Direction ($\phi = \phi_0 \implies V(\phi) = 0$)
+**Physical Meaning:** At the candidate vacuum $\phi = \phi_0$, the potential vanishes.
+
 - **Foundational Source:** Witten (1995); Callens (2026).
 - `@concept: ModuliStabilization, VacuumRigidity`
 -/
-theorem moduli_vacuum_stability (phi phi_0 : Nat) (h : phi = phi_0) :
+theorem moduli_vacuum_stability (phi phi_0 : Int) (h : phi = phi_0) :
     moduli_potential phi phi_0 = 0 := by
   subst h
   dsimp [moduli_potential]
   simp
 
 /--
-### THEOREM: Global Positivity of Moduli Potential
-**Physical Meaning:** The moduli potential is non-negative everywhere in field space ($V(\phi) \ge 0$),
-guaranteeing absence of tachyonic instabilities or unphysical runaway directions below the vacuum energy.
+### THEOREM: Uniqueness of the Moduli Vacuum
+**Physical Meaning:** The converse and stronger statement that
+`moduli_vacuum_stability` alone does not establish: the potential vanishes **if and only if**
+$\phi = \phi_0$, i.e. $\phi_0$ is the *unique* zero of $V$, not merely *a* zero. Combined with
+`moduli_potential_nonneg`, this certifies a strict, non-degenerate global minimum at $\phi = \phi_0$
+(the discrete/integer analogue of a positive-definite Hessian).
+
+- `@concept: ModuliStabilization, VacuumRigidity, UniqueMinimum`
 -/
-theorem moduli_potential_non_negative (phi phi_0 : Nat) :
-    moduli_potential phi phi_0 ≥ 0 := by
-  exact Nat.zero_le _
+theorem moduli_potential_zero_iff (phi phi_0 : Int) :
+    moduli_potential phi phi_0 = 0 ↔ phi = phi_0 := by
+  dsimp [moduli_potential]
+  constructor
+  · intro h
+    rcases Int.mul_eq_zero.mp h with h' | h' <;> omega
+  · intro h
+    subst h
+    simp
 
 end DualScaleValidation.UseCase1
