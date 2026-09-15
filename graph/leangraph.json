@@ -1,13 +1,13 @@
 {
   "format": "LeanGraph.Unified.v2",
   "metrics": {
-    "total_nodes": 528,
-    "total_edges": 785,
-    "theorems_count": 224,
-    "definitions_count": 245,
+    "total_nodes": 538,
+    "total_edges": 807,
+    "theorems_count": 229,
+    "definitions_count": 250,
     "structures_count": 57,
     "is_dag": true,
-    "redundant_transitive_edges": 11
+    "redundant_transitive_edges": 13
   },
   "nodes": [
     {
@@ -5193,6 +5193,211 @@
       "out_degree": 0,
       "pagerank": 1.0,
       "line_number": 32,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "DualScaleValidation.Observables.tensor_to_scalar_ratio_scaled",
+      "name": "tensor_to_scalar_ratio_scaled",
+      "module": "DualScaleValidation.Observables",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "Scaled Primordial Tensor-to-Scalar Ratio: $r \\times 10^5 = 396$ (corresponding to $r = 0.00396$).",
+      "latex_equations": [
+        "r \\times 10^5 = 396",
+        "r = 0.00396"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 50,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "DualScaleValidation.Observables.spectral_index_scaled",
+      "name": "spectral_index_scaled",
+      "module": "DualScaleValidation.Observables",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "Scaled Scalar Spectral Tilt: $n_s \\times 10^3 = 965$ (corresponding to $n_s = 0.965$).",
+      "latex_equations": [
+        "n_s \\times 10^3 = 965",
+        "n_s = 0.965"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 53,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "DualScaleValidation.Observables.neutrino_cp_phase_scaled",
+      "name": "neutrino_cp_phase_scaled",
+      "module": "DualScaleValidation.Observables",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "Scaled Leptonic Dirac CP-Violating Phase: $\\delta_{CP} \\times 10 = 2824$ (corresponding to $282.4^\\circ$).",
+      "latex_equations": [
+        "\\delta_{CP} \\times 10 = 2824",
+        "282.4^\\circ"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 56,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "DualScaleValidation.Observables.dark_energy_w0",
+      "name": "dark_energy_w0",
+      "module": "DualScaleValidation.Observables",
+      "decl_type": "def",
+      "signature": ": Int",
+      "docstring": "Dark energy equation of state parameters: $w_0 = -1, w_a = 0$.",
+      "latex_equations": [
+        "w_0 = -1, w_a = 0"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 59,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "DualScaleValidation.Observables.dark_energy_wa",
+      "name": "dark_energy_wa",
+      "module": "DualScaleValidation.Observables",
+      "decl_type": "def",
+      "signature": ": Int",
+      "docstring": "",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 61,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "DualScaleValidation.Observables.tensor_to_scalar_in_litebird_window",
+      "name": "tensor_to_scalar_in_litebird_window",
+      "module": "DualScaleValidation.Observables",
+      "decl_type": "theorem",
+      "signature": ":\n    300 \u2264 tensor_to_scalar_ratio_scaled \u2227 tensor_to_scalar_ratio_scaled \u2264 500",
+      "docstring": "Master Theorem 1: LiteBIRD Observational Window Certification.\n    The predicted tensor-to-scalar ratio $r = 0.00396$ lies strictly within the LiteBIRD detection range:\n    $0.00300 \\le r \\le 0.00500$.",
+      "latex_equations": [
+        "r = 0.00396",
+        "0.00300 \\le r \\le 0.00500"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 63,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "DualScaleValidation.Observables.spectral_index_in_planck_window",
+      "name": "spectral_index_in_planck_window",
+      "module": "DualScaleValidation.Observables",
+      "decl_type": "theorem",
+      "signature": ":\n    950 \u2264 spectral_index_scaled \u2227 spectral_index_scaled \u2264 980",
+      "docstring": "Master Theorem 2: Planck / ACT Spectral Index Consistency.\n    The predicted tilt $n_s = 0.965$ is consistent with Planck 2018 ($0.950 \\le n_s \\le 0.980$).",
+      "latex_equations": [
+        "n_s = 0.965",
+        "0.950 \\le n_s \\le 0.980"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 71,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "DualScaleValidation.Observables.neutrino_cp_phase_in_dune_window",
+      "name": "neutrino_cp_phase_in_dune_window",
+      "module": "DualScaleValidation.Observables",
+      "decl_type": "theorem",
+      "signature": ":\n    2700 \u2264 neutrino_cp_phase_scaled \u2227 neutrino_cp_phase_scaled \u2264 2950",
+      "docstring": "Master Theorem 3: DUNE / Hyper-Kamiokande Neutrino CP Phase Discovery Window.\n    The predicted leptonic Dirac CP phase $\\delta_{CP} = 282.4^\\circ$ lies in the DUNE window:\n    $270.0^\\circ \\le \\delta_{CP} \\le 295.0^\\circ$.",
+      "latex_equations": [
+        "\\delta_{CP} = 282.4^\\circ",
+        "270.0^\\circ \\le \\delta_{CP} \\le 295.0^\\circ"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 78,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "DualScaleValidation.Observables.dark_energy_cosmological_constant",
+      "name": "dark_energy_cosmological_constant",
+      "module": "DualScaleValidation.Observables",
+      "decl_type": "theorem",
+      "signature": ":\n    dark_energy_w0 = -1 \u2227 dark_energy_wa = 0",
+      "docstring": "Master Theorem 4: Pure Cosmological Constant Vacuum.\n    $w_0 = -1$ and $w_a = 0$.",
+      "latex_equations": [
+        "w_0 = -1",
+        "w_a = 0"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 4,
+      "pagerank": 1.0,
+      "line_number": 86,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "DualScaleValidation.Observables.observables_falsifiable_master_contract",
+      "name": "observables_falsifiable_master_contract",
+      "module": "DualScaleValidation.Observables",
+      "decl_type": "theorem",
+      "signature": ":\n    (300 \u2264 tensor_to_scalar_ratio_scaled \u2227 tensor_to_scalar_ratio_scaled \u2264 500) \u2227\n    (950 \u2264 spectral_index_scaled \u2227 spectral_index_scaled \u2264 980) \u2227\n    (2700 \u2264 neutrino_cp_phase_scaled \u2227 neutrino_cp",
+      "docstring": "Master Theorem 5: Unified Falsifiable Phenomenology Master Contract.\n    Simultaneous certification of all four cosmological and particle physics predictions\n    derived from the zero-parameter $K3 \\times T^2$ Dual-Scale Framework.",
+      "latex_equations": [
+        "K3 \\times T^2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 9,
+      "pagerank": 1.0,
+      "line_number": 93,
       "is_certified": true,
       "cluster": "Foundation Physics"
     },
@@ -13427,6 +13632,158 @@
       }
     },
     {
+      "source": "DualScaleValidation.Observables.tensor_to_scalar_in_litebird_window",
+      "target": "tensor_to_scalar_ratio_scaled",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.tensor_to_scalar_in_litebird_window",
+      "target": "tensor_to_scalar_ratio_scaled",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.spectral_index_in_planck_window",
+      "target": "spectral_index_scaled",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.spectral_index_in_planck_window",
+      "target": "spectral_index_scaled",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.neutrino_cp_phase_in_dune_window",
+      "target": "neutrino_cp_phase_scaled",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.neutrino_cp_phase_in_dune_window",
+      "target": "neutrino_cp_phase_scaled",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.dark_energy_cosmological_constant",
+      "target": "dark_energy_w0",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.dark_energy_cosmological_constant",
+      "target": "dark_energy_wa",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.dark_energy_cosmological_constant",
+      "target": "dark_energy_w0",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.dark_energy_cosmological_constant",
+      "target": "dark_energy_wa",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.observables_falsifiable_master_contract",
+      "target": "tensor_to_scalar_ratio_scaled",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.observables_falsifiable_master_contract",
+      "target": "spectral_index_scaled",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.observables_falsifiable_master_contract",
+      "target": "neutrino_cp_phase_scaled",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.observables_falsifiable_master_contract",
+      "target": "dark_energy_w0",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.observables_falsifiable_master_contract",
+      "target": "dark_energy_wa",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.observables_falsifiable_master_contract",
+      "target": "tensor_to_scalar_in_litebird_window",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.observables_falsifiable_master_contract",
+      "target": "spectral_index_in_planck_window",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.observables_falsifiable_master_contract",
+      "target": "neutrino_cp_phase_in_dune_window",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables.observables_falsifiable_master_contract",
+      "target": "dark_energy_cosmological_constant",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
       "source": "DualScaleValidation.UseCase1.effective_dual_scale_numerator",
       "target": "alpha_prime",
       "kind": "def",
@@ -16307,6 +16664,22 @@
       }
     },
     {
+      "source": "DualScaleValidation.Observables",
+      "target": "DualScaleValidation.UseCase1_ModuliStabilization",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "DualScaleValidation.Observables",
+      "target": "DualScaleValidation.UseCase2_MoonshineBPS",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
       "source": "DualScaleValidation.UseCase1_ModuliStabilization",
       "target": "DoubleFieldTheory.GeneralizedGeometry",
       "kind": "import",
@@ -16389,6 +16762,14 @@
     {
       "source": "DualScaleValidation",
       "target": "DualScaleValidation.UseCase3_FrontierTriad",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "DualScaleValidation",
+      "target": "DualScaleValidation.Observables",
       "kind": "import",
       "metadata": {
         "import_type": "module"

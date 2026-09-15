@@ -1,7 +1,7 @@
 # LeanGraph Analysis: Epistemic Topology of the 8 Solved Problems in Lean 5
 
 **Framework:** LeanGraph Knowledge Discovery Engine  
-**Global Graph Metrics:** 528 Nodes, 785 Edges, `is_dag = True`, 11 Hasse edges pruned.
+**Global Graph Metrics:** 538 Nodes, 807 Edges, `is_dag = True`, 13 Hasse edges pruned.
 
 ---
 
@@ -208,7 +208,7 @@ flowchart TD
 ---
 
 ## 3. Topological Soundness & Acyclicity Guarantee
-- **Acyclicity Verification:** The global topological sort across all **528 declarations** confirms that there are **zero circular dependencies** ($G$ is a strictly verified directed acyclic graph).
+- **Acyclicity Verification:** The global topological sort across all **538 declarations** confirms that there are **zero circular dependencies** ($G$ is a strictly verified directed acyclic graph).
 - **Hasse Transitive Reduction:** 11 redundant shortcut edges were pruned without losing reachability, maximizing reasoning efficiency for automated theorem proving agents.
 - **Proof Path Minimization:** The average proof path depth from foundational definitions to problem master contracts is **3.1** steps, drastically mitigating context drift for AI provers.
 - **Modularity:** All 11 problem modules are decoupled, allowing independent parallel compilation and caching.

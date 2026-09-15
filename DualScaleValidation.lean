@@ -13,3 +13,5 @@ Exports:
 import DualScaleValidation.UseCase1_ModuliStabilization
 import DualScaleValidation.UseCase2_MoonshineBPS
 import DualScaleValidation.UseCase3_FrontierTriad
+import DualScaleValidation.Observables
+
