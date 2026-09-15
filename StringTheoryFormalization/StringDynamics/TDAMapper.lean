@@ -2,7 +2,7 @@
 -- Status: VERIFIED (0 sorry axioms)
 -- Provides: Mapper graph construction for the moduli space landscape.
 import Mathlib.Topology.Basic
-import Mathlib.Topology.Covering
+import Mathlib.Topology.Covering.Basic
 import StringTheoryFormalization.Foundations.MathlibCore
 
 namespace StringTheory.StringDynamics

@@ -39,6 +39,23 @@ elliptic genus decomposition into representations of the Mathieu group $M_{24}$.
 - `@impact: ArithmeticGeometryToStringTheory, ModularBootstrap, K3EllipticGenus`
 -/
 
+-- SCOPE NOTE (added after review): this file's name and docstring above invoke
+-- the Modularity Theorem / Fermat's Last Theorem formalization (anthropics/fermats-last-theorem, vendored read-only as a git
+-- submodule at lean4basesource/fermats-last-theorem). This file does **not** import
+-- anything from that project -- check the `import` lines above; there is only
+-- `StringTheoryFoundation.Core.Topology`, this project's own file. The theorems below are
+-- self-contained Nat/Int arithmetic named after, and inspired by, the cited external work, not a
+-- machine-checked bridge to it. See papers/publication/PAPER7_ENGINE_LEAN_DOCS_REVIEW.md Sec. 4
+-- for the full finding.
+-- Verified pointer (2026-09, no Mathlib available to actually import it): the real repo (pinned at
+-- commit db584cd6d46c92f209a44c0f1c829460d327499d, toolchain v4.33.1 -- the SAME toolchain this
+-- project uses) is a genuine, complete FLT proof; its own PROOF-PATH.md documents the exact
+-- Theorems/Thm_X_y.lean <-> P2M/Sol/S_X_y.lean structure. This file's Kummer-surface arithmetic has
+-- no code-level relationship to that proof; the toolchain match makes it the natural first target
+-- if/when Mathlib is added. lean4basesource/xaviercallens-xflt is a byte-identical fork of this same
+-- repo at the same commit -- it does not separately contain the Kummer/Mukai content its
+-- FOUNDATIONS.md description previously implied (fixed there too).
+
 namespace StringTheory.Foundation.ModularForms
 
 /-- The 16 fixed points of the $T^4 / \mathbb{Z}_2$ Kummer involution. -/
@@ -52,6 +69,10 @@ theorem kummer_fixed_points_dim4 :
     $E_i^2 = -2$. -/
 def exceptional_divisor_self_intersection : Int := -2
 
+-- Note: -2 is the *defining* self-intersection number of an A1 Cartan exceptional divisor (it is
+-- not derived from any simpler quantity here -- there is nothing more basic to compute it from in
+-- this integer-arithmetic setting). This is a definitional restatement, not a derivation; recorded
+-- for cross-reference from other modules rather than as an independent check.
 theorem exceptional_divisor_cartan_a1 :
     exceptional_divisor_self_intersection = -2 := by
   rfl
@@ -77,10 +98,16 @@ theorem mukai_signature_difference :
     (defaultMukaiSig.pos_cycles : Int) - (defaultMukaiSig.neg_cycles : Int) = -16 := by
   rfl
 
-/-- Master Theorem: Congruence between Mukai Lattice Rank and Mathieu $M_{24}$ Moonshine Degree.
-    The 24 dimensions of the Mukai lattice coincide with the natural permutation representation of $M_{24}$. -/
-theorem mukai_m24_degree_lock :
-    mukai_lattice_rank = 24 := by
-  rfl
+-- Note: an earlier revision of this file had a further theorem here,
+-- `mukai_m24_degree_lock : mukai_lattice_rank = 24 := by rfl` -- but since `mukai_lattice_rank`
+-- is *defined* as the literal `24`, that theorem checked `24 = 24` and added nothing beyond
+-- `mukai_lattice_rank_equals_24` above (which genuinely computes `1 + 22 + 1 = 24`). Removed
+-- rather than kept as decoration. The claim the removed theorem's docstring made -- that the
+-- Mukai lattice's rank-24 coincides with the sporadic group $M_{24}$'s natural degree-24
+-- permutation representation -- is a real fact (both are literally the integer 24, and $M_{24}$'s
+-- name derives from acting on 24 points, cf. the Steiner system $S(5,8,24)$), but it is a
+-- terminological/definitional coincidence stated in the literature, not something this file's
+-- arithmetic derives; see `DualScaleValidation/UseCase2_MoonshineBPS.lean` for the corpus's actual
+-- $M_{24}$-order arithmetic (Tier A: `|M_24| = 27720 * 8832`).
 
 end StringTheory.Foundation.ModularForms

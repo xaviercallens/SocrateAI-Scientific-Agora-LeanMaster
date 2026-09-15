@@ -11,6 +11,13 @@ Authors: SocrateAI Team & Scientific Agora Swarm
   The Geometry of Four-Manifolds. Oxford University Press.
 -/
 
+-- SCOPE NOTE (added after review): this file's name and docstring above invoke
+-- the ATLAS autoformalized differential-geometry library (facebookresearch/atlas-lean, vendored
+-- read-only as a git submodule at lean4basesource/atlas-lean). This file has **no `import`
+-- statement at all** (not even of another file in this project) -- it is entirely self-contained
+-- Nat/Int arithmetic named after, and inspired by, the cited external work, not a machine-checked
+-- bridge to it. See papers/publication/PAPER7_ENGINE_LEAN_DOCS_REVIEW.md Sec. 4 for the full finding.
+
 namespace StringTheory.Foundation.Atlas
 
 /-- ATLAS 4-Manifold Topology:
@@ -60,6 +67,9 @@ deriving Repr, DecidableEq
 
 def defaultPoincareMetric : AtlasHyperbolicMetric := {}
 
+-- Note: -1 is the *defining* Gaussian curvature of the Poincaré metric (it is not derived from any
+-- simpler quantity here). This theorem is a definitional restatement for cross-reference, not an
+-- independent derivation.
 /-- Theorem: The ATLAS Poincaré moduli space metric has constant negative curvature -1. -/
 theorem atlas_poincare_curvature_negative :
     defaultPoincareMetric.gaussianCurvature = -1 := by

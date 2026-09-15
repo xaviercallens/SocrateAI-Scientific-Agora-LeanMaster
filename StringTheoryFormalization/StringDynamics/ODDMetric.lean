@@ -7,6 +7,8 @@ import StringTheoryFormalization.StringDynamics.TDualityGysin
 
 namespace StringTheory.StringDynamics
 
+open Matrix
+
 variable (D : ℕ)
 
 /-- The O(D,D) invariant metric η_{MN} = [[0, 1_D],[1_D, 0]].

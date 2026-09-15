@@ -1,30 +1,53 @@
 # SocrateAI Scientific Agora: LeanMaster Engine
-### The First Certified String Theory in Lean 4 — Dual-Scale Framework, Double Field Theory & The Lean 5 Agora Corpus
+### A Lean 4 Companion Formalization for Double Field Theory, Mathieu Moonshine Arithmetic & the Dual-Scale String Cosmology Proposal
 
 [![Lean 4](https://img.shields.io/badge/Lean_4-v4.33.1-blue.svg)](https://leanprover.github.io/)
 [![Zero Sorry](https://img.shields.io/badge/Kernel_Soundness-Strict_0_Sorry_(Certified)-success.svg)](https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster)
-[![Free Parameters](https://img.shields.io/badge/Free_Parameters-0_(Diophantine_Locked)-darkgreen.svg)](#3-rigorous-proof-why-the-dual-scale-string-theory-has-zero-free-parameters)
+[![Free Parameters](https://img.shields.io/badge/Free_Parameters-0_(Conjecture%2C_Tier_C)-yellow.svg)](#3-a-zero-free-parameter-conjecture-what-is-and-isnt-mechanically-locked)
 [![Solved Problems](https://img.shields.io/badge/Frontier_Problems-11_Certified-purple.svg)](#5-the-lean-5-scientific-agora-corpus-11-certified-frontier-problems)
 [![Publication Papers](https://img.shields.io/badge/Scientific_Papers-6_PDFs_Compiled-red.svg)](papers/publication/)
 [![Lean Blueprint](https://img.shields.io/badge/Lean_Blueprint-Interactive_Epistemic_Ledger-blueviolet.svg)](blueprint/web/index.html)
-[![LeanGraph](https://img.shields.io/badge/LeanGraph-528_Nodes_%7C_785_Edges-orange.svg)](graph/index.html)
+[![LeanGraph](https://img.shields.io/badge/LeanGraph-538_Nodes_%7C_807_Edges-orange.svg)](graph/index.html)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster)
 [![License](https://img.shields.io/badge/License-Apache_2.0-lightgrey.svg)](LICENSE)
 
 ---
 
+> **A note on this revision.** An earlier version of this README, and of
+> `papers/publication/paper7_dual_scale_theory_master_demonstration.tex`, described this project
+> as "the first fully certified String Theory," with "strictly zero continuous free parameters" and
+> "100% certified physics." An audit (`papers/publication/PAPER7_IMPROVEMENT_PROPOSAL.md`) found that
+> several headline claims held only for a much narrower Lean statement than the one described in
+> prose (e.g. a bound over $\mathbb{N}$ presented as holding over $\mathbb{R}$), that no
+> "zero free parameters" theorem exists anywhere in this corpus, that one Lean theorem contained a
+> real bug (a non-unique "unique minimum" caused by `Nat` truncation, now fixed), and that a factor
+> was misprinted ($8832 = 2^7\times3\times23$, not $2^6\times3\times23$). Every Lean-side theorem this
+> project cites genuinely compiles with **0 `sorry`, 0 `admit`, and only the three standard Lean
+> axioms** (`propext`, `Classical.choice`, `Quot.sound`) — that much has now been verified
+> exhaustively, not just for a cited subset (see §10). What follows is the corrected, tier-labeled
+> version of the claims: **Tier A** = Lean-kernel-checked, **Tier L** = established literature,
+> **Tier C** = this project's own conjecture, not yet derived or proved.
+
 ## 1. Executive Summary & Scientific Mission
 
-The **LeanMaster Engine** is an open-source, mathematically rigorous, neurosymbolic formalization environment developed by **Xavier Callens** and the **SocrateAI Scientific Agora Collaboration**. It delivers the world's first **fully certified String Theory in Lean 4**, establishing complete mechanical verification of **Double Field Theory (DFT)**, **$K3 \times T^2$ Mathieu Moonshine**, and the **Callens Dual-Scale String Theory Proposal**.
+The **LeanMaster Engine** is an open-source formalization environment developed by **Xavier Callens**
+and the **SocrateAI Scientific Agora Collaboration**. It is a Lean 4 companion to a proposed
+**Dual-Scale String Theory** on $K3\times T^2$: it kernel-certifies (Tier A) the exact integer and
+rational arithmetic used in the argument, and states clearly, claim by claim, which of the
+surrounding differential-geometric, index-theoretic, and cosmological statements are established
+literature (Tier L) versus this project's own conjectures (Tier C, not yet derived).
 
-Every mathematical theorem across all primary packages is verified by the **Lean 4 kernel** with a **strict invariant of zero `sorry` and zero `admit` axioms**.
+Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
+invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
+every theorem and lemma (238/238 in the main project depend on nothing beyond the three standard Lean
+axioms — see §10).
 
-### Key Breakthroughs:
-1. **First Certified String Theory in Lean 4:** Complete mechanization of $O(D, D)$ generalized Riemannian geometry, Courant algebroids, Strong Section Condition, generalized Ricci action, and non-perturbative Buscher T-duality.
-2. **The Callens Dual-Scale String Theory:** A non-singular string cosmology where the physical probe scale is governed by $R_{\mathrm{eff}}(R) = R + \alpha'/R$, replacing spacetime singularities with an exact metric bounce.
-3. **Rigorous Proof of Zero Free Parameters:** We mathematically demonstrate and mechanically verify that the Dual-Scale framework has **strictly zero continuous free parameters**: all scales, BPS spectra, and brane configurations are locked by Diophantine arithmetic, $M_{24}$ sporadic group theory, and topological index theorems.
-4. **The Lean 5 Scientific Agora Corpus:** 11 solved frontier problems in mathematical physics verified in Lean 4, accompanied by 6 publication-grade scientific papers with compiled PDFs and LaTeX sources.
-5. **LeanGraph Knowledge Discovery:** Real-time semantic dependency extraction (528 declarations, 785 dependencies, verified acyclic DAG) with an interactive D3/KaTeX visual explorer (`graph/index.html`).
+### Key Claims, By Tier:
+1. **(Tier A + Tier L) DFT algebraic-shape formalization:** the *algebraic shape* of $O(D,D)$ generalized geometry, Courant algebroids, the Strong Section Condition, and Buscher T-duality is certified on a 1-dimensional scalar model (Tier A); the differential-geometric theory itself (vector bundles, 1-forms on an actual manifold) is Tier L, quoted from Hull–Zwiebach, not re-derived here — see the paper's §2 scope box.
+2. **(Tier L + Tier A instance) The effective dual scale:** $R_{\mathrm{eff}}(R) = R + \alpha'/R \ge 2\sqrt{\alpha'}$ is a real-analytic bound from the T-duality/string-gas literature (Brandenberger–Vafa 1989; Giveon–Porrati–Rabinovici 1994); the integer instance $R\ge1 \Rightarrow R^2+1\ge2$ is Tier A.
+3. **(Tier C) A zero-free-parameter conjecture:** five integer/topological facts (§3) motivate, but do not prove, the conjecture that a consistent completion of this scenario would have zero continuous free parameters. No such theorem is stated or proved in this corpus; see §3 for the caveats (in particular, $27720=\mathrm{lcm}(1,\dots,12)$, which weakens how surprising the "lock" is).
+4. **The Lean 5 Scientific Agora Corpus:** 11 solved frontier problems in mathematical physics verified in Lean 4 (Tier A arithmetic instances of Tier L source results), accompanied by 6 publication-grade scientific papers with compiled PDFs and LaTeX sources.
+5. **LeanGraph Knowledge Discovery:** semantic dependency extraction (538 declarations, 807 edges, verified acyclic DAG — regenerate via `tools/leangraph_corpus_analyzer.py`-family tooling before citing a fresher number) with an interactive D3/KaTeX visual explorer (`graph/index.html`).
 
 ---
 
@@ -62,11 +85,20 @@ As $R \to 0$, $R_{\mathrm{eff}}(R) \to \infty$ due to winding mode tension. The 
 
 ---
 
-## 3. Rigorous Proof: Why the Dual-Scale String Theory Has ZERO FREE PARAMETERS
+## 3. A Zero-Free-Parameter Conjecture: What Is (and Isn't) Mechanically Locked
 
-A central critique of conventional string phenomenology is the proliferation of tunable continuous parameters (moduli, flux vacuum expectation values, coupling constants). 
+A central critique of conventional string phenomenology is the proliferation of tunable continuous parameters (moduli, flux vacuum expectation values, coupling constants).
 
-In the Callens Dual-Scale Framework on $K3 \times T^2$, **every single physical quantity is rigidly locked by Diophantine arithmetic and topological invariants**. There are **no adjustable continuous constants**.
+**This section states a conjecture (Tier C), not a theorem.** The five "locks" below are each
+individually real — Tier A as arithmetic identities, Tier L as topological inputs — but none of them,
+alone or together, is a proof that this compactification's continuous moduli space has dimension
+zero: that would require a stabilizing potential derived from an actual flux/brane completion, which
+this corpus does not construct (Type II on $K3\times T^2$ preserves $\mathcal{N}=4$ supersymmetry, and
+$\mathcal{N}=4$ non-renormalization theorems forbid a potential from arising without such additional
+ingredients — see `papers/publication/paper7_dual_scale_theory_master_demonstration.tex`, §5.1, for
+the full discussion). Read the locks below as **five interesting integer/topological facts this
+framework's discrete data would need to be consistent with**, not as a mechanized proof that no
+continuous parameter survives.
 
 ### Lock 1: Geometric Self-Dual Inversion & Metric Lower Bound
 - **Mathematical Statement:** The effective scale $R_{\mathrm{eff}}(R) = R + \alpha'/R$ has a unique stationary point on $\mathbb{R}^+$:
@@ -84,11 +116,13 @@ In the Callens Dual-Scale Framework on $K3 \times T^2$, **every single physical 
   $$\mathcal{R}_{\mathrm{BPS}} = \frac{A_2}{N_Q \cdot A_1} = \frac{462}{4 \times 90} = \frac{462}{360} = \frac{77}{60}$$
   with:
   $$\gcd(77, 60) = 1, \quad 462 \times 60 = 360 \times 77 = 27720$$
-- **Rigidity:** The integer $N_{\mathrm{BPS}} = 27720$ is the unique Diophantine least common multiple locking the spectrum. It factors completely over the first five prime numbers:
-  $$27720 = 2^3 \cdot 3^2 \cdot 5 \cdot 7 \cdot 11$$
-  and divides the order of the sporadic simple group $M_{24}$:
-  $$|M_{24}| = 244,823,040 = 27720 \times 8832$$
-  Because $N_{\mathrm{BPS}}$ is a discrete topological integer, it admits zero continuous deformations under moduli variations.
+- **Caveat:** $27720 = \mathrm{lcm}(1,2,\dots,12) = 2^3\cdot3^2\cdot5\cdot7\cdot11$. For *any* fraction
+  $p/q$ in lowest terms, cross-multiplying against itself gives $\mathrm{lcm}(p,q)$; and any integer
+  whose factorization contains $2^3,3^2,5,7,11$ — which $|M_{24}|=2^{10}3^35^17^{1}11^{1}23^{1}$ does —
+  is automatically a multiple of $27720$. This makes the divisibility below weaker evidence for a
+  physical "lock" than it may look; we flag it rather than present it as a nontrivial coincidence. The
+  supercharge weighting $N_Q=4$ above is a modeling choice, not independently derived here.
+  $$|M_{24}| = 244,823,040 = 27720 \times 8832, \qquad 8832 = 2^7\times3\times23$$
 - **Formal Verification:** [`DualScaleValidation/UseCase2_MoonshineBPS.lean`](DualScaleValidation/UseCase2_MoonshineBPS.lean#L65-L85) & [`Lean5Corpus/Problems/Problem2_MathieuFrobeniusRigidity.lean`](Lean5Corpus/Problems/Problem2_MathieuFrobeniusRigidity.lean#L55-L95).
 
 ### Lock 3: Diophantine Kummer Ramond-Ramond Tadpole Cancellation
@@ -110,72 +144,90 @@ In the Callens Dual-Scale Framework on $K3 \times T^2$, **every single physical 
 - **Rigidity:** The code parameters $n=24, k=12, d=8, t=3$ and subspace dimension $2^{12} = 4096$ are combinatorial invariants. There is no free parameter in the bulk reconstruction code.
 - **Formal Verification:** [`Lean5Corpus/Problems/Problem8_GolayHolography.lean`](Lean5Corpus/Problems/Problem8_GolayHolography.lean#L55-L90).
 
-### Summary Comparison: Continuous Landscape vs. Callens Dual-Scale Framework
+### Summary: What Each Claim's Tier Actually Is
 
-| Feature | Standard String Landscape | Callens Dual-Scale Framework | Lean 4 Status |
+| Feature | Standard String Landscape | Dual-Scale Proposal | Tier |
 |---|:---:|:---:|:---:|
-| **Spacetime Singularity** | Divergent ($\mathcal{R} \to \infty$) | Smooth bounce ($R_{\mathrm{eff}} \ge 2\sqrt{\alpha'}$) | **Certified (0 sorry)** |
-| **Moduli Stabilization** | Ad hoc flux tuning ($10^{500}$) | Geometric $M_{24}$ & Buscher lock | **Certified (0 sorry)** |
-| **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | **Strictly ZERO (Diophantine Locked)** | **Certified (0 sorry)** |
-| **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ | **Certified (0 sorry)** |
-| **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | **Certified (0 sorry)** |
-| **Kernel Verification** | None (paper only) | **100% Verified in Lean 4 Kernel** | **Certified (0 sorry)** |
+| **Spacetime Singularity (kinematics)** | Divergent ($\mathcal{R} \to \infty$) | $R_{\mathrm{eff}} \ge 2\sqrt{\alpha'}$ bounds the probe distance | Tier L (real bound) / Tier A ($\mathbb{N}$ instance) |
+| **Moduli Stabilization** | Ad hoc flux tuning ($10^{500}$) | **Open problem** — $\mathcal{N}=4$ non-renormalization forbids a potential without additional ingredients this corpus doesn't construct | Tier C (conjectural roadmap only) |
+| **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
+| **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
+| **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
+| **Kernel Verification** | None (paper only) | 238/238 theorems & lemmas in the main project: 0 sorry, standard axioms only | Tier A |
+
+The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
+(Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
+itself.
 
 ---
 
 ## 4. Certified Lean 4 Code Snippets
 
+Every snippet below is copied verbatim from the file it cites — this is a hard requirement of this
+revision (an earlier version of this section showed a differently-named theorem for Example 1, a
+differently-named theorem for Example 2, and a Example 4 that used `Matrix.identity`, an API that
+cannot exist in this project since it has zero external dependencies, including Mathlib — see
+`lake-manifest.json`).
+
 ### Example 1: The Dual-Scale Effective Metric and Global Minimality
 From [`DualScaleValidation/UseCase1_ModuliStabilization.lean`](DualScaleValidation/UseCase1_ModuliStabilization.lean):
 ```lean
-/-- Fundamental string tension scale α' normalized to 1 in string units. -/
+/-- Fundamental string tension scale $\alpha'$ normalized to 1 in string units. -/
 def alpha_prime : Nat := 1
 
-/-- Effective dual scale numerator on a torus of radius R: R_eff(R) * R = R^2 + α'. -/
+/-- Effective dual scale numerator on a torus of radius $R$:
+    $R_{\mathrm{eff}}(R) \times R = R^2 + \alpha'$. -/
 def effective_dual_scale_numerator (R : Nat) : Nat :=
   R * R + alpha_prime
 
-/-- Master Theorem: Non-Singular Lower Bound on Effective Scale.
-    For any physical radius R ≥ 1, R_eff(R) * R = R^2 + 1 ≥ 2. -/
-theorem effective_scale_strictly_super_planckian (R : Nat) (h : R ≥ 1) :
+theorem self_dual_is_global_minimum (R : Nat) (h : R ≥ 1) :
     effective_dual_scale_numerator R ≥ 2 := by
   dsimp [effective_dual_scale_numerator, alpha_prime]
-  have h_sq : R * R ≥ 1 := Nat.mul_le_mul h h
+  have h1 : R * R ≥ 1 := Nat.mul_pos h h
   omega
 ```
+This is the $\mathbb{N}$-valued instance of the bound; it does not formalize real radii, the square
+root, or minimality/uniqueness — see the paper's scope box for §3 for exactly what this theorem does
+and doesn't say.
 
-### Example 2: The Mathieu $M_{24}$ BPS Rigidity Lock ($27720$)
+### Example 2: The Mathieu $M_{24}$ BPS Cross-Multiplication Lock ($27720$)
 From [`DualScaleValidation/UseCase2_MoonshineBPS.lean`](DualScaleValidation/UseCase2_MoonshineBPS.lean):
 ```lean
-def dim_A1 : Nat := 90
-def dim_A2 : Nat := 462
-def bps_character_lock : Nat := 27720
-
-/-- Master Theorem: The exact Mathieu BPS Moonshine Rigidity Lock.
-    dim A2 * 60 = (4 * dim A1) * 77 = 27720. -/
-theorem bps_rigidity_lock_identity :
+theorem bps_cross_multiplication_lock :
     dim_A2 * 60 = 27720 ∧ (4 * dim_A1) * 77 = 27720 := by
+  dsimp [dim_A1, dim_A2]
   decide
 ```
+See §3 above for why $27720=\mathrm{lcm}(1,\dots,12)$ makes this a less surprising divisibility fact
+than the name "lock" suggests.
 
-### Example 3: Diophantine Kummer Tadpole Cancellation
+### Example 3: Diophantine Ramond-Ramond Tadpole Cancellation
 From [`DualScaleValidation/UseCase3_FrontierTriad.lean`](DualScaleValidation/UseCase3_FrontierTriad.lean):
 ```lean
-/-- Master Theorem: Diophantine Ramond-Ramond Tadpole Cancellation.
-    16 D7-branes on O7-planes cancel identically: 16 * (+4) + 4 * (-16) = 0. -/
-theorem ramond_ramond_tadpole_cancellation :
-    16 * 4 + 4 * (-16 : Int) = 0 := by
-  rfl
+theorem rr_tadpole_cancellation :
+    total_d7_charge + total_o7_charge = 0 := rfl
 ```
+where `total_d7_charge := (d7_brane_count : Int) * d7_charge_per_brane` and
+`total_o7_charge := (o7_plane_count : Int) * o7_charge_per_plane` are defined earlier in the same
+file ($16\times4 + 4\times(-16) = 0$).
 
-### Example 4: Double Field Theory $O(D,D)$ Metric & Section Condition
+### Example 4: Double Field Theory $O(D,D)$ Metric & the T-Duality Inversion Generator
 From [`DoubleFieldTheory/GeneralizedGeometry.lean`](DoubleFieldTheory/GeneralizedGeometry.lean):
 ```lean
-/-- O(D,D) metric η satisfies η * η = I. -/
-theorem odd_metric_is_involution (D : Nat) :
-    odd_metric D * odd_metric D = Matrix.identity := by
-  ...
+def ODD_Eta : Mat2 := { a := 0, b := 1, c := 1, d := 0 }
+
+def IsODD (M : Mat2) : Prop :=
+  MatMul (MatTranspose M) (MatMul ODD_Eta M) = ODD_Eta
+
+/-- The discrete O(D,D;Z) element implementing Buscher T-duality on the circle. -/
+def InversionGen : Mat2 := { a := 0, b := 1, c := 1, d := 0 }
+
+theorem odd_inversion_generator : IsODD InversionGen := by
+  rfl
 ```
+`Mat2` is a plain 4-field `structure` over `Int` defined earlier in the same file — this project has
+no Mathlib `Matrix` type; see §9 for what promoting this to a real bundle-valued formalization would
+require.
 
 ---
 
@@ -322,14 +374,28 @@ lake build Lean5Corpus
 ```
 
 ### Auditing Zero-Sorry Compliance
+The naive substring check that used to live here (`'sorry' not in content`) actually raised an
+`AssertionError` if you ran it, because this corpus's own docstrings legitimately contain the phrase
+"0 sorry" — a literal substring match on the word "sorry" flags its own compliance comments. Use a
+tactic-position-aware check instead:
 ```bash
-python3 -c "
-import glob
-for f in sorted(glob.glob('Lean5Corpus/Problems/*.lean')):
-    content = open(f).read()
-    assert 'sorry' not in content and 'admit' not in content, f'Failed: {f}'
-print('All 11 problem modules 100% certified with 0 sorry!')
-"
+grep -rnE '(:=|by|<;>|;)[[:space:]]*sorry\b|^[[:space:]]*sorry[[:space:]]*$|(:=|by|<;>|;)[[:space:]]*admit\b' \
+  --include='*.lean' DoubleFieldTheory DualScaleValidation DualScaleM24Formalization StringTheoryFoundation Lean5Corpus
+# (prints nothing => zero sorry/admit *tactics*, as opposed to the word appearing in a docstring)
+```
+
+### Full Axiom Footprint (not just a cited subset)
+Grepping for `sorry` only proves no *literal* `sorry` token was typed; the kernel-level guarantee is
+`#print axioms`, which reveals a `sorryAx` dependency even if a proof were structured to avoid the
+bare keyword. Every one of the 238 `theorem`/`lemma` declarations across the five built libraries has
+been checked this way (regenerate the list and script with the two-step recipe below); as of this
+revision, **all 238 depend on nothing beyond `propext`, `Classical.choice`, and `Quot.sound`** — zero
+`sorryAx`, zero custom axioms:
+```bash
+# 1. Collect every theorem/lemma's fully-qualified name (adjust the libs list if it changes)
+# 2. Feed '#print axioms <name>' for each into `lake env lean --stdin`
+# See PAPER7_IMPROVEMENT_PROPOSAL.md's methodology section for the exact script used to produce
+# papers/publication/axiom_audit_log.txt (a similar, paper-scoped run of the same technique).
 ```
 
 ### Running LeanGraph Analysis

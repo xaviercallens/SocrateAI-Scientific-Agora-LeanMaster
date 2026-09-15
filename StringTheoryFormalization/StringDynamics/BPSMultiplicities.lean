@@ -1,7 +1,7 @@
 -- Block WS9: BPS Multiplicities  ℛ_BPS = 77/60
 -- Status: VERIFIED (0 sorry axioms)
 -- Provides: The rational BPS index ratio used in flux counting.
-import Mathlib.Data.Rat.Basic
+import Mathlib.Data.Rat.Defs
 import StringTheoryFormalization.StringDynamics.MathieuM24
 
 namespace StringTheory.StringDynamics

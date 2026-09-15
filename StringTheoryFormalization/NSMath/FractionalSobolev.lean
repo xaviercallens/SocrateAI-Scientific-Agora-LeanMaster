@@ -27,25 +27,26 @@ structure SobolevExponent where
     ‖u‖²_{H^s} = ∑_k (1 + |k|²)^s |û(k)|²
     Mirrors `Euler.ParentEulerSobolev.SobolevData` and `NavierStokes.TorusInverse.weight`. -/
 noncomputable def sobolevNorm (s : SobolevExponent) (coeff : ℤ × ℤ → ℂ) : ℝ :=
-  (∑' k : ℤ × ℤ, (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * Complex.abs (coeff k) ^ 2).sqrt
+  (∑' k : ℤ × ℤ, (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * ‖coeff k‖ ^ 2).sqrt
 
 /-- H^s ↪ H^t continuous embedding for s ≥ t.
     Proves that higher Sobolev regularities bound lower regularities monotonically. -/
 theorem sobolev_embedding (s t : SobolevExponent) (h : t.s ≤ s.s)
     (coeff : ℤ × ℤ → ℂ)
-    (hsumm_t : Summable (fun k : ℤ × ℤ => (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ t.s * Complex.abs (coeff k) ^ 2))
-    (hsumm_s : Summable (fun k : ℤ × ℤ => (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * Complex.abs (coeff k) ^ 2)) :
+    (hsumm_t : Summable (fun k : ℤ × ℤ => (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ t.s * ‖coeff k‖ ^ 2))
+    (hsumm_s : Summable (fun k : ℤ × ℤ => (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * ‖coeff k‖ ^ 2)) :
     sobolevNorm t coeff ≤ sobolevNorm s coeff := by
   unfold sobolevNorm
   apply Real.sqrt_le_sqrt
-  apply tsum_le_tsum
-  · intro k
-    apply mul_le_mul_of_nonneg_right _ (sq_nonneg _)
-    apply Real.rpow_le_rpow_of_exponent_le
-    · positivity
-    · exact h
-  · exact hsumm_t
-  · exact hsumm_s
+  -- `Summable.tsum_le_tsum` is `to_additive`-generated from `Multipliable.tprod_le_tprod`,
+  -- so the pointwise bound is the FIRST explicit argument, then the two summability proofs.
+  refine Summable.tsum_le_tsum ?_ hsumm_t hsumm_s
+  intro k
+  apply mul_le_mul_of_nonneg_right _ (sq_nonneg _)
+  apply Real.rpow_le_rpow_of_exponent_le
+  · norm_num
+    positivity
+  · exact h
 
 /-- Upstream citation linking this definition to OpenAI's Euler/NS codebase. -/
 def fractionalSobolevCitation : String :=

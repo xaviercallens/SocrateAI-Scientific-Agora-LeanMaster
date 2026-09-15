@@ -1,0 +1,34 @@
+SocrateAI-Scientific-Agora-LeanMaster -- Axiom Footprint Audit
+Generated: 2026-09-15 17:19:30 UTC
+Commit: e831efbff187a010aa5e0e82fbd8020472af2792
+Toolchain: leanprover/lean4:v4.33.1
+Command: lake env lean --stdin < axiom_audit_script.lean
+Corpus: 51 .lean files, 554 declarations (theorem/lemma/def/structure/inductive/instance/abbrev)
+Build: lake build -> Build completed successfully (61 jobs)
+
+Every theorem cited by name in paper7_dual_scale_theory_master_demonstration.tex:
+
+'DoubleFieldTheory.K3Topology.k3_euler_characteristic' does not depend on any axioms
+'DoubleFieldTheory.K3Topology.k3_atiyah_singer_dirac_index' does not depend on any axioms
+'DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes' depends on axioms: [propext, Quot.sound]
+'DoubleFieldTheory.CourantAlgebroid.strong_section_condition' depends on axioms: [propext, Quot.sound]
+'DualScaleValidation.UseCase1.self_dual_is_global_minimum' depends on axioms: [propext, Quot.sound]
+'DualScaleValidation.UseCase1.moduli_vacuum_stability' depends on axioms: [propext]
+'DualScaleValidation.Observables.tensor_to_scalar_ratio_reduction' does not depend on any axioms
+'DualScaleValidation.UseCase1.moduli_potential_nonneg' depends on axioms: [propext, Quot.sound]
+'DualScaleValidation.UseCase1.moduli_potential_zero_iff' depends on axioms: [propext, Quot.sound]
+'DualScaleValidation.UseCase2.bps_cross_multiplication_lock' does not depend on any axioms
+'DualScaleValidation.UseCase2.bps_ratio_coprime' does not depend on any axioms
+'DualScaleValidation.Observables.observables_windows_master_contract' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SocrateAI.DualScale.genesis_no_singularity' does not depend on any axioms
+'SocrateAI.DualScale.buscher_involution' depends on axioms: [propext, Quot.sound]
+'Lean5Corpus.Problems.DualScaleTCC.tcc_cosmic_protection_contract' depends on axioms: [propext, Quot.sound]
+'Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract' does not depend on any axioms
+
+No theorem depends on anything beyond the three standard Lean 4 axioms
+(propext, Classical.choice, Quot.sound). No axiom named 'sorryAx' appears
+in any footprint above. A separate grep for a bare 'sorry'/'admit' tactic
+(as opposed to the word appearing in prose/docstrings) across all five
+libraries returns zero matches.
