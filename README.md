@@ -6,7 +6,9 @@
 [![Free Parameters](https://img.shields.io/badge/Free_Parameters-0_(Diophantine_Locked)-darkgreen.svg)](#3-rigorous-proof-why-the-dual-scale-string-theory-has-zero-free-parameters)
 [![Solved Problems](https://img.shields.io/badge/Frontier_Problems-11_Certified-purple.svg)](#5-the-lean-5-scientific-agora-corpus-11-certified-frontier-problems)
 [![Publication Papers](https://img.shields.io/badge/Scientific_Papers-6_PDFs_Compiled-red.svg)](papers/publication/)
+[![Lean Blueprint](https://img.shields.io/badge/Lean_Blueprint-Interactive_Epistemic_Ledger-blueviolet.svg)](blueprint/web/index.html)
 [![LeanGraph](https://img.shields.io/badge/LeanGraph-528_Nodes_%7C_785_Edges-orange.svg)](graph/index.html)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster)
 [![License](https://img.shields.io/badge/License-Apache_2.0-lightgrey.svg)](LICENSE)
 
 ---
@@ -233,11 +235,46 @@ The repository provides 6 publication-ready scientific papers with complete LaTe
 - **Compilation Acceleration:** [`tools/lean_cache_manager.py`](tools/lean_cache_manager.py) manages SHA-256 AST hashes and precompiled `.olean` binaries.
   - Full corpus warm build: **1.569 seconds** (51 compilation jobs).
   - Isolated `Lean5Corpus` build: **0.701 seconds** (2.2x speedup).
-- **LeanAutoResearch Workflow:** Inspired by Karpathy's `autoresearch`, the engine runs automated proof discovery in [`leanautoresearch/`](leanautoresearch/), maintaining experiment logs in `results.tsv` and tracking formal claims in `LEDGER.md`.
+---
+
+## 9. Bridging the Semantic Gap: Literate Physics, DSL & The SocrateAI Oracle
+
+Lean 4 kernel syntax is optimized for type verification, while theoretical physicists work with differential geometric and tensorial notation. LeanMaster bridges this semantic gap through four purpose-built layers:
+
+### 1. Physics DSL (`DoubleFieldTheory/PhysicsDSL.lean`)
+Native Lean 4 notations mirror physical textbook formulas:
+- **Canonical Courant Pairing:** `⟨X , Y⟩_η` $\equiv \xi_\mu u^\mu + \zeta_\mu v^\mu$
+- **Courant C-Bracket:** `[X , Y]_C` $\equiv ([v, u], \mathcal{L}_v \alpha_Y - \mathcal{L}_u \alpha_X)$
+- **Dorfman Derived Bracket:** `⟦X , Y⟧_D` $\equiv ([v, u], 2\mathcal{L}_v \alpha_Y - \mathcal{L}_u \alpha_X)$
+- **Buscher-Invariant Scale:** `R_eff(R)` $\equiv R + \alpha'/R$
+- **Strong Section Condition:** `∂_M Φ ∂^M Ψ` $\equiv \eta^{MN} \partial_M \Phi \partial_N \Psi = 0$
+
+### 2. SocrateAI Oracle CLI (`tools/socrateai_oracle.py`)
+Translate functional proofs into human theoretical physics narratives instantly:
+```bash
+# Query the entire corpus by physical concept
+python3 tools/socrateai_oracle.py query "moduli stabilization"
+
+# Translate any Lean theorem to an intuitive physical explanation
+python3 tools/socrateai_oracle.py translate "bps_cross_multiplication_lock"
+
+# Inspect the live "State of the Universe" and falsifiability observables
+python3 tools/socrateai_oracle.py ledger
+```
+
+### 3. Interactive Lean Blueprint & Epistemic Dashboard
+Patrick Massot / Terence Tao style interactive blueprint combining LaTeX mathematical narratives with Lean 4 verification badges, the "State of the Universe" ledger (0 free parameters, 0 singularities), and precision observables tracker.
+```bash
+python3 tools/build_blueprint.py
+# Open blueprint/web/index.html in your browser
+```
+
+### 4. 1-Click Verification in GitHub Codespaces
+No local installation required! Open directly in your browser via [GitHub Codespaces](https://codespaces.new/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster) — pre-configured with Lean 4 `v4.33.1`, the VS Code Lean extension, and automated `lake build` verification.
 
 ---
 
-## 9. Replication & Getting Started
+## 10. Replication & Getting Started
 
 ### Prerequisites
 - [Lean 4](https://leanprover.github.io/) toolchain `v4.33.1` via `elan`.
@@ -249,7 +286,7 @@ The repository provides 6 publication-ready scientific papers with complete LaTe
 git clone https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster.git
 cd SocrateAI-Scientific-Agora-LeanMaster
 
-# Build all 59 jobs with 0 sorrys
+# Build all 61 jobs with 0 sorrys
 lake build
 
 # Recompile and verify Lean5Corpus specifically
@@ -275,7 +312,7 @@ python3 tools/leangraph_corpus_analyzer.py
 
 ---
 
-## 10. Citation & Academic Credits
+## 11. Citation & Academic Credits
 
 If you use this work, the Dual-Scale string theory formalization, or the Lean 5 Scientific Agora Corpus in academic research, please cite:
 

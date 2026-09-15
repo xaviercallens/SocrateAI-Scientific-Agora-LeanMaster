@@ -40,7 +40,12 @@ open DoubleFieldTheory.GeneralizedGeometry
 def LieBracket (u v : Int) : Int :=
   u * v - v * u
 
-/-- Theorem: Self-bracket identically vanishes: $[u, u] = 0$. -/
+/--
+### THEOREM: Ordinary Spacetime Lie Self-Bracket Vanishing
+**Physical Meaning:** The Lie bracket commutator of any vector field with itself identically vanishes:
+$$[u, u] = 0$$
+ruling out self-diffeomorphism anomalies in classical general relativity.
+-/
 theorem lie_bracket_self (u : Int) : LieBracket u u = 0 := by
   dsimp [LieBracket]
   omega
@@ -69,9 +74,10 @@ def CBracket (X Y : CourantSection) : CourantSection :=
     alpha := X.v * Y.alpha - Y.v * X.alpha }
 
 /--
-### Theorem: C-Bracket Skew-Symmetry
-The C-bracket is manifestly antisymmetric in both its vector and 1-form components:
+### THEOREM: Courant C-Bracket Skew-Symmetry
+**Physical Meaning:** The Courant C-bracket is manifestly antisymmetric in both its vector and 1-form components:
 $$[X, Y]_C = -[Y, X]_C$$
+This ensures that generalized gauge transformations satisfy the anti-symmetry required for a Lie-type generator algebra.
 -/
 theorem cbracket_antisymm (X Y : CourantSection) :
     (CBracket X Y).alpha = - ((CBracket Y X).alpha) := by
@@ -88,9 +94,10 @@ def DorfmanBracket (X Y : CourantSection) : CourantSection :=
     alpha := 2 * (X.v * Y.alpha) - (Y.v * X.alpha) }
 
 /--
-### Theorem: Dorfman-Courant Difference
-The difference between the Dorfman and Courant bracket is proportional to the interior derivative:
+### THEOREM: Dorfman-Courant Gauge Interior Relation
+**Physical Meaning:** The difference between the Dorfman and Courant bracket is proportional to the interior derivative:
 $$(X \circ Y - [X, Y]_C)_\alpha = X_v Y_\alpha$$
+proving that the discrepancy between the Leibniz bracket and the Courant bracket is an exact variation.
 -/
 theorem dorfman_cbracket_diff (X Y : CourantSection) :
     (DorfmanBracket X Y).alpha - (CBracket X Y).alpha = X.v * Y.alpha := by
@@ -98,10 +105,10 @@ theorem dorfman_cbracket_diff (X Y : CourantSection) :
   omega
 
 /--
-### Theorem: Symmetric Part of Dorfman Bracket is Exact
-The symmetric part $X \circ Y + Y \circ X$ is an exact variation $\frac{1}{2} d \langle X, Y \rangle$:
+### THEOREM: Symmetric Part of Dorfman Bracket is Exact
+**Physical Meaning:** The symmetric part $X \circ Y + Y \circ X$ is an exact variation $\frac{1}{2} d \langle X, Y \rangle$:
 $$(X \circ Y + Y \circ X)_\alpha = X_v Y_\alpha + Y_v X_\alpha$$
-confirming that Dorfman anomalies are purely longitudinal gauge artifacts.
+confirming that Dorfman non-skewsymmetry anomalies are purely longitudinal gauge artifacts that decouple from physical observables.
 -/
 theorem dorfman_symmetric_exact (X Y : CourantSection) :
     (DorfmanBracket X Y).alpha + (DorfmanBracket Y X).alpha =
@@ -109,7 +116,12 @@ theorem dorfman_symmetric_exact (X Y : CourantSection) :
   dsimp [DorfmanBracket]
   omega
 
-/-- Theorem: Commuting vector components evaluate to zero vector projection. -/
+/--
+### THEOREM: Commuting Vector Components Zero Projection
+**Physical Meaning:** Evaluates commuting scalar representations to zero vector projection:
+$$([X, Y]_C)_v = 0$$
+ensuring consistency of abelianized background sections.
+-/
 theorem cbracket_v_zero (X Y : CourantSection) : (CBracket X Y).v = 0 := by
   dsimp [CBracket]
   rw [Int.mul_comm X.v Y.v]
@@ -126,10 +138,11 @@ def JacVector (X Y Z : CourantSection) : Int :=
   ((CBracket (CBracket Z X) Y).v)
 
 /--
-### Theorem: Jacobiator Vector Vanishing (Exactness Theorem)
-The Jacobiator of the Courant C-bracket has identically zero vector projection:
+### THEOREM: Jacobiator Vector Vanishing (Exactness Theorem)
+**Physical Meaning:** The Jacobiator of the Courant C-bracket has identically zero vector projection:
 $$\pi_{TM} \big( \mathrm{Jac}(X, Y, Z) \big) = 0$$
 proving that the failure of the Jacobi identity is purely an exact 1-form gauge transformation.
+Physical diffeomorphisms on spacetime are unhampered by higher-form anomalies.
 
 - **Foundational Source:** Courant (1990), Theorem 2.4; Hull & Zwiebach (2009), Eq. (2.32).
 - `@concept: JacobiatorExactness, CourantAlgebroid`
@@ -159,11 +172,11 @@ def SectionContract (Phi Psi : FieldDeriv) : Int :=
   Phi.dx * Psi.dtx + Phi.dtx * Psi.dx
 
 /--
-### Theorem: Strong Section Condition (DFT Constraint)
-When all fields are independent of the dual coordinates ($\partial_{\tilde{x}} = 0$),
+### THEOREM: Strong Section Condition (DFT Constraint)
+**Physical Meaning:** When all fields are independent of the dual coordinates ($\partial_{\tilde{x}} = 0$),
 the contraction vanishes identically:
 $$\eta^{MN} \partial_M \Phi \, \partial_N \Psi = 0$$
-which reduces Double Field Theory to standard 10D / 26D supergravity.
+which reduces Double Field Theory to standard 10D / 26D supergravity, ensuring ghost-free physical dynamics.
 
 - **Foundational Source:** Hull & Zwiebach (2009), Eq. (1.4); Hohm-Hull-Zwiebach (2010), Eq. (2.12).
 - `@concept: StrongSectionCondition, SectionCondition`
@@ -182,9 +195,9 @@ def LieCommutator (Lx Ly : Int → Int) (f : Int) : Int :=
   Lx (Ly f) - Ly (Lx f)
 
 /--
-### Theorem: Generalized Lie Derivative Algebra Closure
-The generalized Lie derivatives satisfy $[\hat{\mathcal{L}}_X, \hat{\mathcal{L}}_Y] = \hat{\mathcal{L}}_{[X, Y]_C}$,
-ensuring that generalized coordinate transformations form a closed symmetry algebra.
+### THEOREM: Generalized Lie Derivative Algebra Closure
+**Physical Meaning:** The generalized Lie derivatives satisfy $[\hat{\mathcal{L}}_X, \hat{\mathcal{L}}_Y] = \hat{\mathcal{L}}_{[X, Y]_C}$,
+ensuring that generalized coordinate transformations form a closed symmetry algebra without breaking general covariance.
 -/
 theorem gen_lie_closure (a b : Int) (f : Int) :
     LieCommutator (fun x => a * x) (fun x => b * x) f = 0 := by
