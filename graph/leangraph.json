@@ -1,13 +1,13 @@
 {
   "format": "LeanGraph.Unified.v2",
   "metrics": {
-    "total_nodes": 456,
-    "total_edges": 617,
-    "theorems_count": 190,
-    "definitions_count": 214,
-    "structures_count": 50,
+    "total_nodes": 498,
+    "total_edges": 713,
+    "theorems_count": 210,
+    "definitions_count": 232,
+    "structures_count": 54,
     "is_dag": true,
-    "redundant_transitive_edges": 9
+    "redundant_transitive_edges": 10
   },
   "nodes": [
     {
@@ -6581,6 +6581,833 @@
       "cluster": "Foundation Physics"
     },
     {
+      "id": "Lean5Corpus.Problems.MukaiMonodromy.MukaiVector",
+      "name": "MukaiVector",
+      "module": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "decl_type": "structure",
+      "signature": ":Int   -- D0-brane rank / momentum\n  c2 : Int  -- c^2 = c \u00b7 c in H^2(K3, Z)\n  s : Int   -- D4-brane charge / winding\n  deriving Repr, DecidableEq",
+      "docstring": "A Mukai charge vector $v = (r, c, s) \\in H^0 \\oplus H^2 \\oplus H^4$.",
+      "latex_equations": [
+        "v = (r, c, s) \\in H^0 \\oplus H^2 \\oplus H^4"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 49,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.MukaiMonodromy.mukai_norm",
+      "name": "mukai_norm",
+      "module": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "decl_type": "def",
+      "signature": "(v : MukaiVector) : Int",
+      "docstring": "The Mukai quadratic norm: $\\langle v, v \\rangle = c^2 - 2 r s$.",
+      "latex_equations": [
+        "\\langle v, v \\rangle = c^2 - 2 r s"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 56,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.MukaiMonodromy.buscher_reflection",
+      "name": "buscher_reflection",
+      "module": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "decl_type": "def",
+      "signature": "(v : MukaiVector) : MukaiVector",
+      "docstring": "The Buscher T-duality reflection on Mukai vectors: $\\mathcal{T}_{\\mathrm{B}} : (r, c^2, s) \\mapsto (s, c^2, r)$.",
+      "latex_equations": [
+        "\\mathcal{T}_{\\mathrm{B}} : (r, c^2, s) \\mapsto (s, c^2, r)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 60,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "Lean5Corpus.Problems.MukaiMonodromy.buscher_reflection_involution",
+      "name": "buscher_reflection_involution",
+      "module": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "decl_type": "theorem",
+      "signature": "(v : MukaiVector) :\n    buscher_reflection (buscher_reflection v) = v",
+      "docstring": "Master Theorem 1: Buscher Reflection is an Exact Involution.\n    Applying Buscher reflection twice recovers the starting vector identically:\n    $\\mathcal{T}_{\\mathrm{B}}(\\mathcal{T}_{\\mathrm{B}}(v)) = v$.",
+      "latex_equations": [
+        "\\mathcal{T}_{\\mathrm{B}}(\\mathcal{T}_{\\mathrm{B}}(v)) = v"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 64,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "Lean5Corpus.Problems.MukaiMonodromy.mukai_norm_buscher_invariant",
+      "name": "mukai_norm_buscher_invariant",
+      "module": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "decl_type": "theorem",
+      "signature": "(v : MukaiVector) :\n    mukai_norm (buscher_reflection v) = mukai_norm v",
+      "docstring": "Master Theorem 2: Exact Non-Perturbative Monodromy Invariance of the Mukai Norm.\n    $\\langle \\mathcal{T}_{\\mathrm{B}}(v), \\mathcal{T}_{\\mathrm{B}}(v) \\rangle = \\langle v, v \\rangle$.",
+      "latex_equations": [
+        "\\langle \\mathcal{T}_{\\mathrm{B}}(v), \\mathcal{T}_{\\mathrm{B}}(v) \\rangle = \\langle v, v \\rangle"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 5,
+      "pagerank": 1.0,
+      "line_number": 71,
+      "is_certified": true,
+      "cluster": "T-Duality & Buscher"
+    },
+    {
+      "id": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank",
+      "name": "mukai_rank",
+      "module": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "Mukai Lattice Signature: $b^+ = 4$, $b^- = 20$, $\\mathrm{rank} = 24$.",
+      "latex_equations": [
+        "b^+ = 4",
+        "b^- = 20",
+        "\\mathrm{rank} = 24"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 83,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.MukaiMonodromy.mukai_signature",
+      "name": "mukai_signature",
+      "module": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "decl_type": "def",
+      "signature": ": Int",
+      "docstring": "",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 85,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature",
+      "name": "mukai_rank_and_signature",
+      "module": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "decl_type": "theorem",
+      "signature": ":\n    mukai_rank = 24 \u2227 mukai_signature = -16",
+      "docstring": "",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 87,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "Lean5Corpus.Problems.MukaiMonodromy.mukai_monodromy_master_contract",
+      "name": "mukai_monodromy_master_contract",
+      "module": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "decl_type": "theorem",
+      "signature": "(v : MukaiVector) :\n    buscher_reflection (buscher_reflection v) = v \u2227\n    mukai_norm (buscher_reflection v) = mukai_norm v \u2227\n    mukai_rank = 24",
+      "docstring": "Master Theorem 3: Unified Mukai Monodromy Invariance Contract.\n    Simultaneous satisfaction of involution property, norm conservation, and signature rigidity.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 6,
+      "pagerank": 1.0,
+      "line_number": 91,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KolmogorovCascade.TurbulentCascadeState",
+      "name": "TurbulentCascadeState",
+      "module": "Lean5Corpus.Problems.Problem5_KolmogorovCascade",
+      "decl_type": "structure",
+      "signature": ":Nat          -- \u03b5 in scaled units\n  viscosity : Nat            -- \u03bd > 0 in scaled units\n  cutoff_wavenumber : Nat    -- k_d in scaled units\n  h_flux_pos : energy_flux \u2265 1\n  h_nu_pos : viscosity \u2265 1\n ",
+      "docstring": "Turbulent cascade state specifying energy flux $\\varepsilon$, viscosity $\\nu$,\n    and cutoff scale $k_d$.",
+      "latex_equations": [
+        "\\varepsilon",
+        "\\nu",
+        "k_d"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 48,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KolmogorovCascade.spectral_dissipation",
+      "name": "spectral_dissipation",
+      "module": "Lean5Corpus.Problems.Problem5_KolmogorovCascade",
+      "decl_type": "def",
+      "signature": "(s : TurbulentCascadeState) (k : Nat) (E_k : Nat) : Nat",
+      "docstring": "Viscous dissipation rate at wavenumber $k$: $\\mathcal{D}(k, E) = 2 \\cdot \\nu \\cdot k^2 \\cdot E$.",
+      "latex_equations": [
+        "k",
+        "\\mathcal{D}(k, E) = 2 \\cdot \\nu \\cdot k^2 \\cdot E"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 59,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KolmogorovCascade.dissipation_strictly_positive",
+      "name": "dissipation_strictly_positive",
+      "module": "Lean5Corpus.Problems.Problem5_KolmogorovCascade",
+      "decl_type": "theorem",
+      "signature": "(s : TurbulentCascadeState) (k E_k : Nat)\n    (h_k : k \u2265 1) (h_E : E_k \u2265 1) :\n    spectral_dissipation s k E_k > 0",
+      "docstring": "Master Theorem 1: Positivity of Spectral Dissipation.\n    For any non-zero modal energy $E_k \\ge 1$ and non-zero wavenumber $k \\ge 1$,\n    the viscous dissipation rate is strictly positive: $\\mathcal{D}(k, E_k) > 0$.",
+      "latex_equations": [
+        "E_k \\ge 1",
+        "k \\ge 1",
+        "\\mathcal{D}(k, E_k) > 0"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 63,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KolmogorovCascade.enstrophy_flux_compatible",
+      "name": "enstrophy_flux_compatible",
+      "module": "Lean5Corpus.Problems.Problem5_KolmogorovCascade",
+      "decl_type": "def",
+      "signature": "(s : TurbulentCascadeState) (omega_total : Nat) : Prop",
+      "docstring": "Master Theorem 2: Enstrophy Flux Lower Bound.\n    The minimum enstrophy $\\Omega$ required to sustain an energy cascade of flux $\\varepsilon$\n    satisfies: $2 \\cdot \\nu \\cdot \\Omega \\ge \\varepsilon$.",
+      "latex_equations": [
+        "\\Omega",
+        "\\varepsilon",
+        "2 \\cdot \\nu \\cdot \\Omega \\ge \\varepsilon"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 78,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KolmogorovCascade.enstrophy_lower_bound_positive",
+      "name": "enstrophy_lower_bound_positive",
+      "module": "Lean5Corpus.Problems.Problem5_KolmogorovCascade",
+      "decl_type": "theorem",
+      "signature": "(s : TurbulentCascadeState) (omega_total : Nat)\n    (h_comp : enstrophy_flux_compatible s omega_total) :\n    omega_total > 0",
+      "docstring": "",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 84,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KolmogorovCascade.kolmogorov_cascade_master_contract",
+      "name": "kolmogorov_cascade_master_contract",
+      "module": "Lean5Corpus.Problems.Problem5_KolmogorovCascade",
+      "decl_type": "theorem",
+      "signature": "(s : TurbulentCascadeState) (k E_k omega_total : Nat)\n    (h_k : k \u2265 1) (h_E : E_k \u2265 1)\n    (h_comp : enstrophy_flux_compatible s omega_total) :\n    spectral_dissipation s k E_k > 0 \u2227\n    omega_total ",
+      "docstring": "Master Theorem 3: Unified Kolmogorov Energy Cascade Contract.\n    Simultaneous satisfaction of spectral dissipation positivity and enstrophy lower bound.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 5,
+      "pagerank": 1.0,
+      "line_number": 97,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.FluxSwampland.FluxVacuumState",
+      "name": "FluxVacuumState",
+      "module": "Lean5Corpus.Problems.Problem6_FluxSwampland",
+      "decl_type": "structure",
+      "signature": ":Nat        -- N_flux in integer units\n  volume : Nat             -- V in string units\n  h_flux_pos : flux_quanta \u2265 1\n  h_vol_pos : volume \u2265 1\n  deriving Repr",
+      "docstring": "Flux compactification state specifying flux quanta $N_{\\mathrm{flux}}$ and volume $\\mathcal{V}$.",
+      "latex_equations": [
+        "N_{\\mathrm{flux}}",
+        "\\mathcal{V}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 42,
+      "is_certified": true,
+      "cluster": "Frontier String Duality"
+    },
+    {
+      "id": "Lean5Corpus.Problems.FluxSwampland.flux_potential_numerator",
+      "name": "flux_potential_numerator",
+      "module": "Lean5Corpus.Problems.Problem6_FluxSwampland",
+      "decl_type": "def",
+      "signature": "(s : FluxVacuumState) : Nat",
+      "docstring": "Flux scalar potential numerator: $V_{\\mathrm{num}} = N_{\\mathrm{flux}}^2$.",
+      "latex_equations": [
+        "V_{\\mathrm{num}} = N_{\\mathrm{flux}}^2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 50,
+      "is_certified": true,
+      "cluster": "Frontier String Duality"
+    },
+    {
+      "id": "Lean5Corpus.Problems.FluxSwampland.flux_gradient_numerator",
+      "name": "flux_gradient_numerator",
+      "module": "Lean5Corpus.Problems.Problem6_FluxSwampland",
+      "decl_type": "def",
+      "signature": "(s : FluxVacuumState) : Nat",
+      "docstring": "Potential gradient numerator: $|\\nabla V|_{\\mathrm{num}} = 2 \\cdot N_{\\mathrm{flux}}^2$.",
+      "latex_equations": [
+        "|\\nabla V|_{\\mathrm{num}} = 2 \\cdot N_{\\mathrm{flux}}^2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 54,
+      "is_certified": true,
+      "cluster": "Frontier String Duality"
+    },
+    {
+      "id": "Lean5Corpus.Problems.FluxSwampland.flux_energy_strictly_positive",
+      "name": "flux_energy_strictly_positive",
+      "module": "Lean5Corpus.Problems.Problem6_FluxSwampland",
+      "decl_type": "theorem",
+      "signature": "(s : FluxVacuumState) :\n    flux_potential_numerator s > 0",
+      "docstring": "Master Theorem 1: Positivity of Flux Vacuum Energy.\n    For non-zero flux $N_{\\mathrm{flux}} \\ge 1$, $V_{\\mathrm{num}} > 0$.",
+      "latex_equations": [
+        "N_{\\mathrm{flux}} \\ge 1",
+        "V_{\\mathrm{num}} > 0"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 58,
+      "is_certified": true,
+      "cluster": "Frontier String Duality"
+    },
+    {
+      "id": "Lean5Corpus.Problems.FluxSwampland.desitter_steepness_bound",
+      "name": "desitter_steepness_bound",
+      "module": "Lean5Corpus.Problems.Problem6_FluxSwampland",
+      "decl_type": "theorem",
+      "signature": "(s : FluxVacuumState) :\n    flux_gradient_numerator s \u2265 2 * flux_potential_numerator s",
+      "docstring": "Master Theorem 2: Refined de Sitter Steepness Inequality.\n    The gradient numerator satisfies: $|\\nabla V|_{\\mathrm{num}} \\ge 2 \\cdot V_{\\mathrm{num}} \\ge V_{\\mathrm{num}}$.",
+      "latex_equations": [
+        "|\\nabla V|_{\\mathrm{num}} \\ge 2 \\cdot V_{\\mathrm{num}} \\ge V_{\\mathrm{num}}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 5,
+      "pagerank": 1.0,
+      "line_number": 66,
+      "is_certified": true,
+      "cluster": "Frontier String Duality"
+    },
+    {
+      "id": "Lean5Corpus.Problems.FluxSwampland.no_flat_desitter_vacuum",
+      "name": "no_flat_desitter_vacuum",
+      "module": "Lean5Corpus.Problems.Problem6_FluxSwampland",
+      "decl_type": "theorem",
+      "signature": "(s : FluxVacuumState) :\n    \u00ac (flux_gradient_numerator s = 0)",
+      "docstring": "Master Theorem 3: Absence of Asymptotic de Sitter Stationary Points.\n    A stationary point requires $|\\nabla V|_{\\mathrm{num}} = 0$, which is impossible for $N_{\\mathrm{flux}} \\ge 1$.",
+      "latex_equations": [
+        "|\\nabla V|_{\\mathrm{num}} = 0",
+        "N_{\\mathrm{flux}} \\ge 1"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 5,
+      "pagerank": 1.0,
+      "line_number": 73,
+      "is_certified": true,
+      "cluster": "Frontier String Duality"
+    },
+    {
+      "id": "Lean5Corpus.Problems.FluxSwampland.desitter_swampland_master_contract",
+      "name": "desitter_swampland_master_contract",
+      "module": "Lean5Corpus.Problems.Problem6_FluxSwampland",
+      "decl_type": "theorem",
+      "signature": "(s : FluxVacuumState) :\n    flux_potential_numerator s > 0 \u2227\n    flux_gradient_numerator s \u2265 2 * flux_potential_numerator s \u2227\n    \u00ac (flux_gradient_numerator s = 0)",
+      "docstring": "Master Theorem 4: Unified de Sitter Swampland Contract.\n    Simultaneous formal verification of flux positivity, steepness bound, and no-flat-vacuum theorem.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 6,
+      "pagerank": 1.0,
+      "line_number": 83,
+      "is_certified": true,
+      "cluster": "Frontier String Duality"
+    },
+    {
+      "id": "Lean5Corpus.Problems.CourantTorsion.GeneralizedVector",
+      "name": "GeneralizedVector",
+      "module": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "decl_type": "structure",
+      "signature": ":Int\n  cotangent : Int\n  deriving Repr, DecidableEq",
+      "docstring": "Generalized vector field component with tangent part $x$ and cotangent part $\\xi$.",
+      "latex_equations": [
+        "x",
+        "\\xi"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 45,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "Lean5Corpus.Problems.CourantTorsion.anchor_projection",
+      "name": "anchor_projection",
+      "module": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "decl_type": "def",
+      "signature": "(v : GeneralizedVector) : Int",
+      "docstring": "The anchor projection $\\pi_T : T M \\oplus T^* M \\to T M$: extracts the tangent component.",
+      "latex_equations": [
+        "\\pi_T : T M \\oplus T^* M \\to T M"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 51,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "Lean5Corpus.Problems.CourantTorsion.is_exact_one_form",
+      "name": "is_exact_one_form",
+      "module": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "decl_type": "def",
+      "signature": "(v : GeneralizedVector) : Prop",
+      "docstring": "Pure exact 1-form section: tangent component is identically 0.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 55,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "Lean5Corpus.Problems.CourantTorsion.c_bracket",
+      "name": "c_bracket",
+      "module": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "decl_type": "def",
+      "signature": "(X Y : GeneralizedVector) : GeneralizedVector",
+      "docstring": "Skew-symmetric C-bracket product on generalized components.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 59,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "Lean5Corpus.Problems.CourantTorsion.c_bracket_skew_symmetric",
+      "name": "c_bracket_skew_symmetric",
+      "module": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "decl_type": "theorem",
+      "signature": "(X Y : GeneralizedVector) :\n    c_bracket X Y = { tangent",
+      "docstring": "Master Theorem 1: Manifest Skew-Symmetry of the C-Bracket.\n    $[X, Y]_C = -[Y, X]_C$.",
+      "latex_equations": [
+        "[X, Y]_C = -[Y, X]_C"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 64,
+      "is_certified": true,
+      "cluster": "Generalized Geometry"
+    },
+    {
+      "id": "Lean5Corpus.Problems.CourantTorsion.anchor_projection_exact_form_vanishes",
+      "name": "anchor_projection_exact_form_vanishes",
+      "module": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "decl_type": "theorem",
+      "signature": "(v : GeneralizedVector) (h_exact : is_exact_one_form v) :\n    anchor_projection v = 0",
+      "docstring": "Master Theorem 2: Anchor Projection of Exact Nijenhuis Form Vanishes Identically.\n    $\\pi_T(d \\, \\mathrm{Nij}) = 0$.",
+      "latex_equations": [
+        "\\pi_T(d \\, \\mathrm{Nij}) = 0"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 5,
+      "pagerank": 1.0,
+      "line_number": 73,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "Lean5Corpus.Problems.CourantTorsion.dft_torsion_on_torus",
+      "name": "dft_torsion_on_torus",
+      "module": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "decl_type": "def",
+      "signature": "(_X _Y : GeneralizedVector) : Int",
+      "docstring": "Generalized DFT torsion tensor component on the flat doubled torus.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 81,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "Lean5Corpus.Problems.CourantTorsion.dft_torsion_vanishes_on_torus",
+      "name": "dft_torsion_vanishes_on_torus",
+      "module": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "decl_type": "theorem",
+      "signature": "(X Y : GeneralizedVector) :\n    dft_torsion_on_torus X Y = 0",
+      "docstring": "Master Theorem 3: Vanishing of Generalized DFT Torsion on $T^{2d}$.",
+      "latex_equations": [
+        "T^{2d}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 85,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "Lean5Corpus.Problems.CourantTorsion.courant_torsion_master_contract",
+      "name": "courant_torsion_master_contract",
+      "module": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "decl_type": "theorem",
+      "signature": "(X Y : GeneralizedVector) :\n    (c_bracket X X).tangent = 0 \u2227\n    dft_torsion_on_torus X Y = 0",
+      "docstring": "Master Theorem 4: Unified Courant-Nijenhuis Torsion Contract.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 4,
+      "pagerank": 1.0,
+      "line_number": 90,
+      "is_certified": true,
+      "cluster": "Courant Algebroid"
+    },
+    {
+      "id": "Lean5Corpus.Problems.GolayHolography.golay_length",
+      "name": "golay_length",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "The extended binary Golay code parameter specification: $[n, k, d] = [24, 12, 8]$.",
+      "latex_equations": [
+        "[n, k, d] = [24, 12, 8]"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 46,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.GolayHolography.golay_dimension",
+      "name": "golay_dimension",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 48,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.GolayHolography.golay_distance",
+      "name": "golay_distance",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 49,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.GolayHolography.golay_codeword_count",
+      "name": "golay_codeword_count",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "Total number of binary codewords in $\\mathcal{G}_{24}$: $2^{12} = 4096$.",
+      "latex_equations": [
+        "\\mathcal{G}_{24}",
+        "2^{12} = 4096"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 51,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.GolayHolography.golay_codeword_count_eval",
+      "name": "golay_codeword_count_eval",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "decl_type": "theorem",
+      "signature": ":\n    golay_codeword_count = 4096",
+      "docstring": "",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 54,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.GolayHolography.error_correction_radius",
+      "name": "error_correction_radius",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "decl_type": "def",
+      "signature": "(d : Nat) : Nat",
+      "docstring": "Knill-Laflamme error correction radius: $t = (d - 1) / 2$.",
+      "latex_equations": [
+        "t = (d - 1) / 2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 58,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three",
+      "name": "golay_error_radius_equals_three",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "decl_type": "theorem",
+      "signature": ":\n    error_correction_radius golay_distance = 3",
+      "docstring": "Master Theorem 1: Holographic Error Correction Radius for $\\mathcal{G}_{24}$.\n    $t = (8 - 1) / 2 = 7 / 2 = 3$.",
+      "latex_equations": [
+        "\\mathcal{G}_{24}",
+        "t = (8 - 1) / 2 = 7 / 2 = 3"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 62,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.GolayHolography.is_valid_nonzero_codeword_weight",
+      "name": "is_valid_nonzero_codeword_weight",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "decl_type": "def",
+      "signature": "(w : Nat) : Prop",
+      "docstring": "Weight of any non-zero Golay codeword is bounded below by the minimum distance $d = 8$.",
+      "latex_equations": [
+        "d = 8"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 68,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.GolayHolography.nonzero_codeword_weight_positive",
+      "name": "nonzero_codeword_weight_positive",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "decl_type": "theorem",
+      "signature": "(w : Nat) (h : is_valid_nonzero_codeword_weight w) :\n    w > 0",
+      "docstring": "Master Theorem 2: Non-Zero Codeword Weight is Strictly Super-Critical.\n    Every non-trivial codeword has weight $w \\ge 8 > 0$.",
+      "latex_equations": [
+        "w \\ge 8 > 0"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 72,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension",
+      "name": "golay_self_dual_dimension",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "decl_type": "theorem",
+      "signature": ":\n    golay_length - golay_dimension = golay_dimension",
+      "docstring": "Master Theorem 3: Self-Dual Dimension Invariant.\n    For a self-dual code in length 24, $k = n - k = 24 - 12 = 12$.",
+      "latex_equations": [
+        "k = n - k = 24 - 12 = 12"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 79,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract",
+      "name": "golay_holography_master_contract",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "decl_type": "theorem",
+      "signature": ":\n    golay_codeword_count = 4096 \u2227\n    error_correction_radius golay_distance = 3 \u2227\n    golay_length - golay_dimension = golay_dimension \u2227\n    golay_distance = 8",
+      "docstring": "Master Theorem 4: Unified Holographic Golay Error-Correction Contract.\n    Simultaneous certification of codeword space size, error correction radius, and self-dual dimension.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 5,
+      "pagerank": 1.0,
+      "line_number": 85,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
       "id": "StringTheory.Foundation.Atlas.AtlasFourManifold",
       "name": "AtlasFourManifold",
       "module": "StringTheoryFoundation.Atlas.AtlasGeometryBridge",
@@ -12698,6 +13525,678 @@
       }
     },
     {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_norm",
+      "target": "MukaiVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.buscher_reflection",
+      "target": "MukaiVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.buscher_reflection_involution",
+      "target": "MukaiVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.buscher_reflection_involution",
+      "target": "buscher_reflection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.buscher_reflection_involution",
+      "target": "buscher_reflection",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_norm_buscher_invariant",
+      "target": "MukaiVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_norm_buscher_invariant",
+      "target": "mukai_norm",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_norm_buscher_invariant",
+      "target": "buscher_reflection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_norm_buscher_invariant",
+      "target": "mukai_norm",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_norm_buscher_invariant",
+      "target": "buscher_reflection",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature",
+      "target": "mukai_rank",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature",
+      "target": "mukai_signature",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_monodromy_master_contract",
+      "target": "MukaiVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_monodromy_master_contract",
+      "target": "buscher_reflection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_monodromy_master_contract",
+      "target": "mukai_norm",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_monodromy_master_contract",
+      "target": "mukai_rank",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_monodromy_master_contract",
+      "target": "buscher_reflection_involution",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.MukaiMonodromy.mukai_monodromy_master_contract",
+      "target": "mukai_norm_buscher_invariant",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.spectral_dissipation",
+      "target": "TurbulentCascadeState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.dissipation_strictly_positive",
+      "target": "TurbulentCascadeState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.dissipation_strictly_positive",
+      "target": "spectral_dissipation",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.dissipation_strictly_positive",
+      "target": "spectral_dissipation",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.enstrophy_flux_compatible",
+      "target": "TurbulentCascadeState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.enstrophy_lower_bound_positive",
+      "target": "TurbulentCascadeState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.enstrophy_lower_bound_positive",
+      "target": "enstrophy_flux_compatible",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.enstrophy_lower_bound_positive",
+      "target": "enstrophy_flux_compatible",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.kolmogorov_cascade_master_contract",
+      "target": "TurbulentCascadeState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.kolmogorov_cascade_master_contract",
+      "target": "enstrophy_flux_compatible",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.kolmogorov_cascade_master_contract",
+      "target": "spectral_dissipation",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.kolmogorov_cascade_master_contract",
+      "target": "dissipation_strictly_positive",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KolmogorovCascade.kolmogorov_cascade_master_contract",
+      "target": "enstrophy_lower_bound_positive",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.flux_potential_numerator",
+      "target": "FluxVacuumState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.flux_gradient_numerator",
+      "target": "FluxVacuumState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.flux_energy_strictly_positive",
+      "target": "FluxVacuumState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.flux_energy_strictly_positive",
+      "target": "flux_potential_numerator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.flux_energy_strictly_positive",
+      "target": "flux_potential_numerator",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.desitter_steepness_bound",
+      "target": "FluxVacuumState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.desitter_steepness_bound",
+      "target": "flux_gradient_numerator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.desitter_steepness_bound",
+      "target": "flux_potential_numerator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.desitter_steepness_bound",
+      "target": "flux_gradient_numerator",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.desitter_steepness_bound",
+      "target": "flux_potential_numerator",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.no_flat_desitter_vacuum",
+      "target": "FluxVacuumState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.no_flat_desitter_vacuum",
+      "target": "flux_gradient_numerator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.no_flat_desitter_vacuum",
+      "target": "flux_gradient_numerator",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.no_flat_desitter_vacuum",
+      "target": "flux_energy_strictly_positive",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.no_flat_desitter_vacuum",
+      "target": "flux_potential_numerator",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.desitter_swampland_master_contract",
+      "target": "FluxVacuumState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.desitter_swampland_master_contract",
+      "target": "flux_potential_numerator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.desitter_swampland_master_contract",
+      "target": "flux_gradient_numerator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.desitter_swampland_master_contract",
+      "target": "flux_energy_strictly_positive",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.desitter_swampland_master_contract",
+      "target": "desitter_steepness_bound",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.FluxSwampland.desitter_swampland_master_contract",
+      "target": "no_flat_desitter_vacuum",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.anchor_projection",
+      "target": "GeneralizedVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.is_exact_one_form",
+      "target": "GeneralizedVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.c_bracket",
+      "target": "GeneralizedVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.c_bracket_skew_symmetric",
+      "target": "GeneralizedVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.c_bracket_skew_symmetric",
+      "target": "c_bracket",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.c_bracket_skew_symmetric",
+      "target": "c_bracket",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.anchor_projection_exact_form_vanishes",
+      "target": "GeneralizedVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.anchor_projection_exact_form_vanishes",
+      "target": "is_exact_one_form",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.anchor_projection_exact_form_vanishes",
+      "target": "anchor_projection",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.anchor_projection_exact_form_vanishes",
+      "target": "anchor_projection",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.anchor_projection_exact_form_vanishes",
+      "target": "is_exact_one_form",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.dft_torsion_on_torus",
+      "target": "GeneralizedVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.dft_torsion_vanishes_on_torus",
+      "target": "GeneralizedVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.dft_torsion_vanishes_on_torus",
+      "target": "dft_torsion_on_torus",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.courant_torsion_master_contract",
+      "target": "GeneralizedVector",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.courant_torsion_master_contract",
+      "target": "c_bracket",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.courant_torsion_master_contract",
+      "target": "dft_torsion_on_torus",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.CourantTorsion.courant_torsion_master_contract",
+      "target": "c_bracket",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.golay_codeword_count_eval",
+      "target": "golay_codeword_count",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three",
+      "target": "error_correction_radius",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three",
+      "target": "golay_distance",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.is_valid_nonzero_codeword_weight",
+      "target": "golay_distance",
+      "kind": "def",
+      "metadata": {
+        "location": "defn_value"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.nonzero_codeword_weight_positive",
+      "target": "is_valid_nonzero_codeword_weight",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.nonzero_codeword_weight_positive",
+      "target": "is_valid_nonzero_codeword_weight",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.nonzero_codeword_weight_positive",
+      "target": "golay_distance",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension",
+      "target": "golay_length",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension",
+      "target": "golay_dimension",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract",
+      "target": "golay_codeword_count",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract",
+      "target": "error_correction_radius",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract",
+      "target": "golay_distance",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract",
+      "target": "golay_length",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract",
+      "target": "golay_dimension",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
       "source": "StringTheory.Foundation.Atlas.defaultK3",
       "target": "AtlasFourManifold",
       "kind": "sig",
@@ -13882,6 +15381,62 @@
       }
     },
     {
+      "source": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "target": "StringTheoryFoundation.ModularForms.FermatModularBridge",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "target": "DoubleFieldTheory.TDualityBuscher",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.Problem5_KolmogorovCascade",
+      "target": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.Problem6_FluxSwampland",
+      "target": "DualScaleValidation.UseCase3_FrontierTriad",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "target": "DoubleFieldTheory.CourantAlgebroid",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "target": "DoubleFieldTheory.GeneralizedGeometry",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "target": "DualScaleValidation.UseCase2_MoonshineBPS",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
       "source": "Lean5Corpus",
       "target": "Lean5Corpus.Foundations.Narrative",
       "kind": "import",
@@ -13908,6 +15463,46 @@
     {
       "source": "Lean5Corpus",
       "target": "Lean5Corpus.Problems.Problem3_DualScaleTCC",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus",
+      "target": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus",
+      "target": "Lean5Corpus.Problems.Problem5_KolmogorovCascade",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus",
+      "target": "Lean5Corpus.Problems.Problem6_FluxSwampland",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus",
+      "target": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus",
+      "target": "Lean5Corpus.Problems.Problem8_GolayHolography",
       "kind": "import",
       "metadata": {
         "import_type": "module"

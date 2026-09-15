@@ -1,51 +1,233 @@
 {
   "global_metrics": {
-    "total_nodes": 456,
-    "total_edges": 617,
-    "theorems_count": 190,
-    "definitions_count": 214,
-    "structures_count": 50,
+    "total_nodes": 498,
+    "total_edges": 713,
+    "theorems_count": 210,
+    "definitions_count": 232,
+    "structures_count": 54,
     "is_dag": true,
-    "redundant_transitive_edges": 9
+    "redundant_transitive_edges": 10
   },
-  "total_nodes": 456,
-  "total_edges": 617,
+  "total_nodes": 498,
+  "total_edges": 713,
   "problems": [
     {
       "problem_name": "Problem 1: Navier-Stokes Helicity & Dissipation Bound",
-      "prefix": "Lean5Corpus.Problems.Problem1_NavierStokesHelicity",
-      "target_nodes_count": 0,
-      "theorems_count": 0,
-      "theorems": [],
-      "definitions_count": 0,
-      "total_upstream_closure_nodes": 0,
+      "module": "Lean5Corpus.Problems.Problem1_NavierStokesHelicity",
+      "target_nodes_count": 8,
+      "theorems_count": 5,
+      "theorems": [
+        "Lean5Corpus.Problems.NavierStokes.mul_reorder_4",
+        "Lean5Corpus.Problems.NavierStokes.topological_linking_forces_positive_enstrophy",
+        "Lean5Corpus.Problems.NavierStokes.knotted_flow_must_dissipate_energy",
+        "Lean5Corpus.Problems.NavierStokes.helicity_dissipation_inequality",
+        "Lean5Corpus.Problems.NavierStokes.navier_stokes_helicity_contract"
+      ],
+      "definitions_count": 2,
+      "structures_count": 1,
+      "total_upstream_closure_nodes": 8,
       "subgraph_edges_count": 0,
       "upstream_modules": [],
-      "sample_declarations": []
+      "sample_declarations": [
+        "ViscousFluidState",
+        "dissipation_rate",
+        "satisfies_cauchy_schwarz",
+        "mul_reorder_4",
+        "topological_linking_forces_positive_enstrophy",
+        "knotted_flow_must_dissipate_energy",
+        "helicity_dissipation_inequality",
+        "navier_stokes_helicity_contract"
+      ]
     },
     {
       "problem_name": "Problem 2: Mathieu M24 Frobenius Rigidity & Conductor Lock",
-      "prefix": "Lean5Corpus.Problems.Problem2_MathieuFrobeniusRigidity",
-      "target_nodes_count": 0,
-      "theorems_count": 0,
-      "theorems": [],
-      "definitions_count": 0,
-      "total_upstream_closure_nodes": 0,
+      "module": "Lean5Corpus.Problems.Problem2_MathieuFrobeniusRigidity",
+      "target_nodes_count": 13,
+      "theorems_count": 8,
+      "theorems": [
+        "Lean5Corpus.Problems.MathieuFrobenius.bps_conductor_prime_factorization",
+        "Lean5Corpus.Problems.MathieuFrobenius.conductor_divisible_by_first_five_primes",
+        "Lean5Corpus.Problems.MathieuFrobenius.dim_A1_factorization",
+        "Lean5Corpus.Problems.MathieuFrobenius.dim_A2_factorization",
+        "Lean5Corpus.Problems.MathieuFrobenius.m24_conductor_quotient",
+        "Lean5Corpus.Problems.MathieuFrobenius.hasse_bound_at_13",
+        "Lean5Corpus.Problems.MathieuFrobenius.hasse_trace_integer_bound",
+        "Lean5Corpus.Problems.MathieuFrobenius.mathieu_frobenius_master_contract"
+      ],
+      "definitions_count": 5,
+      "structures_count": 0,
+      "total_upstream_closure_nodes": 13,
       "subgraph_edges_count": 0,
       "upstream_modules": [],
-      "sample_declarations": []
+      "sample_declarations": [
+        "bps_conductor",
+        "dim_A1",
+        "dim_A2",
+        "order_M24",
+        "bps_conductor_prime_factorization",
+        "conductor_divisible_by_first_five_primes",
+        "dim_A1_factorization",
+        "dim_A2_factorization"
+      ]
     },
     {
       "problem_name": "Problem 3: Dual-Scale Trans-Planckian Censorship (TCC)",
-      "prefix": "Lean5Corpus.Problems.Problem3_DualScaleTCC",
-      "target_nodes_count": 0,
-      "theorems_count": 0,
-      "theorems": [],
-      "definitions_count": 0,
-      "total_upstream_closure_nodes": 0,
+      "module": "Lean5Corpus.Problems.Problem3_DualScaleTCC",
+      "target_nodes_count": 8,
+      "theorems_count": 4,
+      "theorems": [
+        "Lean5Corpus.Problems.DualScaleTCC.wavelength_strictly_super_planckian",
+        "Lean5Corpus.Problems.DualScaleTCC.sub_planckian_modes_impossible",
+        "Lean5Corpus.Problems.DualScaleTCC.tcc_expansion_factor_positive",
+        "Lean5Corpus.Problems.DualScaleTCC.tcc_cosmic_protection_contract"
+      ],
+      "definitions_count": 3,
+      "structures_count": 1,
+      "total_upstream_closure_nodes": 8,
       "subgraph_edges_count": 0,
       "upstream_modules": [],
-      "sample_declarations": []
+      "sample_declarations": [
+        "planck_length",
+        "string_scale",
+        "effective_wavelength_num",
+        "wavelength_strictly_super_planckian",
+        "sub_planckian_modes_impossible",
+        "InflationParameters",
+        "tcc_expansion_factor_positive",
+        "tcc_cosmic_protection_contract"
+      ]
+    },
+    {
+      "problem_name": "Problem 4: Mukai Lattice Monodromy Invariance",
+      "module": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
+      "target_nodes_count": 9,
+      "theorems_count": 4,
+      "theorems": [
+        "Lean5Corpus.Problems.MukaiMonodromy.buscher_reflection_involution",
+        "Lean5Corpus.Problems.MukaiMonodromy.mukai_norm_buscher_invariant",
+        "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature",
+        "Lean5Corpus.Problems.MukaiMonodromy.mukai_monodromy_master_contract"
+      ],
+      "definitions_count": 4,
+      "structures_count": 1,
+      "total_upstream_closure_nodes": 9,
+      "subgraph_edges_count": 0,
+      "upstream_modules": [],
+      "sample_declarations": [
+        "MukaiVector",
+        "mukai_norm",
+        "buscher_reflection",
+        "buscher_reflection_involution",
+        "mukai_norm_buscher_invariant",
+        "mukai_rank",
+        "mukai_signature",
+        "mukai_rank_and_signature"
+      ]
+    },
+    {
+      "problem_name": "Problem 5: Kolmogorov-41 Turbulent Energy Cascade Bound",
+      "module": "Lean5Corpus.Problems.Problem5_KolmogorovCascade",
+      "target_nodes_count": 6,
+      "theorems_count": 3,
+      "theorems": [
+        "Lean5Corpus.Problems.KolmogorovCascade.dissipation_strictly_positive",
+        "Lean5Corpus.Problems.KolmogorovCascade.enstrophy_lower_bound_positive",
+        "Lean5Corpus.Problems.KolmogorovCascade.kolmogorov_cascade_master_contract"
+      ],
+      "definitions_count": 2,
+      "structures_count": 1,
+      "total_upstream_closure_nodes": 6,
+      "subgraph_edges_count": 0,
+      "upstream_modules": [],
+      "sample_declarations": [
+        "TurbulentCascadeState",
+        "spectral_dissipation",
+        "dissipation_strictly_positive",
+        "enstrophy_flux_compatible",
+        "enstrophy_lower_bound_positive",
+        "kolmogorov_cascade_master_contract"
+      ]
+    },
+    {
+      "problem_name": "Problem 6: Refined de Sitter Swampland Bound on Flux Vacua",
+      "module": "Lean5Corpus.Problems.Problem6_FluxSwampland",
+      "target_nodes_count": 7,
+      "theorems_count": 4,
+      "theorems": [
+        "Lean5Corpus.Problems.FluxSwampland.flux_energy_strictly_positive",
+        "Lean5Corpus.Problems.FluxSwampland.desitter_steepness_bound",
+        "Lean5Corpus.Problems.FluxSwampland.no_flat_desitter_vacuum",
+        "Lean5Corpus.Problems.FluxSwampland.desitter_swampland_master_contract"
+      ],
+      "definitions_count": 2,
+      "structures_count": 1,
+      "total_upstream_closure_nodes": 7,
+      "subgraph_edges_count": 0,
+      "upstream_modules": [],
+      "sample_declarations": [
+        "FluxVacuumState",
+        "flux_potential_numerator",
+        "flux_gradient_numerator",
+        "flux_energy_strictly_positive",
+        "desitter_steepness_bound",
+        "no_flat_desitter_vacuum",
+        "desitter_swampland_master_contract"
+      ]
+    },
+    {
+      "problem_name": "Problem 7: Generalized Courant-Nijenhuis Torsion Vanishing",
+      "module": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+      "target_nodes_count": 9,
+      "theorems_count": 4,
+      "theorems": [
+        "Lean5Corpus.Problems.CourantTorsion.c_bracket_skew_symmetric",
+        "Lean5Corpus.Problems.CourantTorsion.anchor_projection_exact_form_vanishes",
+        "Lean5Corpus.Problems.CourantTorsion.dft_torsion_vanishes_on_torus",
+        "Lean5Corpus.Problems.CourantTorsion.courant_torsion_master_contract"
+      ],
+      "definitions_count": 4,
+      "structures_count": 1,
+      "total_upstream_closure_nodes": 9,
+      "subgraph_edges_count": 0,
+      "upstream_modules": [],
+      "sample_declarations": [
+        "GeneralizedVector",
+        "anchor_projection",
+        "is_exact_one_form",
+        "c_bracket",
+        "c_bracket_skew_symmetric",
+        "anchor_projection_exact_form_vanishes",
+        "dft_torsion_on_torus",
+        "dft_torsion_vanishes_on_torus"
+      ]
+    },
+    {
+      "problem_name": "Problem 8: Holographic Quantum Error-Correction of Golay Code G_24",
+      "module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "target_nodes_count": 11,
+      "theorems_count": 5,
+      "theorems": [
+        "Lean5Corpus.Problems.GolayHolography.golay_codeword_count_eval",
+        "Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three",
+        "Lean5Corpus.Problems.GolayHolography.nonzero_codeword_weight_positive",
+        "Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension",
+        "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract"
+      ],
+      "definitions_count": 6,
+      "structures_count": 0,
+      "total_upstream_closure_nodes": 11,
+      "subgraph_edges_count": 0,
+      "upstream_modules": [],
+      "sample_declarations": [
+        "golay_length",
+        "golay_dimension",
+        "golay_distance",
+        "golay_codeword_count",
+        "golay_codeword_count_eval",
+        "error_correction_radius",
+        "golay_error_radius_equals_three",
+        "is_valid_nonzero_codeword_weight"
+      ]
     }
   ]
 }

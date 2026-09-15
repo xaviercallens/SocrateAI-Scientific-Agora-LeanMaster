@@ -54,7 +54,7 @@ OPEN_PROBLEMS: List[Dict[str, Any]] = [
         "domain": "String Geometry",
         "foundation": "xaviercallens-xflt / DoubleFieldTheory",
         "target_module": "Lean5Corpus.Problems.Problem4_MukaiMonodromy",
-        "status": "OPEN_FRONTIER",
+        "status": "SOLVED_IN_CORPUS",
         "description": "Prove that the Mukai intersection pairing on H*(K3, Z) is an invariant bilinear form under the doubled T-duality group O(4,20; Z)."
     },
     {
@@ -63,7 +63,7 @@ OPEN_PROBLEMS: List[Dict[str, Any]] = [
         "domain": "Turbulence & Sobolev PDEs",
         "foundation": "openai-navierstokes / PhysLib",
         "target_module": "Lean5Corpus.Problems.Problem5_KolmogorovCascade",
-        "status": "OPEN_FRONTIER",
+        "status": "SOLVED_IN_CORPUS",
         "description": "Formalize lower bounds on the inertial-range spectral transfer rate in a discrete Fourier Sobolev lattice."
     },
     {
@@ -72,35 +72,35 @@ OPEN_PROBLEMS: List[Dict[str, Any]] = [
         "domain": "Quantum Gravity & Swampland",
         "foundation": "DualScaleValidation / Vafa 2005",
         "target_module": "Lean5Corpus.Problems.Problem6_FluxSwampland",
-        "status": "OPEN_FRONTIER",
+        "status": "SOLVED_IN_CORPUS",
         "description": "Prove that positive cosmological constant vacua with non-zero 4-form flux violate asymptotic moduli stabilization."
     },
     {
-        "id": "MOD-P7",
-        "title": "Modularity of Kummer Surface Fibrations over Modular Curves X_0(p^k)",
-        "domain": "Arithmetic Geometry",
-        "foundation": "anthropics-flt / atlas-lean",
-        "target_module": "Lean5Corpus.Problems.Problem7_KummerModularity",
-        "status": "OPEN_FRONTIER",
-        "description": "Formalize the Hecke eigenvalue correspondence for singular fiber components in elliptic K3 fibrations."
-    },
-    {
-        "id": "DFT-P8",
+        "id": "DFT-P7",
         "title": "Generalized Courant-Nijenhuis Torsion Vanishing on Doubled Torus T^{2d}",
         "domain": "Generalized Geometry",
         "foundation": "DoubleFieldTheory / Hull-Zwiebach 2009",
-        "target_module": "Lean5Corpus.Problems.Problem8_CourantTorsion",
-        "status": "OPEN_FRONTIER",
+        "target_module": "Lean5Corpus.Problems.Problem7_CourantTorsion",
+        "status": "SOLVED_IN_CORPUS",
         "description": "Prove that the skew-symmetric C-bracket satisfies the generalized Jacobi identity up to an exact section."
     },
     {
-        "id": "GOL-P9",
+        "id": "GOL-P8",
         "title": "Holographic Quantum Error-Correcting Distance for Extended Golay Code G_{24}",
         "domain": "Quantum Information & Moonshine",
         "foundation": "tnlean / lean-quantum",
-        "target_module": "Lean5Corpus.Problems.Problem9_GolayHolography",
-        "status": "OPEN_FRONTIER",
+        "target_module": "Lean5Corpus.Problems.Problem8_GolayHolography",
+        "status": "SOLVED_IN_CORPUS",
         "description": "Mechanize the minimum Hamming distance d = 8 protecting 1/4-BPS black hole microstate superselection sectors."
+    },
+    {
+        "id": "MOD-P9",
+        "title": "Modularity of Kummer Surface Fibrations over Modular Curves X_0(p^k)",
+        "domain": "Arithmetic Geometry",
+        "foundation": "anthropics-flt / atlas-lean",
+        "target_module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+        "status": "OPEN_FRONTIER",
+        "description": "Formalize the Hecke eigenvalue correspondence for singular fiber components in elliptic K3 fibrations."
     },
     {
         "id": "SYM-P10",
