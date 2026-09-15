@@ -1,0 +1,25 @@
+import DoubleFieldTheory.K3Topology
+import DoubleFieldTheory.CourantAlgebroid
+import DualScaleValidation.UseCase1_ModuliStabilization
+import DualScaleValidation.UseCase2_MoonshineBPS
+import DualScaleValidation.Observables
+import DualScaleM24Formalization.DualScale.EffectiveMetric
+import Lean5Corpus.Problems.Problem3_DualScaleTCC
+import Lean5Corpus.Problems.Problem8_GolayHolography
+
+#print axioms DoubleFieldTheory.K3Topology.k3_euler_characteristic
+#print axioms DoubleFieldTheory.K3Topology.k3_atiyah_singer_dirac_index
+#print axioms DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes
+#print axioms DoubleFieldTheory.CourantAlgebroid.strong_section_condition
+#print axioms DualScaleValidation.UseCase1.self_dual_is_global_minimum
+#print axioms DualScaleValidation.UseCase1.moduli_vacuum_stability
+#print axioms DualScaleValidation.Observables.tensor_to_scalar_ratio_reduction
+#print axioms DualScaleValidation.UseCase1.moduli_potential_nonneg
+#print axioms DualScaleValidation.UseCase1.moduli_potential_zero_iff
+#print axioms DualScaleValidation.UseCase2.bps_cross_multiplication_lock
+#print axioms DualScaleValidation.UseCase2.bps_ratio_coprime
+#print axioms DualScaleValidation.Observables.observables_windows_master_contract
+#print axioms SocrateAI.DualScale.genesis_no_singularity
+#print axioms SocrateAI.DualScale.buscher_involution
+#print axioms Lean5Corpus.Problems.DualScaleTCC.tcc_cosmic_protection_contract
+#print axioms Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract

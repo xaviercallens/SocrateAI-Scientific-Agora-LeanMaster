@@ -1,22 +1,25 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{geometry}
 \geometry{margin=1in}
+\usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage{cleveref}
 \usepackage{booktabs}
+\usepackage{array}
 \usepackage{cite}
-\usepackage{color}
 \usepackage{microtype}
 \usepackage{tcolorbox}
-\usepackage{array}
+\usepackage{slashed}
 
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
     citecolor=red,
     urlcolor=cyan,
-    pdftitle={The Dual-Scale String Theory: Mechanized Foundations, Singularity Resolution, Mathieu Moonshine, and Exact Zero-Free-Parameter Cosmology},
+    pdftitle={The Dual-Scale String Theory: Mechanized Foundations, Singularity Resolution, Mathieu Moonshine, and a Zero-Free-Parameter Cosmological Conjecture},
     pdfauthor={Xavier Callens and the SocrateAI Scientific Agora Collaboration}
 }
 
@@ -25,41 +28,59 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
+% ---------------------------------------------------------------------------
+% Epistemic tier badges. See Section 1.1 for the tier definitions, and
+% papers/publication/PAPER7_IMPROVEMENT_PROPOSAL.md for the audit that
+% motivated this convention.
+% ---------------------------------------------------------------------------
+\newcommand{\tierA}{\colorbox{green!15}{\textsf{\scriptsize Tier A --- Lean kernel}}}
+\newcommand{\tierL}{\colorbox{blue!10}{\textsf{\scriptsize Tier L --- literature}}}
+\newcommand{\tierC}{\colorbox{orange!15}{\textsf{\scriptsize Tier C --- conjecture / proposal}}}
+
+\newtcolorbox{scopebox}{%
+  colback=gray!5, colframe=gray!45, boxrule=0.4pt, arc=1pt,
+  left=6pt, right=6pt, top=3pt, bottom=3pt,
+  fonttitle=\bfseries\small, title={Scope of Lean 4 verification}
+}
+
 \title{\Huge \textbf{The Dual-Scale String Theory:}\\[0.3em]
 \LARGE Mechanized Foundations, Singularity Resolution, Mathieu Moonshine,\\
-and Exact Zero-Free-Parameter Cosmology on $K3 \times T^2$}
+and a Zero-Free-Parameter Cosmological Conjecture on $K3 \times T^2$}
 
-\author{\textbf{Xavier Callens}$^{1,2}$ \and \textbf{SocrateAI Scientific Agora Collaboration}$^{1}$ \\[0.5em]
-$^{1}$\textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal Verification} \\
-$^{2}$\textit{Directorate of Epistemic Software \& Autonomous Multi-Agent Swarms}}
+\author{\textbf{Xavier Callens}$^{1}$ \and \textbf{SocrateAI Scientific Agora Collaboration}$^{1}$ \\[0.5em]
+$^{1}$\textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal Verification}}
 
-\date{\textbf{v1.2.0 Certified Release} --- September 2026}
+\date{Revision 2 --- September 2026}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-For over four decades, superstring theory and theoretical cosmology have contended with the ``Landscape Crisis''---the proliferation of an estimated $10^{500}$ metastable vacua with undetermined continuous moduli, arbitrary coupling constants, and unverified heuristic mathematics. Much like recent AI breakthroughs demonstrating that Navier-Stokes equations inevitably blow up in the continuous fluid limit, we posit that the cosmological singularity and infinite vacuum landscape are artifacts of the dangerous illusion of continuous differential geometry. In this work, we present the comprehensive mathematical and physical demonstration of the \textbf{Dual-Scale String Theory} on $K3 \times T^2$, establishing the first quantum gravity framework to be \textbf{100\% machine-certified by the Lean 4 proof assistant with strict zero-sorry kernel verification}. 
-
-We construct an architecture across ten independent, self-contained sections:
-\begin{enumerate}
-    \item We resolve the landscape crisis via epistemic machine certification;
-    \item We formulate Double Field Theory (DFT) on the generalized bundle $\mathbb{T}M = TM \oplus T^*M$ with invariant metric $\eta_{MN}$ and Courant algebroids;
-    \item We prove the \textit{Genesis No-Singularity Theorem} via the Callens effective dual metric $R_{\mathrm{eff}}(R) = R + \alpha'/R \ge 2\sqrt{\alpha'}$, replacing cosmological Big Bang and black hole singularities with a smooth quantum bounce;
-    \item We demonstrate unconditional algebraic satisfaction of the Trans-Planckian Censorship Conjecture (TCC);
-    \item We demonstrate non-perturbative moduli stabilization on $K3 \times T^2$ driven by the generalized Ricci curvature $\mathcal{R}_{\mathrm{DFT}}$ without flat directions;
-    \item We prove the discrete rigidity of the 1/4-BPS dyon character ratio $\mathcal{R}_{\mathrm{BPS}} = 77/60$ locked by the topological invariant integer $27720$, with sporadic Mathieu group quotient $|M_{24}|/27720 = 8832$;
-    \item We establish the rigorous proof of \textbf{Strictly Zero Continuous Free Parameters} across five Diophantine locks;
-    \item We present the exact \textit{Falsifiability Matrix} yielding sharp predictions for LiteBIRD ($r = 0.00396$), DUNE ($\delta_{\mathrm{CP}} = 282.4^\circ$), and DESI/Euclid ($w_0 = -1, w_a = 0$);
-    \item We outline the Lean 4 formalization architecture, custom Physics Domain-Specific Language (DSL), and LeanGraph acyclic causal DAG;
-    \item We delineate the paradigm shift toward machine-certified physics.
-\end{enumerate}
-Every mathematical definition, lemma, and master theorem has been certified with 0 \texttt{sorry} and 0 \texttt{admit} axioms across 61 Lake compilation jobs in pure Lean 4.
+We present a Lean~4 companion formalization for a dual-scale scenario of type~II string theory on
+$K3\times T^2$, and we state precisely what is, and is not, machine-checked. The Lean artifact
+(51 files, 554 declarations, toolchain \texttt{v4.33.1}, \textbf{no Mathlib dependency},
+standard axioms only --- \texttt{\#print axioms} logs in \Cref{app:axioms}) certifies exact integer
+and rational identities used in the argument: the positivity of the dual scale $R+\alpha'/R$ on
+integer radii; the $K3$ topological invariants $\chi=24$, $\sigma=-16$, $\mathrm{ind}(\slashed D)=2$;
+the elliptic-genus arithmetic $A_2\cdot 60 = 4A_1\cdot 77 = 27720$ with $|M_{24}| = 27720\cdot 8832$;
+and a corrected, genuinely unique-minimum toy potential (an earlier revision of this corpus contained
+a \texttt{Nat}-truncation bug that made the claimed minimum non-unique; \Cref{sec:compactification}
+and \Cref{app:ledger} document the fix). The differential-geometric, index-theoretic and cosmological
+statements built on top of this arithmetic --- Double Field Theory, the Atiyah--Singer index theorem,
+moduli stabilization, and the tensor-to-scalar ratio, CP phase, and dark-energy predictions --- are
+either drawn from the literature or proposed here as conjectures, and are labeled by epistemic tier
+throughout (\tierA\ / \tierL\ / \tierC). In particular we discuss the obstruction that
+$\mathcal{N}=4$ non-renormalization poses for moduli stabilization on $K3\times T^2$, and we confront
+the paper's speculative numerical relations for $r$, $\delta_{\mathrm{CP}}$, and $(w_0,w_a)$ with
+current data, including the DESI DR2 preference for a time-evolving dark-energy equation of state at
+$3.1\sigma$ over $(w_0,w_a)=(-1,0)$. We close with a roadmap for promoting the central real-analytic
+claims (currently Tier L or Tier C) to kernel-checked Tier A theorems using Mathlib.
 \end{abstract}
 
 \newpage
@@ -67,445 +88,663 @@ Every mathematical definition, lemma, and master theorem has been certified with
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The Quantum Gravity Crisis, The Landscape Problem, and Epistemic Machine Certification}
+\section{Introduction: The Landscape Problem and the Scope of This Paper}
+\label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The pursuit of a consistent, unified quantum theory of gravity has constituted the central intellectual endeavor of theoretical high-energy physics for over half a century. While superstring theory provides an anomaly-free perturbative framework uniting non-abelian gauge fields with general relativity in ten spacetime dimensions, its physical realization in four dimensions has suffered from an acute structural impasse: the \textbf{Landscape Problem} \cite{Vafa2005, Douglas2003}.
+The pursuit of a consistent, unified quantum theory of gravity has constituted a central goal of
+theoretical high-energy physics for over half a century. Superstring theory provides an anomaly-free
+perturbative framework uniting non-abelian gauge fields with general relativity in ten spacetime
+dimensions, but its physical realization in four dimensions confronts the \textbf{Landscape
+Problem}: in traditional flux compactifications (e.g.\ the KKLT and Large Volume Scenarios), an
+estimated $10^{500}$ metastable vacua arise from the interplay of hundreds of geometric moduli with
+under-constrained flux choices \cite{Vafa2005, Douglas2003, KKLT2003}. In the absence of a
+stabilizing mechanism, these moduli remain massless, generating unphysical fifth forces and leaving
+gauge couplings, Yukawa hierarchies, and the cosmological constant undetermined.
 
-In traditional compactifications on Calabi-Yau 3-folds or fluxed orientifolds, the low-energy effective field theory is characterized by hundreds of geometric moduli fields parameterizing the volume, complex structure, and internal cycles of the compact manifold. In the absence of non-perturbative stabilizing mechanisms, these scalar fields are massless, generating unphysical fifth forces and leaving gauge couplings, Yukawa hierarchies, and the cosmological constant arbitrary. The introduction of flux vacua (e.g., the KKLT and LVS scenarios) led to an estimated $10^{500}$ metastable vacua, transforming string phenomenology into an underdetermined statistical survey without predictive uniqueness.
+Separately, modern theoretical physics faces a practical \textbf{verification problem}: papers in
+string theory and cosmology routinely involve long chains of tensor algebra, differential forms, and
+representation-theoretic bookkeeping that are tedious and error-prone to check by hand. Interactive
+theorem provers such as Lean~4 \cite{Lean4Paper} offer a way to make specific algebraic claims within
+such an argument kernel-checkable.
 
-Concurrently, theoretical physics has encountered what may be termed the \textbf{Epistemic Verification Crisis}. Modern papers in string theory and cosmology routinely exceed hundreds of pages of complex tensor algebra, differential forms, spectral sequences, and higher-category theory. Peer review by human referees has become fundamentally incapable of verifying the global algebraic soundness of such multi-step deductions, resulting in lingering controversies regarding vacuum stability and swampland bounds. Furthermore, as dramatically highlighted by recent AI-assisted proofs showing the inevitable blowup of the Navier-Stokes equations, relying strictly on continuous differential equations at fundamental scales creates dangerous physical illusions.
+This paper is a case study in doing exactly that --- for a restricted, honestly-scoped set of claims
+about a proposed \textbf{Dual-Scale} scenario for type~II string theory compactified on $K3\times
+T^2$. We adopt the following convention throughout, adapted from the tiered-evidence discipline used
+elsewhere in this research programme:
 
-To overcome both crises simultaneously, we introduce the \textbf{Dual-Scale Framework} under the paradigm of \textbf{Epistemic Machine Certification}. Rather than relying on human consensus or heuristic approximations of the continuum, every mathematical identity, topological invariant, and dynamical claim in this theory has been translated into dependent type theory and mechanically certified by the Lean 4 kernel \cite{Lean4Paper}. By demanding strict 0-sorry compliance, the correctness of our algebra is not an object of subjective debate, but a mathematically certified theorem.
+\subsection{Epistemic tiers}
+\label{sec:tiers}
+\begin{itemize}
+  \item \tierA\ --- \textbf{Lean kernel}: the Lean~4 kernel accepted the exact statement, with no
+    \texttt{sorry}, and its axiom footprint is only the three standard Lean axioms
+    (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; verified in
+    \Cref{app:axioms}). Tier A is a claim about a specific formal statement, not about the informal
+    sentence next to it in this paper --- \Cref{app:ledger} gives the exact Lean type for every
+    Tier A claim so the reader can check the two match.
+  \item \tierL\ --- \textbf{literature}: an established result quoted from a peer-reviewed source,
+    not independently re-derived or re-verified here.
+  \item \tierC\ --- \textbf{conjecture / proposal}: a claim original to this paper, or a numerical
+    pattern-match, that is neither kernel-checked nor an established literature result. Tier~C
+    claims are falsifiable proposals, not derivations.
+\end{itemize}
+A claim may not rest, even transitively, on a claim of a lower tier without that dependency being
+stated. Adjectives (``rigorous'', ``striking'', ``decisive'') are never a substitute for a tier.
+
+\subsection{What changed in this revision}
+\label{sec:changelog}
+An earlier revision of this manuscript stated that ``every mathematical definition, lemma, and
+master theorem has been certified'' and was ``100\% machine-certified.'' A statement-adequacy audit
+--- comparing each cited Lean declaration's actual type against the LaTeX sentence citing it ---
+found that this was not accurate: several headline claims were true only of a much narrower Lean
+statement than the one stated in prose (e.g.\ a bound over $\mathbb{N}$ presented as holding over
+$\mathbb{R}$), one Lean theorem contained a genuine bug (a non-unique ``unique minimum'' caused by
+\texttt{Nat} truncation), several numbers were arithmetically wrong (the factorization
+$8832=2^6\times 3\times 23$, which should read $2^7\times 3\times 23$; the CP-phase evaluation
+$282.4^\circ$, which should read $283^\circ$; a rounded value of $r$ inconsistent with the exact
+fraction it was supposed to approximate), and the confrontation with observational data did not
+reflect current results (in particular, DESI DR2 already disfavors the paper's dark-energy
+prediction). This revision documents and fixes each of these issues in place; the full audit is
+\texttt{papers/publication/PAPER7\_IMPROVEMENT\_PROPOSAL.md} in the repository, and every fix is a
+separate, reviewable commit.
+
+\subsection{AI-assisted tooling}
+The Lean formalization, the audit that produced this revision, and portions of this manuscript's
+prose were produced with the assistance of large-language-model-based agents operating under human
+direction and review (Xavier Callens). All Lean proofs are independently checked by the Lean~4
+kernel regardless of how they were produced (\Cref{app:axioms}); no LLM output is treated as
+establishing a claim's tier (\Cref{sec:tiers}). This is disclosed here in place of listing an AI
+system as an author.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Double Field Theory and \texorpdfstring{$O(D,D)$}{O(D,D)} Generalized Riemannian Geometry}
+\label{sec:dft}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Standard Riemannian geometry treats spacetime as a pseudo-Riemannian manifold $(M, g_{\mu\nu})$ where the metric $g_{\mu\nu}$ determines geodesic motion and the Kalb-Ramond 2-form $B_{\mu\nu}$ is an auxiliary background field. In closed string theory, however, strings possess two distinct topological quantum numbers along any compact cycle: center-of-mass momentum $n \in \mathbb{Z}$ and string winding $w \in \mathbb{Z}$.
+Standard Riemannian geometry treats spacetime as a pseudo-Riemannian manifold $(M, g_{\mu\nu})$ where
+the metric $g_{\mu\nu}$ determines geodesic motion and the Kalb-Ramond 2-form $B_{\mu\nu}$ is an
+auxiliary background field. Closed strings, however, possess two distinct topological quantum
+numbers along any compact cycle: center-of-mass momentum $n \in \mathbb{Z}$ and string winding $w \in
+\mathbb{Z}$.
 
-In \textbf{Double Field Theory (DFT)} \cite{HullZwiebach2009, HohmHullZwiebach2010}, the tangent bundle $TM$ and cotangent bundle $T^*M$ are unified into the generalized tangent bundle:
+In \textbf{Double Field Theory (DFT)} \cite{HullZwiebach2009, HohmHullZwiebach2010}, the tangent
+bundle $TM$ and cotangent bundle $T^*M$ are unified into the generalized tangent bundle $\mathbb{T}M
+= TM \oplus T^*M$. A generalized vector field $X^M \in \Gamma(\mathbb{T}M)$ combines a tangent vector
+$v \in \Gamma(TM)$ and a 1-form $\xi \in \Gamma(T^*M)$, and $\mathbb{T}M$ carries the canonical
+$O(D,D)$ split-signature metric
 \begin{equation}
-    \mathbb{T}M = TM \oplus T^*M
-\end{equation}
-A generalized vector field $X^M \in \Gamma(\mathbb{T}M)$ combines a tangent vector $v \in \Gamma(TM)$ and a 1-form $\xi \in \Gamma(T^*M)$:
-\begin{equation}
-    X^M = \begin{pmatrix} v^\mu \\ \xi_\mu \end{pmatrix}
-\end{equation}
-The bundle $\mathbb{T}M$ is canonically endowed with an $O(D, D)$ split-signature metric:
-\begin{equation}
-    \eta_{MN} = \begin{pmatrix} 0 & \mathbf{1}_D \\ \mathbf{1}_D & 0 \end{pmatrix}, \quad \eta^{MN} = \begin{pmatrix} 0 & \mathbf{1}_D \\ \mathbf{1}_D & 0 \end{pmatrix}
-\end{equation}
-which defines the canonical, coordinate-free inner product:
-\begin{equation}
+    \eta_{MN} = \begin{pmatrix} 0 & \mathbf{1}_D \\ \mathbf{1}_D & 0 \end{pmatrix}, \qquad
     \langle X, Y \rangle_\eta = X^M \eta_{MN} Y^N = \xi_\mu u^\mu + \zeta_\mu v^\mu
 \end{equation}
-for $X = (v, \xi)$ and $Y = (u, \zeta)$.
+for $X = (v, \xi)$, $Y = (u, \zeta)$.
 
-\begin{definition}[Generalized Metric]
-The dynamical gravitational and Kalb-Ramond fields combine into the generalized metric $\mathcal{H}_{MN}$:
-\begin{equation}
-    \mathcal{H}_{MN} = \begin{pmatrix} g - B g^{-1} B & B g^{-1} \\ -g^{-1} B & g^{-1} \end{pmatrix}
-\end{equation}
-which parameterizes the coset space:
-\begin{equation}
-    \mathcal{H} \in \frac{O(D, D)}{O(D) \times O(D)}, \quad \mathcal{H}^T \eta \mathcal{H} = \eta, \quad \mathcal{H}^2 = \mathbf{1}_{2D}.
-\end{equation}
+\begin{definition}[Generalized metric] \label{def:genmetric} \tierL
+The gravitational and Kalb-Ramond fields combine into $\mathcal{H}_{MN} = \begin{pmatrix} g - B g^{-1}
+B & B g^{-1} \\ -g^{-1} B & g^{-1} \end{pmatrix}$, parameterizing the coset
+$\mathcal{H} \in O(D,D)/(O(D)\times O(D))$ with $\mathcal{H}^T\eta\mathcal{H}=\eta$,
+$\mathcal{H}^2=\mathbf{1}_{2D}$.
 \end{definition}
 
-On $\mathbb{T}M$, generalized coordinate transformations are generated by the \textbf{Courant C-Bracket}:
-\begin{equation}
-    [X, Y]_C = [v, u]_{\mathrm{Lie}} + \left( \mathcal{L}_v \zeta - \mathcal{L}_u \xi - \frac{1}{2} d(\iota_v \zeta - \iota_u \xi) \right)
-\end{equation}
-Unlike ordinary vector fields under the Lie bracket, the Courant bracket does not satisfy the standard Jacobi identity. Instead, its Jacobiator is an exact 1-form:
-\begin{equation}
-    \mathrm{Jac}(X, Y, Z) = [[X, Y]_C, Z]_C + \text{cycl.} = d \, \mathrm{Nij}(X, Y, Z)
-\end{equation}
-Crucially, the vector projection vanishes identically:
-\begin{equation}
-    \pi_{TM} \Big( \mathrm{Jac}(X, Y, Z) \Big) = 0
-\end{equation}
-guaranteeing that generalized diffeomorphisms form a closed gauge algebra modulo trivial gauge transformations.
+Generalized coordinate transformations are generated by the \textbf{Courant C-bracket} $[X,Y]_C =
+[v,u]_{\mathrm{Lie}} + \big(\mathcal{L}_v\zeta - \mathcal{L}_u\xi - \tfrac12
+d(\iota_v\zeta-\iota_u\xi)\big)$, whose Jacobiator is an exact 1-form, $\mathrm{Jac}(X,Y,Z) = [[X,Y]_C,
+Z]_C + \text{cycl.} = d\,\mathrm{Nij}(X,Y,Z)$, with vanishing vector projection $\pi_{TM}(\mathrm{Jac})
+= 0$; this guarantees closure of the generalized-diffeomorphism gauge algebra modulo trivial
+transformations. Closure additionally requires the \textbf{strong section condition}
+$\eta^{MN}\partial_M\Phi\,\partial_N\Psi = 0$, which in the physical frame ($\tilde\partial^i=0$)
+collapses DFT onto ordinary 10D supergravity.
 
-To preserve gauge algebra closure across fields $\Phi, \Psi$, all fields must satisfy the \textbf{Strong Section Condition} (DFT constraint):
-\begin{equation}
-    \eta^{MN} \partial_M \Phi \, \partial_N \Psi = 0 \iff \frac{\partial \Phi}{\partial x^i} \frac{\partial \Psi}{\partial \tilde{x}_i} + \frac{\partial \Phi}{\partial \tilde{x}_i} \frac{\partial \Psi}{\partial x^i} = 0
-\end{equation}
-Choosing the physical frame where fields are independent of winding coordinates ($\tilde{\partial}^i = 0$) collapses Double Field Theory onto standard 10D supergravity.
-
-Every statement in this section has been certified in Lean 4 modules \texttt{DoubleFieldTheory.GeneralizedGeometry}, \texttt{DoubleFieldTheory.CourantAlgebroid}, and \texttt{DoubleFieldTheory.PhysicsDSL}.
+\begin{scopebox}
+The Lean modules \texttt{DoubleFieldTheory.CourantAlgebroid} and
+\texttt{DoubleFieldTheory.GeneralizedGeometry} certify (Tier A) the \emph{algebraic shape} of this
+structure on a \textbf{1-dimensional scalar model}: a \texttt{CourantSection} is a pair of
+\texttt{Int}s $(v,\alpha)$, and the bracket $[X,Y]_C$ reduces to $X.v\cdot Y.v - Y.v\cdot X.v$, which
+is identically zero on scalars by commutativity of multiplication. The certified antisymmetry
+(\texttt{cbracket\_antisymm}) and Jacobiator-vanishing (\texttt{jacobiator\_vector\_vanishes})
+theorems are therefore true, but largely because every bracket in the scalar model is trivial; they
+are \emph{consistency checks on the algebraic shape} of the definitions, not a formalization of the
+Courant algebroid on $\mathbb{T}M = TM\oplus T^*M$ for an actual manifold $M$. Promoting this to a
+genuine bundle-valued formalization (vector fields and 1-forms on $K3\times T^2$, with a nontrivial
+Lie bracket) is future work and would require Mathlib's \texttt{VectorBundle} and differential-forms
+libraries; see \Cref{sec:formalization}.
+\end{scopebox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The Callens Effective Dual Metric and Universal Singularity Resolution}
+\section{The Effective Dual Scale and Singularity Resolution}
+\label{sec:effective-scale}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In general relativity, the Hawking-Penrose singularity theorems prove that under generic energy conditions, a contracting universe inevitably reaches a curvature singularity where geodesic completeness fails and curvature invariants diverge:
-\begin{equation}
-    a(t) \to 0 \implies \mathcal{R} \to \infty, \quad R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma} \to \infty
-\end{equation}
+The Hawking-Penrose singularity theorems show that under generic energy conditions a contracting
+universe in general relativity inevitably reaches a curvature singularity: $a(t)\to 0 \implies
+\mathcal{R}\to\infty$. String theory changes this conclusion kinematically. Closed strings
+propagating on a circle of coordinate radius $R$ have mass spectrum $M^2 = n^2/R^2 + w^2R^2/\alpha'^2
++ \tfrac{2}{\alpha'}(N+\tilde N - 2)$, invariant under the Buscher T-duality
+$\mathcal{T}: R \leftrightarrow \alpha'/R,\ n\leftrightarrow w$ \cite{Buscher1987}.
 
-In string theory, closed strings propagating on an isometric direction of coordinate radius $R$ possess the mass spectrum:
+\begin{definition}[Effective dual scale] \label{def:reff} \tierL
+The physical scale probed by a propagating string is governed by
 \begin{equation}
-    M^2 = \frac{n^2}{R^2} + \frac{w^2 R^2}{{\alpha'}^2} + \frac{2}{\alpha'}(N + \tilde{N} - 2)
+    R_{\mathrm{eff}}(R) = R + \frac{\alpha'}{R} = \frac{R^2+\alpha'}{R}, \qquad \alpha'\text{-units: } \alpha'=1.
 \end{equation}
-Under the Buscher T-duality transformation:
-\begin{equation}
-    \mathcal{T}: R \longleftrightarrow \frac{\alpha'}{R}, \quad n \longleftrightarrow w
-\end{equation}
-the physical mass spectrum is strictly invariant. 
-
-\begin{definition}[Callens Effective Dual Scale Metric]
-The physical scale probed by any propagating wavepacket or string probe is governed by the Buscher-invariant dual-scale function:
-\begin{equation}
-    R_{\mathrm{eff}}(R) = R + \frac{\alpha'}{R}
-\end{equation}
-which in string units ($\alpha' = 1$) takes the exact rational form:
-\begin{equation}
-    R_{\mathrm{eff}}(R) = \frac{R^2 + 1}{R}
-\end{equation}
+This function --- also called the ``zero-point-length'' or minimal-length effective radius in the
+T-duality/non-commutative-geometry literature --- and the string-gas cosmology it motivates were
+introduced by Brandenberger and Vafa \cite{BrandenbergerVafa1989} and developed by Giveon, Porrati
+and Rabinovici \cite{GiveonPorratiRabinovici1994}; we adopt their construction rather than proposing
+a new one.
 \end{definition}
 
-\begin{theorem}[Genesis No-Singularity Master Theorem]
-For all physical coordinate radii $R \in (0, \infty)$, the effective physical scale experienced by string probes is strictly bounded from below by $2\sqrt{\alpha'}$:
-\begin{equation}
-    \forall R > 0, \quad R_{\mathrm{eff}}(R) \ge 2\sqrt{\alpha'} > 0
-\end{equation}
-and the unique stationary point is the self-dual fixed point $R = \sqrt{\alpha'}$.
+\begin{theorem}[Global minimum of the effective scale] \label{thm:reff-min}
+
+\noindent\tierL\ (real form)
+
+\noindent\tierA\ (integer instance, below)
+\smallskip
+
+\noindent
+For all $R\in\mathbb{R}^{+}$, $R_{\mathrm{eff}}(R) = R+\alpha'/R \ge 2\sqrt{\alpha'} > 0$, with
+equality iff $R=\sqrt{\alpha'}$ (by AM--GM, or $f'(R)=1-\alpha'/R^2=0 \Rightarrow R=\sqrt{\alpha'}$,
+$f''>0$).
 \end{theorem}
 
-\begin{proof}
-Let $f(R) = R + \alpha'/R$ for $R \in \mathbb{R}^+$. The first derivative is:
-\begin{equation}
-    f'(R) = 1 - \frac{\alpha'}{R^2} = \frac{R^2 - \alpha'}{R^2}
-\end{equation}
-Setting $f'(R) = 0$ yields the unique real positive root $R = \sqrt{\alpha'}$. The second derivative is:
-\begin{equation}
-    f''(R) = \frac{2\alpha'}{R^3} > 0 \quad \forall R > 0
-\end{equation}
-confirming that $R = \sqrt{\alpha'}$ is a strictly global minimum. Evaluating at this minimum:
-\begin{equation}
-    R_{\mathrm{eff}}(\sqrt{\alpha'}) = \sqrt{\alpha'} + \frac{\alpha'}{\sqrt{\alpha'}} = 2\sqrt{\alpha'}
-\end{equation}
-For integer radii $R \ge 1$, the numerator satisfies $R^2 + 1 \ge 2$.
-\end{proof}
+\begin{scopebox}
+Module \texttt{DualScaleValidation.UseCase1}, theorem \texttt{self\_dual\_is\_global\_minimum},
+certifies (Tier A) the \textbf{integer instance} of \Cref{thm:reff-min}: for $R:\mathbb{N}$, $R\ge 1
+\Rightarrow R^2+1\ge 2$ (i.e.\ $R_{\mathrm{eff}}(R)\cdot R \ge 2$ at $\alpha'=1$). It does not
+formalize real radii, the square root, or the strict-minimality/uniqueness clause of
+\Cref{thm:reff-min} --- those remain Tier L pending a Mathlib-based real-analytic proof
+(\Cref{sec:formalization} gives a compiled-free sketch). Separately, theorem
+\texttt{genesis\_no\_singularity} in module \texttt{DualScaleM24Formalization.DualScale.EffectiveMetric}
+certifies that a \emph{piecewise} representation of $R_{\mathrm{eff}}$ on exact positive rationals
+always has a positive numerator and denominator by construction of the underlying \texttt{PosScale}
+type; this is true essentially by definition of the data structure and should not be read as an
+independent proof of non-singularity.
+\end{scopebox}
 
-\begin{corollary}[Elimination of the Initial Big Bang Singularity]
-As the coordinate scale factor contracts toward the classical Big Bang ($R \to 0$), the momentum modes decouple ($E_n \to \infty$) while the winding modes become ultra-light ($E_w \to 0$). The physical distance probed by the string ensemble:
-\begin{equation}
-    \lim_{R \to 0} R_{\mathrm{eff}}(R) = \lim_{R \to 0} \left( R + \frac{\alpha'}{R} \right) = \infty
-\end{equation}
-smoothly bounces into an expanding dual macroscopic universe dominated by a winding string gas. The classical Big Bang singularity is physically replaced by a smooth, non-singular bounce at $R = \sqrt{\alpha'}$.
+\begin{corollary}[Kinematic bounce] \label{cor:bounce} \tierL
+As the coordinate radius contracts ($R\to0$), momentum modes decouple while winding modes become
+light, and $R_{\mathrm{eff}}(R)\to\infty$: the string-frame probe distance does not go to zero. This
+is a \emph{kinematic} statement about the mass spectrum, following Brandenberger--Vafa string-gas
+cosmology \cite{BrandenbergerVafa1989}. It is not, by itself, a dynamical proof that a homogeneous
+cosmology governed by some equations of motion for $a(t)$ must bounce smoothly through this regime
+for \emph{every} choice of those equations of motion; that stronger claim would require specifying
+and solving the dynamics, which is beyond the scope of the present formalization.
 \end{corollary}
 
-Crucially, Lean 4 has verified that this is not merely a kinematic feature of the spectrum, but an \textit{absolute topological bounding} of the probe length. By algebraically forbidding sub-Planckian collapse, the dynamic cosmological singularity is rendered mathematically unreachable, guaranteeing a safe bounce regardless of the specific Friedmann-like equations of motion governing the scale factor $a(t)$.
-
-This theorem has been verified in Lean 4 without approximations in \texttt{DualScaleValidation.UseCase1.self\_dual\_is\_global\_minimum} and \texttt{SocrateAI.DualScale.genesis\_no\_singularity}.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Trans-Planckian Censorship and Cosmic Horizon Protection}
+\section{Trans-Planckian Censorship: A Conditional Bound}
+\label{sec:tcc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The \textbf{Trans-Planckian Censorship Conjecture (TCC)} \cite{BedroyaVafa2020} asserts that in any consistent theory of quantum gravity, sub-Planckian quantum fluctuations ($\lambda < \ell_{\mathrm{Pl}}$) can never expand across the cosmological Hubble horizon $d_H = 1/H$:
-\begin{equation}
-    \frac{a_f}{a_i} \cdot \frac{\ell_{\mathrm{Pl}}}{d_H(t_f)} \le 1 \implies \frac{a_f}{a_i} \le \frac{M_{\mathrm{Pl}}}{H_{\mathrm{inf}}}
-\end{equation}
+The \textbf{Trans-Planckian Censorship Conjecture (TCC)} \cite{BedroyaVafa2020} asserts that in any
+consistent theory of quantum gravity, sub-Planckian quantum fluctuations can never cross the
+cosmological horizon: $\tfrac{a_f}{a_i}\cdot\tfrac{\ell_{\mathrm{Pl}}}{d_H(t_f)} \le 1 \implies
+\tfrac{a_f}{a_i} \le M_{\mathrm{Pl}}/H_{\mathrm{inf}}$.
 
-In standard general-relativistic FRW cosmology, if the universe begins from a singularity $a(t) \to 0$, all observable cosmological scales today were sub-Planckian at early times:
-\begin{equation}
-    \lambda_{\mathrm{phys}}(t) = a(t) \lambda_0 \xrightarrow{a \to 0} 0 \ll \ell_{\mathrm{Pl}}
-\end{equation}
-This induces trans-Planckian modes that enter the classical horizon, violating the TCC and invalidating the low-energy effective field theory.
-
-\begin{theorem}[Algebraic Elimination of Sub-Planckian Modes]
-In the Dual-Scale String Theory, the physical wavelength probed by any propagating mode is:
-\begin{equation}
-    \lambda_{\mathrm{phys}}(R, \lambda_0) = R_{\mathrm{eff}}(R) \cdot \lambda_0 = \frac{R^2 + 1}{R} \lambda_0
-\end{equation}
-In Planck units ($\ell_{\mathrm{Pl}} = 1$), for every integer radius $R \ge 1$ and comoving quantum $\lambda_0 \ge 1$:
-\begin{equation}
-    \lambda_{\mathrm{num}}(R, \lambda_0) = (R^2 + 1) \cdot \lambda_0 \ge 2 > \ell_{\mathrm{Pl}}
-\end{equation}
-and sub-Planckian states are algebraically forbidden:
-\begin{equation}
-    \neg \Big( \lambda_{\mathrm{num}}(R, \lambda_0) \le \ell_{\mathrm{Pl}} \Big)
-\end{equation}
+\begin{theorem}[Wavelength floor] \label{thm:tcc} \tierC\ (as a TCC-satisfaction argument) \, /
+\tierA\ (arithmetic instance, below)
+Writing the physical wavelength of a comoving mode as $\lambda_{\mathrm{phys}}(R,\lambda_0) =
+R_{\mathrm{eff}}(R)\cdot\lambda_0$, for integer $R\ge1$, $\lambda_0\ge1$ (Planck units), one has
+$(R^2+1)\lambda_0 \ge 2 > \ell_{\mathrm{Pl}}$: this discrete family of modes never falls below the
+Planck length.
 \end{theorem}
 
-\begin{proof}
-By direct computation mechanized in Lean 4:
-Since $R \ge 1$, $R \cdot R \ge 1$, hence $R^2 + 1 \ge 2$. Since $\lambda_0 \ge 1$, $(R^2 + 1)\lambda_0 \ge 2 \cdot 1 = 2$.
-Because $2 > 1 = \ell_{\mathrm{Pl}}$, the condition $(R^2 + 1)\lambda_0 \le 1$ implies $2 \le 1$, a contradiction.
-\end{proof}
-
-\begin{corollary}[Unconditional Horizon Protection]
-Because physical wavelengths are bounded below by $2\ell_{\mathrm{Pl}}$, no trans-Planckian fluctuation can ever be generated in the spectrum. The TCC is satisfied unconditionally across all cosmological epochs without tuning the duration of inflation.
-\end{corollary}
-
-Verified in Lean 4: \texttt{Lean5Corpus.Problems.DualScaleTCC.tcc\_cosmic\_protection\_contract}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{String Compactification on \texorpdfstring{$K3 \times T^2$}{K3 x T2} and Non-Perturbative Moduli Stabilization}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-We compactify critical 10-dimensional superstring theory on the product manifold:
-\begin{equation}
-    M_{10} = \mathbb{R}^{3,1} \times K3 \times T^2
-\end{equation}
-The Calabi-Yau 2-fold $K3$ is an algebraic surface possessing $SU(2)$ holonomy and the topological invariants:
-\begin{equation}
-    \chi(K3) = 24, \quad \tau(K3) = -16, \quad b_2(K3) = 22, \quad h^{1,1} = 20, \quad h^{2,0} = 1
-\end{equation}
-Its middle homology decomposes into the even, self-dual unimodular lattice:
-\begin{equation}
-    H_2(K3, \mathbb{Z}) \cong \Gamma^{3, 19} \cong 2\left(-E_8\right) \oplus 3 U
-\end{equation}
-By the Atiyah-Singer Index Theorem, the Dirac index on $K3$ is:
-\begin{equation}
-    \mathrm{ind}(\not{D}) = \frac{1}{24} \int_{K3} c_2(K3) = \frac{24}{24} \times 2 = 2
-\end{equation}
-
-Compactification of Type IIA on $K3$ yields an $\mathcal{N} = (1, 1)$ supergravity theory in six dimensions with 16 real supercharges. Further compactification on $T^2$ yields an $\mathcal{N} = 4$ theory in four dimensions (16 supercharges).
-
-In Double Field Theory, the shifted dilaton $d = \phi - \frac{1}{2} \ln \sqrt{-g}$ and generalized metric $\mathcal{H}_{MN}$ yield the generalized Ricci scalar:
-\begin{equation}
-    \mathcal{R}_{\mathrm{DFT}} = \frac{1}{8}\mathcal{H}^{MN}\partial_M \mathcal{H}^{KL} \partial_N \mathcal{H}_{KL} - \frac{1}{2}\mathcal{H}^{MN}\partial_M \mathcal{H}^{KL} \partial_K \mathcal{H}_{NL} - 2 \partial_M d \partial_N \mathcal{H}^{MN} + 4 \mathcal{H}^{MN}\partial_M d \partial_N d
-\end{equation}
-
-\begin{theorem}[Moduli Stabilization Without Flat Directions]
-At the self-dual radius $R = \sqrt{\alpha'}$, the generalized Ricci scalar generates an effective scalar potential for the volume and dilaton moduli $\phi$:
-\begin{equation}
-    V(\phi) = (\phi - \phi_0)^2 \ge 0
-\end{equation}
-which attains its absolute global minimum $V = 0$ uniquely at $\phi = \phi_0$, dynamically freezing the geometric moduli with positive Hessian:
-\begin{equation}
-    \left. \frac{\partial^2 V}{\partial \phi^2} \right|_{\phi_0} = 2 > 0
-\end{equation}
-\end{theorem}
-
-This exact dimensional reduction from the Lean 4 certified Double Field Theory action guarantees the absence of flat directions for the \textit{entire} continuous moduli matrix (including complex structure and Kähler deformations). The strict quadratic bound is a rigid topological consequence of the generalized Ricci scalar at the self-dual point, fully eliminating runaway decompactification and solving the moduli stabilization problem on $K3 \times T^2$. 
-
-Mechanized in \texttt{DualScaleValidation.UseCase1.moduli\_vacuum\_stability}.
+\begin{scopebox}
+\texttt{Lean5Corpus.Problems.DualScaleTCC.tcc\_cosmic\_protection\_contract} certifies (Tier A) the
+conjunction of the arithmetic bound above with $p.\mathrm{planck\_mass}/p.\mathrm{hubble\_scale}\ge1$,
+where \texttt{InflationParameters} is a structure carrying $\mathrm{hubble\_scale} <
+\mathrm{planck\_mass}$ as a \emph{field} (an assumed hypothesis), not a derived consequence. The
+theorem is therefore a conditional statement (``if the Hubble scale during inflation is sub-Planckian
+and the comoving-mode/radius family lies in this discrete range, then this arithmetic inequality
+holds''), not an unconditional proof that the TCC is satisfied ``regardless of the duration of
+inflation'' for the dual-scale scenario's actual dynamics. We correct the earlier revision's
+\emph{Corollary~(``Unconditional Horizon Protection'')} accordingly: horizon protection here is
+conditional on the same discrete-radius, sub-Planckian-Hubble regime, not unconditional.
+\end{scopebox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Mathieu \texorpdfstring{$M_{24}$}{M24} Moonshine, Holographic Quantum Codes, and the 27720 BPS Lock}
+\section{Compactification on \texorpdfstring{$K3\times T^2$}{K3 x T2}: Topology and the Moduli Obstruction}
+\label{sec:compactification}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In 2010, Eguchi, Ooguri, and Tachikawa (EOT) \cite{EguchiOoguriTachikawa2011} revealed a profound correspondence between the elliptic genus of $K3$ and the sporadic simple Mathieu group $M_{24}$. The elliptic genus decomposes into $\mathcal{N}=4$ superconformal characters ($c=6$):
+We consider Type~II string theory on $M_{10}=\mathbb{R}^{3,1}\times K3\times T^2$. $K3$ is a
+Calabi--Yau 2-fold with $SU(2)$ holonomy and $\chi(K3)=24$, $\sigma(K3)=-16$, $b_2(K3)=22$,
+$h^{1,1}=20$, $h^{2,0}=1$, and middle homology $H_2(K3,\mathbb{Z})\cong 2(-E_8)\oplus 3U$. By the
+Hirzebruch signature theorem specialized to a spin 4-manifold, the Dirac index is
+$\mathrm{ind}(\slashed D) = -\sigma/8$ \cite{AtiyahSinger1968}; for $K3$,
 \begin{equation}
-    \chi(K3; \tau, z) = 24 \, \mathrm{ch}_{h=1/4, l=0}(\tau, z) - 2 \sum_{n=1}^\infty A_n \, \mathrm{ch}_{h=1/4+n, l=1/2}(\tau, z)
+  \mathrm{ind}(\slashed D) = -\frac{-16}{8} = 2,
 \end{equation}
-where the integer multiplicities $A_n$ decompose into irreducible representation dimensions of $M_{24}$:
+consistently with the Todd-genus cross-check $\chi(\mathcal{O}_{K3})=\chi_{\mathrm{top}}/12=24/12=2$
+required by Hirzebruch--Riemann--Roch for a Calabi--Yau surface (an earlier revision of this
+manuscript instead wrote $\tfrac{1}{24}\int c_2 \times 2$, an unmotivated formula that happened to
+give the right numerical answer; the corrected derivation above is the standard one). Type~IIA on
+$K3$ yields 6D $\mathcal{N}=(1,1)$ supergravity (16 supercharges); further compactification on $T^2$
+yields 4D $\mathcal{N}=4$ (still 16 supercharges) \cite{Witten1995}.
+
+\begin{scopebox}
+\texttt{DoubleFieldTheory.K3Topology} certifies (Tier A) the purely arithmetic instances of these
+facts: $\chi(K3)=1-0+22-0+1=24$ from the Betti numbers, and $\mathrm{ind}(\slashed
+D)=-(-16)/8=2$, both by \texttt{decide}. It does not formalize $K3$ as a manifold, its Betti numbers
+as (co)homology dimensions, or the Atiyah--Singer index theorem itself --- those are Tier L,
+standard, and correctly quoted, but not re-derived here.
+\end{scopebox}
+
+\subsection{The moduli-stabilization obstruction}
+\label{sec:moduli-obstruction}
+Type~II theory on $K3\times T^2$ preserves $\mathcal{N}=4$ supersymmetry in 4D. \textbf{This is the
+central physical difficulty for any claim of full moduli stabilization on this background}: $\mathcal
+N=4$ non-renormalization theorems forbid a perturbative or non-perturbative superpotential from
+lifting the classical moduli space (the $K3$ sigma-model moduli, of real dimension $80+1$, and the
+$T^2$ complex-structure/K\"ahler moduli) without additional ingredients --- background fluxes,
+orientifolds/branes with associated tadpole cancellation, or explicit supersymmetry breaking. An
+earlier revision of this paper asserted a ``Non-Perturbative Moduli Vacuum Stabilization Theorem''
+claiming that the generalized Ricci scalar $\mathcal{R}_{\mathrm{DFT}}$ generates a potential
+$V(\phi)=(\phi-\phi_0)^2$ stabilizing \emph{all} $K3\times T^2$ moduli with ``positive Hessian.'' We
+withdraw that claim as stated: no derivation connects $\mathcal{R}_{\mathrm{DFT}}$ (\Cref{def:genmetric})
+to this potential, and the potential itself does not engage the $80+1$-dimensional $K3$ moduli space
+at all. What remains, honestly scoped, is the following.
+
+\begin{proposition}[Toy potential --- corrected] \label{prop:toypotential} \tierA
+Define, over $\mathbb{Z}$, $V(\phi,\phi_0) = (\phi-\phi_0)^2$. Then
 \begin{align}
-    A_1 &= 90 = \mathbf{45} \oplus \overline{\mathbf{45}} \\
-    A_2 &= 462 = \mathbf{231} \oplus \overline{\mathbf{231}} \\
-    A_3 &= 1540 = \mathbf{770} \oplus \overline{\mathbf{770}} \\
-    A_4 &= 4554 = \mathbf{2277} \oplus \overline{\mathbf{2277}}
+  \phi=\phi_0 &\implies V(\phi,\phi_0)=0 && \text{(\texttt{moduli\_vacuum\_stability})}\\
+  V(\phi,\phi_0) &\ge 0 \text{ for all } \phi,\phi_0 && \text{(\texttt{moduli\_potential\_nonneg})}\\
+  V(\phi,\phi_0) = 0 &\iff \phi=\phi_0 && \text{(\texttt{moduli\_potential\_zero\_iff}, uniqueness)}
 \end{align}
+\end{proposition}
 
-\begin{theorem}[BPS Character Lock Theorem]
-In the Dual-Scale Framework on $K3 \times T^2$, the ratio of the second-level BPS state multiplicity $A_2 = 462$ to the spacetime-supersymmetry-weighted primary degeneracy $N_Q \cdot A_1 = 4 \times 90 = 360$ is locked to the irreducible fraction:
+\begin{scopebox}
+An earlier revision of \texttt{UseCase1\_ModuliStabilization.lean} defined this potential over
+\texttt{Nat} with ordinary (truncated) subtraction. Under \texttt{Nat} truncation, $\phi-\phi_0=0$
+whenever $\phi<\phi_0$, so the earlier potential vanished on the entire ray $\phi\le\phi_0$ --- the
+``unique minimum'' claimed in prose was not in fact unique in the formalized statement. The
+definition has been changed to \texttt{Int}, and the genuinely new theorem
+\texttt{moduli\_potential\_zero\_iff} above now proves the uniqueness that was previously only
+asserted. This is a one-dimensional single-field toy model illustrating what a stabilizing potential
+would look like near an isolated minimum; it is \emph{not} a formalization of the $K3\times T^2$
+moduli-space potential, and does not by itself resolve the $\mathcal{N}=4$ non-renormalization
+obstruction above. A genuine treatment would need to (a) introduce a concrete flux or brane
+configuration, (b) verify its own consistency (flux quantization, tadpole cancellation), and (c)
+derive a potential on the actual moduli space from it --- none of which is attempted in this
+corpus. We list this as the top item in the roadmap of \Cref{sec:formalization}.
+\end{scopebox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mathieu \texorpdfstring{$M_{24}$}{M24} Moonshine, Holographic Codes, and the 27720 Integer}
+\label{sec:moonshine}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Eguchi, Ooguri, and Tachikawa (EOT) observed that the $K3$ elliptic genus decomposes into
+$\mathcal{N}=4$ superconformal characters with multiplicities that are (twice) dimensions of
+irreducible representations of the sporadic simple Mathieu group $M_{24}$
+\cite{EguchiOoguriTachikawa2011}; this was subsequently proved in full by Gannon
+\cite{Gannon2013}. Schematically (see \cite{EguchiOoguriTachikawa2011,Gannon2013} for the precise
+normalization),
 \begin{equation}
-    \mathcal{R}_{\mathrm{BPS}} = \frac{A_2}{N_Q \cdot A_1} = \frac{462}{360} = \frac{77}{60}
+    \chi(K3;\tau,z) = 24\,\mathrm{ch}_{1/4,0}(\tau,z) - 2\sum_{n=0}^{\infty} A_n\,\mathrm{ch}_{1/4+n,1/2}(\tau,z),
 \end{equation}
-with:
-\begin{equation}
-    \gcd(77, 60) = 1, \quad 462 \times 60 = 360 \times 77 = 27720
-\end{equation}
-The topological integer $\mathbf{27720}$ is the \textbf{BPS Character Lock}.
+with $A_1=90=\mathbf{45}\oplus\overline{\mathbf{45}}$, $A_2=462=\mathbf{231}\oplus\overline{\mathbf{231}}$,
+$A_3=1540=\mathbf{770}\oplus\overline{\mathbf{770}}$, $A_4=4554=\mathbf{2277}\oplus\overline{\mathbf{2277}}$.
+
+\begin{theorem}[BPS character lock] \label{thm:bpslock} \tierA
+$\dfrac{A_2}{N_Q\cdot A_1} = \dfrac{462}{360} = \dfrac{77}{60}$ for $N_Q=4$, with $\gcd(77,60)=1$ and
+$462\times60 = 360\times77 = 27720$.
 \end{theorem}
 
-\begin{theorem}[Mathieu Group Order Exact Factorization]
-The order of the sporadic simple Mathieu group $|M_{24}| = 244,823,040$ is an exact integer multiple of the BPS Character Lock:
-\begin{equation}
-    \frac{|M_{24}|}{27720} = \frac{244,823,040}{27720} = 8832 \in \mathbb{N}
-\end{equation}
-where $8832 = 2^6 \times 3 \times 23$.
+\begin{theorem}[Mathieu order factorization --- corrected] \label{thm:mathieufactor} \tierA\par\smallskip\noindent
+$|M_{24}| = 244{,}823{,}040 = 27720\times 8832$, where $8832 = 2^7\times3\times23$ (an earlier
+revision of this paper wrote $2^6\times3\times23=4416\ne8832$; the exponent is $7$, not $6$).
 \end{theorem}
 
-\begin{proof}
-Direct integer arithmetic verified by the Lean 4 kernel via \texttt{decide}:
-$27720 \times 8832 = 244,823,040 = |M_{24}|$.
-\end{proof}
+\begin{scopebox}
+Module \texttt{DualScaleValidation.UseCase2}, theorems \texttt{bps\_cross\_multiplication\_lock} and
+\texttt{bps\_ratio\_coprime}, certify (Tier A) the integer identities in
+\Cref{thm:bpslock,thm:mathieufactor} by \texttt{decide}. \textbf{Interpretive caveat:} for any
+fraction $p/q$ in lowest terms,
+$p\cdot q'=q\cdot p'=\mathrm{lcm}(p,q)$ whenever cross-multiplied against itself; concretely,
+$27720=\mathrm{lcm}(1,2,\dots,12)$, and \emph{any} integer whose prime factorization contains
+$2^3,3^2,5,7,11$ is automatically a multiple of $27720$ --- which $|M_{24}|=2^{10}3^35^17^{1}11^{1}23^{1}$
+is. The divisibility in \Cref{thm:mathieufactor} is therefore weaker evidence for a physical ``lock''
+than it may appear; we flag it explicitly rather than presenting it as a nontrivial coincidence. The
+weighting $N_Q=4$ in \Cref{thm:bpslock} is likewise a modeling choice, not independently derived here
+(Tier C).
+\end{scopebox}
 
-\begin{corollary}[Holographic Quantum Error-Correction]
-The Mathieu group $M_{24}$ acts as the automorphism group of the extended binary Golay code $\mathcal{G}_{24} \subset \mathbb{F}_2^{24}$, a $[24, 12, 8]$ self-dual linear code. In the AdS/CFT holographic boundary CFT, $\mathcal{G}_{24}$ realizes the microscopic quantum error-correcting codes that preserve the phase coherence of 1/4-BPS black hole microstates against Hawking radiation decoherence.
-\end{corollary}
+The Mathieu group $M_{24}$ is the automorphism group of the extended binary Golay code
+$\mathcal{G}_{24}\subset\mathbb{F}_2^{24}$, a $[24,12,8]$ self-dual linear code.
 
-Verified in Lean 4: \texttt{DualScaleValidation.UseCase2.bps\_cross\_multiplication\_lock} and \texttt{Lean5Corpus.Problems.Problem8\_GolayHolography}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The Master Demonstration of Strictly Zero Continuous Free Parameters}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The defining triumph of the Callens Dual-Scale String Theory is the rigorous demonstration that the theory contains \textbf{strictly zero continuous free parameters}:
-\begin{equation}
-    \dim \mathcal{P}_{\mathrm{free}} = 0
-\end{equation}
-
-In standard field theories, masses, coupling constants, and vacuum expectation values must be tuned by hand to match empirical data. In Dual-Scale String Theory on $K3 \times T^2$, every physical parameter is pinned by five interlocking Diophantine arithmetic constraints.
-
-\begin{table}[h!]
-\centering
-\caption{\textbf{The Five Diophantine Parameter Locks of Dual-Scale String Theory}}
-\vspace{0.5em}
-\begin{tabular}{@{}llll@{}}
-\toprule
-\textbf{Lock} & \textbf{Rigid Value} & \textbf{Mathematical Origin} & \textbf{Lean 4 Verification Module} \\ \midrule
-\textbf{Lock 1} & $R_{\mathrm{eff}} \ge 2\sqrt{\alpha'}$ & Buscher T-duality stationary bounce & \texttt{DualScaleValidation.UseCase1} \\
-\textbf{Lock 2} & $\mathcal{K}_{\mathrm{BPS}} = 27720$ & $A_2 \times 60 = 4 A_1 \times 77$ & \texttt{DualScaleValidation.UseCase2} \\
-\textbf{Lock 3} & $\mathcal{M}_{\mathrm{quot}} = 8832$ & $|M_{24}| / 27720 = 244823040 / 27720$ & \texttt{DualScaleValidation.UseCase2} \\
-\textbf{Lock 4} & $\mathrm{ind}(\not{D}) = 2$ & $K3$ Dirac index $\frac{1}{24} \int c_2$ & \texttt{DoubleFieldTheory.K3Topology} \\
-\textbf{Lock 5} & $\chi(K3) = 24$ & $K3$ Euler characteristic & \texttt{DoubleFieldTheory.K3Topology} \\ \bottomrule
-\end{tabular}
-\end{table}
-
-\begin{theorem}[Zero Free Parameter Theorem]
-Let $\mathcal{M}_{K3 \times T^2}$ denote the moduli space of compactifications satisfying Double Field Theory covariance, Mathieu Moonshine BPS rigidity, and anomaly cancellation. Then:
-\begin{equation}
-    \dim \mathcal{M}_{K3 \times T^2}^{\mathrm{phys}} = 0
-\end{equation}
-All vacuum parameters, string coupling $g_s$, compactification volume $V(K3 \times T^2)$, and low-energy observables are discrete topological integers.
-\end{theorem}
-
-\begin{proof}
-1. By Theorem 3.1, the string scale is fixed to the self-dual locus $R = \sqrt{\alpha'} = 1$, eliminating the radial scale parameter.
-2. By Theorem 5.1, the non-perturbative potential $V(\phi) = (\phi - \phi_0)^2$ lifts all continuous dilaton flat directions, fixing $\phi = \phi_0$.
-3. By Theorem 6.1, the BPS spectrum is locked to the Diophantine ratio $77/60$ under the invariant $27720$, precluding continuous geometric deformations.
-4. By Theorem 6.2, the microscopic state space decomposes into exactly 8,832 copies of the fundamental $M_{24}$ Moonshine module.
-5. By the Atiyah-Singer theorem, the Dirac index is locked to 2, fixing chiral fermion generations.
-Since every continuous degree of freedom is constrained by an independent Diophantine equation with an isolated discrete solution, the physical parameter space dimension is zero.
-\end{proof}
-
-Verified in Lean 4: \texttt{DualScaleValidation.Observables}.
+\begin{proposition}[Golay code parameters] \label{prop:golay} \tierA
+$|\mathcal{G}_{24}|=2^{12}=4096$; minimum distance $8$ gives error-correction radius $\lfloor
+(8-1)/2\rfloor=3$; the code is self-dual ($24-12=12$).
+\end{proposition}
+Theorem \texttt{golay\_holography\_master\_contract} (module \texttt{GolayHolography};
+full path in \Cref{app:axioms}) certifies
+\Cref{prop:golay} (Tier A, standard coding theory). The further claim that this code's automorphism
+structure ``preserves the phase coherence of 1/4-BPS black hole microstates against Hawking radiation
+decoherence'' is a Tier C physical narrative attached to the Tier A coding-theory fact, following the
+general holographic quantum-error-correction picture of Almheiri--Dong--Harlow and Pastawski et al.\
+\cite{AlmheiriDongHarlow2015,PastawskiEtAl2015}; it is not itself formalized or derived here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Precision Cosmological and Particle Physics Observables: The Falsifiability Matrix}
+\section{Diophantine Coincidences and a Zero-Free-Parameter Conjecture}
+\label{sec:zero-params}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Because the Dual-Scale theory possesses zero free parameters, it is incapable of post-hoc parameter tuning to fit experimental discrepancies. It is \textbf{maximally falsifiable}.
-
-We derive the exact predictions for three premier experimental frontiers:
-
-\subsection{Primordial Tensor-to-Scalar Ratio \texorpdfstring{($r$)}{(r)}}
-In dual-scale cosmology, tensor perturbations are generated at the self-dual bounce ($R = \sqrt{\alpha'}$). The ratio of gravitational wave power to scalar curvature perturbations is determined by the BPS Character Lock constant $\mathcal{K}_{\mathrm{BPS}} = 27720$ and the 4D spacetime supercharge coupling. Physically, the effective slow-roll parameter $\epsilon$ during the bounce is rigidly fixed by the conformal weight ratio of the underlying $\mathcal{N}=4$ string worldsheet theory:
-\begin{equation}
-    r = \frac{2}{27720 / 55} = \frac{110}{27720} = \frac{1}{252} \approx 0.003968
-\end{equation}
-\textbf{Experimental Status:} The LiteBIRD satellite mission (JAXA/NASA/ESA, launch 2028–2032) is designed to measure the CMB $B$-mode polarization with precision $\sigma(r) < 0.001$. A measurement outside the range $0.0035 \le r \le 0.0045$ decisively falsifies Dual-Scale String Theory.
-
-\subsection{Leptonic Dirac CP-Violating Phase \texorpdfstring{($\delta_{\mathrm{CP}}$)}{(delta-CP)}}
-In the neutrino sector, the fundamental constants governing the lepton flavor mixing arise directly from the compactification geometry. By mapping the $T^2$ modular parameter at the self-dual point to the PMNS matrix flavor symmetry, the geometric phase reduces exactly to the irreducible BPS fraction $77/360$, predicting:
-\begin{equation}
-    \delta_{\mathrm{CP}} = 360^\circ \times \left( 1 - \frac{77}{360} \right) = \frac{283}{360} \times 360^\circ = 282.4^\circ
-\end{equation}
-\textbf{Experimental Status:} The Deep Underground Neutrino Experiment (DUNE, Fermilab/SURF, 2026–2030) and Hyper-Kamiokande will measure $\delta_{\mathrm{CP}}$ with $3\sigma$ to $5\sigma$ precision. Current global neutrino oscillation fits (NuFIT 5.2) report $\delta_{\mathrm{CP}} \approx 280^\circ \pm 30^\circ$, in striking alignment with our exact prediction.
-
-\subsection{Dark Energy Equation of State \texorpdfstring{($w$)}{(w)}}
-Because geometric moduli are stabilized in an absolute minimum $V(\phi_0) = 0$ with zero residual runaway kinetic energy, the cosmological dark energy is an exact topological cosmological constant:
-\begin{equation}
-    w_0 = -1, \quad w_a = 0
-\end{equation}
-\textbf{Experimental Status:} DESI Year 3 and ESA Euclid (2025–2027) will test time-varying dark energy models against $(w_0, w_a) = (-1, 0)$.
+An earlier revision of this paper stated a ``Zero Free Parameter Theorem'' and cited the module
+\texttt{DualScaleValidation.Observables} as its Lean proof. \textbf{No such theorem exists
+anywhere in this corpus} --- we could not find, and did not write, a Lean declaration whose type states
+anything resembling $\dim\mathcal{M}^{\mathrm{phys}}_{K3\times T^2}=0$. The claim is withdrawn as a
+theorem and restated as \Cref{conj:zeroparam} below: a conjecture, Tier C, motivated by --- but not
+following from --- the five integer facts in \Cref{tab:locks}, each individually Tier A (as an
+arithmetic identity) or Tier L (as a topological input).
 
 \begin{table}[htbp]
 \centering
-\small
-\setlength{\tabcolsep}{5pt}
-\caption{\textbf{The Precision Falsifiability Matrix of Dual-Scale String Theory}}
-\vspace{0.5em}
-\begin{tabular}{@{}llll@{}}
+\caption{\textbf{Five integer facts used to motivate \Cref{conj:zeroparam}.} None of these facts, by
+itself or in conjunction, constrains a \emph{continuous} modulus of the compactification; see the
+discussion following the table.}
+\label{tab:locks}
+\begin{tabular}{@{}l l >{\raggedright\arraybackslash}p{5.1cm} l@{}}
 \toprule
-\textbf{Physical Observable} & \textbf{Dual-Scale Exact Prediction} & \textbf{Experimental Experiment} & \textbf{Timeline} \\ \midrule
-Tensor-to-Scalar Ratio $r$ & $\mathbf{r = 0.00396}$ ($1/252$) & LiteBIRD CMB Polarimeter & 2028--2032 \\
-Dirac CP Phase $\delta_{\mathrm{CP}}$ & $\mathbf{\delta_{\mathrm{CP}} = 282.4^\circ}$ ($283/360$) & DUNE / Hyper-Kamiokande & 2026--2030 \\
-Dark Energy Equation of State & $\mathbf{w_0 = -1, \, w_a = 0}$ & DESI / ESA Euclid & 2024--2027 \\ \bottomrule
+\textbf{Fact} & \textbf{Value} & \textbf{Origin} & \textbf{Tier / module} \\ \midrule
+1 & $R_{\mathrm{eff}}\ge2\sqrt{\alpha'}$ & Buscher T-duality stationary point & Tier L/A, \Cref{thm:reff-min} \\
+2 & $\mathcal{K}_{\mathrm{BPS}}=27720$ & $A_2\times60 = 4A_1\times77$ & Tier A, \Cref{thm:bpslock} \\
+3 & $\mathcal{M}_{\mathrm{quot}}=8832$ & $|M_{24}|/27720$ & Tier A, \Cref{thm:mathieufactor} \\
+4 & $\mathrm{ind}(\slashed D)=2$ & $-\sigma(K3)/8$ & Tier L/A, \Cref{sec:compactification} \\
+5 & $\chi(K3)=24$ & Euler characteristic & Tier L/A, \Cref{sec:compactification} \\ \bottomrule
 \end{tabular}
 \end{table}
 
-Verified in Lean 4: \texttt{DualScaleValidation.Observables}.
+\begin{conjecture}[Zero free parameters --- restated] \label{conj:zeroparam} \tierC
+There exists a consistent completion of the dual-scale $K3\times T^2$ scenario (specifying whatever
+additional data --- fluxes, branes, SUSY-breaking sector --- is needed to resolve the obstruction of
+\Cref{sec:moduli-obstruction}) whose physical continuous-parameter space has dimension zero, with the
+discrete data of that completion pinned by facts of the kind listed in \Cref{tab:locks}.
+\end{conjecture}
+This is stated as an open target for future formalization, not a result. In particular: no formal
+definition of $\mathcal{M}^{\mathrm{phys}}_{K3\times T^2}$ is given in this corpus, so
+``$\dim=0$'' is not yet a statement that can be assigned a tier above C; and \Cref{tab:locks} fixes
+five \emph{integers}, none of which is a priori a coordinate on the moduli space of vacua (a
+continuous modulus being frozen at, say, the self-dual radius is a dynamical claim requiring the
+potential of \Cref{sec:moduli-obstruction}, not a consequence of Fact~1 alone).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Formal Machine Verification in Lean 4: Kernel Soundness, DSL, and Semantic DAG}
+\section{Confrontation with Data}
+\label{sec:phenomenology}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The entire mathematical architecture of Dual-Scale String Theory has been implemented in the \textbf{Lean 4 interactive theorem prover} (toolchain \texttt{leanprover/lean4:v4.33.1}).
+Because \Cref{conj:zeroparam} would, if established, leave no continuous parameters to fit,
+Tier~C numerical relations attached to it are maximally falsifiable \emph{if they could be derived}.
+None of the three relations below is derived from a Lagrangian or an explicit compactification
+calculation; each is a pattern-match between an integer from \Cref{tab:locks} and an observable. We
+report each with full data provenance (value $\pm$ uncertainty, dataset/release, what it measures,
+and its role: measurement, benchmark, or forecast), following standard practice for this kind of
+falsifiability claim.
 
-\subsection{Kernel Soundness and Axiomatic Purity}
-The project consists of:
-\begin{itemize}
-    \item \textbf{50 Lean 4 Files} encompassing 503 mathematical declarations.
-    \item \textbf{61 Lake Compilation Jobs} executed without external physics axioms. To guarantee that no physical assumptions were ``smuggled'' into the proofs, the foundations strictly rely only on the standard Lean 4 axioms (\texttt{propext}, \texttt{Quot.sound}, and \texttt{Classical.choice}).
-    \item \textbf{Strict Invariant:} Exactly 0 \texttt{sorry} and 0 \texttt{admit} statements across all primary libraries: \texttt{DoubleFieldTheory}, \texttt{DualScaleValidation}, \texttt{DualScaleM24Formalization}, \texttt{StringTheoryFoundation}, and \texttt{Lean5Corpus}.
-\end{itemize}
+\subsection{Primordial tensor-to-scalar ratio \texorpdfstring{$r$}{r} (Tier C)}
+\begin{equation}
+    r \;\overset{\mathrm{Tier\ C}}{=}\; \frac{2}{27720/55} = \frac{110}{27720} = \frac{1}{252} \approx 0.0039683
+\end{equation}
+stored in Lean as the exact reduced fraction $1/252$ (theorem
+\texttt{tensor\_to\_scalar\_ratio\_reduction}, module \texttt{Observables}; an earlier revision
+stored a rounded decimal, $0.00396$, inconsistent with the fraction it was supposed to
+approximate). LiteBIRD targets a total
+(systematics-inclusive) sensitivity $\delta r\approx0.001$, with a Japan-fiscal-year-2032 launch
+target \cite{LiteBIRD2024} (\emph{forecast}). The current 95\%-CL upper bound from BICEP/Keck
+combined with Planck is $r\lesssim0.03$--$0.04$ \cite{BicepKeck2021} (\emph{measurement}, current
+bound). \textbf{Verdict: untestable now, forecast pending.} A $\pm0.0005$ ``discovery window'' around
+the prediction, as stated in an earlier revision, is narrower than LiteBIRD's own forecast
+$1\sigma$ and would not by itself constitute a decisive test; a fair statement is that a LiteBIRD
+non-detection consistent with $r<10^{-3}$ would disfavor the prediction, while a detection at
+$r\sim4\times10^{-3}$ would be consistent with (not proof of) it.
 
-\subsection{The Theoretical Physics Domain-Specific Language (DSL)}
-To bridge the semantic gap between functional dependent type theory and differential geometry, we created \texttt{DoubleFieldTheory.PhysicsDSL}, embedding native tensor notation into the Lean 4 compiler:
-\begin{itemize}
-    \item \textbf{Courant Pairing:} $\langle X , Y \rangle_\eta \equiv \xi_\mu u^\mu + \zeta_\mu v^\mu$, coded in Lean 4 as \texttt{<X, Y>\_eta}.
-    \item \textbf{Courant C-Bracket:} $[X , Y]_C$, coded in Lean 4 as \texttt{[X , Y]\_C}.
-    \item \textbf{Dorfman Bracket:} $[X \circ Y]_D$, coded in Lean 4 as \texttt{[[X , Y]]\_D}.
-    \item \textbf{Effective Dual Scale:} $R_{\mathrm{eff}}(R) = R + \alpha'/R$, coded in Lean 4 as \texttt{R\_eff(R)}.
-    \item \textbf{Strong Section Condition:} $\eta^{MN}\partial_M\Phi \partial_N\Psi = 0$, coded in Lean 4 as \texttt{d\_M Phi d\^{}M Psi}.
-\end{itemize}
+\subsection{Leptonic Dirac CP phase \texorpdfstring{$\delta_{\mathrm{CP}}$}{delta-CP} (Tier C, corrected)}
+\begin{equation}
+    \delta_{\mathrm{CP}} \;\overset{\mathrm{Tier\ C}}{=}\; 360^\circ\times\left(1-\frac{77}{360}\right) = 283^\circ
+\end{equation}
+(an earlier revision reported $282.4^\circ$, obtained by silently mixing the fraction $77/360$ used
+here with the unrelated ratio $77/60$ of \Cref{thm:bpslock}; the exact value of the stated formula is
+$283^\circ$). NuFIT~5.2 (without Super-Kamiokande atmospheric data) reports, for \textbf{normal
+ordering}, $\delta_{\mathrm{CP}}=197^{\circ\,+42}_{\ \ -25}$ ($3\sigma$: $108^\circ$--$404^\circ$),
+and for \textbf{inverted ordering}, $\delta_{\mathrm{CP}}=286^{\circ\,+27}_{\ \ -32}$ ($3\sigma$:
+$192^\circ$--$360^\circ$) \cite{NuFIT52} (\emph{measurement}, global fit). \textbf{Verdict:
+consistent within $3\sigma$ under either ordering, but the prediction sits close to the
+\emph{inverted}-ordering best fit and far from the \emph{normal}-ordering best fit}, which current
+global data mildly prefer; DUNE, whose neutrino beam is now expected around 2031 with full exposure
+targets extending to 2035 \cite{DUNE2025Status} (\emph{forecast}, timeline revised from an earlier
+2026--2030 estimate), together with Hyper-Kamiokande, aims for degree-level precision on
+$\delta_{\mathrm{CP}}$ and on the mass ordering itself.
 
-\subsection{LeanGraph Semantic Knowledge DAG}
-Using \texttt{tools/leangraph\_corpus\_analyzer.py}, we extracted the full Abstract Syntax Tree (AST) dependency graph of the corpus:
-\begin{itemize}
-    \item \textbf{Nodes:} 528 formal declarations (definitions, inductive types, and certified theorems).
-    \item \textbf{Edges:} 785 verified deductive dependencies.
-    \item \textbf{Acyclicity Guarantee:} Verified Directed Acyclic Graph ($\text{is\_dag} = \text{True}$, 0 topological cycles).
-    \item \textbf{Transitive Reduction:} Pruned redundant shortcuts to produce a clean Hasse diagram available interactively at \texttt{graph/index.html}.
-\end{itemize}
+\subsection{Dark energy equation of state (Tier C, contingent, in tension with data)}
+An earlier revision claimed $w_0=-1,\,w_a=0$ as a consequence of moduli stabilization ``at the
+self-dual point'' with $V(\phi_0)=0$. Taken literally, $V(\phi_0)=0$ is a \emph{Minkowski} vacuum
+(zero cosmological constant), not a de~Sitter vacuum with $w=-1$ and nonzero dark-energy density;
+matching observed dark energy would require an additional, undetermined source of vacuum energy that
+this corpus does not derive (Tier C, contingent on the unresolved obstruction of
+\Cref{sec:moduli-obstruction}). Independently of that internal gap: DESI DR2 baryon acoustic
+oscillations combined with CMB and supernova data find the time-evolving quadrant $w_0>-1$, $w_a<0$
+preferred over $\Lambda$CDM at $3.1\sigma$ \cite{DESI2025DR2,DESI2025DR2ext} (\emph{measurement}).
+\textbf{Verdict: in tension with current leading data}, not merely ``to be tested'' by a future
+survey as an earlier revision stated.
+
+\subsection{Scalar spectral index \texorpdfstring{$n_s$}{ns} (Tier C, consistent)}
+$n_s=0.965$, consistent with Planck 2018, $n_s=0.9649\pm0.0042$ \cite{Planck2018} (\emph{benchmark},
+not a joint fit with any data of this paper). This is the one relation in this section not currently
+in tension with data, though it is also the least distinctive (a wide range of inflationary models
+predict $n_s$ close to this value).
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{\textbf{Confrontation summary.} All predictions are Tier C (\Cref{sec:phenomenology}); none
+is derived from a Lagrangian.}
+\label{tab:phenomenology}
+\begin{tabular}{@{}l l >{\raggedright\arraybackslash}p{5.8cm} >{\raggedright\arraybackslash}p{2.1cm}@{}}
+\toprule
+\textbf{Observable} & \textbf{Prediction} & \textbf{Current data (value, dataset, role)} & \textbf{Verdict} \\
+\midrule
+$r$ & $1/252\approx0.00397$ & $\lesssim0.03$--$0.04$ (BICEP/Keck+Planck, meas.);\newline $\delta r\approx0.001$ (LiteBIRD, forecast) & untestable now \\[2pt]
+$\delta_{\mathrm{CP}}$ & $283^\circ$ & $197^{+42}_{-25}$ NO / $286^{+27}_{-32}$ IO\newline (NuFIT 5.2, meas.) & consistent (near IO); tension w/ preferred NO \\[2pt]
+$(w_0,w_a)$ & $(-1,0)$ & $w_0>-1,\,w_a<0$ at $3.1\sigma$\newline (DESI DR2+CMB+SNe, meas.) & tension \\[2pt]
+$n_s$ & $0.965$ & $0.9649\pm0.0042$ (Planck 2018, benchmark) & consistent \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusion: The Paradigm Shift Toward Machine-Certified Quantum Gravity}
+\section{The Lean 4 Artifact: Scope, Reproducibility, and Roadmap}
+\label{sec:formalization}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The Dual-Scale String Theory on $K3 \times T^2$ demonstrates that the longstanding crises of string theory---the landscape of $10^{500}$ vacua, the arbitrariness of continuous moduli, and the presence of cosmological singularities---are not insurmountable laws of nature, but artifacts of continuous differential geometry and heuristic human calculation.
+\subsection{What is in the repository}
+The formalization comprises \textbf{51 Lean~4 files} and \textbf{554 declarations} (\texttt{theorem}
+/ \texttt{lemma} / \texttt{def} / \texttt{structure} / \texttt{inductive} / \texttt{instance} /
+\texttt{abbrev}) on toolchain \texttt{leanprover/lean4:v4.33.1}, across five libraries:
+\begin{center}
+\footnotesize\ttfamily
+DoubleFieldTheory \quad DualScaleValidation \quad DualScaleM24Formalization \quad
+StringTheoryFoundation \quad Lean5Corpus
+\end{center}
+\texttt{lake build} completes all 61 jobs with no errors and no \texttt{sorry} warnings.
+\textbf{This project has no external dependency} (\texttt{lake-manifest.json} lists zero packages):
+it uses only Lean~4 core (\texttt{Init}), with \emph{no Mathlib}. This is the direct explanation for
+why every proof in this paper is over \texttt{Nat}, \texttt{Int}, or an ad hoc rational-pair
+structure rather than over $\mathbb{R}$ --- core Lean does not provide real numbers, manifolds, or
+differential-geometric structures. We regard stating this limitation plainly as more useful than the
+earlier revision's blanket claim of ``100\% certified physics.''
 
-By unifying Double Field Theory, Mathieu Moonshine, and algorithmic proof verification:
-\begin{enumerate}
-    \item \textbf{The Landscape Problem is Ended:} The parameter space is proven to have dimension zero ($\dim \mathcal{P}_{\mathrm{free}} = 0$).
-    \item \textbf{Spacetime Singularities are Resolved:} Spacetime cannot collapse below $2\sqrt{\alpha'}$, guaranteeing a universal cosmic bounce.
-    \item \textbf{Scientific Truth is Epistemically Secured:} Every deduction is certified by the Lean 4 kernel with 0 sorry.
-\end{enumerate}
+\subsection{Reproducibility}
+Every theorem cited by name in this paper was re-verified at the commit given in \Cref{app:axioms}
+using \texttt{\#print axioms}:
+\begin{center}
+\footnotesize\ttfamily
+lake env lean --stdin < axiom\_audit\_script.lean
+\end{center}
+run from \texttt{papers/publication/}; the full output is in \texttt{axiom\_audit\_log.txt} in the
+same directory, and reproduced in \Cref{app:axioms}. Every declaration depends on at most the three
+standard Lean axioms; none depends on \texttt{sorryAx} or on any custom axiom. A companion
+\Cref{app:ledger} gives, for every headline claim in this paper, the exact Lean identifier, its type
+(informally), its tier, and a one-line adequacy note --- the same table used to produce the
+corrections in this revision, so that a reader can re-run the audit rather than trust it.
 
-We invite the theoretical physics, formal mathematics, and observational cosmology communities to inspect, audit, and replicate this mechanized repository via 1-click GitHub Codespaces or the interactive SocrateAI Oracle. The era of heuristic, unverifiable theoretical physics has ended; the era of machine-certified quantum gravity has begun.
+The dependency DAG of the corpus (generated by \texttt{tools/leangraph\_corpus\_analyzer.py}; data
+in \texttt{graph/leangraph.json}) reports 538 nodes and 807 edges, verified acyclic
+(\texttt{is\_dag} = \texttt{True}), with 13 redundant transitive edges identified for Hasse-diagram
+pruning. (An earlier revision of this paper, and the separate internal
+\texttt{PEER\_REVIEW\_REPORT.md}, quote different node/edge counts, 528/785 and 422/554
+respectively; these are stale snapshots from different points in the corpus's history rather than
+three independent measurements of the same state. We recommend regenerating this figure immediately
+before each release rather than carrying it forward across revisions.)
+
+\subsection{Related formalized-physics work}
+This is a small, narrowly-scoped artifact relative to general-purpose physics formalization
+libraries. \texttt{PhysLean}/\texttt{HepLean} (Tooby-Smith et al.) formalizes index notation and a
+growing body of high-energy-physics results directly in Lean~4 on top of Mathlib
+\cite{ToobySmith2024}; Mathlib itself contains substantial differential geometry (manifolds, vector
+bundles, and Riemannian metrics) that the present corpus does not use. A natural next step is
+re-expressing \Cref{thm:reff-min} and \Cref{prop:toypotential} in that setting.
+
+\subsection{Roadmap: promoting Tier L/C claims toward Tier A}
+The following sketches are \textbf{written but not compiled} (they require adding Mathlib as a
+dependency, which this repository currently does not have); we present them as a concrete,
+falsifiable roadmap rather than claim them as verified.
+\begin{verbatim}
+import Mathlib
+
+/-- Real AM-GM form of Theorem 3.2, with equality iff self-dual. -/
+theorem reff_lower_bound {a R : Real} (ha : 0 < a) (hR : 0 < R) :
+    2 * Real.sqrt a <= R + a / R := by
+  have hs : Real.sqrt a ^ 2 = a := Real.sq_sqrt ha.le
+  nlinarith [sq_nonneg (R - Real.sqrt a), hs, Real.sqrt_nonneg a,
+             mul_pos hR hR]
+
+/-- Real form of Proposition 5.1, matching the Int version already proved. -/
+theorem toy_potential_zero_iff (phi phi0 : Real) :
+    (phi - phi0) ^ 2 = 0 <-> phi = phi0 := by
+  simp [sub_eq_zero]
+\end{verbatim}
+Promoting \Cref{conj:zeroparam} to any tier above C requires, at minimum: (1) a concrete flux or
+brane completion consistent with the $\mathcal{N}=4$ non-renormalization obstruction of
+\Cref{sec:moduli-obstruction}; (2) a derivation, not an assertion, connecting that completion's
+potential to the discrete data of \Cref{tab:locks}; and (3) a first-principles derivation of at least
+one of the three relations in \Cref{sec:phenomenology} from that potential.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\label{sec:conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This paper is narrower than its earlier revision claimed. It kernel-certifies (Tier A) a set of
+exact integer and rational identities --- the positivity of a dual-scale bound on integer radii, $K3$
+topological arithmetic, the $M_{24}$ elliptic-genus cross-multiplication and its corrected
+factorization, Golay-code parameters, and a genuinely-unique-minimum toy potential (after fixing a
+real bug) --- and it states, without conflating tiers, which further claims are established
+literature (Tier L: Double Field Theory, the Atiyah--Singer index theorem, string-gas kinematics) and
+which are this paper's own conjectures (Tier C: the zero-free-parameter proposal and its three
+numerical phenomenology relations, one of which, the dark-energy prediction, is already in tension
+with DESI DR2). We consider this an improvement, not a retreat: a claim that survives being checked
+against its own formal artifact and against current data is worth more than a stronger claim that
+does not.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\section{Claim Ledger}
+\label{app:ledger}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Below, every \_ inside a \texttt{} is followed by a bare \discretionary{}{}{}
+% (a core TeX primitive break point with no inserted hyphen -- no package, no
+% catcode tricks) so long identifiers wrap inside the narrow table columns
+% instead of overflowing them. See PAPER7_IMPROVEMENT_PROPOSAL.md P2.
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}l l >{\raggedright\arraybackslash}p{4.4cm} l >{\raggedright\arraybackslash}p{4.0cm}@{}}
+\toprule
+\textbf{\S} & \textbf{Module} & \textbf{Theorem} & \textbf{Tier} & \textbf{Adequacy note} \\ \midrule
+\ref{sec:effective-scale} & \texttt{UseCase1} & \texttt{self\_\discretionary{}{}{}dual\_\discretionary{}{}{}is\_\discretionary{}{}{}global\_\discretionary{}{}{}minimum} & A & $\mathbb{N}$-instance only; real bound is Tier L \\
+\ref{sec:effective-scale} & \texttt{DualScale} & \texttt{genesis\_\discretionary{}{}{}no\_\discretionary{}{}{}singularity} & A & true by construction of \texttt{PosScale} \\
+\ref{sec:tcc} & \texttt{DualScaleTCC} & \texttt{tcc\_\discretionary{}{}{}cosmic\_\discretionary{}{}{}protection\_\discretionary{}{}{}contract} & A & conditional on an assumed field, not derived \\
+\ref{sec:compactification} & \texttt{K3Topology} & \texttt{k3\_\discretionary{}{}{}atiyah\_\discretionary{}{}{}singer\_\discretionary{}{}{}dirac\_\discretionary{}{}{}index} & A & correct arithmetic instance of a Tier L theorem \\
+\ref{sec:compactification} & \texttt{UseCase1} & \texttt{moduli\_\discretionary{}{}{}potential\_\discretionary{}{}{}zero\_\discretionary{}{}{}iff} (new) & A & fixes the \texttt{Nat}-truncation bug (see box in \S\ref{sec:moduli-obstruction}) \\
+\ref{sec:moonshine} & \texttt{UseCase2} & \texttt{bps\_\discretionary{}{}{}cross\_\discretionary{}{}{}multiplication\_\discretionary{}{}{}lock} & A & correct; physical interpretation ($N_Q=4$) is Tier C \\
+\ref{sec:moonshine} & \texttt{GolayHolography} & \texttt{golay\_\discretionary{}{}{}holography\_\discretionary{}{}{}master\_\discretionary{}{}{}contract} & A & coding theory only; holographic narrative is Tier C \\
+\ref{sec:zero-params} & \multicolumn{2}{l}{(none)} & --- & no ``zero free parameters'' theorem exists; restated as \Cref{conj:zeroparam}, Tier C \\
+\ref{sec:phenomenology} & \texttt{Observables} & \texttt{tensor\_\discretionary{}{}{}to\_\discretionary{}{}{}scalar\_\discretionary{}{}{}ratio\_\discretionary{}{}{}reduction} (rewritten) & A & exact-fraction identity; the value $r=1/252$ itself is Tier C \\
+\ref{sec:phenomenology} & \texttt{Observables} & \texttt{observables\_\discretionary{}{}{}windows\_\discretionary{}{}{}master\_\discretionary{}{}{}contract} (rewritten) & A & arithmetic-window conjunction; each window is illustrative, not a confidence interval \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Axiom Audit}
+\label{app:axioms}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Generated from \texttt{papers/publication/} by:
+\begin{center}
+\footnotesize\ttfamily
+lake env lean --stdin < axiom\_audit\_script.lean
+\end{center}
+at commit \texttt{e831efb} on toolchain \texttt{v4.33.1}; full output in
+\texttt{axiom\_audit\_log.txt} (same directory).
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{7.5cm} l@{}}
+\toprule
+\textbf{Declaration} & \textbf{Axioms} \\ \midrule
+\texttt{K3Topology.\discretionary{}{}{}k3\_\discretionary{}{}{}euler\_\discretionary{}{}{}characteristic} & none \\
+\texttt{K3Topology.\discretionary{}{}{}k3\_\discretionary{}{}{}atiyah\_\discretionary{}{}{}singer\_\discretionary{}{}{}dirac\_\discretionary{}{}{}index} & none \\
+\texttt{CourantAlgebroid.\discretionary{}{}{}jacobiator\_\discretionary{}{}{}vector\_\discretionary{}{}{}vanishes} & propext, Quot.sound \\
+\texttt{CourantAlgebroid.\discretionary{}{}{}strong\_\discretionary{}{}{}section\_\discretionary{}{}{}condition} & propext, Quot.sound \\
+\texttt{UseCase1.\discretionary{}{}{}self\_\discretionary{}{}{}dual\_\discretionary{}{}{}is\_\discretionary{}{}{}global\_\discretionary{}{}{}minimum} & propext, Quot.sound \\
+\texttt{UseCase1.\discretionary{}{}{}moduli\_\discretionary{}{}{}vacuum\_\discretionary{}{}{}stability} & propext \\
+\texttt{UseCase1.\discretionary{}{}{}moduli\_\discretionary{}{}{}potential\_\discretionary{}{}{}nonneg} & propext, Quot.sound \\
+\texttt{UseCase1.\discretionary{}{}{}moduli\_\discretionary{}{}{}potential\_\discretionary{}{}{}zero\_\discretionary{}{}{}iff} & propext, Quot.sound \\
+\texttt{UseCase2.\discretionary{}{}{}bps\_\discretionary{}{}{}cross\_\discretionary{}{}{}multiplication\_\discretionary{}{}{}lock} & none \\
+\texttt{UseCase2.\discretionary{}{}{}bps\_\discretionary{}{}{}ratio\_\discretionary{}{}{}coprime} & none \\
+\texttt{Observables.\discretionary{}{}{}tensor\_\discretionary{}{}{}to\_\discretionary{}{}{}scalar\_\discretionary{}{}{}ratio\_\discretionary{}{}{}reduction} & none \\
+\texttt{Observables.\discretionary{}{}{}observables\_\discretionary{}{}{}windows\_\discretionary{}{}{}master\_\discretionary{}{}{}contract} & propext, Classical.choice, Quot.sound \\
+\texttt{SocrateAI.\discretionary{}{}{}DualScale.\discretionary{}{}{}genesis\_\discretionary{}{}{}no\_\discretionary{}{}{}singularity} & none \\
+\texttt{SocrateAI.\discretionary{}{}{}DualScale.\discretionary{}{}{}buscher\_\discretionary{}{}{}involution} & propext, Quot.sound \\
+\texttt{DualScaleTCC.\discretionary{}{}{}tcc\_\discretionary{}{}{}cosmic\_\discretionary{}{}{}protection\_\discretionary{}{}{}contract} & propext, Quot.sound \\
+\texttt{GolayHolography.\discretionary{}{}{}golay\_\discretionary{}{}{}holography\_\discretionary{}{}{}master\_\discretionary{}{}{}contract} & none \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+No declaration in this table depends on \texttt{sorryAx} or on any axiom beyond the three standard
+Lean~4 axioms. A separate search for a bare \texttt{sorry}/\texttt{admit} tactic (as opposed to the
+word appearing in a docstring) across all five libraries returns zero matches.
 
 \begin{thebibliography}{99}
 
-\bibitem{Vafa2005}
-C.~Vafa, ``The String Landscape and the Swampland,'' \textit{arXiv:hep-th/0509212} (2005).
-
-\bibitem{Douglas2003}
-M.~R.~Douglas, ``The Statistics of String / M Theory Vacua,'' \textit{JHEP} 05 (2003) 046, \textit{arXiv:hep-th/0303194}.
-
-\bibitem{Lean4Paper}
-L.~de Moura and S.~Ullrich, ``The Lean 4 Theorem Prover and Programming Language,'' in \textit{Automated Deduction – CADE 28}, Springer (2021) 625--635.
-
-\bibitem{HullZwiebach2009}
-C.~Hull and B.~Zwiebach, ``Double Field Theory,'' \textit{JHEP} 09 (2009) 099, \textit{arXiv:0904.4664}.
-
-\bibitem{HohmHullZwiebach2010}
-O.~Hohm, C.~Hull, and B.~Zwiebach, ``Generalized gauge transformations in double field theory,'' \textit{JHEP} 08 (2010) 008, \textit{arXiv:1006.4823}.
-
-\bibitem{Buscher1987}
-T.~H.~Buscher, ``A symmetry of the string background field equations,'' \textit{Phys. Lett. B} 194 (1987) 59--62.
-
-\bibitem{BedroyaVafa2020}
-A.~Bedroya and C.~Vafa, ``Trans-Planckian Censorship and the Swampland,'' \textit{JHEP} 09 (2020) 123, \textit{arXiv:1909.11063}.
-
-\bibitem{Witten1995}
-E.~Witten, ``String Theory Dynamics In Various Dimensions,'' \textit{Nucl. Phys. B} 443 (1995) 85--126, \textit{arXiv:hep-th/9503124}.
-
-\bibitem{EguchiOoguriTachikawa2011}
-T.~Eguchi, H.~Ooguri, and Y.~Tachikawa, ``Notes on the K3 Surface and the Mathieu Group $M_{24}$,'' \textit{Exper. Math.} 20 (2011) 91--96, \textit{arXiv:1004.0956}.
-
-\bibitem{Cheng2010}
-M.~C.~N.~Cheng, ``K3 Surfaces, $N=4$ Dyons, and the Mathieu Group $M_{24}$,'' \textit{Commun. Num. Theor. Phys.} 4 (2010) 623--657, \textit{arXiv:1005.5415}.
-
-\bibitem{Callens2026}
-X.~Callens and the SocrateAI Agora Collaboration, ``Certified Dual-Scale String Theory, Double Field Theory, and the Lean 5 Scientific Agora Corpus,'' \textit{SocrateAI Laboratory for Mathematical Physics \& Formal Verification} (2026), \url{https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster}.
+\bibitem{Vafa2005} C.~Vafa, ``The String Landscape and the Swampland,'' \textit{arXiv:hep-th/0509212} (2005).
+\bibitem{Douglas2003} M.~R.~Douglas, ``The Statistics of String / M Theory Vacua,'' \textit{JHEP} 05 (2003) 046, \textit{arXiv:hep-th/0303194}.
+\bibitem{KKLT2003} S.~Kachru, R.~Kallosh, A.~Linde, S.~P.~Trivedi, ``de Sitter Vacua in String Theory,'' \textit{Phys. Rev. D} 68 (2003) 046005, \textit{arXiv:hep-th/0301240}.
+\bibitem{Lean4Paper} L.~de Moura and S.~Ullrich, ``The Lean 4 Theorem Prover and Programming Language,'' in \textit{Automated Deduction -- CADE 28}, Springer (2021) 625--635.
+\bibitem{HullZwiebach2009} C.~Hull and B.~Zwiebach, ``Double Field Theory,'' \textit{JHEP} 09 (2009) 099, \textit{arXiv:0904.4664}.
+\bibitem{HohmHullZwiebach2010} O.~Hohm, C.~Hull, and B.~Zwiebach, ``Generalized gauge transformations in double field theory,'' \textit{JHEP} 08 (2010) 008, \textit{arXiv:1006.4823}.
+\bibitem{Buscher1987} T.~H.~Buscher, ``A symmetry of the string background field equations,'' \textit{Phys. Lett. B} 194 (1987) 59--62.
+\bibitem{BrandenbergerVafa1989} R.~Brandenberger and C.~Vafa, ``Superstrings in the Early Universe,'' \textit{Nucl. Phys. B} 316 (1989) 391--410.
+\bibitem{GiveonPorratiRabinovici1994} A.~Giveon, M.~Porrati, and E.~Rabinovici, ``Target space duality in string theory,'' \textit{Phys. Rept.} 244 (1994) 77--202, \textit{arXiv:hep-th/9401139}.
+\bibitem{BedroyaVafa2020} A.~Bedroya and C.~Vafa, ``Trans-Planckian Censorship and the Swampland,'' \textit{JHEP} 09 (2020) 123, \textit{arXiv:1909.11063}.
+\bibitem{Witten1995} E.~Witten, ``String Theory Dynamics In Various Dimensions,'' \textit{Nucl. Phys. B} 443 (1995) 85--126, \textit{arXiv:hep-th/9503124}.
+\bibitem{AtiyahSinger1968} M.~F.~Atiyah and I.~M.~Singer, ``The Index of Elliptic Operators I,'' \textit{Annals of Mathematics} 87 (1968) 484--530.
+\bibitem{EguchiOoguriTachikawa2011} T.~Eguchi, H.~Ooguri, and Y.~Tachikawa, ``Notes on the K3 Surface and the Mathieu Group $M_{24}$,'' \textit{Exper. Math.} 20 (2011) 91--96, \textit{arXiv:1004.0956}.
+\bibitem{Cheng2010} M.~C.~N.~Cheng, ``K3 Surfaces, $N=4$ Dyons, and the Mathieu Group $M_{24}$,'' \textit{Commun. Num. Theor. Phys.} 4 (2010) 623--657, \textit{arXiv:1005.5415}.
+\bibitem{Gannon2013} T.~Gannon, ``Much ado about Mathieu,'' \textit{Adv. Math.} 301 (2016) 322--358, \textit{arXiv:1211.5531}.
+\bibitem{AlmheiriDongHarlow2015} A.~Almheiri, X.~Dong, and D.~Harlow, ``Bulk Locality and Quantum Error Correction in AdS/CFT,'' \textit{JHEP} 04 (2015) 163, \textit{arXiv:1411.7041}.
+\bibitem{PastawskiEtAl2015} F.~Pastawski, B.~Yoshida, D.~Harlow, and J.~Preskill, ``Holographic quantum error-correcting codes: Toy models for the bulk/boundary correspondence,'' \textit{JHEP} 06 (2015) 149, \textit{arXiv:1503.06237}.
+\bibitem{Planck2018} Planck Collaboration, ``Planck 2018 results. X. Constraints on inflation,'' \textit{Astron. Astrophys.} 641 (2020) A10, \textit{arXiv:1807.06211}.
+\bibitem{NuFIT52} I.~Esteban, M.~C.~Gonzalez-Garcia, M.~Maltoni, T.~Schwetz, A.~Zhou, ``The fate of hints: updated global analysis of three-flavor neutrino oscillations,'' \textit{JHEP} 09 (2020) 178, \textit{arXiv:2007.14792}; NuFIT 5.2 (2022) tables, \url{http://www.nu-fit.org}.
+\bibitem{LiteBIRD2024} E.~Allys et al.\ (LiteBIRD Collaboration), ``Probing Cosmic Inflation with the LiteBIRD Cosmic Microwave Background Polarization Survey,'' \textit{PTEP} 2023 (2023) 042F01, \textit{arXiv:2202.02773}; see also \textit{arXiv:2406.02724}.
+\bibitem{BicepKeck2021} BICEP/Keck Collaboration, ``Improved Constraints on Primordial Gravitational Waves using Planck, WMAP, and BICEP/Keck Observations through the 2018 Observing Season,'' \textit{Phys. Rev. Lett.} 127 (2021) 151301, \textit{arXiv:2110.00483}.
+\bibitem{DUNE2025Status} DUNE Collaboration, ``DUNE: science and status,'' \textit{arXiv:2502.08493} (2025).
+\bibitem{DESI2025DR2} DESI Collaboration, ``DESI DR2 Results II: Measurements of Baryon Acoustic Oscillations and Cosmological Constraints,'' \textit{arXiv:2503.14738} (2025).
+\bibitem{DESI2025DR2ext} DESI Collaboration, ``Extended Dark Energy analysis using DESI DR2 BAO measurements,'' \textit{arXiv:2503.14743} (2025).
+\bibitem{ToobySmith2024} J.~Tooby-Smith, ``Formalization of physics index notation in Lean 4,'' \textit{arXiv:2411.07667} (2024); PhysLean/HepLean project, \url{https://github.com/HEPLean/PhysLean}.
+\bibitem{Callens2026} X.~Callens and the SocrateAI Agora Collaboration, ``Certified Dual-Scale String Theory, Double Field Theory, and the Lean 5 Scientific Agora Corpus,'' \textit{SocrateAI Laboratory for Mathematical Physics \& Formal Verification} (2026), \url{https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster}.
 
 \end{thebibliography}
 
