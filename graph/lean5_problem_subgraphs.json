@@ -1,15 +1,15 @@
 {
   "global_metrics": {
-    "total_nodes": 498,
-    "total_edges": 713,
-    "theorems_count": 210,
-    "definitions_count": 232,
-    "structures_count": 54,
+    "total_nodes": 528,
+    "total_edges": 785,
+    "theorems_count": 224,
+    "definitions_count": 245,
+    "structures_count": 57,
     "is_dag": true,
-    "redundant_transitive_edges": 10
+    "redundant_transitive_edges": 11
   },
-  "total_nodes": 498,
-  "total_edges": 713,
+  "total_nodes": 528,
+  "total_edges": 785,
   "problems": [
     {
       "problem_name": "Problem 1: Navier-Stokes Helicity & Dissipation Bound",
@@ -227,6 +227,88 @@
         "error_correction_radius",
         "golay_error_radius_equals_three",
         "is_valid_nonzero_codeword_weight"
+      ]
+    },
+    {
+      "problem_name": "Problem 9: Kummer Surface Modularity & Shioda-Inose Elliptic Fibration",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "target_nodes_count": 15,
+      "theorems_count": 5,
+      "theorems": [
+        "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity",
+        "Lean5Corpus.Problems.KummerModularity.singular_k3_picard_number_equals_twenty",
+        "Lean5Corpus.Problems.KummerModularity.transcendental_rank_two",
+        "Lean5Corpus.Problems.KummerModularity.kummer_cycle_balance",
+        "Lean5Corpus.Problems.KummerModularity.kummer_modularity_master_contract"
+      ],
+      "definitions_count": 9,
+      "structures_count": 1,
+      "total_upstream_closure_nodes": 15,
+      "subgraph_edges_count": 0,
+      "upstream_modules": [],
+      "sample_declarations": [
+        "k3_betti_2",
+        "k3_euler_char",
+        "k3_betti_0",
+        "k3_betti_4",
+        "k3_euler_characteristic_identity",
+        "ShiodaTateDecomposition",
+        "picard_number",
+        "singular_kummer_shioda_tate"
+      ]
+    },
+    {
+      "problem_name": "Problem 10: Non-Perturbative Instanton Action Lower Bound in 4D SYM",
+      "module": "Lean5Corpus.Problems.Problem10_SYMInstanton",
+      "target_nodes_count": 8,
+      "theorems_count": 5,
+      "theorems": [
+        "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_positive",
+        "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_negative",
+        "Lean5Corpus.Problems.SYMInstanton.instanton_action_strictly_positive",
+        "Lean5Corpus.Problems.SYMInstanton.instanton_action_exceeds_charge",
+        "Lean5Corpus.Problems.SYMInstanton.sym_instanton_master_contract"
+      ],
+      "definitions_count": 2,
+      "structures_count": 1,
+      "total_upstream_closure_nodes": 8,
+      "subgraph_edges_count": 0,
+      "upstream_modules": [],
+      "sample_declarations": [
+        "GaugeCurvatureState",
+        "topological_charge_num",
+        "action_numerator",
+        "bps_instanton_bound_positive",
+        "bps_instanton_bound_negative",
+        "instanton_action_strictly_positive",
+        "instanton_action_exceeds_charge",
+        "sym_instanton_master_contract"
+      ]
+    },
+    {
+      "problem_name": "Problem 11: Holographic Ryu-Takayanagi Entanglement Entropy SSA",
+      "module": "Lean5Corpus.Problems.Problem11_EntanglementEntropy",
+      "target_nodes_count": 7,
+      "theorems_count": 4,
+      "theorems": [
+        "Lean5Corpus.Problems.EntanglementEntropy.ryu_takayanagi_strong_subadditivity",
+        "Lean5Corpus.Problems.EntanglementEntropy.mutual_information_nonnegative",
+        "Lean5Corpus.Problems.EntanglementEntropy.holographic_subadditivity",
+        "Lean5Corpus.Problems.EntanglementEntropy.holographic_entanglement_master_contract"
+      ],
+      "definitions_count": 2,
+      "structures_count": 1,
+      "total_upstream_closure_nodes": 7,
+      "subgraph_edges_count": 0,
+      "upstream_modules": [],
+      "sample_declarations": [
+        "HolographicSubregionSystem",
+        "entanglement_entropy",
+        "mutual_information",
+        "ryu_takayanagi_strong_subadditivity",
+        "mutual_information_nonnegative",
+        "holographic_subadditivity",
+        "holographic_entanglement_master_contract"
       ]
     }
   ]

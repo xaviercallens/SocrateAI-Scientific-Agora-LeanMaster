@@ -1,13 +1,13 @@
 {
   "format": "LeanGraph.Unified.v2",
   "metrics": {
-    "total_nodes": 498,
-    "total_edges": 713,
-    "theorems_count": 210,
-    "definitions_count": 232,
-    "structures_count": 54,
+    "total_nodes": 528,
+    "total_edges": 785,
+    "theorems_count": 224,
+    "definitions_count": 245,
+    "structures_count": 57,
     "is_dag": true,
-    "redundant_transitive_edges": 10
+    "redundant_transitive_edges": 11
   },
   "nodes": [
     {
@@ -2979,7 +2979,7 @@
       "concepts": [],
       "impacts": [],
       "in_degree": 0,
-      "out_degree": 1,
+      "out_degree": 2,
       "pagerank": 1.0,
       "line_number": 70,
       "is_certified": true,
@@ -3000,7 +3000,7 @@
       "concepts": [],
       "impacts": [],
       "in_degree": 0,
-      "out_degree": 1,
+      "out_degree": 2,
       "pagerank": 1.0,
       "line_number": 77,
       "is_certified": true,
@@ -5996,6 +5996,300 @@
       "cluster": "Foundation Physics"
     },
     {
+      "id": "Lean5Corpus.Problems.SYMInstanton.GaugeCurvatureState",
+      "name": "GaugeCurvatureState",
+      "module": "Lean5Corpus.Problems.Problem10_SYMInstanton",
+      "decl_type": "structure",
+      "signature": ":Nat\n  norm_f_plus_sq : Nat\n  norm_f_minus_sq : Nat\n  h_g_pos : coupling_sq \u2265 1",
+      "docstring": "Structure representing the gauge field curvature norms in 4D Euclidean space.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 40,
+      "is_certified": true,
+      "cluster": "Curvature & Action"
+    },
+    {
+      "id": "Lean5Corpus.Problems.SYMInstanton.topological_charge_num",
+      "name": "topological_charge_num",
+      "module": "Lean5Corpus.Problems.Problem10_SYMInstanton",
+      "decl_type": "def",
+      "signature": "(s : GaugeCurvatureState) : Int",
+      "docstring": "Topological instanton charge numerator: $\\|F^+\\|^2 - \\|F^-\\|^2$.",
+      "latex_equations": [
+        "\\|F^+\\|^2 - \\|F^-\\|^2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 47,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.SYMInstanton.action_numerator",
+      "name": "action_numerator",
+      "module": "Lean5Corpus.Problems.Problem10_SYMInstanton",
+      "decl_type": "def",
+      "signature": "(s : GaugeCurvatureState) : Nat",
+      "docstring": "Euclidean Yang-Mills action numerator: $\\|F^+\\|^2 + \\|F^-\\|^2$.",
+      "latex_equations": [
+        "\\|F^+\\|^2 + \\|F^-\\|^2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 51,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_positive",
+      "name": "bps_instanton_bound_positive",
+      "module": "Lean5Corpus.Problems.Problem10_SYMInstanton",
+      "decl_type": "theorem",
+      "signature": "(s : GaugeCurvatureState) :\n    (action_numerator s : Int) \u2265 topological_charge_num s",
+      "docstring": "Master Theorem 1: Self-Dual Curvature BPS Bound.\n    The action numerator bounds the topological charge from above:\n    $S_{\\mathrm{num}} \\ge \\|F^+\\|^2 - \\|F^-\\|^2 = k_{\\mathrm{num}}$.",
+      "latex_equations": [
+        "S_{\\mathrm{num}} \\ge \\|F^+\\|^2 - \\|F^-\\|^2 = k_{\\mathrm{num}}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 5,
+      "pagerank": 1.0,
+      "line_number": 55,
+      "is_certified": true,
+      "cluster": "Mathieu M24 Moonshine"
+    },
+    {
+      "id": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_negative",
+      "name": "bps_instanton_bound_negative",
+      "module": "Lean5Corpus.Problems.Problem10_SYMInstanton",
+      "decl_type": "theorem",
+      "signature": "(s : GaugeCurvatureState) :\n    (action_numerator s : Int) \u2265 - topological_charge_num s",
+      "docstring": "Master Theorem 2: Anti-Self-Dual Curvature BPS Bound.\n    The action numerator bounds the negative topological charge:\n    $S_{\\mathrm{num}} \\ge -(\\|F^+\\|^2 - \\|F^-\\|^2) = -k_{\\mathrm{num}}$.",
+      "latex_equations": [
+        "S_{\\mathrm{num}} \\ge -(\\|F^+\\|^2 - \\|F^-\\|^2) = -k_{\\mathrm{num}}"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 5,
+      "pagerank": 1.0,
+      "line_number": 63,
+      "is_certified": true,
+      "cluster": "Mathieu M24 Moonshine"
+    },
+    {
+      "id": "Lean5Corpus.Problems.SYMInstanton.instanton_action_strictly_positive",
+      "name": "instanton_action_strictly_positive",
+      "module": "Lean5Corpus.Problems.Problem10_SYMInstanton",
+      "decl_type": "theorem",
+      "signature": "(s : GaugeCurvatureState) (h_inst : s.norm_f_plus_sq \u2265 1) :\n    action_numerator s > 0",
+      "docstring": "Master Theorem 3: Strict Positivity of Non-Trivial Instanton Action.\n    If the self-dual component is non-zero ($\\|F^+\\|^2 \\ge 1$), the action is strictly positive.",
+      "latex_equations": [
+        "\\|F^+\\|^2 \\ge 1"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 71,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.SYMInstanton.instanton_action_exceeds_charge",
+      "name": "instanton_action_exceeds_charge",
+      "module": "Lean5Corpus.Problems.Problem10_SYMInstanton",
+      "decl_type": "theorem",
+      "signature": "(s : GaugeCurvatureState) (k : Nat) (h_k : topological_charge_num s = (k : Int)) :\n    (action_numerator s : Int) \u2265 (k : Int)",
+      "docstring": "Master Theorem 4: BPS Absolute Topological Bound.\n    For an instanton configuration with topological charge $k > 0$,\n    the action numerator is at least $k$.",
+      "latex_equations": [
+        "k > 0",
+        "k"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 4,
+      "pagerank": 1.0,
+      "line_number": 79,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.SYMInstanton.sym_instanton_master_contract",
+      "name": "sym_instanton_master_contract",
+      "module": "Lean5Corpus.Problems.Problem10_SYMInstanton",
+      "decl_type": "theorem",
+      "signature": "(s : GaugeCurvatureState) (h_inst : s.norm_f_plus_sq \u2265 1) :\n    (action_numerator s : Int) \u2265 topological_charge_num s \u2227\n    (action_numerator s : Int) \u2265 - topological_charge_num s \u2227\n    action_numerat",
+      "docstring": "Master Theorem 5: Unified SYM Instanton Master Contract.\n    Simultaneous certification of the BPS upper and lower bounds and action positivity.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 6,
+      "pagerank": 1.0,
+      "line_number": 89,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.EntanglementEntropy.HolographicSubregionSystem",
+      "name": "HolographicSubregionSystem",
+      "module": "Lean5Corpus.Problems.Problem11_EntanglementEntropy",
+      "decl_type": "structure",
+      "signature": ":Nat\n  area_B : Nat\n  area_union : Nat\n  area_intersection : Nat\n  h_ssa_geom : area_union + area_intersection \u2264 area_A + area_B",
+      "docstring": "Structure representing the minimal surface areas in a holographic AdS/CFT spacetime.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 41,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.EntanglementEntropy.entanglement_entropy",
+      "name": "entanglement_entropy",
+      "module": "Lean5Corpus.Problems.Problem11_EntanglementEntropy",
+      "decl_type": "def",
+      "signature": "(area : Nat) : Nat",
+      "docstring": "Holographic entanglement entropy in units where $4 G_N = 1$.",
+      "latex_equations": [
+        "4 G_N = 1"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 49,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.EntanglementEntropy.mutual_information",
+      "name": "mutual_information",
+      "module": "Lean5Corpus.Problems.Problem11_EntanglementEntropy",
+      "decl_type": "def",
+      "signature": "(s : HolographicSubregionSystem) : Int",
+      "docstring": "Holographic mutual information numerator: $S(A) + S(B) - S(A \\cup B)$.",
+      "latex_equations": [
+        "S(A) + S(B) - S(A \\cup B)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 53,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.EntanglementEntropy.ryu_takayanagi_strong_subadditivity",
+      "name": "ryu_takayanagi_strong_subadditivity",
+      "module": "Lean5Corpus.Problems.Problem11_EntanglementEntropy",
+      "decl_type": "theorem",
+      "signature": "(s : HolographicSubregionSystem) :\n    entanglement_entropy s.area_union + entanglement_entropy s.area_intersection \u2264\n    entanglement_entropy s.area_A + entanglement_entropy s.area_B",
+      "docstring": "Master Theorem 1: Holographic Strong Subadditivity (SSA).\n    $S(A \\cup B) + S(A \\cap B) \\le S(A) + S(B)$.",
+      "latex_equations": [
+        "S(A \\cup B) + S(A \\cap B) \\le S(A) + S(B)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 57,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.EntanglementEntropy.mutual_information_nonnegative",
+      "name": "mutual_information_nonnegative",
+      "module": "Lean5Corpus.Problems.Problem11_EntanglementEntropy",
+      "decl_type": "theorem",
+      "signature": "(s : HolographicSubregionSystem) :\n    mutual_information s \u2265 (s.area_intersection : Int)",
+      "docstring": "Master Theorem 2: Non-Negativity of Holographic Mutual Information.\n    If $S(A \\cap B) \\ge 0$, then $I(A : B) = S(A) + S(B) - S(A \\cup B) \\ge S(A \\cap B) \\ge 0$.",
+      "latex_equations": [
+        "S(A \\cap B) \\ge 0",
+        "I(A : B) = S(A) + S(B) - S(A \\cup B) \\ge S(A \\cap B) \\ge 0"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 65,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.EntanglementEntropy.holographic_subadditivity",
+      "name": "holographic_subadditivity",
+      "module": "Lean5Corpus.Problems.Problem11_EntanglementEntropy",
+      "decl_type": "theorem",
+      "signature": "(s : HolographicSubregionSystem) :\n    entanglement_entropy s.area_union \u2264 entanglement_entropy s.area_A + entanglement_entropy s.area_B",
+      "docstring": "Master Theorem 3: Strict Subadditivity of Holographic Entanglement Entropy.\n    $S(A \\cup B) \\le S(A) + S(B)$.",
+      "latex_equations": [
+        "S(A \\cup B) \\le S(A) + S(B)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 74,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.EntanglementEntropy.holographic_entanglement_master_contract",
+      "name": "holographic_entanglement_master_contract",
+      "module": "Lean5Corpus.Problems.Problem11_EntanglementEntropy",
+      "decl_type": "theorem",
+      "signature": "(s : HolographicSubregionSystem) :\n    entanglement_entropy s.area_union + entanglement_entropy s.area_intersection \u2264\n      entanglement_entropy s.area_A + entanglement_entropy s.area_B \u2227\n    entangle",
+      "docstring": "Master Theorem 4: Unified Holographic Entanglement Master Contract.\n    Simultaneous formal verification of Strong Subadditivity, subadditivity, and mutual information bound.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 6,
+      "pagerank": 1.0,
+      "line_number": 82,
+      "is_certified": true,
+      "cluster": "Foundation Physics"
+    },
+    {
       "id": "Lean5Corpus.Problems.NavierStokes.ViscousFluidState",
       "name": "ViscousFluidState",
       "module": "Lean5Corpus.Problems.Problem1_NavierStokesHelicity",
@@ -7406,6 +7700,286 @@
       "line_number": 85,
       "is_certified": true,
       "cluster": "Foundation Physics"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.k3_betti_2",
+      "name": "k3_betti_2",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "Topological invariants of a smooth K3 surface.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 41,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.k3_euler_char",
+      "name": "k3_euler_char",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 43,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.k3_betti_0",
+      "name": "k3_betti_0",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 44,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.k3_betti_4",
+      "name": "k3_betti_4",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 45,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity",
+      "name": "k3_euler_characteristic_identity",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "theorem",
+      "signature": ":\n    k3_betti_0 + k3_betti_2 + k3_betti_4 = k3_euler_char",
+      "docstring": "Master Theorem 1: K3 Topological Consistency.\n    The Euler characteristic satisfies $\\chi(K3) = b_0 + b_2 + b_4 = 1 + 22 + 1 = 24$.",
+      "latex_equations": [
+        "\\chi(K3) = b_0 + b_2 + b_4 = 1 + 22 + 1 = 24"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 4,
+      "pagerank": 1.0,
+      "line_number": 47,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.ShiodaTateDecomposition",
+      "name": "ShiodaTateDecomposition",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "structure",
+      "signature": ":Nat\n  mordell_weil_rank : Nat\n  singular_fiber_excess : Nat\n  h_base : base_and_section = 2",
+      "docstring": "Structure representing the Shioda-Tate decomposition of an elliptic K3 surface.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 53,
+      "is_certified": true,
+      "cluster": "Fermat & Modular Forms"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.picard_number",
+      "name": "picard_number",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "def",
+      "signature": "(st : ShiodaTateDecomposition) : Nat",
+      "docstring": "Total Picard number computed from the Shioda-Tate formula.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 60,
+      "is_certified": true,
+      "cluster": "Fermat & Modular Forms"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.singular_kummer_shioda_tate",
+      "name": "singular_kummer_shioda_tate",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "def",
+      "signature": ": ShiodaTateDecomposition",
+      "docstring": "A singular (attractive) Kummer K3 surface has Mordell-Weil rank 0 and 18 fiber components.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 64,
+      "is_certified": true,
+      "cluster": "Fermat & Modular Forms"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.singular_k3_picard_number_equals_twenty",
+      "name": "singular_k3_picard_number_equals_twenty",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "theorem",
+      "signature": ":\n    picard_number singular_kummer_shioda_tate = 20",
+      "docstring": "Master Theorem 2: Singular K3 Picard Number Equals 20.\n    $\\rho(X) = 2 + 0 + 18 = 20$.",
+      "latex_equations": [
+        "\\rho(X) = 2 + 0 + 18 = 20"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 71,
+      "is_certified": true,
+      "cluster": "K3 Surface & Kummer"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.transcendental_lattice_rank",
+      "name": "transcendental_lattice_rank",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "def",
+      "signature": "(rho : Nat) : Nat",
+      "docstring": "Transcendental lattice rank $r(T_X) = b_2 - \\rho(X)$.",
+      "latex_equations": [
+        "r(T_X) = b_2 - \\rho(X)"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 1,
+      "pagerank": 1.0,
+      "line_number": 77,
+      "is_certified": true,
+      "cluster": "Fermat & Modular Forms"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.transcendental_rank_two",
+      "name": "transcendental_rank_two",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "theorem",
+      "signature": ":\n    transcendental_lattice_rank (picard_number singular_kummer_shioda_tate) = 2",
+      "docstring": "Master Theorem 3: Transcendental Lattice of Singular K3 is Rank 2.\n    $\\mathrm{rank}(T_X) = 22 - 20 = 2$.\n    This two-dimensional space of periods matches the 2-dimensional modular Galois representation.",
+      "latex_equations": [
+        "\\mathrm{rank}(T_X) = 22 - 20 = 2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 3,
+      "pagerank": 1.0,
+      "line_number": 81,
+      "is_certified": true,
+      "cluster": "Fermat & Modular Forms"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.kummer_exceptional_divisors",
+      "name": "kummer_exceptional_divisors",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "Kummer exceptional divisors and torus cycles.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 88,
+      "is_certified": true,
+      "cluster": "Fermat & Modular Forms"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.kummer_torus_cycles",
+      "name": "kummer_torus_cycles",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "def",
+      "signature": ": Nat",
+      "docstring": "",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 0,
+      "pagerank": 1.0,
+      "line_number": 90,
+      "is_certified": true,
+      "cluster": "Fermat & Modular Forms"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.kummer_cycle_balance",
+      "name": "kummer_cycle_balance",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "theorem",
+      "signature": ":\n    kummer_exceptional_divisors + kummer_torus_cycles = 20",
+      "docstring": "Master Theorem 4: Kummer Geometric Cycle Balance.\n    The 16 blow-up spheres plus the 4 invariant 2-cycles of $T^4 / \\mathbb{Z}_2$ span the 20 cycles.",
+      "latex_equations": [
+        "T^4 / \\mathbb{Z}_2"
+      ],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 2,
+      "pagerank": 1.0,
+      "line_number": 92,
+      "is_certified": true,
+      "cluster": "Fermat & Modular Forms"
+    },
+    {
+      "id": "Lean5Corpus.Problems.KummerModularity.kummer_modularity_master_contract",
+      "name": "kummer_modularity_master_contract",
+      "module": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "decl_type": "theorem",
+      "signature": ":\n    k3_betti_0 + k3_betti_2 + k3_betti_4 = k3_euler_char \u2227\n    picard_number singular_kummer_shioda_tate = 20 \u2227\n    transcendental_lattice_rank 20 = 2 \u2227\n    kummer_exceptional_divisors + kummer_toru",
+      "docstring": "Master Theorem 5: Unified Kummer Modularity Master Contract.\n    Simultaneous certification of Euler characteristic, Picard rank 20, transcendental rank 2,\n    and Kummer cycle balance.",
+      "latex_equations": [],
+      "papers": [],
+      "concepts": [],
+      "impacts": [],
+      "in_degree": 0,
+      "out_degree": 9,
+      "pagerank": 1.0,
+      "line_number": 98,
+      "is_certified": true,
+      "cluster": "Fermat & Modular Forms"
     },
     {
       "id": "StringTheory.Foundation.Atlas.AtlasFourManifold",
@@ -11741,11 +12315,27 @@
       }
     },
     {
+      "source": "SocrateAI.FrontierTriad.CooperS10",
+      "target": "picard_number",
+      "kind": "def",
+      "metadata": {
+        "location": "defn_value"
+      }
+    },
+    {
       "source": "SocrateAI.FrontierTriad.KummerM24",
       "target": "ModuliGeometry",
       "kind": "sig",
       "metadata": {
         "location": "signature"
+      }
+    },
+    {
+      "source": "SocrateAI.FrontierTriad.KummerM24",
+      "target": "picard_number",
+      "kind": "def",
+      "metadata": {
+        "location": "defn_value"
       }
     },
     {
@@ -13173,6 +13763,334 @@
       }
     },
     {
+      "source": "Lean5Corpus.Problems.SYMInstanton.topological_charge_num",
+      "target": "GaugeCurvatureState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.action_numerator",
+      "target": "GaugeCurvatureState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_positive",
+      "target": "GaugeCurvatureState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_positive",
+      "target": "action_numerator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_positive",
+      "target": "topological_charge_num",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_positive",
+      "target": "action_numerator",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_positive",
+      "target": "topological_charge_num",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_negative",
+      "target": "GaugeCurvatureState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_negative",
+      "target": "action_numerator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_negative",
+      "target": "topological_charge_num",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_negative",
+      "target": "action_numerator",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.bps_instanton_bound_negative",
+      "target": "topological_charge_num",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.instanton_action_strictly_positive",
+      "target": "GaugeCurvatureState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.instanton_action_strictly_positive",
+      "target": "action_numerator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.instanton_action_strictly_positive",
+      "target": "action_numerator",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.instanton_action_exceeds_charge",
+      "target": "GaugeCurvatureState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.instanton_action_exceeds_charge",
+      "target": "topological_charge_num",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.instanton_action_exceeds_charge",
+      "target": "action_numerator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.instanton_action_exceeds_charge",
+      "target": "bps_instanton_bound_positive",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.sym_instanton_master_contract",
+      "target": "GaugeCurvatureState",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.sym_instanton_master_contract",
+      "target": "action_numerator",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.sym_instanton_master_contract",
+      "target": "topological_charge_num",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.sym_instanton_master_contract",
+      "target": "bps_instanton_bound_positive",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.sym_instanton_master_contract",
+      "target": "bps_instanton_bound_negative",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.SYMInstanton.sym_instanton_master_contract",
+      "target": "instanton_action_strictly_positive",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.mutual_information",
+      "target": "HolographicSubregionSystem",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.ryu_takayanagi_strong_subadditivity",
+      "target": "HolographicSubregionSystem",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.ryu_takayanagi_strong_subadditivity",
+      "target": "entanglement_entropy",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.ryu_takayanagi_strong_subadditivity",
+      "target": "entanglement_entropy",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.mutual_information_nonnegative",
+      "target": "HolographicSubregionSystem",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.mutual_information_nonnegative",
+      "target": "mutual_information",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.mutual_information_nonnegative",
+      "target": "mutual_information",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.holographic_subadditivity",
+      "target": "HolographicSubregionSystem",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.holographic_subadditivity",
+      "target": "entanglement_entropy",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.holographic_subadditivity",
+      "target": "entanglement_entropy",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.holographic_entanglement_master_contract",
+      "target": "HolographicSubregionSystem",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.holographic_entanglement_master_contract",
+      "target": "entanglement_entropy",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.holographic_entanglement_master_contract",
+      "target": "mutual_information",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.holographic_entanglement_master_contract",
+      "target": "ryu_takayanagi_strong_subadditivity",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.holographic_entanglement_master_contract",
+      "target": "holographic_subadditivity",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.EntanglementEntropy.holographic_entanglement_master_contract",
+      "target": "mutual_information_nonnegative",
+      "kind": "proof",
+      "metadata": {
+        "location": "proof_body"
+      }
+    },
+    {
       "source": "Lean5Corpus.Problems.NavierStokes.dissipation_rate",
       "target": "ViscousFluidState",
       "kind": "sig",
@@ -14191,6 +15109,190 @@
     {
       "source": "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract",
       "target": "golay_dimension",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity",
+      "target": "k3_betti_0",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity",
+      "target": "k3_betti_2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity",
+      "target": "k3_betti_4",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity",
+      "target": "k3_euler_char",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.picard_number",
+      "target": "ShiodaTateDecomposition",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.singular_kummer_shioda_tate",
+      "target": "ShiodaTateDecomposition",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.singular_k3_picard_number_equals_twenty",
+      "target": "picard_number",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.singular_k3_picard_number_equals_twenty",
+      "target": "singular_kummer_shioda_tate",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.transcendental_lattice_rank",
+      "target": "k3_betti_2",
+      "kind": "def",
+      "metadata": {
+        "location": "defn_value"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.transcendental_rank_two",
+      "target": "transcendental_lattice_rank",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.transcendental_rank_two",
+      "target": "picard_number",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.transcendental_rank_two",
+      "target": "singular_kummer_shioda_tate",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.kummer_cycle_balance",
+      "target": "kummer_exceptional_divisors",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.kummer_cycle_balance",
+      "target": "kummer_torus_cycles",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.kummer_modularity_master_contract",
+      "target": "k3_betti_0",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.kummer_modularity_master_contract",
+      "target": "k3_betti_2",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.kummer_modularity_master_contract",
+      "target": "k3_betti_4",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.kummer_modularity_master_contract",
+      "target": "k3_euler_char",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.kummer_modularity_master_contract",
+      "target": "picard_number",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.kummer_modularity_master_contract",
+      "target": "singular_kummer_shioda_tate",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.kummer_modularity_master_contract",
+      "target": "transcendental_lattice_rank",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.kummer_modularity_master_contract",
+      "target": "kummer_exceptional_divisors",
+      "kind": "sig",
+      "metadata": {
+        "location": "signature"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.KummerModularity.kummer_modularity_master_contract",
+      "target": "kummer_torus_cycles",
       "kind": "sig",
       "metadata": {
         "location": "signature"
@@ -15341,6 +16443,22 @@
       }
     },
     {
+      "source": "Lean5Corpus.Problems.Problem10_SYMInstanton",
+      "target": "Lean5Corpus.Foundations.Narrative",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus.Problems.Problem11_EntanglementEntropy",
+      "target": "Lean5Corpus.Foundations.Narrative",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
       "source": "Lean5Corpus.Problems.Problem1_NavierStokesHelicity",
       "target": "StringTheoryFoundation.FluidDynamics.NavierStokesBridge",
       "kind": "import",
@@ -15437,6 +16555,14 @@
       }
     },
     {
+      "source": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "target": "Lean5Corpus.Foundations.Narrative",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
       "source": "Lean5Corpus",
       "target": "Lean5Corpus.Foundations.Narrative",
       "kind": "import",
@@ -15503,6 +16629,30 @@
     {
       "source": "Lean5Corpus",
       "target": "Lean5Corpus.Problems.Problem8_GolayHolography",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus",
+      "target": "Lean5Corpus.Problems.Problem9_KummerModularity",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus",
+      "target": "Lean5Corpus.Problems.Problem10_SYMInstanton",
+      "kind": "import",
+      "metadata": {
+        "import_type": "module"
+      }
+    },
+    {
+      "source": "Lean5Corpus",
+      "target": "Lean5Corpus.Problems.Problem11_EntanglementEntropy",
       "kind": "import",
       "metadata": {
         "import_type": "module"

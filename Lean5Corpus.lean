@@ -7,6 +7,9 @@ import Lean5Corpus.Problems.Problem5_KolmogorovCascade
 import Lean5Corpus.Problems.Problem6_FluxSwampland
 import Lean5Corpus.Problems.Problem7_CourantTorsion
 import Lean5Corpus.Problems.Problem8_GolayHolography
+import Lean5Corpus.Problems.Problem9_KummerModularity
+import Lean5Corpus.Problems.Problem10_SYMInstanton
+import Lean5Corpus.Problems.Problem11_EntanglementEntropy
 
 /-!
 # Lean 5 Scientific Agora Corpus: Master Library
@@ -21,4 +24,7 @@ Re-exports the certified mathematical physics foundations and solved open proble
 7. `Lean5Corpus.Problems.Problem6_FluxSwampland` (Refined de Sitter Swampland bound on fluxed Calabi-Yau 4-folds)
 8. `Lean5Corpus.Problems.Problem7_CourantTorsion` (Generalized Courant-Nijenhuis torsion vanishing on doubled torus T^{2d})
 9. `Lean5Corpus.Problems.Problem8_GolayHolography` (Holographic quantum error-correcting distance for Golay code G_24)
+10. `Lean5Corpus.Problems.Problem9_KummerModularity` (Kummer surface modularity and Shioda-Inose elliptic fibration)
+11. `Lean5Corpus.Problems.Problem10_SYMInstanton` (Non-perturbative instanton action lower bound in 4D N=4 SYM)
+12. `Lean5Corpus.Problems.Problem11_EntanglementEntropy` (Holographic Ryu-Takayanagi Strong Subadditivity on doubled geometry)
 -/

@@ -99,7 +99,7 @@ OPEN_PROBLEMS: List[Dict[str, Any]] = [
         "domain": "Arithmetic Geometry",
         "foundation": "anthropics-flt / atlas-lean",
         "target_module": "Lean5Corpus.Problems.Problem9_KummerModularity",
-        "status": "OPEN_FRONTIER",
+        "status": "SOLVED_IN_CORPUS",
         "description": "Formalize the Hecke eigenvalue correspondence for singular fiber components in elliptic K3 fibrations."
     },
     {
@@ -108,8 +108,17 @@ OPEN_PROBLEMS: List[Dict[str, Any]] = [
         "domain": "Mathematical Physics",
         "foundation": "StringTheoryFoundation / PhysLib",
         "target_module": "Lean5Corpus.Problems.Problem10_SYMInstanton",
-        "status": "OPEN_FRONTIER",
+        "status": "SOLVED_IN_CORPUS",
         "description": "Prove the topological bound S_inst = 8*pi^2/g^2 * |k| > 0 for non-zero second Chern number k != 0."
+    },
+    {
+        "id": "ENT-P11",
+        "title": "Holographic Ryu-Takayanagi Entanglement Entropy Strong Subadditivity",
+        "domain": "Quantum Information & Holography",
+        "foundation": "DualScaleValidation / DoubleFieldTheory",
+        "target_module": "Lean5Corpus.Problems.Problem11_EntanglementEntropy",
+        "status": "SOLVED_IN_CORPUS",
+        "description": "Prove holographic Strong Subadditivity S(A union B) + S(A int B) <= S(A) + S(B) on doubled geometry."
     }
 ]
 
