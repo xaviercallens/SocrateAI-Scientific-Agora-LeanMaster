@@ -3,6 +3,13 @@
 > **Bridging Unstructured Physics Literature and Mechanized Lean 4 Proofs**  
 > *From "Zero-GPU" API-Driven Blueprints to a Global GCP TPU Swarm for String Theory and M-Theory Formalization*
 
+> **⚠️ Vision document, not a status report.** This describes a long-horizon aspirational
+> architecture (GCP TPU swarms, edge GPU inference, RL proof search, etc.) that has not been built
+> or attempted. None of the tools/phases below (Aesop rule sets, Ollama/DeepSeek-Prover, GKE
+> Autopilot, TPU v5e training) are wired up in this repo today. For the actual, verified current
+> state of the formalization and the concrete near-term plan to reach it, see
+> **[`docs/RIGOR_ROADMAP.md`](docs/RIGOR_ROADMAP.md)**.
+
 ---
 
 ## Executive Summary
