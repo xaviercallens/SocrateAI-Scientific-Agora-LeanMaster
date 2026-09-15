@@ -47,6 +47,14 @@ elliptic genus decomposition into representations of the Mathieu group $M_{24}$.
 -- self-contained Nat/Int arithmetic named after, and inspired by, the cited external work, not a
 -- machine-checked bridge to it. See papers/publication/PAPER7_ENGINE_LEAN_DOCS_REVIEW.md Sec. 4
 -- for the full finding.
+-- Verified pointer (2026-09, no Mathlib available to actually import it): the real repo (pinned at
+-- commit db584cd6d46c92f209a44c0f1c829460d327499d, toolchain v4.33.1 -- the SAME toolchain this
+-- project uses) is a genuine, complete FLT proof; its own PROOF-PATH.md documents the exact
+-- Theorems/Thm_X_y.lean <-> P2M/Sol/S_X_y.lean structure. This file's Kummer-surface arithmetic has
+-- no code-level relationship to that proof; the toolchain match makes it the natural first target
+-- if/when Mathlib is added. lean4basesource/xaviercallens-xflt is a byte-identical fork of this same
+-- repo at the same commit -- it does not separately contain the Kummer/Mukai content its
+-- FOUNDATIONS.md description previously implied (fixed there too).
 
 namespace StringTheory.Foundation.ModularForms
 

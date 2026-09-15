@@ -124,11 +124,52 @@ all 6 Bridge files carry an honest scope note. See
 before and after; exhaustive sorry/admit and `#print axioms` sweeps re-run clean (237 theorems/lemmas
 now, standard axioms only).
 
+## Mathlib registration: attempted, blocked on disk space, deferred (not abandoned)
+User decision (confirmed): register `StringTheoryFormalization` with Mathlib rather than archive it.
+Blocked this session before touching `lakefile.lean`: disk check showed **2.2 GB free on a 100%-full
+234 GB filesystem** — Mathlib's source + compiled cache needs several GB; attempting it would likely
+fail mid-download and could corrupt Lake's manifest/cache, not just fail cleanly. Deferred to a
+machine with more disk. **The Mathlib commit to use is already determined, no re-investigation
+needed**: `db584cd6d46c92f209a44c0f1c829460d327499d` from
+`https://github.com/leanprover-community/mathlib4.git` — both `lean4basesource/anthropics-flt` and
+`lean4basesource/xaviercallens-xflt` pin exactly this commit on `leanprover/lean4:v4.33.1`, the
+identical toolchain this project already uses. See
+`/home/xavkal/.claude/plans/mighty-skipping-meadow.md` Phase 1a for the full scoped plan (build in
+isolation first, decision rule to stop-and-report if compile errors are large/systemic rather than
+grinding through them, then re-run the sorry/admit grep and `#print axioms` sweep since a clean
+build alone doesn't mean either).
+
+**"Leverage the vendored corpora" done at the level available without Mathlib:** all 8
+`lean4basesource/*` submodules genuinely require Mathlib in their own build (confirmed by reading
+each one's `lakefile.lean`/`.toml`), so none can be `import`-ed today regardless of which one.
+Updated `FOUNDATIONS.md` (§1 registry + §3, renamed from "Architectural Bridges" since none exist
+yet) and the 4 most relevant `StringTheoryFoundation` Bridge files
+(`NavierStokesBridge.lean`/`FermatModularBridge.lean`/`PhysLibKinematicsBridge.lean`/
+`TensorNetworkBridge.lean`) with specific, verified pointers to real declarations in each vendored
+repo, replacing vague or wrong ones — e.g. `physlib/Physlib/Relativity/MinkowskiMatrix.lean`
+genuinely proves `minkowskiMatrix`/`minkowskiMatrix.dual`; `tnlean/TNLean/MPS/FundamentalTheorem.lean`
+is real MPS formalization (1,229 files total, 16 real cited arXiv papers under `Papers/`, but tnlean
+itself needs 3 more dependencies beyond Mathlib and a newer toolchain); `anthropics-flt` is a
+genuine, complete FLT proof pinned at the same toolchain as this project, documented file-by-file in
+its own `PROOF-PATH.md`; `xaviercallens-xflt` is confirmed byte-identical to `anthropics-flt` (not an
+independent extension — `FOUNDATIONS.md`'s old claim that it contains Kummer/Mukai content was
+wrong, now corrected: that content is in this project's own `DualScaleM24Formalization`). Also found:
+`physlib/Physlib/StringTheory/Basic.lean` is an **explicit placeholder** per its own author's
+docstring — there is no real string-theory content in `physlib` yet. Separately found (not fixed,
+just flagged): `prove2me_engine/tools/query_base.py` + `.leancache/declarations.db` is a real, live
+cross-corpus search tool (confirmed: a "Sobolev" query correctly surfaced real
+`openai-navierstokes/NavierStokes/TorusInverse.lean` declarations), but the cache is tiny (33 rows
+total) and mistags at least one of our own theorems (`zero_mode_laplacian`, actually in our own
+`NavierStokesBridge.lean`) as `repo:openai-navierstokes` — worth fixing if the cache is ever
+properly (re-)populated at scale.
+
 ## Next Steps / Backlog
 - Audit and fix papers 1–6 the way paper 7 was fixed (moduli-stabilization title claim in paper 1 is
   the most urgent).
-- Decide and act on `StringTheoryFormalization/`, `Tests/Main.lean`, and the redundant nested
-  `DualScaleM24Formalization/lakefile.lean` (archive/delete, or properly integrate with Mathlib).
+- Run Phase 1a (Mathlib + `StringTheoryFormalization`/`Tests/Main.lean` registration) on a machine
+  with adequate disk space — commit and decision rule already determined, see above.
+- Decide and act on the redundant nested `DualScaleM24Formalization/lakefile.lean` (delete — the
+  root lakefile already builds this exact code).
 - Apply the LEDGER.md `OBS-VAL-0001` fix if not already done.
 - Continue to refine RAG & LeanGraph elements for physicist adoption; regenerate `graph/leangraph.json`
   before quoting its node/edge counts anywhere (they drift — this session found the README, paper,

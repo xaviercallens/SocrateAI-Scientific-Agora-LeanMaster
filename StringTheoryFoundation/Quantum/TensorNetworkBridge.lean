@@ -44,6 +44,12 @@ first non-trivial Mathieu Moonshine representation $A_1 = 90 = \mathbf{45} \oplu
 -- self-contained Nat/Int arithmetic named after, and inspired by, the cited external work, not a
 -- machine-checked bridge to it. See papers/publication/PAPER7_ENGINE_LEAN_DOCS_REVIEW.md Sec. 4
 -- for the full finding.
+-- Verified pointer (2026-09, no Mathlib available to actually import it): the real repo's
+-- `TNLean/MPS/FundamentalTheorem.lean`, `ParentHamiltonian.lean`, `OpenBoundary.lean` etc. are a
+-- genuine Matrix-Product-State/tensor-network formalization (1,229 .lean files total), plus 16 real
+-- cited arXiv papers under `Papers/`. It requires Mathlib and two further dependencies
+-- (`checkdecls`, a game-theory repo) plus `QICLean`, on toolchain v4.34.0-rc1 (one point release
+-- ahead of this project's v4.33.1) -- registering it would need more than just adding Mathlib.
 
 namespace StringTheory.Foundation.Quantum
 

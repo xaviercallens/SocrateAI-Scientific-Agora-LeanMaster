@@ -46,6 +46,10 @@ $$\frac{d}{dt} \|u\|_{L^2}^2 = -2\nu \|\nabla u\|_{L^2}^2 \le 0$$
 -- self-contained Nat/Int arithmetic named after, and inspired by, the cited external work, not a
 -- machine-checked bridge to it. See papers/publication/PAPER7_ENGINE_LEAN_DOCS_REVIEW.md Sec. 4
 -- for the full finding.
+-- Verified pointer (2026-09, no Mathlib available to actually import it): the real repo's
+-- `NavierStokes/TorusInverse.lean` genuinely defines `torusMeasure`, `liftX`/`liftY`, and a discrete
+-- Laplacian eigenvalue construction on the torus -- the closest real analogue of this file's
+-- `laplacian_eigenvalue`/`WaveVector`. See FOUNDATIONS.md Sec. 1 for what else is confirmed present.
 
 namespace StringTheory.Foundation.FluidDynamics
 

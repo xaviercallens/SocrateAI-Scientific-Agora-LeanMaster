@@ -1,21 +1,35 @@
 # Foundational Open-Source Corpora & Mathematical Engines
 
-This repository (`SocrateAI-Scientific-Agora-LeanMaster`) integrates, cross-indexes, and formally bridges **8 premier open-source Lean 4 mathematical corpora** and **4 foundational physics monographs**. These codebases provide the verified analytic, geometric, modular, and physical substrates upon which **Double Field Theory (DFT)** and **Dual-Scale $M_{24}$ Moonshine** are constructed.
+This repository (`SocrateAI-Scientific-Agora-LeanMaster`) vendors **8 open-source Lean 4 corpora**
+as read-only git submodules under `lean4basesource/` and cites **4 foundational physics papers**.
+
+> **Status, verified directly against the submodules (not from memory or prior prose):** every one
+> of the 8 vendored corpora depends on Mathlib in its own `lakefile.lean`/`lakefile.toml`. This
+> project's own `lakefile.lean` has **zero external dependencies**
+> (`lake-manifest.json`: `"packages": []`) — no Mathlib, and therefore no `import` from any of these
+> 8 corpora is possible today. Adding Mathlib as a root dependency is planned but deferred to a
+> machine with adequate disk space (attempted this session; blocked at 2.2 GB free on a 100%-full
+> disk — see `/home/xavkal/.claude/plans/mighty-skipping-meadow.md` Phase 1a). Until then, "bridges"
+> to these corpora in this codebase are **citations and thematic parallels, not compiled
+> dependencies** — the six `StringTheoryFoundation/*Bridge.lean` files each carry a `SCOPE NOTE`
+> saying exactly this, and this document does the same below, with specifics verified by reading
+> the actual vendored source (not assumed) for each of the four repositories the project leans on
+> most.
 
 ---
 
 ## 1. Registry of Foundational Repositories & Submodules
 
-| Repository | Source / Institution | Role in LeanMaster Engine | Submodule Path |
+| Repository | Source / Institution | What's actually in it (verified) | Submodule Path |
 | :--- | :--- | :--- | :--- |
-| **OpenAI Navier-Stokes & Euler** | [OpenAI Research](https://github.com/openai/NavierStokesAndEuler) | Continuous fluid dynamics, Sobolev spaces, mild PDE solutions, energy conservation bounds. | `lean4basesource/openai-navierstokes` |
-| **Anthropic Fermat's Last Theorem** | [Anthropic Research](https://github.com/anthropics/fermats-last-theorem) | Modular forms, Galois representations, elliptic curves, Kummer surfaces. | `lean4basesource/anthropics-flt` |
-| **Callens xFermat Kummer Lattice** | [Xavier Callens](https://github.com/xaviercallens/xfermats-last-theorem) | Kummer surface blowup divisors, Mukai lattice $\Gamma^{4,20}$, $T^4/\mathbb{Z}_2$ singularity resolution. | `lean4basesource/xaviercallens-xflt` |
-| **Meta AI ATLAS-Lean** | [Meta AI Research AutoformBot](https://github.com/facebookresearch/atlas-lean) | 2,653 formalized papers, 46,000+ declarations, 4-manifold topology, intersection lattices. | `lean4basesource/atlas-lean` |
-| **PhysLib** | [Lean Community](https://github.com/leanprover-community/physlib) | 19 physics domains, spacetime kinematics, Clifford algebra, classical mechanics. | `lean4basesource/physlib` |
-| **TNLean (Tensor Networks)** | [LionSR / Oxford Quantum](https://github.com/LionSR/TNLean) | Tensor network decompositions, MPS/PEPS representations, quantum entanglement geometry. | `lean4basesource/tnlean` |
-| **LeanQuantum** | [inQWIRE Quantum](https://github.com/inQWIRE/LeanQuantum) | Quantum gates, unitary state evolution, quantum error-correcting codes. | `lean4basesource/lean-quantum` |
-| **Lean Stat Learning Theory** | [YuanheZ](https://github.com/YuanheZ/lean-stat-learning-theory) | Rademacher complexity, PAC bounds, empirical risk minimization. | `lean4basesource/lean-stat-learning-theory` |
+| **OpenAI Navier-Stokes & Euler** | [OpenAI Research](https://github.com/openai/NavierStokesAndEuler) | 2,659 `.lean` files under `NavierStokes/` (incl. `NavierStokes/R3`), `Euler/`, `ComparatorChallenges/` — real fractional-Sobolev/mild-PDE formalization (e.g. `NavierStokes/TorusInverse.lean`'s `torusMeasure`, `liftX`/`liftY`, Laplacian eigenvalue machinery). Requires Mathlib. | `lean4basesource/openai-navierstokes` |
+| **Anthropic Fermat's Last Theorem** | [Anthropic Research](https://github.com/anthropics/fermats-last-theorem) | 29,511 files under `Theorems/`, 1,450 under `Definitions/`, plus `P2M/`. A real, complete FLT proof (Frey-Serre-Ribet-Wiles-Taylor-Wiles route, largely following Darmon-Diamond-Taylor) — `PROOF-PATH.md` documents the exact theorem-by-theorem structure (`Theorems/Thm_X_y.lean` stated, `P2M/Sol/S_X_y.lean` proved). Requires Mathlib, pinned at `db584cd6d46c92f209a44c0f1c829460d327499d` on `leanprover/lean4:v4.33.1` — the same toolchain this project uses, making it the natural first target once Mathlib is added. | `lean4basesource/anthropics-flt` |
+| **Callens xFermat Kummer Lattice** | [Xavier Callens](https://github.com/xaviercallens/xfermats-last-theorem) | Confirmed byte-identical to `anthropics-flt` at the same commit (`diff -rq` on `Theorems/` returns no differences) — an unmodified mirror/fork, not an independently-extended repo. It does **not** separately contain Kummer-surface or Mukai-lattice content; that content lives in this project's own `DualScaleM24Formalization`. | `lean4basesource/xaviercallens-xflt` |
+| **Meta AI ATLAS-Lean** | [Meta AI Research AutoformBot](https://github.com/facebookresearch/atlas-lean) | Autoformalized-textbook corpus; requires Mathlib. Node/declaration counts here have not been independently re-verified this session (the "2,653 formalized papers, 46,000+ declarations" figure is carried over from an earlier, unaudited pass — treat as unverified until re-checked). | `lean4basesource/atlas-lean` |
+| **PhysLib** | [leanprover-community](https://github.com/leanprover-community/physlib) | Real, substantial content in `Physlib/{Relativity,SpaceAndTime,Mathematics,QuantumMechanics,Particles,QFT}/` — e.g. `Relativity/MinkowskiMatrix.lean` genuinely defines and proves properties of the Minkowski matrix $\eta=\mathrm{diag}(1,-1,-1,\dots)$ (theorems `minkowskiMatrix`, `minkowskiMatrix.dual`). **`Physlib/StringTheory/Basic.lean` is explicitly a placeholder** per its own author's docstring ("This directory is currently a place holder. Please feel free to contribute!") — there is no real string-theory content here to bridge to yet. Requires Mathlib. | `lean4basesource/physlib` |
+| **TNLean (Tensor Networks)** | [LionSR](https://github.com/LionSR/TNLean) | Real Matrix-Product-States/tensor-network formalization: `TNLean/{Algebra,MPS,PEPS,QCA,Spectral,Wielandt,PiAlgebra,Tactic}.lean` plus an `MPS/` subdirectory with `FundamentalTheorem.lean`, `ParentHamiltonian.lean`, `OpenBoundary.lean`, etc. (1,229 `.lean` files total). Also carries 16 real cited arXiv papers under `Papers/` (tensor-network/quantum-information literature, e.g. `1606.00608`, `2405.00439`). Requires Mathlib **and** two further dependencies (`checkdecls`, a `Brouwer`/game-theory repo) plus `QICLean`, on toolchain `v4.34.0-rc1` (one point release ahead of this project's `v4.33.1`). | `lean4basesource/tnlean` |
+| **LeanQuantum** | [inQWIRE](https://github.com/inQWIRE/LeanQuantum) | Quantum gates, unitary state evolution, quantum error-correcting codes. Requires Mathlib. Not independently re-verified this session. | `lean4basesource/lean-quantum` |
+| **Lean Stat Learning Theory** | [YuanheZ](https://github.com/YuanheZ/lean-stat-learning-theory) | Rademacher complexity, PAC bounds, empirical risk minimization. Requires Mathlib. Not independently re-verified this session. | `lean4basesource/lean-stat-learning-theory` |
 
 ---
 
@@ -30,37 +44,53 @@ This repository (`SocrateAI-Scientific-Agora-LeanMaster`) integrates, cross-inde
 
 ---
 
-## 3. Certified Lean 4 Architectural Bridges (`StringTheoryFoundation`)
+## 3. Named After, Not Yet Linked To: `StringTheoryFoundation`'s Six "Bridge" Files
 
-All external foundations are directly linked into our formal Lean 4 kernel environment via `StringTheoryFoundation`:
+None of the six files below **import** anything from the external submodule their name and
+docstring cite — confirmed by reading every `import` line in all six (none beyond this project's
+own `StringTheoryFoundation.Core.Topology`, and `AtlasGeometryBridge.lean` has no `import` at all).
+This was found and corrected in-file (each carries a `SCOPE NOTE` comment) earlier this session; the
+descriptions below replace this document's own earlier "ingests/connects/certifies" framing, which
+made the same overclaim at the document level.
 
-1. **OpenAI Navier-Stokes & Fluid Dynamics Bridge (`StringTheoryFoundation.FluidDynamics.NavierStokesBridge`)**
-   - Formalizes the continuous limit of string field theory.
-   - Connects $D$-dimensional energy conservation bounds and mild PDE solutions to generalized Einstein equations in DFT.
-   - Submodule Path: `lean4basesource/openai-navierstokes/`
+1. **`StringTheoryFoundation.FluidDynamics.NavierStokesBridge`**
+   - Self-contained `Nat`/`Int` arithmetic (Laplacian eigenvalues on a torus, a dissipation-monotonicity
+     lemma) named after and thematically inspired by `openai-navierstokes`'s real, Mathlib-dependent
+     Sobolev/PDE formalization. No import; see §1 for what the real repo actually contains.
 
-2. **Fermat Modular Forms & Kummer Surface Bridge (`StringTheoryFoundation.ModularForms.FermatModularBridge`)**
-   - Connects modular curves $X_0(N)$, Hecke eigenvalues, and Kummer surfaces to string compactifications on $K3 \times T^2$.
-   - Proves the $T^4/\mathbb{Z}_2$ orbifold singularity blowup with 16 exceptional $\mathbb{P}^1$ rational curves, yielding the Euler characteristic $\chi(K3) = 24$.
-   - Submodule Paths: `lean4basesource/anthropics-flt/` and `lean4basesource/xaviercallens-xflt/`
+2. **`StringTheoryFoundation.ModularForms.FermatModularBridge`**
+   - Self-contained Kummer-surface/Mukai-lattice integer arithmetic (fixed-point counts, lattice rank
+     and signature). Its docstring's citations to Wiles/Taylor-Wiles and the Anthropic FLT
+     formalization describe the mathematical *background* the Kummer-surface construction sits in
+     (K3 as $\mathrm{Km}(T^4/\mathbb{Z}_2)$), not a machine-checked connection to `anthropics-flt`'s
+     actual modularity-theorem proof — the two have no code-level relationship. No import.
 
-3. **Meta AI ATLAS-Lean Differential Geometry Bridge (`StringTheoryFoundation.Atlas.AtlasGeometryBridge`)**
-   - Ingests 4-manifold Betti numbers: $b_0 = 1, b_1 = 0, b_2 = 22, b_3 = 0, b_4 = 1$.
-   - Certifies the Hirzebruch signature formula $\tau(K3) = b_2^+ - b_2^- = 3 - 19 = -16$.
-   - Submodule Path: `lean4basesource/atlas-lean/`
+3. **`StringTheoryFoundation.Atlas.AtlasGeometryBridge`**
+   - Self-contained integer arithmetic (K3 Betti-number Euler characteristic, intersection-form
+     signature, a hyperbolic-curvature constant) named after Meta's ATLAS autoformalization project.
+     No import — and this file has no `import` statement at all, not even of another file in this
+     project.
 
-4. **PhysLib Spacetime Kinematics Bridge (`StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge`)**
-   - Ingests relativistic 4-vector kinematics and Lorentz metric signatures $(+,-,-,-)$.
-   - Generalizes to the Double Field Theory split signature metric $\eta_{MN}$ on $O(D,D)$.
-   - Submodule Path: `lean4basesource/physlib/`
+4. **`StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge`**
+   - Self-contained integer arithmetic for a Minkowski norm and a Lorentz-signature constant,
+     modeled loosely on the real `physlib` repo's genuine (Mathlib-dependent) formalization of the
+     same objects — specifically `Physlib/Relativity/MinkowskiMatrix.lean`'s `minkowskiMatrix` and
+     `minkowskiMatrix.dual` theorems, which actually prove the properties (symmetry, involution,
+     determinant) this file's docstring only asserts by analogy. No import.
 
-5. **Quantum & Tensor Network Bridge (`StringTheoryFoundation.Quantum.TensorNetworkBridge`)**
-   - Implements holographic tensor network contractions representing AdS/CFT bulk-to-boundary reconstructions and quantum error-correcting Golay codes $\mathcal{G}_{24}$.
-   - Submodule Paths: `lean4basesource/tnlean/` and `lean4basesource/lean-quantum/`
+5. **`StringTheoryFoundation.Quantum.TensorNetworkBridge`**
+   - Self-contained Golay-code-parameter arithmetic and a toy Ryu-Takayanagi entropy formula, named
+     after `tnlean`'s real Matrix-Product-State/tensor-network formalization
+     (`TNLean/MPS/FundamentalTheorem.lean` etc.) and `lean-quantum`. No import.
 
-6. **Statistical Learning Theory Bridge (`StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge`)**
-   - Provides formal generalization bounds for AI proving agents operating on the LeanGraph DAG.
-   - Submodule Path: `lean4basesource/lean-stat-learning-theory/`
+6. **`StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge`**
+   - Self-contained PAC-bound arithmetic (empirical risk, Rademacher complexity numerator), named
+     after `lean-stat-learning-theory`. No import.
+
+**What would make these genuine bridges rather than citations:** adding Mathlib as a dependency
+(Phase 1a of the plan referenced above), then actually `import`-ing the specific real declarations
+named for each file above and stating theorems that reference them, rather than a same-shaped
+standalone arithmetic fact next to a citation.
 
 ---
 

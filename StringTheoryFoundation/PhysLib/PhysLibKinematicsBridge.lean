@@ -44,6 +44,15 @@ which satisfies the $O(D, D)$ coset condition $\mathcal{H}^T \eta \mathcal{H} = 
 -- self-contained Nat/Int arithmetic named after, and inspired by, the cited external work, not a
 -- machine-checked bridge to it. See papers/publication/PAPER7_ENGINE_LEAN_DOCS_REVIEW.md Sec. 4
 -- for the full finding.
+-- Verified pointer (2026-09, no Mathlib available to actually import it): the real repo's
+-- `Physlib/Relativity/MinkowskiMatrix.lean` genuinely defines the Minkowski matrix
+-- eta = diag(1,-1,-1,...) and proves its properties (theorems `minkowskiMatrix`,
+-- `minkowskiMatrix.dual`) -- the real, machine-checked version of what this file's
+-- `minkowski_norm_squared`/`odd_metric_sign_squared` only assert by analogy. Note also:
+-- `Physlib/StringTheory/Basic.lean` is explicitly a placeholder per its own author's docstring
+-- ("currently a place holder... feel free to contribute") -- there is no real string-theory
+-- content in physlib to bridge to yet, only the general-relativity/kinematics modules this file
+-- draws on.
 
 namespace StringTheory.Foundation.PhysLib
 
