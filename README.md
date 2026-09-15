@@ -272,6 +272,34 @@ python3 tools/build_blueprint.py
 ### 4. 1-Click Verification in GitHub Codespaces
 No local installation required! Open directly in your browser via [GitHub Codespaces](https://codespaces.new/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster) — pre-configured with Lean 4 `v4.33.1`, the VS Code Lean extension, and automated `lake build` verification.
 
+### 5. Physicist & RAG-Graph Comments Workflow (`tools/commentsworkflow.py`)
+Automated audit and quality control enforcing the [Physicist & RAG-Graph Documentation Template](templates/LEAN4_PHYSICS_RAG_GRAPH_TEMPLATE.md):
+```bash
+# Audit corpus-wide docstring coverage, physical meanings, and RAG/Graph metadata
+python3 tools/commentsworkflow.py audit
+
+# Verify compilation soundness across all modules
+python3 tools/commentsworkflow.py verify
+```
+
+### 6. Google Antigravity (AGY) SDK Multi-Agent Swarm (`tools/antigravity_agent_swarm.py`)
+Autonomous multi-agent orchestration coordinating 4 specialized agents:
+1. `PhysicistNarratorAgent`: Translates DTT types and proofs into intuitive theoretical physics narratives with LaTeX equations.
+2. `GraphArchitectAgent`: Extracts LeanGraph nodes (`@graph_node`) and edges (`@graph_edge`) to maintain verified DAG acyclicity.
+3. `RAGOracleAgent`: Indexes semantic concepts (`@concept`) and query keys (`@rag_query`) for the SocrateAI Oracle.
+4. `KernelVerifierAgent`: Continuous soundness guardian enforcing strict zero-sorry compilation (`lake build`).
+
+```bash
+# Audit Antigravity SDK agent swarm configuration
+python3 tools/antigravity_agent_swarm.py audit
+
+# Export swarm specification to JSON
+python3 tools/antigravity_agent_swarm.py export-spec
+
+# Run autonomous agent swarm dry-run verification loop
+python3 tools/antigravity_agent_swarm.py run --dry-run
+```
+
 ---
 
 ## 10. Replication & Getting Started
