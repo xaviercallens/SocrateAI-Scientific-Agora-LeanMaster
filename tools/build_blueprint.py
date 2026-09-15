@@ -354,7 +354,7 @@ def main():
             <p>Mathematical architecture by <strong>Xavier Callens</strong> & the SocrateAI Agora Collaboration. Machine-certified with <strong>zero `sorry` axioms</strong> in Lean 4.</p>
             <div class="nav-links">
                 <a href="../../graph/index.html">🕸️ View LeanGraph Interactive Knowledge Map</a>
-                <a href="../../papers/publication/">📄 6 Published Peer-Reviewed TeX/PDF Papers</a>
+                <a href="../../papers/publication/">📄 7 Published Peer-Reviewed TeX/PDF Papers</a>
                 <a href="../../README.md">📖 View Master Documentation</a>
                 <a href="https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster">🐙 GitHub Repository</a>
             </div>
