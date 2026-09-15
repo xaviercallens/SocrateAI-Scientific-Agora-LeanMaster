@@ -11,7 +11,11 @@ Authors: SocrateAI Team & Scientific Agora Swarm
   Cambridge University Press.
 -/
 
+import StringTheoryFoundation.Core.Topology
+
 namespace StringTheory.Foundation.StringTheory.StromingerSYZ
+
+open StringTheory.Foundation.Core.Topology
 
 /-- SYZ Special Lagrangian Fibration:
     A Calabi-Yau 2-fold (K3 surface) admits a fibration by special Lagrangian
@@ -36,14 +40,18 @@ theorem strominger_syz_dim_sum :
     matching the Euler characteristic χ(K3) = 24. -/
 structure EllipticK3Fibration where
   numSingularFibers : Nat := 24
-  eulerCharK3 : Nat := 24
 deriving Repr, DecidableEq
 
 def defaultEllipticK3 : EllipticK3Fibration := {}
 
-/-- Theorem: The number of SYZ discriminant singular fibers equals χ(K3) = 24. -/
+/-- Theorem: The number of SYZ discriminant singular fibers equals $\chi(K3)$, where $\chi(K3)$ is
+    computed independently in `StringTheoryFoundation.Core.Topology` from the K3 Betti numbers.
+    An earlier revision compared `numSingularFibers` only to a second, separately-hardcoded field
+    `eulerCharK3 := 24` local to this structure -- i.e. two independently-typed copies of the same
+    literal, asserted equal with no derivation connecting them. Referencing the real computation
+    instead makes this a genuine (if still simple) cross-module check. -/
 theorem strominger_nodal_fibers_match_euler :
-    defaultEllipticK3.numSingularFibers = defaultEllipticK3.eulerCharK3 := by
+    (defaultEllipticK3.numSingularFibers : Int) = eulerChar4D bettiK3 := by
   decide
 
 /-- SYZ Fiberwise T-Duality:

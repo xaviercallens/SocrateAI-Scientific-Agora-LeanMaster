@@ -33,6 +33,15 @@ generalize across all mathematical and physical domains without overfitting to s
 - `@impact: NeurosymbolicGeneralization, RigorousAgentBounds, OverfittingPreventionInProofSearch`
 -/
 
+-- SCOPE NOTE (added after review): this file's name and docstring above invoke
+-- the statistical learning theory formalization (YuanheZ/lean-stat-learning-theory, vendored read-only as a git
+-- submodule at lean4basesource/lean-stat-learning-theory). This file does **not** import
+-- anything from that project -- check the `import` lines above; there is only
+-- `StringTheoryFoundation.Core.Topology`, this project's own file. The theorems below are
+-- self-contained Nat/Int arithmetic named after, and inspired by, the cited external work, not a
+-- machine-checked bridge to it. See papers/publication/PAPER7_ENGINE_LEAN_DOCS_REVIEW.md Sec. 4
+-- for the full finding.
+
 namespace StringTheory.Foundation.StatisticalLearning
 
 /-- Sample size $n$ and confidence parameter $\delta$ represented in scaled integer metrics. -/

@@ -224,7 +224,144 @@ actually builds** — exhaustively verified this session, not sampled.
 
 ---
 
-## 4. Summary
+## 4. `StringTheoryFoundation`: a second, distinct honesty gap
+
+`StringTheoryFoundation` is one of the five live, registered, built libraries (§2.1) — it is not dead
+code, and everything in §2 (zero sorry/admit, standard-axioms-only) is genuinely true of it. But a
+closer read of its content, done in response to a request to evaluate the state of the string theory
+formalization as a whole, surfaces a pattern distinct from (and in one respect further from honest
+than) anything in §§1–3: theorems that prove nothing at all, and file names that claim integration
+with real external work the code never touches.
+
+### 4.1 Tautological "default-struct-value" theorems
+A recurring pattern in `StringTheoryFoundation/StringTheory/WittenDuality.lean` and the six "Bridge"
+files (§4.2) is: define a `structure` whose Nat/Int field's *default value* is the literal the
+docstring claims to derive, then state a "theorem" that unfolds that default and checks it against
+the same literal. The theorem proves nothing beyond "this literal equals itself" — it is weaker than
+the "arithmetic identity" tier already documented in `PAPER7_IMPROVEMENT_PROPOSAL.md` and §§1–3 above
+(those at least cross-multiply two *independently defined* numbers, e.g. the BPS lock's
+`dim_A2 * 60 = (4 * dim_A1) * 77`).
+
+Verbatim, from `StringTheoryFoundation/StringTheory/WittenDuality.lean`:
+```lean
+structure SixDSupersymmetry where
+  dimSpacetime : Nat := 6
+  numSupercharges : Nat := 16
+  chiralLeft : Nat := 1
+  chiralRight : Nat := 1
+
+def defaultSixDSusy : SixDSupersymmetry := {}
+...
+theorem witten_6d_supercharges :
+    defaultSixDSusy.numSupercharges = 16 := by
+  decide
+```
+The docstring immediately above this theorem states it verifies "$N_Q = 32 \times \frac{1}{2} = 16$"
+(citing Witten 1995) — but the Lean statement never computes `32 * (1/2)`; `decide` only confirms the
+hardcoded default `16` equals the literal `16` written on the next line. Nothing is derived.
+
+A second instance, verbatim from `StringTheoryFoundation/ModularForms/FermatModularBridge.lean`:
+```lean
+structure MukaiSignature where
+  pos_cycles : Nat := 4
+  neg_cycles : Nat := 20
+  deriving Repr, DecidableEq
+
+def defaultMukaiSig : MukaiSignature := {}
+
+theorem mukai_signature_difference :
+    (defaultMukaiSig.pos_cycles : Int) - (defaultMukaiSig.neg_cycles : Int) = -16 := by
+  rfl
+...
+theorem mukai_m24_degree_lock :
+    mukai_lattice_rank = 24 := by
+  rfl
+```
+`mukai_lattice_rank : Nat := 24` is itself a raw literal defined a few lines earlier in the same
+file — so `mukai_m24_degree_lock` literally proves `24 = 24`.
+
+**Counter-example, cited as what "doing it right" looks like in this same library:**
+`StringTheoryFoundation/StringTheory/K3xT2.lean` computes genuinely, from independently-defined
+inputs, e.g. `euler_char_vanishes : eulerChar4D bettiK3 * eulerChar2D bettiT2 = 0`, where
+`eulerChar4D`/`eulerChar2D` are real alternating-sum formulas applied to independently-declared Betti
+numbers, not a literal checked against itself. The tautology pattern above is not how this library
+writes its theorems everywhere — it is a specific, avoidable failure mode concentrated in
+`WittenDuality.lean` and the Bridge files.
+
+### 4.2 Six "Bridge" files with no bridge in them
+Six files' names and docstrings claim integration with real external projects; their code does not:
+
+- `StringTheoryFoundation/ModularForms/FermatModularBridge.lean`
+- `StringTheoryFoundation/Quantum/TensorNetworkBridge.lean`
+- `StringTheoryFoundation/Atlas/AtlasGeometryBridge.lean`
+- `StringTheoryFoundation/PhysLib/PhysLibKinematicsBridge.lean`
+- `StringTheoryFoundation/StatisticalLearning/StatisticalLearningBridge.lean`
+- `StringTheoryFoundation/FluidDynamics/NavierStokesBridge.lean`
+
+These names, and (for the first) a docstring citing Wiles 1995, Taylor-Wiles 1995, and "Anthropic
+Research, *Formalizing Fermat's Last Theorem in Lean 4* (2025)," strongly suggest a bridge to the real
+external repositories vendored as git submodules under `lean4basesource/` — `anthropics-flt`,
+`physlib`, `atlas-lean`, `lean-quantum`, `lean-stat-learning-theory`, `openai-navierstokes`
+respectively. Grepping every `^import` line in all six files finds **no import beyond this project's
+own `StringTheoryFoundation.Core.Topology`** — zero code-level connection to any of the six named
+external projects.
+
+`FermatModularBridge.lean` is the clearest example: its docstring is entirely about the Modularity
+Theorem for elliptic curves ($E/\mathbb{Q} \to X_0(N)$, Hecke algebras, $L$-functions). Its actual
+Lean content — `kummer_fixed_points_count`, `exceptional_divisor_self_intersection`,
+`mukai_lattice_rank`, `MukaiSignature` — is Kummer-surface/K3-lattice arithmetic with no mathematical
+relationship to modularity at all. The narrative and the code are simply about different things; the
+file name and citations are the only place a reader would encounter Fermat's Last Theorem or the
+Anthropic FLT formalization.
+
+### 4.3 Calibration
+Compared to a real physics-formalization effort such as PhysLean/HepLean (Tooby-Smith et al., built on
+Mathlib, formalizing actual field content and index notation — see
+`paper7_dual_scale_theory_master_demonstration.tex` §9.3), `StringTheoryFoundation` — and by extension
+this project as a whole — sits closer to a discrete sanity-check harness for a handful of hardcoded
+integers than to a formalization of the physics its names and docstrings invoke. §4.1's tautologies
+make that gap concrete: some of what's labeled a "theorem" here proves literally nothing.
+
+### 4.4 Status: fixed
+This was found and written up in response to a request to evaluate the state of the formalization,
+and fixed in the same session, in `StringTheoryFoundation/`, using two patterns:
+
+**(a) Ten genuinely-tautological theorems, across eight files, were each either given a real
+computation to check or removed/annotated as definitional:**
+
+| Theorem | File | Fix |
+|---|---|---|
+| `witten_6d_supercharges` | `WittenDuality.lean` | `numSupercharges` redefined as `32 / 2` (was the literal `16`) |
+| `exceptional_divisor_cartan_a1` | `FermatModularBridge.lean` | annotated as definitional (no simpler quantity to derive $-2$ from) |
+| `mukai_m24_degree_lock` | `FermatModularBridge.lean` | **removed** — fully subsumed by `mukai_lattice_rank_equals_24` two theorems above it |
+| `odd_metric_involutive` | `PhysLibKinematicsBridge.lean` | `odd_metric_sign_squared` redefined as `(-1) * (-1)` (was the literal `1`) |
+| `golay_length_matches_k3_euler` | `TensorNetworkBridge.lean` | now compares against `eulerChar4D bettiK3`, computed independently in `Core.Topology`, instead of the bare literal `24` |
+| `num_fixed_points_is_16` | `TadpoleCancellation.lean` | now states `2 ^ 4 = numFixedPointsT4Z2` (mirrors the correct pattern already used for the same fact in `FermatModularBridge.lean`'s `kummer_fixed_points_dim4`) |
+| `sound_speed_is_luminal` | `NavierStokesBridge.lean` | `sound_speed_squared_dim2` redefined as `1 / (defaultConfig.dim - 1)` (was the literal `1`) |
+| `energy_dissipation_monotonic` | `NavierStokesBridge.lean` | was `(h : e2 ≤ e1) : e2 ≤ e1 := h` (assumes its own conclusion); now `e - d ≤ e := Nat.sub_le e d`, a real fact about subtracting a dissipated amount |
+| `atlas_poincare_curvature_negative` | `AtlasGeometryBridge.lean` | annotated as definitional (no simpler quantity to derive $-1$ from) |
+| `strominger_nodal_fibers_match_euler` | `StromingerSYZ.lean` | now compares against `eulerChar4D bettiK3` (added the missing `import StringTheoryFoundation.Core.Topology`) instead of a second, separately-hardcoded `24` local to the same structure |
+
+**(b) All six Bridge files** got a "SCOPE NOTE" comment inserted between their module docstring and
+their `namespace` line, stating plainly which external project the name/citations invoke, that the
+file has no import from it (or, for `AtlasGeometryBridge.lean`, no import at all), and pointing back
+to this section.
+
+**Verified:** `lake build` → 61/61 jobs, clean, both before and after; a repeat of the exhaustive
+sorry/admit grep (§2.2) over all 166 files → zero matches; a repeat of the exhaustive `#print axioms`
+sweep (§2.3), regenerated against the edited source (237 theorems/lemmas now, one fewer than §2.3's
+238 since `mukai_m24_degree_lock` was removed) → 148 with no axioms, 89 standard-axioms-only, **zero**
+depending on anything beyond `propext`/`Classical.choice`/`Quot.sound`.
+
+**What this fix does *not* claim:** the ten fixes above make each theorem's *arithmetic* genuine; they
+do not make the surrounding *physics* claims (e.g. that 6D supercharge counting, or a Golay-code
+length matching $\chi(K3)$, means what the docstrings' narrative prose says it means) any more Tier A
+than it was — that distinction is exactly §4.1's counter-example point, and applies throughout this
+library the way it does in the rest of the project (§3, and `PAPER7_IMPROVEMENT_PROPOSAL.md`).
+
+---
+
+## 5. Summary
 
 | Area | Before this session | After |
 |---|---|---|
@@ -235,3 +372,4 @@ actually builds** — exhaustively verified this session, not sampled.
 | README.md | Same overclaiming as pre-fix paper 7, plus four code snippets that didn't match their cited files (one using a nonexistent `Matrix` API) and a verification snippet that crashes if run | Tier-labeled throughout; all four snippets verbatim; verification snippets actually work |
 | memory.md / LEDGER.md | Stale, would re-seed the retracted claims into a future session | Corrected and cross-referenced to this document and to `PAPER7_IMPROVEMENT_PROPOSAL.md` |
 | Papers 1–6 | Unaudited | Still unaudited — flagged as the top follow-up item |
+| `StringTheoryFoundation` tautologies & Bridge files | Unflagged: `witten_6d_supercharges` and similar theorems proved a hardcoded default equals itself; six "Bridge" files (`FermatModularBridge.lean` etc.) named after and citing external projects (Wiles' modularity theorem, the Anthropic FLT formalization, PhysLib, Atlas, TensorNetwork, Navier-Stokes) with zero import from, or mathematical connection to, any of them | Fixed: 10 tautological theorems across 8 files now either compute genuinely or are annotated as definitional/removed; all 6 Bridge files carry an honest scope note. `lake build` clean (61/61) both before and after; exhaustive sorry/admit and axiom sweeps re-run clean (§4.4) |

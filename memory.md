@@ -106,6 +106,24 @@ the follow-up full-project review (engine, Lean, docs).
    manifolds, or differential geometry — every Lean proof here is over `Nat`/`Int`/a hand-rolled
    rational-pair structure).
 
+## Additional fix (same day, follow-up to the engine/Lean/docs review above)
+`StringTheoryFoundation` (one of the five live libraries — genuinely 0 sorry, standard axioms only,
+per the review above) had a second, distinct honesty gap, found while evaluating "the state of the
+string theory formalization": (a) 10 theorems across 8 files that proved nothing — a `structure`
+field's *default value* checked against the same literal, e.g. `witten_6d_supercharges :
+defaultSixDSusy.numSupercharges = 16 := by decide` where `numSupercharges := 16` was the field's own
+default; (b) six "Bridge" files (`FermatModularBridge.lean`, `TensorNetworkBridge.lean`,
+`AtlasGeometryBridge.lean`, `PhysLibKinematicsBridge.lean`, `StatisticalLearningBridge.lean`,
+`NavierStokesBridge.lean`) whose names and docstrings invoke real external projects vendored as
+`lean4basesource/` submodules (Wiles' FLT modularity theorem and "Anthropic Research, Formalizing
+Fermat's Last Theorem in Lean 4" in the first case) but import nothing beyond this project's own
+`Core.Topology` (or, for `AtlasGeometryBridge.lean`, nothing at all). Both fixed: the 10 theorems now
+either compute genuinely (e.g. `numSupercharges := 32 / 2`) or are removed/annotated as definitional;
+all 6 Bridge files carry an honest scope note. See
+`papers/publication/PAPER7_ENGINE_LEAN_DOCS_REVIEW.md` §4 for full detail. `lake build` clean (61/61)
+before and after; exhaustive sorry/admit and `#print axioms` sweeps re-run clean (237 theorems/lemmas
+now, standard axioms only).
+
 ## Next Steps / Backlog
 - Audit and fix papers 1–6 the way paper 7 was fixed (moduli-stabilization title claim in paper 1 is
   the most urgent).

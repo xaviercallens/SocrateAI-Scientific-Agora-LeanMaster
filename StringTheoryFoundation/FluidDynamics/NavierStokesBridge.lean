@@ -38,6 +38,15 @@ $$\frac{d}{dt} \|u\|_{L^2}^2 = -2\nu \|\nabla u\|_{L^2}^2 \le 0$$
 - `@impact: ContinuousToDiscreteBridge, StringFieldFluidLimit, EnergyConservation`
 -/
 
+-- SCOPE NOTE (added after review): this file's name and docstring above invoke
+-- OpenAI's Navier-Stokes/Euler formalization (openai/NavierStokesAndEuler, vendored read-only as a git
+-- submodule at lean4basesource/NavierStokesAndEuler). This file does **not** import
+-- anything from that project -- check the `import` lines above; there is only
+-- `StringTheoryFoundation.Core.Topology`, this project's own file. The theorems below are
+-- self-contained Nat/Int arithmetic named after, and inspired by, the cited external work, not a
+-- machine-checked bridge to it. See papers/publication/PAPER7_ENGINE_LEAN_DOCS_REVIEW.md Sec. 4
+-- for the full finding.
+
 namespace StringTheory.Foundation.FluidDynamics
 
 /-- Torus dimension and viscosity parameter. -/
@@ -77,14 +86,19 @@ structure FluidEnergyState where
   deriving Repr, DecidableEq
 
 /-- Master Theorem: Monotonic Energy Dissipation.
-    In the absence of external forcing, kinetic energy decreases monotonically:
-    $E(t_2) \le E(t_1)$ for $t_2 \ge t_1$. -/
-theorem energy_dissipation_monotonic (e1 e2 : Nat) (h : e2 ≤ e1) :
-    e2 ≤ e1 := h
+    Removing a non-negative dissipated amount `d` from an energy `e` never increases it:
+    $E - d \le E$. An earlier revision of this theorem took `e2 ≤ e1` as a *hypothesis* and
+    returned it unchanged as the conclusion (`(h : e2 ≤ e1) : e2 ≤ e1 := h`), which assumes
+    monotonicity rather than deriving it from anything. This version derives it from `Nat`
+    subtraction instead, which is at least a real (if simple) fact about dissipation removing
+    energy rather than adding it. -/
+theorem energy_dissipation_monotonic (e d : Nat) :
+    e - d ≤ e :=
+  Nat.sub_le e d
 
 /-- Fluid-Gravity Duality: Low-energy sound speed on the horizon:
     $c_s^2 = \frac{1}{d-1} = \frac{1}{2-1} = 1$ for $d=2$ boundary. -/
-def sound_speed_squared_dim2 : Nat := 1
+def sound_speed_squared_dim2 : Nat := 1 / (defaultConfig.dim - 1)
 
 theorem sound_speed_is_luminal :
     sound_speed_squared_dim2 = 1 := by

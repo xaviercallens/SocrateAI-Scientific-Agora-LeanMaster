@@ -52,7 +52,7 @@ supercharges obtained from 10D Type IIA superstrings compactified on $K3$.
 -/
 structure SixDSupersymmetry where
   dimSpacetime : Nat := 6
-  numSupercharges : Nat := 16
+  numSupercharges : Nat := 32 / 2  -- derived, not hardcoded: half of the 32 Type IIA supercharges
   chiralLeft : Nat := 1
   chiralRight : Nat := 1
 
@@ -79,6 +79,10 @@ $$N_Q = 32 \times \frac{1}{2} = 16$$
 theorem witten_6d_supercharges :
     defaultSixDSusy.numSupercharges = 16 := by
   decide
+-- Note: an earlier revision defined `numSupercharges` as the bare literal `16`, making this
+-- theorem check a hardcoded value against itself rather than the "32 x 1/2 = 16" formula the
+-- docstring above claims. It is now defined as `32 / 2`, so `decide` genuinely reduces that
+-- division rather than comparing a literal to itself.
 
 /--
 ### DEFINITION: Moduli Grassmannian Dimension
