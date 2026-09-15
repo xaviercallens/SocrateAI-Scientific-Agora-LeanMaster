@@ -19,3 +19,7 @@ lean_lib «DoubleFieldTheory» where
 @[default_target]
 lean_lib «DualScaleValidation» where
   roots := #[`DualScaleValidation]
+
+@[default_target]
+lean_lib «Lean5Corpus» where
+  roots := #[`Lean5Corpus]
