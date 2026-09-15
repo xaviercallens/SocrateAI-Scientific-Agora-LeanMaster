@@ -60,6 +60,7 @@ containing kinetic energy $E$, enstrophy $\Omega$, topological helicity $\mathca
 
 **RAG & Graph Indexing:**
 - `@concept: ViscousFluidState, FluidThermodynamics`
+- `@rag_query: "What data represents a viscous fluid's dissipative thermodynamic state?"`
 - `@graph_node: ViscousFluidState`
 -/
 structure ViscousFluidState where
@@ -90,6 +91,7 @@ $$\mathcal{H}^2 \le 4 E \Omega$$
 
 **RAG & Graph Indexing:**
 - `@concept: CauchySchwarzHelicity`
+- `@rag_query: "What is the Cauchy-Schwarz bound relating helicity to enstrophy and kinetic energy?"`
 - `@graph_node: satisfies_cauchy_schwarz`
 - `@graph_edge: [ViscousFluidState]`
 -/
@@ -106,6 +108,7 @@ linking the dissipation rate $\mathcal{D}$ directly to the Cauchy-Schwarz enstro
 
 **RAG & Graph Indexing:**
 - `@concept: DissipationReordering`
+- `@rag_query: "algebraic re-association linking the dissipation rate to the Cauchy-Schwarz enstrophy envelope"`
 - `@graph_node: mul_reorder_4`
 -/
 theorem mul_reorder_4 (v o e : Nat) :
@@ -221,6 +224,7 @@ and satisfies the helicity-dissipation inequality ($2\mathcal{D}E \ge \nu\mathca
 
 **RAG & Graph Indexing:**
 - `@concept: NavierStokesProtectionContract`
+- `@rag_query: "unified contract proving knotted vortex flows must dissipate energy and satisfy the helicity bound"`
 - `@graph_node: navier_stokes_helicity_contract`
 - `@graph_edge: [knotted_flow_must_dissipate_energy, helicity_dissipation_inequality]`
 -/
