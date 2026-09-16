@@ -17,7 +17,7 @@ structure SDCBound where
   m₀_pos : 0 < m₀
 
 /-- Tower mass decreases exponentially along a field-space geodesic. -/
-def towerMass (bound : SDCBound) (Δ : ℝ) : ℝ :=
+noncomputable def towerMass (bound : SDCBound) (Δ : ℝ) : ℝ :=
   bound.m₀ * Real.exp (- bound.α * Δ)
 
 /-- SDC: tower mass remains strictly positive for any finite displacement. -/
@@ -37,10 +37,10 @@ theorem sdc_tower_suppression (bound : SDCBound) (Δ : ℝ) (hΔ : 0 ≤ Δ) :
   nlinarith [bound.m₀_pos, hExp]
 
 /-- The de Sitter conjecture: |∇V| ≥ c V in Planck units for any scalar potential. -/
-theorem de_sitter_conjecture (c : ℝ) (hc : 0 < c) (V : ℝ → ℝ) (∇V : ℝ → ℝ)
+theorem de_sitter_conjecture (c : ℝ) (hc : 0 < c) (V : ℝ → ℝ) (gradV : ℝ → ℝ)
     (hV : ∀ φ, 0 < V φ)
-    (h∇ : ∀ φ, 0 < ∇V φ) :
-    ∀ φ, ∇V φ ≥ c * V φ → True := by
+    (hgrad : ∀ φ, 0 < gradV φ) :
+    ∀ φ, gradV φ ≥ c * V φ → True := by
   intros; trivial
 
 end StringTheory.StringDynamics

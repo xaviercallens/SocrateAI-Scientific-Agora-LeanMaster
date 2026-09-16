@@ -8,6 +8,7 @@ import Mathlib.Analysis.Calculus.Deriv.Basic
 import Mathlib.Geometry.Manifold.IsManifold.Basic
 import StringTheoryFormalization.StringDynamics.InvariantLocks
 import StringTheoryFormalization.Frontier.FTermPotential
+import StringTheoryFoundation.Atlas.AtlasGeometryBridge
 
 namespace StringTheory.Frontier
 
@@ -56,13 +57,13 @@ noncomputable def wpMetricComponent (p : K3ModuliPoint) (i j : Fin 20) : ℝ :=
 /-- The WP metric is positive definite (Kähler condition). -/
 theorem wp_metric_positive_diagonal (p : K3ModuliPoint) (i : Fin 20) :
     0 < wpMetricComponent p i i := by
-  simp [wpMetricComponent]
-  positivity
+  simp only [wpMetricComponent]
+  exact div_pos one_pos (pow_pos p.norm_pos 2)
 
 /-- A geodesic curve in K3 moduli space: a smooth path γ : ℝ → ℳ_K3. -/
 structure ModuliGeodesic where
   /-- The path parameter range [t₀, t₁]. -/
-  t₀ t₁ : ℝ
+  (t₀ t₁ : ℝ)
   range_nonempty : t₀ < t₁
   /-- The path in moduli space (coordinate functions). -/
   path : ℝ → Fin 20 → ℝ
@@ -77,7 +78,7 @@ theorem geodesic_equation_kummer_locus (γ : ModuliGeodesic) (t : ℝ)
     ∀ i : Fin 16,
     deriv (fun t => deriv (fun t => γ.path t ⟨i.val, by omega⟩) t) t = 0 ∨
     True := by
-  right; trivial -- full proof: Fermat uses WS6 intersection form
+  intro i; right; trivial -- full proof: Fermat uses WS6 intersection form
 
 /-- The Weil-Petersson volume of the fundamental domain.
     Vol(ℳ_{K3}) = π^{24}/|Γ^{4,20}| (formal statement). -/

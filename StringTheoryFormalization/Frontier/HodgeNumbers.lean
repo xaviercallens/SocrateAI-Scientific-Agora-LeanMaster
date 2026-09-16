@@ -53,7 +53,6 @@ theorem k3_euler_characteristic :
       (if (p.val + q.val) % 2 = 0 then 1 else -1 : ℤ) *
       (k3HodgeNumber p q : ℤ)) = 24 := by
   simp [k3HodgeNumber, Fin.sum_univ_three]
-  norm_num
 
 /-- Hodge symmetry: h^{p,q} = h^{q,p}. -/
 theorem k3_hodge_symmetry (p q : Fin 3) :
@@ -77,7 +76,6 @@ theorem k3_b2 :
 theorem hodge11_from_kummer :
     k3HodgeNumber ⟨1, by norm_num⟩ ⟨1, by norm_num⟩ =
     (Finset.univ (α := Fin 16)).card + 4 := by
-  simp [k3HodgeNumber, kummer_sublattice_rank]
-  norm_num
+  simp [k3HodgeNumber]
 
 end StringTheory.Frontier

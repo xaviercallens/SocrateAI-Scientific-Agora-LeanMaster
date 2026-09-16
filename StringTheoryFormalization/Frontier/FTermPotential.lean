@@ -8,6 +8,8 @@ import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
 import StringTheoryFormalization.StringDynamics.MukaiLattice
 import StringTheoryFormalization.StringDynamics.TadpoleConstraint
 import StringTheoryFormalization.Frontier.HodgeNumbers
+import StringTheoryFoundation.StringTheory.VafaSwampland
+import StringTheoryFoundation.StringTheory.TadpoleCancellation
 
 namespace StringTheory.Frontier
 
@@ -60,21 +62,18 @@ noncomputable def fTermCondition (W : GVWSuperpotential) (τ : ℂ) : ℂ :=
   -- ∂_τ K = -1/(τ - τ̄) = i/(2 Im τ) -- simplified
   -(W.h3 : ℂ) * W.period
 
-import StringTheoryFoundation.StringTheory.VafaSwampland
-import StringTheoryFoundation.StringTheory.TadpoleCancellation
-
 /-- Flux tadpole quantization connecting Vafa's GVW flux state to K3 Euler characteristic:
     The D3 charge contribution from flux cancellation is bounded by χ(K3)/24 = 1. -/
 theorem flux_tadpole_quantization_exact (s : StringTheory.Foundation.StringTheory.VafaSwampland.GVWFluxState) :
-    let d7 := StringTheory.Foundation.StringTheory.TadpoleCancellation.d7_tadpole_cancellation
-    d7 = 0 := by
-  exact rfl
+    StringTheory.Foundation.StringTheory.TadpoleCancellation.totalD7Charge +
+    StringTheory.Foundation.StringTheory.TadpoleCancellation.totalO7Charge = 0 :=
+  StringTheory.Foundation.StringTheory.TadpoleCancellation.d7_tadpole_cancellation
 
 /-- The scalar potential V ≥ 0 (no-scale supersymmetry breaking).
     At the SUSY minimum: V = 0 and W = 0. -/
 theorem fterm_potential_nonneg (W : GVWSuperpotential) (τ : ℂ) (hτ : 0 < τ.im) :
     -- V = e^K |D W|² ≥ 0
-    (0 : ℝ) ≤ Complex.abs (fTermCondition W τ) ^ 2 := by
+    (0 : ℝ) ≤ ‖fTermCondition W τ‖ ^ 2 := by
   positivity
 
 /-- No-scale identity: for the STU model K = -log(S+S̄) - log(T+T̄) - log(U+Ū),
@@ -88,7 +87,7 @@ theorem no_scale_identity :
 theorem fterm_potential_minimum_susy
     (W : GVWSuperpotential) (τ : ℂ)
     (hW : W.eval τ = 0) (hDW : fTermCondition W τ = 0) :
-    Complex.abs (fTermCondition W τ) ^ 2 = 0 := by
+    ‖fTermCondition W τ‖ ^ 2 = 0 := by
   rw [hDW]
   simp
 

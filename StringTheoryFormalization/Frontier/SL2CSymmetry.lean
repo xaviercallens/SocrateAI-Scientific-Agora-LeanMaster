@@ -33,7 +33,7 @@ structure MobiusTransform where
   det_one : a * d - b * c = 1
 
 /-- Action of a Möbius transformation on ℂ \ {-d/c}. -/
-def MobiusTransform.act (M : MobiusTransform) (z : ℂ) : ℂ :=
+noncomputable def MobiusTransform.act (M : MobiusTransform) (z : ℂ) : ℂ :=
   (M.a * z + M.b) / (M.c * z + M.d)
 
 /-- Composition of Möbius transformations corresponds to matrix multiplication. -/
@@ -45,7 +45,11 @@ theorem mobius_compose (M N : MobiusTransform) (z : ℂ)
       (M.a * N.b + M.b * N.d)
       (M.c * N.a + M.d * N.c)
       (M.c * N.b + M.d * N.d)
-      (by ring_nf; rw [M.det_one, N.det_one]; ring)).act z =
+      (by
+        have key : (M.a * N.a + M.b * N.c) * (M.c * N.b + M.d * N.d)
+            - (M.a * N.b + M.b * N.d) * (M.c * N.a + M.d * N.c)
+            = (M.a * M.d - M.b * M.c) * (N.a * N.d - N.b * N.c) := by ring
+        rw [key, M.det_one, N.det_one, one_mul])).act z =
     M.act (N.act z) := by
   simp [MobiusTransform.act]
   field_simp
@@ -63,7 +67,7 @@ theorem mobius_id_act (z : ℂ) : mobiusId.act z = z := by
 /-- A primary field of weight h transforms as φ(z) → (dw/dz)^h φ(w)
     under z ↦ w = M(z). The Jacobian is (M.c z + M.d)^{-2h}. -/
 noncomputable def primaryTransform (h : ℚ) (M : MobiusTransform) (z : ℂ) : ℂ :=
-  (M.c * z + M.d)^(-(2 * (h : ℝ)))
+  (M.c * z + M.d) ^ (-(2 * (h : ℂ)))
 
 /-- Ward identity for translation L_{-1}: ∑_i ∂_{z_i} correlator = 0.
     Encoded as: the total translation generator annihilates the vacuum. -/
@@ -81,13 +85,16 @@ theorem ward_identity_dilatation (n : ℕ) (z : Fin n → ℂ) (h : Fin n → �
 /-- Two-point function fixed by SL(2,ℂ) Ward identities:
     ⟨φ_1(z) φ_2(w)⟩ = C₁₂ / (z-w)^{2h} when h_1 = h_2 = h. -/
 noncomputable def twoPointFunction (h : ℚ) (C : ℂ) (z w : ℂ) (hzw : z ≠ w) : ℂ :=
-  C / (z - w) ^ (2 * (h : ℝ))
+  C / (z - w) ^ (2 * (h : ℂ))
 
 /-- FRONTIER GOAL: Prove that SL(2,ℂ) Ward identities uniquely fix the 2-pt function.
     Fermat Strategy: use Möbius covariance to reduce to 3 special positions. -/
 theorem sl2c_fixes_two_point (h : ℚ) :
-    ∃ (C : ℂ) (f : ℂ → ℂ → ℂ), ∀ z w : ℂ, z ≠ w →
-    f z w = twoPointFunction h C z w (by assumption) := by
-  exact ⟨1, fun z w => twoPointFunction h 1 z w, fun z w hzw => rfl⟩
+    ∃ (C : ℂ) (f : ℂ → ℂ → ℂ), ∀ (z w : ℂ) (hzw : z ≠ w),
+    f z w = twoPointFunction h C z w hzw := by
+  classical
+  refine ⟨1, fun z w => if hzw : z ≠ w then twoPointFunction h 1 z w hzw else 0, ?_⟩
+  intro z w hzw
+  simp only [dif_pos hzw]
 
 end StringTheory.Frontier

@@ -31,13 +31,8 @@ theorem energy_dissipation (s : SobolevExponent) (t : ℝ) (ht : 0 ≤ t)
     (hsumm₀ : Summable (fun k : ℤ × ℤ => (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * ‖coeff₀ k‖ ^ 2)) :
     fieldEnergy s coeffₜ ≤ fieldEnergy s coeff₀ := by
   unfold fieldEnergy sobolevNorm
-  apply sq_le_sq'
-  · linarith [Real.sqrt_nonneg _]
-  · apply Real.sqrt_le_sqrt
-    refine Summable.tsum_le_tsum ?_ hsummₜ hsumm₀
-    intro k
-    apply mul_le_mul_of_nonneg_left _ (by positivity)
-    exact sq_le_sq' (by linarith [norm_nonneg (coeff₀ k)]) (h k)
+  gcongr
+  exact h k
 
 /-- Paley-Littlewood regularity lifting:
     if ‖u‖_{H^{s+ε}} < ∞ then u has finite H^s norm. -/
@@ -49,9 +44,11 @@ theorem regularity_lifting (s : SobolevExponent) (ε : ℝ) (hε : 0 < ε)
       (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * ‖coeff k‖ ^ 2) := by
   apply h.of_norm_bounded
   · intro k
+    rw [Real.norm_of_nonneg (by positivity)]
     apply mul_le_mul_of_nonneg_right _ (sq_nonneg _)
     apply Real.rpow_le_rpow_of_exponent_le
-    · positivity
+    · have hnn : (0 : ℝ) ≤ ((k.1 ^ 2 + k.2 ^ 2 : ℤ) : ℝ) := by positivity
+      linarith
     · linarith
 
 /-- Upstream citation linking this definition to OpenAI's Euler/NS codebase. -/
