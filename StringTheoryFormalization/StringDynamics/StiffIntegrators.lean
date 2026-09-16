@@ -18,10 +18,10 @@ structure StiffODESystem where
   stiff : 1 < stiffnessRatio
 
 /-- Implicit Euler real axis stability:
-    The denominator 1 - hλ is strictly greater than or equal to 1 for negative real eigenvalues. -/
+    The denominator 1 - h*eig is strictly greater than or equal to 1 for negative real eigenvalues. -/
 theorem implicit_euler_denominator_lower_bound (sys : StiffODESystem) (h : ℝ) (hh : 0 < h)
-    (λ : ℝ) (hλ : λ ≤ 0) :
-    1 ≤ 1 - h * λ := by
+    (eig : ℝ) (heig : eig ≤ 0) :
+    1 ≤ 1 - h * eig := by
   nlinarith
 
 /-- BDF2 stability order bound: spatial dimension is at least 0. -/

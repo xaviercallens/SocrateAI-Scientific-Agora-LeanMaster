@@ -5,7 +5,7 @@
 --           and central-charge computation (Track A).
 
 import Mathlib.Analysis.Fourier.FourierTransform
-import Mathlib.Analysis.Distribution.SchwartzSpace
+import Mathlib.Analysis.Distribution.SchwartzSpace.Deriv
 import StringTheoryFormalization.NSMath.FractionalSobolev
 
 namespace StringTheory.NSMath
@@ -21,7 +21,7 @@ Directly grounded in `openai-navierstokes/NavierStokes/TorusInverse.lean`:
 /-- A Fourier multiplier on L²(T²) defined by symbol m : ℤ × ℤ → ℂ. -/
 structure FourierMultiplier where
   symbol : ℤ × ℤ → ℂ
-  bounded : ∃ C : ℝ, ∀ k, Complex.abs (symbol k) ≤ C
+  bounded : ∃ C : ℝ, ∀ k, ‖symbol k‖ ≤ C
 
 /-- Action of a Fourier multiplier on a Fourier series.
     Directly corresponds to `NavierStokes.TorusInverse.Rapid.mul_linear`. -/
@@ -34,9 +34,10 @@ def FourierMultiplier.comp (M N : FourierMultiplier) : FourierMultiplier where
   bounded := by
     obtain ⟨C₁, hC₁⟩ := M.bounded
     obtain ⟨C₂, hC₂⟩ := N.bounded
-    exact ⟨C₁ * C₂, fun k => by
-      rw [map_mul]
-      exact mul_le_mul (hC₁ k) (hC₂ k) (by positivity) (by linarith [hC₁ k])⟩
+    refine ⟨C₁ * C₂, fun k => ?_⟩
+    show ‖M.symbol k * N.symbol k‖ ≤ C₁ * C₂
+    calc ‖M.symbol k * N.symbol k‖ ≤ ‖M.symbol k‖ * ‖N.symbol k‖ := norm_mul_le _ _
+      _ ≤ C₁ * C₂ := mul_le_mul (hC₁ k) (hC₂ k) (norm_nonneg _) ((norm_nonneg _).trans (hC₁ k))
 
 /-- Bounded Fourier multiplier on the dual torus lattice (identity / normalized cutoff). -/
 def laplacianMultiplier : FourierMultiplier where

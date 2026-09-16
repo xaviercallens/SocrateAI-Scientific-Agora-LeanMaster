@@ -5,7 +5,7 @@
 -- Source: Weil (1958); Wolpert (1986); Candelas-de la Ossa (1990).
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 import Mathlib.Analysis.Calculus.Deriv.Basic
-import Mathlib.Geometry.Manifold.Basic
+import Mathlib.Geometry.Manifold.IsManifold.Basic
 import StringTheoryFormalization.StringDynamics.InvariantLocks
 import StringTheoryFormalization.Frontier.FTermPotential
 

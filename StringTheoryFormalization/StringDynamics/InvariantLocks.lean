@@ -14,19 +14,18 @@ structure WorldsheetModulus where
 
 /-- The fundamental domain for SL(2,ℤ): |τ| ≥ 1 and |Re(τ)| ≤ 1/2. -/
 def inFundamentalDomain (w : WorldsheetModulus) : Prop :=
-  Complex.abs w.τ ≥ 1 ∧ |w.τ.re| ≤ 1/2
+  ‖w.τ‖ ≥ 1 ∧ |w.τ.re| ≤ 1/2
 
 /-- The Teichmüller parameter is always in the upper half-plane. -/
 theorem modulus_upper_half (w : WorldsheetModulus) : 0 < w.τ.im := w.im_pos
 
-/-- SL(2,ℤ) acts on ℍ: τ ↦ (aτ+b)/(cτ+d).
-    The imaginary part transforms as Im(γτ) = Im(τ)/|cτ+d|².
-    Preservation of the upper half-plane under modular transformations. -/
-theorem sl2z_preserves_upper_half (w : WorldsheetModulus) (a b c d : ℤ)
-    (hdet : a * d - b * c = 1) :
-    let τ' := ((a : ℂ) * w.τ + b) / ((c : ℂ) * w.τ + d)
-    (c : ℂ) * w.τ + d ≠ 0 → 0 < w.τ.im := by
-  intro _
-  exact w.im_pos
+/-!
+SCOPE NOTE: SL(2,ℤ) Action on the Upper Half-Plane
+
+The classical result that modular transformations τ ↦ (aτ+b)/(cτ+d) preserve the upper
+half-plane Im(τ) > 0 via the formula Im(τ')/Im(τ) = 1/|cτ+d|² is **Tier L** (literature,
+Serre's "A Course in Arithmetic"). A mechanized proof here would require building complex
+analysis machinery (e.g., properties of complex conjugation, strict positivity preservation
+through division) not present in this corpus. Removed the false non-proof. -/
 
 end StringTheory.StringDynamics

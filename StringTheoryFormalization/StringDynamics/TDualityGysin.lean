@@ -7,7 +7,7 @@ import StringTheoryFormalization.StringDynamics.MukaiLattice
 namespace StringTheory.StringDynamics
 
 /-- T-duality radius inversion: R ↦ α'/R. -/
-def tDualityRadius (R α' : ℝ) (hR : 0 < R) (hα : 0 < α') : ℝ := α' / R
+noncomputable def tDualityRadius (R α' : ℝ) (hR : 0 < R) (hα : 0 < α') : ℝ := α' / R
 
 /-- T-duality swaps winding and momentum numbers. -/
 structure TDualState where

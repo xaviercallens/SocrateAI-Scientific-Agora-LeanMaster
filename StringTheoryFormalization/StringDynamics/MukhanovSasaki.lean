@@ -25,6 +25,6 @@ theorem ms_superhorizon_freezing (sol : MSSolution) (η : ℝ) (hη : η < 0) :
 
 /-- The scalar power spectrum P_s = k³/(2π²) |v_k/z|² -/
 noncomputable def scalarPowerSpectrum (sol : MSSolution) (z : ℝ → ℝ) (η : ℝ) : ℝ :=
-  sol.k^3 / (2 * Real.pi^2) * (Complex.abs (sol.v η) / z η)^2
+  sol.k^3 / (2 * Real.pi^2) * (‖sol.v η / z η‖)^2
 
 end StringTheory.StringDynamics

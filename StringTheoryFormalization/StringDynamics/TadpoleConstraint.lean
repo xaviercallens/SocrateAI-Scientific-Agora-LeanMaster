@@ -1,7 +1,7 @@
 -- Block WS7: Tadpole Constraint ∑Q = 0
 -- Status: VERIFIED (0 sorry axioms)
 -- Provides: D3-brane + flux tadpole cancellation on K3 × T².
-import Mathlib.Algebra.BigOperators.Group.Finset
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import StringTheoryFormalization.StringDynamics.KummerBlowup
 
 namespace StringTheory.StringDynamics
@@ -18,15 +18,15 @@ def fluxTadpole (H₃_quanta F₃_quanta : ℤ) : ℤ := H₃_quanta * F₃_quan
 
 /-- Total tadpole from branes + fluxes + O3 planes.
     The K3 Euler characteristic χ(K3) = 24. -/
-def totalTadpole (stacks : Fin 4 → BraneStack)
+def totalTadpole (braneStacks : Fin 4 → BraneStack)
     (H₃ F₃ : ℤ) : ℤ :=
-  (∑ i, stacks i |>.charge) + fluxTadpole H₃ F₃ - 24
+  (∑ i, (braneStacks i).charge) + fluxTadpole H₃ F₃ - 24
 
 /-- Tadpole cancellation: ∑Q = 0 enforces charge conservation. -/
-theorem tadpole_cancellation (stacks : Fin 4 → BraneStack)
+theorem tadpole_cancellation (braneStacks : Fin 4 → BraneStack)
     (H₃ F₃ : ℤ)
-    (h : totalTadpole stacks H₃ F₃ = 0) :
-    (∑ i, stacks i |>.charge) + fluxTadpole H₃ F₃ = 24 := by
+    (h : totalTadpole braneStacks H₃ F₃ = 0) :
+    (∑ i, (braneStacks i).charge) + fluxTadpole H₃ F₃ = 24 := by
   unfold totalTadpole at h
   linarith
 

@@ -2,7 +2,7 @@
 -- Status: VERIFIED (0 sorry axioms)
 -- Provides: Character decomposition of K3 elliptic genus under M₂₄.
 import Mathlib.GroupTheory.Perm.Basic
-import Mathlib.Algebra.BigOperators.Group.Finset
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import StringTheoryFormalization.Foundations.MathlibCore
 
 namespace StringTheory.StringDynamics
@@ -36,6 +36,10 @@ def M24RepDim : Fin 26 → ℕ
   | ⟨23, _⟩ => 231
   | ⟨24, _⟩ => 770
   | ⟨25, _⟩ => 483
+  -- All 26 indices of `Fin 26` are enumerated above; this branch is unreachable and is
+  -- discharged from the `Fin` bound rather than by a catch-all default, so that a genuinely
+  -- missing dimension would still be a compile error.
+  | ⟨n + 26, h⟩ => absurd h (by omega)
 
 /-- The Mathieu Moonshine observation: K3 elliptic genus decomposes as
     χ(K3; q, y) = 20 · χ_{h=1/4} + (large M₂₄ reps) + ... -/

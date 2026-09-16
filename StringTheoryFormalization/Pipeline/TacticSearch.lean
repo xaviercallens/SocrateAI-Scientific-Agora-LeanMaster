@@ -1,6 +1,10 @@
 -- ML Pipeline Module 2: Tactic Search Interface
 -- Provides the bridge between Lean 4 proof states and external ML tactic generators.
 import Lean
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Ring
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.Positivity
 import StringTheoryFormalization.Pipeline.DAGOrchestrator
 
 namespace StringTheory.Pipeline
