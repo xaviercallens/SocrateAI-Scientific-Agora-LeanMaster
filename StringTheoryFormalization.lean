@@ -32,3 +32,8 @@ import StringTheoryFormalization.Frontier.FTermPotential
 import StringTheoryFormalization.Frontier.ModuliGeodesics
 import StringTheoryFormalization.Pipeline.DAGOrchestrator
 import StringTheoryFormalization.Pipeline.TacticSearch
+import StringTheoryFormalization.UseCases.TDualityMassSpectrum
+import StringTheoryFormalization.UseCases.CriticalDimension
+import StringTheoryFormalization.UseCases.NarainLattice
+import StringTheoryFormalization.UseCases.MathieuTower
+import StringTheoryFormalization.UseCases.K3SignatureTheorem
