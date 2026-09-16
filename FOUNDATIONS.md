@@ -3,18 +3,34 @@
 This repository (`SocrateAI-Scientific-Agora-LeanMaster`) vendors **8 open-source Lean 4 corpora**
 as read-only git submodules under `lean4basesource/` and cites **4 foundational physics papers**.
 
-> **Status, verified directly against the submodules (not from memory or prior prose):** every one
-> of the 8 vendored corpora depends on Mathlib in its own `lakefile.lean`/`lakefile.toml`. This
-> project's own `lakefile.lean` has **zero external dependencies**
-> (`lake-manifest.json`: `"packages": []`) — no Mathlib, and therefore no `import` from any of these
-> 8 corpora is possible today. Adding Mathlib as a root dependency is planned but deferred to a
-> machine with adequate disk space (attempted this session; blocked at 2.2 GB free on a 100%-full
-> disk — see `/home/xavkal/.claude/plans/mighty-skipping-meadow.md` Phase 1a). Until then, "bridges"
-> to these corpora in this codebase are **citations and thematic parallels, not compiled
-> dependencies** — the six `StringTheoryFoundation/*Bridge.lean` files each carry a `SCOPE NOTE`
-> saying exactly this, and this document does the same below, with specifics verified by reading
-> the actual vendored source (not assumed) for each of the four repositories the project leans on
-> most.
+> **Update (2026-09-16, verified directly against `lakefile.lean`/`lake-manifest.json`, not
+> carried over from prior prose): the paragraph below is now stale on its central claim.**
+> Storage was relocated to a second disk this session (`.lake` symlinked to
+> `/mnt/disks/disk-socrateai-local-1/leanmaster/lake`), and this project's own `lakefile.lean`
+> **does now require Mathlib** (`require "leanprover-community" / "mathlib" @ git "v4.33.1"`,
+> resolved to commit `0df444a360eaa60ab8c11dca51a86af692955474`; `lake-manifest.json` lists 9
+> packages: `mathlib, plausible, LeanSearchClient, importGraph, proofwidgets, aesop, Qq,
+> batteries, Cli`). `StringTheoryFormalization` — the library that actually imports Mathlib
+> throughout (`Complex`, `Real`, `Matrix`, …) — builds 100% clean against it: 3296/3296 jobs,
+> 0 errors, 0 `sorry`/`admit` (verified this session, not asserted). **This does not, by
+> itself, mean the 8 vendored `lean4basesource/` corpora below are importable** — each pins its
+> *own* Mathlib commit/toolchain, and at least one (`openai-navierstokes`, toolchain
+> `v4.34.0-rc2`) was empirically confirmed incompatible with this project's `v4.33.1` pin
+> (attempted a real `lake update` fusing both as dependencies of one package; Lake resolved an
+> inconsistent (toolchain, Mathlib-commit) pair and failed at the cache-fetch step before any
+> compilation — see the LeanMaster session log for 2026-09-16). The six
+> `StringTheoryFoundation/*Bridge.lean` files' `SCOPE NOTE`s (thematic parallel only, no
+> compiled dependency on the named external corpus) are therefore **still accurate** and
+> unaffected by the Mathlib fix above — only the *reason* they don't import has changed, from
+> "no Mathlib at all" to "Mathlib present, but a version-pin mismatch with this specific
+> external corpus."
+>
+> **Original paragraph (now superseded on the Mathlib claim, kept for record):** "every one of
+> the 8 vendored corpora depends on Mathlib in its own `lakefile.lean`/`lakefile.toml`. This
+> project's own `lakefile.lean` has zero external dependencies (`lake-manifest.json`:
+> `"packages": []`) — no Mathlib, and therefore no `import` from any of these 8 corpora is
+> possible today. Adding Mathlib as a root dependency is planned but deferred to a machine with
+> adequate disk space (attempted this session; blocked at 2.2 GB free on a 100%-full disk)."
 
 ---
 

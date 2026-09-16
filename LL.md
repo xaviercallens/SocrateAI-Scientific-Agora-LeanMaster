@@ -1,9 +1,133 @@
-# Lessons Learned (LL): Phase 0 LeanMaster Formalization & Foundation Retrieval
+# Lessons Learned (LL)
 
-**Project**: SocrateAI-Scientific-Agora-LeanMaster  
-**Target Milestone**: Phase 0 — Dual-Scale String Theory Formalization on $K3 \times T^2$  
-**Date**: September 2026  
-**Status**: Completed, Verified, and Released (Target: ≥ 60.0% | Achieved: 96.9%)  
+**Most recent session first** (§0, dated 2026-09-16) — read that before anything below it.
+Everything from §1 onward is the original "Phase 0" document and is kept for record, but
+**its headline metrics are a known overclaim, not a mistake to repeat**: "125,790 files",
+"961,898 theorems", "96.9% coverage" are aggregate counts across every vendored
+`lean4basesource/` submodule (Mathlib, FLT, Navier-Stokes, …) — other people's proved
+theorems, not this project's own content — presented as if they were this project's
+foundation-theory coverage. Treat every number below the divider as unverified until
+independently re-checked (the pattern is the same one `FOUNDATIONS.md`'s own correction
+note and the root `README.md`'s "note on this revision" already flag elsewhere in this
+repo) rather than as ground truth to build the next session's narrative on.
+
+---
+
+# §0. Session 2026-09-16: Recovery, Build-Fix, Use-Case, and RAG/Graph Wiring
+
+**Project**: SocrateAI-Scientific-Agora-LeanMaster
+**What happened this session, in order**: (1) the entire local checkout was missing from
+disk and had to be re-cloned from GitHub; (2) `StringTheoryFormalization` had 8 real
+build failures despite being self-documented as "26-28/30 modules, complete" — fixed to
+3291/3291, 0 errors; (3) added 5 new, real, fully-proved "known complex" use cases (26
+theorems, 0 sorry); (4) wired up the project's own RAG/graph/SQLite tooling for real,
+since most of it was either unpopulated or scoped to a stale subset of the project.
+**Final state**: `main` green, `lake build` 3353/3353 jobs, 0 errors, across all 6
+first-party libraries.
+
+## Lesson 0.1: A missing project is not always a missing project — check the disk before re-cloning
+Home-directory symlinks to the data disk can silently disappear (a VM remount/relabel
+event, cause unconfirmed) while the actual data survives one level down. **Before
+concluding something needs re-cloning**, diff every top-level entry of the data-disk
+directory against home's symlinks — a one-line loop, seconds to run — rather than trusting
+`ls ~` alone. This session, doing that turned up 4 more silently-broken symlinks besides
+the one initially reported, including the project's main Python venv (6.5GB, completely
+unreachable at its expected path until checked). Only re-clone from GitHub once you've
+confirmed via `find -L` (which follows symlinks; plain `find` gives false negatives) that
+the data is genuinely gone from every disk, not just unlinked.
+
+## Lesson 0.2: Self-reported "complete"/"N/M modules passing" status is a claim, not a fact — rerun the build
+This repo's own session summaries have repeatedly stated build status that didn't match
+running `lake build` fresh: "26-28/30 modules" was actually 22/30 failing-or-untested at
+the start of this session (8 real failures once the full dependency chain was exercised,
+not the "2 remaining" the docs named — those 2 had in fact been fixed; a different 8
+had not). **The fix that generalizes**: after any claim of "X builds clean" from a
+document, memory note, or your own earlier turn in a long session, re-run the actual
+build before trusting it or building further work on top of it. This is cheap (`lake
+build <target>`, background it, keep working) and it is the only way this session
+caught real, previously-unreported failures.
+
+## Lesson 0.3: A fix that "compiles" can still be hiding downstream breakage — fixing cascades
+Fixing one broken file can *unblock* Lean from even attempting to elaborate files that
+depend on it, which can surface entirely new failures that were always latently present
+but never reached because the build stopped earlier. This session: fixing 4 modules
+revealed a 5th (`ModuliGeodesics`) and 6th (`SwamplandSafe`, `FTermPotential`) that had
+never actually been attempted in a full build before. **Rule**: after any fix, re-run
+the *whole* target's build, not just the one file you touched — `lake build` on the
+single file will look green and hide this.
+
+## Lesson 0.4: A real, reproducible Lean 4 parser gotcha — parenthesize multi-name structure fields
+`structure Foo where a b c d : T` (space-separated field names, **no parens**) is parsed
+as ONE field `a` that is a *curried function* taking `b c d` as auto-bound implicit
+arguments and returning `T` — not four scalar fields of type `T`. This reproduces in
+vanilla Lean 4 with zero Mathlib imports (`structure Foo where a b c d : Nat`, then any
+use of `a`,`b`,`c`,`d` as scalars fails with bizarre dependent-function-type errors whose
+error messages give no hint of the real cause). **Fix**: parenthesize the group,
+`(a b c d : T)`. This bug, once found in one file (`SL2CSymmetry.MobiusTransform`), was
+found again independently in a second, unrelated file (`ModuliGeodesics.ModuliGeodesic`)
+in the same corpus — **grep the whole codebase for `structure \w+ where\s*\n\s*\w+ \w+`
+(two-or-more bare space-separated names before a bare `:`) as a class of latent bug**,
+don't assume it's isolated once you've found and fixed one instance.
+
+## Lesson 0.5: This project's automation tools are a mix of real and fabricated — audit each one before trusting or extending it
+`leanautoresearch/evaluator.py`'s `LeanEvaluator` is real: it runs an actual `lake build`
+subprocess and a real regex sorry/admit audit after stripping comments. `leangraph/`
+(dependency graph extractor) and `tools/socrateai_oracle.py`/`tools/lean_cache_manager.py`
++ `leangraph/cache.py` (SQLite declaration index) are also real, working code. But:
+- `leanautoresearch/prover.py` is a **hardcoded static list** of already-"PROVEN"
+  experiments with **no actual proving logic** — pure mock data.
+- `leanautoresearch/engine.py`'s `sync_epistemic_claims()` injects the **same 3
+  hardcoded claims** into `ledger.jsonl` any time the *whole* corpus builds with
+  aggregate zero-sorry, regardless of whether those 3 specific claims are what was
+  actually just proved.
+- `leangraph.build_graph`'s default module list and `socrateai_oracle.py`'s indexing
+  scope both silently omitted `StringTheoryFormalization` — the single largest library
+  in the project — until fixed this session (see §0.7). A "complete" RAG/graph export
+  can still be silently missing most of the actual corpus; check the target/scope list,
+  not just whether the tool ran successfully.
+**Rule for next session**: before running or trusting output from any `tools/*.py` or
+`*/engine.py`/`prover.py` script in this repo, read what it actually does (open the
+file), don't assume the module or file name describes real behavior.
+
+## Lesson 0.6: A local LLM is a second opinion, not an oracle — verify its claims like anyone else's
+Asked the locally-hosted `qwen2.5-coder:7b-instruct` (Ollama, on the project's T4 GPU) to
+sanity-check 5 new formalizations' physics claims. It correctly confirmed 2 of 3
+spot-checked facts and **incorrectly disputed the third** (claimed the bosonic-string
+ghost central charge was `c=-24` at weight `λ=2`; the correct, well-established value —
+independently re-derived from the cited Polchinski formula and matching the famous
+`D=26` bosonic-string result — is `c=-26`; the model likely conflated it with the
+unrelated `D-2=24` light-cone transverse count). Useful as a fast first-pass check, not
+as a substitute for deriving the answer yourself from a cited source.
+
+## Lesson 0.7: "Ensure RAG/graph/DB is in place" means checking real data flows in, not that the script exists
+Three separate indexing tools existed with real, working code, but each was either
+never run (SQLite `declarations.db` didn't exist anywhere on disk) or scoped to a
+subset of the project that excluded `StringTheoryFormalization`:
+- `leangraph`'s declaration-graph builder defaults to `["DoubleFieldTheory",
+  "DualScaleM24Formalization", "StringTheoryFoundation"]` only — re-run with an explicit
+  `--target` listing all 6 first-party libraries to get real coverage (729 nodes / 1216
+  edges vs. the stale 538/807 in the committed `graph/` from before this session).
+- `tools/socrateai_oracle.py`'s `_load_corpus` had the same 5-library gap (missing
+  `StringTheoryFormalization`) — one-line fix, then re-run `export-json`.
+- No script existed that walked the *whole* corpus into `leangraph.cache.LeanCacheManager`
+  (the real SQLite backend) — `leangraph/base_graph.py`'s `_index_key_declarations` only
+  indexes ~27 hand-picked "landmark" files. Wrote `tools/index_declarations.py` to do a
+  full walk; **first regex attempt (copied from `base_graph.py`) undercounted by >2x**
+  (746 real declarations vs. 297 found) because it tried to capture the entire
+  multi-line signature in one regex and silently dropped anything that didn't fit —
+  switched to a line-anchored "match just the declaration head, treat the rest of the
+  line as a preview" pattern and cross-checked the total against a plain
+  `grep -c '^theorem '`-style count (matched exactly: 746 = 746) before trusting it.
+  **General lesson**: when writing any extraction/counting tool over this corpus,
+  cross-check its output against an independent, dumber method before trusting the count.
+
+## Lesson 0.8: Keep large data off the root disk, always
+Mathlib clones, git submodule clones, Lake build caches, and (new this session) Ollama
+model weights all belong on `/mnt/disks/disk-socrateai-local-1/`, never the root disk —
+even for a disposable, throwaway experiment (a stray 812MB test clone landed on root
+disk under `/tmp` mid-session and had to be relocated). Set `OLLAMA_MODELS` /
+`LAKE_ARTIFACT_CACHE` / clone target paths onto the second disk *before* running the
+command that downloads, not after.
 
 ---
 

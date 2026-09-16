@@ -37,6 +37,7 @@ class SocrateAIOracle:
             self.root / "DualScaleM24Formalization",
             self.root / "Lean5Corpus",
             self.root / "StringTheoryFoundation",
+            self.root / "StringTheoryFormalization",
         ]
         for ldir in lean_dirs:
             if not ldir.exists():
