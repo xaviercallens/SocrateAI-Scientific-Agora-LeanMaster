@@ -1,0 +1,4177 @@
+arXiv:0904.4664v2 [hep-th] 13 Aug 2009
+
+April 2009
+arXiv:0904.4664
+Imperial-TP-2009-CH-02
+MIT-CTP-4031
+
+Double Field Theory
+Chris Hull1 and Barton Zwiebach2
+
+1 The Blackett Laboratory
+
+Imperial College London
+Prince Consort Road, London SW7 @AZ, U.K.
+c.hull@imperial.ac.uk
+2 Center for Theoretical Physics
+
+Massachusetts Institute of Technology
+Cambridge, MA 02139, USA
+zwiebach@mit.edu
+
+Abstract
+The zero modes of closed strings on a torus –the torus coordinates plus dual coordinates
+conjugate to winding number– parameterize a doubled torus. In closed string field theory, the
+string field depends on all zero-modes and so can be expanded to give an infinite set of fields
+on the doubled torus. We use string field theory to construct a theory of massless fields on
+the doubled torus. Key to the consistency is a constraint on fields and gauge parameters that
+arises from the L0 − L̄0 = 0 condition in closed string theory. The symmetry of this double field
+theory includes usual and ‘dual diffeomorphisms’, together with a T-duality acting on fields
+that have explicit dependence on the torus coordinates and the dual coordinates. We find
+that, along with gravity, a Kalb-Ramond field and a dilaton must be added to support both
+usual and dual diffeomorphisms. We construct a fully consistent and gauge invariant action
+on the doubled torus to cubic order in the fields. We discuss the challenges involved in the
+construction of the full nonlinear theory. We emphasize that the doubled geometry is physical
+and the dual dimensions should not be viewed as an auxiliary structure or a gauge artifact.
+
+Contents
+1 Introduction and summary
+
+1
+
+2 The Free Theory
+2.1 Linearised double diffeomorphism symmetry . . . . . . . . . . . . . . . . . . . . . . . .
+2.2 General toroidal backgrounds . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2.3 Quadratic action from string field theory . . . . . . . . . . . . . . . . . . . . . . . . . .
+2.4 Comparison with conventional actions . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+8
+8
+9
+13
+16
+
+3 Cubic action and gauge transformations
+3.1 Cubic terms and gauge transformations from CSFT . . . . . . . . . . . . . . . . . . .
+3.2 Simplifying the gauge transformations . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3.3 Simplifying the action . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3.4 Conventional field theory limits . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3.4.1 Fields with no x̃ dependence. . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3.4.2 Fields with no x dependence. . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+18
+19
+22
+23
+25
+27
+29
+
+4 T-duality of the action
+4.1 Duality transformations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4.2 Duality invariance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4.3 Inversion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4.4 The discrete symmetry B → −B . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4.5 Field redefinitions, Buscher rules, and generalised T-duality . . . . . . . . . . . . . . .
+
+32
+33
+35
+37
+38
+39
+
+5 Constraint, cocycles, and null subspaces
+5.1 The constraint and projectors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+5.2 Cocycles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+5.3 Spaces large and small . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+41
+42
+44
+45
+
+6 Comments and open questions
+
+46
+
+1
+
+Introduction and summary
+
+T-duality is a striking property of string theory.1 Closed strings can wrap around non-contractible
+cycles in spacetime, giving winding states that have no analogue for particle theories. The existence of
+both momentum and winding states is the key property of strings that allows T-duality: the complete
+physical equivalence of string theories on dual backgrounds that have very different geometries.
+String field theory provides a complete gauge-invariant formulation of string dynamics around any
+consistent background, and we will use it here to study T-duality. A closed string field theory for a
+flat spacetime with some spatial directions curled up into a torus was examined long ago by Kugo
+and Zwiebach [2]2 , following earlier work in [4, 5]. In particular, [2] showed how T-duality is realised
+as a symmetry of the string field theory. The string field theory treats momenta and winding rather
+1
+
+See [1] for a review of T-duality and references.
+While this work used a covariantised light-cone formulation of the string field theory, the results are largely applicable
+to the covariant closed string field theory [3] which we use here.
+2
+
+1
+
+symmetrically and, as a consequence, expanding the string field gives component fields that depend on
+both momentum and winding number. Fourier transforming to position space then gives component
+fields that depend on both the spacetime coordinates conjugate to momentum and on new periodic
+coordinates conjugate to winding number. For a spacetime which is a product of a Minkowski space
+M with a d-dimensional torus T d , the component fields are then fields on M × T 2d where the doubled
+torus T 2d contains the original spacetime torus T d together with another torus T d parameterised by
+the winding coordinates. In fact, the doubled torus contains the original torus T d as well as the tori
+related to it by T-duality. Then T-duality can be viewed as changing which T d subspace of the doubled
+torus is to be regarded as part of the spacetime [6].
+The complete closed string field theory on a torus is exotic and complicated. To our knowledge, it
+has not been examined in detail at the component level to try to uncover how spacetime fields realise
+the magic of T-duality. This is one of the main purposes of the present paper. As a simplification, we
+restrict ourselves to the ‘massless’ sector or, more precisely, to the set of fields that would be massless
+in the uncompactified theory. We thus focus on the gravity, antisymmetric tensor (Kalb-Ramond),
+and dilaton fields. We include all momenta and winding excitations of these fields by keeping their
+full dependence on the coordinates of the doubled torus. T-duality exchanges momentum and winding
+excitations, so that we expect T-duality to be a symmetry of this massless theory. A T-duality
+symmetric field theory on the doubled torus that can incorporate all T-dual geometries is likely to be
+novel and perhaps even exotic. Our hope is that this massless theory exists and it is not so complicated
+as to defy construction. Our results so far are encouraging: we have constructed the theory to cubic
+order in the fields. No higher derivatives are needed: each term has two derivatives, as in Einstein
+gravity.
+Previous work on double field theory includes that of Tseytlin [7] who used a first-quantized
+approach with non-covariant actions for left and right-moving string coordinates on the torus. He
+calculated amplitudes for vertex operators depending on both coordinates, finding partially gaugefixed cubic interactions for metric perturbations that are consistent with our action. It would be
+interesting to develop the first-quantised approach further, perhaps using the covariant formulation
+of [6]. Siegel [8] considered the field theory for the massless sector of closed strings without winding
+modes, but this restriction is implemented in an O(d, d, Z) covariant fashion through an intriguing
+formulation of T-duality. An effective field theory on a doubled torus also arose in the study of open
+strings on a torus with space-filling and point-like D-branes [9].
+The gauge symmetry of the theory we build should include diffeomorphisms for each T d subspace
+of the doubled torus that can arise as a possible spacetime. We find that this is the case, and the
+linearised transformations include linearised diffeomorphisms on the doubled torus as well as a doubled
+version of the antisymmetric tensor field gauge symmetry. The non-linear structure is rather intricate
+and a simple characterization remains to be found. We find that the Jacobi identities are not satisfied,
+so the symmetry appears not to be diffeomorphisms on the doubled torus or even a Lie algebra.
+Gauge invariance requires that the fields and gauge parameters satisfy a constraint that arises from
+the L0 − L̄0 = 0 constraint of closed string field theory.
+The doubled torus T 2d arises naturally in the first-quantized approach to strings on a torus,
+2
+
+leading to a number of approaches involving sigma models whose target is the space with doubled
+torus fibres [6, 7, 10, 11, 12, 13, 14, 15, 16, 17]. T-duality extends to spacetimes that have a torus
+fibration if the fields are independent of the coordinates of the torus fibres. The Buscher rules [18]
+for d = 1, and their extension to d > 1 [19], encode the transformation of such a background under
+T-duality. In the doubled torus formalism of Refs. [6, 14], the T d fibres of such a background are
+replaced with doubled torus fibres T 2d . A key feature of this formalism is that T-duality is a manifest
+geometric symmetry, as the T-duality group acts through diffeomorphisms on the doubled torus fibres.
+Moreover, the target space with doubled torus fibres incorporates all possible T-dual geometries. The
+conventional picture emerges only on choosing a T d subspace of each T 2d fibre to be the spacetime
+torus, and T-duality acts to change which T d subspace is chosen [6]. The fact that T-duality is a
+symmetry means that the physics is the same in each case.
+If fields have explicit dependence on the torus coordinates, the situation is not well understood. It
+is expected that fields that depend on the spacetime torus coordinates x should transform into fields
+that depend on the dual coordinates x̃. Dependence on the dual coordinates is puzzling, but one would
+expect that while x-dependence affects particles, x̃-dependence should affect winding modes, so that
+particles and winding modes could experience different backgrounds; see e.g. [20]. Dependence on x̃ has
+been associated with world-sheet instanton effects [20], and a number of calculations have supported
+this view [21, 22, 23, 24]. General string backgrounds, however, should involve fields depending on both
+x and x̃, and it is to be expected that there should be an extension of the T-duality transformation
+rules to this general case [25, 26]. We find the T-duality transformations that are a symmetry of
+the double action for fields that depend on both x and x̃. The fields in this action arise naturally
+from string field theory. In the case with no dependence on the dual coordinates x̃, we use the nonlinear relation between these fields and the familiar metric and B-field to find a generalisation of the
+Buscher rules to the case of fields with general dependence on the torus coordinates x (or any set of
+coordinates related to these by a duality). The form of these transformations then suggest a natural
+further generalisation to the case in which the fields have full dependence on x and x̃.
+We would like to emphasize that the inclusion of dual coordinates in double field theory is not a
+gauge redundancy or a reformulation of an underlying non-doubled geometry. The dual coordinates
+are needed to represent physical degrees of freedom; one cannot eliminate the dependence of fields on
+the additional coordinates using gauge conditions or solving constraints. This is perhaps less obvious in
+first quantization than in second quantization. In first quantization the familiar sigma model for closed
+strings on tori defines a conformal field theory. Using a doubled torus or other additional structures
+for the sigma model gives a better and more useful description of the same conformal field theory.
+It allows, for example, a natural construction of vertex operators for states with both momentum
+and winding. The physics, however, is in the conformal field theory, which includes momentum and
+winding, however they are described. In the string field theory a non-doubled formulation is not
+even an option. The string field, always defined by the conformal field theory state space, necessarily
+depends on coordinates conjugate to momentum and dual coordinates conjugate to winding. This
+dependence is nontrivial. While string field theory is now known to have nonperturbative information
+(at least in the open sector), our use of closed string field theory here has been more limited. String
+3
+
+field theory was useful in the construction of a nontrivial action and gauge transformations that would
+have been hard to guess or construct directly.
+Let us now discuss in some detail the setup and results in the present paper. We shall be interested
+in closed string theory in D-dimensional flat space with d compactified directions, Rn−1,1 × T d where
+n + d = D. We shall present our discussion for the critical D = 26 bosonic closed string, but much
+of this applies to closed superstring theories. We use coordinates xi = (xµ , xa ) with i = 0, ..., D − 1
+which split into coordinates xµ on the n-dimensional Minkoswski space Rn−1,1 and coordinates xa on
+the d-torus T d . States are labelled by the momentum pi = (kµ , pa ) and the string windings wa . For
+coordinates with periodicity xa ∼ xa + 2π, the operators pa and wa have integer eigenvalues – these
+are the momentum and winding quantum numbers. Perturbative states are of the form
+XZ
+X
+dk
+φI (kµ , pa , wa ) OI |kµ , pa , wa i ,
+(1.1)
+I
+
+pa ,w a
+
+where OI are operators built from matter and ghost oscillators and φI (k, pa , wa ) are momentum-space
+fields which also depend on the winding numbers. Fourier transforming, dependence on the momenta
+kµ , pa becomes dependence on the spacetime coordinates xµ , xa as usual, while dependence on wa is
+replaced by dependence on a new periodic coordinate x̃a conjugate to winding numbers wa . Thus the
+fields φI above give us coordinate-space fields
+φI (xµ , xa , x̃a ) .
+
+(1.2)
+
+Then (xa , x̃a ) are periodic coordinates for the doubled torus T 2d . All physical string states must satisfy
+the level matching condition, i.e., they must be annihilated by L0 − L̄0 :
+L0 − L̄0 = N − N̄ − pa wa = 0 .
+
+(1.3)
+
+This constraint will play a central role in our work. The free string on-shell condition L0 + L̄0 − 2 = 0
+takes a simple form when the background antisymmetric tensor vanishes:
+M 2 ≡ −(k2 + p2 + w2 ) =
+
+2
+(N + N̄ − 2) .
+α′
+
+(1.4)
+
+Here α′ p2 = Ĝab pa pb and α′ w2 = Ĝab wa wb where Ĝab is the torus metric and N, N̄ are the number
+operators for the left and right moving oscillators. We can view M 2 as the D-dimensional mass-squared
+and the associated massless states (M 2 = 0) satisfy N + N̄ = 2.
+The mass M in D-dimensions should not be confused with the mass M in the n-dimensional
+Minkoswki space obtained after compactification:
+M2 ≡ −k2 = p2 + w2 +
+
+2
+(N + N̄ − 2) .
+α′
+
+(1.5)
+
+For a rectangular torus the metric is Ĝab = δab Ra2 /α′ , where Ra is the radius of the circle along xa . If
+P
+all the circles are sufficiently large compared with the string length (Ra2 ≫ α′ ), then w2 = a wa2 Ra2 /α′
+P
+is large and p2 = a p2a α′ /Ra2 is small, so that the states that are light compared to the string scale
+4
+
+include those which have wa = 0 and N + N̄ = 2. This is the Kaluza-Klein tower of states obtained
+by compactifying the theory of massless states in D dimensions. A conventional effective field theory
+in the n-dimensional Minkowski space would keep states for which M2 is zero or small, and would
+give the leading terms in a systematic expansion in M2 . Instead, here we focus on M 2 = 0 states
+and in so doing, we are keeping certain states that, from the lower-dimensional point of view, are
+heavy while neglecting some which are lighter.3 It is possible that the theory we are trying to build
+should be considered as an effective theory in which we keep a set of massless fields, including all of
+their large-energy excitations, and integrate out everything else. At special points in the torus moduli
+space there are extra states with M2 = 0 giving enhanced gauge symmetry, while near these special
+points these states will have small M2 . These have (N, N̄ ) = (1, 0) or (N, N̄ ) = (0, 1) and so have
+M 2 = −2/α′ ; we will not include these here.
+T-duality is an O(d, d; Z) symmetry of the string theory acting linearly on the torus coordinates
+a
+x , x̃a and preserving their boundary conditions. This includes a Z2 symmetry for each direction a
+that interchanges xa with x̃a . For a rectangular torus in which xa is a coordinate for a circle of radius
+Ra , x̃a is the coordinate for a T-dual circle of radius α′ /Ra . Performing a Z2 on each of the toroidal
+dimensions takes a theory on the original spacetime Rn−1,1 × T d with coordinates xµ , xa to a theory
+in the dual spacetime Rn−1,1 × Ted with coordinates xµ , x̃a .
+
+In the closed string field theory for this toroidal background the string field |Ψi is a general state
+of the form (1.1), and so can be viewed as a collection of component fields φI (xµ , xa , x̃a ). It should
+be emphasized that the difference between the toroidally compactified theory and the D-dimensional
+Minkowski space theory is that the toroidal zero modes are doubled; no new oscillators are added.
+Two off-shell constraints must be satisfied by both the string field and the gauge parameter |Λi. We
+must have
+(b0 − b̄0 )|Ψi = 0,
+(b0 − b̄0 )|Λi = 0 ,
+(1.6)
+and the associated level-matching conditions
+(L0 − L̄0 )|Ψi = 0 , (L0 − L̄0 )|Λi = 0 .
+
+(1.7)
+
+The free field equation is Q|Ψi = 0, where Q is the BRST operator, and it is invariant under gauge
+transformations δ|Ψi = Q|Λi. The ket |Λi gives rise to an infinite set of gauge parameters that depend
+on xµ , xa , and x̃a . On account of (1.3) and (1.7) the string field satisfies
+(N − N̄ )|Ψi = pa wa |Ψi ,
+
+(1.8)
+
+and for a component field φI (xµ , xa , x̃a ) we have
+(NI − N̄I ) φI =
+
+1 ′
+α ∆φI ,
+2
+
+with ∆ ≡ −
+
+2 ∂ ∂
+.
+α′ ∂xa ∂ x̃a
+
+(1.9)
+
+Here the NI and N̄I are the eigenvalues of N and N̄ on the CFT state for which φI is the expansion
+coefficient. Thus string field theory is a theory of constrained fields, but the constraint still allows
+fields with non-trivial dependence on both xa and x̃a if d > 1.
+3
+
+We thank David Gross for emphasizing this point to us.
+
+5
+
+For N = N̄ = 1 we have the following fields, all with M 2 = 0:4
+hij (xµ , xa , x̃a ),
+
+bij (xµ , xa , x̃a ),
+
+d (xµ , xa , x̃a ) .
+
+(1.10)
+
+The constraint requires that these fields are all annihilated by the differential operator ∆. The solutions
+independent of x̃ give the gravity field hij (xµ , xa ), the antisymmetric tensor field bij (xµ , xa ), and the
+dilaton d(xµ , xa ) in D dimensions. The solutions independent of xa give dual versions of these fields,
+while again the general case depends on both xa and x̃a (for d > 1). Note that e.g. hij decomposes
+as usual into hµν , hµa , hab and there is no doubling of the tensor indices. At higher levels the fields
+have the same index structure as for the uncompactified string theory, but now depend on x̃ as well
+as xµ , xa and are subject to the constraint (1.9).
+In this paper we focus on the M 2 = 0 fields in (1.10). The relevant gauge parameters are a pair of
+vector fields ǫi (xµ , xa , x̃a ) and ǫ̃i (xµ , xa , x̃a ), both of which are annihilated by ∆. Our analysis of the
+quadratic theory shows that the linearised gauge transformations take the form
+δhij =
+
+∂i ǫj + ∂j ǫi + ∂˜i ǫ̃j + ∂˜j ǫ̃i ,
+
+δbij = −(∂˜i ǫj − ∂˜j ǫi ) − (∂i ǫ̃j − ∂j ǫ̃i ) ,
+
+(1.11)
+
+δd = − 12 ∂ · ǫ + 12 ∂˜ · ǫ̃ .
+We use the notation x̃i = (x̃a , 0) and ∂˜i = (∂/∂ x̃a , 0, ) which makes it clear that only the coordinates
+on the torus are doubled. The above gauge structure is rather intricate and novel. For parameters
+and fields that are independent of x̃, these are the standard linearised diffeomorphisms (acting on xi )
+with parameter ǫi and antisymmetric tensor gauge transformations with parameter ǫ̃i . A dilaton φ
+which is a scalar (invariant under these linearised transformations) can be defined by φ = d + 41 η ij hij .
+Parameters and fields that are independent of xa live on the dual space with coordinates xµ , x̃a .
+These are again linearised diffeomorphisms, now acting on xµ , x̃a , and antisymmetric tensor gauge
+transformations, but the roles of the parameters ǫi and ǫ̃i have been interchanged. Now ǫ̃i is the
+diffeomorphism parameter and ǫi the antisymmetric tensor gauge parameter. In this case, the scalar
+dilaton would be φ̃ = d− 41 η ij hij . While φ is invariant under ǫ transformations and φ̃ is invariant under
+ǫ̃ transformations, there is no combination of d and η ij hij that is invariant under both. In the full nonlinear theory there is no dilaton that is a scalar under both diffeomorphisms and dual diffeomorphisms,
+√
+and d is the natural field to use. Nonlinearly, one has a relation of the form e−2d = e−2φ −g; the
+dilaton d is invariant under T-duality and its expectation value provides the duality-invariant string
+coupling constant [2, 34, 14].
+In the general case with dependence on both xa and x̃a one has both diffeomorphisms and dual
+diffeomorphisms, giving an intriguing structure of ‘doubled diffeomorphisms’. Moreover, we will show
+the diffeomorphisms and antisymmetric tensor gauge transformations become closely linked, with
+the roles of the parameters interchanged by T-duality. The consistency of this free theory hinges
+crucially on the constraint ∆ = 0 satisfied by the fields and gauge parameters. Given the general
+4
+
+There are additional auxiliary fields and gauge trivial fields that do not contribute propagating degrees of freedom.
+
+6
+
+interest in theories on doubled tori, we analyze the free theory further and find that linearised double
+diffeomorphisms cannot be realised with the hij field alone: the Kalb-Ramond and dilaton fields must
+be added. While diffeomorphism symmetry does not fix the field content of the massless sector of
+closed string theory, ‘double diffeomorphisms’ does!
+We are guided by string field theory to build a remarkable interacting generalisation of the linearised
+massless theory described above. In doing so we obtain a two-derivative theory with a gauge invariance
+that is the nonlinear version of the doubled diffeomorphisms found in the quadratic theory. The
+constraint ∆ = 0 remains unmodified and the theory remains a theory of constrained fields. The
+action is given in (3.25) and the gauge transformations are given in (3.27). The theory also has a
+discrete Z2 symmetry (3.26) that arises from the orientation invariance of the underlying closed string
+theory. It should be emphasized that the quadratic part of the action that we write is exactly that of
+the string field theory, but the cubic part of the action is not. In constructing this cubic part we drop
+all terms with more than two derivatives. We also drop the momentum-dependent sign factors due to
+cocycles that enforce the mutual locality of vertex operators [27, 28, 4, 5, 32]. Gauge invariance works
+to this order without the inclusion of such terms, although some may be needed to achieve a complete
+nonlinear construction. The role of sign factors is discussed in Section 5.
+The symmetry algebra of closed string field theory is not a Lie algebra (the Jacobi identitites
+do not hold) as in familiar theories, but rather a homotopy Lie algebra [3]. The structure of the
+interactions we find in our double field theory leads to a symmetry algebra that appears not to be a
+Lie algebra, suggesting that some of the homotopy structure of the string field theory survives in the
+massless theory. As we discuss in Section 5, an explicit projector is needed so that the product of
+two fields in the kernel of ∆ is also in the kernel of ∆. The presence of this projection is part of the
+reason the brackets that define the composition of gauge parameters do not satisfy a Jacobi identity.
+Understanding the full symmetry of the theory is a central open problem. Further discussion of open
+problems and directions for further research can be found in §6.
+In closing this introduction we note that the work here furnishes some new results in closed string
+field theory. The cubic theory of the massless fields, required to see the full structure of diffeomorphisms, was not worked out before. The formulation of gravity in string theory uses auxiliary fields
+that must be eliminated using their equations of motion as well as a gauge trivial scalar field that
+must be carefully gauged away. Field redefinitions are needed to obtain a simple form of the gauge
+transformations. In the end, the formulation of gravity plus antisymmetric field and a dilaton in string
+theory is extremely efficient; it uses eij = hij +bij and a duality-invariant scalar d (related to linearized
+order to the usual dilaton φ by d = φ − 41 h). The cubic action we present is much simpler than the
+cubic action obtained by direct expansion of the familiar action for gravity, antisymmetric tensor, and
+dilaton. The results in this paper suffice to find the field redefinitions that connect the string field
+theory and sigma model fields for the massless sector of the closed string to quadratic order in the
+fields and without derivatives. Earlier work in this direction includes that of [29], which discussed
+general coordinate invariance in closed string field theory and [30], which studied the constraints that
+T-duality imposes on the relation between closed string fields and sigma model fields.
+
+7
+
+2
+
+The Free Theory
+
+In this section we begin by giving an argument supporting our claim that linearised double diffeomorphism invariance requires the massless multiplet of closed string theory. We then review closed string
+theory on toroidal backgrounds, setting the notation and giving the basic results used in this paper.
+We then use the free closed string field theory to construct the free double field theory. We study
+the symmetries in detail and emphasize the differences with the conventional free theory of gravity,
+antisymmetric field, and dilaton.
+
+2.1
+
+Linearised double diffeomorphism symmetry
+
+In the introduction we introduced M 2 = 0 fields depending on (xµ , xa , x̃a ) with linearised transformations (1.11). These included a field hij (xµ , xa , x̃a ) transforming under linearised diffeomorphisms as
+δhij = ∂i ǫj + ∂j ǫi .
+
+(2.1)
+
+and under linearised ‘dual diffeomorphisms’ as
+δ̃hij = ∂˜i ǫ̃j + ∂˜j ǫ̃i .
+
+(2.2)
+
+We will now show why we cannot have a theory of hij alone that is invariant under such ‘double
+diffeomorphisms’. We will find that introducing a Kalb-Ramond field and a dilaton is essential, and
+that the constraint ∆ = 0 must be satisfied for invariance.
+R√
+For Einstein’s gravity S = 2κ1 2
+−gR, and to quadratic order in the fluctuation field hij (x) ≡
+gij (x) − ηij one has
+Z
+i
+h 1
+1
+1
+1
+2
+(2.3)
+hij ∂ 2 hij − h∂ 2 h + (∂ i hij )2 + h ∂i ∂j hij .
+(2κ ) S0 = dx
+4
+4
+2
+2
+
+This action, of course, is invariant under (2.1), but we wish to implement also the dual diffeomorphisms
+(2.2). For a field hij (x̃, x) depending on both x and x̃, the action is an integral over the full n + 2d
+R
+dimensional doubled space. We will denote this integral as [dxdx̃]. The natural action is
+Z
+h 1
+1
+1
+1
+(2κ2 ) S = [dxdx̃]
+hij ∂ 2 hij − h∂ 2 h + (∂ i hij )2 + h ∂i ∂j hij
+4
+4
+2
+2
+(2.4)
+i
+1 ij ˜2
+1 ˜i
+1
+1 ˜2
+2
+ij
+˜
+˜
++ h ∂ hij − h∂ h + (∂ hij ) + h ∂i ∂j h
+.
+4
+4
+2
+2
+
+For a gravity field hij (xi ) independent of x̃a the action reduces to the linearised Einstein action on the
+space with coordinates xi . For a gravity field hij (xµ , x̃a ) independent of xa the action reduces to the
+linearised Einstein action on the dual space with coordinates xµ , x̃a . The first line in (2.4) is invariant
+under the δ transformations (2.1), the second is invariant under the δ̃ transformations (2.2).
+Let us vary the double action S under δ̃. The second line is invariant and varying the first gives
+Z
+h
+(2κ2 ) δ̃S = [dxdx̃] hij ∂ 2 ∂˜i ǫ̃j + ∂i hij (∂ k ∂˜k )ǫ̃j
+− h ∂ 2 ∂˜ · ǫ̃ + h (∂i ∂˜i )∂j ǫ̃j
+
+(2.5)
+
+i
+
++ ∂i hij ∂ k ∂˜j ǫ̃k + (∂i ∂j hij )∂˜ · ǫ̃ .
+8
+
+We have organised the right-hand side so that the terms on each line would cancel if the tilde derivatives
+were replaced by ordinary derivatives. As we can see, no cancellation whatsoever takes place! Grouping
+related terms we have
+Z
+h
+(2κ2 ) δ̃S = [dxdx̃] hij ∂ 2 ∂˜i ǫ̃j − hij ∂i ∂ k ∂˜j ǫ̃k + (∂i ∂j hij − ∂ 2 h ) ∂˜ · ǫ̃
+(2.6)
+i
+i
+j
+˜
++ (∂ hij − ∂j h) (∂ · ∂)ǫ̃ .
+
+The terms on the second line vanish when the gauge parameter ǫ̃ satisfies the constraint ∂ · ∂˜ = 0.
+Relabeling the indices on the first two terms, we get
+Z
+h
+(2κ2 ) δ̃S = [dxdx̃] (∂˜j hij )∂ k (∂i ǫ̃k − ∂k ǫ̃i ) + (∂i ∂j hij − ∂ 2 h ) ∂˜ · ǫ̃
+(2.7)
+i
+i
+j
+˜
++(∂ hij − ∂j h) (∂ · ∂)ǫ̃ .
+
+In order to cancel this variation we need new fields with new gauge transformations. To cancel the
+first term we can use a Kalb-Ramond field bij and a new term S1 in the action:
+Z
+2
+(2κ ) S1 = [dxdx̃] (∂˜j hij )∂ k bik ,
+with δ̃bij = −(∂i ǫ̃j − ∂j ǫ̃i ) .
+(2.8)
+To cancel the second term in (2.7) we introduce a dilaton φ and a new term S2 given by
+Z
+1
+(2κ2 )S2 = [dxdx̃](−2)(∂i ∂j hij − ∂ 2 h )φ , with
+δ̃φ = ∂˜ · ǫ̃ .
+2
+
+(2.9)
+
+The above are the first steps in the construction of a consistent quadratic theory. More terms are
+needed, and we will find the full, invariant quadratic action from the closed string field theory in §2.3.
+The lessons are clear, however. Implementation of linearised doubled diffeomorphisms for hij requires
+the addition of further fields, most naturally, a Kalb-Ramond gauge field and a dilaton. Moreover, a
+second-order differential constraint is required: fields and gauge parameters must be annihilated by
+˜ In fact, to this order, it suffices for the gauge parameters to satisfy the constraint.
+∂ · ∂.
+It is natural to ask if by adding further fields one can find an action that is invariant without
+the constraint. The offending term on the second line of (2.7) can be cancelled in this way, but then
+further terms are needed. We have not been able to find a non-trivial theory that is invariant under
+both δ and δ̃ transformations without use of the constraint.
+
+2.2
+
+General toroidal backgrounds
+
+An explicit discussion of closed string field theory in toroidal backgrounds was given in the work of
+Kugo and Zwiebach [2]. Following this work, we review the basic results that will be needed here. We
+begin with the string action, given by5
+Z
+Z 2π
+
+1
+√
+dσ dτ γγ αβ ∂α X i ∂β X j Gij + ǫαβ ∂α X i ∂β X j Bij .
+(2.10)
+S=−
+4π 0
+5
+
+Our formulae will keep explicit factors of α′ . In the worldsheet action (2.10) Gij , Bij , and the X i are all dimensionless.
+
+9
+
+The string coordinates
+X i = {X a , X µ } ,
+
+(2.11)
+
+split into string coordinates X µ for n-dimensional Minkowski space and periodic string coordinates
+X a for the internal d-dimensional torus:
+X a ∼ X a + 2π .
+
+(2.12)
+
+In the above action Gij and Bij are the constant background metric and antisymmetric tensor, respectively. As usual, we define the inverse metric with upper indices:
+Gij Gjk = δki .
+
+(2.13)
+
+The background fields are taken to be
+Gij =
+
+Ĝab 0
+0 ηµν
+
+and we define
+Eij ≡ Gij + Bij =
+
+
+
+!
+
+,
+
+B̂ab 0
+0 0
+
+Bij =
+
+Êab 0
+0 ηµν
+
+The Hamiltonian H for this theory takes the form
+
+
+
+!
+
+.
+
+, Êab ≡ Ĝab + B̂ab .
+
+′
+
+4πH = (X , 2πP ) H(E)
+
+X′
+2πP
+
+!
+
+,
+
+(2.14)
+
+(2.15)
+
+(2.16)
+
+′
+
+where the derivatives of the coordinates X i = ∂σ X i and the momenta Pi are combined into a 2D
+dimensional column vector and the 2D × 2D matrix H is given by
+
+
+G − BG−1 B BG−1
+.
+H(E) = 
+(2.17)
+−1
+−1
+−G B
+G
+The matrix H(E) satisfies the constraint H−1 = ηHη.
+The mode expansions for X i , Pi and the dual coordinates X̃i take the form
+
+i X 1  i inσ
+αn e + ᾱin e−inσ e−inτ ,
+X i (τ, σ) = xi + wi σ + τ Gij (pj − Bjk wk ) + √
+n
+2
+n6=0
+
+
+i X t j inσ
+2πPi (τ, σ) = pi + √
+Eij αn e + Eij ᾱjn e−inσ e−inτ ,
+2 n6=0
+
+
+
+
+i X 1
+t j inσ
+−Eij
+αn e +Eij ᾱjn e−inσ e−inτ .
+X̃i (τ, σ) = x̃i + pi σ + τ (G − BG−1B)ij wj + (BG−1)ij pj + √
+2 n6=0 n
+(2.18)
+
+Given (2.12), xa ∼ xa + 2π and wa and pa take integer values. Conjugate to the winding charges wa ,
+there are periodic coordinates x̃a satisfying x̃a ∼ x̃a + 2π. In the above expansions we use
+wi = {wa , wµ } = {wa , 0} ,
+x̃i = {x̃a , x̃µ } = {x̃a , 0} ,
+10
+
+(2.19)
+
+which state that there are no windings nor dual coordinates along the Minkowski directions. We have
+the commutation relations:
+[ xi , pj ] = i δji , [ x̃i , wj ] = i δ̂ij ,
+(2.20)
+where δ̂ij = diag{δ̂ba , 0} so that the second relation is just [ x̃a , wb ] = i δ̂ab . Moreover
+[ αim , αjn ] = [ ᾱim , ᾱjn ] = m Gij δm+n,0 .
+
+(2.21)
+
+Finally, we have the zero-modes given by
+
+1
+αi0 = √ Gij pj − Ejk wk ,
+2
+
+1
+t
+αi0 = √ Gij pj + Ejk
+wk .
+2
+
+Lowering the indices and writing in terms of the dimensionless coordinates xi and x̃i gives
+r
+i  ∂
+∂ 
+α′
+α0i = − √
+=
+−i
+−
+E
+Di ,
+ik
+∂ x̃k
+2
+2 ∂xi
+r
+
+i  ∂
+α′
+t ∂
+= −i
++ Eik
+D̄i ,
+ᾱ0i = − √
+i
+∂ x̃k
+2
+2 ∂x
+
+(2.22)
+
+(2.23)
+
+where we introduced derivatives Di and D̄i with the dimensions of inverse length and used pj = 1i ∂j
+as well as wk = 1i ∂˜k . The derivatives D and D̄ can then be written as
+∂ 
+1  ∂
+,
+−
+E
+Di = √
+ik
+∂ x̃k
+α′ ∂xi
+1  ∂
+∂ 
+t
+D̄i = √
+.
++
+E
+ik
+∂ x̃k
+α′ ∂xi
+
+(2.24)
+
+We work in Lorentzian signature (both for the worldsheet and spacetime) and D and D̄ are independent
+t xj , respectively.
+real derivatives with respect to right- and left-moving coordinates x̃i −Eij xj and x̃i +Eij
+t X j is a function of (σ +τ ). For the noncompact
+Indeed, X̃i −Eij X j is a function of (σ −τ ) and X̃i +Eij
+directions there are no dual derivatives and we have
+n ∂
+o
+∂
+=
+,0 .
+(2.25)
+∂ x̃i
+∂ x̃a
+As a consequence, while Da 6= D̄a we have Dµ = D̄µ .
+It is useful to introduce operators  and ∆, both quadratic in the α0 and ᾱ0 operators:
+−
+
+1
+1
+α′
+ ≡ αi0 Gij αj0 + ᾱi0 Gij ᾱj0 ,
+2
+2
+2
+
+1
+1
+α′
+− ∆ ≡ αi0 Gij αj0 − ᾱi0 Gij ᾱj0 .
+2
+2
+2
+11
+
+(2.26)
+
+We note that, in general
+
+α′
+∆,
+(2.27)
+2
+so that the level matching condition for fields with N = N̄ becomes the constraint ∆ = 0. In terms of
+our derivatives, we get
+L0 − L̄0 = N − N̄ −
+
+
+1 i
+1
+1
+D Gij D j + D̄ i Gij D̄ j =
+D i Di + D̄ j D̄j ,
+2
+2
+2
+
+1
+1
+1
+D i Di − D̄ j D̄j .
+∆ = D i Gij D j − D̄ i Gij D̄ j =
+2
+2
+2
+=
+
+(2.28)
+
+Writing D 2 ≡ D i Di and D̄ i D̄i = D̄ 2 we have
+=
+
+1 2
+1
+(D + D̄ 2 ) , ∆ = (D 2 − D̄ 2 ) .
+2
+2
+
+(2.29)
+
+An explicit computation using the expressions for α0 and ᾱ0 gives
+=
+
+∂
+∂ ∂ 
+1  ij ∂ ∂
+−1 j ∂
+−1
++
+2
+(BG
+)
++
+(G
+−
+BG
+B)
+G
+.
+ij
+i
+α′
+∂xi ∂xj
+∂ x̃i ∂xj
+∂ x̃i ∂ x̃j
+
+(2.30)
+
+Note that the contribution to  from the non-compact directions is the expected term α1′ η µν ∂µ ∂ν .
+Recalling that E is a constant, this can be rewritten as
+!
+∂
+1 t
+ = ′ ∂ H(E) ∂ , with ∂ = ∂∂x̃i .
+(2.31)
+α
+j
+∂x
+
+Another short computation, together with (2.25), shows that the operator ∆ takes the form
+∆=−
+
+2 X ∂ ∂
+2 X ∂ ∂
+=
+−
+.
+α′
+∂ x̃i ∂xi
+α′ a ∂ x̃a ∂xa
+
+(2.32)
+
+i
+
+Note that no background fields are required here. We can also write
+
+
+1
+0 I
+.
+∆ = − ′ ∂ t η ∂ , with η =
+I 0
+α
+
+(2.33)
+
+While  is a Laplacian for the metric H(E), ∆ is one for the O(D, D) invariant metric η.
+In string field theory the physical state conditions L0 + L̄0 − 2 = 0 and L0 − L̄0 = 0 are treated
+very differently. The former arises from the free string field equation of motion and gives equations
+of the form ΦI = .... for the component fields ΦI (x, x̃). The latter is imposed as a constraint on the
+string field, so that the fields with N = N̄ are required to satisfy
+∆ΦI = 0 .
+As usual, we include the standard bc ghost system with ghost oscillators bn , cn , b̄n , c̄n .
+
+12
+
+Rectangular Tori: Let us consider the case where B̂ab = 0 and the metric is diagonal. If Ra denotes
+the physical radius of the circle X a ∼ X a + 2π we have
+Êab = Ĝab =
+
+Ra2
+δab ,
+α′
+
+Ĝab =
+
+α′ ab
+δ .
+Ra2
+
+(2.34)
+
+For the derivatives we find
+1  ∂
+1  ∂
+Ri2
+∂ 
+Ri2
+∂ 
+√
+Da = √
+,
+D̄
+=
+,
+−
+δ
++
+δ
+a
+ab
+ab
+α′
+∂ x̃b
+α′
+∂ x̃b
+α′ ∂xa
+α′ ∂xa
+∂ ∂ 
+α′
+1
+Ri2
+∂ ∂
+.
+δ
+ = ′ η µν ∂µ ∂ν + 2 δab a
++
+ab
+α
+∂x ∂xb
+α′
+∂ x̃a ∂ x̃b
+Ri
+
+(2.35)
+
+We can introduce coordinates ua and ũa that have physical lengths (repeated indices not summed)
+ua = Ra xa ,
+
+ua ∼ ua + 2πRa ,
+
+ũa =
+
+α′
+x̃a ,
+Ra
+
+ũa ∼ ũa + 2π
+
+α′
+.
+Ra
+
+(2.36)
+
+√
+For the noncompact directions we can take uµ = α′ xµ . We then get
+Ra  ∂
+∂ 
+∂ 
+Ra  ∂
+√
+,
+D̄
+=
+,
+−
+δ
++
+δ
+Da = √
+a
+ab
+ab
+∂ ũb
+∂ ũb
+α′ ∂ua
+α′ ∂ua
+=η
+
+2.3
+
+µν
+
+(2.37)
+
+∂
+∂
+∂ ∂
+∂ ∂
+.
++ δab a
++ δab
+µ
+ν
+b
+∂u ∂u
+∂u ∂u
+∂ ũa ∂ ũb
+
+Quadratic action from string field theory
+
+The closed string field with N = N̄ = 1 takes the form
+Z
+ 1
+|Ψi = [dp] − eij (p) αi−1 ᾱj−1 c1 c̄1 + e(p) c1 c−1 + ē(p) c̄1 c̄−1
+2
+(2.38)
+r
+
+α′
+j
++
++
+i
+fi (p) c0 c1 α−1 + f¯j (p) c0 c̄1 ᾱ−1 |pi .
++i
+2
+R
+We have used [dp] to denote the integral over the continuous momenta pµ and the sum over the
+discrete momenta pa and discrete winding wa so that, for example, e(p) = e(pµ , pa , wa ). The string
+field has ghost number two: each term includes two ghost oscillators acting on the ghost-number zero
+±
+± ±
+1
+state |pi. In the above c±
+0 = 2 (c0 ± c̄0 ) and we define b0 = b0 ± b̄0 , so that {c0 , b0 } = 1. As required,
+−
+−
+b−
+0 |Ψi = 0 because b0 |pi = 0 and the ghost oscillator c0 does not appear in |Ψi. This expansion of
+the string field features five momentum-space component fields: eij , e, ē, f, and f¯.
+We wish to construct the quadratic action, given by
+(2κ2 ) S (2) = −
+
+2
+hΨ| c−
+0 Q|Ψi .
+α′
+
+(2.39)
+
+Here Q is the (ghost-number one) BRST operator of the conformal field theory and hΨ| denotes the
+BPZ conjugate of the string field |Ψi in (2.38). The computation of S (2) is straightforward6 and the
+′
+
+− +
+n+2d
+We use the ´inner product
+hp′ | c−1 c̄−1
+δ(p − p′ ). The BRST operator is Q = − α2 c+
+0  + α0 ·
+´ c0 c+0 c1 c̄1 |pi = (2π)
+`
+α−1 c1 + c−1 α1 + ᾱ0 · ᾱ−1 c̄1 + c̄−1 ᾱ1 − b0 (c−1 c1 + c̄−1 c̄1 ) + . . ..
+6
+
+`
+
+13
+
+result is
+2
+
+(2κ ) S
+
+(2)
+
+=
+
+Z
+
+[dx dx̃]
+
+h 1
+
+4
+
+−f
+
+eij eij + 2ē  e − fi f i − f¯i f¯i
+
+i
+D̄ eij − 2 Di ē + f¯j D i eij + 2 D̄j e .
+
+i
+
+(2.40)
+
+j
+
+R
+R
+Here [dxdx̃] = dn xµ dd xa dd x̃a is an integral over all n + 2d coordinates of Rn−1,1 × T 2d . The
+definitions of , D, and D̄ were given in §2.2. All indices are raised and lowered with the metric Gij .
+The gauge parameter |Λi for the linearised gauge transformations is
+Z
+ i
+
+i
+|Λi = [dp] √
+λi (p) αi−1 c1 − √
+λ̄i (p) ᾱi−1 c̄1 + µ(p) c+
+(2.41)
+0 |pi .
+2α′
+2α′
+
+The string field Λ has ghost number one and is annihilated by b−
+0 . It encodes two vectorial gauge
+parameters λi and λ̄i and one scalar gauge parameter µ. The consistency of the string field theory
+requires the level-matching conditions (1.7). As a result, the fields eij , d, e, ē, fi , f¯i and the gauge
+parameters λ, λ̄, µ must be annihilated by ∆ (defined in (2.32)):
+∆eij = ∆d = ∆e = ∆ē = ∆fi = ∆f¯i = 0 ,
+
+∆λi = ∆λ̄i = ∆µ = 0 .
+
+(2.42)
+
+The quadratic string action (2.39) is invariant under the gauge transformations
+δ|Ψi = Q|Λi .
+
+(2.43)
+
+Expanding this equation using (2.41) and (2.38) gives the following gauge transformations of the
+component fields:
+δeij = Di λ̄j + D̄j λi ,
+δfi = − 12  λi + Di µ ,
+δf¯i =
+
+1
+2  λ̄i + D̄i µ ,
+
+(2.44)
+
+δe = − 12 D i λi + µ ,
+δē =
+
+1 i
+2 D̄ λ̄i + µ .
+
+We can now introduce fields d and χ by
+d=
+
+1
+(e − ē) ,
+2
+
+and
+
+χ=
+
+1
+(e + ē) .
+2
+
+(2.45)
+
+The gauge transformations of d and χ are
+1
+δd = − (D i λi + D̄ i λ̄i ) ,
+4
+1 i
+δχ = − (D λi − D̄ i λ̄i ) + µ .
+4
+We can use µ to make the gauge choice
+χ = 0.
+14
+
+(2.46)
+
+After this choice is made, gauge transformations with arbitrary λ and λ̄ require compensating µ
+transformations to preserve χ = 0. These do not affect d or eij , as neither transforms under µ gauge
+transformations. It does change the gauge transformations of f and f¯, but this is of no concern here
+as these auxiliary fields will be eliminated using their equations of motion. Therefore, we set e = d
+and ē = −d in (2.40) and eliminate the auxiliary fields fi and f¯i , using
+fi = −
+
+
+1 j
+D̄ eij − 2Di ē ,
+2
+
+
+1
+f¯j = D i eij + 2D̄j e .
+2
+
+The result is the following quadratic action
+2
+
+(2κ ) S
+
+(2)
+
+=
+
+Z
+
+[dxdx̃]
+
+h 1
+
+i
+1
+1
+eij eij + (D̄ j eij )2 + (D i eij )2 − 2 d D i D̄ j eij − 4 d  d .
+4
+4
+4
+
+(2.47)
+
+(2.48)
+
+The gauge transformations generated by λ are
+δλ eij = D̄j λi ,
+1
+δλ d = − D · λ ,
+4
+
+(2.49)
+
+and the gauge transformations generated by λ̄ are
+δλ̄ eij = Di λ̄j ,
+1
+δλ̄ d = − D̄ · λ̄ ,
+4
+
+(2.50)
+
+where we use a dot to indicate index contraction: a · b ≡ ai bi . The action is invariant under the Z2
+symmetry
+eij → eji , Di → D̄i , D̄i → Di , d → d ,
+(2.51)
+which, as we will discuss later, is related to the invariance of the closed string theory under orientation
+reversal. For our present purposes we note that this relates the δλ and δλ̄ transformations, so that
+invariance under this Z2 and δλ implies invariance under δλ̄ .
+A short computation using (2.29) shows that the variation δ = δλ + δλ̄ of the action (2.48) gives
+Z
+h1
+i
+(2κ2 ) δS (2) = [dxdx̃]
+eij ∆(D̄j λi − Di λ̄j ) + 2d∆(D · λ − D̄ · λ̄) .
+(2.52)
+2
+As expected, the variation vanishes only if we use the constraint ∆ = 0. Note that it is sufficient for
+the invariance of the quadratic action that the parameters satisfy the constraints ∆λ = ∆λ̄ = 0. We
+have attempted to relax the constraints by adding extra fields, but have been unable to find a gauge
+invariant action without constraints.
+The action (2.48) and the associated gauge transformations are completely general. They describe the dynamics of fluctuations about the toroidal background with background field Eij . This
+background field enters the action through the derivatives, as can be seen from (2.24).
+
+15
+
+2.4
+
+Comparison with conventional actions
+
+We can compare our general free theory (2.48) with the one discussed in §2.1. For this we scale the
+√
+coordinates by α′ to give them dimensions of length and the derivatives (2.24) become
+Di = ∂i − ∂˜i − Bik ∂˜k ,
+
+D̄i = ∂i + ∂˜i − Bik ∂˜k ,
+where we defined
+
+(2.53)
+
+∂
+.
+∂˜i ≡ Gik ∂˜k = Gik
+∂ x̃k
+
+(2.54)
+
+ = ∂ 2 + ∂˜2 + (Bij ∂˜j )2 − 2Bij ∂ i ∂˜j , and ∆ = −2∂i ∂˜i .
+
+(2.55)
+
+Then
+Here Gij is used to raise and lower indices and ∂ 2 = Gij ∂i ∂j , etc. For simplicity we will consider
+backgrounds with Bij = 0. The derivatives and laplacians above become
+Di = ∂i − ∂˜i ,
+
+D̄i = ∂i + ∂˜i ,  = ∂ 2 + ∂˜2 , and ∆ = −2 ∂i ∂˜i .
+
+(2.56)
+
+We decompose the field eij into its symmetric and antisymmetric parts:
+eij = hij + bij ,
+The action (2.48) then gives
+Z
+h
+(2κ2 ) S (2) = [dxdx̃]
+
+with
+
+hij = hji , bij = −bji .
+
+(2.57)
+
+1
+1 ij 2
+h ∂ hij + (∂ j hij )2 − 2 d ∂ i ∂ j hij − 4 d ∂ 2 d
+4
+2
+1 ij ˜2
+1
+h ∂ hij + (∂˜j hij )2 + 2 d ∂˜i ∂˜j hij − 4 d ∂˜2 d
+4
+2
+1
+1
++ bij ∂ 2 bij + (∂ j bij )2
+4
+2
+1
+1
++ bij ∂˜2 bij + (∂˜j bij )2
+4
+2
+i
++ (∂k hik )(∂˜j bij ) + (∂˜k hik )(∂j bij ) − 4 d ∂ i ∂˜j bij .
++
+
+(2.58)
+
+To appreciate this result, we recall the standard action Sst for gravity, Kalb-Ramond, and dilaton
+fields
+Z
+h
+i
+√
+1
+2
+(2.59)
+(2κ )Sst = dx −g e−2φ R − H 2 + 4(∂φ)2 .
+12
+
+We expand to quadratic order in fluctuations using gij = Gij +hij , φ = d+ 14 Gij hij , and bij = Bij +bij ,
+with constant Gij and Bij . It follows that Hijk = ∂i bjk + · · · , and we find
+Z
+(2)
+(2.60)
+(2κ2 ) Sst = dx L[ h, b, d; ∂ ] ,
+
+where
+
+L[ h, b, d; ∂ ] =
+
+1 ij 2
+1
+h ∂ hij + (∂ j hij )2 − 2 d ∂ i ∂ j hij − 4 d ∂ 2 d
+4
+2
+1 j
+1 ij 2
++ b ∂ bij + (∂ bij )2 .
+4
+2
+16
+
+(2.61)
+
+Comparing with (2.60) we see that our action (2.58) can be written as
+Z
+h
+2
+(2)
+(2κ ) S = [dxdx̃] L[ h, b, d; ∂ ] + L[ h, b, −d; ∂˜ ]
+ik
+
+˜j
+
+˜k
+
+ij
+
+i ˜j
+
++ (∂k h )(∂ bij ) + (∂ hik )(∂j b ) − 4 d ∂ ∂ bij
+
+i
+
+(2.62)
+.
+
+While in (2.60) the fields depend only on the spacetime coordinates xi , here they depend on x̃ also.
+˜
+The lagrangian L appears twice, first with ordinary derivatives ∂ and then with dual derivatives ∂,
+together with d → −d. Finally, in the last line we have unusual terms with mixed derivatives. They
+introduce novel quadratic couplings between the metric and the Kalb-Ramond field! Finally, there is
+a new coupling of the dilaton to the Kalb-Ramond field.
+We now turn to the symmetries. The linearised version of the standard action (2.60) is invariant
+under linearised diffeomorphisms:
+δhij = ∂i ǫj + ∂j ǫi ,
+(2.63)
+
+δbij = 0 ,
+δd
+
+= − 12 ∂ · ǫ ,
+
+as well as antisymmetric tensor gauge transformations:
+δhij = 0 ,
+δbij = −∂i ǫ̃j + ∂j ǫ̃i ,
+
+(2.64)
+
+δd = 0 .
+Note that the scalar dilaton φ ≡ d + 14 Gij hij is invariant under linearised diffeomorphisms.
+The symmetries of the double field theory (2.58) are (2.49) and (2.50). Defining
+1
+ǫi ≡ (λi + λ̄i ) ,
+2
+
+ǫ̃i ≡
+
+1
+(λi − λ̄i ) ,
+2
+
+(2.65)
+
+we can rewrite these gauge transformations in a more familiar form. The transformations with parameter ǫ are
+δhij =
+
+∂i ǫj + ∂j ǫi ,
+
+δbij = −(∂˜i ǫj − ∂˜j ǫi ) ,
+
+(2.66)
+
+δd = − 12 ∂ · ǫ .
+These give transformations of the same form as the linearised diffeomorphisms (2.63) together with
+an exotic gauge transformation of bij in which dual derivatives ∂˜ act on the parameter. The transformations with parameter ǫ̃ are
+δ̃hij =
+
+∂˜i ǫ̃j + ∂˜j ǫ̃i ,
+
+δ̃bij = −(∂i ǫ̃j − ∂j ǫ̃i ) ,
+δ̃d =
+
+1 ˜
+2 ∂ · ǫ̃ .
+
+17
+
+(2.67)
+
+Comparing with (2.64), we see Kalb-Ramond gauge transformations with parameter ǫ̃ together with
+˜ Note that this time
+gravity transformations that are linearised diffeomorphisms with ∂ replaced by ∂.
+the scalar dilaton is φ̃ ≡ d − 14 Gij hij , since this is invariant under linearised dual diffeomorphisms.
+Also interesting is that the transformation of d under these dual diffeomorphisms is of the same form
+as the one in (2.66), but with opposite sign. While the Minkowski space theory has a gauge invariant
+dilaton φ = d + 14 h, there is none in the toroidal theory. We certainly have δφ = 0, but δ̃φ = ∂˜ · ǫ̃.
+There is no dilaton that is invariant under both ǫ and ǫ̃ transformations.
+
+3
+
+Cubic action and gauge transformations
+
+In this section we use closed string field theory to compute the cubic interactions for the string field
+(2.38) together with the gauge transformations with parameter (2.41) to linear order in the fields. The
+computation is laborious since there are many terms to consider but the techniques are standard in
+string field theory.
+In the action we have kept only the terms with a total number of derivatives (D or D̄) less than
+or equal to two. In the gauge transformations we have kept the terms linear in the fields and which
+are relevant to an action with two derivatives. This strategy was expected to lead to an action that
+is exactly gauge invariant to this order, just as it does for string field actions around flat space. The
+constraint ∆ = 0 does not involve terms with different numbers of derivatives so no complication is
+expected.
+The string field theory product used to define the interactions involves a projector. The string
+fields satisfy the constraint L0 − L̄0 = 0 and the projector imposes the constraint L0 − L̄0 = 0 on the
+product. Such projector should lead to a projector that imposes the constraint ∆ = 0 in our field
+theory products, and thus in our interactions. We discuss this in detail in section 5. As we show
+there, however, when the fields satisfy the ∆ = 0 constraint no additional projectors are needed for
+the cubic interactions. The projectors are needed in the gauge transformations, in the terms that
+involve a product of a field and a gauge parameter. In order to avoid cluttering the notation we will
+leave them implicit. As explained in section 5 the check of gauge invariance to this order is correctly
+done naively, ignoring the projectors.
+The vertex operators for strings on a torus include cocycles that lead to momentum-dependent sign
+factors in the exact cubic string field theory interactions, and these sign factors should also appear in
+our cubic double field theory action. These factors are not expected to affect gauge invariance to cubic
+order. We present the results of this section without cocycle-induced sign factors, but will discuss
+these further in section 5.
+As a check of our results, we used the gauge transformations obtained in section 3.2 to independently construct the cubic term in the action by the Noether method. The result is exactly the same
+cubic action that we present here. We have also checked that the gravitational sector of the action
+agrees with that in the standard action (2.59), expanded to cubic order with the help of [33], for fields
+independent of x̃ and in a gauge in which the metric perturbation is traceless.
+
+18
+
+3.1
+
+Cubic terms and gauge transformations from CSFT
+
+The string field theory action is non-polynomial and takes the form
+i
+2h
+1
+1
+(2κ2 )S = − ′ hΨ|c−
+{Ψ,
+Ψ
+,
+Ψ}
++
+{Ψ,
+Ψ
+,
+Ψ,
+Ψ}
++
+·
+·
+·
+.
+Q|Ψi
++
+0
+α
+3
+3·4
+
+(3.1)
+
+−
+Here {Ψ, Ψ, Ψ} = hΨ|c−
+0 [Ψ, Ψ]i and {Ψ, Ψ, Ψ, Ψ} = hΨ|c0 [Ψ, Ψ, Ψ]i where [·, ·] is the closed string
+product and [·, ·, ·] is a triple product of string fields. The higher order terms require the introduction
+of products of all orders, with relations between them implied by gauge invariance. The closed string
+products (discussed further in section 5) are graded commutative and therefore symmetric when the
+entries are even vectors in the state space. The string field Ψ is even. The gauge transformations are
+
+δλ Ψ = Qλ + [λ , Ψ] + · · · ,
+
+(3.2)
+
+where the dots denote terms with higher powers of the string field Ψ. The computation of the action
+to cubic order in the string field (2.38) gives:
+Z
+h 1
+
+
+(2κ2 ) S = [dxdx̃]
+eij eij + 2ē  e − fi f i − f¯i f¯i − f i D̄ j eij − 2Di ē + f¯j D i eij + 2D̄j e
+4
+1 
+− eij −(Dk ekj )(D̄l eil ) − (Dk ekl )(D̄l eij ) − 2 (D i ekl )(D̄ j ekl )
+8
+
++ 2(D i ekl ) (D̄ l ekj ) + 2(D k eil )(D̄ j ekl )
+
+1
+1
+1
++ eij f i f¯j − fi f i ē + f¯i f¯i e
+(3.3)
+2
+2
+2
+
+1 
+− eij (D i D̄ j e)ē − (D i e)(D̄ j ē) − (D̄ j e)(D i ē) + e D i D̄ j ē
+8
+
+ 1 
+1 i
+j
+j
+i
+− f eij D̄ ē + D̄ (eij ē) + f (Di e)ē − eDi ē
+4
+4
+
+
+i
+1
+1 
+− f¯j eij D i e + D i (eij e) + f¯j (D̄j e)ē − e D̄j ē .
+4
+4
+All fields are assumed to satisfy the constraint ∆ = 0. The above action is invariant under the
+exchanges
+eij ↔ eji , Di ↔ D̄i , fi ↔ − f¯i , e ↔ − ē .
+(3.4)
+This discrete symmetry implies we need only concern ourselves with the gauge transformations generated by λ and by µ. Those generated by λ̄ can be written in terms of the λ ones and the discrete
+transformations above. For the λ gauge transformations we find, to linear order in the fields,
+i
+1h k
+λ Di ekj − (Di λk )ekj + D k (λi ekj ) + (D k λi )ekj − D k (λk eij ) − λk D k eij
+δλ eij = D̄j λi −
+4
+h
+i
+1
+1
+λi D̄j ē − (D̄j λi )ē + λi f¯j ,
+−
+4
+2
+(3.5)
+
+1 i
+1 i
+1
+i
+i
+δλ e = − D λi − f λi +
+eD λi + 2(D e)λi ,
+2
+4
+8
+δλ ē =
+
+
+1
+ēD i λi + 2(D i ē)λi .
+16
+
+19
+
+We have not written the gauge transformations for the auxiliary fields fi and f¯i since they are quite
+cumbersome and will not be needed. The µ gauge transformations, to linear order in the fields, are
+δµ eij = 0 ,
+3
+µe,
+8
+3
+δµ ē = µ + µ ē .
+8
+δµ e = µ −
+
+(3.6)
+
+To preserve the constraint, the variation of any field must be annihilated by ∆. The field-independent
+terms in the variations meet this requirement as the gauge parameters are in the kernel of ∆. The
+terms involving a product of a field and a gauge parameter are not guaranteed to satisfy the constraint
+and a projection is needed. In section 5 we discuss the natural projector [[ · ]] that satisfies ∆[[A]] = 0
+for arbitrary A(x, x̃). All terms linear in the fields in the above gauge transformations include an
+implicit [[. . .]] around them. We do not write these brackets here to avoid cluttering.
+The closed string field theory predicts a gauge algebra that is quite intricate [3]: the bracket of two
+gauge transformations is in general a gauge transformation with field dependent structure constants
+and the gauge algebra only closes on-shell. To lowest nontrivial order we find
+[δλ1 , δλ2 ]Ψ = δΛ Ψ + (on-shell = 0 terms)
+
+with
+
+Λ = [λ2 , λ1 ] + . . . ,
+
+(3.7)
+
+where the dots represent field dependent terms. The product of parameters [λ2 , λ1 ] is antisymmetric
+under the interchange 1 ↔ 2 since the λ’s have ghost number one. For gauge parameters λ1 and λ2
+the computation of the closed string product, keeping the lowest number of derivatives, gives
+i
+1h
+(λ2 · D)λi1 − (λ1 · D)λi2
+Λi =
+2
+i
+1h
+(3.8)
+λ1 · D i λ2 − λ2 · D i λ1
++
+4
+i
+1h i
++
+λ1 (D · λ2 ) − λi2 (D · λ1 ) ≡ {λ2 , λ1 }i .
+4
+
+In the above, we introduced a bracket {· , ·} of two vectors, defined by the right hand side. It is the
+bracket induced by the closed string product and resembles the Lie bracket of vector fields, but does
+not coincide with it. One can show that ghost number conservation implies that the commutator
+of two λ transformations does not give a λ̄ transformation nor does it give a µ-transformation. In
+(3.8) the projection brackets [[. . . ]] act on the right hand side, since any allowed gauge parameter
+must be in the kernel of ∆. We have verified the structure of Λi in (3.8) by computing explicitly the
+leading inhomogeneous term in the commutator of two transformations on eij . The projectors cause
+no complication.
+It is of interest to see if the bracket {λ2 , λ1 } forms a Lie algebra. The first line of (3.8) is the Lie
+derivative, but the other two lines are exotic. We have found that
+{{λ2 , λ1 }, λ3 } + {{λ3 , λ2 }, λ1 } + {{λ1 , λ3 }, λ2 } =
+6 0.
+20
+
+(3.9)
+
+We have checked that this non-vanishing result occurs even if all products of λ’s are in the kernel of ∆.
+So the failure of the Jacobi identity is not only due to the projectors implicit in the bracket { , }. The
+fact that the Jacobi identity does not hold is a reflection of the homotopy-Lie algebra structure of the
+string field theory gauge algebra.
+Fixing the µ gauge symmetry. We noted in the quadratic theory that the µ symmetry could be used
+to set e = d and ē = −d in the action. A similar result holds at the cubic level, as we discuss now.
+First note that the µ transformations in (3.6) give
+3
+µ(e + ē) ,
+8
+3
+δµ (e + ē) = 2µ − µ(e − ē) .
+8
+
+(3.10)
+
+1
+3
+(e − ē) +
+(e + ē)2 ,
+2
+64
+1
+3 2
+χ ≡ (e + ē) +
+(e − ē2 ) ,
+2
+32
+
+(3.11)
+
+δµ (e − ē) = 0 −
+
+As a result, the following fields
+d≡
+
+have transformations in which terms linear in fields vanish:
+δµ d = 0 ,
+δµ χ = µ .
+
+(3.12)
+
+We now use µ to set χ = 0. Since
+χ=
+the perturbative solution to χ = 0 is
+
+
+
+3
+1
+(e + ē) 1 +
+(e − ē) ,
+2
+16
+
+(3.13)
+
+e = −ē .
+
+(3.14)
+
+1
+(e − ē) ,
+2
+
+(3.15)
+
+It then follows from (3.11) that in this gauge
+d=
+
+and we can take e = d and ē = −d in evaluating the action and the gauge transformations.
+Note that λ gauge transformations now require compensating µ transformations to preserve the gauge
+χ = 0. Indeed, it follows from
+1
+(δµ + δλ )χ = µ − D · λ + non-linear ,
+4
+
+(3.16)
+
+that we must set µ = 41 D · λ + . . . and therefore the final λ gauge transformations take the form
+δλ + δµ= 1 D·λ+... . Since δµ eij = 0 and δµ d = 0, this only affects the auxiliary fields. Since auxiliary
+4
+fields will be eliminated, we need not concern ourselves with these compensating gauge transformations.
+
+21
+
+3.2
+
+Simplifying the gauge transformations
+
+We now turn to simplifying the λ-gauge transformations of eij and d, dropping all terms of quadratic
+and higher order in the fields. The field equations for the auxiliary fields f and f¯ have non-linear
+terms, but to the order we are working it suffices to substitute for f and f¯ in the gauge transformation
+(3.5) using the linearised field equations (2.47). From (3.15) we have
+1
+(3.17)
+δd = (δe − δē) .
+2
+In the formulae for δd, and δeij , we can set e = d and ē = −d. Then (3.5) gives
+1h k
+δλ eij = D̄j λi −
+λ Di ekj − (Di λk )ekj + λi D k ekj + 2(D k λi )ekj
+4
+i
+i 1h
+1
+− (D · λ)eij − 2 λk D k eij + λi D̄j d − (D̄j λi )d + λi (D k ekj + 2D̄j d) ,
+(3.18)
+4
+4
+i
+1h 1
+1
+1
+1
+δλ d = − D i λi − f i λi + (eD i λi + 2(D i e)λi ) −
+(ēD i λi + 2(D i ē)λi ) .
+2 2
+4
+8
+16
+Next we look for redefinitions of the fields and gauge parameters. After some manipulation the
+above transformations can be written as
+i
+
+
+3
+1h
+(Di λk )ekj − (D k λi )ekj + λk D k eij
+δλ eij = D̄j λi + λi d +
+4
+2
+ 1
+
+k
++ Di − λ ekj − δλ (eij d) ,
+4
+
+ 1
+(3.19)
+3
+1
+δλ d = − D i λi + λi d + (λ · D) d
+4
+4
+2
+
+1
+9
+1  1
+δλ (eij eij ) −
+δλ d2 .
+− D̄ j − λk ekj −
+4
+4
+32
+16
+We redefine the gauge parameter λi by taking λi + 43 λi d → λi , without affecting the remaining
+terms linear in fields. Moreover, note that the first term on the second line in each of the above
+transformations can be thought of as linearised transformations with an effective barred parameter
+λ̄ = − 14 λk ekj . The δλ̄ transformation with parameter λ̄ = − 41 λk ekj leaves the quadratic action
+invariant, while it changes the cubic action by terms cubic in the fields. In checking the invariance of
+the quadratic plus cubic action up to terms quadratic in the fields, these δλ̄ transformations constitute
+a separate symmetry and so need not be included in the λ transformations. We can therefore ignore
+them and we will do so. We then have
+
+
+i
+1h
+δλ eij + eij d = D̄j λi +
+(Di λk )ekj − (D k λi )ekj + λk D k eij ,
+2
+(3.20)
+
+
+1
+1
+9 2
+1
+ij
+δλ d −
+eij e −
+d = − D · λ + (λ · D) d .
+32
+16
+4
+2
+We redefine the fields
+e′ij = eij + eij d ,
+d′ = d +
+
+9
+1
+eij eij + d2 .
+32
+16
+22
+
+(3.21)
+
+to give primed fields that have simple gauge transformations
+i
+1h
+δλ e′ij = D̄j λi +
+(Di λk )e′kj − (D k λi )e′kj + λk D k e′ij ,
+2
+1
+1
+δλ d′ = − D · λ + (λ · D) d′ .
+4
+2
+
+(3.22)
+
+After these field redefinitions, it is convenient to drop the primes to simplify notation. We do so in
+what follows.
+
+3.3
+
+Simplifying the action
+
+We now consider the full action (3.3) and first fix the µ gauge symmetry by setting e = d and ē = −d.
+We then eliminate the auxiliary fields f and f¯ and, after a fair amount of straightforward work, we
+find
+Z
+h 1
+1
+1
+2
+(2κ ) S = [dxdx̃]
+eij eij + (D̄ j eij )2 + (D i eij )2 − 2 d D i D̄ j eij − 4 d  d
+4
+4
+4
+
+1
+− eij −(Dk ekl )(D̄l eij ) − 2 (D i ekl )(D̄ j ekl )
+8
+
+(3.23)
++ 2(D i ekl ) (D̄ l ekj ) + 2(D k eil )(D̄ j ekl )
+
+1 
+d eij D̄k D̄ j eik + eij Dl D i elj + (D i eij )2 + (D̄ j eij )2
+2
+1
+9
+1
+− eij (D i D̄ j d)d − eij (D i d)(D̄ j d) − d2  d .
+4
+4
+2
+
++
+
+This is the action expected to be invariant under the original gauge transformations (3.18). Since we
+simplified those gauge transformations by the field redefinitions (3.21) we now perform these same
+field redefinitions in the action. From (3.21), we set
+eij = e′ij − e′ij d′ .
+d = d′ −
+
+9
+1 ′ ′ij
+eij e − d′2 .
+32
+16
+
+(3.24)
+
+to obtain an action in terms of the primed fields. Dropping all primes, the result is
+(2κ2 )S =
+
+Z
+
+h 1
+
+1
+1
+eij eij + (D̄ j eij )2 + (D i eij )2 − 2 d D i D̄ j eij − 4 d  d
+4
+4
+4
+
+1 
++ eij (D i ekl )(D̄ j ekl ) − (D i ekl ) (D̄ l ekj ) − (D k eil )(D̄ j ekl )
+4
+
+1
+1
+1 
++ d (D i eij )2 + (D̄ j eij )2 + (Dk eij )2 + (D̄k eij )2 + 2eij (Di D k ekj + D̄j D̄ k eik )
+2
+2
+2
+i
++ 4 eij d D i D̄ j d + 4 d2  d .
+
+[dxdx̃]
+
+(3.25)
+23
+
+The discrete Z2 symmetry (2.51) we found in the quadratic theory is preserved here. This is essentially
+manifest for all terms except the e3 terms, where it takes a small computation to confirm the symmetry.
+The transformations are written again here for convenience
+Z2 transformations :
+
+eij → eji ,
+
+Di → D̄i ,
+
+D̄i → Di ,
+
+d → d .
+
+(3.26)
+
+The gauge transformations are those in (3.22)
+δλ eij = D̄j λi +
+
+i
+1h
+(Di λk )ekj − (D k λi )ekj + λk D k eij ,
+2
+
+(3.27)
+
+1
+1
+δλ d = − D · λ + (λ · D) d .
+4
+2
+The discrete symmetry (3.26) of the action S is fundamental to our analysis. It implies that gauge
+transformations with barred gauge parameters obtained from (3.27) by the discrete symmetry are also
+invariances of S. The action S then has the appropriate doubled symmetry. For future reference the
+barred gauge transformations are
+i
+1h
+(D̄j λ̄k )eik − (D̄ k λ̄j )eik + λ̄k D̄ k eij ,
+δλ̄ eij = Di λ̄j +
+2
+(3.28)
+1
+1
+δλ̄ d = − D̄ · λ̄ + (λ̄ · D̄) d .
+4
+2
+In all of the above gauge transformations, there is an implict projection [[ · ]] to the kernel of ∆ for the
+terms linear in the fields.
+As a check of the action S we used the Noether method to construct a cubic term to be added
+to the quadratic action for which the action is invariant under (3.27), up to terms cubic or higher in
+the fields. The result was precisely the action S given above. We note that the cubic action can be
+rewritten in a suggestive way (up to quartic terms) as
+Z
+h 1
+i
+(2κ2 ) S = [dxdx̃] e−2d − K − 2 eij D i D̄ j d + 2(Dd)2 + 2(D̄d)2 .
+(3.29)
+4
+Here K = K2 + K3 , where
+1
+1
+K2 = (D i eij )2 + (D̄ j eij )2 + (D k eij )2 + (D̄ k eij )2 + 2eij (Di D k ekj + D̄j D̄ k eik ) ,
+2
+2
+coincides, up to total derivatives, with the quadratic Lagrangian for eij and
+
+
+K3 = − eij (D i ekl )(D̄ j ekl ) − (D i ekl ) (D̄ l ekj ) − (D k eil )(D̄ j ekl ) ,
+
+(3.30)
+
+(3.31)
+
+coincides with the cubic Lagrangian for eij . This suggests that K may give the leading terms in the
+expansion of some curvature.
+
+24
+
+We can now reconsider the algebra of gauge transformations discussed around equation (3.8).
+Our field redefinitions cause the mixing of the unbarred and barred transformations, so some of the
+simplicity is lost. Nevertheless the answers are still reasonably compact. The commutation of two
+gauge transformations with parameters (λ1 , λ̄1 ) and (λ2 , λ̄2 ) is a gauge transformation with parameters
+(Λ, Λ̄) that to leading order are field independent:
+Λi =
+
+i
+1h
+(λ2 · D + λ̄2 · D̄) λi1 − (λ1 · D + λ̄1 · D̄)λi2
+2
+
+i 1h
+i
+1h
+λ1 · D i λ2 − λ2 · D i λ1 −
+λ̄1 · D i λ̄2 − λ̄2 · D i λ̄1 ,
+4
+4
+i
+h
+1
+Λ̄i =
+(λ2 · D + λ̄2 · D̄) λ̄i1 − (λ1 · D + λ̄1 · D̄) λ̄i2
+2
+i 1h
+i
+1h
+−
+λ1 · D̄ i λ2 − λ2 · D̄ i λ1 +
+λ̄1 · D̄ i λ̄2 − λ̄2 · D̄ i λ̄1 .
+4
+4
++
+
+(3.32)
+
+The constraint ∆ = 0 on the parameters is used in calculating the algebra. The same caveats discussed
+earlier apply here. The commutator of gauge transformations to all orders in the fields is expected to
+include field dependent structure constants as well as terms that vanish on-shell. There is an implicit
+projection [[ ·]] in the above right-hand sides so that (Λ, Λ̄) are in the kernel of ∆. Finally, the brackets
+[ ·, ·] implicit above do not satisfy the Jacobi identity.
+
+3.4
+
+Conventional field theory limits
+
+In this section we examine the gauge transformations in the limits where there is dependence on either
+just x or just x̃ coordinates and show that we recover the expected results. Interestingly, these two
+limits require two different sets of field redefinitions and these break the discrete Z2 symmetry of the
+theory.
+We wish to compare our results with the gauge transformations of the conventional (undoubled)
+theory of a metric gij (xk ), Kalb-Ramond field bij (xk ), and a dilaton φ(xk ). Under diffeomorphisms
+with parameter ξ i and antisymmetric gauge transformations with parameter αi , the first two fields
+transform as
+δgij = Lξ gij ,
+δbij = Lξ bij + ∂i αj − ∂j αi .
+
+(3.33)
+
+For the dilaton we have
+δφ = ξ i ∂i φ .
+
+(3.34)
+
+Here Lξ is the Lie derivative with respect to ξ i . For any rank two tensor rij , the Lie derivative with
+respect to ξ i takes the form
+Lξ rij = (∂i ξ k ) rkj + (∂j ξ k ) rik + ξ k ∂k rij .
+
+(3.35)
+
+The above form of the standard diffeomorphisms is all we need to compare with our results. It is
+interesting, however, to write the transformations more geometrically. We first note that (3.33) can
+25
+
+be written as
+δgij = ∇i ξj + ∇j ξi ,
+δbij = Hijk ξ k + ∂i ξ̃j − ∂j ξ̃i ,
+
+(3.36)
+
+where ∇ is the covariant derivative with Levi-Civita connection Γ, H is the field strength
+Hijk = ∂i bjk + ∂j bki + ∂k bij ,
+
+(3.37)
+
+ξi ≡ gij ξ j ,
+
+(3.38)
+
+and we have defined
+ξ̃i ≡ αi − bij ξ j .
+
+Introducing the field
+Eij = gij + bij ,
+
+(3.39)
+
+the transformations can be written as transformations of E:
+δEij = ∇i ξj + ∇j ξi + Hijk ξ k + ∂i ξ̃j − ∂j ξ̃i
+→
+
+(3.40)
+
+ˆ i ξj + ∇
+ˆ j ξi + ∂i ξ˜j − ∂j ξ̃i ,
+δEij = ∇
+
+ˆ is the derivative for the connection with torsion
+where ∇
+Γ̂kij = Γkij − gkl Hijl =
+
+1 kl
+g (∂i Elj + ∂j Eil − ∂l Eij ) .
+2
+
+(3.41)
+
+The transformation (3.40) encodes nicely the full gauge structure of the fields. For the dilaton transformation (3.34) it is convenient to define a field d by
+e−2d ≡
+Since
+
+√
+
+−g e−2φ .
+
+(3.42)
+
+√
+−g is a density we find that e−2d is also a density:
+δe−2d = ∂i (e−2d ξ i ) .
+
+(3.43)
+
+Returning to the task at hand, we split the fields into constant background fields G, B plus fluctuations
+gij = Gij + hij ,
+bij = Bij + bij .
+
+(3.44)
+
+The transformations (3.33) then imply transformations for the fluctuations. A short computation
+shows that they can be written as
+δhij = ∂i ǫj + ∂j ǫi + Lξ hij ,
+δbij = ∂i ǫ̃j − ∂j ǫ̃i + Lξ bij ,
+
+(3.45)
+
+where
+ǫi = Gij ξ j ,
+
+ǫ̃i = αi − Bij ξ j .
+26
+
+(3.46)
+
+Defining as usual the field ěij that puts together the two types of fluctuations,
+ěij = hij + bij ,
+
+(3.47)
+
+δěij = (∂i ǫj + ∂j ǫi ) + (∂i ǫ̃j − ∂j ǫ̃i ) + Lǫ ěij
+
+(3.48)
+
+we readily find that it transforms as
+
+= (∂i ǫj + ∂j ǫi ) + (∂i ǫ̃j − ∂j ǫ̃i ) + ((∂i ǫk )ěkj + (∂j ǫk )ěik + ǫk ∂k ěij ) ,
+
+where indices are raised and lowered using Gij . This is our final form for the conventional gauge
+transformations, to be compared with the result arising from the cubic theory we have constructed.
+Our analysis requires both unbarred and barred gauge parameters, so we put together the gauge
+transformations (3.27) and (3.28) to obtain the transformations
+i
+1h
+(Di λk )ekj − (D k λi )ekj + λk D k eij
+2
+i
+1h
++ Di λ̄j +
+(D̄j λ̄k )eik − (D̄ k λ̄j )eik + λ̄k D̄ k eij ,
+2
+
+δeij = D̄j λi +
+
+as well as
+
+1
+1
+δd = − (D · λ + D̄ · λ̄) + (λ · D + λ̄ · D̄) d .
+4
+2
+We can rearrange the former in the suggestive form
+δeij = D̄j λi + Di λ̄j + (Di λk )ekj + (D̄j λ̄k )eik +
+−
+
+1
+(λk D k + λ̄k D̄ k )eij
+2
+
+
+
+1
+1
+Di λk + D k λi ekj −
+D̄j λ̄k + D̄ k λ̄j eik .
+2
+2
+
+(3.49)
+
+(3.50)
+
+(3.51)
+
+The first line, as we will see, contains terms that combine naturally to form Lie derivatives. The above
+transformations are expected to receive corrections of quadratic and higher order in eij , while those
+for ěij above are exact. The fields eij , ěij are related by non-linear field redefinitions ěij = eij + O(e2 )
+[30] and next we shall seek such redefinitions to bring the transformations of eij to the same form as
+those for ěij . We then undertake a similar analysis for the T-dual system, and find a different field
+redefinition is needed.
+We now examine the above gauge transformations in two limits. The first is that when fields have
+no x̃i dependence. The second is that when fields have no xi dependence. It is convenient in both
+cases to use linear combinations of the gauge parameters:
+1
+ǫi ≡ (λi + λ̄i ) ,
+2
+
+1
+ǫ̃i ≡ (λi − λ̄i ) .
+2
+
+(3.52)
+
+We now consider the two possible limits.
+3.4.1
+
+Fields with no x̃ dependence.
+
+In this case we can set ∂˜ equal to zero in the derivatives (2.24). It follows then that D = D̄ = ∂,
+√
+absorbing α′ into the definition of the coordinates. All indices are raised or lowered with Gij and Gij .
+27
+
+The transformations with parameter ǫ are obtained from (3.51) setting λi = λ̄i = ǫi :
+1
+1
+δǫ eij = ∂j ǫi + ∂i ǫj + (∂i ǫk )ekj + (∂j ǫk )eik + ǫk ∂ k eij − (δǫ ei k )ekj − (δǫ ekj )eik
+2
+2
+1
+= ∂j ǫi + ∂i ǫj + (∂i ǫk )ekj + (∂j ǫk )eik + ǫk ∂ k eij − δǫ (ei k ekj ) .
+2
+
+(3.53)
+
+We therefore have
+
+
+1
+δǫ eij + ei k ekj = ∂j ǫi + ∂i ǫj + (∂i ǫk )ekj + (∂j ǫk )eik + ǫk ∂ k eij .
+2
+
+(3.54)
+
+1 k
+e+
+ij ≡ eij + ei ekj ,
+2
+
+(3.55)
+
++
+δǫ e+
+ij = (∂i ǫj + ∂j ǫi ) + Lǫ eij ,
+
+(3.56)
+
+It follows that the field
+transforms as
+
+2
+up to terms of order (e+
+ij ) .
+
+The ǫ̃-gauge transformations are obtained from (3.51) setting λi = −λ̄i = ǫ̃i :
+1
+1
+δ̃ǫ̃ eij = ∂j ǫ̃i − ∂i ǫ̃j − (δǫ̃ ei k )ekj − (δǫ̃ ekj )eik ,
+2
+2
+
+(3.57)
+
+δ̃ǫ̃ e+
+ij = ∂j ǫ̃i − ∂i ǫ̃j ,
+
+(3.58)
+
+so that
++
+2
+up to terms of order (e+
+ij ) . The transformations for eij are precisely the standard gauge transformations (3.48), up to higher order terms. This is what we wanted to show.
+Note that the full field (background plus fluctuation) with natural gauge transformations is
+
+1 k
+Eij ≡ Eij + e+
+ij + cubic terms = Gij + Bij + eij + ei ekj + cubic terms ,
+2
+
+(3.59)
+
+so that ěij = eij + 12 ei k ekj , up to cubic terms. We now show that E has the expected gauge transformations. Indeed, for ǫ̃ transformations (up to terms of quadratic in fields) we have
+δ̃ǫ̃ Eij = ∂j ǫ̃i − ∂i ǫ̃j .
+
+(3.60)
+
+The ǫ transformations are a little more intricate. We first compute the Lie derivative of E:
+Lǫ Eij = (∂i ǫk ) Ekj + (∂j ǫk ) Eik + ǫk ∂k Eij
+= (∂i ǫk ) Ekj + (∂j ǫk ) Eik + Lǫ e+
+ij
+
+= ∂i ǫj + ∂j ǫi − ∂i ( Bjk ǫk ) + ∂j (Bik ǫk ) + Lǫ e+
+ij
+
+(3.61)
+
+= δǫ Eij + δ̃Bǫ Eij ,
+where we used (3.56), noted that δǫ Eij = δǫ e+
+ij , and recognised the presence of a δ̃ transformation with
+j
+parameter ǫ̃i = Bij ǫ . We thus have a symmetry δ̄ǫ for which the transformation of E is through the
+Lie derivative (up to terms quadratic in fields):
+δ̄ǫ Eij ≡ (δǫ + δ̃Bǫ )Eij = Lǫ Eij .
+28
+
+(3.62)
+
+The gauge transformation of d is obtained from (3.50). For the δǫ transformations (λ = λ̄ = ǫ) we
+find, up to terms quadratic in fields,
+1
+δǫ d = − ∂ · ǫ + ǫ · ∂d .
+2
+
+(3.63)
+
+δǫ e−2d = ∂i (e−2d ǫi ) ,
+
+(3.64)
+
+This can be rewritten as
+and agrees with (3.43) if d is the same as d, up to terms cubic in the fields. A short calculation shows
+that δ̃ǫ̃ d = 0, as would be expected.
+3.4.2
+
+Fields with no x dependence.
+
+The configuration dual to the one considered in §3.4.1 has fields independent of xa . In order to
+avoid the complication of indices running over non-compact directions and toroidal directions we will
+consider the case in which there is no x dependence at all; neither on the non-compact xµ nor on the
+toroidal xa . We will simplify further by only considering the transformations with parameters λa and
+λ̄a and the components eab of eij .
+For fields that do not depend on x, the derivative ∂i vanishes and the derivatives (2.24), absorbing
+√
+α′ into the definition of the coordinates, take the form
+Da = − Êac ∂˜c ,
+
+D̄a = Êca ∂˜c .
+
+(3.65)
+
+′ =
+We expect from T-duality that the theory based on x̃ coordinates sees the dual background Êab
+′ = Ê −1 . As we will see later, the dual metric Ĝ′ is related to the original metric Ĝ by
+Ĝ′ab + B̂ab
+ab
+
+Ĝ′−1 = Ê Ĝ−1 Ê t = Ê t Ĝ−1 Ê .
+
+(3.66)
+
+Note that Ĝ′−1 naturally has lower indices, just like Ê does. For example, from the above we see that
+(Ĝ′−1 )ab = Ê ac Ĝcd Êbd . Thus we use Ĝ′−1 to lower indices of primed objects:
+A′a ≡ (Ĝ′−1 )ab A′b .
+
+(3.67)
+
+The fields and gauge parameters appropriate here are field redefinitions of the original fields and gauge
+parameters whose forms are suggested by T-duality transformations. We introduce the fluctuation field
+e′
+
+ab
+
+≡ −(Ê −1 )ac ecd (Ê −1 )db .
+
+(3.68)
+
+Note that this field has upper indices. In order to compute the gauge transformations we use
+δe′
+
+ab
+
+= −(Ê −1 )ac δecd (Ê −1 )db .
+
+(3.69)
+
+For the gauge parameters we introduce new primed ones through the relations
+λa = − Ê ab λ′b ,
+
+λ̄a = Ê ba λ̄′b .
+
+All other gauge parameters will be taken to vanish.
+29
+
+(3.70)
+
+Consider first the dilaton transformations (3.50), where indices, of course, are contracted with the
+original metric Ĝ−1 . We write this out explicitly
+ 1
+
+1
+δ d = − Ĝab Da λb + D̄a λ̄b + Ĝab λa Db + λ̄a D̄b d
+4
+2
+ 1
+
+1 ab
+= − Ĝ Êac ∂˜c Êbd λ′d + Êca ∂˜c Êdb λ̄′d + Ĝab Êac λ′c Êbd ∂˜d + Êca λ̄′c Êdb ∂˜d d ,
+4
+2
+
+
+1
+1 ′−1
+= − (Ĝ )cd ∂˜c λ′d + ∂˜c λ̄′d + (Ĝ′−1 )cd λ′c ∂˜d + λ̄′c ∂˜d d ,
+4
+2
+
+(3.71)
+
+where we made use of (3.65) and (3.70) to obtain the second line and (3.66) to obtain the last line.
+This can now be rewritten as
+1
+1
+˜ ,
+δd = − ∂˜ · [λ′ + λ̄′ ] + [λ′ + λ̄′ ] · ∂d
+4
+2
+
+(3.72)
+
+where indices are contracted with Ĝ′−1 . Taking λ̄′ = λ′ = ǫ′ , this gives
+1
+˜ ,
+δd = − ∂˜ · ǫ′ + ǫ′ · ∂d
+2
+
+(3.73)
+
+δe−2d = ∂˜ · (e−2d ǫ′ ) ,
+
+(3.74)
+
+which can be rewritten as
+and is of the same form as (3.43). Gauge transformations δ̃ of the dilaton with λ = −λ̄′ vanish on
+account of (3.72).
+Let us now turn to the gauge transformations (3.51) of eij where, again, all indices are raised with
+ij
+G . We rewrite this result with lower-indexed fields and derivatives and explicit G−1 factors:
+δeab ≡ D̄b λa + Da λ̄b + Ĝcd (Da λd )ecb + Ĝcd (D̄b λ̄d )eac +
+
+1 cd
+Ĝ (λc Dd + λ̄c D̄d )eab
+2
+
+
+
+1
+1
+− Ĝcd Da λd + Dd λa ecb − Ĝcd D̄b λ̄d + D̄d λ̄b eac .
+2
+2
+
+(3.75)
+
+Our task now is to manipulate the right hand side above. We replace D and D̄ by the explicit forms in
+(3.65), write the gauge parameters in terms of the primed gauge parameters in (3.70), simplify using
+(3.66), and finally evaluate (3.69). This takes some effort, but the result is relatively simple:
+1
+δe′ab = ∂˜b λ′a + ∂˜a λ̄′b + (∂˜a λ′c )e′cb + (∂˜b λ̄′c )e′ac + (λ′c ∂˜c + λ̄′c ∂˜c )e′ab
+2
+i
+1 ′−1 h ˜a ′c ˜c ′a  ′db
+− (Ĝ )cd ∂ λ + ∂ λ e + e′ac ∂˜b λ̄′d + ∂˜p λ̄′d .
+2
+
+(3.76)
+
+We first take the case when λ′ = λ̄′ = ǫ′ . We find
+
+
+1
+δe′ab = ∂˜b ǫ′a + ∂˜a ǫ′b + (∂˜a ǫ′c )e′cb + (∂˜b ǫ′c )e′ac + ǫ′c ∂˜c e′ab − δ e′ac (Ĝ′−1 )cd e′db ,
+2
+
+which gives
+
+
+1
+δ e′ab + e′ac (Ĝ′−1 )cd e′db = ∂˜b ǫ′a + ∂˜a ǫ′b + (∂˜a ǫ′c )e′cb + (∂˜b ǫ′c )e′ac + ǫ′c ∂˜c e′ab .
+2
+30
+
+(3.77)
+
+(3.78)
+
+Note that the tilde derivatives naturally have the index up. The parameters ǫ′ naturally have the index
+down, just like the coordinates, so that an infinitesimal diffeomorphism takes the form x̃′a = x̃a + ǫ′a .
+For the case λ̄′ = −λ′ = −ǫ̃′ , equation (3.76) gives
+
+1 
+(3.79)
+δ̃e′ab = ∂˜b ǫ̃′a − ∂˜a ǫ̃′b − δ e′ac (Ĝ′−1 )cd e′db ,
+2
+so that we now have
+
+
+
+1
+δ̃ e′ab + e′ac (Ĝ′−1 )cd e′db = ∂˜b ǫ̃′a − ∂˜a ǫ̃′b .
+2
+
+We define
+
+1
+ēab ≡ e′ab + e′ac (Ĝ′−1 )cd e′db ,
+2
+so that, to this order, our gauge transformations take the form
+δ̃ēab = ∂˜b ǫ̃′a − ∂˜a ǫ̃′b ,
+δēab = ∂˜b ǫ′a + ∂˜a ǫ′b + (∂˜a ǫ′c )ēcb + (∂˜b ǫ′c )ēac + ǫ′c ∂˜c ēab .
+
+(3.80)
+
+(3.81)
+
+(3.82)
+
+These are the expected transformations.
+To give a clearer interpretation we now introduce a field that incorporates the background and the
+fluctuation. If we denote by Ê ab the inverse background field Ê ab = {Ê −1 } we now define
+3
+
+E ab ≡ Ê ab + ēab + O(e′ ) .
+
+(3.83)
+
+We now show that this has the expected gauge transformations, up to terms of order e′ 2 . We clearly
+have
+δ̃E ab = ∂˜b ǫ̃′a − ∂˜a ǫ̃′b .
+(3.84)
+Next, we aim to write δēab = δE ab in terms of a Lie derivative. The Lie derivative of E ab follows
+from the tensorial transformation
+E ′ab (x̃′ ) =
+
+∂ x̃c ∂ x̃d cd
+E (x̃) .
+∂ x̃′a ∂ x̃′b
+
+(3.85)
+
+The result is
+Lǫ′ E ab = (∂˜a ǫ′c )E cb + (∂˜b ǫ′c )E ac + ǫ′c ∂˜c E ab .
+
+(3.86)
+
+Lǫ′ E ab = (∂˜a ǫ′c )Ê cb + (∂˜b ǫ′c )Ê ac + (∂˜a ǫ′c )ēcb + (∂˜b ǫ′c )ēac + ǫ′c ∂˜c ēab .
+
+(3.87)
+
+Using (3.83) this gives:
+
+Noting that Ê ab = Ĝ′ab + B̂ ′ab , that Ĝ′ raises indices, and using (3.82), we find
+δE ab = δēab = Lǫ′ E ab − ∂˜a (ǫ′c B̂ cb ) + ∂˜b (ǫ′c B̂ ca ) .
+
+(3.88)
+
+Since the last two terms give a symmetry of the form (3.84), the theory contains a gauge symmetry
+δE ab = Lǫ′ E ab .
+31
+
+(3.89)
+
+We conclude by comparing the field redefinition used here to that used in the absence of x̃ dependence, namely eij → e+
+ij in (3.55). For this purpose it is convenient to re-express the present field
+redefinition (3.81)
+1
+e′ab → e′ab + e′ac (Ĝ′−1 )cd e′db .
+(3.90)
+2
+in terms of the lower-indexed field eab . For this we use (3.68), which gives ecd = −Êce e′ef Êf d . Thus
+multiplying (3.90) from the left and from the right by Ê, we find
+
+Using (3.66) we see that
+
+1
+eab → eab − eac (Ê −1 Ĝ′−1 Ê −1 )cd edb .
+2
+
+(3.91)
+
+1
+−1 t −1 cd
+eab → e−
+Ê Ê ) edb .
+ab ≡ eab − 2 eac (Ĝ
+
+(3.92)
+
+The above shows that the field redefinition e′ab → ēab is equivalent to eab → e−
+ab . If B̂ab = 0 we find
++
+−
+1 c
+eab = eab − 2 ea ecb , an expression that differs by a crucial sign from eij = eij + 12 eik ekj .
+Note that the field redefinition e → e+ needed to bring the ǫ transformations to the form of
+x-diffeomorphisms (in the x̃-independent case) differs from the field redefinition e → e− needed to
+bring the ǫ̃ transformations to the form of x̃-diffeomorphisms (in the x-independent case). While our
+symmetries contain both x-diffeomorphisms and x̃-diffeomorphisms in certain limits, it is not clear
+how, or even if, they fit together to form diffeomorphisms of the doubled torus.
+
+4
+
+T-duality of the action
+
+We have written a field theory action (3.25) that represents the dynamics of certain fluctuations (eij
+and d) about the background Eij . T-duality states that the closed string physics around backgrounds
+E and E ′ related by an O(d, d, Z) transformation are identical. In the string field theory context this
+was proven in [2] by showing that the string field theories formulated around E and E ′ are equivalent.
+In fact these theories are related by a homogeneous field redefinition. This field redefinition does not
+mix fields at different mass levels; on a given field it shuffles momenta and winding, as well as the
+various polarizations. For this reason, it is to be expected that our construction, which only keeps
+the N = N̄ = 1 fields, should have a T-duality symmetry. In this section we prove that T -duality
+is a property of the action we have constructed. In string field theory, there are cocycle-induced
+sign factors in the T-duality transformations [2].7 Our cubic action does not include the momentum
+dependent sign factors that arise from cocycles and so our T-duality transformations do not include
+such factors either. As we discuss in Section 5, such sign factors may be needed in some circumstances
+and could affect the duality transformations.
+We also establish that the action is invariant under the background change Bij → −Bij . This
+discrete symmetry is not part of the group of O(d, d, Z) symmetries, but plays an important role in
+the theory. We conclude by discussing a natural generalization of the Buscher rules that may describe
+T-duality transformations of toroidal backgrounds that fail to have U (1) isometries due to explicit
+7
+
+See [32] for a review of the role of cocycles in T-duality in the first-quantized formalism.
+
+32
+
+dependence on both coordinates and dual coordinates of the tori. Again, this discussion is modulo
+cocycle-induced sign factors.
+
+4.1
+
+Duality transformations
+
+We begin by reviewing a few properties of duality transformations. The group elements g ∈ O(D, D; Z)
+are 2D × 2D matrices of integers that leave the metric η invariant:
+
+
+0 I
+t
+.
+(4.1)
+g ηg = η ,
+η=
+I 0
+One readily sees that det g = ±1.
+Our indices i run over D = n + d values, so that the coordinates xi split into n non-compact
+directions xµ and d compact ones xa . If n = 0 and all dimensions are compact, then the doubled torus
+has 2D periodic coordinates xi , x̃i transforming in the fundamental representation of O(D, D; Z). If
+there are n non-compact directions, we shall be interested in the O(d, d; Z) subgroup of O(D, D; Z)
+that preserves xµ and which acts only on the 2d periodic coordinates xa , x̃a . It is this O(d, d; Z)
+subgroup that is a symmetry of the string theory, but it will be useful to represent its action in terms
+of the 2D × 2D matrix g.
+As in §2.2, we write E = G + B, with D × D matrices E = {Eij }, G = {Gij }, and B = {Bij }. We
+also use G−1 = {Gij }. If we write the 2D × 2D matrix
+
+
+a b
+g=
+,
+(4.2)
+c d
+the group action on the background is
+E ′ = g(E) = (aE + b)(cE + d)−1 .
+
+(4.3)
+
+We emphasize that we restrict ourselves to matrices g in the O(d, d; Z) subgroup of O(D, D; Z). This
+means that explicitly we have the D × D matrices:
+
+
+
+
+
+
+
+
+â 0
+ĉ 0
+b̂ 0
+dˆ 0
+a=
+, b=
+, c=
+, d=
+,
+(4.4)
+0 1
+0 0
+0 0
+0 1
+where â, b̂, ĉ, and dˆ are d × d matrices such that
+
+
+â b̂
+ĝ =
+∈ O(d, d, Z) .
+ĉ dˆ
+
+(4.5)
+
+(We use hats for d × d matrices.) It is straightforward to verify that if ĝ ∈ O(d, d, Z) then g ∈
+O(D, D, Z). The background E is a matrix of the form
+
+
+Ê 0
+E=
+, with Ê = Ĝ + B̂ = [Êab ] and η = [ηµν ] .
+(4.6)
+0 η
+It follows from the transformation in (4.3) that
+ ′ 
+Ê 0
+′
+ˆ −1 .
+E =
+, with Ê ′ = (âÊ + b̂)(ĉÊ + d)
+0 η
+33
+
+(4.7)
+
+This is the expected transformation of the background metric: the background Ê in the torus is
+transformed by an element of O(d, d, Z) while the Minkowski background is left unchanged.
+It is a familiar result that the non-linear transformation (4.3) of E becomes the linear transformation of the 2D × 2D matrix H defined in (2.17):
+H(E ′ ) = g H(E)g t .
+
+(4.8)
+
+It is useful to introduce the D × D matrices M (written as Mi j ) and M̄ (written as M̄i j ) defined
+by the relations
+ t
+
+dˆ − Ê ĉt 0
+t
+t
+M ≡d − Ec =
+,
+0
+1
+(4.9)
+ t
+
+t ĉt 0
+ˆ
+d
++
+Ê
+M̄ ≡ dt + E t ct =
+.
+0
+1
+The matrices M and M̄ control the transformation of the metric G obtained from (4.3) by splitting
+E ′ into symmetric and antisymmetric parts, E ′ = G′ + B ′ . Indeed, equation (4.10) in [2] gives
+(dˆ + ĉÊ)t Ĝ′ (dˆ + ĉÊ) = Ĝ ,
+(dˆ − ĉÊ t )t Ĝ′ (dˆ − ĉÊ t ) = Ĝ .
+
+(4.10)
+
+These relations, together with (4.9) quickly lead to
+G−1 = (M̄ t )−1 G′−1 M̄ −1 ,
+G−1 = (M t )−1 G′−1 M −1 .
+
+(4.11)
+
+Two more identities from [2] (eqns. (4.19)) are useful to us:
+b̂t − Êât = −(dˆt − Êĉt )Ê ′ ,
+b̂t + Ê t ât = (dˆt + Ê t ĉt )Ê ′t .
+
+(4.12)
+
+In terms of the D × D matrices the above relations give,
+bt − Eat = −M E ′ ,
+bt + E t at = M̄ E ′t .
+
+(4.13)
+
+Finally, a perturbation of the background E + δE transforms to E ′ + δE ′ where
+δE ′ = M −1 δE(M̄ t )−1 ,
+
+(4.14)
+
+′
+δEij = Mi k M̄j l δEkl
+.
+
+(4.15)
+
+so that
+
+34
+
+4.2
+
+Duality invariance
+
+We will begin with the action (3.25) written around a background E and with fields (eij , d) collectively
+denoted by Ψ. Setting 2κ2 = 1 we have
+Z
+h
+i
+S(E, Ψ) = dxµ dX L Dk , D̄l , G−1 ; eij (xµ , X), d(xµ , X) .
+(4.16)
+
+Here X is a 2d-column vector of coordinates
+
+X≡
+
+
+
+x̃a
+xa
+
+
+
+,
+
+(4.17)
+
+R
+R
+and dX ≡ dx̃dx. The action (4.16) is constructed from lower-index derivatives Di , D̄j and the
+lower-indexed eij fields (together with d) with all index contractions using the metric G−1 . The action
+depends on the background E through G−1 and the derivatives D, D̄ (see (2.24)).
+We will establish equivalence between the theory on the background E and the theory formulated
+on a background
+
+
+a b
+′
+E = g(E) with g =
+,
+(4.18)
+c d
+where g is in the O(d, d; Z) subgroup of O(D, D; Z), as explained in §4.1.
+It is notationally convenient to introduce extra coordinates x̃µ , so that we have 2D coordinates X
+with
+ 
+ 
+ a
+x̃i
+x̃a
+x
+i
+X≡
+,
+where
+x̃
+=
+,
+x
+=
+.
+(4.19)
+i
+xi
+xµ
+x̃µ
+
+We will only consider fields that are independent of the extra coordinates x̃µ , so that these coordinates
+play no role. With the help of these coordinates the action (4.16) can be written as
+Z
+h
+i
+S(E, Ψ) = dX L Dk , D̄l , G−1 ; eij (X), d(X) .
+(4.20)
+Here
+
+Z
+
+dX ≡
+
+Z
+
+dxµ dxa dx̃a ,
+
+(4.21)
+
+with no integration over the trivial coordinates x̃µ . Our argument will apply to any action that is of
+the form (4.20) and with indices contracted in the way we describe below.
+There is a natural action of O(D, D) on the 2D coordinates X but, as before, we only consider
+the O(D, D; Z) transformations in the O(d, d; Z) subgroup that preserves xµ and x̃µ and respects the
+periodicities of the xa , x̃a . Such a transformation takes X to X ′ where
+ ′
+
+  
+
+x̃
+a b
+x̃
+ax̃ + bx
+′
+X =
+= gX =
+=
+.
+(4.22)
+x′
+c d
+x
+cx̃ + dx
+Then O(d, d; Z) transformations act as diffeomorphisms of the doubled torus T 2d , the subgroup of the
+large diffeomorphisms GL(2d; Z) preserving η. Our ansatz for the transformation of e, d in the general
+case follows from the transformations found in [2]:
+eij (X) = Mi k M̄j l e′kl (X ′ ) ,
+d(X) = d′ (X ′ ) .
+35
+
+(4.23)
+
+Using this to write the fields e, d in terms of e′ , d′ in in (4.20) gives
+Z
+h
+i
+′
+S(E, Ψ(Ψ )) = dX ′ L Di , D̄j , G−1 ; Mi k M̄j l e′kl (X ′ ), d′ (X ′ ) ,
+
+(4.24)
+
+where we have used
+Z
+
+Z
+
+dX ≡
+
+µ
+
+a
+
+dx dx dx̃a =
+
+Z
+
+µ
+
+′ a
+
+′
+
+dx d(x ) d(x̃ )a =
+
+Z
+
+dX ′ ,
+
+(4.25)
+
+since the Jacobian of the transformation is unity.
+The transformation (4.22) of X implies that the (lower-indexed) derivatives acting on the new
+fields can be rewritten in terms of primed derivatives based on E ′ as follows
+D = M D′ ,
+
+(4.26)
+
+D̄ = M̄ D ′ ,
+as we will show below. Then the action becomes
+Z
+h
+i
+′
+S(E, Ψ(Ψ )) = dX ′ L M D ′ , M̄ D ′ , G−1 ; Mi k M̄j l e′kl (X ′ ), d′ (X ′ ) .
+
+(4.27)
+
+If we can show that this is equal to
+′
+
+′
+
+S(E , Ψ ) =
+
+Z
+
+′
+
+h
+
+′
+
+′
+
+′−1
+
+dX L D , D̄ , G
+
+i
+
+; e′ij (X ′ ), d′ (X ′ )
+
+,
+
+(4.28)
+
+then we will have
+S(E ′ , Ψ′ ) = S(E, Ψ(Ψ′ )) ,
+
+(4.29)
+
+establishing the desired physical equivalence.
+To show this, we need to keep track of which indices transform with an M and which with an M̄ .
+For this argument, we introduce a notation in which lower indices i transform with an M and lower
+indices ī transform with a M̄ , while upper indices transform with the inverses of these matrices. Then
+(4.26) implies that the derivatives are Di , D̄j̄ while (4.23) implies that eij̄ has a first index which is
+unbarred and a second which is barred. The two forms for the transformation of the metric in (4.11)
+imply that we can write G−1 with with two unbarred indices as Gij or with two barred ones as Gī j̄ .
+For any action in which all unbarred indices are contracted amongst themselves using Gij and all the
+barred indices are contracted amongst themselves using Gī j̄ , equation (4.11) implies that all factors of
+M and M̄ will cancel. This gives the equality of (4.27) and (4.28), as required. The index contractions
+in the cubic action (3.25) indeed obey this rule. We see from the string field (2.38) that the first index
+in eij is tied to an unbarred oscillator while the second is tied to a barred oscillator. It is clear from the
+commutation relations (2.21) that contractions always relate two un-barred or two barred operators,
+but cannot ever mix them. The same is true for the derivatives D and D̄ that arise from unbarred and
+barred zero modes, as shown in (2.23). It follows that the action derived from the string field theory
+obeys the stated contraction rules, and so must be T-dual in this way.
+
+36
+
+To complete the above proof we must derive (4.26). Consider the action of derivatives with respect
+to x and x̃ on functions of X ′ . As a preliminary, short calculations using (4.22) give
+ ∂
+∂
+∂ 
+F (X ′ ) = bt ′ + dt ′ F (X ′ ) ,
+∂x
+∂ x̃
+∂x
+(4.30)
+
+
+∂
+′
+t ∂
+t ∂
+′
+F (X ) = a
++c
+F (X ) .
+∂ x̃
+∂ x̃′
+∂x′
+
+We then have for Di
+
+∂ 
+1 ∂
+F (X ′ )
+−E
+DF (X ′ ) = √
+∂ x̃
+α′ ∂x
+h ∂
+i
+1  t ∂
+t ∂
+t
+t ∂
+=√
++
+d
+−
+E
+a
++
+c
+F (X ′ )
+b
+∂ x̃′
+∂x′
+∂ x̃′
+∂x′
+α′
+∂
+1  t
+∂ 
+(d − Ect ) ′ + (bt − Eat ) ′ F (X ′ ) .
+=√
+∂x
+∂ x̃
+α′
+
+(4.31)
+
+
+1  ∂
+′ ∂
+DF (X ′ ) = M √
+−
+E
+F (X ′ ) = M D ′ F (X ′ ) ,
+∂ x̃′
+α′ ∂x′
+
+(4.32)
+
+Making use of (4.13)
+
+as we wanted to show. We repeat for the derivative D̄i :
+∂ 
+1 ∂
+F (X ′ )
++ Et
+D̄F (X ′ ) = √
+∂ x̃
+α′ ∂x
+h
+i
+1  t ∂
+t ∂
+t t ∂
+t ∂
++
+d
++
+E
+a
++
+c
+F (X ′ )
+=√
+b
+′
+′
+′
+′
+′
+∂
+x̃
+∂x
+∂
+x̃
+∂x
+α
+∂
+1  t
+∂ 
+(d + E t ct ) ′ + (bt + E t at ) ′ F (X ′ ) .
+=√
+∂x
+∂ x̃
+α′
+
+(4.33)
+
+Making use of (4.13)
+
+1  ∂
+′t ∂
+D̄F (X ′ ) = M̄ √
++
+E
+F (X ′ ) = M̄ D̄ ′ F (X ′ ) ,
+∂ x̃′
+α′ ∂x′
+
+(4.34)
+
+as we wanted to show. This completes our proof of (4.26), and therefore our proof of T -duality.
+
+4.3
+
+Inversion
+
+We now give some explicit formulae relevant to the Z2 duality transformation that simultaneously
+exchanges all tori coordinates xa and x̃a . This duality transforms the toroidal background with
+
+ 
+
+â b̂
+0 1
+ĝ =
+=
+∈ O(d, d, Z) .
+(4.35)
+1 0
+ĉ dˆ
+Explicitly, b̂ab = δab and ĉab = δab , introducing metrics that can naturally raise and lower indices in
+what follows. Using (4.7) we find that the toroidal part of the background is transformed to:
+ −1 
+Ê
+0
+′
+−1
+′
+Ê = Ê ,
+E =
+.
+(4.36)
+0
+η
+37
+
+We also have from (4.10)
+Ê t Ĝ′ Ê = Ê Ĝ′ Ê t = Ĝ .
+
+(4.37)
+
+Taking inverses and solving for Ĝ′−1 we find
+Ĝ′−1 = Ê Ĝ−1 Ê t = Ê t Ĝ−1 Ê .
+
+(4.38)
+
+This gives equation (3.66) which was used to investigate the gauge transformations of the theory in
+which fields depend only on x̃. We also have from (4.9)
+
+ t 
+
+Ê 0
+−Ê 0
+,
+(4.39)
+, M̄ =
+M=
+0 1
+0
+1
+so that
+Ma b = −Êac δcb ,
+
+M̄a b = Êca δcb ,
+
+(4.40)
+
+using ĉab = δab . The transformation for the field e was given in (4.23) and takes the form eab (X) =
+Ma c M̄b d e′cd (X ′ ), since the matrices M and M̄ are block diagonal. We then find
+cd
+
+eab (X) = −Êac e′ (X ′ ) Êdb ,
+
+(4.41)
+
+where e′ cd = e′ab δac δbd , giving an e′ with upper indices, which was the natural convention used in
+§3.4.2. If we solve for e′ we immediately obtain (3.68). The above results justify the starting point of
+the analysis in §3.4.2.
+
+4.4
+
+The discrete symmetry B → −B
+
+It is well known that the background change Bij → −Bij in a toroidally compactified theory is a
+symmetry of the closed string theory. Since Bij couples electrically to the string, this symmetry is
+a consequence of the orientation invariance of the theory. We now show that the discrete symmetry
+discovered in the action guarantees the invariance of the physics under Bij → −Bij .
+We begin with our action
+Z
+h
+i
+S(E, Ψ) = dX L D, D̄, G−1 ; eij (X), d(X) .
+(4.42)
+
+The replacement B → −B makes E → G − B, which means
+E → Et .
+
+(4.43)
+
+This does not affect the metric G, but the action formulated with background E t has the derivatives
+changed. Given (2.24), we have
+Z
+h 1  ∂
+i
+1  ∂
+∂ 
+∂ 
+S(E t , Ψ) = dX L √
+, √
+, G−1 ; eij (X), d(X) .
+(4.44)
+− Et
++E
+∂ x̃
+∂ x̃
+α′ ∂x
+α′ ∂x
+We now redefine the fields as
+
+eij (X) = e′ji (X ′ ) ,
+d(X) = d′ (X ′ ) ,
+38
+
+(4.45)
+
+with
+
+ ′ 
+
+x̃
+−x̃
+X =
+=
+.
+x′
+x
+′
+
+(4.46)
+
+The effect of this change on the derivatives is to reverse the sign of the terms carrying a tilde coordinate,
+so by now
+Z
+h
+i
+S(E t , Ψ(Ψ′ )) =
+dX ′ L D̄ ′ , D ′ , G−1 ; e′ji (X ′ ), d′ (X ′ ) ,
+(4.47)
+
+where we also used dX = dX ′ . The above action has exactly the replacements associated with the
+discrete symmetry (3.26) that leaves the action invariant, so
+Z
+h
+i
+t
+′
+S(E , Ψ(Ψ )) =
+dX ′ L D ′ , D̄ ′ , G−1 ; e′ij (X ′ ), d′ (X ′ ) = S(E, Ψ′ ) .
+(4.48)
+This shows the physical equivalence of the actions formulated around E and around E t .
+
+4.5
+
+Field redefinitions, Buscher rules, and generalised T-duality
+
+If the fields eij and d depend on the spacetime coordinates xi = (xµ , xa ) but are independent of the
+dual coordinates x̃a , then there is a conventional low-energy effective theory. The effective field theory
+for these fields obtained using string field theory must be equivalent to the standard string low-energy
+effective field theory (2.59) with higher-derivative α′ corrections. The standard theory is written in
+terms of the total field Eij which defines gij and bij fields that have the standard diffeomorphism and
+anti-symmetric tensor gauge transformations (3.36). The map from string field theory to the standard
+effective field theory has been studied in [30], but has not been found explicitly. We have shown in
+(3.59) that
+1 k
+(4.49)
+Eij = gij + bij = Eij + e′ij + e′i e′kj + cubic corrections .
+2
+Here e′ij is the field used for the double field theory and is related to the string field theory variable
+eij arising in (2.38) by (3.21), so that e′ij = eij + eij d, making it clear that the dilaton d mixes in. In
+the following, we will use only e′ij and drop the primes.
+The full non-linear relation will include α′ corrections involving derivatives of eij and d and string
+loop corrections. It is also subject to field redefinition ambiguities [30]. To zeroth order in α′ , however,
+the relation should contain no derivatives, on dimensional grounds and because it is used to match
+two two-derivative actions. Then at zeroth order in α′ and at string tree level there must be some
+algebraic function f (e, d), so that
+1
+fij (e, d) = eij + ei k ekj + cubic corrections ,
+(4.50)
+2
+with Eij transforming as in (3.40). Moreover, this relation should apply both for the compactified and
+uncompactified theory. The field Eij combines the background and fluctuations geometrically.
+When the fields are independent of the torus coordinates xa as well as x̃a , the U (1)d torus action is
+an isometry leaving the fields invariant and T-duality acts through the Buscher rules [18, 19]. The full
+metric gij and Kalb-Ramond field bij depend on xµ and are independent of xa , x̃a and so transform
+according to the extension [19] of the Buscher rules for the torus:
+Eij ≡ Eij + fij (e, d) ,
+
+E ′ = g(E) = (aE + b)(cE + d)−1 .
+39
+
+(4.51)
+
+These transformations are expected to receive α′ corrections and possibly string loop corrections, but
+to zeroth order in α′ and string tree level, they are the complete non-linear transformations. This can
+now be compared with the T-duality transformations of eij , d found above. As the coordinates xµ do
+not transform, the dilaton is invariant and (4.23) gives
+eij (x) = Mi k M̄j l e′kl (x) ,
+d(x) = d′ (x) .
+
+(4.52)
+
+For infinitesimal eij , we have Eij = Eij + eij + O(e2 ) and using (4.15) we see that the expansion of
+(4.51) gives a linear transformation of eij which is precisely (4.52) plus quadratic corrections. The
+requirement that the relation (4.50) should map the linear transformation (4.52) to the fractional
+linear transformation places stringent constraints on the function fij , as discussed in [30]. A simple
+explicit function that is compatible with these two forms of the T-duality transformations was found
+in [30], but requiring such compatibility does not fix the function uniquely.
+Let us now return to the case in which the fields depend on the torus coordinates xa as well as xµ
+(but not x̃a ), so that massive Kaluza-Klein modes with momenta on the torus exist. The dependence
+on xa means that the U (1)d torus action does not preserve the fields and so the usual Buscher rules
+do not apply. Nonetheless, our linear transformations (4.23) for e, d still apply, and the full fields
+with geometric gauge transformations are still given by (4.50). The function fij in (4.50) still converts
+linear duality transform transformations into fractional linear transformations. As a result, we learn
+that the linear transformation of eij , d implies the non-linear transformations of E, d given by
+E ′ (X ′ ) = g(E(X)) = (aE(X) + b)(cE(X) + d)−1 ,
+d′ (X ′ ) = d(X) .
+
+(4.53)
+
+Here, the argument X refers to (xµ , xa , x̃a = 0) and X ′ = gX. For inversion in all d circles, X ′ is given
+by (x′µ , x′a , x̃′a ) = (xµ , 0, xa ) so that the T-dual of a configuration with dependence on (xµ , xa ) is one
+with dependence on (xµ , x̃a ), as expected. Conversely, the T-dual of a configuration with dependence
+on (xµ , x̃a ) is one with dependence on (xµ , xa ).
+We now turn to the general case in which the fields eij and d depend on x̃a as well as xµ , xa . Then
+the T-duality transformations of eij , d are still given by (4.23). In this case it is not so clear how
+we should define the total field E(X) as we no longer have a conventional field theory description to
+guide us. Moreover, as we saw in §3.4.2, different field redefinitions are useful in different contexts. A
+natural definition, however, is to take Eij ≡ Eij + eij + fij (e, d) with the same algebraic function f
+that arose above in the map from string field theory to the effective field theory, so that we recover
+the results above in the case in which there is no dependence on x̃a . If we do so, the fact that fij maps
+our linear T-duality transformations to fractional linear ones implies that the transformation of this
+Eij is again given by (4.53) but now with general dependence on the coordinates (xµ , xa , x̃a ). This is
+a simple and manifestly O(d, d; Z) compatible candidate for the generalisation of the Buscher rules to
+the case with general dependence on (xµ , xa , x̃a ).
+The fact that the double field theory action satisfies
+S(E, e, d) = S(E ′ , e′ , d′ ) ,
+40
+
+(4.54)
+
+implies that the transformation of both the background E and the fields e, d is a symmetry of the
+action. If the action can be rewritten in terms of the total field E so that S(E, e, d) = S(E, d), then it
+will be manifestly independent of the split into a background field E and a fluctuation e and will be
+invariant under the T-duality transformations (4.53)
+S(E, d) = S(E ′ , d′ ) .
+
+(4.55)
+
+The matrix H(E) defined in (2.17) for the background field E has a natural generalisation for the
+total field E = g + b. We define the 2D × 2D matrix H(E) by
+
+
+g − bg−1 b bg−1
+.
+H(E) = 
+(4.56)
+−1
+−1
+−g b
+g
+
+It follows from (4.8) that the background transformation (4.53) induces a simple linear transformation
+for H(E)
+H(E ′ (X ′ )) = g H(E(X)) g t .
+(4.57)
+From (4.57), the inverse G(E) ≡ (H(E))−1 transforms as
+G(E) = g t G(E ′ (X ′ )) g .
+This can be written suggestively using X ′ = gX:
+
+
+
+
+∂X ′ t ′ ′ ∂X ′
+G(X) =
+G (X )
+.
+∂X
+∂X
+
+(4.58)
+
+(4.59)
+
+where G ′ (X ′ ) = G(E ′ (X ′ )) and G(X) = G(E(X)). This shows that G behaves as a covariant tensor
+under O(D, D) transformations. Indeed, G defines a duality invariant line element
+ds2 = dX t G(E(X)) dX .
+
+(4.60)
+
+The metric G and its relation to the generalised metric in generalised geometry is discussed in §6.
+
+5
+
+Constraint, cocycles, and null subspaces
+
+In this section we discuss some of the subtle issues that arise in our construction. We have referred to
+these at various points in the earlier sections. We begin with an examination of the constraint that
+requires fields and gauge parameters to be in ker(∆), namely, the kernel of the second-order differential
+operator ∆. We define the natural linear projection [[ · ]] that takes an arbitrary double field to this
+kernel. We then turn to a discussion of cocycles and sign factors. It is possible that the nonlinear
+completion of the theory will involve these sign factors. Finally, we conclude with a discussion of null
+spaces that arise from the restriction to double fields that have no winding in some suitable T-dual
+frame, resulting in a conventional field theory for that non-winding sector.
+
+41
+
+5.1
+
+The constraint and projectors
+
+The constraint L0 − L̄0 = 0 is applied to all fields and gauge parameters. The product of two fields
+satisfying the constraint will not satisfy it in general, and for this reason the string product [·, ·]
+includes an explicit projection onto states that satisfy L0 − L̄0 = 0. It also has an insertion of b−
+0 that
+−
+ensures that the string product is annihilated by b0 . Schematically, we have
+Z
+dθ iθ(L0 −L̄0 ) −
+′
+[Ψ1 , Ψ2 ] ≡
+e
+b0 [Ψ1 , Ψ2 ]′ = δL0 −L̄0 ,0 b−
+(5.1)
+0 [Ψ1 , Ψ2 ] ,
+2π
+where the primed bracket [· , ·]′ inserts the states in the three-punctured sphere that defines the
+vertex. The b−
+0 insertion implies that the string product has an intrinsic ghost number of minus one:
+gh([A, B]) = gh(A) + gh(B) − 1. This inclusion of the projection in the string product in covariant
+closed string field theory leads to the failure of a Jacobi identity and this then requires further higher
+order interactions resulting in a non-polynomial theory. Concretely, one finds [3]
+0 = Q[B1 , B2 , B3 ] + [QB1 , B2 , B3 ] + (−1)B1 [B1 , QB2 , B3 ] + (−1)B1 +B2 [B1 , B2 , QB3 ]
++ (−)B1 [B1 , [B2 , B3 ]] + (−1)B2 (1+B1 ) [B2 , [B1 , B3 ]] + (−1)B3 (1+B1 +B2 ) [B3 , [B1 , B2 ]] .
+
+(5.2)
+
+If the string product [· , · , ·] satisfied a Jacobi-like identity, the terms on the second line would add
+up to zero. Since they do not, one requires an elementary triple product represented by [· , · , ·] and
+used to define a quartic elementary interaction. This triple product (as well as all higher ones) must
+also include a projection to states that satisfy L0 − L̄0 = 0. The failure of Q to be a derivation of
+this product is equal to the violation of the Jacobi identity. The above relation is part of the defining
+relations of the L∞ homotopy Lie-algebra [3, 31].
+Consider now the states with N = N̄ = 1. Projection down to the physical space with ∆ = 0
+is most easily discussed in momentum space. Consider a field φ (with N = N̄ = 1) with definite
+momenta and winding numbers (wa , pa ) = (ma , na ) with a = 1, 2, . . . , d . Then
+X
+n a ma ≡ n m = 0 .
+(5.3)
+∆φ = 0 ↔
+a
+
+We combine the winding ma and the momentum na of φ into a 2d-column vector v:
+ 
+m
+v=
+∈ Z2d ,
+n
+and define the inner product with respect to the O(d, d) invariant metric η̂
+
+  ′
+0 1
+m
+′
+T
+′
+v ◦ v ≡ v η̂ v = m, n)
+= mn′ + nm′ .
+n′
+1 0
+
+(5.4)
+
+(5.5)
+
+Since v ◦ v = 2na ma , the ∆ = 0 constraint on the vector takes the form
+∆φ = 0
+
+↔
+
+v ◦ v = 0.
+
+(5.6)
+
+In words, the vector v is null with respect to η. A field with definite momentum and winding must
+satisfy this condition to be allowed. A general superposition of such allowed fields is also allowed,
+42
+
+since ∆ is a linear operator. If we have fields φ and φ′ with null momenta v and v ′ , the product φφ′
+has momentum v + v ′ which is not null in general. The product will only satisfy the constraint if the
+momenta are orthogonal:
+∆(φφ′ ) = 0 ↔ (v + v ′ ) ◦ (v + v ′ ) = 0
+
+↔
+
+v ◦ v′ = 0 .
+
+(5.7)
+
+The constraint is not satisfied by products since ∆ is a second-order differential operator. We enforce the constraint as follows. Given a general field A(xµ , xa , x̃a ), a Fourier series for the compact
+dimensions yields
+A(xµ , xa , x̃a ) =
+
+X
+
+T
+
+Â(xµ , v) eiv X =
+
+v∈Z2d
+
+Since ∆ = − α2′ ∂a ∂˜a we find
+∆A =
+
+X
+
+a
+
+a
+
+Â(xµ , v) eim x̃a +ina x .
+
+(5.8)
+
+v∈Z2d
+
+1 X
+T
+v ◦ v Â(xµ , v) eiv X .
+′
+α
+2d
+
+(5.9)
+
+v∈Z
+
+A canonical projection of a general A into a field [[A]] that satisfies the ∆ = 0 constraint is defined by
+[[A]] ≡
+
+X
+
+T
+
+δv◦v,0 Â(xµ , v) eiv X .
+
+(5.10)
+
+v∈Z2d
+
+The role of the Kronecker delta is to retain only the Fourier components of the field whose momenta
+are null. It is now clear that
+∆[[A]] = 0 .
+(5.11)
+It is also clear from the definition that with constants α and β and functions A and B we have
+[[αA + βB]] = α [[A]] + β [[B]] .
+
+(5.12)
+
+The operation [[ · ]] is a linear map from the space of functions on the doubled torus to the kernel of ∆.
+It is a projector because applying it twice has the same effect as applying it once. The operation [[ · ]]
+implements the ∆ = 0 constraint in the same way that the Kronecker delta in (5.1) implements the
+level matching constraint for a general string field. For constrained fields A(x, x̃) and B(x, x̃), the
+product [[A(x, x̃)B(x, x̃)]] projects onto those Fourier modes Â(x, v)B̂(x, v ′ ) with v, v ′ both null and
+orthogonal, v ◦ v ′ = 0.
+The closed string product includes the projector δL0 −L̄0 ,0 because the product of two allowed states
+should give an allowed state. We must therefore use the projection [[ · ]] in the gauge transformations
+(3.27) to ensure that the gauge variations are allowed variations of the fields. This means that, properly
+written, the gauge transformations are
+ii
+1 hh
+,
+(Di λk )ekj − (D k λi )ekj + λk D k eij
+2
+
+1
+1 
+δλ d = − D · λ +
+(λ · D) d
+.
+4
+2
+
+δλ eij = D̄j λi +
+
+43
+
+(5.13)
+
+Happily, there is no need to use the projection [[ · ]] in the cubic action. The action is correct as written
+in equation (3.25). This is not difficult to explain. Let A be a field that satisfies ∆A = 0 and B be a
+field that does not. Then, we claim that
+Z
+Z
+A [[ B ]] =
+AB ,
+(5.14)
+where the integral is over xµ , xa , and x̃a . It follows from the above that the projection of B to the
+kernel of ∆ is not needed. This is clear in momentum space. The integration implies that any Fourier
+mode of B with momentum v can only couple to a Fourier mode of A with momentum (−v). Then
+any Fourier mode of B with momentum v that is not allowed cannot contribute since (−v) is also not
+allowed and thus cannot be found in A, as A satisfies the constraint. Next consider the cubic term
+in the action. Since this arises from the string field theory term hΨ, [Ψ , Ψ]i the structure we obtain
+R
+must be a sum of terms of the form φ1 [[φ2 φ3 ]]. Since φ1 satisfies the constraint, equation (5.14)
+shows that the projector is not needed for the product φ2 φ3 . Therefore, we do not need to include
+additional projectors in the quadratic and cubic terms in the action. Similar remarks apply to the
+check of gauge invariance of the action. The above gauge transformations induces terms of the form
+R
+φ1 [[λφ2 ]]. Again, the projector is not needed to the order to which we are working, and we can
+proceed naively.
+This convenient simplification may disappear for terms in the action quartic in fields. The terms
+that arise from the elementary quartic interaction hΨ, [Ψ , Ψ , Ψ]i of the closed string field theory action
+R
+would have the form φ1 [[φ2 φ3 φ4 ]]. Again, because of (5.14) the projector is not needed and this term
+R
+equals φ1 φ2 φ3 φ4 . On the other hand, terms that arise from integrating out other fields will have a
+R
+projector of the form φ1 φ2 [[φ3 φ4 ]]. This projector cannot be eliminated. It is clear that given four
+fields, the projector can be inserted in three inequivalent ways – the number of ways in which the
+fields can be partitioned into groups of two. It seems tempting to believe that terms with these three
+inequivalent positions of the projector may be related to terms with no projector through identities
+in the spirit of (5.2).
+
+5.2
+
+Cocycles
+
+We now address another important issue. Closed string vertex operators in toroidal backgrounds have
+cocycles – operators that are included to ensure standard commutation properties [27, 28]. If Vv0α
+denotes the naive vertex operator for a state with momenta and winding specified by vα one finds
+Vv02 (z2 , z̄2 ) Vv01 (z1 , z̄1 ) = eiπ v1 ◦v2 Vv01 (z1 , z̄1 ) Vv02 (z2 , z̄2 ) .
+
+(5.15)
+
+The phase factor can be equal to minus one, in which case we have the unpleasant fact that vertex
+operators for bosons anticommute. A cocycle operator is included multiplicatively to define vertex
+operators Vvα that always commute. These cocycles affect the signs of correlation functions. As
+a result, there are extra signs that are introduced in the three-string vertex [4, 5, 2]. Up to field
+redefinitions, the sign factor that affects the amplitude hVvα Vvβ Vvγ i is
+α
+
+α
+
+γ
+
+β
+
+ǫαβγ = eiπ(n m +n m ) .
+44
+
+(5.16)
+
+Of course vα + vβ + vγ = 0. The sign factor can be shown to be cyclic invariant. Under exchange of
+α and β labels, for example, this sign factor changes as follows:
+ǫβαγ = ǫαβγ eiπvα ◦vβ .
+
+(5.17)
+
+The sign factor (5.16) is nontrivial: it cannot be removed by redefinitions of the states corresponding
+to the vertex operators. For our case of interest the situation is somewhat simpler. We have nα mα = 0
+because all states satisfy the ∆ = 0 constraint. As a result, (5.16) becomes
+γ
+
+β
+
+ǫαβγ = eiπ n m .
+
+(5.18)
+
+Despite appearances to the contrary this sign factor is fully symmetric under exchange of labels. This
+can be understood as follows. First recall the simple fact that given three null vectors that add up to
+zero, the vectors are mutually orthogonal. This shows that vα ◦ vβ = vα ◦ vγ = vβ ◦ vγ = 0 and the sign
+factor associated with exchanges vanishes. A symmetric sign factor could be trivial, but we have not
+been able to show that (5.18) is trivial. Note, however, that any three (constrained) states coupled by
+the three string vertex have momenta which are orthogonal and therefore the associated cocycle-free
+vertex operators commute (see (5.15)).
+The cubic action we have written did not include cocycle-induced sign factors. If present, such
+signs also appear in the gauge transformations and in the duality transformations. It is known that
+string field theory gauge invariance to O(ΛΨ2 ) holds with or without such sign factors and this may
+explain why our construction succeeded so far without any sign factors. It is to next order that the
+sign factors are claimed to be needed for gauge invariance [4]. The cocycle-induced sign factors are
+non-trivial and required for the full string field theory, but their role may be different for the double
+field theory we are focussing on. We hope to return to this question in the future.
+
+5.3
+
+Spaces large and small
+
+For fields with arbitrary dependence on the coordinates X of T 2d , the momenta can be arbitrary v’s
+in the full momentum lattice Z2d introduced in §5.1. The constraint
+v ◦ v = 0,
+
+(5.19)
+
+restricts us to the null subspace of Z2d , which we refer to as the large space. The equation v ◦ v = 0
+defines a light-cone in R2d with metric η̂, and the large space consists of the points on this light cone
+with integer coordinates. For general string states with N 6= N̄ , this light-cone is replaced by the
+hyperboloid
+1
+(5.20)
+2 v ◦ v = N − N̄ .
+A 2d dimensional space with metric of signature (d, d) can have totally null d-dimensional subspaces
+(called totally isotropic subspaces in the mathematics literature) in which the indefinite metric restricts
+to zero, so that all tangent vectors to the subspace are null and mutually orthogonal. We shall be
+interested in totally null subspaces T d ⊂ T 2d . Writing the metric as ds2 = 2dxa dx̃a , we see that the
+d-torus with coordinates xa and the dual torus with coordinates x̃a are both totally null, and any T d
+45
+
+obtained from these by acting with O(d, d; Z) will also be totally null. If we let the coordinates of a
+null subspace be y a and those of the complement be ỹa , then the metric η̂ is ds2 = 2dy a dỹa and
+∆=−
+
+2 X ∂ ∂
+.
+α′ a ∂ ỹa ∂y a
+
+(5.21)
+
+For fields that are independent of ỹ, the constraint ∆ = 0 is automatically satisfied. Moreover, all
+products of fields satisfy the constraint ∆ = 0 and no projection [[ · ]] is necessary. Nor are cocycles
+needed, as all momenta v for such fields are null and mutually orthogonal, so all vertex operators are
+mutually local. Then the restriction of the full double field theory to fields dependent only on the
+coordinates y a of such a null subspace (together with xµ ) should give a conventional local field theory
+without cocycles or projectors. For the T d with coordinates xa , this should be the conventional field
+theory with action (2.59) (after field redefinitions, and compactified on T d ), while for other choices it
+should be a dual theory related to this by an O(d, d; Z) transformation. However, these theories can
+be written in a duality covariant way, by taking the double field theory and restricting the momentum
+space to a small space where all vectors v are not only null, but also mutually orthogonal. With
+this restriction, the double field theory has no cocycles, constraints or projectors. It would be very
+interesting to obtain the full nonlinear version of our action under this simplifying assumption. The
+result may be related to the work of Siegel [8] who constructed a realization of T-duality in the massless
+sector under the assumption that all momenta are orthogonal.
+
+6
+
+Comments and open questions
+
+A striking feature of string field theory on a torus is that general solutions involve fields on the
+doubled torus instead of conventional spacetime fields. As a result, the theory is very different from
+that suggested by conventional effective field theories that, like supergravity limits of superstrings,
+miss key stringy features. The theory on a torus is a case which is nontrivial enough to be interesting
+yet is simple enough to be tractable. One of our goals here has been to seek a subsector of this theory
+that is almost as simple as a conventional field theory but which is rich enough to include much of the
+magic of string theory.
+We have begun the construction of an intriguing double field theory of massless fields hij , bij , d
+depending on both x and x̃. We have used string field theory to find the action to cubic order and
+showed that its variation under gauge transformations, found to linear order in the fields, vanishes
+to the requisite order. By including both winding and momenta we do not have a regime where all
+excitations have parametrically small energy and the theory may not arise as a simple decoupling
+limit of string theory. If we view our construction as an effective field theory for a natural set of
+excitations (some of which may have large energy), the string field theory suggests that an action and
+gauge transformations should exist to all orders in the field, although the explicit calculation of these
+becomes much harder at higher orders. The unusual features of string field theory include the explicit
+projectors to the kernel of L0 − L̄0 , cocycle-induced sign factors in the vertices, and the homotopy
+Lie algebra structure of the string products. These are all expected to play a role in the double field
+theory, although they have been largely avoided at the cubic level. Of course, the ∆ = 0 constraint
+46
+
+on fields and gauge parameters, which arises from the L0 − L̄0 = 0 constraint in string field theory,
+has played a central role. It was absolutely crucial, even for linearised gauge invariance.
+It has long been known that the L0 − L̄0 = 0 constraint is fundamental and all attempts to formulate
+closed string field theory without imposing this off-shell condition on the fields and parameters have
+so far failed. Such a formulation could exist, but a very significant conceptual advance may be needed
+to find it. In our massless theory the level-matching constraint became ∆ = 0. Our attempts to relax
+this constraint failed, but we hope that understanding the constraint in the simpler setting of the
+double field theory may shed light on the constraint in the full string field theory.
+It is natural to speculate on the full non-linear form of the theory. We noted that the free theory
+includes gauge parameters that suffice to describe “double-diffeomorphisms” or linearised diffeomorphisms of the doubled space Rn−1,1 × T 2d . The nonlinear extension shows that the symmetry of
+the theory appears to be considerably more intricate. In addition to linearised diffeomorphisms, the
+gauge parameters generate doubled gauge transformations of the antisymmetric tensor field so that
+there is an interesting mixture of the two symmetries. Second, there is the projection of the gauge
+parameters to the kernel of ∆. The full symmetry has an algebra that appears to be different from
+that of diffeomorphisms on the doubled space Rn−1,1 × T 2d , but does include the diffeomorphisms of
+various undoubled subspaces Rn−1,1 × T d obtained by keeping only the xa coordinates, or keeping
+only a set of coordinates obtained from the xa by T-duality. As we have noted at various points,
+the full symmetry of the theory may turn out to be that of a homotopy-Lie algebra, or some related
+structure. It would be interesting to see what field theory structures arise to define the higher products
+inherent in such algebra. In a homotopy Lie algebra we have field dependent structure constants and
+a gauge algebra that only closes on-shell. These features are coherently organised and described by
+the products. While diffeomorphisms define a conventional Lie algebra, the larger symmetry of our
+theory most likely does not. Perhaps the most important open question related to the action is that
+of cocycles. The construction of the quartic terms in the action will have to face this issue, as well as
+the possibility that explicit projectors to the kernel of ∆ will be needed.
+The string field theory treats the background E and the fluctuation e rather differently, but gives
+a treatment to all orders in an arbitrary fluctuation e. In section 4.5, we introduced a total field
+E(X) combining both background and fluctuation, showing that it had the right geometric gauge
+transformations when independent of x̃. The Buscher transformation of E was extended to the case
+with dependence on both x and x̃, providing a generalisation of T-duality of the kind proposed in
+[25]. Rewriting the double field theory in terms of E would give a version of the theory independent
+of the split into background and fluctuation, and thus with some degree of background independence.
+Although arbitrary geometries would be allowed, our formulation would remain very much tied to the
+topology Rn−1,1 × T d ; other topologies would have different zero-mode structures.
+Some of the structures in our work also arise in generalised geometry, but with important differences. Generalised geometry [35, 36] treats structures on a D dimensional manifold M on which
+there is a natural action of the group O(D, D). This typically involves doubling the tangent space of
+a manifold M (replacing the tangent bundle T with T ⊕ T ∗ ). Tensor indices then run over twice the
+usual range, but there is dependence only on the D coordinates of M . If M is equipped with a metric
+47
+
+and B-field Eij = gij + bij , these can be usefully combined into the 2D × 2D matrix H(E) given by
+(4.56). The inverse matrix G(E) = H−1 is the generalised metric [36]. It is a 2D × 2D matrix but
+depends only on the D coordinates of M . Generalised geometry is then the study of conventional
+geometry with a metric and B-field on M , packaged in a useful way.
+In our work, by contrast, we restrict to D-dimensional manifolds M = Rn−1,1 × T d and find that
+string theory leads us to Rn−1,1 × T 2d , with a doubling of the torus coordinates but no doubling
+of the range of tensor indices. We found it notationally useful to double the coordinates of Rn−1,1
+also, to give a space Mdoubled with dimension 2D. Our fields depend non-trivially on the doubled
+torus coordinates (xa , x̃a ) and on the Minkowski coordinates xµ , but do not depend on the extra dual
+Minkowski coordinates x̃µ . It follows that we can use the double field theory fluctuations to define the
+field E = Eij + eij + . . . in (4.49) that depends nontrivially on (xµ , xa , x̃a ). We then define an H(E)
+by (4.56) and its inverse G(E). If E depends only on the coordinates (xµ , xa ) of M , then G(E) is a
+generalised metric on M , but here we generalise to allow dependence on x̃a also. Since G(E) is a 2D×2D
+matrix function on the 2D dimensional space Mdoubled that depends on (xµ , xa , x̃a ), it is a candidate for
+a conventional metric on Mdoubled . We have seen in (4.60) that the line element ds2 = dX t G(E(X)) dX
+is invariant under T-duality transformations, which act as large diffeomorphisms of T 2d . The metric
+G is constrained, because H is: ηH = H−1 η, and is further restricted by the requirement that ∆
+annihilate eij and d. Then G is a natural and interesting object that could play an important role in
+the formulation of double field theory.
+Our work has been concrete and explicit. It has long been known that the toroidal coordinates
+in closed string theory should be doubled due to the presence of winding modes and we have given a
+precise sense to this, showing that the dual coordinates enter on an equal footing with the spacetime
+coordinates and that fields depend on both spacetime and dual coordinates. We have seen that double
+field theory exists as a free theory and when we include the lowest-order interactions. A number of
+key features have been identified precisely. The symmetry structure is novel and remains to be fully
+understood and the full nonlinear theory remains to be found. We have seen that doubled fields can
+be used to define a kind of geometry on the doubled space that reduces to conventional spacetime
+geometry on the original torus or to a dual geometry on the dual torus. This geometry is fully
+dynamical – it depends on all of the coordinates of the doubled space, it evolves according to field
+equations and is subject to constraints. This leads to the conclusion that the full doubled geometry
+is physical: the dual dimensions should not be viewed as an auxiliary structure or a gauge artifact.
+It is therefore reasonable to expect that doubled geometry will feature prominently in the eventual
+understanding of the nature of space and the role of geometry in string theory.
+
+Acknowledgments: We would like to thank the KITP in Santa Barbara for hospitality during
+the 2009 Fundamental Aspects of Superstring Theory program and D. Gross for his questions and
+comments. We are grateful to N. Moeller, whose computer programs helped sort out signs of ghost
+correlators needed to compute the action and gauge transformations. We are happy to acknowledge
+helpful conversations with M. Green, W. Siegel, W. Taylor, and A. Tseytlin. The work of B.Z. is
+supported in part by the U.S. DOe grant De-FC02-94eR40818.
+48
+
+References
+[1] A. Giveon, M. Porrati and E. Rabinovici, “Target space duality in string theory,” Phys. Rept. 244 (1994) 77
+[arXiv:hep-th/9401139].
+[2] T. Kugo and B. Zwiebach, “Target space duality as a symmetry of string field theory,” Prog. Theor. Phys.
+87, 801 (1992) [arXiv:hep-th/9201040].
+[3] B. Zwiebach, “Closed string field theory: Quantum action and the B-V master equation,” Nucl. Phys. B
+390, 33 (1993) [arXiv:hep-th/9206084].
+[4] H. Hata, K. Itoh, T. Kugo, H. Kunitomo and K. Ogawa, “Gauge String Field Theory For Torus Compactified Closed String,” Prog. Theor. Phys. 77, 443 (1987).
+[5] M. Maeno and H. Takano, “Derivation of the cocycle factor of vertex in closed bosonic string field theory
+on torus,” Prog. Theor. Phys. 82, 829 (1989).
+[6] C. M. Hull, “A geometry for non-geometric string backgrounds,” JHEP 0510 (2005) 065,
+arXiv:hep-th/0406102.
+[7] A. A. Tseytlin, “Duality Symmetric Formulation Of String World Sheet Dynamics,” Phys. Lett. B 242,
+163 (1990); “Duality Symmetric Closed String Theory And Interacting Chiral Scalars,” Nucl. Phys. B 350,
+395 (1991).
+[8] W. Siegel, “Superspace duality in low-energy superstrings,” Phys. Rev. D 48, 2826 (1993)
+[arXiv:hep-th/9305073]; “Two vierbein formalism for string inspired axionic gravity,” Phys. Rev. D 47,
+5453 (1993) [arXiv:hep-th/9302036].
+[9] M. Van Raamsdonk, “Blending local symmetries with matrix nonlocality in D-brane effective actions,”
+JHEP 0309, 026 (2003) [arXiv:hep-th/0305145].
+[10] M. J. Duff, “Duality Rotations In String Theory,” Nucl. Phys. B 335, 610 (1990).
+[11] C. M. Hull, “Covariant Quantization Of Chiral Bosons And Anomaly Cancellation,” Phys. Lett. B 206
+(1988) 234.
+[12] C. M. Hull, “Chiral Conformal Field Theory And Asymmetric String Compactification,” Phys. Lett. B
+212, 437 (1988).
+[13] J. Maharana and J. H. Schwarz, “Noncompact symmetries in string theory,” Nucl. Phys. B 390, 3 (1993)
+[arXiv:hep-th/9207016].
+[14] C. M. Hull, “Doubled geometry and T-folds,” JHEP 0707 (2007) 080 [arXiv:hep-th/0605149].
+[15] D. S. Berman and D. C. Thompson, “Duality Symmetric Strings, Dilatons and O(d,d) Effective Actions,”
+Phys. Lett. B 662, 279 (2008) [arXiv:0712.1121 [hep-th]].
+[16] D. S. Berman, N. B. Copland and D. C. Thompson, “Background Field Equations for the Duality Symmetric String,” Nucl. Phys. B 791, 175 (2008) [arXiv:0708.2267 [hep-th]].
+[17] E. Hackett-Jones and G. Moutsopoulos, “Quantum mechanics of the doubled torus,” JHEP 0610, 062
+(2006) [arXiv:hep-th/0605114].
+[18] T. H. Buscher, “A Symmetry of the String Background Field Equations,” Phys. Lett. B 194, 59 (1987);
+“Path Integral Derivation of Quantum Duality in Nonlinear Sigma Models,” Phys. Lett. B 201, 466 (1988).
+[19] A. Giveon and M. Rocek, “Generalized duality in curved string backgrounds,” Nucl. Phys. B 380, 128
+(1992) [arXiv:hep-th/9112070].
+
+49
+
+[20] R. Gregory, J. A. Harvey and G. W. Moore, “Unwinding strings and T-duality of Kaluza-Klein and Hmonopoles,” Adv. Theor. Math. Phys. 1 (1997) 283 [arXiv:hep-th/9708086].
+[21] D. Tong, “NS5-branes,
+[arXiv:hep-th/0204186].
+
+T-duality
+
+and
+
+world-sheet
+
+instantons,”
+
+JHEP
+
+0207,
+
+013
+
+(2002)
+
+[22] J. A. Harvey and S. Jensen, “Worldsheet instanton corrections to the Kaluza-Klein monopole,” JHEP
+0510 (2005) 028 [arXiv:hep-th/0507204].
+[23] K. Okuyama, “Linear sigma models of H and KK monopoles,”
+[arXiv:hep-th/0508097].
+
+JHEP 0508 (2005) 089
+
+[24] E. Witten, “Branes, Instantons, And Taub-NUT Spaces,” arXiv:0902.0948 [hep-th].
+[25] A. Dabholkar and C. Hull, “Generalised T-duality and non-geometric backgrounds,” arXiv:hep-th/0512005.
+[26] C. M. Hull and R. A. Reid-Edwards, “Non-geometric backgrounds, doubled geometry and generalised
+T-duality,” arXiv:0902.4032 [hep-th].
+[27] I. B. Frenkel and V. G. Kac, “Basic Representations of Affine Lie Algebras and Dual Resonance Models,”
+Invent. Math. 62, 23 (1980); P. Goddard and D.I. Olive, “Algebras, Lattices and Strings”, in Vertex
+Operators in Mathematics and Physics. Publications of the Mathematical Sciences Research Institute,
+Berkeley, No.3 (Springer-Verlag, 1984) 51-96.
+[28] D. J. Gross, J. A. Harvey, E. J. Martinec and R. Rohm, “Heterotic String Theory. 2. The Interacting
+Heterotic String,” Nucl. Phys. B 267, 75 (1986); Nucl. Phys. B 256, 253 (1985).
+[29] D. Ghoshal and A. Sen, “Gauge and general coordinate invariance in nonpolynomial closed string theory,”
+Nucl. Phys. B 380, 103 (1992) [arXiv:hep-th/9110038].
+[30] Y. Michishita, “Field redefinitions, T-duality and solutions in closed string field theories,” JHEP 0609,
+001 (2006) [arXiv:hep-th/0602251].
+[31] T. Lada and J. Stasheff, “Introduction to SH Lie algebras for physicists,” Int. J. Theor. Phys. 32, 1087
+(1993) [arXiv:hep-th/9209099].
+[32] S. Hellerman and J. Walcher, “Worldsheet CFTs for flat monodrofolds,” arXiv:hep-th/0604191.
+[33] M. H. Goroff and A. Sagnotti, “The Ultraviolet Behavior Of Einstein Gravity,” Nucl. Phys. B266, 709
+(1986).
+[34] E. Alvarez and Y. Kubyshin, “Is the string coupling constant invariant under T-duality?,” Nucl. Phys.
+Proc. Suppl. 57 (1997) 44 [arXiv:hep-th/9610032].
+[35] N. Hitchin, “Generalized Calabi-Yau manifolds,”
+arXiv:math.DG/0209099.
+
+Q. J. Math. 54 (2003),
+
+no. 3,
+
+281–308,
+
+[36] M. Gualtieri, “Generalized complex geometry,” PhD Thesis (2004). arXiv:math/0401221v1 [math.DG]
+
+50
+
+

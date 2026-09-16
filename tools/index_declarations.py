@@ -36,6 +36,7 @@ OWN_LIBRARIES = [
     "DualScaleValidation",
     "Lean5Corpus",
     "StringTheoryFormalization",
+    "DualScaleStream2",
 ]
 
 # Line-anchored: matches the START of a declaration regardless of how complex

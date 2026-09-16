@@ -1,0 +1,2699 @@
+arXiv:hep-th/9906070v2 12 Mar 2001
+
+hep-th/9906070
+HUTP-99/A034
+IASSNS-HEP-99-52
+PUPT-1864
+
+CFT’s From Calabi-Yau Four-folds
+
+Sergei Gukov
+Department of Physics, Princeton University
+Princeton, NJ 08544, USA
+Cumrun Vafa
+Jefferson Laboratory of Physics
+Harvard University, Cambridge, MA 02138, USA
+Edward Witten
+School of Natural Sciences, Institute for Advanced Study
+Olden Lane, Princeton, NJ 08540, USA
+
+We consider F/M/Type IIA theory compactified to four, three, or two dimensions on
+a Calabi-Yau four-fold, and study the behavior near an isolated singularity in the presence
+of appropriate fluxes and branes. We analyze the vacuum and soliton structure of these
+models, and show that near an isolated singularity, one often generates massless chiral
+superfields and a superpotential, and in many instances in two or three dimensions one
+obtains nontrivial superconformal field theories. In the case of two dimensions, we identify
+some of these theories with certain Kazama-Suzuki coset models, such as the N = 2
+
+minimal models.
+
+June 1999
+
+1. Introduction
+We have learned in recent years that it is fruitful to study singular limits of string
+compactifications. In this paper, we consider theories with four supercharges in four,
+three, and two dimensions, constructed by considering F -theory, M -theory, and Type
+IIA string theory on a Calabi-Yau four-fold with an isolated complex singularity. We
+can connect these theories to each other by circle compactifications from four to three to
+two dimensions. In addition to the choice of singularity, the description of these theories
+depends on certain additional data involving the four-form flux and membrane charge in
+M -theory (and related objects in the other theories).
+We will analyze the vacuum structure of these theories and the domain walls connecting the possible vacua. We argue that in many cases, the nonperturbative physics near
+a singularity generates massless chiral superfields with a superpotential, leading in many
+instances, especially in two dimensions or in three dimensions with large membrane charge,
+to an infrared flow to a nontrivial conformal field theory. In some cases, we can identify
+the theories in question with known superconformal models; for example, Type IIA at a
+four-fold An singularity gives an N = 2 Kazama-Suzuki model in two dimensions, as we
+argue using the vacuum and soliton structure. More generally, from the A-D-E four-fold
+hypersurface singularities with appropriate fluxes, we obtain all the N = 2 Kazama-Suzuki
+
+models [1] at level one. This is a large list of exactly solvable conformal theories, which
+includes the N = 2 unitary minimal models. It is quite satisfying that strings in the
+presence of singularities captures such a large class of known conformal theories in two
+
+dimensions, and suggests that maybe even in higher dimensions, strings propagating in
+singular geometries yield an equally large subspace of conformal theories. Moreover, since
+the Kazama-Suzuki models are exactly solvable conformal theories in two dimensions, it
+would be interesting to see to what extent its known spectrum and correlation functions
+can be extracted from string theory. This would be a natural testing grounds in view
+of potential application to higher dimensions where the conformal theories are less well
+understood.
+Our result gives a relation between singularity theory, as in the Landau-Ginzburg
+approach to conformal theories in two dimensions [2-4], and the singularity of internal
+compactification geometry. This relation may well extend to non-supersymmetric examples; it would certainly be interesting to explore this.
+In section 2, we analyze the fluxes, branes, and vacuum states near a four-fold singularity. In section 3, we show how to compute the spectrum of domain walls (which can
+1
+
+also be viewed as strings and kinks in the three and two-dimensional cases) for a special
+class of singularities. In section 4, we identify the models derived from A-D-E singularities
+with Kazama-Suzuki models at level 1. In section 5, we discuss some additional classes of
+singularities on four-folds, and in section 6, we discuss the reinterpretation of some of our
+results in terms of branes.
+
+2. Classification Of Vacua
+2.1. The G-Field And Domain Walls
+For our starting point, we take M -theory on R3 × Y , where Y is a compact eight-
+
+manifold. Soon, we will specialize to the case that Y is a Calabi-Yau four-fold, so as to
+
+achieve supersymmetry. We also will note in section 2.5 the generalization of our remarks
+to Type IIA or F -theory compactification on Y .
+To fully specify a vacuum on Y , one must specify not just Y but also the topological
+class of the three-form potential C of M -theory, whose field strength is G = dC. Roughly
+speaking, C-fields are classified topologically by a characteristic class ξ ∈ H 4 (Y ; Z). At
+
+the level of de Rham cohomology, ξ is measured by the differential form G/2π, and we
+sometimes write it informally as ξ = [G/2π]. 1
+Without breaking the three-dimensional Poincaré symmetries, this model can be gen-
+
+eralized by picking N points Pi ∈ Y and including N membranes with world-volumes of
+
+the form R3 × Pi . More generally, we include both membranes and antimembranes and let
+
+N be the difference between the number of membranes and antimembranes; thus it can be
+a positive or negative integer. With Y being compact, the net source of the C-field must
+vanish; this gives a relation [6,5]
+1
+χ
+−
+N=
+24 2
+1
+
+Z
+
+G∧G
+.
+2
+Y (2π)
+
+(2.1)
+
+The assertion that ξ takes values in H 4 (Y ; Z) is a bit imprecise, since in general [5] the G-field
+
+is shifted from standard Dirac quantization and ξ is not an element of H 4 (Y ; Z). But the difference
+between two C-fields is always measured by a difference ξ − ξ ′ ∈ H 4 (Y ; Z). ξ itself takes values in
+a “principal homogeneous space” Λ for the group H 4 (Y ; Z); the relation between H 4 (Y ; Z) and
+Λ is just analogous to the relation between H 2 (Y ; Z) and the set of Spinc structures on Y . The
+shift in the quantization law of G arises precisely when the intersection form on H 4 (Y ; Z) is not
+even. In our examples, this will occur only in section 5, and we will ignore this issue until that
+point.
+
+2
+
+If G obeys the shifted quantization condition mentioned in the last footnote, then the right
+hand side of (2.1) is always integral [5].
+In this construction, models defined using the same Y but different ξ are actually
+different states of the same model.2 To show this, it suffices to describe a domain wall
+interpolating between models with the same Y and with C-fields of arbitrary characteristic
+classes ξ1 and ξ2 . By Poincaré duality, H4 (Y ; Z) = H 4 (Y ; Z). Hence, there is a four-cycle
+S ⊂ Y , representing an element of H4 (Y ; Z), such that if [S] ∈ H 4 (Y, Z) is the class that
+
+is Poincaré dual to S, then ξ2 − ξ1 = [S]. Now, consider a fivebrane in R3 × Y whose
+
+worldvolume is W = R2 × S, with R2 a linear subspace of R3 . Being of codimension one
+
+in spacetime, this fivebrane looks macroscopically like a domain wall. Moreover, because
+
+the fivebrane is a magnetic source of G, the characteristic class ξ = [G/2π] jumps by [S]
+in crossing this domain wall. Hence if it equals ξ1 on one side, then it equals ξ2 = ξ1 + [S]
+on the other side.
+Equation (2.1) implies that if ξ jumps in crossing a domain wall, then N must also
+jump. Let us see how this comes about. The key is that there is a self-dual three-form T
+on the fivebrane with a relation
+dT = G|W − 2πδ(∂M ).
+
+(2.2)
+
+where G|W is the restriction of the G-field to the world-volume W , ∂M is the union of all
+boundaries of membrane worldvolumes that terminate on W , and δ(∂M ) is a four-form
+with delta function support on ∂M . Because the G-field actually jumps in crossing the
+fivebrane, it is not completely obvious how to interpret the term G|W . We will assume
+that this should be understood as the average of the G-field on the two sides: G|W =
+(G1 + G2 )/2. Since the left hand side of (2.2) is zero in cohomology, we get a relation in
+cohomology
+[∂M ] =
+
+G1 + G2
+2(2π)
+
+(2.3)
+
+where [∂M ] is the cohomology class dual to ∂M . We are interested in the case that the
+membrane worldvolumes are of the form R3 × Pi , so that their boundaries on W are of the
+
+form R2 × Pi . In evaluating (2.3), we can suppress the common R2 factor, and integrate
+over S to get a cohomology relation. The integration converts [∂M ] into N1 − N2 , the
+2
+
+This may also be true of models with different Y – as suggested by results of [7] in the
+
+threefold case – but this issue is much harder to explore.
+
+3
+
+change in N in crossing the domain wall or in other words the net number of membranes
+whose boundary is on the fivebrane. So
+1
+N1 − N2 =
+2
+
+Z
+
+G1 + G2
+1
+=−
+2π
+2
+S
+
+Z
+
+G21 − G22
+.
+(2π)2
+Y
+
+(2.4)
+
+Here we have used the fact that [S] = [(G2 − G1 )/2π] to convert an integral over S to one
+
+over Y . Clearly, (2.4) is compatible with the requirement that (2.1) should hold on both
+
+sides of the domain wall.
+Incorporation Of Supersymmetry
+Now we wish to specialize to the case that Y is a Calabi-Yau four-fold and to look for
+vacua with unbroken supersymmetry.
+For this, several restrictions must be imposed. The requirements for G, assuming that
+one wants unbroken supersymmetry with zero cosmological constant, have been obtained
+in an elegant computation [8]. The result is that G must be of type (2, 2) and must be
+primitive, that is, it must obey
+K ∧ G = 0,
+
+(2.5)
+
+where K is the Kähler form. We will analyze this condition in Appendix I, but for now
+we note that it implies that G is self-dual and hence in particular that
+Z
+G∧G
+≥ 0,
+2
+Y (2π)
+
+(2.6)
+
+with equality only if G = 0.
+The second basic consequence of supersymmetry is that N must be positive. Only
+membranes and not anti-membranes on R3 × Pi preserve the same supersymmetry that is
+
+preserved by the compactification on the complex four-fold Y .
+
+Given that N must be positive, the relation (2.1) implies that
+Z
+
+χ
+G∧G
+≤
+.
+2
+12
+Y (2π)
+
+(2.7)
+
+This inequality together with self-duality implies that, for compact Y , there are only
+finitely many choices of G that are compatible with unbroken supersymmetry. For χ
+negative, there are none at all.
+Energetic Considerations
+4
+
+There is another way to understand the result that Φ = N + 8π1 2
+
+R
+
+G ∧ G should
+
+not change in crossing the domain wall. This is based on a finite energy condition. The
+
+condition that the domain wall be flat and have finite tension requires that the energy
+density on the two sides of the domain wall should be equal far away from the domain
+R
+wall. The energy density in the bulk gets contribution from the G flux given by 8π1 2 G∧∗G
+
+and from the membranes by N . For the supersymmetric situation we are considering, G
+
+is self-dual (as explained in Appendix I), i.e., G = ∗G so the energy density is given by
+R
+N + 8π1 2 G ∧ G, and so its constancy across a domain wall is a consequence of the finite
+
+energy of the domain wall. This is also important in our applications later, as we will
+use a BPS formula for the mass of domain walls. Due to boundary terms at infinity,
+such formulas are generally not valid for objects of very low codimension in space (the
+codimension is one in our case). The cancellation of the boundary terms in question in
+our case is again precisely the condition of constancy of Φ across the domain wall.
+2.2. Behavior Near A Singularity
+So far we have considered the case of a compact smooth manifold Y . Our main interest
+in the present paper, however, is to study the behavior as Y develops a singularity. For
+practical purposes, it is convenient then to omit the part of Y that is far from the singularity
+and to consider a complete but not compact Calabi-Yau four-fold that is developing a
+singularity. In fact, some of the singularities we will study – like the An singularities of a
+complex surface for very large n – probably cannot be embedded in a compact Calabi-Yau
+manifold. Our discussion will apply directly to an isolated singularity of a non-compact
+variety.
+Hypersurface singularities are an important example and will be our focus in this
+paper except in section 5. For example, one of our important applications will be to quasihomogeneous hypersurface singularities. In this case, we begin with five complex variables
+za , a = 1, . . . , 5 of degree ra > 0 and a polynomial F (z1 , . . . , z5 ) that is homogeneous of
+degree 1. We assume that F is such that the hypersurface F = 0 is smooth except for an
+isolated singularity at z1 = . . . = z5 = 0. Then we let X be a smooth deformation of this
+singular hypersurface such as
+F (z1 , . . . , z5 ) = ǫ
+
+(2.8)
+
+X
+
+(2.9)
+
+with ǫ a constant, or more generally
+F (z1 , . . . , z5 ) =
+
+i
+
+5
+
+ti Ai (z1 , . . . , z5 ),
+
+with complex parameters ti and polynomials Ai that describe relevant perturbations of
+the singularity F = 0. The singular hypersurface F = 0 admits the U (1) symmetry group
+za → eiθra za .
+
+(2.10)
+
+Under this transformation, the holomorphic four-form
+Ω=
+
+dz2 ∧ dz3 ∧ dz4 ∧ dz5
+∂F/∂z1
+
+has charge
+rΩ =
+
+X
+a
+
+ra − 1.
+
+(2.11)
+
+(2.12)
+
+The U (1) symmetry in (2.10) is an R-symmetry group if rΩ 6= 0. If the model is to
+
+flow in the infrared to a superconformal field theory, an R-symmetry must appear in the
+
+superconformal algebra; we propose that it is the symmetry just identified. If the Ai have
+degrees ri , then the dimensions of the corresponding operators are proportional to ri /rΩ
+(in other words, the R-charges normalized so that Ω has R-charge 1). Since the ri are
+positive, requiring that the dimensions be positive gives a condition rΩ > 0:
+X
+
+ra > 1.
+
+(2.13)
+
+a
+
+We will see the importance of this condition from several points of view.
+In what sense is such an X a Calabi-Yau manifold? The holomorphic four-form Ω
+defined in (2.11) has no zeroes or poles on X, though it has in a certain sense (using the
+compactification described in the next paragraph) a pole at infinity. A theorem of Tian
+and Yau [9] asserts, assuming (2.13), that there is a Calabi-Yau metric on X with volume
+form
+|Ω ∧ Ω|,
+
+(2.14)
+
+and moreover (see the precise statement in eqn. (2.3) of [9]) this metric is asymptotically
+conical, that is it looks near infinity like
+ds2 = dr 2 + r 2 ds2⊥ .
+
+(2.15)
+
+Here ds⊥ is an “angular” metric, and r is a “radial” coordinate near infinity which scales
+under za → λra za as r → λ(Σa ra −1)/4 r. This exponent ensures that the volume form
+derived from (2.15) scales like |Ω|2 .
+
+6
+
+To apply the Tian-Yau theorem to the hypersurface X and deduce the statements
+in the last paragraph, one writes ra = ba /d with ba relatively prime integers and d a
+positive integer. Then one introduces another complex variable w of degree 1/d, and one
+compactifies X to the compact variety Y ′ defined by the equation F (zi ) − ǫwd = 0 in
+a weighted projective space. The discussion of [9] applies to this situation, with D the
+divisor w = 0, and identifies r with a fractional power of |w|.
+
+It is very plausible that if a compact Calabi-Yau manifold Y develops an isolated
+
+hypersurface singularity that is at finite distance on the moduli space, then the CalabiYau metric on Y looks locally like the conelike metric that we have just described on the
+hypersurface X.3 For our purposes, we do not strictly need to know that this is true, but
+the physical applications are certainly rather natural if it is.
+Flux At Infinity
+Noncompactness of X leads to several important novelties in the specification of the
+model. First of all, flux can escape to infinity, and hence (2.1) no longer holds. Rather, an
+extra term appears in (2.1), namely the flux Φ measured at infinity. This flux is a constant
+of the motion, invariant under the dynamics which occurs in the “interior” of X. If we
+absorb the constant χ/24 in the definition of Φ,4 then we can write the conserved quantity
+as
+
+1
+Φ=N+
+2
+
+Z
+
+G∧G
+.
+2
+X (2π)
+
+(2.16)
+
+We can think of Φ as a constant that must be specified (in addition to giving X) in order
+to determine the model. A model with given Φ has various vacuum states, determined by
+the values of N and G. For unbroken supersymmetry, both terms on the right hand side
+of (2.16) are positive (for the same reasons as in the case of compact X), so there are only
+finitely many possible choices of N and G for fixed Φ.
+In addition to Φ, there is another quantity that characterizes the definition of the
+model – and commutes with the dynamics. For finiteness of the energy, it is reasonable
+to require that the flux G vanishes if restricted to ∂X, the region near infinity in X. This
+3
+
+There is no claim here that X can be globally embedded in Y , only that the behavior of Y
+
+near its singularity can be modeled by X. Note that the variety Y ′ used in the last paragraph in
+relation to the Tian-Yau theorem is not a Calabi-Yau manifold.
+4
+
+When X is not compact, χ must in any event be defined by a curvature integral and need
+
+not coincide with the topological Euler characteristic.
+
+7
+
+does not imply that the cohomology class ξ vanishes if restricted to ∂X, but only that its
+restriction is a torsion class. Thus, the C-field at infinity is flat, but perhaps topologically
+non-trivial. Local dynamics cannot change the behavior at infinity, so the restriction of
+ξ to ∂X is another invariant of the local dynamics, which must be specified in defining a
+model.
+There is another way to see more explicitly how this invariant comes about. For
+this, we have to look at precisely what Poincaré duality says in the case of a noncompact
+manifold X. Domain walls of the type introduced in section 2.1 are classified by H4 (X; Z),
+which classifies the cycles S on which a fivebrane can wrap to make a domain wall. Poincaré
+4
+4
+duality says that this is the same as Hcpct
+(X; Z) (where Hcpct
+denotes cohomology with
+
+compact support), 5 the rough idea being that if S is a four-cycle determining an element
+of H4 (X; Z) (so in particular S is by definition compact), then the Poincaré dual class
+[S] is represented by a delta function δ(S) that has compact support. C-fields on X are
+4
+classified topologically by ξ ∈ H 4 (X; Z). The groups H 4 (X; Z) and Hcpct
+(X; Z) that
+
+classify, respectively, topological classes of C-fields and of changes in C-fields in crossing
+
+domain walls are in general different for non-compact X. However, there is always a
+natural map
+4
+i : Hcpct
+(X; Z) → H 4 (X; Z)
+
+(2.17)
+
+(by “forgetting” that a class has compact support). Moreover, for hypersurface singu4
+larities, Hcpct
+(X; Z) and H 4 (X; Z) are lattices, which we will call Γ and Γ∗ respectively.
+
+Poincaré duality in the noncompact case says that Γ and Γ∗ are dual lattices. When the
+4
+intersection form on Hcpct
+(X; Z) has no null vectors, the map i is an embedding, and Γ
+
+can be regarded as a sublattice of its dual lattice Γ∗ . This makes things very simple.
+The lattice Γ can actually be described rather simply. In fact, topologically, the
+hypersurface X is homotopic to a “bouquet” of four-spheres. 6 H4 (X; Z) is a lattice Γ
+with one generator for every four-sphere in the bouquet.
+5
+
+The cohomology of X with compact support is generated by closed forms β on X with
+compact support, subject to the equivalence relation that β ∼
+= β + dǫ if ǫ has compact support.
+6
+
+Such a bouquet is, by definition, associated with a tree diagram in which the vertices represent
+
+four-spheres and two vertices are connected by a line if and only if the corresponding four-spheres
+intersect. Such a diagram has the form of a simply-laced Dynkin diagram (with vertices for fourspheres and lines for intersections of them), except that the Cartan matrix may not be positive
+definite and thus one is not restricted to the A-D-E case.
+
+8
+
+In crossing a domain wall, ξ cannot change by an arbitrary amount, but only by
+something of the form i([S]) where [S] is a class with compact support. The possible
+values of ξ modulo changes due to the dynamics, that is due to crossing domain walls, are
+thus classified by
+4
+H 4 (X; Z)/i(Hcpct
+(X; Z)) = Γ∗ /Γ.
+
+(2.18)
+
+This can be reinterpreted as follows. The exact sequence of the pair (X, ∂X) reads in
+part
+j
+i
+4
+. . . H 4 (X, ∂X; Z)−→H
+(X; Z)−→H 4 (∂X; Z) → H 5 (X, ∂X; Z) → . . . .
+
+(2.19)
+
+i
+Here H i (X, ∂X; Z) is the same as Hcpct
+(X; Z). By Poincaré duality, H 5 (X, ∂X; Z) =
+
+H3 (X; Z), and this is zero on dimensional grounds for a bouquet of four-spheres. So the
+exact sequence implies that
+4
+H 4 (∂X; Z) = H 4 (X; Z)/i(Hcpct
+(X; Z)) = Γ∗ /Γ.
+
+(2.20)
+
+Thus the value of ξ modulo changes in crossing domain walls (the right hand side of (2.20))
+can be identified with the restriction of ξ to ∂X (the left hand side).
+If the intersection pairing on H4 (X; Z) is degenerate, then we should define Γ to be the
+quotient of H 4 (X, ∂X; Z) by the group of null vectors (which can be shown to be precisely
+the image in H 4 (X, ∂X; Z) of H 3 (∂X; Z)). The dual Γ∗ is the subgroup of H 4 (X; Z)
+consisting of elements whose restriction to ∂X is torsion. With these definitions of Γ and
+Γ∗ , everything that we have described above carries over (i embeds Γ as a finite index
+sublattice of Γ∗ ; the G-fields, with appropriate boundary conditions, take values in Γ∗ ,
+and jump in crossing a domain wall by elements of Γ).
+Examples
+We will now illustrate these perhaps slightly abstract ideas with examples that will
+be important later.
+Consider first the simple case that X is a deformation of a quadric singularity:
+5
+X
+
+za2 = ǫ.
+
+(2.21)
+
+a=1
+
+If we assume that ǫ is real and write za = xa + iya , we get ~x2 −~y 2 = ǫ and ~x · ~y = 0. Setting
+p
+~u = ~x/ ǫ + ~y 2 , we see that ~u is a unit vector. The subset of X with ~y = 0 is a four-sphere
+9
+
+S; since ~y · ~u = 0, X is the cotangent bundle of S. In particular, X is homotopic to the
+four-sphere S. This is the case in which the bouquet of spheres is made from just a single
+4
+sphere. The self-intersection number of S is S · S = 2.7 The lattice Γ = Hcpct
+(X; Z) is
+
+generated by [S], but the dual lattice Γ∗ = H 4 (X; Z) is generated by 21 [S] (whose scalar
+4
+product with S is 1). So H 4 (∂X; Z) = H 4 (X; Z)/Hcpct
+(X; Z) = 12 Γ/Γ = Z2 .
+
+A somewhat more sophisticated example is the An−1 singularity in complex dimension
+four:
+Pn (z1 ) +
+
+5
+X
+
+za2 = 0.
+
+(2.22)
+
+a=2
+
+Here Pn (z1 ) is a polynomial of degree n. For simplicity we take
+Pn (z1 ) =
+
+n
+Y
+
+i=1
+
+(z1 − bi )
+
+(2.23)
+
+with real bi , b1 < b2 < . . . < bn . For i = 1, . . . , n−1, we define a four-sphere Si by requiring
+that z1 is real with bi < z1 < bi+1 , and that the zj for j > 1 are all real or all imaginary
+4
+depending on the value of i modulo two. The Si generate the lattice Γ = Hcpct
+(X; Z).
+
+The intersection numbers of the Si are Si2 = 2, Si · Si+1 = 1, with others vanishing. (Si
+
+intersects Si+1 at the single point z1 = bi+1 , zj = 0 for j > 1; Si does not intersect Sj if
+|j − i| > 1.) Endowed with this intersection form, Γ is the root lattice of the Lie group
+An−1 = SU (n), while the dual lattice Γ∗ = H 4 (X; Z) is the weight lattice. The quotient
+is H 4 (∂X; Z) = Γ∗ /Γ = Zn . It can be shown that X is homotopic to the union of the Si ,
+which form a “bouquet.” In this case, the bouquet is associated with the Dynkin diagram
+of An .
+More generally, if H(z1 , z2 , z3 ) is a polynomial in three complex variables that describes a deformation of an A-D-E surface singularity, we can consider the corresponding
+surface singularity in complex dimension four:
+H(z1 , z2 , z3 ) + z42 + z52 = 0.
+
+(2.24)
+
+The case just considered, with H(z1 , z2 , z3 ) = Pn (z1 ) + z22 + z32 , corresponds to An−1 . (The
+appropriate H’s for the other cases are written at the end of section 2.5.) For any of the
+7
+
+To compute this, deform S to the four-sphere S ′ defined by y1 = u2 , y2 = −u1 , y3 = u4 ,
+
+y4 = −u3 , y5 = 0. Then S ′ intersects S at the two points u1 = . . . = u4 = 0, u5 = ±1, and each
+point contributes +1 to the intersection number. Hence S · S = S · S ′ = 2.
+
+10
+
+A-D-E examples, Γ is the root lattice of the appropriate simply-connected A-D-E group
+G, Γ∗ is the weight lattice of G, and the quotient H 4 (∂X; Z) = Γ∗ /Γ is isomorphic to the
+center of G. One approach to proving these assertions is to show that they are true for
+the middle-dimensional cohomology of the surface H(z1 , z2 , z3 ) = 0, and are unaffected
+by “stabilizing” the singularity by adding two more variables with the quadratic terms
+z42 + z52 .
+2.3. Distance To Singularity And Hodge Structure Of Cohomology
+In the present subsection, we return to the case of a compact Calabi-Yau four-fold Y .
+We suppose that, when some complex parameters ti are varied, Y develops a singularity
+that looks like a quasihomogeneous hypersurface singularity F (z1 , . . . , z5 ) = 0, where the
+za have degrees ra > 0 and F is of degree 1. Upon varying the complex structure of Y ,
+the hypersurface is deformed to a smooth one which looks locally like
+F (z1 , . . . , z5 ) +
+
+X
+
+ti Ai (z1 , . . . , z5 ) = 0.
+
+(2.25)
+
+i
+
+Here the ti are complex parameters, and the Ai are perturbations of the equation.
+The first question to examine is whether the singularity at ti = 0 can arise at finite
+distance in Calabi-Yau moduli space. The Kähler form on the parameter space is
+ω = dti dt
+
+∂2
+
+j
+
+∂ti ∂t
+
+j
+
+K,
+
+(2.26)
+
+where K is the Kähler potential K. On the parameter space of a compact Calabi-Yau
+manifold, the Kähler potential of the Weil-Peterson metric is8
+Z
+K = − ln
+Ω ∧ Ω.
+
+(2.27)
+
+Y
+
+We want to analyze a possible singularity of this integral near za = 0 in the limit that the
+ti go to zero. If and only if there is such a singularity, the distance to ti = 0 will be infinite
+in the metric (2.26). For analyzing this question, the large za behavior, which depends on
+how the singularity is embedded in a compact variety Y , is immaterial (as long as there
+is some cutoff to avoid a divergence at large za ); we can, for instance, replace Y by the
+hypersurface in (2.25) and restrict the integral to the region |za | < 1.
+8
+
+The derivation of this formula is just as in the three-fold case; see [10] for an exposition.
+
+11
+
+To determine the small za behavior of the integral, we use a simple scaling. Under
+za → λra za , Ω scales like λΣa ra −1 and so the integral in (2.27) scales like |λ|2Σa ra −2 . Small
+
+za corresponds to small λ. Hence the condition that the integral converges at small za is
+X
+a
+
+ra − 1 > 0.
+
+(2.28)
+
+This is a satisfying result, in that this is the same condition that was needed to get an
+R-symmetry with positive charges and to apply the Tian-Yau theorem on existence of
+asymptotically cone-like Calabi-Yau metrics.
+We will now apply this kind of reasoning to address the following question, whose
+importance will become clear: As Y becomes singular, what is the Hodge type of the
+“vanishing cohomology,” that is, of the part of the cohomology that “disappears” at the
+singularity? We only have to look at middle dimensional cohomology, because the deformation of a hypersurface singularity has cohomology only in the middle dimension.
+First let us ask if there is vanishing cohomology of type (4, 0). For this, we normalize
+the holomorphic (4, 0)-form Ω of Y in such a way that far from za = 0 it has a limit as
+ti → 0. Then we ask if the integral
+
+Z
+
+Y
+
+Ω∧Ω
+
+(2.29)
+
+converges as ti → 0. If the answer is no, then to make the integral converge as ti → 0, we
+
+would have to rescale Ω so that in the limit it vanishes pointwise away from the singularity.
+Then in the limit ti → 0, Ω would be a closed four-form that is non-zero but vanishes away
+
+from the singularity. There would thus be vanishing cohomology of type (4, 0). If the
+answer is yes, there is no vanishing cohomology of type (4, 0).
+We have already seen that convergence of the integral in (2.29) is the condition that
+the singularity is at finite distance in moduli space. Hence, singularities that can arise
+in the dynamics of a compact Calabi-Yau four-fold have no vanishing cohomology of type
+(4, 0).
+Now let us look for vanishing cohomology of type (3, 1). The (3, 1) cohomology is
+generated by Ωi = DΩ/Dti , where D/Dti is the covariant derivative computed using the
+Gauss-Manin connection. To determine if Ωi is a vanishing cycle, we need to examine the
+integral
+
+Z
+
+Y
+
+Ωi ∧ Ωi ,
+
+(2.30)
+
+and ask if it is finite as all tj → 0. If not, then to make the integral converge, we would
+have to rescale Ωi by a function of the tj , and in the limit tj → 0, Ωi would represent a
+12
+
+nonzero (3, 1) cohomology class that vanishes away from the singularity, or in other words
+a piece of the vanishing cohomology of type (3, 1). The integral (2.30) is more conveniently
+written as
+
+∂2
+∂ti ∂ti
+
+Z
+
+Y
+
+Ω ∧ Ω.
+
+(2.31)
+
+Whether this integral converges can, again, be determined by scaling. If the function Ai
+in (2.25) scales under za → λra za as λsi , then ti scales like λ1−si and (2.31) scales like
+
+|λ|wi with
+
+wi = 2
+
+X
+a
+
+!
+
+ra + s i − 2 .
+
+(2.32)
+
+Vanishing (3, 1) cohomology arises when wi ≤ 0, so that the integral in (2.31) diverges
+
+near z = 0. The most dangerous case is for Ai = 1, si = 0. The condition that wi > 0 for
+all i, so that there is no vanishing (3, 1) cohomology, is thus
+X
+
+ra > 2.
+
+(2.33)
+
+a
+
+We can classify the models that obey this condition. Consider a Landau-Ginzburg
+model with chiral superfields Φa , a = 1, . . . , 5 and superpotential F (Φ1 , . . . , Φ5 ). If Φa have
+P5
+degree ra and F has degree one, then the central charge of this model is b
+c = a=1 (1 −
+P
+2ra ) = 5 − 2 a ra . The condition (2.33) thus amounts to9
+c < 1.
+b
+
+(2.34)
+
+F (z1 , . . . , z5 ) = H(z1 , z2 , z3 ) + z42 + z52 ,
+
+(2.35)
+
+The singularities that obey this condition are the A-D-E singularities. They are given, in
+a suitable set of coordinates, by
+
+where H(z1 , z2 , z3 ) = 0 is the equation of an A-D-E surface singularity.
+Application To Hypersurface
+We have developed this discussion for the case of a compact Calabi-Yau manifold Y
+that develops a hypersurface singularity, but it is more in the spirit of the present paper
+to decompactify Y and focus on the hypersurface itself, that is to consider M -theory on
+9
+
+Note that in terms of b
+c the condition that the local singularity of the fourfold be at finite
+
+distance in moduli space (2.28) is that b
+c < 3, which generalizes for an n-fold singularity to b
+c < n−1.
+
+13
+
+R3 × X, where X is a hypersurface that develops the given singularity. This is the natural
+framework for studying M -theory near a singularity, with extraneous degrees of freedom
+decoupled. Let us therefore now explain the significance of the above results for this case.
+P
+If we work on the noncompact hypersurface, the condition that a ra + si > 2, which
+R
+ensures that there is not a divergence of |Ωi |2 near za = 0, also ensures that there is
+such a divergence near za = ∞. The large za divergence means that, in M -theory on
+R3 × X, the modes that deform the singularity of X have divergent kinetic energy and
+
+are not dynamical. They correspond, instead, to coupling constants of the theory near the
+singularity; they can be specified externally as part of the definition of the problem.
+In the A-D-E examples, the complex structure modes are all non-dynamical in this
+sense. For other examples, positivity of (2.32) does not hold for all i, and therefore some of
+the complex structure deformations of X are dynamical; they vary quantum mechanically
+in the theory at the singularity. Only those modes for which wi > 0 can be specified
+externally and represent coupling constants.
+Now let us consider the Hodge type of the G-field in the hypersurface case. For
+unbroken supersymmetry in flat spacetime, G must be a harmonic L2 form of type (2, 2)
+[8]. It must, as well, be integral and “primitive.”
+For hypersurface singularities with asymptotically conical metrics of the type predicted
+by the Tian-Yau theorem, the condition that G be a harmonic L2 form is a mild one in
+the following sense. For an asymptotically conical metric on a manifold X, one expects
+i
+the space of L2 harmonic forms of degree i to be isomorphic to the image of Hcpct
+(X; R)
+
+in H i (X; R). For hypersurface singularities of complex dimension four, there is only fourdimensional cohomology, so we expect L2 harmonic forms of degree four only. Assuming
+4
+i
+there are no null vectors in Hcpct
+(X), the image of Hcpct
+(X; R) in H i (X; R) is all of
+
+H i (X; R), so one expects that all of the four-dimensional cohomology is realized by L2
+harmonic forms.
+What about the requirement that G be primitive? Primitiveness means that K ∧ G =
+
+0, where K is the Kähler form. If G is an L2 harmonic four-form on a manifold whose L2
+
+harmonic forms are all four-forms, then K ∧ G is automatically zero (if not zero, it would
+
+be an L2 harmonic six-form). Thus, for singularities of this type, the condition that G
+14
+
+should be primitive is automatically obeyed. 10 In section 5, we will examine a singularity
+of a different sort for which primitiveness of G is an important constraint.
+The remaining constraint that we have not examined yet is a severe constraint in the
+case of hypersurface singularities. This is the condition that G should be of type (2, 2). For
+A-D-E singularities, as we have seen above, the vanishing cohomology is all of type (2,2),
+P
+so the L2 harmonic forms have this property. For other singularities, with a ra < 2,
+there is vanishing cohomology of types (3,1), (2,2), and (1,3). Under such conditions, it
+is generically very hard to find a non-zero four-form that is of type (2,2) and integral.
+Once an integral four-form G is picked, requiring that it be of type (2, 2) will generally put
+restrictions on the complex structure of X. Since some of the complex structure modes
+are dynamical whenever there is vanishing (3,1) cohomology, the restriction on complex
+structure that is entailed in making G be of type (2,2) is likely to play an important role in
+the dynamics of these models. In this paper, to avoid having to deal with the dynamical
+complex structure modes and the Hodge structure of the singularity, we will study in detail
+only the A-D-E singularities. (For fourfold examples where moduli are dynamically frozen
+see [11].)
+Here is another way to see the distinguished nature of the A-D-E singularities. As
+we explain in Appendix I, the intersection form on H 4 (X, Z) is positive definite on the
+primitive cohomology of type (2,2), and negative definite on the primitive cohomology of
+types (3,1) and (1,3). Hence, in particular, having the primitive cohomology be entirely of
+type (2,2) is equivalent to positive definiteness of the intersection form on H 4 (X; Z). For
+an intersection form specified by a bouquet of spheres to be positive definite is a condition
+that singles out the A-D-E Dynkin diagrams, so again we see that the A-D-E singularities
+are the ones with vanishing cohomology that is entirely of type (2,2).
+2.4. Interpretation Of Constraints On G
+Since the constraints on G found in [8] have played an important role in this discussion,
+we will pause here to attempt to gain a better understanding of these constraints.
+We consider compactification of M -theory on a compact four-fold Y . We first suppose
+that G is zero. Variations of the Calabi-Yau metric of Y arise either from variations of
+10
+
+A different explanation of this is as follows. In section 2.2, we compactified X to a complete
+
+but non-Calabi-Yau variety Y ′ by adding a divisor D at infinity. D is an ample divisor, and the
+“primitive” cohomology in this situation is the cohomology that vanishes when restricted to D.
+This is certainly so for the vanishing cohomology, whose support is far from D.
+
+15
+
+the complex structure or variations of the Kähler structure. The variations of the complex
+structure are parametrized classically by complex parameters ti , which we promote to chiral
+superfields Ti . If hp,q is the dimension of the Hodge group H p,q (Y ), then the number of
+Ti is h3,1 . The Kähler structure is parametrized classically by h1,1 real parameters ki .
+Compactification of the C-field on Y gives rise to h1,1 U (1) gauge fields ai on R3 whose
+duals are scalars φi that combine with the ki to make h1,1 chiral superfields that we may
+call Ki .
+If G = 0, the expectation values of the Ti and Ki are arbitrary, in the supergravity
+approximation to M -theory. (Instantons can lift this degeneracy [12].) For non-zero G,
+R
+this is not so. After picking an integral four-form G (which must be such that X G∧G > 0
+or the equations we are about to write will have no solutions), we must adjust the complex
+structure of X so that
+G0,4 = G1,3 = 0,
+
+(2.36)
+
+and the Kähler structure of X so that
+G ∧ K = 0.
+
+(2.37)
+
+In (2.36), Gp,q denotes the (p, q) part of G.
+We want to describe an effective action for the Ti and Kj that accounts for (2.36)
+R
+and (2.37). Since supersymmetric actions of the general kind d4 θ(. . .) do not lift vacuum
+
+degeneracies, we look for F-term interactions. Thus, we want a superpotential W (Ti )
+f (Kj ) that will account
+that will account for (2.36), and an analog of a superpotential W
+
+for (2.37). In three dimensions, the fields Kj are in vector multiplets, and the function
+f (Kj ) is related by supersymmetry to Chern-Simons couplings for those multiplets. We
+W
+will not try to work out the full details of this here. Upon dimensional reduction to two
+f (Kj ) becomes the twisted chiral
+dimensions, the Kj become twisted chiral multiplets and W
+f a superpotential.
+superpotential. Therefore, we will somewhen loosely call W
+
+To obtain (2.36), we propose to let Ω be a holomorphic four-form on Y , and take
+1
+W (Ti ) =
+2π
+
+Z
+
+Y
+
+Ω ∧ G.
+
+(2.38)
+
+This object is not, strictly speaking, a function of the Ti but a section of a line bundle over
+the moduli space M of complex structures on Y (on which the Ti are coordinates), since
+16
+
+it is proportional to the choice of Ω. Let L be the line bundle over M whose fiber is the
+space of holomorphic four-forms on Y . The Kähler form of M can be written
+ω = −∂∂ln
+
+Z
+
+Y
+
+Ω ∧ Ω,
+
+(2.39)
+
+in other words it is ∂∂ ln |Ω|2 for Ω any section of L, and this means [13] that W should
+
+be a section of L. Thus, the linear dependence on Ω in (2.38) is the right behavior
+of a superpotential. In supergravity with four supercharges, the condition for unbroken
+
+supersymmetry in flat space is W = dW = 0. With W as in (2.38), the condition W = 0 is
+that G0,4 = 0. Also, since the objects dΩ/dti generate H 3,1 (Y ), the condition dW = 0 is
+that G1,3 = 0. So we have found the supersymmetric interaction that accounts for (2.36).
+Another way to justify (2.38) is to consider supersymmetric domain walls. The tension
+of a domain wall obtained by wrapping a brane on a four-cycle S is the absolute value of
+R
+Ω. If G changes from G1 to G2 in crossing the domain wall, then G2 − G1 = 2π[S], so
+S
+
+this integral is
+
+1
+2π
+
+Z
+
+X
+
+Ω ∧ (G2 − G1 ).
+
+(2.40)
+
+In a theory with four supercharges, the tension of a supersymmetric domain wall is the
+absolute value of the change in the superpotential W . So (2.40) should be the change in
+W in crossing the domain wall, a statement that is clearly compatible with (2.38).
+In a similar spirit, one can readily guess the interaction responsible for (2.37):
+f (Ki ) =
+W
+
+Z
+
+X
+
+K ∧ K ∧ G.
+
+(2.41)
+
+Here K is a complexified Kähler class whose real part is the ordinary Kähler class K. The
+f = 0 is K ∧ G = 0, whose real part is (2.37). W
+f = 0 is a consequence of this,
+condition dW
+
+and imposes no further condition.
+
+In M -theory on a compact Calabi-Yau four-fold Y , near a hypersurface singular-
+
+ity, the relation of the change in the superpotential in crossing a domain wall to (2.40)
+shows that W cannot vanish in all vacua. In the first version of the present paper it
+was conjectured that vacua with non-zero W correspond to supersymmetric AdS compactifications. However, a more careful analysis in the revised Appendix II (triggered by
+comments of J. Polchinski) shows that four-fold compactifications with G0,4 6= 0 lead to
+17
+
+non-supersymmetric theories which are classically scale invariant11 , the so-called “no-scale
+models”. In fact, since the supersymmetry conditions (2.36) and (2.37) are invariant under overall rescaling of the metric on Y , this conclusion is needed for the superpotential
+f (Kj ) to describe correctly the effective dynamics of M-theory on
+W (Ti , Kj ) = W (Ti ) + W
+
+a Calabi-Yau four-fold with a G-flux. Going to a non-compact manifold has the effect of
+decoupling gravity and allows us to avoid this problem in the present discussion.
+
+Going back to supersymmetric compactifications to R3 , it is interesting to compactify
+one of the directions in R3 on a circle and consider Type IIA on R2 × Y . The above
+
+analysis carries over immediately for supersymmetric vacua with a nonzero value of the
+Ramond-Ramond four-form G. However, in Type IIA string theory, in view of mirror
+symmetry and other T -dualities, one naturally thinks that one should construct a more
+general effective superpotential to incorporate the possibility of turning on a full set of
+Ramond-Ramond fields, and not just the four-form. Indeed, the mirror of G0,4 would be
+the RR zero-form (responsible [14] for the massive deformation of Type IIA supergravity),
+and the mirror of G1,3 would be the RR two-form. This is under investigation [15].
+Physical Interpretation
+We will now discuss the physical interpretation of the superpotentials that we have
+computed.
+We have computed the superpotential as a function of the superfields Ti and Kj with
+all other degrees of freedom integrated out. For Y a large, smooth Calabi-Yau four-fold,
+this is a very natural thing to do, since the superfields Ti and Kj are massless if G = 0,
+while other superfields are massive. However, we have argued that as one approaches
+a singularity, there are different vacuum states in the theory at the singularity that are
+specified by different choices of the G-field. We will interpret the theory near the singularity
+as a theory of dynamical chiral fields Φα such that the critical points of the superpotential
+as a function of Φα are given by the possible choices of G-field. Thus, a more complete
+c (Φα ; Ti , Kj ), such that
+description of the theory would involve a superpotential function W
+f (Kj ) is obtained by extremizing W
+c with respect
+the function W (Ti , Kj ) = W (Ti ) + W
+
+to the Φα . For fixed choices of Ti and Kj , the extremization with respect to Φα has
+11
+
+In general, quantum corrections presumably break the classical scale invariance which changes
+
+the normalization of the Lagrangian. For instance, five-brane instantons are expected to modify
+the effective superpotential and cause the model to roll down to a supersymmetric vacuum with
+negative cosmological constant.
+
+18
+
+different solutions, corresponding to the different choices of G. It is very difficult to see
+the superfields Φα explicitly, but for suitable examples we will identify the superpotential
+c (Φα ; Ti , Kj ) in section 3 by studying the soliton structure.
+function W
+
+2.5. Analogs For Type IIA And F -Theory
+
+We have formulated the discussion so far in terms of M -theory on R3 × Y , with Y
+
+a Calabi-Yau four-fold, but there are close analogs for Type IIA on R2 × Y and (if Y is
+elliptically fibered) for F -theory on R4 × Y .
+
+The analysis of [8] carries over to Type IIA, with G now understood as the Ramond-
+
+Ramond four-form field. Our analysis of the vacuum structure also carries over readily to
+this case. One obvious change is that domain walls are now constructed from four-branes
+(with world-volume R × S ⊂ R2 × Y ). Another obvious change is that, in Type IIA, the
+
+space-filling membranes that contribute to the formula (2.16) for the flux at infinity are
+replaced by space-filling fundamental strings. Also, in the Type IIA case, alongside the
+Ramond-Ramond four-form, one would want to incorporate the Ramond-Ramond zeroform and two-form, as we have discussed briefly in section 2.4.
+In going to F -theory, the space-filling membranes that contribute to the flux Φ at
+infinity are replaced by space-filling threebranes. Also we need to discuss the F -theory
+analog of the G-field. Let Y be a four-fold that is elliptically fibered over a base B. Let θ i ,
+i = 1, 2, be a basis of integral harmonic one-forms on the fibers, and let χ be an integral
+two-form generating the two-dimensional cohomology of the fibers. Then a four-form G
+on Y has at the level of cohomology an expansion
+G=g+p∧χ+
+
+X
+i
+
+Hi ∧ θ i ,
+
+(2.42)
+
+where g, p, and Hi are respectively forms of degree 4, 2, and 3 on B. (Hi is a three-form on
+B with values in the one-dimensional cohomology of the fibers, while g and p are ordinary
+four- and two-forms on B.) If G is primitive, then it is in particular self-dual (see Appendix
+I). For G to be integral, g and p must be integral. Self-duality of G gives a relation between
+g and p which, in the limit that the area of the fibers of Y → B is very small, is impossible
+to obey if g and p are non-zero and integral. Hence, the surviving part of G in the F -theory
+
+limit is contained in the Hi , which are interpreted physically as the Neveu-Schwarz and
+Ramond-Ramond three-form field strengths of Type IIB superstrings. With g = p = 0, G
+19
+
+is an element of the primitive cohomology of Y that is odd under the involution that acts
+as −1 on the elliptic fibers and trivially on the base.
+
+In terms of a Type IIB description, we have the following structure. Let H NS , H R
+
+denote the NS and Ramond three-form field strengths. Let B denote the base of F-theory
+“visible” to type IIB. Consider
+H + = H R − τ H NS
+H − = H R − τ H NS
+We view τ as varying over B with monodromies around the loci of seven-branes by SL(2, Z)
+transformations
+τ→
+
+aτ + b
+cτ + d
+
+Under such transformations
+H + → (cτ + d)−1 H +
+H − → (cτ + d)−1 H −
+A supersymmetric configuration in this context is obtained by choosing an integral (1, 2)
+form on the base, H, well defined modulo transformation by (cτ + d)−1 around the 7branes. Alternatively, H is a section of Ω1,2 ⊗ L where L is a line bundle over B whose
+first chern class is c1 (L) = −12c1 (B). Then we identify
+H + = H,
+
+H− = H
+
+Moreover we require that H ∧ k = 0 where k denotes the Kähler class of B. In this case a
+given model is specified by fixing
+
+1
+Φ=N+ 2
+4π
+
+Z
+
+1
+H ∧H
+B τ2
+
+where N denotes the number of D3 branes.
+To describe the domain walls, recall that one can interpret F -theory on R4 × Y in
+
+terms of Type IIB on R4 × B with (p, q)-sevenbranes on a certain locus L ⊂ B. Domain
+walls across which the Hi jump are described by a five-brane wrapped on R3 ×V ⊂ R4 ×B
+
+with V a three-cycle in B. The (p, q) type of the five-brane varies as V wraps around the
+
+discriminant locus in B.
+20
+
+This is a rather complicated structure in general, but to study the local behavior
+near a singularity, it simplifies considerably. One reason for this is that near an isolated
+singularity, one can replace B by C3 . If we pick coordinates z1 , z2 , z3 on C3 , then the
+elliptic fibration over C3 can be described very explicitly by a Weierstrass equation for
+additional complex variables x, y:
+y 2 = x3 + f (z1 , z2 , z3 )x + g(z1 , z2 , z3 ).
+
+(2.43)
+
+The fibers degenerate over a singular locus L which is the discriminant of the cubic, given
+by ∆ = 0, where
+∆ = 4f 3 (z1 , z2 , z3 ) + 27g 2 (z1 , z2 , z3 ).
+
+(2.44)
+
+A singular behavior of the elliptic fibration Y just corresponds in this language to a singularity of the hypersurface L ⊂ C3 . We are interested in a singular point of L at which
+
+4f 3 + 27g 2 = 0 but f and g are not both zero.12 Near such a singular point, the detailed
+construction of ∆ in terms of f and g is irrelevant, and and one can regard L as a fairly
+generic deformation of a hypersurface singularity ∆ = 0.
+Actually, the full structure of (p, q) sevenbranes also simplifies in this situation. The
+deformation of an isolated surface singularity is topologically a bouquet of two-spheres,
+and in particular simply-connected. Hence, there is no monodromy around which the type
+of brane can change; the (p, q) type of the sevenbrane is fixed, and one can think of it (for
+example) as a D7-brane. Thus, the F -theory analog of a Calabi-Yau fourfold singularity is
+a more elementary-sounding problem: the study of a D7-brane in R10 = R4 × C3 whose
+worldvolume is R4 × L, where L ⊂ C3 is developing a singularity.
+
+Now, let us describe the vacuum states and domain walls in this context. The D7-brane
+
+supports a U (1) gauge field, whose first Chern class is an element of H 2 (L; Z). This group
+is a lattice Γ∗ , whose rank is the number of two-spheres in the bouquet. A D5-brane can
+end on a D7-brane; its boundary couples magnetically to the gauge field on the D7-brane.
+Hence the domain walls across which the first Chern class jumps are built from fivebranes of
+topology R3 × V , where V is a three-manifold in C3 whose boundary lies in L. In crossing
+
+such a domain wall, the first Chern class jumps by the cohomology class [∂V ], which is
+2
+an element of Γ = H2 (L; Z) = Hcpct
+(L; Z). Poincaré duality for noncompact manifolds
+12
+
+Singularities with f and g both zero are composite 7-branes of various types (the order of
+
+vanishing of discriminant would be bigger than 1). For such cases the simplifications described in
+the text do not arise and the full structure of (p, q) sevenbranes is relevant.
+
+21
+
+2
+asserts that Γ and Γ∗ are dual, and13 the natural map i : Hcpct
+(L; Z) → H 2 (L; Z) gives
+
+an embedding of Γ in Γ∗ . Thus we have a familiar situation: the vacuum is determined
+
+by a point in a lattice Γ∗ , and in crossing a domain wall it can jump by an element of a
+sublattice Γ. Γ is endowed with an integral quadratic form (the intersection pairing), and
+as the notation suggests, Γ∗ is the dual lattice of Γ with respect to this pairing.
+The A-D-E singularities will furnish important examples in the present paper, for
+reasons that we have already explained. Thus, let us explain how they arise in the F theory context. An example of an elliptic four-fold fibration Y with an isolated singularity
+is given by the following Weierstrass equation:
+y 2 = x3 − 3a2 x + (H(z1 , z2 , z3 ) + 2a3 ).
+
+(2.45)
+
+Here a is an arbitrary non-zero constant, and H is a quasihomogeneous polynomial describing a singularity in three variables at z1 = z2 = z3 = 0. If we shift x to x + a, the
+equation becomes
+y 2 = x3 + 3ax2 + H(z1 , z2 , z3 ),
+
+(2.46)
+
+and this makes it obvious that the singularity of the elliptic fibration is obtained by “stabilizing” the surface singularity H = 0 by adding the quadratic terms 3a2 x2 − y 2 (the
+
+x3 term is irrelevant near the singularity, which is at x = y = 0). The equation for the
+discriminant locus L ⊂ C3 reduces to H = 0 (plus higher order terms that are irrelevant
+
+near the singularity). So the singularity of the elliptic four-fold is just the “stabilization”
+of the singularity L. To obtain the A-D-E singularities, for both the surface L and the
+four-fold Y , we need only select the appropriate H:
+
+13
+
+H = z1n + z22 + z32
+
+An−1
+
+H = z1n + z1 z22 + z32
+
+Dn+1
+
+H = z13 + z24 + z32
+
+E6
+
+H = z13 + z1 z23 + z32
+
+E7
+
+H = z13 + z25 + z32
+
+E8 .
+
+(2.47)
+
+If there are null vectors in Γ, there is a slightly more elaborate story as mentioned in section
+
+2.2.
+
+22
+
+2.6. Conformal Field Theory: First Results
+Given Type IIA, M -theory, or F -theory on a singular geometry, one natural question
+is whether a non-trivial conformal field theory arises in the infrared.
+In one situation, an affirmative answer to this question is strongly suggested by recent
+literature. This is the case of M -theory at a quasihomogeneous four-fold singularity (for
+the present discussion this need not be a hypersurface singularity) with a large value of
+the conserved quantity Φ that was introduced in section 2.2:
+1
+Φ=N+
+2
+
+Z
+
+G∧G
+.
+2
+X (2π)
+
+(2.48)
+
+We suppose that the four-fold X is a cone over a seven-manifold Q. Consider M -theory
+on R3 × X, with a specified (flat) C-field at infinity that we call C∞ , and with a very large
+number of membranes near the singularity, such that the total membrane charge (including
+the contribution of the C-field) is Φ.
+
+This system is believed [16-18] to be described
+
+in the infrared by a conformal field theory that is dual to M -theory on AdS4 × Q, with
+
+a constant curvature (but topologically trivial) C-field on AdS4 that depends on Φ, and
+
+a flat but topologically nontrivial C-field on Q that is equal to C∞ . For a special case in
+which the role of C∞ has been analyzed (for Q = RP7 ) see [19].
+The AdS4 dual of this CFT depends only on what one can measure on Q, that is
+C∞ and Φ, and not the detailed way of decomposing Φ in terms of N and G as in (2.48).
+That decomposition arises if one makes a deformation of the theory, deforming X to a
+smooth hypersurface. M -theory on R3 × X with X such a smooth hypersurface has vacua
+
+corresponding to all choices of N and G obeying (2.48). When X develops a singularity,
+the G-field apparently “disappears” at the singularity, and the decomposition of Φ into
+
+membrane and G-field terms is lost.
+Note that the vacua with N 6= 0 do not have a mass gap even after deforming to smooth
+
+X. There are at least massless modes associated with the motion of the membranes on X.
+To get a theory that after deformation of the parameters flows in the infrared to massive
+vacua only, one must set Φ to the smallest possible value for a given value of C∞ , so that
+after deforming to a smooth X, N will be zero for all vacua. We recall that C∞ determines
+a coset in Γ∗ /Γ. To get a massive theory, Φ must equal the minimum of
+1
+2
+
+Z
+
+G∧G
+,
+2
+X (2π)
+23
+
+(2.49)
+
+with G running over the elements of the coset of Γ∗ /Γ determined by C∞ ; the massive
+vacua are in correspondence with the choices of G that achieve the minimum.
+Our goal in the next two sections will be to analyze, for the A-D-E singularities, the
+“massive” models just described. The analysis will be made by analyzing the domain wall
+structure, or, as it is usually called in two dimensions, the soliton structure. To justify the
+analysis, we need to know that there are no quantum corrections to the classical geometry
+(which we will use to find the solitons). Such corrections would come from appropriate
+instantons. For example, for Type IIA on a Calabi-Yau threefold near the conifold singularity, the Euclidean D2 brane instantons wrapped around the S3 in the conifold smooth out
+the singular classical geometry [20-22]. Likewise, in M -theory compactifications on suitable Calabi-Yau four-folds, a superpotential is generated by wrapped Euclidean fivebranes
+[12]. Such effects, however, are absent in the examples we are considering. For example, in
+the F -theory, we are really studying, as we have explained above, a sevenbrane on L ⊂ C3 .
+
+Since the C3 has no non-trivial cycles, the relevant instantons will have to end on L, in
+order to have finite action. For the instanton to affect the quantum moduli space it has to
+be BPS, which in particular requires that the boundary of the instanton be a non-trivial
+compact cycle in L. In Type IIB string theory the only possible candidate instantons
+which could end on a sevenbrane are fivebranes and onebranes (of appropriate (p, q) type).
+Viewing them as instantons, their boundaries would be five- and one-dimensional respectively. So if L has no non-trivial compact five- or one-dimensional cycles, then there are no
+instantons, and quantum corrections do not modify the singular classical geometry. In our
+case, L, whose compact geometry consists of a bouquet of two-spheres, has only two-cycles,
+so there are no instantons. This is to be contrasted with the seemingly similar problem of
+F -theory on a Calabi-Yau threefold. In that case, L is a complex curve, with non-trivial
+one-cycles; instanton one-branes can and do modify the classical geometry. This is in fact
+the F -theory version of the description of the corrections to conifold geometry in Type
+IIA compactification (and reduces to it upon compactification on T2 ). For F -theory on a
+four-fold, if the singularity of the surface L is not isolated, then it would generically also
+have non-trivial one-cycles and would thus receive corrections.
+For M -theory or Type IIA near a four-fold hypersurface singularity, a similar statement holds. In this case, the local geometry of the deformed singularity has non-trivial
+four-cycles only. Thus there is no room for instantons, i.e. wrapped Euclidean M2- or
+M5-branes, which would require non-trivial three or six-cycles on X. Thus the classical
+singularity survives quantum corrections.
+24
+
+Thus, to analyze the small Φ theories, we will look for supersymmetric domain walls
+using the classical geometry near the singularity. The domain walls are constructed from
+branes whose volumes vanish as the hypersurface X becomes singular, so their tensions go
+to zero. Thus one can reasonably hope to get a description in terms of an effective theory
+that contains only light degrees of freedom and generates these domain walls. In fact,
+for the massive models derived from A-D-E singularities, we will propose a description in
+terms of an effective superpotential for a certain set of chiral superfields that generate the
+same soliton structure. This description will make clear that one should expect flow to a
+non-trivial IR conformal field theory in the two-dimensional cases, and in a few cases in
+three dimensions.
+The basic strategy for identifying a supersymmetric theory based on its BPS soliton
+structure is the classification approach of [23] to N = 2 supersymmetric theories in two
+dimensions. Consider a theory with N = 2 supersymmetry in two dimensions with k
+vacua, and consider the integral k × k matrix S given by
+S =1−A
+
+(2.50)
+
+where 1 represents the identity matrix and A is a strictly upper triangular matrix whose
+Aij entry for i < j is the number of nearly massless BPS solitons interpolating between
+the i-th sector and the j-th sector weighted with the index (−1)F F [24], i.e.
+Aij = Trij−solitons (−1)F F.
+It was argued that this massive deformation comes from a CFT in the UV limit with
+central charge b
+c and k chiral fields with R-charges qi which satisfy
+Eigenvalues(S −t S) = exp[2πi(qi − 21 b
+c)]
+
+(even the integral part of qi can be determined from Aij [23]). This is a strong restriction,
+and in case of deformations of minimal models, the solitons completely characterize the
+conformal theory. In other words, any theory which upon mass deformation has the same
+solitonic structure as that for a massive deformation of a minimal model is equivalent to
+it! For non-minimal models, the relation above between the spectrum of the solitons and
+the charges of chiral fields is still a very powerful connection and in particular fixes the
+central charge of the corresponding conformal theory.
+25
+
+Above two dimensions, the domain wall or soliton analysis still identifies an effective
+superpotential, but it is less common for a theory with a given superpotential to flow to a
+nontrivial IR conformal field theory. For instance, a theory with a single chiral superfield
+Φ and superpotential W = Φn is believed to flow to a nontrivial CFT in two dimensions
+for all n > 2, while in three dimensions this is expected only for n = 3 [25], and in four
+dimensions, it is believed to flow to a trivial IR theory for all n. In any event, our analysis
+will identify the nonperturbative massless fields and superpotential near the singularity
+also in three and four dimensions. Also, even in four dimensions, a Φn superpotential can
+become relevant as a perturbation to certain fixed points [26], so with some modification
+of our construction, the superpotential we find may eventually be important in analyzing
+four dimensional CFT’s that arise from string theory.
+The soliton analysis will give detailed information about the behavior for small membrane charge, which is the opposite limit from the AdS description discussed above that
+governs the large charge behavior at least for the M -theory compactifications. For the
+Type IIA and F -theory compactifications, the description of the large charge behavior
+appears to be less simple.
+
+3. Geometry of Domain Walls
+As explained in section 2.6, our task now is to analyze the soliton structure for certain hypersurface singularities. In fact, we will consider the Ak singularities which were
+introduced in section 2.2.
+Instead of specializing to four-folds, it proves insightful to consider the more general
+problem of identifying BPS states of wrapped n-branes in a Calabi-Yau n-fold near an
+isolated singularity. To study the behavior near an Ak singularity, we consider a local
+model for a Calabi-Yau n-fold given by
+2
+−Pm (z1 ) + z22 + ... + zn+1
+=0
+
+where Pm (z1 ) is a polynomial of degree m = k + 1 in z1 . When Pm has two equal roots,
+we get a singular geometry. The most singular gemetry arises when Pm (z1 ) = z1m . For
+a generic polynomial Pm (z1 ), the geometry is not singular and the compact homology of
+this manifold has a basis made of m − 1 spheres of real dimension n intersecting each
+
+other according to the Am−1 Dynkin diagram. For a particular choice of Pm , we explained
+how to construct these spheres in section 2.2. The intersection form on the compact
+26
+
+homology is symmetric if n is even and antisymmetric if n is odd. We would like to
+consider minimal wrapped n-branes, i.e. minimal supersymmetric cycles, in this geometry.
+A supersymmetric cycle is a Lagrangian submanifold (that is, the Kähler form vanishes on
+it). Moreover, on a minimal supersymmetric n-cycle the holomorphic n-form Ω of CalabiYau is real (with a suitably chosen overall phase) and gives the volume of the n-brane. For
+a minimal supersymmetric cycle the quantity
+Z
+V =
+|Ω|
+C
+
+which is the volume of cycle C, is minimized and is given by
+Z
+V =α
+Ω
+C
+
+for some choice of phase α. Or stated equivalently, the condition is that
+Z
+Z
+Ω .
+|Ω| =
+C
+
+C
+
+which is the condition for minimizing the volume of C among the Lagrangian submanifolds
+in a given homology class.
+The holomorphic n-form Ω, up to an overall complex scale factor, is given by
+Ω=
+
+idz1 ...dzn
+dz1 ...dzn
+=p
+2
+zn+1
+z2 + ... + zn2 − Pm (z1 )
+
+We would like to minimize the volume form given by |Ω|. To count the minimal supersym-
+
+metric cycles, we follow the strategy in [27] and decompose the geometry to the “fiber and
+the base” as follows. Suppose C is a supersymmetric minimal cycle. Consider the image
+
+of C on z1 . This is a one-dimensional subspace, because for a fixed z1 , the manifold (being
+P
+defined by j>1 zj2 = Pm (z1 )) has for its only nontrivial cycle a sphere Sn−1
+z1 . Note that
+the radius of this sphere is |Pm (z1 )|1/2 , from which one can deduce by scaling that
+Z
+
+dz2 ∧ . . . ∧ dzn−1
+= |Pm (z1 )|(n−2)/2
+n−1
+z
+n
+Sz
+
+(3.1)
+
+1
+
+up to an irrelevant multiplicative constant. The inverse image of C over a point in the z1
+plane must, if not empty, be a minimal cycle, and so must be n − 1-dimensional; hence
+
+the image of C in the z1 plane must be one-dimensional. The minimization of |Ω| will be
+
+done in two steps: We first consider Lagrangian submanifolds Cf (z1 ) for a fixed z1 which
+27
+
+minimize the
+
+R
+
+Cf (z1 )
+
+|Ω| and next consider the minimization of the volume interval over an
+
+interval I in z1 . In this way we get using (3.1)
+Z
+
+Cf (z1 )×I
+
+|Ω| =
+
+Z Z
+I
+
+Ω =
+
+S n−1 (z1 )
+
+Z
+
+I
+
+n−2
+
+|Pm (z1 )| 2 dz1 .
+
+(3.2)
+
+We now minimize the volume of the supersymmetric n-cycle with respect to the choice of
+the one-dimensional line segment I representing the image of the supersymmetric cycle on
+the z1 plane. One can allow the line segment to end at some special points on z1 where
+Pm (z1 ) = 0, and these are the only allowed boundaries. In fact, precisely if the line segment
+terminates at zeroes of Pm , the D-brane worldvolume is closed and smooth. Indeed the
+topology of the cycle is an Sn which can be viewed as an Sn−1 sphere fibered over the
+interval, where at the boundaries of the interval the radius of Sn−1 vanishes. The expression
+(3.2) is minimized if along the segment on z1 plane the condition |Pm (z)| = αPm (z) is
+satisfied for some z-independent phase α. Let us define a function W with
+n−2
+
+dW = Pm 2 dz1
+
+(3.3)
+
+In terms of W , the condition for minimal volume is that the image of the curve in the W
+plane be a straight line along the direction specified by α−1 . Moreover, the end-points of
+the segment in the z1 plane correspond to critical points in W , i.e., dW = 0 (for n = 2 the
+endpoints are defined by the condition that Pm (z1 ) = 0). These conditions are identical
+[28] for finding solitons in an N = 2 Landau-Ginzburg theory in two dimension (or more
+generally, BPS domain walls in theories with four supercharges in dimensions two, three,
+or four) with superpotential given by W ! If n is even, (3.3) corresponds to a well defined
+function of z1 . If n is odd, it gives rise to a well defined (meromorphic) one-form on a
+hyperelliptic cover of the z1 plane, branched over the zeroes of Pm (z1 ).
+Strictly speaking we have constructed the supersymmetric cycle by assuming that the
+condition that the cycle Cf be Lagrangian is the same as being Lagrangian relative to the
+Kähler form induced on the fiber. This is not necessarily true. For example if the Kähler
+form has a piece of the form
+k = ... + fi dz1 ∧ dzi∗ + ...
+the condition of Lagrangian gets modified. In special cases, like when the polynomial Pm
+has real coefficient one can use a Z2 antiholomorphic involution to argue that the cycles
+28
+
+we constructed are both Lagrangian and supersymmetric. In the more general case we
+proceed as follows: Consider a generic
+Pm (z1 ) =
+
+Y
+(z1 − ai )
+i
+
+Consider a one parameter family of Calabi-Yau metrics where
+ai (t) = tai .
+Note that the BPS states will be the same for all t, because the condition of the BPS
+charges getting aligned does not change as we change t (the BPS charges only receive an
+overall rescaling). However to construct the Kähler metric as a function of t we note that
+it can be mapped to the previous metric by defining
+ze1 = tz1
+
+zei = tn/2 zi
+
+f or i 6= 1
+
+Thus we use the z variables but rescale the Kähler form accordingly. In this way as
+t → ∞ the mixed terms in the Kähler form are dominated by the terms purely in the
+fiber direction (for n > 2 which is the case of main interest). Therefore in this limit the
+
+condition of Lagrangian submanifold in the fiber that we have used becomes accurate.
+Let us consider some special cases. The cases for a K3 surface and for a Calabi-Yau
+threefold have already been considered in [27] (see also [29,30]), and will be reviewed below.
+Solitons for K3
+In the case n = 2, the above geometry is the complex deformation of the Am−1
+singularity. For any choice of the polynomial Pm (z1 ), we expect m(m − 1)/2 solitons (up
+
+to the choice of orientation) to complete the adjoint representation of U (1)m−1 to the
+
+SU (m) gauge multiplet. From (3.3), we see that in this case W = z1 . There are m roots
+for Pm (z), and the solitons correspond to straight lines between the roots. Note that this
+gives m(m − 1)/2 solitons up to the choice of the orientation, as was anticipated.
+Solitons for CY3
+For the case of Calabi-Yau threefolds, n = 3. In this case W is defined by
+1
+
+dW = Pm (z1 ) 2 dz1 .
+29
+
+Here dW can be viewed as a meromorphic one-form on a hyperelliptic Riemann surface
+over z1 branched over the roots of Pm (z1 ). The geometry of these solitons for this class
+of conformal theories would correspond to straight lines on the Jacobian of this surface
+defined by the integrals dW and is presently under study [31].
+Solitons for CY4
+For the case of four-folds, which are of course our main focus in the present paper,
+the definition of W in (3.3) shows that W is a polynomial of degree m + 1 in the z1 plane.
+We have already shown that the conditions for finding the solitons in this geometry are
+the same as those in an LG theory with the superpotential W . In this case, however, if
+we use our four-fold in Type IIA superstring theory, the analogy becomes more precise:
+compactification on the four-fold leads to a theory in two dimensions with N = 2, and it
+
+is natural to identify the corresponding W with the superpotential of an N = 2 Landau-
+
+Ginzburg theory. We will indeed argue that for a certain choice of the membrane charge,
+the Type IIA on a deformed A1 singularity leads to an N = 2 theory with the same W
+for its superpotential. For more general choices of the membrane charge, we find closely
+related Kazama-Suzuki coset models at level 1.
+Before we discuss these subtleties, note that even though we have m critical points, it
+is no longer true in general that we have m(m − 1)/2 solitons. In general the pre-image of
+a straight line connecting the images of critical points in the W plane will not connect the
+critical points in the z1 space. In fact as we change the polynomial Pm (z1 ), it is known
+that the number of BPS states jumps [24]. For some choices of Pm (z1 ) we do have exactly
+the same number of solitons as in the K3 case. For example, it has been shown [28] that
+for
+Pm (z1 ) = z1m − µn
+for any constant µ, there is one soliton for each pair of m critical points z1 = ωµ with
+ω m = 1, though, unlike the K3 case the image in the z1 plane is not a straight line.
+It would be interesting to compare the formula for W that we have deduced from
+the soliton structure to the analysis of section 2.4. Although this is guaranteed to work,
+because both capture the mass of the BPS soliton, we have not attempted to check this
+correspondence explicitly.
+30
+
+4. Identifications With Kazama-Suzuki Models
+Let us consider in more detail Type IIA strings propagating on a smooth hypersurface
+X obtained by deforming the Am−1 singularity:
+−Pm (z1 ) + z22 + z32 + z42 + z52 = 0.
+As explained in section 2, in order to specify the problem fully, we must fix the value C∞
+of the C-field at infinity and also the flux
+Φ = N + 12 ξ 2 ,
+
+(4.1)
+
+where ξ = [G/2π] is the characteristic class of the C-field.
+As we explained in section 2.2, ξ is restricted to a fixed coset in Γ∗ /Γ, where Γ and Γ∗
+are the root and weight lattices of the Lie group SU (m). The coset in which ξ takes values
+is determined by C∞ . For the theory to have a mass gap, as discussed in section 2.6, we
+set Φ equal to the minimum value of 21 ξ 2 (for all ξ in the given coset), so that N = 0 for
+all vacua.
+This can be made very explicit in the case of the Am−1 singularity. C∞ takes values in
+Γ∗ /Γ, which is isomorphic to the center of SU (m), or Zm . For k = 0, . . . , m−1, if C∞ = k,
+then to minimize ξ 2 , ξ must be a weight of the k-fold antisymmetric tensor product of the
+fundamental representation of SU (m). We denote that representation as Rk . The number
+of choices of ξ is the dimension of Rk or m!/k!(m − k)!. This is the number of vacuum
+states of the k th model, if Pm is such that the hypersurface X is smooth.
+
+For k = 0, there is only one vacuum (ξ = 0), and the theory is trivial and massive.
+Let us consider the next simplest case, where k = 1 and ξ is a weight of the fundamental
+representation of SU (m). In this case, we have m vacua. To find the degeneracy of
+the solitons between these vacua, we use the analysis of section 3. We found that the
+solitons are exactly the same as those for an N = 2 LG theory with a chiral field Φ and
+
+a superpotential W obeying dW/dΦ = Pm (Φ). In fact we can identify the m vacua with
+the m critical points of Pm , and as we found in section 3, the condition for the existence
+of a soliton in the LG theory is exactly the same as the condition for a BPS wrapped fourbrane in Type IIA near the Am−1 singularity. In this case the soliton data are enough to
+determine the theory [23] as discussed at the end of section 2; the two-dimensional theory
+with superpotential W is the Am minimal model [3,4]. So the Type IIA theory near an
+31
+
+Am−1 four-fold singularity is governed by the Am N = 2 minimal model. This model can
+also be viewed as an N = 2 Kazama-Suzuki coset model at level one, of the form
+SU (m)
+SU (m − 1) × U (1)
+For the M -theory or F -theory near an Am−1 four-fold singularity, we still get a description in terms of a chiral field with the same superpotential, but in most instances (the
+exception being Φ3 in three dimensions), a theory in three or four dimensions with a Φm+1
+superpotential is believed to flow to a free theory in the infrared.
+We now consider the other choices of C∞ , so that ξ is a weight of the k-fold antisymmetric product of the fundamental representation of SU (m) with some k > 1. We
+argue that it has exactly the same solitonic spectrum as a deformation of the following LG
+theory, which we will call the k-fold symmetric combination of the k = 1 model. Consider
+the function of k variables
+W (z1 , . . . , zk ) = z1m+1 + z2m+1 + ... + zkm+1 .
+It is invariant under permutations of the zi , and so can be expressed as a polynomial in
+the elementary symmetric functions
+xl =
+
+X
+
+zi1 ...zil .
+
+i1 <...<il
+
+The superpotential we consider is thus
+W (x1 , . . . , xk ) = W (z1 ) + . . . + W (zk ).
+
+(4.2)
+
+The LG model with superpotential (4.2) has been conjectured in [32] to be equivalent to
+the following Kazama-Suzuki coset model at level 1:
+SU (m)
+SU (m − k) × SU (k) × U (1)
+For the deformed singularity, with ∂W = Pm , we claim that the deformed LG superpotential is given by
+W (x1 , ..., xk ) = W (z1 ) + ... + W (zk )
+where again what we mean by this expression is that the superpotential is W (z1 ) + . . . +
+W (zk ) regarded as a polynomial in the elementary symmetric functions x1 , . . . , xk . Let us
+32
+
+see why this LG superpotential has exactly the same solitonic spectrum that we get for
+Type IIA at an Am−1 four-fold singularity with C∞ = k mod m. It is not too difficult to
+show [23,33] that the set of vacua of a LG theory made of a k-fold symmetric combination
+of a given LG theory (in the sense introduced above) can be identified with the k-fold
+antisymmetric tensor product of the space of vacua of the original LG theory.14 As we
+already discussed, the k = 1 model has a one-variable superpotential W (z), and its vacua
+correspond to the fundamental weights of the SU (m) lattice. Thus we can identify the
+vacua of the k-fold symmetric combination of the k = 1 model with the weights of the
+k-fold anti-symmetric tensor representation Rk . As far as the allowed solitons, on the LG
+side, they can be constructed in the decoupled theory with superpotential W (z1 , . . . , zk ) =
+W (z1 ) + . . . + W (zk ) before re-expressing this in terms of the symmetric functions xi . In
+this description, it is clear that soliton states are just the products of soliton states in the
+individual one-variable theories, and that irreducible solitons (which cannot break up into
+several widely separated mutually BPS solitons) are solitons in just one of the variables zi .
+So if we label the vacua by |i1 , ..., ik i, with is denoting a vacuum in the sth one-particle
+
+theory, then the allowed solitons only change one vacuum index at a time. So the solitons
+of a LG theory that is constructed as a k-fold symmetric combination of a one-variable
+theory are in natural correspondence with the solitons of the one-variable theory. This is
+the same result that we get from Type IIA near the Am−1 singularity with C∞ = k mod m.
+
+Indeed, for this model, the solitons are constructed by finding supersymmetric four-cycles.
+The analysis of those cycles in section 3 depends only on the geometry of the hypersurface
+and makes no reference to C∞ . Hence the solitons for any k are in a natural sense the
+same as the solitons of the k = 1 model.
+In other words the solitons are in 1-1 correspondence with those roots of SU (m)
+that appear as solitons for the one-variable LG superpotential given by W . Whichever
+roots appear act in the natural way on the weights of the representation Rk . In the
+case W = z m+1 − az, all the roots appear with multiplicity 1. This structure for the
+
+solitons of the deformed Kazama-Suzuki model was suggested in [34] where it was argued
+to correspond (with a specific choice of Kähler potential) to an integrable model.
+14
+
+The main point that must be shown is that the vacua in the different factors must be distinct.
+
+To illustrate why, it suffices to consider the case that k = 2 and that each individual model has
+only one vacuum. So we start with m = 2: W (z) = z 2 . Then we write W (z1 , z2 ) = z12 + z22 in
+terms of the symmetric functions x1 = z1 + z2 , x2 = z1 z2 , getting W (x1 , x2 ) = x21 − 2x2 . This
+function has no critical points, so the combined model has no supersymmetric vacua, as expected.
+
+33
+
+4.1. Other A-D-E Singularities
+So far we have mainly considered the local singularity to be
+H(z1 , z2 , z3 ) + z42 + z52 = 0
+with H being an Am−1 singularity. Here we would like to generalize this to the case where
+H determines a D or E type singularity.
+The general structure is quite like what we have seen for Am−1 . C∞ takes values in
+Γ∗ /Γ, where Γ is the root lattice of the appropriate simply-connected A-D-E group G, and
+Γ∗ is the weight lattice of G. The quotient Γ∗ /Γ is isomorphic to the center of G.
+Just as in the SU (m) case, to make possible a deformation to a massive theory, we
+need to pick Φ so that ξ ranges over the weights of the smallest representation with a given
+non-trivial action of the center of G. (If we pick the trivial action of the center, we will
+get the trivial representation and a massive free theory.) The appropriate representations
+are the representations with Dynkin label 1. In the Dn case, the relevant choices are the
+vector and spinor representations. For D2n , there are two different spinor representations,
+but they differ by an outer automorphism of D2n and give equivalent theories. So there are
+essentially two choices of C∞ leading to massive theories based on the Dn singularity. For
+the E6 theory, there is only the fundamental 27 dimensional representation (and its conjugate, which gives an equivalent theory); for E7 there is the fundamental 56 dimensional
+representation. So E6 and E7 lead to one massive theory each. E8 is simply-connected with
+trivial center, so we cannot use it to get a conformal theory with a massive deformation.
+The distinguished representations that we have described are in one-to-one correspondence with nodes of index 1 on the A-D-E Dynkin diagram and thence with Hermitian
+symmetric spaces G/H (where H is obtained by omitting the given node from the Dynkin
+diagram). Apart from the Grassmannians SU (m)/SU (k) × SU (m − k) × U (1) that we
+
+have already encountered, these Hermitian symmetric spaces are as follows. For the Dn
+case, there are two inequivalent choices, given by
+SO(2n)
+SO(2n − 2) × SO(2)
+
+for fundamental rep.
+
+SO(2n)
+U (n)
+
+for spinor rep.,
+34
+
+and for the E6 and E7 cases one has
+E6
+SO(10) × U (1)
+
+for fundamental rep.
+
+E7
+E6 × U (1)
+
+for fundamental rep.
+
+Such a Hermitian symmetric space determines a series of N = 2 Kazama-Suzuki models
+
+(at level 1, 2, 3 . . .). It is natural to conjecture that, as we have found for Am−1 , the massive
+
+models obtained from Type IIA at an A-D-E singularity are the massive deformations of
+the corresponding level 1 Kazama-Suzuki (or KS) models. As a first check, it is known that
+for a level one G/H KS model, the dimension of the chiral ring is equal to the dimension
+of the corresponding representation of G. This in turn is equal to the dimension of the
+cohomology of G/H and it was conjectured in [32] that the chiral ring is isomorphic to
+the cohomology ring, which in turn was shown to arise from the ring of an LG theory.
+Thus the G/H theories at level 1 were identified with specific LG models.15 Moreover, the
+structure of the solitons for a special (integrable) deformation of the KS model at level 1
+was studied in [34] and it was conjectured that the solitons exist precisely for each allowed
+single root acting on the corresponding weight diagram. Though we have not analyzed the
+BPS spectrum of the D4-branes in this case to find the multiplicity of the solitons for each
+root, it is natural to expect that at least for specific deformations, just as in the Am−1
+case, the solitons are given by the root lattice of the corresponding group with multiplicity
+1. In this case we would reproduce the solitonic structure anticipated in [34]. It is quite
+satisfying that we apparently get all the Hermitian symmetric space KS models at level 1
+in such a uniform way from considering singularities of CY four-folds.
+
+5. Other Types Of Singularity
+The only four-fold singularities that we have so far considered in any detail are hypersurface singularities. A Calabi-Yau four-fold can, however, develop singularities of many
+different types. We cannot offer any sort of overview of the possibilities, but will briefly
+analyze two cases in the present section.
+15
+
+The higher level KS models do not generally admit an LG description.
+
+35
+
+5.1. Hyper-Kähler Singularities
+First we will consider what one might call hyper-Kähler singularities – singularities
+near which Y admits a hyper-Kähler structure, though Y may not be globally a hyperKähler manifold. An important fact here is that M -theory compactification on R3 × Y
+
+with Y hyper-Kähler has N = 3 supersymmetry in three dimensions, because the space of
+covariantly constant spinors on a hyper-Kähler eight-manifold is three-dimensional.
+
+To isolate the behavior near the singularity, we replace Y by an asymptotically conical
+hyper-Kähler manifold X that is developing a singularity. We will focus on a very concrete
+example, with X = T ∗ CP2 , the cotangent bundle of complex projective two-space. This
+hyper-Kähler manifold is conveniently obtained by considering a U (1) gauge theory with
+eight supercharges, and three hypermultiplets Ai , i = 1, 2, 3, of charge 1. 16 There is an
+
+SU (3) global symmetry group, with the Ai transforming as the 3. There is also an SU (2)
+R-symmetry group, and it is possible to add an SU (2) triplet of Fayet-Iliopoulos terms d~
+to the D-flatness equations. A manifestly SU (2)-invariant way to exhibit the D-flatness
+equations is as follows. The bosonic parts of the Ai can be regarded as a complex field
+
+Aiα , α = 1, 2, transforming as (3, 2) under SU (3) × SU (2)R . The D-flatness condition is
+X
+i
+
+β
+Aiα Ai = d~ · ~σαβ ,
+
+(5.1)
+
+with ~σ the traceless 2 × 2 Pauli matrices. The moduli space X of zero energy states of the
+
+classical gauge theory is the space of solutions of (5.1) divided by the action of the gauge
+theory. In this description, it is manifest that if d~ = 0, then X has an SU (3) × SU (2)R
+
+symmetry, broken if d~ 6= 0 to SU (3) × U (1)R . The SU (3) preserves the hyper-Kähler
+structure, and SU (2)R rotates the three complex structures on X. If d~ = 0, X is a cone
+over a seven-manifold Q described by
+X
+
+β
+
+Aiα Ai = δαβ .
+
+(5.2)
+
+i
+
+It is fairly easy to see that this manifold is a copy of SU (3)/U (1), where the U (1) acts by
+right multiplication by
+diag(eiθ , eiθ , e−2iθ ).
+16
+
+(5.3)
+
+We will present this gauge theory as a formal device, but it may have a physical interpretation
+
+in terms of a membrane probe of the singularity.
+
+36
+
+SU (3) acts on SU (3)/U (1) by left multiplication, and SU (2)R acts by right multiplication
+by SU (3) elements that commute with (5.3). Even if d~ 6= 0, X is asymptotic to a cone
+over Q at big distances. The R-symmetry group that acts faithfully on X is actually
+
+SO(3)R = SU (2)R /Z2 . That is because the center of SU (2)R is equivalent to a U (1)
+gauge transformation. In M -theory on R3 × X, the three spacetime supersymmetries
+
+transform as a vector of SO(3)R .
+Now let us explain why for d~ 6= 0, X is equivalent to T ∗ CP2 . In terms of a description
+
+that makes manifest only half the supersymmetry of the gauge theory, one can break
+up the bosonic part of the Ai into pairs of complex fields B i , Ci , transforming as 3
+
+and 3 of an SU (3) symmetry group, and with charges 1 and −1 under the U (1) gauge
+group. (Compared to the previous description, B i = Ai1 and Ci = Ai 2 .) This description
+breaks SO(3)R to SO(2)R = U (1)R , with d~ splitting as a real component dR and complex
+component dC . The D-flatness equations of the U (1) gauge theory are in this description
+X
+i
+
+|B i |2 −
+
+X
+j
+
+X
+
+|Cj |2 = dR
+(5.4)
+
+B i Ci = dC .
+
+i
+
+One must also divide by the action of U (1). By an SO(3)R rotation, one can set dC = 0
+q
+P
+P ei 2
+i
+i
+e
+|Cj |2 obey
+|B | = 1 and, after
+and dR > 0. The quantities B = B / dR +
+j
+
+i
+
+dividing by the gauge group, define a point in CP2 . With dC = 0, the second equation
+in (5.4) can be interpreted to mean that Ci lies in the cotangent space to CP2 , at the
+e i . Thus X is isomorphic to T ∗ CP2 . For any manifold W ,
+point determined by the B
+
+regarded as the zero section of T ∗ W , the self-intersection number W · W is equal to the
+Euler characteristic of W . The Euler characteristic of CP2 is 3, so in our example
+W ·W =3
+
+(5.5)
+
+with W = [CP2 ].
+Though turning on d~ breaks the SO(3)R symmetry of X to SO(2), it preserves the
+hyper-Kähler structure and all of the supersymmetry of M -theory on R3 × X.
+The appearance of an SO(3)R symmetry at d~ = 0 is a hint that M -theory on R3 × X
+
+flows to a superconformal field theory in the infrared as d~ → 0. Indeed, in three spacetime
+
+dimensions with N supercharges, the superconformal algebra contains an SO(N )R R-
+
+symmetry group.
+
+37
+
+To get more insight, let us now analyze the possible G-fields on the smooth manifold
+X with d~ 6= 0. Since X is contractible to CP2 , one has H 4 (X; R) = H 4 (CP2 ; R). The
+
+non-zero Betti numbers are h0 = h2 = h4 = 1. The cohomology with compact support
+
+is, by Poincaré duality, the dual of this, so the non-zero Betti numbers with compact
+support are h4cpct = h6cpct = h8cpct . Hence, just on dimensional grounds, the natural map
+k
+4
+i : Hcpct
+(X; R) → H k (X; R) is zero except for k = 4. For k = 4, Hcpct
+(X; R) is generated
+
+by the class [W ] = [CP2 ], and the nonzero intersection number (5.5) implies that i 6= 0.
+For an asymptotically conical manifold, one expects the space of L2 harmonic forms to
+
+coincide with the image of i, so in the present example we expect precisely one L2 harmonic
+form α, in dimension four. α is necessarily primitive with respect to all of the complex
+structures, since if K is any of the Kähler forms, then α ∧ K, if not zero, would be an L2
+harmonic six-form.
+
+Hence, turning on a nonzero G-field, proportional to α, preserves all of the supersymmetries. In fact, we must turn on such a G-field, for the following reason. According
+to [5], on a spacetime X, the general flux quantization law for G is not that G/2π has
+integral periods but that the periods of G/2π coincide with the periods of c2 (X)/2 mod
+integers. (There is a slightly more general formulation if X is not a complex manifold.) In
+our situation, the integral of c2 (X)/2 over CP2 is a half-integer,17 so we need
+Z
+
+G
+1
+∈Z+ ,
+2
+CP2 2π
+
+(5.6)
+
+and in particular G cannot be zero.
+If we normalize the four-form α to represent the class [CP2 ], then α generates
+4
+Hcpct
+(X; Z) (or rather its image in real cohomology). Also, α · α = 3, so the dual lat-
+
+tice H 4 (X; Z) is generated by α/3. Hence, we require
+
+
+
+
+G
+α
+=
+k + 12
+2π
+3
+
+with k ∈ Z.
+
+(5.7)
+
+4
+One also has H 4 (Q; Z) = H 4 (X; Z)/Hcpct
+(X; Z) = Z3 . The different possibilities for the
+
+restriction of the C-field to ∂X = Q are determined by the value of k modulo three.
+17
+
+Let the total Chern class of the tangent bundle of CP2 be 1 + c1 + c2 . The total Chern class
+
+of the cotangent bundle of CP2 is then 1 − c1 + c2 . The total Chern class of T ∗ CP2 , restricted
+to CP2 ⊂ T ∗ CP2 , is hence (1 − c1 + c2 )(1 + c1 + c2 ) = 1 − c21 + 2c2 , so c2 (T ∗ CP2 ) = −c21 + 2c2 .
+Since
+
+R
+
+2
+
+c = 9, which is odd, the claim follows.
+CP2 1
+
+38
+
+In the presence of N membranes and a G-field, the membrane flux at infinity is
+Z
+(k + 21 )2
+G∧G
+1
+=
+N
++
+.
+(5.8)
+Φ=N+
+2 X (2π)2
+6
+In evaluating the integral, we used (5.7) and the fact that α · α = 3. A check on (5.8)
+
+is that if k is shifted by an integer multiple of 3 (the 3 is needed so as to leave fixed the
+
+restriction of G to Q), Φ changes by an integer. According to the discussion in section 2,
+a model is specified by fixing the value of Φ and also by fixing the value of k modulo 3. A
+supersymmetric vacuum is then found by finding a nonnegative N and an integer k in the
+given mod 3 coset such that (5.8) is obeyed. There is precisely one case of a model having
+more than one vacuum, with all vacua having N = 0. This arises for Φ = 3/8, with k = 1
+and k = −2. We do not know a Landau-Ginzburg or other semiclassical description for
+
+this N = 3 model with two vacua (but see below).
+For sufficiently large Φ, this model (at d~ = 0) is expected to flow to a nontrivial
+superconformal field theory in the infrared. Indeed, the standard conjectures would suggest
+that the SCFT in question is dual to M -theory on AdS3 × Q, with the C-field on Q being
+
+determined by the value of k modulo three. We have no good way at present to determine
+if the model flows to a nontrivial SCFT also for small Φ.
+We expect that instead of T ∗ CP2 , one could in a similar way analyze T ∗ F , where F
+
+is a two-dimensional Fano surface. One can also consider a collection of intersecting CP2 ’s
+(with a suitable normal bundle over it) and carry out a similar analysis.
+Physical Interpretation Of Gauge Theory?
+So far the U (1) gauge theory with three charged hypermultiplets has been considered
+just as a mathematical device. It is natural to wonder whether, in fact, this gauge theory
+can be interpreted physically as the long wavelength theory of a membrane probe of the
+R3 × T ∗ CP2 solution of M -theory. More generally, we would like to find an effective
+action for N membranes probing the R3 × T ∗ CP2 singularity (in the limit that CP2 is
+
+“blown down”) that will give a gauge theory dual of M -theory on AdS4 ×Q. In the spirit of
+
+[17,18], such a description might be roughly as follows. Consider an N = 4 supersymmetric
+
+gauge theory in three dimensions with gauge group S(U (N ) × U (N )) and hypermultiplets
+consisting of three copies of (N, N). Break N = 4 to N = 3 with some Chern-Simons
+
+interaction, determined by the C-field. (Gauge theories with Chern-Simons interactions
+are essentially the only known classical field theories in three spacetime dimensions without
+gravity with N = 3 supersymmetry. For a study of their dynamics in the abelian case, see
+
+[35].) Such a model might have roughly the right properties.
+39
+
+5.2. Blowup Of Orbifold Singularity
+The other kind of singularity that we will briefly examine is a simple orbifold singularity. We begin with C4 , with complex coordinates z1 , . . . , z4 , and consider the Z4 symmetry
+za → iza . The quotient C4 /Z4 is a Calabi-Yau orbifold.
+
+If one analyzes this type of orbifold in Type IIA string theory, one finds that there
+
+is one blow-up mode and no complex structure deformation. The blow-up corresponds to
+a very simple resolution of the singularity, in which it is replaced by the total space W
+of a line bundle L = O(−4) over CP3 . Thus, CP3 is embedded in W as an exceptional
+
+divisor, the “zero section” of L. W admits a Calabi-Yau metric, asymptotic in closed form
+
+to the flat metric on C4 /Z4 ; because of the SU (4) symmetry of W , it is actually possible
+to describe this metric by quadrature, though we will not do so here.
+
+One might at first think that one could approach the C4 /Z4 orbifold singularity in
+M -theory by a motion in Kähler moduli space, leading to a blow-down of the exceptional
+divisor CP3 ⊂ W . However, since the Hodge numbers hi,0 (CP3 ) are zero for i > 0,
+fivebrane wrapping on CP3 will produce a superpotential [12], proportional roughly to
+
+e−V with V the volume of CP3 . Moreover, though the multiple cover formula for multiple
+fivebrane wrapping in M -theory is not known, analogy with other multiple cover formulas
+(such as the formula for multiple covers by fundamental strings [36,37]) suggests that the
+sum over multiple covers of CP3 will produce a pole at V = 0. If this is so, there will
+not be interesting long distance physics associated with the behavior of M -theory near a
+C4 /Z4 singularity. At any rate, one certainly cannot expect to study M -theory on C4 /Z4
+while ignoring the superpotential.
+Is it possible to include a G-field on W while preserving supersymmetry? If so, then
+since the G-field must vanish in cohomology on a fivebrane worldvolume (because of the
+existence of a field T on the fivebrane with dT = G), in the presence of the G-field
+the superpotential would be absent, and the question of the behavior near the C4 /Z4
+singularity would be restored.
+The answer to the question of whether a supersymmetric G-field is possible turns out,
+however, to be “no,” in the following interesting way. First of all, W is contractible to
+CP3 , so its nonzero Betti numbers are h0 = h2 = h4 = h6 = 1. For cohomology with
+compact support, one has the dual Betti numbers h2cpct = h4cpct = h6cpct = h8cpct = 1.
+k
+This suggests that the map i : Hcpct
+(W ; R) → H k (W ; R) may be nonzero for k = 2, 4,
+
+and 6. A topological analysis, using the fact that c1 (L)3 |W 6= 0, shows that this is so.
+40
+
+Consequently, given the asymptotically conical nature of the Calabi-Yau metric on W , we
+expect the space of L2 harmonic forms on W to be three-dimensional, with one class each
+in dimension 2, 4, and 6. Given this, there is only one option for how the SU (2) group
+R that acts on the cohomology of a Kähler manifold (see Appendix I) can act on the L2
+harmonic forms on W : they transform with spin 1. Hence, though there is an L2 harmonic
+four-form on W , it is not primitive, and one cannot turn on a G-field without breaking
+supersymmetry.
+6. Brane Perspective
+We will conclude this paper by pointing out a reinterpretation of the problem in terms
+of singularities of branes. We already explained in section 2.6 that F -theory on a fourfold singularity can be reinterpreted as Type IIB with a D7-brane that has a world-volume
+R4 ×L, where L ⊂ C3 is a singular complex surface. By successive circle compactifications,
+
+it follows that M -theory or Type IIA at a four-fold singularity can be described by Type
+IIA with a singular sixbrane R3 × L, or Type IIB with a singular fivebrane R2 × L.
+
+Analogous phenomena have been noted in the past in the context of N = 2 conformal
+
+theories with NS or M5-branes worldvolumes with singular geometry R4 × Σ where Σ
+
+is a Riemann surface which develops a singularity, say of the form y 2 = xn locally (for
+
+n > 2). These give models for studying Type II strings at a Calabi-Yau threefold singularity
+capturing Argyres-Douglas points of N = 2 conformal theories [38] and are presently under
+study [31].
+
+As we discussed in section 2.6, it is important that in the cases that we have looked
+at, there are no corrections to the classical Rn × L geometry. Let us raise the general
+
+question of this sort. Suppose we have a p-brane of some kind, with worldvolume
+Rn × X p+1−n
+
+embedded in R10 or R11 depending on whether we are dealing with string theory or M theory. We assume that this geometry preserves some number of supersymmetries in Rn .
+Let us assume X develops a singularity. Is this singular geometry smoothed out in the
+quantum theory? A necessary condition for that is the existence of instantons which end
+on X. So if q-branes can end on this particular p-brane, the condition is the absence of
+compact q-cycles in X. So for Dp-branes in Type IIA or IIB string theory, since D(p − 2)-
+
+branes and fundamental one-branes can end on them, the condition is the absence of
+topologically non-trivial compact one-cycles and p − 2-cycles in the geometry of X. For
+M 5-branes, the condition is the absence of compact two-cycles in X.
+41
+
+Appendix I. Primitive Forms
+The de Rham cohomology of a compact Kähler manifold X, or the space of L2 harmonic forms on any Kähler manifold, admits an SU (2) action which is as follows. (See [39],
+pp. 122-6, for a mathematical introduction.) A diagonal generator J3 of SU (2) multiplies
+a p-form by (n − p)/2, where n is the complex dimension of X. The lowering operator J−
+acts by wedge product with the Kähler form K:
+
+G → K ∧ G.
+
+(I.1)
+
+And the raising operator J+ is the adjoint operation of contraction with K:
+Gi1 i2 ...in → K i1 i2 Gi1 i2 ...in .
+
+(I.2)
+
+Conceptually, this SU (2) action arises as follows. Begin with the supersymmetric
+nonlinear sigma model in four dimensions with target space X, and dimensionally reduce
+it to 0 + 1 dimensions. This gives a supersymmetric system in which the Hilbert space is
+the space of differential forms on X, the four supercharges are are the ∂ and ∂ operators
+and their adjoints, and there is an SU (2) symmetry that comes from rotations of the three
+extra dimensions. From this point of view, the SU (2) arises as an R-symmetry group, so
+we denote it as R.
+Since an (n − p)-form has J3 eigenvalue (n − p)/2, it clearly transforms under R with
+
+spin at least |n − p|/2. For n − p ≥ 0, we declare the primitive part of H n−p (X; R) to
+consist of the harmonic forms that transform with spin precisely (n − p)/2. For a middle-
+
+dimensional form, with p = n, this definition means that the primitive part of H n (X; R)
+consists precisely of the R-invariants.
+For a noncompact Kähler manifold X, if all of the L2 harmonic forms are in the
+middle dimension, then they are all automatically primitive. For a middle-dimensional L2
+harmonic form that is not R-invariant can be raised and lowered to make L2 harmonic
+
+forms of other dimensions.
+For a middle-dimensional L2 harmonic form G, such as the G-field on a Calabi-Yau
+four-fold, primitiveness is equivalent to either 0 = J− G, which is the condition on G given
+in [8], or 0 = J+ G = K ∧ G.
+
+An important illustrative case is that of a complex surface W . The middle-dimensional
+
+cohomology of W is two-dimensional and can be decomposed as follows. The space of selfdual forms at a given point is three-dimensional; the self-dual forms are the (2, 0) and
+42
+
+(0, 2) forms and the multiples of the Kähler class K. The (2, 0) and (0, 2) forms are clearly
+primitive (the lowering operator would map them to (3, 1) and (1, 3)-forms) but the Kähler
+class K is not (as K ∧K 6= 0). The anti-self dual two-forms are of type (1, 1) and are of the
+
+form α = aij dz i ∧ dz j where aij is traceless. Tracelessness of a means that α is annihilated
+
+by the raising and lowering operators and so is primitive. So for a complex surface, the
+
+middle-dimensional primitive cohomology is of type (2, 0) or (0, 2) and self-dual, or of type
+(1, 1) and anti-self-dual.
+Closer to our needs in this paper is the case of a complex four-fold X. At any point
+P ∈ X, the holonomy group U (4) acts on the differential forms at P . Since the generator
+
+of the center of U (4) simply multiplies a (p, q) form by p − q, we focus on the SU (4) action.
+
+We look first at the (p, p) forms for p = 0, 1, 2, . . ., since they are closed under the action
+
+of R. The (0, 0) forms transform in the trivial representation 1 of SU (4). The (1, 1)-forms
+aij dz i ∧ dz j transform as 4 ⊗ 4 = 1 ⊕ 15, with 15 the adjoint representation. Since a (2, 0)
+or (0, 2)-form hij dz i ∧ dz j or e
+h dz i ∧ dz j transforms as the 6, the (2, 2)-forms transform
+ij
+
+as 6 ⊗ 6 = 1 ⊕ 15 ⊕ 20. From this, it follows that (2, 2)-forms that transform as 20 of
+SU (4) have R = 0, those that transform as 15 have R = 1, and those that transform as 1
+have R = 2.
+
+In particular, the primitive (2, 2)-forms transform in an irreducible representation of
+SU (4). From this, it follows that they all transform with the same eigenvalue under the
+Hodge ∗ operator. To determine the sign, it suffices to consider the case that X = W1 ×W2 ,
+
+with the Wi complex surfaces, and to consider on X the primitive (2, 2)-form G = α1 ∧ α2 ,
+
+where for i = 1, 2, αi is a primitive (1, 1)-form on Wi . Since the αi are anti-self-dual, G is
+self-dual.
+We can similarly analyze the primitive (3, 1) cohomology. The (2, 0)-forms transform
+as 6 under SU (4), while the (3, 1)-forms transform as 6 ⊕ 10. (3, 1)-forms that transform
+
+as 10 of SU (4) have R = 0 and so are primitive, while those that transform as 6 have
+R = 1. Since the primitive (3, 1)-forms transform irreducibly under SU (4), they again
+all have the same eigenvalue of ∗. Indeed, by considering the case G = α ∧ β, with α a
+primitive (1, 1)-form on a surface W1 and β a primitive (2, 0)-form on another surface W2 ,
+
+we learn that the primitive (3, 1) cohomology of a four-fold is anti-self-dual.
+Finally, the (4, 0) cohomology of a four-fold transforms trivially under SU (4) and is
+primitive. By setting G = β1 ∧ β2 with βi a (2, 0) form on Wi for i = 1, 2, we learn that
+
+the (4, 0) cohomology on a four-fold is self-dual.
+
+In sum, the Hodge ∗ operator acts on the primitive (p, 4 −p) cohomology of a four-fold
+
+as (−1)p . This type of argument can clearly be generalized to other dimensions.
+43
+
+Appendix II. Supersymmetry Conditions in Eleven Dimensions
+In this appendix we extend the analysis of [8] to compactifications of M-theory on
+Calabi-Yau four-folds with general G-flux, allowing for the possibility that the threedimensional cosmological constant is non-zero. In the original version of this paper we
+showed that turning on holomorphic G-flux of type (4, 0) induces a mass for the gravitino
+R
+fields, mψ ∼ G ∧ Ω. In a supersymmetric situation masses of the bosonic modes of the
+
+supergravity multiplet should be related to mψ in a supersymmetric fashion. In particular,
+one should expect a non-zero cosmological constant Λ = −|mψ |2 . However, it turns out
+
+that compactification with a G4,0 flux leads to a solution with zero cosmological constant
+and, therefore, implies broken supersymmetry, see below and [40].
+
+We follow the notations of [8] where capital letters M , N , . . . run from 0 to 10 and
+denote eleven-dimensional indices; m, n, . . . are real indices tangent to Y ; and Greek letters
+µ, ν, . . . stand for the three-dimensional Lorentzian indices 0,1,2. Finally, lower case letters
+a, b, . . . from the beginning of the alphabet denote holomorphic indices tangent to Y .
+The bosonic part of the eleven-dimensional effective action, corrected by the σ-model
+anomaly on the five-brane world-volume, has the following form:
+Z
+Z
+i
+1
+1 h1
+1
+11 √
+d x −gR −
+G ∧ ∗G + C ∧ G ∧ G − (2π)4 C ∧ I8
+S11 =
+2
+2
+2
+6
+
+(II.1)
+
+The eight-form anomaly polynomial can be expressed in terms of the Riemann tensor [41]:
+
+1 
+1
+1
+2 2
+4
+I8 =
+−
+(trR ) +
+trR
+(2π)4
+768
+192
+
+(II.2)
+
+1
+In these units the five-brane tension T6 = (2π)
+3 . The field equation for G that follows from
+
+the action (II.1) looks like:
+N
+X
+1
+4
+δ 8 (xm − Pi )
+d ∗ G = − G ∧ G + (2π) I8 −
+2
+i=1
+
+(II.3)
+
+This equation is a macroscopic analog of the anomaly equation (2.1). In fact, the right-hand
+side of (II.3) represents a local source for the field Gµνρm . For a compact Calabi-Yau space
+Y , the G-flux has nowhere to go. Hence, the integral of the right-hand side of (II.3) has to
+vanish, leading to the anomaly cancellation condition (2.1). In order to satisfy the equation
+of motion (II.3) we take the following ansatz for the three-dimensional components of G:
+Gµνρm = ǫµνρ ∂m f (xm )
+44
+
+(II.4)
+
+We also allow for arbitrary internal components Gmnpq , the form of which will be
+fixed by the field equation and supersymmetry conditions. As we will see in a moment,
+a maximally symmetric compactification on Y with nontrivial G-flux typically leads to
+warped metric:
+
+
+
+ds211 = ∆−1 ds23 (xµ ) + ds28 (xm )
+
+(II.5)
+
+where we introduced the warp factor ∆(xm ). For now, both ∆(xm ) and f (xm ) are scalar
+functions of the coordinates on Y . Below we show that these two functions are related by
+the supersymmetry conditions which we are going to analyze now.
+Assuming that the gravitino, ψM , vanishes in the background, supersymmetry variations of the bosonic fields are all identically zero. So, we only have to check that the
+variations of the gravitino also vanish for some Majorana spinor η:
+1
+δψM ≡ ∇M η − ΓM N ∂N (log ∆)η−
+4
+−
+
+(II.6)
+
+1 3/2
+P QRS
+∆ (ΓM P QRS − 8δM
+Γ
+)GP QRS η = 0
+288
+
+The first two terms in this expression come from the covariant derivative in the elevendimensional metric (II.5).
+Following [8], we make the 11=3+8 split:
+Γµ = γµ ⊗ γ9 ,
+
+Γm = 1 ⊗ γm
+
+where the eleven-dimensional gamma-matrices ΓM are hermitian for M = 1, . . . , 10 and
+anti-hermitian for M = 0. They satisfy:
+{ΓM , ΓN } = 2gM N
+
+(II.7)
+
+ΓM1 ...Mn = Γ[M1 . . . ΓMn ]
+
+(II.8)
+
+We use the standard notation
+
+for the antisymmetrized product of gamma-matrices. We decompose the supersymmetry
+parameter as:
+η = ǫ ⊗ ξ + ǫ∗ ⊗ ξ ∗
+
+(II.9)
+
+where ǫ is an anti-commuting Killing spinor in three dimensions:
+∇µ ǫ = mψ γµ ǫ∗
+45
+
+(II.10)
+
+and ξ is a commuting eight-dimensional complex spinor of definite chirality. From the
+commutation relation of ∇µ in anti-de Sitter space we find the usual relation between the
+
+complex gravitino mass mψ and the value of the three-dimensional cosmological constant:
+Λ = −|mψ |2
+
+(II.11)
+
+Without loss of generality we can take:
+γ9 ξ = ξ
+
+(II.12)
+
+Here γ9 is the eight-dimensional chirality operator that anti-commutes with all the γm ’s
+and satisfies γ92 = 1. The sign in (II.12) determines whether it is space-filling membranes
+or space-filling antimembranes that can be included without breaking supersymmetry. If
+the sign is changed, the corresponding supersymmetric vacuum can be obtained from that
+with γ9 ξ = +ξ by changing the sign of the function f and the chirality of ǫ.
+The µ-component of the supersymmetry condition (II.6) takes the form:
+1
+δψµ ≡ ∇µ η − ∂n (log ∆)(γµ ⊗ γ9 γ n )η−
+4
+1
+1 3/2
+∆ (γµ ⊗ γ9 γ mnpq )Gmnpq η + ∆3/2 (∂m f )(γµ ⊗ γ m )η = 0
+−
+288
+6
+
+(II.13)
+
+Substituting the decomposition (II.9) for η and using equations (II.10) and (II.12) we
+obtain our first supersymmetry condition. Projecting the result onto subspaces of positive
+and negative chirality, we actually get two conditions: one comes from the first and the
+third term in (II.13); and the other one comes from the second and the fourth term.
+Moreover, in a vacuum with N = 2 supersymmetry variations proportional to ǫ and ǫ∗
+must vanish separately. Therefore, we find:
+f = ∆−3/2 ,
+
+288mψ ∆−3/2 ξ = Gξ
+/ ∗.
+
+(II.14)
+
+Here we have written G
+/ for the total contraction Gmnpq γ mnpq . According to our ansatz
+(II.4), the three-dimensional components of the four-form field strength:
+Gµνρm = ǫµνρ ∂m ∆−3/2
+
+(II.15)
+
+have the form similar to the membrane solution with local “effective” membrane charge
+density, as follows from the field equation (II.3) for the internal components. Note, that for
+46
+
+a compact Y there is no global membrane charge. Substituting (II.15) into (II.3), we obtain
+two additional equations. One equation uniquely determines G given its cohomology class:
+∂m (∆−3/2 Gmnpq ) =
+
+1
+(∂m ∆−3/2 )ǫmnpqrstu Grstu
+4!
+
+(II.16)
+
+It is identically obeyed if G is self-dual (as we will find) and closed. The second equation
+which follows from (II.3) determines the warp factor:
+3/2
+
+d ∗ d log ∆
+
+N
+X
+1
+4
+δ 8 (xm − Pi )
+= G ∧ G − (2π) I8 +
+2
+i=1
+
+(II.17)
+
+Now we return to the original supersymmetry condition (II.6) and consider its mcomponent:
+δψm ≡ ǫ ⊗ ∇m ξ − mψ ǫ ⊗ γm ξ ∗ +
+
+1 3/2
+∆ Gmnpq ǫ ⊗ γ npq ξ+
+24
+
+(II.18)
+
+3
+1
++ ∂m (log ∆)ǫ ⊗ ξ − ∂n (log ∆)ǫ ⊗ γm n ξ + c.c. = 0
+4
+8
+where we used the explicit form of the solution (II.14) and standard properties of gammamatrices. Once again ǫ and ǫ∗ components of this equation must vanish separately. By
+means of the rescaling transformations:
+gmn
+ξ
+
+→ ∆3/2 gmn
+→ ∆−1/4 ξ
+
+the ǫ-component of (II.18) can be written in the following compact form:
+1 −3/4
+∆
+Gmnpq γ npq ξ = 0
+24
+
+∇m ξ − mψ ∆3/4 γm ξ ∗ +
+
+(II.19)
+
+Then, following [8], we choose ξ to be a covariantly constant spinor of unit norm, and
+use it to define the complex structure Jm n = iξ † γm n ξ and the Kähler form Jab = igab .
+Since the metric on Y is of type (1,1), it is convenient to think of ‘holomorphic’ gammamatrices γ a and γa as creation and annihilation operators that satisfy the algebra:
+{γ a , γ b } = {γ a , γ b } = 0,
+
+{γ a , γ b } = 2g ab
+
+Namely, γ a and γa act on the Fock “vacuum” ξ as annihilation operators:
+γ a ξ = 0,
+
+γa ξ ∗ = 0,
+47
+
+γ a ξ ∗ = 0,
+
+γa ξ = 0
+
+(II.20)
+
+To obtain the algebraic constraints on the field G, we multiply the differential equation
+(II.19) by γ a which kills the first term in that equation:
+24mψ ∆3/2 γ a γm ξ ∗ − Gmnpq γ a γ npq ξ = 0
+
+(II.21)
+
+Components of this equation with different gamma-matrix structure must vanish separately. For example, if we choose m to be an anti-holomorphic index and use (II.20), we
+find that G(1,3) , the (1,3) piece of the field G, must be zero:
+Gabcd = 0.
+
+(II.22)
+
+Gabcd J cd = 0
+
+(II.23)
+
+Moreover, G(2,2) must be primitive:
+
+Finally, taking the trace over the holomorphic index ‘a’ in the main supersymmetry
+condition (II.21), we can demonstrate that the (4,0) part of the G-flux breaks supersymmetry, as we expected in section 2.4. Indeed, we get a relation between G4,0 and mψ of
+the form (II.14), but with a different numerical coefficient:
+96mψ ∆3/2 ξ ∗ = Gabcd γ abcd ξ
+Therefore, compactifications of M-theory on Calabi-Yau four-folds with G4,0 6= 0 lead
+
+to three-dimensional vacua with broken supersymmetry, in accordance with the proposed
+
+expressions (2.38) and (2.41) for the effective superpotential. Indeed, from (2.38) it follows
+that (4,0) part of G contributes to the vacuum value of W . Now, in order to see that threedimensional vacua with W 6= 0 are not supersymmetric we must be careful and use the
+
+appropriate covariant derivatives D/Dti and D/Dkj . Since the supersymmetry conditions
+(2.36) and (2.37) are scale invariant, there is at least one massless vector multiplet in the
+effective three-dimensional theory corresponding to the volume of Y . After this multiplet
+is dualized to a massless chiral multiplet K0 , one finds no-scale supergravity theory where
+effective superpotential is independent on K0 , see [40], for otherwise this multiplet had a
+mass. Since ∂k0 W = 0 but ∂k0 K(ti , kj ) 6= 0, where K(ti , kj ) is the Kähler potential, it
+
+follows that in a vacuum with W 6= 0 the covariant derivative DW/Dk0 = ∂k0 W +(∂k0 K)W
+
+does not vanish, and supersymmetry is broken.
+
+Note, that both G4,0 and primitive G-flux of type (2, 2) are self-dual and, therefore,
+obey equations of motion (II.16). As one can easily see, self-duality of G also implies
+48
+
+vanishing of the three-dimensional cosmological constant. Indeed, it follows from (2.1)
+R
+that 12 G ∧∗ G − χ(X)/24 = 0, so that the positive vacuum energy due to the G-flux is
+
+cancelled by the negative contribution of the R4 terms in the effective action of M theory.
+In particular, it means that compactification with G-flux of type (4, 0) classically gives a
+flat space solution with Λ = 0, cf. [42].
+Acknowledgements We have benefited from discussions with M. Bershadsky, N. Hitchin,
+S. Katz, J. Louis, R. MacPherson, D. Morrison, T. Pantev, N. Seiberg, A. Shapere, and
+S.-T. Yau. We thank J. Polchinski hor helpful and interesting discussions that stimulated
+a revision of the analysis of compactifications with G4,0 6= 0 in Appendix II.
+
+The work of S.G. was supported in part by grant RFBR No 98-02-16575 and Russian
+
+President’s grant No 96-15-96939. The work of C.V. was supported in part by NSF grant
+PHY-98-02709 and that of E.W. was supported in part by NSF grant PHY-9513835.
+
+49
+
+References
+[1] Y. Kazama and H. Suzuki,“New N=2 Superconformal Field Theories and Superstring
+Compactification,” Mod. Phys. Lett. A4 (1989) 325.
+[2] A.B. Zamolodchikov, JETP Lett. 46 (1987) 160.
+[3] C. Vafa and N.P. Warner,“Catastrphes and the Classification of Conformal Theories,”
+Phys. Lett. B218 (1989) 51.
+[4] E. Martinec,“Algebraic Geometry and Effective Lagrangians,” Phys. Lett. B217
+(1989) 431.
+[5] E. Witten, “On Flux Quantization In M -Theory And The Effective Action,” J. Geom.
+Phys. 22 (1997) 1.
+[6] S. Sethi, C. Vafa, and E. Witten, “Constraints on Low Dimensional String Compactifications,” Nucl. Phys. B480 (1996) 213.
+[7] B. Greene, D. Morrison, and A. Strominger,“Black hole Condensation and the Unification of String Vacua,” Nucl. Phys. B451 (1995) 109.
+[8] K. Becker and M. Becker,“M Theory on Eight Manifolds,” Nucl. Phys. B477 (1996)
+155.
+[9] G. Tian and S.-T. Yau, “Complete Kähler Manifolds With Zero Ricci Curvature II,
+Inv. Math. 106 (1991) 27.
+[10] P. Candela and X. C. de la Ossa, “Moduli Space Of Calabi-Yau Manifolds,” Nucl.Phys.
+B355 (1991) 455.
+[11] W. Lerche, “Fayet-Iliopoulos Potentials From Four-Folds,” JHEP 9711:004 (1997)
+[12] E. Witten,“Non-perturbative Superpotentials in String Theory,” Nucl. Phys. B474
+(1996) 343.
+[13] J. Bagger and E. Witten,“Quantization of Newton’s Constant in Certain Supergravity
+Theories,” Phys. Lett. B115 (1982) 202.
+[14] J. Polchinski and A. Strominger,“New Vacua for Type II String Theory,” Phys. Lett.
+B388 (1996) 736.
+[15] S. Gukov, “Solitons, Superpotentials and Calibrations”, Nucl.Phys. B574 (2000) 169,
+hep-th/9911011.
+[16] A. Kehagias, “New Type IIB Vacua And Their F -Theory Interpretation,” hepth/9805131.
+[17] I. Klebanov and E. Witten,“Superconformal Field Theory on Three-Branes at a
+Calabi-Yau Singularity,” Nucl. Phys. B536 (1998) 199.
+[18] D. Morrison and R. Plesser,“Nonspherical Horizons,” hep-th/9810201.
+[19] S. Sethi, “A Relation Between N = 8 Gauge Theories In Three Dimensions,” JHEP
+9811:003, 1998, hep-th/9809162.
+[20] K. Becker, M. Becker and A. Strominger,“Five-brane, Membranes and Nonperturbative String Theory,” Nucl. Phys. B456 (1995) 130.
+50
+
+[21] H. Ooguri and C. Vafa,“Summing up D-instantons,” Phys. Rev. Lett. 77 (1996) 3296.
+[22] N. Seiberg and S. Shenker,“ Hypermultiplet Moduli Space and String Compactification
+to Three-Dimensions,” Phys. Lett. B388 (1996) 521.
+[23] S. Cecotti and C. Vafa,“On Classification of N=2 Supersymmetric Theories,” Commun. Math. Phys. 158 (1993) 569.
+[24] S. Cecotti, P. Fendley, K. Intriligator and C. Vafa,“A New Supersymmetric Index,”
+Nucl. Phys. 386 (1992) 405.
+[25] O. Aharony, A. Hanany, K. Intriligator, N. Seiberg and M.J. Strassler,“Aspects of N=2
+Supersymmetric Gauge Theories in Three-Dimensions,” Nucl. Phys. B499 (1997) 67.
+[26] D. Kutasov,“A Comment on Duality in N=1 Supersymmetric Non-abelian Gauge
+Theories,” Phys. Lett. B351 (1995) 230.
+[27] A. Klemm, W. Lerche, P. Mayr, C. Vafa and N. Warner,“Self-dual Strings and N=2
+Supersymmetric Field Theory,” Nucl. Phys. B477 (1996) 746.
+[28] P. Fendley, S.D. Mathur, C.Vafa and N.P. Warner,“Integrable deformations and scattering matrices for the N=2 supersymmetric discrete series,” Phys. Lett. 243 (1990)
+257.
+[29] J.M. Rabin, Phys. Lett. B411 (1997) 274.
+[30] J. Schulze and N.P. Warner, “BPS Geodesics in N=2 Supersymmetric Yang-Mills
+Theory,” Nucl. Phys. B498 (1997) 101.
+[31] A. Shapere, C.Vafa, “BPS Structure of Argyres-Douglas Superconformal Theories,”hepth/9910182.
+[32] W. Lerche, C. Vafa and N.P. Warner, “Chiral Rings in N=2 Superconformal Theories,”
+Nucl. Phys. B324 (1989) 427.
+[33] K. Intriligator, “Fusion Residues,” Mod. Phys. Lett. A6 (1991) 3543.
+[34] W. Lerche and N.P. Warner,“Polytopes and Solitons in Integrable N=2 Supersymmetric Landau-Ginzburge Theories,” Nucl. Phys. B358 (1991) 571.
+[35] A. Kapustin and M. Strassler, “On Mirror Symmetry In Three-Dimensional Abelian
+Gauge Theories,” JHEP 9904:021,1999, hep-th/9902033.
+[36] P. Candelas, X.C. De la Ossa, P.S. Green and L. Parkes, “A Pair of Calabi-Yau
+Manifolds As An Exactly Soluble Superconformal Theory,” Nucl. Phys. B359 (1991)
+21.
+[37] P. Aspinwall and D. Morrison, “Topological Field Theory and Rational Curves,” Commun. Math. Phys. 151 (1993) 245.
+[38] P.C. Argyres and M.R. Douglas,“New Phenomena in SU(3) Supersymmetric Gauge
+Theory,” Nucl. Phys. B448 (1995) 93.
+[39] P. Griffiths and J. Harris, Principles Of Algebraic Geometry (Wiley-Interscience,
+1978).
+[40] S. Giddings, S. Kachru, and J. Polchinski, to appear.
+[41] L. Alvarez-Gaumé and E. Witten, Nucl.Phys. B234 (1983) 269.
+[42] M. Haack, J. Louis, “M-theory compactified on Calabi-Yau fourfolds with background
+flux,” hep-th/0103068.
+51
+
+

@@ -44,3 +44,10 @@ lean_lib «Lean5Corpus» where
 
 lean_lib «StringTheoryFormalization» where
   roots := #[`StringTheoryFormalization]
+
+-- === Stream 2: Dual-Scale K3 × T² lattice / T-duality layer ===
+-- Separate library so a Stream 2 failure never turns the green Stream 1 core red.
+-- Not a default_target until it builds clean; build with `lake build DualScaleStream2`.
+
+lean_lib «DualScaleStream2» where
+  roots := #[`DualScaleStream2]

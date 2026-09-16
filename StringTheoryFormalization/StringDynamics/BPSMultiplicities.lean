@@ -13,7 +13,7 @@ def bpsRatio : ℚ := 77 / 60
 /-- Numerator and denominator in lowest terms. -/
 theorem bps_ratio_reduced :
     bpsRatio.num = 77 ∧ bpsRatio.den = 60 := by
-  constructor <;> native_decide
+  constructor <;> norm_num [bpsRatio]
 
 /-- ℛ_BPS > 1 — more BPS states than the naive counting. -/
 theorem bps_ratio_pos : (0 : ℚ) < bpsRatio := by
