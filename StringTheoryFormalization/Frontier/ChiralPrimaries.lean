@@ -33,7 +33,7 @@ structure N2State where
 
 /-- BPS bound for the N=2 SCA: h ≥ |q|/2. -/
 def bpsBound (s : N2State) : Prop :=
-  s.confWeight ≥ s.u1Charge.natAbs / 2
+  s.confWeight ≥ |s.u1Charge| / 2
 
 /-- A chiral primary saturates the BPS bound: h = q/2 (q ≥ 0). -/
 def isChiralPrimary (s : N2State) : Prop :=
@@ -45,7 +45,7 @@ theorem chiral_primary_saturates_bps (s : N2State) (h : isChiralPrimary s) :
   unfold bpsBound isChiralPrimary at *
   obtain ⟨hq, hw⟩ := h
   rw [hw]
-  simp [Rat.natAbs_of_nonneg hq]
+  simp [abs_of_nonneg hq]
 
 /-- For K3: chiral primaries at charge q ∈ {0,1,2} correspond to
     H^{q,0}(K3) with dimensions {1, 0, 1}. -/

@@ -26,29 +26,27 @@ noncomputable def fieldEnergy (s : SobolevExponent) (coeff : ℤ × ℤ → ℂ)
     Mirrors `Euler.EnergyEstimate` bounds. -/
 theorem energy_dissipation (s : SobolevExponent) (t : ℝ) (ht : 0 ≤ t)
     (coeff₀ coeffₜ : ℤ × ℤ → ℂ)
-    (h : ∀ k, Complex.abs (coeffₜ k) ≤ Complex.abs (coeff₀ k))
-    (hsummₜ : Summable (fun k : ℤ × ℤ => (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * Complex.abs (coeffₜ k) ^ 2))
-    (hsumm₀ : Summable (fun k : ℤ × ℤ => (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * Complex.abs (coeff₀ k) ^ 2)) :
+    (h : ∀ k, ‖coeffₜ k‖ ≤ ‖coeff₀ k‖)
+    (hsummₜ : Summable (fun k : ℤ × ℤ => (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * ‖coeffₜ k‖ ^ 2))
+    (hsumm₀ : Summable (fun k : ℤ × ℤ => (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * ‖coeff₀ k‖ ^ 2)) :
     fieldEnergy s coeffₜ ≤ fieldEnergy s coeff₀ := by
   unfold fieldEnergy sobolevNorm
   apply sq_le_sq'
   · linarith [Real.sqrt_nonneg _]
   · apply Real.sqrt_le_sqrt
-    apply tsum_le_tsum
-    · intro k
-      apply mul_le_mul_of_nonneg_left _ (by positivity)
-      exact sq_le_sq' (by linarith [Complex.abs.nonneg (coeff₀ k)]) (h k)
-    · exact hsummₜ
-    · exact hsumm₀
+    refine Summable.tsum_le_tsum ?_ hsummₜ hsumm₀
+    intro k
+    apply mul_le_mul_of_nonneg_left _ (by positivity)
+    exact sq_le_sq' (by linarith [norm_nonneg (coeff₀ k)]) (h k)
 
 /-- Paley-Littlewood regularity lifting:
     if ‖u‖_{H^{s+ε}} < ∞ then u has finite H^s norm. -/
 theorem regularity_lifting (s : SobolevExponent) (ε : ℝ) (hε : 0 < ε)
     (coeff : ℤ × ℤ → ℂ)
     (h : Summable (fun k : ℤ × ℤ =>
-      (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ (s.s + ε) * Complex.abs (coeff k) ^ 2)) :
+      (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ (s.s + ε) * ‖coeff k‖ ^ 2)) :
     Summable (fun k : ℤ × ℤ =>
-      (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * Complex.abs (coeff k) ^ 2) := by
+      (1 + (k.1^2 + k.2^2 : ℤ) : ℝ) ^ s.s * ‖coeff k‖ ^ 2) := by
   apply h.of_norm_bounded
   · intro k
     apply mul_le_mul_of_nonneg_right _ (sq_nonneg _)

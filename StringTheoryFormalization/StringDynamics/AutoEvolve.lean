@@ -29,7 +29,7 @@ theorem potential_decreases_along_flow (eq : EFTFlowEq) (φ : ℝ) :
   exact neg_nonpos.mpr (sq_nonneg _)
 
 /-- AutoEvolve integrator: applies N steps of gradient flow. -/
-def autoEvolve (eq : EFTFlowEq) (h : ℝ) (φ₀ : ℝ) : ℕ → ℝ
+noncomputable def autoEvolve (eq : EFTFlowEq) (h : ℝ) (φ₀ : ℝ) : ℕ → ℝ
   | 0     => φ₀
   | n + 1 => autoEvolve eq h φ₀ n + h * gradientFlow eq (autoEvolve eq h φ₀ n)
 

@@ -29,7 +29,7 @@ namespace StringTheory.Frontier
 
 /-- A Möbius (SL(2,ℂ)) transformation z ↦ (az+b)/(cz+d). -/
 structure MobiusTransform where
-  a b c d : ℂ
+  (a b c d : ℂ)
   det_one : a * d - b * c = 1
 
 /-- Action of a Möbius transformation on ℂ \ {-d/c}. -/
