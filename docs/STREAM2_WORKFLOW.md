@@ -99,7 +99,7 @@ only honest progress measure for Stream 2: it counts items of *this plan*, not a
 | P2.4 | dual-scale bound `tr G + tr G⁻¹ ≥ 2d`, T-duality invariance, circle case | ✅ `DualScale.TraceBound` |
 | P2.4 | level matching `n·w = 0` and the section condition: momentum/winding frames totally null, swapped by `η`, preserved by `O(d,d;ℤ)` (HZ eq. 1.3, ll. 339–342, 3930–3940) | 🔄 `DFT.SectionCondition` |
 | P2.5 | `χ/24` counting on K3×K3, `χ(K3×T²) = 0`, D3 budget | ✅ `036329e` |
-| P2.5 | flux integrality: Kronecker product of an even form is even, so `½∫G∧G ∈ ℤ` (DRS ll. 230–232) | 🔄 `Flux.Integrality` |
+| P2.5 | flux integrality: Kronecker product of an even form is even, so `½∫G∧G ∈ ℤ` (DRS ll. 230–232) | ✅ `Flux.Integrality` |
 | P2.6 | EOT `A₁…A₇` decompositions vs. Burnside-checked `M₂₄` table | ✅ `036329e` |
 
 ## 6. Pilot results — measured

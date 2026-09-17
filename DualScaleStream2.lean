@@ -17,4 +17,5 @@ import DualScaleStream2.DFT.GeneralizedMetric
 import DualScaleStream2.DFT.BShift
 import DualScaleStream2.DualScale.TraceBound
 import DualScaleStream2.Flux.Tadpole
+import DualScaleStream2.Flux.Integrality
 import DualScaleStream2.Moonshine.EOT
