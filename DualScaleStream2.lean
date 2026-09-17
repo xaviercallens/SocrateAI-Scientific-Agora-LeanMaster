@@ -4,17 +4,19 @@
 
 import DualScaleStream2.Lattice.Basic
 import DualScaleStream2.Lattice.E8
+import DualScaleStream2.Lattice.E8PosDef
 import DualScaleStream2.Lattice.Hyperbolic
 import DualScaleStream2.Lattice.K3T2Signature
-import DualScaleStream2.Lattice.E8PosDef
 import DualScaleStream2.Lattice.Mukai
 import DualScaleStream2.Lattice.Reflection
 import DualScaleStream2.TDuality.ODD
 import DualScaleStream2.TDuality.Factorized
-import DualScaleStream2.TDuality.Mirror
 import DualScaleStream2.TDuality.Spectrum
+import DualScaleStream2.TDuality.Mirror
+import DualScaleStream2.TDuality.SL2Product
 import DualScaleStream2.DFT.GeneralizedMetric
 import DualScaleStream2.DFT.BShift
+import DualScaleStream2.DFT.SectionCondition
 import DualScaleStream2.DualScale.TraceBound
 import DualScaleStream2.Flux.Tadpole
 import DualScaleStream2.Flux.Integrality

@@ -90,14 +90,14 @@ only honest progress measure for Stream 2: it counts items of *this plan*, not a
 | P2.2 | factorized dualities `D_k` (GPR 2.4.29), charge norm even + invariant | ✅ `TDuality.Factorized` |
 | P2.2 | spectrum equivalence of `O(d,d;ℤ)`-dual backgrounds | ✅ `TDuality.Spectrum` |
 | P2.2 | T²: mirror `D₀` conjugates the τ-shift to a B-shift (matrix identity; sympy-verified) | ✅ `TDuality.Mirror` |
-| P2.2 | `SL(2,ℤ)_τ` commutes with the ρ-translations inside `O(2,2;ℤ)` (scope narrowed from the full `SL(2,ℤ)_ρ`; GPR ll. 1874–1884) | 🔄 `TDuality.SL2Product` |
+| P2.2 | `SL(2,ℤ)_τ` commutes with the ρ-translations inside `O(2,2;ℤ)` (scope narrowed from the full `SL(2,ℤ)_ρ`; GPR ll. 1874–1884) | ✅ `TDuality.SL2Product` |
 | P2.3 | `E8` positive definite (LDLᵀ), `det = 1` | ✅ `036329e` |
 | P2.3 | Mukai pairing: symmetric, even, `U(−1)`, `v(𝒪_X)² = −2` | ✅ `036329e` |
 | P2.3 | `(−2)`-reflections are lattice isometries (Weyl / Picard–Lefschetz), `E8(−1)` Weyl reflections | ✅ `Lattice.Reflection` |
 | P2.4 | generalized metric: `(ηH)² = 1`, symmetric, T-duality = `G ↦ G⁻¹`, mass covariance, circle cross-link | ✅ `036329e` |
 | P2.4 | integer B-shift acts on `H` by the Θ-shift (sympy-verified convention) | ✅ `DFT.BShift` |
 | P2.4 | dual-scale bound `tr G + tr G⁻¹ ≥ 2d`, T-duality invariance, circle case | ✅ `DualScale.TraceBound` |
-| P2.4 | level matching `n·w = 0` and the section condition: momentum/winding frames totally null, swapped by `η`, preserved by `O(d,d;ℤ)` (HZ eq. 1.3, ll. 339–342, 3930–3940) | 🔄 `DFT.SectionCondition` |
+| P2.4 | level matching `n·w = 0` and the section condition: momentum/winding frames totally null, swapped by `η`, preserved by `O(d,d;ℤ)` (HZ eq. 1.3, ll. 339–342, 3930–3940) | ✅ `DFT.SectionCondition` |
 | P2.5 | `χ/24` counting on K3×K3, `χ(K3×T²) = 0`, D3 budget | ✅ `036329e` |
 | P2.5 | flux integrality: Kronecker product of an even form is even, so `½∫G∧G ∈ ℤ` (DRS ll. 230–232) | ✅ `Flux.Integrality` |
 | P2.6 | EOT `A₁…A₇` decompositions vs. Burnside-checked `M₂₄` table | ✅ `036329e` |
@@ -182,7 +182,18 @@ T3 DeepSeek 1 (`dualScale_eq`), T2 Haiku 3 (`dualScale_one`, `dualScale_inv`,
 `circle_effective_scale_ge_two`; the agent ran ~6.6 h wall-clock and needed a deadline),
 T1 Sonnet 2 (`dualScale_ge` via `tr((G−1)G⁻¹(G−1)) ≥ 0`, `dualScale_circle`) in ~6 min.
 
-### Remaining in progress: spectrum equivalence, T² mirror identity, `(−2)`-reflections, B-shift covariance
+### Final gate (2026-09-17 05:07 UTC) — **roadmap 18/18, designed goals 99/99**
+
+`lake build DualScaleStream2`: 3670 jobs, 0 `sorry`; `tools/axiom_audit.py DualScaleStream2`:
+99 theorems, 0 failing. Stream 1 re-gated in the same session: 3353 jobs, 326 theorems, 0
+failing. Statements locked in `docs/statement_lock.json` (`tools/statement_lock.py`).
+
+Last round, by tier: local DeepSeek-Prover closed the Mirror identity (3), `genMetric_bshift_cancel`,
+`mul_jMat_mul_transpose`, `basisChange_mul`; Haiku closed 1 Spectrum lemma and the SL(2,ℤ)
+product (2) plus 5 of 6 section-condition goals — its report again claimed "0 errors" while one
+proof failed to parse (operator precedence), repaired by the orchestrator; Sonnet closed
+reflections (4 + helper), B-shift covariance (2), spectrum equivalence (3 + helper) and flux
+integrality (4), each in under 7 minutes.
 
 ## 7. Running this as an orchestrated workflow
 

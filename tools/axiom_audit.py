@@ -57,8 +57,17 @@ def main() -> int:
     with tempfile.NamedTemporaryFile("w", suffix=".lean", dir="/tmp", delete=False) as fh:
         fh.write(probe)
         tmp = fh.name
-    out = subprocess.run(["lake", "env", "lean", tmp], cwd=ROOT, capture_output=True, text=True).stdout
+    proc = subprocess.run(["lake", "env", "lean", tmp], cwd=ROOT, capture_output=True, text=True)
     Path(tmp).unlink(missing_ok=True)
+    out = proc.stdout
+    import_errors = [ln for ln in (proc.stdout + proc.stderr).splitlines() if ": error" in ln]
+    if import_errors:
+        # Fail loudly: a missing/stale .olean makes every name "MISSING", which previously
+        # looked like an audit result instead of an infrastructure failure.
+        print("AUDIT ERROR — the probe file did not elaborate (build the library first):")
+        for ln in import_errors[:5]:
+            print("   ", ln)
+        return 2
 
     blocks = re.split(r"(?='[^']+' (?:depends on axioms|does not depend on any axioms))", out)
     results = {}
