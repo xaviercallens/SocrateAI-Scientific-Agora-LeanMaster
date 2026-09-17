@@ -1,0 +1,2447 @@
+{
+ "stats": {
+  "declarations": 1224,
+  "theorems": 423,
+  "per_library": {
+   "DualScaleStream2": 99,
+   "StringTheoryFormalization": 89,
+   "DoubleFieldTheory": 44,
+   "DualScaleM24Formalization": 61,
+   "StringTheoryFoundation": 56,
+   "DualScaleValidation": 23,
+   "Lean5Corpus": 51
+  },
+  "module_edges": 42,
+  "cross_library_bridges": 19
+ },
+ "hubs": [
+  {
+   "name": "DualScaleStream2.TDuality.Charge",
+   "kind": "def",
+   "used_by": 36,
+   "examples": [
+    "DualScaleStream2.DFT.etaPair_self",
+    "DualScaleStream2.DFT.etaR_genMetric_sq",
+    "DualScaleStream2.DFT.etaR_mul_self",
+    "DualScaleStream2.DFT.eta_momentum_to_winding",
+    "DualScaleStream2.DFT.genMetric_bshift",
+    "DualScaleStream2.DFT.genMetric_bshift_cancel"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.Gram",
+   "kind": "def",
+   "used_by": 20,
+   "examples": [
+    "DualScaleStream2.Flux.flux_half_selfIntersection_integral",
+    "DualScaleStream2.Flux.kronForm_even",
+    "DualScaleStream2.Flux.kronForm_evenDiag",
+    "DualScaleStream2.Flux.kronForm_symm",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.e8Neg_unimodular"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.TDuality.eta",
+   "kind": "def",
+   "used_by": 20,
+   "examples": [
+    "DualScaleStream2.DFT.etaPair_self",
+    "DualScaleStream2.DFT.eta_momentum_to_winding",
+    "DualScaleStream2.DFT.isSection_image",
+    "DualScaleStream2.DFT.momentumFrame_isSection",
+    "DualScaleStream2.DFT.windingFrame_isSection",
+    "DualScaleStream2.TDuality.basisChange_isODD"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.TDuality.IsODD",
+   "kind": "def",
+   "used_by": 12,
+   "examples": [
+    "DualScaleStream2.DFT.isSection_image",
+    "DualScaleStream2.TDuality.basisChange_isODD",
+    "DualScaleStream2.TDuality.chargeNorm_invariant",
+    "DualScaleStream2.TDuality.eta_isODD",
+    "DualScaleStream2.TDuality.factorized_isODD",
+    "DualScaleStream2.TDuality.isODD_inv_isODD"
+   ]
+  },
+  {
+   "name": "StringTheory.Frontier.k3HodgeNumber",
+   "kind": "def",
+   "used_by": 12,
+   "examples": [
+    "DualScaleStream2.Flux.euler_K3",
+    "DualScaleStream2.Flux.k3k3_anomaly",
+    "DualScaleStream2.Flux.k3t2_euler_zero",
+    "StringTheory.Frontier.hodge11_from_kummer",
+    "StringTheory.Frontier.k3_b2",
+    "StringTheory.Frontier.k3_euler_characteristic"
+   ]
+  },
+  {
+   "name": "SocrateAI.Epistemic.Tier",
+   "kind": "inductive",
+   "used_by": 11,
+   "examples": [
+    "SocrateAI.Epistemic.eq_A_of_A_le",
+    "SocrateAI.Epistemic.no_kernel_claim_rests_on_weaker",
+    "SocrateAI.Epistemic.not_A_of_weak_support",
+    "SocrateAI.Epistemic.tier_A_is_maximal",
+    "SocrateAI.Epistemic.tier_X_is_minimal",
+    "SocrateAI.Epistemic.tier_antisymm"
+   ]
+  },
+  {
+   "name": "DoubleFieldTheory.CourantAlgebroid.CourantSection",
+   "kind": "inductive",
+   "used_by": 8,
+   "examples": [
+    "DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm",
+    "DoubleFieldTheory.CourantAlgebroid.cbracket_v_zero",
+    "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+    "DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact",
+    "DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes",
+    "DoubleFieldTheory.PhysicsDSL.dsl_cbracket_antisymm"
+   ]
+  },
+  {
+   "name": "DoubleFieldTheory.CourantAlgebroid.CourantSection.v",
+   "kind": "def",
+   "used_by": 8,
+   "examples": [
+    "DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm",
+    "DoubleFieldTheory.CourantAlgebroid.cbracket_v_zero",
+    "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+    "DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact",
+    "DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes",
+    "DoubleFieldTheory.PhysicsDSL.dsl_cbracket_antisymm"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.IsEvenDiag",
+   "kind": "def",
+   "used_by": 8,
+   "examples": [
+    "DualScaleStream2.Flux.flux_half_selfIntersection_integral",
+    "DualScaleStream2.Flux.kronForm_even",
+    "DualScaleStream2.Flux.kronForm_evenDiag",
+    "DualScaleStream2.Lattice.cartanE8_evenDiag",
+    "DualScaleStream2.Lattice.e8Neg_evenDiag",
+    "DualScaleStream2.Lattice.even_quadratic_form_of_even_diag"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.DFT.genMetric",
+   "kind": "def",
+   "used_by": 7,
+   "examples": [
+    "DualScaleStream2.DFT.etaR_genMetric_sq",
+    "DualScaleStream2.DFT.genMetric_bshift",
+    "DualScaleStream2.DFT.genMetric_bshift_cancel",
+    "DualScaleStream2.DFT.genMetric_symm",
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DFT.tduality_inverts_metric"
+   ]
+  },
+  {
+   "name": "DoubleFieldTheory.CourantAlgebroid.CBracket",
+   "kind": "def",
+   "used_by": 7,
+   "examples": [
+    "DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm",
+    "DoubleFieldTheory.CourantAlgebroid.cbracket_v_zero",
+    "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+    "DoubleFieldTheory.CourantAlgebroid.jacobiator_vector_vanishes",
+    "DoubleFieldTheory.PhysicsDSL.dsl_cbracket_antisymm",
+    "DoubleFieldTheory.PhysicsDSL.dsl_cbracket_self_vanishes"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.cartanE8",
+   "kind": "def",
+   "used_by": 7,
+   "examples": [
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.cartanE8_det",
+    "DualScaleStream2.Lattice.cartanE8_evenDiag",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "DualScaleStream2.Lattice.cartanE8_symm",
+    "DualScaleStream2.Lattice.cartanE8_unimodular"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.hyperbolicU",
+   "kind": "def",
+   "used_by": 7,
+   "examples": [
+    "DualScaleStream2.Lattice.hyperbolicU_congruence",
+    "DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram",
+    "DualScaleStream2.Lattice.hyperbolicU_evenDiag",
+    "DualScaleStream2.Lattice.hyperbolicU_mul_self",
+    "DualScaleStream2.Lattice.hyperbolicU_symm",
+    "DualScaleStream2.Lattice.hyperbolicU_unimodular"
+   ]
+  },
+  {
+   "name": "DoubleFieldTheory.CourantAlgebroid.CourantSection.alpha",
+   "kind": "def",
+   "used_by": 6,
+   "examples": [
+    "DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm",
+    "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+    "DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact",
+    "DoubleFieldTheory.PhysicsDSL.dsl_cbracket_antisymm",
+    "DoubleFieldTheory.PhysicsDSL.dsl_cbracket_self_vanishes",
+    "DoubleFieldTheory.PhysicsDSL.dsl_dorfman_cbracket_diff"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.TDuality.proj",
+   "kind": "def",
+   "used_by": 6,
+   "examples": [
+    "DualScaleStream2.TDuality.factorized_comm",
+    "DualScaleStream2.TDuality.factorized_isODD",
+    "DualScaleStream2.TDuality.factorized_mul_self",
+    "DualScaleStream2.TDuality.proj_comm",
+    "DualScaleStream2.TDuality.proj_mul_self",
+    "DualScaleStream2.TDuality.proj_transpose"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.TDuality.chargeNorm",
+   "kind": "def",
+   "used_by": 6,
+   "examples": [
+    "DualScaleStream2.DFT.etaPair_self",
+    "DualScaleStream2.DFT.levelMatching_iff",
+    "DualScaleStream2.TDuality.chargeNorm_even",
+    "DualScaleStream2.TDuality.chargeNorm_invariant",
+    "DualScaleStream2.TDuality.chargeNorm_sumElim",
+    "DualScaleStream2.TDuality.spectrum_equivalence"
+   ]
+  },
+  {
+   "name": "StringTheory.StringDynamics.M24RepDim",
+   "kind": "def",
+   "used_by": 6,
+   "examples": [
+    "DualScaleStream2.Moonshine.A6_decomposition",
+    "DualScaleStream2.Moonshine.A6_not_irrep",
+    "DualScaleStream2.Moonshine.A7_decomposition",
+    "DualScaleStream2.Moonshine.first_five_are_irreps",
+    "StringTheory.StringDynamics.M24RepDim_sum_sq",
+    "StringTheory.StringDynamics.M24_first_coefficient"
+   ]
+  },
+  {
+   "name": "DoubleFieldTheory.GeneralizedGeometry.Mat2",
+   "kind": "inductive",
+   "used_by": 5,
+   "examples": [
+    "DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality",
+    "DoubleFieldTheory.GeneralizedGeometry.odd_inversion_generator",
+    "DoubleFieldTheory.TDualityBuscher.inversion_generator_properties",
+    "DoubleFieldTheory.TDualityBuscher.t_duality_congruence",
+    "DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators"
+   ]
+  },
+  {
+   "name": "DoubleFieldTheory.GeneralizedGeometry.MatMul",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta",
+    "DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality",
+    "DoubleFieldTheory.GeneralizedGeometry.odd_inversion_generator",
+    "DoubleFieldTheory.TDualityBuscher.inversion_generator_properties",
+    "DoubleFieldTheory.TorusMoonshine.sl2z_modular_generators"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.IsUnimodular",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "DualScaleStream2.Lattice.cartanE8_unimodular",
+    "DualScaleStream2.Lattice.e8Neg_unimodular",
+    "DualScaleStream2.Lattice.hyperbolicUNeg_unimodular",
+    "DualScaleStream2.Lattice.hyperbolicU_unimodular",
+    "DualScaleStream2.Lattice.isUnimodular_of_mul_eq_one"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.DualScale.dualScale",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "DualScaleStream2.DualScale.dualScale_circle",
+    "DualScaleStream2.DualScale.dualScale_eq",
+    "DualScaleStream2.DualScale.dualScale_ge",
+    "DualScaleStream2.DualScale.dualScale_inv",
+    "DualScaleStream2.DualScale.dualScale_one"
+   ]
+  },
+  {
+   "name": "StringTheory.UseCases.CriticalDimension.fermionicGhostCharge",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "StringTheory.UseCases.CriticalDimension.bc_ghost_charge_eq",
+    "StringTheory.UseCases.CriticalDimension.bosonic_dimension_unique",
+    "StringTheory.UseCases.CriticalDimension.bosonic_eq_neg_fermionic",
+    "StringTheory.UseCases.CriticalDimension.bosonic_string_critical_dimension",
+    "StringTheory.UseCases.CriticalDimension.superstring_critical_dimension"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.TDuality.basisChange",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "DualScaleStream2.TDuality.basisChange_comm_thetaShift",
+    "DualScaleStream2.TDuality.basisChange_isODD",
+    "DualScaleStream2.TDuality.basisChange_mul",
+    "DualScaleStream2.TDuality.mirror_conjugates_tauShift",
+    "DualScaleStream2.TDuality.tauShift_isODD"
+   ]
+  },
+  {
+   "name": "StringTheory.UseCases.K3Signature.bPlus",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "DualScaleStream2.Lattice.sigK3_matches_hodge",
+    "StringTheory.UseCases.K3Signature.bPlus_eq_three",
+    "StringTheory.UseCases.K3Signature.betti_decomposition_matches_b2",
+    "StringTheory.UseCases.K3Signature.betti_sum_eq_b2",
+    "StringTheory.UseCases.K3Signature.k3_signature_eq_neg_sixteen"
+   ]
+  },
+  {
+   "name": "StringTheory.UseCases.K3Signature.bMinus",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "DualScaleStream2.Lattice.sigK3_matches_hodge",
+    "StringTheory.UseCases.K3Signature.bMinus_eq_nineteen",
+    "StringTheory.UseCases.K3Signature.betti_decomposition_matches_b2",
+    "StringTheory.UseCases.K3Signature.betti_sum_eq_b2",
+    "StringTheory.UseCases.K3Signature.k3_signature_eq_neg_sixteen"
+   ]
+  },
+  {
+   "name": "SocrateAI.Epistemic.Claim.tier",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "SocrateAI.Epistemic.no_kernel_claim_rests_on_weaker",
+    "SocrateAI.Epistemic.not_A_of_weak_support",
+    "SocrateAI.Epistemic.tier_le_of_depends",
+    "SocrateAI.Epistemic.witnessSound_sound",
+    "SocrateAI.Epistemic.witnessUnsound_not_sound"
+   ]
+  },
+  {
+   "name": "SocrateAI.Epistemic.Sound",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "SocrateAI.Epistemic.no_kernel_claim_rests_on_weaker",
+    "SocrateAI.Epistemic.not_A_of_weak_support",
+    "SocrateAI.Epistemic.tier_le_of_depends",
+    "SocrateAI.Epistemic.witnessSound_sound",
+    "SocrateAI.Epistemic.witnessUnsound_not_sound"
+   ]
+  },
+  {
+   "name": "SocrateAI.Moonshine.eqFrac",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "SocrateAI.Moonshine.conformal_exponent_sum",
+    "SocrateAI.Moonshine.delta12_value",
+    "SocrateAI.Moonshine.delta1_is_half",
+    "SocrateAI.Moonshine.delta2_is_five_halves",
+    "SocrateAI.Moonshine.total_chiral_weight_value"
+   ]
+  },
+  {
+   "name": "SocrateAI.Epistemic.Tier.toNat",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "SocrateAI.Epistemic.tier_A_is_maximal",
+    "SocrateAI.Epistemic.tier_X_is_minimal",
+    "SocrateAI.Epistemic.tier_antisymm",
+    "SocrateAI.Epistemic.tier_refl",
+    "SocrateAI.Epistemic.tier_trans"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.Signature",
+   "kind": "inductive",
+   "used_by": 5,
+   "examples": [
+    "DualScaleStream2.Lattice.rank_K3",
+    "DualScaleStream2.Lattice.rank_K3T2",
+    "DualScaleStream2.Lattice.sigK3T2_eq",
+    "DualScaleStream2.Lattice.sigK3_eq",
+    "DualScaleStream2.Lattice.sigMukai_eq"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.TDuality.factorized",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "DualScaleStream2.TDuality.factorized_comm",
+    "DualScaleStream2.TDuality.factorized_isODD",
+    "DualScaleStream2.TDuality.factorized_mul_self",
+    "DualScaleStream2.TDuality.factorized_two",
+    "DualScaleStream2.TDuality.mirror_conjugates_tauShift"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.e8Neg",
+   "kind": "def",
+   "used_by": 5,
+   "examples": [
+    "DualScaleStream2.Lattice.e8Neg_evenDiag",
+    "DualScaleStream2.Lattice.e8Neg_simpleRoot_norm",
+    "DualScaleStream2.Lattice.e8Neg_symm",
+    "DualScaleStream2.Lattice.e8Neg_unimodular",
+    "DualScaleStream2.Lattice.e8Neg_weyl_isometry"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.DFT.etaR",
+   "kind": "def",
+   "used_by": 4,
+   "examples": [
+    "DualScaleStream2.DFT.etaR_genMetric_sq",
+    "DualScaleStream2.DFT.etaR_mul_self",
+    "DualScaleStream2.DFT.tduality_inverts_metric",
+    "DualScaleStream2.DFT.thetaShiftR_preserves_eta"
+   ]
+  },
+  {
+   "name": "DoubleFieldTheory.GeneralizedGeometry.ODD_Eta",
+   "kind": "def",
+   "used_by": 4,
+   "examples": [
+    "DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta",
+    "DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality",
+    "DoubleFieldTheory.GeneralizedGeometry.odd_inversion_generator",
+    "DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.MukaiVec.s",
+   "kind": "def",
+   "used_by": 4,
+   "examples": [
+    "DualScaleStream2.Lattice.mukaiPair_even",
+    "DualScaleStream2.Lattice.mukaiPair_self",
+    "DualScaleStream2.Lattice.mukaiPair_symm",
+    "DualScaleStream2.Lattice.structureSheaf_mukai_sq"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.mukaiPair",
+   "kind": "def",
+   "used_by": 4,
+   "examples": [
+    "DualScaleStream2.Lattice.mukaiPair_even",
+    "DualScaleStream2.Lattice.mukaiPair_self",
+    "DualScaleStream2.Lattice.mukaiPair_symm",
+    "DualScaleStream2.Lattice.structureSheaf_mukai_sq"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.MukaiVec.c",
+   "kind": "def",
+   "used_by": 4,
+   "examples": [
+    "DualScaleStream2.Lattice.mukaiPair_even",
+    "DualScaleStream2.Lattice.mukaiPair_self",
+    "DualScaleStream2.Lattice.mukaiPair_symm",
+    "DualScaleStream2.Lattice.structureSheaf_mukai_sq"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.MukaiVec.r",
+   "kind": "def",
+   "used_by": 4,
+   "examples": [
+    "DualScaleStream2.Lattice.mukaiPair_even",
+    "DualScaleStream2.Lattice.mukaiPair_self",
+    "DualScaleStream2.Lattice.mukaiPair_symm",
+    "DualScaleStream2.Lattice.structureSheaf_mukai_sq"
+   ]
+  },
+  {
+   "name": "DualScaleStream2.Lattice.isUnimodular_of_mul_eq_one",
+   "kind": "theorem",
+   "used_by": 4,
+   "examples": [
+    "DualScaleStream2.Lattice.cartanE8_unimodular",
+    "DualScaleStream2.Lattice.e8Neg_unimodular",
+    "DualScaleStream2.Lattice.hyperbolicUNeg_unimodular",
+    "DualScaleStream2.Lattice.hyperbolicU_unimodular"
+   ]
+  },
+  {
+   "name": "SocrateAI.DualScale.MicroL2Operator",
+   "kind": "inductive",
+   "used_by": 4,
+   "examples": [
+    "SocrateAI.DualScale.sym2_det_identity",
+    "SocrateAI.DualScale.sym2_fibonacci_verification",
+    "SocrateAI.DualScale.sym2_modular_attractor_verification",
+    "SocrateAI.DualScale.sym2_pell_verification"
+   ]
+  }
+ ],
+ "shared_foundations": [
+  {
+   "lemma": "Fintype.complete",
+   "uses": 29,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DualScale.dualScale_circle",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.cartanE8_det",
+    "DualScaleStream2.Lattice.cartanE8_evenDiag"
+   ]
+  },
+  {
+   "lemma": "Matrix.ext",
+   "uses": 22,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DualScale.dualScale_circle",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.cartanE8_symm",
+    "DualScaleStream2.Lattice.e8Neg_symm"
+   ]
+  },
+  {
+   "lemma": "MulZeroClass.mul_zero",
+   "uses": 22,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.etaR_mul_self",
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DFT.tduality_inverts_metric",
+    "DualScaleStream2.DFT.thetaShiftR_preserves_eta",
+    "DualScaleStream2.DualScale.dualScale_eq"
+   ]
+  },
+  {
+   "lemma": "Finset.sum_congr",
+   "uses": 17,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.Flux.euler_K3",
+    "DualScaleStream2.Flux.euler_T2",
+    "DualScaleStream2.Flux.k3t2_euler_zero",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul"
+   ]
+  },
+  {
+   "lemma": "Matrix.cons_val'",
+   "uses": 17,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DualScale.dualScale_circle",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.cartanE8_det",
+    "DualScaleStream2.Lattice.cartanE8_evenDiag"
+   ]
+  },
+  {
+   "lemma": "Matrix.cons_val_fin_one",
+   "uses": 17,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DualScale.dualScale_circle",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.cartanE8_det",
+    "DualScaleStream2.Lattice.cartanE8_evenDiag"
+   ]
+  },
+  {
+   "lemma": "MulZeroClass.zero_mul",
+   "uses": 15,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.etaR_genMetric_sq",
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DFT.tduality_inverts_metric",
+    "DualScaleStream2.DFT.thetaShiftR_preserves_eta",
+    "DualScaleStream2.DualScale.dualScale_eq"
+   ]
+  },
+  {
+   "lemma": "Matrix.fromBlocks_multiply",
+   "uses": 13,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.etaR_genMetric_sq",
+    "DualScaleStream2.DFT.etaR_mul_self",
+    "DualScaleStream2.DFT.genMetric_bshift",
+    "DualScaleStream2.DFT.tduality_inverts_metric",
+    "DualScaleStream2.DFT.thetaShiftR_preserves_eta"
+   ]
+  },
+  {
+   "lemma": "Finset.univ_unique",
+   "uses": 12,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.Flux.euler_T2",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.cartanE8_det",
+    "DualScaleStream2.Lattice.cartanE8_posDef"
+   ]
+  },
+  {
+   "lemma": "Real.instIsStrictOrderedRing",
+   "uses": 12,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.DualScale.dualScale_ge",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.Frontier.fterm_potential_nonneg",
+    "StringTheory.Frontier.poincare_geodesic_kinetic_energy_nonneg"
+   ]
+  },
+  {
+   "lemma": "Iff.mpr",
+   "uses": 11,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.etaR_genMetric_sq",
+    "DualScaleStream2.DFT.genMetric_bshift",
+    "DualScaleStream2.DFT.genMetric_symm",
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.Lattice.cartanE8_posDef"
+   ]
+  },
+  {
+   "lemma": "IsOrderedAddMonoid.toAddLeftMono",
+   "uses": 11,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.DualScale.dualScale_ge",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.NSMath.OpenAIBridging.torus_weight_pos",
+    "StringTheory.NSMath.energy_dissipation"
+   ]
+  },
+  {
+   "lemma": "Real.instIsOrderedRing",
+   "uses": 11,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.DualScale.dualScale_ge",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.NSMath.OpenAIBridging.torus_weight_pos",
+    "StringTheory.NSMath.energy_dissipation"
+   ]
+  },
+  {
+   "lemma": "Real.instIsOrderedAddMonoid",
+   "uses": 10,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.DualScale.dualScale_ge",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.NSMath.OpenAIBridging.torus_weight_pos",
+    "StringTheory.NSMath.energy_dissipation"
+   ]
+  },
+  {
+   "lemma": "IsStrictOrderedRing.toIsOrderedRing",
+   "uses": 10,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.Frontier.fterm_potential_nonneg",
+    "StringTheory.Frontier.poincare_geodesic_kinetic_energy_nonneg",
+    "StringTheory.NSMath.energy_dissipation",
+    "StringTheory.NSMath.regularity_lifting"
+   ]
+  },
+  {
+   "lemma": "Matrix.cons_val_succ",
+   "uses": 9,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.cartanE8_det",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "DualScaleStream2.Lattice.e8_LDL",
+    "DualScaleStream2.Lattice.hyperbolicUNeg_mul_self"
+   ]
+  },
+  {
+   "lemma": "Matrix.transpose_one",
+   "uses": 9,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.genMetric_bshift",
+    "DualScaleStream2.DFT.thetaShiftR_preserves_eta",
+    "DualScaleStream2.DualScale.dualScale_ge",
+    "DualScaleStream2.Lattice.reflection_isometry",
+    "DualScaleStream2.TDuality.basisChange_isODD"
+   ]
+  },
+  {
+   "lemma": "Finset.sum_const",
+   "uses": 9,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.Flux.euler_T2",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.e8_LDL",
+    "DualScaleStream2.Lattice.hyperbolicUNeg_mul_self"
+   ]
+  },
+  {
+   "lemma": "Finset.card_singleton",
+   "uses": 9,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.Flux.euler_T2",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.cartanE8_det",
+    "DualScaleStream2.Lattice.e8_LDL"
+   ]
+  },
+  {
+   "lemma": "Rat.instCharZero",
+   "uses": 9,
+   "libraries": [
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "StringTheory.Frontier.central_charge_k3_eq_six",
+    "StringTheory.Frontier.virasoro_algebra_commutator",
+    "StringTheory.Frontier.virasoro_ope_central_term",
+    "StringTheory.StringDynamics.bps_ratio_pos",
+    "StringTheory.StringDynamics.bps_ratio_reduced"
+   ]
+  },
+  {
+   "lemma": "FloorSemiring.instCharZero",
+   "uses": 8,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.Lattice.cartanE8_det",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "DualScaleStream2.Lattice.e8_LDL"
+   ]
+  },
+  {
+   "lemma": "AddGroup.existsAddOfLE",
+   "uses": 8,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.Frontier.fterm_potential_nonneg",
+    "StringTheory.Frontier.poincare_geodesic_kinetic_energy_nonneg",
+    "StringTheory.NSMath.energy_dissipation"
+   ]
+  },
+  {
+   "lemma": "one_ne_zero._simp_1",
+   "uses": 8,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.Flux.euler_T2",
+    "DualScaleStream2.Flux.k3t2_euler_zero",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.hyperbolicUNeg_mul_self",
+    "DualScaleStream2.Lattice.hyperbolicU_mul_self"
+   ]
+  },
+  {
+   "lemma": "Matrix.fromBlocks_transpose",
+   "uses": 8,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.genMetric_bshift",
+    "DualScaleStream2.DFT.genMetric_symm",
+    "DualScaleStream2.DFT.thetaShiftR_preserves_eta",
+    "DualScaleStream2.TDuality.basisChange_isODD",
+    "DualScaleStream2.TDuality.eta_isODD"
+   ]
+  },
+  {
+   "lemma": "IsCancelMulZero.toIsLeftCancelMulZero",
+   "uses": 8,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.DualScale.dualScale_circle",
+    "StringTheory.Frontier.mobius_compose",
+    "StringTheory.UseCases.NarainLattice.narain_norm_R_independent"
+   ]
+  },
+  {
+   "lemma": "NeZero.one",
+   "uses": 8,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.DualScale.dualScale_circle",
+    "StringTheory.Frontier.mobius_compose",
+    "StringTheory.UseCases.NarainLattice.narain_norm_R_independent"
+   ]
+  },
+  {
+   "lemma": "GroupWithZero.toNontrivial",
+   "uses": 8,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.DualScale.dualScale_circle",
+    "StringTheory.Frontier.mobius_compose",
+    "StringTheory.UseCases.NarainLattice.narain_norm_R_independent"
+   ]
+  },
+  {
+   "lemma": "Finset.sum_const_zero",
+   "uses": 7,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.Flux.euler_T2",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.e8_LDL",
+    "DualScaleStream2.Lattice.hyperbolicUNeg_mul_self",
+    "DualScaleStream2.Lattice.hyperbolicU_mul_self"
+   ]
+  },
+  {
+   "lemma": "Matrix.fromBlocks_inj",
+   "uses": 6,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.etaR_genMetric_sq",
+    "DualScaleStream2.DFT.genMetric_bshift",
+    "DualScaleStream2.DFT.genMetric_symm",
+    "DualScaleStream2.TDuality.factorized_comm",
+    "DualScaleStream2.TDuality.factorized_isODD"
+   ]
+  },
+  {
+   "lemma": "Matrix.mul_assoc",
+   "uses": 6,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.genMetric_bshift",
+    "DualScaleStream2.DFT.genMetric_bshift_cancel",
+    "DualScaleStream2.TDuality.basisChange_comm_thetaShift",
+    "DualScaleStream2.TDuality.isODD_inv_isODD",
+    "DualScaleStream2.TDuality.isODD_left_inv"
+   ]
+  },
+  {
+   "lemma": "IsOrderedRing.toPosMulMono",
+   "uses": 6,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.NSMath.energy_dissipation",
+    "StringTheory.NSMath.regularity_lifting",
+    "StringTheory.NSMath.sobolev_embedding"
+   ]
+  },
+  {
+   "lemma": "Even.pow_nonneg",
+   "uses": 6,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.Frontier.fterm_potential_nonneg",
+    "StringTheory.Frontier.poincare_geodesic_kinetic_energy_nonneg",
+    "StringTheory.NSMath.energy_dissipation",
+    "StringTheory.NSMath.regularity_lifting"
+   ]
+  },
+  {
+   "lemma": "IsStrictOrderedRing.toPosMulStrictMono",
+   "uses": 6,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.Frontier.poincare_geodesic_kinetic_energy_nonneg",
+    "StringTheory.Frontier.wp_metric_positive_diagonal",
+    "StringTheory.StringDynamics.bps_ratio_pos"
+   ]
+  },
+  {
+   "lemma": "IsOrderedRing.toMulPosMono",
+   "uses": 6,
+   "libraries": [
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "StringTheory.NSMath.energy_dissipation",
+    "StringTheory.NSMath.regularity_lifting",
+    "StringTheory.NSMath.sobolev_embedding",
+    "StringTheory.StringDynamics.implicit_euler_denominator_lower_bound",
+    "StringTheory.StringDynamics.sdc_tower_suppression"
+   ]
+  },
+  {
+   "lemma": "Finset.sum_neg_distrib",
+   "uses": 6,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.Flux.euler_T2",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.e8Neg_simpleRoot_norm",
+    "DualScaleStream2.Lattice.hyperbolicU_congruence",
+    "DualScaleStream2.TDuality.tauShift_dual_spec"
+   ]
+  },
+  {
+   "lemma": "Matrix.one_apply_eq",
+   "uses": 6,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DualScale.dualScale_circle",
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.hyperbolicUNeg_mul_self",
+    "DualScaleStream2.Lattice.hyperbolicU_mul_self"
+   ]
+  },
+  {
+   "lemma": "PosMulReflectLE.toPosMulReflectLT",
+   "uses": 5,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.Frontier.poincare_geodesic_kinetic_energy_nonneg",
+    "StringTheory.Frontier.wp_metric_positive_diagonal",
+    "StringTheory.StringDynamics.bps_ratio_pos"
+   ]
+  },
+  {
+   "lemma": "PosMulStrictMono.toPosMulReflectLE",
+   "uses": 5,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DualScale.circle_effective_scale_ge_two",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.Frontier.poincare_geodesic_kinetic_energy_nonneg",
+    "StringTheory.Frontier.wp_metric_positive_diagonal",
+    "StringTheory.StringDynamics.bps_ratio_pos"
+   ]
+  },
+  {
+   "lemma": "zero_ne_one._simp_1",
+   "uses": 5,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.hyperbolicUNeg_mul_self",
+    "DualScaleStream2.Lattice.hyperbolicU_mul_self",
+    "DualScaleStream2.TDuality.tauShift_dual_spec",
+    "StringTheory.StringDynamics.odd_metric_d1"
+   ]
+  },
+  {
+   "lemma": "StarOrderedRing.toExistsAddOfLE",
+   "uses": 5,
+   "libraries": [
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "StringTheory.NSMath.regularity_lifting",
+    "StringTheory.NSMath.sobolev_embedding",
+    "StringTheory.StringDynamics.implicit_euler_denominator_lower_bound",
+    "StringTheory.StringDynamics.potential_decreases_along_flow",
+    "StringTheory.StringDynamics.sdc_tower_suppression"
+   ]
+  },
+  {
+   "lemma": "Real.instStarOrderedRing",
+   "uses": 5,
+   "libraries": [
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "StringTheory.NSMath.regularity_lifting",
+    "StringTheory.NSMath.sobolev_embedding",
+    "StringTheory.StringDynamics.implicit_euler_denominator_lower_bound",
+    "StringTheory.StringDynamics.potential_decreases_along_flow",
+    "StringTheory.StringDynamics.sdc_tower_suppression"
+   ]
+  },
+  {
+   "lemma": "Fintype.card_fin",
+   "uses": 5,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.DualScale.dualScale_ge",
+    "DualScaleStream2.DualScale.dualScale_one",
+    "StringTheory.Frontier.hodge11_from_kummer",
+    "StringTheory.StringDynamics.kummer_lattice_contribution",
+    "StringTheory.StringDynamics.kummer_sublattice_rank"
+   ]
+  },
+  {
+   "lemma": "Matrix.transpose_mul",
+   "uses": 5,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.genMetric_symm",
+    "DualScaleStream2.Lattice.reflection_isometry",
+    "DualScaleStream2.TDuality.basisChange_isODD",
+    "DualScaleStream2.TDuality.isODD_inv_isODD",
+    "DualScaleStream2.TDuality.isODD_mul"
+   ]
+  },
+  {
+   "lemma": "IsLeftCancelAdd.addLeftReflectLE_of_addLeftReflectLT",
+   "uses": 5,
+   "libraries": [
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "StringTheory.NSMath.sobolev_embedding",
+    "StringTheory.StringDynamics.M24RepDim_sum_sq",
+    "StringTheory.StringDynamics.implicit_euler_denominator_lower_bound",
+    "StringTheory.StringDynamics.sdc_tower_suppression",
+    "StringTheory.UseCases.TDuality.self_dual_radius_unique"
+   ]
+  },
+  {
+   "lemma": "Matrix.fromBlocks_one",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.etaR_genMetric_sq",
+    "DualScaleStream2.DFT.etaR_mul_self",
+    "DualScaleStream2.TDuality.eta_mul_self",
+    "DualScaleStream2.TDuality.factorized_mul_self"
+   ]
+  },
+  {
+   "lemma": "Real.instNontrivial",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.NSMath.OpenAIBridging.torus_weight_pos",
+    "StringTheory.NSMath.energy_dissipation",
+    "StringTheory.NSMath.regularity_lifting"
+   ]
+  },
+  {
+   "lemma": "Not.intro",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "StringTheory.StringDynamics.tadpole_cancellation",
+    "StringTheory.UseCases.CriticalDimension.bosonic_dimension_unique",
+    "StringTheory.UseCases.TDuality.self_dual_radius_unique"
+   ]
+  },
+  {
+   "lemma": "Iff.mp",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2",
+    "DualScaleValidation"
+   ],
+   "examples": [
+    "DualScaleStream2.DualScale.dualScale_ge",
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "DualScaleStream2.TDuality.isODD_right_inv",
+    "DualScaleValidation.UseCase1.moduli_potential_zero_iff"
+   ]
+  },
+  {
+   "lemma": "Matrix.transpose_zero",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.genMetric_bshift",
+    "DualScaleStream2.DFT.thetaShiftR_preserves_eta",
+    "DualScaleStream2.TDuality.basisChange_isODD",
+    "DualScaleStream2.TDuality.thetaShift_isODD"
+   ]
+  },
+  {
+   "lemma": "Matrix.fromBlocks_mulVec",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.eta_momentum_to_winding",
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DFT.windingFrame_isSection",
+    "DualScaleStream2.TDuality.chargeNorm_sumElim"
+   ]
+  },
+  {
+   "lemma": "Matrix.zero_mulVec",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.eta_momentum_to_winding",
+    "DualScaleStream2.DFT.massForm_circle",
+    "DualScaleStream2.DFT.windingFrame_isSection",
+    "DualScaleStream2.TDuality.chargeNorm_sumElim"
+   ]
+  },
+  {
+   "lemma": "Matrix.one_mulVec",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.eta_momentum_to_winding",
+    "DualScaleStream2.DFT.windingFrame_isSection",
+    "DualScaleStream2.TDuality.chargeNorm_sumElim",
+    "DualScaleStream2.TDuality.spectrum_equivalence"
+   ]
+  },
+  {
+   "lemma": "Matrix.one_apply_ne",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.Lattice.cartanE8Inv_mul",
+    "DualScaleStream2.Lattice.hyperbolicUNeg_mul_self",
+    "DualScaleStream2.Lattice.hyperbolicU_mul_self",
+    "DualScaleStream2.TDuality.tauShift_dual_spec"
+   ]
+  },
+  {
+   "lemma": "Matrix.dotProduct_mulVec",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.isSection_image",
+    "DualScaleStream2.Lattice.even_quadratic_form_of_even_diag",
+    "DualScaleStream2.Lattice.vecMulVec_mul_self",
+    "DualScaleStream2.TDuality.chargeNorm_invariant"
+   ]
+  },
+  {
+   "lemma": "AddLeftCancelSemigroup.toIsLeftCancelAdd",
+   "uses": 4,
+   "libraries": [
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "StringTheory.StringDynamics.M24RepDim_sum_sq",
+    "StringTheory.StringDynamics.implicit_euler_denominator_lower_bound",
+    "StringTheory.StringDynamics.sdc_tower_suppression",
+    "StringTheory.UseCases.TDuality.self_dual_radius_unique"
+   ]
+  },
+  {
+   "lemma": "StarOrderedRing.toIsOrderedRing",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.Moonshine.first_five_are_irreps",
+    "StringTheory.StringDynamics.M24_first_coefficient",
+    "StringTheory.UseCases.K3Signature.betti_decomposition_matches_b2",
+    "StringTheory.UseCases.K3Signature.betti_sum_eq_b2"
+   ]
+  },
+  {
+   "lemma": "Matrix.mulVec_mulVec",
+   "uses": 4,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.isSection_image",
+    "DualScaleStream2.DFT.massForm_covariant",
+    "DualScaleStream2.TDuality.chargeNorm_invariant",
+    "DualScaleStream2.TDuality.spectrum_equivalence"
+   ]
+  },
+  {
+   "lemma": "Finset.sum_singleton",
+   "uses": 3,
+   "libraries": [
+    "DualScaleStream2",
+    "StringTheoryFormalization"
+   ],
+   "examples": [
+    "DualScaleStream2.Lattice.cartanE8_posDef",
+    "DualScaleStream2.TDuality.mul_jMat_mul_transpose",
+    "StringTheory.StringDynamics.M24RepDim_sum_sq"
+   ]
+  },
+  {
+   "lemma": "Matrix.transpose_sub",
+   "uses": 3,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.genMetric_symm",
+    "DualScaleStream2.DualScale.dualScale_ge",
+    "DualScaleStream2.TDuality.factorized_isODD"
+   ]
+  },
+  {
+   "lemma": "Matrix.mul_one",
+   "uses": 3,
+   "libraries": [
+    "DualScaleStream2"
+   ],
+   "examples": [
+    "DualScaleStream2.DFT.genMetric_bshift",
+    "DualScaleStream2.DualScale.dualScale_ge",
+    "DualScaleStream2.TDuality.isODD_inv_isODD"
+   ]
+  }
+ ],
+ "bridges": [
+  {
+   "theorem": "DualScaleStream2.DFT.massForm_circle",
+   "uses": "StringTheory.UseCases.TDuality.leftMomentum",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.DFT.massForm_circle",
+   "uses": "StringTheory.UseCases.TDuality.momentumMassSq",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.DFT.massForm_circle",
+   "uses": "StringTheory.UseCases.TDuality.rightMomentum",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.Flux.euler_K3",
+   "uses": "StringTheory.Frontier.k3HodgeNumber",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.Flux.k3k3_anomaly",
+   "uses": "StringTheory.Frontier.k3HodgeNumber",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.Flux.k3t2_euler_zero",
+   "uses": "StringTheory.Frontier.k3HodgeNumber",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram",
+   "uses": "StringTheory.UseCases.NarainLattice.gram",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.Lattice.sigK3_matches_hodge",
+   "uses": "StringTheory.UseCases.K3Signature.bMinus",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.Lattice.sigK3_matches_hodge",
+   "uses": "StringTheory.UseCases.K3Signature.bPlus",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.Moonshine.A6_decomposition",
+   "uses": "StringTheory.StringDynamics.M24RepDim",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.Moonshine.A6_not_irrep",
+   "uses": "StringTheory.StringDynamics.M24RepDim",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.Moonshine.A7_decomposition",
+   "uses": "StringTheory.StringDynamics.M24RepDim",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "DualScaleStream2.Moonshine.first_five_are_irreps",
+   "uses": "StringTheory.StringDynamics.M24RepDim",
+   "from": "DualScaleStream2",
+   "to": "StringTheoryFormalization"
+  },
+  {
+   "theorem": "StringTheory.Frontier.flux_tadpole_quantization_exact",
+   "uses": "StringTheory.Foundation.StringTheory.TadpoleCancellation.d7_tadpole_cancellation",
+   "from": "StringTheoryFormalization",
+   "to": "StringTheoryFoundation"
+  },
+  {
+   "theorem": "StringTheory.Frontier.flux_tadpole_quantization_exact",
+   "uses": "StringTheory.Foundation.StringTheory.TadpoleCancellation.totalD7Charge",
+   "from": "StringTheoryFormalization",
+   "to": "StringTheoryFoundation"
+  },
+  {
+   "theorem": "StringTheory.Frontier.flux_tadpole_quantization_exact",
+   "uses": "StringTheory.Foundation.StringTheory.TadpoleCancellation.totalO7Charge",
+   "from": "StringTheoryFormalization",
+   "to": "StringTheoryFoundation"
+  },
+  {
+   "theorem": "StringTheory.Frontier.flux_tadpole_quantization_exact",
+   "uses": "StringTheory.Foundation.StringTheory.VafaSwampland.GVWFluxState",
+   "from": "StringTheoryFormalization",
+   "to": "StringTheoryFoundation"
+  },
+  {
+   "theorem": "StringTheory.Frontier.poincare_geodesic_atlas_curvature",
+   "uses": "StringTheory.Foundation.Atlas.AtlasHyperbolicMetric",
+   "from": "StringTheoryFormalization",
+   "to": "StringTheoryFoundation"
+  },
+  {
+   "theorem": "StringTheory.Frontier.poincare_geodesic_atlas_curvature",
+   "uses": "StringTheory.Foundation.Atlas.AtlasHyperbolicMetric.gaussianCurvature",
+   "from": "StringTheoryFormalization",
+   "to": "StringTheoryFoundation"
+  }
+ ],
+ "similar_cross_library": [
+  {
+   "cosine": 0.631,
+   "dep_jaccard": 0.108,
+   "a": "DoubleFieldTheory.K3Topology.k3_euler_characteristic",
+   "b": "SocrateAI.Moonshine.k3_euler_eq_24"
+  },
+  {
+   "cosine": 0.571,
+   "dep_jaccard": 0.016,
+   "a": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature",
+   "b": "StringTheory.StringDynamics.mukai_rank"
+  },
+  {
+   "cosine": 0.557,
+   "dep_jaccard": 0.009,
+   "a": "DualScaleStream2.Flux.k3t2_euler_zero",
+   "b": "SocrateAI.Moonshine.k3t2_euler_char_eq_zero"
+  },
+  {
+   "cosine": 0.547,
+   "dep_jaccard": 0.012,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension",
+   "b": "StringTheory.Foundation.Quantum.golay_length_matches_k3_euler"
+  },
+  {
+   "cosine": 0.531,
+   "dep_jaccard": 0.452,
+   "a": "DualScaleStream2.Flux.euler_K3",
+   "b": "StringTheory.Frontier.k3_euler_characteristic"
+  },
+  {
+   "cosine": 0.518,
+   "dep_jaccard": 0.025,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension",
+   "b": "StringTheory.Foundation.Quantum.golay_code_rate_is_half"
+  },
+  {
+   "cosine": 0.514,
+   "dep_jaccard": 0.021,
+   "a": "DualScaleValidation.UseCase3.rr_tadpole_cancellation",
+   "b": "StringTheory.StringDynamics.tadpole_cancellation"
+  },
+  {
+   "cosine": 0.513,
+   "dep_jaccard": 0.253,
+   "a": "SocrateAI.Moonshine.kummer_exceptional_intersection",
+   "b": "StringTheory.StringDynamics.exceptional_self_intersection"
+  },
+  {
+   "cosine": 0.494,
+   "dep_jaccard": 0.009,
+   "a": "DoubleFieldTheory.K3Topology.k3_euler_characteristic",
+   "b": "StringTheory.Frontier.k3_euler_characteristic"
+  },
+  {
+   "cosine": 0.472,
+   "dep_jaccard": 0.091,
+   "a": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature",
+   "b": "StringTheory.Foundation.ModularForms.mukai_signature_difference"
+  },
+  {
+   "cosine": 0.469,
+   "dep_jaccard": 0.009,
+   "a": "SocrateAI.Moonshine.k3_euler_eq_24",
+   "b": "StringTheory.Frontier.k3_euler_characteristic"
+  },
+  {
+   "cosine": 0.464,
+   "dep_jaccard": 0.015,
+   "a": "DoubleFieldTheory.K3Topology.k3_euler_characteristic",
+   "b": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity"
+  },
+  {
+   "cosine": 0.463,
+   "dep_jaccard": 0.113,
+   "a": "SocrateAI.Moonshine.d7_positive_charge",
+   "b": "StringTheory.Foundation.StringTheory.TadpoleCancellation.total_D7_charge_is_64"
+  },
+  {
+   "cosine": 0.461,
+   "dep_jaccard": 0.029,
+   "a": "DoubleFieldTheory.PhysicsDSL.dsl_self_dual_minimum",
+   "b": "DualScaleValidation.UseCase1.self_dual_is_global_minimum"
+  },
+  {
+   "cosine": 0.458,
+   "dep_jaccard": 0.041,
+   "a": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature",
+   "b": "StringTheory.Foundation.ModularForms.mukai_lattice_rank_equals_24"
+  },
+  {
+   "cosine": 0.457,
+   "dep_jaccard": 0.002,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract",
+   "b": "StringTheory.Foundation.Quantum.golay_length_matches_k3_euler"
+  },
+  {
+   "cosine": 0.443,
+   "dep_jaccard": 0.674,
+   "a": "DualScaleStream2.Flux.k3t2_euler_zero",
+   "b": "StringTheory.Frontier.k3_euler_characteristic"
+  },
+  {
+   "cosine": 0.441,
+   "dep_jaccard": 0.007,
+   "a": "StringTheory.Foundation.PhysLib.odd_metric_involutive",
+   "b": "StringTheory.StringDynamics.odd_metric_d1"
+  },
+  {
+   "cosine": 0.437,
+   "dep_jaccard": 0.009,
+   "a": "DoubleFieldTheory.K3Topology.k3_second_betti_hodge",
+   "b": "StringTheory.Frontier.k3_euler_characteristic"
+  },
+  {
+   "cosine": 0.434,
+   "dep_jaccard": 0.351,
+   "a": "DoubleFieldTheory.TDualityBuscher.buscher_log_involution",
+   "b": "DualScaleValidation.UseCase1.buscher_log_involution"
+  },
+  {
+   "cosine": 0.433,
+   "dep_jaccard": 0.022,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract",
+   "b": "StringTheory.Foundation.Quantum.golay_code_rate_is_half"
+  },
+  {
+   "cosine": 0.429,
+   "dep_jaccard": 0.03,
+   "a": "DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock",
+   "b": "Lean5Corpus.Problems.MathieuFrobenius.conductor_divisible_by_first_five_primes"
+  },
+  {
+   "cosine": 0.427,
+   "dep_jaccard": 0.081,
+   "a": "DualScaleValidation.UseCase3.rr_tadpole_cancellation",
+   "b": "SocrateAI.Moonshine.rr_tadpole_cancellation"
+  },
+  {
+   "cosine": 0.427,
+   "dep_jaccard": 0.019,
+   "a": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity",
+   "b": "SocrateAI.Moonshine.k3_euler_eq_24"
+  },
+  {
+   "cosine": 0.423,
+   "dep_jaccard": 0.108,
+   "a": "DoubleFieldTheory.K3Topology.k3_second_betti_hodge",
+   "b": "SocrateAI.Moonshine.k3_euler_eq_24"
+  },
+  {
+   "cosine": 0.423,
+   "dep_jaccard": 0.015,
+   "a": "DoubleFieldTheory.K3Topology.k3_second_betti_hodge",
+   "b": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity"
+  },
+  {
+   "cosine": 0.422,
+   "dep_jaccard": 0.014,
+   "a": "StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity",
+   "b": "StringTheory.StringDynamics.sdc_tower_mass_pos"
+  },
+  {
+   "cosine": 0.421,
+   "dep_jaccard": 0.052,
+   "a": "DualScaleStream2.Flux.euler_K3",
+   "b": "StringTheory.Frontier.k3_b2"
+  },
+  {
+   "cosine": 0.421,
+   "dep_jaccard": 0.022,
+   "a": "DualScaleStream2.Lattice.rank_K3T2",
+   "b": "SocrateAI.FrontierTriad.total_k3t2_moduli_dim_eq_80"
+  },
+  {
+   "cosine": 0.416,
+   "dep_jaccard": 0.016,
+   "a": "DualScaleStream2.Lattice.rank_K3",
+   "b": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature"
+  },
+  {
+   "cosine": 0.415,
+   "dep_jaccard": 0.074,
+   "a": "DoubleFieldTheory.K3Topology.k3_euler_characteristic",
+   "b": "SocrateAI.Moonshine.kummer_exceptional_intersection"
+  },
+  {
+   "cosine": 0.408,
+   "dep_jaccard": 0.495,
+   "a": "DoubleFieldTheory.K3Topology.k3_euler_characteristic",
+   "b": "SocrateAI.Moonshine.k3t2_euler_char_eq_zero"
+  },
+  {
+   "cosine": 0.406,
+   "dep_jaccard": 0.013,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three",
+   "b": "StringTheory.Foundation.Quantum.golay_length_matches_k3_euler"
+  },
+  {
+   "cosine": 0.404,
+   "dep_jaccard": 0.334,
+   "a": "StringTheory.Foundation.Atlas.atlas_poincare_curvature_negative",
+   "b": "StringTheory.Frontier.poincare_geodesic_atlas_curvature"
+  },
+  {
+   "cosine": 0.404,
+   "dep_jaccard": 0.006,
+   "a": "SocrateAI.Moonshine.rr_tadpole_cancellation",
+   "b": "StringTheory.StringDynamics.tadpole_cancellation"
+  },
+  {
+   "cosine": 0.401,
+   "dep_jaccard": 0.105,
+   "a": "Lean5Corpus.Problems.FluxSwampland.flux_energy_strictly_positive",
+   "b": "SocrateAI.FrontierTriad.cdl_action_strictly_positive"
+  },
+  {
+   "cosine": 0.398,
+   "dep_jaccard": 0.095,
+   "a": "DoubleFieldTheory.K3Topology.k3_hirzebruch_signature",
+   "b": "SocrateAI.Moonshine.k3_euler_eq_24"
+  },
+  {
+   "cosine": 0.395,
+   "dep_jaccard": 0.021,
+   "a": "DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock",
+   "b": "Lean5Corpus.Problems.MathieuFrobenius.m24_conductor_quotient"
+  },
+  {
+   "cosine": 0.392,
+   "dep_jaccard": 0.027,
+   "a": "StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity",
+   "b": "StringTheory.StringDynamics.de_sitter_conjecture"
+  },
+  {
+   "cosine": 0.391,
+   "dep_jaccard": 0.149,
+   "a": "DoubleFieldTheory.PhysicsDSL.dsl_self_dual_minimum",
+   "b": "DualScaleValidation.UseCase1.dual_scale_self_dual_value"
+  },
+  {
+   "cosine": 0.388,
+   "dep_jaccard": 0.144,
+   "a": "StringTheory.Foundation.ModularForms.mukai_lattice_rank_equals_24",
+   "b": "StringTheory.StringDynamics.mukai_rank"
+  },
+  {
+   "cosine": 0.385,
+   "dep_jaccard": 0.057,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three",
+   "b": "StringTheory.Foundation.Quantum.golay_code_rate_is_half"
+  },
+  {
+   "cosine": 0.382,
+   "dep_jaccard": 0.099,
+   "a": "SocrateAI.Moonshine.o7_negative_charge",
+   "b": "StringTheory.Foundation.StringTheory.TadpoleCancellation.total_D7_charge_is_64"
+  },
+  {
+   "cosine": 0.382,
+   "dep_jaccard": 0.129,
+   "a": "DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig",
+   "b": "SocrateAI.Moonshine.kummer_exceptional_intersection"
+  },
+  {
+   "cosine": 0.378,
+   "dep_jaccard": 0.108,
+   "a": "DoubleFieldTheory.K3Topology.k3_euler_characteristic",
+   "b": "SocrateAI.Moonshine.rr_tadpole_cancellation"
+  },
+  {
+   "cosine": 0.375,
+   "dep_jaccard": 0.212,
+   "a": "DualScaleValidation.UseCase2.bps_lock_exact_equality",
+   "b": "Lean5Corpus.Problems.MathieuFrobenius.dim_A2_factorization"
+  },
+  {
+   "cosine": 0.375,
+   "dep_jaccard": 0.137,
+   "a": "DualScaleValidation.UseCase2.bps_lock_exact_equality",
+   "b": "Lean5Corpus.Problems.MathieuFrobenius.dim_A1_factorization"
+  },
+  {
+   "cosine": 0.373,
+   "dep_jaccard": 0.008,
+   "a": "StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity",
+   "b": "StringTheory.StringDynamics.sdc_tower_suppression"
+  },
+  {
+   "cosine": 0.373,
+   "dep_jaccard": 0.127,
+   "a": "SocrateAI.Moonshine.kummer_exceptional_intersection",
+   "b": "StringTheory.StringDynamics.kummer_lattice_contribution"
+  },
+  {
+   "cosine": 0.368,
+   "dep_jaccard": 0.099,
+   "a": "SocrateAI.Moonshine.d7_positive_charge",
+   "b": "StringTheory.Foundation.StringTheory.TadpoleCancellation.total_O7_charge_is_minus_64"
+  },
+  {
+   "cosine": 0.367,
+   "dep_jaccard": 0.477,
+   "a": "DoubleFieldTheory.PhysicsDSL.dsl_effective_radius_strictly_super_planckian",
+   "b": "Lean5Corpus.Problems.DualScaleTCC.wavelength_strictly_super_planckian"
+  },
+  {
+   "cosine": 0.367,
+   "dep_jaccard": 0.2,
+   "a": "DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock",
+   "b": "Lean5Corpus.Problems.MathieuFrobenius.dim_A2_factorization"
+  },
+  {
+   "cosine": 0.367,
+   "dep_jaccard": 0.132,
+   "a": "DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock",
+   "b": "Lean5Corpus.Problems.MathieuFrobenius.dim_A1_factorization"
+  },
+  {
+   "cosine": 0.364,
+   "dep_jaccard": 0.151,
+   "a": "DualScaleValidation.UseCase2.bps_cross_multiplication_lock",
+   "b": "Lean5Corpus.Problems.MathieuFrobenius.dim_A2_factorization"
+  },
+  {
+   "cosine": 0.364,
+   "dep_jaccard": 0.111,
+   "a": "DualScaleValidation.UseCase2.bps_cross_multiplication_lock",
+   "b": "Lean5Corpus.Problems.MathieuFrobenius.dim_A1_factorization"
+  },
+  {
+   "cosine": 0.363,
+   "dep_jaccard": 0.008,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension",
+   "b": "StringTheory.Foundation.Quantum.ryu_takayanagi_positive_cut"
+  },
+  {
+   "cosine": 0.362,
+   "dep_jaccard": 0.068,
+   "a": "DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig",
+   "b": "SocrateAI.Moonshine.k3_euler_eq_24"
+  },
+  {
+   "cosine": 0.362,
+   "dep_jaccard": 0.015,
+   "a": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity",
+   "b": "SocrateAI.Moonshine.k3t2_euler_char_eq_zero"
+  },
+  {
+   "cosine": 0.361,
+   "dep_jaccard": 0.257,
+   "a": "DualScaleValidation.UseCase2.bps_cross_multiplication_lock",
+   "b": "SocrateAI.Moonshine.r_bps_cross_multiplication"
+  },
+  {
+   "cosine": 0.36,
+   "dep_jaccard": 0.001,
+   "a": "DualScaleValidation.UseCase1.buscher_log_involution",
+   "b": "SocrateAI.DualScale.buscher_involution"
+  }
+ ],
+ "intersecting": [
+  {
+   "dep_jaccard": 0.925,
+   "cosine": 0.112,
+   "a": "StringTheory.StringDynamics.M24_order",
+   "b": "StringTheory.UseCases.MathieuTower.M21_order_factorization"
+  },
+  {
+   "dep_jaccard": 0.904,
+   "cosine": 0.286,
+   "a": "DualScaleStream2.Lattice.cartanE8_symm",
+   "b": "DualScaleStream2.Lattice.hyperbolicU_symm"
+  },
+  {
+   "dep_jaccard": 0.9,
+   "cosine": 0.277,
+   "a": "DualScaleStream2.Lattice.e8Neg_symm",
+   "b": "DualScaleStream2.Lattice.hyperbolicU_symm"
+  },
+  {
+   "dep_jaccard": 0.891,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.cartanE8Inv_mul",
+   "b": "DualScaleStream2.TDuality.tauShift_dual_spec"
+  },
+  {
+   "dep_jaccard": 0.883,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.hyperbolicUNeg_mul_self",
+   "b": "DualScaleStream2.TDuality.tauShift_dual_spec"
+  },
+  {
+   "dep_jaccard": 0.85,
+   "cosine": 0.165,
+   "a": "DualScaleStream2.Lattice.hyperbolicUNeg_mul_self",
+   "b": "DualScaleStream2.Lattice.hyperbolicU_mul_self"
+  },
+  {
+   "dep_jaccard": 0.846,
+   "cosine": 0.151,
+   "a": "DualScaleStream2.Lattice.cartanE8Inv_mul",
+   "b": "DualScaleStream2.Lattice.hyperbolicUNeg_mul_self"
+  },
+  {
+   "dep_jaccard": 0.84,
+   "cosine": 0.057,
+   "a": "StringTheory.StringDynamics.implicit_euler_denominator_lower_bound",
+   "b": "StringTheory.StringDynamics.sdc_tower_suppression"
+  },
+  {
+   "dep_jaccard": 0.825,
+   "cosine": 0.033,
+   "a": "DualScaleStream2.Lattice.cartanE8_symm",
+   "b": "DualScaleStream2.TDuality.mirrorTheta_antisymm"
+  },
+  {
+   "dep_jaccard": 0.825,
+   "cosine": 0.033,
+   "a": "DualScaleStream2.Lattice.hyperbolicU_symm",
+   "b": "DualScaleStream2.TDuality.mirrorTheta_antisymm"
+  },
+  {
+   "dep_jaccard": 0.822,
+   "cosine": 0.032,
+   "a": "DualScaleStream2.Lattice.e8Neg_symm",
+   "b": "DualScaleStream2.TDuality.mirrorTheta_antisymm"
+  },
+  {
+   "dep_jaccard": 0.818,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.hyperbolicU_symm",
+   "b": "StringTheory.Frontier.k3_hodge_symmetry"
+  },
+  {
+   "dep_jaccard": 0.818,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.cartanE8_symm",
+   "b": "StringTheory.Frontier.k3_hodge_symmetry"
+  },
+  {
+   "dep_jaccard": 0.815,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.e8Neg_symm",
+   "b": "StringTheory.Frontier.k3_hodge_symmetry"
+  },
+  {
+   "dep_jaccard": 0.807,
+   "cosine": 0.095,
+   "a": "DualScaleStream2.TDuality.factorized_two",
+   "b": "DualScaleStream2.TDuality.mirror_conjugates_tauShift"
+  },
+  {
+   "dep_jaccard": 0.789,
+   "cosine": 0.019,
+   "a": "DualScaleStream2.Lattice.hyperbolicU_mul_self",
+   "b": "DualScaleStream2.TDuality.tauShift_dual_spec"
+  },
+  {
+   "dep_jaccard": 0.784,
+   "cosine": 0.106,
+   "a": "DualScaleStream2.Lattice.cartanE8Inv_mul",
+   "b": "DualScaleStream2.Lattice.hyperbolicU_mul_self"
+  },
+  {
+   "dep_jaccard": 0.783,
+   "cosine": 0.039,
+   "a": "DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram",
+   "b": "StringTheory.Frontier.k3_hodge_symmetry"
+  },
+  {
+   "dep_jaccard": 0.782,
+   "cosine": 0.107,
+   "a": "DualScaleStream2.Lattice.cartanE8_symm",
+   "b": "DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram"
+  },
+  {
+   "dep_jaccard": 0.779,
+   "cosine": 0.104,
+   "a": "DualScaleStream2.Lattice.e8Neg_symm",
+   "b": "DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram"
+  },
+  {
+   "dep_jaccard": 0.772,
+   "cosine": 0.507,
+   "a": "DualScaleStream2.Lattice.cartanE8_evenDiag",
+   "b": "DualScaleStream2.Lattice.hyperbolicU_evenDiag"
+  },
+  {
+   "dep_jaccard": 0.766,
+   "cosine": 0.435,
+   "a": "DoubleFieldTheory.CourantAlgebroid.strong_section_condition",
+   "b": "DoubleFieldTheory.PhysicsDSL.dsl_strong_section_condition"
+  },
+  {
+   "dep_jaccard": 0.762,
+   "cosine": 0.02,
+   "a": "DualScaleStream2.Lattice.hyperbolicU_congruence",
+   "b": "DualScaleStream2.TDuality.tauShift_dual_spec"
+  },
+  {
+   "dep_jaccard": 0.759,
+   "cosine": 0.463,
+   "a": "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+   "b": "DoubleFieldTheory.PhysicsDSL.dsl_dorfman_cbracket_diff"
+  },
+  {
+   "dep_jaccard": 0.748,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.cartanE8Inv_mul",
+   "b": "DualScaleStream2.Lattice.hyperbolicU_congruence"
+  },
+  {
+   "dep_jaccard": 0.746,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.TDuality.mirrorTheta_antisymm",
+   "b": "StringTheory.Frontier.k3_hodge_symmetry"
+  },
+  {
+   "dep_jaccard": 0.745,
+   "cosine": 0.338,
+   "a": "DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm",
+   "b": "DoubleFieldTheory.PhysicsDSL.dsl_cbracket_antisymm"
+  },
+  {
+   "dep_jaccard": 0.737,
+   "cosine": 0.009,
+   "a": "StringTheory.Frontier.k3_b2",
+   "b": "StringTheory.StringDynamics.M24_first_coefficient"
+  },
+  {
+   "dep_jaccard": 0.734,
+   "cosine": 0.433,
+   "a": "DoubleFieldTheory.GeneralizedGeometry.courant_pairing_symm",
+   "b": "DoubleFieldTheory.PhysicsDSL.dsl_courant_pairing_symm"
+  },
+  {
+   "dep_jaccard": 0.721,
+   "cosine": 0.206,
+   "a": "StringTheory.UseCases.NarainLattice.narain_norm_R_independent",
+   "b": "StringTheory.UseCases.TDuality.tduality_flips_right_momentum"
+  },
+  {
+   "dep_jaccard": 0.719,
+   "cosine": 0.019,
+   "a": "DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram",
+   "b": "DualScaleStream2.TDuality.mirrorTheta_antisymm"
+  },
+  {
+   "dep_jaccard": 0.706,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.hyperbolicUNeg_mul_self",
+   "b": "DualScaleStream2.Lattice.hyperbolicU_congruence"
+  },
+  {
+   "dep_jaccard": 0.698,
+   "cosine": 0.187,
+   "a": "DualScaleStream2.TDuality.chargeNorm_even",
+   "b": "StringTheory.UseCases.NarainLattice.narain_form_even"
+  },
+  {
+   "dep_jaccard": 0.684,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.mukaiPair_self",
+   "b": "StringTheory.UseCases.NarainLattice.B_is_polarization_of_Q"
+  },
+  {
+   "dep_jaccard": 0.68,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.hyperbolicU_symm",
+   "b": "DualScaleStream2.TDuality.eta_one_reindex"
+  },
+  {
+   "dep_jaccard": 0.674,
+   "cosine": 0.443,
+   "a": "DualScaleStream2.Flux.k3t2_euler_zero",
+   "b": "StringTheory.Frontier.k3_euler_characteristic"
+  },
+  {
+   "dep_jaccard": 0.668,
+   "cosine": 0.068,
+   "a": "DualScaleValidation.UseCase2.bps_ratio_coprime",
+   "b": "SocrateAI.Moonshine.r_bps_is_irreducible"
+  },
+  {
+   "dep_jaccard": 0.661,
+   "cosine": 0.181,
+   "a": "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+   "b": "DoubleFieldTheory.PhysicsDSL.dsl_cbracket_self_vanishes"
+  },
+  {
+   "dep_jaccard": 0.657,
+   "cosine": 0.202,
+   "a": "DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm",
+   "b": "DoubleFieldTheory.PhysicsDSL.dsl_cbracket_self_vanishes"
+  },
+  {
+   "dep_jaccard": 0.655,
+   "cosine": 0.122,
+   "a": "DualScaleStream2.DFT.thetaShiftR_preserves_eta",
+   "b": "DualScaleStream2.TDuality.thetaShift_isODD"
+  },
+  {
+   "dep_jaccard": 0.653,
+   "cosine": 0.0,
+   "a": "StringTheory.Frontier.k3_b2",
+   "b": "StringTheory.UseCases.K3Signature.betti_sum_eq_b2"
+  },
+  {
+   "dep_jaccard": 0.646,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.DFT.etaR_mul_self",
+   "b": "DualScaleStream2.DFT.thetaShiftR_preserves_eta"
+  },
+  {
+   "dep_jaccard": 0.639,
+   "cosine": 0.246,
+   "a": "DualScaleStream2.TDuality.eta_mul_self",
+   "b": "DualScaleStream2.TDuality.thetaShift_mul"
+  },
+  {
+   "dep_jaccard": 0.636,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Flux.flux_half_selfIntersection_integral",
+   "b": "StringTheory.UseCases.NarainLattice.narain_form_even"
+  },
+  {
+   "dep_jaccard": 0.634,
+   "cosine": 0.023,
+   "a": "DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram",
+   "b": "DualScaleStream2.TDuality.eta_one_reindex"
+  },
+  {
+   "dep_jaccard": 0.626,
+   "cosine": 0.241,
+   "a": "StringTheory.UseCases.NarainLattice.narain_norm_R_independent",
+   "b": "StringTheory.UseCases.TDuality.tduality_fixes_left_momentum"
+  },
+  {
+   "dep_jaccard": 0.623,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.cartanE8_symm",
+   "b": "DualScaleStream2.TDuality.eta_one_reindex"
+  },
+  {
+   "dep_jaccard": 0.621,
+   "cosine": 0.196,
+   "a": "DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact",
+   "b": "DoubleFieldTheory.PhysicsDSL.dsl_dorfman_cbracket_diff"
+  },
+  {
+   "dep_jaccard": 0.621,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.e8Neg_symm",
+   "b": "DualScaleStream2.TDuality.eta_one_reindex"
+  },
+  {
+   "dep_jaccard": 0.614,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.hyperbolicU_symm",
+   "b": "StringTheory.Frontier.k3_serre_duality"
+  },
+  {
+   "dep_jaccard": 0.614,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.cartanE8_symm",
+   "b": "StringTheory.Frontier.k3_serre_duality"
+  },
+  {
+   "dep_jaccard": 0.612,
+   "cosine": 0.0,
+   "a": "DualScaleStream2.Lattice.e8Neg_symm",
+   "b": "StringTheory.Frontier.k3_serre_duality"
+  },
+  {
+   "dep_jaccard": 0.611,
+   "cosine": 0.694,
+   "a": "DualScaleStream2.TDuality.thetaShift_isODD",
+   "b": "DualScaleStream2.TDuality.thetaShift_mul"
+  },
+  {
+   "dep_jaccard": 0.604,
+   "cosine": 0.496,
+   "a": "DualScaleStream2.Lattice.e8Neg_evenDiag",
+   "b": "DualScaleStream2.Lattice.hyperbolicU_evenDiag"
+  },
+  {
+   "dep_jaccard": 0.601,
+   "cosine": 0.144,
+   "a": "StringTheory.Frontier.central_charge_k3_eq_six",
+   "b": "StringTheory.UseCases.CriticalDimension.superstring_critical_dimension"
+  },
+  {
+   "dep_jaccard": 0.598,
+   "cosine": 0.233,
+   "a": "DualScaleStream2.DFT.etaR_mul_self",
+   "b": "DualScaleStream2.TDuality.eta_mul_self"
+  },
+  {
+   "dep_jaccard": 0.596,
+   "cosine": 0.16,
+   "a": "DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm",
+   "b": "DoubleFieldTheory.PhysicsDSL.dsl_dorfman_cbracket_diff"
+  },
+  {
+   "dep_jaccard": 0.596,
+   "cosine": 0.159,
+   "a": "DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff",
+   "b": "DoubleFieldTheory.PhysicsDSL.dsl_cbracket_antisymm"
+  },
+  {
+   "dep_jaccard": 0.594,
+   "cosine": 0.038,
+   "a": "DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram",
+   "b": "StringTheory.Frontier.k3_serre_duality"
+  },
+  {
+   "dep_jaccard": 0.593,
+   "cosine": 0.066,
+   "a": "DualScaleStream2.Flux.flux_half_selfIntersection_integral",
+   "b": "DualScaleStream2.TDuality.chargeNorm_even"
+  }
+ ],
+ "unification_candidates": [
+  {
+   "cosine": 0.571,
+   "dep_jaccard": 0.016,
+   "a": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature",
+   "b": "StringTheory.StringDynamics.mukai_rank"
+  },
+  {
+   "cosine": 0.557,
+   "dep_jaccard": 0.009,
+   "a": "DualScaleStream2.Flux.k3t2_euler_zero",
+   "b": "SocrateAI.Moonshine.k3t2_euler_char_eq_zero"
+  },
+  {
+   "cosine": 0.547,
+   "dep_jaccard": 0.012,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension",
+   "b": "StringTheory.Foundation.Quantum.golay_length_matches_k3_euler"
+  },
+  {
+   "cosine": 0.518,
+   "dep_jaccard": 0.025,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension",
+   "b": "StringTheory.Foundation.Quantum.golay_code_rate_is_half"
+  },
+  {
+   "cosine": 0.514,
+   "dep_jaccard": 0.021,
+   "a": "DualScaleValidation.UseCase3.rr_tadpole_cancellation",
+   "b": "StringTheory.StringDynamics.tadpole_cancellation"
+  },
+  {
+   "cosine": 0.494,
+   "dep_jaccard": 0.009,
+   "a": "DoubleFieldTheory.K3Topology.k3_euler_characteristic",
+   "b": "StringTheory.Frontier.k3_euler_characteristic"
+  },
+  {
+   "cosine": 0.469,
+   "dep_jaccard": 0.009,
+   "a": "SocrateAI.Moonshine.k3_euler_eq_24",
+   "b": "StringTheory.Frontier.k3_euler_characteristic"
+  },
+  {
+   "cosine": 0.464,
+   "dep_jaccard": 0.015,
+   "a": "DoubleFieldTheory.K3Topology.k3_euler_characteristic",
+   "b": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity"
+  },
+  {
+   "cosine": 0.461,
+   "dep_jaccard": 0.029,
+   "a": "DoubleFieldTheory.PhysicsDSL.dsl_self_dual_minimum",
+   "b": "DualScaleValidation.UseCase1.self_dual_is_global_minimum"
+  },
+  {
+   "cosine": 0.458,
+   "dep_jaccard": 0.041,
+   "a": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature",
+   "b": "StringTheory.Foundation.ModularForms.mukai_lattice_rank_equals_24"
+  },
+  {
+   "cosine": 0.457,
+   "dep_jaccard": 0.002,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract",
+   "b": "StringTheory.Foundation.Quantum.golay_length_matches_k3_euler"
+  },
+  {
+   "cosine": 0.441,
+   "dep_jaccard": 0.007,
+   "a": "StringTheory.Foundation.PhysLib.odd_metric_involutive",
+   "b": "StringTheory.StringDynamics.odd_metric_d1"
+  },
+  {
+   "cosine": 0.437,
+   "dep_jaccard": 0.009,
+   "a": "DoubleFieldTheory.K3Topology.k3_second_betti_hodge",
+   "b": "StringTheory.Frontier.k3_euler_characteristic"
+  },
+  {
+   "cosine": 0.433,
+   "dep_jaccard": 0.022,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract",
+   "b": "StringTheory.Foundation.Quantum.golay_code_rate_is_half"
+  },
+  {
+   "cosine": 0.429,
+   "dep_jaccard": 0.03,
+   "a": "DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock",
+   "b": "Lean5Corpus.Problems.MathieuFrobenius.conductor_divisible_by_first_five_primes"
+  },
+  {
+   "cosine": 0.427,
+   "dep_jaccard": 0.019,
+   "a": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity",
+   "b": "SocrateAI.Moonshine.k3_euler_eq_24"
+  },
+  {
+   "cosine": 0.423,
+   "dep_jaccard": 0.015,
+   "a": "DoubleFieldTheory.K3Topology.k3_second_betti_hodge",
+   "b": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity"
+  },
+  {
+   "cosine": 0.422,
+   "dep_jaccard": 0.014,
+   "a": "StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity",
+   "b": "StringTheory.StringDynamics.sdc_tower_mass_pos"
+  },
+  {
+   "cosine": 0.421,
+   "dep_jaccard": 0.022,
+   "a": "DualScaleStream2.Lattice.rank_K3T2",
+   "b": "SocrateAI.FrontierTriad.total_k3t2_moduli_dim_eq_80"
+  },
+  {
+   "cosine": 0.416,
+   "dep_jaccard": 0.016,
+   "a": "DualScaleStream2.Lattice.rank_K3",
+   "b": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature"
+  },
+  {
+   "cosine": 0.406,
+   "dep_jaccard": 0.013,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three",
+   "b": "StringTheory.Foundation.Quantum.golay_length_matches_k3_euler"
+  },
+  {
+   "cosine": 0.404,
+   "dep_jaccard": 0.006,
+   "a": "SocrateAI.Moonshine.rr_tadpole_cancellation",
+   "b": "StringTheory.StringDynamics.tadpole_cancellation"
+  },
+  {
+   "cosine": 0.395,
+   "dep_jaccard": 0.021,
+   "a": "DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock",
+   "b": "Lean5Corpus.Problems.MathieuFrobenius.m24_conductor_quotient"
+  },
+  {
+   "cosine": 0.392,
+   "dep_jaccard": 0.027,
+   "a": "StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity",
+   "b": "StringTheory.StringDynamics.de_sitter_conjecture"
+  },
+  {
+   "cosine": 0.373,
+   "dep_jaccard": 0.008,
+   "a": "StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity",
+   "b": "StringTheory.StringDynamics.sdc_tower_suppression"
+  },
+  {
+   "cosine": 0.363,
+   "dep_jaccard": 0.008,
+   "a": "Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension",
+   "b": "StringTheory.Foundation.Quantum.ryu_takayanagi_positive_cut"
+  },
+  {
+   "cosine": 0.362,
+   "dep_jaccard": 0.015,
+   "a": "Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity",
+   "b": "SocrateAI.Moonshine.k3t2_euler_char_eq_zero"
+  },
+  {
+   "cosine": 0.36,
+   "dep_jaccard": 0.001,
+   "a": "DualScaleValidation.UseCase1.buscher_log_involution",
+   "b": "SocrateAI.DualScale.buscher_involution"
+  },
+  {
+   "cosine": 0.36,
+   "dep_jaccard": 0.003,
+   "a": "DualScaleStream2.Lattice.reflection_involution",
+   "b": "Lean5Corpus.Problems.MukaiMonodromy.buscher_reflection_involution"
+  },
+  {
+   "cosine": 0.358,
+   "dep_jaccard": 0.014,
+   "a": "SocrateAI.Moonshine.total_chiral_weight_value",
+   "b": "StringTheory.Frontier.k3_chiral_primary_total"
+  },
+  {
+   "cosine": 0.355,
+   "dep_jaccard": 0.032,
+   "a": "DoubleFieldTheory.K3Topology.k3_second_betti_hodge",
+   "b": "StringTheory.UseCases.K3Signature.betti_sum_eq_b2"
+  },
+  {
+   "cosine": 0.354,
+   "dep_jaccard": 0.005,
+   "a": "DualScaleStream2.Lattice.rank_K3T2",
+   "b": "SocrateAI.Moonshine.k3t2_euler_char_eq_zero"
+  },
+  {
+   "cosine": 0.354,
+   "dep_jaccard": 0.033,
+   "a": "Lean5Corpus.Problems.KolmogorovCascade.dissipation_strictly_positive",
+   "b": "StringTheory.Foundation.FluidDynamics.energy_dissipation_monotonic"
+  },
+  {
+   "cosine": 0.354,
+   "dep_jaccard": 0.0,
+   "a": "Lean5Corpus.Problems.GolayHolography.nonzero_codeword_weight_positive",
+   "b": "StringTheory.Foundation.Quantum.golay_length_matches_k3_euler"
+  },
+  {
+   "cosine": 0.352,
+   "dep_jaccard": 0.032,
+   "a": "StringTheory.Foundation.PhysLib.odd_metric_involutive",
+   "b": "StringTheory.StringDynamics.odd_metric_symm"
+  },
+  {
+   "cosine": 0.349,
+   "dep_jaccard": 0.024,
+   "a": "Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature",
+   "b": "StringTheory.StringDynamics.kummer_sublattice_rank"
+  },
+  {
+   "cosine": 0.347,
+   "dep_jaccard": 0.006,
+   "a": "StringTheory.Foundation.StringTheory.Swampland.unit_state_satisfies_wgc",
+   "b": "StringTheory.StringDynamics.sdc_tower_mass_pos"
+  },
+  {
+   "cosine": 0.347,
+   "dep_jaccard": 0.019,
+   "a": "DoubleFieldTheory.K3Topology.k3_euler_characteristic",
+   "b": "SocrateAI.Moonshine.kuenneth_b3_derivation"
+  },
+  {
+   "cosine": 0.346,
+   "dep_jaccard": 0.002,
+   "a": "StringTheory.Foundation.StringTheory.VafaSwampland.vafa_sdc_4d_decay_rate",
+   "b": "StringTheory.StringDynamics.sdc_tower_mass_pos"
+  },
+  {
+   "cosine": 0.339,
+   "dep_jaccard": 0.009,
+   "a": "StringTheory.Foundation.StringTheory.VafaSwampland.vafa_sdc_4d_decay_rate",
+   "b": "StringTheory.StringDynamics.sdc_tower_suppression"
+  }
+ ]
+}

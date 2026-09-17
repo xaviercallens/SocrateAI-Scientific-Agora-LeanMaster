@@ -1,0 +1,2536 @@
+arXiv:1006.4823v2 [hep-th] 10 Aug 2010
+
+June 2010
+Imperial-TP-2010-CH-03
+MIT-CTP-4154
+
+Generalized metric formulation of double field theory
+
+Olaf Hohm1, Chris Hull2, and Barton Zwiebach1
+1
+
+Center for Theoretical Physics
+Massachusetts Institute of Technology
+Cambridge, MA 02139, USA
+ohohm@mit.edu, zwiebach@mit.edu
+2
+
+The Blackett Laboratory
+Imperial College London
+Prince Consort Road
+London SW7 @AZ, U.K.
+c.hull@imperial.ac.uk
+
+Abstract
+The generalized metric is a T-duality covariant symmetric matrix constructed from the
+metric and two-form gauge field and arises in generalized geometry. We view it here as
+a metric on the doubled spacetime and use it to give a simple formulation with manifest
+T-duality of the double field theory that describes the massless sector of closed strings.
+The gauge transformations are written in terms of a generalized Lie derivative whose
+commutator algebra is defined by a double field theory extension of the Courant bracket.
+
+Contents
+1 Introduction
+
+1
+
+2 O(D, D) and the generalized metric
+
+6
+
+3 Gauge symmetry and Courant brackets
+3.1 Gauge transformations of the generalized metric . . . . . . . . . . . . . . . . . .
+3.2 Generalized Lie derivatives and Courant brackets . . . . . . . . . . . . . . . . .
+3.3 Generalized Lie brackets and Dorfman brackets . . . . . . . . . . . . . . . . . .
+
+9
+9
+11
+13
+
+4 The gauge invariant action
+14
+4.1 The O(D,D) and gauge invariant action . . . . . . . . . . . . . . . . . . . . . . . 14
+4.2 Generalized scalar curvature . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+4.3 Proof of gauge invariance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.4 Generalized Ricci curvature . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+5 Vielbein formulations
+23
+5.1 General frames . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+5.2 Frames with GL(D, R) × GL(D, R) symmetry . . . . . . . . . . . . . . . . . . . 25
+5.3 Frames with GL(D, R) symmetry . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+5.4 Gauge choices and applications . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+6 Conclusions and Outlook
+
+1
+
+33
+
+Introduction
+
+The remarkable T-duality properties of string theory [1] have motivated much study of field
+theory models that may incorporate such properties. Double field theory [2, 3, 4] is a field
+theoretic approach inspired by closed string field theory [5, 6] that focuses on the gravity, antisymmetric tensor, and dilaton fields. These fields depend on a doubled set of coordinates:
+coordinates xi associated with momentum excitations and coordinates x̃i associated with winding excitations. The closed string theory constraint L0 − L̄0 = 0 has implications: the fields
+and gauge parameters of doubled field theory must be annihilated by the differential operator
+∂i ∂˜i , where a sum over i is understood. Double field theory remains to be fully constructed;
+the work in [2] gave the doubled action only to cubic order in the fluctuations of fields around
+a fixed background. Noteworthy early work in double field theory includes that of Tseytlin [7]
+and Siegel [8, 9]. Indeed, some of our results are closely related to the results of Siegel [8, 9].
+In a recent paper [4] we imposed a stronger form of the constraint ∂i ∂˜i = 0 and constructed
+a manifestly background independent double field theory action for Eij = gij + bij , with i, j =
+1, 2, . . . , D, and the dilaton d. The action takes the form:1
+1
+
+Our notation can deal with a theory with both compact and non-compact directions. The spacetime has
+dimension D = n + d and is the product of n-dimensional Minkowski space Rn−1,1 and a torus T d . Although
+
+1
+
+S =
+
+Z
+
+−2d
+
+dxdx̃ e
+
+h
+
+
+1 ik jl p
+1
+g g D Ekl Dp Eij + g kl D j Eik D i Ejl + D̄ j Eki D̄ i Elj
+4
+4
+i
+
+i
+j
+i
+j
+i
++ D d D̄ Eij + D̄ d D Eji + 4D d Di d ,
+−
+
+(1.1)
+
+where the calligraphic derivatives Di and D̄i are defined by
+Di ≡
+
+∂
+∂
+,
+− Eik
+i
+∂x
+∂ x̃k
+
+D̄i ≡
+
+∂
+∂
+.
++ Eki
+i
+∂x
+∂ x̃k
+
+(1.2)
+
+This action is T-duality invariant. More precisely, it is invariant under the non-linear O(D, D)
+transformations
+E ′ (X ′ ) = (aE(X) + b)(cE(X) + d)−1 ,
+
+d′ (X ′ ) = d(X) ,
+
+X ′ = hX .
+
+(1.3)
+
+Here we have used matrix notation for the E field, a, b, c, d are the D × D blocks of an O(D, D)
+matrix h,
+
+
+
+
+a b
+0 1
+t
+h=
+∈ O(D, D) , h ηh = η
+with η =
+,
+(1.4)
+c d
+1 0
+and the coordinates have been grouped into the O(D, D) vector
+ i
+ 
+x̃i
+∂˜
+M
+.
+,
+∂M =
+X =
+i
+x
+∂i
+
+(1.5)
+
+O(D, D) indices M, N are raised and lowered with the constant O(D, D) invariant metric
+
+
+0 1
+.
+(1.6)
+ηM N =
+1 0
+If some of the coordinates are compact, the symmetry O(D, D) is broken to the subgroup preserving the periodic boundary conditions. Each term in the action (1.1) is separately O(D, D)
+invariant. As explained in [4, 2] this result largely follows from consistent index contractions.
+Although we do not display them explicitly, there are two types of indices: unbarred and barred.
+The first index in Eij is viewed as unbarred and the second index is viewed as barred. The index
+in Di is viewed as unbarred and the index in D̄i is viewed as barred. Finally the indices in g ij can
+be viewed either as both unbarred or as both barred. Any term in which all contractions can be
+viewed as contractions of like-type indices is O(D, D) invariant.2 While the O(D, D) transformations are global, the various ingredients in the action (g ij , DE, D̄E, Dd, D̄d) transform by the
+action of matrices that involve the field E and thus do not define linear representations of the
+O(D, D) group. The barred/un-barred structure originates from the left/right factorization of
+we write O(D, D) matrices, the ones that are used describe T-dualities that belong to the O(d, d) subgroup
+associated with the torus.
+2
+Also needed is that each E field appear with one calligraphic derivative. If more than one derivative is used
+on a field, one must employ the O(D, D) covariant derivatives discussed in [4].
+
+2
+
+closed string theory and its geometric significance will be discussed in section 5. The O(D, D)
+symmetry is not manifest because the action does not use conventional O(D, D) tensors that
+carry O(D, D) indices (M, N, . . . = 1, 2, . . . , 2D). Since ∂ M ∂M = 2∂i ∂˜i , the constraint on all
+fields and gauge parameters is O(D, D) invariant.
+The action (1.1) is also invariant under gauge transformations with a gauge parameter ξ M :
+!
+˜i
+ξ
+.
+(1.7)
+ξM =
+ξi
+These parameters depend on both x and x̃ coordinates. The gauge transformations take the
+form
+δEij = Di ξ˜j − D̄j ξ˜i + ξ M ∂M Eij + Di ξ k Ekj + D̄j ξ k Eik ,
+1
+δd = − ∂M ξ M + ξ M ∂M d .
+2
+
+(1.8)
+
+Here ξ M ∂M = ξ i ∂i + ξ˜i ∂˜i and ∂M ξ M = ∂i ξ i + ∂˜i ξ˜i . The invariance of the action (1.1) requires
+a strong version of the constraint: ∂ M ∂M must annihilate all possible products of fields and/or
+gauge parameters. This constraint is so strong that it implies that the theory is not truly
+doubled: there is a choice of coordinates (x′ , x̃′ ), related to the original coordinates (x, x̃) by
+O(D, D), in which the doubled fields do not depend on the x̃′ coordinates [4]. This means that
+we then have a field theory on the subspace with coordinates x′ in which the gauge symmetry
+reduces to diffeomorphisms and b-field gauge transformations on that subspace.
+Even though the theory it is not truly doubled, the action (1.1) is interesting because it
+exhibits new structures and has some properties that are expected to persist in the – yet to be
+constructed – general double field theory. It is a natural action for the field Eij and inherits
+from string theory a left-right structure that is not present in the usual formulation. The gauge
+algebra is defined by the Courant bracket, or more precisely, an extension appropriate for
+doubled fields. Furthermore, the action (1.1), expanded to cubic order in fluctuations around
+a flat background is fully gauge invariant to that order without imposing the strong version of
+the constraint: only the weak constraint is needed. We believe that the general theory should
+be some natural generalization of the theory discussed here.
+The gauge invariance of the action (1.1) is not manifest and was verified in [4] through
+an elaborate and lengthy calculation. The above gauge transformations can be rewritten in
+suggestive ways but remain mysterious. In this paper we provide an equivalent form of the
+action (1.1) for which the proof of gauge invariance is significantly simplified. Even the O(D, D)
+invariance will be simpler: all objects will transform in linear representations.
+The key object in the new construction will be the so-called “generalized metric”. This is a
+2D ×2D symmetric matrix constructed from the D ×D metric tensor gij and the antisymmetric
+tensor bij with the remarkable property that it transforms as an O(D, D) tensor. The explicit
+
+3
+
+form of the generalized metric is:3
+HM N
+
+=
+
+
+
+g ij
+−g ik bkj
+bik g kj gij − bik g kl blj
+
+
+
+.
+
+(1.9)
+
+The non-linear O(D, D) transformation (1.3) of the fields g and b implies a simple transformation for HM N . Writing X ′ = hX as X ′M = hM N X N one finds:
+hP M hQ N HP′ Q (X ′ ) = HM N (X) ,
+
+(1.10)
+
+so that HM N is an O(D, D) tensor, as indicated by the indices M, N.
+The matrix (1.9) appeared in the early T-duality literature. It defines the first-quantized
+Hamiltonian for closed strings in a toroidal background with constant metric and antisymmetric
+tensor fields [10, 11]. Such matrices parameterize the coset space O(D, D)/O(D) × O(D), and
+so arise in the toroidal dimensional reduction of supergravity and string theories whose moduli
+take values in this coset [12, 13, 14].
+The doubled space then has two metrics, the constant ηM N with signature (D, D) and the
+metric HM N which incorporates the dynamical fields and is positive definite if gij is. Throughout
+this paper, we will always use the metric ηM N and its inverse η M N to lower and raise indices.
+Raising one or both indices with η defines the new tensors HM N and HM N . A striking feature
+of matrices of the form (1.9) is that HM N is the inverse of HM N :
+HM P HP N = δ M N .
+
+(1.11)
+
+Then HM N can be viewed as a metric on the doubled space that satisfies the constraint that
+its inverse is HM N ≡ η M P HP Q η QN . We define the matrix S whose components S M N are
+S M N ≡ HM N = η M P HP N = HM P ηP N .
+
+(1.12)
+
+S2 = 1 ,
+
+(1.13)
+
+The matrix S satisfies
+so that S is an almost local product structure, or almost real structure on the doubled space.
+It has D eigenvalues +1 and D eigenvalues −1, and is an element of O(D, D):
+S t ηS = η .
+
+(1.14)
+
+In the mathematical literature, the generalized metric and the Courant bracket are key
+structures in generalized geometry [15, 16, 17]. In this geometry the coordinates of the spacetime
+manifold M are not doubled, rather, the tangent bundle T of M and the cotangent bundle T ∗
+of M are put together to form a larger bundle E = T ⊕ T ∗ (or a twisted version of this bundle).
+Note that this form follows from our convention X M = (x̃i , xi ). Some papers use the opposite conventions
+with X M = (xi , x̃i ), which would then lead to an expression for the generalized metric related to ours by
+swapping rows and columns.
+3
+
+4
+
+Sections of this bundle E are the formal sums X + ξ of vectors X and one-forms ξ. There is
+a natural (indefinite) metric η on sections of E given by hX1 + ξ1 , X2 + ξ2 i = X1 i ξ2i + X2i ξ1i .
+Introducing a metric g and 2-form b on M allows the definition of tensor fields H and S by
+the formulae above. The tensor S defines a splitting E = C+ ⊕ C− such that h·, ·i is positive
+definite on C+ and negative definite on C− . The spaces C± are eigenspaces of the matrix S
+with eigenvalues ±1. Gualtieri [16] referred to S as the generalized metric. In [18], it was
+suggested that the term generalized metric be used instead for HM N . The generalized metric
+is then a 2D × 2D matrix field on the D dimensional space M and a metric on sections of E.
+In the context of doubling, however, it was proposed in [18] that the generalized metric be
+used as a conventional metric on the 2D dimensional doubled space. In this context the name
+‘generalized metric’ is a misnomer and HM N is better regarded as a conventional metric on the
+doubled space satisfying the constraint (1.11). We will follow [18] and the subsequent literature
+and continue to refer to the metric HM N on the doubled space as a generalized metric.
+In this paper we present a double field theory spacetime action based on the generalized
+metric which is a rather nontrivial and surprising rewriting of (1.1). The action is built using
+the O(D, D) tensors HM N , HM N , and the derivatives ∂M and is a rather simple and natural
+expression:
+Z
+ 1
+1
+HM N ∂M HKL ∂N HKL − HM N ∂N HKL ∂L HM K
+S =
+dxdx̃ e−2d
+8
+2
+(1.15)
+
+MN
+MN
+− 2 ∂M d ∂N H
++ 4H
+∂M d ∂N d .
+
+This action is manifestly O(D, D) invariant because all O(D, D) indices are properly contracted.
+The factor e−2d tranforms as a density under gauge transformations and a scalar under O(D, D)
+transformations. Most directly, we view the above action as an action for g, b and d fields, in
+which g and b enter through H. With this identification the Lagrangians associated with (1.1)
+and (1.15) are in fact identical. Alternatively, and more intriguingly, one may view H as an
+elementary constrained field with a natural geometric interpretation.
+The action (1.15) is gauge invariant provided the strong constraint is imposed. The dilaton
+gauge transformation in (1.8) is already in O(D, D) covariant notation. For HM N we find
+δξ HM N = ξ P ∂P HM N + (∂ M ξP − ∂P ξ M ) HP N + (∂ N ξP − ∂P ξ N ) HM P .
+
+(1.16)
+
+This transformation looks like a diffeomorphism in which each index gives a covariant and
+contravariant contribution. We can view the above right-hand side as the generalized Lie
+derivative Lbξ of HM N and write
+δξ HM N = Lbξ HM N .
+(1.17)
+
+...
+We can indeed define the action of Lbξ on an arbitrary generalized tensor AMN11MN22...
+consistently
+with the derivation property. The algebra of gauge transformations in the theory becomes
+the commutator algebra of the generalized Lie derivatives. The commutator of generalized Lie
+
+5
+
+derivatives is in fact a generalized Lie derivative. Indeed, making use of the strong form of the
+constraint, we show that
+
+
+Lbξ1 , Lbξ2 = −Lb[ξ1 ,ξ2 ]C ,
+(1.18)
+where the C bracket [· , ·]C is defined by
+
+
+M
+1 P M
+N
+∂ ξ2] P ,
+ξ1 , ξ2 C ≡ ξ[1
+∂N ξ2]M − ξ[1
+2
+
+(1.19)
+
+with [ij] = ij − ji. The C bracket, introduced by Siegel in [8], was recognized in [3] as the
+O(D, D) covariant extension of the Courant bracket for doubled fields. As we shall discuss, our
+generalized Lie derivatives are closely related to those of [8] and [19].
+
+2
+
+O(D, D) and the generalized metric
+
+In this section we summarize some well-known facts about the O(D, D) group, its Lie algebra,
+and the generalized metric. Some of these facts were already mentioned in the introduction.
+We define O(D, D), as in (1.4), as the group of 2D × 2D matrices h satisfying
+ht η h = η ,
+
+(2.1)
+
+and consequently h−1 = η −1 ht η . The associated Lie algebra generators T satisfy T t η + ηT = 0.
+More explicitly,
+
+
+α β
+→ γ, β, antisymmetric and δ = −αt ,
+(2.2)
+T =
+γ δ
+giving a total of 2D 2 − D parameters.
+Raising the indices on the generalized metric (1.9) gives
+HM N = η M P η N Q HP Q .
+
+(2.3)
+
+It will be convenient to use an index-free matrix notation. We will write H to denote the matrix
+whose components are HM N :
+H ≡ H• • ,
+(2.4)
+with the heavy dots indicating the index positions. We write η to denote the matrix whose
+components are ηM N and S to denote the matrix whose components are S M N :
+S ≡ S •• .
+
+η ≡ η• • ,
+
+(2.5)
+
+In this notation (1.12) is written as
+S = Hη.
+6
+
+(2.6)
+
+It follows from (2.3), (2.4), and (1.9) that
+
+
+g − bg −1 b bg −1
+H =
+.
+−g −1 b
+g −1
+
+(2.7)
+
+The matrix H is symmetric (Ht = H) and satisfies
+H η H = η −1 ,
+
+(2.8)
+
+H−1 = ηHt η = ηHη .
+
+(2.9)
+
+so that its inverse is
+Then H, with components HM N , is the inverse of the generalized metric with components HM N ,
+which we denote H−1 so that (1.11) becomes HH−1 = 1. One can check explicitly that the
+matrix in (2.7) is indeed the inverse of the matrix in (1.9).
+Since the entries of the matrix η −1 coincide with those of the matrix η and H is symmetric,
+H satisfies the defining condition (2.1) for O(D, D). We will then refer to a symmetric matrix
+H that satisfies the constraint (2.8) as being a (symmetric) O(D, D) matrix. Strictly speaking,
+this is an abuse of language as H has upper indices HM N while group elements have mixed
+indices hM N . The fact that H is a symmetric O(D, D) matrix can be seen explicitly by writing
+H as the product of three simple O(D, D) matrices:
+
+
+
+
+ 
+g − bg −1 b bg −1
+1 0
+g 0
+1 b
+.
+(2.10)
+H =
+=
+−b 1
+0 g −1
+0 1
+−g −1 b
+g −1
+The construction of H and its remaining properties are motivated by the action (1.3) of h ∈
+O(D, D) on E. We have E ′ = h(E) = (aE + b)(cE + d)−1. Let hE be the O(D, D) transformation
+that creates E starting from the identity background4 E = I, where I is the unit matrix
+Iij = δij , so that it satisfies E = hE (I). Such a transformation is given by
+!
+e b(et )−1
+hE =
+,
+(2.11)
+0 (et )−1
+where we have introduced a vielbein e for the metric, so that
+g = eet .
+
+(2.12)
+
+Indeed we easily confirm that, as desired,
+hE (I) = (eI + b(et )−1 )(0 · I + (et )−1 )−1 = (e + b(et )−1 )et = eet + b = g + b = E .
+
+(2.13)
+
+The matrix hE is not uniquely defined; right multiplication by the O(D) × O(D) subgroup of
+O(D, D) that leaves the background I invariant gives another transformation with the desired
+properties.
+4
+
+For simplicity we give the argument for Euclidean signature. For Lorentzian signature, we take I as the
+Minkowski metric and g = eIet .
+
+7
+
+Let us now consider the group action on hE . Consider an O(D, D) transformation h taking
+E to E ′ = h(E). We then have hE ′ (I) = E ′ = h(hE (I)) = (hhE )(I). We thus deduce that
+h : hE → hE ′ = hhE .
+
+(2.14)
+
+We now define the symmetric O(D, D) matrix
+H(E) ≡ hE htE .
+
+(2.15)
+
+Here H is in O(D, D) because both hE and htE are. Moreover, the O(D) × O(D) ambiguity in
+hE drops out of H. A quick computation confirms that this agrees with (2.7):
+!
+!
+!
+!
+e b(et )−1
+et
+0
+eet − b(eet )−1 b b(eet )−1
+g − bg −1 b bg −1
+H(E) =
+=
+=
+.
+0 (et )−1
+−e−1 b e−1
+−(eet )−1 b
+(eet )−1
+−g −1 b
+g −1
+It follows from (2.14) and (2.15) that under a transformation h ∈ O(D, D) such that E ′ = hE
+we get the following transformation of H:
+H(E ′) = h H(E) ht .
+
+(2.16)
+
+We note that H at any point X is a symmetric O(D, D) matrix (i.e. a symmetric matrix
+satisfying (2.8)) that is in the component of the O(D, D) group connected to the identity. The
+formula for H in terms of g and b is a useful parameterization of this symmetric O(D, D)
+matrix. We can readily check that the counting of degrees of freedom works out. This is most
+easily done near the identity, using the Lie algebra results. If h = 1 + ǫT is to be symmetric
+then we get that α is symmetric and γ = −β, referring to the notation in (2.2). Thus the whole
+T is characterized by a symmetric α and an antisymmetric β. This is precisely D 2 parameters,
+the same number of parameter as in E.
+The O(D, D) indices make the transformation properties manifest. For an O(D, D) vector
+M
+V and an O(D, D) element h we have a transformation
+V′
+
+M
+
+= hM N V N .
+
+(2.17)
+
+An upper index M runs over 2D values, the first D of them described with a lower roman index
+i and the second D of them with an upper roman index i:
+V M = ( vi , v i ) .
+
+(2.18)
+
+The indices i, j = 1, ..., D label representations of the GL(D, R) subgroup of O(D, D). The
+components vi and v i are independent. For lower O(D, D) indices we have
+
+In summary we can write M =
+components
+
+UM = ( ui , ui ) .
+(2.19)
+
+
+i
+and M = i , i . The matrix hM N , for example, has
+i,
+M
+
+h
+
+N
+
+=
+
+
+
+hi j hij
+hij hi j
+
+8
+
+
+
+.
+
+(2.20)
+
+We can view H as a tensor HM N with two upper O(D, D) indices because the transformation
+(2.16) implies that:
+MN
+H′ (X ′ ) = hM P hN Q HP Q (X) .
+(2.21)
+We thus identify the H matrix with HM N (= HN M ) as
+
+
+
+
+Hij Hi j
+gij − bik g kl blj bik g kj
+MN
+H
+=
+=
+.
+Hi j Hij
+−g ik bkj
+g ij
+
+(2.22)
+
+The symmetry HM N = HN M implies that
+Hij = Hji , Hij = Hji , Hi j = Hj i .
+
+(2.23)
+
+The relation ηHη = H−1 in (2.9) with O(D, D) indices is
+(H−1 )M N = ηM P HP Q ηQN = HM N ,
+so that HM N is indeed the inverse of HM N . The generalized metric is
+
+ ij
+
+g
+−g ik bkj
+M N −1
+.
+HM N = H
+=
+bik g kj gij − bik g kl blj
+
+3
+
+(2.24)
+
+(2.25)
+
+Gauge symmetry and Courant brackets
+
+In this section we will show that the gauge transformations (1.8), which are non-linear when
+written in terms of Eij , act linearly on the O(D, D) covariant matrix HM N introduced above.
+This linear form of the gauge transformations naturally suggests a notion of generalized Lie
+derivative, for which a tensor calculus can be developed. This simplifies the proof of gauge
+invariance to be undertaken in the next section. Finally, the closure of the gauge algebra
+according to the Courant bracket will be checked in this formulation.
+
+3.1
+
+Gauge transformations of the generalized metric
+
+The gauge transformations (1.8) take a highly non-linear form when written in terms of the
+fundamental fields Eij = gij + bij . Writing out δEij using the definition (1.2) of calligraphic
+derivatives one determines the transformation of δξ gij (from which δg ij follows) and the transformation δξ bij . The results are
+
+δξ gij = Lξ gij + Lξ̃ gij + ∂˜k ξ l − ∂˜l ξ k (gki bjl + gkj bil ) ,
+
+
+
+δξ g ij = Lξ g ij + Lξ̃ g ij − ∂˜i ξ k − ∂˜k ξ i g jl blk + (i ↔ j) ,
+(3.1)
+
+
+δξ bij = Lξ bij + Lξ̃ bij + ∂i ξ˜j − ∂j ξ˜i + gik ∂˜l ξ k − ∂˜k ξ l glj + bik ∂˜l ξ k − ∂˜k ξ l blj .
+9
+
+Here we use the Lie derivatives with respect to ξ i and dual Lie derivatives with respect to ξ˜i .
+Their definition on tensors with arbitrary number of upper and lower indices follow from
+Lξ ui j = ξ p ∂p ui j + ∂i ξ p upj − ∂p ξ j ui p ,
+Lξ̃ ui j = ξ˜p ∂˜p ui j + ∂˜j ξ˜p ui p − ∂˜p ξ˜i upj .
+
+(3.2)
+
+It is of interest to determine the gauge transformations of the (inverse) generalized metric HM N . The direct computation gives a remarkable result: the gauge transformations of HM N
+implied by (3.1) are linear in HM N . Indeed, we find
+
+
+δHij = Lξ Hij + Lξ̃ Hij + (∂i ξ˜p − ∂p ξ˜i )Hp j + (i ↔ j) ,
+
+
+(3.3)
+δHij = Lξ Hij + Lξ̃ Hij + (∂˜i ξ p − ∂˜p ξ i )Hj p + (i ↔ j) ,
+δHi j = Lξ Hi j + Lξ̃ Hi j + (∂˜i ξ p − ∂˜p ξ i )Hpj + (∂j ξ˜p − ∂p ξ˜j )Hip .
+
+We sketch the proof of the first relation in (3.3). For this we rewrite (3.1) with a separation of
+terms δ̂ξ that are quadratic in the fields:
+δξ gij = Lξ gij + Lξ̃ gij + δ̂ξ gij ,
+δξ g ij = Lξ g ij + Lξ̃ g ij + δ̂ξ g ij ,
+
+(3.4)
+
+δξ bij = Lξ bij + Lξ̃ bij + ∂i ξ˜j − ∂j ξ˜i + δ̂ξ bij .
+The expressions for δ̂ξ on the fields follow directly by comparison with (3.1). In the computation of
+
+δξ Hij = δξ gij − bik g kl blj ,
+(3.5)
+the terms in the gauge variations of fields that consist of Lie derivatives combine to form the
+Lie derivatives of Hij . We thus find
+δξ Hij = Lξ Hij + Lξ̃ Hij − (∂i ξ˜k − ∂k ξ˜i )g kl blj − bik g kl (∂l ξ˜j − ∂j ξ˜l ) + δ̂ξ Hij
+= Lξ Hij + Lξ̃ Hij + (∂i ξ˜p − ∂p ξ˜i )Hp j + (∂j ξ˜p − ∂p ξ˜j )Hp i + δ̂ξ Hij ,
+
+(3.6)
+
+where we have used (2.22) to identify components of HM N and have relabeled the indices. A
+direct computation then shows that:
+δ̂ξ Hij = δ̂ξ gij − bik g klblj
+
+
+
+= 0.
+
+(3.7)
+
+This completes the proof that the gauge transformation is linear in H. The other relations in
+(3.3) follow similarly. The linear part of the above computation essentially coincides with the
+analysis of [19], but the remarkable cancellation of the non-linear terms is only visible once the
+dual derivatives ∂˜i enter.
+10
+
+The transformations (3.3) can be written in a manifestly O(D, D) covariant form and the
+result is rather simple:
+δξ HM N = ξ P ∂P HM N − ∂P ξ M HP N − ∂P ξ N HM P
+
+
++ ηP Q η M K ∂K ξ P HQN + η N K ∂K ξ P HM Q .
+
+(3.8)
+
+The first terms are the standard diffeomorphism terms, while the remaining ones are novel and
+responsible for closure into the C bracket. If we use the notation ∂ M = η M N ∂N , ξM = ηM N ξ N ,
+etc., these gauge transformations can be rewritten in a even more suggestive form as
+δξ HM N = ξ P ∂P HM N − ∂P ξ M HP N − ∂P ξ N HM P + ∂ M ξP HP N + ∂ N ξP HM P .
+
+(3.9)
+
+It looks like a diffeomorphism which democratically treats the indices both as covariant and
+contravariant and can be seen as a generalized Lie derivative which we consider in more detail in
+the next subsection. Another convenient rewriting that groups the covariant and contravariant
+action on each index is
+δξ HM N = ξ P ∂P HM N + (∂ M ξP − ∂P ξ M )HP N + (∂ N ξP − ∂P ξ N )HM P .
+
+(3.10)
+
+The gauge invariance has the usual gauge invariance: gauge parameters of the form ξ P = ∂ P χ
+generate no gauge transformations: δ∂χ HM N = 0. This is readily verified in the equation above
+using the strong form of the constraint.
+
+3.2
+
+Generalized Lie derivatives and Courant brackets
+
+The transformation of HM N in (3.10) involves an operation similar to a Lie derivative. This
+motivates the definition of a generalized Lie derivative Lb of a generalized tensor which has upper
+and lower indices ANM1 ...1 ... . For a tensor AM N the generalized Lie derivative is defined to be
+Lbξ AM N ≡ ξ P ∂P AM N + (∂M ξ P − ∂ P ξM ) AP N + (∂ N ξP − ∂P ξ N )AM P .
+
+(3.11)
+
+δξ HM N = Lbξ HM N .
+
+(3.12)
+
+For multiple indices the generalized Lie derivative is defined analogously: each index gives rise
+to two terms. With such definition we immediately recognize that the gauge transformation
+(3.10) of the generalized (inverse) metric is simply a generalized Lie derivative:
+
+The generalized Lie derivative differs from the conventional Lie derivative by terms that involve
+explicitly the O(D, D) metric
+Lbξ AM N = Lξ AM N − ∂ P ξM AP N + ∂ N ξP AM P
+
+(3.13)
+
+With the definition (3.11) Lbξ is a derivative satisfying the Leibniz rule,
+
+
+
+
+Lbξ ANM1 ...1 ... BPQ1 ...1 ... = Lbξ ANM1 ...1 ... BPQ1 ...1 ... + ANM1 ...1 ... Lbξ BPQ1 ...1 ... ,
+
+(3.14)
+
+= Lξ AM N − η P Q ηM R ∂Q ξ R AP N + ηP Q η N R ∂R ξ Q AM P .
+
+11
+
+so that it is consistent to regard products of generalized tensors are generalized tensors with the
+index structure of the full set of indices. The generalized Lie derivative Lbξ of any generalized
+tensor vanishes when ξ M = ∂ M χ, so that for any generalized tensor A we have
+Lbξ+η−1 ∂χ A = Lbξ A .
+
+(3.15)
+
+A remarkable and important property is that the generalized Lie derivatives of the O(D, D)
+metric ηM N and the Kronecker tensor δM N vanish:
+Lbξ ηM N = 0,
+
+For example,
+
+Lbξ η M N = 0,
+
+Lbξ δM N = 0 .
+
+Lbξ η M N = ξ P ∂P η M N − ∂ N ξ M − ∂ M ξ N + ∂ N ξ M + ∂ M ξ N = 0 .
+
+(3.16)
+
+(3.17)
+
+This is unusual; in ordinary diffeomorphism invariant theories a constant world-tensor with two
+covariant or two contravariant indices does not have vanishing Lie derivative along arbitrary
+vector fields.
+An important consequence of Lbξ η = Lbξ η −1 = 0 is that the constraint that H is an O(D, D)
+matrix is compatible with its gauge symmetry. Taking the generalized Lie derivative of the
+condition HηH = η −1 gives
+
+
+Lbξ H ηH + Hη Lbξ H = 0 .
+(3.18)
+This means that
+
+
+
+δξ H ηH + Hη δξ H = 0 ,
+
+(3.19)
+
+so that HηH = η −1 is preserved by the gauge transformations, showing that the O(D, D) and
+gauge symmetries are compatible.
+The constant tensors η and δ can be used to simplify and relate tensor expressions. The
+simplest generalized tensor is a scalar S for which
+Lbξ S = ξ P ∂P S .
+
+(3.20)
+
+Lbξ AM = ξ P ∂P AM + (∂M ξ P − ∂ P ξM ) AP .
+
+(3.21)
+
+Lbξ AM = ξ P ∂P AM + (∂ M ξP − ∂P ξ M ) AP ,
+
+(3.22)
+
+A generalized tensor with two indices contracted, such as AM M , is a generalized scalar (the
+definition (3.11) gives Lbξ AM M = ξ P ∂P AM M ). Any contraction of an upper and a lower index
+effectively removes both indices from the tensor. For a tensor AM with one index down we have
+For a tensor AM with one index up we have
+
+so that Lbξ AM = η M N Lbξ AM as expected.
+
+12
+
+The algebra of generalized Lie derivatives is governed by the C bracket (1.19). The commutator algebra of generalized Lie derivatives is most easily calculated acting on the generalized
+tensor AM . A straightforward computation gives
+
+
+Lbξ1 , Lbξ2 AM = −Lb[ξ1 ,ξ2 ]C AM + FM (ξ1 , ξ2, A) ,
+(3.23)
+where [· , ·]C is the C bracket defined in (1.19) and FM is given by
+
+1
+FM (ξ1 , ξ2 , A) = − ξ[1N ∂ Q ξ2]N ∂Q AM + ∂ Q ξ[1M ∂Q ξ2]P AP ,
+2
+
+(3.24)
+
+which vanishes by the strong form of the constraint. Since we always assume this constraint,
+we have shown that acting on a field AM we have
+
+
+Lbξ1 , Lbξ2 = −Lb[ξ1 ,ξ2 ]C .
+(3.25)
+
+This commutator actually holds acting on arbitrary generalized tensors. Indeed, consider
+the action on the product of two one-index generalized tensors
+
+
+
+
+
+
+
+
+Lbξ1 , Lbξ2 AM BN =
+Lbξ1 , Lbξ2 AM BN + AM Lbξ1 , Lbξ2 BN
+(3.26)
+
+= −Lb[ξ1 ,ξ2 ]C AM BN .
+By iterating this proof it follows that the commutator property (3.25) holds for all tensors with
+lower indices. It also holds for tensors with an arbitrary number of upper indices. This follows
+from Lbξ η M N = 0,
+
+
+
+
+
+
+
+Lbξ1 , Lbξ2 AM = Lbξ1 , Lbξ2 η M N AN = η M N Lbξ1 , Lbξ2 AN
+(3.27)
+= −η M N Lb[ξ1 ,ξ2 ]C AN = −Lb[ξ1 ,ξ2 ]C AM .
+
+We have verified explicitly that the commutator (3.25) holds acting on HM N . With the identification of δξ with Lbξ acting on H we have that up to terms that vanish because of the strong
+form of the constraint,
+
+
+(3.28)
+δξ1 , δξ2 HM N = δξ12 HM N ,
+
+where ξ12 = −[ξ1 , ξ2 ]C . The gauge transformations close according to the C bracket. This is in
+agreement with [3] where it was shown that the algebra of the gauge transformations on E and
+d is given by the C bracket.
+
+3.3
+
+Generalized Lie brackets and Dorfman brackets
+
+The usual Lie derivative of a vector field defines the Lie bracket through [X, Y ] = LX Y .
+This suggests defining a generalized Lie bracket through the generalized Lie derivative. This
+generalized Lie bracket, which we will refer to as a D-bracket, is thus defined by
+
+
+A, B D ≡ LbA B .
+(3.29)
+13
+
+The D bracket is not skew-symmetric, as can be seen using (3.22). A short calculation shows
+that the D bracket differs from the C bracket (1.19) by a term which has the structure of a
+trivial gauge parameter:
+
+
+M 1
+M
+(3.30)
+A, B D = A, B C + ∂ M B N AN .
+2
+Generalized vectors that depend just on x and not on x̃ decompose into a vector and a 1-form
+on the usual D-dimensional space with coordinates xi , and in that case it was shown in [3] that
+the C bracket becomes precisely the Courant bracket. In that same situation, the D-bracket
+becomes precisely the Dorfman bracket (see, for example [16], section 3.2) and our generalized
+Lie derivative becomes precisely the generalized Lie derivative introduced in [19] leading to the
+standard transformations of the metric and B-field. Our C bracket, D bracket and generalized
+Lie derivative, however, have the advantage of being O(D, D) covariant. For any totally null
+D-dimensional subspace N (i.e. any maximally isotropic subspace), we showed in [3] that the
+C bracket becomes the Courant bracket on N. Similarly, the D-bracket becomes the Dorfman
+bracket on N and the generalized Lie derivative becomes that of [19] on N.
+The D-brackets inherit the properties of the familiar Dorfman bracket [16].5 They are not
+skew:
+
+M
+
+M 
+(3.31)
+A, B D + B, A D = ∂ M B N AN ,
+
+
+
+
+
+
+but their antisymmetrization gives the C bracket A, B D − B, A D = 2 A, B C . It satisfies
+the Jacobi like identity
+ 
+ 
+
+  
+ 
+ 
+A, B, C D D = A, B D , C D + B, A, C D D .
+(3.32)
+
+
+Thus while the C bracket is anti-symmetric but does not satisfy the Jacobi identity, the Dbracket is not anti-symmetric but does satisfy a Jacobi identity.
+
+4
+
+The gauge invariant action
+
+In this section we determine the gauge invariant action in terms of HM N , which is equivalent
+to the original form (1.1). This action will be manifestly O(D, D) invariant and is further constrained by a discrete Z2 symmetry. Moreover, we construct a function R(H, d) that transforms
+as a gauge and O(D, D) scalar and show that the action, up to boundary terms, can be written
+in an Einstein-Hilbert-like form.
+
+4.1
+
+The O(D,D) and gauge invariant action
+
+Given the O(D, D) transformation properties of HM N , the partial derivatives ∂N , and the metric
+η M N = ηM N , we can build O(D, D) scalars by simply contracting all indices consistently.
+5
+
+Since the Dorfman bracket is not skew, it is usually not written as a bracket, but rather as a product: A ◦ B
+denotes what we call [A, B]D .
+
+14
+
+The O(D, D) transformations are global and there is no complication whatsoever with the
+derivatives. Examples of O(D, D) scalars are
+HM N ∂M d ∂N d , ∂ K HM N ∂M HKN .
+
+(4.1)
+
+There are a number of such O(D, D) scalars and what we are looking for is a linear combination
+of them, each with two derivatives, that is gauge invariant. To simplify the problem we consider
+the one additional discrete Z2 symmetry the action is supposed to have. This is the symmetry
+bij → −bij of the antisymmetric tensor field. This transformation must be accompanied by
+˜ In the original action (1.1) this is the symmetry under
+letting x̃ → −x̃ as well as ∂˜ → −∂.
+Eij → Eji as well as D ↔ D̄. In our present notation, where
+!
+∂˜i
+∂M =
+,
+(4.2)
+∂i
+we will write
+∂• → Z ∂• ,
+
+
+
+−1 0
+,
+with Z =
+0 1
+
+(4.3)
+
+where we used ∂• to denote the column vector associated with ∂M . The matrix Z satisfies the
+simple properties
+Z = Z t = Z −1 , Z 2 = 1 .
+(4.4)
+When bij → −bij the off-diagonal matrices in HM N change sign. So do the off-diagonal matrices
+in HM N . This is accomplished by
+H•• → ZH•• Z ,
+
+H•• → ZH•• Z .
+
+(4.5)
+
+The matrix Z does not correspond to an O(D, D) transformation. Thus we find that
+η •• 6= Z η •• Z ,
+
+η•• 6= Z η•• Z .
+
+(4.6)
+
+We now see that terms built with ∂• , H•• , and H•• , with all indices contracted, will be Z2
+invariant. Indeed, each index appears twice and, under the transformation, generate two Z
+matrices in a product ZZ = 1. The Z2 invariance is violated if η •• or η•• are needed to write
+the term (H•• can be written with two η’s and H•• ). Alternatively, the Z2 invariance is violated
+if we need to use the derivatives ∂ M with an upper index.
+The above Z2 constraint is quite strong. It eliminates, for example, the second term in (4.1).
+In fact, one can convince oneself that there is no Z2 -invariant term with two derivatives and
+two appearances of the generalized metric. For terms that mix the generalized metric and the
+dilaton there are four options:
+∂M d ∂N HM N , HM N ∂M d ∂N d , HM N ∂M ∂N d , ∂M ∂N HM N .
+
+15
+
+(4.7)
+
+The last one qualifies as an interaction because it is to be multiplied by e−2d , just as every other
+term. By integration by parts we can show that in an action the last two terms are simply
+linear combinations of the first two. Thus our choices are
+∂M d ∂N HM N , HM N ∂M d ∂N d .
+
+(4.8)
+
+Since we cannot have terms with just two generalized metrics, we look for terms with three
+of them (built without η). There are just two options
+HM N ∂M HKL ∂N HKL ,
+
+HM N ∂N HKL ∂L HM K .
+
+(4.9)
+
+The action must be build by an appropriate linear combination of the four terms listed above,
+and multiplied by e−2d . We claim that the gauge-invariant combination is
+Z
+S = dx dx̃ L ,
+(4.10)
+with
+L = e−2d
+
+1
+
+1 MN
+H ∂N HKL ∂L HM K
+8
+2
+
+− 2∂M d ∂N HM N + 4HM N ∂M d ∂N d .
+HM N ∂M HKL ∂N HKL −
+
+(4.11)
+
+Rather than prove now the gauge invariance we first verify that the above action is equivalent
+to the double field theory action in [4]. Even more, the two corresponding Lagrangian densities
+are just identical. As a check we perform a derivative expansion L = L(0) + L(1) + L(2) in ∂˜ as
+in [4]. For L(0) one finds
+
+1
+1
+1
+(0)
+−2d 1 ij
+L
+= e
+H ∂i Hkl ∂j Hkl + Hij ∂i Hk l ∂j Hl k − Hi j ∂j Hk l ∂l Hik − Hi j ∂j Hkl ∂l Hi k
+4
+4
+2
+2
+(4.12)
+
+1 ij
+1 ij
+l
+k
+kl
+ij
+ij
+− H ∂j Hk ∂l Hi − H ∂j H ∂l Hik − 2∂i d ∂j H + 4H ∂i d ∂j d .
+2
+2
+
+It is a straightforward though somewhat lengthy calculation to check that
+1
+
+1
+1
+L(0) = e−2d g ij ∂i gkl ∂j g kl − g ij ∂j g kl ∂l gik − 2∂i d ∂j g ij + 4g ij ∂i d ∂j d − H 2 ,
+4
+2
+12
+
+(4.13)
+
+where Hijk = ∂i bjk + ∂j bki + ∂k bij . This coincides with the expression found in eq. (3.18) of [4].
+Moreover, L(2) turns out to be the ‘T-dual’ expression, where we note that under inversion
+duality
+∂i → ∂˜i ,
+Hij → Hij ,
+etc. ,
+(4.14)
+i.e., L(2) must also coincide with the corresponding expression in [4]. The lemma that two
+O(D, D) scalars that agree in one O(D, D) frame are identical [4] shows that the two Lagrangians are identical. Thus (4.11) is the correct rewriting of the Lagrangian in terms of the
+generalized metric.
+16
+
+It is possible to understand the equality of the Lagrangians (4.11) and (1.1) more directly.
+For this purpose it is useful to define
+!
+E
+ji
+eM i ≡
+.
+(4.15)
+j
+δ i
+This definition allows us to write
+HM N = eM i eN j g ij − η M N ,
+
+(4.16)
+
+as can be verified by a simple direct calculation of the components. We also have
+eM i ∂M ≡ D̄i ,
+
+(4.17)
+
+with the calligraphic derivative defined in (1.2). Next we will take terms in the new action and
+write them in terms of those in the old action. For the last term in (4.11) the computation is
+rather simple:
+4HM N ∂M d ∂N d = 4eM i eN j g ij ∂M d ∂N d − 4η M N ∂M d ∂N d
+= 4g ij eM i ∂M d eN j ∂N d
+
+(4.18)
+
+= 4g ij D̄i d D̄j d ,
+where we used the constraint, (4.16), and (4.17). The right-hand side is the last term in the
+Lagrangian (1.1). Other terms require more work because they contain derivatives of HM N . A
+short computation with the next to last term in (4.11) gives
+
+−2 ∂M d ∂N HM N = −2 ∂M d ∂N eM i eN j g ij
+(4.19)
+= −2 ∂˜k d D̄j Eki g ij − 2 D̄i d ∂˜k Ekj g ij − 2 D̄i d D̄j g ij .
+˜
+At this point we can replace the ∂-derivatives
+using the identity ∂˜k = (D̄ k − D k )/2, and one
+quickly finds that
+
+− 2 ∂M d ∂N HM N = g ij g kl Dl d D̄j Eki + D̄i d Dl Ekj .
+
+(4.20)
+
+The right-hand side describes the next to last terms in the Lagrangian (1.1)! One must work
+harder to write the pure generalized-metric terms in terms of E and calligraphic derivatives.
+But the results are still simple, with a rather direct correspondence between the terms in the
+two actions. We have verified that
+1
+1 MN
+H ∂M HKL ∂N HKL = − g ik g jl D p Ekl Dp Eij ,
+8
+4
+
+(4.21)
+
+showing that the first terms in the Lagrangians are equal. In doing this computation the
+strategy is that terms with E fields and no derivatives have to combine and disappear, leaving
+17
+
+at most metric components gij . Finally, given the equality of the Lagrangians, the last two
+structures have to coincide,
+
+1
+1
+− HM N ∂N HKL ∂L HM K = g kl D j Eik D i Ejl + D̄ j Eki D̄ i Elj .
+2
+4
+
+(4.22)
+
+In total we conclude that all terms in the action can be identified naturally.
+
+We note, in passing, that integrating by parts in the last term of the action defined by (4.11)
+we can get the simpler, three term action:
+Z
+1
+
+1
+S =
+dxdx̃ e−2d HM N ∂M HKL ∂N HKL − HM N ∂N HKL ∂L HM K + 2HM N ∂M ∂N d . (4.23)
+8
+2
+Another set of integration by parts leads to an action where the Lagrangian takes the form of
+e−2d R where R is a gauge scalar. This is what we discuss next.
+
+4.2
+
+Generalized scalar curvature
+
+A reasonable assumption is that the analogue R of the scalar curvature is just the dilaton
+equation of motion, a feature that it shares with the scalar curvature constructed in [4], and
+that found in [8]. Using the Lagrangian (4.11) a simple computation gives the equation of
+motion of the dilaton, and we thus define:
+R ≡ 4 HM N ∂M ∂N d − ∂M ∂N HM N
+− 4 HM N ∂M d ∂N d + 4∂M HM N ∂N d ,
++
+
+(4.24)
+
+1
+1 MN
+H ∂M HKL ∂N HKL − HM N ∂M HKL ∂K HN L .
+8
+2
+
+The claim, to be proven in the following subsection, is that R so defined is a gauge scalar. We
+can confirm that this is in fact the same as the scalar in [4]. The verification uses the equation
+of motion of the dilaton from (4.11). The simplicity of this is that the Lagrangian here reduces
+to L(0) . The variation of the dilaton in the Lagrangian (but not the exponential) then gives
+additional terms that are total derivatives and a short computation shows that they coincide
+with the total derivatives in equation (C.27) of [4]. This confirms that the dilaton equation of
+motion does equal the curvature invariant.
+We now confirm that the action (4.11), up to total derivatives, takes the form
+Z
+S = dx dx̃ e−2d R .
+(4.25)
+To see this we consider the last two terms in the Lagrangian of (4.11). Simple manipulations
+
+18
+
+show that
+
+
+e−2d − 2∂M d ∂N HM N + 4HM N ∂M d ∂N d
+
+
+= ∂M (e−2d ) ∂N HM N + e−2d − 4HM N ∂M d ∂N d + 8HM N ∂M d ∂N d
+
+
+= ∂M (e−2d ∂N HM N ) + e−2d − ∂M ∂N HM N − 4HM N ∂M d ∂N d − 4HM N ∂M (e−2d ) ∂N d
+
+
+MN
+MN
+MN
+−2d
+MN
+MN
+−2d
+− ∂M ∂N H
+− 4H ∂M d ∂N d + 4∂M (H ∂N d) .
+= ∂M (e [∂N H
+− 4H ∂N d]) + e
+(4.26)
+
+We recognize that the terms within the last parentheses are the first four terms in R, as given
+in (4.24). Looking back at (4.11) and R we conclude that
+
+
+−2d
+−2d
+MN
+MN
+L = e R + ∂M e [∂N H
+− 4H ∂N d ] .
+(4.27)
+
+4.3
+
+Proof of gauge invariance
+
+We prove now the gauge invariance of the action. For this purpose we consider (4.25) and we
+will show that R is a gauge scalar, namely,
+δξ R = Lbξ R = ξ M ∂M R .
+
+(4.28)
+
+δξ e−2d = ∂M (ξ M e−2d ) ,
+
+(4.29)
+
+Given that the dilaton exponential transforms like a density:
+
+the invariance of the action S follows immediately.
+We use the same strategy as in [4] to prove (4.28). Since all indices are properly contracted,
+we only need to focus on the non-covariant terms in the variation of partial derivatives. Thus,
+for example, a short calculation shows that
+
+
+δξ ∂M HKL = Lbξ ∂M HKL + ∂ P ξM ∂P HKL − 2∂M ∂P ξ (K HL)P + 2∂M ∂ (K ξP HL)P . (4.30)
+
+The first term is the covariant one. The second term vanishes due to the constraint, and
+consequently this term and analogous ones in the formulas below will be ignored in the following.
+We will write, for any object W ,
+δξ W = Lbξ W + ∆ξ W ,
+
+(4.31)
+
+so that ∆ξ W denotes the violation of W to transform as the tensor associated with its index
+structure. Since δξ is a linear operation
+δξ (W V ) = (δξ W )V + W (δξ V )
+= (Lbξ W + ∆ξ W )V + W (Lbξ V + ∆ξ V )
+
+= Lbξ (W V ) + (∆ξ W )V + W (∆ξ V ) ,
+19
+
+(4.32)
+
+showing that the violation ∆ξ is also a derivation:
+∆ξ (W V ) = (∆ξ W )V + W (∆ξ V ) .
+
+(4.33)
+
+Using the notation in (4.31), the variation in (4.30) is
+∆ξ ∂M HKL
+
+
+
+= −2∂M ∂P ξ (K HL)P + 2∂M ∂ (K ξP HL)P .
+
+(4.34)
+
+The contraction of the above is useful,
+∆ξ ∂M HM N
+
+
+
+= −∂P (∂ · ξ) HP N − ∂M ∂P ξ N HM P + ∂M ∂ N ξP HM P .
+
+(4.35)
+
+b = 0 we have ∆ξ η = 0 and we can directly raise and lower indices in formulae
+Since δξ η = Lη
+for ∆ξ W . Thus, (4.34) gives
+∆ξ (∂K HN L ) = −2∂K ∂ P ξ(N HL)P + 2∂K ∂(N ξ P HL)P .
+
+(4.36)
+
+We also need
+
+∆ξ ∂M ∂N HM N = − 2 ∂M (∂ · ξ) ∂N HM N − 2∂M ∂N (∂ · ξ) HM N − ∂M ∂N ξ P ∂P HM N ,
+∆ξ (∂M d) = −
+
+1
+∂M ∂ · ξ ,
+2
+
+∆ξ (∂M ∂N d) = ∂M ∂N ξ P ∂P d −
+
+(4.37)
+
+1
+∂M ∂N (∂ · ξ) .
+2
+
+In light of the above discussion, we need to show that
+∆ξ R = 0 .
+
+(4.38)
+
+We begin with the first two terms in R, those that contain second derivatives of fields. A short
+calculation shows that
+
+
+MN
+MN
+∆ξ 4 H ∂M ∂N d − ∂M ∂N H
+= 4HM N ∂M ∂N ξ P ∂P d + 2∂M ∂ · ξ ∂N HM N
+(4.39)
++ ∂M ∂N ξ P ∂P HM N .
+The virtue of the above combination of terms is that variations with three derivatives on ξ
+cancelled out. Next we aim to cancel the term above of the form H ∂ 2 ξ ∂d. For this we use the
+next two terms in R. A short computation gives
+
+
+∆ξ 4∂M HM N ∂N d − 4HM N ∂M d∂N d = −4HM N ∂M ∂N ξ P ∂P d − 2∂M ∂ · ξ ∂N HM N . (4.40)
+Comparing with the previous equation we see that two terms are in fact cancelled and we get
+
+
+∆ξ 4 HM N ∂M ∂N d−∂M ∂N HM N +4∂M HM N ∂N d−4HM N ∂M d∂N d = ∂M ∂N ξ P ∂P HM N . (4.41)
+20
+
+The violation in the right-hand side can be cancelled by one of the remaining terms in R:
+ 1
+
+∆ξ − HM N ∂M HKL ∂K HN L = − ∂M ∂N ξ P ∂P HM N
+2
+(4.42)
+ KP
+MN
+L
+L
++ ∂K H
+∂M ∂ ξP − ∂P ξ H HN L .
+
+We can show that the underlined term is in fact zero because it is equal to minus itself:
+∂K HM N HKP HN L ∂M ∂ L ξP = − ∂K HN L HKP HM N ∂M ∂ L ξP
+
+= − ∂K HN L HKP HM N ∂ M ∂L ξP
+
+= − ∂K HN M HKP HLN ∂ L ∂M ξP
+
+(4.43)
+
+= − ∂K HM N HKP HN L ∂M ∂ L ξP .
+
+In the first step we used ∂K HM N HN L = −HM N ∂K HN L , which follows from HM N HN L = δLM .
+As a result (4.42) becomes
+
+ 1
+∆ξ − HM N ∂M HKL ∂K HN L = − ∂M ∂N ξ P ∂P HM N − ∂K HM N HKP HN L ∂M ∂P ξ L .
+2
+
+(4.44)
+
+The first term on the right-hand side is suitable to cancel the violation in (4.41) but we got an
+additional term. This term requires the consideration of the one remaining term in R. A short
+calculation gives
+1
+ 1
+
+MN
+KL
+∆ξ H ∂M H ∂N HKL = ∂M HKL ∂N ∂K ξ P − ∂ P ξK HM N HLP .
+(4.45)
+8
+2
+
+Using manipulations similar to those in (4.43) show that the two terms in the above right-hand
+side are actually equal so that
+
+1
+∆ξ HM N ∂M HKL ∂N HKL = ∂M HKL HM N HLP ∂N ∂K ξ P ,
+8
+(4.46)
+MN
+KP
+L
+= ∂K H
+H HN L ∂M ∂P ξ ,
+using additional manipulations for the last step. This result, together with (4.44), gives
+∆ξ
+
+1
+
+
+1
+HM N ∂M HKL ∂N HKL − HM N ∂M HKL ∂K HN L = −∂M ∂N ξ P ∂P HM N .
+8
+2
+
+(4.47)
+
+At this point it is clear that the ∆ξ violation of these two terms cancels precisely with the
+violation of the other four terms in R, as shown in (4.41). We thus find that ∆ξ R = 0, which
+is what we wanted to show. This completes the proof of gauge invariance of the action.
+
+4.4
+
+Generalized Ricci curvature
+
+We have seen that the dilaton field equation gives a generalized scalar R that can be viewed as
+a generalisation of the scalar curvature. In this subsection we consider the field equation for H
+21
+
+which provides a natural generalization of the Ricci curvature. The change in the action (1.15)
+under a general variation δHM N of HM N is
+Z
+δS =
+dxdx̃ e−2d δHM N KM N ,
+(4.48)
+where
+1
+1
+∂M HKL ∂N HKL − (∂L − 2(∂L d))(HLK ∂K HM N ) + 2 ∂M ∂N d
+8
+4
+
+1
+1
+− ∂(M HKL ∂L HN )K + (∂L − 2(∂L d)) HKL ∂(M HN )K + HK (M ∂K HL N ) .
+2
+2
+
+KM N ≡
+
+(4.49)
+
+As H is constrained to satisfy HηH = η −1 , the equations of motion are found by considering
+variations that preserve this constraint. The varied field H′ = H+δH will satisfy H′ ηH′ = η −1
+provided
+δH ηH + Hη δH = 0 .
+(4.50)
+Using (2.6) we rewrite the above as
+δH S t + S δH = 0 ,
+
+(4.51)
+
+and recalling that S 2 = 1 we have the constraint
+δH = −S δH S t .
+
+(4.52)
+
+Since 21 (1 ± S), acting on vectors V = V M with upper indices, can be viewed as projectors into
+subspaces with S eigenvalues ±1, any matrix M = M M N can be viewed as a bivector and so
+written as the sum of four projections into independent subspaces:
+M =
+
+1
+1
+(1 + S)M(1 + S t ) + (1 + S)M(1 − S t )
+4
+4
+
+1
+1
++ (1 − S)M(1 + S t ) + (1 − S)M(1 − S t ) .
+4
+4
+
+(4.53)
+
+It then follows that the general solution of (4.52) is given by
+1
+1
+δH = (1 + S) M(1 − S t ) + (1 − S)M(1 + S t ) ,
+4
+4
+
+(4.54)
+
+where M is an arbitrary matrix that must be symmetric to guarantee that δH is symmetric.
+Inserting this in (4.48) and letting K denote the matrix with components KM N gives
+Z
+
+δS =
+dxdx̃ e−2d Tr δH K
+(4.55)
+Z
+
+h1
+i
+1
+−2d
+t
+t
+=
+dxdx̃ e Tr M (1 − S ) K (1 + S) + (1 + S ) K (1 − S) .
+4
+4
+22
+
+The field equation is then
+RM N = 0 ,
+
+(4.56)
+
+where the matrix R, whose components are RM N , is given by
+1
+1
+R ≡ (1 − S t )K(1 + S) + (1 + S t )K(1 − S) .
+4
+4
+
+(4.57)
+
+Restoring the indices we have
+1
+1
+RM N ≡ (δM P − S P M ) KP Q (δ Q N + S Q N ) + (δM P + S P M ) KP Q (δ Q N − S Q N ) .
+4
+4
+
+(4.58)
+
+The field equation RM N = 0 combines the field equations of the metric g and the b-field in
+an O(D, D) covariant form and RM N provides a generalized Ricci curvature. We will discus it
+further in section 5.4.
+
+5
+
+Vielbein formulations
+
+In this section we discuss reformulations of the double field theory written in terms of vielbeins or coset variables instead of the metric H, introducing variables similar to those used
+in dimensional reduction of supergravity theories. When dimensionally reduced on a D-torus,
+the familiar field theory of gravity plus b-field arising in supergravity theories gives a theory
+with O(D, D) duality symmetry. In particular, the scalar fields originating from the metric and
+b-field on the torus take values in the coset space O(D, D)/O(D) × O(D) [12, 13, 14]. Scalar
+fields such as these that parameterize a coset space G/H can be represented by a group-valued
+field V(x) ∈ G, which depends only on the non-compact coordinates xα and transforms as
+V ′ (x) = g V(x) h(x) ,
+
+g∈G,
+
+h(x) ∈ H
+
+(5.1)
+
+under local H and rigid G transformations. The theory can also be written in terms of H = V † V,
+which is H-invariant and reduces to H = V t V if V is a real matrix, as in our case.
+For G/H = O(D, D)/O(D) × O(D), the matrix V M A has an O(D, D) index M and a
+O(D) × O(D) index A. The vielbein V M A corresponds to the matrix hE in (2.11), which
+indeed transforms from the left by the G = O(D, D) action and is well-defined only up to local
+H = O(D) × O(D) transformations from the right. We define the H-invariant HM N by
+HM N ≡ V M A V N B δ AB .
+
+(5.2)
+
+This definition coincides with (2.15) and thus HM N is the inverse generalized metric. Any
+action for which V enters only through H is automatically H-invariant. The standard sigma
+
+
+model Lagrangian reads L = Tr H−1 ∂ α H H−1 ∂α H . An alternative formulation of this sigma
+model was found by Maharana and Schwarz [12] involving a vielbein eM a , where a = 1, . . . , D,
+and in this formulation the local symmetry is GL(D, R) instead of O(D) × O(D).
+23
+
+Siegel generalised this by using similar variables for the whole space-time, not just an internal
+torus. In [9] he rewrote the metric and b-fields in D-dimensional flat space in terms of a
+Maharana-Schwarz-like vielbein eM a depending on all the space-time coordinates, not just the
+non-compact ones. Then in [8] he extended this further to a doubled space-time with 2D
+coordinates X transforming as a vector under O(D, D) and a vielbein eM A (X) with a local
+GL(D, R) × GL(D, R) symmetry. This formulation reduces to the coset space formulation
+with one gauge choice and to the Maharana-Schwarz-like formulation with another. Neither
+eM A (X) or eM a (X) are coset representatives, but fixing the GL(D, R) × GL(D, R) symmetry
+to O(D) × O(D) does give a representative of the coset O(D, D)/O(D) × O(D). Models with
+fields taking values in a coset G/H and depending on coordinates X that transform under G
+were discussed in [20], motivated by earlier use of such variables in e.g. [21] and [22]. A key
+feature is that such models allow for more general G-invariant actions, as the derivatives ∂M
+now carry the same kind of index as HM N or V M A . Consequently, contractions between indices
+on derivatives and indices on matrices are now possible, as arising in our action (4.11).
+Here we will discuss reformulations of our theory in terms of vielbeins eM A (X) or eM a (X),
+and use these to explore the geometry further. In this way we show how our formalism is related
+to that of Siegel, giving a different approach to his formalism here.
+
+5.1
+
+General frames
+
+We start by choosing a basis of vector fields eM A for the doubled space, where M is the usual
+vector index and A = 1, . . . , 2D labels the basis. Then eM A is a 2D × 2D invertible matrix
+field, and its inverse eA M can be regarded as a vielbein for the doubled space. The metrics H
+and η then have frame components
+HAB ≡ eM A eN B HM N
+
+(5.3)
+
+η̂AB ≡ eM A eN B ηM N ,
+
+(5.4)
+
+and
+
+where the ˆ indicates that for general frames this will be a function of X. There is a local
+GL(2D, R) action on frames
+eM A → eM B ΛB A ,
+
+Λ(X) ∈ GL(2D, R) .
+
+(5.5)
+
+The inverse metrics have frame components defined by
+HAB ≡ eA M eB N HM N ,
+
+η̂ AB ≡ eA M eB N η M N ,
+
+(5.6)
+
+and it follows from these definitions and (1.11) that, as expected, these are the inverses of HAB
+and η̂AB :
+HAC HCB = δ A B ,
+η̂ AC η̂CB = δ A B .
+(5.7)
+24
+
+Using the above formulae, it follows that
+eA M (η M N eB N η̂BC ) = δ A C ,
+
+(5.8)
+
+so that the inverse vielbein is given by
+eM C = η M N eB N η̂BC .
+
+(5.9)
+
+Thus it is fully consistent to raise and lower M, N, . . . indices with ηM N and the tangent space
+indices A, B, . . . with η̂AB , and we will do so throughout this section.
+The tangent space group GL(2D, R) can be reduced by restricting to a basis with special
+properties. For example, a basis that is orthonormal with respect to ηM N will have
+
+
+
+
+0 1
+0 1
+M
+N
+e A e B ηM N =
+→ η̂AB =
+.
+(5.10)
+1 0
+1 0
+Restricting to such bases will restrict the tangent space group to O(D, D). Similarly, a basis
+that is orthonormal with respect to HM N will have
+eM A eN B HM N = δAB
+
+→
+
+HAB = δAB .
+
+(5.11)
+
+Restricting to such bases will restrict the tangent space group to O(2D).6 Restricting to
+frames which are orthonormal for both metrics H and η reduces the tangent space group to
+O(D) × O(D).
+
+5.2
+
+Frames with GL(D, R) × GL(D, R) symmetry
+
+Here we will be interested in a different reduction of the frame bundle in which the structure
+group is reduced to GL(D, R) ×GL(D, R). The doubled space is equipped with the two metrics
+H and η so that S = η −1 H satisfies S 2 = 1 and is an almost local product structure or almost
+real structure (the analogue of an almost complex structure satisfying J 2 = −1). This allows
+the splitting T = T+ ⊕ T− of the tangent bundle T of the doubled space into the subbundle T+
+of vectors with S eigenvalue +1 and the subbundle T− with S eigenvalue −1. We will choose
+a basis of D vectors eM a for T− (a = 1, . . . , D) and a basis eM ā (ā = 1, . . . , D) for T+ . Then
+A = (ā, a) is an composite index and we have
+
+
+
+eiā eia
+M
+M
+M
+,
+(5.12)
+e A = e ā e a =
+ei ā ei a
+
+where
+
+Sea = −ea ,
+
+Seā =
+6
+
+eā .
+
+(5.13)
+
+This is for the case in which gij and HMN are positive definite. For gij of signature (p, q), HMN has signature
+(2p, 2q) and orthonormal frames will have HAB the constant Minkowski-type metric of signature (2p, 2q), and
+the tangent space group would be O(2p, 2q). Throughout this section, we will present results for the case in
+which gij is positive definite, but our formulae all have natural generalisations to the case of general signature.
+
+25
+
+As HM N = ηM P S P N these imply
+HM N eN a = −ηM N eN a ,
+
+(5.14)
+
+HM N eN ā = ηM N eN ā .
+
+Contracting each of these with a vielbein we obtain
+HM N eM a eN b = −ηM N eM a eN b
+
+→
+
+Hab = −η̂ab ,
+
+HM N eM ā eN b̄ =
+
+→
+
+Hāb̄ = η̂āb̄ .
+
+ηM N eM ā eN b̄
+
+(5.15)
+
+Additional information comes by considering HM N eM a eN b̄ . Evaluating this term using the
+first and second equations in (5.14) gives
+HM N eM a eN b̄ = (HN M eM a ) eN b̄ = −ηM N eM a eN b̄ ,
+
+HM N eM a eN b̄ = (HM N eN b̄ )eM a =
+
+ηM N eM a eN b̄ .
+
+(5.16)
+
+Since the two evaluations differ by a sign, the term in question vanishes. This means that
+Hab̄ = 0 , η̂ab̄ = 0 ,
+
+(5.17)
+
+Hāb = 0 , η̂āb = 0 .
+
+We define gab and gāb̄ as the nonvanishing components of the flattened metric η̂AB , with factors
+of two introduced for later convenience,
+gab ≡ −
+
+1
+1
+ηM N eM a eN b = − η̂ab ,
+2
+2
+
+gāb̄ ≡
+
+1
+ηM N eM ā eN b̄ =
+2
+
+1
+η̂ .
+2 āb̄
+
+The above results are summarized by giving the flat components of H and η:
+
+
+
+
+gāb̄
+0
+gāb̄ 0
+.
+,
+η̂AB = 2
+HAB = 2
+0 −gab
+0 gab
+
+(5.18)
+
+(5.19)
+
+If the original metric gij is positive definite, then HM N and HAB are positive definite. Thus,
+gab and gāb̄ are positive definite as well, while η̂AB has signature (D, D). (For other signatures,
+if gij is invertible, then so are gab and gāb̄ .)
+Choosing frames in this way reduces the tangent space group to GL(D, R) × GL(D, R) with
+one GL(D, R) factor acting on the indices a, b as frame rotations of T− and the other GL(D, R)
+factor acting on the indices ā, b̄ as frame rotations of T+ . The O(D, D) and the local tangent
+space symmetries then act on the frame field as follows
+e′
+
+M
+
+′
+A (X )
+
+= hM N eN B (X) ΛB A (X) ,
+
+26
+
+(5.20)
+
+with h ∈ O(D, D) and Λ(X) ∈ GL(D, R) × GL(D, R), so that
+
+ ā
+Λ b̄ 0
+A
+,
+Λ B =
+0 Λa b
+
+(5.21)
+
+with Λā b̄ in the first GL(D, R) and Λa b in the second GL(D, R). Here X ′ = hX as before, so
+that the coordinates transform under O(D, D) but are inert under the tangent space group.
+This is Siegel’s vielbein formalism with GL(D, R) × GL(D, R) symmetry [8].
+Following [8] we consider gauge fixing the tangent space symmetry. We use one GL(D, R)
+symmetry to choose gab = 12 δab and the other GL(D, R) symmetry to choose gāb̄ = 21 δāb̄ . Then
+
+
+
+
+δāb̄
+0
+δāb̄ 0
+.
+(5.22)
+≡ δAB ,
+η̂AB =
+HAB =
+0 −δab
+0 δab
+The basis is then orthonormal with respect to both H and η and the tangent space group is
+reduced to O(D) × O(D). Then (5.3) implies
+HM N = δAB eA M eB N ,
+
+(5.23)
+
+so that H−1 = et e and eA M is a vielbein for the generalized metric. The matrix η̂AB appearing
+in (5.22) differs by a similarity transformation from ηM N :
+
+
+1 1 −1
+t
+σ η̂ σ = η ,
+σ = √
+= (σ t )−1 .
+(5.24)
+1
+1
+2
+We then have
+ηAB = êM A êN B ηM N ,
+
+where êM A ≡ eM B σA B .
+
+(5.25)
+
+This is verified by expanding the right-hand side, using (5.4), and the relation (5.24) that
+follows from the gauge fixing. The result (5.25) means that ê is an O(D, D) group element.
+Thus, êM A is an O(D, D) matrix transforming under a rigid O(D, D) transformation h and a
+local O(D) × O(D) transformation Λ(X) as
+ê′ (X ′ ) = h ê(X) Λ(X) ,
+
+(5.26)
+
+where X ′ = hX. The gauge equivalence classes of ê under the local O(D) × O(D) symmetry
+can then be identified with fields taking values in the coset space O(D, D)/O(D) × O(D). In
+this way we recover the familiar coset space variables.
+
+5.3
+
+Frames with GL(D, R) symmetry
+
+We now return to the general situation with the full GL(D, R) × GL(D, R) symmetry and show
+that the geometry can be formulated in terms of the frames for T+ :
+ 
+eiā
+M
+.
+(5.27)
+e ā =
+ei ā
+27
+
+There is a local GL(D, R) symmetry acting on the index ā. In matrix notation,
+eM → eM Λ ,
+
+Λ ∈ GL(D, R) .
+
+(5.28)
+
+We note that (5.19) implies
+1
+HAB =
+2
+
+g āb̄ 0
+0 g ab
+
+!
+
+1
+η̂ AB =
+2
+
+,
+
+g āb̄
+0
+0 −g ab
+
+!
+
+,
+
+where g ab is the inverse of gab and g āb̄ is the inverse of gāb̄ . Then
+!
+āb̄
+g
+0
+− η̂ AB .
+HAB =
+0 0
+
+(5.29)
+
+(5.30)
+
+Acting on this with eM A eN B gives
+HM N = eM ā eN b̄ g āb̄ − η M N .
+
+(5.31)
+
+As gāb̄ is given in terms of the eM ā by (5.18), it follows that (5.31) gives an expression for the
+generalised metric in terms of the T+ frames eM ā alone.
+The components of HM N are given in (2.22) and this can be used to find expressions for gij
+and bij in terms of the frame fields. First, the lower right block of (2.22) is Hij = g ij and using
+this in (5.31) gives
+g ij = ei ā ej b̄ g āb̄ .
+(5.32)
+Remarkably, this implies that ei ā is non-degenerate and can be viewed as D × D frame fields
+to convert the indices i, j, . . . to flat indices ā, b̄, . . .. Moreover, gāb̄ are precisely the frame
+components of gij . The inverse of ei ā is then the vielbein
+eā i = gij ej b̄ g āb̄ .
+
+(5.33)
+
+Similarly, the upper right block of (2.22) is Hi j = bik g kj , and using this in (5.31) gives
+bik g kj = eiā ej b̄ g āb̄ − δi j .
+
+(5.34)
+
+Multiplication by gjp quickly leads to
+Eij = gij + bij = eiā eā j .
+
+(5.35)
+
+Thus, in addition to the vielbein eā i that gives a ‘square root’ of the metric gij in (5.32), there
+is a field eiā which can be viewed as a second vielbein that incorporates the b-field and which
+gives a factorisation of E. The contraction of upper and lower ā indices in (5.35) implies that
+Eij is invariant under GL(D, R). Thus the generalised metric H and E are both given in terms
+of the frame fields eM ā (ā = 1, . . . , D) for T+ . This is essentially the two-vielbein formalism
+28
+
+given in [9] for fields depending on the spacetime coordinates and extended to doubled fields
+in [8].
+The linear transformation of eM ā under O(D, D) then implies that Eij = eiā eā j transforms
+by the fractional linear transformation (1.3). To see this we use matrix notation and denote
+the D × D matrix components of eM ā as e and ẽ, such that E = e ẽ−1 . They transform under
+the O(D, D) group element in (1.3) as follows
+
+
+ 
+
+ 
+ae + bẽ
+e
+a b
+e
+.
+(5.36)
+=
+→
+ce + dẽ
+ẽ
+c d
+ẽ
+This implies for the transformation of E
+E → (ae + bẽ) (ce + dẽ)−1 =
+−1
+
+= (aE + b) (cE + d)
+
+,
+
+
+−1
+aeẽ−1 + b ẽẽ−1 ceẽ−1 + d
+
+(5.37)
+
+which is the fractional linear transformation (1.3), as we wanted to show.
+We next fix the local GL(D, R) symmetry (5.28). One possibility is the gauge choice gāb̄ =
+δāb̄ . This makes the frame orthonormal so that one has the usual gij = eā i eb̄ j δāb̄ and the tangent
+space group is reduced to O(D). Alternatively, the GL(D, R) symmetry can be completely fixed
+by choosing the gauge
+GL(D, R) gauge fixing : ei ā = δ i ā .
+(5.38)
+In this gauge we identify flat indices ā, b̄ and world indices i, j. It follows that gij and gāb̄ become
+identical matrices on account of (5.32). Moreover, we have eāi = δ ā i and equation (5.35) gives
+Eij = eiā eā j = eij .
+As a result, we have
+Eji
+
+eM i =
+
+δj i
+
+!
+
+.
+
+(5.39)
+
+(5.40)
+
+This is then precisely the field defined in (4.15). The derivatives with frame indices reduce in
+this gauge as follows
+Dā ≡ eM ā ∂M
+
+⇒
+
+Di = eM i ∂M = D̄i ,
+
+(5.41)
+
+recovering the calligraphic derivative as in (4.17). In this way we provide a geometric setting
+for the equations that were used in §4.1 in order to discuss the equivalence of the actions in
+terms of E and H.
+Similar arguments lead to completely analogous results for the frames of T− . The frames of
+T− are
+ 
+eia
+M
+.
+(5.42)
+e a =
+ei a
+29
+
+The generalised metric is given by
+HM N = eM a eN b g ab + η M N ,
+
+(5.43)
+
+g ij = ei a ej b g ab ,
+
+(5.44)
+
+the inverse metric is
+and ei a is non-degenerate with inverse given by the vielbein
+ea i = gij ej b g ab .
+
+(5.45)
+
+Eji = gij − bij = −eia ea j ,
+
+(5.46)
+
+Eij = −eja ea i .
+
+(5.47)
+
+Furthermore,
+so that
+The GL(D, R) symmetry acting on the indices a, b, . . . can be completely fixed by choosing
+the gauge ei a = δ i a . In this gauge we identify flat indices a, b and world indices i, j, and the
+matrices gij and gab . The frames eM a become
+!
+−E
+ij
+eM i =
+.
+(5.48)
+δj i
+The flattened derivatives in this gauge are
+Da = eM a ∂M
+
+⇒
+
+Di = eM i ∂M ≡ Di ,
+
+(5.49)
+
+giving the unbarred calligraphic derivative defined in (1.2).
+
+5.4
+
+Gauge choices and applications
+
+The doubled space has two metrics: the fixed metric η that appears in the constraint η M N ∂M ∂N =
+0 and the dynamical metric H, which encodes the space-time metric and b-field. As we have
+seen, the geometry could instead be formulated in terms of η and the frames eM ā , in terms of
+η and the frames eM a , or in terms of eM A and η.
+The theory can be rewritten in terms of the frame field eM ā , giving a theory with a local
+GL(D, R) symmetry. An advantage of this formalism is that eM ā is unconstrained.7 In this
+subsection we use the frame formulation to investigate the relation between the formulation in
+terms of Eij and in terms of H.
+As we have seen, the GL(D, R) gauge symmetry can be completely fixed by the gauge choice
+i
+e ā = δ i ā so that the frame field is given in terms of E by (5.40). Together with (5.31) this
+7
+If we are to restrict to non-degenerate metrics gij , then certain invertibility requirements need to be imposed
+on eM ā .
+
+30
+
+gives a rewriting of the H-based theory in terms of E, and this was the strategy used in section
+4 to show the equivalence of the action (1.15) in terms of H and the action (1.1) in terms of E.
+Next we use the frame formalism to relate the gauge transformations of E to those of H.
+The gauge and GL(D, R) transformations of the frame field eM ā are
+δeM ā = Lbξ eM ā + eM b̄ Σb̄ ā
+K
+
+M
+
+= ξ ∂K e
+
+ā − ∂K ξ
+
+M
+
+K
+
+M
+
+K
+
+M
+
+e ā + ∂ ξK e ā + e
+
+b̄
+
+(5.50)
+
+b̄ Σ ā ,
+
+where Σb̄ ā is the local GL(D, R) parameter. Then HM N is given by (5.31) and is a GL(D, R)
+singlet and transforms with the generalized Lie derivative under the ξ M gauge transformations.
+The gauge condition ei ā = δ i ā is not preserved by the ξ gauge transformations and so these
+must be accompanied by compensating GL(D, R) transformations. The transformation of the
+gauge-fixed component ei ā is
+δei ā = −∂K ξ i eK ā + ∂˜i ξK eK ā + ei b̄ Σb̄ ā
+= −D̄ā ξ i + ∂˜i ξ˜ā + ∂˜i ξ k ekā + δ i b̄ Σb̄ ā ,
+
+(5.51)
+
+where we used (5.41), which holds after gauge-fixing. In order to preserve the gauge condition
+we need δei ā = 0 and therefore a ξ-transformation must be accompanied by a compensating
+GL(D, R) transformation with parameter
+Σj i = D̄i ξ j − ∂˜j ξ˜i − ∂˜j ξ k Eki ,
+
+(5.52)
+
+where we have used that after gauge-fixing Eij = eij , and ‘world indices’ are identified with ‘flat
+indices’. Now, from (5.40) we have in this gauge
+!
+δE
+ji
+.
+(5.53)
+δeM i =
+0
+The ξ variation of Eij can thus be found by substituting (5.53) in (5.50) and using (5.52),
+δEij = ξ K ∂K Eij − ∂K ξ˜i eK j + ∂i ξK eK j + Eik Σk j
+
+
+= ξ K ∂K Eij − D̄j ξ˜i + ∂i ξ˜j + ∂i ξ k Ekj + D̄j ξ k − ∂˜k ξ˜j − ∂˜k ξ p Epj Eik
+
+(5.54)
+
+= Di ξ˜j − D̄j ξ˜i + ξ K ∂K Eij + Di ξ k Ekj + D̄j ξ k Eik .
+
+This is precisely the gauge transformation (1.8) of Eij , and thus we have shown that this can
+be understood as arising from a geometric transformation and a compensating tangent space
+rotation.
+Alternatively, the theory can be rewritten in terms of the frame field eM A , giving a formulation with local GL(D, R) × GL(D, R) symmetry as in [8]. This can be done by writing H + η
+in terms of eM ā using (5.31) and writing H − η in terms of eM a using (5.43). Note that (5.16)
+implies
+ei a eib̄ + eia ei b̄ = 0 .
+31
+
+(5.55)
+
+The gauge transformations are
+δeM A = Lbξ eM A + eM B ΣB A ,
+
+(5.56)
+
+where the parameter Σ takes values in the Lie algebra gl(D, R) ⊕ gl(D, R).
+We can gauge-fix the GL(D, R) × GL(D, R) completely by setting ei ā = δ i ā and ei a = δ i a .
+Then the indices a, b... and ā, b̄.... are both identified with the world indices i, j, ... and we
+identify the component eiā with Eij as before. Then the constraint (5.55) determines eia to be
+eia = −Eai ; thus we have
+
+
+Eiā −Eai
+M
+.
+(5.57)
+e A =
+δ i ā δ i a
+The components of the ‘flattened’ derivative in this gauge become, on identifying the indices
+i with both a and ā,
+DA ≡ eM A ∂M
+
+⇒
+
+Da = D a ,
+
+Dā = D̄ā .
+
+(5.58)
+
+In this gauge the flattened derivatives are the calligraphic derivatives as in (5.41) and (5.49).
+As an illustration of this formalism we translate the strong constraint ∂ M f ∂M g = 0 into the
+language of calligraphic derivatives. It follows from the second equation in (5.6) that
+η M N = η̂ AB eM A eN B .
+
+(5.59)
+
+It thus follows that
+0 = η M N ∂M f ∂N g = ∂ M f ∂M g = η̂ AB eM A eN B ∂M f ∂N g = η̂ AB DA f DB g
+1
+1
+1
+1
+= g āb̄ Dā f Db̄ g − g ab Da f Db g = g ij D̄i f D̄j g − g ij Di f Dj g
+2
+2
+2
+2
+
+1
+= − D i f Di g − D̄ i f D̄i g ,
+2
+
+(5.60)
+
+where we used the expression for η̂ AB in (5.30), the identification of gab and gāb̄ with gij , and
+(5.58). This is the constraint in calligraphic derivatives [4].
+The frame fields are useful in the discussion of the generalized Ricci curvature introduced
+in §4.4. The tensor KM N given in (4.49) has frame components
+
+
+Kāb̄ Kāb
+M
+N
+.
+(5.61)
+KAB = KM N e A e B =
+Kab̄ Kab
+As 21 (1+S) projects onto barred indices and 12 (1−S) projects onto unbarred indices (see (5.13)),
+the frame components of (4.57) are
+
+
+0 Kāb
+M
+N
+,
+(5.62)
+RAB = RM N e A e B =
+Kab̄ 0
+so that the unmixed components vanish, Rab = Rāb̄ = 0, and the mixed ones are determined
+by the mixed components of K, so that Rab̄ = Kab̄ .
+32
+
+6
+
+Conclusions and Outlook
+
+In this paper we have reformulated the background independent double field theory of [4] in
+terms of the generalized metric HM N . The action and gauge transformations simplify significantly when written in terms of H, and the proof of gauge invariance is considerably easier
+than the one given in [4]. The generalized metric transforms covariantly under O(D, D) and
+as a result the action and gauge transformations are manifestly O(D, D) covariant. The gauge
+symmetry acts nonlinearly on the fields gij and bij (or Eij ) used for the formulation in [4] but
+becomes linear when written in terms of HM N . The gauge algebra of double field theory is
+characterized by a C bracket that is the natural O(D, D) covariant extension of the Courant
+bracket to doubled fields. The C bracket reduces to the Courant bracket when the fields are
+restricted to a null subspace. The action in terms of H can be seen as a generalization of a
+non-linear sigma model based on the coset space O(D, D)/(O(D) × O(D)) in which the coordinates transform under O(D, D). The generalized metric HM N can be viewed as a composite
+field defined in terms of a metric g and an antisymmetric tensor b. Alternatively, HM N can
+be viewed as an elementary field that is constrained to be a symmetric O(D, D) matrix. The
+constraint can be solved by writing H in terms of frame fields, so that these frame fields could
+be viewed as the basic fields of the theory.
+We defined a generalized Lie derivative that was suggested by the linear form of the gauge
+transformations of HM N and introduced generalized tensors that transform with this derivative.
+We explored the properties of these derivatives in some detail. It is crucial that the Lie derivative
+of the O(D, D) metric η M N vanishes, so that the O(D, D) structure is preserved by the gauge
+transformations. The commutator of two generalized Lie derivatives is again a generalized Lie
+derivative with parameter obtained through the C bracket. The generalized scalar curvature R,
+built with two derivatives acting on the generalized metric and the dilaton, indeed transforms
+as a generalized scalar.
+We have discussed the relation of our work to that of Siegel [8, 9]. The frame fields with
+tangent space symmetry GL(D, R) × GL(D, R) have simple transformation properties and the
+fields H and E were constructed in terms of these. The frame variables were useful in showing
+the relation between the theory written in terms of H and that written in terms of E. In [8],
+Siegel introduced covariant derivatives and curvatures constructed from the vielbein fields and
+used these to write an action. Its relation to our actions should be investigated.
+The ‘generalized metric’ HM N should properly be regarded as a conventional metric on the
+doubled space. It is only unusual in that this metric is constrained to be an O(D, D) matrix.
+The metric HM N is the natural extension of the generalized metric of generalized geometry to
+doubled fields. It is intriguing that two key ingredients of generalized geometry play central roles
+in the double field theory: Courant brackets and the generalized metric. There is much that
+remains to be understood of the geometry underlying the double field theory. We have found
+a natural field strength transforming as a scalar under the gauge transformations, and the field
+equation for H gives a generalisation of the Ricci tensor, but we do not have an understanding of
+33
+
+these as curvatures. It would be of considerable interest to develop a geometric understanding
+of our results, perhaps combining ideas from generalized geometry with the constructions of
+Siegel. This would help in constructing gauge-invariant higher derivative actions.
+Our results in this paper use the strong version of the ∂M ∂ M = 0 constraint, which requires
+that all fields and products of fields are in the kernel of ∂M ∂ M . This strong form of the
+constraint implies that all fields and parameters depend on just D of the 2D coordinates, so
+that the theory can be viewed as a conventional theory living on a D dimensional subspace of
+the doubled spacetime. The most important outstanding question is whether there is a gauge
+invariant theory in which only the weak form of the constraint is imposed, so that each field
+satisfies the constraint, but products of fields need not do so. Such a theory would depend
+non-trivially on all the coordinates of the doubled spacetime and so would be a true double
+field theory. This theory was constructed to cubic order in [2] and shown to be gauge invariant
+using only the weak form of the constraint. Its extension to higher orders, however, necessarily
+involves new structures and the explicit appearance of a projector onto the kernel of ∂M ∂ M [2].
+We hope that the geometric structures discussed in this paper will be useful in the quest for
+such a theory.
+
+Acknowledgments
+We acknowledge helpful discussions with Ashoke Sen, Warren Siegel, and Dan Waldram. This
+work is supported by the U.S. Department of Energy under research agreement DE-FG0205ER41360. The work of OH is supported by the DFG – The German Science Foundation.
+
+References
+[1] A. Giveon, M. Porrati and E. Rabinovici, “Target space duality in string theory,” Phys.
+Rept. 244, 77 (1994) [arXiv:hep-th/9401139].
+[2] C. Hull and B. Zwiebach, “Double Field Theory,” JHEP 0909 (2009) 099 [arXiv:0904.4664
+[hep-th]].
+[3] C. Hull and B. Zwiebach, “The gauge algebra of double field theory and Courant brackets,”
+JHEP 0909 (2009) 090 [arXiv:0908.1792 [hep-th]].
+[4] O. Hohm, C. Hull and B. Zwiebach, “Background independent action for double field
+theory,” [arXiv:1003.5027 [hep-th]].
+[5] T. Kugo and B. Zwiebach, “Target space duality as a symmetry of string field theory,”
+Prog. Theor. Phys. 87, 801 (1992) [arXiv:hep-th/9201040].
+[6] B. Zwiebach, “Closed string field theory: Quantum action and the B-V master equation,”
+Nucl. Phys. B 390, 33 (1993) [arXiv:hep-th/9206084].
+
+34
+
+[7] A. A. Tseytlin, “Duality Symmetric Formulation Of String World Sheet Dynamics,” Phys.
+Lett. B 242, 163 (1990); “Duality Symmetric Closed String Theory And Interacting Chiral
+Scalars,” Nucl. Phys. B 350, 395 (1991).
+[8] W. Siegel, “Superspace duality in low-energy superstrings,” Phys. Rev. D 48, 2826 (1993)
+[arXiv:hep-th/9305073].
+[9] W. Siegel, “Two vierbein formalism for string inspired axionic gravity,” Phys. Rev. D 47,
+5453 (1993) [arXiv:hep-th/9302036].
+[10] A. Giveon, E. Rabinovici and G. Veneziano, “Duality in String Background Space,” Nucl.
+Phys. B 322, 167 (1989).
+[11] M. J. Duff, “Duality Rotations In String Theory,” Nucl. Phys. B 335, 610 (1990).
+[12] J. Maharana and J. H. Schwarz, “Noncompact symmetries in string theory,” Nucl. Phys.
+B 390 (1993) 3 [arXiv:hep-th/9207016].
+[13] K. A. Meissner and G. Veneziano, “Symmetries of cosmological superstring vacua,” Phys.
+Lett. B 267 (1991) 33; “Manifestly O(d,d) invariant approach to space-time dependent
+string vacua,” Mod. Phys. Lett. A 6 (1991) 3397 [arXiv:hep-th/9110004].
+[14] A. Kleinschmidt and H. Nicolai, “E(10) and SO(9,9) invariant supergravity,” JHEP 0407
+(2004) 041 [arXiv:hep-th/0407101].
+[15] N. Hitchin, “Generalized Calabi-Yau manifolds,” Q. J. Math. 54 (2003), no.
+3, 281–308, arXiv:math.DG/0209099; ‘Brackets, form and invariant functionals,
+[arXiv:math/0508618].
+[16] M.
+Gualtieri,
+“Generalized
+complex
+[arXiv:math/0401221v1 [math.DG]]
+
+geometry,”
+
+PhD
+
+Thesis
+
+(2004),
+
+[17] T. Courant, “Dirac Manifolds.” Trans. Amer. Math. Soc. 319: 631-661, 1990.
+[18] C. M. Hull, “A geometry for non-geometric string backgrounds,” JHEP 0510 (2005) 065
+[arXiv:hep-th/0406102].
+[19] M. Grana, R. Minasian, M. Petrini and D. Waldram, “T-duality, Generalized Geometry
+and Non-Geometric Backgrounds,” JHEP 0904, 075 (2009) [arXiv:0807.4527 [hep-th]].
+[20] C. Hillmann, “Generalized E(7(7)) coset dynamics and D=11 supergravity,” JHEP 0903,
+135 (2009) [arXiv:0901.1581 [hep-th]].
+[21] A. B. Borisov and V. I. Ogievetsky, “Theory of dynamical affine and conformal symmetries
+as gravity theory of the gravitational field,” Theor. Math. Phys. 21 (1975) 1179
+[22] P. C. West, “Hidden superconformal symmetry in M theory,” JHEP 0008 (2000) 007
+[arXiv:hep-th/0005270]; “E(11), SL(32) and central charges,” Phys. Lett. B 575 (2003)
+333 [arXiv:hep-th/0307098].
+35
+
+

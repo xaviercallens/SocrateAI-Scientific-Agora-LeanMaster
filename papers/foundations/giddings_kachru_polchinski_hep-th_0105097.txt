@@ -1,0 +1,2091 @@
+NSF-ITP-01-37
+SLAC-PUB-8807
+SU-ITP-01/16
+hep-th/0105097
+
+arXiv:hep-th/0105097v2 25 Apr 2002
+
+Hierarchies from Fluxes in String Compactifications
+Steven B. Giddings1,2 , Shamit Kachru1,3 and Joseph Polchinski1
+1
+
+Institute for Theoretical Physics, University of California, Santa Barbara, CA 93106-4030
+2
+Department of Physics, University of California, Santa Barbara, CA 93106
+3
+Department of Physics and SLAC, Stanford University, Stanford, CA 94305/94309
+Abstract
+Warped compactifications with significant warping provide one of the few known
+mechanisms for naturally generating large hierarchies of physical scales. We demonstrate that this mechanism is realizable in string theory, and give examples involving
+orientifold compactifications of IIB string theory and F-theory compactifications on
+Calabi-Yau four-folds. In each case, the hierarchy of scales is fixed by a choice of RR
+and NS fluxes in the compact manifold. Our solutions involve compactifications of the
+Klebanov-Strassler gravity dual to a confining N = 1 supersymmetric gauge theory,
+and the hierarchy reflects the small scale of chiral symmetry breaking in the dual gauge
+theory.
+
+1
+
+1
+
+Introduction
+
+The origin of the small ratio Mweak /MPlanck is a great puzzle. There are several known
+mechanisms for producing an exponentially small ratio of scales. One is dimensional transmutation, which Nature employs in many contexts. Another is nonperturbative effects, such
+as instantons, which are exponentially small in the inverse coupling. A third possibility has
+recently come to the fore. In a warped spacetime — one where the normalization of the
+four-dimensional metric varies in the transverse dimensions — a given invariant energy scale
+can give rise to many four-dimensional scales, depending on the position-dependent gravitational redshift in the transverse space. This mechanism has in particular played a role in
+the Randall-Sundrum (RS) models [1, 2].
+Such generation of a hierarchy via redshift has a number of interesting potential consequences. For example, one may reach thresholds to produce Kaluza-Klein modes at low energies, perhaps in the TeV range, with interesting phenomenological consequences. Moreover,
+in such scenarios, scattering at apparently low energies can actually reach the fundamental
+Planck scale, due to the relative redshift, raising the prospect of experimental probes of
+Planck- or string-scale physics at energies far below the apparent four-dimensional Planck
+scale; an example is the possibility of producing black holes at relatively low energy scales [3].
+Warped metrics are quite natural in string theory, where D-branes generically provide
+sources for the warping. Within the context of string compactifications, a particularly simple
+realization was described by H. Verlinde [4]: simply take N D3-branes to be coincident on
+a Calabi-Yau (CY) space. As is familiar from the AdS/CFT duality [5], the spacetime near
+the D3-branes is of the form AdS5 × S 5 . It is well known that AdS5 can be represented as a
+Poincaré-invariant four-dimensional space plus a radial direction, with a varying warp factor
+that vanishes at the horizon of its Poincaré parameterization.
+The RS models, and the warped compactifications of Verlinde, allow a large hierarchy
+but do not explain it. There is a moduli space of solutions, and the size of the hierarchy is a
+function of the moduli. These moduli correspond, for example, to the separations of various
+branes. Goldberger and Wise [6] have shown that additional dynamics can fix the moduli
+and produce a calculable large hierarchy. Their analysis was phenomenological; the goal of
+our paper is to examine this issue in string theory, in the framework suggested by Verlinde.
+In particular, as has been exhibited in the work of [7] (see also [8, 9]), a natural mechanism
+to generate such a hierarchy is to consider warped compactifications with both RR and NS
+fluxes present.
+One way to understand this arises from a picture where branes are placed at a singularity.
+2
+
+The low energy physics of D3-branes on a CY manifold is conformally invariant and N = 4
+supersymmetric. In order to fix the moduli it is necessary to break the conformal invariance
+and most of the supersymmetry. Precisely this same issue arises in the context of Maldacena
+duality. String theory on AdS5 × S 5 is dual to N = 4 supersymmetric Yang-Mills theory.
+To find string duals of gauge theories with confinement and chiral symmetry breaking one
+must reduce the symmetry; in the supergravity context this generates potentials which can
+fix some of the moduli and stabilize a hierarchy.
+A simple means of reducing the symmetry is to place the D3-branes not at a smooth point
+of the transverse space but at a singularity [10, 11, 12, 13]. Indeed, placing them at a generic
+CY singularity, a conifold point [14], reduces the supersymmetry to N = 1. This does not
+break the conformal invariance, so it is also necessary to add additional ‘fractional’ branes
+localized at the conifold singularity [15, 16, 17]. In the final analysis these branes dissolve
+into flux, and result in a nonsingular solution that has recently been found by Klebanov and
+Strassler (KS) [7]. So while the picture of branes and fractional branes at a conifold is used
+to motivate the construction, the net result is that one ends up with a string background
+with RR and NS fluxes, which lead to a smooth string solution with a large hierarchy.
+The KS solution is, however, noncompact and therefore not suitable as a means of reducing string theory to four dimensions; in particular it would produce an infinite 4d Planck
+scale. Thus, our goal is to find true string compactifications, with a finite 4d Planck scale
+and a local region of the KS form which generates a large but finite hierarchy. This hierarchy will be determined by the quantized values of the fluxes on the compact manifold. (For
+another discussion of compactifications with fluxes, see [18].)
+The outline of our paper is as follows. In section 2 we consider global constraints on
+warped IIB solutions. Such constraints have been used in the past to exclude warped solutions of IIB supergravity, but in the context of string theory their effect is to require the
+presence of objects of negative tension such as O3 planes and wrapped D7-branes. Further,
+when the localized sources satisfy a certain BPS-like bound, we are able from the global constraints to find the general solution. We find that, in the classical approximation in which
+we work, the radial modulus is a flat direction with zero cosmological constant. This is the
+case even though supersymmetry is generically broken at a scale that depends on the radial
+modulus. Thus, these are no-scale models [19].
+In section 3 we focus on the local structure of the compactifications, beginning with a
+review of the Verlinde solution and its generalizations. In particular, in the presence of certain
+fluxes on a compact manifold, together with the required O3 planes or D7-branes, we show
+that compact smooth string solutions exist with the hierarchy fixed by the fluxes, in a limit of
+3
+
+large fluxes. However, as noted above, the overall radius of the compact dimensions is always
+left unfixed. This reflects the familiar feature of string compactifications, that it is very
+difficult to stabilize all moduli, though we should note that in classical IIB compactifications
+with fluxes the dilaton generically is stabilized.1 In fact the effective theories that we find
+are very similar to those which arise in heterotic string compactifications [21, 22]. We
+also outline the dual, gauge theory, description of these solutions. Section 4 is devoted to
+constructing explicit examples, first as orientifolds of CY compactifications, and then as
+F-theory compactifications (which allow larger fluxes and hierarchies).
+
+2
+
+Warped compactifications: global constraints
+
+We begin by working in the approximation of low energy IIB supergravity, with such localized
+sources as arise in string theory. In pure supergravity, the integrated field equations rule
+out warped compactifications under broad conditions [23, 24]. In section 2.1 we revisit
+this argument with localized sources included, and show that a warped compactification is
+possible if sources with negative tension are present; such objects do exist in string theory.
+With the constraint thus weakened, it does not appear possible to give a simple description of the general warped solution. In section 2.2 we show that when the localized sources
+satisfy a certain BPS-like bound involving their energy-momentum tensor and their D3-brane
+charge, then the global constraints do determine the general solution. The localized sources
+that we consider — D3-branes, wrapped D7-branes, and O3-planes — all satisfy this bound.
+We discuss various special properties of these solutions, in particular the effective action for
+their moduli, and we relate them to solutions recently considered in the literature.
+
+2.1
+
+Action, equations of motion, and constraints
+
+Our starting point is the effective action2
+(
+
+Z
+2
+2
+i
+h
+F(1)
+F̃(5)
+1
+1
+2
+−2φ
+10 √
+SIIB =
+Rs + 4(∇φ) −
+d x −gs e
+−
+G(3) · G(3) −
+2κ10 2
+2
+2 · 3!
+4 · 5!
+Z
+1
+eφ C(4) ∧ G(3) ∧ G(3) + Sloc .
++
+8iκ10 2
+1
+
+)
+
+(2.1)
+
+More general compactifications with fluxes will be discussed in ref. [20]. In particular, some of these
+have no moduli, and are reliably studied in a regime where low-energy supergravity is valid.
+2
+We use the conventions of [25].
+
+4
+
+Here gs denotes the string metric. We have also defined the combined three-flux, G(3) =
+F(3) − τ H(3) , where as usual τ = C(0) + ie−φ , and
+1
+1
+F̃(5) = F(5) − C(2) ∧ H(3) + B(2) ∧ F(3) .
+2
+2
+
+(2.2)
+
+The term Sloc is the action of localized objects, such as branes, which will become important
+shortly. The condition F̃(5) = ∗F̃(5) must as usual be imposed by hand on the equations of
+motion.
+We will be considering compactifications arising from F-theory, so it is particularly useful
+to reformulate the action in an SL(2, Z) invariant form by defining the Einstein metric
+gM N = e−φ/2 gs M N , whence the action becomes
+1
+SIIB =
+2κ10 2
+
+Z
+
+)
+
+(
+
+2
+F̃(5)
+√
+G(3) · G(3)
+∂M τ ∂ M τ̄
+d x −g R −
+−
+−
+2(Im τ )2
+12 Im τ
+4 · 5!
+Z
+C(4) ∧ G(3) ∧ G(3)
+1
++
++ Sloc .
+2
+8iκ10
+Im τ
+10
+
+(2.3)
+
+Henceforth we use the Einstein metric throughout. Invariance under the SL(2, Z) transform
+τ→
+
+aτ + b
+,
+cτ + d
+
+(2.4)
+
+G(3)
+cτ + d
+
+(2.5)
+
+together with the transformation
+G(3) →
+
+is readily checked.
+Our interest is in warped metrics maintaining four-dimensional Poincaré symmetry, with
+convenient parameterization
+ds210 = e2A(y) ηµν dxµ dxν + e−2A(y) g̃mn dy mdy n
+
+(2.6)
+
+in terms of four-dimensional coordinates xµ and coordinates y m on the compact manifold
+M6 . The axion/dilaton will be allowed to vary over the compact manifold,
+τ = τ (y) ,
+
+(2.7)
+
+and since we will consider D7-branes, monodromies of the form (2.4) will be allowed. To
+maintain Poincaré invariance only compact components of G(3) are present, and furthermore,
+with monodromies (2.5), these will transform in a non-trivial bundle over M6 :
+G(3) ∈ σ(Ω3 ⊗ L) ,
+5
+
+(2.8)
+
+where Ω denotes the canonical bundle, and L is the line bundle defined by the transformation
+law (2.5). Finally, Poincaré invariance and the Bianchi identity allows a five-form flux of the
+form
+F̃(5) = (1 + ∗)[dα ∧ dx0 ∧ dx1 ∧ dx2 ∧ dx3 ] ,
+(2.9)
+with α a function on the compact space. Also, in accord with Poincaré invariance, we will
+allow some number of D3-branes along the noncompact directions, as well as D7-branes
+filling the noncompact directions and wrapping certain four-cycles in M6 .
+Einstein’s equation, trace reversed, is
+RM N = κ10
+
+2
+
+
+
+1
+TM N − gM N T
+8
+
+
+
+,
+
+(2.10)
+
+sugra
+loc
+where TM N = TM
+N + TM N is the total stress tensor of the supergravity fields and the
+localized objects. In particular, the latter contribution is
+
+2 δSloc
+loc
+.
+TM
+N = −√
+−g δg M N
+
+(2.11)
+
+The noncompact components take the form
+!
+
+
+
+(2.12)
+
+
+
+˜ 2 e4A − e−4A ∂m e4A ∂ m̃ e4A .
+˜ 2 A = − 1 ηµν ∇
+Rµν = −ηµν e4A ∇
+4
+
+(2.13)
+
+mnp
+
+Rµν = −gµν
+
+Gmnp G
+48 Im τ
+
+
+
+1
+e−8A
+loc
+− gµν T loc .
++
+∂m α∂ m α + κ10 2 Tµν
+4
+8
+
+From the metric Ansatz (2.6), one computes the Ricci components
+
+(A tilde denotes use of the metric g̃mn .) Using this and tracing (2.12) gives
+mnp
+
+˜ 2 A = e−2A Gmnp G
+∇
+48 Im τ
+
++
+
+e−6A
+κ10 2 −2A m
+∂m α∂ m α +
+e (Tm − Tµµ )loc .
+4
+8
+
+(2.14)
+
+i
+
+(2.15)
+
+or
+mnp
+
+˜ 2 e4A = e2A Gmnp G
+∇
+12 Im τ
+
+h
+
++ e−6A ∂m α∂ m α + ∂m e4A ∂ m e4A +
+
+κ10 2 2A m
+e (Tm − Tµµ )loc .
+2
+
+These equations serve as stringent constraints on flux/brane configurations that can lead
+to warped solutions on compact manifolds.3 To see this, note that the integrals of their left
+3
+
+One reaches the same conclusions by considering ∇2 ekA for any positive k, but k = 4 is the value that
+will be useful in the next subsection.
+
+6
+
+sides over a compact manifold M6 vanish, whereas the flux and warp terms on the righthand side are positive definite. Thus, in the absence of localized sources there is a no-go
+theorem [23, 24]: the fluxes must vanish and the warp factor must be constant. For a warped
+solution the stress terms on the RHS must be negative, which can only be true under certain
+circumstances.
+For example, consider a p-brane wrapped on a (p − 3)-cycle Σ of the manifold M6 . To
+leading order in α′ (and in the case of vanishing fluxes along the brane) this contributes a
+source action
+Z
+Z
+√
+p+1
+d ξ Tp −g + µp
+Sloc = −
+Cp+1 ;
+(2.16)
+R4 ×Σ
+
+R4 ×Σ
+
+for positive tension objects the Einstein frame tension is
+Tp = |µp |e(p−3)φ/4 .
+
+(2.17)
+
+Eq. (2.16) gives a stress tensor
+loc
+Tµν
+= −Tp e2A ηµν δ(Σ) ,
+
+loc
+Tmn
+= −Tp ΠΣ
+mn δ(Σ) ,
+
+(2.18)
+
+where δ(Σ) and ΠΣ denote the delta function and projector on the cycle Σ, respectively.
+From this we find
+(Tmm − Tµµ )loc = (7 − p)Tp δ(Σ) .
+(2.19)
+Eq. (2.19) tells us that for p < 7, in order to have the required negative stress on the RHS
+of the constraint (2.15), the compactification must involve negative tension objects.
+String theory does have such objects, and so evades the no-go theorem of [23, 24]. O3
+planes are a simple example. The T 6 /Z2 orientifold, which is T -dual to the type I theory, is
+a compact Minkowski solution with 16 D3-branes and 64 O3-planes [25]. This implies that
+the O3 tension is − 14 T3 . This orientifold was discussed in ref. [4] as an example of a warped
+string solution.
+Note that F-theory compactifications, despite having D7-branes, dilaton gradients, and
+RR 1-form fluxes, satisfy the constraint (2.15) without negative tension. This is because
+terms involving τ gradients do not enter the constraint, and the D7 brane stress tensor
+contributions vanish by eq. (2.19).
+To be precise, this is true only to leading order in α′ . It is necessary to include also
+the first α′ corrections to the D7 action Sloc (we will explain this expansion below). In the
+Chern-Simons action the correction is [26]
+Z
+
+Z
+
+p1 (R)
+µ7
+C(4) ∧
+− µ3
+= (2πα′ )2
+C(4) ∧ Tr (R(2) ∧ R(2) ) .
+4
+48
+96
+R ×Σ
+R4 ×Σ
+7
+
+(2.20)
+
+This Chern-Simons coupling captures the induced D3 charge on the wrapped D7-brane. In
+the DBI action it is [27]
+Z
+√
+µ7
+′ 2
+− (2πα )
+d4 x −gTr(R(2) ∧ ∗R(2) ) .
+96
+R4 ×Σ
+
+(2.21)
+
+This term computes the first α′ correction to the wrapped D7-brane tension.4 The ChernSimons coupling has the effect, for example, that a D7-brane wrapped on K3 has −1 unit of
+D3 charge [26]. This state is still BPS, with the same supersymmetry as the D3-brane, so
+the DBI coupling must contribute −T3 to the tension. In F-theory, this background charge
+is given in terms of the Euler number of the corresponding fourfold by
+QD7
+3 = −
+
+χ(X)
+,
+24
+
+(2.22)
+
+and N = 1 supersymmetry implies the corresponding tension Qloc
+3 T3 . This can be thought of
+as coming from the summed contribution of all 7-branes wrapping four-cycles in the base of
+the elliptic fibration X. To directly derive this tension along the lines discussed above, one
+should use the generalization of (2.21) which is applicable to branes wrapping divisors in the
+(non-CY) base of X; the result is guaranteed by the supersymmetry of the configuration,
+and the direct calculation is beyond the scope of our work.
+We have been discussing constraints from the integrated Einstein equation. The Bianchi
+identity/equations of motion for the 5-form flux is5
+dF̃(5) = H(3) ∧ F(3) + 2κ10 2 T3 ρloc
+3
+
+(2.23)
+
+where ρloc
+3 is the D3 charge density form from localized sources; this includes the contributions
+of the D7-branes or O3 planes, and also of mobile D3-branes that may be present.6 The
+integrated Bianchi identity
+1
+2κ10 2 T3
+
+Z
+
+M6
+
+H(3) ∧ F(3) + Qloc
+3 = 0
+
+4
+
+(2.24)
+
+For simplicity we are considering in eqs. (2.20, 2.21) the case of a trivial normal bundle; the full form is
+given in ref. [28]. The F-theory result (2.22) is general.
+5
+Recall that 2κ10 2 = (2π)7 α′4 , µ3 = (2π)−3 α′−2 , µ7 = (2π)−7 α′−4 , and, in Einstein frame, T3 = µ3 [25].
+6
+In deriving this field equation there is an annoying subtlety due to the self-dual flux. The electric
+coupling of C(4) must actually be half of what we have written in eqs. (2.16, 2.20), in order to obtain
+eq. (2.23). However, any object carrying D3 charge also has a magnetic coupling to C(4) ; in a self-dual
+background the action for a probe is then obtained by doubling the electric coupling as we have done.
+2
+An alternative approach to the self-dual flux is to use a Lorentz-noninvariant action: double the F(5)
+and
+Chern-Simons terms in the actions (2.1, 2.3) but restrict to terms in which F(5) or C(4) has a 1-component.
+This action, derived by T -duality from the IIA action, is well-suited to the study of compactification of the
+IIB theory.
+
+8
+
+states that the total D3 charge from supergravity backgrounds and localized sources vanishes.
+In the next subsection, we will analyze the constraints (2.15, 2.24) further.
+Finally, let us discuss the nature of the α′ expansion. The localized source in the Bianchi
+identity (2.23) is of order Nα′2 , where N is the characteristic D3 charge. It is not possible to
+take N to be parametrically large, because the negative contributions to the Bianchi identity
+are determined by the topology of the manifold. However, the Euler number (2.22) can be
+quite large in a given example, and so we will treat N as an effective large parameter as in
+ref. [4]. We will then treat Nα′2 as being of order one, but drop order α′ effects such as the
+string corrections to the supergravity action. This is why we needed to keep the curvature
+terms in the D7-brane action. The Bianchi identity then implies that G(3) = O(N 1/2 α′); the
+factor of α′ is consistent with the quantization
+1 Z
+F(3) ∈ 2πZ ,
+2πα′
+
+1 Z
+H(3) ∈ 2πZ ,
+2πα′
+
+(2.25)
+
+and the number of 3-form flux units then scales as N 1/2 .
+
+2.2
+
+Special solutions
+
+2.2.1
+
+A BPS-like condition
+
+With general negative tension sources, the constraints from the integrated field equations
+appear to be rather weak. However, in the special case that
+1 m
+(T − Tµµ )loc ≥ T3 ρloc
+3
+4 m
+
+(2.26)
+
+for all localized sources, the global constraints determine the form of the solution completely.
+In fact, the inequality (2.26) holds for all of the localized sources considered in this
+paper. For D3-branes and O3 planes, whose integrated ρ3 is respectively +1 and − 14 , the
+stress tensor is
+T00 = T11 = T22 = T33 = −T3 ρ3 , Tmm = 0 ,
+(2.27)
+and so the inequality is actually saturated. Anti-D3-branes satisfy the inequality but do
+not saturate it. D5-branes wrapped on collapsed cycles also satisfy the inequality, as their
+tension comes entirely from their induced D3 charge.
+For D7-branes, the nonvanishing contributions to the two sides of the inequality come
+from the curvature terms (2.20, 2.21). In the simple case of D7-branes wrapped on K3, the
+property ∗R(2) = R(2) implies that the inequality is saturated. If a nontrivial gauge bundle
+is introduced, the inequality is still respected as a consequence of Fµν F µν ≥ Fµν (∗F )µν . For
+9
+
+the more general wrappings that arise in F-theory, we argue below that the inequality is
+saturated.
+There are objects that do violate the inequality (2.26). O5 planes make a negative
+contribution to the LHS and zero contribution to the RHS. Anti-O3 planes make a negative
+contribution to the LHS and a positive contribution to the RHS.
+The inequality (2.26) resembles a BPS condition. Indeed, the underlying IIB supersymmetry algebra implies that
+H ≥ T3 Q3 .
+(2.28)
+If this holds locally, as might be expected classically, then by applying Lorentz invariance we
+get −T00 = −T11 = −T22 = −T33 ≥ T3 ρ3 . When the inequality (2.28) is saturated, the pressure
+Tmm should vanish by analogy to the no-force condition. Away from extremality Tmm − Tµµ
+generally increases, by analogy to the weak energy condition, so the inequality (2.26) follows.
+The O planes that do not satisfy the bound (2.26) are able to evade it because the necessary
+supercharges do not exist: they are projected out by the orientifold. The D7-branes that
+arise in F-theory compactifications saturate the bound because they preserve an N = 1
+supersymmetry that is also preserved by D3-branes.
+2.2.2
+
+Solution of the constraints
+
+In terms of the potential α the Bianchi identity (2.23) becomes
+mnp
+
+˜ 2 α = ie2A Gmnp (∗6 G ) + 2e−6A ∂m α∂ m e4A + 2κ10 2 e2A T3 ρloc ,
+∇
+(2.29)
+3
+12 Im τ
+where ∗6 is the dual in the transverse directions. Subtracting this from the Einstein equation
+constraint (2.15) gives
+
+
+
+
+2A
+2
+1
+˜ 2 (e4A − α) = e
+iG(3) − ∗6 G(3) + e−6A |∂(e4A − α)|2 + 2κ10 2 e2A (Tmm − Tµµ )loc − T3 ρloc
+.
+∇
+3
+6 Im τ
+4
+(2.30)
+The LHS integrates to zero, while under the assumption (2.26) the RHS is nonnegative.
+Thus, if the inequality (2.26) holds, then
+
+• The 3-form field strength is imaginary self-dual,
+∗6 G(3) = iG(3) .
+
+(2.31)
+
+• The warp-factor and 4-form potential are related,
+e4A = α .
+10
+
+(2.32)
+
+• The inequality (2.26) is actually saturated.
+Assuming this form, let use review the full set of field equations and Bianchi identities.
+The 5-form field strength (2.9) is self-dual by construction. Its field strength/Bianchi identity (2.29) is consistent and determines α and A, provided that the total D3 charge (2.24)
+vanishes. The 3-form Bianchi identities
+dF(3) = dH(3) = 0
+
+(2.33)
+
+must be imposed. Using these, the equation of motion then takes the form
+dΛ +
+
+i
+dτ ∧ Re Λ = 0 ,
+Im τ
+
+Λ = e4A ∗6 G(3) − iαG(3) ,
+
+(2.34)
+
+and so is satisfied as a consequence of eqs. (2.31, 2.32). The Rµν equation also follows from
+these conditions. Finally, the remaining field equations reduce to
+∂m τ ∂n τ̄ + ∂n τ ∂m τ̄
++ κ10 2
+R̃mn = κ10 2
+2
+4(Im τ )
+
+
+
+1
+D7
+− g̃mn T̃ D7
+T̃mn
+8
+
+2
+2
+˜
+˜
+˜ 2 τ = ∇τ · ∇τ − 4κ10√(Im τ ) δ S̃D7 .
+∇
+i Im τ
+−g
+δτ̄
+
+
+
+,
+
+(2.35)
+(2.36)
+
+These are the equations determining a solution to F-theory in the supergravity approximation.
+In summary, assuming that the localized sources satisfy (2.26), the necessary and suffif ≡ (g̃ , τ ) satisfying (2.35, 2.36),
+cient conditions for a solution are an underlying manifold M
+6
+mn
+closed 3-form fluxes F(3) and H(3) such that G(3) is imaginary self-dual, and vanishing total
+D3 charge.
+2.2.3
+
+Supersymmetry, and relation to previous solutions
+
+The conditions for N = 1 supersymmetry of such a solution have recently been considered
+in refs. [29, 30] for constant dilaton, and in ref. [31] more generally. The underlying manifold
+must be Kähler and the connection D̃m − 2i Qm must lie in SU(3), where Qm is constructed
+from τ as in [32]. The flux G(3) must be a (2,1) form and primitive, meaning that the
+index structure is ı̄jk and the contraction with the Kähler form J ı̄j vanishes. The condition
+∗6 G(3) = iG(3) allows a primitive (2, 1) piece and a (0, 3) piece.7 Thus our general solution
+is supersymmetric if and only if the (0, 3) part vanishes.
+7
+
+It also allows a (1, 2) piece of the form K(2) ∧ ω(1) where K(2) is the Kähler form and ω(1) is a nontrivial
+closed (0, 1)-form. A compact Calabi-Yau manifold has no such (0, 1)-form, and neither do the Calabi-Yau
+orientifolds or F-theory compactifications we consider. Note that in our conventions for the complex basis,
+ǫ123 123 = −i.
+
+11
+
+In general, supersymmetric and nonsupersymmetric solutions are both possible, though
+the latter are more generic. Consider for example the T 6 /Z2 orientifold. This is somewhat
+special because it has N = 4 supersymmetry in the absence of G-flux, but it serves for
+illustration. In terms of three complex coordinates, the primitive fluxes G1̄23 , G12̄3 , and G123̄
+can be turned on consistent with the quantization conditions (2.25) (these fix τ and some
+of the Kähler moduli), leaving N = 1 supersymmetry. If the additional flux G1̄2̄3̄ is nonzero
+then all supersymmetry is broken.
+Noncompact solutions of this form have previously been described in ref. [29] in the special
+case of constant dilaton. The supersymmetric solutions are dual [8, 33] to the M theory
+solutions of ref. [34]. As emphasized in ref. [31] these solutions are special, in the sense that
+the N = 1 supersymmetry lies in an N = 4 subgroup of the full N = 8 IIB supersymmetry.
+In IIB form, this is the subgroup preserved by a space-filling D3-brane; in M theory form
+it is the subgroup preserved by a space-filling M2-brane. F-theory compactifications on CY
+fourfolds preserve N = 1 supersymmetry in the presence of D3 branes (and in fact are limits
+of the M theory solutions of [34]). Therefore, we can infer that they are solutions of this
+special form, though we have not displayed this by computing and explicitly comparing the
+contributions of (the fully generalized forms of) (2.21) and (2.20) for the wrapped 7-branes.
+2.2.4
+
+Moduli and effective actions
+
+The necessary and sufficient conditions (2.24, 2.31, 2.33, 2.35, 2.36) are all invariant under
+rescaling g̃mn → λ2 g̃mn . Thus,
+• All special solutions have a radial modulus.
+Thus our goal of fixing the moduli in a warped compactification is limited in this class of
+solutions to leaving at least this one. On the other hand, there is no dilaton modulus, because
+the dilaton couples differently to the NS-NS and R-R 3-form fluxes and so has a nontrivial
+potential. This suggests that it may be an interesting exercise to look for solutions having
+no classical moduli by introducing sources not satisfying the inequality (2.26) [20].
+This is slightly subtle, because the solution itself does not scale simply. In the field
+equation (2.15), the terms involving derivatives of A scale like λ−2 , and the flux source term
+scales like λ−6 . It follows that at large radius e4A = 1 + O(λ−4) and so the warp factor
+approaches a constant. At radii less than O(N 1/4 α′1/2 ) the warping becomes significant.
+The properties of the nonsupersymmetric solutions — vanishing four-dimensional cosmological constant and a radial modulus in spite of the absence of supersymmetry — identifies
+
+12
+
+them as no-scale models [19, 21, 22]. The combination of broken supersymmetry with vanishing cosmological constant is intriguing, but there is no known reason that it should survive
+quantum corrections, from instantons and even perturbative loops. Even at string tree level,
+α′ corrections to the supergravity field equations presumably spoil the no-scale structure.
+Let us also consider the effective four-dimensional action. Before turning on fluxes, there
+will be massless fields corresponding to the Kähler and complex structure moduli; we denote
+the latter z α . Furthermore, for orientifold models, the dilaton field τ is massless, whereas
+in general F-theory models it is fixed in terms of the complex structure moduli by (2.36).
+For the moment we consider the case of a single Kähler modulus, the radial modulus, in a
+four-dimensional superfield ρ.
+For a large-radius CY or orientifold, the Kähler potential follows by dimensionally reducing the 10d action.8 For the radius we find
+K(ρ) = −3 ln[−i(ρ − ρ̄)] ,
+
+(2.37)
+
+and for the dilaton and complex structure moduli
+
+
+K(τ, z α ) = − ln[−i(τ − τ̄ )] − ln −i
+
+Z
+
+M
+
+Ω ∧ Ω̄
+
+
+
+(2.38)
+
+where Ω is the holomorphic (3, 0) form. The latter expression follows from the Weil-Petersson
+metric, and is discussed in [35]. An obvious conjecture for the F-theory generalization of
+(2.38) is
+Z
+
+K = − ln
+
+X
+
+Ω4 ∧ Ω̄4
+
+(2.39)
+
+where X and Ω4 denote the CY fourfold and its holomorphic (4, 0) form respectively.
+The fluxes generate a superpotential, which takes the form [8]
+W =
+
+Z
+
+M
+
+Ω ∧ G(3) .
+
+(2.40)
+
+This is independent of ρ. The expected F-theory generalization of this formula takes the
+form [8]
+Z
+W =
+
+X
+
+Ω4 ∧ G(4) .
+
+(2.41)
+
+In (2.41), G(4) denotes the four-form flux one would get in M-theory by compactifying the
+F-theory on a circle; it can be expressed in terms of type IIB quantities in the F-theory
+8
+
+For further discussion see the appendix.
+
+13
+
+limit. If the one works with a local trivialization of the elliptic fibration, for example in the
+vicinity of the conifold point, with fiber coordinate w, the four form G(4) takes the form
+G(4) = −
+
+G(3) dw̄
++ h.c. .
+τ − τ̄
+
+(2.42)
+
+We will further discuss issues surrounding use of such a trivialization in section four.
+Under these conditions the N = 1 supergravity potential simplifies [19],
+
+1 K  ab̄
+2
+G
+D
+W
+e
+D
+W
+−
+3|W
+|
+a
+b
+2κ210
+
+
+1
+→ 2 eK Gi̄ Di W Dj W ,
+2κ10
+
+V =
+
+(2.43)
+
+where Da W = ∂a W + W ∂a K and Gab̄ = ∂a ∂b̄ K, and the indices a, b are summed over
+superfields, with i, j labeling indices excluding ρ. In no-scale models the |Dρ W |2 term
+cancels the negative term, leaving a nonnegative potential. When Da W = 0 the potential
+vanishes; this condition is independent of ρ, so if there are n superfields besides ρ it represents
+n equations on n moduli and leaves ρ undetermined. Generically at these solutions W 6= 0,
+so Dρ W = −3W/(ρ − ρ) is nonzero and supersymmetry is broken.
+A useful check on these expressions comes by comparing the 4d and 10d equations. In
+the CY/orientifold case, one readily finds (see appendix)
+0 = Dα W ≡ ∂α W + (∂α K)W =
+
+Z
+
+M
+
+G(3) ∧ χα ,
+
+1
+0 = Dτ W ≡ ∂τ W + (∂τ K)W =
+τ̄ − τ
+
+Z
+
+M
+
+G(3) ∧ Ω ,
+
+(2.44)
+
+where χα is a basis of (2, 1) forms on M. These equations imply that G(3) is imaginary
+self-dual, in correspondence to the 10d condition (2.31). For F-theory, define a basis of (3, 1)
+forms χA on X; the expected generalization of (2.44) is
+0 = DA W =
+
+Z
+
+X
+
+G(4) ∧ χA .
+
+(2.45)
+
+While our discussion so far has focused on the case where there is only one Kähler
+modulus, ρ, a general model may have several Kähler moduli ρi . The required modification
+of this discussion is quite simple. The superpotential is independent of all of the ρi . It should
+then follow that the Kähler metric for the Kähler deformations produces an analog of the
+simplification (2.43), where now the greek indices sum over moduli excluding the ρi . One
+way to see this is from the 10d picture – the condition (2.31), whose correspondence with the
+14
+
+4d potentials was just seen, is independent of the Kähler moduli. So the no-scale structure
+survives, with each of the Kähler moduli persisting as a flat direction at this order. Because
+it is not difficult to find models with only a single Kähler modulus ρ, we will assume that
+this is the case in the rest of the paper.
+In the appendix we discuss further the derivation of the four-dimensional action by dimensional reduction and the correspondence between the four-dimensional and ten-dimensional
+pictures.
+
+3
+
+Warped solutions and hierarchies
+
+In section 2 we discussed various global features of IIB compactifications with a nontrivial
+warp factor. We now turn to the local structure of the warped region.
+We begin by reviewing the solutions of Verlinde [4], corresponding to D3 branes on a
+compact manifold. If N D3-branes are coincident, the warp factor in their vicinity is
+e−4A ≈
+
+4πgs N
+,
+r̃ 4
+
+(3.1)
+
+with r̃ the distance from the D3-branes in the g̃mn metric. Near the D3-branes the geometry
+is thus AdS5 × S 5 , producing a large warp factor [4]. At larger values of r̃, the product
+structure breaks down due to the curvature of M6 , and eventually r̃ ceases to be a good
+coordinate [36]: M6 is not globally the product of a five-sphere and a one dimensional
+space. This is similar to the RS2 model [2], though is a bona-fide compactification, with the
+compact manifold playing a role roughly analogous to the so-called “Planck brane” of [2],
+and yielding a finite four-dimensional Planck scale. The warp factor of course diverges as
+r̃ → 0, which is at infinite spatial distance.
+If such a model is realized on an orientifold, the dilaton is a constant, eφ = gs , but in the
+more general context of an F-theory compactification it varies holomorphically as determined
+by (2.36) or equivalently by the eight-dimensional construction. As we will discuss in section
+4.2, the physics near the D3-branes is essentially the same, and the effective value of gs is
+determined by the value of τ at the D3-branes.
+To get a large but finite hierarchy, one or more D3-branes must be separated from the
+rest by a small distance r̃. These might be the branes on which the Standard Model fields
+live, or they might be associated with some symmetry breaking that couples to the Standard
+Model through the bulk. However, the D3-brane coordinates have no potential. Thus in the
+present model there is nothing that fixes r̃ and so the size of the hierarchy.
+
+15
+
+In order to find a warped solution that produces a large but stable hierarchy, we now add
+fluxes. Our motivation stems from the work of Klebanov-Strassler [7]. The basic idea is that
+locally in the vicinity of a conifold point, KS have found solutions with fluxes that generate
+smooth supergravity solutions with large relative warpings. Here we will extend this work
+to the compact context.
+CY manifolds are generically nonsingular, but at special values of the parameters they
+can develop singularities. The most generic singular space is a conifold [14]. Locally this can
+be described as the submanifold of C4 defined by
+w12 + w22 + w32 + w42 = 0 .
+
+(3.2)
+
+This submanifold is singular at (w1 , w2 , w3 , w4 ) = 0. The geometry of this space, including
+its Calabi-Yau metric, is described in ref. [14]. It is important that this is a good singularity,
+meaning that string theory makes sense in such a space [37]. Although the compactification
+f we are using is either the base of a nontrivial elliptic fibration, or is an orientifold
+space M
+6
+of a Calabi-Yau, the local structure of a singularity like (3.2) will not be affected by these
+global details, so we can use local facts about CY singularities in the ensuing discussion.
+The conifold singularity can be regarded as a cone whose base has the topology S 3 ×S 2 . At
+the singular point, both the S 3 and the S 2 shrink to zero size. The conifold can be smoothed
+into a nonsingular CY manifold in two ways. In the small resolution of the conifold, the
+S 2 is blown up to finite size. In the deformed conifold, the S 3 is expanded to finite size; it
+is this that will be relevant for us. The deformed conifold has a simple description as the
+submanifold
+w12 + w22 + w32 + w42 = z .
+(3.3)
+Here the complex parameter z is the modulus which controls the size of the S 3 .
+We now consider adding fluxes to this geometry, and find the resulting potential for the
+moduli. Consider a compact manifold with moduli z, ρ, and τ (we explain at the end of
+this subsection how additional complex structure moduli ui can be incorporated, without
+substantially modifying the results).9 Dirac quantization implies that these fluxes, integrated
+over all of the three-cycles of the CY, be integers as in (2.25). In the vicinity of the conifold,
+there are two relevant cycles. Examining the equation (3.3), and taking z to be real and
+positive for convenience, the three-cycle which vanishes as z → 0 (denoted A) can be taken
+to be the S 3 on which all of the wi are real. In general compact examples, there also exists a
+dual B-cycle which intersects A exactly once. An example of such a cycle in this noncompact
+9
+
+More generally, in the case of an F-theory compactification, the following should be generalized using
+sections as outlined in (2.8), (2.42).
+
+16
+
+case can be constructed by taking w1,2,3 to be imaginary and w4 real and positive. The KS
+solution corresponds to M units of F(3) on the A-cycle. The field equation in KS requires
+that H(3) be supported on the dual cycle to F(3) , so let there be −K units on the B-cycle:
+Z
+
+1
+F(3) = 2πM ,
+2πα′ A
+Z
+1
+H(3) = −2πK .
+2πα′ B
+
+(3.4)
+
+This can also be understood by requiring D3 charge conservation as in (2.24):
+1
+2κ210 T3
+
+Z
+
+M
+
+H(3) ∧ F(3) = MK .
+
+(3.5)
+
+Thus, in the sense of Poincaré duality, we can write
+F(3) = (2π)2 α′ M[B] ,
+This gives
+W =
+
+Z
+
+M
+
+H(3) = (2π)2 α′ K[A] .
+2
+
+′
+
+
+
+G(3) ∧ Ω = (2π) α M
+
+Z
+
+B
+
+Ω − Kτ
+
+Z
+
+A
+
+(3.6)
+
+
+Ω .
+
+(3.7)
+
+The integrals appearing here are the periods defining the complex structure of the conifold.
+In particular, the complex coordinate for the collapsing cycle A is defined by
+z=
+
+Z
+
+A
+
+Ω.
+
+It is a standard result that on the dual cycle
+Z
+z
+ln z + holomorphic .
+Ω ≡ G(z) =
+2πi
+B
+The superpotential is then
+W = (2π)2 α′ (MG(z) − Kτ z) .
+
+(3.8)
+
+(3.9)
+
+(3.10)
+
+Such a superpotential has been obtained previously by Vafa [9].
+Let us consider first the Dz W condition,
+0 = Dz W ∝ M∂z G − Kτ + ∂z K(MG − Kτ z) .
+
+(3.11)
+
+In order to obtain a large hierarchy we will take K/gs to be large: this will result in z being
+exponentially small. This has a simple interpretation in the dual gauge theory, as we will
+discuss later in this section. In this regime, the dominant terms in Dz W are
+Dz W ∝
+
+M
+K
+ln z − i + O(1) ,
+2πi
+gs
+17
+
+(3.12)
+
+It follows that for K/Mgs ≫ 1, z is indeed exponentially small,
+z ∼ exp(−2πK/Mgs ) .
+
+(3.13)
+
+Thus, we obtain a large hierarchy of scales if, for example, M = 1 and K/gs is of order 5.
+As things stand, the Dτ equation
+0 = Dτ W ∝
+
+1
+(−Kzτ̄ + MG)
+τ̄ − τ
+
+(3.14)
+
+cannot be satisfied. The first term in parentheses is exponentially small, while the second is
+not because the holomorphic part in (3.9) is generically nonvanishing, G(0) = O(1). Note
+that this is a property of the compact case. In the noncompact case of interest in KS, the
+bulk modulus τ is frozen and there is no corresponding Dτ W equation to impose.
+The problem arises because at z = 0 the superpotential (3.10) is independent of τ ,
+and the remedy is to consider a configuration with additional τ dependence. With such
+τ dependence, one can generically find a solution to (3.14) with z ≈ 0, though additional
+structure may be required to ensure that this minimum is at weak coupling. To give one
+example, τ can be stabilized by turning on additional fluxes. Keeping for simplicity the case
+of a single complex structure modulus z, there are 2 + 2b2,1 = 4 3-cycles, namely the pair
+(A, B) and an additional pair (A′ , B ′ ). Turning on −K ′ units of H(3) on the B ′ cycle gives
+W = (2π)2 α′ [MG(z) − τ (Kz + K ′ z ′ )]
+
+(3.15)
+
+where z ′ is a function of z which is generically nonvanishing at z = 0, z ′ (z) = O(1). Then if
+we fix z = 0, the Dτ W equation is
+0 = Dτ W ∝
+
+1
+[−K ′ z ′ (0)τ̄ + MG(0)] ,
+τ̄ − τ
+
+(3.16)
+
+thus fixing the dilaton at
+τ̄ =
+The hierarchy becomes
+
+MG(0)
+.
+K ′ z ′ (0)
+
+(3.17)
+
+
+
+
+2πK
+Im[G(0)/z ′ (0)]
+(3.18)
+K′
+Thus, by appropriate choices of K, K ′ , and M one obtains an exponential hierarchy with
+the dilaton fixed at an interesting value.
+The hierarchy is determined in terms of integer fluxes and the Calabi-Yau geometry. To
+obtain the actual warp factor requires solving the differential equation (2.14), but one can
+z ∼ exp
+
+18
+
+estimate it as follows. The D3-brane warp factor (3.1) is e4A ∼ r̃ 4 . The resolution of the
+conifold cuts this off at wi2 ∼ z. According to ref. [14], the conic coordinate r̃ (which is ρ in
+the notation of that paper) is r̃ ∝ w 2/3 ∝ z 1/3 , and so the hierarchy of energy scales is
+eAmin ∼ z 1/3 ∼ exp(−2πK/3Mgs ) .
+
+(3.19)
+
+In effect the fluxes produce a model similar to RS1 [1], in which the warp factor does not go
+to zero but to a small positive value.10
+The large hierarchy (3.13) has a simple interpretation in terms of a dual gauge theory.
+The KS solution is the supergravity dual to a nonconformal N = 1 gauge theory, with
+confinement and chiral symmetry breaking at a dynamically generated scale [7]. In the
+spirit of the Verlinde model [4], the low energy physics of our supergravity solutions is
+equivalent to this gauge theory coupled to the massless bulk fields of the compactification.
+The KS solution begins with N whole D3-branes and M fractional D3-branes at a conifold
+singularity. In the end all of these branes are replaced by flux; their moduli disappear, which
+is in accord with confinement in the dual gauge theory. In particular, with M units of F(3)
+on the A cycle and K units of H(3) on the dual B cycle, the total D3 charge is N = MK.11
+The formula (3.19) then corresponds precisely to the renormalization group analysis
+of KS [7]. Using the β-function in their eq. (23), one cascade takes place on a ratio of
+scales e2π/3M gs (during which the LHS of that equation changes from −2π/gs to +2π/gs ).
+The total number of cascades is N/M = K, because M units of D3 charge disappear at
+each cascade, giving the total hierarchy (3.19). Thus the four-dimensional effective action
+correctly reproduces the physics of the KS gauge theory.
+In the gauge theory, the parameter z is the scale of gluino condensation. The instability
+noted in eq. (3.14) is the familiar fact that a gluino condensate generates a dilaton potential [22]. The stabilization (3.16) does not have a gauge theory origin; rather, it is a bulk
+effect in the IIB theory.
+There is an effect which might have been expected to destabilize the large hierarchy, but
+does not do so. The dual gauge theory has various relevant perturbations; for example, the
+N = 1 supersymmetry allows a superpotential. This would produce a mass gap which is of
+order the perturbation, rather than exponentially small. This perturbation is absent in our
+solution: in supergravity language it is a 3-form flux, but it is not of the form ∗6 G(3) = iG(3) ,
+10
+
+We should note that, unlike RS1, there is no negative tension brane at the low energy end; rather, there
+is a KS space. The negative tension objects that we require are elsewhere on the compact space, in the
+region that replaces the RS Planck brane.
+11
+In order to obtain an interesting low energy spectrum, one may need additional ‘mobile’ D3-branes in
+the warped region, but this is beyond our present focus.
+
+19
+
+as one sees from the explicit expressions in section III.C of ref. [38]. The reason for its
+absence appears to be holomorphy: the gauge theory perturbation corresponds to a growing
+(nonnormalizable) mode as one move away from the origin, and evidently this cannot be
+extended to the full compact space.
+So far, we have assumed that there is a single complex structure parameter z. Suppose
+there are other complex structure deformations, controlled by moduli ui . In such a case,
+the ui enter in the regular terms in the period (3.9), so G(z) is really G(z, ui ). Generically,
+assuming that z has been successfully stabilized near the conifold point in moduli space as
+above, the equations
+Dui W |z=0 = 0
+(3.20)
+can be solved to yield fixed (order 1) values for the other moduli ui. So we see that the
+presence of background RR and NS fluxes generically serves to fix all of the complex moduli
+and the dilaton, while leaving the Kähler modulus ρ unfixed.
+
+4
+
+Examples
+
+In order to make our discussion of warped compactifications with fluxes more explicit and
+concrete, and in particular check our ability to build consistent solutions with both negative
+D3 charge/tension and the above flux configurations, we now turn to the construction of some
+explicit models. We briefly describe models based on O3-folds, and then discuss F-theory
+compactifications in detail.
+
+4.1
+
+O3 models
+
+Models in which the negative tension objects are O3 planes are easily described. Begin with
+a CY manifold with a conifold singularity and a Z2 symmetry that has isolated fixed points,
+and orientifold on this symmetry. Since we assuming that the O3 planes are distant from the
+singularity, the initial CY must actually have two conifold singularities which are images of
+one another. The D3 charge of the O3 planes is then − 41 times the number of fixed points. In
+order that the supergravity description be good, we need gs N to be somewhat greater than
+one. To work in perturbative string theory we should also assume that gs ≤ 1. Therefore,
+we need N, and hence the number of fixed points, to be large.
+We will not present explicit examples, deferring an explicit example to the discussion of
+F-theory, but we will present some details of the orientifold construction and the low energy
+spectrum.
+20
+
+Let us first determine which of the RR fields survive the orientifolding by RΩ, where R
+is the Z2 with isolated fixed points, and Ω is world-sheet parity. First, consider a T k /Z2
+orientifold, where we can use T -duality to relate this to Ω in the IIB string [25],
+RΩ = T −1 ΩT .
+
+(4.1)
+
+Consider a Ramond field with r indices in the direction of the k-torus and s in the orthogonal
+directions. In the IIB string, the operator Ω acts as ir+s−2 on RR potentials and ir+s−3 on
+RR fluxes; thus, for example, the RR two-form potential survives the projection to the type I
+string. The T -duality takes r to k − r. Thus, ΩR acts as i−r+s+k−2 or i−r+s+k−3 respectively.
+We can also phrase this as the statement that the intrinsic ΩR of these fields is respectively
+in+k−2 or in+k−3 , where n is the total number of indices. This intrinsic parity must be
+combined with (−1)r , from the explicit action of the R on the indices. For the value k = 6
+relevant here, the intrinsic parities are respectively in and in−1 .
+Thus, the Ramond scalar C has even intrinsic parity, as expected because it is the
+superpartner of the dilaton. Similarly aµν , the axionic part of ρ, has even intrinsic parity:
+Cµνpq = aµν J˜pq ,
+
+(4.2)
+
+where J˜ is the Kähler form.
+The orientifolding requires that the Z2 symmetry hold throughout the moduli space and
+so only complex structure moduli that are even survive. The R-R flux Fmnp has odd intrinsic
+parity, as does the NS-NS flux Hmnp (from the action of Ω). Thus these must be proportional
+to 3-forms of odd intrinsic parity to survive the projection. Note that the 3-form Ω (not to be
+confused with the world-sheet parity operator) also has odd intrinsic parity. This is because
+it is nowhere vanishing and so in particular is nonzero at the fixed points; at the fixed points
+the Z2 gives an explicit −1 from the indices and this must be offset by the intrinsic parity.
+It follows that the superpotential
+Z
+Ω ∧ G(3)
+(4.3)
+is well-defined on the covering space. Also, the even complex structure deformations generate, by contraction with Ω, odd (2, 1) forms, so these are the appropriate fluxes to excite.
+Models of this class can be analyzed exactly as in section 3. One can choose fluxes
+through the A and B cycles of the conifold (with the D3 charge being canceled by the O3
+planes), and obtain precisely the effective field theory for z, ρ and τ described there.
+
+21
+
+4.2
+
+F theory models
+
+Another general class of warped models arises from F-theory compactifications to four dimensions. In such models the possible configurations of branes and fluxes are constrained
+by the topology of the elliptic Calabi-Yau fourfold X → M, via the equation
+χ(X)
+1
+= ND3 + 2
+24
+2κ10 T3
+
+Z
+
+M
+
+H3 ∧ F3 .
+
+(4.4)
+
+The left-hand side of this equation arises from the induced D3 brane charge on the wrapped
+D7 branes, and this charge must be compensated by introducing either wandering D3 branes
+or appropriate fluxes in the base M of the elliptic fibration. In general one could also
+introduce nontrivial gauge bundles in the wrapped D7 branes (which would yield another
+term on the right-hand side of (4.4), corresponding to the instanton number in each D7-brane
+gauge theory), but we will not need to use this freedom. Because χ ≫ 1 is attainable for
+Calabi-Yau fourfolds, this class of models should allow a great deal of freedom in choosing
+appropriate flux and brane configurations for model building. Earlier discussions of fourfold
+compactifications with nontrivial fluxes can be found in [34, 8, 33, 40].
+Because of SL(2, Z) monodromies around the (p, q) 7-branes wrapping surfaces in M, the
+fluxes should really be viewed as transforming as sections of a nontrivial bundle (as detailed
+in section 2.1). However, we will focus our attention on a local region around a conifold
+singularity in the base M, and will write our formulae in terms of a local trivialization of
+this bundle. This is particularly simple in orientifold limits of F-theory vacua, and we will
+be most explicit there. Since the most general F-theory model does have an orientifold locus
+in its moduli space [41], this does not constitute a serious loss of generality.
+4.2.1
+
+The Fourfold
+
+To embed the Klebanov-Strassler system into an F-theory compactification, we need to
+exhibit an elliptically fibered Calabi-Yau fourfold X which admits a conifold singularity in
+its base M. A simple example can be designed as follows (the generalization to construct
+other examples is straightforward).
+Consider for M the hypersurface given by a quartic equation in P 4
+P = z52 (
+
+4
+X
+i=1
+
+zi2 ) − t2 z54 +
+
+4
+X
+
+zi4 = 0
+
+(4.5)
+
+i=1
+
+where zi are the homogeneous coordinates on P 4, and t is for convenience taken to be a real
+parameter. One can construct a fourfold X over M by specifying a Weierstrass model (see,
+22
+
+e.g., [42])
+y 2 = x3 + xf (zi ) + g(zi )
+
+(4.6)
+
+where y ∈ 3L, x ∈ 2L, f ∈ H 0 (4L) and g ∈ H 0 (6L); here L is the line bundle given by
+L = −KM in terms of the canonical bundle of M. In practice for this model, we can think of
+f and g as being polynomials of degree 4 and 6 in the homogeneous coordinates zi (restricted
+to M).
+In type IIB language, one should think of the model (4.6) as corresponding to a compactification of IIB string theory on the quartic in P 4 , with various (p, q) 7-branes appearing at
+the loci where the elliptic fibration degenerates, i.e. where the discriminant
+∆ = 4f 3 + 27g 2
+
+(4.7)
+
+vanishes. The physics associated with such degenerations involves enhanced gauge symmetry
+and more exotic phenomena, and is described for many cases which arise in compactification
+on CY threefolds in [43, 44, 45]. However, for our interests we want a degeneration of the
+base which is unrelated to the physics of the 7 branes, and we will simply insure that the
+loci in M of interest to us do not intersect the ∆ = 0 discriminant locus. For later reference,
+the value of the IIB axion-dilaton τ is determined in terms of the Weierstrass data by the
+equation
+4(24f )3
+j(τ ) =
+(4.8)
+4f 3 + 27g 2
+where j(τ ) is the modular invariant function of τ , normalized so that j(i) = (24)3 .
+Eqn. (2.22) gives the background D3 charge for this configuration. For the model (4.6),
+one can evaluate χ by using the formula in [42], with the result that
+− QD7
+3 =
+
+Z
+
+χ
+= 12 + 15
+c1 (M)3 = 72 .
+24
+M
+
+(4.9)
+
+Inspection of (4.5) reveals that M has a conifold singularity as t → 0 – one can solve
+P = dP = 0 at (0, 0, 0, 0, 1). The collapsing three-cycle can in fact be exhibited explicitly, as
+the fixed point locus of the involution zi → z i . On this locus, the zi must be real. One can
+see from (4.5) that without loss of generality on the real locus z5 6= 0, so we can take z5 = 1
+and fix the projective symmetry. Denote the real part of zi by xi . The equation becomes
+4
+X
+
+(x4i + x2i ) = t2
+
+i=1
+
+23
+
+(4.10)
+
+q
+
+and by defining ui = x4i + x2i , and choosing the branch of the square root where sgn(ui ) =
+sgn(xi ), we get a 1-1 map onto the locus
+4
+X
+
+u2i = t2
+
+(4.11)
+
+i=1
+
+which describes an S 3 that collapses as t → 0. This is the A-cycle of the conifold.
+4.2.2
+
+Orientifold Limit
+
+Following the work of Sen [41] we can present X on a locus in its moduli space where it has
+a particularly simple description, as a type IIB orientifold. Choose f and g so that they
+satisfy
+f = Cη(zi ) − 3h(zi )2 , g = h(zi )[Cη(zi ) − 2h(zi )2 ]
+(4.12)
+with h, η arbitrary functions of degrees 2 and 4. Since f is quartic this allows for a generic
+choice of f , but is a specialization of the choice of g. Then from (4.8) it is clear that as
+C → 0 with η and h fixed, j(τ ) → ∞ wherever the numerator does not vanish. This means
+τ → i∞ almost everywhere on the base, i.e. we are at weak type IIB coupling.
+In fact in this limit, the model becomes an orientifold of type IIB on a Calabi-Yau
+c M
+c is a double cover of M, specified by the equation (4.5) together with
+threefold M.
+ξ 2 − h(zi ) = 0
+
+(4.13)
+
+c by the action
+where ξ is a new coordinate (valued in the line bundle L). We orientifold M
+
+ξ → −ξ
+
+(4.14)
+
+composed with Ω(−1)FL which fixes the locus ξ = 0, yielding an O7 plane localized at
+h(zi ) = 0 in (4.5).
+One must also introduce D7 branes to cancel the RR tadpole generated by the orientifold.
+Inspecting the discriminant ∆, which is
+∆ = C 2 η 2 (4Cη − 9h2 )
+
+(4.15)
+
+c
+in the limit (4.12), one can see that there are a pair of D7 branes located at η(zi ) = 0 in M.
+
+24
+
+4.2.3
+
+Embedding Klebanov-Strassler
+
+c by (4.14).
+We have now reduced F-theory on X to IIB string theory on the orientifold of M
+Recall that as t → 0, there is a conifold singularity in M, which survives in the orientifold
+c We can choose h and η to be of the form
+of IIB on M.
+
+h(zi ) =
+
+5
+X
+
+ai zi2 , η(zi ) =
+
+5
+X
+
+bi zi4
+
+(4.16)
+
+i=1
+
+i=1
+
+with ai and bi real and positive. With such a choice, the loci h = 0 and η = 0 where the
+O7 and D7s are located do not intersect the real slice of M. But the collapsing three-cycle
+c as t2 → 0 lies on this real slice. Therefore, the D7 branes and O7 plane do not lie
+in M
+near the conifold singularity, and we can work in a local neighborhood of the conifold in the
+c while ignoring these other branes.
+orientifold of M
+c as well as a dual B cycle
+At the conifold point there is a collapsing A cycle in M,
+c which it intersects once. We expect to be able to put flux through both of these,
+in M
+consistent with the orientifold projection. The background charge (4.9) is still in force in
+the orientifold limit (the D3 charge comes from the induced charge on the wrapped branes);
+and can be cancelled by choosing appropriate H3 and F3 fluxes through these cycles. If we
+choose to put M units of RR three-form flux through A and K units of NS three-form flux
+through B, with MK = N ≤ 72, then (4.4) can be satisfied (for N < 72, we should add
+wandering D3 branes or turn on other fluxes to saturate (4.4)). This allows us to reproduce
+c the solution of
+locally, in a neighborhood of the conifold point in (the orientifold of) M,
+Klebanov and Strassler [7]. That is, the local geometry is the same as the gravity dual of
+the SU(N + M) × SU(N) gauge theory considered there. Even with the values of M and K
+which are possible in this model (much larger values of χ, and thus larger values of K, are
+possible in other examples), one can generate a large hierarchy from the RG cascade, as we
+have demonstrated in section 3.
+Stabilizing the dilaton in such an orientifold requires some other generic addition to the
+low-energy superpotential. One way to accomplish this is to turn on additional fluxes, as
+discussed in §3. An alternative is to work at generic points in the F-theory moduli space,
+which we discuss below.
+4.2.4
+
+Deforming Away from the Orientifold Limit
+
+To understand the low energy physics governing an orientifold model with a conifold singularity and appropriate fluxes, one should compute the effective field theory governing (at
+least) three different moduli, as described in §3. These are the complex modulus z which
+25
+
+controls the volume of the collapsing three-cycle at the conifold, the dilaton τ , and the overall
+volume of the space ρ.
+In our F-theory situation, however, we could consider moving away from the limit of
+§4.2.2, so that the model is not a perturbative IIB orientifold. Working away from the orientifold limit while keeping the F3 and H3 fluxes as before, one achieves some simplification.12
+While ρ (the size of the base M) and z (here controlled by t2 in (4.5)) remain moduli in the
+F-theory picture, the dilaton does not remain an independent modulus. It is fixed in terms
+of the complex structure of X by the equation (2.36), with solution (4.8).
+This means that the naive problem with solving the Dτ W = 0 equation in the vicinity
+of the conifold point, solved in §3 by for example turning on an additional flux, will not
+occur here. τ does not appear as an independent mode in the low-energy effective field
+theory. The modes controlling the complex structure of X, which determine τ via (4.8), are
+frozen on general grounds by just the Klebanov-Strassler fluxes, as described at the end of
+§3. Although our discussion there was in terms of perturbative type IIB string theory, there
+is an alternative derivation which goes through M-theory. One can view F-theory on X as
+being defined by a limit of M-theory on X (where one shrinks the volume of the elliptic
+fiber in going from M-theory to F-theory). The superpotential for complex structure moduli
+in M-theory on X is given by the formula (2.41) where G(4) is the M-theory four-form flux
+and Ω4 is the holomorphic (4,0) form on X. The formula (3.7) for the IIB string theory
+superpotential follows from (2.41) in the F-theory limit, for suitable choices of G(4) (those
+which lift to G(3) flux in IIB language) and in the case that X is a Calabi-Yau threefold times
+a two-torus. In the more general F-theory case, X is not such a product, but nevertheless
+the A and B cycle in M that we have been using lift to 4-cycles in X and allow use of the
+local decomposition (2.42). The statement that the complex moduli (and therefore the value
+of τ at the conifold point in M) are fixed then follows from the fact that the period of Ω4
+over the lift of the B cycle will have generic dependence on the complex structure moduli.
+We saw in §3 that fixing the dilaton, either by this mechanism or by turning on additional
+fluxes, allows one to solve for z. The exponentially small value of z computed from the superpotential of [9] independently confirms the existence of a hierarchy for reasonable choices
+of M and N (and represents the small, dynamically generated scale of chiral symmetry
+breaking in [7]).
+12
+
+Note that fluxes which were projected in by the orientifold action are guaranteed to adiabatically deform
+to consistent G(4) fluxes in the full CY fourfold geometry.
+
+26
+
+5
+
+Conclusion
+
+There has been a great deal of interest in finding string theory constructions which produce
+large hierarchies through warping, and in particular reproduce, at long wavelengths, features
+of the RS1 model [1]. Building on the ideas of Verlinde and collaborators [4, 36], we have
+described orientifold and F-theory models which accomplish this. The role of the AdS throat
+and the infrared brane is played by (a finite radial segment of) the gravity dual to a confining
+gauge theory found by Klebanov and Strassler [7], while the UV brane is replaced by the
+bulk of the string theory compactification manifold.
+Our models are consistent, nonsingular string theory backgrounds. However, we expect
+′
+α and string loop corrections to generate a potential for the overall scale ρ of the compactification manifold. An analogous problem also arises in familiar classical heterotic string
+backgrounds [21, 22], and in some ways our models are quite similar to those (with the
+important difference that non-perturbative gauge theory effects have already been incorporated in the classical gravity solution). It would be very interesting to find mechanisms for
+stabilizing ρ in these models; toy models where all of the moduli are stabilized by fluxes can
+be constructed [20].
+The duality between gauge theories and compactifications with flux extends beyond the
+single example [7] we have used here. The results of [9] provide a more general construction
+of dualities between fluxes and gauge theories, and quantum gauge theory effects are again
+calculable using classical geometry. It would be interesting to use other examples of this
+gauge theory/flux duality to construct N = 1 string compactifications with moduli which
+are calculably stabilized by non-perturbative gauge dynamics.
+Finally, it has recently become clear that warped compactifications offer new mechanisms,
+distinct from AdS redshifting, of producing large hierarchies [46]. The relevant warped models need to have two or more different brane throats, with fairly generic warping (so power-law
+warping is sufficient). Large hierarchies can then be produced by the tunneling-suppressed
+(and therefore weak) interactions between the IR modes localized down distinct throats. It
+should be possible to design string theory examples of such multi-throat compactifications
+by generalizing the construction in our paper.
+
+Acknowledgments
+We would like to thank P. Aspinwall, A. Grassi, S. Gubser, S. Gukov, G. Horowitz, S. Katz,
+I. Klebanov, M. Schulz, E. Silverstein, C. Vafa, H. Verlinde and E. Witten for helpful discussions. This work was supported by National Science Foundation grants PHY99-07949
+27
+
+and PHY97-22022, and by the DOE under contracts DE-FG-03-91ER40618 and DE-AC0376SF00515. The research of S.K. is supported in part by a David and Lucile Packard Foundation Fellowship for Science and Engineering and an Alfred P. Sloan Foundation Fellowship.
+
+A
+
+Dimensional reduction
+
+We now develop further the low energy effective action, discussed in section 2. Before
+f generically has a large number of moduli and
+turning on fluxes, the underlying manifold M
+corresponding massless supermultiplets in the four-dimensional low-energy effective theory.
+Turning on fluxes deforms the geometry of the compactification, and in the four-dimensional
+effective theory generates a potential for the massless moduli [8, 33].
+
+A.1
+
+Kinetic terms and Kähler potential
+
+The allowed moduli depend on the topology of the compactification, though one generically
+has the universal Kähler modulus corresponding to overall rescaling of the six-dimensional
+metric. This has partner aµν , arising from
+Cµνpq = aµν J˜pq
+
+(A.1)
+
+where J˜ is the Kähler form. We work in the approximation of constant warp factor and
+vanishing F̃5 ; as discussed in section 2.2.4 this is valid in the large-radius limit (although
+we expect our expressions to generalize beyond this). The effective action for this Kähler
+multiplet together with the 4d metric and dilaton can be found by computing the action
+(2.3) with
+ds2 = gµν dxµ dxν + e2u(x) g̃mn dy m dy n
+(A.2)
+where g̃mn is the metric of the compactification. In doing so, we define the 4d Newton’s
+f and the Weyl rescaled metric g = e−6u g̃ .
+constant κ24 = κ210 /Ṽ where Ṽ is the volume of M,
+4
+4
+√
+−8u ˜
+4u
+We also dualize, da(2) = e ∗db, and define ρ = b/ 2 + ie . The result is
+1
+S= 2
+2κ4
+
+Z
+
+4
+
+d x (−g̃4 )
+
+1/2
+
+∂µ τ ∂ µ τ̄
+∂µ ρ∂ µ ρ̄
+R̃4 − 2
+−
+6
+|τ − τ̄ |2
+|ρ − ρ̄|2
+
+!
+
+.
+
+(A.3)
+
+The kinetic terms for τ and ρ can thus be found from the Kähler potential
+K1 = − ln[−i(τ − τ̄ )] − 3 ln[−i(ρ − ρ̄)] .
+
+(A.4)
+
+In the O3 case, both τ and ρ survive the projection. In the case of an F-theory compactification, the D7-brane monodromies generally remove τ from the 4d spectrum, although τ
+28
+
+varies as other complex structure moduli, e.g. parameterizing the locations of the D7 branes,
+vary.
+The remaining moduli are the other Kähler and complex structure deformations of the 6d
+compactification, or, in the F-theory context, of the eight-dimensional Calabi-Yau manifold.
+f is a Calabi-Yau orientifold, and we
+In the following, we imagine for definiteness that M
+discuss the complex structure moduli space of Calabi-Yau threefolds, but the relevant parts
+of the story carry over also to the F-theory examples.
+As shown by Candelas and de la Ossa [35], the effective action for CY moduli is determined by the Weil-Petersson metric on the moduli space, and one may derive a simple
+expression for the corresponding Kähler potential. First note that on a general CY threefold
+there are the following harmonic forms:
+1. One (3,0) form Ω.
+2. b2,1 primitive (2,1) forms χα .
+3. Their (1,2) conjugates χα .
+4. The (0,3) conjugate Ω.
+These satisfy
+∗6 Ω = −iΩ ,
+
+∗6 χα = iχα .
+
+(A.5)
+
+As discussed in section 4.2, only forms of odd intrinsic parity under the Z2 projection are
+relevant. This includes Ω and a subset of the χα . In the subsequent analysis α is restricted
+to this subset.
+The metric for the complex structure deformations takes the form
+Z
+
+Gαβ̄ = − ZM
+
+χα ∧ χβ
+
+M
+
+.
+
+(A.6)
+
+Ω∧Ω
+
+To find the corresponding Kähler potential, let z α be coordinates on the complex structure
+moduli space. Then it can be shown that ∂Ω/∂z α is (3, 0) + (2, 1), and more precisely that
+there is a basis χα such that
+∂Ω
+= kα (z, z̄)Ω + χα .
+(A.7)
+∂z α
+Defining
+
+
+Z
+K2 = − ln −i
+
+29
+
+M
+
+Ω∧Ω ,
+
+(A.8)
+
+one may then show
+∂α K2 = −kα ,
+
+(A.9)
+
+∂α ∂β̄ K2 = Gαβ̄
+
+(A.10)
+
+and the equation
+gives the above metric.
+In the context of an F-theory compactification, an obvious generalization of (A.8) is
+K = − ln
+
+A.2
+
+Z
+
+
+
+Ω4 ∧ Ω̄4 .
+
+X
+
+(A.11)
+
+The potential and superpotential
+
+We now turn to the problem of finding the potential determined by the fluxes. From (2.3),
+the potential is determined by
+SG = −
+
+1
+24κ210
+
+Z
+
+d6 yg̃ 1/2
+
+M
+
+g
+Gmnp Ḡmnp
+.
+Im τ
+
+(A.12)
+
+Again, we are in a large-radius approximation where the warp factor is constant and F̃(5) = 0.
+We define the imaginary self-dual parts of G(3) as
+1
+G±
+(3) = (G(3) ± i∗6 G(3) ) ,
+2
+
+−
+G(3) = G+
+(3) + G(3) ,
+±
+∗ 6 G±
+(3) = ∓iG(3) .
+
+(A.13)
+
+The action can then be written as
+Z
+Z
+i
+1
++mnp
+g
+6
+1/2 +
+− 2
+SG = −
+d x g̃ Gmnp G
+G(3) ∧ G(3)
+12κ210 Im τ M
+4κ10 Im τ M
+Z
+i
+= −V − 2
+G(3) ∧ G(3)
+4κ10 Im τ M
+
+(A.14)
+
+where we define the potential
+V =−
+
+1
+2
+2κ10 Im τ
+
+Z
+
+M
+
++
+G+
+(3) ∧ ∗6 G(3)
+
+(A.15)
+
+G
+The second term in (A.14) is proportional to µ3 QG
+3 , where µ3 is the D3 tension and Q3 is
+the D3 charge carried by the three-form flux. This term is topological and does not involve
+the moduli. It is canceled by the tension of the localized sources, because these have total
+G
+D3 charge Qloc
+3 = −Q3 and saturate the inequality (2.26).
+
+30
+
+(A.5) implies that V only depends on the coefficients of Ω and χα when G(3) is expanded
+in the basis of 3-forms. In terms of the metric (A.6), we find
+i
+V=
+
+Z
+
+M
+
+G(3) ∧ Ω
+
+Z
+
+M
+
+G(3) ∧ Ω + Gαβ̄
+2Im τ κ210
+
+Z
+
+M
+
+Z
+
+M
+
+G(3) ∧ χα
+
+Z
+
+M
+
+G(3) ∧ χβ
+
+.
+
+(A.16)
+
+Ω∧Ω
+
+This can be derived from a superpotential of the form discussed in refs. [8, 47, 9],
+W =
+
+Z
+
+M
+
+G(3) ∧ Ω .
+
+(A.17)
+
+Indeed, from (A.7,A.4) we find
+Dα W ≡ ∂α W + (∂α K)W =
+
+Z
+
+M
+
+G(3) ∧ χα ,
+
+1 Z
+Dτ W ≡ ∂τ W + (∂τ K)W =
+G(3) ∧ Ω ,
+τ̄ − τ M
+
+(A.18)
+
+where K = K1 + K2 . After a Weyl transformation to the four-dimensional Einstein frame,
+the potential takes the standard N = 1 supergravity form [48], as in eq. (2.43).
+This potential has been discussed before [49], but in somewhat different contexts. In
+the first place, these earlier systems had N = 2 low energy supersymmetry, even when
+the potential was written in N = 1 form. Here, the orientifolding or the F-theory D7
+configuration explicitly reduces the low energy supersymmetry to N = 1. Second, objects
+R
+with negative D3 charge were not included, so the fluxes were restricted to M H(3) ∧F(3) = 0.
+The conditions Dα W = Dτ W = 0 imply that G+
+(3) = 0. Thus the effective fourdimensional action reproduces the ten-dimensional conditions (2.31) for a solution. Unbroken
+supersymmetry requires also that Dρ W = 0, implying that the (0, 3) part of G(3) vanishes
+and so this flux is (2, 1) and primitive, again as argued directly in ten dimensions. The latter
+condition is equivalent to W = 0; this will generically not hold when Dα W = Dτ W = 0.
+The F-theory generalization of this discussion readily follows, with superpotential [8]
+W =
+
+Z
+
+X
+
+G(4) ∧ Ω4 ,
+
+(A.19)
+
+where G(4) is the F-theory lift of the flux, locally given in eq. (2.42).
+This dimensional reduction has been carried out in a limit that is rather orthogonal to
+the main concerns of this paper, in that the warp factor is constant rather than strongly
+varying, and F̃(5) = 0. The detailed treatment of dimensional reduction in the warped case
+is left for the future (see also ref. [40]), but in the present case we can argue that the key
+31
+
+results are unaffected. In particular, the ten-dimensional analysis of section 2 shows that
+the solutions found from the effective action derived here remain solutions even when the
+warping is taken into account. The physical reason is that all localized sources as well as the
+supergravity fields couple to the warp factor and the 5-form flux in the same ratio, so that
+there is no net force.
+The superpotential derived in the large-radius limit is exact in string perturbation theory.
+This is because the real part of ρ is an axion, obtained from the tensor field (A.1), and so
+there is a Peccei-Quinn symmetry broken only by D-instanton effects. Thus ρ cannot appear
+in the superpotential [50]; the same will be true of all other Kähler moduli. Note that this
+is not true of τ . The field C(0) appears in the classical action through the definition of G(3) ,
+so there is no PQ symmetry and τ does enter into the classical superpotential (A.17).
+
+32
+
+References
+[1] L. Randall and R. Sundrum, “A large mass hierarchy from a small extra dimension,”
+Phys. Rev. Lett. 83, 3370 (1999) [hep-th/9905221].
+[2] L. Randall and R. Sundrum, “An alternative to compactification,” Phys. Rev. Lett. 83,
+4690 (1999) [hep-th/9906064].
+[3] S. B. Giddings and E. Katz, “Effective theories and black hole production in warped
+compactifications,” hep-th/0009176, to appear in Jour. Math. Phys.
+[4] H.Verlinde, “Holography and Compactification,” Nucl. Phys. B580, 264 (2000) [hepth/9906182].
+[5] J. Maldacena, “The large N limit of superconformal field theories and supergravity,”
+Adv. Theor. Math. Phys. 2, 231 (1998) [hep-th/9711200].
+[6] W. D. Goldberger and M. B. Wise, “Modulus stabilization with bulk fields,” Phys.
+Rev. Lett. 83, 4922 (1999) [hep-ph/9907447]; Phys. Lett. B475, 275 (2000) [hepph/9911457].
+[7] I. R. Klebanov and M. J. Strassler, “Supergravity and a confining gauge theory: duality cascades and χsb-resolution of naked singularities,” JHEP 0008, 052 (2000) [hepth/0007191].
+[8] S. Gukov, C. Vafa and E. Witten, “CFT’s from Calabi-Yau four-folds,” Nucl. Phys.
+B584, 69 (2000) [hep-th/9906070].
+[9] C. Vafa, “Superstrings and topological strings at large N,” hep-th/0008142.
+[10] S. Kachru and E. Silverstein, “4d conformal field theories and strings on orbifolds,”
+Phys. Rev. Lett. 80, 4855 (1998) [hep-th/9802183].
+[11] A. Kehagias, “New type IIB vacua and their F-theory interpretation,” Phys. Lett. B435,
+337 (1998) [hep-th/9805131].
+[12] I. R. Klebanov and E. Witten, “Superconformal field theory on threebranes at a CalabiYau singularity,” Nucl. Phys. B536, 199 (1998) [hep-th/9807080].
+[13] B. S. Acharya, J. M. Figueroa-O’Farrill, C. M. Hull and B. Spence, “Branes at conical singularities and holography,” Adv. Theor. Math. Phys. 2, 1249 (1999) [hepth/9808014];
+D. R. Morrison and M. R. Plesser, “Non-spherical horizons, I” Adv. Theor. Math. Phys.
+3, 1 (1999) [hep-th/9810201].
+[14] P. Candelas and X. de la Ossa, “Comments on conifolds,” Nucl. Phys. B342, 246 (1990).
+33
+
+[15] S. S. Gubser and I. R. Klebanov, “Baryons and domain walls in an N = 1 superconformal
+gauge theory,” Phys. Rev. D58, 125025 (1998) [hep-th/9808075].
+[16] I. R. Klebanov and N. A. Nekrasov, “Gravity duals of fractional branes and logarithmic
+RG flow,” Nucl. Phys. B574, 263 (2000) [hep-th/9911096].
+[17] I. R. Klebanov and A. A. Tseytlin, “Gravity duals of supersymmetric SU(N) x SU(N+M)
+gauge theories,” Nucl. Phys. B578, 123 (2000) [hep-th/0002159].
+[18] P. Mayr, “On supersymmetry breaking in string theory and its realization in brane
+worlds,” Nucl. Phys. B 593, 99 (2001) [arXiv:hep-th/0003198].
+[19] E. Cremmer, S. Ferrara, C. Kounnas and D. V. Nanopoulos, “Naturally vanishing cosmological constant in N=1 supergravity,” Phys. Lett. B133, 61 (1983);
+J. Ellis, A. B. Lahanas, D. V. Nanopoulos and K. Tamvakis, “No - Scale Supersymmetric
+Standard Model,” Phys. Lett. B134, 429 (1984).
+[20] S.B. Giddings, S. Kachru and J. Polchinski, work in progress.
+[21] E. Witten, “Dimensional reduction of superstring models,” Phys. Lett. B155, 151
+(1985).
+[22] M. Dine, R. Rohm, N. Seiberg and E. Witten, “Gluino condensation in superstring
+models,” Phys. Lett. B156, 55 (1985).
+[23] B. de Wit, D.J. Smit and N.D. Hari Dass, “Residual supersymmetry of compactified D
+= 10 supergravity,” Nucl. Phys. B283, 165 (1987).
+[24] J. Maldacena and C. Nunez, “Supergravity description of field theories on curved manifolds and a no go theorem,” Int. J. Mod. Phys. A 16, 822 (2001) [hep-th/0007018].
+[25] J. Polchinski, String Theory, 2 vols., Cambridge University Press, 1998.
+[26] M. Bershadsky, C. Vafa and V. Sadov, “D-Branes and Topological Field Theories,”
+Nucl. Phys. B 463, 420 (1996) [hep-th/9511222].
+[27] K. Dasgupta, D. P. Jatkar and S. Mukhi, “Gravitational couplings and Z(2) orientifolds,” Nucl. Phys. B523, 465 (1998) [hep-th/9707224];
+C. P. Bachas, P. Bain and M. B. Green, “Curvature terms in D-brane actions and their
+M-theory origin,” JHEP 9905, 011 (1999) [hep-th/9903210];
+A. Fotopoulos, “On (alpha’)**2 corrections to the D-brane action for non-geodesic
+world-volume embeddings,” JHEP 0109, 005 (2001) [arXiv:hep-th/0104146].
+[28] Y. E. Cheung and Z. Yin, “Anomalies, branes, and currents,” Nucl. Phys. B517, 69
+(1998) [hep-th/9710206];
+R. Minasian and G. Moore, “K-theory and Ramond-Ramond charge,” JHEP 9711, 002
+(1997) [hep-th/9710230].
+34
+
+[29] M. Grana and J. Polchinski, “Supersymmetric three-form flux perturbations on AdS5 ”
+Phys. Rev. D63, 026001 (2001) [hep-th/0009211].
+[30] S. S. Gubser, “Supersymmetry and F-theory realization of the deformed conifold with
+three-form flux,” [hep-th/0010010].
+[31] M. Grana and J. Polchinski, in preparation.
+[32] J. Schwarz and P. West, “Symmetries and transformations of chiral N=2 D = 10 supergravity,” Phys. Lett. B126, 301 (1983);
+J. Schwarz, “Covariant field equations of chiral N=2 D = 10 supergravity,” Nucl. Phys.
+B226, 269 (1983);
+P. Howe and P. West, “The complete N=2, D = 10 supergravity,” Nucl. Phys. B238,
+181 (1984).
+[33] K. Dasgupta, G. Rajesh and S. Sethi, “M theory, orientifolds and G-flux,” JHEP 9908,
+023 (1999) [hep-th/9908088].
+[34] K. Becker and M. Becker, “M-theory on eight-manifolds,” Nucl. Phys. B477 (1996) 155
+[hep-th/9605053].
+[35] P. Candelas and X. de la Ossa, “Moduli Space of Calabi-Yau Manifolds,” Nucl. Phys.
+B355, 455 (1991).
+[36] C. S. Chan, P. L. Paul and H. Verlinde, “A note on warped string compactification,”
+Nucl. Phys. B581, 156 (2000) [hep-th/0003236].
+[37] A. Strominger, “Massless black holes and conifolds in string theory,” Nucl. Phys. B451,
+96 (1995) [hep-th/9504090].
+[38] J. Polchinski and M. Strassler, “String dual of a confining four-dimensional gauge theory,” hep-th/0003136.
+[39] T. Banks, L. Dixon, D. Friedan and E. Martinec, “Phenomenology and Conformal Field
+Theory, or Can String Theory Predict the Weak Mixing Angle?,” Nucl. Phys. B299,
+613 (1988).
+[40] B. Greene, K. Schalm and G. Shiu, “Warped compactifications in M and F theory,”
+Nucl. Phys. B584, 480 (2000) [hep-th/0004103].
+[41] A. Sen, “Orientifold limit of F-theory vacua,” Phys. Rev. D55, 7345 (1997) [hepth/9702165].
+[42] S. Sethi, C. Vafa and E. Witten, “Constraints on low-dimensional string compactifications,” Nucl. Phys. B480, 213 (1996) [hep-th/9606122].
+
+35
+
+[43] D. Morrison and C. Vafa, “Compactifications of F-theory on Calabi–Yau threefolds –
+I,” Nucl. Phys. B473, 74 (1996) [hep-th/9602114]; Nucl. Phys. B476, 437 (1996).
+[44] P. Aspinwall and M. Gross, “The SO(32) heterotic string on a K3 surface,” Phys. Lett.
+B387, 735 (1996) [hep-th/9605131].
+[45] M. Bershadsky, K. Intriligator, S. Kachru, D. Morrison, V. Sadov and C. Vafa, “Geometric singularities and enhanced gauge symmetries,” Nucl. Phys. B481, 215 (1996)
+[hep-th/9605200].
+[46] S. Dimopoulos, S. Kachru, N. Kaloper, A. Lawrence and E. Silverstein, “Small Numbers
+From Tunneling Between Brane Throats,” hep-th/0104239.
+[47] T. R. Taylor and C. Vafa, “RR flux on Calabi-Yau and partial supersymmetry breaking,”
+Phys. Lett. B474, 130 (2000) [hep-th/9912152].
+[48] E. Cremmer, S. Ferrara, L. Girardello and A. Van Proeyen, “Yang-Mills theories with
+local supersymmetry: Lagrangian, transformation laws and superhiggs effect,” Nucl.
+Phys. B212, 413 (1983).
+[49] J. Michelson, “Compactifications of type IIB strings to four dimensions with non-trivial
+classical potential,” Nucl. Phys. B495, 127 (1997) [hep-th/9610151];
+G. Curio, A. Klemm, D. Lust and S. Theisen, “On the vacuum structure of type II
+string compactifications on Calabi-Yau spaces with H-fluxes,” hep-th/0012213.
+[50] E. Witten, “New Issues in manifolds of SU(3) holonomy,” Nucl. Phys. B268, 79 (1986).
+
+36
+
+

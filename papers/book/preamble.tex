@@ -1,0 +1,221 @@
+% papers/book/preamble.tex — shared preamble of the master book. Engine: pdfLaTeX (LuaLaTeX on this
+% machine has no luaotfload). Unicode inside Lean listings is mapped symbol by symbol below.
+% Chapter files must NOT load packages or define global macros; request additions from the editor.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{newunicodechar}
+\usepackage[a4paper,inner=30mm,outer=25mm,top=28mm,bottom=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{graphicx,booktabs,longtable,array,enumitem,xcolor,caption}
+\usepackage{tikz,tikz-cd}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,decorations.markings,shapes.geometric}
+\usepackage{fancyvrb}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr,emptypage}
+\usepackage[expansion=false]{microtype}
+\usepackage{imakeidx}\makeindex[intoc]
+\usepackage[hidelinks,colorlinks=false,bookmarksnumbered]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+% ---- Unicode used in Lean sources (works inside leancode/Verbatim and in running text) ----------
+\newunicodechar{ℤ}{\ensuremath{\mathbb{Z}}}
+\newunicodechar{ℝ}{\ensuremath{\mathbb{R}}}
+\newunicodechar{ℂ}{\ensuremath{\mathbb{C}}}
+\newunicodechar{ℕ}{\ensuremath{\mathbb{N}}}
+\newunicodechar{ℚ}{\ensuremath{\mathbb{Q}}}
+\newunicodechar{ℍ}{\ensuremath{\mathbb{H}}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{ᵀ}{\ensuremath{{}^{\mathsf T}}}
+\newunicodechar{→}{\ensuremath{\to}}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{↦}{\ensuremath{\mapsto}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{↪}{\ensuremath{\hookrightarrow}}
+\newunicodechar{₀}{\ensuremath{{}_0}}
+\newunicodechar{₁}{\ensuremath{{}_1}}
+\newunicodechar{₂}{\ensuremath{{}_2}}
+\newunicodechar{₃}{\ensuremath{{}_3}}
+\newunicodechar{₄}{\ensuremath{{}_4}}
+\newunicodechar{₅}{\ensuremath{{}_5}}
+\newunicodechar{₆}{\ensuremath{{}_6}}
+\newunicodechar{₇}{\ensuremath{{}_7}}
+\newunicodechar{₈}{\ensuremath{{}_8}}
+\newunicodechar{₉}{\ensuremath{{}_9}}
+\newunicodechar{₊}{\ensuremath{{}_+}}
+\newunicodechar{₋}{\ensuremath{{}_-}}
+\newunicodechar{ₐ}{\ensuremath{{}_a}}
+\newunicodechar{ₜ}{\ensuremath{{}_t}}
+\newunicodechar{ᵢ}{\ensuremath{{}_i}}
+\newunicodechar{ⱼ}{\ensuremath{{}_j}}
+\newunicodechar{ᵥ}{\ensuremath{{}_v}}
+\newunicodechar{ₙ}{\ensuremath{{}_n}}
+\newunicodechar{ₖ}{\ensuremath{{}_k}}
+\newunicodechar{⁰}{\ensuremath{{}^0}}
+\newunicodechar{¹}{\ensuremath{{}^1}}
+\newunicodechar{²}{\ensuremath{{}^2}}
+\newunicodechar{³}{\ensuremath{{}^3}}
+\newunicodechar{⁴}{\ensuremath{{}^4}}
+\newunicodechar{⁵}{\ensuremath{{}^5}}
+\newunicodechar{⁶}{\ensuremath{{}^6}}
+\newunicodechar{⁷}{\ensuremath{{}^7}}
+\newunicodechar{⁸}{\ensuremath{{}^8}}
+\newunicodechar{⁹}{\ensuremath{{}^9}}
+\newunicodechar{⁻}{\ensuremath{{}^{-}}}
+\newunicodechar{⁺}{\ensuremath{{}^{+}}}
+\newunicodechar{ⁱ}{\ensuremath{{}^i}}
+\newunicodechar{ᵃ}{\ensuremath{{}^a}}
+\newunicodechar{ᵗ}{\ensuremath{{}^t}}
+\newunicodechar{ᵏ}{\ensuremath{{}^k}}
+\newunicodechar{ʲ}{\ensuremath{{}^j}}
+\newunicodechar{ᴴ}{\ensuremath{{}^{\mathsf H}}}
+\newunicodechar{ⁿ}{\ensuremath{{}^n}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{‖}{\ensuremath{\|}}
+\newunicodechar{≤}{\ensuremath{\le}}
+\newunicodechar{≥}{\ensuremath{\ge}}
+\newunicodechar{≠}{\ensuremath{\ne}}
+\newunicodechar{≅}{\ensuremath{\cong}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newunicodechar{≡}{\ensuremath{\equiv}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{∼}{\ensuremath{\sim}}
+\newunicodechar{∝}{\ensuremath{\propto}}
+\newunicodechar{≪}{\ensuremath{\ll}}
+\newunicodechar{≫}{\ensuremath{\gg}}
+\newunicodechar{⬝}{\ensuremath{\cdot}}
+\newunicodechar{∧}{\ensuremath{\wedge}}
+\newunicodechar{∨}{\ensuremath{\vee}}
+\newunicodechar{¬}{\ensuremath{\neg}}
+\newunicodechar{⊕}{\ensuremath{\oplus}}
+\newunicodechar{⊗}{\ensuremath{\otimes}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∉}{\ensuremath{\notin}}
+\newunicodechar{⊂}{\ensuremath{\subset}}
+\newunicodechar{⊃}{\ensuremath{\supset}}
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+\newunicodechar{∩}{\ensuremath{\cap}}
+\newunicodechar{∪}{\ensuremath{\cup}}
+\newunicodechar{∅}{\ensuremath{\emptyset}}
+\newunicodechar{∑}{\ensuremath{\sum}}
+\newunicodechar{∏}{\ensuremath{\prod}}
+\newunicodechar{∫}{\ensuremath{\int}}
+\newunicodechar{∂}{\ensuremath{\partial}}
+\newunicodechar{∇}{\ensuremath{\nabla}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{∘}{\ensuremath{\circ}}
+\newunicodechar{∗}{\ensuremath{\ast}}
+\newunicodechar{⋆}{\ensuremath{\star}}
+\newunicodechar{†}{\ensuremath{\dagger}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{½}{\ensuremath{\tfrac12}}
+\newunicodechar{…}{\ensuremath{\ldots}}
+\newunicodechar{•}{\ensuremath{\bullet}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{⊢}{\ensuremath{\vdash}}
+\newunicodechar{⊤}{\ensuremath{\top}}
+\newunicodechar{⊥}{\ensuremath{\bot}}
+\newunicodechar{▸}{\ensuremath{\triangleright}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∃}{\ensuremath{\exists}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{η}{\ensuremath{\eta}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{χ}{\ensuremath{\chi}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{ξ}{\ensuremath{\xi}}
+\newunicodechar{ζ}{\ensuremath{\zeta}}
+\newunicodechar{ι}{\ensuremath{\iota}}
+\newunicodechar{Γ}{\ensuremath{\Gamma}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Θ}{\ensuremath{\Theta}}
+\newunicodechar{Λ}{\ensuremath{\Lambda}}
+\newunicodechar{Π}{\ensuremath{\Pi}}
+\newunicodechar{Σ}{\ensuremath{\Sigma}}
+\newunicodechar{Φ}{\ensuremath{\Phi}}
+\newunicodechar{Ψ}{\ensuremath{\Psi}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{𝒟}{\ensuremath{\mathcal{D}}}
+\newunicodechar{𝒪}{\ensuremath{\mathcal{O}}}
+\newunicodechar{ℳ}{\ensuremath{\mathcal{M}}}
+\newunicodechar{ℛ}{\ensuremath{\mathcal{R}}}
+\newunicodechar{ℋ}{\ensuremath{\mathcal{H}}}
+\newunicodechar{ℒ}{\ensuremath{\mathcal{L}}}
+\newunicodechar{—}{---}\newunicodechar{–}{--}\newunicodechar{─}{-}\newunicodechar{§}{\S}
+
+% ---- theorem-like environments (numbered per chapter, one counter) -------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ---- epistemic tiers --------------------------------------------------------------------------
+\definecolor{tierA}{HTML}{1B7837}\definecolor{tierL}{HTML}{2166AC}\definecolor{tierC}{HTML}{B2182B}
+\newcommand{\tierbadge}[2]{\textcolor{#1}{\textsf{\bfseries\small[#2]}}}
+\newcommand{\TA}{\tierbadge{tierA}{A}}   % kernel-checked in Lean 4
+\newcommand{\TL}{\tierbadge{tierL}{L}}   % established in the literature, cited, not formalized here
+\newcommand{\TC}{\tierbadge{tierC}{C}}   % conjecture / proposal of this programme
+\newcommand{\lean}[1]{\texttt{#1}}       % Lean identifier; escape underscores as \_
+
+% ---- boxes ------------------------------------------------------------------------------------
+\tcbset{bookbox/.style={enhanced,breakable,boxrule=0.5pt,arc=1.5mm,left=2mm,right=2mm,top=1.2mm,bottom=1.2mm,
+  fonttitle=\sffamily\bfseries\small,before skip=10pt,after skip=10pt}}
+\newtcolorbox{physicsbox}[1][Physical picture]{bookbox,colback=blue!3,colframe=blue!45!black,title={#1}}
+\newtcolorbox{leanbox}[1][In Lean]{bookbox,colback=green!3,colframe=tierA,title={#1}}
+\newtcolorbox{pitfallbox}[1][Common pitfall]{bookbox,colback=red!3,colframe=tierC,title={#1}}
+\newtcolorbox{historybox}[1][Historical note]{bookbox,colback=black!3,colframe=black!55,title={#1}}
+\newtcolorbox{summarybox}[1][Chapter summary]{bookbox,colback=yellow!6,colframe=orange!60!black,title={#1}}
+% Lean source: \begin{leancode} ... \end{leancode} (verbatim, UTF-8 allowed; keep lines <= 92 chars)
+\DefineVerbatimEnvironment{leancode}{Verbatim}{fontsize=\footnotesize,frame=leftline,framerule=1.2pt,
+  rulecolor=\color{tierA},framesep=3mm,xleftmargin=4mm,samepage=false}
+
+% ---- notation (see Appendix A) ------------------------------------------------------------------
+\newcommand{\ap}{\alpha'}
+\newcommand{\Z}{\mathbb{Z}}\newcommand{\R}{\mathbb{R}}\newcommand{\C}{\mathbb{C}}\newcommand{\Q}{\mathbb{Q}}\newcommand{\N}{\mathbb{N}}
+\newcommand{\HH}{\mathcal{H}}              % generalized metric
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Odd}[1]{O(#1,#1;\Z)}           % \Odd{d} = O(d,d;Z)
+\newcommand{\OddR}[1]{O(#1,#1;\R)}
+\newcommand{\SLZ}{SL(2,\Z)}
+\newcommand{\Mtf}{M_{24}}
+\newcommand{\KT}{K3\times T^2}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\bra}[1]{\langle #1|}\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\vev}[1]{\langle #1\rangle}
+\newcommand{\source}[1]{{\small\textsf{[#1]}}}   % pinned source, e.g. \source{GPR §2.4, ll.~1355--1373}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[LE]{\small\nouppercase{\leftmark}}\fancyhead[RO]{\small\nouppercase{\rightmark}}
+\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{14pt}

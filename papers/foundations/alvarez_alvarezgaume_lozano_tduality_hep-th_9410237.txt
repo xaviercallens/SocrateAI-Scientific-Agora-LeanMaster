@@ -1,0 +1,2400 @@
+arXiv:hep-th/9410237v2 2 Nov 1994
+
+CERN-TH-7486/94
+FTUAM-94/26
+October, 1994
+hep-th/9410237
+
+An Introduction to T-Duality
+in String Theory
+Enrique Álvarez 1 , Luis Álvarez-Gaumé and Yolanda Lozano 1
+Theory Division CERN
+1211 Geneva 23
+Switzerland
+
+Abstract
+In these lectures a general introduction to T-duality is given. In the abelian case the
+approaches of Buscher, and Roc̆ek and Verlinde are reviewed. Buscher’s prescription for
+the dilaton transformation is recovered from a careful definition of the gauge integration
+measure. It is also shown how duality can be understood as a quite simple canonical
+transformation. Some aspects of non-abelian duality are also discussed, in particular what
+is known on relation to canonical transformations. Some implications of the existence of
+duality on the cosmological constant and the definition of distance in String Theory are
+also suggested.
+
+1
+
+Permanent address: Departamento de Fı́sica Teórica, Universidad Autónoma de Madrid, 28049
+Madrid, Spain
+
+Contents
+1 Introduction
+
+2
+
+2 Abelian and Non-Abelian Dualities
+2.1 Abelian Duality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2.2 Non-Abelian Duality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+5
+5
+9
+
+3 Mixed Anomalies and Effective Actions
+
+11
+
+4 The Transformation of the Dilaton
+
+13
+
+5 Duality and the Cosmological Constant
+
+15
+
+6 The Physical Definition of Distance
+
+17
+
+7 The Canonical Approach
+19
+7.1 The Abelian Case . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+7.2 The Non-Abelian Case . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+8 Conclusions and Open Problems
+
+27
+
+1
+
+1
+
+Introduction
+
+Few words have been used with more different meanings than the word “duality”. Even
+within the restricted framework of string theories, duality originally meant a symmetry
+between the s and the t-channels in strong interactions (coming from the demands in
+the S-matrix approach of the sixties of Regge behavior without fixed poles and analiticity, which were shown to imply the existence of an infinite number of resonances) [1].
+Somewhat related ideas, also termed “duality”, appear in the context of Conformal Field
+Theory (CFT) as simple consequences of locality and associativity of the operator product
+expansion (OPE) [2].
+Duality symmetry plays an important rôle in Statistical Mechanics (for a review and
+references to the literature see for instance [3]), in particular in the analysis of the phase
+diagram of spin systems. It can also be understood as a way to show the equivalence
+between two apparently different theories. On a lattice system described by a Hamiltonian
+H(gi) with coupling constants gi the duality transformation produces a new Hamiltonian
+H ∗ (gi∗) with coupling constants gi∗ on the dual lattice. In this way one can often relate the
+strong coupling regime of H(g) with the weak coupling regime of H ∗ (g ∗). An important
+application was the determination of the exact temperature at which the phase transition
+of the two-dimensional Ising model takes place [4].
+More recently, the word “duality” (“space-time duality”) has been introduced in yet
+another sense. T-duality is a symmetry which relates physical properties corresponding
+to big spacetime radius with quantities corresponding to small radius. This will be our
+main theme in this review and from now on we will refer to it as just duality (a general
+reference is [5]). S-duality is a (conjectural) symmetry relating the strong coupling regime
+with the weak coupling one, a bold generalization of the original conjecture by Montonen
+and Olive [6]. Still more interesting (and speculative), there is a “duality of dualities”:
+S-duality for strings corresponds to T-duality for fivebranes and conversely (see [7] for a
+general review). Another formally very similar property is β-duality, a property of the free
+energy of strings at finite temperature [8] which relates the high and the low temperature
+phases. For example, for the 10-dimensional heterotic string
+F (β) =
+
+π2
+F (π 2 /β).
+β2
+
+(1.0. 1)
+
+The physical interpretation of this symmetry is, however, somewhat uncertain due to the
+presence of the Hagedorn temperature.
+In String Theory and Two-Dimensional Conformal Field Theory duality is an important tool to show the equivalence of different geometries and/or topologies and in
+determining some of the genuinely stringy implications on the structure of the low energy
+Quantum Field Theory limit. Duality symmetry was first described on the context of
+toroidal compactifications [9]. For the simplest case of a single compactified dimension of
+radius R, the entire physics of the interacting theory is left unchanged under the
+√ replace′
+ment R → α /R provided one also transforms the dilaton field φ → φ − log (R/ α′ ) [10].
+This simple case can be generalized to arbitrary toroidal compactifications described by
+constant metric gij and antisymmetric tensor bij [12]. The generalization of duality to this
+case becomes (g + b) → (g + b)−1 and φ → φ − 12 log det(g + b). In fact this transformation
+2
+
+is an element of an infinite order discrete symmetry group O(d, d; Z) for d-dimensional
+toroidal compactifications [13, 14]. The symmetry was later extended to the case of nonflat conformal backgrounds in [16]. In Buscher’s construction one starts with a manifold
+M with metric gij , i, j = 0, . . . d − 1, antisymmetric tensor bij and dilaton field φ(xi ). One
+requires the metric to admit at least one continuous abelian isometry leaving invariant
+the σ-model action constructed out of (g, b, φ). Choosing an adapted coordinate system
+(x0 , xα ) = (θ, xα ), α = 1, . . . d − 1 where the isometry acts by translations of θ, the change
+of g, b, φ is given by
+g̃00 = 1/g00 ,
+g̃0α = b0α /g00 ,
+g̃αβ = gαβ − (g0α g0β − b0α b0β )/g00
+b̃0α = g0α /g00 ,
+b̃αβ = bαβ − (g0α b0β − g0β b0α )/g00 ,
+1
+φ̃ = φ − log g00 .
+2
+
+(1.0. 2)
+
+The final outcome is that for any continuous isometry of the metric which is a symmetry of the action one obtains the equivalence of two apparently very different non-linear
+σ-models. The transformation (1.0. 2) is referred to in the literature as abelian duality
+due to the abelian character of the isometry of the original σ-model. If n is the maximal
+number of commuting isometries, one gets a duality group of the form O(n, n; Z) [18].
+Duality symmetries are useful in determining important properties of the low-energy effective action, in particular in questions related to supersymmetry breaking and to the
+lifting of flat directions from the potential [15]. Although the transformation (1.0. 2) was
+originally obtained using a method apparently not compatible with general covariance, it
+is not difficult to modify the construction to eliminate this drawback [19]. A particularly
+useful interpretation of (1.0. 2) is in terms of the gauging of the isometry symmetry [17].
+The duality transformation proceeds in two steps: i) First one gauges the isometry group,
+thus introducing some auxiliary gauge field variables A. The gauge field is required to be
+flat and this is implemented by adding a Lagrange multiplier term of the form χdA. It
+is naively clear that if we first perform the integral ovel χ, this provides a δ-function dA
+on the measure, implying that A = dX is a pure gauge (we consider a spherical world
+sheet for simplicity). Fixing X = 0 the original model is recovered. ii) The second step
+consists of integrating first the gauge field A. Since there is no gauge kinetic term, the
+integration is gaussian, yielding a Lagrangian depending on the original variables and the
+auxiliary variable χ. After fixing the gauge the dual action follows. In [17] it was further
+shown that if one starts with a conformal field theory (CFT), conformal invariance is
+preserved by abelian duality. The proof was based on an analogy between the duality
+transformation and the GKO construction [32].
+Of more recent history is the notion of non-abelian duality [22, 23, 24, 25], which has
+no analogue in Statistical Mechanics. The basic idea of [22], inspired in the treatment of
+abelian duality presented in [17], is to consider a conformal field theory with a non-abelian
+symmetry group G. In this case the gauge field variables A and the Lagrange multipliers
+live in the Lie algebra associated to G. The duality transformation proceeds in the two
+steps described above.
+3
+
+In the abelian case it is also possible to work out the mapping between some operators
+in the original and dual theories, as well as the global topology of the dual manifold
+[19]. Thus for G abelian we have a rather thorough understanding of the detailed local
+and global properties of duality. In the non-abelian case global information can only be
+extracted for σ-models with chiral currents [25]. For these models it is possible to perform
+a non-local change of variables in the Lagrange multiplier term such that the Lagrangian
+keeps its local expression and from it the global properties of the dual model can be
+worked out. The same construction does not work for general σ-models without chiral
+isometries.
+Some interesting reviews on duality can be found in [5] and [20].
+The organization of the lectures is as follows:
+1. In section two we review the approaches of Buscher [16] and Roc̆ek and Verlinde
+[17] to abelian duality. We also exhibit the kind of information one can obtain with
+these formalisms. The approach of De la Ossa and Quevedo [22] to non-abelian
+duality is explained. Some comments are made concerning the global properties of
+the dual manifold [25].
+2. In section three we show that for non-semisimple isometry groups a mixed gravitationalgauge anomaly may emerge in constructing the non-abelian dual. This explains in
+particular why the example considered in [24] violates conformal invariance to first
+′
+order in α .
+3. In section four we study with some detail the transformation of the dilaton needed
+′
+to preserve conformal invariance (to first order in α ) under duality.
+4. In section five the problem of the behavior of the cosmological constant under duality is addressed. This study is motivated by the work in [36] where an explicit
+example in which the cosmological constant changes under a duality transformation
+is considered.
+5. In section six we study the implications that duality has in the definition of a
+proper distance within String Theory. We consider particular families of correlators,
+manifestly duality invariant, and discuss the properties a distance based on them
+would have.
+6. In section seven the canonical transformation approach to duality is studied. We
+shall be following [45]. In the abelian case the explicit generating functional producing Buscher’s formulae is constructed. It is shown that all the information which
+can be obtained in the formulations above can be derived more easily this way. The
+general formulation of non-abelian duality as a canonical transformation is so far
+unknown. We review an example [47] where a non-abelian transformation in the
+SU(2) principal chiral model is constructed as a canonical transformation of type I,
+the same type as for abelian duality.
+7. Section eight contains a partial list of open problems.
+4
+
+2
+
+Abelian and Non-Abelian Dualities
+
+2.1
+
+Abelian Duality
+
+We start with a summary of Buscher’s formulation [16]. Consider a non-linear σ-model
+defined on a d-dimensional manifold M:
+Z
+√
+√
+1
+′
+(2.1. 1)
+d2 ξ[ hhµν gij ∂µ xi ∂ν xj + iǫµν bij ∂µ xi ∂ν xj + α hR(2) φ(x)],
+S=
+′
+4πα
+where gij is the target space metric, bij the torsion and φ the dilaton field, coupled to
+the two dimensional scalar curvature in the world sheet R(2) . hµν is the world sheet
+′
+metric and α the inverse of the string tension. Let us assume that the σ-model has an
+abelian isometry represented by a translation in a coordinate θ in the target space. In
+the coordinates {θ, xα }, α = 1, . . . , d − 1, adapted to the isometry, the metric, torsion
+and dilaton fields are θ-independent. Then the original theory can be obtained from the
+following d + 1-dimensional σ-model:
+Z
+√
+1
+Sd+1 =
+d2 ξ[ hhµν (g00 Vµ Vν + 2g0α Vµ ∂ν xα + gαβ ∂µ xα ∂ν xβ )
+′
+4πα
+√
+′
+µν
++iǫ (2b0α Vµ ∂ν xα + bαβ ∂µ xα ∂ν xβ ) + 2iǫµν θ̃∂µ Vν + α hR(2) φ(x)], (2.1. 2)
+where V is a 1-form defined on M and θ̃ is an additional variable acting as a Lagrange
+multiplier. The equation of motion for θ̃ implies ǫµν ∂µ Vν = 0, which in topologically
+trivial world sheets forces Vµ = ∂µ θ, leading to the original theory. If instead we integrate
+over the Vµ -fields:
+ǫµ ν
+1
+(2.1. 3)
+Vµ = − (g0α ∂µ xα + i √ (b0α ∂ν xα + ∂ν θ̃)),
+g00
+h
+we obtain the dual action:
+1 Z 2 √ µν
+S̃ =
+d ξ[ hh (g̃00 ∂µ θ̃∂ν θ̃ + 2g̃0α ∂µ θ̃∂ν xα + g̃αβ ∂µ xα ∂ν xβ )
+4πα′
+√
+′
+(2.1. 4)
++iǫµν (2b̃0α ∂µ θ̃∂ν xα + b̃αβ ∂µ xα ∂ν xβ ) + α hR(2) φ(x)],
+where:
+1
+g00
+b0α
+,
+=
+g00
+
+g̃00 =
+g̃0α
+g̃αβ
+b̃αβ
+
+g0α
+g00
+g0α g0β − b0α b0β
+= gαβ −
+g00
+g0α b0β − g0β b0α
+.
+= bαβ −
+g00
+b̃0α =
+
+(2.1. 5)
+
+(2.1. 5) show that duality relates very different geometries. We will see that it may also
+lead to different topologies. The integration on Vµ produces a factor in the measure detg00
+which conveniently regularized yields the shift of the dilaton:
+φ̃ = φ −
+
+1
+log g00 .
+2
+5
+
+(2.1. 6)
+
+The regularization prescription in order to find (2.1. 6) is fixed by requiring conformal
+invariance of the dual theory. In [16] the following definition was shown to yield the
+′
+correct dilaton shift satisfying conformal invariance to first order in α :
+det∆A
+,
+(2.1. 7)
+det∆
+√
+√
+where ∆A = − √1h ∂µ ( hhµν A∂ν ), ∆ = − √1h ∂µ ( hhµν ∂ν ). We will further justify this
+definition for the determinant in section four.
+The σ-model defined by (g̃, b̃, φ̃) is independent of the θ̃ variable, hence the original
+model can be recovered by performing the duality transformation with respect to θ̃ shifts.
+This formalism has apparently some limitations:
+detA ≡
+
+1. It seems that general covariance is broken due to the choice of adapted coordinates
+needed to perform the duality transformation. This also obscures the issue of the
+global topology of the dual manifold, which is harder to describe if one works in
+local coordinates.
+2. If the original theory has some isometries not commuting with the one used for
+duality they generically disappear as local symmetries in the dual model.
+3. The original model is recovered from (2.1. 2) only in spherical world sheets. The
+monodromy of the V variable must be fixed by imposing the absence of modular
+anomalies. For that we need to know which are the orbits of the Killing vector.
+4. When the Killing vector has fixed points, Vµ in (2.1. 3) is singular. In this case it
+could be much wiser to work with the d + 1-dimensional action (2.1. 2).
+5. What happens to the operator mapping from the above construction?.
+6. What are the general properties of the non-abelian generalization?.
+All these questions can be addressed with a different way of constructing the dual
+model. We will follow the work of Roc̆ek and Verlinde [17]. The formulation of Roc̆ek and
+Verlinde starts with the same σ-model (2.1. 1) with the abelian isometry represented by
+θ → θ + ǫ. The key point is to gauge the isometry by introducing some gauge fields Aµ
+transforming as δAµ = −∂µ ǫ. With a Lagrange multiplier term the gauge field strength is
+required to vanish, forcing the constraint that the gauge field is pure gauge. After gauge
+fixing the original model is then recovered.
+Gauging the isometry in (2.1. 1) and adding the Lagrange multipliers term leads to:
+Sd+1
+
+Z
+√
+1
+=
+d2 ξ[ hhµν (g00 (∂µ θ + Aµ )(∂ν θ + Aν ) + 2g0α (∂µ θ + Aµ )∂ν xα
+′
+4πα
++gαβ ∂µ xα ∂ν xβ ) + iǫµν (2b0α (∂µ θ + Aµ )∂ν xα + bαβ ∂µ xα ∂ν xβ ) + 2iǫµν θ̃∂µ Aν
+√
+′
++α hR(2) φ(x)].
+(2.1. 8)
+
+The dual theory is obtained integrating the A fields:
+Aµ = −
+
+ǫµ ν
+1
+(g0α ∂µ xα + i √ (b0α ∂ν xα + ∂ν θ̃)),
+g00
+h
+6
+
+(2.1. 9)
+
+and fixing θ = 0.
+In [17] it is shown that the original and dual theories can be considered as the vectorial
+and axial cosets of a given higher dimensional theory with chiral currents in which the
+abelian symmetry group is gauged. This shows that conformal invariance is preserved by
+′
+abelian duality to all orders in α since one can think of the initial and dual theories as
+two different functional integral representations of the same conformal field theory.
+Within this approach the open questions enumerated above can be solved.
+The procedure of gauging the isometry can be implemented in arbitrary coordinates
+[19]. If the original σ-model has a torsion term then Noether’s procedure must be followed,
+as made explicit in [26]. Let us consider the following σ-model:
+Z
+
+Z
+
+1
+i
+S =
+gij ∂µ xi ∂ µ xj +
+bij dxi ∧ dxj
+8π Z
+8π
+1
+d2 ξ(gij + bij )∂xi ∂xj ,
+=
+2π
+
+(2.1. 10)
+
+′
+
+where α = 2. Let k i be a Killing vector for the metric g:
+Lk gij = ∇i kj + ∇j ki = 0.
+
+(2.1. 11)
+
+Lk b = dω,
+
+(2.1. 12)
+
+Invariance of S requires also
+ω = ik b − v,
+
+where (ik b)j ≡ k i bij and v is a one-form such that ik H = −dv (H = db locally). The
+associated conservation law is:
+¯ k=0
+∂ J¯k + ∂J
+(2.1. 13)
+Jk = (k − ik b + ω)i∂xi = (k − v)i ∂xi ≡ (k − v) · ∂x
+¯ i = (k + v)i ∂x
+¯ i ≡ (k + v) · ∂x.
+¯
+J¯k = (k + ik b − ω)i∂x
+
+(2.1. 14)
+
+If we wish to gauge the isometry we introduce gauge fields A, Ā, with δǫ A = −∂ǫ , δǫ Ā =
+¯ and δxi = ǫk i (x) now with ǫ a function on the world sheet. It can be shown [19]
+−∂ǫ,
+that the action:
+Sd+1 =
+
+1
+2π
+
+Z
+
+¯ j + (Jk − ∂χ)Ā + (J¯k + ∂χ)A
+¯
+d2 ξ[(gij + bij )∂xi ∂x
++ k 2 AĀ],
+
+(2.1. 15)
+
+is invariant under:
+δǫ xi = ǫk i (x)
+δǫ A = −∂ǫ
+
+δǫ χ = −ǫk · v
+¯
+δǫ Ā = −∂ǫ.
+
+(2.1. 16)
+
+The Lagrange multiplier term forces the gauge field to be flat and at the same time cancels
+the anomalous variation of the Lagrangian. For a genus g world-sheet Σg and compact
+isometry orbits we may have large gauge transformations. We consider multivalued gauge
+functions:
+I
+dǫ = 2πn(γ)
+n(γ) ∈ Z,
+(2.1. 17)
+γ
+
+7
+
+where γ is a non-trivial homology cycle in Σg . Since we are dealing with abelian isometries
+it suffices to consider only the toroidal case g = 1. The variation of Sd+1 is:
+δSd+1
+
+Z
+
+Z
+
+
+
+1
+¯ − ∂ǫ∂χ
+¯ = i
+=
+∂χ∂ǫ
+dχ ∧ dǫ
+2π I
+4π T
+I
+I
+I
+i
+dχ dǫ − dǫ dχ
+=
+4π a
+b
+a
+b
+
+(2.1. 18)
+
+where a and b are the two generators of the homology group of the torus T. Since ǫ is
+multivalued by 2πZ, we learn from (2.1. 18) that χ is multivalued by 4πZ:
+I
+
+γ
+
+dχ = 4πm(γ)
+
+m(γ) ∈ Z.
+
+(2.1. 19)
+
+For a non-compact isometry δSd+1 = 0 and dχ may in general have real periods. The
+original theory is recovered integrating the Lagrange multiplier, which appears in the
+action in the form of a closed one form. In non trivial world sheets these one forms have
+exact and harmonic components. The χ-dependence in (2.1. 15) is:
+Sχ = −
+
+1
+2π
+
+Z
+
+(dχ0 + χh ) ∧ A.
+
+(2.1. 20)
+
+Integrating by parts in the exact part and using Riemann’s bilinear identity we obtain:
+1
+Sχ =
+2π
+
+Z
+
+I
+
+I
+
+I
+
+I
+
+1
+( χh A − A χh ).
+χ0 ∧ dA −
+2π a
+b
+a
+b
+
+(2.1. 21)
+
+Integration on χ0 yields the constraint dA = 0 and integration on the harmonic components leads to:
+I
+I
+A = A = 0.
+(2.1. 22)
+a
+
+b
+
+Both constraints imply that A must be an exact one form. Fixing the gauge the original
+theory is recovered. By construction Sd+1 is general covariant, and therefore we have
+a clear idea of the d-dimensional geometrical interpretation of the model. Locally the
+dual manifold is equivalent to (M/S 1 ) × S 1 (for compact isometries), where the quotient
+means that the gauge is fixed by dividing by the orbits of the isometry group. Generically
+we expect topology change as a consequence of duality. However the more delicate issue
+is whether the dual manifold M̃ is indeed a product or a twisted product (non-trivial
+bundle). It is also useful to notice that in the previous arguments the structure of π1 (M)
+played no rôle. This rises some questions concerning the way the operators in both theories
+are mapped under duality [19]. The nature of the product relating the gauged original
+manifold and the Lagrange multipliers space turns out to be dictated by the gauge fixing
+procedure, in particular by Gribov problems. We use an example to labor this point. This
+is the SU(2) principal chiral model, which represents a σ-model in S 3 . The dual with
+respect to a fixed point free abelian isometry is locally S 2 × S 1 . One knows that this also
+holds globally when performing the gauge fixing. This reveals that the dual manifold is
+S 2 × S 1 and not a squeezed S 3 (for details see [19]).
+The interest of working with the d + 1-dimensional theory is that the possible singularities in the dual theory due to the existence of fixed points do not emerge. However if
+8
+
+we are interested in the explicit form of the dual σ-model we have to eliminate the gauge
+field A. Integrating on A in (2.1. 15), the dual model (g̃, b̃, φ̃) reads:
+1
+k2
+vα
+g̃0α = 2 ,
+k
+
+g̃00 =
+
+kα
+k2
+kα kβ − vα vβ
+g̃αβ = gαβ −
+k2
+kα vβ − kβ vα
+b̃αβ = bαβ −
+k2
+1
+φ̃ = φ − log k 2 .
+2
+b̃0α =
+
+(2.1. 23)
+
+Going to adapted coordinates and fixing the gauge we recover Buscher’s formulae since
+k 2 = g00 , vα = b0α , kα = g0α . However this choice of coordinate system unables us to
+obtain global information about the dual manifold.
+The explicit operator mapping can be constructed [19]. The duals to vertex operators
+Vp = exp ipθ, which are momenta operators in the direction of the isometry, are non-local
+operators which can be interpreted as winding operators only for flat compact isometries.
+Thus, the description of duality in toroidal compatifications as the symmetry exchanging
+momenta and windings is modified. In particular the structure of π1 (M) turns out not
+to be important. The winding operators are associated to compact isometry orbits in the
+target space manifold and not to homologically non-trivial cycles as is usually interpreted
+for toroidal compactifications.
+The extension to non-abelian isometry groups is easily done in this formalism. The
+details are worked out in the next section.
+
+2.2
+
+Non-Abelian Duality
+
+The same procedure à la Roc̆ek and Verlinde was generalized in [22] to construct the
+dual with respect to a given no-abelian isometry group G. The gauge fields take values
+in the Lie algebra associated to the isometry group and they transform under gauge
+transformations xm → g m n xn , m, n = 1, . . . , N, where g ∈ G, as A → g(A + ∂)g −1 . The
+isometry is gauged by introducing covariant derivatives2 :
+∂xm → Dxm = ∂xm + Aα (Tα )m n xn ,
+
+(2.2. 1)
+
+where Tα is a N-dimensional representation for the α generator of the Lie algebra of G.
+The flatness of the gauge fields is imposed by the term:
+Z
+
+T r(χF ),
+
+(2.2. 2)
+
+¯ + [A, Ā]. The χ-fields take values in the Lie algebra associated to G
+with F = ∂ Ā − ∂A
+and transform in the adjoint representation to preserve gauge invariance. Integration on
+2
+
+Note that this way of gauging a continuous global isometry is only valid for certain σ-models and
+isometry groups [26].
+
+9
+
+χ fixes F = 0 in semisimple groups, then A is pure gauge (in spherical world sheets) and
+after gauge fixing we recover the original model. As before the dual model is obtained
+integrating on A and then fixing the gauge. For non-semisimple groups the Lagrange
+multipliers term must be introduced in a different way since the Cartan-Killing metric is
+degenerate and the integration on χ does not imply that all the F -components are zero.
+In this case the χ-fields must be taken in the basis dual to Tα and they transform in the
+coadjoint representation.
+We can write the gauged σ-model action as:
+Sgauge
+
+1 Z 2
+¯ µ + Qµn ∂xµ D̄xn + Qµν ∂xµ ∂x
+¯ ν
+=
+d z[Qmn Dxm D̄xn + Qmµ Dxm ∂x
+2π
+1
+(2.2. 3)
++T r(χF ) + R(2) φ],
+2
+
+where Q = g + b, latin indices are associated to coordinates adapted to the non-abelian
+isometry and greek indices to inert coordinates. We can write (2.2. 3) as:
+Sgauge = S[x] +
+
+1
+2π
+
+Z
+
+1
+d2 z[Āα fαβ Aβ + h̄α Aα + hα Āα + R(2) φ],
+2
+
+(2.2. 4)
+
+with:
+hα = (Qmn ∂xm + Qµn ∂xµ )(Tα )n q xq − ∂χα TR ηαα
+¯ µ + Qnm ∂x
+¯ m )(Tα )n q xq + ∂χ
+¯ α TR ηαα
+h̄α = (Qnµ ∂x
+fαβ = Qmn (Tβ )m r (Tα )n p xr xp + Cβα γ χγ TR ηγγ ,
+
+(2.2. 5)
+
+′
+
+where [Tα , Tβ ] = Cαβ γ Tγ and T r(Tα Tβ ) = TR ηαβ (T r(Tα Tβ ) = TR ηαβ if the group is not
+semisimple).
+Integrating A, Ā:
+S̃ = S[x] +
+
+1
+2π
+
+Z
+
+1
+d2 z[h̄α (f αβ )−1 hβ + R(2) φ̃],
+2
+
+where φ̃ is given by:
+
+(2.2. 6)
+
+1
+log (detf ),
+(2.2. 7)
+2
+after regularizing the factor detf coming from the measure as in previous section. In all
+the examples considered the dual model with this dilaton satifies the conformal invariance
+′
+conditions to first order in α , but a general proof analogous to that of Buscher in the
+abelian case is lacking.
+The construction above seems to be a straightforward extension of abelian duality.
+However this is not so. Non-abelian duality is quite different from abelian duality, as
+it is clearly manifested in the context of Statistical Mechanics. In this context duality
+transformations are applied to models defined on a lattice L with physical variables taking
+values on some abelian group G. The duality transformation takes us from the triplet
+(L, G, S[g]), where S[g] is the action depending on some coupling constants labelled collectively by g to a model (L∗ , G∗ , S ∗ [g ∗ ]) on the dual lattice L∗ with variables taking values
+on the dual group G∗ and with some well-defined action S ∗ [g ∗ ]. For abelian groups, G∗
+φ̃ = φ −
+
+10
+
+is the representation ring, itself a group, and when we apply the duality transformation
+once again we obtain the original model. As soon as the group is non-abelian the previous construction breaks down because the representation ring of G is not a group [3]. In
+particular the non-abelian duality transformation cannot be performed again to obtain
+the model we started with. In the context of String Theory the major problems in stating
+non-abelian duality as an exact symmetry come when trying to extend it to non-trivial
+world sheets and when performing the operator mapping (a detailed explanation on this
+can be found in [19]). With the usual Lagrange multipliers variables is not possible to extract global information. In σ-models with chiral currents a non-local change of variables
+in the Lagrange multipliers term can be done such that the dual Lagrangian is local. In
+these variables the dual theory can be shown to be the product of the coset of the original
+manifold by the isometry group M/G and the WZW model of group G [25]. This applies
+in particular to the case of abelian groups, in agreement with the results on abelian duality. The dual variables introduced in [25] are the base of the non-abelian bosonization
+studied in [27]. As in the abelian case the more delicate issue is to know what kind of a
+product it is. This can be worked out in the case of WZW models [49]. The partition
+function at genus one of a WZW model with group G is not a product of any modular invariant partition function for the G/H coset theory and one of the H WZW-model (now
+H is the gauged isometry group). The Kac-Moody characters of the Gk WZW-model
+have a well-defined decomposition in terms of products of G/H and Hk characters. This
+implies that the product is a twisted product. In fact in this case the explicit integration
+on the A-fields can be made and the result is that the model is self-dual.
+For non-abelian isometry groups certain anomalies can arise when performing the nonabelian dual construction [25, 28]. When one analyzes carefully the measure of integration
+over the gauge fields and its dependence on the world sheet metric, one encounters a mixed
+gauge and gravitational anomaly [29] when any generator of the isometry group in the
+adjoint representation has a non-vanishing trace. This can only happen for non-semisimple
+groups. This mixed anomaly generates a contribution to the trace anomaly which cannot
+be absorbed in a dilaton shift and imposes a mild anomaly cancellation condition for the
+consistency of non-abelian duality. We treat this point in the next section.
+
+3
+
+Mixed Anomalies and Effective Actions
+
+Since we are interested in conformal invariance, we introduce an arbitrary metric hαβ on
+the world sheet and compute the contribution to the trace anomaly of the auxiliary gauge
+fields Aa± . If for simplicity we work on genus zero surfaces, the most straightforward way
+to compute the dependence of the effective action on the world sheet metric is to first
+parametrize A± as:
+A+ = L−1 ∂+ L, A− = R−1 ∂− R,
+(3.0. 1)
+for L, R group elements. We can think of x± as light-cone variables or as complex coordinates, and they depend on the metric being used. In changing variables from A± to
+(L, R) we encounter jacobians:
+DA+ DA− = DL DR det(D+ (A+ )D− (A− ))
+11
+
+(3.0. 2)
+
+with A± given by (3.0. 1) (we take A± as antihermitian matrices). We can write the determinants in (3.0. 2) in terms of a pair of (b,c)-systems (b+a , ca ), (b−a , c̃a ). c, c̃ are 0-forms
+transforming in the adjoint representation of the group. For arbitrary groups b± transform in the coadjoint representation. The determinants in (3.0. 2) can be exponentiated
+in terms of the (b,c)- systems with an action:
+i
+S[b± , c, c̃] =
+π
+
+Z
+
+(b+ D− (A)c + b− D+ (A)c̃),
+
+(3.0. 3)
+
+which is formally conformal invariant. The variation of S with respect to the metric is
+given by the energy-momentum tensor T±± . We can ignore momentarily that A± are
+given by (3.0. 1) and work with arbitrary gauge fields. We can compute the dependence
+of the effective action for (3.0. 3) on the metric hαβ and the gauge field using Feynman
+graphs. Expanding about the flat metric, and using the methods in [29], the first diagrams
+contributing to the effective action are
+
+A
+
+h
+
+h++
+
+A+
+
+h−− (h++ ) couples to T++ (T−− ), and A− (A+ ) to the ghost currents j+ (j− ) given by:
+T++ = ∂+ ca b+a , T−− = ∂− c̃a b−a
+
+(3.0. 4)
+
+j+i = b+a (T i )ab cb , j−i = b−a (T i )ab c̃b
+
+(3.0. 5)
+
+If one keeps track of the iǫ prescriptions in the propagators appearing in the graphs, the
+loop integrals are finite, and we can write their contributions to the effective action as:
+W (2) =
+
+Z
+1
+p2
+p2
+T rT a d2 p(h−− (p) + Aa− (−p) + h++ (p) − Aa+ (−p)).
+4π
+p−
+p+
+
+(3.0. 6)
+
+The coefficient of (3.0. 6) and W (2) may also be computed using the OPE:
+T (z)ja (w) ∼
+
+1
+1
+T rTa
++
+ja (w) +
+∂ja (w).
+3
+2
+(z − w)
+(z − w)
+(z − w)
+
+(3.0. 7)
+
+As it stands, W (2) has a gravitational anomaly, i.e. the energy-momentum tensor is not
+conserved. However we can still add local counterterms to (3.0. 6) to recover general
+coordinate invariance. Since to first order in h the two-dimensional scalar curvature has
+as Fourier transform:
+R(p) = 2(2p+ p− h+− (p) − p2+ h−− − p2− h++ ),
+
+(3.0. 8)
+
+if we add the counterterms:
+Z
+
+1
+Wc.t. =
+T rTa Aa− (−p)(h++ (p)p− − 2p+ h+− )
+4πZ
+1
++ T rTa Aa+ (−p)(h−− (p)p+ − 2p− h+− ),
+4π
+12
+
+(3.0. 9)
+
+we obtain an effective action
+W
+
+(2)
+
+1
+T rTa
+=
+16π
+
+Z
+
+R(p)
+
+p+ Aa− (−p) + p− Aa+ (−p)
+,
+p+ p−
+
+(3.0. 10)
+
+leading to a conserved energy-momentum tensor, although it contains a trace anomaly
+which is not proportional to R(p) and therefore it cannot be absorbed in a modification
+of the dilaton transformation. Varying (3.0. 10) with respect to h+− leads to:
+hT+− i =
+
+δW (2)
+1
+=
+T rTa (p+ Aa− (−p) + p− Aa+ (−p))
+δh+−
+4π
+
+(3.0. 11)
+
+which in covariant form becomes ∼ T rTa ∇α Aaα .
+Similarly we can vary the effective action to this order with respect to gauge transformations to evaluate the corresponding gauge anomaly:
+δW (2)
+δW (2)
+δW (2)
+δW (2)
++
+D
+)
+∼
+p
++
+p
++
+−
++
+δAa−
+δAa+
+δAa− (p)
+δAa+ (p)
+1
+= p− hja+ (p)i + p+ hja− (p)i = − T rTa R(−p).
+8π
+(D−
+
+(3.0. 12)
+
+This is a different way of writing the third order pole in the OPE (3.0. 7). From (3.0.
+11) we see that at this order (W (2) ) the trace anomaly is not proportional to R, and it
+therefore cannot be absorbed in a contribution to the dilaton or the effective value of
+c (the central charge of the Virasoro algebra). The contribution in (3.0. 11) spoils the
+conformal invariance of the dual theory, and further fields should be required to cancel it.
+However in that case the resulting theory would not agree with the one obtained through
+a naive duality transformation. Another way to obtain the same conclusion as in (3.0. 11)
+is to use heat kernel methods. Both methods agree and we conclude that the condition for
+the duality transformation to respect conformal invariance is that the generators of the
+duality group in the adjoint representation should have a vanishing trace. The opposite
+may only happen for non-semisimple groups, as in the example discussed in [24].
+
+4
+
+The Transformation of the Dilaton
+
+It is well known [16] that the transformation (2.1. 5) is not the whole story. Indeed, the
+dual model is not even conformally invariant in general, unless an appropriate transformation of the dilaton is included, namely
+φ̃ = φ −
+
+1
+log k 2 .
+2
+
+(4.0. 1)
+
+Perhaps the simplest way to realize that something has to change in the dilaton coupling
+is to insist on the demand that the BRS charge be nilpotent. It is well-known [33, 34]
+that the BRS charge can be written as:
+Q=
+
+I
+
+dz
+1
+c(z)(T (x) + Tgh ),
+2πi
+2
+13
+
+(4.0. 2)
+
+where
+1
+1
+T (x) ≡ − gµν ∂xµ ∂xν + ∂ 2 φ
+2
+2
+Tgh ≡ −2b∂c − ∂bc
+
+(4.0. 3)
+
+and Q2 = 0 (in the OPE sense) is equivalent to the consistency conditions of the σ-model
+β-functions equal to zero [35].
+Using the fact that after performing a duality transformation
+T̃ (x) = T (x) +
+
+1
+1
+[(k.∂x)2 − ((v − w).∂x)2 ] + ∂ 2 (φ̃ − φ)
+2
+2k
+2
+
+(4.0. 4)
+
+the condition Q̃2 = 0 necessarily leads to (4.0. 1).
+We can trace the need for a transformation of the dilaton to the behavior of the
+measure under conformal transformations. Under a Weyl rescaling of the 2-d world-sheet
+metric, g → eσ g, the integration measure over the embeddings behaves (to first order in
+σ) as:
+′ R
+1
+d
+2
+2 1
+2
+(4.0. 5)
+D(eσ g) x = Dg x e 48π SL (σ)+6α (−∇ φ+(∇φ) − 4 R+ 48 H )σ ,
+
+where SL (σ) is the Liouville action. This means that although they are formally the same,
+both measures Dx and Dx̃ behave in a very different way under Weyl transformations
+unless, of course, a compensating transformation of the dilaton is introduced to this
+purpose.
+In the path integral approach the way to obtain the correct dilaton shift yielding to a
+conformally invariant dual theory can be seen as follows. Let us work with the approach
+of Roc̆ek and Verlinde. In complex coordinates and on spherical world sheets we can
+¯ (as we previously did in (3.0. 1)), for some 0-forms α, β
+parametrize A = ∂α, Ā = ∂β
+in the manifold M. The change of variables from A, Ā to α, β produces a factor in the
+measure:
+¯ = DαDβ(det∆).
+DAD Ā = DαDβ(det∂)(det∂)
+(4.0. 6)
+
+Substituting A, Ā as functions of α, β in (2.1. 8) and integrating on α, β, the following
+determinant emerges:
+¯ −1 .
+(det(∂g00 ∂))
+(4.0. 7)
+In particular, the integration on β produces a delta-function
+¯ 00 ∂α + (g0α − b0α )∂xα − ∂ θ̃)),
+δ(∂(g
+
+(4.0. 8)
+
+which integrated on α yields the factor in the measure (4.0. 7).
+What we finally get in the measure is then
+det∆
+det∆g00
+
+(4.0. 9)
+
+where ∆g00 is given as in (2.1. 7) in complex notation. This formula provides a justification
+for Buscher’s prescription (see also [30]) for the computation of the determinant arising
+from the naive gaussian integration. As we have just seen some care is needed in order
+to correctly define the measure of integration over the gauge fields. From (4.0. 9) the
+14
+
+dilaton shift (2.1. 6) is obtained in the following way. Writing g00 as g00 = 1 + σ ≈ eσ we
+have:
+∆g00 = (1 + σ)∆ − hµν ∂µ σ∂ν .
+(4.0. 10)
+Substituting in the infinitesimal variation of Schwinger’s formula:
+
+we obtain
+δ log det∆g00 = −
+
+Z
+
+Z ∞
+
+dtδ∆e−t∆
+
+(4.0. 11)
+
+√
+µν
+d2 ξ hΩhξ|e−ǫ(∆+σ∆−h ∂µ σ∂ν ) |ξi,
+
+(4.0. 12)
+
+δ log det∆ = T r
+
+ǫ
+
+where δ∆g00 = −Ω∆g00 with δhµν = Ωδµν . We can now use the heat kernel expansion
+[31]:
+1
+1 1 (2)
+hξ|e−ǫD |ξi =
++
+( R − V ),
+(4.0. 13)
+4πǫ 4π 6
+where
+√
+i
+(4.0. 14)
+D ≡ ∆ − 2ihµµ Aµ ∂ν + (− √ ∂µ ( hhµν Aν ) + hµν Aµ Aν ) + V.
+h
+For D = ∆ + σ∆ − hµν ∂µ σ∂ν and after dropping the divergent term 1/4πǫ and the
+quadratic terms in σ we obtain:
+Z
+
+√
+d2 ξ hR(2) log g00 .
+
+(4.0. 15)
+
+1 Z 2 √ (2)
+d ξ hR log g00 ),
+detg00 = exp (−
+8π
+
+(4.0. 16)
+
+1
+δ log det∆g00 = −
+8π
+Substituting in (2.1. 7):
+
+which implies φ̃ = φ − 21 log g00 .
+
+5
+
+Duality and the Cosmological Constant
+
+A striking feature of duality is the fact that the cosmological constant, defined as the
+asymptotic value of the scalar curvature, is not in general invariant under the transformag R)
+tion. This fact was first noticed in [36] for the case of a WZW model with group SL(2,
+where a discrete subgroup was gauged. This space has negative cosmological constant
+and under a given duality transformation it is mapped into an asymptotically flat space
+(into a black string). This implies that the usual definition of the cosmological constant
+from the low-energy effective action is not satisfactory. Even at large distances, if duality
+is not broken there is a symmetry between local (momentum) modes and non-local (winding) modes. One is lead to wonder to what extent the cosmological constant is a string
+observable3 . The contribution to the cosmological constant of the massless sector might
+be cancelled by the tower of massive states always present in String Theory (proposals
+along these lines using the Atkin-Lehner symmetry were advanced by G. Moore [39]).
+3
+
+Similar remarks would apply to the concept of spacetime singularity in String Theory [37, 38].
+
+15
+
+We study now the behavior of the scalar curvature under duality. If the space-time
+metric in the σ-model takes the form
+ds2 = gij dxi dxj
+
+i, j = 0, 1, 2, ..., d − 1,
+
+(5.0. 1)
+
+where x0 is adapted to the isometry ~k = ∂/∂x0 , (5.0. 1) can be written as
+ds2 = (e0 )2 + (gαβ −
+
+kα kβ
+)dxα dxβ
+k2
+
+kα α
+dx
+k
+= ki k i = g00
+kα = g0α .
+
+e0 = kdx0 +
+k2
+
+(5.0. 2)
+
+Buscher’s transformation leads to a dual metric
+ds̃2 = (ẽ0 )2 + (gαβ −
+ẽ0 =
+
+kα kβ
+)dxα dxβ
+k2
+
+1
+(dx̃0 + vα dxα ),
+k
+
+(5.0. 3)
+
+x̃0 being the Lagrange multiplier and v is defined as in section 2 by k l Hlij = −∂[i vj] , H =
+db. The dual scalar curvature following from (5.0. 3) is
+R̃ = R −
+
+4 d−1
+1
+k2
+4 αβ
+0αβ
+g
+∂
+k∂
+k
++
+∆
+k
++
+H
+H
+−
+Fαβ F αβ ,
+α
+β
+0αβ
+k2
+k q
+k2
+4
+
+q
+where ∆d−1
+is the (d − 1)-dimensional Laplacian for the metric gαβ
+= gαβ −
+q
+Fαβ = ∂α Aβ − ∂β Aα with Aα = kα /k 2 . (5.0. 4) can be rewritten as
+
+R̃ = R + 4∆ log k +
+
+1
+k2
+0αβ
+H
+H
+−
+Fαβ F αβ .
+0αβ
+k2
+4
+
+(5.0. 4)
+kα kβ
+, and
+k2
+
+(5.0. 5)
+
+From (5.0. 5) we see that:
+• The only way to “flatten” negative curvature is by having torsion in the initial
+space-time. Otherwise the dual of an asymptotically negatively curved space time
+is a space of the same type.
+• Positive curvature seems easier to flatten.
+• In general the asymptotic behaviors of R̃ and R are different, which proves the
+statement at the beginning of this section.
+• In the particular case of constant toroidal compactifications R̃ = R, in agreement
+with the result in [40].
+We can also construct the dual torsion
+1
+H̃0αβ = − Fαβ
+2
+H̃αβρ = Hαβρ −
+
+3
+3
+H0[αβ kρ] − F[αβ vρ] .
+2
+k
+2
+16
+
+(5.0. 6)
+
+Since
+
+√
+
+q
+
+g = k 2 g̃,
+
+(5.0. 7)
+
+and the modulus of k can be expressed in terms of the dilaton transformation properties,
+φ̃ = φ − log k,
+
+(5.0. 8)
+
+2
+2
+R̃ + e2(φ−φ̃) H̃0αβ
++ ∆φ̃ = R + e2(φ̃−φ) H0αβ
++ ∆φ,
+
+(5.0. 9)
+
+we obtain
+which could be used to show the duality invariance of the string effective action to leading
+order in α′ .
+The change of the cosmological constant under duality is not only peculiar to threedimensions [36] but rather generic. This raises the physical question of whether in the
+context of String Theory the value of the cosmological constant can be inferred from the
+asymptotic (long distance) behavior of the Ricci tensor. If duality is not broken, the
+answer seems to be in the negative, and it makes the issue of what is the correct meaning
+of the cosmological constant in String Theory yet more misterious.
+
+6
+
+The Physical Definition of Distance
+
+The existence of duality raises the question of the empirical definition of distance. This is,
+of course, not a well defined question in the absence of a sufficiently developed String Field
+Theory, but can nevertheless be asked if we assume that the outcome of every possible
+experiment is some correlation function of the corresponding two dimensional CFT.
+Thinking on the simplest situation of closed strings propagating in a spacetime with
+one coordinate compactified in a circle, it is physically obvious that if we attempt to
+measure distances through the asymptotic behavior of correlation functions at large separations4 [41], we would get a completely different answer if we use pure momentum states
+(of energy Ep = n/R) or pure windings states (of energy Ew = mR), which we would
+most simply reinterpret as momentum states of a torus of radius 1/R. This would lead
+us in a natural way to restrict the allowed outcome of our experiments to the interval
+d ∈ (1, ∞).
+There are some technical complications, stemming from the fact that the Polyakov
+method only allows to compute on-shell correlators, which means that we cannot probe
+directly off-shell amplitudes.
+In the absence of any clear physical distinction among different classes of states, perhaps the most natural possibility is to define distances out of “unpolarized” correlators,
+that is, considering the contribution of all states at the same time.
+There is still a certain freedom as to how to perform the corresponding Fourier transform in order to define physical quantities in position space. The most sensible thing
+seems, however, to make use of the fact that momentum and winding states define a
+lattice [11, 12]. To be specific, sticking for concreteness to the case in which r dimensions
+4
+
+′
+
+′
+
+At large spatial distances the propagator behaves as G(~r, ~r ; M ) ∼ e−M|~r−~r | so that a suitable
+′
+
+G(~
+r ,~
+r ;M)
+1
+.
+definition of distance is given by d(~r, ~r ) ≡ M
+log G(~
+r,~
+r ′ ;2M)
+′
+
+17
+
+(called ~x) are compactified in circles of radius R, and denoting by ~y the (d−r)-dimensional
+set of all other coordinates, the above considerations yield:
+′
+
+′
+
+′
+
+G(~x, ~x ; ~y−~y , t−t ) ≡
+
+X
+
+′
+
+~
+e2πi(~x−~x )(~n/R+mR/2)
+
+~
+n, m
+~
+
+Z
+
+′
+
+′
+
+dp0 dµ(~p)ei~p(~y−~y )−ip0 (t−t ) hV~n,m
+~ V−~
+n,−m
+~ if~
+n, m
+~,
+
+(6.0. 1)
+where V~n,m
+~ represents the vertex operator corresponding to the sector with momentum
+numbers ~n and winding numbers m,
+~ and we will moreover consider pure solitonic states,
+without any oscillators N = Ñ = 05 .
+The momentum space correlator is then given essentially by the delta function implementing the condition that the vertex operator has conformal dimension 1, that is:
+~n
+R
++m
+~ )2 = N − 1 + Ñ − 1 = −2.
+(6.0. 2)
+R
+2
+A further restriction (~nm
+~ = 0) comes from invariance under translations in σ (L0 = L̃0 ).
+Using the integral representation for the delta functions, the integral over p0 can be
+easily performed, and the double sum packed into a Riemann theta-function:
+p20 − ~p2 − (
+
+′
+
+′
+
+′
+
+G(~x, ~x ; ~y − ~y , t − t ) =
+
+Z
+
+dµ(~p)
+
+Z ∞
+
+dτ τ −1/2
+
+−∞
+
+Z ∞
+
+dλe−i
+
+′
+′
+(t−t )2
+−iτ (~
+p2 −2)+i~
+p(~
+y −~
+y )
+4τ
+
+−∞
+
+where ~z ≡ (~x − ~x )( R2 , R1 ) and
+
+θ(~z , Ω),
+(6.0. 3)
+
+′
+
+1
+Ω≡
+π
+
+−τ R2 /2
+(λ−τ )
+2
+
+(λ−τ )
+2
+− Rτ2
+
+!
+
+.
+
+(6.0. 4)
+
+A different expression can be obtained in terms of a double sum of (d − r)-dimensional
+Pauli-Jordan functions
+′
+
+′
+
+′
+
+G(d) (~x, ~x ; ~y −~y , t−t ) =
+
+X
+
+m,~
+~ n
+
+(d−r)
+
+′
+
+′
+
+~
+n
+
+R
+
+′
+
+~ 2 )(~
+x−~
+x)
+GP J (~y −~y , t−t ; M 2 (~n, m
+~ ))e2πi( R +m
+δ(~nm),
+~ (6.0. 5)
+
+where the “mass spectrum” is given by
+R
+~n
++m
+~ )2 − 2.
+(6.0. 6)
+R
+2
+It is plain that any definition of distance based on the preceding ideas lacks any
+periodicity (which shows only in the particular cases in which pure winding states f~n,m
+~ =
+δ~n,~0 or pure momentum states f~n,m
+~ = δm,
+~ ~0 are used).
+It is also arguable whether these correlators are indeed the most natural ones to
+consider from the physical point of view. At extreme (either very high or very low) values
+of the radius, “pure” states (winding or momentum) are much lighter than all the others,
+so that it is perhaps more natural to define distances in terms of the lightest states only
+[42].
+One could always consider our suggestion as a concrete implementation of earlier speculations that at very short distances there could be a physical regime at which geometry
+ceases to be smooth, but distances can nevertheless be defined, and they obey the triangular inequality [43].
+M 2 (~n, m)
+~ ≡(
+
+5
+
+In the unpolarized case we are favouring, the selection function is trivial f~n,m
+~ = 1, but we have
+written it in the formula in order to allow for more general possibilities.
+
+18
+
+7
+
+The Canonical Approach
+
+The procedures to implement duality explained in section 2 look unnecessarily complicated. In the one due to Roc̆ek and Verlinde the isometry is gauged, the (non propagating)
+gauge fields are constrained to be trivial, and the Lagrange multipliers themselves are promoted to the rank of new coordinates once the gaussian integration over the gauge fields is
+performed. One suspects that all those complicated intermediate steps could be avoided,
+and that it should be possible to pass directly from the original to the dual theory.
+Some suggestions have indeed been made in the literature pointing (at least in the
+simplified situation where all backgrounds are constant or dependent only on time) towards an understanding of duality as particular instances of canonical transformations
+[14, 44].
+In this section we are going to show that this idea works well when the background
+admits an abelian isometry [45], laying duality on a simpler setting than before, namely as
+a (privileged) subgroup of the whole group of (non-anomalous, that is implementable in
+Quantum Field Theory [46]) canonical transformations on the phase space of the theory.
+We will proof that Buscher’s transformation formulae can be derived by performing a
+given canonical transformation on the Hamiltonian of the initial theory. We believe that
+this is a “minimal” approach in the sense that no extraneous structure has to be introduced, and all standard results in the abelian case (and more) are easily recovered using it.
+In particular it is possible to perform the duality transformation in arbitrary coordinates
+not only in the original manifold (which was also possible in Roc̆ek and Verlinde’s formulation) but also in the dual one. The multivaluedness and periods of the dual variables
+can be easily worked out from the implementation of the canonical transformation in the
+path integral. The generalization to arbitrary genus Riemann surfaces is in this approach
+straightforward. The behavior of currents not commuting with those used to implement
+duality can also be clarified. In the case of WZW models it becomes rather simple to
+prove that the full duality group is given by Aut(G)L × Aut(G)R , where L, R refer to the
+left- and right-currents on the model with group G, and Aut(G) are the automorphisms
+of G, both inner and outer. Due to the chiral conservation of the currents in this case,
+the canonical transformation leads to a local expression for the dual currents. In the case
+where the currents are not chirally conserved, then those currents associated to symmetries not commuting with the one used to perform duality become generically non-local
+in the dual theory and this is why they are not manifest in the dual Lagrangian. All
+the generators of the full duality group O(d, d; Z) can be described in terms of canonical
+transformations. This gives the impression that the duality group should be understood
+in terms of global symplectic diffemorphisms. It would be useful to formulate it in the
+context of some analogue of the group of disconnected diffeomorphisms, but for the time
+being such a construction is lacking.
+Concerning non-abelian duality, it seems to fall beyond the scope of the Hamiltonian
+point of view. There is one example [47] in which the non-abelian dual has been constructed out of a canonical transformation but it is still early to say whether the general
+case can be treated similarly.
+
+19
+
+7.1
+
+The Abelian Case
+
+We start with a bosonic sigma model written in arbitrary coordinates on a manifold M
+with Lagrangian
+1
+L = (gab + bab )(φ)∂+ φa ∂− φb
+(7.1. 1)
+2
+where x± = (τ ± σ)/2, a, b = 1, . . . , d = dimM. The corresponding Hamiltonian is
+1
+′
+′
+′
+′
+H = (g ab (pa − bac φ c )(pb − bbd φ d ) + gab φ a φ b )
+2
+
+(7.1. 2)
+
+′
+
+where φ a ≡ dφa /dσ. We assume moreover that there is a Killing vector field k a , Lk gab = 0
+and ik H = −dv for some one-form v, where (ik H)ab ≡ k c Hcab and H = db locally. This
+guarantees the existence of a particular system of coordinates, “adapted coordinates”,
+which we denote by xi ≡ (θ, xα ), such that ~k = ∂/∂θ. We denote the jacobian matrix by
+eia ≡ ∂xi /∂φa .
+This defines a point transformation in the original Lagrangian (7.1. 1) which acts on
+the Hamiltonian as a canonical transformation with generating function Φ = xi (φ)pi, and
+yields:
+pa = eia pi
+xi = xi (φ).
+
+(7.1. 3)
+
+Once in adapted coordinates we can write the sigma model Lagrangian as
+1
+′
+′
+′
+L = G(θ̇2 − θ 2 ) + (θ̇ + θ )J− + (θ̇ − θ )J+ + V
+2
+
+(7.1. 4)
+
+where
+1
+V = (gαβ + bαβ )∂+ xα ∂− xβ
+2
+1
+1
+J− = (g0α + b0α )∂− xα
+J+ = (g0α − b0α )∂+ xα .
+2
+2
+G = g00 = k 2
+
+(7.1. 5)
+
+In finding the dual with a canonical transformation we can use the Routh function with
+respect to θ, i.e. we only apply the Legendre transformation to (θ, θ̇). The canonical
+momentum is given by
+pθ = Gθ̇ + (J+ + J− )
+(7.1. 6)
+and the Hamiltonian
+1 ′
+1
+H = pθ θ̇ − L = G−1 p2θ − G−1 (J+ + J− )pθ + Gθ 2 +
+2
+2
+1 −1
+′
++ G (J+ + J− )2 + θ (J+ − J− ) − V.
+2
+
+(7.1. 7)
+
+The Hamilton equations are:
+δH
+= G−1 (pθ − J+ − J− )
+δpθ
+δH
+′
+′
+p˙θ = −
+= (Gθ + J+ − J− )
+δθ
+θ̇ =
+
+20
+
+(7.1. 8)
+
+and the current components:
+1
+1
+1 ′ J+ − J−
+J+ = G∂+ θ + J+ = pθ + Gθ +
+2
+2
+2
+2
+1
+1
+1 ′ J+ − J−
+J− = G∂− θ + J− = pθ − Gθ −
+.
+2
+2
+2
+2
+
+(7.1. 9)
+
+It can easily be seing that the current conservation ∂− J+ + ∂+ J− = 0 is equivalent to the
+second Hamilton equation p˙θ = −δH/δθ.
+The generator of the canonical transformation we choose is:
+F =
+
+1
+2
+
+Z
+
+D,∂D=S 1
+
+dθ̃ ∧ dθ =
+
+1
+2
+
+I
+
+S1
+
+′
+
+′
+
+(θ θ̃ − θθ̃ )dσ
+
+(7.1. 10)
+
+that is,
+δF
+′
+= −θ̃
+δθ
+δF
+′
+= −θ .
+pθ̃ = −
+δ θ̃
+
+pθ =
+
+(7.1. 11)
+
+This generating functional does not receive any quantum corrections (as explained in [46])
+since it is linear in θ and θ̃. If θ was not an adapted coordinate to a continuous isometry, the canonical transformation would generically lead to a non-local form of the dual
+Hamiltonian. Since the Lagrangian and Hamiltonian in our case only depend on the timeand space-derivatives of θ, there are no problems with non-locality. The transformation
+(7.1. 11) in (7.1. 7) gives:
+1
+′
+′
+H̃ = G−1 θ̃ 2 + G−1 (J+ + J− )θ̃ +
+2
+1
+1 2
+Gpθ̃ − (J+ − J− )pθ̃ + G−1 (J+ + J− )2 − V.
+2
+2
+
+(7.1. 12)
+
+Since:
+δ H̃
+θ̃˙ =
+= Gpθ̃ − (J+ − J− ),
+δpθ̃
+
+(7.1. 13)
+
+we can perform the inverse Legendre transform:
+2
+1
+′
+′
+L̃ = G−1 (θ̃˙ − θ̃ 2 ) + G−1 J+ (θ̃˙ − θ̃ )
+2
+′
+˙
+−1
+−G J− (θ̃ + θ̃ ) + V − 2G−1 J+ J− .
+
+(7.1. 14)
+
+From this expression we can read the dual metric and torsion and check that they are
+given by Buscher’s formulae6 :
+g̃00 = 1/g00 ,
+b̃0α = −
+6
+
+g0α
+,
+g00
+
+g̃0α = −b0α /g00 ,
+b̃αβ = bαβ −
+
+g̃αβ = gαβ −
+
+g0α g0β − b0α b0β
+g00
+
+g0α b0β − g0β b0α
+g00
+
+The minus signs in g̃0α and b̃0α can be absorbed in a redefinition θ̃ → −θ̃.
+
+21
+
+(7.1. 15)
+
+′
+
+For the dual theory to be conformal invariant the dilaton must transform as Φ =
+Φ − 12 log g00 [16] [10]. We have not been able to find any argument justifying this transformation within the canonical transformations approach.
+The dual manifold M̃ is automatically expressed in coordinates adapted to the dual
+˜
+Killing vector ~k = ∂/∂ θ̃. We can now perform another point transformation, with the
+same jacobian as (7.1. 3) to express the dual manifold in coordinates which are as close
+as possible to the original ones.
+The transformations we perform are then: First a point transformation φa → {θ, xα },
+to go to adapted coordinates in the original manifold. Then a canonical transformation
+{θ, xα } → {θ̃, xα }, which is the true duality transformation. And finally another point
+transformation {θ̃, xα } → φ̃a , with the same jacobian as the first point transformation, to
+express the dual manifold in general coordinates.
+It turns out that the composition of these three transformations can be expressed in
+geometrical terms using only the Killing vector k a , ωa ≡ e0a and the corresponding dual
+quantities7 .
+It is then quite easy to check that the total canonical transformation to be made in
+(7.1. 1) is just
+′
+
+k a pa → ω̃a φ̃ a
+′
+ωa φ a → k̃ a p̃a ,
+
+(7.1. 16)
+
+whose generating function is8
+1
+F =
+2
+
+Z
+
+1
+ω̃ ∧ ω =
+2
+D
+
+Z
+
+D
+
+ω̃a dφ̃a ∧ ωb dφb .
+
+(7.1. 17)
+
+One then easily performs the transformations in such a way that the dual metric and
+torsion can be expressed in geometrical terms as
+g̃ab = gab −
+g̃ ab = g ab +
+
+1
+(ka kb − (va − ωa )(vb − ωb ))
+k2
+
+1
+[(k 2 + (v − ω)2)k a k b − 2(1 + k.v)(k (a (v − ω)b) ]
+2
+(1 + k.v)
+
+and
+b̃ab = bab −
+
+2
+k[a (v − ω)b] ,
+k2
+
+(7.1. 18)
+(7.1. 19)
+
+(7.1. 20)
+
+where
+1
+k(a (v − ω)b) = (ka (vb − ωb ) + kb (va − ωa ))
+2
+1
+k[a (v − ω)b] = (ka (vb − ωb ) − kb (va − ωa )).
+2
+7
+
+(7.1. 21)
+
+Note that we must raise and lower indices with the dual metric, i.e. ẽia = g̃ij ẽja , ẽia = g̃ ab ẽib , which
+implies ω̃a = ωa , but ω̃ a = k a (k 2 + v 2 ) + ~e a · v (where ~e a ≡ eaα ), k̃ a = k a but k̃a = (ωa − (~ea · v))/k 2 . We
+have moreover ω̃ 2 = k 2 + v 2 + g αβ vβ ωα and k̃ 2 = 1/k 2 .
+8
+The one-form ω ≡ ωa dφa is dual to the Killing vector ~k: ω(~k) = 1, ω(~eα ) = 0, but it is of course
+different from k ≡ ka /k 2 dφa (the former is an exact form, whereas the latter does not even in general
+satisfy Frobenius condition k ∧ dk = 0).
+
+22
+
+These formulae are the covariant generalization of (7.1. 15). The canonical approach has
+been very useful in order to obtain the dual manifold in an arbitrary coordinate system.
+With the usual approaches it is expressed in adapted coordinates to the dual isometry.
+This happens because the dual variables appear as Lagrange multipliers and after an
+integration by parts only the derivatives of them emerge, being then adapted coordinates
+automatically.
+Some other useful information can be extracted easier in the approach of the canonical
+transformation.
+From the generating functional (7.1. 10) we can learn about the multivaluedness and
+periods of the dual variables [19]. Since θ is periodic and in the path integral the canonical
+transformation is implemented by [46]:
+ψk [θ̃(σ)] = N(k)
+
+Z
+
+Dθ(σ)eiF [θ̃,θ(σ)] φk [θ(σ)]
+
+(7.1. 22)
+
+where N(k) is a normalization factor, φk (θ + a) = φk (θ) implies for θ̃: θ̃(σ + 2π) − θ̃(σ) =
+4π/a, which means that θ̃ must live in the dual lattice of θ. Note that (7.1. 22) suffices to
+construct the dual Hamiltonian. It is a simple exercise to check that acting with (7.1. 12)
+on the left-hand side of (7.1. 22) and pushing the dual Hamiltonian through the integral
+we obtain the original Hamiltonian acting on φk [θ(σ)]:
+H̃ψk [θ̃(σ)] = N(k)
+
+Z
+
+Dθ(σ)eiF [θ̃,θ(σ)] Hφk [θ(σ)]
+
+(7.1. 23)
+
+This makes the duality transformation very simple conceptually, and it also implies how
+it can be applied to arbitrary genus Riemann surfaces, because the state φk [θ(σ)] could
+be the state obtained by integrating the original theory on an arbitrary Riemann surface
+with boundary. It is also clear that the arguments generalize straightforwardly when we
+have several commuting isometries.
+One can easily see that under the canonical transformation the Hamilton equations
+are interchanged:
+δH
+′
+′
+= (Gθ + J+ − J− ) → θ̃˙ = Gpθ̃ − J+ + J−
+δθ
+δH
+′
+′
+= G−1 (pθ − J+ − J− ) → p˙θ̃ = (G−1 (θ̃ + J+ + J− )) ,
+θ̇ =
+δpθ
+p˙θ = −
+
+(7.1. 24)
+
+and that the canonical transformed currents conservation law is in this case equivalent to
+the first Hamilton equation.
+In the chiral case J− = 0 (i.e. g0i = −b0i ) and G is a constant, therefore we can
+normalize θ to set G = 1 and :
+
+The Hamiltonian is
+
+1
+′
+′
+L = (θ̇2 − θ 2 ) + (θ̇ − θ )J+ + V.
+2
+
+(7.1. 25)
+
+1
+1
+′
+H = p2θ − J+ pθ + (J+ + θ )2 − V.
+2
+2
+
+(7.1. 26)
+
+23
+
+The action is invariant under δθ = α(x+ ), a U(1)L Kac-Moody symmetry. The U(1)
+Kac-Moody algebra has the automorphism J+ → −J+ . This is precisely the effect of the
+canonical transformation. The equation of motion or current conservation is:
+∂− (∂+ θ + J+ ) = 0.
+
+(7.1. 27)
+
+′
+
+J+ = ∂+ θ + J+ = pθ + θ transforms under the canonical transformation in J+c.t. =
+′
+−θ̃ − pθ̃ = −J+ .
+One can also follow the transformation to the dual model of other continuous symmetries. The simplest case is as usual the WZW-model which is the basic model with chiral
+currents. Consider for simplicity the level-k SU(2)-WZW model with action
+−k
+S[g] =
+2π
+
+Z
+
+k
+d σT r(g ∂+ gg ∂− g) +
+12π
+2
+
+−1
+
+−1
+
+Z
+
+T r(g −1dg)3.
+
+(7.1. 28)
+
+The left- and right-chiral currents are
+J+ =
+
+k
+∂+ gg −1
+2π
+
+J− = −
+
+k −1
+g ∂− g.
+2π
+
+(7.1. 29)
+
+Parametrizing g in terms of Euler angles
+g = eiασ3 /2 eiβσ2 /2 eiγσ3 /2 ,
+
+(7.1. 30)
+
+J+ are given by:
+k
+(− cos α sin β∂+ γ + sin α∂+ β)
+2π
+k
+(sin α sin β∂+ γ + cos α∂+ β)
+J+2 =
+2π
+k
+(∂+ α + cos β∂+ γ),
+J+3 =
+2π
+J+1 =
+
+(7.1. 31)
+
+and similarly for the right currents. If we perform duality with respect to α → α +
+constant, J+3 → −J+3 , J−3 → J−3 since J+3 is the current component adapted to the
+isometry. For these currents it is easy to find the action of the canonical transformation
+because only the derivatives of α appear. For J+1,2 there is an explicit dependence on α
+and it seems that the transform of these currents is very non-local. However due to its
+chiral nature, one can show that there are similar chirally conserved currents in the dual
+model. To do this we first combine the currents in terms of root generators:
+(+)
+
+J+
+
+(−)
+
+J+
+
+(+)
+
+= J+1 + iJ+2 = e−iα (i∂+ β − sin β∂+ γ) = e−iα j+
+
+(−)
+
+= J+1 − iJ+2 = −eiα (i∂+ β + sin β∂+ γ) = eiα j+ .
+(±)
+
+From chiral current conservation ∂− J+
+
+(7.1. 32)
+
+= 0 we obtain
+
+(±)
+
+(±)
+
+∂− j+ = ±i∂− αj+ .
+
+(7.1. 33)
+
+In these equations only α̇, α′ appear, and after the canonical transformation we can reconstruct the dual non-abelian currents (in the previous equations the canonical transformation amounts to the replacement α → α̃) which take the same form as the original
+24
+
+ones except that with respect to the transformed J+3 the rôles of positive and negative
+roots get exchanged. One also verifies that J−a are unaffected. This implies therefore
+that the effect of duality with respect to shifts of α is an automorphism of the current
+algebra amounting to performing a Weyl transformation on the left currents only while
+the right ones remain unmodified. This result although known [21] is much easier to
+derive in the Hamiltonian formalism than in the Lagrangian formalism where one must
+introduce external sources which carry some ambiguities. The construction for SU(2) can
+be straightforwardly extended to other groups. This implies that for WZW-models the
+full duality group is Aut(G)L × Aut(G)R , where Aut(G) is the group of automorphisms
+of the group G, including Weyl transformations and outer automorphisms. For instance
+if we take SU(N), the transformation J+ → −J+T , i.e. charge conjugation, follows from a
+canonical transformation of the type discussed. It suffices to take as generating functions
+for the canonical transformation the sum of the generating functions for each generator
+in the Cartan subalgebra. It is important to remark that the chiral conservation of the
+currents is crucial to guarantee the locality of the dual non-abelian currents. If the conserved current with respect to which we dualize is not chirally conserved locality is not
+obtained. The simplest example to verify this is the principal chiral model for SU(2),
+which although is not a CFT serves for illustrative purposes. The equations of motion for
+this model imply the conservation laws:
+∂− J+a + ∂+ J−a = 0
+
+(7.1. 34)
+
+where
+
+k
+∂± gg −1.
+(7.1. 35)
+2π
+If we perform duality with respect to the invariance under α translations we know how
+J±3 transform, since they are the currents associated to the isometry. With the canonical
+transformation is possible to see as well which are the other dual conserved currents. Since
+the dual model is only U(1)-invariant one expects the rest of the currents to become nonlocal [47]. In terms of the root generators introduced in (7.1. 32) the conservation laws
+J± =
+
+(±)
+
+are expressed:
+
+(±)
+
+∂− J+ + ∂+ J−
+(±)
+
+(±)
+
+=0
+
+(±)
+
+(7.1. 36)
+(±)
+
+∂− j+ + ∂+ j− ∓ i(∂− αj+ + ∂+ αj− ) = 0.
+
+(7.1. 37)
+
+Performing the canonical transformation we obtain that the dual conserved currents are
+given by:
+(+)
+J˜± = exp (i
+
+Z
+
+dσ(α̃˙ + cos βγ ))(i∂± β − sin β∂± γ)
+
+(−)
+J˜± = − exp (−i
+
+′
+
+Z
+
+dσ(α̃˙ + cos βγ ))(i∂± β + sin β∂± γ)
+′
+
+(7.1. 38)
+
+which cannot be expressed in a local form.
+
+7.2
+
+The Non-Abelian Case
+
+In view of the simplicity of the canonical approach to abelian duality, one could be tempted
+to think that the corresponding generalization to the non-abelian case would not be very
+25
+
+difficult. Unfortunately this is not the case, the reason being that there are no adapted coordinates to a set of non-commuting isometries, and therefore one is led to a non-local form
+of the Hamiltonian. In [25] we could carry out the non-abelian duality transformation due
+to the existence of chiral currents and as a consequence of the Polyakov-Wiegmann property [50] satisfied by WZW-actions. Although in the intermediate steps it was necessary
+to introduce non-local variables, the final result led to a local action in the new variables
+as a result of the special properties of WZW-models mentioned. The computations could
+be carried out exactly until the end to evaluate the form of the effective action in terms
+of the auxiliary variables needed in the construction of non-abelian duals. We have so far
+been unable to express these functional integral manipulations in a Hamiltonian setting
+as in the previous section.
+To finish this section we present an example from the literature in which a canonical
+transformation produces a given non-abelian dual model. This example was presented in
+[47]. They consider the principal chiral model with group SU(2) and construct a local
+canonical transformation mapping the model in a theory which turns out to be the nonabelian dual with respect to the left action of the whole group. This example was studied
+in the context of non-abelian duality in [48, 19].
+The initial theory is the principal chiral model defined by the Lagrangian:
+L = T r(∂µ g∂ µ g −1 ),
+
+(7.2. 1)
+
+where g ∈ SU(2). Parametrizing g = φ0 + iσ j φj , with φ0 , φj subject to the constraint
+P
+(φ0 )2 + φ2 = 1 and φ2 ≡ j (φj )2 , (7.2. 1) becomes:
+The generating functional:
+F [ψ, φ] =
+
+Z +∞
+−∞
+
+i
+
+dxψ (
+
+1 ij
+φi φj
+L = (δ +
+)∂µ φi ∂ µ φj .
+2
+2
+1−φ
+
+(7.2. 2)
+
+q
+
+(7.2. 3)
+
+1 − φ2
+
+q
+∂ i
+∂
+i ∂
+1 − φ2 + ǫijk φj φk )
+φ −φ
+∂x
+∂x
+∂x
+
+produces the canonical transformation:
+pi
+p̃i
+
+q
+φi φj
+∂
+δF [ψ, φ]
+ij
+2
+√
+= ( 1−φ δ +
+− ǫijk φk ) φj
+=
+i
+2
+δψ
+∂x
+1−φ
+q
+i j
+δF [ψ, φ]
+φφ
+∂
+= −
+= ( 1 − φ2 δ ij + √
++ ǫijk φk ) ψ j +
+i
+2
+δφ
+∂x
+1−φ
+2
+∂
+(√
+(φi ψ j − ψ i φj ) − 2ǫijk ψ k ) φj ,
+2
+∂x
+1−φ
+
+(7.2. 4)
+
+which transforms (7.2. 2) into:
+L̃ =
+
+1
+1
+[ (δ ij + 4ψ i ψ j )∂µ ψ i ∂ µ ψ j − ǫµν ǫijk ψ i ∂µ ψ j ∂ν ψ k ].
+2
+1 + 4ψ 2
+
+(7.2. 5)
+
+This is the non-abelian dual of (7.2. 1) with respect to the left action of the whole group
+[48, 19]. The generating functional (7.2. 3) can be written as:
+F [ψ, φ] =
+
+Z +∞
+−∞
+
+26
+
+dxψ i Ji1 [φ]
+
+(7.2. 6)
+
+where Ji1 [φ] are the spatial components of the conserved currents of the initial theory. (7.2.
+6) is linear in the dual variables but not in the initial ones, so it will receive quantum
+corrections when implemented in the path integral. From (7.2. 4) it is not obvious that
+the dual model will not depend on the original variables φi . However this is so. Whether
+this way of constructing the generating functional of non-abelian duality is general or only
+works in this particular example is still an open question.
+
+8
+
+Conclusions and Open Problems
+
+In these lectures a general exposition of abelian and non-abelian duality has been given.
+The usual approaches in the literature to both kinds of dualities have been reviewed. The
+goals of these approaches have been also exhibited, and some of them derived explicitly,
+as the formulation of abelian duality in an arbitrary coordinate system. The canonical
+transformations approach to abelian duality presented in [45] has been studied in detail,
+focussing especially in the problems that could not be solved in the usual approaches of
+Buscher or Roc̆ek and Verlinde or were difficult to study. The non-abelian case has been
+also considered, although the general construction as a canonical transformation is not
+yet understood. As was mentioned in the lectures the example given by Curtright and
+Zachos in [47] opens the possibility for non-abelian duality to be formulated in this way,
+in spite of the difficulties already mentioned concerning the impossibility of finding an
+adapted coordinate system to the whole set on non-commuting isometries.
+The relation between duality and external automorphisms [51, 52, 53] is also much in
+need of further clarification.
+
+Acknowledgements
+We would like to thank C. Zachos for useful suggestions. One of us (LAG) would
+like to thank the organizers of the Trieste Spring School for the opportunity to present
+this material and for their kind hospitality. E.A. and Y.L. were supported in part by the
+CICYT grant AEN 93/673 (Spain) and by a fellowship from Comunidad de Madrid (YL).
+They would also like to thank the Theory Division at CERN for its hospitality while part
+of this work was done.
+
+27
+
+References
+[1] J. Scherk, Rev. Mod. Phys. 47 (1975) 123.
+[2] L. Álvarez-Gaumé, G. Sierra and C. Gómez, Topics in Conformal Field Theory, in
+Knizhnik Memorial Volume, Eds. L. Brink, D. Friedan and A.M. Polyakov, World
+Scientific, Singapore, 1989.
+[3] J.M. Drouffe and C. Itzykson, Quantum Field Theory and Statistical Mechanics,
+Cambridge U. Press, 1990.
+[4] H.A. Kramers and G.H. Wannier, Phys. Rev. 60 (1941) 252.
+[5] A. Giveon, M. Porrati and E. Rabinovici, Phys. Rep. 244 (1994) 77.
+[6] C. Montonen and D. Olive, Phys. Lett. B72 (1977) 117.
+[7] A. Sen, Int. J. Mod. Phys. A9 (1994) 3707.
+[8] K.H. O’Brien and C.-I Tan, Phys. Rev. D36 (1987) 1184; E. Álvarez and M.A.R.
+Osorio, Nucl. Phys. B304 (1988) 327; J.J. Atick and E. Witten, Nucl. Phys. B310
+(1988) 291.
+[9] L. Brink, M.B. Green and J.H. Schwarz, Nucl. Phys. B198 (1982) 474; K. Kikkawa
+and M. Yamasaki, Phys. Lett. B149 (1984) 357; N. Sakai and I. Senda, Prog. Theor.
+Phys. 75 (1984) 692.
+[10] E. Álvarez and M.A.R. Osorio, Phys. Rev. D40 (1989) 1150.
+[11] K. Narain, Phys. Lett. B169 (1986) 41.
+[12] K. Narain, H. Sarmadi and E. Witten, Nucl. Phys. B279 (1987) 369.
+[13] A. Shapere and F. Wilczek, Nucl. Phys. B320 (1989) 609.
+[14] A. Giveon, E. Rabinovici and G. Veneziano, Nucl. Phys. B322 (1989) 167.
+[15] A. Font, L.E. Ibañez, D. Lüst and F. Quevedo, Phys. Lett. B245 (1990) 401; S.
+Ferrara, N. Magnoli, T.R. Taylor and G. Veneziano, Phys. Lett. B245 (1990) 409;
+H.P. Nilles and M. Olechowski, Phys. Lett. B248 (1990) 268; P. Binetruy and M.K.
+Gaillard, Phys. Lett. B253 (1991) 119.
+[16] T.H. Buscher, Phys. Lett. B194 (1987) 51, B201 (1988) 466.
+[17] M. Roc̆ek and E. Verlinde, Nucl. Phys. B373 (1992) 630.
+[18] A. Giveon and M. Roček, Nucl. Phys. B380 (1992) 128.
+[19] E. Álvarez, L. Álvarez-Gaumé, J.L.F. Barbón and Y. Lozano, Nucl. Phys. B415
+(1994) 71.
+28
+
+[20] L. Álvarez-Gaumé, Aspects of Abelian and Non-abelian Duality, CERN-TH-7036/93,
+proceedings of Trieste’93.
+[21] E. Kiritsis, Nucl. Phys. B405 (1993) 109.
+[22] X. De la Ossa and F. Quevedo, Nucl. Phys. B403 (1993) 377.
+[23] A. Giveon and M. Roc̆ek, Nucl. Phys. B421 (1994) 173.
+[24] M. Gasperini, R. Ricci and G. Veneziano, Phys. Lett. B319 (1993) 438.
+[25] E. Álvarez, L. Álvarez-Gaumé and Y. Lozano, Nucl. Phys. B424 (1994) 155.
+[26] C. Hull and B. Spence, Phys. Lett. B232 (1989) 204.
+[27] C.P. Burgess and F. Quevedo, Phys. Lett. B329 (1994) 457.
+[28] S. Elitzur, A. Giveon, E. Rabinovici, A. Schwimmer and G. Veneziano, Remarks on
+Non-abelian Duality, CERN-TH-7414/94, hep-th/9409011.
+[29] L. Álvarez-Gaumé and E. Witten, Nucl. Phys. B234 (1984) 269.
+[30] A.S. Schwarz and A.A. Tseytlin, Nucl. Phys. B399 (1993) 691.
+[31] P.B. Gilkey, J. Diff. Geom. 10 (1975) 601.
+[32] P. Goddard, A. Kent and D. Olive, Comm. Math. Phys. 103 (1986) 105.
+[33] T. Banks, D. Nemeschansky and A. Sen, Nucl. Phys. B277 (1986) 67.
+[34] M.E. Peskin, Introduction to String and Superstring Theory II, proceedings of the
+Theoretical Advanced Study Institute in Elementary Particle Physics, University of
+California, Santa Cruz, 1986, vol.1.
+[35] C. Callan, D. Friedan, E. Martinec and M. Perry, Nucl. Phys. B262 (1985) 593.
+[36] G.T. Horowitz and D.L. Welch, Phys. Rev. Lett. 71 (1993) 328.
+[37] E. Witten, Phys. Rev. D44 (1991) 314.
+[38] P. Ginsparg and F. Quevedo, Nucl. Phys. B385 (1992) 527.
+[39] G. Moore, Nucl. Phys. B293 (1987) 139; E. Alvarez and M.A.R. Osorio, Z. Phys. C44
+(1989) 89.
+[40] V.P. Nair, A. Shapere, A. Strominger and F. Wilczek, Nucl. Phys. B287 (1987) 402.
+[41] F. David, Nucl. Phys. B368 (1992) 671.
+[42] R. Branderberger and C. Vafa, Nucl. Phys. B316 (1989) 391.
+[43] E. Álvarez, J. Céspedes and E. Verdaguer, Phys. Rev. D45 (1992) 2033; Phys. Lett.
+B289 (1992) 51; Phys. Lett. B304 (1993) 225.
+29
+
+[44] K.A. Meissner and G. Veneziano, Phys. Lett. B267 (1991) 33.
+[45] E. Álvarez, L. Álvarez-Gaumé and Y. Lozano, Phys. Lett. B336 (1994) 183.
+[46] G.I. Ghandour, Phys. Rev. D35 (1987) 1289; T. Curtright, Differential Geometrical
+Methods in Theoretical Physics: Physics and Geometry, ed. L.L. Chau and W. Nahm,
+Plenum, New York, (1990) 279; T. Curtright and G. Ghandour, Using Functional
+Methods to compute Quantum Effects in the Liouville Theory, ed. T. Curtright, L.
+Mezincescu and R. Nepomechie, proceedings of NATO Advanced Workshop, Coral
+Gables, FL, Jan 1991; and references therein.
+[47] T. Curtright and C. Zachos, Phys. Rev. D49 (1994) 5408.
+[48] B.E. Fridling and A. Jevicki, Phys. Lett. B134 (1984) 70; E.S. Fradkin and A.A.
+Tseytlin, Ann. Phys. 162 (1985) 31.
+[49] E. Witten, Comm. Math. Phys. 92 (1984) 455.
+[50] A.M. Polyakov and P.B. Wiegmann, Phys. Lett. B131 (1983) 121, B141 (1984) 223.
+[51] I. Bars and K. Sfetsos, Mod. Phys. Lett. A7 (1992) 1091.
+[52] I. Antoniadis and N. Obers, Nucl. Phys. B423 (1994) 639.
+[53] E. Kiritsis and N. Obers, A New Duality Symmetry in String Theory, CERN-TH
+7310/94, hep-th/9406082.
+
+30
+
+This figure "fig1-1.png" is available in "png" format from:
+http://arxiv.org/ps/hep-th/9410237v2
+
+

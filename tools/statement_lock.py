@@ -11,7 +11,8 @@ still the one that was designed and reviewed. An agent (or a person) can make a 
 * for `def`/`abbrev`/`structure`/`noncomputable def`: the whole declaration, body included
   (changing a definition changes the meaning of every statement that uses it).
 
-Whitespace is normalized before hashing.
+Comments (`-- ...`, `/- ... -/`, docstrings, module docs) are removed and whitespace is normalized
+before hashing, so documentation can be improved freely without touching the lock.
 
 Usage:
   python3 tools/statement_lock.py --update DualScaleStream2/**/*.lean   # after statement review (gate G2)
@@ -40,6 +41,29 @@ NEXT = re.compile(
 OPEN, CLOSE = "([{⟨", ")]}⟩"
 
 
+def strip_comments(text: str) -> str:
+    """Remove Lean comments, keeping the text length-independent of documentation. Block comments
+    nest in Lean, so this is a small scanner rather than a regex."""
+    out, i, depth, n = [], 0, 0, len(text)
+    while i < n:
+        two = text[i:i + 2]
+        if two == "/-":
+            depth += 1
+            i += 2
+        elif two == "-/" and depth:
+            depth -= 1
+            i += 2
+        elif depth:
+            i += 1
+        elif two == "--":
+            j = text.find("\n", i)
+            i = n if j < 0 else j
+        else:
+            out.append(text[i])
+            i += 1
+    return "".join(out)
+
+
 def statement_text(text: str, start: int, kind: str) -> str:
     nxt = NEXT.search(text, text.index("\n", start) + 1 if "\n" in text[start:] else len(text))
     end = nxt.start() if nxt else len(text)
@@ -61,7 +85,7 @@ def scan(files: list[str]) -> dict[str, dict[str, str]]:
     out: dict[str, dict[str, str]] = {}
     for f in files:
         p = Path(f)
-        text = p.read_text(encoding="utf-8")
+        text = strip_comments(p.read_text(encoding="utf-8"))
         decls = {}
         for m in HEAD.finditer(text):
             body = statement_text(text, m.start(), m.group("kind"))

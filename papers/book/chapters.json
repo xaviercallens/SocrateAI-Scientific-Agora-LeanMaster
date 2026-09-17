@@ -1,0 +1,775 @@
+{
+ "parts": [
+  {
+   "id": "I",
+   "title": "Foundations of the String"
+  },
+  {
+   "id": "II",
+   "title": "Compactification and T-Duality"
+  },
+  {
+   "id": "III",
+   "title": "Double Field Theory"
+  },
+  {
+   "id": "IV",
+   "title": "K3 Surfaces and Lattices"
+  },
+  {
+   "id": "V",
+   "title": "K3 × T² and Fluxes"
+  },
+  {
+   "id": "VI",
+   "title": "Mathieu Moonshine"
+  },
+  {
+   "id": "VII",
+   "title": "The Dual-Scale Theory"
+  },
+  {
+   "id": "VIII",
+   "title": "The Formalization"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "ch01",
+   "num": 1,
+   "part": "I",
+   "slug": "intro",
+   "title": "Why Strings, Why Two Scales, Why a Proof Assistant",
+   "pages": 10,
+   "sources": [
+    "Tong §0-1 (introduction)",
+    "GPR §1",
+    "BW §1-2"
+   ],
+   "lean": [
+    "docs/STREAM2_WORKFLOW.md",
+    "DualScaleM24Formalization/Epistemic/Tier.lean",
+    "DualScaleM24Formalization/Epistemic/Ledger.lean"
+   ],
+   "brief": "Orientation for the whole book: the string length as a new fundamental scale; why a string sees R and α′/R as the same geometry while a point particle does not; the programme of this book; the three epistemic tiers A/L/C with the Lean Tier/Ledger modules as the formal version of that discipline; a reader's guide to the eight parts and how to read a leanbox. No heavy mathematics; one fully worked toy example: the AM-GM inequality R + α′/R ≥ 2√α′ derived by hand and shown as a Lean theorem.",
+   "file": "chapters/ch01_intro.tex"
+  },
+  {
+   "id": "ch02",
+   "num": 2,
+   "part": "I",
+   "slug": "classical",
+   "title": "The Relativistic String: Nambu–Goto and Polyakov",
+   "pages": 12,
+   "sources": [
+    "Tong §1 (relativistic point particle, Nambu-Goto, Polyakov, symmetries, mode expansions)"
+   ],
+   "lean": [
+    "StringTheoryFormalization/Foundations/MathlibCore.lean"
+   ],
+   "brief": "From the relativistic particle to the string worldsheet; Nambu–Goto action, induced metric, tension and α′; Polyakov action, its symmetries (diffeomorphisms, Weyl), conformal gauge; equations of motion, constraints, closed-string mode expansion, left and right movers. Set up everything that ch. circle needs. Be explicit that this chapter is almost entirely Tier L; explain why formalizing an action functional is much harder than formalizing the algebra that follows from it.",
+   "file": "chapters/ch02_classical.tex"
+  },
+  {
+   "id": "ch03",
+   "num": 3,
+   "part": "I",
+   "slug": "quantum",
+   "title": "Quantization, the Spectrum and the Critical Dimension",
+   "pages": 13,
+   "sources": [
+    "Tong §2 (covariant and lightcone quantization, spectrum, Lorentz invariance D=26)",
+    "Tong §2.4-2.5"
+   ],
+   "lean": [
+    "StringTheoryFormalization/UseCases/CriticalDimension.lean"
+   ],
+   "brief": "Canonical quantization, Virasoro constraints, lightcone gauge, the normal-ordering constant and ζ-regularized sum, the tachyon, the massless level (graviton, B-field, dilaton), why D = 26; level matching. Explain what CriticalDimension.lean proves (central-charge bookkeeping 26 = D, ghosts −26, superstring 15 → D = 10) and what it does not (it does not derive the Lorentz algebra closure).",
+   "file": "chapters/ch03_quantum.tex"
+  },
+  {
+   "id": "ch04",
+   "num": 4,
+   "part": "I",
+   "slug": "cft",
+   "title": "Conformal Field Theory for String Theorists",
+   "pages": 14,
+   "sources": [
+    "Tong §4 (CFT: stress tensor, OPE, Virasoro algebra, central charge, state-operator map, free scalar)"
+   ],
+   "lean": [
+    "StringTheoryFormalization/Frontier/CentralCharge.lean",
+    "StringTheoryFormalization/Frontier/SL2CSymmetry.lean",
+    "StringTheoryFormalization/Frontier/ChiralPrimaries.lean",
+    "StringTheoryFormalization/StringDynamics/VertexOperators.lean"
+   ],
+   "brief": "Conformal transformations in 2d, the stress tensor, primary operators and weights, operator product expansion, the TT OPE and the central charge, Virasoro algebra, SL(2,C) global subgroup and Möbius maps, state–operator map, free boson c = 1, Ward identities. Tie each Lean module to the concept and state precisely what algebraic fragment is checked (e.g. Möbius composition, c(K3 sigma model) = 6 arithmetic).",
+   "file": "chapters/ch04_cft.tex"
+  },
+  {
+   "id": "ch05",
+   "num": 5,
+   "part": "I",
+   "slug": "ghosts",
+   "title": "The Polyakov Path Integral, Ghosts and the Superstring in Brief",
+   "pages": 11,
+   "sources": [
+    "Tong §5 (Faddeev-Popov, ghost CFT, critical central charge)",
+    "Tong §6.1-6.2 (scattering overview) only if needed"
+   ],
+   "lean": [
+    "StringTheoryFormalization/UseCases/CriticalDimension.lean",
+    "StringTheoryFormalization/Frontier/CentralCharge.lean"
+   ],
+   "brief": "Gauge fixing the Polyakov integral, the bc ghost system with c = −26, Weyl anomaly cancellation c_matter = 26; a brief, honest sketch of the superstring (worldsheet fermions c = 1/2 each, βγ ghosts c = +11, hence D = 10) labelled Tier L from general knowledge only where Tong covers it; what the five superstring theories are, at the level needed later (type IIA/IIB, heterotic) with pointers to Asp §1.",
+   "file": "chapters/ch05_ghosts.tex"
+  },
+  {
+   "id": "ch06",
+   "num": 6,
+   "part": "I",
+   "slug": "backgrounds",
+   "title": "Strings in Background Fields and the Low-Energy Effective Action",
+   "pages": 12,
+   "sources": [
+    "Tong §7 (background fields, beta functions, effective action, dilaton and string coupling)"
+   ],
+   "lean": [
+    "DoubleFieldTheory/ActionCurvature.lean"
+   ],
+   "brief": "The non-linear sigma model with G, B, Φ; Weyl invariance ⇒ beta functions ⇒ Einstein equations; the string-frame effective action; the dilaton as string coupling; why B has a gauge symmetry and why only H = dB is physical locally but ∮B matters on a torus. This prepares the generalized metric. Mention the DFT ActionCurvature module only as a pointer forward.",
+   "file": "chapters/ch06_backgrounds.tex"
+  },
+  {
+   "id": "ch07",
+   "num": 7,
+   "part": "II",
+   "slug": "circle",
+   "title": "Compactification on a Circle: Momentum and Winding",
+   "pages": 13,
+   "sources": [
+    "Tong §8.1-8.2 (compactification, KK, the view from the string, winding, spectrum)",
+    "GPR §2.1-2.2",
+    "AAL §1-2"
+   ],
+   "lean": [
+    "StringTheoryFormalization/UseCases/TDualityMassSpectrum.lean",
+    "DualScaleStream2/DFT/GeneralizedMetric.lean",
+    "StringTheoryFoundation/Duality/T_Duality.lean"
+   ],
+   "brief": "Kaluza–Klein reduction for a field, then the string: periodicity, winding number, zero-mode expansion, p_L and p_R, derivation of the mass formula and level matching in full detail with the book's conventions; table of the lightest states vs R; the U(1)×U(1) gauge symmetry. Worked numerical example. Lean: momentumMassSq and the tduality_* theorems, massForm_circle as the bridge between Stream 1 and Stream 2.",
+   "file": "chapters/ch07_circle.tex"
+  },
+  {
+   "id": "ch08",
+   "num": 8,
+   "part": "II",
+   "slug": "tduality",
+   "title": "T-Duality and the Self-Dual Radius",
+   "pages": 13,
+   "sources": [
+    "Tong §8.3 (T-duality, path integral derivation, self-dual radius)",
+    "GPR §2.1-2.3",
+    "AAL §2-3"
+   ],
+   "lean": [
+    "StringTheoryFormalization/UseCases/TDualityMassSpectrum.lean",
+    "DualScaleStream2/DualScale/TraceBound.lean",
+    "DualScaleValidation/UseCase1_ModuliStabilization.lean",
+    "StringTheoryFormalization/StringDynamics/TDualityGysin.lean"
+   ],
+   "brief": "The exact symmetry R ↔ α′/R, n ↔ w: action on p_L, p_R, on the fields X = X_L + X_R ↦ X_L − X_R, invariance of the spectrum and (sketch) of interactions; dilaton shift; the self-dual radius, enhanced SU(2)×SU(2), the moduli space as a half-line; minimal length as physics. Lean: tduality_invariant_mass_squared, self_dual_radius_unique, dualScale_circle, circle_effective_scale_ge_two. Contrast carefully what 'T-duality is a symmetry of the spectrum' means vs 'of the full theory'.",
+   "file": "chapters/ch08_tduality.tex"
+  },
+  {
+   "id": "ch09",
+   "num": 9,
+   "part": "II",
+   "slug": "buscher",
+   "title": "Buscher Rules: T-Duality from the Worldsheet",
+   "pages": 11,
+   "sources": [
+    "AAL §3-4 (Buscher's formulation, gauging the isometry, dilaton shift, global issues)",
+    "GPR §3 (if present: sigma-model duality)",
+    "Tong §8.3.1"
+   ],
+   "lean": [
+    "DoubleFieldTheory/TDualityBuscher.lean"
+   ],
+   "brief": "Gauging an isometry of the sigma model, Lagrange multiplier, integrating out in two orders; the Buscher rules for G, B and the dilaton; check on the circle; global issues (periodicity of the multiplier); preview of how the rules become a single O(d,d) action on the generalized metric. Lean: what TDualityBuscher.lean states (integer-model identities) and its honest scope.",
+   "file": "chapters/ch09_buscher.tex"
+  },
+  {
+   "id": "ch10",
+   "num": 10,
+   "part": "II",
+   "slug": "narain",
+   "title": "Toroidal Compactification and the Narain Lattice",
+   "pages": 14,
+   "sources": [
+    "GPR §2.3-2.4 (toroidal backgrounds, Narain lattice, moduli space O(d,d)/O(d)xO(d))",
+    "AAL §2"
+   ],
+   "lean": [
+    "StringTheoryFormalization/UseCases/NarainLattice.lean",
+    "DualScaleStream2/Lattice/Hyperbolic.lean",
+    "DualScaleStream2/TDuality/Spectrum.lean",
+    "DualScaleStream2/Lattice/Basic.lean"
+   ],
+   "brief": "Strings on T^d with constant G and B: momenta p_L, p_R, the even self-dual lattice Γ^{d,d} of signature (d,d), why modular invariance forces even self-duality, moduli space O(d,d;R)/O(d)×O(d) and its dimension d², the d = 1 case as the hyperbolic plane U. Lean: narain_form_even, narain_gram_unimodular, hyperbolicU_*, chargeNorm, hyperbolicU_eq_narain_gram (the two streams define literally the same matrix).",
+   "file": "chapters/ch10_narain.tex"
+  },
+  {
+   "id": "ch11",
+   "num": 11,
+   "part": "II",
+   "slug": "odd",
+   "title": "The Duality Group O(d,d;Z)",
+   "pages": 14,
+   "sources": [
+    "GPR §2.4 (generators of O(d,d,Z): B-shifts, basis changes, factorized dualities; ll. ~1300-1500 and the generation statement)",
+    "AMN §2"
+   ],
+   "lean": [
+    "DualScaleStream2/TDuality/ODD.lean",
+    "DualScaleStream2/TDuality/Factorized.lean",
+    "DualScaleStream2/TDuality/Spectrum.lean"
+   ],
+   "brief": "Definition of O(d,d) via η; the three families of generators with their physical meaning (integer B-shift = large gauge transformation, GL(d,Z) = change of torus basis, factorized duality = R ↦ 1/R on one circle); the group law, inverses; proof that dual backgrounds have identical spectra (spectrum_equivalence) developed as a real mathematical proof on the page, then its Lean form; what is NOT formalized (that these generate the whole group: Tier L). Include a d = 2 worked example with explicit 4×4 matrices.",
+   "file": "chapters/ch11_odd.tex"
+  },
+  {
+   "id": "ch12",
+   "num": 12,
+   "part": "II",
+   "slug": "torus2",
+   "title": "The Two-Torus: τ, ρ and Mirror Symmetry",
+   "pages": 13,
+   "sources": [
+    "GPR §2.5 or the d=2 discussion (tau, rho, SL(2,Z)xSL(2,Z), Z2 exchanges)",
+    "Asp §3 (T2 example) if present"
+   ],
+   "lean": [
+    "DualScaleStream2/TDuality/Mirror.lean",
+    "DualScaleStream2/TDuality/SL2Product.lean",
+    "StringTheoryFormalization/Frontier/ModuliGeodesics.lean",
+    "StringTheoryFormalization/Frontier/SL2CSymmetry.lean"
+   ],
+   "brief": "Complex structure τ and complexified Kähler modulus ρ = B + i√G; O(2,2;Z) ≅ [SL(2,Z)×SL(2,Z)] ⋊ (Z2×Z2) explained; the upper half-plane, fundamental domain (TikZ), Poincaré metric and geodesics; mirror symmetry τ ↔ ρ as a factorized duality; Lean: tauShift, mirror_conjugates_tauShift, basisChange_comm_thetaShift (one direction only; the converse is a symbolic check), modulus/geodesic lemmas.",
+   "file": "chapters/ch12_torus2.tex"
+  },
+  {
+   "id": "ch13",
+   "num": 13,
+   "part": "II",
+   "slug": "dbranes",
+   "title": "Open Strings, D-Branes and T-Duality",
+   "pages": 10,
+   "sources": [
+    "Pol §1-2 (T-duality of open strings, D-branes from Neumann to Dirichlet, Chan-Paton and Wilson lines)",
+    "Tong §3 (open strings and D-branes) basics"
+   ],
+   "lean": [],
+   "brief": "Open-string boundary conditions; T-duality turns Neumann into Dirichlet; D-branes as dynamical objects, Wilson lines ↔ brane positions; why this matters for K3×T² orientifolds and tadpoles later. Entirely Tier L: say so, and explain what a formalization target would look like (a boundary-condition involution on mode data). Include 'A formalization exercise' section proposing two precise Lean statements for students.",
+   "file": "chapters/ch13_dbranes.tex"
+  },
+  {
+   "id": "ch14",
+   "num": 14,
+   "part": "III",
+   "slug": "doubled",
+   "title": "Doubled Coordinates and the Strong Constraint",
+   "pages": 12,
+   "sources": [
+    "HZ §1-2 (doubled torus, fields depending on x and x-tilde, level matching constraint)",
+    "AMN §3.1-3.2"
+   ],
+   "lean": [
+    "DualScaleStream2/DFT/SectionCondition.lean",
+    "DualScaleStream2/TDuality/ODD.lean"
+   ],
+   "brief": "Why double: winding modes need their own coordinate x̃; fields on the doubled torus; level matching L0 − L̄0 = 0 becomes ∂·∂̃ = 0 (weak constraint), the strong constraint/section condition, its solutions as maximal isotropic subspaces, O(d,d) rotates one frame into another. Lean: etaPair, IsSection, momentumFrame_isSection, windingFrame_isSection, isSection_image, levelMatching_iff.",
+   "file": "chapters/ch14_doubled.tex"
+  },
+  {
+   "id": "ch15",
+   "num": 15,
+   "part": "III",
+   "slug": "genmetric",
+   "title": "The Generalized Metric",
+   "pages": 14,
+   "sources": [
+    "HHZ §1-2 (generalized metric H, its O(D,D) properties, action)",
+    "AMN §3.3",
+    "GPR §2.4 (background matrix E = G+B and its fractional linear transformation)"
+   ],
+   "lean": [
+    "DualScaleStream2/DFT/GeneralizedMetric.lean",
+    "DualScaleStream2/DFT/BShift.lean",
+    "StringTheoryFormalization/StringDynamics/ODDMetric.lean"
+   ],
+   "brief": "Construct H(G,B) from the Hamiltonian of the zero modes; prove by hand: H symmetric, H ∈ O(d,d) i.e. (ηH)² = 1, H positive definite, B-shift acts by conjugation, factorized duality with B = 0 inverts G; the mass form M² = Zᵀ H Z and its covariance; relation to E = G + B and fractional linear transformations. Lean: every theorem of GeneralizedMetric.lean and BShift.lean with proof ideas (block multiplication, Matrix.fromBlocks_multiply). This is the technical heart of Part III: be complete.",
+   "file": "chapters/ch15_genmetric.tex"
+  },
+  {
+   "id": "ch16",
+   "num": 16,
+   "part": "III",
+   "slug": "courant",
+   "title": "Generalized Geometry: Courant and Dorfman Brackets",
+   "pages": 12,
+   "sources": [
+    "AMN §3.2-3.4 (generalized Lie derivative, C-bracket, closure)",
+    "HZ §3 (gauge algebra, C bracket)",
+    "HHZ §3"
+   ],
+   "lean": [
+    "DoubleFieldTheory/CourantAlgebroid.lean",
+    "DoubleFieldTheory/GeneralizedGeometry.lean"
+   ],
+   "brief": "Generalized vectors V = v + ξ, the natural pairing, the generalized Lie derivative unifying diffeomorphisms and B-gauge transformations, Dorfman bracket, Courant (C-) bracket as its antisymmetrization, failure of Jacobi, closure needs the strong constraint. Lean: CourantSection, cbracket_antisymm, dorfman_* — integer-component models; state exactly what is modelled.",
+   "file": "chapters/ch16_courant.tex"
+  },
+  {
+   "id": "ch17",
+   "num": 17,
+   "part": "III",
+   "slug": "dftaction",
+   "title": "The Double Field Theory Action",
+   "pages": 11,
+   "sources": [
+    "HHZ §2-4 (action in terms of H and d, generalized scalar curvature, reduction to the NS-NS action)",
+    "AMN §3.5"
+   ],
+   "lean": [
+    "DoubleFieldTheory/ActionCurvature.lean",
+    "DoubleFieldTheory/PhysicsDSL.lean"
+   ],
+   "brief": "The O(D,D) dilaton d with e^{−2d} = √g e^{−2φ}; the DFT action in generalized-metric form; how it reduces to the NS–NS supergravity action when ∂̃ = 0; generalized curvature scalar; status of DFT beyond the strong constraint. Lean: DilatonMeasure and the ActionCurvature lemmas as arithmetic shadows; an honest 'what a full formalization would need' section (manifolds, tensor calculus in Mathlib).",
+   "file": "chapters/ch17_dftaction.tex"
+  },
+  {
+   "id": "ch18",
+   "num": 18,
+   "part": "IV",
+   "slug": "lattices",
+   "title": "Lattices: Even, Unimodular, E8 and U",
+   "pages": 14,
+   "sources": [
+    "Huy ch. 14 (lattices) — locate via source_toc; Asp §2.3 (the lattice discussion)",
+    "Milnor-Husemoller/Serre are NOT in the library: mark classification theorem Tier L via Huy"
+   ],
+   "lean": [
+    "DualScaleStream2/Lattice/Basic.lean",
+    "DualScaleStream2/Lattice/E8.lean",
+    "DualScaleStream2/Lattice/E8PosDef.lean",
+    "DualScaleStream2/Lattice/Hyperbolic.lean",
+    "DualScaleStream2/Lattice/Reflection.lean"
+   ],
+   "brief": "Integral lattices, Gram matrices, even/odd, discriminant, unimodularity, signature, the classification of indefinite even unimodular lattices (statement), E8 from its Dynkin diagram (TikZ), its Cartan matrix, explicit inverse, determinant 1, positive definiteness via LDLᵀ / sum of squares, the hyperbolic plane U, reflections in (−2)-vectors and the Weyl group. Lean: isUnimodular_of_mul_eq_one, cartanE8_*, e8_LDL, cartanE8_posDef (explain the sum-of-squares proof route and why the naive route timed out), reflection_isometry, reflection_involution.",
+   "file": "chapters/ch18_lattices.tex"
+  },
+  {
+   "id": "ch19",
+   "num": 19,
+   "part": "IV",
+   "slug": "k3",
+   "title": "K3 Surfaces: Definition, Examples and Topology",
+   "pages": 13,
+   "sources": [
+    "Huy ch. 1 (basic definitions, examples: quartic, Kummer, double planes; Hodge numbers)",
+    "Asp §2.1-2.2"
+   ],
+   "lean": [
+    "StringTheoryFormalization/Frontier/HodgeNumbers.lean",
+    "DoubleFieldTheory/K3Topology.lean",
+    "StringTheoryFoundation/K3/K3Surfaces.lean",
+    "StringTheoryFormalization/UseCases/K3SignatureTheorem.lean"
+   ],
+   "brief": "Definition (trivial canonical bundle, h¹(O) = 0), examples, the Hodge diamond (TikZ), χ = 24 by Noether's formula, b₂ = 22, signature (3,19) via the Hirzebruch signature theorem, SU(2) holonomy and why physicists love K3 (half the supersymmetry). Lean: k3HodgeNumber, k3_euler_characteristic (proved in several libraries: mention the atlas finding), bPlus/bMinus, k3_signature_eq_neg_sixteen.",
+   "file": "chapters/ch19_k3.tex"
+  },
+  {
+   "id": "ch20",
+   "num": 20,
+   "part": "IV",
+   "slug": "k3lattice",
+   "title": "The K3 Lattice, Periods and the Torelli Theorem",
+   "pages": 13,
+   "sources": [
+    "Huy ch. 1 §3 and the chapters on period domains and the global Torelli theorem (locate via source_toc)",
+    "Asp §2.3-2.5 (moduli space of Ricci-flat metrics, O(3,19))"
+   ],
+   "lean": [
+    "DualScaleStream2/Lattice/K3T2Signature.lean",
+    "DualScaleStream2/Lattice/Reflection.lean",
+    "DualScaleStream2/Lattice/E8.lean"
+   ],
+   "brief": "H²(K3,Z) ≅ 3U ⊕ 2E8(−1); why (evenness from Wu's formula, unimodularity from Poincaré duality, then classification); the period point, period domain, Torelli theorem and surjectivity (statements, Tier L); moduli of Einstein metrics O(3,19;Z)\\O(3,19)/O(3)×O(19)×R₊; (−2)-curves, reflections and the Weyl group; ADE singularities as enhanced gauge symmetry. Lean: Signature, sigK3_eq, rank_K3, index_mod_eight, e8Neg_*, e8Neg_weyl_isometry.",
+   "file": "chapters/ch20_k3lattice.tex"
+  },
+  {
+   "id": "ch21",
+   "num": 21,
+   "part": "IV",
+   "slug": "kummer",
+   "title": "Kummer Surfaces and the Orbifold T⁴/Z₂",
+   "pages": 11,
+   "sources": [
+    "Huy (Kummer surfaces: ch. 1 example and ch. 14 Kummer lattice)",
+    "Asp §2.6 (orbifolds and blow-ups)"
+   ],
+   "lean": [
+    "StringTheoryFormalization/StringDynamics/KummerBlowup.lean",
+    "DualScaleM24Formalization/Moonshine/KummerTadpole.lean",
+    "Lean5Corpus/Problems/Problem9_KummerModularity.lean"
+   ],
+   "brief": "T⁴/Z₂ has 16 A₁ singularities; blow-up gives 16 exceptional (−2)-curves; count: b₂ = 6 + 16 = 22, χ = 24 done by hand in two ways; the Kummer lattice; string orbifold picture (twisted sectors supply the 16×... states). Lean: kummer_lattice_contribution, exceptional_self_intersection and their counterparts in the other libraries.",
+   "file": "chapters/ch21_kummer.tex"
+  },
+  {
+   "id": "ch22",
+   "num": 22,
+   "part": "IV",
+   "slug": "mukai",
+   "title": "The Mukai Lattice and Fourier–Mukai Transforms",
+   "pages": 12,
+   "sources": [
+    "Huy ch. 9 §1 (Mukai pairing, Def 1.4 near l.7352) and ch. 16 (derived categories, Fourier-Mukai)",
+    "Asp §3 (the (4,20) lattice of the full cohomology)"
+   ],
+   "lean": [
+    "DualScaleStream2/Lattice/Mukai.lean",
+    "StringTheoryFormalization/StringDynamics/MukaiLattice.lean",
+    "StringTheoryFormalization/StringDynamics/FourierMukai.lean",
+    "Lean5Corpus/Problems/Problem4_MukaiMonodromy.lean"
+   ],
+   "brief": "H*(K3,Z) with the Mukai pairing, signature (4,20), the Mukai vector v(E) = ch(E)√td, v² = −χ(E,E) example v(O)² = −2; derived equivalences act as lattice isometries; physical reading: D-brane charges and the stringy moduli space O(4,20). Lean: MukaiVec, mukaiPair_*, structureSheaf_mukai_sq, sigMukai_eq, fm_* statements with scope.",
+   "file": "chapters/ch22_mukai.tex"
+  },
+  {
+   "id": "ch23",
+   "num": 23,
+   "part": "IV",
+   "slug": "stringsk3",
+   "title": "Strings on K3: Moduli Space and Dualities",
+   "pages": 12,
+   "sources": [
+    "Asp §3-4 (type IIA on K3, moduli space O(4,20), heterotic/IIA duality, enhanced gauge symmetry)"
+   ],
+   "lean": [
+    "DualScaleStream2/Lattice/Mukai.lean",
+    "DualScaleStream2/Lattice/K3T2Signature.lean",
+    "StringTheoryFoundation/StringTheory/WittenDuality.lean"
+   ],
+   "brief": "The N=(4,4) sigma model on K3; B-field gives 22 more moduli: 58 + 22 = 80 = 4·20; moduli space O(4,20;Z)\\O(4,20)/O(4)×O(20); the same Narain-type coset as heterotic on T⁴ ⇒ IIA/heterotic duality; enhanced gauge symmetry from shrinking 2-cycles. Tie: Γ^{4,20} is the Mukai lattice — the lattice chapters and the T-duality chapters meet here. Mostly Tier L with precise Lean anchors (signatures, ranks).",
+   "file": "chapters/ch23_stringsk3.tex"
+  },
+  {
+   "id": "ch24",
+   "num": 24,
+   "part": "V",
+   "slug": "k3t2",
+   "title": "Compactification on K3 × T²",
+   "pages": 12,
+   "sources": [
+    "Asp §5-6 (further compactification on T2, N=2 in four dimensions) as available",
+    "DRS §1-3"
+   ],
+   "lean": [
+    "DualScaleStream2/Lattice/K3T2Signature.lean",
+    "StringTheoryFoundation/StringTheory/K3xT2.lean",
+    "DualScaleStream2/Flux/Tadpole.lean"
+   ],
+   "brief": "Künneth: cohomology of K3×T², b₂, b₃, Euler number 0; holonomy SU(2) ⇒ N = 4 → with orientifold/flux N = 2/1; moduli: K3 moduli + τ, ρ of the torus; the full duality group contains O(4,20;Z) × O(2,2;Z); the lattice sigK3T2. Lean: sigK3T2_eq, rank_K3T2, euler_T2, k3t2_euler_zero, K3xT2.lean statements.",
+   "file": "chapters/ch24_k3t2.tex"
+  },
+  {
+   "id": "ch25",
+   "num": 25,
+   "part": "V",
+   "slug": "tadpole",
+   "title": "Fluxes, Tadpoles and χ/24",
+   "pages": 13,
+   "sources": [
+    "SVW (whole paper, 659 lines: the χ/24 tadpole)",
+    "BB §1-3",
+    "DRS §2-4 (K3xK3, K3xT2/orientifold, G-flux)",
+    "GVW §2 (flux quantization)"
+   ],
+   "lean": [
+    "DualScaleStream2/Flux/Tadpole.lean",
+    "DualScaleStream2/Flux/Integrality.lean",
+    "StringTheoryFormalization/StringDynamics/TadpoleConstraint.lean",
+    "StringTheoryFoundation/StringTheory/TadpoleCancellation.lean",
+    "DualScaleM24Formalization/Moonshine/KummerTadpole.lean",
+    "DualScaleValidation/UseCase3_FrontierTriad.lean"
+   ],
+   "brief": "Gauss's law on a compact space; the M/F-theory tadpole χ(X₈)/24 = N_branes + ½∫G∧G; χ(K3×K3) = 576 ⇒ 24; flux quantization and evenness of the intersection form ⇒ ½∫G∧G ∈ Z; the type IIB orientifold picture on K3×T²/Z₂ with O7/D7 charges. Lean: k3k3_anomaly, tadpole_budget, kronForm_even, flux_half_selfIntersection_integral, flux_tadpole_quantization_exact, tadpole_cancellation (note the atlas 'unification candidates').",
+   "file": "chapters/ch25_tadpole.tex"
+  },
+  {
+   "id": "ch26",
+   "num": 26,
+   "part": "V",
+   "slug": "stabilization",
+   "title": "Flux Superpotential and Moduli Stabilization",
+   "pages": 12,
+   "sources": [
+    "GVW §2-3 (W = ∫ G ∧ Ω)",
+    "GKP §2-3 (flux compactification, no-scale structure)",
+    "Gra §3-4 selectively"
+   ],
+   "lean": [
+    "StringTheoryFormalization/Frontier/FTermPotential.lean",
+    "DualScaleValidation/UseCase1_ModuliStabilization.lean",
+    "DualScaleValidation/Observables.lean"
+   ],
+   "brief": "The moduli problem; GVW superpotential; N = 1 F-term potential V = e^K(|DW|² − 3|W|²), no-scale cancellation, V ≥ 0 and minima at D W = 0; the dual-scale potential of this programme V(R) ∝ (R − α′/R)² type toy model with its minimum at the self-dual radius (Tier C as physics, Tier A as calculus). Lean: fterm_potential_nonneg, no_scale_identity, fterm_potential_minimum_susy, self_dual_is_global_minimum.",
+   "file": "chapters/ch26_stabilization.tex"
+  },
+  {
+   "id": "ch27",
+   "num": 27,
+   "part": "V",
+   "slug": "swampland",
+   "title": "The Swampland: Distance, de Sitter and TCC",
+   "pages": 12,
+   "sources": [
+    "Pal §1-2 (overview), the distance conjecture section, the de Sitter conjecture section (locate via source_toc)"
+   ],
+   "lean": [
+    "DualScaleM24Formalization/FrontierTriad/SwamplandDistance.lean",
+    "StringTheoryFormalization/StringDynamics/SwamplandSafe.lean",
+    "StringTheoryFoundation/StringTheory/VafaSwampland.lean",
+    "StringTheoryFoundation/StringTheory/Swampland.lean",
+    "Lean5Corpus/Problems/Problem6_FluxSwampland.lean",
+    "Lean5Corpus/Problems/Problem3_DualScaleTCC.lean"
+   ],
+   "brief": "Landscape vs swampland; the distance conjecture with the circle as the model example (KK tower m ~ e^{−φ}, winding tower at the other end — T-duality makes both ends infinite distance); de Sitter conjecture |∇V| ≥ cV; TCC. All conjectures are Tier C by definition; show how Lean encodes a conjecture as a hypothesis/structure and proves consequences (sdc_tower_suppression etc.) without asserting it.",
+   "file": "chapters/ch27_swampland.tex"
+  },
+  {
+   "id": "ch28",
+   "num": 28,
+   "part": "VI",
+   "slug": "ellgenus",
+   "title": "The Elliptic Genus of K3 and N = 4 Characters",
+   "pages": 13,
+   "sources": [
+    "EOT §1 (elliptic genus, N=4 characters, eq. 1.8-1.12)",
+    "GHV §2"
+   ],
+   "lean": [
+    "StringTheoryFormalization/Frontier/ChiralPrimaries.lean",
+    "StringTheoryFormalization/Frontier/CentralCharge.lean",
+    "DualScaleStream2/Moonshine/EOT.lean"
+   ],
+   "brief": "Partition functions with (−1)^F: the Witten index and its refinement, the elliptic genus as a weak Jacobi form of weight 0 index 1, Z = 8[(θ₂/θ₂(0))² + ...], χ = Z(z=0) = 24; N = 4 superconformal algebra at c = 6, massless and massive characters, decomposition (EOT eq. 1.11) and the coefficients A_n; convention 2A_n. Lean: eotA table, k3 central charge, chiral-primary counts.",
+   "file": "chapters/ch28_ellgenus.tex"
+  },
+  {
+   "id": "ch29",
+   "num": 29,
+   "part": "VI",
+   "slug": "m24",
+   "title": "The Mathieu Group M₂₄",
+   "pages": 12,
+   "sources": [
+    "EOT appendix A (character table, irreps, eq. A.3-A.4)",
+    "GHV §3 (conjugacy classes)"
+   ],
+   "lean": [
+    "StringTheoryFormalization/StringDynamics/MathieuM24.lean",
+    "StringTheoryFormalization/UseCases/MathieuTower.lean",
+    "Lean5Corpus/Problems/Problem8_GolayHolography.lean",
+    "Lean5Corpus/Problems/Problem2_MathieuFrobeniusRigidity.lean",
+    "StringTheoryFoundation/Quantum/TensorNetworkBridge.lean"
+   ],
+   "brief": "Sporadic groups in one page; the binary Golay code [24,12,8] and M24 as its automorphism group; order 2¹⁰·3³·5·7·11·23 = 244823040; 5-transitivity and the tower M24 ⊃ M23 ⊃ M22 ⊃ M21 = PSL(3,4) with stabilizer indices 24, 23, 22; the 26 irreducible dimensions, Burnside Σ dim² = |G| as a consistency check — and the true story of how that check caught a wrong table in this project (LL.md S2.6). Lean: M24_order, M24RepDim, M24RepDim_sum_sq, mathieu_tower_*; Golay lemmas with scope.",
+   "file": "chapters/ch29_m24.tex"
+  },
+  {
+   "id": "ch30",
+   "num": 30,
+   "part": "VI",
+   "slug": "moonshine",
+   "title": "Mathieu Moonshine",
+   "pages": 12,
+   "sources": [
+    "EOT §1-2 and appendix",
+    "GHV §1, §4 (twining genera, evidence)"
+   ],
+   "lean": [
+    "DualScaleStream2/Moonshine/EOT.lean",
+    "DualScaleM24Formalization/Moonshine/MathieuRigidity.lean",
+    "StringTheoryFormalization/StringDynamics/BPSMultiplicities.lean",
+    "DualScaleValidation/UseCase2_MoonshineBPS.lean",
+    "DualScaleM24Formalization/Moonshine/GysinBEMSequence.lean"
+   ],
+   "brief": "The observation 45, 231, 770, 2277, 5796 are irreps; 13915 = 3520 + 10395; conjugate pairs vs real irreps (2277 is real: the correction made to this project's paper 7); twining genera as the real test; the puzzle (no K3 sigma model has M24 symmetry — Mukai's theorem gives M23 subgroups with ≥5 orbits; cite only what GHV/EOT state); what is known and open. Lean: first_five_are_irreps, A6_decomposition, A7_decomposition, A6_not_irrep, bps_ratio_*; 'BPS ratio locks' of this programme as Tier A arithmetic + Tier C interpretation.",
+   "file": "chapters/ch30_moonshine.tex"
+  },
+  {
+   "id": "ch31",
+   "num": 31,
+   "part": "VII",
+   "slug": "dualscale",
+   "title": "The Dual-Scale Principle",
+   "pages": 14,
+   "sources": [
+    "GPR §1 and §2.1 (minimal length remarks)",
+    "BW §2 (T-duality and minimal length in cosmology)",
+    "AAL introduction"
+   ],
+   "lean": [
+    "DualScaleStream2/DualScale/TraceBound.lean",
+    "DualScaleM24Formalization/DualScale/EffectiveMetric.lean",
+    "DualScaleM24Formalization/DualScale/Sym2Lock.lean",
+    "StringTheoryFoundation/Duality/DualScale.lean",
+    "DualScaleValidation/UseCase1_ModuliStabilization.lean",
+    "DualScaleValidation/Observables.lean"
+   ],
+   "brief": "The central thesis stated carefully: geometry probed by strings is described by the pair (R, α′/R) — (G, G⁻¹) in general — and T-duality-invariant quantities are functions of both. The effective scale R_eff = R + α′/R ≥ 2√α′ and its matrix generalization tr G + tr G⁻¹ ≥ 2d for positive definite G: give the full human proof (spectral theorem + x + 1/x ≥ 2) and then the Lean proof strategy actually used; equality at G = 1 (attainment; uniqueness is not formalized); invariance under G ↦ G⁻¹ (dualScale_inv); effective metric and 'no singularity' statements in the older library as arithmetic models. Separate sharply: Tier A inequality, Tier L minimal-length lore, Tier C the programme's cosmological use.",
+   "file": "chapters/ch31_dualscale.tex"
+  },
+  {
+   "id": "ch32",
+   "num": 32,
+   "part": "VII",
+   "slug": "cosmology",
+   "title": "String Gas Cosmology and the Dual-Scale Early Universe",
+   "pages": 12,
+   "sources": [
+    "BW §2-5 (string gas cosmology, Brandenberger-Vafa mechanism, dilaton gravity, moduli stabilization by string gases, perturbations)"
+   ],
+   "lean": [
+    "StringTheoryFormalization/StringDynamics/MukhanovSasaki.lean",
+    "DualScaleM24Formalization/DualScale/EffectiveMetric.lean",
+    "Lean5Corpus/Problems/Problem3_DualScaleTCC.lean",
+    "StringTheoryFormalization/StringDynamics/StiffIntegrators.lean",
+    "StringTheoryFormalization/StringDynamics/PicardSpectral.lean"
+   ],
+   "brief": "T-duality in cosmology: temperature T(R) = T(1/R), Hagedorn phase, Brandenberger–Vafa argument for three large dimensions, winding modes stabilize the radius at the self-dual point, open problems acknowledged in BW; Mukhanov–Sasaki equation and superhorizon freezing; how the programme's numerical modules (stiff integrators, Picard iteration) connect, with exactly what their Lean lemmas state (step-size bounds, contraction constants).",
+   "file": "chapters/ch32_cosmology.tex"
+  },
+  {
+   "id": "ch33",
+   "num": 33,
+   "part": "VII",
+   "slug": "triad",
+   "title": "The Frontier Triad: Distance, Decay and Condensation",
+   "pages": 11,
+   "sources": [
+    "Pal (distance conjecture, dS sections)",
+    "BW or Tong §2 tachyon remarks",
+    "GKP §5 if relevant"
+   ],
+   "lean": [
+    "DualScaleM24Formalization/FrontierTriad/TriadContract.lean",
+    "DualScaleM24Formalization/FrontierTriad/SwamplandDistance.lean",
+    "DualScaleM24Formalization/FrontierTriad/FluxVacuumDecay.lean",
+    "DualScaleM24Formalization/FrontierTriad/TachyonCondensation.lean",
+    "DualScaleValidation/UseCase3_FrontierTriad.lean"
+   ],
+   "brief": "Three dynamical questions the programme packages together: moduli excursions (distance conjecture), flux vacuum decay (bounce action positivity), tachyon condensation (potential descent); the 'contract' pattern: a Lean structure bundling hypotheses with a master theorem (frontier_triad_master_contract) — explain design-by-contract for physics conjectures, exactly what is assumed and what is derived.",
+   "file": "chapters/ch33_triad.tex"
+  },
+  {
+   "id": "ch34",
+   "num": 34,
+   "part": "VIII",
+   "slug": "leanprimer",
+   "title": "Lean 4 for Physicists: A Crash Course",
+   "pages": 14,
+   "sources": [
+    "LL.md",
+    "docs/STREAM2_WORKFLOW.md"
+   ],
+   "lean": [
+    "DualScaleStream2/Lattice/Basic.lean",
+    "DualScaleStream2/TDuality/ODD.lean",
+    "DualScaleStream2/DualScale/TraceBound.lean",
+    "StringTheoryFormalization/UseCases/TDualityMassSpectrum.lean"
+   ],
+   "brief": "Propositions as types in ten pages: terms, types, Prop; def vs theorem; structures; Mathlib matrices (Matrix (Fin d) (Fin d) ℝ, fromBlocks, transpose, PosDef); the tactics used in this book (simp, ring, norm_num, decide, fin_cases, nlinarith, ext, rw, exact, constructor) each with a tiny example from the repo; reading #print axioms; the parser pitfall about multi-name structure fields (LL.md 0.4); how to set up the repo and check a theorem yourself. Walk through ONE full proof line by line: isSection_image or thetaShift_isODD.",
+   "file": "chapters/ch34_leanprimer.tex"
+  },
+  {
+   "id": "ch35",
+   "num": 35,
+   "part": "VIII",
+   "slug": "architecture",
+   "title": "Architecture of the Formalization",
+   "pages": 12,
+   "sources": [
+    "docs/STREAM2_WORKFLOW.md",
+    "docs/PAPER_REVISION_BRIEF_2026_09_17.md",
+    "lakefile.lean",
+    "LL.md §0"
+   ],
+   "lean": [
+    "DualScaleM24Formalization/Epistemic/Tier.lean",
+    "DualScaleM24Formalization/Epistemic/Ledger.lean",
+    "tools/axiom_audit.py",
+    "tools/statement_lock.py"
+   ],
+   "brief": "The seven libraries, their dependency structure (Mathlib-free core vs Mathlib-based), what each contains, honest assessment of depth (arithmetic shadows vs faithful linear algebra); the gates: build, sorry count, axiom audit, statement lock, producer ≠ verifier; the peripheral 'bridge' modules (Navier–Stokes, Fermat/modular, statistical learning, Atlas) described factually in one section with their scope; numbers: 326 + 99 audited theorems.",
+   "file": "chapters/ch35_architecture.tex"
+  },
+  {
+   "id": "ch36",
+   "num": 36,
+   "part": "VIII",
+   "slug": "atlas",
+   "title": "An Atlas of the Theorems: Graph and Retrieval Analysis",
+   "pages": 12,
+   "sources": [
+    "papers/book/generated/atlas.md",
+    "papers/book/generated/atlas_data.json",
+    "tools/theorem_atlas.py",
+    "tools/lean_depgraph.lean"
+   ],
+   "lean": [
+    "tools/lean_depgraph.lean"
+   ],
+   "brief": "Method: kernel-level dependency graph extracted from the compiled environment (not regex), TF-IDF retrieval over statements and docstrings; two distinct relations — dependency intersection (weighted Jaccard) and textual similarity (cosine). Findings, each interpreted mathematically: hubs (Charge, Gram, eta, IsODD, k3HodgeNumber), the 19 cross-library bridges and what each identifies, shared Mathlib foundations (Matrix.fromBlocks_multiply, Matrix.ext...), clusters of similar theorems, and 'unification candidates' — the same fact (χ(K3) = 24, Mukai rank, tadpole cancellation) proved independently in several libraries: what that says about technical debt and how to refactor. Must \\input{generated/atlas_tables} and include generated/module_graph.pdf via \\includegraphics[width=\\textwidth]{generated/module_graph.pdf}. All numbers from atlas_data.json.",
+   "file": "chapters/ch36_atlas.tex"
+  },
+  {
+   "id": "ch37",
+   "num": 37,
+   "part": "VIII",
+   "slug": "pipeline",
+   "title": "The Tiered Proof Pipeline: Methods and Lessons",
+   "pages": 11,
+   "sources": [
+    "docs/STREAM2_WORKFLOW.md §1-6",
+    "LL.md §S2 and §S2-I"
+   ],
+   "lean": [
+    "tools/prover_loop.py",
+    "tools/axiom_audit.py",
+    "tools/statement_lock.py"
+   ],
+   "brief": "How the Stream 2 library was produced: orchestrator-written statements, sympy pre-verification of conventions, local 7B prover for concrete goals, Haiku/Sonnet for symbolic goals, kernel as the only judge; measured results per tier from STREAM2_WORKFLOW §6 (quote numbers exactly); the failures (misreported compile status, thinking-model budget, heartbeat mismatch, wrong M24 table, native_decide) and the safeguards that came out of them. Written as a methods chapter a student could reproduce.",
+   "file": "chapters/ch37_pipeline.tex"
+  },
+  {
+   "id": "ch38",
+   "num": 38,
+   "part": "VIII",
+   "slug": "open",
+   "title": "Open Problems and a Research Roadmap",
+   "pages": 10,
+   "sources": [
+    "LL.md §S2-I",
+    "papers/book/generated/atlas.md (unification candidates)",
+    "GPR, Asp, EOT open questions sections as cited"
+   ],
+   "lean": [],
+   "brief": "A graded list of ~25 concrete projects: (formalization) Narain lattice even self-duality for general d, generation of O(d,d;Z), uniqueness of the dual-scale minimizer, Buscher rules as a theorem about the generalized metric, K3 lattice from classification, Mukai isometries, modular invariance of the torus partition function, Jacobi forms and the elliptic genus, EOT coefficients from characters; (physics) what the dual-scale proposal must do to become testable. Each with prerequisites, difficulty, the Mathlib state, and a precise suggested Lean statement (as leancode marked 'not yet proved').",
+   "file": "chapters/ch38_open.tex"
+  }
+ ]
+}

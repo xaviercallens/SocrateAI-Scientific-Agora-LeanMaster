@@ -1,0 +1,2377 @@
+arXiv:1006.0221v1 [hep-th] 1 Jun 2010
+
+Preprint typeset in JHEP style - HYPER VERSION
+
+Mathieu twining characters for K3
+
+Matthias R. Gaberdiel, Stefan Hohenegger and Roberto Volpato
+Institut für Theoretische Physik
+ETH Zurich
+CH-8093 Zürich
+Switzerland
+
+Abstract: The analogue of the McKay-Thompson series for the proposed Mathieu group
+action on the elliptic genus of K3 is analysed. The corresponding NS-sector twining characters have good modular properties and satisfy remarkable replication identities. These
+observations provide strong support for the conjecture that the elliptic genus of K3 carries
+indeed an action of the Mathieu group M24 .
+
+Contents
+1. Introduction and summary
+
+1
+
+2. Elliptic genera and their modular properties
+2.1 Symmetric powers
+
+2
+4
+
+3. Mathieu symmetry and twining characters
+3.1 Explicit formulae for the twining characters
+3.2 Replication formulae
+
+6
+7
+10
+
+4. Conclusions
+
+13
+
+A. Definitions
+A.1 McKay-Thompson series
+A.2 Twining characters for K3
+
+14
+14
+15
+
+1. Introduction and summary
+Recently, Eguchi, Ooguri and Tachikawa [11] have observed that the elliptic genus of K3
+seems to carry an action of the Mathieu group M24 . More specifically, they noticed that
+the expansion coefficients of the elliptic genus of K3, when written in terms of the elliptic
+genera of N = 4 superconformal representations, can be expressed in terms of dimensions
+of Mathieu group representations. This intriguing observation is very reminiscent of the
+famous observation of McKay and Thompson who found that the Fourier expansion coefficients of the J-function can be written in terms of dimensions of representations of the
+Monster group. This led to a development that is now usually referred to as ‘Monstrous
+Moonshine’, see [18] for a nice review. One of the upshots of this analysis is that the
+J-function can be thought of as the partition function of a self-dual conformal field theory,
+the ‘Monster conformal field theory’ [3, 16], whose automorphism group is precisely the
+Monster group.
+Unlike the situation of the Monster group, the dimensions of the Mathieu group are
+rather small, and thus there is a certain amount of arbitrariness in the above observation
+regarding the elliptic genus of K3. It would therefore be very interesting to subject this
+proposal to some more stringent tests. In the context of Monstrous Moonshine, one of
+the tests concerned the so-called McKay-Thompson series [21]. They are obtained from
+the J-function by replacing the dimensions of the Monster group representations by their
+characters with respect to a Monster group element. (In retrospect, they are the ‘twining
+characters’, where one inserts into the partition function of the Monster conformal field
+
+–1–
+
+theory a Monster group element.) It was observed early on by Conway & Norton that these
+McKay-Thompson series have nice modular properties and satisfy remarkable replication
+identities [5]. The former identities have a natural interpretation in terms of standard orbifold arguments [22], while the latter can be obtained by considering the twining characters
+for the symmetric power theories (as follows from our analysis in section 3.2).
+In this paper we study the analogues of the McKay-Thompson series for the case of
+K3, i.e. the twining elliptic genera where we insert a Mathieu group element into the trace.
+Using the proposed decomposition of the coefficients of the elliptic genus in terms of Mathieu group representations, we can calculate the first few coefficients of these twining genera
+explicitly. As for the McKay-Thompson series, standard orbifold arguments suggest that
+they must have good modular properties. At least for the group elements of small order,
+these modular constraints are very constraining, and we can use them to determine the
+twining genera exactly. We furthermore show that they satisfy highly non-trivial replication identities, relating twining genera corresponding to different group elements to one
+another. The fact that all of this works out represents a very stringent consistency check
+for the proposal of [11]; indeed, our analysis implies that one of the identifications of the
+coefficients in terms of Mathieu representation dimensions must be different to what was
+proposed in [11]. Our analysis thus gives strong support to the idea that the elliptic genus
+of K3 carries indeed an action of the Mathieu group M24 . It furthermore suggests that this
+is in some sense the natural supersymmetric generalisation of Monstrous Moonshine to the
+case of M24 . (A different proposal for the analogue of Monstrous Moonshine for M24 was
+made some time ago in the context of self-dual bosonic conformal field theories by Dong
+& Mason [8].)
+The paper is organised as follows. In section 2 we recall some basic properties of
+elliptic genera and their modular properties. We also review how the elliptic genus of the
+symmetric power theory can be calculated in terms of the original elliptic genus. In section 3
+we briefly describe the proposal of [11], and then calculate the twining elliptic genera and
+their associated NS twining characters. We explain in detail which modular properties the
+latter should possess. Using this insight we then identify the twining characters for group
+elements of small order in terms of known theta functions (or standard McKay-Thompson
+series), see (3.14). In section 3.2 we explain what replication formulae one should expect,
+and demonstrate in a large number of examples, that these identities are indeed satisfied for
+the twining characters of K3. Our conclusions and avenues for future research are described
+in section 4. We have relegated some of the more technical material to an appendix.
+
+2. Elliptic genera and their modular properties
+Let us begin by reviewing some standard material about elliptic genera and their Jacobi
+and modular properties. The elliptic genus of an N = 2 superconformal algebra is defined
+by
+
+
+c̄
+c
+(2.1)
+φ(τ, z) = TrHRR q L0 − 24 e2πizJ0 (−1)F q̄ L̄0 − 24 (−1)F̄ .
+
+–2–
+
+For the right-movers (whose modes are denoted by a bar), only the ground states contribute,
+and hence the above expression is in fact independent of q̄. As is well-known [20], the
+modularity properties of conformal field theory together with spectral flow invariance and
+unitarity imply that the elliptic genus is a weak Jacobi form of index m = 6c and weight
+zero [14]. A weak Jacobi form φ(τ, z) of weight w and index m ∈ Z, with (τ, z) ∈ H × C,
+satisfies the transformation laws
+!
+ aτ + b
+cz 2
+z 
+a
+b
+= (cτ + d)w e2πim cτ +d φ(τ, z)
+,
+∈ SL(2, Z) ,
+(2.2)
+φ
+cτ + d cτ + d
+c d
+2
+
+φ(τ, z + ℓτ + ℓ′ ) = e−2πim(ℓ τ +2ℓz) φ(τ, z)
+
+ℓ, ℓ′ ∈ Z ,
+
+(2.3)
+
+and has a Fourier expansion
+φ(τ, z) =
+
+X
+
+c(n, ℓ)q n y ℓ
+
+(2.4)
+
+n≥0,ℓ∈Z
+
+with c(n, ℓ) = (−1)w c(n, −ℓ). For the case of K3 that will concern us primarily in this
+paper, the elliptic genus equals [10]
+
+
+φK3 (τ, z) = 2y + 20 + 2y −1 + q 20y 2 − 128y + 216 − 128y −1 + 20y −2 + O(q 2 ) , (2.5)
+
+where y = e2πiz . For the following it will be convenient to rescale the elliptic genus by a
+factor of 21 , i.e. to define
+
+
+1
+φ1A (τ, z) = φK3 (τ, z) = y+10+y −1 +q 10y 2 −64y+108−64y −1 +10y −2 +O(q 2 ) , (2.6)
+2
+
+which is then directly equal to the standard weak Jacobi form φ0,1 .
+To understand the analogy with the bosonic Monster conformal field theory, it is useful
+to consider instead the NS-sector version of the elliptic genus, which is obtained by applying
+one half unit of spectral flow to the left-movers, i.e. l = l′ = 12 in (2.3); the shift by l = 21
+is familiar from the spectral flow automorphism
+L0 7→ L0 + l J0 + l2
+
+c
+,
+6
+
+J0 7→ J0 + l
+
+c
+,
+3
+
+(2.7)
+
+while the shift by l′ = 12 is required so as to remove the (−1)F from the trace, in order to
+get the standard NS-sector partition function without an insertion of (−1)F . The resulting
+NS-sector partition function will always be denoted by
+
+
+ 
+
+τ
+1
+1
+τ
+χ(τ, z) = exp 2πim
++z+
+φ τ, z + +
+.
+(2.8)
+4
+2
+2 2
+Using the transformation properties of a Jacobi form it follows easily that
+mz 2
+
+χ(−1/τ, z/τ ) = (−1)m e2πi τ χ(τ, z)
+χ(τ + 2, z) = (−1)m χ(τ, z) .
+
+–3–
+
+(2.9)
+
+In order to obtain a standard modular form (rather than a Jacobi form) we may then put
+z = 0; the resulting function (which we shall simply denote by χ(τ )) is non-trivial, and it
+has simple transformation laws under the congruence subgroup Γθ = hT 2 , Si. For m even
+we have a strict modular function and for m odd we have a function with multiplier system
+given by −1 on the two generators [17],
+χ(−1/τ ) = (−1)m χ(τ ) ,
+
+χ(τ + 2) = (−1)m χ(τ ) .
+
+(2.10)
+
+For the case of K3 it is explicitly given as [17]
+1
+χ1A (τ ) = χK3 (τ ) = κ(τ ) =
+2
+
+
+
+2ϑ4 (τ )
+ϑ2 (τ )
+
+2
+
+−
+
+
+
+2ϑ2 (τ )
+ϑ4 (τ )
+
+2
+
+1
+
+1
+
+= q − 4 (1 − 20 q 2 + · · · ) . (2.11)
+
+Our conventions regarding the theta functions are described in the appendix.
+It should be noted that specialising to z = 0 in the NS-sector does not loose any
+information. Indeed, the NS character χ1A (τ ) determines φ1A (τ, 21 ) by setting z = 0 in
+χ1A (τ, z) = φ1A (τ, 0)
+
+2
+ϑ4 (τ, z)2
+1 ϑ3 (τ, z)
+)
+−
+φ
+(τ,
+1A
+2 ϑ (τ, 0)2 ,
+ϑ2 (τ, 0)2
+2
+
+(2.12)
+
+and using that the coefficient of the first term is simply the Witten index φ1A (τ, 0) = 12.
+On the other hand, this information determines the full elliptic genus via
+φ1A (τ, z) = φ1A (τ, 0)
+
+2
+ϑ2 (τ, z)2
+1 ϑ1 (τ, z)
+)
++
+φ
+(τ,
+1A
+2 ϑ (τ, 0)2 .
+ϑ2 (τ, 0)2
+2
+
+(2.13)
+
+Thus the knowledge of χ1A (τ ) is equivalent to that of φ1A (τ, z). The advantage of working
+with χ1A (τ ) is that it is the natural supersymmetric analogue of the partition function of a
+bosonic conformal field theory for which Monstrous Moonshine was originally formulated.
+2.1 Symmetric powers
+For the following it will also be important to consider the symmetric powers of the K3
+conformal field theory. Given any N = 2 superconformal field theory H, we can consider
+the symmetric power theory
+
+
+H(p) = H⊗ · · · ⊗ H /Zp ,
+(2.14)
+|
+{z
+}
+p times
+
+where the generator π of Zp is the cyclic permutation of length p. We shall concentrate in
+the following on the case when p is prime; then all elements of Zp are cyclic permutations
+of cycle length p. Given the elliptic genus of the original H theory, we can then determine
+the elliptic genus of H(p) [6]. From the untwisted sector of the Zp orbifold we get the
+contribution
+
+p
+1
+(p)
+φ(τ, z) + (p − 1) φ(pτ, pz) .
+(2.15)
+φU (τ, z) =
+p
+Here the first term is the elliptic genus without the insertion of any orbifold generator,
+while the second term gives the contributions coming from π l with l = 1, . . . , p − 1. Since
+
+–4–
+
+each such π l is a cyclic permutation of order p, only the states of the form (u ⊗ u ⊗ · · · ⊗ u)
+contribute, and this leads to φ(pτ, pz) for each of these terms.
+There are (p − 1) twisted sectors, and each of them contributes the same, thus giving
+for the whole twisted sector
+p−1
+
+(p)
+
+φT (τ, z) =
+
+(p − 1) X τ +l 
+φ p ,z ,
+p
+
+(2.16)
+
+l=0
+
+where the sum over l implements the orbifold projection in the twisted sector. Thus the
+elliptic genus of the symmetric power theory is (for p prime)
+φ(p) (τ, z) =
+
+p (p − 1)
+1
+Hp φ(τ, z) ,
+φ(τ, z) +
+p
+p
+
+(2.17)
+
+where Hp denotes the action of the Hecke operator
+Hp φ(τ, z) = φ(pτ, pz) +
+
+p−1
+X
+l=0
+
+
+φ τ +l
+p ,z .
+
+(2.18)
+
+It is well known that (2.17) is again a weak Jacobi form of index mp provided that φ(τ, z)
+has index m [6]. For example, this follows directly from the fact that the Hecke operator
+(2.18) maps weak Jacobi forms to weak Jacobi forms, see [14].
+For our purposes, it is also convenient to rewrite (2.18) for the NS-sector character
+χ(p) (τ ). The result depends on whether p = 2 or p odd. For p = 2 we find
+
+
+
+(2.19)
+χ(2) (τ ) = χ 2τ, 12 + φ τ2 , 12 + (−1)m φ τ2 + 21 , 0 ,
+
+where χ(τ, z) is the NS-sector function defined in (2.8), while φ(τ, z) is the elliptic genus in
+the R-sector. In particular, the last expression is therefore actually a constant since φ(τ, 0)
+is the Witten index. The emergence of the R-sector as the ‘twisted’ sector of the NS-sector
+is familiar from standard Z2 orbifold considerations. For the case of the K3 character the
+relevant formula is1
+"
+#
+2 
+ 2 # "
+
+τ 2
+τ 2
+2ϑ
+(
+2ϑ
+(
+)
+)
+2ϑ
+(2τ
+)
+2ϑ
+(2τ
+)
+3
+4
+(2)
+3
+2
+2
+2
+χ1A (τ ) =
+−
++
+− 12
+−
+ϑ2 (2τ )
+ϑ3 (2τ )
+ϑ4 ( τ2 )
+ϑ3 ( τ2 )
+= χ1A (τ )2 + 36 .
+
+(2.20)
+
+The fact that the left-hand side can be expressed in terms of a polynomial of the original
+K3 character is a consequence of χ1A (τ )2 being a Hauptmodul (without any multiplier
+system) for the congruence subgroup Γθ . Since the left-hand is a modular form for Γθ
+(without any multiplier system), it must therefore be a polynomial of χ1 (τ )2 .
+For p > 2 (recall that p is prime, and therefore now odd) the formula is instead
+χ(p) (τ ) = χ(pτ ) +
+
+p−1
+X
+l=0
+
+1
+
+
+,
+χ τ +4l
+p
+
+p ≥ 3 prime.
+
+(2.21)
+
+We shall state these and any following formulae for the rescaled elliptic genera, see (2.6) and (2.11).
+
+–5–
+
+For the case of the K3 character we then find, for example for p = 3,
+
+
+
+(3)
+τ +8
++
+χ
+χ1A (τ ) = χ1A (3τ ) + χ1A τ3 + χ1A τ +4
+1A
+3
+3
+= χ1A (τ )3 + 60 χ1A (τ ) .
+
+(2.22)
+
+By the same token as above, this formula follows from the fact that the left-hand side
+is again a modular form (with multiplier system −1 on S and T 2 ) for Γθ , and that the
+Hauptmodul for these is χ1A (τ ). Because of the non-trivial multipler system of the lefthand-side the expression now only involves odd powers of χ1A (τ ).
+We should note that these relations are the natural analogue of the replication formulae
+for the J-function, which read for p = 2 and p = 3
+
+
+J(2τ ) + J τ2 + J τ +1
+= J 2 (τ ) − 2a1
+2
+
+
+
++ J τ +2
+= J 3 (τ ) − 3a1 J(τ ) − 3a2 .
+(2.23)
+J(3τ ) + J τ3 + J τ +1
+3
+3
+Here J(τ ) is the famous J-function
+J(τ ) =
+
+∞
+X
+
+k=−1
+
+ak q k = q −1 + 196884q + 21493760q 2 + O(q 3 ) ,
+
+(2.24)
+
+that plays a central role in Monstrous moonshine, see [18] for a nice review.
+
+3. Mathieu symmetry and twining characters
+The elliptic genus of K3 can be thought of as the partition function of the N = 2 half-BPS
+states of type II string theory on K3. It is suggested by the work of [11] that the space of
+these half-BPS states carries an action of the Mathieu group M24 . Indeed, it was found in
+[11], following on from earlier work [9], that the elliptic genus of K3 can be written as
+N =4
+(τ, z) +
+φ1A (τ, z) = 24 chh=
+1
+,l=0
+4
+
+∞
+X
+
+N =4
+An chh=n+
+(τ, z) ,
+1
+,l= 1
+
+n=0
+
+4
+
+(3.1)
+
+2
+
+N =4
+where chh=
+is the elliptic genus of the short N = 4 representation with h = 14 and
+1
+,l=0
+4
+
+l = 0 — see [12, 13] for an explicit formula — while
+3
+
+h− 8
+N =4
+chh,l=
+1 (τ, z) = q
+2
+
+ϑ1 (τ, z)2
+η(τ )3
+
+(3.2)
+
+is the elliptic genus of a long N = 4 representation.2 The observation of [11] was that the
+coefficients An can be written in terms of dimensions of irreducible representations of the
+Mathieu group M24 . (The character table of M24 , from which one can read off in particular
+the dimensions of the irreducible representations is given in the appendix.) More explicitly,
+24 = 23 + 1
+A1 = 90 = 45 + 45
+A3 = 1440 = 770 + 770
+A5 = 11592 = 2 · 5796
+
+−A0 = 2 = 1 + 1
+A2 = 462 = 231 + 231
+A4 = 4554 = 2277 + 2277
+A6 = 27830 = 2 · 3520 + 2 · 10395
+
+2
+
+(3.3)
+
+Strictly speaking, the N = 4 representation with n = 0 (h = 41 ) is short, and thus (3.2) for h = 14 is
+not the elliptic genus of a single representation, but rather involves a sum of representations.
+
+–6–
+
+and
+A7 = 61686 = 2 · 1771 + 2 · 2024 + 2 · 5313 + 2 · 5796 + 2 · 5544 + 2 · 10395 .
+
+(3.4)
+
+Note that, relative to [11], we have absorbed the prefactor of 2 in [11, eq. (1.11)] into the
+definition of An . Then we can write the An in terms of real representations, i.e. sums of
+representations and their conjugate representations. Furthermore, for reasons that will be
+explained momentarily, our expression for A7 differs from the decomposition suggested in
+[11]. We should mention though that while A7 given in (3.4) is consistent with what is
+done below, it is not uniquely specified by this.
+3.1 Explicit formulae for the twining characters
+Obviously, as is apparent from the last comment, there is much arbitrariness in these
+decompositions, and they are only a suggestive hint of some underlying deeper structure.
+The main aim of this paper is to subject this proposal to a much more refined test. To
+this end we shall study the corresponding ‘twining genus’, i.e. the analogues of the McKayThompson series in the case of Monstrous Moonshine. This is to say, we shall calculate
+not just the elliptic genus itself, but the elliptic genus with the insertion of a group element
+g ∈ M24
+
+
+c̄
+c
+(3.5)
+φg (τ, z) = TrHRR g q L0 − 24 e2πizJ0 (−1)F q̄ L̄0 − 24 (−1)F̄ .
+
+Technically speaking, the calculation of φg differs from φ by replacing An in (3.1) by the
+characters of g in the representations described in (3.3). Obviously, the character of g only
+depends on its conjugacy class, and thus all the information we need is contained in the
+character table of M24 that is included in the appendix.
+One immediate problem with this approach is that we only know how to write An in
+terms of dimensions of representations of M24 for the first few values of n. We can therefore
+only directly determine the low powers of q of the twining genera φg . If this was all there
+was to it, this would not be particularly interesting, and it would certainly not lead to any
+non-trivial consistency check of the proposal. The reason why interesting information can
+be obtained in this manner is that the twining genera must have fairly specific modular
+properties. One way to see this explicitly is to translate the R-sector series φg (τ, z) into
+the NS-sector as in (2.8), and set z = 0. The resulting expression is the NS-sector twining
+character χg (τ ), i.e. the character in the NS-sector with the insertion of the Mathieu group
+element g. Note that by the same arguments as above we are not loosing any information
+in doing so, because the analogues of (2.12) and (2.13) are
+χg (τ, z) = φg (τ, 0)
+
+2
+ϑ4 (τ, z)2
+1 ϑ3 (τ, z)
+−
+φ
+(τ,
+)
+g
+2 ϑ (τ, 0)2 ,
+ϑ2 (τ, 0)2
+2
+
+(3.6)
+
+φg (τ, z) = φg (τ, 0)
+
+2
+ϑ2 (τ, z)2
+1 ϑ1 (τ, z)
+)
++
+φ
+(τ,
+g
+2 ϑ (τ, 0)2 ,
+ϑ2 (τ, 0)2
+2
+
+(3.7)
+
+and
+
+where now the constant term equals
+φg (τ, 0) = 12 Tr23⊕1 (g) .
+
+–7–
+
+(3.8)
+
+Thus we can reconstruct the full twining genus φg (τ, z) from the twining character χg (τ ),
+and vice versa. In terms of the usual box notation, χg (τ ) corresponds to
+χg (τ ) ←→ (−1, 1)
+(−1, g)
+
+(3.9)
+
+where the ’−1’s indicate that the trace is taken in the NS-sector, and without any insertion
+of (−1)F , respectively. Under a modular transformation it is believed that these twining
+and twisted characters transform as
+
+
+
+
+a b
+c d
+−−−−−−−−−→
+
+
+h
+
+(3.10)
+
+hd gc
+
+g
+
+ga hb
+
+For the case at hand, it therefore follows that the twining character corresponding to (3.9)
+is invariant (possibly up to some phase) under a modular transformation provided that
+a + b, c + d ∈ 2Z + 1 ,
+
+c=0
+
+mod o(g),
+
+(3.11)
+
+where o(g) is the order of the group element g. [Here we have used that the group operation
+is (ǫ1 , g1 ) · (ǫ2 , g2 ) = (ǫ1 ǫ2 , g1 · g2 ), where ǫj ∈ {±1} and gi ∈ M24 . We have furthermore
+used that the conditions in (3.11) together with the requirement that ad−bc = 1 imply that
+(a, o(g)) = 1. For the Mathieu group M24 it then follows that ga is in the same conjugacy
+class as g.] The subgroup of SL(2, Z) that is characterised by (3.11) contains in particular
+Γg = Γθ ∩ Γ0 (o(g)) ,
+where Γθ was introduced before, and
+(
+!
+)
+a b
+Γ0 (N ) =
+∈ SL(2, Z) : c = 0 mod (N ) .
+c d
+
+(3.12)
+
+(3.13)
+
+The property of a function to be modular invariant under Γg (possibly up to some multiplier
+system) is a very strong condition, and knowing the first few terms usually determines the
+function uniquely.
+Thus the non-trivial consistency test we will be performing proceeds as follows. Using
+the low-lying decomposition (3.3), we can calculate the first few coefficients of the twining
+characters χg (τ ) explicitly. On the other hand, we know that these functions must be
+invariant under Γg , and thus there is the highly non-trivial consistency condition whether
+this ansatz can be completed in a Γg -invariant manner. The results we find are consistent
+with An given in (3.3) and (3.4), but not with the formula for A7 suggested in [11]. They
+represent a highly non-trivial consistency condition for the conjecture of [11] that the
+elliptic genus of K3 carries an action by the Mathieu group M24 .
+The constraints coming from the modular properties are tighter the larger Γg is, i.e.
+the smaller the order of the group element is. In particular, we should therefore expect
+
+–8–
+
+to have good control over the twining characters corresponding to group elements of small
+order. Indeed, this turns out to be correct, and we have even found closed form expressions
+that match with the low lying coefficients and have the correct modular properties. More
+specifically, we find that — in the following the label refers to the conjugacy class of the
+Mathieu group element that is described in the appendix
+χ1A (τ ) = κ(τ ) = T[8a] ( τ4 )
+χ2A (τ ) = 4
+
+— see eq. (2.11)
+
+ϑ4 (τ )2
+≃ T[16b] ( τ4 )
+ϑ2 (τ )2
+
+ϑ3 (τ )2
+≃ T[16b] ( τ4 )
+ϑ2 (τ )2
+
+
+η(τ ) 3 ϑ3 (3τ )
+= T[24c] ( τ4 )
+χ3A (τ ) =
+η(3τ )
+ϑ3 (τ )
+
+
+η(τ ) η(2τ ) 4
+= T[16A] ( τ4 )
+χ4A (τ ) =
+η( τ2 ) η(4τ )
+χ2B (τ ) = 4
+
+χ4B (τ ) = 2
+
+(3.14)
+
+ϑ3 (2τ )
+= T[16B] ( τ4 )
+ϑ2 (2τ )
+
+ϑ3 (τ )2 ϑ3 (2τ )
+ϑ2 (τ )2 ϑ4 (2τ )
+
+
+1
+3
+5
+χ5A (τ ) = q − 4 1 + 3 q + 4 q 2 + 4 q 2 + 4 q 2 + · · · = T[40a] ( τ4 )
+χ4C (τ ) = 4
+
+χ6A (τ ) =
+
+η( 32 τ ) η(2τ )
+η( τ2 ) η(6τ )
+
+!2
+
+= T[24H] ( τ4 ) .
+
+Our conventions for the Jacobi theta functions, and the first few coefficients of the power
+series expansions of the relevant McKay-Thompson series are given in the appendix. We
+1
+have again normalised these functions so that they start with 1 · q − 4 , compare (2.11). In
+most cases, the functions can be identified with a standard McKay-Thompson series T[∗]
+(evaluated at τ4 ) — if this is the case the corresponding identity is given above. For the
+conjugacy class 2A and 2B the coefficients only agree with the McKay-Thompson series
+up to some signs; this is indicated by ≃. In all cases we have explicitly checked that these
+functions are invariant under Γg in (3.12) up to some multiplier system. The multiplier
+system is non-trivial in all cases since all twining characters transform as −1 under T 2 ∈ Γg .
+In addition, χ1A transforms as −1 under S (compare (2.9)), while χ4C transforms as −i
+under ST 4 S. (We have not checked the precise form of the multiplier system for the class
+corresponding to 5A.)
+The attentive reader will notice that (3.14) accounts for all twining characters of group
+elements up to order 6, except for the ones corresponding to 3B and 6B. While we have
+not managed to find any closed formulae for them — explicit formulae for the first few
+coefficients of their power series expansion are given in the appendix — we have an indi-
+
+–9–
+
+rect argument that suggests that at least the twining character corresponding to 3B has
+good modular properties; this will be explained in the following section. We should also
+mention that some of these conjugacy classes are actually contained in M23 — these are
+the conjugacy classes 1A, 2A, 3A, 4B, 5A, 6A — while the others (2B, 3B, 4A, 4C) lie
+only in M24 but not in M23 . These latter classes are characterised by the property that
+Tr23⊕1 (g) = 0. For them the relation between the twining characters and the twining
+genera (see (3.6) and (3.7)) is therefore particularly simple, and we have
+φg (τ, z) = −χg (τ )
+
+ϑ1 (τ, z)2
+ϑ3 (τ, 0)2
+
+if Tr23⊕1 (g) = 0.
+
+(3.15)
+
+Thus for the elements in M24 that are not in M23 , the modular properties of φg (τ, z) are
+a direct consequence of those of χg (τ ). However, apart from this simplification, we do not
+see any difference between the behaviour of the elements that lie in M23 and those that do
+not.
+3.2 Replication formulae
+One of the remarkable properties of the McKay-Thompson series in Monstrous Moonshine
+are their replication relations. They are a direct generalisation of the J-function replication identities (2.23) to the McKay-Thompson series. In the following we want to give a
+conformal field theoretic argument that suggests that similar relations should also hold for
+the twining characters of K3, and more specifically, what precise form they should take.
+Incidentally, if we applied the following argument to the Monster theory it would give a
+physics explanation of the replication identities of Monstrous Moonshine.
+The idea of the argument is very simple. If the N = 2 half-BPS spectrum of K3 carries
+an action of the Mathieu group M24 , then the same will apply to the symmetric power
+theories where g ∈ M24 acts diagonally on all p factors so as to commute with the orbifold
+action. But if this is so, then we can also consider the twining character corresponding
+to g ∈ M24 for the pth symmetric power theory. Given our detailed understanding of the
+orbifold theory, we can determine how g acts on the various terms in (2.17) or indeed
+on the different terms in Hp φ(τ, z). The first term corresponds to the untwisted sector
+contribution where the cyclic permutation generator has been inserted into the trace. This
+implies that only the states of the form (u ⊗ u ⊗ · · · ⊗ u) contribute. Inserting the diagonal
+group element g ∈ M24 then leads to φgp (pτ, pz). The other terms of Hp φ(τ, z) come from
+the twisted sector, and the natural action of g ∈ M24 is simply described by replacing φ by
+φg . Thus we are led to claim that the twining genus for the Hecke part of the pth symmetric
+power theory is given by
+p−1
+X
+
+
+Hp φ g (τ, z) = φgp (pτ, pz) +
+φg τ +l
+p ,z .
+
+(3.16)
+
+l=0
+
+Translated into the NS-sector characters we then have for p = 2
+
+1
+χ(2)
+g (τ ) = χg 2 2τ, 2 + φg
+
+τ 1
+2, 2
+
+– 10 –
+
+
+
++ (−1)m φg
+
+
+
+1
+τ
+2 + 2, 0
+
+,
+
+(3.17)
+
+while for p > 2 the formula is
+χg(p) (τ ) = χgp (pτ ) +
+
+p−1
+X
+l=0
+
+χg
+
+
+
+τ +4l
+p
+
+
+
+,
+
+p ≥ 3 prime.
+
+(3.18)
+
+On the other hand, it is clear from the discussion around (3.12) that also these twining
+characters must be invariant under Γg , possibly up to a (different) multiplier system. In
+the context of Monstrous Moonshine, the McKay-Thompson series were Hauptmoduls for
+the corresponding genus zero congruence subgroups, and thus the McKay-Thompson series
+of the symmetric power theories could be written as a polynomial of the original McKayThompson series. This then leads to the replication formulae of Monstrous Moonshine
+(generalising directly the J-function replication identities of (2.23)).
+In the current context, it appears that the twining characters are not of genus zero,
+but we still find remarkable replication identities that give yet another consistency check
+on our analysis (and indicate that the twining characters corresponding to 3B and 7A=7B
+have indeed good modular properties). Specifically, we have found the following identities
+for p = 2
+
+(2)
+χ2A (τ ) = χ1A 2τ, 12 + φ2A
+
+(2)
+χ2B (τ ) = χ1A 2τ, 12 + φ2B
+
+(2)
+χ3A (τ ) = χ3A 2τ, 12 + φ3A
+
+(2)
+χ3B (τ ) = χ3B 2τ, 12 + φ3B
+
+(2)
+χ4A (τ ) = χ2A 2τ, 21 + φ4A
+
+(2)
+χ4B (τ ) = χ2A 2τ, 12 + φ4B
+
+(2)
+χ4C (τ ) = χ2B 2τ, 12 + φ4C
+
+(2)
+χ5A (τ ) = χ5A 2τ, 12 + φ5A
+
+(2)
+χ6A (τ ) = χ3A 2τ, 12 + φ6A
+
+(2)
+χ7A (τ ) = χ7A 2τ, 12 + φ7A
+
+τ 1
+2, 2
+τ 1
+2, 2
+τ 1
+2, 2
+τ 1
+2, 2
+τ 1
+2, 2
+τ 1
+2, 2
+τ 1
+2, 2
+τ 1
+2, 2
+τ 1
+2, 2
+τ 1
+2, 2
+
+
+
+− 4 = χ2A (τ )2 + 4
+
+(3.19)
+
+= χ2B (τ )2 − 12
+
+(3.20)
+
+
+
+− 3 = χ3A (τ )2
+
+(3.21)
+
+
+
+
+= − 12 χ3B (τ )2 + 32 T[12D]
+
+
+
+− 2 = −χ4B (τ )2 + 2 T[8E]
+
+
+
+− 2 = −χ5A (τ )2 + 2 T[20C]
+
+τ
+2
+
+− 1 = −χ6A (τ )2 + 2 T[12I]
+
+τ
+2
+
+
+
+− 23 = −2χ7A (τ )2 + 3 T[28B]
+
+
+
+
+
+
+
+= −χ4A (τ )2 + 2 T[8E]
+
+τ
+2
+
+τ
+2
+
+
+
+= − 12 χ4C (τ )2 + 23 T[16d]
+
+
+
+(3.22)
+
++4
+
+τ
+
+(3.23)
+−4
+
+2
+
+
+τ 2
+4
+
+(3.24)
+(3.25)
+
+
+
+
+
+τ
+2
+
+−4
+
+(3.26)
+(3.27)
+
+
+
+.
+
+(3.28)
+
+These identities imply recursion relations for the twining characters which one could use,
+say, to determine the twining character for 3B explicitly. Furthermore, since the McKayThompson series are known to have good modular transformation properties, the existence
+of these relations implies that the same must be true for the twining characters that appear
+here.
+For p = 3 we have found the following explicit identities
+(3)
+
+χ2A (τ ) = χ2A (3τ ) +
+
+2
+X
+l=0
+
+χ2A
+
+τ +4l
+3
+
+
+
+= χ2A (τ )3 + 12 χ2A (τ )
+
+– 11 –
+
+(3.29)
+
+(3)
+χ2B (τ ) = χ2B (3τ ) +
+
+2
+X
+
+χ2B
+
+τ +4l
+3
+
+
+
+= χ2B (τ )3 − 12 χ2B (τ )
+
+(3.30)
+
+χ3A
+
+τ +4l
+3
+
+
+
+= χ3A (τ )3 + 6 χ3A (τ )
+
+(3.31)
+
+χ4A
+
+τ +4l
+3
+
+
+
+= χ4A (τ )3 − 12 χ4A (τ )
+
+(3.32)
+
+χ4B
+
+τ +4l
+3
+
+= χ4B (τ )3
+
+(3.33)
+
+2
+X
+
+
+
+χ4C
+
+τ +4l
+3
+
+
+
+= 14 χ4C (τ )3 + 43 χ4C (τ ) T[16d]
+
+2
+X
+
+χ5A
+
+τ +4l
+3
+
+
+
+= χ5A (τ )3
+
+(3.35)
+
+χ6A
+
+τ +4l
+3
+
+
+
+= χ6A (τ )3 − 6 χ6A (τ ) ,
+
+(3.36)
+
+l=0
+
+(3)
+χ3A (τ ) = χ1A (3τ ) +
+
+2
+X
+l=0
+
+(3)
+χ4A (τ ) = χ4A (3τ ) +
+
+2
+X
+l=0
+
+(3)
+χ4B (τ ) = χ4B (3τ ) +
+
+2
+X
+l=0
+
+(3)
+χ4C (τ ) = χ4C (3τ ) +
+
+l=0
+
+(3)
+
+χ5A (τ ) = χ5A (3τ ) +
+
+l=0
+
+(3)
+
+χ6A (τ ) = χ2A (3τ ) +
+
+2
+X
+l=0
+
+
+τ 2
+− 6 T[16d]
+4
+
+τ
+4
+
+
+
+(3.34)
+
+while for p = 5 we have found
+
+(5)
+χ2A (τ ) = χ2A (5τ ) +
+
+4
+X
+
+χ2A
+
+τ +4l
+5
+
+
+
+= χ2A (τ )5 + 20 χ2A (τ )3 + 70 χ2A (τ )
+
+(3.37)
+
+χ2B
+
+τ +4l
+5
+
+
+
+= χ2B (τ )5 − 20 χ2B (τ )3 + 70 χ2B (τ )
+
+(3.38)
+
+χ3A
+
+τ +4l
+5
+
+
+
+= χ3A (τ )5 + 10 χ3A (τ )3 + 15 χ3A (τ )
+
+(3.39)
+
+χ4A
+
+τ +4l
+5
+
+
+
+= χ4A (τ )5 − 20 χ4A (τ )3 + 30 χ4A (τ )
+
+(3.40)
+
+χ4B
+
+τ +4l
+5
+
+= χ4B (τ )5 − 10 χ4B (τ )
+
+(3.41)
+
+4
+X
+
+
+
+χ4C
+
+τ +4l
+5
+
+
+
+1
+1
+= 16
+χ4C (τ )5 − 16
+χ4C (τ )3 T[16d]
+
+4
+X
+
+χ5A
+
+
+
+= χ5A (τ )5 − 15 χ5A (τ )
+
+l=0
+
+(5)
+χ2B (τ ) = χ2B (5τ ) +
+
+4
+X
+l=0
+
+(5)
+
+χ3A (τ ) = χ3A (5τ ) +
+
+4
+X
+l=0
+
+(5)
+
+χ4A (τ ) = χ4A (5τ ) +
+
+4
+X
+l=0
+
+(5)
+
+χ4B (τ ) = χ4B (5τ ) +
+
+4
+X
+l=0
+
+(5)
+
+χ4C (τ ) = χ4C (5τ ) +
+
+l=0
+
++χ4C (τ ) T[16d]
+(5)
+
+χ5A (τ ) = χ1A (5τ ) +
+
+l=0
+
+
+τ 4
+− 21 χ4C (τ )2 T[16d]
+4
+τ +4l
+5
+
+– 12 –
+
+τ
+4
+
+
+
+− 4 T[16d]
+
+
+τ 2
+4
+
+
+τ 3
+− 2 χ4C (τ )
+4
+
+(3.42)
+(3.43)
+
+(5)
+χ6A (τ ) = χ6A (5τ ) +
+
+4
+X
+l=0
+
+χ6A
+
+τ +4l
+5
+
+
+
+= χ6A (τ )5 − 10 χ6A (τ )3 − 5 χ6A (τ ) .
+
+(3.44)
+
+These are probably not the only identities that exist, but only those we have been able to
+find with our current partial understanding of the twining characters. Indeed, in order to
+be able to determine the higher order replication formulae, one needs to know the twining
+characters up to some fairly high level. Thus with our current understanding we can only
+check these identities for the twining characters given in (3.14).
+
+4. Conclusions
+In this paper we have provided strong evidence for the conjecture of Eguchi, Ooguri and
+Tachikawa [11] that the elliptic genus of K3 carries a natural action of the Mathieu group
+M24 . In particular, we have shown that the elliptic genus with the insertion of a group
+element in M24 leads, in the NS-sector, to a twining character that possesses nice modular
+properties. By considering the twining characters of symmetric power theories we have
+furthermore shown that the twining characters satisfy beautiful replication identities similar to those appearing for the McKay-Thompson series in Monstrous Moonshine. While
+the analogy of the twining characters with the McKay-Thompson series is quite striking,
+there are also marked differences: in the current context the twining characters are not
+Hauptmoduls for a genus zero congruence subgroup, and hence the replication relations
+contain also ‘inhomogeneous’ terms (for example the term proportional to T[12D] in (3.22)).
+So far we have only worked out about half of the twining characters in detail. In order
+to get a more complete understanding of the Mathieu action on the K3 elliptic genus, it
+would be very desirable to find closed form expressions for all twining characters. Probably
+some more refined techniques (rather than just guessing and confirming the answer) will
+be necessary; in particular, the techniques developed by Bantay & Gannon [1, 2] should be
+useful for this.
+The above analysis suggests that the space of N = 2 half-BPS states of K3 carries
+an action of the Mathieu group M24 . It is believed that these N = 2 half-BPS states
+form a subset of the quarter-BPS states (with respect to N = 4), for which the spectrum
+generating algebra is the so-called BPS-algebra of Harvey & Moore [19, 7]. The above group
+action on the spectrum then suggests that the Mathieu group M24 should be (contained in)
+the automorphism group of that Borcherds algebra, in complete analogy to what happened
+for Monstrous Moonshine. It would be very interesting to explore this idea in more detail.
+
+Acknowledgments
+We thank Terry Gannon for useful communications and Daniel Persson for comments on
+the draft. The research of MRG is partially supported by a grant from the Swiss National
+Science Foundation, and the research of RV is supported by an INFN Fellowship.
+
+– 13 –
+
+Note added: As this paper was being finalised, a preprint appeared arXiv:1005.5415 [4]
+that contains overlapping results with those of section 3.1 of the present paper.
+
+A. Definitions
+Our conventions for the Dedekind eta and the Jacobi theta functions are
+∞
+Y
+
+1
+
+η(τ ) = q 24
+
+(1 − q n )
+
+n=1
+1
+
+1
+
+ϑ1 (τ, z) = −iq 8 y 2
+
+∞
+Y
+
+(1 − q n )(1 − yq n )(1 − y −1 q n−1 )
+
+n=1
+
+1
+8
+
+ϑ2 (τ, z) = 2 q cos(πz)
+
+∞
+Y
+
+(1 − q n ) (1 + yq n )(1 + y −1 q n )
+
+n=1
+
+ϑ3 (τ, z) =
+ϑ4 (τ, z) =
+
+∞
+Y
+
+(1 − q n ) (1 + yq n−1/2 )(1 + y −1 q n−1/2 )
+
+(A.1)
+
+n=1
+∞
+Y
+
+(1 − q n ) (1 − yq n−1/2 )(1 − y −1 q n−1/2 ) .
+
+n=1
+
+Under modular transformations the ϑ and η functions transform as
+2πi
+
+2πi
+
+η(τ + 1) = e 24 η(τ )
+
+ϑ2 (τ + 1, z) = e 8 ϑ2 (τ, z) ,
+
+(A.2)
+
+ϑ4 (τ + 1, z) = ϑ3 (τ, z) ,
+
+(A.3)
+
+ϑ3 (τ + 1, z) = ϑ4 (τ, z)
+as well as
+1
+
+η(− τ1 ) = (−iτ ) 2 η(τ )
+1
+
+ϑ3 (− τ1 , τz ) = (−iτ ) 2 e
+
+1
+
+iπz 2
+
+1
+
+iπz 2
+τ
+
+ϑ2 (− τ1 , τz ) = (−iτ ) 2 e τ ϑ4 (τ, z) ,
+iπz 2
+τ
+
+ϑ4 (− τ1 , τz ) = (−iτ ) 2 e
+
+ϑ3 (τ, z)
+
+ϑ2 (τ, z) .
+
+(A.4)
+(A.5)
+
+The theta functions ϑa (τ ) are defined as ϑa (τ ) ≡ ϑa (τ, z = 0).
+A.1 McKay-Thompson series
+For completeness we give here the first few terms of the McKay-Thompson series that
+appear in our analysis
+T[8D] = q −1 + 4q + 2q 3 + 8q 5 − q 7 + · · ·
+
+T[8E] = q
+
+−1
+
+3
+
+5
+
+(A.6)
+
+7
+
++ 4q + 2q − 8q − q + · · ·
+
+(A.7)
+
+T[8a] = q −1 − 20q − 62q 3 − 216q 5 − 641q 7 − 1636q 9 − · · ·
+T[12D] = q
+
+−1
+
+2
+
+5
+
+8
+
++ 8q + 28q + 64q + 134q
+
+11
+
++ ···
+
+T[12I] = q −1 + 2q + q 3 − 2q 7 − 2q 9 + 2q 11 + · · ·
+
+T[16A] = q
+
+−1
+
+3
+
+5
+
+7
+
+9
+
++ 4q + 10q + 24q + 47q + 84q + · · ·
+
+T[16B] = q −1 + 2q 3 − q 7 − 2q 11 + 3q 15 + 2q 19 + · · ·
+
+– 14 –
+
+(A.8)
+(A.9)
+(A.10)
+(A.11)
+(A.12)
+
+T[16b] = q −1 + 4q − 2q 3 + 8q 5 − q 7 + 20q 9 + · · ·
+
+T[16d] = T[8D] (2τ )1/2 = q −1 − 2q 3 − q 7 + 2q 11 + · · ·
+
+T[20C] = q
+
+−1
+
+2
+
+3
+
+4
+
+5
+
+7
+
++ q − 2q + 2q + 2q − q − 4q + · · ·
+
+T[24H] = q −1 + 2q + 5q 3 + 8q 5 + 14q 7 + 22q 9 + · · ·
+
+T[24c] = q
+
+−1
+
+3
+
+7
+
+9
+
+− 2q + q − 2q + 2q + 2q
+
+11
+
++ ···
+
+T[28B] = q −1 + 3q + 4q 2 + 9q 3 + 12q 4 + 15q 5 + 24q 6 + 39q 7 + · · ·
+
+T[40a] = q
+
+−1
+
+3
+
+5
+
+7
+
+9
+
++ 3q + 4q + 4q + 4q + 7q
+
+11
+
++ ··· ,
+
+(A.13)
+(A.14)
+(A.15)
+(A.16)
+(A.17)
+(A.18)
+(A.19)
+
+see [15] and http://www.research.att.com/ njas/sequences/ for more information about
+these series.
+A.2 Twining characters for K3
+Here we give the low order expansion of the remaining twining characters. Since the
+spectrum of the BPS states is real, the twining characters of conjugacy classes that only
+differ on conjugate representations agree. The remaining functions are therefore
+
+1
+1
+5
+7
+9
+11
+χ3B (τ ) = q − 4 1 + 4q 2 + 4q + 4q 2 + 8q 2 + 2q 3 + 8q 2 + 12q 4 + 4q 2 + 16q 5 + 16q 2
+
+13
+(A.20)
++ 5q 6 + 26q 2 + 21q 7 + · · ·
+
+1
+3
+5
+7
+9
+1
+χ6B (τ ) = q − 4 1 + 4q 2 + 8q + 16q 2 + 32q 2 + 56q 2 + 94q 3 + +152q 2 + 240q 4 + 372q 2
+
+11
+13
++ 560q 5 + 832q 2 + 1197q 6 + 1594q 2 + 1849q 7 + · · ·
+(A.21)
+
+3
+5
+7
+1
+1
+2
+4
+81 3
+2
+2
+χ7A (τ ) = χ7B (τ ) = q − 4 1 + q 2 + 92 q + 8q 2 + 27
+2 q + 23q + 2 q + 68q + 104q
+
+11
+9
+7
+5
+987 6
+1293 13
+2 +
+2 + 751q + · · ·
+(A.22)
+q
++
+352q
+q
++
+q
++ 154q 2 + 469
+2
+2
+2
+
+1
+1
+3
+5
+7
+9
+χ8A (τ ) = q − 4 1 + 2q 2 + 6q + 12q 2 + 23q 2 + 42q 2 + 74q 3 + 124q 2 + 203q 4 + 324q 2
+
+13
+11
+(A.23)
++ 502q 5 + 768q 2 + 1141q 6 + 1567q 2 + 1866q 7 + · · ·
+
+1
+1
+3
+5
+7
+9
+χ10A (τ ) = q − 4 1 + 4q 2 + 7q + 12q 2 + 24q 2 + 40q 2 + 63q 3 + 100q 2 + 153q 4 + 232q 2
+
+11
+13
++ 342q 5 + 492q 2 + 692q 6 + 900q 2 + 1018q 7 + · · ·
+(A.24)
+
+1
+1
+3
+5
+7
+9
+χ11A (τ ) = q − 4 1 + 2q 2 + 4q + 4q 2 + 8q 2 + 14q 2 + 17q 3 + 24q 2 + 37q 4 + 52q 2
+
+11
+13
++ 68q 5 + 88q 2 + 116q 6 + 141q 2 + 147q 7 + · · ·
+(A.25)
+
+1
+1
+3
+5
+7
+9
+χ12A (τ ) = q − 4 1 + 4q 2 + 7q + 12q 2 + 26q 2 + 48q 2 + 78q 3 + 128q 2 + 211q 4 + 336q 2
+
+13
+11
+(A.26)
++ 516q 5 + 780q 2 + 1157q 6 + 1592q 2 + 1886q 7 + · · ·
+
+1
+1
+3
+5
+7
+4
+33 2
+87 3
+2
+2
+2
+χ14A (τ ) = χ14B (τ ) = q − 4 1 + 3q 2 + 11
+2 q + 8q + 2 q + 29q + 2 q + 68q + 108q
+
+9
+11
+13
+7
+5
+6
+2 + 1009 q + 1335 q 2 + 761q + · · ·
+(A.27)
++ 166q 2 + 487
+q
++
+352q
+2
+2
+2
+
+– 15 –
+
+
+5
+7
+1
+3
+1
+2
+119 3
+311 4
+2
+2
+χ15A (τ ) = χ15B (τ ) = q − 4 1 + 3q 2 + 6q + 10q 2 + 41
+2 q + 37q + 2 q + 96q + 2 q
+
+9
+13
+11
+7
+2 + 1250q + · · ·
++ 244q 2 + 367q 5 + 544q 2 + 795q 6 + 2149
+q
+(A.28)
+2
+
+3
+5
+7
+1
+1
+4
+57 2
+165 3
+2
+2
+2
+χ21A (τ ) = χ21B (τ ) = q − 4 1 + 4q 2 + 15
+2 q + 14q + 2 q + 50q + 2 q + 134q + 215q
+
+11
+13
+9
+7
+5
+6
+2 + 2271 q + 1545q 2 + 1813q + · · ·
+(A.29)
+q
++
+772q
++ 340q 2 + 1033
+2
+2
+
+1
+1
+3
+5
+7
+3
+383 4
+2
+χ23A (τ ) = χ23B (τ ) = q − 4 1 + 3q 2 + 7q + 14q 2 + 26q 2 + 43q 2 + 149
+2 q + 124q + 2 q
+
+9
+11
+13
+6
+7
+5
+2 + 985q + 2639 q 2 + 1548q + · · ·
+. (A.30)
++ 296q 2 + 909
+q
++
+682q
+2
+2
+
+– 16 –
+
+Table 1: The character table of the Mathieu group. The rows correspond to the characters, while
+the columns describe the different conjugacy classes, numbered from 1 to 26 as in [11]. The second
+line gives the name of the conjugacy class that is used throughout the paper, where the number is
+the order of any element in the class. Where appropriate the classes of some powers are given in
+√
+the third and fourth row, but only the non-trivial cases are stated. Finally, ep± = (−1 ± i p)/2.
+
+– 17 –
+
+1
+2
+3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+1A 2A 3A 5A 4B 7A 7B 8A 6A 11A 15A 15B 14A 14B 23A 23B 12B 6B 4C 3B 2B 10A 21A 21B 4A 12A
+2A
+4B 3A
+3A 3A 2A 2A
+6B 3B 2B
+2B 3B 3B 2A 6A
+2A
+4C 2B
+3A
+1
+1
+1 1 1 1 1 1 1
+1
+1
+1
+1
+1
+1
+1
+1 1 1 1
+1
+1
+1
+1 1
+1
+23
+7
+5 3 3 2 2 1 1
+1
+0
+0
+0
+0
+0
+0 −1 −1 −1 −1 −1 −1 −1 −1 −1 −1
+252 28
+9 2 4 0 0 0 1 −1 −1 −1
+0
+0 −1 −1
+0 0 0 0 12
+2
+0
+0 4
+1
+253 13 10 3 1 1 1 −1 −2
+0
+0
+0 −1 −1
+0
+0
+1 1 1 1 −11 −1
+1
+1 −3
+0
+1771 −21 16 1 −5 0 0 −1 0
+0
+1
+1
+0
+0
+0
+0 −1 −1 −1 7 11
+1
+0
+0 3
+0
+3520 64 10 0 0 −1 −1 0 −2
+0
+0
+0
+1
+1
+1
+1
+0 0 0 −8
+0
+0 −1 −1 0
+0
+−
++
+−
+−
++
+45 −3
+0 0 1 e+
+e
+−1
+0
+1
+0
+0
+−e
+−e
+−1
+−1
+1
+−1
+1
+3
+5
+0
+e
+e
+−3
+0
+7
+7
+7
+7
+7
+7
++
+45 −3
+0 0 1 e−
+e+
+0
+1
+0
+0 −e−
+−1 −1
+1 −1 1 3
+5
+0 e+
+e−
+0
+7
+7 −1
+7 −e7
+7
+7 −3
++
+−
++
+−
+−
++
+990 −18
+0 0 2 e7 e7 0 0
+0
+0
+0 e7 e7
+1
+1
+1 −1 −2 3 −10
+0 e7 e7 6
+0
++
+−
++
++
+−
+990 −18
+0 0 2 e−
+e
+0
+0
+0
+0
+0
+e
+e
+1
+1
+1
+−1
+−2
+3
+−10
+0
+e
+e
+6
+0
+7
+7
+7
+7
+7
+7
+−
++
+1035 −21
+0 0 3 2e+
+0
+1
+0
+0
+0
+0
+0
+0 −1 1 −1 −3 −5
+0 −e−
+3
+0
+7 2e7 −1
+7 −e7
+−
++
++
+−
+1035 −21
+0 0 3 2e7 2e7 −1 0
+1
+0
+0
+0
+0
+0
+0 −1 1 −1 −3 −5
+0 −e7 −e7 3
+0
+1035 27
+0 0 −1 −1 −1 1 0
+1
+0
+0 −1 −1
+0
+0
+0 2 3 6 35
+0 −1 −1 3
+0
++
+−
+231
+7 −3 1 −1 0 0 −1 1
+0 e15 e15
+0
+0
+1
+1
+0 0 3 0 −9
+1
+0
+0 −1 −1
++
+231
+7 −3 1 −1 0 0 −1 1
+0 e−
+e
+0
+0
+1
+1
+0
+0
+3
+0
+−9
+1
+0
+0
+−1 −1
+15
+15
+−
+770 −14
+5 0 −2 0 0 0 1
+0
+0
+0
+0
+0 e+
+e
+1
+1
+−2
+−7
+10
+0
+0
+0
+2 −1
+23
+23
+−
++
+770 −14
+5 0 −2 0 0 0 1
+0
+0
+0
+0
+0 e23 e23
+1 1 −2 −7 10
+0
+0
+0 2 −1
+483 35
+6 −2 3 0 0 −1 2 −1
+1
+1
+0
+0
+0
+0
+0 0 3 0
+3 −2
+0
+0 3
+0
+1265 49
+5 0 1 −2 −2 1 1
+0
+0
+0
+0
+0
+0
+0
+0 0 −3 8 −15
+0
+1
+1 −7 −1
+2024
+8 −1 −1 0 1 1 0 −1
+0 −1 −1
+1
+1
+0
+0
+0 0 0 8 24 −1
+1
+1 8 −1
+2277 21
+0 −3 1 2 2 −1 0
+0
+0
+0
+0
+0
+0
+0
+0 2 −3 6 −19
+1 −1 −1 −3
+0
+3312 48
+0 −3 0 1 1 0 0
+1
+0
+0 −1 −1
+0
+0
+0 −2 0 −6 16
+1
+1
+1 0
+0
+5313 49 −15 3 −3 0 0 −1 1
+0
+0
+0
+0
+0
+0
+0
+0 0 −3 0
+9 −1
+0
+0 1
+1
+5796 −28 −9 1 4 0 0 0 −1 −1
+1
+1
+0
+0
+0
+0
+0 0 0 0 36
+1
+0
+0 −4 −1
+5544 −56
+9 −1 0 0 0 0 1
+0 −1 −1
+0
+0
+1
+1
+0 0 0 0 24 −1
+0
+0 −8
+1
+10395 −21
+0 0 −1 0 0 1 0
+0
+0
+0
+0
+0 −1 −1
+0 0 3 0 −45
+0
+0
+0 3
+0
+
+References
+[1] P. Bantay and T. Gannon, Conformal characters and the modular representation, JHEP
+0602, 005 (2006) [arXiv:hep-th/0512011].
+[2] P. Bantay and T. Gannon, Vector-valued modular functions for the modular group and the
+hypergeometric equation, Commun. Number Theory and Physics 1, 637 (2008)
+[arXiv:0705.2467 [math.NT]]
+[3] R. Borcherds, Vertex algebras, Kac-Moody algebras and the Monster, Proc. Nat. Acad. Sci.
+U.S.A. 83, 3068 (1986).
+[4] M.C.N. Cheng, K3 surfaces, N=4 dyons, and the Mathieu group M24, arXiv:1005.5415
+[hep-th].
+[5] J.H. Conway and S. Norton, Monstrous Moonshine, Bull. Lond. Math. Soc. 11, 308 (1979).
+[6] R. Dijkgraaf, G.W. Moore, E.P. Verlinde and H.L. Verlinde, Elliptic genera of symmetric
+products and second quantized strings, Commun. Math. Phys. 185, 197 (1997)
+[arXiv:hep-th/9608096].
+[7] R. Dijkgraaf, E.P. Verlinde and H.L. Verlinde, Counting dyons in N=4 string theory, Nucl.
+Phys. B 484, 543 (1997) [arXiv:hep-th/9607026].
+[8] C.Y. Dong and G. Mason, An orbifold theory of genus zero associated to the sporadic group
+M24 , Commun. Math. Phys. 164, 87 (1994).
+[9] T. Eguchi and K. Hikami, Superconformal algebras and Mock Theta Functions 2.
+Rademacher expansion for K3 surface, Commun. Number Theory and Physics 3, 531 (2009)
+[arXiv:0904.0911 [math-ph]].
+[10] T. Eguchi, H. Ooguri, A. Taormina and S.K. Yang, Superconformal algebras and string
+compactification on manifolds with SU (N ) holonomy, Nucl. Phys. B 315, 193 (1989).
+[11] T. Eguchi, H. Ooguri and Y. Tachikawa, Notes on the K3 surface and the Mathieu group
+M24 , arXiv:1004.0956 [hep-th].
+[12] T. Eguchi and A. Taormina, Character formulas for the N = 4 superconformal algebra, Phys.
+Lett. B 200, 315 (1988).
+[13] T. Eguchi and A. Taormina, On the unitary representations of N = 2 and N = 4
+superconformal algebras, Phys. Lett. B 210, 125 (1988).
+[14] M. Eichler and D. Zagier, The Theory of Jacobi Forms, Birkhäuser (1985).
+[15] D. Ford, J. McKay and S. Norton, More on replicable functions, Commun. Algebra 22, 5175
+(1994).
+[16] I. Frenkel, J. Lepowski and A. Meurman, Vertex Operator Algebras and the Monster,
+Academic Press (1986).
+[17] M.R. Gaberdiel, S. Gukov, C.A. Keller, G.W. Moore and H. Ooguri, Extremal N=(2,2) 2d
+conformal field theories and constraints of modularity, Commun. Number Theory and Physics
+2, 743 (2008) [arXiv:0805.4216 [hep-th]].
+[18] T. Gannon, Moonshine beyond the Monster: The Bridge connecting Algebra, Modular Forms
+and Physics, Cambridge University Press (2006).
+
+– 18 –
+
+[19] J.A. Harvey and G.W. Moore, Algebras, BPS states, and strings, Nucl. Phys. B 463, 315
+(1996) [arXiv:hep-th/9510182]
+J.A. Harvey and G.W. Moore, On the algebras of BPS states, Commun. Math. Phys. 197,
+489 (1998) [arXiv:hep-th/9609017].
+[20] T. Kawai, Y. Yamada, and S.-K. Yang, Elliptic genera and N = 2 superconformal field
+theory, Nucl. Phys. B 414, 191 (1994) [hep-th/9306096].
+[21] J.G. Thompson, Some numerology between the Fischer-Griess Monster and the elliptic
+modular function, Bull. Lond. Math. Soc. 11, 352 (1979).
+[22] M.P. Tuite, Monstrous Moonshine from orbifolds, Commun. Math. Phys. 146, 277 (1992).
+
+– 19 –
+
+

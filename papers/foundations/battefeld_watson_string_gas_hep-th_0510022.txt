@@ -1,0 +1,2917 @@
+String Gas Cosmology
+Thorsten Battefeld∗
+
+arXiv:hep-th/0510022v3 17 Feb 2006
+
+Physics Department, Brown University, Providence, RI 02912 USA.
+Scott Watson†
+Physics Department, University of Toronto, Toronto, ON, Canada M5S 1A7.
+(Dated: October 29, 2018)
+
+1
+
+Abstract
+We present a critical review and summary of String Gas Cosmology. We include a
+pedagogical derivation of the effective action starting from string theory, emphasizing the necessary approximations that must be invoked. Working in the effective
+theory, we demonstrate that at late-times it is not possible to stabilize the extra
+dimensions by a gas of massive string winding modes. We then consider additional
+string gases that contain so-called enhanced symmetry states. These string gases
+are very heavy initially, but drive the moduli to locations that minimize the energy
+and pressure of the gas. We consider both classical and quantum gas dynamics,
+where in the former the validity of the theory is questionable and some fine-tuning
+is required, but in the latter we find a consistent and promising stabilization mechanism that is valid at late-times. In addition, we find that string gases provide a
+framework to explore dark matter, presenting alternatives to ΛCDM as recently
+considered by Gubser and Peebles. We also discuss quantum trapping with string
+gases as a method for including dynamics on the string landscape.
+
+∗
+†
+
+Electronic address: Battefeld@physics.brown.edu
+Electronic address: watsongs@physics.utoronto.ca
+
+2
+
+Contents
+I. Introduction
+
+4
+
+II. Dynamics of Strings in Time-Dependent Backgrounds
+
+6
+
+III. Cosmology with String Gases
+
+10
+
+A. Assumptions of the string gas approach
+
+10
+
+B. Energy and pressure of a string gas
+
+12
+
+IV. Classical dynamics of string gases
+
+16
+
+A. Initial Conditions and the Dimensionality of Space-time
+
+16
+
+B. Cosmological Evolution in the Presence of a String Gas
+
+19
+
+C. Summary of 10d Dynamics and Moduli Stabilization
+
+20
+
+D. 4D Dynamics and the Effective Potential
+
+23
+
+V. Quantum dynamics of string gases
+
+28
+
+VI. Late time cosmology and observations
+
+37
+
+A. Dark Matter
+
+38
+
+1. General setup
+
+39
+
+2. Example: A dark matter candidate within SGC
+
+41
+
+B. Imprints onto Perturbations
+
+42
+44
+
+VII. Summary
+
+45
+
+Acknowledgments
+A. Conformal Frames and Dimensional Reduction
+
+45
+
+1. Conformal Transformations
+
+46
+
+2. Dimensional Reduction
+
+47
+
+3
+
+References
+
+50
+
+Figures
+
+54
+
+I. INTRODUCTION
+
+String theory continues to have a number of challenges to address if it is to be made
+experimentally verifiable. Cosmology offers an exciting opportunity to explore such challenges, since the early universe provides conditions where string dynamics would play
+a vital role. To investigate the predictions of string cosmology it is important to have
+concrete constructions of string models in backgrounds that are compatible with our understanding of the early universe. In particular, this presents us with the challenge of
+finding solutions of string theory in time-dependent backgrounds and at nonzero temperature.
+The usual method for constructing models of string cosmology is to compactify any
+extra dimensions and then focus on the low energy, massless degrees of freedom. However,
+this presents a problem since the low energy equations of motion lack potentials to fix the
+massless moduli. For cosmology, this implies the existence of many light scalars, which
+if not fixed at late-times would seem to contradict current observations. Nevertheless, a
+few light scalars could prove valuable to cosmology, since they could address the issue of
+dark energy, dark matter, or provide a theoretical motivation for inflation.
+String or Brane Gas Cosmology (SGC) is an approach to string cosmology which
+began with the pioneering work of Brandenberger and Vafa in (Brandenberger and Vafa,
+1989). They presented an elegant explanation for the dimensionality of space-time by
+considering the effects of massive string modes on the evolution of the early universe. Since
+this seminal paper, considerable effort has gone into realizing whether such a scenario is
+possible. In fact, the cosmology of string gases has lead to interesting conclusions beyond
+those originally proposed by Brandenberger and Vafa. In this paper we attempt to present
+
+4
+
+a pedagogical, yet critical, review of the string gas approach.
+In Section II, we review the origin of the effective action of string cosmology as it
+arises from string theory in the low energy - weak coupling limit. For homogeneous fields,
+this effective theory exhibits a dynamical symmetry, so-called scale factor duality. We
+present the BPS fundamental string solution and corresponding stress-energy tensor for
+the special case of a time-independent background. In Section III, after explicitly stating
+the assumptions of the SGC approach, we generalize the fundamental strings to a timedependent background treating them as an ideal gas. We derive the corresponding energy
+and pressure and discuss the duality properties of the spectrum. In Section IV, we return
+to the Brandenberger and Vafa mechanism and review recent work that challenges the
+heuristic argument. However, we point out that this argument is not quintessential to
+string gas cosmology. Next, we consider the effect of a classical string gas on the timedependent background. This has been examined in the literature from both the 10D
+String frame and 4D Einstein frame perspectives. We review these works, stressing the
+importance that physical quantities are frame independent. Using this, we demonstrate
+that string gases of purely winding modes are not enough to stabilize the extra dimensions.
+A possible resolution to these problems consists of considering string states that become
+massless at critical values of the radion (scale of the extra dimension). These gases can
+drive the evolution of the radion to the location which minimizes the pressure of the gas.
+However, we will see that this approach suffers from fine-tuning issues: first, each string
+gas configuration can lead to a different attractor point on the moduli space; second, if
+the radion starts far from the attractor point, the density of the gas will exceed the energy
+cutoff of the effective theory, questioning the validity of the approach.
+In Section V, we present a resolution to these fine-tuning problems, by considering the
+quantum aspects of the string gas. This approach, known as quantum moduli trapping
+(Kofman et al., 2004; Watson, 2004a), takes the initial theory to contain only the low
+energy massless modes of the string. Then, as the radion nears a point of enhanced
+symmetry (ESP) where additional states become light, the states must be included in the
+5
+
+effective action. This leads to particle production of the additional light states. Once
+on-shell, these states result in a confining potential, since their energy density grows as
+the radion departs from the ESP.
+In Section VI, we consider the possibility of obtaining observational signatures from
+string gases. We demonstrate that remnant strings in the extra dimensions provide natural
+candidates for the alternative ΛCDM model proposed recently by Gubser and Peebles in
+(Gubser and Peebles, 2004b). We also comment on the possibility of combining string
+gases with a period of cosmological inflation.
+In Section VII we conclude. In the appendices we provide a short review on conformal
+transformations and dimensional reduction, necessary for going between the 10D String
+frame and 4D Einstein frames.
+In this review, we attempt to provide a comprehensive survey of the existing SGC
+literature, focusing on the string theory origin and the importance of moduli stabilization.
+For complementary reviews with emphasis on cosmological aspects, we refer the reader
+to (Brandenberger, 2005a,b).
+
+II. DYNAMICS OF STRINGS IN TIME-DEPENDENT BACKGROUNDS
+
+A closed string in a background generated by its bosonic, massless modes is described
+by a nonlinear sigma model (Callan et al., 1985)
+Z
+
+√
+1
+ab
+µ
+ν
+ab
+µ
+ν
+2
+G
+(X)
+∂
+X
+∂
+X
++
+ǫ
+B
+(X)
+∂
+X
+∂
+X
+,
+d
+σ
+−γγ
+Sσ = −
+µν
+a
+b
+µν
+a
+b
+4πα′
+
+(1)
+
+where γ ab is the world-sheet metric, (2πα′ ) is the inverse string tension, Gµν is the background space-time metric, Bµν is the background antisymmetric tensor. Our convention
+in this review will be that coordinates of the full space-time are denoted by X µ with
+µ = 0 . . . D − 1, where D is the space-time dimension. Spatial dimensions parameterized
+
+by X i are denoted by indices i, j = 1 . . . D − 1, compact dimensions are given by coordinates Y m with m, n running over compact spatial coordinates, and σ a with σ 0 ≡ τ, σ 1 ≡ σ
+6
+
+are the worldsheet coordinates.
+In addition to the action above, one can add a topological term
+Z
+1
+√
+Sφ = −
+d2 σ γφ(X)R(2) ,
+4π
+
+(2)
+
+where φ is the background dilaton, which is coupled to the world-sheet Ricci scalar R(2) .
+The string coupling is then given in terms of the vacuum expectation value of the dilaton
+gs = eφ0 .
+Varying the action (1) with respect to the fields, X µ , gives the string equations of
+motion in a general space-time
+
+√
+√
+1
+∂a γγ ab ∂b X µ + Γµλν γγ ab ∂a X λ ∂b X ν + H µλν ǫab ∂a X λ ∂b X ν = 0.
+2
+In addition, one must satisfy the constraint equations
+
+
+1
+Gµν (X) ∂a X µ (σ, τ )∂b X ν (σ, τ ) − γab γ cd ∂c X µ ∂d X ν = 0.
+2
+
+(3)
+
+(4)
+
+The background fields, Gµν , Bµν , and φ, are realized as couplings of the non-linear sigma
+model as can be seen from the action above. This model possesses a conformal symmetry
+classically, but this is spoiled at the quantum level by anomalies; the couplings evolve in
+accordance with the corresponding beta functions1 . This is equivalent to demanding that
+the trace of the world-sheet stress tensor given by
+√
+G√
+B ab
+γγ ab ∂a X µ ∂b X ν + βµν
+ǫ ∂a X µ ∂b X ν + β φ γR(2) ,
+Taa = βµν
+
+(5)
+
+vanishes, where the β functions are found, (e.g. by the background field method) to be
+(Callan et al., 1985)
+
+
+1
+G
+βµν
+= Rµν + 2∇µ ∇ν φ − Hµκσ Hνκσ + O(α′ ),
+4 
+
+B
+κ
+κ
+βµν = ∇ Hκµν − 2∇ φHκµν + O(α′ ),
+
+1
+1  D − 26  
+κ
+κ
+κµν
++
+4∇
+φ∇
+φ
+−
+4∇
+∇
+φ
+−
+R
++
++ O(α′ ),
+βφ = ′
+H
+H
+κ
+κ
+κµν
+α
+48π 2
+12
+1
+
+(6)
+
+Actually (2) already breaks conformal symmetry at the classical level, but is none-the-less required
+(Fradkin and Tseytlin, 1985).
+
+7
+
+with H = dB denoting the field strength associated with the field Bµν . Keeping terms
+tree level in α′ , these equations of motion can be derived from those of the low energy
+effective action of supergravity in D space-time dimensions
+Z
+
+√
+1
+1 2
+D
+−2φ
+2
+d x −Ge
+S0 = 2
+R + c + 4(∇φ) − H ,
+2κD
+12
+
+(7)
+
+where c vanishes in the critical case, D = 26 (D = 10) for the bosonic (super) string, and
+acts as a cosmological constant in the noncritical case. In the case D ≤ 10, the prefactor
+√
+√
+takes the form 2κ2D = (2π α′ )D−2 gs2 (2π)−1 = 16πGD with ls = α′ the string length and
+GD the D dimensional Newton constant. By noting this prefactor we see that this action
+is not only tree level in α′ , but it is also tree level in gs = eφ0 where φ0 is the expectation
+value of the dilaton 2 .
+The above action exhibits a new symmetry, scale factor duality, that is not found in
+pure general relativity. To see this, let us consider cosmological solutions, ignoring flux
+for the moment and working in the critical dimension (c = 0).We take the metric and
+dilaton to have the form
+ds2 = −dt2 +
+λi (t)
+
+ai ≡ e
+
+,
+
+d
+X
+
+a2i (t) dx2i ,
+
+i=1
+
+φ = φ(t),
+
+d = D − 1,
+
+(8)
+
+where the spatial directions are taken to be toroidal. It will prove useful to perform a
+field redefinition and introduce the shifted dilaton,
+ϕ = 2φ − ln V = 2φ −
+
+d
+X
+
+λi .
+
+(9)
+
+i=1
+
+Plugging this ansatz for the fields into the action (7) one finds that the action is invariant
+under the transformation
+ai →
+2
+
+1
+,
+ai
+
+λi → −λi ,
+
+ϕ → ϕ.
+
+(10)
+
+Higher gs corrections would come from considering corrections to the β equations from higher genus
+surfaces for the string world-sheet corresponding to string interactions (we implicitly used a sphere,
+genus zero).
+
+8
+
+This symmetry is known as scale factor duality, and has interesting consequences for
+cosmology. In particular, it tells us that the effective field theory of dilaton gravity for a
+small scale factor is equivalent to that for a large scale factor.
+In addition to the low-energy action for the massless modes above, one may consider
+the addition of classical or quantum string matter. One approach that was first advocated
+in (Dabholkar et al., 1996, 1990; Dabholkar and Harvey, 1989) is to include the action (1)
+as a phenomenological matter source for the background fields in (7). There are many
+interpretations of what such a term may represent. In the supergravity (SUGRA) solutions
+presented in (Dabholkar et al., 1996, 1990; Dabholkar and Harvey, 1989), the authors
+observed that the string source was required at the origin to complete the solution. It has
+also been argued that this action can be added as a method for taking into consideration
+quantum corrections coming from higher genus worldsheets (see e.g. (de Alwis and Sato,
+1996; Tseytlin, 1992)). This interpretation is clear from the additional power of gs2 that
+appears in front of the action (1) relative to (7)3 .
+If we consider a single string source for the background fields the total action becomes,
+S = S0 + Sσ .
+
+(11)
+
+Varying this action we recover the equation of motion of the string (3), the constraints
+(4), and the background equations sourced by the string which take the form
+Z
+√
+κ2D e2φ
+1
+κσ
+√
+d2 σ γγ ab ∂a X µ ∂b X ν δ (D) (x − X(σ)),
+Rµν + 2∇µ ∇ν φ − Hµκσ Hν = −
+′
+4
+2πα −G
+(12)
+Z
+2
+
+κD
+√
+∇µ e−2φ H µνρ =
+d2 σǫab ∂a X ν ∂b X ρ δ (D) (x − X(σ)),
+(13)
+′
+πα −G
+1
+(14)
+4∇κ φ∇κ φ − 4∇κ ∇κ φ − R + Hκµν H κµν = 0.
+12
+3
+
+The action (7) carries a multiplicative factor of gs−2 , whereas the action (1) has prefactor gs0 . Thus,
+the latter is one higher order in the closed string coupling gs2 and is related to the 1-loop free energy
+coming from strings on a toroidal worldsheet (see for example (Bassett et al., 2003; Borunda, 2003)).
+
+9
+
+From (12) we see that the stress-energy tensor of a single string is
+Z
+√
+1
+2 δSσ
+√
+d2 σ γγ ab ∂a X µ ∂b X ν δ (D) (x − X(σ)).
+=−
+Tµν ≡ √
+′
+−G δGµν
+2πα −G
+
+(15)
+
+These equations, along with (3) and (4), represent a system of a single string in the
+presence of its background massless modes. Solving these equations would seem extremely
+difficult given the non-linearity of the problem. However, static solutions were found
+some time ago (Dabholkar et al., 1996, 1990; Dabholkar and Harvey, 1989) and these
+so-called F-string solutions were shown to preserve some supersymmetries and exhibit
+BPS-like properties similar to solitons. In particular, two parallel strings satisfy a noforce condition, since the gravitational attraction is canceled by the scalar exchange of
+the dilaton and flux. Instead, in SGC we will be interested in solutions generated by a gas
+of strings at finite temperature and in cosmological (time-dependent) background fields.
+
+III. COSMOLOGY WITH STRING GASES
+
+We now want to attempt to solve for the background fields allowing for conditions
+indicative of early universe cosmology. As mentioned in the previous section, generically
+the equations resulting from (3) are very difficult to solve. However, by invoking some
+approximations that are not in conflict with cosmological observation, the equations can
+be made tractable. We will now explicitly state these approximations leaving a discussion
+of their limitations to follow.
+
+A. Assumptions of the string gas approach
+
+• Homogeneous Fields:
+
+We will assume that the background fields (i.e. met-
+
+ric, flux, and dilaton) are homogeneous and therefore at most functions of time.
+The generalization to inhomogeneous fields was addressed in (Battefeld et al., 2005;
+Watson, 2004b; Watson and Brandenberger, 2004).
+10
+
+• Adiabatic approximation:
+
+We will assume that the background fields are
+
+evolving slowly enough that higher derivative corrections, i.e. (α′ ) corrections, can
+
+be ignored. This means that locally, string sources won’t be influenced by the
+expansion and their evolution can be characterized by their scaling behavior.
+• Weak Coupling:
+
+We will work in the region of weak coupling (i.e. gs ≪ 1), and
+
+we will choose initial conditions for the dilaton that preserve this condition. Thus,
+higher orders corrections in gs , can be neglected.
+• Toroidal Spatial Dimensions:
+
+We assume that all spatial dimensions are
+
+toroidal and therefore admit non-trivial one cycles. In the past this assumption
+was believed to be crucial, however it was later shown that this condition may be
+relaxed in some cases, allowing for more phenomenologically motivated backgrounds
+(Easther et al., 2002).
+From the point of view of cosmology, all of these approximations are familiar. However,
+both the adiabatic and weak coupling approximation are very restrictive from the string
+theory perspective. The string corrections that we are choosing to ignore may be very
+important for early universe cosmology, especially near cosmological singularities. The
+motivation here is to take a modest approach by slowly turning on stringy effects, as one
+extrapolates the known cosmological equations backward in time to better understand
+the departures from standard big-bang cosmology. This is to be contrasted to models of
+string cosmology that invoke supersymmetry to avoid higher order corrections. From the
+cosmological standpoint, one could argue that these models are less realistic since supersymmetry should not be expected to hold in conditions favorable to the early universe,
+i.e. time-dependent, finite temperature backgrounds. It is certainly premature to claim
+one has a well established understanding of string theory in cosmological backgrounds,
+but one hopes by the SGC approach to better understand what role strings play in the
+early universe.
+11
+
+B. Energy and pressure of a string gas
+
+Given the assumptions stated above, we now want to find cosmological solutions to the
+equations (12)-(14), given the presence of a string gas. The time-dependent background
+fields are
+ds2 = −dt2 +
+λi (t)
+
+ai ≡ e
+
+,
+
+φ = φ(t),
+
+Bµν = 0,
+
+d
+X
+
+a2i (t) dx2i ,
+
+i=1
+
+d = D − 1.
+
+(16)
+
+The adiabatic approximation implies that the local effects of expansion on the string
+can be neglected, allowing us to simplify the string equation of motion (3) to
+∂a
+
+√
+
+
+
+√
+γγ ab ∂b X µ + Γµλν γγ ab ∂a X λ ∂b X ν ≈ ∂τ2 − ∂σ2 X µ (σ, τ ) = 0,
+
+(17)
+
+where we have fixed the gauge of the worldsheet metric to γab = f (τ, σ)ηab , with ηab =
+diag(−1, 1). In this gauge the constraints (4) become
+
+
+Gµν Ẋ µ Ẋ ν + X́ µ X́ ν = 0
+
+Gµν Ẋ µ X́ ν = 0,
+
+(18)
+(19)
+
+where Ẋ ≡ ∂τ X and X́ ≡ ∂σ X. Since the X µ satisfy a free wave equation, their solution
+can be decomposed into left and right movers
+X µ = XLµ (τ + σ) + XRµ (τ − σ),
+r
+r
+α′ µ
+α′ X 1 µ −in(τ −σ)
+µ
+µ
+pR (τ − σ) + i
+α e
+,
+XR = xR +
+2
+2
+n n
+n6=0
+r
+r
+α′ µ
+α′ X 1 µ −in(σ+τ )
+µ
+µ
+pL (τ + σ) + i
+α̃ e
+,
+XL = xL +
+2
+2 n6=0 n n
+
+(20)
+
+where xR and xL are the center of mass position, pµR and pµL are the center of mass
+momentum, and α (α̃) after quantization are the operators associated with right (left)
+
+12
+
+moving oscillations of the string. If we take some of the spatial dimensions to be compact
+with coordinates Y m , then the center of mass momenta become
+√
+α′ m
+R
+m
+n − √ ωm,
+pR =
+R
+α′
+√
+α′ m
+R
+pm
+n + √ ωm,
+L =
+R
+α′
+
+(21)
+
+where R is the scale factor in the mth compact direction, nm is an integer giving the charge
+of the Kaluza-Klein momentum in that direction and ω l = Gmn ωm is an integer giving
+the winding number of the wound string (Note: The placing of the indices is important,
+for a generic metric Gmn , nm and ωm are not integers.). It is important to note that we
+are again invoking the adiabatic approximation, since we are treating the scale factor R
+as a constant (locally).
+If we now substitute this solution into the constraint equation (18) and use the gauge
+√
+choice X 0 = Eτ α′ we find4
+
+
+
+
+− G00 Ẋ 0 Ẋ 0 ≡ α′ E 2 = Gij Ẋ i Ẋ j + X́ i X́ j + Gmn Ẏ m Ẏ n + Ý m Ý n
+2
+
+2
+
+(p + pR )
++ 2 (NL + NR + aL + aR ) ,
+= α′ P~ 2 + L
+2
+
+(22)
+
+which is the mass shell condition for the string E 2 = P~ 2 + M 2 . The constants aR and
+aL have been added to account for normal ordering, with aR = aL = −1 for the bosonic
+
+string. For the heterotic string aL = −1 and aR = − 12 for the Neveu-Schwarz sector, while
+aR = 0 for the Ramond-Ramond sector, and NR (NL ) is the excitation number of the
+right (left) oscillators. We have also allowed for the presence of non-compact dimensions
+√
+X i , for which the string has center of mass momentum P~ and we have used X i = α′ P~ τ .
+4
+
+There is a subtlety here involving the quantization procedure and obtaining the physical degrees of
+freedom. The correct way to deal with the constraints is to introduce light-cone coordinates in target
+space and this results in only the oscillators in the transverse directions being excited. We will take
+this for granted in what follows and we refer the reader to (Green et al., 1987a,b) for details.
+
+13
+
+Using the other constraint (19) we find the level matching condition
+p2L − p2R = 4nm ω m = 4(NR − NL + aR − aL ).
+
+(23)
+
+From the string mass spectrum we immediately see that strings are invariant under the
+same duality as the massless background fields. Namely, the string spectrum is unchanged
+under the transformation
+
+√
+R
+α′
+√ →
+n ←→ ω,
+(24)
+R
+α′
+which suggests that strings at small scale factor R1 , behave the same as strings at large
+
+scale factor R. This property of the spectrum, known as t-duality, is a very important
+property of strings and suggests that their effects on cosmological backgrounds may differ
+greatly from that of ordinary point particles (Brandenberger and Vafa, 1989).
+We would now like to reconsider the stress energy tensor (15) for this string configuration (see e.g. (de Vega and Sanchez, 1995)). The T 00 component is given by
+Z
+√
+1
+00
+√
+d2 σ γγ ab ∂a X 0 ∂b X 0 δ (D) (xµ − X(σ)µ )
+T = −
+′
+2πα −G
+Z
+
+
+1
+2
+0 0
+0 0
+√
+d σ Ẋ Ẋ − X́ X́ δ (D) (xµ − X µ (σ)),
+=
+′
+2πα −G
+
+(25)
+
+where we have again used the conformal gauge for the worldsheet metric gab = f (τ, σ)ηab .
+√
+Noting our previous choice of X 0 = α′ Eτ , we find
+Z 2π√α′
+
+
+1
+00
+(D−1) i
+i
+0 0
+0 0
+√
+T =
+dσ δ
+(x − X (σ)) Ẋ Ẋ − X́ X́
+τ =τ (X 0 )
+2πα′|Ẋ 0 | −G 0
+E
+δ (D−1) (xi − X i (σ)),
+(26)
+= √
+−GD−1
+which is the energy density of a single string with the delta function enforcing that there
+is no contribution unless we are at the position of the string. The explicit formula for the
+energy of the string in terms of its oscillations and momentum then follows from (21) and
+the constraint (22)
+E=
+
+r
+
+
+ωm  
+ωn  4
+2
+mn
+~
+nm + ′
+P +G
+nn + ′ + ′ (NL + aL ),
+α
+α
+α
+14
+
+(27)
+
+where we have eliminated NR in favor of the other quantum numbers by using (23). It
+is straight forward to generalize this to a gas of N strings. We simply average over the
+delta function sources and the energy density of the string gas is
+ρ=
+
+X
+
+ñs Es ,
+
+(28)
+
+s
+
+where the sum is over all species s and ñs = Ns V −1 is the number density of the string
+gas in spatial volume V , with a particular set of quantum numbers n, ω, NL , NR . We will
+assume that the gas is a perfect fluid and non-interacting. Therefore, we can find the
+pressure in the i-th direction
+pi = −
+
+1 ∂(ρV )
+,
+V λi
+
+(29)
+
+where ai = exp(λi ) is the scale factor in the i-th direction.
+As a simple example, let us consider two bosonic string gases (aL = aR ) composed of
+strings wrapping the compact dimensions (ωm 6= 0, nm = NL = NR = 0) and strings with
+momentum in the compact dimensions (nm 6= 0, ωm = NL = NR = 0). Assuming we can
+neglect the non-compact momenta, P~ = 0, their energy density and pressure are given by
+ρw =
+
+d
+X
+
+(l) λl (t)
+ñw
+e
+,
+
+ρm =
+
+λl (t)
+
+= −ñw e
+
+(l) −λl (t)
+ñm
+e
+,
+
+l=1
+(l)
+pm = ñm e−λl (t) ,
+
+l=1
+
+(l)
+pw
+
+d
+X
+
+,
+
+(30)
+
+where we now take d to denote the number of compact directions and we have vanishing
+pressure in the D − 1 − d non-compact dimensions. We have lifted the scale factors Ri =
+
+eλi to time-dependent functions using the adiabatic approximation, with V (t) the timeP
+dependent spatial volume (ln V (t) = D−1
+i=1 λi (t)). For simplicity we have absorbed the
+winding and momentum numbers ω, n into the number density of winding and momentum
+(l)
+
+(l)
+
+modes in the lth direction ñw and ñm . We have also renormalized the mass to remove
+the tachyonic zero point energy aL , which would be automatically removed in the case
+of heterotic strings. Here we do this by hand, since we are mainly concerned with the
+
+15
+
+scaling of the string energy with λi . Given an isotropic distribution of strings in the extra
+dimensions, we find that the equation of state for winding and momentum modes is
+1
+pm = ρm ,
+d
+
+1
+pw = − ρw ,
+d
+
+(31)
+
+respectively. We see that winding modes contribute negative pressure whereas the momentum modes scale as radiation filling the extra dimensions. To close this section, we
+have found that under the assumption that the string gas can be modeled as a perfect
+fluid, the stress energy tensor of a single string (15) can be generalized to
+Tνµ = diag (−ρ, p1 , p2 , . . . , pD−1 ) ,
+
+(32)
+
+where the energy density and pressure are given by (28) and (29), respectively.
+
+IV. CLASSICAL DYNAMICS OF STRING GASES
+A. Initial Conditions and the Dimensionality of Space-time
+
+One of the successes of SGC is the possibility to explain the emergence of three large
+and isotropic spatial dimensions, while six remain stabilized near the string scale. In
+this way, SGC is the only cosmological model thus far that has attempted to explain
+the dimensionality of space-time dynamically5 . The qualitative argument, due to Brandenberger and Vafa (Brandenberger and Vafa, 1989), was that winding string modes can
+maintain equilibrium in at most three spatial dimensions. This is based on the simple
+fact that p dimensional objects can generically intersect in at most 2p + 1 dimensions
+and the intuition that string interactions are due to intersections. They argued that once
+the winding modes annihilate with anti-winding modes, three spatial dimensions would
+be free to expand while the remaining six should remain confined by winding modes near
+5
+
+However, for recent variations of the ideas to be discussed see (Durrer et al., 2005; Karch and Randall,
+2005; Majumdar and Christine-Davis, 2002).
+
+16
+
+the string scale. Winding modes were shown to possess such confining behavior quantitatively in (Tseytlin and Vafa, 1992). There, the importance of the dilaton was stressed
+because this led to the observation that the negative pressure of winding modes leads to
+contraction rather than accelerated expansion. It was later observed that the dilaton is
+not the critical feature restoring the Newtonian intuition per se, rather it is the effect of
+anisotropies6 7 . In fact, it was shown many years ago that string winding modes could
+lead to confinement in the case of general relativity (Kripfganz and Perlt, 1988).
+This counting argument was verified numerically in a static background, focusing on
+cosmic strings in (Sakellariadou, 1996) (see also (Cleaver and Rosenthal, 1995) ) and later
+extended to the case of branes in (Alexander et al., 2000), where it was argued that the
+strings remain the important objects, since branes fall out of equilibrium sooner than
+strings, leading to a hierarchial structure of dimensions. The setup has been generalized
+to more complex topologies (Biswas, 2004; Easson, 2003; Easther et al., 2002) and many
+authors elaborated on these basic arguments (Arapoglu and Kaya, 2004; Deo et al., 1992,
+1991; Hotta et al., 1997; Kaya, 2003, 2004, 2005a,b; Kaya and Rador, 2003; Kim, 2004;
+Park et al., 2000; Rador, 2005a,b,c). The t-duality of branes was discussed in the context
+of SGC in (Boehm and Brandenberger, 2003). Other recent attempts to address dimensionality making use of branes in a different way have appeared in (Durrer et al., 2005;
+Karch and Randall, 2005).
+Despite the appeal of the BV argument, there remain serious challenges for its quantitative realization. As a first step, a study in eleven dimensional supergravity (Easther et al.,
+2003) employing a fixed wrapping matrix (based on the counting argument) yielded indeed the predicted anisotropic expansion. However, the internal dimensions were not
+stabilized, but simply grew slower. This work was extended in (Easther et al., 2004) by
+6
+
+An easy way to see this is to think of the dilaton as the scale factor of another 11th dimension. Thus,
+instead of the dilaton, one could simply take one of the other scale factors to evolve anisotropically
+while keeping the dilaton; this would still lead to the same conclusions as in (Tseytlin and Vafa, 1992).
+7
+We thank Amanda Weltman and Brian Greene for discussions on this point.
+
+17
+
+studying the coupled Einstein-Boltzmann equations for a thermal brane gas. It was found
+that only highly fine tuned initial conditions yield the desired outcome. The most recent
+study (Easther et al., 2005) focusing on dilaton gravity confirmed these results: either
+all dimensions grow large, since the string gas annihilated entirely, or all dimension stay
+small, since the string gas froze out – intermediate solutions can only be achieved by
+fine-tuning the initial conditions. It was also observed that a string gas freezes out quite
+quickly due to the coupling to the rolling dilaton (Danos et al., 2004).
+A crucial input is the interaction rate of strings (Polchinski, 1988) that lead to the
+corresponding Boltzmann equation. The interaction probability relies on the value of
+gs and therefore the dilaton. As the dilaton runs to weak coupling this means that
+interaction probabilities go to zero. Secondly, viewing interactions as intersections is an
+entirely classical argument8 . At the level of supergravity one has exchange of closed
+strings that mediate interactions. This increases the probability of interaction, since
+closed string exchange can take place in any number of dimensions with the only dilution
+1
+. Henceforth,
+being due to the force following a generalized Newton law, i.e. F ∼ rD−2
+
+the conclusion of Easther et.al.’s investigations have been that compactification of all
+or none of the dimensions is the most probable configuration (Easther et al., 2002, 2003,
+2005). However, this analysis was done given our rather limited knowledge of string theory
+dynamics. In particular, our knowledge of cosmological solutions when all radii are taken
+to be at the string scale is sketchy at best. A more complete knowledge of both curvature
+corrections (α′ ) and the strong coupling behavior of the theory could certainly change this
+outcome. Moreover, time dependent solutions of the full string theory continue to be an
+avenue that is being actively pursued. It will be interesting to see if the BV argument will
+hold, given a more complete understanding of string theory dynamics. While awaiting
+this progress, we will simply assume in what follows that winding modes were able to
+annihilate in three spatial dimensions, causing those to be free to expand while a winding
+8
+
+We thank Liam McAllister for discussions.
+
+18
+
+mode gas remains in the other six. Thus, our initial conditions will be no more unnatural
+than those of usual models of cosmology.
+
+B. Cosmological Evolution in the Presence of a String Gas
+
+Anticipating the D = 3 + 1 + 6 split, due to the annihilation of the winding modes in
+three dimensions, let us consider the following background field configuration
+ds2 = −dt2 + e2λ(t) d~x2 + e2ν(t) d~y 2,
+H3 = h dx1 ∧ dx2 ∧ dx3 ,
+
+φ = φ(t),
+
+(33)
+(34)
+
+where H3 is a constant three form flux restricted by the expected symmetries (namely,
+3 + 1 + 6)9 . We want to consider these background fields in the equations of motion
+(12)-(14), with the string sources replaced by the averaged stress tensor of the string gas
+(32). We have
+1
+Rµν + 2∇µ ∇ν φ − Hµκσ Hνκσ = 16πG10 e2φ Tµν ,
+4
+
+−2φ µνρ
+∇µ e H
+= 0,
+1
+4∇κ φ∇κ φ − 2∇κ ∇κ φ − Hκµν H κµν = 16πG10 e2φ T,
+6
+
+(35)
+(36)
+(37)
+
+where G10 is the ten-dimensional Newton constant, T ≡ Tµµ is the trace of the stress
+tensor, and we have used the trace of (35) to rewrite the last equation. Writing (37) in
+this form allows us to make the important observation that (ignoring flux) the dilaton can
+only evolve if matter is not conformal (i.e. T 6= 0). This condition will be respected by
+string gases in general, and it is this important observation that makes string cosmology
+(dilaton gravity) very different from ordinary cosmology. The flux equation (36) is trivially
+satisfied given the ansatz for the background fields and we assume that the flux of the
+9
+
+More general flux configurations were considered in (Brandenberger et al., 2005; Campos, 2005a;
+Kanno and Soda, 2005) where it is clear that there is still much to consider.
+
+19
+
+strings themselves average to zero10 . The remaining equations can be written in the form
+h2 −6λ
+e
+= eϕ E,
+2
+1 2 −6λ 1 ϕ
+= e P3
+λ̈ − ϕ̇λ̇ − h e
+2
+2
+1 ϕ
+ν̈ − ϕ̇ν̇ = e , P6 ,
+2
+1
+2
+2
+ϕ̈ − 3λ̇ − 6ν̇ = eϕ E,
+2
+
+c − 3λ̇2 − 6ν̇ 2 + ϕ̇2 −
+
+(38)
+(39)
+(40)
+(41)
+
+where we have introduced the energy E = ρV , we define the scaled pressure Pi = pi V , and
+ϕ is the shifted dilaton (9). The first equation is an energy constraint, which if satisfied
+at some initial time will remain satisfied for all times. The sources obey a conservation
+equation,
+Ė + 3λ̇P3 + 6ν̇P6 = 0.
+
+(42)
+
+From the above equations we see that the term involving flux will be negligible at
+late-times, since it scales as a−6 . However, in the early universe as one approaches
+the cosmological singularity this term may become vital to understanding the dynamics (Friess et al., 2004). Also, if we decide to work in the non-critical theory (i.e. c 6= 0),
+we see that c acts as an effective cosmological constant.
+
+C. Summary of 10d Dynamics and Moduli Stabilization
+
+We will now briefly review the results of various authors in studying the system of
+equations (38)-(41), where it will be assumed that h = 0 and c = 0 unless noted otherwise. In (Brandenberger et al., 2002; Easson, 2001), the above equations were studied
+with energy and pressure given by a gas of string winding modes as in (30). There it was
+shown that the universe remains in a period of cosmological loitering until all of the winding modes have annihilated. Once the winding modes have all annihilated the dimensions
+10
+
+The vanishing of the total flux is required for consistency on the compact space, however local sources
+can prove interesting in a time-dependent background (Brandenberger et al., 2005).
+
+20
+
+are freed to grow large. It was observed that the period of loitering would resolve the
+horizon problem, without the need to invoke cosmological inflation. These results agree
+with the earlier study in (Tseytlin and Vafa, 1992), where it was shown that the negative
+pressure of the string winding modes leads to contraction in string cosmology, not inflation. In (Watson and Brandenberger, 2003b), the effect of the winding mode annihilation
+processes on the three dimensions growing large was shown to lead to a natural explanation for the observed isotropy of our universe. This resulted from the annihilation rate
+depending on the size of the dimension and the expansion rate depending on the number
+of winding modes present. Moreover, the string winding modes annihilate into unwound
+closed string loops, or momentum modes, which we saw from (31) scale as radiation (d=3
+in this case). Thus, it was shown that a large, three dimensional, radiation dominated
+universe naturally evolves from SGC.
+In the above investigations, the stabilization of the other six dimensions was assumed a
+priori. In (Watson and Brandenberger, 2003a), these dimensions were included and filled
+with a gas of string winding modes and a gas of string momentum modes, with energy and
+pressure as in (30). It was shown that as the three spatial dimensions continue to grow
+large, the six compact dimensions will oscillate about the self-dual radius, since winding
+modes were unable to annihilate in these dimensions via the BV argument discussed
+above. The oscillations are the result of the negative pressure of the string winding
+modes (pw = −ñeν ) driving the radius to smaller values and the positive pressure of the
+string momentum modes (pm = ñm e−ν ) driving the radius to larger values. For an equal
+
+number of winding and momentum modes (i.e. ñw = ñm ) one finds that the evolution is
+√
+driven to the critical radius, the so-called self-dual radius ν = 0 or b = α′ where the
+total pressure vanishes and t-duality is restored11 . In order for stabilization to occur it
+was crucial that the dilaton ran to weak coupling. This running of the dilaton leads to
+11
+
+Similar results were reported by Tseyltin sometime ago, however no details regarding the anisotropic
+case were given in (Tseytlin, 1992).
+
+21
+
+a damping effect of the internal dimensions, as can be seen in Figure 1. The running of
+the dilaton implies that the Newton constant will evolve and this will prove problematic
+at late-times. However, the important point here is that during the early stages of the
+evolution, the extra dimensions are naturally led to the self-dual radius. In fact, the
+important point stressed in (Watson and Brandenberger, 2003a) and later elaborated on
+in (Patil and Brandenberger, 2005, 2006; Watson, 2004a) is the presence of additional
+massless string states that become massless at the self-dual radius and should therefore
+be considered in the low energy action. We will see in Section V that these states can have
+a very important effect resulting in a stabilization mechanism for the extra dimensions.
+So far, we have ignored the problem of inhomogeneities, since we have assumed all
+the background fields to be homogeneous. This problem was considered at late-times
+in (Watson and Brandenberger, 2004) and (Watson, 2004c), where it was shown that the
+dilaton again plays a vital role. It was found that as long as the dilaton continues to roll towards weak coupling, perturbations will be under control and stability of the string frame
+radion will persist. So it would appear that the dilaton plays a very important role in SGC,
+but as we will see in the next section, it must ultimately be stabilized if SGC is to agree
+with observation. The role of inhomogeneities at early-times is a much more challenging
+problem. As we approach the cosmological singularity, we might hope that the finiteness
+of strings would resolve the singularity and/or provide a bounce. Although many different
+approaches have been attempted (see e.g. (Gasperini and Veneziano, 2003; Khoury et al.,
+2002)), no convincing models have been found (Polchinski, 2005). This seems a promising
+area for SGC to investigate, given the various duality properties exhibited by the string
+gas and background fields (Brandenberger and Vafa, 1989). The dynamics of SGC as the
+singularity is approached has been largely ignored due to the lack of control of string
+corrections and the expected breakdown of the assumptions stated in Section III. One
+attempt at understanding the evolution is the work of (Friess et al., 2004), where it was
+found that the background flux would play a crucial role and could no longer be ignored.
+It will be interesting to see how string winding modes and strings as local sources of flux
+22
+
+can effect the evolution towards the singularity. This presents an important challenge for
+SGC.
+Before closing this section, we would like to briefly mention some other consideration of
+SGC dynamics that have appeared in the literature. The assumption of toroidal geometry
+used in (38)-(41) was generalized to orbifold backgrounds in (Easther et al., 2002), where
+it was found that the confining behavior of winding modes still persists even in the absence
+of non-trivial homotopy. Interactions of the string winding and momentum mode gases
+were considered in both (Bastero-Gil et al., 2002) and (Danos et al., 2004), where in the
+former it was argued that correlations between the winding and momentum modes lead
+to modified dispersion relations that may help explain the small value of the cosmological
+constant. In addition to the study of the equations (38)-(38), attempts to extend SGC
+to M-theory via its connection with 11D SUGRA was considered in (Alexander, 2003;
+Campos, 2005b; Easther et al., 2003, 2005). Campos has considered the importance of
+background flux in SGC (Campos, 2003, 2004, 2005a). Whereas in (Brandenberger et al.,
+2005) the effects of strings as sources of flux was considered, and in particular their
+ability to stabilize shape moduli in addition to the radion. The idea of inflation or
+cosmic acceleration from SGC was discussed in (Brandenberger et al., 2004; Kaya, 2004;
+Parry and Steer, 2002) and remains a difficult challenge for SGC. We refer the reader to
+our references for addition papers on SGC.
+
+D. 4D Dynamics and the Effective Potential
+
+Thus far the stability analysis of the extra dimensions has been carried out in the
+string frame. In this frame it has been shown that the radion is stabilized at the selfdual radius by the competing negative and positive pressure of the stringy matter, along
+with damping provided by the dilaton which continues to run to weak coupling. However, at late-times an evolving dilaton is problematic for both particle phenomenology
+and moduli stabilization. In fact, any evolving gravitational scalar will lead to a changing
+23
+
+gravitational constant GN , which is tightly constrained by fifth force experiments (see
+e.g. (Gubser and Khoury, 2004)). Moreover, because the Einstein frame radion is actually a linear combination of the string frame dilaton and radion, we will find that the
+extra dimensions will be unstable as long as the dilaton evolves. We will briefly discuss
+possibilities for dynamically stabilizing the dilaton in the next section, but let us first
+review the problem of stability as discussed in (Battefeld and Watson, 2004) (see also
+(Berndsen et al., 2005; Berndsen and Cline, 2004; Easson and Trodden, 2005)).
+In order to examine the late time behavior of SGC it is most appropriate to work in the
+4D Einstein frame. Since we have focused on homogeneous fields, the physical quantities
+originating from these equations are equivalent to those of the 10D string frame we have
+considered thus far; this is simply the consistency of dimensional reduction. The 10D
+Einstein frame metric can be rewritten in terms of the string frame scale factors and
+dilaton as
+ds2E = −dt2E + eφ/2 a2 (t)d~x2 + eφ/2 b2 (t)d~y 2 ,
+
+with dt2E = eφ/2 dt2s
+
+(43)
+
+which immediately allows one to see the problem. Even if one fixes b(t), the dilaton
+evolution still prevents stabilization of the Einstein frame radion. We see that in this case
+the Einstein frame makes this instability manifest in a simple way. However, the same
+conclusion could have been reached in the string frame by more complicated methods, such
+as identifying the physical radion and examining the corresponding two-point function.
+The important point is that the two frames are physically equivalent, but the
+instability is manifest in the Einstein frame. In addition to the problem of the dilaton, we
+will see that from the 4D Einstein frame additional problems arise regarding the dilution
+of our string matter as a source of stabilization.
+Beginning from the 10D string frame action (7) one can reduce to the 4D Einstein frame
+by a conformal transformation followed by field redefinitions to canonically normalize the
+
+24
+
+scalars. We leave the details to the appendix, where we find
+
+
+Z
+i
+√
+1 µν
+1 µν
+1 h
+4φ− d2 ψ (4+d)
+4 √
+R[gµν ] − g ∇µ ψ∇ν ψ − g ∇µ φ∇ν φ − e
+Vs
+(λ, ϕ, ψ) .
+S4 = d x −g
+16πG
+2
+2
+where again we neglect flux and work in the critical dimensions c = 0 and where the 4D
+Newton constant is given by 16πG = 2πα′gs2 . The canonically normalized scalars, φ and
+ψ are then 4D fluctuations about the fixed values for the dilaton and radion, respectively.
+(4+d)
+
+The 10D string frame potential Vs
+
+includes the effects of any wrapped branes or
+
+strings, flux, cosmological constant or any other contribution to the energy density.
+As a simple example, consider a cosmological constant arising in the 10D string frame,
+such as appears in the RR sector of massive Type II-A supergravity. We see that in the
+4D Einstein frame this term is no longer constant
+Vs(4+d) ∼ Λ
+
+(4)
+VE =
+
+−→
+
+√d
+e4φ− 2 ψ
+√
+Λ,
+(2π α′ )4
+
+(44)
+
+and if we assume weak coupling, i.e. φ → −|φ|, we see that one gets a exponential
+runaway potential.
+We would now like to see if the situation improves in SGC, where it seemed earlier
+that wrapped strings could stabilize the extra dimensions. We are interested in potentials
+coming from wrapped and moving branes and strings on the compact space. Assuming
+the string frame metric to have the form
+ds2 = −dt2 + a2 (t)dx2 + b2 (t)dy 2 ,
+
+(45)
+
+we can write the 10D string frame potential as
+Nbk
+Vs(4+d) = µ 3 d
+ab
+
+(46)
+
+√
+where µ = (2π α′ )−4 and following the notation in the appendix we have absorbed a
+√
+(4+d)
+. The
+factor of (2π α′)6 coming from the compactification into the definition of Vs
+number of strings (branes) is given by N and k ≤ |d| is the type of strings (branes)
+25
+
+(e.g., k = 2 is a wound 2-brane and k = −1 is a string with Kaluza-Klein momentum in
+one compact direction). Of course, this expression is just a generalization of our earlier
+expression (30), for the energy density of winding and momentum string gases. The
+reduction to 4D leaves the potential unchanged, but we must transform the scale factor
+a(t) when moving to the Einstein frame, i.e. ã(t) = e−ϕ a(t), where ϕ is the canonical 4D
+dilaton ϕ = 2φ − d ln b and ã(t) is the Einstein frame scale factor. The potential becomes
+d
+
+3
+
+Vs(4+d) = µñe− 2 ϕ bk−d = µñe−3φ bk+ 2 ,
+
+(47)
+
+where ñ is the number density in the Einstein frame and we have expressed the potential
+in terms of the unshifted dilaton. Comparing this potential with the action (44) we find
+that the potential in the 4D Einstein frame is
+d
+(4)
+VE = µñeφ bk− 2 = µñe−|φ| exp
+
+
+
+ 
+2k − d
+√
+ψ ,
+2 2d
+
+(48)
+
+where in the last step we have expressed the radion in terms of the canonical variable ψ
+and we have assumed the dilaton evolves to weak coupling. From this potential we can
+see that a confining potential only arises if k ≥ d2 . For the case of a winding string (k = 1)
+this is only true for a single extra dimension d = 1 and even then there is an overall factor
+of the dilaton diluting this potential. We conclude that a gas of purely winding strings is
+not enough to stabilize the extra dimensions.
+Given this negative outcome, we would now like to consider a gas composed of a
+less restrictive string configuration. Let us consider the stress energy tensor for a gas of
+heterotic strings given by (28), (29), and (32). The energy of the individual string is given
+by (27) and in the case of the heterotic string takes the form
+r
+
+ωm  
+ωn  4
+EHE = Gmn nm + ′
+nn + ′ + ′ (NL − 1),
+α
+α
+α
+
+(49)
+
+and the level matching condition follows from (23) as
+1
+nm ω m = NR − NL + ,
+2
+26
+
+(50)
+
+where we have used aL = −1 and aR = 12 for the heterotic string and we have again
+assumed that P~ = 0. We are interested in ground state configurations of the string,
+which in the case of NS Heterotic strings means setting the right oscillators to their
+minimum value, NR = 21 (see (Polchinski, 1998b) for details). We then want to consider
+non-oscillatory states (NL = 0), since we are interested in the terms that contain explicit
+dependence on the scale factor of the extra dimensions. With these assumptions the
+energy and constraint become
+E(NL =0,NR = 1 ,~n,~ω) =
+2
+
+r
+
+nm ω m = 1.
+
+
+ωm  
+ωn 
+4
+Gmn nm + ′
+nn + ′ − ′ ,
+α
+α
+α
+
+Let us consider the energy at the self-dual radius b =
+
+√
+
+(51)
+
+α′ , where we have seen that the
+
+higher dimensional evolution naturally led us. At the self-dual radius, we can see from
+the energy and level matching condition that additional massless states will occur if the
+winding and momentum numbers satisfy the conditions
+n · n + ω · ω = 2,
+
+n · ω = 1,
+
+(52)
+
+where we introduce the notation n · n ≡ δ mn nm nn , ω · ω ≡ δmn ω m ω n , and n · ω ≡ nm ω m
+with δmn the Kronecker delta symbol. Given that these states become massless at the
+self-dual radius and then grow massive as the radion leaves, one might hope that this
+could lead to a stabilizing potential in the 4D Einstein frame. Upon reducing we find
+d
+
+Vs(4+d) = µñe−3φ b 2 E
+√d
+−3φ 12
+(53)
+= µñe e 2 ψ E,
+√
+where we have rescaled E to put all α′ dependence in µ for simplicity. The 4D Einstein
+frame number density is given by ñ, φ is the unshifted dilaton, ψ is the normalized radion,
+and the energy E is given by
+r
+n·n
+n
+E =
++ ω · ωb2 − 2n · ω =
+− ωb
+2
+b
+b
+
+
+ψ
+,
+= 2 sinh √
+2d
+27
+
+(54)
+
+where we have set n = ω to satisfy the massless state conditions (52). The 4D Einstein
+frame potential takes the form
+1
+(4)
+VE = 2µñeφ− 2
+
+√d
+2
+
+ψ
+
+sinh
+
+
+
+ψ
+√
+2d
+
+
+
+.
+
+(55)
+
+This potential does admit a local minimum, but as the dilaton runs to weak coupling the
+minimum becomes shallow. This result is sensitive to initial conditions, but can lead to
+interesting phenomenology if the dilaton is taken into close consideration.
+A more serious objection to the above potential comes from considering its inclusion in
+√
+the low energy effective action (LEEA). That is, for b 6= α′ we saw that the string states
+are massive. In fact, they are very heavy since their masses are string scale. Only near
+√
+the self-dual radius (b ≈ α′ ) do these states become light enough that it makes sense
+to include them in the LEEA. One can attempt to avoid this objection by insisting that
+by including the strings as sources we have managed to capture the full action and not
+just the LEEA. However, the problem resurfaces if we recall that we chose a very specific
+heterotic string gas in order to obtain the potential (55). This is simply the objection
+that if we include one massive state of the string, don’t we have to include all of them? In
+fact, for many other states of the heterotic string we find additional points (even surfaces)
+in moduli space where the states become light. These also act as attractors for the radion
+and the point one gets trapped at becomes a function of initial conditions. We will see
+in the next section that there is a possible resolution to the question of the relevance of
+such trapping potentials in the LEEA.
+
+V. QUANTUM DYNAMICS OF STRING GASES
+
+In the last section we saw that a heterotic string gas carrying both winding and momentum can result in a stabilizing potential for the string frame radion. This potential
+resulted from the dependence of the string mass on the value of the radion. The dynamics
+then drives the radion to values that minimize the energy of the string gas, which in the
+28
+
+case we considered corresponded to the self-dual radius b =
+
+√
+
+α′ . This leads to a trapping
+
+mechanism for the radion, given that the string gas survives the cosmological redshift
+and the dilution resulting from the running of the dilaton. This idea of trapping by a
+massive gas will be referred to as classical trapping12 . The terminology classical is used
+here to signify that this mechanism results from considering the effects of classical string
+gas matter sources on the classical dilaton-gravity equations. As we mentioned in the last
+section, one serious objection to this idea is that we have chosen to include states that
+are very massive at generic locations of the moduli space, but we have not included all
+the other massive string states.
+An alternative (but not unrelated) point of view is to consider the quantum production
+of these states as we pass near places in the moduli space where additional string states
+become light. This is the idea of quantum trapping (Kofman et al., 2004; Watson, 2004a)
+and differs from the classical case in that the states are not included in the action initially.
+Instead, these states are produced as the modulus rolls near a place in moduli space where
+additional states become massless. Then, the modulus continues to evolve, but because
+the mass of the produced states depends on the modulus, backreaction of the produced
+string gas results in a confining potential which can trap the modulus. It turns out that
+such points, which we will call Enhanced Symmetry Points (ESP), are very common
+in moduli space (Horne and Moore, 1994). The ubiquitousness of such states in string
+models means that we can expect such trapping to occur as a natural consequence of the
+dynamics. However, it also means that the determination of the string vacuum, and thus
+our universe, may not be unique.
+To see how quantum moduli trapping works, let us consider the simple case of a bosonic
+string compactification on M4 × S 1 . Introducing complex light-cone coordinates on the
+12
+
+This idea has been considered in other works; including M-theory matrix models (Helling, 2000),
+flop transitions on the conifold in both the M-theory (Mohaupt and Saueressig, 2005b), Type IIA
+(Mohaupt and Saueressig, 2005a), and Type IIB string theory (Lukas et al., 2005) and for a gas of
+massive extremal blackholes (Kaloper et al., 2005).
+
+29
+
+world-sheet, the string action (1) and (2) in conformal gauge takes the form
+1
+S5D =
+πα′
+
+Z
+
+h
+i
+√
+¯ N + α′ R(2) φ(X),
+d2 z GM N (X) + BM N (X) ∂X M ∂X
+
+(56)
+
+¯ is the left (right) derivative, and the
+where GM N is the 5d metric with M, N = 0 . . . 5, ∂ (∂)
+background dilaton and anti-symmetric tensor are denoted φ and BM N , respectively. In
+order to reduce this theory on a circle of radius R, let us consider the following factorizable
+background metric
+(4)
+ds2 = GM N = −gµν
+dxµ dxν + R2 dy 2.
+
+(57)
+
+Using this metric in the above action we find
+Z
+h
+i
+h
+i
+1
+2
+µ¯ ν
+¯ µ ∂X 5
+S4D+1 =
+d z Gµν (X) + Bµν (X) ∂X ∂X + Gµ5 (X) + Bµ5 (X) ∂X
+′
+πα
+h
+i
+√
+¯ 5 + G55 (X)∂X 5 ∂X
+¯ 5 + α′ R(2) Φ(X),
+(58)
++ Gµ5 (X) − Bµ5 (X) ∂X µ ∂X
+where R ≡
+
+√
+
+G55 is the radius of the extra dimension. The mass of the string state is
+
+given as before from (23) and (27), with aL = aR = −1 since we are considering bosonic
+strings. The mass and level matching are then given by
+M2 =
+
+ω 2 R2
+2
+n2
++
++ ′ (NL + NR − 2),
+2
+′2
+R
+α
+α
+nω + NL − NR = 0,
+
+(59)
+
+where the integers n and ω label the momentum and winding charge associated with
+the extra dimensions and NL (NR ) correspond to the number of left (right) oscillators
+(5)
+
+(5)
+
+that are excited, which can be taken in the compact NL , NR or non-compact directions
+(µ)
+
+(µ)
+
+NL , NR .
+We are interested in the low-energy or massless states given by (59). For generic radii
+no non-trivial winding or momentum is allowed, i.e. n = ω = 0. If the oscillators are
+(5)
+
+(5)
+
+restricted to the non-compact dimensions, i.e. NL = NR = 0, we have the 4D graviton,
+flux, and dilaton. If the oscillators are taken in the compact direction we get one scalar
+
+30
+
+(the radion)
+σ = ln
+
+
+
+R
+√
+α′
+
+
+
+,
+
+(60)
+
+and two vectors
+1
+(Gµ5 + Bµ5 ) ,
+2
+1
+Aµright ≡ Āµ = (Gµ5 − Bµ5 ) .
+2
+Aµleft ≡ Aµ =
+
+(61)
+
+To find the evolution of the fields, we calculating the beta equations for the action (58)
+and demand that the couplings do not spoil conformal invariance (Bagger and Giannakis,
+1997). In the low energy limit these equations can be derived from the usual space-time
+action for dilaton gravity with flux (7) with an additional contribution coming from the
+fields above given by
+Sm =
+
+Z
+
+
+
+√
+1
+1
+µν
+µν
+2
+d x G (∂σ) − 2 (Fµν F ) − 2 (F̄µν F̄ ) ,
+4g
+4g
+4
+
+(62)
+
+where the abelian field strength is given by Fµν = ∂µ Aν − ∂ν Aµ and F̄µν = ∂µ Āν − ∂ν Āµ .
+In addition, the beta equations naturally enforce the Lorentz gauge condition
+∂µ Aµ = 0.
+
+(63)
+
+Thus, the low energy theory of a bosonic string compactified on M4 × S 1 is described by
+4D dilaton-gravity with flux coupled to a chiral U(1) gauge theory.
+Now let us consider the mass spectrum at the self-dual radius σ = 0. In this case the
+mass and constraint (59) become
+α′ M 2 = (n + ω)2 + 4(NL − 1),
+nω + NL − NR = 0,
+leading to the additional massless states;
+
+31
+
+(64)
+
+(µ)
+
+(µ)
+
+(5)
+
+(5)
+
+Scalars NL NR NL NR n
+
+w
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+±2 0
+
+0
+
+0
+
+1
+
+0
+
+±1 ∓1
+
+0
+
+0
+
+0
+
+1
+
+±1 ±1
+
+(µ)
+
+(µ)
+
+(5)
+
+(5)
+
+Vectors NL NR NL NR n
+
+±2
+
+w
+
+1
+
+0
+
+0
+
+0
+
+±1 ∓1
+
+0
+
+1
+
+0
+
+0
+
+±1 ±1
+
+These new states combine with the previous scalar and vectors to fill out the adjoint
+representation of SUL (2) × SUR (2) (Bagger and Giannakis, 1997). Thus, for arbitrary
+radius the matter action is given by the chiral U(1) gauge theory (62), and as we approach
+the ESP (self-dual radius) the theory is lifted to a non-Abelian chiral SU(2) gauge theory.
+In the latter case the field strengths are now given by the Yang-Mills theory
+a
+Fµν
+= ∂µ Aaν − ∂ν Aaµ + gǫabc Abµ Acν ,
+
+(65)
+
+a
+F̄µν
+= ∂µ Āaν − ∂ν Āaµ + gǫabc Ābµ Ācν ,
+
+(66)
+
+and the scalars couple through the (a,0) and (0,a) gauge covariant derivatives
+(Dµ φ)a = ∂µ φa + gǫabc Abµ φc ,
+
+(67)
+
+(D̄µ φ)a = ∂µ φa + gǫabc Ābµ φc ,
+
+(68)
+
+where the coupling g is of O(1) for the states we are considering13 and φa is in the (3,3)
+adjoint representation of the chiral SU(2). The gauged kinetic term leads to an effective
+mass for the vectors m2A ∼ g 2 σ 2 and similarly for the additional scalars. Thus, we see
+13
+
+√
+For example, for the heterotic string the four dimensional gauge coupling is given by g 2 = 4κ2 / α′ ,
+where κ is the gravitational length and contains the dilaton expectation value. One can usually choose
+these values so that g is order one, which is expected from the Yang-Mills theory. This implies that
+the string scale is close to the gravitation scale. For a complete discussion see (Polchinski, 1998a,b).
+
+32
+
+that the radion is acting to give masses to the string states in the same way as the Higgs
+particle in ordinary gauge theories with spontaneously broken symmetries (Polchinski,
+1998a).
+It was observed in (Watson, 2004a) that considering this effect for homogeneous, but
+time-dependent fields can lead to a stabilization mechanism for the radion. For simplicity
+let us take the dilaton to be fixed and using the adiabatic approximation, let us consider
+strings in a 4D FRW universe with metric
+ds24 = −dt2 + e2λ(t) d~x2 .
+The effective action for generic σ is given by
+Z
+i
+√ h
+1
+Sef f = d4 x g R − (∂σ)2 − Vef f ,
+2
+
+(69)
+
+(70)
+
+where Vef f initially represents the contribution from the chiral U(1)s, although near the
+self dual radius it should incorporate the effects due to the additional massless states.
+Let us consider the background equations of motion first, neglecting the backreaction
+near the ESP. The equations following from (70) are
+1 2
+σ̇ + ρsub ,
+2
+1
+2λ̈ + 3λ̇2 = − σ̇ 2 − psub ,
+2
+∂Vef f
+,
+σ̈ + 3λ̇σ̇ =
+∂σ
+3λ̇2 =
+
+(71)
+(72)
+(73)
+
+where ρsub and psub represent the subdominant contribution from the UL (1) × UR (1) contained in Vef f at generic radii. This contribution will be subdominant at early-times,
+since the kinetic term has an equation of state ρ = p and thus scales as ρ = a−6 . The
+corresponding scale factor is a(t) ∼ t1/3 and λ̇ = 1/3t. In this limit we can ignore the
+potential in (73) and σ is given for small t as
+σ(t) = σ0 + v0 t.
+33
+
+(74)
+
+We start the time evolution at t = 0 when the field is closest to R =
+
+√
+
+α′ , thus we see
+
+that σ0 is a measure of how close the radion comes to the ESP. In the previous section
+it was shown that by including the dilaton in the dynamics, along with the winding and
+momentum modes of the string, the radion will naturally pass through σ = 0 and be
+localized around the ESP. Motivated by this result we assume σ0 = 0, which is the most
+efficient case for particle production, since the states will be exactly massless there.
+We proceed to address particle creation in a way analogous to (p)reheating in so-called
+NO (No Oscillation) models of inflation (Felder et al., 1999a,b). The method of quantum
+trapping was first discussed in (Kofman et al., 2004), where the application of the trapping
+was applied to a D-brane moduli space with the trapped modulus corresponding to the
+separation of two D-branes and the light states corresponding to open strings stretched
+between the branes which become massless as the branes approach. Since we are discussing
+the creation of strings, one might wonder if we are justified in taking the field theoretic
+approach that is usually utilized in models of reheating. This issue was addressed in
+(Gubser, 2004), where it was shown that the effective field theory is adequate to describe
+string production mode by mode in a way analogous to the usual point particle case. Using
+this approach, we can think of each string mode as a scalar field with a time varying mass.
+For example, let us consider the effects of producing one of the additional massless
+vectors that appear at the ESP. From the coupling in (67) we see that the additional
+states would lead to a potential
+1
+1
+Vef f (σ, Aµ ) = (∂µ Aν )2 − g 2 σ 2 Aµ Aµ ,
+2
+2
+
+(75)
+
+where Aµ is one of the additional massless vectors. Note that we are neglecting the other
+Yang-Mills interactions, as these would lead to the same generic dynamics for σ. However,
+it would be interesting to include these interactions in future work, as they are examples
+originating directly from string theory of the type of interactions recently considered in
+(Gubser and Peebles, 2004b) as dark matter candidates. We will discuss this possibility
+in the next section in some detail.
+34
+
+From (75), we can identify m(t)2 = g 2 σ 2 as a time dependent mass for Aµ . As σ
+approaches the ESP, the Aµ ’s become massless and easy to create. Then, as σ leaves the
+ESP these states will grow massive. Considering this backreaction results in an attractive
+force pulling σ back towards the ESP.
+Let us consider the time dependent frequency of a particular Fourier mode Aµk
+q
+ωk (t) = ~k 2 + g 2 σ 2 (t).
+
+(76)
+
+A particular mode becomes excited when the non-abiabaticity parameter satisfies ω̇/ω 2 ≥
+1. When this condition holds for a particular mode, it results in particle production and
+an occupation number
+
+
+ ~2
+π k + g 2 σ02
+.
+nk = exp −
+gv0
+
+(77)
+
+Recall that we can take σ0 = 0, while g is a positive constant of order unity in string
+units. The energy density of produced particles is given by
+Z
+d3 k
+nk ωk ≈ g|σ(t)|N,
+ρA =
+(2π)3
+
+(78)
+
+with N ∼ (gv0 )3/2 . Thus, comparing this to (71) we see that the initial kinetic energy
+
+associated with the radion 12 v02 is dumped into production of Aµ particles as the radion
+passes through the ESP. Given a large enough v0 , the radion will continue its trajectory
+and the modes will become massive as we have seen. This results in an always attractive
+force of magnitude gN pointing the radion back towards the ESP. The effective equation
+for σ including the backreaction is then given by
+σ̈ + 3λ̇σ̇ = −gN(t).
+
+(79)
+
+This process will continue with each pass of the radion, until all of its initial kinetic
+energy has been used up and it settles to the self dual radius. Therefore, we are led to
+the conclusion that the additional states associated with the enhanced symmetry result
+in a fixed value for the radion at the self dual radius.
+35
+
+One immediate concern might be whether this method is stable to perturbations.
+Moreover, one could worry that the initial kinetic energy of the radion is so high that
+the force associated with the backreaction is not enough to over come its inertia. Both
+of these problems are overcome by considering the Hubble friction associated with the
+second term in (79). One expects this friction to damp out any perturbations and to
+actually enhance the stabilization mechanism. This was discussed in models of string
+gas cosmology (Battefeld and Watson, 2004) and a similar conclusion was reached in
+(Kofman et al., 2004). Moreover, it was shown in (Battefeld and Watson, 2004) that
+once we switch to the effective theory the Hubble friction is enough to keep the radion
+evolving slowly compared to the growth of the three large dimensions. We conclude that
+Hubble friction combined with the ESP backreaction should be more than adequate to
+stabilize the radion at the self dual radius.
+Despite this promising result for stabilizing the radion, the dilaton still remains a serious challenge. One approach to stabilizing the dilaton would be to search for enhanced
+symmetry states that depend on the value of the dilaton in much the same way they did
+for the radion. However, this is problematic, since it requires a knowledge of the effective
+theory for all values of the string coupling (dilaton). One way to circumvent this is to
+search for additional light BPS states, since such states are non-perturbative in the sense
+that they are understood for all values of the coupling. Preliminary results suggest that
+dynamical stabilization of the dilaton may be possible by considering certain bound states
+of membranes in M-theory (Cremonini and Watson, 2006). These membranes have a tension that depends on the radius of the 11th dimension, which is related to the dilaton upon
+compactification to 10D string theory. This suggests that one could stabilize the dilaton
+at locations where the membrane tension vanishes in much the same way as the radion
+above. One challenge in this case is understanding the production of string states, since
+this depends crucially on the string coupling. Moreover, as the string coupling changes
+there can be competing effects governing the dynamics in moduli space. It was shown in
+(Silverstein and Tong, 2004), that at strong coupling corrections to moduli trajectories
+36
+
+from virtual effects of the ESP states can have a more important effect than on-shell
+production. This could actually slow the modulus before it finally reaches the ESP. Thus,
+we learn that the dynamics of moduli can be quite rich if we go beyond the usual static
+moduli space approximation. One might hope that with further investigation and a better
+understanding of the dynamics of moduli space the need to resort to anthropic arguments
+or a landscape might be avoided. Instead, the universe could be determined through the
+effect of string dynamics on a time-dependent background.
+
+VI. LATE TIME COSMOLOGY AND OBSERVATIONS
+
+So far, our main concern has been the impact of strings and branes on the evolution
+of moduli fields, either at the classical or the quantum level. We have seen the emergence
+of possible mechanisms to stabilize moduli fields at various instances. Given a stabilizing
+mechanism, e.g. provided by a classical gas of massless string modes or by quantum
+trapping as outlined in the previous section, we can turn our attention to late time
+cosmology 14 , and search for observational imprints. Two interesting possibilities naturally
+surface:
+1. If a string gas is responsible for stabilizing internal dimensions today and it is taken
+in the dark sector, this naturally leads to a candidate for cold dark matter.
+2. It is widely believed that some period of cosmological inflation must have occurred
+in the past and it seems unavoidable to incorporate inflation into SGC. However,
+inflation must have taken place before the moduli were stabilized by the string
+gas – otherwise the gas would have been diluted too much to effectively stabilize
+14
+
+The consistency of the stabilization mechanism in the presence of matter was shown quantitatively in
+(Ferrer and Rasanen, 2005), where it was also noted that it is not consistent with the presence of a
+cosmological constant – however, an explanation of the currently observed late time acceleration via the
+dynamics of the radion seems possible within SGC (Ferrer and Rasanen, 2005) (see also (Biswas et al.,
+2005)).
+
+37
+
+the radion. Since the observed large scale structure of the universe evolved from
+quantum fluctuations seeded during inflation, it is possible that the string gas left
+observable imprints on the spectrum of fluctuations.
+Both avenues are in their initial stages of being examined and a lot of work needs to be
+done before an honest prediction can be made. Nevertheless, we will have a closer look
+at recent progress in the next two sections.
+
+A. Dark Matter
+
+Within the framework of SGC we do not expect to observe single strings, because the
+model relies on the presence of a gas of strings. Such a gas will appear as a component of
+the energy budget of the universe, not as single objects. We will take the strings to lie in
+the dark sector, which suggests they may offer candidates for both dark energy and dark
+matter. Both dark energy and dark matter can only be observed via their gravitational
+interaction 15 , but they differ in their equation of state p = wρ: Dark energy has w close
+to −1 (if it is exactly -1, it is a cosmological constant) and dark matter has either w = 0
+if it is cold (like pressureless dust), or 1/3 if it is hot (like radiation).
+In the following, we will provide a general treatment of different cold dark matter
+(CDM) types, following closely (Gubser and Peebles, 2004a,b; Nusser et al., 2005). Thereafter, we discuss how dark matter arises in the framework of SGC (Battefeld and Watson,
+2004), focusing on a simple realization via a classical gas of winding and momentum modes
+in a universe with only one extra dimension.
+15
+
+They are observable in the spectrum of fluctuations in the CMBR, gravitational lensing, galaxy rotation
+curves, etc.
+
+38
+
+1. General setup
+
+Our starting point is a low energy effective action, valid at late-times. We saw in
+the previous sections how scalars like the radion arise in an effective four dimensional
+description, with a potential dictated by the string gas under consideration. Hence we
+will focus on a single scalar with action
+
+
+Z
+√
+1 µν
+1
+4
+R[gµν ] − g ∇µ ψ∇ν ψ + V(λ, ψ) ,
+(80)
+Sef f =
+d x −g
+2lp2
+2
+P
+where V(ψ, λ) = i ni mi defines the masses mi and number densities ni . We keep the
+
+potential and hence the masses mi general for the time being, and give a concrete example
+later.
+
+We are interested in the way different dark matter particles interact with each other
+and furthermore, how they influence structure formation. With this knowledge one can
+then discuss specific imprints onto the large scale structure of the universe, as was done in
+(Gubser and Peebles, 2004a; Nusser et al., 2005). The deviations from standard ΛCDM
+models are in the form of an additional fifth force, mediated by the scalar.
+From the Klein Gordon equation of motion for ψ one can read off the magnitude of
+the force between the dark matter particles of different type (Gubser and Peebles, 2004b)
+Fij = βij
+
+Gmi mj
+,
+r2
+
+Qi Qj
+,
+βij = 1 + 2
+lp mi mj
+
+(81)
+
+dmi
+.
+dψ
+
+(82)
+
+where we introduce the scalar charges
+Qi =
+
+Since we are considering scalar gravity, we have that like charges attract and unlike charges
+repel. We also note that ψ should be stabilized by a potential V in order to avoid problems
+with observations. As a consequence, charge neutrality
+X
+
+Qi ni = 0
+39
+
+(83)
+
+is required. If the charges vanish, as is the case for standard baryonic matter, we are left
+with the Newtonian limit of general relativity, as it should be. It is via its charge that
+the CDM we are interested in modifies structure formation.
+In order to understand structure formation one first needs to understand how small
+initial under- and over-densities grow due to the gravitational instability. This means we
+need to study how perturbations in the densities of each matter type evolve. Since this is
+not our main focus, we refer the reader to the literature (Gubser and Peebles, 2004b) and
+summarize the main results below. Let us introduce the density contrast of dark matter
+δi =
+
+δρi
+,
+ρ
+
+(84)
+
+where ρi = ni mi are the densities of dark matter and ρ is the total density. The equations
+of motion for the δi become
+δ̈i + 2λ̇δ̇i =
+
+ρlp2 X
+βij fj δj ,
+2 j
+
+where we introduced the mass fraction fi = ni mi /
+
+P
+
+i ni mi .
+
+(85)
+Once again, the Newtonian
+
+limit is recovered in the case of vanishing charges. We would like to emphasize that the
+whole treatment up to this point holds true only for small curvatures and nonrelativistic
+dark matter, which is exactly the case we are interested in at late-times.
+By discussing solutions to (85) one can study how the large scale structure with its
+filaments and voids builds up. If one compares the resulting universe to common ΛCDM
+computations and observations, one has a way of verifying or excluding the existence of
+a specific string or brane gas. However, this seems to require improved observations.
+We conclude this brief summary and refer the interested reader to (Gubser and Peebles,
+2004a; Nusser et al., 2005) where the study of structure formation was developed in much
+more detail, and the connection to observations has been discussed.
+
+40
+
+2. Example: A dark matter candidate within SGC
+
+We shall now examine a simple example as introduced in (Battefeld and Watson, 2004).
+The goal here is not to present a complete model, but only to suggest how dark matter
+may arise from SGC. The generalization to other types of string/brane gases should be
+straightforward.
+Let us consider the case of only one extra dimension filled with a gas of winding and
+momentum modes. Going to the Einstein frame and integrating out the extra dimension
+an effective action of type (44) results. Giving the dilaton a VEV of φ = 0, the potential
+turns out to be
+√
+
+µV1 Ne
+V=
+e3λ
+
+6lp ψ
+6
+
+−
+
+µV1 Me
++
+e3λ
+
+√
+
+6lp ψ
+2
+
+,
+
+(86)
+
+after following the procedures of Subsection IV.D. Here V1 is the spacial volume of the
+extra dimension (so that Mp2 = V1 M52 ), and M, N are the numbers of winding and
+momentum modes, respectively. A stable minimum at the self dual radius ψ = 0 results,
+if we have 3M = N 16 . For other string gases the potential will differ accordingly.
+We can now identify the number densities
+n1 =
+
+M
+,
+e3λ
+
+n2 =
+
+N
+e3λ
+
+(87)
+
+and the masses
+√
+
+− 26 lp ψ
+
+m1 = µV1 e
+
+√
+
+6
+
+, m2 = µV1 e 6 lp ψ .
+
+(88)
+
+The densities scale as e−3λ , just like matter, so that we can identify this specific string gas
+as a CDM candidate. Computing the charges Qi one sees that the total charge vanishes
+at the self dual radius, as it should. The mass fractions become f1 = f2 = 1/2 and the β
+16
+
+It is then consistent to give the dilaton the VEV we chose.
+
+41
+
+matrix is given by
+
+
+βij = 4 
+
+1 0
+0 31
+
+
+
+.
+
+(89)
+
+The matrix is diagonal showing the absence of any long range interaction between winding
+and momentum modes. This is consistent with the overall setup.
+One can now go ahead and solve the equation of motion (85) and follow up with a
+numerical treatment once the perturbations become nonlinear. Here we will only mention
+the modes of instability in the linear regime (Battefeld and Watson, 2004); there is an
+adiabatic mode and another subdominant mode. The adiabatic mode corresponds to the
+movement of strings together with the expansion in the matter dominated epoch.
+The addition of other string or brane gases is straightforward, and one can find rich
+physics in the dark sector that still needs to be explored in more detail. Also, a connection
+to Chameleon cosmology as proposed by Khoury and Weltman seems possible (see e.g.
+(Brax et al., 2005) and references within), but has not yet been examined.
+
+B. Imprints onto Perturbations
+
+In this section, we are interested in possible imprints of string gases on perturbations
+of the metric degrees of freedom. These signatures can then be probed, e.g. via an
+observation of the cosmic microwave background radiation.
+We begin in a phase with three dimensions inflating, while the other dimensions are
+deflating. During this phase, metric fluctuations are generated by the string gases and
+continue to evolve until the perturbation exits the Hubble radius. As a consequence, a
+nearly scale invariant spectrum of fluctuations should result. Once the internal dimensions
+evolve to a value where enhanced symmetry occurs, massless string modes get produced
+and these modes can stabilize the internal dimensions as we discussed in the last section.
+We are then left with a radiation dominated FRW universe that is effectively 3 + 1
+42
+
+dimensional. Then as the universe evolves in the post inflationary epoch, long wavelength
+modes enter the horizon again and leave imprints on the cosmic microwave background
+radiation that we observe today.
+The weak point of this proposal is clearly that no successful incorporation of inflation into the setup of SGC has been realized yet, however efforts in this direction were
+considered in (Brandenberger et al., 2004; Kaya, 2004; Parry and Steer, 2002). Another
+possibility is a period of anisotropic inflation as proposed by Levin and others in the mid
+nineties (Levin, 1995) or more recently in (Patil, 2005). If inflation can be realized, then
+another immediate concern arises: Given that a nearly scale invariant spectrum of fluctuations can be generated during the inflationary phase, one might fear that the violent
+production of a string gas at the end of inflation and the resulting stabilization of the
+radion will spoil the spectrum. However, a recent study (Battefeld et al., 2005) showed
+that the spectrum remains unaltered, which was certainly unexpected. The analysis was
+performed in a full 5D setting (the extra dimension being either a circle or an orbifold),
+with a classical gas of massless string modes and a radiation bath present. After finding
+an approximate analytic solution for the background, all quantities (the string gas, the
+radiation bath and the metric) were perturbed up to first order, the relevant equations
+of motion derived and solved (approximate analytical and numerical). The most prominent features of the solution are the following: long wavelength modes of the Bardeen
+potentials (super horizon modes) stay approximately frozen until they re-enter the Hubble horizon, since the transient oscillations of the radion only source equally transient
+oscillations in the Bradeen potentials. The perturbation of the radion itself exhibits only
+decaying modes, consistent with a stable radion. Henceforth, a given spectrum of fluctuations will survive the trapping of the radion in a similar way as a spectrum survives
+reheating after standard scalar field driven inflation.
+Based on these results, an important next step within the SGC program is the incorporation of inflation. This will then allow one to search for imprints onto the spectrum
+of perturbation that are unique for SGC.
+43
+
+VII. SUMMARY
+
+We have seen that an important concept leading to recent progress in SGC is that of
+quantum moduli trapping via light states at points of enhanced symmetry. These states
+first appeared in SGC while considering the classical dynamical effects of massive string
+states containing nontrivial winding and momentum. The massive states were included
+in the tree level theory by including the string sigma model directly in the action to
+obtain higher order corrections to the tree level action. This approach was questionable
+given the necessary truncation of the string beta equations in order to obtain the low
+energy action. However, it lead to uncovering the importance of additional massless
+states that had been missed in the low energy theory. This is an example that suggests
+if we are to build more realistic models of string cosmology, we really need to go beyond
+the moduli space approximation and obtain a better understanding of time-dependent
+string solutions. Moreover, even though the focus of SGC has shifted to massless states
+for moduli stabilization, the massive modes may still prove vital, especially if the ideas
+of Brandenberger and Vafa are to be realized. We discussed that current calculations in
+the low energy theory suggest that the heuristic argument for dimensionality may not be
+realized. Although, it seems that a better understanding of the non-perturbative aspects
+of string theory are needed to be sure.
+At late-times, we saw that not only do string gases near ESPs provide moduli stabilization through trapping, but that string gases also act as an alternative candidate for cold
+dark matter. In addition, the framework for studying signals in the large scale structure
+of the universe originating from this dark sector has already been developed by Gubser
+and Peebles.
+Another conclusion of the string gas approach is that it leads naturally to a string
+landscape. This results from the fact that ESPs are quite common in moduli space and
+the moduli stabilization can occur at any one of these ESPs. In fact, ESPs are ubiquitous
+in any theory with N = 4 D = 4 supergravity as a low energy limit. This makes moduli
+44
+
+trapping a common feature on the landscape of vacua, but it also leaves the question of
+a definitive vacuum unanswered. It should also be noted that one lesson learned from
+SGC is that our understanding of moduli space dynamics is in need of further study.
+Moduli trapping is only one of many dynamical effects that one might anticipate on the
+landscape, and a better understanding of the dynamics will perhaps lead to a definitive
+vacuum after-all. Moreover, in order to obtain realistic phenomenology we are interested
+in low energy vacua with at most N = 1 SUSY and chiral fermions. Thus, much remains
+to be done if we are to build more realistic models, but we hope that we have demonstrated
+that SGC offers a framework where many of these questions may be explored.
+
+Acknowledgments
+
+We are grateful to Diana Battefeld, Tirthabir Biswas, Robert Brandenberger, Sera
+Cremonini, Alan Guth, Liam McAllister, Subodh Patil, and Amanda Weltman for useful
+discussions. SW would also like to thank Steve Gubser and Eva Silverstein for critical
+comments during the early stages of his work. This work was financially supported in
+part by the National Science and Engineering Research Council of Canada and in part by
+the U.S. Department of Energy under Contract DE-FG02-91ER40688, TASK A.
+
+APPENDIX A: Conformal Frames and Dimensional Reduction
+
+In this appendix we present a brief summary of the methods of dimensional reduction and conformal transformations.
+
+A more complete account can be found in
+
+(Birrell and Davies, 1982; Carroll et al., 2002; Lidsey et al., 2000; Silverstein, 2004). We
+will use the mostly plus convention for the metric (− + + + . . .) and we follow the sign
+conventions of (Wald, 1984), denoted (+ + +) in (Misner et al., 1973).
+
+45
+
+1. Conformal Transformations
+
+In general, a conformal transformation
+¯ 2 = Ω2 ds2 ,
+ds
+
+ḡµν = Ω2 gµν ,
+
+ḡ µν = Ω−2 g µν ,
+
+√
+
+√
+−ḡ = ΩD −g,
+
+does NOT leave the action invariant and results in the following transformations
+
+1
+Γ̄λµν =
+ḡµκ,ν + ḡνκ,µ − ḡµν,κ
+2
+
+1 λ
+gµ Ω,ν + gνλ Ω,µ − gµν g λκ Ω,κ ,
+= Γλµν +
+Ω
+
+Ω,µ Ω,ν 
+R̄ = Ω−2 R − 2(D − 1) ln Ω − (D − 2)(D − 1)g µν
+,
+Ω2
+
+
+¯ = Ω−2 φ + (D − 2)g µν Ω,µ φ,ν ,
+φ
+Ω
+
+(A1)
+
+(A2)
+(A3)
+(A4)
+(A5)
+
+where quantities with a bar denote the new frame. We can invert to find the old Ricci
+scalar in terms of the new one
+
+
+µν Ω,µ Ω,ν
+2
+¯
+.
+R = Ω R̄ + 2(D − 1) ln Ω − (D − 2)(D − 1)ḡ
+Ω2
+We see that if we begin with an action
+Z
+
+
+√
+µ
+S=
+−gf [φ(x )] R + . . .
+
+(A6)
+
+(A7)
+
+for a general modulus field f [φ(xµ )] multiplying the Ricci scalar, the term can be
+2
+
+transformed to the canonical Einstein frame by choosing Ω2 = f D−2 .
+
+String frame to Einstein frame
+As an example, consider starting with the bosonic string frame action in D dimensions
+Z
+
+
+√
+1
+1
+(A8)
+SS = 2 dD x −Ge−2φ R + 4(∂φS )2 − H 2 .
+2κ
+12
+We can then go to the Einstein frame by the transformation
+E
+S
+gµν
+= Ω2 gµν
+,
+
+
+4φ 
+Ω = exp −
+,
+D−2
+2
+
+46
+
+φE = 2
+
+r
+
+2
+φ,
+D−2
+
+(A9)
+
+with the field redefinition making φE canonical. The action becomes
+Z
+
+√
+1 −2√ 2 φE 2
+1
+1
+D
+2
+D−2
+H ,
+d x −G R − (∂φE ) − e
+SE =
+16πGD
+2
+12
+
+(A10)
+
+where factors of gs2 and α′ are present in the D dimensional Newton constant GD and φE
+is the scalar fluctuation associated with the dynamical dilaton.
+
+2. Dimensional Reduction
+
+Consider the toriodal compactification of the bosonic degrees of freedom with action
+Z
+
+
+p
+1
+1
+(A11)
+dD+dx −GD+d e−2φ RD+d + 4(∂φ)2 − H 2 ,
+SD+d = 2
+2κD+d
+12
+where GD+d is the higher dimensional metric, φ is the dilaton, and H = dB is the NS
+three form field strength of the fundamental string. For this toriodal compactification the
+geometry is factorizable MD+d = MD × Td with metric
+ds2D+d = gµν dxµ dxν + hab dy a dy b,
+
+(A12)
+
+where gµν is the metric on MD parameterized by coordinates xµ , and hab is the metric on
+the compactified space Td with periodic coordinates y a . We will assume that all matter
+fields are at most functions of the xµ , e.g. φ = φ(xµ ). This implies that the compact
+
+space must be Ricci flat, and we will further assume the flux B is block diagonal. Given
+this metric, the Ricci scalar will factorize as
+√
+√
+1
+2 √
+RD+d = RD + ∇µ hab ∇µ hab + ∇µ (ln h)∇µ (ln h) − √  h,
+4
+h
+
+(A13)
+
+where we used the relation ∂µ ln h = hab ∂µ hab . Plugging (A13) into the action (A11) and
+defining the lower dimensional dilaton
+ϕ ≡ 2φ −
+
+1
+ln det hab .
+2
+
+47
+
+(A14)
+
+we find
+
+√
+1
+1
+−ϕ
+d x −gD e
+RD + ∇µ ϕ∇µ ϕ − Hµνλ H µνλ + ∇µ hab ∇µ hab
+12
+4
+
+1
+ab µ
+− ∇µ B ∇ Bab , (A15)
+4
+√
+where 2κ2D = 2κ2D+d V0−1 = 2κ2D+d (2π α′ )−d and we have defined the d dimensional volume
+1
+SD =
+2κD
+
+Z
+
+D
+
+as
+Vd = V0
+
+Z
+
+dd y
+
+p
+det hab = V0 h1/2 (xµ ),
+
+(A16)
+
+where we used the fact that h(xµ ) does not depend on the y a and its components will
+appear, along with the Bab , as fluctuating scalars in the D dimensional theory. The
+constant V0 is a reference volume and for a string scale compactification given by V0 =
+√
+(2π α′ )d . The lower dimensional Newton constant is then given by
+1
+V0
+=
+.
+16πGD
+16πGD+d
+
+(A17)
+
+We would like to put (A15) in Einstein canonical form, which is accomplished by the
+conformal transformation
+2
+
+g̃µν = Ω gµν ,
+
+
+2
+ϕ ,
+Ω ≡ exp −
+D−2
+2
+
+
+
+and a field redefinition canonically normalizes the lower dimensional dilaton
+r
+2
+ϕ̃ ≡
+ϕ
+D−2
+which gives the desired form
+
+Z
+p
+1  ˜ 2
+1
+1 √
+D
+S=
+d x −g˜D R̃D −
+∇ϕ̃ − e− 8/(D−2)ϕ̃ H̃µνλ H̃ µνλ
+16πGD
+2
+12
+
+1˜
+1˜
+µ ab
+µ
+ac bd
+˜
+˜
++ ∇µ hab ∇ h − ∇µ Bab ∇ Bcd h h ,
+4
+4
+where we have used 2κ2D = 16πGD .
+
+48
+
+(A18)
+
+(A19)
+
+(A20)
+
+Now let us specialize this result to the case of an isotropic internal metric, where the
+radion is the only degree of freedom. In this review we have primarily been interested in
+the case of vanishing flux (H = 0) and we started with the string frame metric
+ds2 = −dt2 + a(t)2 d2 x + b2 (t)dy 2 ,
+
+(A21)
+
+where b(t) is the 10D string frame radion. By noting hab = b2 and plugging this result
+into (A20), along with D = 4 and neglecting flux, we find
+
+
+Z
+1
+1
+2
+4 √
+−2
+2
+d x −g R − (∂ϕ) − db (∂b) .
+S=
+16πG
+2
+
+(A22)
+
+We can canonically normalize the radion by the field redefinition
+ψ=
+
+√
+
+2d ln b,
+
+so that we arrive at the desired action
+
+
+Z
+1
+1
+1
+2
+4 √
+2
+d x −g R − (∂ϕ) − (∂ψ) ,
+S=
+16πG
+2
+2
+where the four dimensional dilaton is given by
+r
+ϕ = 2φ −
+
+d
+ψ.
+2
+
+(A23)
+
+(A24)
+
+(A25)
+
+Finally, we would like to consider the addition of a potential term allowing for the presence
+of strings, branes, or other matter. If we begin with the potential in the string frame,
+Z
+p
+(4+d)
+(A26)
+Sm
+= − d4+d x G4+d Vs(4+d) ,
+after the reduction we have
+(4)
+Sm
+= −(2π
+
+√
+
+α ′ )d
+
+Z
+
+√
+d4 x g4 bd Vs(4+d) .
+
+(A27)
+
+Now performing the transformation (A18) to convert to the Einstein frame the action
+becomes
+E
+Sm
+=−
+
+Z
+
+p
+d4 x g̃4 e2ϕ bd Ṽs(4+d) ,
+49
+
+(A28)
+
+where we note that the transformation (A19) is trivial in four dimensions, i.e. ϕ̃ = ϕ,
+and we have absorbed the constant prefactor in (A27) into the potential. To illustrate
+the scaling with volume and coupling, let us restore the unshifted dilaton and compact
+volume using (A25) and (A23)
+E
+=−
+Sm
+
+Z
+
+p e4φ
+d4 x g̃4 2d bd Vs(4+d) .
+b
+
+(A29)
+
+The final reduced action in the Einstein frame is
+
+
+Z
+
+√
+1
+1
+1 
+2
+4 √
+4φ − d2 ψ
+2
+(4+d)
+S = d x −g
+R − (∂ϕ) − (∂ψ) − e e
+.
+Vs
+16πG
+2
+2
+
+(A30)
+
+Thus, we see the potential is diluted as the volume runs to large values or the dilaton
+runs to weak coupling. Unfortunately, it is in these limits that string cosmology is best
+(4+d)
+
+understood and string corrections are understood. Moreover, if the potential Vs
+
+does
+
+not contain large enough powers to overcome the dilaton and radion, then a local minimum
+for stabilization is not found.
+
+References
+Alexander, S., R. H. Brandenberger, and D. Easson, 2000, Phys. Rev. D62, 103509.
+Alexander, S. H. S., 2003, JHEP 10, 013.
+de Alwis, S. P., and K. Sato, 1996, Phys. Rev. D53, 7187.
+Arapoglu, S., and A. Kaya, 2004, Phys. Lett. B603, 107.
+Bagger, J., and I. Giannakis, 1997, Phys. Rev. D56, 2317.
+Bassett, B. A., M. Borunda, M. Serone, and S. Tsujikawa, 2003, Phys. Rev. D67, 123506.
+Bastero-Gil, M., P. H. Frampton, and L. Mersini-Houghton, 2002, Phys. Rev. D65, 106002.
+Battefeld, T., and S. Watson, 2004, JCAP 0406, 001.
+Battefeld, T. J., S. P. Patil, and R. H. Brandenberger, 2005, eprint hep-th/0509043.
+Berndsen, A., T. Biswas, and J. M. Cline, 2005, JCAP 0508, 012.
+Berndsen, A. J., and J. M. Cline, 2004, Int. J. Mod. Phys. A19, 5311.
+
+50
+
+Birrell, N. D., and P. C. W. Davies, 1982, cambridge, Uk: Univ. Pr. ( 1982) 340p.
+Biswas, T., 2004, JHEP 02, 039.
+Biswas, T., R. Brandenberger, A. Mazumdar, and T. Multamaki, 2005, eprint hep-th/0507199.
+Boehm, T., and R. Brandenberger, 2003, JCAP 0306, 008.
+Borunda, M., 2003, eprint hep-th/0310032.
+Brandenberger, R., Y.-K. E. Cheung, and S. Watson, 2005, eprint hep-th/0501032.
+Brandenberger, R., D. A. Easson, and D. Kimberly, 2002, Nucl. Phys. B623, 421.
+Brandenberger, R., D. A. Easson, and A. Mazumdar, 2004, Phys. Rev. D69, 083502.
+Brandenberger, R. H., 2005a, eprint hep-th/0509099.
+Brandenberger, R. H., 2005b, eprint hep-th/0509159.
+Brandenberger, R. H., and C. Vafa, 1989, Nucl. Phys. B316, 391.
+Brax, P., C. van de Bruck, A. C. Davis, J. Khoury, and A. Weltman, 2005, AIP Conf. Proc.
+736, 105.
+Callan, J., Curtis G., E. J. Martinec, M. J. Perry, and D. Friedan, 1985, Nucl. Phys. B262, 593.
+Campos, A., 2003, Phys. Rev. D68, 104017.
+Campos, A., 2004, Phys. Lett. B586, 133.
+Campos, A., 2005a, Phys. Rev. D71, 083510.
+Campos, A., 2005b, JCAP 0501, 010.
+Carroll, S. M., J. Geddes, M. B. Hoffman, and R. M. Wald, 2002, Phys. Rev. D66, 024036.
+Cleaver, G. B., and P. J. Rosenthal, 1995, Nucl. Phys. B457, 621.
+Cremonini, S., and S. Watson, 2006, eprint hep-th/0601082.
+Dabholkar, A., J. P. Gauntlett, J. A. Harvey, and D. Waldram, 1996, Nucl. Phys. B474, 85.
+Dabholkar, A., G. W. Gibbons, J. A. Harvey, and F. Ruiz Ruiz, 1990, Nucl. Phys. B340, 33.
+Dabholkar, A., and J. A. Harvey, 1989, Phys. Rev. Lett. 63, 478.
+Danos, R., A. R. Frey, and A. Mazumdar, 2004, Phys. Rev. D70, 106010.
+Deo, N., S. Jain, O. Narayan, and C.-I. Tan, 1992, Phys. Rev. D45, 3641.
+Deo, N., S. Jain, and C.-I. Tan, 1991, based on talk given at Int. Colloq. on Modern Quantum
+
+51
+
+Field Theory, Bombay, India, Jan 8-14, 1990.
+Durrer, R., M. Kunz, and M. Sakellariadou, 2005, Phys. Lett. B614, 125.
+Easson, D. A., 2001, eprint hep-th/0111055.
+Easson, D. A., 2003, Int. J. Mod. Phys. A18, 4295.
+Easson, D. A., and M. Trodden, 2005, Phys. Rev. D72, 026002.
+Easther, R., B. R. Greene, and M. G. Jackson, 2002, Phys. Rev. D66, 023502.
+Easther, R., B. R. Greene, M. G. Jackson, and D. Kabat, 2003, Phys. Rev. D67, 123501.
+Easther, R., B. R. Greene, M. G. Jackson, and D. Kabat, 2004, JCAP 0401, 006.
+Easther, R., B. R. Greene, M. G. Jackson, and D. Kabat, 2005, JCAP 0502, 009.
+Felder, G. N., L. Kofman, and A. D. Linde, 1999a, Phys. Rev. D60, 103505.
+Felder, G. N., L. Kofman, and A. D. Linde, 1999b, Phys. Rev. D59, 123523.
+Ferrer, F., and S. Rasanen, 2005, eprint hep-th/0509225.
+Fradkin, E. S., and A. A. Tseytlin, 1985, Phys. Lett. B158, 316.
+Friess, J. J., S. S. Gubser, and I. Mitra, 2004, Nucl. Phys. B689, 243.
+Gasperini, M., and G. Veneziano, 2003, Phys. Rept. 373, 1.
+Green, M. B., J. H. Schwarz, and E. Witten, 1987a, cambridge, Uk: Univ. Pr. ( 1987) 469 P. (
+Cambridge Monographs On Mathematical Physics).
+Green, M. B., J. H. Schwarz, and E. Witten, 1987b, cambridge, Uk: Univ. Pr. ( 1987) 596 P. (
+Cambridge Monographs On Mathematical Physics).
+Gubser, S. S., 2004, Phys. Rev. D69, 123507.
+Gubser, S. S., and J. Khoury, 2004, Phys. Rev. D70, 104001.
+Gubser, S. S., and P. J. E. Peebles, 2004a, Phys. Rev. D70, 123511.
+Gubser, S. S., and P. J. E. Peebles, 2004b, Phys. Rev. D70, 123510.
+Helling, R., 2000, eprint hep-th/0009134.
+Horne, J. H., and G. W. Moore, 1994, Nucl. Phys. B432, 109.
+Hotta, K., K. Kikkawa, and H. Kunitomo, 1997, Prog. Theor. Phys. 98, 687.
+Kaloper, N., J. Rahmfeld, and L. Sorbo, 2005, Phys. Lett. B606, 234.
+
+52
+
+Kanno, S., and J. Soda, 2005, Phys. Rev. D72, 104023.
+Karch, A., and L. Randall, 2005, Phys. Rev. Lett. 95, 161601.
+Kaya, A., 2003, Class. Quant. Grav. 20, 4533.
+Kaya, A., 2004, JCAP 0408, 014.
+Kaya, A., 2005a, Phys. Rev. D72, 066006.
+Kaya, A., 2005b, JHEP 03, 003.
+Kaya, A., and T. Rador, 2003, Phys. Lett. B565, 19.
+Khoury, J., B. A. Ovrut, N. Seiberg, P. J. Steinhardt, and N. Turok, 2002, Phys. Rev. D65,
+086007.
+Kim, J. Y., 2004, Phys. Rev. D70, 104024.
+Kofman, L., et al., 2004, JHEP 05, 030.
+Kripfganz, J., and H. Perlt, 1988, Class. Quant. Grav. 5, 453.
+Levin, J. J., 1995, Phys. Lett. B343, 69.
+Lidsey, J. E., D. Wands, and E. J. Copeland, 2000, Phys. Rept. 337, 343.
+Lukas, A., E. Palti, and P. M. Saffin, 2005, Phys. Rev. D71, 066001.
+Majumdar, M., and A. Christine-Davis, 2002, JHEP 03, 056.
+Misner, C. W., K. S. Thorne, and J. A. Wheeler, 1973, san Francisco, CA: Freeman ( 1973).
+Mohaupt, T., and F. Saueressig, 2005a, Fortsch. Phys. 53, 522.
+Mohaupt, T., and F. Saueressig, 2005b, JCAP 0501, 006.
+Nusser, A., S. S. Gubser, and P. J. E. Peebles, 2005, Phys. Rev. D71, 083505.
+Park, C., S.-J. Sin, and S. Lee, 2000, Phys. Rev. D61, 083514.
+Parry, M. F., and D. A. Steer, 2002, JHEP 02, 032.
+Patil, S. P., 2005, eprint hep-th/0509088.
+Patil, S. P., and R. Brandenberger, 2005, Phys. Rev. D71, 103522.
+Patil, S. P., and R. H. Brandenberger, 2006, JCAP 0601, 005.
+Polchinski, J., 1988, Phys. Lett. B209, 252.
+Polchinski, J., 1998a, cambridge, UK: Univ. Pr. (1998) 402 p.
+
+53
+
+Polchinski, J., 1998b, cambridge, UK: Univ. Pr. (1998) 531 p.
+Polchinski, J., 2005, Phys. Scripta T117, 64.
+Rador, T., 2005a, Phys. Lett. B621, 176.
+Rador, T., 2005b, eprint hep-th/0504047.
+Rador, T., 2005c, JHEP 06, 001.
+Sakellariadou, M., 1996, Nucl. Phys. B468, 319.
+Silverstein, E., 2004, eprint hep-th/0405068.
+Silverstein, E., and D. Tong, 2004, Phys. Rev. D70, 103505.
+Tseytlin, A. A., 1992, Class. Quant. Grav. 9, 979.
+Tseytlin, A. A., and C. Vafa, 1992, Nucl. Phys. B372, 443.
+de Vega, H. J., and N. Sanchez, 1995, eprint hep-th/9512074.
+Wald, R. M., 1984, chicago, Usa: Univ. Pr. ( 1984) 491p.
+Watson, S., 2004a, Phys. Rev. D70, 066005.
+Watson, S., 2004b, eprint hep-th/0409281.
+Watson, S., 2004c, Phys. Rev. D70, 023516.
+Watson, S., and R. Brandenberger, 2003a, JCAP 0311, 008.
+Watson, S., and R. Brandenberger, 2004, JHEP 03, 045.
+Watson, S., and R. H. Brandenberger, 2003b, Phys. Rev. D67, 043510.
+
+Figures
+
+54
+
+FIG. 1 This graph shows the primary results of (Watson and Brandenberger, 2003a), where
+stabilization of the string frame radion (green or light line) in the presence of string winding
+and momentum modes was demonstrated. The damping of the oscillations relied crucially on
+the dilaton running slowly to weak coupling (red or dark line).
+
+55
+
+

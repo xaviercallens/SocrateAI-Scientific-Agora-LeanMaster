@@ -1,0 +1,198 @@
+\begin{longtable}{p{0.34\textwidth}p{0.34\textwidth}lr}
+\caption{Hub declarations: the project's own definitions and lemmas on which the most theorems depend (kernel-level dependencies).}\label{tab:atlas-hubs}\\
+\toprule
+Declaration & Module & Kind & Used by \\ \midrule \endfirsthead
+\toprule
+Declaration & Module & Kind & Used by \\ \midrule \endhead
+\bottomrule \endfoot
+\texttt{\small Charge} & {\scriptsize TDuality.ODD} & def & 36 \\
+\texttt{\small Gram} & {\scriptsize Lattice.Basic} & def & 20 \\
+\texttt{\small eta} & {\scriptsize TDuality.ODD} & def & 20 \\
+\texttt{\small IsODD} & {\scriptsize TDuality.ODD} & def & 12 \\
+\texttt{\small k3HodgeNumber} & {\scriptsize Frontier.HodgeNumbers} & def & 12 \\
+\texttt{\small Tier} & {\scriptsize Epistemic.Tier} & inductive & 11 \\
+\texttt{\small CourantSection} & {\scriptsize CourantAlgebroid} & inductive & 8 \\
+\texttt{\small v} & {\scriptsize CourantAlgebroid} & def & 8 \\
+\texttt{\small IsEvenDiag} & {\scriptsize Lattice.Basic} & def & 8 \\
+\texttt{\small genMetric} & {\scriptsize DFT.GeneralizedMetric} & def & 7 \\
+\texttt{\small CBracket} & {\scriptsize CourantAlgebroid} & def & 7 \\
+\texttt{\small cartanE8} & {\scriptsize Lattice.E8} & def & 7 \\
+\texttt{\small hyperbolicU} & {\scriptsize Lattice.Hyperbolic} & def & 7 \\
+\texttt{\small alpha} & {\scriptsize CourantAlgebroid} & def & 6 \\
+\texttt{\small proj} & {\scriptsize TDuality.Factorized} & def & 6 \\
+\texttt{\small chargeNorm} & {\scriptsize TDuality.Factorized} & def & 6 \\
+\texttt{\small M24RepDim} & {\scriptsize StringDynamics.MathieuM24} & def & 6 \\
+\texttt{\small Mat2} & {\scriptsize GeneralizedGeometry} & inductive & 5 \\
+\texttt{\small MatMul} & {\scriptsize GeneralizedGeometry} & def & 5 \\
+\texttt{\small IsUnimodular} & {\scriptsize Lattice.Basic} & def & 5 \\
+\texttt{\small dualScale} & {\scriptsize DualScale.TraceBound} & def & 5 \\
+\texttt{\small fermionicGhostCharge} & {\scriptsize UseCases.CriticalDimension} & def & 5 \\
+\texttt{\small basisChange} & {\scriptsize TDuality.ODD} & def & 5 \\
+\texttt{\small bPlus} & {\scriptsize UseCases.K3SignatureTheorem} & def & 5 \\
+\texttt{\small bMinus} & {\scriptsize UseCases.K3SignatureTheorem} & def & 5 \\
+\texttt{\small tier} & {\scriptsize Epistemic.Ledger} & def & 5 \\
+\texttt{\small Sound} & {\scriptsize Epistemic.Ledger} & def & 5 \\
+\texttt{\small eqFrac} & {\scriptsize Moonshine.MathieuRigidity} & def & 5 \\
+\texttt{\small toNat} & {\scriptsize Epistemic.Tier} & def & 5 \\
+\texttt{\small Signature} & {\scriptsize Lattice.K3T2Signature} & inductive & 5 \\
+\end{longtable}
+
+\begin{longtable}{p{0.26\textwidth}p{0.22\textwidth}p{0.22\textwidth}p{0.22\textwidth}}
+\caption{Cross-library bridges: theorems whose statement or proof uses a declaration of a different library.}\label{tab:atlas-bridges}\\
+\toprule
+Theorem & in & uses & of \\ \midrule \endfirsthead
+\toprule
+Theorem & in & uses & of \\ \midrule \endhead
+\bottomrule \endfoot
+\texttt{\small massForm\_circle} & {\scriptsize DFT.GeneralizedMetric} & \texttt{\small leftMomentum} & {\scriptsize UseCases.TDualityMassSpectrum} \\
+\texttt{\small massForm\_circle} & {\scriptsize DFT.GeneralizedMetric} & \texttt{\small momentumMassSq} & {\scriptsize UseCases.TDualityMassSpectrum} \\
+\texttt{\small massForm\_circle} & {\scriptsize DFT.GeneralizedMetric} & \texttt{\small rightMomentum} & {\scriptsize UseCases.TDualityMassSpectrum} \\
+\texttt{\small euler\_K3} & {\scriptsize Flux.Tadpole} & \texttt{\small k3HodgeNumber} & {\scriptsize Frontier.HodgeNumbers} \\
+\texttt{\small k3k3\_anomaly} & {\scriptsize Flux.Tadpole} & \texttt{\small k3HodgeNumber} & {\scriptsize Frontier.HodgeNumbers} \\
+\texttt{\small k3t2\_euler\_zero} & {\scriptsize Flux.Tadpole} & \texttt{\small k3HodgeNumber} & {\scriptsize Frontier.HodgeNumbers} \\
+\texttt{\small hyperbolicU\_eq\_narain\_gram} & {\scriptsize Lattice.Hyperbolic} & \texttt{\small gram} & {\scriptsize UseCases.NarainLattice} \\
+\texttt{\small sigK3\_matches\_hodge} & {\scriptsize Lattice.K3T2Signature} & \texttt{\small bMinus} & {\scriptsize UseCases.K3SignatureTheorem} \\
+\texttt{\small sigK3\_matches\_hodge} & {\scriptsize Lattice.K3T2Signature} & \texttt{\small bPlus} & {\scriptsize UseCases.K3SignatureTheorem} \\
+\texttt{\small A6\_decomposition} & {\scriptsize Moonshine.EOT} & \texttt{\small M24RepDim} & {\scriptsize StringDynamics.MathieuM24} \\
+\texttt{\small A6\_not\_irrep} & {\scriptsize Moonshine.EOT} & \texttt{\small M24RepDim} & {\scriptsize StringDynamics.MathieuM24} \\
+\texttt{\small A7\_decomposition} & {\scriptsize Moonshine.EOT} & \texttt{\small M24RepDim} & {\scriptsize StringDynamics.MathieuM24} \\
+\texttt{\small first\_five\_are\_irreps} & {\scriptsize Moonshine.EOT} & \texttt{\small M24RepDim} & {\scriptsize StringDynamics.MathieuM24} \\
+\texttt{\small flux\_tadpole\_quantization\_exact} & {\scriptsize Frontier.FTermPotential} & \texttt{\small d7\_tadpole\_cancellation} & {\scriptsize StringTheory.TadpoleCancellation} \\
+\texttt{\small flux\_tadpole\_quantization\_exact} & {\scriptsize Frontier.FTermPotential} & \texttt{\small totalD7Charge} & {\scriptsize StringTheory.TadpoleCancellation} \\
+\texttt{\small flux\_tadpole\_quantization\_exact} & {\scriptsize Frontier.FTermPotential} & \texttt{\small totalO7Charge} & {\scriptsize StringTheory.TadpoleCancellation} \\
+\texttt{\small flux\_tadpole\_quantization\_exact} & {\scriptsize Frontier.FTermPotential} & \texttt{\small GVWFluxState} & {\scriptsize StringTheory.VafaSwampland} \\
+\texttt{\small poincare\_geodesic\_atlas\_curvature} & {\scriptsize Frontier.ModuliGeodesics} & \texttt{\small AtlasHyperbolicMetric} & {\scriptsize Atlas.AtlasGeometryBridge} \\
+\texttt{\small poincare\_geodesic\_atlas\_curvature} & {\scriptsize Frontier.ModuliGeodesics} & \texttt{\small gaussianCurvature} & {\scriptsize Atlas.AtlasGeometryBridge} \\
+\end{longtable}
+
+\begin{longtable}{p{0.42\textwidth}rp{0.44\textwidth}}
+\caption{Shared external foundations: Mathlib and core lemmas on which several of the project's theorems rest.}\label{tab:atlas-shared}\\
+\toprule
+Lemma & Theorems & Examples \\ \midrule \endfirsthead
+\toprule
+Lemma & Theorems & Examples \\ \midrule \endhead
+\bottomrule \endfoot
+\texttt{\scriptsize Fintype.complete} & 29 & \texttt{\small massForm\_circle}, \texttt{\small dualScale\_circle}, \texttt{\small cartanE8Inv\_mul} \\
+\texttt{\scriptsize Matrix.ext} & 22 & \texttt{\small massForm\_circle}, \texttt{\small dualScale\_circle}, \texttt{\small cartanE8Inv\_mul} \\
+\texttt{\scriptsize MulZeroClass.mul\_zero} & 22 & \texttt{\small etaR\_mul\_self}, \texttt{\small massForm\_circle}, \texttt{\small tduality\_inverts\_metric} \\
+\texttt{\scriptsize Finset.sum\_congr} & 17 & \texttt{\small massForm\_circle}, \texttt{\small euler\_K3}, \texttt{\small euler\_T2} \\
+\texttt{\scriptsize Matrix.cons\_val'} & 17 & \texttt{\small massForm\_circle}, \texttt{\small dualScale\_circle}, \texttt{\small cartanE8Inv\_mul} \\
+\texttt{\scriptsize Matrix.cons\_val\_fin\_one} & 17 & \texttt{\small massForm\_circle}, \texttt{\small dualScale\_circle}, \texttt{\small cartanE8Inv\_mul} \\
+\texttt{\scriptsize MulZeroClass.zero\_mul} & 15 & \texttt{\small etaR\_genMetric\_sq}, \texttt{\small massForm\_circle}, \texttt{\small tduality\_inverts\_metric} \\
+\texttt{\scriptsize Matrix.fromBlocks\_multiply} & 13 & \texttt{\small etaR\_genMetric\_sq}, \texttt{\small etaR\_mul\_self}, \texttt{\small genMetric\_bshift} \\
+\texttt{\scriptsize Finset.univ\_unique} & 12 & \texttt{\small massForm\_circle}, \texttt{\small euler\_T2}, \texttt{\small cartanE8Inv\_mul} \\
+\texttt{\scriptsize Real.instIsStrictOrderedRing} & 12 & \texttt{\small circle\_effective\_scale\_ge\_two}, \texttt{\small dualScale\_ge}, \texttt{\small cartanE8\_posDef} \\
+\texttt{\scriptsize Iff.mpr} & 11 & \texttt{\small etaR\_genMetric\_sq}, \texttt{\small genMetric\_bshift}, \texttt{\small genMetric\_symm} \\
+\texttt{\scriptsize IsOrderedAddMonoid.toAddLeftMono} & 11 & \texttt{\small circle\_effective\_scale\_ge\_two}, \texttt{\small dualScale\_ge}, \texttt{\small cartanE8\_posDef} \\
+\texttt{\scriptsize Real.instIsOrderedRing} & 11 & \texttt{\small circle\_effective\_scale\_ge\_two}, \texttt{\small dualScale\_ge}, \texttt{\small cartanE8\_posDef} \\
+\texttt{\scriptsize Real.instIsOrderedAddMonoid} & 10 & \texttt{\small circle\_effective\_scale\_ge\_two}, \texttt{\small dualScale\_ge}, \texttt{\small cartanE8\_posDef} \\
+\texttt{\scriptsize IsStrictOrderedRing.toIsOrderedRing} & 10 & \texttt{\small cartanE8\_posDef}, \texttt{\small fterm\_potential\_nonneg}, \texttt{\small poincare\_geodesic\_kinetic\_energy\_nonneg} \\
+\texttt{\scriptsize Matrix.cons\_val\_succ} & 9 & \texttt{\small cartanE8Inv\_mul}, \texttt{\small cartanE8\_det}, \texttt{\small cartanE8\_posDef} \\
+\texttt{\scriptsize Matrix.transpose\_one} & 9 & \texttt{\small genMetric\_bshift}, \texttt{\small thetaShiftR\_preserves\_eta}, \texttt{\small dualScale\_ge} \\
+\texttt{\scriptsize Finset.sum\_const} & 9 & \texttt{\small massForm\_circle}, \texttt{\small euler\_T2}, \texttt{\small cartanE8Inv\_mul} \\
+\texttt{\scriptsize Finset.card\_singleton} & 9 & \texttt{\small massForm\_circle}, \texttt{\small euler\_T2}, \texttt{\small cartanE8Inv\_mul} \\
+\texttt{\scriptsize Rat.instCharZero} & 9 & \texttt{\small central\_charge\_k3\_eq\_six}, \texttt{\small virasoro\_algebra\_commutator}, \texttt{\small virasoro\_ope\_central\_term} \\
+\texttt{\scriptsize FloorSemiring.instCharZero} & 8 & \texttt{\small massForm\_circle}, \texttt{\small circle\_effective\_scale\_ge\_two}, \texttt{\small cartanE8\_det} \\
+\texttt{\scriptsize AddGroup.existsAddOfLE} & 8 & \texttt{\small circle\_effective\_scale\_ge\_two}, \texttt{\small cartanE8\_posDef}, \texttt{\small fterm\_potential\_nonneg} \\
+\texttt{\scriptsize one\_ne\_zero.\_simp\_1} & 8 & \texttt{\small euler\_T2}, \texttt{\small k3t2\_euler\_zero}, \texttt{\small cartanE8Inv\_mul} \\
+\texttt{\scriptsize Matrix.fromBlocks\_transpose} & 8 & \texttt{\small genMetric\_bshift}, \texttt{\small genMetric\_symm}, \texttt{\small thetaShiftR\_preserves\_eta} \\
+\texttt{\scriptsize IsCancelMulZero.toIsLeftCancelMulZero} & 8 & \texttt{\small massForm\_circle}, \texttt{\small circle\_effective\_scale\_ge\_two}, \texttt{\small dualScale\_circle} \\
+\texttt{\scriptsize NeZero.one} & 8 & \texttt{\small massForm\_circle}, \texttt{\small circle\_effective\_scale\_ge\_two}, \texttt{\small dualScale\_circle} \\
+\texttt{\scriptsize GroupWithZero.toNontrivial} & 8 & \texttt{\small massForm\_circle}, \texttt{\small circle\_effective\_scale\_ge\_two}, \texttt{\small dualScale\_circle} \\
+\texttt{\scriptsize Finset.sum\_const\_zero} & 7 & \texttt{\small euler\_T2}, \texttt{\small cartanE8Inv\_mul}, \texttt{\small e8\_LDL} \\
+\texttt{\scriptsize Matrix.fromBlocks\_inj} & 6 & \texttt{\small etaR\_genMetric\_sq}, \texttt{\small genMetric\_bshift}, \texttt{\small genMetric\_symm} \\
+\texttt{\scriptsize Matrix.mul\_assoc} & 6 & \texttt{\small genMetric\_bshift}, \texttt{\small genMetric\_bshift\_cancel}, \texttt{\small basisChange\_comm\_thetaShift} \\
+\texttt{\scriptsize IsOrderedRing.toPosMulMono} & 6 & \texttt{\small circle\_effective\_scale\_ge\_two}, \texttt{\small cartanE8\_posDef}, \texttt{\small energy\_dissipation} \\
+\texttt{\scriptsize Even.pow\_nonneg} & 6 & \texttt{\small cartanE8\_posDef}, \texttt{\small fterm\_potential\_nonneg}, \texttt{\small poincare\_geodesic\_kinetic\_energy\_nonneg} \\
+\texttt{\scriptsize IsStrictOrderedRing.toPosMulStrictMono} & 6 & \texttt{\small circle\_effective\_scale\_ge\_two}, \texttt{\small cartanE8\_posDef}, \texttt{\small poincare\_geodesic\_kinetic\_energy\_nonneg} \\
+\texttt{\scriptsize IsOrderedRing.toMulPosMono} & 6 & \texttt{\small energy\_dissipation}, \texttt{\small regularity\_lifting}, \texttt{\small sobolev\_embedding} \\
+\texttt{\scriptsize Finset.sum\_neg\_distrib} & 6 & \texttt{\small euler\_T2}, \texttt{\small cartanE8Inv\_mul}, \texttt{\small e8Neg\_simpleRoot\_norm} \\
+\end{longtable}
+
+\begin{longtable}{rrp{0.40\textwidth}p{0.40\textwidth}}
+\caption{Most similar theorem statements across libraries (TF--IDF cosine similarity), with the weighted Jaccard index of their kernel dependencies.}\label{tab:atlas-similar}\\
+\toprule
+cos & dep & Theorem A & Theorem B \\ \midrule \endfirsthead
+\toprule
+cos & dep & Theorem A & Theorem B \\ \midrule \endhead
+\bottomrule \endfoot
+0.63 & 0.11 & \texttt{\small k3\_euler\_characteristic}\newline {\scriptsize K3Topology} & \texttt{\small k3\_euler\_eq\_24}\newline {\scriptsize Moonshine.KummerTadpole} \\
+0.57 & 0.02 & \texttt{\small mukai\_rank\_and\_signature}\newline {\scriptsize Problems.Problem4\_MukaiMonodromy} & \texttt{\small mukai\_rank}\newline {\scriptsize StringDynamics.MukaiLattice} \\
+0.56 & 0.01 & \texttt{\small k3t2\_euler\_zero}\newline {\scriptsize Flux.Tadpole} & \texttt{\small k3t2\_euler\_char\_eq\_zero}\newline {\scriptsize Moonshine.KummerTadpole} \\
+0.55 & 0.01 & \texttt{\small golay\_self\_dual\_dimension}\newline {\scriptsize Problems.Problem8\_GolayHolography} & \texttt{\small golay\_length\_matches\_k3\_euler}\newline {\scriptsize Quantum.TensorNetworkBridge} \\
+0.53 & 0.45 & \texttt{\small euler\_K3}\newline {\scriptsize Flux.Tadpole} & \texttt{\small k3\_euler\_characteristic}\newline {\scriptsize Frontier.HodgeNumbers} \\
+0.52 & 0.03 & \texttt{\small golay\_self\_dual\_dimension}\newline {\scriptsize Problems.Problem8\_GolayHolography} & \texttt{\small golay\_code\_rate\_is\_half}\newline {\scriptsize Quantum.TensorNetworkBridge} \\
+0.51 & 0.02 & \texttt{\small rr\_tadpole\_cancellation}\newline {\scriptsize UseCase3\_FrontierTriad} & \texttt{\small tadpole\_cancellation}\newline {\scriptsize StringDynamics.TadpoleConstraint} \\
+0.51 & 0.25 & \texttt{\small kummer\_exceptional\_intersection}\newline {\scriptsize Moonshine.KummerTadpole} & \texttt{\small exceptional\_self\_intersection}\newline {\scriptsize StringDynamics.KummerBlowup} \\
+0.49 & 0.01 & \texttt{\small k3\_euler\_characteristic}\newline {\scriptsize K3Topology} & \texttt{\small k3\_euler\_characteristic}\newline {\scriptsize Frontier.HodgeNumbers} \\
+0.47 & 0.09 & \texttt{\small mukai\_rank\_and\_signature}\newline {\scriptsize Problems.Problem4\_MukaiMonodromy} & \texttt{\small mukai\_signature\_difference}\newline {\scriptsize ModularForms.FermatModularBridge} \\
+0.47 & 0.01 & \texttt{\small k3\_euler\_eq\_24}\newline {\scriptsize Moonshine.KummerTadpole} & \texttt{\small k3\_euler\_characteristic}\newline {\scriptsize Frontier.HodgeNumbers} \\
+0.46 & 0.01 & \texttt{\small k3\_euler\_characteristic}\newline {\scriptsize K3Topology} & \texttt{\small k3\_euler\_characteristic\_identity}\newline {\scriptsize Problems.Problem9\_KummerModularity} \\
+0.46 & 0.11 & \texttt{\small d7\_positive\_charge}\newline {\scriptsize Moonshine.KummerTadpole} & \texttt{\small total\_D7\_charge\_is\_64}\newline {\scriptsize StringTheory.TadpoleCancellation} \\
+0.46 & 0.03 & \texttt{\small dsl\_self\_dual\_minimum}\newline {\scriptsize PhysicsDSL} & \texttt{\small self\_dual\_is\_global\_minimum}\newline {\scriptsize UseCase1\_ModuliStabilization} \\
+0.46 & 0.04 & \texttt{\small mukai\_rank\_and\_signature}\newline {\scriptsize Problems.Problem4\_MukaiMonodromy} & \texttt{\small mukai\_lattice\_rank\_equals\_24}\newline {\scriptsize ModularForms.FermatModularBridge} \\
+0.46 & 0.00 & \texttt{\small golay\_holography\_master\_contract}\newline {\scriptsize Problems.Problem8\_GolayHolography} & \texttt{\small golay\_length\_matches\_k3\_euler}\newline {\scriptsize Quantum.TensorNetworkBridge} \\
+0.44 & 0.67 & \texttt{\small k3t2\_euler\_zero}\newline {\scriptsize Flux.Tadpole} & \texttt{\small k3\_euler\_characteristic}\newline {\scriptsize Frontier.HodgeNumbers} \\
+0.44 & 0.01 & \texttt{\small odd\_metric\_involutive}\newline {\scriptsize PhysLib.PhysLibKinematicsBridge} & \texttt{\small odd\_metric\_d1}\newline {\scriptsize StringDynamics.ODDMetric} \\
+0.44 & 0.01 & \texttt{\small k3\_second\_betti\_hodge}\newline {\scriptsize K3Topology} & \texttt{\small k3\_euler\_characteristic}\newline {\scriptsize Frontier.HodgeNumbers} \\
+0.43 & 0.35 & \texttt{\small buscher\_log\_involution}\newline {\scriptsize TDualityBuscher} & \texttt{\small buscher\_log\_involution}\newline {\scriptsize UseCase1\_ModuliStabilization} \\
+0.43 & 0.02 & \texttt{\small golay\_holography\_master\_contract}\newline {\scriptsize Problems.Problem8\_GolayHolography} & \texttt{\small golay\_code\_rate\_is\_half}\newline {\scriptsize Quantum.TensorNetworkBridge} \\
+0.43 & 0.03 & \texttt{\small m24\_order\_divisible\_by\_bps\_lock}\newline {\scriptsize UseCase2\_MoonshineBPS} & \texttt{\small conductor\_divisible\_by\_first\_five\_primes}\newline {\scriptsize Problems.Problem2\_MathieuFrobeniusRigidity} \\
+0.43 & 0.08 & \texttt{\small rr\_tadpole\_cancellation}\newline {\scriptsize UseCase3\_FrontierTriad} & \texttt{\small rr\_tadpole\_cancellation}\newline {\scriptsize Moonshine.KummerTadpole} \\
+0.43 & 0.02 & \texttt{\small k3\_euler\_characteristic\_identity}\newline {\scriptsize Problems.Problem9\_KummerModularity} & \texttt{\small k3\_euler\_eq\_24}\newline {\scriptsize Moonshine.KummerTadpole} \\
+0.42 & 0.11 & \texttt{\small k3\_second\_betti\_hodge}\newline {\scriptsize K3Topology} & \texttt{\small k3\_euler\_eq\_24}\newline {\scriptsize Moonshine.KummerTadpole} \\
+0.42 & 0.01 & \texttt{\small k3\_second\_betti\_hodge}\newline {\scriptsize K3Topology} & \texttt{\small k3\_euler\_characteristic\_identity}\newline {\scriptsize Problems.Problem9\_KummerModularity} \\
+0.42 & 0.01 & \texttt{\small distance\_conjecture\_monotonicity}\newline {\scriptsize StringTheory.Swampland} & \texttt{\small sdc\_tower\_mass\_pos}\newline {\scriptsize StringDynamics.SwamplandSafe} \\
+0.42 & 0.05 & \texttt{\small euler\_K3}\newline {\scriptsize Flux.Tadpole} & \texttt{\small k3\_b2}\newline {\scriptsize Frontier.HodgeNumbers} \\
+0.42 & 0.02 & \texttt{\small rank\_K3T2}\newline {\scriptsize Lattice.K3T2Signature} & \texttt{\small total\_k3t2\_moduli\_dim\_eq\_80}\newline {\scriptsize FrontierTriad.SwamplandDistance} \\
+0.42 & 0.02 & \texttt{\small rank\_K3}\newline {\scriptsize Lattice.K3T2Signature} & \texttt{\small mukai\_rank\_and\_signature}\newline {\scriptsize Problems.Problem4\_MukaiMonodromy} \\
+0.41 & 0.07 & \texttt{\small k3\_euler\_characteristic}\newline {\scriptsize K3Topology} & \texttt{\small kummer\_exceptional\_intersection}\newline {\scriptsize Moonshine.KummerTadpole} \\
+0.41 & 0.49 & \texttt{\small k3\_euler\_characteristic}\newline {\scriptsize K3Topology} & \texttt{\small k3t2\_euler\_char\_eq\_zero}\newline {\scriptsize Moonshine.KummerTadpole} \\
+0.41 & 0.01 & \texttt{\small golay\_error\_radius\_equals\_three}\newline {\scriptsize Problems.Problem8\_GolayHolography} & \texttt{\small golay\_length\_matches\_k3\_euler}\newline {\scriptsize Quantum.TensorNetworkBridge} \\
+0.40 & 0.33 & \texttt{\small atlas\_poincare\_curvature\_negative}\newline {\scriptsize Atlas.AtlasGeometryBridge} & \texttt{\small poincare\_geodesic\_atlas\_curvature}\newline {\scriptsize Frontier.ModuliGeodesics} \\
+0.40 & 0.01 & \texttt{\small rr\_tadpole\_cancellation}\newline {\scriptsize Moonshine.KummerTadpole} & \texttt{\small tadpole\_cancellation}\newline {\scriptsize StringDynamics.TadpoleConstraint} \\
+\end{longtable}
+
+\begin{longtable}{rrp{0.40\textwidth}p{0.40\textwidth}}
+\caption{Strongest dependency intersections between theorems of different modules.}\label{tab:atlas-intersect}\\
+\toprule
+dep & cos & Theorem A & Theorem B \\ \midrule \endfirsthead
+\toprule
+dep & cos & Theorem A & Theorem B \\ \midrule \endhead
+\bottomrule \endfoot
+0.93 & 0.11 & \texttt{\small M24\_order}\newline {\scriptsize StringDynamics.MathieuM24} & \texttt{\small M21\_order\_factorization}\newline {\scriptsize UseCases.MathieuTower} \\
+0.90 & 0.29 & \texttt{\small cartanE8\_symm}\newline {\scriptsize Lattice.E8} & \texttt{\small hyperbolicU\_symm}\newline {\scriptsize Lattice.Hyperbolic} \\
+0.90 & 0.28 & \texttt{\small e8Neg\_symm}\newline {\scriptsize Lattice.E8} & \texttt{\small hyperbolicU\_symm}\newline {\scriptsize Lattice.Hyperbolic} \\
+0.89 & 0.00 & \texttt{\small cartanE8Inv\_mul}\newline {\scriptsize Lattice.E8} & \texttt{\small tauShift\_dual\_spec}\newline {\scriptsize TDuality.Mirror} \\
+0.88 & 0.00 & \texttt{\small hyperbolicUNeg\_mul\_self}\newline {\scriptsize Lattice.Mukai} & \texttt{\small tauShift\_dual\_spec}\newline {\scriptsize TDuality.Mirror} \\
+0.85 & 0.17 & \texttt{\small hyperbolicUNeg\_mul\_self}\newline {\scriptsize Lattice.Mukai} & \texttt{\small hyperbolicU\_mul\_self}\newline {\scriptsize Lattice.Hyperbolic} \\
+0.85 & 0.15 & \texttt{\small cartanE8Inv\_mul}\newline {\scriptsize Lattice.E8} & \texttt{\small hyperbolicUNeg\_mul\_self}\newline {\scriptsize Lattice.Mukai} \\
+0.84 & 0.06 & \texttt{\small implicit\_euler\_denominator\_lower\_bound}\newline {\scriptsize StringDynamics.StiffIntegrators} & \texttt{\small sdc\_tower\_suppression}\newline {\scriptsize StringDynamics.SwamplandSafe} \\
+0.82 & 0.03 & \texttt{\small cartanE8\_symm}\newline {\scriptsize Lattice.E8} & \texttt{\small mirrorTheta\_antisymm}\newline {\scriptsize TDuality.Mirror} \\
+0.82 & 0.03 & \texttt{\small hyperbolicU\_symm}\newline {\scriptsize Lattice.Hyperbolic} & \texttt{\small mirrorTheta\_antisymm}\newline {\scriptsize TDuality.Mirror} \\
+0.82 & 0.03 & \texttt{\small e8Neg\_symm}\newline {\scriptsize Lattice.E8} & \texttt{\small mirrorTheta\_antisymm}\newline {\scriptsize TDuality.Mirror} \\
+0.82 & 0.00 & \texttt{\small hyperbolicU\_symm}\newline {\scriptsize Lattice.Hyperbolic} & \texttt{\small k3\_hodge\_symmetry}\newline {\scriptsize Frontier.HodgeNumbers} \\
+0.82 & 0.00 & \texttt{\small cartanE8\_symm}\newline {\scriptsize Lattice.E8} & \texttt{\small k3\_hodge\_symmetry}\newline {\scriptsize Frontier.HodgeNumbers} \\
+0.81 & 0.00 & \texttt{\small e8Neg\_symm}\newline {\scriptsize Lattice.E8} & \texttt{\small k3\_hodge\_symmetry}\newline {\scriptsize Frontier.HodgeNumbers} \\
+0.81 & 0.10 & \texttt{\small factorized\_two}\newline {\scriptsize TDuality.Factorized} & \texttt{\small mirror\_conjugates\_tauShift}\newline {\scriptsize TDuality.Mirror} \\
+0.79 & 0.02 & \texttt{\small hyperbolicU\_mul\_self}\newline {\scriptsize Lattice.Hyperbolic} & \texttt{\small tauShift\_dual\_spec}\newline {\scriptsize TDuality.Mirror} \\
+0.78 & 0.11 & \texttt{\small cartanE8Inv\_mul}\newline {\scriptsize Lattice.E8} & \texttt{\small hyperbolicU\_mul\_self}\newline {\scriptsize Lattice.Hyperbolic} \\
+0.78 & 0.04 & \texttt{\small hyperbolicU\_eq\_narain\_gram}\newline {\scriptsize Lattice.Hyperbolic} & \texttt{\small k3\_hodge\_symmetry}\newline {\scriptsize Frontier.HodgeNumbers} \\
+0.78 & 0.11 & \texttt{\small cartanE8\_symm}\newline {\scriptsize Lattice.E8} & \texttt{\small hyperbolicU\_eq\_narain\_gram}\newline {\scriptsize Lattice.Hyperbolic} \\
+0.78 & 0.10 & \texttt{\small e8Neg\_symm}\newline {\scriptsize Lattice.E8} & \texttt{\small hyperbolicU\_eq\_narain\_gram}\newline {\scriptsize Lattice.Hyperbolic} \\
+0.77 & 0.51 & \texttt{\small cartanE8\_evenDiag}\newline {\scriptsize Lattice.E8} & \texttt{\small hyperbolicU\_evenDiag}\newline {\scriptsize Lattice.Hyperbolic} \\
+0.77 & 0.43 & \texttt{\small strong\_section\_condition}\newline {\scriptsize CourantAlgebroid} & \texttt{\small dsl\_strong\_section\_condition}\newline {\scriptsize PhysicsDSL} \\
+0.76 & 0.02 & \texttt{\small hyperbolicU\_congruence}\newline {\scriptsize Lattice.Hyperbolic} & \texttt{\small tauShift\_dual\_spec}\newline {\scriptsize TDuality.Mirror} \\
+0.76 & 0.46 & \texttt{\small dorfman\_cbracket\_diff}\newline {\scriptsize CourantAlgebroid} & \texttt{\small dsl\_dorfman\_cbracket\_diff}\newline {\scriptsize PhysicsDSL} \\
+0.75 & 0.00 & \texttt{\small cartanE8Inv\_mul}\newline {\scriptsize Lattice.E8} & \texttt{\small hyperbolicU\_congruence}\newline {\scriptsize Lattice.Hyperbolic} \\
+0.75 & 0.00 & \texttt{\small mirrorTheta\_antisymm}\newline {\scriptsize TDuality.Mirror} & \texttt{\small k3\_hodge\_symmetry}\newline {\scriptsize Frontier.HodgeNumbers} \\
+0.74 & 0.34 & \texttt{\small cbracket\_antisymm}\newline {\scriptsize CourantAlgebroid} & \texttt{\small dsl\_cbracket\_antisymm}\newline {\scriptsize PhysicsDSL} \\
+0.74 & 0.01 & \texttt{\small k3\_b2}\newline {\scriptsize Frontier.HodgeNumbers} & \texttt{\small M24\_first\_coefficient}\newline {\scriptsize StringDynamics.MathieuM24} \\
+0.73 & 0.43 & \texttt{\small courant\_pairing\_symm}\newline {\scriptsize GeneralizedGeometry} & \texttt{\small dsl\_courant\_pairing\_symm}\newline {\scriptsize PhysicsDSL} \\
+0.72 & 0.21 & \texttt{\small narain\_norm\_R\_independent}\newline {\scriptsize UseCases.NarainLattice} & \texttt{\small tduality\_flips\_right\_momentum}\newline {\scriptsize UseCases.TDualityMassSpectrum} \\
+0.72 & 0.02 & \texttt{\small hyperbolicU\_eq\_narain\_gram}\newline {\scriptsize Lattice.Hyperbolic} & \texttt{\small mirrorTheta\_antisymm}\newline {\scriptsize TDuality.Mirror} \\
+0.71 & 0.00 & \texttt{\small hyperbolicUNeg\_mul\_self}\newline {\scriptsize Lattice.Mukai} & \texttt{\small hyperbolicU\_congruence}\newline {\scriptsize Lattice.Hyperbolic} \\
+0.70 & 0.19 & \texttt{\small chargeNorm\_even}\newline {\scriptsize TDuality.Factorized} & \texttt{\small narain\_form\_even}\newline {\scriptsize UseCases.NarainLattice} \\
+0.68 & 0.00 & \texttt{\small mukaiPair\_self}\newline {\scriptsize Lattice.Mukai} & \texttt{\small B\_is\_polarization\_of\_Q}\newline {\scriptsize UseCases.NarainLattice} \\
+0.68 & 0.00 & \texttt{\small hyperbolicU\_symm}\newline {\scriptsize Lattice.Hyperbolic} & \texttt{\small eta\_one\_reindex}\newline {\scriptsize TDuality.ODD} \\
+\end{longtable}
