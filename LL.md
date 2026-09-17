@@ -1,6 +1,7 @@
 # Lessons Learned (LL)
 
-**Most recent session first** (§0, dated 2026-09-16) — read that before anything below it.
+**Most recent session first** — read §S2 (Stream 2 autonomous run, 2026-09-16/17) and §0
+(2026-09-16) before anything below them.
 Everything from §1 onward is the original "Phase 0" document and is kept for record, but
 **its headline metrics are a known overclaim, not a mistake to repeat**: "125,790 files",
 "961,898 theorems", "96.9% coverage" are aggregate counts across every vendored
@@ -10,6 +11,78 @@ foundation-theory coverage. Treat every number below the divider as unverified u
 independently re-checked (the pattern is the same one `FOUNDATIONS.md`'s own correction
 note and the root `README.md`'s "note on this revision" already flag elsewhere in this
 repo) rather than as ground truth to build the next session's narrative on.
+
+---
+
+# §S2. Stream 2 autonomous run (2026-09-16 21:27 → 2026-09-17 UTC): tiered proof pipeline
+
+**Scope**: new `DualScaleStream2` lean_lib (K3 × T² lattices, `O(d,d;ℤ)`, DFT generalized
+metric, dual-scale bound, tadpole, moonshine). Full per-tier numbers:
+`docs/STREAM2_WORKFLOW.md` §6. These lessons are the ones that should change how the *next*
+run is organized.
+
+## S2.1 Route every goal T3 → T2 → T1; the split is sharp and predictable
+Local `DeepSeek-Prover-V2-7B` (Q8_0 on the T4, ~4 s/attempt) closed essentially every
+*concrete* goal (fixed matrices, numerals, `fin_cases` tables, the 64-entry E8 inverse
+check) and essentially none of the *symbolic* general-`n`/general-`d` goals. Haiku closed
+most short symbolic algebra; Sonnet was needed for goals needing a real idea (block-matrix
+identities with inverses, positive-definiteness, the diagonal + strict-upper decomposition).
+**Do**: write statements so the concrete content is split into separate lemmas — they are
+nearly free at T3.
+
+## S2.2 A thinking prover model is useless if the budget can't reach the answer
+`Goedel-Prover-V2-8B` closed 0 goals: with thinking on it spent 8192 tokens / 615 s without
+emitting an answer; with thinking off it went off-target and emitted `sorry` scaffolds.
+**Check `done_reason` and the separate `thinking` field before concluding a model can't
+prove something.** It was a configuration failure at T4 speed, not a capability verdict.
+
+## S2.3 Never count an agent's "SOLVED" or "0 errors" without recompiling it yourself
+Two Haiku reports misstated compile status: "5 clean `sorry`s" was really 8 compile errors,
+and "no compilation errors" was really 3. A third report said a definition "could not be
+found" when it existed in a file this session had written. Recompile every report,
+re-check that every statement and definition is byte-identical to what was designed, and
+restore unsolved goals to exactly `sorry` before escalating. Put "unsolved = exactly
+`sorry`, final compile 0 errors" in every prover prompt.
+
+## S2.4 `lake env lean` does not apply `lakefile.lean` options
+Package `leanOptions` (here `maxHeartbeats := 1000000`) apply to `lake build`, not to bare
+`lake env lean file.lean`, which uses Lean's default 200000. Agents and
+`tools/prover_loop.py` were running a stricter gate than the real build, and one Haiku agent
+abandoned `e8_LDL` on a timeout the real budget doesn't hit. **Always pass
+`-DmaxHeartbeats=1000000 -DmaxRecDepth=8000` to single-file compiles.** (A stricter gate
+can reject valid proofs; it can never accept invalid ones, so no wrong result entered the
+repo — it only cost time.)
+
+## S2.5 A green build and zero `sorry` are not the whole gate — audit axioms
+The new `tools/axiom_audit.py` (`#print axioms` over every theorem) found a `native_decide`
+in the "clean" Stream 1 core (`bps_ratio_reduced`), which the build and every `sorry` grep
+had passed. It also correctly propagates `sorryAx` to theorems that only *depend* on a
+`sorry`. Run it at every gate; validate it with a positive control (a known-clean library)
+and a negative control (a library with known `sorry`s) before trusting it.
+
+## S2.6 Guard every data table with a theorem that would break if the table were wrong
+Stream 1's `M24RepDim` table had been "verified" for months and was wrong (two entries
+duplicated, two missing), because its only theorem checked a single entry. Burnside's
+`∑ dim² = |G|` caught it in one line. For every hand-entered table, add the cheapest global
+consistency theorem available (sum of squares, total count, known product, symmetry).
+
+## S2.7 Pick the proof route before picking the tier
+`cartanE8_posDef` failed at T2 through the literal 64-entry `L·D·Lᵀ` matrix product. It fell
+to T1 once the orchestrator derived (and sympy-verified) the equivalent sum-of-squares
+identity `xᵀ E8 x = Σ Dₖ yₖ²`, which `ring` checks directly. When a goal times out, look for a
+formulation that avoids large definitional unfolding *before* escalating to a costlier model.
+
+## S2.8 Bound agents by wall-clock, not just attempts
+Several Haiku agents ran for hours on 1–3 goals (one took 6.7 h for 3 goals, all trivial
+once found), dominated by CPU contention from up to six concurrent `lean` processes on one
+VM. "At most N compile attempts" did not bound elapsed time. Give every agent a wall-clock
+limit, and run at most 2–3 compile-heavy agents at once on this VM.
+
+## S2.9 Pin citations to file + line, and grep them — even your own
+A docstring drafted this run cited Huybrechts "Ch. 16 (§1.4?)"; grepping the downloaded
+text showed the Mukai pairing is Ch. 9 §1 Def. 1.4 (heading at line 7352). Every Tier L
+citation in `DualScaleStream2` now names a `papers/foundations/*.txt` file and line range, and
+the papers' metadata came from the arXiv abstract pages, not memory.
 
 ---
 

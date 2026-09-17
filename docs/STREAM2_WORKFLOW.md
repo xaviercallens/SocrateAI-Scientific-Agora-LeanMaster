@@ -75,6 +75,33 @@ under the kernel gate. T0 never writes proofs in the steady state.
 | P2.5 Flux & tadpole on K3 × T² | `χ(K3)/24` counting; flux quanta integrality | Dasgupta–Rajesh–Sethi hep-th/9908088; GVW hep-th/9906070 |
 | P2.6 Moonshine interface | elliptic-genus coefficient decompositions into `M₂₄` irreps, checked against the paper's tables | Eguchi–Ooguri–Tachikawa 1004.0956 |
 
+### 5.1 Roadmap coverage checklist (updated at each gate)
+
+"Done" = every theorem for the item is committed, sorry-free and axiom-audited. This is the
+only honest progress measure for Stream 2: it counts items of *this plan*, not a fraction of
+"string theory".
+
+| Phase | Item | Status |
+|---|---|---|
+| P2.1 | `U` even + unimodular | ✅ `d7c483b` |
+| P2.1 | `E8` / `E8(−1)` even + unimodular | ✅ `d7c483b` |
+| P2.1 | K3 → Mukai → `Γ⁶'²²` signatures, cross-checked with Hodge numbers | ✅ `d7c483b` |
+| P2.1 | general-`d` `O(d,d;ℤ)` generators (Θ-shift, basis change, `η`) | ✅ `d7c483b` |
+| P2.2 | factorized dualities `D_k` (GPR 2.4.29), charge norm even + invariant | ✅ `TDuality.Factorized` |
+| P2.2 | spectrum equivalence of `O(d,d;ℤ)`-dual backgrounds | 🔄 `TDuality.Spectrum` |
+| P2.2 | T²: mirror `D₀` conjugates the τ-shift to a B-shift (matrix identity; sympy-verified) | 🔄 `TDuality.Mirror` |
+| P2.2 | `SL(2,ℤ)_τ × SL(2,ℤ)_ρ ⊂ O(2,2;ℤ)` full product structure | ⬜ not started |
+| P2.3 | `E8` positive definite (LDLᵀ), `det = 1` | ✅ `036329e` |
+| P2.3 | Mukai pairing: symmetric, even, `U(−1)`, `v(𝒪_X)² = −2` | ✅ `036329e` |
+| P2.3 | `(−2)`-reflections are lattice isometries (Weyl / Picard–Lefschetz), `E8(−1)` Weyl reflections | 🔄 `Lattice.Reflection` |
+| P2.4 | generalized metric: `(ηH)² = 1`, symmetric, T-duality = `G ↦ G⁻¹`, mass covariance, circle cross-link | ✅ `036329e` |
+| P2.4 | integer B-shift acts on `H` by the Θ-shift (sympy-verified convention) | 🔄 `DFT.BShift` |
+| P2.4 | dual-scale bound `tr G + tr G⁻¹ ≥ 2d`, T-duality invariance, circle case | 🔄 `DualScale.TraceBound` |
+| P2.4 | strong constraint as `η`-null momenta | ⬜ not started |
+| P2.5 | `χ/24` counting on K3×K3, `χ(K3×T²) = 0`, D3 budget | ✅ `036329e` |
+| P2.5 | flux-quanta integrality condition | ⬜ not started |
+| P2.6 | EOT `A₁…A₇` decompositions vs. Burnside-checked `M₂₄` table | ✅ `036329e` |
+
 ## 6. Pilot results — measured
 
 ### P2.1 Lattice layer (26 goals) — **26/26 closed**, gate G3 passed
@@ -142,7 +169,14 @@ witnesses — kernel-valid proofs are not automatically readable ones.
   product; T1 closed it via the orchestrator-derived (sympy-verified) sum-of-squares identity
   `xᵀE8x = Σ Dₖ yₖ²`, checked by `ring`, plus back-substitution.
 
-### P2.2 (factorized dualities), P2.2b (spectrum equivalence), dual-scale trace bound — in progress
+### P2.2 factorized dualities (10 goals incl. helper `proj_comm`) — **10/10 closed**, gate G3 passed
+
+T3 DeepSeek 1 (`factorized_two`), T2 Haiku 2 kept (`proj_transpose`, `chargeNorm_even`; its
+other claimed solutions did not compile and were reset), T1 Sonnet 7 (6 goals + helper
+`proj_comm`), ~6 compile runs in under 7 minutes once given the real heartbeat flags and a
+wall-clock limit — compare hours for the earlier unbounded Haiku agents.
+
+### Remaining in progress: spectrum equivalence, T² mirror identity, `(−2)`-reflections, B-shift covariance, dual-scale bound
 
 ## 7. Running this as an orchestrated workflow
 
