@@ -10,7 +10,9 @@ import DualScaleStream2.Lattice.E8PosDef
 import DualScaleStream2.Lattice.Mukai
 import DualScaleStream2.TDuality.ODD
 import DualScaleStream2.TDuality.Factorized
+import DualScaleStream2.TDuality.Mirror
 import DualScaleStream2.DFT.GeneralizedMetric
+import DualScaleStream2.DFT.BShift
 import DualScaleStream2.DualScale.TraceBound
 import DualScaleStream2.Flux.Tadpole
 import DualScaleStream2.Moonshine.EOT

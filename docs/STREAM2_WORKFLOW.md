@@ -89,17 +89,17 @@ only honest progress measure for Stream 2: it counts items of *this plan*, not a
 | P2.1 | general-`d` `O(d,d;ℤ)` generators (Θ-shift, basis change, `η`) | ✅ `d7c483b` |
 | P2.2 | factorized dualities `D_k` (GPR 2.4.29), charge norm even + invariant | ✅ `TDuality.Factorized` |
 | P2.2 | spectrum equivalence of `O(d,d;ℤ)`-dual backgrounds | 🔄 `TDuality.Spectrum` |
-| P2.2 | T²: mirror `D₀` conjugates the τ-shift to a B-shift (matrix identity; sympy-verified) | 🔄 `TDuality.Mirror` |
-| P2.2 | `SL(2,ℤ)_τ × SL(2,ℤ)_ρ ⊂ O(2,2;ℤ)` full product structure | ⬜ not started |
+| P2.2 | T²: mirror `D₀` conjugates the τ-shift to a B-shift (matrix identity; sympy-verified) | ✅ `TDuality.Mirror` |
+| P2.2 | `SL(2,ℤ)_τ` commutes with the ρ-translations inside `O(2,2;ℤ)` (scope narrowed from the full `SL(2,ℤ)_ρ`; GPR ll. 1874–1884) | 🔄 `TDuality.SL2Product` |
 | P2.3 | `E8` positive definite (LDLᵀ), `det = 1` | ✅ `036329e` |
 | P2.3 | Mukai pairing: symmetric, even, `U(−1)`, `v(𝒪_X)² = −2` | ✅ `036329e` |
 | P2.3 | `(−2)`-reflections are lattice isometries (Weyl / Picard–Lefschetz), `E8(−1)` Weyl reflections | 🔄 `Lattice.Reflection` |
 | P2.4 | generalized metric: `(ηH)² = 1`, symmetric, T-duality = `G ↦ G⁻¹`, mass covariance, circle cross-link | ✅ `036329e` |
-| P2.4 | integer B-shift acts on `H` by the Θ-shift (sympy-verified convention) | 🔄 `DFT.BShift` |
+| P2.4 | integer B-shift acts on `H` by the Θ-shift (sympy-verified convention) | ✅ `DFT.BShift` |
 | P2.4 | dual-scale bound `tr G + tr G⁻¹ ≥ 2d`, T-duality invariance, circle case | ✅ `DualScale.TraceBound` |
-| P2.4 | strong constraint as `η`-null momenta | ⬜ not started |
+| P2.4 | level matching `n·w = 0` and the section condition: momentum/winding frames totally null, swapped by `η`, preserved by `O(d,d;ℤ)` (HZ eq. 1.3, ll. 339–342, 3930–3940) | 🔄 `DFT.SectionCondition` |
 | P2.5 | `χ/24` counting on K3×K3, `χ(K3×T²) = 0`, D3 budget | ✅ `036329e` |
-| P2.5 | flux-quanta integrality condition | ⬜ not started |
+| P2.5 | flux integrality: Kronecker product of an even form is even, so `½∫G∧G ∈ ℤ` (DRS ll. 230–232) | 🔄 `Flux.Integrality` |
 | P2.6 | EOT `A₁…A₇` decompositions vs. Burnside-checked `M₂₄` table | ✅ `036329e` |
 
 ## 6. Pilot results — measured
