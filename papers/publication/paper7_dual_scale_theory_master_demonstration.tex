@@ -10,7 +10,7 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{cite}
-\usepackage{microtype}
+\usepackage[expansion=false]{microtype}
 \usepackage{tcolorbox}
 \usepackage{slashed}
 
@@ -55,7 +55,7 @@ and a Zero-Free-Parameter Cosmological Conjecture on $K3 \times T^2$}
 \author{\textbf{Xavier Callens}$^{1}$ \and \textbf{SocrateAI Scientific Agora Collaboration}$^{1}$ \\[0.5em]
 $^{1}$\textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal Verification}}
 
-\date{Revision 2 --- September 2026}
+\date{Revision 3 --- September 17, 2026}
 
 \begin{document}
 
@@ -63,24 +63,33 @@ $^{1}$\textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal V
 
 \begin{abstract}
 We present a Lean~4 companion formalization for a dual-scale scenario of type~II string theory on
-$K3\times T^2$, and we state precisely what is, and is not, machine-checked. The Lean artifact
-(51 files, 554 declarations, toolchain \texttt{v4.33.1}, \textbf{no Mathlib dependency},
-standard axioms only --- \texttt{\#print axioms} logs in \Cref{app:axioms}) certifies exact integer
-and rational identities used in the argument: the positivity of the dual scale $R+\alpha'/R$ on
-integer radii; the $K3$ topological invariants $\chi=24$, $\sigma=-16$, $\mathrm{ind}(\slashed D)=2$;
-the elliptic-genus arithmetic $A_2\cdot 60 = 4A_1\cdot 77 = 27720$ with $|M_{24}| = 27720\cdot 8832$;
-and a corrected, genuinely unique-minimum toy potential (an earlier revision of this corpus contained
-a \texttt{Nat}-truncation bug that made the claimed minimum non-unique; \Cref{sec:compactification}
-and \Cref{app:ledger} document the fix). The differential-geometric, index-theoretic and cosmological
-statements built on top of this arithmetic --- Double Field Theory, the Atiyah--Singer index theorem,
-moduli stabilization, and the tensor-to-scalar ratio, CP phase, and dark-energy predictions --- are
-either drawn from the literature or proposed here as conjectures, and are labeled by epistemic tier
-throughout (\tierA\ / \tierL\ / \tierC). In particular we discuss the obstruction that
-$\mathcal{N}=4$ non-renormalization poses for moduli stabilization on $K3\times T^2$, and we confront
-the paper's speculative numerical relations for $r$, $\delta_{\mathrm{CP}}$, and $(w_0,w_a)$ with
-current data, including the DESI DR2 preference for a time-evolving dark-energy equation of state at
-$3.1\sigma$ over $(w_0,w_a)=(-1,0)$. We close with a roadmap for promoting the central real-analytic
-claims (currently Tier L or Tier C) to kernel-checked Tier A theorems using Mathlib.
+$K3\times T^2$, and we state precisely what is, and is not, machine-checked. The Mathlib-free core of
+the Lean artifact (51 files, 554 declarations, toolchain \texttt{v4.33.1}, \textbf{no external
+dependency}, standard axioms only --- \texttt{\#print axioms} logs in \Cref{app:axioms}) certifies
+exact integer and rational identities used in the argument: the positivity of the dual scale
+$R+\alpha'/R$ on integer radii; the $K3$ topological invariants $\chi=24$, $\sigma=-16$,
+$\mathrm{ind}(\slashed D)=2$; the elliptic-genus arithmetic $\mathcal A_2\cdot 60 = 4\mathcal
+A_1\cdot 77 = 27720$ with $|M_{24}| = 27720\cdot 8832$; and a corrected, genuinely unique-minimum toy
+potential (an earlier revision of this corpus contained a \texttt{Nat}-truncation bug that made the
+claimed minimum non-unique; \Cref{sec:compactification} and \Cref{app:ledger} document the fix).
+Two further Lean libraries, built on Mathlib (which contributes no axioms beyond Lean's own three
+standard ones for the fragments used here), extend this core: \texttt{StringTheoryFormalization}
+(Stream~1's sixth library, corrects the $M_{24}$ representation table used in the moonshine
+arithmetic, \Cref{sec:moonshine}) and the new \texttt{DualScaleStream2} library (99 theorems, 19
+modules), which formalizes the $O(d,d;\mathbb Z)$ T-duality group, the Double Field Theory
+generalized metric, and the $K3\times T^2$ lattice layer (\Cref{sec:stream2}); together with the
+original core, the audited total is 326 theorems (Stream~1, six libraries) and 99 theorems
+(Stream~2), 0 failing, standard axioms only. The differential-geometric, index-theoretic and
+cosmological statements built on top of this arithmetic --- Double Field Theory, the
+Atiyah--Singer index theorem, moduli stabilization, and the tensor-to-scalar ratio, CP phase, and
+dark-energy predictions --- are either drawn from the literature or proposed here as conjectures,
+and are labeled by epistemic tier throughout (\tierA\ / \tierL\ / \tierC). In particular we discuss
+the obstruction that $\mathcal{N}=4$ non-renormalization poses for moduli stabilization on $K3\times
+T^2$, and we confront the paper's speculative numerical relations for $r$, $\delta_{\mathrm{CP}}$,
+and $(w_0,w_a)$ with current data, including the DESI DR2 preference for a time-evolving dark-energy
+equation of state at $3.1\sigma$ over $(w_0,w_a)=(-1,0)$. We close with a roadmap for promoting the
+central real-analytic claims (currently Tier L or Tier C) to kernel-checked Tier A theorems using
+Mathlib --- a roadmap Stream~2 has already begun executing.
 \end{abstract}
 
 \newpage
@@ -144,9 +153,39 @@ $8832=2^6\times 3\times 23$, which should read $2^7\times 3\times 23$; the CP-ph
 $282.4^\circ$, which should read $283^\circ$; a rounded value of $r$ inconsistent with the exact
 fraction it was supposed to approximate), and the confrontation with observational data did not
 reflect current results (in particular, DESI DR2 already disfavors the paper's dark-energy
-prediction). This revision documents and fixes each of these issues in place; the full audit is
+prediction). Revision~2 documented and fixed each of these issues in place; the full audit is
 \texttt{papers/publication/PAPER7\_IMPROVEMENT\_PROPOSAL.md} in the repository, and every fix is a
 separate, reviewable commit.
+
+\paragraph{Revision 3 (2026-09-17).} This revision makes four further corrections, each verified
+against the Lean kernel or against the downloaded literature file it cites (see
+\texttt{docs/\discretionary{}{}{}PAPER\_\discretionary{}{}{}REVISION\_\discretionary{}{}{}BRIEF\_\discretionary{}{}{}2026\_\discretionary{}{}{}09\_\discretionary{}{}{}17.md} for the underlying audit):
+\begin{enumerate}
+  \item The $M_{24}$ irreducible-dimension table \texttt{StringDynamics.\discretionary{}{}{}M24RepDim}
+    (used by the moonshine cross-check of \Cref{sec:moonshine}) contained a duplication bug (10395
+    and 483 listed twice; the second 990 and third 1035 missing) discovered 2026-09-16. It has been
+    replaced by the table of Eguchi--Ooguri--Tachikawa eq.~(A.3), and is now guarded by a new Tier A
+    Burnside check, \texttt{M24RepDim\_\discretionary{}{}{}sum\_\discretionary{}{}{}sq}: the squares of
+    the 26 dimensions sum to exactly $244{,}823{,}040=|M_{24}|$.
+  \item \texttt{StringDynamics.\discretionary{}{}{}bps\_\discretionary{}{}{}ratio\_\discretionary{}{}{}reduced}
+    (a $77/60$-in-lowest-terms fact, distinct from the \texttt{UseCase2} theorem already cited in
+    \Cref{sec:moonshine} below) previously used the tactic \texttt{native\_\discretionary{}{}{}decide},
+    whose axiom footprint includes \texttt{Lean.\discretionary{}{}{}ofReduceBool} (trusting the
+    compiled native-code evaluator rather than only the kernel). It is now a kernel
+    \texttt{norm\_\discretionary{}{}{}num} proof, so this fact's axiom trust base is back down to
+    Lean's three standard axioms.
+  \item A moonshine \emph{normalization} error is fixed in \Cref{sec:moonshine}: this paper's
+    $\mathcal A_4=4554$ was mislabeled as $\mathbf{2277}\oplus\overline{\mathbf{2277}}$, but the
+    $2277$-dimensional representation of $M_{24}$ is real, not one of EOT's five conjugate-paired
+    dimensions; the correct statement is $\mathcal A_4=2\cdot\mathbf{2277}$ (two copies of the same
+    real irrep). We also state explicitly, for the first time, the doubling convention
+    $\mathcal A_n:=2A_n^{\mathrm{EOT}}$ under which this paper's and paper~2's $A_n$ relate to EOT's
+    own coefficients.
+  \item A new \Cref{sec:stream2} summarizes the \texttt{DualScaleStream2} companion library (99
+    theorems, 19 modules): the $O(d,d;\mathbb Z)$ T-duality group, the Double Field Theory
+    generalized metric, and the $K3\times T^2$/Mukai lattice layer, all formalized over Mathlib with
+    the same three-axiom footprint as the Mathlib-free core.
+\end{enumerate}
 
 \subsection{AI-assisted tooling}
 The Lean formalization, the audit that produced this revision, and portions of this manuscript's
@@ -381,13 +420,49 @@ irreducible representations of the sporadic simple Mathieu group $M_{24}$
 \cite{Gannon2013}. Schematically (see \cite{EguchiOoguriTachikawa2011,Gannon2013} for the precise
 normalization),
 \begin{equation}
-    \chi(K3;\tau,z) = 24\,\mathrm{ch}_{1/4,0}(\tau,z) - 2\sum_{n=0}^{\infty} A_n\,\mathrm{ch}_{1/4+n,1/2}(\tau,z),
+    \chi(K3;\tau,z) = 24\,\mathrm{ch}_{1/4,0}(\tau,z) - 2\sum_{n=0}^{\infty} \mathcal A_n\,\mathrm{ch}_{1/4+n,1/2}(\tau,z),
 \end{equation}
-with $A_1=90=\mathbf{45}\oplus\overline{\mathbf{45}}$, $A_2=462=\mathbf{231}\oplus\overline{\mathbf{231}}$,
-$A_3=1540=\mathbf{770}\oplus\overline{\mathbf{770}}$, $A_4=4554=\mathbf{2277}\oplus\overline{\mathbf{2277}}$.
+\emph{Normalization.} EOT's own eq.~(1.12) (\texttt{eguchi\_ooguri\_tachikawa\_1004\_0956.txt}, l.~208)
+gives coefficients $A_n^{\mathrm{EOT}}=45,231,770,2277,5796,13915,\dots$; this paper (and paper~2)
+instead uses the symbol $A_n$, written here as $\mathcal A_n$ to avoid the clash, for the
+\emph{doubled} multiplicity of the massive representation, $\mathcal A_n := 2\,A_n^{\mathrm{EOT}}$.
+It is $\mathcal A_n$, not $A_n^{\mathrm{EOT}}$, that appears in the display above and in
+\Cref{thm:bpslock,thm:mathieufactor} and \Cref{tab:locks} below. Concretely,
+$\mathcal A_1=90=2\times45=\mathbf{45}\oplus\overline{\mathbf{45}}$,
+$\mathcal A_2=462=2\times231=\mathbf{231}\oplus\overline{\mathbf{231}}$,
+$\mathcal A_3=1540=2\times770=\mathbf{770}\oplus\overline{\mathbf{770}}$, and
+$\mathcal A_4=4554=2\times2277=2\cdot\mathbf{2277}$ (\textbf{corrected}: an earlier revision wrote
+$4554=\mathbf{2277}\oplus\overline{\mathbf{2277}}$, but EOT eq.~(A.4)
+(\texttt{eguchi\_ooguri\_tachikawa\_1004\_0956.txt}, ll.~352--358) states that only the irreducible
+representations of dimension $45,231,770,990,1035$ come in complex-conjugate pairs; the
+$2277$-dimensional representation is real, so $\mathcal A_4$ is two copies of the \emph{same} real
+irrep, not a conjugate pair).
+
+\begin{scopebox}
+This normalization is now backed by a machine-checked cross-check. Module
+\texttt{StringDynamics.\discretionary{}{}{}M24RepDim} (library \texttt{StringTheoryFormalization})
+tabulates the 26 irreducible dimensions of $M_{24}$ in EOT's increasing order (eq.~(A.3),
+ll.~346--349). Before 2026-09-16 this table duplicated $10395$ and $483$ and omitted the second copy
+of $990$ and the third copy of $1035$, so its squares summed to $351{,}061{,}029\ne|M_{24}|$; it is
+now guarded by the Tier A theorem \texttt{M24RepDim\_\discretionary{}{}{}sum\_\discretionary{}{}{}sq}:
+$\sum_{i=0}^{25}\texttt{M24RepDim}(i)^2 = 244{,}823{,}040=|M_{24}|$ (Burnside's identity
+$\sum\dim^2=|G|$ is itself Tier L; that \emph{this table} satisfies it is a Tier A regression guard
+against exactly the kind of duplication bug above). Module
+\texttt{DualScaleStream2.\discretionary{}{}{}Moonshine.\discretionary{}{}{}EOT} then certifies (Tier
+A) that $A_1^{\mathrm{EOT}},\dots,A_5^{\mathrm{EOT}}$ each equal an entry of this corrected table
+(theorem \texttt{first\_\discretionary{}{}{}five\_\discretionary{}{}{}are\_\discretionary{}{}{}irreps},
+witnesses $45\to$ index~2, $231\to4$, $770\to9$, $2277\to19$, $5796\to23$), that
+$A_6^{\mathrm{EOT}}=13915=3520+10395$ and $A_7^{\mathrm{EOT}}=30843=10395+5796+5544+5313+2024+1771$
+(theorems \texttt{A6\_\discretionary{}{}{}decomposition}, \texttt{A7\_\discretionary{}{}{}decomposition},
+EOT eqs.~(1.14)--(1.15)), and that $A_6^{\mathrm{EOT}}$ is \emph{not} itself an irreducible dimension
+(\texttt{A6\_\discretionary{}{}{}not\_\discretionary{}{}{}irrep}). That the elliptic genus actually
+carries an $M_{24}$ action --- the moonshine observation, proved by Gannon \cite{Gannon2013} --- is
+Tier L; what is Tier A here is only the arithmetic coincidence among EOT's coefficients and the
+group-theoretic dimensions.
+\end{scopebox}
 
 \begin{theorem}[BPS character lock] \label{thm:bpslock} \tierA
-$\dfrac{A_2}{N_Q\cdot A_1} = \dfrac{462}{360} = \dfrac{77}{60}$ for $N_Q=4$, with $\gcd(77,60)=1$ and
+$\dfrac{\mathcal A_2}{N_Q\cdot \mathcal A_1} = \dfrac{462}{360} = \dfrac{77}{60}$ for $N_Q=4$, with $\gcd(77,60)=1$ and
 $462\times60 = 360\times77 = 27720$.
 \end{theorem}
 
@@ -407,7 +482,14 @@ $2^3,3^2,5,7,11$ is automatically a multiple of $27720$ --- which $|M_{24}|=2^{1
 is. The divisibility in \Cref{thm:mathieufactor} is therefore weaker evidence for a physical ``lock''
 than it may appear; we flag it explicitly rather than presenting it as a nontrivial coincidence. The
 weighting $N_Q=4$ in \Cref{thm:bpslock} is likewise a modeling choice, not independently derived here
-(Tier C).
+(Tier C). A related fact, audited separately: \texttt{StringDynamics.\discretionary{}{}{}bps\_\discretionary{}{}{}ratio\_\discretionary{}{}{}reduced}
+(the same $77/60$ ratio, library \texttt{StringTheoryFormalization}, distinct from the
+\texttt{UseCase2} theorems above) previously relied on \texttt{native\_\discretionary{}{}{}decide},
+whose axiom footprint includes \texttt{Lean.\discretionary{}{}{}ofReduceBool}; it is now a kernel
+\texttt{norm\_\discretionary{}{}{}num} proof. The 16-row audit table of \Cref{app:axioms} is
+unaffected by this fix, since it covers only the five-library Mathlib-free core and
+\texttt{bps\_ratio\_reduced} lives in the separately-audited \texttt{StringTheoryFormalization}
+library (\Cref{sec:formalization}).
 \end{scopebox}
 
 The Mathieu group $M_{24}$ is the automorphism group of the extended binary Golay code
@@ -448,7 +530,7 @@ discussion following the table.}
 \toprule
 \textbf{Fact} & \textbf{Value} & \textbf{Origin} & \textbf{Tier / module} \\ \midrule
 1 & $R_{\mathrm{eff}}\ge2\sqrt{\alpha'}$ & Buscher T-duality stationary point & Tier L/A, \Cref{thm:reff-min} \\
-2 & $\mathcal{K}_{\mathrm{BPS}}=27720$ & $A_2\times60 = 4A_1\times77$ & Tier A, \Cref{thm:bpslock} \\
+2 & $\mathcal{K}_{\mathrm{BPS}}=27720$ & $\mathcal A_2\times60 = 4\mathcal A_1\times77$ & Tier A, \Cref{thm:bpslock} \\
 3 & $\mathcal{M}_{\mathrm{quot}}=8832$ & $|M_{24}|/27720$ & Tier A, \Cref{thm:mathieufactor} \\
 4 & $\mathrm{ind}(\slashed D)=2$ & $-\sigma(K3)/8$ & Tier L/A, \Cref{sec:compactification} \\
 5 & $\chi(K3)=24$ & Euler characteristic & Tier L/A, \Cref{sec:compactification} \\ \bottomrule
@@ -552,26 +634,271 @@ $n_s$ & $0.965$ & $0.9649\pm0.0042$ (Planck 2018, benchmark) & consistent \\
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stream 2: T-duality and the Lattice Layer on \texorpdfstring{$K3\times T^2$}{K3 x T2}}
+\label{sec:stream2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Everything certified so far in this paper is arithmetic over $\mathbb N$, $\mathbb Z$, or $\mathbb Q$:
+the Mathlib-free core deliberately stops short of the real-analytic and lattice-theoretic structures
+that the physics actually uses (\Cref{sec:formalization} explains why). \textbf{Stream 2} is a new,
+separate Lean~4 library, \texttt{DualScaleStream2} (19 modules, built on Mathlib \texttt{v4.33.1}),
+that takes the next step: it formalizes the $O(d,d;\mathbb Z)$ T-duality group, the Double Field
+Theory generalized metric over $\mathbb R$, the even unimodular lattices ($E_8$, the hyperbolic
+plane $U$, the $K3\times T^2$ charge lattice) that these structures act on, and a real-analytic,
+every-$d$ generalization of \Cref{thm:reff-min}'s dual-scale bound. As of the 2026-09-17 gate,
+\texttt{lake build DualScaleStream2} is green (3670 jobs, 0 \texttt{sorry}), and
+\texttt{tools/axiom\_\discretionary{}{}{}audit.py} reports \textbf{99 theorems, 0 failing}, every one
+depending on at most Lean's three standard axioms (\texttt{propext}, \texttt{Classical.choice},
+\texttt{Quot.sound}) --- Mathlib itself introduces no further axioms for the lemmas used here, so
+this library's trust base is exactly as narrow as the Mathlib-free core's. Stream~1 was re-gated in
+the same session at \textbf{326 theorems} across its now-six libraries (the new,
+Mathlib-dependent \texttt{StringTheoryFormalization} contributes 89 of these; see
+\Cref{sec:formalization,app:axioms}). Throughout this section, ``Tier A'' again means exactly what
+\Cref{sec:tiers} says: kernel-checked, no \texttt{sorry}, standard axioms only, and only for the
+formal statement named --- not for the physics sentence next to it.
+
+\subsection{Lattice layer: \texorpdfstring{$E_8$}{E8}, the hyperbolic plane, and the \texorpdfstring{$K3\times T^2$}{K3xT2} charge lattice}
+\label{sec:stream2-lattice}
+Module \texttt{Lattice.Basic} proves two general facts about integer Gram matrices $G$: an integer
+left inverse certifies $\det G=\pm1$ (\texttt{isUnimodular\_\discretionary{}{}{}of\_\discretionary{}{}{}mul\_\discretionary{}{}{}eq\_\discretionary{}{}{}one}),
+and if $G$ is symmetric with even diagonal then $x^{\mathsf T}Gx$ is even for every integer vector
+$x$ (\texttt{even\_\discretionary{}{}{}quadratic\_\discretionary{}{}{}form\_\discretionary{}{}{}of\_\discretionary{}{}{}even\_\discretionary{}{}{}diag},
+via $G=D+U+U^{\mathsf T}$ and $x^{\mathsf T}U^{\mathsf T}x=x^{\mathsf T}Ux$). \texttt{Lattice.E8}
+instantiates the $E_8$ Cartan matrix and checks, entry-by-entry, that it is symmetric, has even
+diagonal, and is unimodular via an explicit integer inverse
+(\texttt{cartanE8\_\discretionary{}{}{}unimodular}, and the same for $E_8(-1)$,
+\texttt{e8Neg\_\discretionary{}{}{}unimodular}). \texttt{Lattice.E8PosDef} goes further and produces
+an exact $LDL^{\mathsf T}$ factorization of the (real-cast) Cartan matrix with pivots $2,\tfrac32,
+\tfrac43,\tfrac54,\tfrac65,\tfrac76,\tfrac87,\tfrac18$ (\texttt{e8\_\discretionary{}{}{}LDL}), from
+which $\det E_8=1$ (\texttt{cartanE8\_\discretionary{}{}{}det}) and positive-definiteness
+(\texttt{cartanE8\_\discretionary{}{}{}posDef}) both follow as sum-of-squares identities
+$x^{\mathsf T}E_8x=\sum_k D_k\,y_k(x)^2$, checked by \texttt{ring} plus back-substitution --- no
+eigenvalue computation is needed or performed.
+
+\texttt{Lattice.Hyperbolic} certifies that $U=\begin{pmatrix}0&1\\1&0\end{pmatrix}$ is even,
+unimodular (\texttt{hyperbolicU\_\discretionary{}{}{}mul\_\discretionary{}{}{}self}: $U\cdot U=1$),
+and \emph{equal}, not merely isomorphic, to Stream~1's Narain Gram matrix
+(\texttt{hyperbolicU\_\discretionary{}{}{}eq\_\discretionary{}{}{}narain\_\discretionary{}{}{}gram}) ---
+a genuine cross-check between the two streams' independently-written lattice conventions. It also
+proves $U$ congruent to $\mathrm{diag}(2,-2)$ over $\mathbb Q$
+(\texttt{hyperbolicU\_\discretionary{}{}{}congruence}); concluding \emph{signature} $(1,1)$ from this
+congruence uses Sylvester's law of inertia, which is Tier L (not itself formalized).
+\texttt{Lattice.K3T2Signature} then assembles, by pure rank/signature arithmetic on
+$E_8(-1)^{\oplus2}\oplus U^{\oplus3}$, $E_8(-1)^{\oplus2}\oplus U^{\oplus4}$, and
+$E_8(-1)^{\oplus2}\oplus U^{\oplus5}$: the $K3$ lattice has signature $(3,19)$
+(\texttt{sigK3\_\discretionary{}{}{}eq}), the Mukai lattice $\Gamma^{4,20}$ has signature $(4,20)$
+(\texttt{sigMukai\_\discretionary{}{}{}eq}), and the $K3\times T^2$ charge lattice $\Gamma^{6,22}$ has
+signature $(6,22)$, rank 28 (\texttt{sigK3T2\_\discretionary{}{}{}eq},
+\texttt{rank\_\discretionary{}{}{}K3T2}), with $b_+-b_-\equiv0\pmod 8$ verified for all three
+(\texttt{index\_\discretionary{}{}{}mod\_\discretionary{}{}{}eight}) and the $(3,19)$ figure
+independently cross-checked against Stream~1's Hodge-theoretic
+$(2h^{2,0}+1,\,h^{1,1}-1)$ (\texttt{sigK3\_\discretionary{}{}{}matches\_\discretionary{}{}{}hodge}).
+The identification $H^2(K3,\mathbb Z)\cong E_8(-1)^{\oplus2}\oplus U^{\oplus3}$ is Tier L (Huybrechts,
+\textit{Lectures on K3 Surfaces} \cite{Huybrechts2016}, Ch.~1 eq.~(3.4),
+\texttt{huybrechts\_K3Global.txt} l.~603), as is the description of the $K3$ moduli space as
+$O^+(\Gamma^{3,19})\backslash O^+(3,19)/(O(2)\times O(1,19))^+$ (Aspinwall
+\cite{Aspinwall1996}, ll.~705--766, 1737--1748) and the classical Milnor--Serre mod-8 theorem for
+even unimodular indefinite lattices (not independently re-derived or downloaded here).
+
+\texttt{Lattice.Mukai} formalizes the Mukai pairing $\langle(r,c,s),(r',c',s')\rangle = c\cdot
+L\cdot c' - rs'-sr'$ (Huybrechts Ch.~9 \S1 Def.~1.4, ll.~7475--7482): it is symmetric
+(\texttt{mukaiPair\_\discretionary{}{}{}symm}), $v^2=c\cdot L\cdot c-2rs$
+(\texttt{mukaiPair\_\discretionary{}{}{}self}), even whenever $H^2$ is even
+(\texttt{mukaiPair\_\discretionary{}{}{}even}), and the $H^0\oplus H^4$ summand $U(-1)$ is unimodular.
+For $v=(1,0,1)$ (the Mukai vector of the structure sheaf), $v^2=-2$, so
+$\chi(\mathcal O_X,\mathcal O_X)=-v^2=2$ (\texttt{structureSheaf\_\discretionary{}{}{}mukai\_\discretionary{}{}{}sq});
+the identification $v(\mathcal O_X)=(1,0,1)$ and the Hirzebruch--Riemann--Roch formula
+$\chi=-\langle v,v\rangle$ are Tier L. \texttt{Lattice.Reflection} proves, for any symmetric integer
+Gram $L$ and any $v$ with $v^{\mathsf T}Lv=-2$, that the reflection $s_v=1+v\,v^{\mathsf T}L$ is an
+isometry and an involution (\texttt{reflection\_\discretionary{}{}{}isometry},
+\texttt{reflection\_\discretionary{}{}{}involution}); since every simple root of $E_8(-1)$ has norm
+$-2$ (\texttt{e8Neg\_\discretionary{}{}{}simpleRoot\_\discretionary{}{}{}norm}), every simple Weyl
+reflection of $E_8(-1)$ is an isometry (\texttt{e8Neg\_\discretionary{}{}{}weyl\_\discretionary{}{}{}isometry}).
+The reflection formula itself (Huybrechts Ch.~7 \S5.4, ll.~6031--6043) and its role as
+Picard--Lefschetz monodromy of an $A_1$ degeneration (Ch.~6, l.~5400) are Tier L.
+
+\subsection{The T-duality group \texorpdfstring{$O(d,d;\mathbb Z)$}{O(d,d;Z)}, every \texorpdfstring{$d$}{d}}
+\label{sec:stream2-odd}
+\texttt{TDuality.ODD} defines $\eta=\begin{pmatrix}0&I\\I&0\end{pmatrix}$ and
+$g\in O(d,d;\mathbb Z)$ by $g^{\mathsf T}\eta g=\eta$, and proves closure under products
+(\texttt{isODD\_\discretionary{}{}{}mul}), that $\eta$ itself is an involution and lies in
+$O(d,d;\mathbb Z)$ (\texttt{eta\_\discretionary{}{}{}mul\_\discretionary{}{}{}self},
+\texttt{eta\_\discretionary{}{}{}isODD}), and that a basis change $\mathrm{diag}(A,B)$ lies in
+$O(d,d;\mathbb Z)$ whenever $A^{\mathsf T}B=1$ (\texttt{basisChange\_\discretionary{}{}{}isODD}).
+For the $\Theta$-shift $g_\Theta=\begin{pmatrix}I&\Theta\\0&I\end{pmatrix}$ (Giveon--Porrati--Rabinovici
+\cite{GiveonPorratiRabinovici1994} eq.~(2.4.25), ll.~1355--1373), only the direction ``$\Theta$
+antisymmetric $\Rightarrow$ $g_\Theta\in O(d,d;\mathbb Z)$'' is proved
+(\texttt{thetaShift\_\discretionary{}{}{}isODD}); the converse is not claimed. \texttt{TDuality.Factorized}
+formalizes the factorized dualities $D_k=\begin{pmatrix}I-e_k&e_k\\e_k&I-e_k\end{pmatrix}$
+(GPR eq.~(2.4.29), ll.~1399--1422, ``a generalization of the $R\to1/R$ circle duality''): each $D_k$
+is in $O(d,d;\mathbb Z)$, an involution, and they mutually commute
+(\texttt{factorized\_\discretionary{}{}{}isODD}, \texttt{factorized\_\discretionary{}{}{}mul\_\discretionary{}{}{}self},
+\texttt{factorized\_\discretionary{}{}{}comm}); on $T^2$, $D_0D_1=\eta$
+(\texttt{factorized\_\discretionary{}{}{}two}); and the integer charge norm $Z^{\mathsf T}\eta Z=2\,n\cdot w$
+is even (\texttt{chargeNorm\_\discretionary{}{}{}even}, since $\Gamma^{d,d}$ is even) and invariant
+under all of $O(d,d;\mathbb Z)$ (\texttt{chargeNorm\_\discretionary{}{}{}invariant}). That these
+generators \emph{generate} the full group $O(d,d;\mathbb Z)$ is Tier L (GPR l.~1422), not proved here.
+\texttt{TDuality.Spectrum} shows every $g\in O(d,d;\mathbb Z)$ is invertible over $\mathbb Z$ with
+inverse $\eta g^{\mathsf T}\eta$, again in $O(d,d;\mathbb Z)$
+(\texttt{isODD\_\discretionary{}{}{}inv\_\discretionary{}{}{}isODD}), and an explicit \textbf{spectrum
+equivalence}: for any background $H$ there is a bijection of the integer charge lattice under which
+$(\text{mass}^2=Z^{\mathsf T}HZ,\ \text{level}=Z^{\mathsf T}\eta Z)$ for $H$ matches that of
+$g^{\mathsf T}Hg$, charge by charge (\texttt{spectrum\_\discretionary{}{}{}equivalence}). Invariance of
+the \emph{full} partition function (oscillators, modular integral; GPR l.~1417) is Tier L, not
+addressed by this charge-level statement alone.
+
+Two further modules deliberately narrow their claims. \texttt{TDuality.Mirror} proves, on $T^2$ with
+$T=\begin{pmatrix}1&1\\0&1\end{pmatrix}$ and $\Theta=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$,
+that $D_0\cdot\mathrm{diag}(T,(T^{\mathsf T})^{-1})\cdot D_0=(g_\Theta)^{\mathsf T}$
+(\texttt{mirror\_\discretionary{}{}{}conjugates\_\discretionary{}{}{}tauShift}): the factorized
+duality conjugates the $\tau\mapsto\tau+1$ generator into a pure $B$-field shift. That this is
+``factorized duality = mirror symmetry for a complex torus'' is Tier L (GPR l.~344); \emph{the sign of
+the induced $\rho$-shift is convention-dependent and is not claimed}. \texttt{TDuality.SL2Product}
+proves $AJA^{\mathsf T}=\det(A)\cdot J$ for $2\times2$ integer $A$ and that a basis change with
+$\det A=1$ commutes with every $\rho$-translation $g_{tJ}$
+(\texttt{basisChange\_\discretionary{}{}{}comm\_\discretionary{}{}{}thetaShift}) --- this one direction
+only is Tier A. That the commutator is \emph{nonzero} when $\det A\ne1$ was checked symbolically with
+sympy, not in Lean, and \textbf{is not presented as Tier A}. GPR's full statement for ``the $d=2$
+example,'' that the duality group is $SL(2,\mathbb Z)\times SL(2,\mathbb Z)\otimes_S[\mathbb
+Z_2\times\mathbb Z_2]$ (ll.~1874--1884), is likewise \textbf{not claimed in full}; only the
+$SL(2,\mathbb Z)_\tau$ commuting with $\rho$-translations, above, is formalized.
+
+\subsection{Double Field Theory over \texorpdfstring{$\mathbb R$}{R}, every \texorpdfstring{$d$}{d}}
+\label{sec:stream2-dft}
+\texttt{DFT.GeneralizedMetric} formalizes the Hull--Zwiebach generalized metric
+\cite{HullZwiebach2009} (eq.~(2.17), ll.~662--672),
+\begin{equation}
+\mathcal H(G,B)=\begin{pmatrix}G-BG^{-1}B & BG^{-1}\\-G^{-1}B & G^{-1}\end{pmatrix},
+\end{equation}
+and proves $(\eta\mathcal H)^2=1$ for \emph{any}
+antisymmetric $B$, given only that $G$ is invertible
+(\texttt{etaR\_\discretionary{}{}{}genMetric\_\discretionary{}{}{}sq}) --- sharper than HZ's own
+stated constraint $\mathcal H^{-1}=\eta\mathcal H\eta$, which assumed more. It proves $\mathcal H$
+symmetric for symmetric $G$, antisymmetric $B$ (\texttt{genMetric\_\discretionary{}{}{}symm}); that
+\textbf{T-duality is metric inversion}, $\eta\,\mathcal H(G,0)\,\eta=\mathcal H(G^{-1},0)$
+(\texttt{tduality\_\discretionary{}{}{}inverts\_\discretionary{}{}{}metric}); that the mass form
+$Z^{\mathsf T}\mathcal HZ$ is covariant under any $g$
+(\texttt{massForm\_\discretionary{}{}{}covariant}); and that on a circle ($G=R^2$, $B=0$) this mass
+form equals half of Stream~1's $P_L^2+P_R^2$ (\texttt{massForm\_\discretionary{}{}{}circle}) --- so
+Stream~2's DFT layer and Stream~1's circle computation provably agree. \texttt{DFT.BShift} proves
+$g_\Theta\cdot\mathcal H(G,B)\cdot g_\Theta^{\mathsf T}=\mathcal H(G,B+\Theta)$ for antisymmetric
+$\Theta$ (\texttt{genMetric\_\discretionary{}{}{}bshift}): integer $B$-field shifts act as $O(d,d)$
+conjugation. The sign/transpose convention in this identity was checked with sympy \emph{before}
+formalization --- exactly one of four candidate variants holds --- and the Lean theorem records the
+one that does. \texttt{DFT.SectionCondition} shows the level-matching condition
+$L_0-\bar L_0=N-\bar N-p\cdot w=0$ (HZ eq.~(1.3), l.~231) is, at $N=\bar N$, exactly $n\cdot w=0$
+(\texttt{levelMatching\_\discretionary{}{}{}iff}); that the pure-momentum and pure-winding frames are
+both totally $\eta$-null, i.e.\ solve the section condition
+(\texttt{momentumFrame\_\discretionary{}{}{}isSection}, \texttt{windingFrame\_\discretionary{}{}{}isSection};
+HZ ll.~339--342, 3930--3940); that $\eta$ maps one frame to the other
+(\texttt{eta\_\discretionary{}{}{}momentum\_\discretionary{}{}{}to\_\discretionary{}{}{}winding}); and
+that $O(d,d;\mathbb Z)$ maps sections to sections
+(\texttt{isSection\_\discretionary{}{}{}image}).
+
+\subsection{The dual-scale bound, generalized}
+\label{sec:stream2-dualscale}
+\texttt{DualScale.TraceBound} lifts \Cref{thm:reff-min} from the integer circle case to any
+positive-definite $G$ and any dimension $d$. Define $\mathcal D(G):=\operatorname{tr}\mathcal
+H(G,0)=\operatorname{tr}G+\operatorname{tr}G^{-1}$. Then $\mathcal D(G^{-1})=\mathcal D(G)$
+(\texttt{dualScale\_\discretionary{}{}{}inv}, T-duality invariance), and
+\begin{equation}
+  \mathcal D(G)\ \ge\ 2d \quad\text{for every positive-definite } G,
+\end{equation}
+proved (\texttt{dualScale\_\discretionary{}{}{}ge}) from $\operatorname{tr}\big((G-1)G^{-1}(G-1)\big)\ge0$
+expanding to $\operatorname{tr}G+\operatorname{tr}G^{-1}-2d\ge0$ --- no eigenvalue decomposition is
+used --- with equality at the self-dual point $G=1$
+(\texttt{dualScale\_\discretionary{}{}{}one}). On a circle, $\mathcal D(R^2)=(R+1/R)^2-2$
+(\texttt{dualScale\_\discretionary{}{}{}circle}), recovering $R+1/R\ge2$
+(\texttt{circle\_\discretionary{}{}{}effective\_\discretionary{}{}{}scale\_\discretionary{}{}{}ge\_\discretionary{}{}{}two}) ---
+the same real-analytic statement behind Stream~1's
+\texttt{EffectiveMetric.\discretionary{}{}{}genesis\_\discretionary{}{}{}no\_\discretionary{}{}{}singularity}
+($R_{\mathrm{eff}}=R+\alpha'/R\ge2\sqrt{\alpha'}$), but now proved directly over $\mathbb R$ rather
+than only instantiated on integers. As with \Cref{cor:bounce}, any cosmological reading (singularity
+resolution, a minimum length) remains \textbf{Tier C}; \texttt{TraceBound} is a statement about a
+matrix trace, not about a dynamical spacetime.
+
+\subsection{Flux and tadpole on \texorpdfstring{$K3\times T^2$}{K3xT2} / \texorpdfstring{$K3\times K3$}{K3xK3}}
+\label{sec:stream2-flux}
+\texttt{Flux.Tadpole} computes, from Hodge-number tables (reusing Stream~1's $K3$ table),
+$\chi(T^2)=0$ (\texttt{euler\_\discretionary{}{}{}T2}) and $\chi(K3)=24$
+(\texttt{euler\_\discretionary{}{}{}K3}); hence $\chi(K3\times K3)/24=24$, an integer
+(\texttt{k3k3\_\discretionary{}{}{}anomaly}), and $\chi(K3\times T^2)=0$
+(\texttt{k3t2\_\discretionary{}{}{}euler\_\discretionary{}{}{}zero}). The D3-brane budget
+flux$+n=24$, with flux$\,\ge0$, gives $n\le24$, and $n=24$ when flux$=0$
+(\texttt{tadpole\_\discretionary{}{}{}budget}). This matches Dasgupta--Rajesh--Sethi
+\cite{DasguptaRajeshSethi1999} \S3.1 (l.~640, ``the anomaly $\chi/24=24$''), ll.~1265--1275 (type
+IIB on an orientifold of $K3\times T^2$; with no flux, ``type I on $K3\times T^2$ with 24 D5-branes''),
+and ll.~1366--1370 ($\tfrac12\int G\wedge G+n=24$); the Künneth identification of $\chi$ under a
+product is Tier L. \texttt{Flux.Integrality} proves the Kronecker product of an even symmetric
+integer form with any symmetric integer form is again even
+(\texttt{kronForm\_\discretionary{}{}{}even}); hence for $G\in H^2(K3)\otimes H^2(K3)$,
+$\tfrac12\int G\wedge G\in\mathbb Z$
+(\texttt{flux\_\discretionary{}{}{}half\_\discretionary{}{}{}selfIntersection\_\discretionary{}{}{}integral}).
+Dirac quantization of $[G/\pi]$ and integrality of $[G/2\pi]$ when $\chi/24\in\mathbb Z$ are DRS
+ll.~230--232, Tier L; the Künneth identification of the intersection form with the Kronecker product
+is likewise Tier L.
+
+\subsection{Moonshine}
+\label{sec:stream2-moonshine}
+Stream~2's moonshine cross-check, module \texttt{Moonshine.EOT}, is discussed in full in
+\Cref{sec:moonshine} above, alongside the corrected $M_{24}$ representation table it depends on.
+
+\subsection{How Stream 2 was produced, and where the full listing lives}
+\label{sec:stream2-methods}
+Every Stream~2 statement was designed by the orchestrating model with each Tier L source pinned to a
+specific file and line, then proofs were searched in tiers: a local 7B prover
+(DeepSeek-Prover-V2, on a single T4 GPU) first, then Claude Haiku, then Claude Sonnet, each candidate
+accepted only if the Lean kernel compiled it. Every agent report was independently recompiled and
+statement-checked by the orchestrator before being counted --- two Haiku reports misstated their own
+compile status during this process and were caught only by that recompilation, not by trusting the
+report (\texttt{docs/STREAM2\_WORKFLOW.md} \S6). The final gate is build $+$ \texttt{sorry} count $+$
+\texttt{\#print axioms}, exactly as for Stream~1. Across all 99 goals, the local prover closed 18\%,
+Haiku closed roughly a third, and Sonnet closed the remainder requiring an actual proof idea (e.g.\
+the $E_8$ positive-definiteness sum-of-squares route, and the trace-bound and spectrum-equivalence
+arguments); the measured breakdown and process lessons (harness heartbeat mismatches, wall-clock vs.\
+compile-attempt limits, route choice mattering more than model tier) are in
+\texttt{docs/STREAM2\_WORKFLOW.md} \S6 and \texttt{LL.md} \S S2, not repeated here. A full
+module-by-module Lean listing and expanded mathematical discussion of Stream~2 --- beyond this
+paper's summary --- is given in the companion paper
+\texttt{paper8\_dual\_scale\_k3t2\_tduality\_lean4} (in preparation).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Lean 4 Artifact: Scope, Reproducibility, and Roadmap}
 \label{sec:formalization}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{What is in the repository}
-The formalization comprises \textbf{51 Lean~4 files} and \textbf{554 declarations} (\texttt{theorem}
-/ \texttt{lemma} / \texttt{def} / \texttt{structure} / \texttt{inductive} / \texttt{instance} /
-\texttt{abbrev}) on toolchain \texttt{leanprover/lean4:v4.33.1}, across five libraries:
+The original, Mathlib-free \textbf{core} comprises \textbf{51 Lean~4 files} and \textbf{554
+declarations} (\texttt{theorem} / \texttt{lemma} / \texttt{def} / \texttt{structure} /
+\texttt{inductive} / \texttt{instance} / \texttt{abbrev}) on toolchain
+\texttt{leanprover/\discretionary{}{}{}lean4:\discretionary{}{}{}v4.33.1}, across five libraries:
 \begin{center}
 \footnotesize\ttfamily
 DoubleFieldTheory \quad DualScaleValidation \quad DualScaleM24Formalization \quad
 StringTheoryFoundation \quad Lean5Corpus
 \end{center}
-\texttt{lake build} completes all 61 jobs with no errors and no \texttt{sorry} warnings.
-\textbf{This project has no external dependency} (\texttt{lake-manifest.json} lists zero packages):
-it uses only Lean~4 core (\texttt{Init}), with \emph{no Mathlib}. This is the direct explanation for
-why every proof in this paper is over \texttt{Nat}, \texttt{Int}, or an ad hoc rational-pair
-structure rather than over $\mathbb{R}$ --- core Lean does not provide real numbers, manifolds, or
-differential-geometric structures. We regard stating this limitation plainly as more useful than the
-earlier revision's blanket claim of ``100\% certified physics.''
+(note: the library named \texttt{StringTheoryFoundation} above, singular, is one of these five
+Mathlib-free libraries and is distinct from \texttt{StringTheoryFormalization}, plural-suffixed,
+described next). \texttt{lake build} completes all 61 jobs for these five libraries with no errors
+and no \texttt{sorry} warnings, using only Lean~4 core (\texttt{Init}), with \emph{no Mathlib}. This
+is the direct explanation for why every proof cited above \Cref{sec:stream2} is over \texttt{Nat},
+\texttt{Int}, or an ad hoc rational-pair structure rather than over $\mathbb{R}$ --- core Lean does
+not provide real numbers, manifolds, or differential-geometric structures. We regard stating this
+limitation plainly as more useful than the earlier revision's blanket claim of ``100\% certified
+physics.''
+
+\textbf{As of this revision, the repository as a whole is larger than this core.} Two further
+libraries are Mathlib-dependent (the project's \texttt{lake-manifest.json} now lists Mathlib and its
+transitive dependencies, pinned at tag \texttt{v4.33.1}): \texttt{StringTheoryFormalization} (35
+files, Stream~1's sixth library, not a \texttt{lake} default target until it built clean; 89 of the
+theorems in the 326-theorem Stream~1 audit total of \Cref{sec:stream2}) and
+\texttt{DualScaleStream2} (19 modules, 99 theorems, \Cref{sec:stream2}). \textbf{Depending on
+Mathlib does not, by itself, weaken any Tier A claim}: the axiom audits of both libraries
+(\texttt{tools/axiom\_\discretionary{}{}{}audit.py}, \Cref{sec:stream2}) show 0 failing declarations
+and no axiom beyond Lean's three standard ones, the same bar as \Cref{sec:tiers} sets for the
+Mathlib-free core. What Mathlib buys is exactly the real numbers, matrices, and linear algebra that
+the five-library core above cannot express --- which is why \Cref{sec:stream2}'s dual-scale bound
+(\Cref{sec:stream2-dualscale}) is stated over $\mathbb R$ rather than only instantiated on integers.
 
 \subsection{Reproducibility}
 Every theorem cited by name in this paper was re-verified at the commit given in \Cref{app:axioms}
@@ -582,7 +909,11 @@ lake env lean --stdin < axiom\_audit\_script.lean
 \end{center}
 run from \texttt{papers/publication/}; the full output is in \texttt{axiom\_audit\_log.txt} in the
 same directory, and reproduced in \Cref{app:axioms}. Every declaration depends on at most the three
-standard Lean axioms; none depends on \texttt{sorryAx} or on any custom axiom. A companion
+standard Lean axioms; none depends on \texttt{sorryAx} or on any custom axiom. This particular script
+and log cover the five-library Mathlib-free core; the \texttt{StringTheoryFormalization} and
+\texttt{DualScaleStream2} figures quoted in \Cref{sec:stream2} (326 and 99 theorems respectively) are
+a separate, aggregate audit run via \texttt{tools/axiom\_\discretionary{}{}{}audit.py} and are quoted
+here only at that aggregate level, not reproduced declaration-by-declaration in \Cref{app:axioms}. A companion
 \Cref{app:ledger} gives, for every headline claim in this paper, the exact Lean identifier, its type
 (informally), its tier, and a one-line adequacy note --- the same table used to produce the
 corrections in this revision, so that a reader can re-run the audit rather than trust it.
@@ -671,6 +1002,10 @@ does not.
 \ref{sec:zero-params} & \multicolumn{2}{l}{(none)} & --- & no ``zero free parameters'' theorem exists; restated as \Cref{conj:zeroparam}, Tier C \\
 \ref{sec:phenomenology} & \texttt{Observables} & \texttt{tensor\_\discretionary{}{}{}to\_\discretionary{}{}{}scalar\_\discretionary{}{}{}ratio\_\discretionary{}{}{}reduction} (rewritten) & A & exact-fraction identity; the value $r=1/252$ itself is Tier C \\
 \ref{sec:phenomenology} & \texttt{Observables} & \texttt{observables\_\discretionary{}{}{}windows\_\discretionary{}{}{}master\_\discretionary{}{}{}contract} (rewritten) & A & arithmetic-window conjunction; each window is illustrative, not a confidence interval \\
+\ref{sec:moonshine} & \texttt{StringDynamics} & \texttt{M24RepDim\_\discretionary{}{}{}sum\_\discretionary{}{}{}sq} (new, 2026-09-16) & A & Burnside regression guard on the corrected EOT (A.3) table; Burnside's identity itself is Tier L \\
+\ref{sec:moonshine} & \texttt{Moonshine.EOT} & \texttt{first\_\discretionary{}{}{}five\_\discretionary{}{}{}are\_\discretionary{}{}{}irreps}, \texttt{A6\_\discretionary{}{}{}decomposition}, \texttt{A7\_\discretionary{}{}{}decomposition} & A & arithmetic cross-check of EOT (1.12), (1.14)--(1.15) against \texttt{M24RepDim}; the $M_{24}$ action itself is Tier L \\
+\ref{sec:moonshine} & \texttt{StringDynamics} & \texttt{bps\_\discretionary{}{}{}ratio\_\discretionary{}{}{}reduced} (fixed, 2026-09-16) & A & now \texttt{norm\_\discretionary{}{}{}num}; previously \texttt{native\_\discretionary{}{}{}decide} (axiom \texttt{Lean.\discretionary{}{}{}ofReduceBool}) \\
+\ref{sec:stream2} & \texttt{DualScaleStream2} (19 modules) & 99 theorems total, see \Cref{sec:stream2} & A & aggregate audit (\texttt{tools/axiom\_\discretionary{}{}{}audit.py}); individual claims/tiers itemized in \Cref{sec:stream2} \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -717,6 +1052,21 @@ No declaration in this table depends on \texttt{sorryAx} or on any axiom beyond 
 Lean~4 axioms. A separate search for a bare \texttt{sorry}/\texttt{admit} tactic (as opposed to the
 word appearing in a docstring) across all five libraries returns zero matches.
 
+\paragraph{Corpus-wide aggregate (2026-09-17).} The table above is a fixed, per-declaration snapshot
+of the five-library Mathlib-free core at commit \texttt{e831efb}; it is not re-run against the two
+newer, Mathlib-dependent libraries. Those are audited in aggregate by
+\texttt{tools/axiom\_\discretionary{}{}{}audit.py} (a different tool from the
+\texttt{axiom\_audit\_script.lean} above, run in the same 2026-09-17 session but not tied to a single
+quoted commit): \texttt{StringTheoryFormalization} (Stream~1's sixth library) contributes 89 theorems
+to a six-library Stream~1 total of \textbf{326 theorems, 0 failing}, and the new
+\texttt{DualScaleStream2} library (Stream~2, 19 modules) reports \textbf{99 theorems, 0 failing}. In
+both cases every theorem depends on at most the three standard Lean axioms; neither audit found a
+\texttt{sorryAx} or custom-axiom dependency. \Cref{sec:stream2} gives the per-module breakdown and
+itemizes which physical (as opposed to purely mathematical) statements attached to these theorems
+remain Tier L or Tier C. We do not claim ``zero axioms'' anywhere in this corpus: the correct,
+narrower statement --- proved with no axiom beyond Lean's three standard ones --- is what all of the
+figures in this appendix and in \Cref{sec:stream2} support, and is the only claim we make.
+
 \begin{thebibliography}{99}
 
 \bibitem{Vafa2005} C.~Vafa, ``The String Landscape and the Swampland,'' \textit{arXiv:hep-th/0509212} (2005).
@@ -731,6 +1081,9 @@ word appearing in a docstring) across all five libraries returns zero matches.
 \bibitem{BedroyaVafa2020} A.~Bedroya and C.~Vafa, ``Trans-Planckian Censorship and the Swampland,'' \textit{JHEP} 09 (2020) 123, \textit{arXiv:1909.11063}.
 \bibitem{Witten1995} E.~Witten, ``String Theory Dynamics In Various Dimensions,'' \textit{Nucl. Phys. B} 443 (1995) 85--126, \textit{arXiv:hep-th/9503124}.
 \bibitem{AtiyahSinger1968} M.~F.~Atiyah and I.~M.~Singer, ``The Index of Elliptic Operators I,'' \textit{Annals of Mathematics} 87 (1968) 484--530.
+\bibitem{Huybrechts2016} D.~Huybrechts, \textit{Lectures on K3 Surfaces}, Cambridge University Press (2016).
+\bibitem{Aspinwall1996} P.~S.~Aspinwall, ``K3 Surfaces and String Duality,'' \textit{arXiv:hep-th/9611137} (1996), lecture notes.
+\bibitem{DasguptaRajeshSethi1999} K.~Dasgupta, G.~Rajesh, and S.~Sethi, ``M Theory, Orientifolds and G-Flux,'' \textit{arXiv:hep-th/9908088} (1999).
 \bibitem{EguchiOoguriTachikawa2011} T.~Eguchi, H.~Ooguri, and Y.~Tachikawa, ``Notes on the K3 Surface and the Mathieu Group $M_{24}$,'' \textit{Exper. Math.} 20 (2011) 91--96, \textit{arXiv:1004.0956}.
 \bibitem{Cheng2010} M.~C.~N.~Cheng, ``K3 Surfaces, $N=4$ Dyons, and the Mathieu Group $M_{24}$,'' \textit{Commun. Num. Theor. Phys.} 4 (2010) 623--657, \textit{arXiv:1005.5415}.
 \bibitem{Gannon2013} T.~Gannon, ``Much ado about Mathieu,'' \textit{Adv. Math.} 301 (2016) 322--358, \textit{arXiv:1211.5531}.

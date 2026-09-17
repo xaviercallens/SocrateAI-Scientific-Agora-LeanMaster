@@ -35,8 +35,11 @@ We report the formal specification, mathematical proof, and mechanical verificat
 (1) \textbf{Kummer Surface Modularity and Shioda-Inose Elliptic Fibration:} We formalize the Shioda-Tate decomposition of singular (attractive) $K3$ surfaces possessing maximal Picard number $\rho(X) = 20$. We prove that the transcendental lattice $T_X$ has rank $\mathrm{rank}(T_X) = b_2(K3) - \rho(X) = 22 - 20 = 2$, and that the 16 Kummer nodal resolution divisors together with the 4 invariant 2-cycles of $T^4/\mathbb{Z}_2$ span the 20-dimensional Néron-Severi algebraic lattice, locking arithmetic modularity directly to K3 fibration topology.
 (2) \textbf{Non-Perturbative Instanton Action Lower Bound in 4D $\mathcal{N}=4$ Super Yang-Mills:} In four-dimensional non-Abelian $SU(N)$ gauge theory, we formalize the curvature decomposition into self-dual ($F^+$) and anti-self-dual ($F^-$) components. We prove the Bogomolny-Prasad-Sommerfield (BPS) topological bound $g^2 S_E \ge 8\pi^2 |k|$, and establish that any non-trivial instanton bundle $|k| \ge 1$ possesses strictly positive Euclidean action $S_E > 0$, rigorously eliminating unsuppressed topological vacuum decay.
 (3) \textbf{Holographic Ryu-Takayanagi Entanglement Entropy Strong Subadditivity:} In AdS/CFT and Double Field Theory (DFT), we formalize the minimal surface area functional $\mathcal{A}(\gamma_A)$ in the presence of the strictly positive dilaton measure $e^{-2d} > 0$. We mechanically prove Strong Subadditivity (SSA) $S(A \cup B) + S(A \cap B) \le S(A) + S(B)$, standard subadditivity $S(A \cup B) \le S(A) + S(B)$, and the non-negativity of holographic mutual information $I(A:B) \ge 0$.
-All three master theorems are certified with strictly \textbf{zero `sorry` axioms} in the Lean 4 kernel, and integrated into the global \textbf{LeanGraph} knowledge discovery topology.
+All three master theorems are certified with no axioms beyond Lean's three standard axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}), with strictly zero \texttt{sorry} statements in the Lean 4 kernel, and integrated into the global \textbf{LeanGraph} knowledge discovery topology.
 \end{abstract}
+
+\section*{Revision Note (2026-09-17)}
+\textit{Wording on axioms and mathematical rigor has been corrected to use epistemic tier vocabulary: Tier A for kernel-checked theorems with no axioms beyond Lean's three standard axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}), Tier L for literature citations, and Tier C for conjectures. The T-duality and K3$\times$T$^2$ lattice formalism is now formalized in the companion Stream 2 library \texttt{DualScaleStream2} (99 theorems, standard axioms only), described in paper 8.}
 
 \section{Introduction}
 The formal verification of unified physical theories demands bridging discrete algebraic geometry, non-perturbative quantum field theory, and holographic quantum information. Within the \textbf{Lean 5 Scientific Agora Corpus}, we develop modular, kernel-certified proofs that can be verified in sub-second turnaround without monolithic library dependencies.
@@ -245,7 +248,7 @@ Problem 11 & \texttt{Problem11\_EntanglementEntropy} & Quantum Information & 4 &
 \end{table}
 
 \section{Conclusion}
-We have formalized and mechanically certified three advanced problems in the Lean 5 Agora Corpus, achieving 100\% mathematical soundness with strictly zero unproven axioms across 51 theorems in eleven problem modules. The modular architecture, supported by LeanGraph DAG tracking and AST-level caching, demonstrates the viability of automated theorem proving pipelines in frontier mathematical physics.
+We have formalized and mechanically certified three advanced problems in the Lean 5 Agora Corpus, achieving kernel verification with no axioms beyond Lean's three standard axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}) across 51 theorems in eleven problem modules. The modular architecture, supported by LeanGraph DAG tracking and AST-level caching, demonstrates the viability of automated theorem proving pipelines in frontier mathematical physics.
 
 \begin{thebibliography}{99}
 \bibitem{ShiodaInose1977} T.~Shioda and H.~Inose, ``On Singular K3 Surfaces,'' \textit{Complex Analysis and Algebraic Geometry}, Iwanami Shoten, 1977.

@@ -97,7 +97,7 @@ Charge ordering (momentum ⊕ winding), `η = [[0, I],[I, 0]]`.
 
 ### 3.2 T-duality group O(d,d;ℤ) — every d
 - `TDuality.ODD`: Θ-shift g_Θ = [[I,Θ],[0,I]] (Giveon–Porrati–Rabinovici hep-th/9401139 eq.
-  (2.4.25), ll. 1355–1373) preserves η iff Θ antisymmetric; basis change diag(A,B) preserves η
+  (2.4.25), ll. 1355–1373) preserves η whenever Θ is antisymmetric (only this direction is proved); basis change diag(A,B) preserves η
   when AᵀB = 1; η is an involution in O(d,d;ℤ); O(d,d;ℤ) closed under products; at d = 1, η = U.
 - `TDuality.Factorized`: factorized dualities D_k = [[I−e_k, e_k],[e_k, I−e_k]] (GPR eq. (2.4.29),
   ll. 1399–1422, "a generalization of the R → 1/R circle duality") are in O(d,d;ℤ), involutions,
@@ -115,8 +115,9 @@ Charge ordering (momentum ⊕ winding), `η = [[0, I],[I, 0]]`.
   mirror symmetry for a complex torus" is Tier L (GPR l. 344). The sign of the induced ρ-shift is
   convention-dependent and **not claimed**.
 - `TDuality.SL2Product`: A J Aᵀ = det(A)·J for 2×2 integer A; basis changes and Θ-shifts obey
-  their product laws; **a basis change with det A = 1 commutes with every ρ-translation g_{tJ}**
-  (commutator vanishes exactly when det A = 1). GPR "The d = 2 Example" (ll. 1874–1884): the
+  their product laws; **a basis change with det A = 1 commutes with every ρ-translation g_{tJ}** (Tier A, this
+  direction only; that the commutator is nonzero when det A ≠ 1 was checked symbolically with sympy
+  and is NOT a Lean theorem — do not present it as Tier A). GPR "The d = 2 Example" (ll. 1874–1884): the
   duality group is SL(2,ℤ)×SL(2,ℤ) ⊗_S [Z₂×Z₂] — **not** claimed in full; only SL(2,ℤ)_τ commuting
   with the ρ-translations is Tier A.
 

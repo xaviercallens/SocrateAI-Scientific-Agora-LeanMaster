@@ -1,6 +1,6 @@
 # Lessons Learned (LL)
 
-**Most recent session first** — read §S2 (Stream 2 autonomous run, 2026-09-16/17) and §0
+**Most recent session first** — read §S2 and §S2-I (Stream 2 run + improvements, 2026-09-16/17) and §0
 (2026-09-16) before anything below them.
 Everything from §1 onward is the original "Phase 0" document and is kept for record, but
 **its headline metrics are a known overclaim, not a mistake to repeat**: "125,790 files",
@@ -83,6 +83,62 @@ A docstring drafted this run cited Huybrechts "Ch. 16 (§1.4?)"; grepping the do
 text showed the Mukai pairing is Ch. 9 §1 Def. 1.4 (heading at line 7352). Every Tier L
 citation in `DualScaleStream2` now names a `papers/foundations/*.txt` file and line range, and
 the papers' metadata came from the arXiv abstract pages, not memory.
+
+## S2.10 Lock statements, not just proofs
+The kernel checks that a proof proves its statement. It does not check that the statement is
+still the one that was reviewed. `tools/statement_lock.py` hashes theorem statements (up to
+the top-level `:=`) and full definition bodies into `docs/statement_lock.json`. Replacing
+`sorry` with a proof leaves the hash unchanged; weakening a hypothesis changes it. Run
+`--check` before accepting any agent's proof.
+
+## S2.11 An audit that can't elaborate must fail loudly, not report "MISSING"
+When the root `.olean` of `StringTheoryFormalization` was stale, the axiom audit printed
+"89 theorems audited, 89 failing (MISSING)". That looks like a proof result, but it was an
+infrastructure failure. The audit now exits 2 with `AUDIT ERROR` whenever the probe file has
+any elaboration error. General rule: tools must tell "could not check" apart from "checked
+and failed".
+
+## S2.12 Pre-verify conventions symbolically before stating a theorem
+Every block-matrix convention (sign of `B` in the generalized metric, the `η`-pairing, the
+Θ-shift orientation) was checked in sympy before its Lean statement was written. A sign slip
+caught this way costs minutes. The same slip caught only after an agent has spent an hour on
+an unprovable statement costs far more. A sympy check is still **not**
+Tier A: papers must label it as a symbolic check and must not quote it as a theorem (for
+example, the converse "commutator ≠ 0 when det A ≠ 1" in `SL2Product`).
+
+## S2.13 Docs drift into "iff" when the theorem is one direction
+The revision brief said the Θ-shift preserves η "iff Θ antisymmetric". The Lean theorem proves
+only the "if" direction. Before a claim goes into a paper, read the Lean statement itself, not
+the prose that summarized it.
+
+---
+
+# §S2-I. Improvements for the next run (actionable)
+
+1. **Statement design first, in one pass.** Write every statement with sympy-checked
+   conventions and `sorry`, then run `lake build`, `statement_lock --update`, and T0 review.
+   Only after that does any proving start. This run interleaved design and proving, which
+   caused re-locks.
+2. **Tier routing by goal shape, automatically.** Concrete goals (numerals, fixed matrices,
+   `fin_cases`) go to T3 `prover_loop.py`. Short symbolic algebra goes to Haiku. Anything
+   with inverses, positivity, or general `n` goes straight to Sonnet: Haiku's success rate
+   there was low and its reports unreliable (S2.3).
+3. **Concurrency budget.** Run at most 3 compile-heavy agents, each with a wall-clock limit
+   (≈45 min Haiku, ≈90 min Sonnet), plus the prompt line "final compile 0 errors, paste the
+   literal compiler output".
+4. **Single gate script.** Wrap `lake build <lib>`, the sorry grep, `axiom_audit.py`,
+   `statement_lock.py --check`, and the S8 refresh (`index_declarations.py`, `leangraph`,
+   `socrateai_oracle.py export-json`) in one `tools/gate.sh`, so no gate is skipped under
+   time pressure.
+5. **Rebuild root oleans after module changes.** Build the library target itself, not only
+   module targets, before auditing (S2.11).
+6. **Paper claims come from the Lean source.** Generate the claim tables in papers from the
+   declarations DB (`.leancache/declarations.db`) plus the statement lock, not from
+   hand-written prose (S2.13).
+7. **Next mathematics targets (Stream 3 candidates).** Narain lattice Γ^{d,d} even
+   self-duality for general d; the full O(Γ^{4,20}) action on the Mukai lattice; the
+   Siegel–Narain theta function's modular transformation (needs Mathlib modular-forms
+   coverage); and a certified reduction of EOT A_n coefficients to M24 characters.
 
 ---
 

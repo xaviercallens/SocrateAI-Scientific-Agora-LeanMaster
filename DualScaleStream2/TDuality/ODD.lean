@@ -9,7 +9,7 @@ below are theirs: the integer antisymmetric Θ-shift `g_Θ = [[I, Θ],[0, I]]`
 
 Tier A here, for **every** `d` (not just `d = 1, 2`): with charge vectors ordered
 (momentum ⊕ winding) and invariant form `η = [[0, I],[I, 0]]`,
-* the Θ-shift preserves `η` exactly when `Θ` is antisymmetric;
+* the Θ-shift preserves `η` when `Θ` is antisymmetric;
 * a basis change `diag(A, B)` preserves `η` when `Aᵀ B = 1`;
 * the full duality `n ↔ w` (i.e. `η` itself) preserves `η` and is an involution;
 * `O(d,d;ℤ)` is closed under multiplication.

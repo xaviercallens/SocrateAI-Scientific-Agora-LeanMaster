@@ -35,8 +35,11 @@ We report the formal specification, mathematical proof, and mechanical verificat
 (1) In three-dimensional incompressible fluid dynamics, we prove that non-vanishing topological helicity $\mathcal{H} \ne 0$ strictly forbids dissipationless steady states in viscous Navier-Stokes flows, establishing the rigorous lower bound $2 \mathcal{D} E \ge \nu \mathcal{H}^2$ where $\mathcal{D}$ is the enstrophy dissipation rate.
 (2) In arithmetic geometry and string moonshine, we formalize the bridge between Fermat modularity and Mathieu moonshine on $K3 \times T^2$, proving that the BPS character lock $N_{\mathrm{BPS}} = 27720 = 2^3 \cdot 3^2 \cdot 5 \cdot 7 \cdot 11$ factors over the first five prime numbers, containing all prime factors of the chiral primary dimensions $A_1 = 90$ and $A_2 = 462$, with $|M_{24}| = 27720 \times 8832$.
 (3) In quantum cosmology and the Swampland Program, we demonstrate that the Callens dual-scale effective metric $R_{\mathrm{eff}}(R) = R + \alpha'/R$ strictly enforces $\lambda_{\mathrm{phys}} \ge 2 l_{\mathrm{Pl}} > l_{\mathrm{Pl}}$, rendering trans-Planckian modes algebraically impossible and unconditionally satisfying the Trans-Planckian Censorship Conjecture (TCC) without cosmological fine-tuning.
-All three master theorems have been verified with 100\% mathematical rigor, admitting strictly \textbf{zero `sorry` axioms} in the Lean 4 kernel, and integrated into an autonomous exploration pipeline inspired by Karpathy's AutoResearch.
+All three master theorems have been verified as Tier A (kernel-checked with no axioms beyond the three standard axioms \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}), with strictly zero \texttt{sorry} statements in the Lean 4 kernel, and integrated into an autonomous exploration pipeline inspired by Karpathy's AutoResearch.
 \end{abstract}
+
+\section*{Revision Note (2026-09-17)}
+\textit{Wording on axioms and mathematical rigor has been corrected to use epistemic tier vocabulary: Tier A for kernel-checked theorems with no axioms beyond Lean's three standard axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}), Tier L for literature citations, and Tier C for conjectures. The T-duality and K3$\times$T$^2$ lattice formalism is now formalized in the companion Stream 2 library \texttt{DualScaleStream2} (99 theorems, standard axioms only), described in paper 8.}
 
 \section{Introduction}
 Modern mathematical physics increasingly relies on complex interdisciplinary chains linking continuous partial differential equations (PDEs), arithmetic algebraic geometry, and quantum gravitational dualities. However, verifying the consistency of such cross-domain frameworks has historically been hampered by monolithic formal libraries with prohibitively slow build cycles and high memory overheads.
@@ -187,7 +190,7 @@ Every declaration reported in this paper has been verified by the Lean 4 compile
 \texttt{Problem2\_MathieuFrobeniusRigidity} & 8 & 4 & 0 & \textbf{VERIFIED} \\
 \texttt{Problem3\_DualScaleTCC} & 4 & 3 & 0 & \textbf{VERIFIED} \\
 \midrule
-\textbf{Total Lean 5 Corpus} & \textbf{17} & \textbf{10} & \textbf{0} & \textbf{100\% CERTIFIED} \\
+\textbf{Total Lean 5 Corpus} & \textbf{17} & \textbf{10} & \textbf{0} & \textbf{KERNEL-VERIFIED} \\
 \bottomrule
 \end{tabular}
 \caption{Lean 4 compilation audit for the three formalized open problems.}
