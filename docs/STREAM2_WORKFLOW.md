@@ -88,7 +88,7 @@ only honest progress measure for Stream 2: it counts items of *this plan*, not a
 | P2.1 | K3 → Mukai → `Γ⁶'²²` signatures, cross-checked with Hodge numbers | ✅ `d7c483b` |
 | P2.1 | general-`d` `O(d,d;ℤ)` generators (Θ-shift, basis change, `η`) | ✅ `d7c483b` |
 | P2.2 | factorized dualities `D_k` (GPR 2.4.29), charge norm even + invariant | ✅ `TDuality.Factorized` |
-| P2.2 | spectrum equivalence of `O(d,d;ℤ)`-dual backgrounds | 🔄 `TDuality.Spectrum` |
+| P2.2 | spectrum equivalence of `O(d,d;ℤ)`-dual backgrounds | ✅ `TDuality.Spectrum` |
 | P2.2 | T²: mirror `D₀` conjugates the τ-shift to a B-shift (matrix identity; sympy-verified) | ✅ `TDuality.Mirror` |
 | P2.2 | `SL(2,ℤ)_τ` commutes with the ρ-translations inside `O(2,2;ℤ)` (scope narrowed from the full `SL(2,ℤ)_ρ`; GPR ll. 1874–1884) | 🔄 `TDuality.SL2Product` |
 | P2.3 | `E8` positive definite (LDLᵀ), `det = 1` | ✅ `036329e` |

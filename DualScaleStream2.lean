@@ -12,6 +12,7 @@ import DualScaleStream2.Lattice.Reflection
 import DualScaleStream2.TDuality.ODD
 import DualScaleStream2.TDuality.Factorized
 import DualScaleStream2.TDuality.Mirror
+import DualScaleStream2.TDuality.Spectrum
 import DualScaleStream2.DFT.GeneralizedMetric
 import DualScaleStream2.DFT.BShift
 import DualScaleStream2.DualScale.TraceBound
