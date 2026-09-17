@@ -8,6 +8,7 @@ import DualScaleStream2.Lattice.Hyperbolic
 import DualScaleStream2.Lattice.K3T2Signature
 import DualScaleStream2.Lattice.E8PosDef
 import DualScaleStream2.Lattice.Mukai
+import DualScaleStream2.Lattice.Reflection
 import DualScaleStream2.TDuality.ODD
 import DualScaleStream2.TDuality.Factorized
 import DualScaleStream2.TDuality.Mirror

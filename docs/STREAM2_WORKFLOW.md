@@ -93,7 +93,7 @@ only honest progress measure for Stream 2: it counts items of *this plan*, not a
 | P2.2 | `SL(2,ℤ)_τ` commutes with the ρ-translations inside `O(2,2;ℤ)` (scope narrowed from the full `SL(2,ℤ)_ρ`; GPR ll. 1874–1884) | 🔄 `TDuality.SL2Product` |
 | P2.3 | `E8` positive definite (LDLᵀ), `det = 1` | ✅ `036329e` |
 | P2.3 | Mukai pairing: symmetric, even, `U(−1)`, `v(𝒪_X)² = −2` | ✅ `036329e` |
-| P2.3 | `(−2)`-reflections are lattice isometries (Weyl / Picard–Lefschetz), `E8(−1)` Weyl reflections | 🔄 `Lattice.Reflection` |
+| P2.3 | `(−2)`-reflections are lattice isometries (Weyl / Picard–Lefschetz), `E8(−1)` Weyl reflections | ✅ `Lattice.Reflection` |
 | P2.4 | generalized metric: `(ηH)² = 1`, symmetric, T-duality = `G ↦ G⁻¹`, mass covariance, circle cross-link | ✅ `036329e` |
 | P2.4 | integer B-shift acts on `H` by the Θ-shift (sympy-verified convention) | ✅ `DFT.BShift` |
 | P2.4 | dual-scale bound `tr G + tr G⁻¹ ≥ 2d`, T-duality invariance, circle case | ✅ `DualScale.TraceBound` |
