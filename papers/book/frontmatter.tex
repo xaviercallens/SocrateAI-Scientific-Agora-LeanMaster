@@ -1,0 +1,94 @@
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\Huge\bfseries The Dual-Scale String\par}
+\vspace{0.8cm}
+{\LARGE T-Duality, $K3\times T^2$, and Their Formalization in Lean~4\par}
+\vspace{0.6cm}
+{\Large\itshape A Student's Companion\par}
+\vspace{2.5cm}
+{\Large Xavier Callens\par}
+\vspace{0.3cm}
+{\large SocrateAI Scientific Agora Collaboration\par}
+\vspace{0.3cm}
+{\normalsize SocrateAI Research Laboratory for Mathematical Physics \& Formal Verification\par}
+\vfill
+{\large First edition --- September 2026\par}
+\vspace{0.4cm}
+{\small Companion to the Lean~4 repository \texttt{SocrateAI-Scientific-Agora-LeanMaster}\par}
+\end{titlepage}
+
+\thispagestyle{empty}
+\vspace*{\fill}
+\noindent\textbf{How this book was made.}
+The text was drafted by AI language models (Anthropic's Claude family) working as chapter authors under
+the direction of the first author, from a fixed library of open-access sources that the models were
+required to open and cite by file and line range, and from the Lean~4 source code of the companion
+repository. Every chapter was then examined by an independent reviewer model that re-opened the cited
+sources and the Lean files. The Lean theorems quoted in this book were checked by the Lean~4 kernel; the
+prose was not, and cannot be. Readers should treat the exposition as they would any first edition of
+lecture notes: check derivations, and report errors.
+
+\medskip\noindent\textbf{What the word ``checked'' means here.}
+A claim marked \TA{} is a theorem whose proof has been verified by the Lean~4 kernel and which depends on
+no axioms beyond Lean's three standard ones (\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}).
+A claim marked \TL{} is taken from the cited literature and has not been formalized here. A claim marked
+\TC{} is a conjecture, or a proposal of the dual-scale programme. That a formal object in Lean faithfully
+represents a physical system is never a \TA{} claim.
+
+\medskip\noindent\textbf{Sources.}
+The source library (arXiv identifiers and SHA-256 hashes) is listed in the bibliography and in
+\texttt{papers/foundations/MANIFEST.md}. We thank the authors of those lecture notes and reviews; any
+error introduced in paraphrasing them is ours.
+\vspace*{\fill}
+\clearpage
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\markboth{Preface}{Preface}
+
+A point particle moving on a circle cannot tell you the size of the circle twice. A string can: it carries
+momentum around the circle, with energy quantized in units of $1/R$, and it can wind around the circle,
+with energy proportional to $R/\ap$. Exchange the two kinds of quantum number and replace $R$ by $\ap/R$,
+and every energy level is where it was. This is T-duality. It says that for a string the geometry of
+radius $R$ and the geometry of radius $\ap/R$ are one and the same, and therefore that a length shorter
+than $\sqrt{\ap}$ has no independent meaning. A theory of strings has two scales in every compact
+direction, $R$ and $\ap/R$, and physical statements must respect both. That is the sense of the title.
+
+This book has three aims, and tries to keep them apart.
+
+The first is to \emph{teach}: to take a student from the relativistic string to toroidal
+compactification, the duality group $\Odd{d}$, double field theory, the lattice theory of $K3$ surfaces,
+compactification on $\KT$ with fluxes, and Mathieu moonshine. The derivations are written out. Where we
+follow a source we say which, down to the line range of the text we read.
+
+The second is to \emph{record exactly what has been formalized}. Alongside the physics, each chapter has a
+section called ``What the machine has checked'', which quotes statements from the companion Lean~4
+libraries and says in plain words what each one asserts. Much of string theory is far beyond what any
+proof assistant can currently express: there is no formal path integral here, no worldsheet conformal
+field theory, no Calabi--Yau metric. What \emph{can} be formalized today is the algebraic skeleton:
+lattices and their signatures, the matrices of $\Odd{d}$ and the identities they satisfy, the generalized
+metric, inequalities such as $\Tr G+\Tr G^{-1}\ge 2d$, tadpole arithmetic, and the dimension counts of
+moonshine. The older libraries in the repository go less far and model physical quantities by integers or
+rationals; we call these \emph{arithmetic shadows} and describe them as such.
+
+The third is to \emph{propose}: the dual-scale programme treats the pair $(G,G^{-1})$ as the basic
+geometric datum and asks what follows for moduli stabilization and early-universe cosmology. These
+proposals are conjectural and are marked \TC{} throughout. The inequalities they rest on are theorems; the
+physics is not.
+
+\section*{How to read this book}
+Parts~I--II are a self-contained first course on the bosonic string and T-duality. Part~III develops
+double field theory. Part~IV is an introduction to lattices and $K3$ surfaces for physicists; Part~V puts
+the two together on $\KT$. Part~VI treats Mathieu moonshine. Part~VII states the dual-scale proposal.
+Part~VIII is about the formalization itself: a Lean primer for physicists, the architecture of the
+libraries, a graph-and-retrieval atlas of all theorems, the AI-assisted proof pipeline that produced
+them, and open problems sized for student projects. A reader interested mainly in Lean can start with
+\cref{ch:leanprimer} and then read the ``machine'' sections of Parts~II--IV. Exercises are graded
+$\star$ (routine), $\star\star$ (needs an idea), $\star\star\star$ (small project); many ask for a Lean
+statement or proof.
+
+\section*{What this book is not}
+It is not a replacement for the standard textbooks, and it does not cover the superstring, string
+perturbation theory beyond the spectrum, or AdS/CFT. It does not claim that string theory, or the
+dual-scale proposal, describes nature.

@@ -1,0 +1,47 @@
+\chapter{Notation and Conventions}\label{app:notation}
+\begin{longtable}{p{0.22\textwidth}p{0.72\textwidth}}
+\toprule Symbol & Meaning \\ \midrule \endhead \bottomrule \endfoot
+$\ap$ & Regge slope; dimension length$^2$. String length $\ell_s=\sqrt{\ap}$, tension $T=1/(2\pi\ap)$. \\
+$R$, $\ap/R$ & Radius of a compact circle and its T-dual. Self-dual radius $R=\sqrt{\ap}$. \\
+$n$, $w$ & Momentum and winding quantum numbers on a circle; level matching $N-\tilde N=nw$. \\
+$p_L$, $p_R$ & Left- and right-moving zero-mode momenta. \\
+$G$, $B$, $\Phi$ & Metric, Kalb--Ramond two-form and dilaton; on $T^d$, $G$ is a positive definite $d\times d$ matrix and $B$ is antisymmetric. \\
+$E=G+B$ & Background matrix. \\
+$\eta$ & The $\OddR{d}$ pairing, block form $\begin{pmatrix}0&1\\1&0\end{pmatrix}$ (\lean{eta} in Lean). \\
+$\Odd{d}$ & Integer matrices $g$ with $g^{\mathsf T}\eta g=\eta$ (\lean{IsODD}). \\
+$\HH(G,B)$ & Generalized metric $\begin{pmatrix}G-BG^{-1}B & BG^{-1}\\ -G^{-1}B & G^{-1}\end{pmatrix}$ (\lean{genMetric}). \\
+$Z$ & Doubled charge vector; mass form $Z^{\mathsf T}\HH Z$, level form $\tfrac12 Z^{\mathsf T}\eta Z$. \\
+$\tau$, $\rho$ & Complex structure and complexified K\"ahler modulus of $T^2$. \\
+$U$ & Hyperbolic plane, Gram matrix $\begin{pmatrix}0&1\\1&0\end{pmatrix}$, signature $(1,1)$. \\
+$E_8$, $E_8(-1)$ & The $E_8$ root lattice (Cartan matrix as Gram matrix) and its negative. \\
+$(n_+,n_-)$ & Signature of a lattice. $K3$ lattice $3U\oplus2E_8(-1)$: $(3,19)$. Mukai lattice: $(4,20)$. \\
+$\chi$, $h^{p,q}$, $b_k$ & Euler characteristic, Hodge numbers, Betti numbers. $\chi(K3)=24$. \\
+$\Mtf$ & Mathieu group, $|\Mtf|=244\,823\,040$. \\
+$A_n$ & Eguchi--Ooguri--Tachikawa coefficients $45, 231, 770, 2277,\dots$; multiplicities of massive $N=4$ representations are $2A_n$. \\
+$\operatorname{dualScale}(G)$ & $\Tr G+\Tr G^{-1}$ (\lean{dualScale}); for a circle, $R^2/\ap+\ap/R^2$ in units where the entry of $G$ is $R^2/\ap$. \\
+\TA, \TL, \TC & Epistemic tiers: kernel-checked; literature; conjecture or proposal. \\
+\end{longtable}
+
+\chapter{Index of Formalized Theorems}\label{app:theorems}
+This appendix lists every theorem stated in the source of the seven libraries, generated from the
+declaration index (\texttt{tools/index\_declarations.py}). The second column is the first line of the
+theorem's docstring, truncated, with non-ASCII characters removed; consult the source for the statement.
+{\small\input{generated/theorem_index}}
+
+\chapter{Reproducing the Formal Results}\label{app:reproduce}
+\begin{leancode}
+git clone https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster
+cd SocrateAI-Scientific-Agora-LeanMaster
+lake exe cache get                      # prebuilt Mathlib
+lake build DualScaleStream2             # Stream 2: lattices, O(d,d;Z), DFT, dual-scale bound
+lake build StringTheoryFormalization    # Stream 1 (Mathlib-based)
+lake build                              # the Mathlib-free core libraries
+python3 tools/axiom_audit.py DualScaleStream2           # #print axioms over every theorem
+python3 tools/statement_lock.py --check DualScaleStream2/*/*.lean
+lake env lean tools/lean_depgraph.lean > .leancache/depgraph.jsonl
+python3 tools/index_declarations.py && python3 tools/theorem_atlas.py   # the atlas chapter
+python3 tools/book_assemble.py          # this book
+\end{leancode}
+The axiom audit must report, for every theorem, a subset of \lean{propext}, \lean{Classical.choice},
+\lean{Quot.sound}. The statement lock must report \texttt{OK}: it fails if any reviewed statement or
+definition has been altered, while changes to comments and proofs leave it untouched.

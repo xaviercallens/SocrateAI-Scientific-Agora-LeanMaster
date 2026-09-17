@@ -1,0 +1,546 @@
+\section*{\texttt{DualScaleStream2} (99 theorems)}
+\begin{longtable}{p{0.40\textwidth}p{0.55\textwidth}}\toprule Theorem & First line of its docstring \\ \midrule\endhead\bottomrule\endfoot
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.DFT.BShift}} \\
+\quad\texttt{\footnotesize genMetric\_bshift} & {\footnotesize Real -shift g\_ = [[I, ],[0, I]]. -/ noncomputable def thetaShiftR ( : Matrix (Fin d) (Fin d) ) : Matrix (Charge d) (Charge d)  := fromBlocks 1  0 1 /-} \\
+\quad\texttt{\footnotesize genMetric\_bshift\_cancel} & {\footnotesize Real -shift g\_ = [[I, ],[0, I]]. -/ noncomputable def thetaShiftR ( : Matrix (Fin d) (Fin d) ) : Matrix (Charge d) (Charge d)  := fromBlocks 1  0 1 /-} \\
+\quad\texttt{\footnotesize thetaShiftR\_preserves\_eta} & {\footnotesize Real -shift g\_ = [[I, ],[0, I]]. -/ noncomputable def thetaShiftR ( : Matrix (Fin d) (Fin d) ) : Matrix (Charge d) (Charge d)  := fromBlocks 1  0 1 /-} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.DFT.GeneralizedMetric}} \\
+\quad\texttt{\footnotesize etaR\_genMetric\_sq} & {\footnotesize Real O(d,d) form  = [[0, I],[I, 0]]. -/ noncomputable def etaR (d : ) : Matrix (Charge d) (Charge d)  := fromBlocks 0 1 1 0 /-- HullZwiebach generaliz} \\
+\quad\texttt{\footnotesize etaR\_mul\_self} & {\footnotesize } \\
+\quad\texttt{\footnotesize genMetric\_symm} & {\footnotesize } \\
+\quad\texttt{\footnotesize massForm\_circle} & {\footnotesize Real O(d,d) form  = [[0, I],[I, 0]]. -/ noncomputable def etaR (d : ) : Matrix (Charge d) (Charge d)  := fromBlocks 0 1 1 0 /-- HullZwiebach generaliz} \\
+\quad\texttt{\footnotesize massForm\_covariant} & {\footnotesize Real O(d,d) form  = [[0, I],[I, 0]]. -/ noncomputable def etaR (d : ) : Matrix (Charge d) (Charge d)  := fromBlocks 0 1 1 0 /-- HullZwiebach generaliz} \\
+\quad\texttt{\footnotesize tduality\_inverts\_metric} & {\footnotesize Real O(d,d) form  = [[0, I],[I, 0]]. -/ noncomputable def etaR (d : ) : Matrix (Charge d) (Charge d)  := fromBlocks 0 1 1 0 /-- HullZwiebach generaliz} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.DFT.SectionCondition}} \\
+\quad\texttt{\footnotesize etaPair\_self} & {\footnotesize } \\
+\quad\texttt{\footnotesize eta\_momentum\_to\_winding} & {\footnotesize The -pairing Z  Z' = Z  Z'. -/ def etaPair (Z Z' : Charge d  ) :  := Z  (eta d  Z') /-- A set of charges is a section if it is totally -null. -/ def I} \\
+\quad\texttt{\footnotesize isSection\_image} & {\footnotesize The -pairing Z  Z' = Z  Z'. -/ def etaPair (Z Z' : Charge d  ) :  := Z  (eta d  Z') /-- A set of charges is a section if it is totally -null. -/ def I} \\
+\quad\texttt{\footnotesize levelMatching\_iff} & {\footnotesize The -pairing Z  Z' = Z  Z'. -/ def etaPair (Z Z' : Charge d  ) :  := Z  (eta d  Z') /-- A set of charges is a section if it is totally -null. -/ def I} \\
+\quad\texttt{\footnotesize momentumFrame\_isSection} & {\footnotesize } \\
+\quad\texttt{\footnotesize windingFrame\_isSection} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.DualScale.TraceBound}} \\
+\quad\texttt{\footnotesize circle\_effective\_scale\_ge\_two} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace theorem dualScale\_eq (G : Matrix} \\
+\quad\texttt{\footnotesize dualScale\_circle} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace theorem dualScale\_eq (G : Matrix} \\
+\quad\texttt{\footnotesize dualScale\_eq} & {\footnotesize } \\
+\quad\texttt{\footnotesize dualScale\_ge} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace theorem dualScale\_eq (G : Matrix} \\
+\quad\texttt{\footnotesize dualScale\_inv} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace theorem dualScale\_eq (G : Matrix} \\
+\quad\texttt{\footnotesize dualScale\_one} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace theorem dualScale\_eq (G : Matrix} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.Flux.Integrality}} \\
+\quad\texttt{\footnotesize flux\_half\_selfIntersection\_integral} & {\footnotesize Kronecker product of two integer forms, on Fin n  Fin m. -/ def kronForm (L : Gram n) (L : Gram m) : Matrix (Fin n  Fin m) (Fin n  Fin m)  := kronecke} \\
+\quad\texttt{\footnotesize kronForm\_even} & {\footnotesize Kronecker product of two integer forms, on Fin n  Fin m. -/ def kronForm (L : Gram n) (L : Gram m) : Matrix (Fin n  Fin m) (Fin n  Fin m)  := kronecke} \\
+\quad\texttt{\footnotesize kronForm\_evenDiag} & {\footnotesize } \\
+\quad\texttt{\footnotesize kronForm\_symm} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.Flux.Tadpole}} \\
+\quad\texttt{\footnotesize euler\_K3} & {\footnotesize Hodge numbers h\^{}(p,q) of a complex torus T (all equal to 1). -/ def t2HodgeNumber : Fin 2  Fin 2   := fun \_ \_ => 1 /-- Euler characteristic from Hodge} \\
+\quad\texttt{\footnotesize euler\_T2} & {\footnotesize } \\
+\quad\texttt{\footnotesize k3k3\_anomaly} & {\footnotesize Hodge numbers h\^{}(p,q) of a complex torus T (all equal to 1). -/ def t2HodgeNumber : Fin 2  Fin 2   := fun \_ \_ => 1 /-- Euler characteristic from Hodge} \\
+\quad\texttt{\footnotesize k3t2\_euler\_zero} & {\footnotesize Hodge numbers h\^{}(p,q) of a complex torus T (all equal to 1). -/ def t2HodgeNumber : Fin 2  Fin 2   := fun \_ \_ => 1 /-- Euler characteristic from Hodge} \\
+\quad\texttt{\footnotesize tadpole\_budget} & {\footnotesize Hodge numbers h\^{}(p,q) of a complex torus T (all equal to 1). -/ def t2HodgeNumber : Fin 2  Fin 2   := fun \_ \_ => 1 /-- Euler characteristic from Hodge} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.Basic}} \\
+\quad\texttt{\footnotesize even\_quadratic\_form\_of\_even\_diag} & {\footnotesize An integral lattice of rank n, presented by its Gram matrix in a chosen basis. -/ abbrev Gram (n : ) := Matrix (Fin n) (Fin n)  /-- Even diagonal. For} \\
+\quad\texttt{\footnotesize isUnimodular\_of\_mul\_eq\_one} & {\footnotesize An integral lattice of rank n, presented by its Gram matrix in a chosen basis. -/ abbrev Gram (n : ) := Matrix (Fin n) (Fin n)  /-- Even diagonal. For} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.E8}} \\
+\quad\texttt{\footnotesize cartanE8Inv\_mul} & {\footnotesize } \\
+\quad\texttt{\footnotesize cartanE8\_evenDiag} & {\footnotesize } \\
+\quad\texttt{\footnotesize cartanE8\_symm} & {\footnotesize } \\
+\quad\texttt{\footnotesize cartanE8\_unimodular} & {\footnotesize Cartan matrix of E8 (positive definite form). -/ def cartanE8 : Gram 8 := !![ 2, -1, 0, 0, 0, 0, 0, 0; -1, 2, -1, 0, 0, 0, 0, 0; 0, -1, 2, -1, 0, 0, 0} \\
+\quad\texttt{\footnotesize e8Neg\_evenDiag} & {\footnotesize } \\
+\quad\texttt{\footnotesize e8Neg\_symm} & {\footnotesize } \\
+\quad\texttt{\footnotesize e8Neg\_unimodular} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.E8PosDef}} \\
+\quad\texttt{\footnotesize cartanE8\_det} & {\footnotesize Unit lower-triangular factor. -/ noncomputable def e8L : Matrix (Fin 8) (Fin 8)  := !![1, 0, 0, 0, 0, 0, 0, 0; -1/2, 1, 0, 0, 0, 0, 0, 0; 0, -2/3, 1, } \\
+\quad\texttt{\footnotesize cartanE8\_posDef} & {\footnotesize Unit lower-triangular factor. -/ noncomputable def e8L : Matrix (Fin 8) (Fin 8)  := !![1, 0, 0, 0, 0, 0, 0, 0; -1/2, 1, 0, 0, 0, 0, 0, 0; 0, -2/3, 1, } \\
+\quad\texttt{\footnotesize e8\_LDL} & {\footnotesize Unit lower-triangular factor. -/ noncomputable def e8L : Matrix (Fin 8) (Fin 8)  := !![1, 0, 0, 0, 0, 0, 0, 0; -1/2, 1, 0, 0, 0, 0, 0, 0; 0, -2/3, 1, } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.Hyperbolic}} \\
+\quad\texttt{\footnotesize hyperbolicU\_congruence} & {\footnotesize Hyperbolic plane U. -/ def hyperbolicU : Gram 2 := !![0, 1; 1, 0] theorem hyperbolicU\_symm : hyperbolicU = hyperbolicU := by ext i j fin\_cases i <;> f} \\
+\quad\texttt{\footnotesize hyperbolicU\_eq\_narain\_gram} & {\footnotesize Hyperbolic plane U. -/ def hyperbolicU : Gram 2 := !![0, 1; 1, 0] theorem hyperbolicU\_symm : hyperbolicU = hyperbolicU := by ext i j fin\_cases i <;> f} \\
+\quad\texttt{\footnotesize hyperbolicU\_evenDiag} & {\footnotesize } \\
+\quad\texttt{\footnotesize hyperbolicU\_mul\_self} & {\footnotesize Hyperbolic plane U. -/ def hyperbolicU : Gram 2 := !![0, 1; 1, 0] theorem hyperbolicU\_symm : hyperbolicU = hyperbolicU := by ext i j fin\_cases i <;> f} \\
+\quad\texttt{\footnotesize hyperbolicU\_symm} & {\footnotesize } \\
+\quad\texttt{\footnotesize hyperbolicU\_unimodular} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.K3T2Signature}} \\
+\quad\texttt{\footnotesize index\_mod\_eight} & {\footnotesize Signature (b, b) of a non-degenerate real quadratic form. -/ structure Signature where pos :  neg :  deriving DecidableEq, Repr namespace Signature in} \\
+\quad\texttt{\footnotesize rank\_K3} & {\footnotesize } \\
+\quad\texttt{\footnotesize rank\_K3T2} & {\footnotesize } \\
+\quad\texttt{\footnotesize sigK3T2\_eq} & {\footnotesize } \\
+\quad\texttt{\footnotesize sigK3\_eq} & {\footnotesize } \\
+\quad\texttt{\footnotesize sigK3\_matches\_hodge} & {\footnotesize Signature (b, b) of a non-degenerate real quadratic form. -/ structure Signature where pos :  neg :  deriving DecidableEq, Repr namespace Signature in} \\
+\quad\texttt{\footnotesize sigMukai\_eq} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.Mukai}} \\
+\quad\texttt{\footnotesize hyperbolicUNeg\_mul\_self} & {\footnotesize } \\
+\quad\texttt{\footnotesize hyperbolicUNeg\_unimodular} & {\footnotesize } \\
+\quad\texttt{\footnotesize mukaiPair\_even} & {\footnotesize A Mukai vector (r, c, s)  H  H  H. -/ structure MukaiVec (n : ) where (r : ) (c : Fin n  ) (s : ) /-- Huybrechts Def. 1.4. -/ def mukaiPair (n : ) (L } \\
+\quad\texttt{\footnotesize mukaiPair\_self} & {\footnotesize } \\
+\quad\texttt{\footnotesize mukaiPair\_symm} & {\footnotesize } \\
+\quad\texttt{\footnotesize structureSheaf\_mukai\_sq} & {\footnotesize A Mukai vector (r, c, s)  H  H  H. -/ structure MukaiVec (n : ) where (r : ) (c : Fin n  ) (s : ) /-- Huybrechts Def. 1.4. -/ def mukaiPair (n : ) (L } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.Reflection}} \\
+\quad\texttt{\footnotesize e8Neg\_simpleRoot\_norm} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). -/ def reflection (L : Gram n) (v : Fin n  ) : Gram n := 1 + vecMulVec v } \\
+\quad\texttt{\footnotesize e8Neg\_weyl\_isometry} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). -/ def reflection (L : Gram n) (v : Fin n  ) : Gram n := 1 + vecMulVec v } \\
+\quad\texttt{\footnotesize reflection\_involution} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). -/ def reflection (L : Gram n) (v : Fin n  ) : Gram n := 1 + vecMulVec v } \\
+\quad\texttt{\footnotesize reflection\_isometry} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). -/ def reflection (L : Gram n) (v : Fin n  ) : Gram n := 1 + vecMulVec v } \\
+\quad\texttt{\footnotesize vecMulVec\_mul\_self} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). -/ def reflection (L : Gram n) (v : Fin n  ) : Gram n := 1 + vecMulVec v } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.Moonshine.EOT}} \\
+\quad\texttt{\footnotesize A6\_decomposition} & {\footnotesize EOT eq. (1.12): A, , A. -/ def eotA : Fin 9   := ![45, 231, 770, 2277, 5796, 13915, 30843, 65550, 132825] /-- A  A are each the dimension of an irredu} \\
+\quad\texttt{\footnotesize A6\_not\_irrep} & {\footnotesize EOT eq. (1.12): A, , A. -/ def eotA : Fin 9   := ![45, 231, 770, 2277, 5796, 13915, 30843, 65550, 132825] /-- A  A are each the dimension of an irredu} \\
+\quad\texttt{\footnotesize A7\_decomposition} & {\footnotesize EOT eq. (1.12): A, , A. -/ def eotA : Fin 9   := ![45, 231, 770, 2277, 5796, 13915, 30843, 65550, 132825] /-- A  A are each the dimension of an irredu} \\
+\quad\texttt{\footnotesize first\_five\_are\_irreps} & {\footnotesize EOT eq. (1.12): A, , A. -/ def eotA : Fin 9   := ![45, 231, 770, 2277, 5796, 13915, 30843, 65550, 132825] /-- A  A are each the dimension of an irredu} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.TDuality.Factorized}} \\
+\quad\texttt{\footnotesize chargeNorm\_even} & {\footnotesize e\_k: the matrix unit at (k,k). -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d)  := single k k 1 /-- Factorized duality D\_k (GPR eq. (2.4.29)). -/ def} \\
+\quad\texttt{\footnotesize chargeNorm\_invariant} & {\footnotesize e\_k: the matrix unit at (k,k). -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d)  := single k k 1 /-- Factorized duality D\_k (GPR eq. (2.4.29)). -/ def} \\
+\quad\texttt{\footnotesize chargeNorm\_sumElim} & {\footnotesize } \\
+\quad\texttt{\footnotesize factorized\_comm} & {\footnotesize } \\
+\quad\texttt{\footnotesize factorized\_isODD} & {\footnotesize } \\
+\quad\texttt{\footnotesize factorized\_mul\_self} & {\footnotesize } \\
+\quad\texttt{\footnotesize factorized\_two} & {\footnotesize e\_k: the matrix unit at (k,k). -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d)  := single k k 1 /-- Factorized duality D\_k (GPR eq. (2.4.29)). -/ def} \\
+\quad\texttt{\footnotesize proj\_comm} & {\footnotesize e\_k: the matrix unit at (k,k). -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d)  := single k k 1 /-- Factorized duality D\_k (GPR eq. (2.4.29)). -/ def} \\
+\quad\texttt{\footnotesize proj\_mul\_self} & {\footnotesize } \\
+\quad\texttt{\footnotesize proj\_transpose} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.TDuality.Mirror}} \\
+\quad\texttt{\footnotesize mirrorTheta\_antisymm} & {\footnotesize } \\
+\quad\texttt{\footnotesize mirror\_conjugates\_tauShift} & {\footnotesize T = [[1,1],[0,1]]. -/ def tauShift : Matrix (Fin 2) (Fin 2)  := !![1, 1; 0, 1] /-- (T) = [[1,0],[-1,1]]. -/ def tauShiftDual : Matrix (Fin 2) (Fin 2) } \\
+\quad\texttt{\footnotesize tauShift\_dual\_spec} & {\footnotesize } \\
+\quad\texttt{\footnotesize tauShift\_isODD} & {\footnotesize T = [[1,1],[0,1]]. -/ def tauShift : Matrix (Fin 2) (Fin 2)  := !![1, 1; 0, 1] /-- (T) = [[1,0],[-1,1]]. -/ def tauShiftDual : Matrix (Fin 2) (Fin 2) } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.TDuality.ODD}} \\
+\quad\texttt{\footnotesize basisChange\_isODD} & {\footnotesize } \\
+\quad\texttt{\footnotesize eta\_isODD} & {\footnotesize Charge-lattice index set: d momenta  d windings. -/ abbrev Charge (d : ) := Fin d  Fin d /-- The O(d,d)-invariant form  = [[0, I],[I, 0]]. -/ def eta } \\
+\quad\texttt{\footnotesize eta\_mul\_self} & {\footnotesize Charge-lattice index set: d momenta  d windings. -/ abbrev Charge (d : ) := Fin d  Fin d /-- The O(d,d)-invariant form  = [[0, I],[I, 0]]. -/ def eta } \\
+\quad\texttt{\footnotesize eta\_one\_reindex} & {\footnotesize Charge-lattice index set: d momenta  d windings. -/ abbrev Charge (d : ) := Fin d  Fin d /-- The O(d,d)-invariant form  = [[0, I],[I, 0]]. -/ def eta } \\
+\quad\texttt{\footnotesize isODD\_mul} & {\footnotesize Charge-lattice index set: d momenta  d windings. -/ abbrev Charge (d : ) := Fin d  Fin d /-- The O(d,d)-invariant form  = [[0, I],[I, 0]]. -/ def eta } \\
+\quad\texttt{\footnotesize thetaShift\_isODD} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.TDuality.SL2Product}} \\
+\quad\texttt{\footnotesize basisChange\_comm\_thetaShift} & {\footnotesize J = [[0,1],[-1,0]]. -/ def jMat : Matrix (Fin 2) (Fin 2)  := !![0, 1; -1, 0] theorem mul\_jMat\_mul\_transpose (A : Matrix (Fin 2) (Fin 2) ) : A jMat A =} \\
+\quad\texttt{\footnotesize basisChange\_mul} & {\footnotesize } \\
+\quad\texttt{\footnotesize mul\_jMat\_mul\_transpose} & {\footnotesize } \\
+\quad\texttt{\footnotesize thetaShift\_mul} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleStream2.TDuality.Spectrum}} \\
+\quad\texttt{\footnotesize eta\_transpose} & {\footnotesize Helper:  is symmetric.} \\
+\quad\texttt{\footnotesize isODD\_inv\_isODD} & {\footnotesize } \\
+\quad\texttt{\footnotesize isODD\_left\_inv} & {\footnotesize } \\
+\quad\texttt{\footnotesize isODD\_right\_inv} & {\footnotesize } \\
+\quad\texttt{\footnotesize spectrum\_equivalence} & {\footnotesize Helper:  is symmetric. -/ theorem eta\_transpose : (eta d) = eta d := by unfold eta rw [fromBlocks\_transpose] simp theorem isODD\_inv\_isODD (g : Matrix } \\
+\end{longtable}
+\section*{\texttt{StringTheoryFormalization} (89 theorems)}
+\begin{longtable}{p{0.40\textwidth}p{0.55\textwidth}}\toprule Theorem & First line of its docstring \\ \midrule\endhead\bottomrule\endfoot
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.CentralCharge}} \\
+\quad\texttt{\footnotesize central\_charge\_from\_worldsheet\_action} & {\footnotesize The Virasoro central charge contribution from a single free boson. -/ def centralChargeBoson :  := 1 /-- The Virasoro central charge from a single fre} \\
+\quad\texttt{\footnotesize central\_charge\_k3\_eq\_six} & {\footnotesize The Virasoro central charge contribution from a single free boson. -/ def centralChargeBoson :  := 1 /-- The Virasoro central charge from a single fre} \\
+\quad\texttt{\footnotesize virasoro\_algebra\_commutator} & {\footnotesize The Virasoro central charge contribution from a single free boson. -/ def centralChargeBoson :  := 1 /-- The Virasoro central charge from a single fre} \\
+\quad\texttt{\footnotesize virasoro\_ope\_central\_term} & {\footnotesize The Virasoro central charge contribution from a single free boson. -/ def centralChargeBoson :  := 1 /-- The Virasoro central charge from a single fre} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.ChiralPrimaries}} \\
+\quad\texttt{\footnotesize chiral\_primary\_ring\_associativity} & {\footnotesize N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h  0. -/ confWeight :  /-- U(1)\_R charge q   (after sp} \\
+\quad\texttt{\footnotesize chiral\_primary\_saturates\_bps} & {\footnotesize N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h  0. -/ confWeight :  /-- U(1)\_R charge q   (after sp} \\
+\quad\texttt{\footnotesize k3\_chiral\_primary\_total} & {\footnotesize N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h  0. -/ confWeight :  /-- U(1)\_R charge q   (after sp} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.FTermPotential}} \\
+\quad\texttt{\footnotesize flux\_tadpole\_quantization\_exact} & {\footnotesize The complex dilaton-axion field  = C + i e\^{}(-). -/ structure DilatonAxion where  :  im\_pos : 0 < .im /-- The Khler potential for the dilaton modulus. } \\
+\quad\texttt{\footnotesize fterm\_potential\_minimum\_susy} & {\footnotesize The complex dilaton-axion field  = C + i e\^{}(-). -/ structure DilatonAxion where  :  im\_pos : 0 < .im /-- The Khler potential for the dilaton modulus. } \\
+\quad\texttt{\footnotesize fterm\_potential\_nonneg} & {\footnotesize The complex dilaton-axion field  = C + i e\^{}(-). -/ structure DilatonAxion where  :  im\_pos : 0 < .im /-- The Khler potential for the dilaton modulus. } \\
+\quad\texttt{\footnotesize no\_scale\_identity} & {\footnotesize The complex dilaton-axion field  = C + i e\^{}(-). -/ structure DilatonAxion where  :  im\_pos : 0 < .im /-- The Khler potential for the dilaton modulus. } \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.HodgeNumbers}} \\
+\quad\texttt{\footnotesize hodge11\_from\_kummer} & {\footnotesize The Hodge numbers of K3 as a function (p,q)  . -/ def k3HodgeNumber : Fin 3  Fin 3   | 0, \_, 0, \_ => 1 -- h\^{}(0,0) = 1 | 0, \_, 1, \_ => 0 -- h\^{}(0,1) = 0} \\
+\quad\texttt{\footnotesize k3\_b2} & {\footnotesize The Hodge numbers of K3 as a function (p,q)  . -/ def k3HodgeNumber : Fin 3  Fin 3   | 0, \_, 0, \_ => 1 -- h\^{}(0,0) = 1 | 0, \_, 1, \_ => 0 -- h\^{}(0,1) = 0} \\
+\quad\texttt{\footnotesize k3\_euler\_characteristic} & {\footnotesize The Hodge numbers of K3 as a function (p,q)  . -/ def k3HodgeNumber : Fin 3  Fin 3   | 0, \_, 0, \_ => 1 -- h\^{}(0,0) = 1 | 0, \_, 1, \_ => 0 -- h\^{}(0,1) = 0} \\
+\quad\texttt{\footnotesize k3\_hodge\_symmetry} & {\footnotesize The Hodge numbers of K3 as a function (p,q)  . -/ def k3HodgeNumber : Fin 3  Fin 3   | 0, \_, 0, \_ => 1 -- h\^{}(0,0) = 1 | 0, \_, 1, \_ => 0 -- h\^{}(0,1) = 0} \\
+\quad\texttt{\footnotesize k3\_serre\_duality} & {\footnotesize The Hodge numbers of K3 as a function (p,q)  . -/ def k3HodgeNumber : Fin 3  Fin 3   | 0, \_, 0, \_ => 1 -- h\^{}(0,0) = 1 | 0, \_, 1, \_ => 0 -- h\^{}(0,1) = 0} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.ModuliGeodesics}} \\
+\quad\texttt{\footnotesize geodesic\_equation\_kummer\_locus} & {\footnotesize A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). -/ structure K3ModuliPoint where /} \\
+\quad\texttt{\footnotesize poincare\_geodesic\_atlas\_curvature} & {\footnotesize A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). -/ structure K3ModuliPoint where /} \\
+\quad\texttt{\footnotesize poincare\_geodesic\_kinetic\_energy\_nonneg} & {\footnotesize A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). -/ structure K3ModuliPoint where /} \\
+\quad\texttt{\footnotesize wp\_geodesic\_completeness} & {\footnotesize A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). -/ structure K3ModuliPoint where /} \\
+\quad\texttt{\footnotesize wp\_metric\_positive\_diagonal} & {\footnotesize A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). -/ structure K3ModuliPoint where /} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.SL2CSymmetry}} \\
+\quad\texttt{\footnotesize mobius\_compose} & {\footnotesize A Mbius (SL(2,)) transformation z  (az+b)/(cz+d). -/ structure MobiusTransform where (a b c d : ) det\_one : a d - b c = 1 /-- Action of a Mbius transf} \\
+\quad\texttt{\footnotesize mobius\_id\_act} & {\footnotesize A Mbius (SL(2,)) transformation z  (az+b)/(cz+d). -/ structure MobiusTransform where (a b c d : ) det\_one : a d - b c = 1 /-- Action of a Mbius transf} \\
+\quad\texttt{\footnotesize sl2c\_fixes\_two\_point} & {\footnotesize A Mbius (SL(2,)) transformation z  (az+b)/(cz+d). -/ structure MobiusTransform where (a b c d : ) det\_one : a d - b c = 1 /-- Action of a Mbius transf} \\
+\quad\texttt{\footnotesize ward\_identity\_dilatation} & {\footnotesize A Mbius (SL(2,)) transformation z  (az+b)/(cz+d). -/ structure MobiusTransform where (a b c d : ) det\_one : a d - b c = 1 /-- Action of a Mbius transf} \\
+\quad\texttt{\footnotesize ward\_identity\_translation} & {\footnotesize A Mbius (SL(2,)) transformation z  (az+b)/(cz+d). -/ structure MobiusTransform where (a b c d : ) det\_one : a d - b c = 1 /-- Action of a Mbius transf} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.NSMath.EnergyBounds}} \\
+\quad\texttt{\footnotesize energy\_dissipation} & {\footnotesize Energy of a field configuration measured in H\^{}s. -/ noncomputable def fieldEnergy (s : SobolevExponent) (coeff :     ) :  := (sobolevNorm s coeff) \^{} 2} \\
+\quad\texttt{\footnotesize regularity\_lifting} & {\footnotesize Energy of a field configuration measured in H\^{}s. -/ noncomputable def fieldEnergy (s : SobolevExponent) (coeff :     ) :  := (sobolevNorm s coeff) \^{} 2} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.NSMath.FractionalSobolev}} \\
+\quad\texttt{\footnotesize sobolev\_embedding} & {\footnotesize Fractional Sobolev exponent s   with s > 0. -/ structure SobolevExponent where s :  pos : 0 < s /-- H\^{}s(T) norm via Fourier characterization: u\_(H\^{}s) } \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.NSMath.MildPDEs}} \\
+\quad\texttt{\footnotesize mild\_solution\_unique} & {\footnotesize Abstract semigroup generator (unbounded operator) on a Banach space. -/ structure SemigroupGenerator (E : Type) [NormedAddCommGroup E] [NormedSpace  E} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.NSMath.OpenAIBridging}} \\
+\quad\texttt{\footnotesize evolution\_regularity\_preserved} & {\footnotesize Torus frequency lattice    for the T compactification. -/ abbrev TorusFrequency :=    /-- Torus spatial coordinates on the universal cover   . -/ abbr} \\
+\quad\texttt{\footnotesize is\_rapid\_summable} & {\footnotesize Torus frequency lattice    for the T compactification. -/ abbrev TorusFrequency :=    /-- Torus spatial coordinates on the universal cover   . -/ abbr} \\
+\quad\texttt{\footnotesize swap\_torus\_involution} & {\footnotesize Torus frequency lattice    for the T compactification. -/ abbrev TorusFrequency :=    /-- Torus spatial coordinates on the universal cover   . -/ abbr} \\
+\quad\texttt{\footnotesize torus\_weight\_pos} & {\footnotesize Torus frequency lattice    for the T compactification. -/ abbrev TorusFrequency :=    /-- Torus spatial coordinates on the universal cover   . -/ abbr} \\
+\quad\texttt{\footnotesize torus\_weight\_swap} & {\footnotesize Torus frequency lattice    for the T compactification. -/ abbrev TorusFrequency :=    /-- Torus spatial coordinates on the universal cover   . -/ abbr} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.AutoEvolve}} \\
+\quad\texttt{\footnotesize potential\_decreases\_along\_flow} & {\footnotesize A scalar field EFT flow equation: d/dt = -\_ V(). -/ structure EFTFlowEq where /-- The effective potential V :   . -/ potential :    potential\_smooth :} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.BPSMultiplicities}} \\
+\quad\texttt{\footnotesize bps\_ratio\_pos} & {\footnotesize The BPS index ratio \_BPS = 77/60, arising from the ratio of the K3 Euler characteristic (K3) = 24 to the index density. -/ def bpsRatio :  := 77 / 60 } \\
+\quad\texttt{\footnotesize bps\_ratio\_reduced} & {\footnotesize The BPS index ratio \_BPS = 77/60, arising from the ratio of the K3 Euler characteristic (K3) = 24 to the index density. -/ def bpsRatio :  := 77 / 60 } \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.FourierMukai}} \\
+\quad\texttt{\footnotesize fm\_isEquivalence\_of\_mk} & {\footnotesize Placeholder type for a triangulated category (D\^{}b of coherent sheaves). -/ structure DerivedCategory (X : Type) where name : String /-- The Fourier-Mu} \\
+\quad\texttt{\footnotesize fm\_squared\_is\_shift} & {\footnotesize Placeholder type for a triangulated category (D\^{}b of coherent sheaves). -/ structure DerivedCategory (X : Type) where name : String /-- The Fourier-Mu} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.InvariantLocks}} \\
+\quad\texttt{\footnotesize modulus\_upper\_half} & {\footnotesize The complex structure modulus  of the worldsheet torus, constrained to the upper half-plane . -/ structure WorldsheetModulus where  :  im\_pos : 0 < .i} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.KummerBlowup}} \\
+\quad\texttt{\footnotesize exceptional\_self\_intersection} & {\footnotesize The 16 exceptional divisors from the Kummer blowup of T/. -/ def kummerExceptionalDivisors : Fin 16  String := fun i => s!"E\_(i.val)" /-- Intersection} \\
+\quad\texttt{\footnotesize kummer\_lattice\_contribution} & {\footnotesize The 16 exceptional divisors from the Kummer blowup of T/. -/ def kummerExceptionalDivisors : Fin 16  String := fun i => s!"E\_(i.val)" /-- Intersection} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.MathieuM24}} \\
+\quad\texttt{\footnotesize M24RepDim\_sum\_sq} & {\footnotesize Dimension of the j-th irreducible representation of M, all 26, in the order of EguchiOoguriTachikawa, arXiv:1004.0956, eq. (A.3) (papers/foundations/e} \\
+\quad\texttt{\footnotesize M24\_first\_coefficient} & {\footnotesize Dimension of the j-th irreducible representation of M, all 26, in the order of EguchiOoguriTachikawa, arXiv:1004.0956, eq. (A.3) (papers/foundations/e} \\
+\quad\texttt{\footnotesize M24\_order} & {\footnotesize Dimension of the j-th irreducible representation of M, all 26, in the order of EguchiOoguriTachikawa, arXiv:1004.0956, eq. (A.3) (papers/foundations/e} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.MukaiLattice}} \\
+\quad\texttt{\footnotesize kummer\_sublattice\_rank} & {\footnotesize Signature (4,20) lattice for K3 cohomology. Rank = 24, signature = (4,20), discriminant = 1 (unimodular). -/ structure MukaiLattice where /-- Basis ve} \\
+\quad\texttt{\footnotesize mukai\_rank} & {\footnotesize Signature (4,20) lattice for K3 cohomology. Rank = 24, signature = (4,20), discriminant = 1 (unimodular). -/ structure MukaiLattice where /-- Basis ve} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.MukhanovSasaki}} \\
+\quad\texttt{\footnotesize ms\_superhorizon\_freezing} & {\footnotesize Mukhanov-Sasaki variable v\_k in Fourier space. Satisfies: v\_k'' + (k - z''/z) v\_k = 0 where z = a ' / H (slow-roll pump field). -/ structure MSSolutio} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.ODDMetric}} \\
+\quad\texttt{\footnotesize odd\_metric\_d1} & {\footnotesize The O(D,D) invariant metric \_(MN) = [[0, 1\_D],[1\_D, 0]]. This is the split-signature metric on \^{}(2D). -/ def oddMetric : Matrix (Fin (2 D)) (Fin (2 D)} \\
+\quad\texttt{\footnotesize odd\_metric\_symm} & {\footnotesize The O(D,D) invariant metric \_(MN) = [[0, 1\_D],[1\_D, 0]]. This is the split-signature metric on \^{}(2D). -/ def oddMetric : Matrix (Fin (2 D)) (Fin (2 D)} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.PicardSpectral}} \\
+\quad\texttt{\footnotesize picard\_convergence} & {\footnotesize The Picard iteration for the worldsheet OPE algebra converges when the spectral radius  < 1 after rescaling by 1/18. -/ def picardSpectralRadius :  :=} \\
+\quad\texttt{\footnotesize picard\_spectral\_contraction} & {\footnotesize The Picard iteration for the worldsheet OPE algebra converges when the spectral radius  < 1 after rescaling by 1/18. -/ def picardSpectralRadius :  :=} \\
+\quad\texttt{\footnotesize picard\_spectral\_radius\_pos} & {\footnotesize The Picard iteration for the worldsheet OPE algebra converges when the spectral radius  < 1 after rescaling by 1/18. -/ def picardSpectralRadius :  :=} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.StiffIntegrators}} \\
+\quad\texttt{\footnotesize bdf2\_order\_bound} & {\footnotesize A stiff ODE system y' = f(t,y) with stiffness ratio \_max/\_min  1. -/ structure StiffODESystem where /-- Spatial dimension of the phase space. -/ dim :} \\
+\quad\texttt{\footnotesize implicit\_euler\_denominator\_lower\_bound} & {\footnotesize A stiff ODE system y' = f(t,y) with stiffness ratio \_max/\_min  1. -/ structure StiffODESystem where /-- Spatial dimension of the phase space. -/ dim :} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.SwamplandSafe}} \\
+\quad\texttt{\footnotesize de\_sitter\_conjecture} & {\footnotesize The Swampland Distance Conjecture (SDC): Along any geodesic in moduli space of length   O(1) in Planck units, an infinite tower of states becomes ligh} \\
+\quad\texttt{\footnotesize sdc\_tower\_mass\_pos} & {\footnotesize The Swampland Distance Conjecture (SDC): Along any geodesic in moduli space of length   O(1) in Planck units, an infinite tower of states becomes ligh} \\
+\quad\texttt{\footnotesize sdc\_tower\_suppression} & {\footnotesize The Swampland Distance Conjecture (SDC): Along any geodesic in moduli space of length   O(1) in Planck units, an infinite tower of states becomes ligh} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.TDAMapper}} \\
+\quad\texttt{\footnotesize mapper\_nerve\_theorem} & {\footnotesize A cover of a topological space by open sets. -/ structure OpenCover (X : Type) [TopologicalSpace X] where index : Type sets : index  Set X isOpen :  i} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.TDualityGysin}} \\
+\quad\texttt{\footnotesize tduality\_involution} & {\footnotesize T-duality radius inversion: R  '/R. -/ noncomputable def tDualityRadius (R ' : ) (hR : 0 < R) (h : 0 < ') :  := ' / R /-- T-duality swaps winding and } \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.TadpoleConstraint}} \\
+\quad\texttt{\footnotesize tadpole\_cancellation} & {\footnotesize A D3-brane charge contribution at a stack location. -/ structure BraneStack where /-- Number of D3 branes (positive = brane, negative = anti-brane). -} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.VertexOperators}} \\
+\quad\texttt{\footnotesize ope\_vacuum\_left} & {\footnotesize Worldsheet mode index. -/ abbrev ModeIndex :=  /-- A bosonic oscillator mode a\_n acting on a Fock space. We model the Fock space as formal power serie} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.UseCases.CriticalDimension}} \\
+\quad\texttt{\footnotesize bc\_ghost\_charge\_eq} & {\footnotesize Central charge of an anticommuting first-order (b,c) system of weight (, 1-). -/ def fermionicGhostCharge (lam : ) :  := 1 - 3 (2 lam - 1) \^{} 2 /-- Cen} \\
+\quad\texttt{\footnotesize betagamma\_ghost\_charge\_eq} & {\footnotesize Central charge of an anticommuting first-order (b,c) system of weight (, 1-). -/ def fermionicGhostCharge (lam : ) :  := 1 - 3 (2 lam - 1) \^{} 2 /-- Cen} \\
+\quad\texttt{\footnotesize bosonic\_dimension\_unique} & {\footnotesize Central charge of an anticommuting first-order (b,c) system of weight (, 1-). -/ def fermionicGhostCharge (lam : ) :  := 1 - 3 (2 lam - 1) \^{} 2 /-- Cen} \\
+\quad\texttt{\footnotesize bosonic\_eq\_neg\_fermionic} & {\footnotesize Central charge of an anticommuting first-order (b,c) system of weight (, 1-). -/ def fermionicGhostCharge (lam : ) :  := 1 - 3 (2 lam - 1) \^{} 2 /-- Cen} \\
+\quad\texttt{\footnotesize bosonic\_string\_critical\_dimension} & {\footnotesize Central charge of an anticommuting first-order (b,c) system of weight (, 1-). -/ def fermionicGhostCharge (lam : ) :  := 1 - 3 (2 lam - 1) \^{} 2 /-- Cen} \\
+\quad\texttt{\footnotesize superstring\_critical\_dimension} & {\footnotesize Central charge of an anticommuting first-order (b,c) system of weight (, 1-). -/ def fermionicGhostCharge (lam : ) :  := 1 - 3 (2 lam - 1) \^{} 2 /-- Cen} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.UseCases.K3SignatureTheorem}} \\
+\quad\texttt{\footnotesize bMinus\_eq\_nineteen} & {\footnotesize } \\
+\quad\texttt{\footnotesize bPlus\_eq\_three} & {\footnotesize } \\
+\quad\texttt{\footnotesize betti\_decomposition\_matches\_b2} & {\footnotesize The positive-definite part of the intersection form: 2h\^{}(2,0) + 1. -/ def bPlus :  := 2 k3HodgeNumber 2, by norm\_num 0, by norm\_num + 1 /-- The negati} \\
+\quad\texttt{\footnotesize betti\_sum\_eq\_b2} & {\footnotesize } \\
+\quad\texttt{\footnotesize k3\_signature\_eq\_neg\_sixteen} & {\footnotesize The positive-definite part of the intersection form: 2h\^{}(2,0) + 1. -/ def bPlus :  := 2 k3HodgeNumber 2, by norm\_num 0, by norm\_num + 1 /-- The negati} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.UseCases.MathieuTower}} \\
+\quad\texttt{\footnotesize M21\_order\_factorization} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
+\quad\texttt{\footnotesize M22\_stabilizer\_index} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
+\quad\texttt{\footnotesize M23\_stabilizer\_index} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
+\quad\texttt{\footnotesize M24\_stabilizer\_index} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
+\quad\texttt{\footnotesize mathieu\_tower\_consistent} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
+\quad\texttt{\footnotesize mathieu\_tower\_matches\_certified\_order} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.UseCases.NarainLattice}} \\
+\quad\texttt{\footnotesize B\_is\_polarization\_of\_Q} & {\footnotesize } \\
+\quad\texttt{\footnotesize gram\_eq\_hyperbolic} & {\footnotesize Left-moving momentum (see also UseCases.TDuality.leftMomentum, restated self-contained here so this file's Narain-specific claims don't accidentally d} \\
+\quad\texttt{\footnotesize narain\_form\_even} & {\footnotesize Left-moving momentum (see also UseCases.TDuality.leftMomentum, restated self-contained here so this file's Narain-specific claims don't accidentally d} \\
+\quad\texttt{\footnotesize narain\_gram\_unimodular} & {\footnotesize Left-moving momentum (see also UseCases.TDuality.leftMomentum, restated self-contained here so this file's Narain-specific claims don't accidentally d} \\
+\quad\texttt{\footnotesize narain\_norm\_R\_independent} & {\footnotesize Left-moving momentum (see also UseCases.TDuality.leftMomentum, restated self-contained here so this file's Narain-specific claims don't accidentally d} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.UseCases.TDualityMassSpectrum}} \\
+\quad\texttt{\footnotesize self\_dual\_radius\_unique} & {\footnotesize Left-moving momentum: combination of momentum and winding that survives T-duality unchanged. -/ def leftMomentum (n w R : ) :  := n / R + w R /-- Righ} \\
+\quad\texttt{\footnotesize tduality\_fixes\_left\_momentum} & {\footnotesize Left-moving momentum: combination of momentum and winding that survives T-duality unchanged. -/ def leftMomentum (n w R : ) :  := n / R + w R /-- Righ} \\
+\quad\texttt{\footnotesize tduality\_flips\_right\_momentum} & {\footnotesize Left-moving momentum: combination of momentum and winding that survives T-duality unchanged. -/ def leftMomentum (n w R : ) :  := n / R + w R /-- Righ} \\
+\quad\texttt{\footnotesize tduality\_invariant\_mass\_squared} & {\footnotesize Left-moving momentum: combination of momentum and winding that survives T-duality unchanged. -/ def leftMomentum (n w R : ) :  := n / R + w R /-- Righ} \\
+\end{longtable}
+\section*{\texttt{DoubleFieldTheory} (44 theorems)}
+\begin{longtable}{p{0.40\textwidth}p{0.55\textwidth}}\toprule Theorem & First line of its docstring \\ \midrule\endhead\bottomrule\endfoot
+\multicolumn{2}{l}{\textsf{\small DoubleFieldTheory.ActionCurvature}} \\
+\quad\texttt{\footnotesize connection\_trace\_conservation} & {\footnotesize DEFINITION: O(D, D) Invariant Dilaton Measure Physical Interpretation: The integration measure e\^{}(-2d) =  sqrt(-g)  , e\^{}(-2 phi) on doubled spacetime:} \\
+\quad\texttt{\footnotesize contracted\_einstein\_dim2} & {\footnotesize DEFINITION: O(D, D) Invariant Dilaton Measure Physical Interpretation: The integration measure e\^{}(-2d) =  sqrt(-g)  , e\^{}(-2 phi) on doubled spacetime:} \\
+\quad\texttt{\footnotesize dft\_action\_nsns\_equivalence} & {\footnotesize DEFINITION: O(D, D) Invariant Dilaton Measure Physical Interpretation: The integration measure e\^{}(-2d) =  sqrt(-g)  , e\^{}(-2 phi) on doubled spacetime:} \\
+\quad\texttt{\footnotesize dft\_ricci\_expansion} & {\footnotesize DEFINITION: O(D, D) Invariant Dilaton Measure Physical Interpretation: The integration measure e\^{}(-2d) =  sqrt(-g)  , e\^{}(-2 phi) on doubled spacetime:} \\
+\quad\texttt{\footnotesize dft\_ricci\_physical\_reduction} & {\footnotesize DEFINITION: O(D, D) Invariant Dilaton Measure Physical Interpretation: The integration measure e\^{}(-2d) =  sqrt(-g)  , e\^{}(-2 phi) on doubled spacetime:} \\
+\quad\texttt{\footnotesize dilaton\_measure\_symm} & {\footnotesize DEFINITION: O(D, D) Invariant Dilaton Measure Physical Interpretation: The integration measure e\^{}(-2d) =  sqrt(-g)  , e\^{}(-2 phi) on doubled spacetime:} \\
+\multicolumn{2}{l}{\textsf{\small DoubleFieldTheory.CourantAlgebroid}} \\
+\quad\texttt{\footnotesize cbracket\_antisymm} & {\footnotesize Lie bracket commutator of scalar vector field representations. -/ def LieBracket (u v : Int) : Int := u v - v u /-- THEOREM: Ordinary Spacetime Lie Se} \\
+\quad\texttt{\footnotesize cbracket\_v\_zero} & {\footnotesize Lie bracket commutator of scalar vector field representations. -/ def LieBracket (u v : Int) : Int := u v - v u /-- THEOREM: Ordinary Spacetime Lie Se} \\
+\quad\texttt{\footnotesize dorfman\_cbracket\_diff} & {\footnotesize Lie bracket commutator of scalar vector field representations. -/ def LieBracket (u v : Int) : Int := u v - v u /-- THEOREM: Ordinary Spacetime Lie Se} \\
+\quad\texttt{\footnotesize dorfman\_symmetric\_exact} & {\footnotesize Lie bracket commutator of scalar vector field representations. -/ def LieBracket (u v : Int) : Int := u v - v u /-- THEOREM: Ordinary Spacetime Lie Se} \\
+\quad\texttt{\footnotesize gen\_lie\_closure} & {\footnotesize Lie bracket commutator of scalar vector field representations. -/ def LieBracket (u v : Int) : Int := u v - v u /-- THEOREM: Ordinary Spacetime Lie Se} \\
+\quad\texttt{\footnotesize jacobiator\_vector\_vanishes} & {\footnotesize Lie bracket commutator of scalar vector field representations. -/ def LieBracket (u v : Int) : Int := u v - v u /-- THEOREM: Ordinary Spacetime Lie Se} \\
+\quad\texttt{\footnotesize lie\_bracket\_self} & {\footnotesize Lie bracket commutator of scalar vector field representations. -/ def LieBracket (u v : Int) : Int := u v - v u /-- THEOREM: Ordinary Spacetime Lie Se} \\
+\quad\texttt{\footnotesize strong\_section\_condition} & {\footnotesize Lie bracket commutator of scalar vector field representations. -/ def LieBracket (u v : Int) : Int := u v - v u /-- THEOREM: Ordinary Spacetime Lie Se} \\
+\multicolumn{2}{l}{\textsf{\small DoubleFieldTheory.GeneralizedGeometry}} \\
+\quad\texttt{\footnotesize btwist\_preserves\_eta} & {\footnotesize Generalized Vector Field A section X\^{}M = (v\^{} mu,  xi\_ mu)  in  Gamma(TM  oplus T\^{}M) combining a tangent vector v (momentum mode generator) and a 1-for} \\
+\quad\texttt{\footnotesize chiral\_projector\_orthogonality} & {\footnotesize Generalized Vector Field A section X\^{}M = (v\^{} mu,  xi\_ mu)  in  Gamma(TM  oplus T\^{}M) combining a tangent vector v (momentum mode generator) and a 1-for} \\
+\quad\texttt{\footnotesize courant\_pairing\_symm} & {\footnotesize Generalized Vector Field A section X\^{}M = (v\^{} mu,  xi\_ mu)  in  Gamma(TM  oplus T\^{}M) combining a tangent vector v (momentum mode generator) and a 1-for} \\
+\quad\texttt{\footnotesize gen\_energy\_pos} & {\footnotesize Generalized Vector Field A section X\^{}M = (v\^{} mu,  xi\_ mu)  in  Gamma(TM  oplus T\^{}M) combining a tangent vector v (momentum mode generator) and a 1-for} \\
+\quad\texttt{\footnotesize gen\_metric\_duality} & {\footnotesize Generalized Vector Field A section X\^{}M = (v\^{} mu,  xi\_ mu)  in  Gamma(TM  oplus T\^{}M) combining a tangent vector v (momentum mode generator) and a 1-for} \\
+\quad\texttt{\footnotesize gen\_metric\_symmetric} & {\footnotesize Generalized Vector Field A section X\^{}M = (v\^{} mu,  xi\_ mu)  in  Gamma(TM  oplus T\^{}M) combining a tangent vector v (momentum mode generator) and a 1-for} \\
+\quad\texttt{\footnotesize odd\_inversion\_generator} & {\footnotesize Generalized Vector Field A section X\^{}M = (v\^{} mu,  xi\_ mu)  in  Gamma(TM  oplus T\^{}M) combining a tangent vector v (momentum mode generator) and a 1-for} \\
+\quad\texttt{\footnotesize odd\_metric\_eval} & {\footnotesize Generalized Vector Field A section X\^{}M = (v\^{} mu,  xi\_ mu)  in  Gamma(TM  oplus T\^{}M) combining a tangent vector v (momentum mode generator) and a 1-for} \\
+\multicolumn{2}{l}{\textsf{\small DoubleFieldTheory.K3Topology}} \\
+\quad\texttt{\footnotesize k3\_atiyah\_singer\_dirac\_index} & {\footnotesize Alternating sum of Betti numbers computing the topological Euler characteristic. -/ def K3BettiSum (b0 b1 b2 b3 b4 : Int) : Int := b0 - b1 + b2 - b3 +} \\
+\quad\texttt{\footnotesize k3\_euler\_characteristic} & {\footnotesize Alternating sum of Betti numbers computing the topological Euler characteristic. -/ def K3BettiSum (b0 b1 b2 b3 b4 : Int) : Int := b0 - b1 + b2 - b3 +} \\
+\quad\texttt{\footnotesize k3\_hirzebruch\_signature} & {\footnotesize Alternating sum of Betti numbers computing the topological Euler characteristic. -/ def K3BettiSum (b0 b1 b2 b3 b4 : Int) : Int := b0 - b1 + b2 - b3 +} \\
+\quad\texttt{\footnotesize k3\_intersection\_lattice\_rank\_sig} & {\footnotesize Alternating sum of Betti numbers computing the topological Euler characteristic. -/ def K3BettiSum (b0 b1 b2 b3 b4 : Int) : Int := b0 - b1 + b2 - b3 +} \\
+\quad\texttt{\footnotesize k3\_parallel\_chiral\_spinor\_index} & {\footnotesize Alternating sum of Betti numbers computing the topological Euler characteristic. -/ def K3BettiSum (b0 b1 b2 b3 b4 : Int) : Int := b0 - b1 + b2 - b3 +} \\
+\quad\texttt{\footnotesize k3\_second\_betti\_hodge} & {\footnotesize Alternating sum of Betti numbers computing the topological Euler characteristic. -/ def K3BettiSum (b0 b1 b2 b3 b4 : Int) : Int := b0 - b1 + b2 - b3 +} \\
+\quad\texttt{\footnotesize k3\_su2\_holonomy\_reduction} & {\footnotesize Alternating sum of Betti numbers computing the topological Euler characteristic. -/ def K3BettiSum (b0 b1 b2 b3 b4 : Int) : Int := b0 - b1 + b2 - b3 +} \\
+\multicolumn{2}{l}{\textsf{\small DoubleFieldTheory.PhysicsDSL}} \\
+\quad\texttt{\footnotesize dsl\_cbracket\_antisymm} & {\footnotesize Effective dual radius numerator R\_( mathrm(eff))(R)  times R = R\^{}2 +  alpha' with  alpha' = 1. -/ def Reff (R : Nat) : Nat := R R + 1 -- Notation defi} \\
+\quad\texttt{\footnotesize dsl\_cbracket\_self\_vanishes} & {\footnotesize Effective dual radius numerator R\_( mathrm(eff))(R)  times R = R\^{}2 +  alpha' with  alpha' = 1. -/ def Reff (R : Nat) : Nat := R R + 1 -- Notation defi} \\
+\quad\texttt{\footnotesize dsl\_courant\_pairing\_symm} & {\footnotesize Effective dual radius numerator R\_( mathrm(eff))(R)  times R = R\^{}2 +  alpha' with  alpha' = 1. -/ def Reff (R : Nat) : Nat := R R + 1 -- Notation defi} \\
+\quad\texttt{\footnotesize dsl\_dorfman\_cbracket\_diff} & {\footnotesize Effective dual radius numerator R\_( mathrm(eff))(R)  times R = R\^{}2 +  alpha' with  alpha' = 1. -/ def Reff (R : Nat) : Nat := R R + 1 -- Notation defi} \\
+\quad\texttt{\footnotesize dsl\_effective\_radius\_strictly\_super\_planckian} & {\footnotesize Effective dual radius numerator R\_( mathrm(eff))(R)  times R = R\^{}2 +  alpha' with  alpha' = 1. -/ def Reff (R : Nat) : Nat := R R + 1 -- Notation defi} \\
+\quad\texttt{\footnotesize dsl\_self\_dual\_minimum} & {\footnotesize Effective dual radius numerator R\_( mathrm(eff))(R)  times R = R\^{}2 +  alpha' with  alpha' = 1. -/ def Reff (R : Nat) : Nat := R R + 1 -- Notation defi} \\
+\quad\texttt{\footnotesize dsl\_strong\_section\_condition} & {\footnotesize Effective dual radius numerator R\_( mathrm(eff))(R)  times R = R\^{}2 +  alpha' with  alpha' = 1. -/ def Reff (R : Nat) : Nat := R R + 1 -- Notation defi} \\
+\multicolumn{2}{l}{\textsf{\small DoubleFieldTheory.TDualityBuscher}} \\
+\quad\texttt{\footnotesize buscher\_dilaton\_involution} & {\footnotesize DEFINITION: Congruence Action of O(D, D) Duality Matrix Physical Interpretation: The transformation law of the generalized metric  mathcal(H) under du} \\
+\quad\texttt{\footnotesize buscher\_dilaton\_measure\_invariance} & {\footnotesize DEFINITION: Congruence Action of O(D, D) Duality Matrix Physical Interpretation: The transformation law of the generalized metric  mathcal(H) under du} \\
+\quad\texttt{\footnotesize buscher\_log\_involution} & {\footnotesize DEFINITION: Congruence Action of O(D, D) Duality Matrix Physical Interpretation: The transformation law of the generalized metric  mathcal(H) under du} \\
+\quad\texttt{\footnotesize inversion\_generator\_properties} & {\footnotesize DEFINITION: Congruence Action of O(D, D) Duality Matrix Physical Interpretation: The transformation law of the generalized metric  mathcal(H) under du} \\
+\quad\texttt{\footnotesize self\_dual\_radius\_rigidity} & {\footnotesize DEFINITION: Congruence Action of O(D, D) Duality Matrix Physical Interpretation: The transformation law of the generalized metric  mathcal(H) under du} \\
+\quad\texttt{\footnotesize t\_duality\_congruence} & {\footnotesize DEFINITION: Congruence Action of O(D, D) Duality Matrix Physical Interpretation: The transformation law of the generalized metric  mathcal(H) under du} \\
+\multicolumn{2}{l}{\textsf{\small DoubleFieldTheory.TorusMoonshine}} \\
+\quad\texttt{\footnotesize mukai\_lattice\_m24\_bridge} & {\footnotesize Modular inversion generator S:  tau  mapsto -1/ tau. -/ def ModS : Mat2 := ( a := 0, b := -1, c := 1, d := 0 ) /-- Modular translation generator T:  t} \\
+\quad\texttt{\footnotesize sl2z\_modular\_generators} & {\footnotesize Modular inversion generator S:  tau  mapsto -1/ tau. -/ def ModS : Mat2 := ( a := 0, b := -1, c := 1, d := 0 ) /-- Modular translation generator T:  t} \\
+\end{longtable}
+\section*{\texttt{DualScaleM24Formalization} (61 theorems)}
+\begin{longtable}{p{0.40\textwidth}p{0.55\textwidth}}\toprule Theorem & First line of its docstring \\ \midrule\endhead\bottomrule\endfoot
+\multicolumn{2}{l}{\textsf{\small DualScaleM24Formalization.DualScale.EffectiveMetric}} \\
+\quad\texttt{\footnotesize buscher\_involution} & {\footnotesize DEFINITION: Positive Scale Representation Physical Interpretation: Exact positive rational scale s =  text(num) /  text(den) > 0 representing compacti} \\
+\quad\texttt{\footnotesize genesis\_no\_singularity} & {\footnotesize DEFINITION: Positive Scale Representation Physical Interpretation: Exact positive rational scale s =  text(num) /  text(den) > 0 representing compacti} \\
+\quad\texttt{\footnotesize self\_dual\_symmetric} & {\footnotesize DEFINITION: Positive Scale Representation Physical Interpretation: Exact positive rational scale s =  text(num) /  text(den) > 0 representing compacti} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleM24Formalization.DualScale.Sym2Lock}} \\
+\quad\texttt{\footnotesize sym2\_det\_identity} & {\footnotesize Microscopic L\_2 Operator Parameterizes the second-order microscopic quantum evolution: u\_(n+2) = a  cdot u\_(n+1) + b  cdot u\_n -/ structure MicroL2Ope} \\
+\quad\texttt{\footnotesize sym2\_fibonacci\_verification} & {\footnotesize Microscopic L\_2 Operator Parameterizes the second-order microscopic quantum evolution: u\_(n+2) = a  cdot u\_(n+1) + b  cdot u\_n -/ structure MicroL2Ope} \\
+\quad\texttt{\footnotesize sym2\_modular\_attractor\_verification} & {\footnotesize Microscopic L\_2 Operator Parameterizes the second-order microscopic quantum evolution: u\_(n+2) = a  cdot u\_(n+1) + b  cdot u\_n -/ structure MicroL2Ope} \\
+\quad\texttt{\footnotesize sym2\_pell\_verification} & {\footnotesize Microscopic L\_2 Operator Parameterizes the second-order microscopic quantum evolution: u\_(n+2) = a  cdot u\_(n+1) + b  cdot u\_n -/ structure MicroL2Ope} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleM24Formalization.Epistemic.Ledger}} \\
+\quad\texttt{\footnotesize no\_kernel\_claim\_rests\_on\_weaker} & {\footnotesize A single ledger row: the tier it is filed at, and the claims it rests on. -/ structure Claim ( : Type) where tier : Tier supports : List  deriving Rep} \\
+\quad\texttt{\footnotesize not\_A\_of\_weak\_support} & {\footnotesize A single ledger row: the tier it is filed at, and the claims it rests on. -/ structure Claim ( : Type) where tier : Tier supports : List  deriving Rep} \\
+\quad\texttt{\footnotesize tier\_le\_of\_depends} & {\footnotesize A single ledger row: the tier it is filed at, and the claims it rests on. -/ structure Claim ( : Type) where tier : Tier supports : List  deriving Rep} \\
+\quad\texttt{\footnotesize trans} & {\footnotesize } \\
+\quad\texttt{\footnotesize witnessSound\_sound} & {\footnotesize } \\
+\quad\texttt{\footnotesize witnessUnsound\_not\_sound} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleM24Formalization.Epistemic.Tier}} \\
+\quad\texttt{\footnotesize eq\_A\_of\_A\_le} & {\footnotesize } \\
+\quad\texttt{\footnotesize tier\_A\_is\_maximal} & {\footnotesize } \\
+\quad\texttt{\footnotesize tier\_X\_is\_minimal} & {\footnotesize } \\
+\quad\texttt{\footnotesize tier\_antisymm} & {\footnotesize } \\
+\quad\texttt{\footnotesize tier\_refl} & {\footnotesize } \\
+\quad\texttt{\footnotesize tier\_trans} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleM24Formalization.FrontierTriad.FluxVacuumDecay}} \\
+\quad\texttt{\footnotesize cdl\_action\_strictly\_positive} & {\footnotesize Flux Vacuum State A string compactification vacuum characterized by flux integer N, energy density V, and holographic central charge c. -/ structure F} \\
+\quad\texttt{\footnotesize holographic\_c\_theorem\_decay} & {\footnotesize Flux Vacuum State A string compactification vacuum characterized by flux integer N, energy density V, and holographic central charge c. -/ structure F} \\
+\quad\texttt{\footnotesize true\_vacuum\_energy\_is\_lower} & {\footnotesize Flux Vacuum State A string compactification vacuum characterized by flux integer N, energy density V, and holographic central charge c. -/ structure F} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleM24Formalization.FrontierTriad.SwamplandDistance}} \\
+\quad\texttt{\footnotesize cooper\_s10\_swampland\_safe} & {\footnotesize } \\
+\quad\texttt{\footnotesize fricke\_discriminant\_is\_minus\_four} & {\footnotesize } \\
+\quad\texttt{\footnotesize fricke\_involution\_property} & {\footnotesize Moduli space dimension of Ricci-flat metrics on K3: 3  times 19 + 1 = 58. -/ def k3\_moduli\_dim : Nat := 3 19 + 1 theorem k3\_moduli\_dim\_eq\_58 : k3\_modu} \\
+\quad\texttt{\footnotesize k3\_moduli\_dim\_eq\_58} & {\footnotesize } \\
+\quad\texttt{\footnotesize kummer\_m24\_swampland\_safe} & {\footnotesize } \\
+\quad\texttt{\footnotesize sdc\_decay\_coefficient\_identity} & {\footnotesize Moduli space dimension of Ricci-flat metrics on K3: 3  times 19 + 1 = 58. -/ def k3\_moduli\_dim : Nat := 3 19 + 1 theorem k3\_moduli\_dim\_eq\_58 : k3\_modu} \\
+\quad\texttt{\footnotesize total\_k3t2\_moduli\_dim\_eq\_80} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleM24Formalization.FrontierTriad.TachyonCondensation}} \\
+\quad\texttt{\footnotesize sen\_conjecture\_k\_theory\_conservation} & {\footnotesize Topological K-Theory Class A truncated Grothendieck class in K\_0(X) parameterized by rank, first Chern number c\_1, and second Chern number c\_2. -/ str} \\
+\quad\texttt{\footnotesize tachyon\_condensation\_preserves\_rr\_charge} & {\footnotesize Topological K-Theory Class A truncated Grothendieck class in K\_0(X) parameterized by rank, first Chern number c\_1, and second Chern number c\_2. -/ str} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleM24Formalization.FrontierTriad.TriadContract}} \\
+\quad\texttt{\footnotesize kummer\_mapper\_betti1\_eq\_376} & {\footnotesize Fast AOT Contract: In-flight metric positivity gate  mathrm(Im)( tau) > 0. -/ def checkMetricPositivity (tau\_im\_scaled : Int) : Bool := tau\_im\_scaled } \\
+\quad\texttt{\footnotesize kummer\_mapper\_euler\_eq\_minus\_370} & {\footnotesize Fast AOT Contract: In-flight metric positivity gate  mathrm(Im)( tau) > 0. -/ def checkMetricPositivity (tau\_im\_scaled : Int) : Bool := tau\_im\_scaled } \\
+\quad\texttt{\footnotesize symmetron\_screening\_cassini\_pass} & {\footnotesize Fast AOT Contract: In-flight metric positivity gate  mathrm(Im)( tau) > 0. -/ def checkMetricPositivity (tau\_im\_scaled : Int) : Bool := tau\_im\_scaled } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleM24Formalization.Moonshine.GysinBEMSequence}} \\
+\quad\texttt{\footnotesize bem\_characteristic\_vanishing} & {\footnotesize Graded cohomology ring representation for circle bundle fibrations. -/ structure CohomologyRing where H2\_B : Int H3\_B : Int H4\_B : Int H3\_E : Int H4\_E} \\
+\quad\texttt{\footnotesize bem\_derived\_exchange} & {\footnotesize Graded cohomology ring representation for circle bundle fibrations. -/ structure CohomologyRing where H2\_B : Int H3\_B : Int H4\_B : Int H3\_E : Int H4\_E} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleM24Formalization.Moonshine.KummerTadpole}} \\
+\quad\texttt{\footnotesize d7\_positive\_charge} & {\footnotesize } \\
+\quad\texttt{\footnotesize hodge\_h11\_eq\_20} & {\footnotesize } \\
+\quad\texttt{\footnotesize k3\_euler\_eq\_24} & {\footnotesize Topological Euler characteristic of K3:  chi = b\_0 - b\_1 + b\_2 - b\_3 + b\_4 = 24. -/ def k3\_euler : Int := (k3\_b0 : Int) - k3\_b1 + k3\_b2 - k3\_b3 + k3\_b} \\
+\quad\texttt{\footnotesize k3t2\_euler\_char\_eq\_zero} & {\footnotesize Topological Euler characteristic of K3:  chi = b\_0 - b\_1 + b\_2 - b\_3 + b\_4 = 24. -/ def k3\_euler : Int := (k3\_b0 : Int) - k3\_b1 + k3\_b2 - k3\_b3 + k3\_b} \\
+\quad\texttt{\footnotesize kuenneth\_b3\_derivation} & {\footnotesize Topological Euler characteristic of K3:  chi = b\_0 - b\_1 + b\_2 - b\_3 + b\_4 = 24. -/ def k3\_euler : Int := (k3\_b0 : Int) - k3\_b1 + k3\_b2 - k3\_b3 + k3\_b} \\
+\quad\texttt{\footnotesize kummer\_exceptional\_intersection} & {\footnotesize Topological Euler characteristic of K3:  chi = b\_0 - b\_1 + b\_2 - b\_3 + b\_4 = 24. -/ def k3\_euler : Int := (k3\_b0 : Int) - k3\_b1 + k3\_b2 - k3\_b3 + k3\_b} \\
+\quad\texttt{\footnotesize o7\_negative\_charge} & {\footnotesize } \\
+\quad\texttt{\footnotesize picard\_rank\_kummer\_maximal} & {\footnotesize } \\
+\quad\texttt{\footnotesize rr\_tadpole\_cancellation} & {\footnotesize Topological Euler characteristic of K3:  chi = b\_0 - b\_1 + b\_2 - b\_3 + b\_4 = 24. -/ def k3\_euler : Int := (k3\_b0 : Int) - k3\_b1 + k3\_b2 - k3\_b3 + k3\_b} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleM24Formalization.Moonshine.MathieuRigidity}} \\
+\quad\texttt{\footnotesize conformal\_exponent\_sum} & {\footnotesize } \\
+\quad\texttt{\footnotesize delta12\_value} & {\footnotesize } \\
+\quad\texttt{\footnotesize delta1\_is\_half} & {\footnotesize } \\
+\quad\texttt{\footnotesize delta2\_is\_five\_halves} & {\footnotesize } \\
+\quad\texttt{\footnotesize denominator\_product\_check} & {\footnotesize } \\
+\quad\texttt{\footnotesize dimA1\_decomposition} & {\footnotesize } \\
+\quad\texttt{\footnotesize dimA2\_decomposition} & {\footnotesize } \\
+\quad\texttt{\footnotesize dimA3\_decomposition} & {\footnotesize } \\
+\quad\texttt{\footnotesize nominal\_value\_is\_consistent} & {\footnotesize } \\
+\quad\texttt{\footnotesize product\_value\_check} & {\footnotesize } \\
+\quad\texttt{\footnotesize r\_bps\_cross\_multiplication} & {\footnotesize Exact rational fraction for conformal weights and scaling exponents. -/ structure Frac where num : Int den : Nat deriving DecidableEq, Repr def addFra} \\
+\quad\texttt{\footnotesize r\_bps\_is\_irreducible} & {\footnotesize Exact rational fraction for conformal weights and scaling exponents. -/ structure Frac where num : Int den : Nat deriving DecidableEq, Repr def addFra} \\
+\quad\texttt{\footnotesize r\_bps\_parts\_per\_thousand\_value} & {\footnotesize } \\
+\quad\texttt{\footnotesize superconformal\_geometric\_congruence} & {\footnotesize Exact rational fraction for conformal weights and scaling exponents. -/ structure Frac where num : Int den : Nat deriving DecidableEq, Repr def addFra} \\
+\quad\texttt{\footnotesize sym2\_A1\_dimension\_is\_4095} & {\footnotesize } \\
+\quad\texttt{\footnotesize total\_chiral\_weight\_value} & {\footnotesize } \\
+\end{longtable}
+\section*{\texttt{StringTheoryFoundation} (56 theorems)}
+\begin{longtable}{p{0.40\textwidth}p{0.55\textwidth}}\toprule Theorem & First line of its docstring \\ \midrule\endhead\bottomrule\endfoot
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.Atlas.AtlasGeometryBridge}} \\
+\quad\texttt{\footnotesize atlas\_k3\_euler\_characteristic} & {\footnotesize ATLAS 4-Manifold Topology: Grounded in Atlas.GeometryOfManifolds and Atlas.AlgebraicTopologyI. Encodes the topological invariants of smooth simply-con} \\
+\quad\texttt{\footnotesize atlas\_k3\_signature} & {\footnotesize ATLAS 4-Manifold Topology: Grounded in Atlas.GeometryOfManifolds and Atlas.AlgebraicTopologyI. Encodes the topological invariants of smooth simply-con} \\
+\quad\texttt{\footnotesize atlas\_poincare\_curvature\_negative} & {\footnotesize ATLAS 4-Manifold Topology: Grounded in Atlas.GeometryOfManifolds and Atlas.AlgebraicTopologyI. Encodes the topological invariants of smooth simply-con} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.Core.Topology}} \\
+\quad\texttt{\footnotesize euler\_char\_K3} & {\footnotesize Betti numbers of a 4-dimensional compact orientable manifold (b, b, b, b, b). -/ structure Betti4D where b0 : Int := 1 b1 : Int := 0 b2 : Int := 0 b3 } \\
+\quad\texttt{\footnotesize euler\_char\_T2} & {\footnotesize Betti numbers of a 4-dimensional compact orientable manifold (b, b, b, b, b). -/ structure Betti4D where b0 : Int := 1 b1 : Int := 0 b2 : Int := 0 b3 } \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.Duality.DualScale}} \\
+\quad\texttt{\footnotesize dual\_pair\_symmetric} & {\footnotesize Dual-Scale Model: Given a self-dual crossover scale L > 0, any physical scale L has a dual scale L = L / L. -/ def dualLength (L\_star L : Float) : Flo} \\
+\quad\texttt{\footnotesize dual\_product\_invariant} & {\footnotesize Dual-Scale Model: Given a self-dual crossover scale L > 0, any physical scale L has a dual scale L = L / L. -/ def dualLength (L\_star L : Float) : Flo} \\
+\quad\texttt{\footnotesize self\_dual\_at\_crossover} & {\footnotesize Dual-Scale Model: Given a self-dual crossover scale L > 0, any physical scale L has a dual scale L = L / L. -/ def dualLength (L\_star L : Float) : Flo} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.Duality.T\_Duality}} \\
+\quad\texttt{\footnotesize self\_dual\_mass\_symmetry} & {\footnotesize String compactification state on a circle with radius R: - n: Kaluza-Klein momentum excitation integer - w: topological string winding number -/ struc} \\
+\quad\texttt{\footnotesize t\_duality\_involution} & {\footnotesize String compactification state on a circle with radius R: - n: Kaluza-Klein momentum excitation integer - w: topological string winding number -/ struc} \\
+\quad\texttt{\footnotesize t\_duality\_spectrum\_invariance} & {\footnotesize String compactification state on a circle with radius R: - n: Kaluza-Klein momentum excitation integer - w: topological string winding number -/ struc} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.FluidDynamics.NavierStokesBridge}} \\
+\quad\texttt{\footnotesize energy\_dissipation\_monotonic} & {\footnotesize Torus dimension and viscosity parameter. -/ structure TorusFluidConfig where dim : Nat := 2 viscosity : Nat := 1 -- scaled integer viscosity  > 0 sobo} \\
+\quad\texttt{\footnotesize fundamental\_mode\_positive} & {\footnotesize Torus dimension and viscosity parameter. -/ structure TorusFluidConfig where dim : Nat := 2 viscosity : Nat := 1 -- scaled integer viscosity  > 0 sobo} \\
+\quad\texttt{\footnotesize sound\_speed\_is\_luminal} & {\footnotesize } \\
+\quad\texttt{\footnotesize zero\_mode\_laplacian} & {\footnotesize Torus dimension and viscosity parameter. -/ structure TorusFluidConfig where dim : Nat := 2 viscosity : Nat := 1 -- scaled integer viscosity  > 0 sobo} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.K3.K3Surfaces}} \\
+\quad\texttt{\footnotesize k3\_b2\_is\_22} & {\footnotesize Hodge diamond for a compact complex surface: h, h, h, h, h, h, h, h, h. -/ structure HodgeDiamond2D where h00 : Nat := 1 h10 : Nat := 0 h01 : Nat := 0} \\
+\quad\texttt{\footnotesize k3\_lattice\_rank\_valid} & {\footnotesize Hodge diamond for a compact complex surface: h, h, h, h, h, h, h, h, h. -/ structure HodgeDiamond2D where h00 : Nat := 1 h10 : Nat := 0 h01 : Nat := 0} \\
+\quad\texttt{\footnotesize k3\_signature\_is\_minus\_16} & {\footnotesize Hodge diamond for a compact complex surface: h, h, h, h, h, h, h, h, h. -/ structure HodgeDiamond2D where h00 : Nat := 1 h10 : Nat := 0 h01 : Nat := 0} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.ModularForms.FermatModularBridge}} \\
+\quad\texttt{\footnotesize exceptional\_divisor\_cartan\_a1} & {\footnotesize } \\
+\quad\texttt{\footnotesize kummer\_fixed\_points\_dim4} & {\footnotesize } \\
+\quad\texttt{\footnotesize mukai\_lattice\_rank\_equals\_24} & {\footnotesize } \\
+\quad\texttt{\footnotesize mukai\_signature\_difference} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.PhysLib.PhysLibKinematicsBridge}} \\
+\quad\texttt{\footnotesize dft\_dimension\_dim4} & {\footnotesize } \\
+\quad\texttt{\footnotesize lorentz\_signature\_is\_minus\_two} & {\footnotesize } \\
+\quad\texttt{\footnotesize odd\_metric\_involutive} & {\footnotesize } \\
+\quad\texttt{\footnotesize rest\_frame\_mass\_shell} & {\footnotesize Relativistic 4-momentum in discrete integer units. -/ structure FourMomentum where p0 : Int -- Energy E p1 : Int -- Momentum p\_x p2 : Int -- Momentum } \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.Quantum.TensorNetworkBridge}} \\
+\quad\texttt{\footnotesize golay\_code\_rate\_is\_half} & {\footnotesize Parameters of the extended binary Golay code  mathcal(G)\_(24): Length n = 24, dimension k = 12, minimum Hamming distance d = 8. -/ structure GolayCode} \\
+\quad\texttt{\footnotesize golay\_length\_matches\_k3\_euler} & {\footnotesize Parameters of the extended binary Golay code  mathcal(G)\_(24): Length n = 24, dimension k = 12, minimum Hamming distance d = 8. -/ structure GolayCode} \\
+\quad\texttt{\footnotesize ryu\_takayanagi\_empty\_cut} & {\footnotesize Parameters of the extended binary Golay code  mathcal(G)\_(24): Length n = 24, dimension k = 12, minimum Hamming distance d = 8. -/ structure GolayCode} \\
+\quad\texttt{\footnotesize ryu\_takayanagi\_positive\_cut} & {\footnotesize Parameters of the extended binary Golay code  mathcal(G)\_(24): Length n = 24, dimension k = 12, minimum Hamming distance d = 8. -/ structure GolayCode} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.StatisticalLearning.StatisticalLearningBridge}} \\
+\quad\texttt{\footnotesize rademacher\_bound\_positive} & {\footnotesize Sample size n and confidence parameter  delta represented in scaled integer metrics. -/ structure PACSampleConfig where sample\_size : Nat := 100 confi} \\
+\quad\texttt{\footnotesize zero\_empirical\_risk\_on\_perfect\_proofs} & {\footnotesize Sample size n and confidence parameter  delta represented in scaled integer metrics. -/ structure PACSampleConfig where sample\_size : Nat := 100 confi} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.StringTheory.K3xT2}} \\
+\quad\texttt{\footnotesize dim\_real\_k3xt2\_is\_6} & {\footnotesize Real dimension of the internal compactification manifold K3  T: dim\_(K3) + dim\_(T) = 4 + 2 = 6. -/ def dimRealK3xT2 : Nat := 4 + 2 /-- Theorem: K3  T } \\
+\quad\texttt{\footnotesize euler\_char\_vanishes} & {\footnotesize Real dimension of the internal compactification manifold K3  T: dim\_(K3) + dim\_(T) = 4 + 2 = 6. -/ def dimRealK3xT2 : Nat := 4 + 2 /-- Theorem: K3  T } \\
+\quad\texttt{\footnotesize string\_duality\_susy\_match} & {\footnotesize } \\
+\quad\texttt{\footnotesize target\_spacetime\_is\_4d} & {\footnotesize } \\
+\quad\texttt{\footnotesize typeII\_k3xt2\_susy\_N4} & {\footnotesize Real dimension of the internal compactification manifold K3  T: dim\_(K3) + dim\_(T) = 4 + 2 = 6. -/ def dimRealK3xT2 : Nat := 4 + 2 /-- Theorem: K3  T } \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.StringTheory.StromingerSYZ}} \\
+\quad\texttt{\footnotesize strominger\_hyperkahler\_signature} & {\footnotesize SYZ Special Lagrangian Fibration: A Calabi-Yau 2-fold (K3 surface) admits a fibration by special Lagrangian 2-tori T over a 2-sphere base S (affine ma} \\
+\quad\texttt{\footnotesize strominger\_nodal\_fibers\_match\_euler} & {\footnotesize SYZ Special Lagrangian Fibration: A Calabi-Yau 2-fold (K3 surface) admits a fibration by special Lagrangian 2-tori T over a 2-sphere base S (affine ma} \\
+\quad\texttt{\footnotesize strominger\_syz\_dim\_sum} & {\footnotesize SYZ Special Lagrangian Fibration: A Calabi-Yau 2-fold (K3 surface) admits a fibration by special Lagrangian 2-tori T over a 2-sphere base S (affine ma} \\
+\quad\texttt{\footnotesize strominger\_syz\_dual\_symmetric} & {\footnotesize SYZ Special Lagrangian Fibration: A Calabi-Yau 2-fold (K3 surface) admits a fibration by special Lagrangian 2-tori T over a 2-sphere base S (affine ma} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.StringTheory.Swampland}} \\
+\quad\texttt{\footnotesize distance\_conjecture\_monotonicity} & {\footnotesize Swampland Distance Conjecture (SDC): For a displacement  in moduli space, a tower of states has mass m()  m  exp(- ) where  > 0. Expressed in discrete} \\
+\quad\texttt{\footnotesize unit\_state\_satisfies\_wgc} & {\footnotesize Swampland Distance Conjecture (SDC): For a displacement  in moduli space, a tower of states has mass m()  m  exp(- ) where  > 0. Expressed in discrete} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.StringTheory.TadpoleCancellation}} \\
+\quad\texttt{\footnotesize d3\_tadpole\_target\_is\_one} & {\footnotesize } \\
+\quad\texttt{\footnotesize d7\_tadpole\_cancellation} & {\footnotesize Fixed points of the T/ orientifold action: The involution x\_i  -x\_i on T = (S) has 2 = 16 fixed points. -/ def numFixedPointsT4Z2 : Nat := 16 /-- Genu} \\
+\quad\texttt{\footnotesize num\_fixed\_points\_is\_16} & {\footnotesize Fixed points of the T/ orientifold action: The involution x\_i  -x\_i on T = (S) has 2 = 16 fixed points. -/ def numFixedPointsT4Z2 : Nat := 16 /-- Genu} \\
+\quad\texttt{\footnotesize total\_D7\_charge\_is\_64} & {\footnotesize } \\
+\quad\texttt{\footnotesize total\_O7\_charge\_is\_minus\_64} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.StringTheory.VafaSwampland}} \\
+\quad\texttt{\footnotesize vafa\_gvw\_zero\_flux} & {\footnotesize DEFINITION: Swampland Distance Tower Physical Interpretation: Represents an infinite Kaluza-Klein or string winding tower descending from the UV along} \\
+\quad\texttt{\footnotesize vafa\_sdc\_4d\_decay\_rate} & {\footnotesize DEFINITION: Swampland Distance Tower Physical Interpretation: Represents an infinite Kaluza-Klein or string winding tower descending from the UV along} \\
+\quad\texttt{\footnotesize vafa\_u1\_gauge\_consistent} & {\footnotesize DEFINITION: Swampland Distance Tower Physical Interpretation: Represents an infinite Kaluza-Klein or string winding tower descending from the UV along} \\
+\quad\texttt{\footnotesize vafa\_wgc\_weak\_coupling\_cutoff\_monotone} & {\footnotesize DEFINITION: Swampland Distance Tower Physical Interpretation: Represents an infinite Kaluza-Klein or string winding tower descending from the UV along} \\
+\multicolumn{2}{l}{\textsf{\small StringTheoryFoundation.StringTheory.WittenDuality}} \\
+\quad\texttt{\footnotesize witten\_6d\_supercharges} & {\footnotesize DEFINITION: Six-Dimensional Supersymmetry Algebra Physical Interpretation: Data defining  mathcal(N) = (1, 1) supersymmetry in 6 dimensions with 16 re} \\
+\quad\texttt{\footnotesize witten\_duality\_rank\_match} & {\footnotesize DEFINITION: Six-Dimensional Supersymmetry Algebra Physical Interpretation: Data defining  mathcal(N) = (1, 1) supersymmetry in 6 dimensions with 16 re} \\
+\quad\texttt{\footnotesize witten\_gauge\_enhancement\_at\_singularity} & {\footnotesize DEFINITION: Six-Dimensional Supersymmetry Algebra Physical Interpretation: Data defining  mathcal(N) = (1, 1) supersymmetry in 6 dimensions with 16 re} \\
+\quad\texttt{\footnotesize witten\_moduli\_dim\_is\_80} & {\footnotesize DEFINITION: Six-Dimensional Supersymmetry Algebra Physical Interpretation: Data defining  mathcal(N) = (1, 1) supersymmetry in 6 dimensions with 16 re} \\
+\end{longtable}
+\section*{\texttt{DualScaleValidation} (23 theorems)}
+\begin{longtable}{p{0.40\textwidth}p{0.55\textwidth}}\toprule Theorem & First line of its docstring \\ \midrule\endhead\bottomrule\endfoot
+\multicolumn{2}{l}{\textsf{\small DualScaleValidation.Observables}} \\
+\quad\texttt{\footnotesize dark\_energy\_cosmological\_constant} & {\footnotesize Exact numerator of the speculative tensor-to-scalar ratio r = 1/252 (see module docstring 1). -/ def tensor\_to\_scalar\_ratio\_num : Nat := 1 /-- Exact d} \\
+\quad\texttt{\footnotesize neutrino\_cp\_phase\_in\_illustrative\_window} & {\footnotesize Exact numerator of the speculative tensor-to-scalar ratio r = 1/252 (see module docstring 1). -/ def tensor\_to\_scalar\_ratio\_num : Nat := 1 /-- Exact d} \\
+\quad\texttt{\footnotesize observables\_windows\_master\_contract} & {\footnotesize Exact numerator of the speculative tensor-to-scalar ratio r = 1/252 (see module docstring 1). -/ def tensor\_to\_scalar\_ratio\_num : Nat := 1 /-- Exact d} \\
+\quad\texttt{\footnotesize spectral\_index\_in\_planck\_window} & {\footnotesize Exact numerator of the speculative tensor-to-scalar ratio r = 1/252 (see module docstring 1). -/ def tensor\_to\_scalar\_ratio\_num : Nat := 1 /-- Exact d} \\
+\quad\texttt{\footnotesize tensor\_to\_scalar\_in\_illustrative\_window} & {\footnotesize Exact numerator of the speculative tensor-to-scalar ratio r = 1/252 (see module docstring 1). -/ def tensor\_to\_scalar\_ratio\_num : Nat := 1 /-- Exact d} \\
+\quad\texttt{\footnotesize tensor\_to\_scalar\_ratio\_reduction} & {\footnotesize Exact numerator of the speculative tensor-to-scalar ratio r = 1/252 (see module docstring 1). -/ def tensor\_to\_scalar\_ratio\_num : Nat := 1 /-- Exact d} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleValidation.UseCase1\_ModuliStabilization}} \\
+\quad\texttt{\footnotesize buscher\_log\_involution} & {\footnotesize Fundamental string tension scale  alpha' normalized to 1 in string units. -/ def alpha\_prime : Nat := 1 /-- Effective dual scale numerator on a torus } \\
+\quad\texttt{\footnotesize dft\_doubled\_dimension\_10d} & {\footnotesize Fundamental string tension scale  alpha' normalized to 1 in string units. -/ def alpha\_prime : Nat := 1 /-- Effective dual scale numerator on a torus } \\
+\quad\texttt{\footnotesize dual\_scale\_self\_dual\_value} & {\footnotesize Fundamental string tension scale  alpha' normalized to 1 in string units. -/ def alpha\_prime : Nat := 1 /-- Effective dual scale numerator on a torus } \\
+\quad\texttt{\footnotesize moduli\_potential\_nonneg} & {\footnotesize Fundamental string tension scale  alpha' normalized to 1 in string units. -/ def alpha\_prime : Nat := 1 /-- Effective dual scale numerator on a torus } \\
+\quad\texttt{\footnotesize moduli\_potential\_zero\_iff} & {\footnotesize Fundamental string tension scale  alpha' normalized to 1 in string units. -/ def alpha\_prime : Nat := 1 /-- Effective dual scale numerator on a torus } \\
+\quad\texttt{\footnotesize moduli\_vacuum\_stability} & {\footnotesize Fundamental string tension scale  alpha' normalized to 1 in string units. -/ def alpha\_prime : Nat := 1 /-- Effective dual scale numerator on a torus } \\
+\quad\texttt{\footnotesize self\_dual\_is\_global\_minimum} & {\footnotesize Fundamental string tension scale  alpha' normalized to 1 in string units. -/ def alpha\_prime : Nat := 1 /-- Effective dual scale numerator on a torus } \\
+\multicolumn{2}{l}{\textsf{\small DualScaleValidation.UseCase2\_MoonshineBPS}} \\
+\quad\texttt{\footnotesize bps\_cross\_multiplication\_lock} & {\footnotesize Dimension of the first Mathieu Moonshine representation: A\_1 = 90 =  mathbf(45)  oplus  overline( mathbf(45)). -/ def dim\_A1 : Nat := 90 /-- Dimension} \\
+\quad\texttt{\footnotesize bps\_lock\_exact\_equality} & {\footnotesize Dimension of the first Mathieu Moonshine representation: A\_1 = 90 =  mathbf(45)  oplus  overline( mathbf(45)). -/ def dim\_A1 : Nat := 90 /-- Dimension} \\
+\quad\texttt{\footnotesize bps\_ratio\_coprime} & {\footnotesize Dimension of the first Mathieu Moonshine representation: A\_1 = 90 =  mathbf(45)  oplus  overline( mathbf(45)). -/ def dim\_A1 : Nat := 90 /-- Dimension} \\
+\quad\texttt{\footnotesize m24\_order\_divisible\_by\_bps\_lock} & {\footnotesize Dimension of the first Mathieu Moonshine representation: A\_1 = 90 =  mathbf(45)  oplus  overline( mathbf(45)). -/ def dim\_A1 : Nat := 90 /-- Dimension} \\
+\quad\texttt{\footnotesize sym2\_A1\_value} & {\footnotesize Dimension of the first Mathieu Moonshine representation: A\_1 = 90 =  mathbf(45)  oplus  overline( mathbf(45)). -/ def dim\_A1 : Nat := 90 /-- Dimension} \\
+\multicolumn{2}{l}{\textsf{\small DualScaleValidation.UseCase3\_FrontierTriad}} \\
+\quad\texttt{\footnotesize bounce\_action\_positive} & {\footnotesize Positive RR charge contributed by each D7-brane: +4. -/ def d7\_charge\_per\_brane : Int := 4 /-- Total number of D7-branes in consistent T\^{}4/ mathbb(Z)\_} \\
+\quad\texttt{\footnotesize frontier\_triad\_master\_contract} & {\footnotesize Positive RR charge contributed by each D7-brane: +4. -/ def d7\_charge\_per\_brane : Int := 4 /-- Total number of D7-branes in consistent T\^{}4/ mathbb(Z)\_} \\
+\quad\texttt{\footnotesize rr\_tadpole\_cancellation} & {\footnotesize Positive RR charge contributed by each D7-brane: +4. -/ def d7\_charge\_per\_brane : Int := 4 /-- Total number of D7-branes in consistent T\^{}4/ mathbb(Z)\_} \\
+\quad\texttt{\footnotesize sdc\_mass\_suppression} & {\footnotesize Positive RR charge contributed by each D7-brane: +4. -/ def d7\_charge\_per\_brane : Int := 4 /-- Total number of D7-branes in consistent T\^{}4/ mathbb(Z)\_} \\
+\quad\texttt{\footnotesize tachyon\_condensation\_endpoint} & {\footnotesize Positive RR charge contributed by each D7-brane: +4. -/ def d7\_charge\_per\_brane : Int := 4 /-- Total number of D7-branes in consistent T\^{}4/ mathbb(Z)\_} \\
+\end{longtable}
+\section*{\texttt{Lean5Corpus} (53 theorems)}
+\begin{longtable}{p{0.40\textwidth}p{0.55\textwidth}}\toprule Theorem & First line of its docstring \\ \midrule\endhead\bottomrule\endfoot
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Foundations.Narrative}} \\
+\quad\texttt{\footnotesize canonical\_corpus\_is\_sound} & {\footnotesize } \\
+\quad\texttt{\footnotesize foundational\_domains\_verified} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Problems.Problem10\_SYMInstanton}} \\
+\quad\texttt{\footnotesize bps\_instanton\_bound\_negative} & {\footnotesize Structure representing the gauge field curvature norms in 4D Euclidean space. -/ structure GaugeCurvatureState where coupling\_sq : Nat norm\_f\_plus\_sq } \\
+\quad\texttt{\footnotesize bps\_instanton\_bound\_positive} & {\footnotesize Structure representing the gauge field curvature norms in 4D Euclidean space. -/ structure GaugeCurvatureState where coupling\_sq : Nat norm\_f\_plus\_sq } \\
+\quad\texttt{\footnotesize instanton\_action\_exceeds\_charge} & {\footnotesize Structure representing the gauge field curvature norms in 4D Euclidean space. -/ structure GaugeCurvatureState where coupling\_sq : Nat norm\_f\_plus\_sq } \\
+\quad\texttt{\footnotesize instanton\_action\_strictly\_positive} & {\footnotesize Structure representing the gauge field curvature norms in 4D Euclidean space. -/ structure GaugeCurvatureState where coupling\_sq : Nat norm\_f\_plus\_sq } \\
+\quad\texttt{\footnotesize sym\_instanton\_master\_contract} & {\footnotesize Structure representing the gauge field curvature norms in 4D Euclidean space. -/ structure GaugeCurvatureState where coupling\_sq : Nat norm\_f\_plus\_sq } \\
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Problems.Problem11\_EntanglementEntropy}} \\
+\quad\texttt{\footnotesize holographic\_entanglement\_master\_contract} & {\footnotesize Structure representing the minimal surface areas in a holographic AdS/CFT spacetime. -/ structure HolographicSubregionSystem where area\_A : Nat area\_B} \\
+\quad\texttt{\footnotesize holographic\_subadditivity} & {\footnotesize Structure representing the minimal surface areas in a holographic AdS/CFT spacetime. -/ structure HolographicSubregionSystem where area\_A : Nat area\_B} \\
+\quad\texttt{\footnotesize mutual\_information\_nonnegative} & {\footnotesize Structure representing the minimal surface areas in a holographic AdS/CFT spacetime. -/ structure HolographicSubregionSystem where area\_A : Nat area\_B} \\
+\quad\texttt{\footnotesize ryu\_takayanagi\_strong\_subadditivity} & {\footnotesize Structure representing the minimal surface areas in a holographic AdS/CFT spacetime. -/ structure HolographicSubregionSystem where area\_A : Nat area\_B} \\
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Problems.Problem1\_NavierStokesHelicity}} \\
+\quad\texttt{\footnotesize helicity\_dissipation\_inequality} & {\footnotesize DEFINITION: Viscous Fluid Thermodynamic State Physical Interpretation: Represents the macroscopic state of an incompressible fluid on  mathbb(T)\^{}3, co} \\
+\quad\texttt{\footnotesize knotted\_flow\_must\_dissipate\_energy} & {\footnotesize DEFINITION: Viscous Fluid Thermodynamic State Physical Interpretation: Represents the macroscopic state of an incompressible fluid on  mathbb(T)\^{}3, co} \\
+\quad\texttt{\footnotesize mul\_reorder\_4} & {\footnotesize DEFINITION: Viscous Fluid Thermodynamic State Physical Interpretation: Represents the macroscopic state of an incompressible fluid on  mathbb(T)\^{}3, co} \\
+\quad\texttt{\footnotesize navier\_stokes\_helicity\_contract} & {\footnotesize DEFINITION: Viscous Fluid Thermodynamic State Physical Interpretation: Represents the macroscopic state of an incompressible fluid on  mathbb(T)\^{}3, co} \\
+\quad\texttt{\footnotesize topological\_linking\_forces\_positive\_enstrophy} & {\footnotesize DEFINITION: Viscous Fluid Thermodynamic State Physical Interpretation: Represents the macroscopic state of an incompressible fluid on  mathbb(T)\^{}3, co} \\
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Problems.Problem2\_MathieuFrobeniusRigidity}} \\
+\quad\texttt{\footnotesize bps\_conductor\_prime\_factorization} & {\footnotesize The BPS Character Lock constant: N\_( mathrm(BPS)) = 27720. -/ def bps\_conductor : Nat := 27720 /-- Dimension of first Mathieu primary representation: } \\
+\quad\texttt{\footnotesize conductor\_divisible\_by\_first\_five\_primes} & {\footnotesize The BPS Character Lock constant: N\_( mathrm(BPS)) = 27720. -/ def bps\_conductor : Nat := 27720 /-- Dimension of first Mathieu primary representation: } \\
+\quad\texttt{\footnotesize dim\_A1\_factorization} & {\footnotesize The BPS Character Lock constant: N\_( mathrm(BPS)) = 27720. -/ def bps\_conductor : Nat := 27720 /-- Dimension of first Mathieu primary representation: } \\
+\quad\texttt{\footnotesize dim\_A2\_factorization} & {\footnotesize The BPS Character Lock constant: N\_( mathrm(BPS)) = 27720. -/ def bps\_conductor : Nat := 27720 /-- Dimension of first Mathieu primary representation: } \\
+\quad\texttt{\footnotesize hasse\_bound\_at\_13} & {\footnotesize } \\
+\quad\texttt{\footnotesize hasse\_trace\_integer\_bound} & {\footnotesize } \\
+\quad\texttt{\footnotesize m24\_conductor\_quotient} & {\footnotesize The BPS Character Lock constant: N\_( mathrm(BPS)) = 27720. -/ def bps\_conductor : Nat := 27720 /-- Dimension of first Mathieu primary representation: } \\
+\quad\texttt{\footnotesize mathieu\_frobenius\_master\_contract} & {\footnotesize The BPS Character Lock constant: N\_( mathrm(BPS)) = 27720. -/ def bps\_conductor : Nat := 27720 /-- Dimension of first Mathieu primary representation: } \\
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Problems.Problem3\_DualScaleTCC}} \\
+\quad\texttt{\footnotesize sub\_planckian\_modes\_impossible} & {\footnotesize DEFINITION: Planck Length Scale Physical Interpretation: The fundamental quantum gravity length unit  ell\_( mathrm(Pl))  equiv 1. RAG \& Graph Indexing} \\
+\quad\texttt{\footnotesize tcc\_cosmic\_protection\_contract} & {\footnotesize DEFINITION: Planck Length Scale Physical Interpretation: The fundamental quantum gravity length unit  ell\_( mathrm(Pl))  equiv 1. RAG \& Graph Indexing} \\
+\quad\texttt{\footnotesize tcc\_expansion\_factor\_positive} & {\footnotesize DEFINITION: Planck Length Scale Physical Interpretation: The fundamental quantum gravity length unit  ell\_( mathrm(Pl))  equiv 1. RAG \& Graph Indexing} \\
+\quad\texttt{\footnotesize wavelength\_strictly\_super\_planckian} & {\footnotesize DEFINITION: Planck Length Scale Physical Interpretation: The fundamental quantum gravity length unit  ell\_( mathrm(Pl))  equiv 1. RAG \& Graph Indexing} \\
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Problems.Problem4\_MukaiMonodromy}} \\
+\quad\texttt{\footnotesize buscher\_reflection\_involution} & {\footnotesize A Mukai charge vector v = (r, c, s)  in H\^{}0  oplus H\^{}2  oplus H\^{}4. -/ structure MukaiVector where r : Int -- D0-brane rank / momentum c2 : Int -- c\^{}2 } \\
+\quad\texttt{\footnotesize mukai\_monodromy\_master\_contract} & {\footnotesize A Mukai charge vector v = (r, c, s)  in H\^{}0  oplus H\^{}2  oplus H\^{}4. -/ structure MukaiVector where r : Int -- D0-brane rank / momentum c2 : Int -- c\^{}2 } \\
+\quad\texttt{\footnotesize mukai\_norm\_buscher\_invariant} & {\footnotesize A Mukai charge vector v = (r, c, s)  in H\^{}0  oplus H\^{}2  oplus H\^{}4. -/ structure MukaiVector where r : Int -- D0-brane rank / momentum c2 : Int -- c\^{}2 } \\
+\quad\texttt{\footnotesize mukai\_rank\_and\_signature} & {\footnotesize } \\
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Problems.Problem5\_KolmogorovCascade}} \\
+\quad\texttt{\footnotesize dissipation\_strictly\_positive} & {\footnotesize Turbulent cascade state specifying energy flux  varepsilon, viscosity  nu, and cutoff scale k\_d. -/ structure TurbulentCascadeState where energy\_flux } \\
+\quad\texttt{\footnotesize enstrophy\_lower\_bound\_positive} & {\footnotesize } \\
+\quad\texttt{\footnotesize kolmogorov\_cascade\_master\_contract} & {\footnotesize Turbulent cascade state specifying energy flux  varepsilon, viscosity  nu, and cutoff scale k\_d. -/ structure TurbulentCascadeState where energy\_flux } \\
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Problems.Problem6\_FluxSwampland}} \\
+\quad\texttt{\footnotesize desitter\_steepness\_bound} & {\footnotesize Flux compactification state specifying flux quanta N\_( mathrm(flux)) and volume  mathcal(V). -/ structure FluxVacuumState where flux\_quanta : Nat -- N} \\
+\quad\texttt{\footnotesize desitter\_swampland\_master\_contract} & {\footnotesize Flux compactification state specifying flux quanta N\_( mathrm(flux)) and volume  mathcal(V). -/ structure FluxVacuumState where flux\_quanta : Nat -- N} \\
+\quad\texttt{\footnotesize flux\_energy\_strictly\_positive} & {\footnotesize Flux compactification state specifying flux quanta N\_( mathrm(flux)) and volume  mathcal(V). -/ structure FluxVacuumState where flux\_quanta : Nat -- N} \\
+\quad\texttt{\footnotesize no\_flat\_desitter\_vacuum} & {\footnotesize Flux compactification state specifying flux quanta N\_( mathrm(flux)) and volume  mathcal(V). -/ structure FluxVacuumState where flux\_quanta : Nat -- N} \\
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Problems.Problem7\_CourantTorsion}} \\
+\quad\texttt{\footnotesize anchor\_projection\_exact\_form\_vanishes} & {\footnotesize Generalized vector field component with tangent part x and cotangent part  xi. -/ structure GeneralizedVector where tangent : Int cotangent : Int deri} \\
+\quad\texttt{\footnotesize c\_bracket\_skew\_symmetric} & {\footnotesize Generalized vector field component with tangent part x and cotangent part  xi. -/ structure GeneralizedVector where tangent : Int cotangent : Int deri} \\
+\quad\texttt{\footnotesize courant\_torsion\_master\_contract} & {\footnotesize Generalized vector field component with tangent part x and cotangent part  xi. -/ structure GeneralizedVector where tangent : Int cotangent : Int deri} \\
+\quad\texttt{\footnotesize dft\_torsion\_vanishes\_on\_torus} & {\footnotesize Generalized vector field component with tangent part x and cotangent part  xi. -/ structure GeneralizedVector where tangent : Int cotangent : Int deri} \\
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Problems.Problem8\_GolayHolography}} \\
+\quad\texttt{\footnotesize golay\_codeword\_count\_eval} & {\footnotesize } \\
+\quad\texttt{\footnotesize golay\_error\_radius\_equals\_three} & {\footnotesize The extended binary Golay code parameter specification: [n, k, d] = [24, 12, 8]. -/ def golay\_length : Nat := 24 def golay\_dimension : Nat := 12 def g} \\
+\quad\texttt{\footnotesize golay\_holography\_master\_contract} & {\footnotesize The extended binary Golay code parameter specification: [n, k, d] = [24, 12, 8]. -/ def golay\_length : Nat := 24 def golay\_dimension : Nat := 12 def g} \\
+\quad\texttt{\footnotesize golay\_self\_dual\_dimension} & {\footnotesize The extended binary Golay code parameter specification: [n, k, d] = [24, 12, 8]. -/ def golay\_length : Nat := 24 def golay\_dimension : Nat := 12 def g} \\
+\quad\texttt{\footnotesize nonzero\_codeword\_weight\_positive} & {\footnotesize The extended binary Golay code parameter specification: [n, k, d] = [24, 12, 8]. -/ def golay\_length : Nat := 24 def golay\_dimension : Nat := 12 def g} \\
+\multicolumn{2}{l}{\textsf{\small Lean5Corpus.Problems.Problem9\_KummerModularity}} \\
+\quad\texttt{\footnotesize k3\_euler\_characteristic\_identity} & {\footnotesize Topological invariants of a smooth K3 surface. -/ def k3\_betti\_2 : Nat := 22 def k3\_euler\_char : Nat := 24 def k3\_betti\_0 : Nat := 1 def k3\_betti\_4 : } \\
+\quad\texttt{\footnotesize kummer\_cycle\_balance} & {\footnotesize Topological invariants of a smooth K3 surface. -/ def k3\_betti\_2 : Nat := 22 def k3\_euler\_char : Nat := 24 def k3\_betti\_0 : Nat := 1 def k3\_betti\_4 : } \\
+\quad\texttt{\footnotesize kummer\_modularity\_master\_contract} & {\footnotesize Topological invariants of a smooth K3 surface. -/ def k3\_betti\_2 : Nat := 22 def k3\_euler\_char : Nat := 24 def k3\_betti\_0 : Nat := 1 def k3\_betti\_4 : } \\
+\quad\texttt{\footnotesize singular\_k3\_picard\_number\_equals\_twenty} & {\footnotesize Topological invariants of a smooth K3 surface. -/ def k3\_betti\_2 : Nat := 22 def k3\_euler\_char : Nat := 24 def k3\_betti\_0 : Nat := 1 def k3\_betti\_4 : } \\
+\quad\texttt{\footnotesize transcendental\_rank\_two} & {\footnotesize Topological invariants of a smooth K3 surface. -/ def k3\_betti\_2 : Nat := 22 def k3\_euler\_char : Nat := 24 def k3\_betti\_0 : Nat := 1 def k3\_betti\_4 : } \\
+\end{longtable}
