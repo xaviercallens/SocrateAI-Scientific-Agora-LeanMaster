@@ -26,6 +26,10 @@ Mukai Monodromy, Kolmogorov Turbulence, Flux Swampland, Courant Torsion, and Gol
 \textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal Verification}}
 \date{September 2026}
 
+% [layout] allow long Lean identifiers to break after underscores (added 2026-09-17)
+\makeatletter\let\LMoldunderscore\_\renewcommand{\_}{\LMoldunderscore\allowbreak}\makeatother
+\setlength{\emergencystretch}{3em}
+% [/layout]
 \begin{document}
 
 \maketitle
@@ -96,13 +100,13 @@ Hence $\mathcal{T}$ preserves the orientation or reverses it unimodularly, guara
 Mechanized in \texttt{Lean5Corpus.Problems.Problem4\_MukaiMonodromy}:
 \begin{itemize}
     \item \textbf{Theorem 1 (Rank 24 Invariant):} $\mathrm{rank}(\Gamma^{4,20}) = 4 + 20 = 24$. \\
-    \textit{Lean 4 identifier:} \texttt{Lean5Corpus.Problems.MukaiMonodromy.mukai\_rank\_equals\_24}.
+    \textit{Lean 4 identifier:} \texttt{Lean5Corpus.Problems.MukaiMonodromy.mukai\_rank\_and\_signature} (it states \texttt{mukai\_rank = 24} and \texttt{mukai\_signature = -16} for the constants \emph{defined} as $24$ and $4-20$; the rank of $\Gamma^{4,20}$ itself is not computed).
     \item \textbf{Theorem 2 (Involution Property):} $\mathcal{T}(\mathcal{T}(v)) = v$. \\
-    \textit{Lean 4 identifier:} \texttt{Lean5Corpus.Problems.MukaiMonodromy.buscher\_t\_duality\_is\_involution}.
+    \textit{Lean 4 identifier:} \texttt{Lean5Corpus.Problems.MukaiMonodromy.buscher\_reflection\_involution} (for the swap $(r,c^2,s)\mapsto(s,c^2,r)$ on integer triples).
     \item \textbf{Theorem 3 (Quadratic Form Invariance):} $Q(\mathcal{T}(v)) = Q(v)$. \\
-    \textit{Lean 4 identifier:} \texttt{Lean5Corpus.Problems.MukaiMonodromy.buscher\_preserves\_quadratic\_form}.
+    \textit{Lean 4 identifier:} \texttt{Lean5Corpus.Problems.MukaiMonodromy.mukai\_norm\_buscher\_invariant} (for the norm $c^2-2rs$).
     \item \textbf{Theorem 4 (Unimodular Determinant):} $\det(\mathcal{T})^2 = 1$. \\
-    \textit{Lean 4 identifier:} \texttt{Lean5Corpus.Problems.MukaiMonodromy.buscher\_determinant\_unimodular}.
+    \textit{Not formalized:} no Lean theorem states this (revision 2026-09-17: the identifier previously cited here does not exist). For the swap matrix it is elementary: $\det=-1$.
     \item \textbf{Master Contract:} Unified certification of rank, involution, and quadratic preservation. \\
     \textit{Lean 4 identifier:} \texttt{Lean5Corpus.Problems.MukaiMonodromy.mukai\_monodromy\_master\_contract}.
 \end{itemize}

@@ -34,6 +34,8 @@ built Mathlib (`packagesDir`), or `require … from git … @ "v2.1.0"`. Your `l
 
 ## Scope limits you must carry into your own text
 * Tier A = the Lean statement as written. Physical interpretation = Tier L (pin the source) or Tier C.
+* `sigK3_eq` (3,19), `sigMukai_eq` (4,20) add Tier-L signature inputs (U = (1,1), E8(−1) = (0,8)); they are not
+  computed from the Gram matrices.
 * One direction only: `thetaShift_isODD`, `basisChange_comm_thetaShift`; `dualScale_one` is attainment, not
   uniqueness; generation of O(d,d;ℤ) and the classification of even unimodular lattices are Tier L.
 * The five Mathlib-free libraries are integer/rational "arithmetic shadows": fine to cite as such, not as

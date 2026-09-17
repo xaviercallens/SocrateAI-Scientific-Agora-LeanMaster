@@ -19,9 +19,9 @@ before quoting a statement in the book.
 
 - `D` **DualScaleStream2.DFT.etaR** — `(d : ℕ) : Matrix (Charge d) (Charge d) ℝ := fromBlocks 0 1 1 0` — Real `O(d,d)` form `η = [[0, I],[I, 0]]`.
 - `T` **DualScaleStream2.DFT.etaR_genMetric_sq** — `(G B : Matrix (Fin d) (Fin d) ℝ) (hG : IsUnit G.det) :` — Real `O(d,d)` form `η = [[0, I],[I, 0]]`. -/ noncomputable def etaR (d : ℕ) : Matrix (Charge d) (Charge d) ℝ := fromBlocks 0 1 1 0 /-- Hull–Zwiebach generalized
-- `T` **DualScaleStream2.DFT.etaR_mul_self** — `: etaR d * etaR d = 1 := by`
+- `T` **DualScaleStream2.DFT.etaR_mul_self** — `: etaR d * etaR d = 1 := by` — Real `O(d,d)` form `η = [[0, I],[I, 0]]`. -/ noncomputable def etaR (d : ℕ) : Matrix (Charge d) (Charge d) ℝ := fromBlocks 0 1 1 0 /-- Hull–Zwiebach generalized
 - `D` **DualScaleStream2.DFT.genMetric** — `(G B : Matrix (Fin d) (Fin d) ℝ) : Matrix (Charge d) (Charge d) ℝ :=` — Real `O(d,d)` form `η = [[0, I],[I, 0]]`. -/ noncomputable def etaR (d : ℕ) : Matrix (Charge d) (Charge d) ℝ := fromBlocks 0 1 1 0 /-- Hull–Zwiebach generalized
-- `T` **DualScaleStream2.DFT.genMetric_symm** — `(G B : Matrix (Fin d) (Fin d) ℝ) (hG : IsUnit G.det)`
+- `T` **DualScaleStream2.DFT.genMetric_symm** — `(G B : Matrix (Fin d) (Fin d) ℝ) (hG : IsUnit G.det)` — Real `O(d,d)` form `η = [[0, I],[I, 0]]`. -/ noncomputable def etaR (d : ℕ) : Matrix (Charge d) (Charge d) ℝ := fromBlocks 0 1 1 0 /-- Hull–Zwiebach generalized
 - `D` **DualScaleStream2.DFT.massForm** — `(H : Matrix (Charge d) (Charge d) ℝ) (Z : Charge d → ℝ) : ℝ :=` — Real `O(d,d)` form `η = [[0, I],[I, 0]]`. -/ noncomputable def etaR (d : ℕ) : Matrix (Charge d) (Charge d) ℝ := fromBlocks 0 1 1 0 /-- Hull–Zwiebach generalized
 - `T` **DualScaleStream2.DFT.massForm_circle** — `(n w R : ℚ) (hR : R ≠ 0) :` — Real `O(d,d)` form `η = [[0, I],[I, 0]]`. -/ noncomputable def etaR (d : ℕ) : Matrix (Charge d) (Charge d) ℝ := fromBlocks 0 1 1 0 /-- Hull–Zwiebach generalized
 - `T` **DualScaleStream2.DFT.massForm_covariant** — `(g H : Matrix (Charge d) (Charge d) ℝ) (Z : Charge d → ℝ) :` — Real `O(d,d)` form `η = [[0, I],[I, 0]]`. -/ noncomputable def etaR (d : ℕ) : Matrix (Charge d) (Charge d) ℝ := fromBlocks 0 1 1 0 /-- Hull–Zwiebach generalized
@@ -31,39 +31,39 @@ before quoting a statement in the book.
 
 - `D` **DualScaleStream2.DFT.IsSection** — `(S : Set (Charge d → ℤ)) : Prop := ∀ Z ∈ S, ∀ Z' ∈ S, etaPair Z Z' = 0` — The `η`-pairing `Z ∘ Z' = Zᵀ η Z'`. -/ def etaPair (Z Z' : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z') /-- A set of charges is a *section* if it is totally `η`-null
 - `D` **DualScaleStream2.DFT.etaPair** — `(Z Z' : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z')` — The `η`-pairing `Z ∘ Z' = Zᵀ η Z'`.
-- `T` **DualScaleStream2.DFT.etaPair_self** — `(Z : Charge d → ℤ) : etaPair Z Z = chargeNorm Z := by`
+- `T` **DualScaleStream2.DFT.etaPair_self** — `(Z : Charge d → ℤ) : etaPair Z Z = chargeNorm Z := by` — The `η`-pairing `Z ∘ Z' = Zᵀ η Z'`. -/ def etaPair (Z Z' : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z') /-- A set of charges is a *section* if it is totally `η`-null
 - `T` **DualScaleStream2.DFT.eta_momentum_to_winding** — `(n : Fin d → ℤ) :` — The `η`-pairing `Z ∘ Z' = Zᵀ η Z'`. -/ def etaPair (Z Z' : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z') /-- A set of charges is a *section* if it is totally `η`-null
 - `T` **DualScaleStream2.DFT.isSection_image** — `(g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g)` — The `η`-pairing `Z ∘ Z' = Zᵀ η Z'`. -/ def etaPair (Z Z' : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z') /-- A set of charges is a *section* if it is totally `η`-null
 - `T` **DualScaleStream2.DFT.levelMatching_iff** — `(n w : Fin d → ℤ) :` — The `η`-pairing `Z ∘ Z' = Zᵀ η Z'`. -/ def etaPair (Z Z' : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z') /-- A set of charges is a *section* if it is totally `η`-null
 - `D` **DualScaleStream2.DFT.momentumFrame** — `(d : ℕ) : Set (Charge d → ℤ) :=` — The `η`-pairing `Z ∘ Z' = Zᵀ η Z'`. -/ def etaPair (Z Z' : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z') /-- A set of charges is a *section* if it is totally `η`-null
-- `T` **DualScaleStream2.DFT.momentumFrame_isSection** — `: IsSection (momentumFrame d) := by`
+- `T` **DualScaleStream2.DFT.momentumFrame_isSection** — `: IsSection (momentumFrame d) := by` — The `η`-pairing `Z ∘ Z' = Zᵀ η Z'`. -/ def etaPair (Z Z' : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z') /-- A set of charges is a *section* if it is totally `η`-null
 - `D` **DualScaleStream2.DFT.windingFrame** — `(d : ℕ) : Set (Charge d → ℤ) :=` — The `η`-pairing `Z ∘ Z' = Zᵀ η Z'`. -/ def etaPair (Z Z' : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z') /-- A set of charges is a *section* if it is totally `η`-null
-- `T` **DualScaleStream2.DFT.windingFrame_isSection** — `: IsSection (windingFrame d) := by`
+- `T` **DualScaleStream2.DFT.windingFrame_isSection** — `: IsSection (windingFrame d) := by` — The `η`-pairing `Z ∘ Z' = Zᵀ η Z'`. -/ def etaPair (Z Z' : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z') /-- A set of charges is a *section* if it is totally `η`-null
 
 ### DualScaleStream2.DualScale.TraceBound  (`DualScaleStream2/DualScale/TraceBound.lean`)
 
-- `T` **DualScaleStream2.DualScale.circle_effective_scale_ge_two** — `(R : ℝ) (hR : 0 < R) : 2 ≤ R + R⁻¹ := by` — Dual scale `𝒟(G) = tr H(G, 0)`. -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace theorem dualScale_eq (G : Matrix (Fin
+- `T` **DualScaleStream2.DualScale.circle_effective_scale_ge_two** — `(R : ℝ) (hR : 0 < R) : 2 ≤ R + R⁻¹ := by` — Dual scale `𝒟(G) = tr H(G, 0)`. -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace /-- Unwinding the block-diagonal stru
 - `D` **DualScaleStream2.DualScale.dualScale** — `(G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace` — Dual scale `𝒟(G) = tr H(G, 0)`.
-- `T` **DualScaleStream2.DualScale.dualScale_circle** — `(R : ℝ) (hR : R ≠ 0) :` — Dual scale `𝒟(G) = tr H(G, 0)`. -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace theorem dualScale_eq (G : Matrix (Fin
-- `T` **DualScaleStream2.DualScale.dualScale_eq** — `(G : Matrix (Fin d) (Fin d) ℝ) :`
-- `T` **DualScaleStream2.DualScale.dualScale_ge** — `(G : Matrix (Fin d) (Fin d) ℝ) (hG : G.PosDef) :` — Dual scale `𝒟(G) = tr H(G, 0)`. -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace theorem dualScale_eq (G : Matrix (Fin
-- `T` **DualScaleStream2.DualScale.dualScale_inv** — `(G : Matrix (Fin d) (Fin d) ℝ) (hG : IsUnit G.det) :` — Dual scale `𝒟(G) = tr H(G, 0)`. -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace theorem dualScale_eq (G : Matrix (Fin
-- `T` **DualScaleStream2.DualScale.dualScale_one** — `: dualScale (1 : Matrix (Fin d) (Fin d) ℝ) = 2 * d := by` — Dual scale `𝒟(G) = tr H(G, 0)`. -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace theorem dualScale_eq (G : Matrix (Fin
+- `T` **DualScaleStream2.DualScale.dualScale_circle** — `(R : ℝ) (hR : R ≠ 0) :` — Dual scale `𝒟(G) = tr H(G, 0)`. -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace /-- Unwinding the block-diagonal stru
+- `T` **DualScaleStream2.DualScale.dualScale_eq** — `(G : Matrix (Fin d) (Fin d) ℝ) :` — Dual scale `𝒟(G) = tr H(G, 0)`. -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace /-- Unwinding the block-diagonal stru
+- `T` **DualScaleStream2.DualScale.dualScale_ge** — `(G : Matrix (Fin d) (Fin d) ℝ) (hG : G.PosDef) :` — Dual scale `𝒟(G) = tr H(G, 0)`. -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace /-- Unwinding the block-diagonal stru
+- `T` **DualScaleStream2.DualScale.dualScale_inv** — `(G : Matrix (Fin d) (Fin d) ℝ) (hG : IsUnit G.det) :` — Dual scale `𝒟(G) = tr H(G, 0)`. -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace /-- Unwinding the block-diagonal stru
+- `T` **DualScaleStream2.DualScale.dualScale_one** — `: dualScale (1 : Matrix (Fin d) (Fin d) ℝ) = 2 * d := by` — Dual scale `𝒟(G) = tr H(G, 0)`. -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace /-- Unwinding the block-diagonal stru
 
 ### DualScaleStream2.Flux.Integrality  (`DualScaleStream2/Flux/Integrality.lean`)
 
 - `T` **DualScaleStream2.Flux.flux_half_selfIntersection_integral** — `(L₁ : Gram n) (L₂ : Gram m) (h₁s : L₁ᵀ = L₁)` — Kronecker product of two integer forms, on `Fin n × Fin m`. -/ def kronForm (L₁ : Gram n) (L₂ : Gram m) : Matrix (Fin n × Fin m) (Fin n × Fin m) ℤ := kroneckerM
 - `D` **DualScaleStream2.Flux.kronForm** — `(L₁ : Gram n) (L₂ : Gram m) : Matrix (Fin n × Fin m) (Fin n × Fin m) ℤ :=` — Kronecker product of two integer forms, on `Fin n × Fin m`.
 - `T` **DualScaleStream2.Flux.kronForm_even** — `(L₁ : Gram n) (L₂ : Gram m) (h₁s : L₁ᵀ = L₁) (h₂s : L₂ᵀ = L₂)` — Kronecker product of two integer forms, on `Fin n × Fin m`. -/ def kronForm (L₁ : Gram n) (L₂ : Gram m) : Matrix (Fin n × Fin m) (Fin n × Fin m) ℤ := kroneckerM
-- `T` **DualScaleStream2.Flux.kronForm_evenDiag** — `(L₁ : Gram n) (L₂ : Gram m) (h₁ : IsEvenDiag L₁) :`
-- `T` **DualScaleStream2.Flux.kronForm_symm** — `(L₁ : Gram n) (L₂ : Gram m) (h₁ : L₁ᵀ = L₁) (h₂ : L₂ᵀ = L₂) :`
+- `T` **DualScaleStream2.Flux.kronForm_evenDiag** — `(L₁ : Gram n) (L₂ : Gram m) (h₁ : IsEvenDiag L₁) :` — Kronecker product of two integer forms, on `Fin n × Fin m`. -/ def kronForm (L₁ : Gram n) (L₂ : Gram m) : Matrix (Fin n × Fin m) (Fin n × Fin m) ℤ := kroneckerM
+- `T` **DualScaleStream2.Flux.kronForm_symm** — `(L₁ : Gram n) (L₂ : Gram m) (h₁ : L₁ᵀ = L₁) (h₂ : L₂ᵀ = L₂) :` — Kronecker product of two integer forms, on `Fin n × Fin m`. -/ def kronForm (L₁ : Gram n) (L₂ : Gram m) : Matrix (Fin n × Fin m) (Fin n × Fin m) ℤ := kroneckerM
 
 ### DualScaleStream2.Flux.Tadpole  (`DualScaleStream2/Flux/Tadpole.lean`)
 
 - `D` **DualScaleStream2.Flux.chiK3K3** — `: ℤ := eulerFromHodge StringTheory.Frontier.k3HodgeNumber *` — Hodge numbers `h^{p,q}` of a complex torus `T²` (all equal to 1). -/ def t2HodgeNumber : Fin 2 → Fin 2 → ℕ := fun _ _ => 1 /-- Euler characteristic from Hodge n
 - `D` **DualScaleStream2.Flux.eulerFromHodge** — `{m : ℕ} (h : Fin m → Fin m → ℕ) : ℤ :=` — Hodge numbers `h^{p,q}` of a complex torus `T²` (all equal to 1). -/ def t2HodgeNumber : Fin 2 → Fin 2 → ℕ := fun _ _ => 1 /-- Euler characteristic from Hodge n
 - `T` **DualScaleStream2.Flux.euler_K3** — `: eulerFromHodge StringTheory.Frontier.k3HodgeNumber = 24 := by` — Hodge numbers `h^{p,q}` of a complex torus `T²` (all equal to 1). -/ def t2HodgeNumber : Fin 2 → Fin 2 → ℕ := fun _ _ => 1 /-- Euler characteristic from Hodge n
-- `T` **DualScaleStream2.Flux.euler_T2** — `: eulerFromHodge t2HodgeNumber = 0 := by`
+- `T` **DualScaleStream2.Flux.euler_T2** — `: eulerFromHodge t2HodgeNumber = 0 := by` — Hodge numbers `h^{p,q}` of a complex torus `T²` (all equal to 1). -/ def t2HodgeNumber : Fin 2 → Fin 2 → ℕ := fun _ _ => 1 /-- Euler characteristic from Hodge n
 - `T` **DualScaleStream2.Flux.k3k3_anomaly** — `: chiK3K3 % 24 = 0 ∧ chiK3K3 / 24 = 24 := by` — Hodge numbers `h^{p,q}` of a complex torus `T²` (all equal to 1). -/ def t2HodgeNumber : Fin 2 → Fin 2 → ℕ := fun _ _ => 1 /-- Euler characteristic from Hodge n
 - `T` **DualScaleStream2.Flux.k3t2_euler_zero** — `:` — Hodge numbers `h^{p,q}` of a complex torus `T²` (all equal to 1). -/ def t2HodgeNumber : Fin 2 → Fin 2 → ℕ := fun _ _ => 1 /-- Euler characteristic from Hodge n
 - `D` **DualScaleStream2.Flux.t2HodgeNumber** — `: Fin 2 → Fin 2 → ℕ := fun _ _ => 1` — Hodge numbers `h^{p,q}` of a complex torus `T²` (all equal to 1).
@@ -72,90 +72,90 @@ before quoting a statement in the book.
 ### DualScaleStream2.Lattice.Basic  (`DualScaleStream2/Lattice/Basic.lean`)
 
 - `D` **DualScaleStream2.Lattice.Gram** — ``
-- `D` **DualScaleStream2.Lattice.IsEvenDiag** — `{n : ℕ} (G : Gram n) : Prop := ∀ i, Even (G i i)` — An integral lattice of rank `n`, presented by its Gram matrix in a chosen basis. -/ abbrev Gram (n : ℕ) := Matrix (Fin n) (Fin n) ℤ /-- Even diagonal. For a sym
-- `D` **DualScaleStream2.Lattice.IsUnimodular** — `{n : ℕ} (G : Gram n) : Prop := G.det = 1 ∨ G.det = -1` — An integral lattice of rank `n`, presented by its Gram matrix in a chosen basis. -/ abbrev Gram (n : ℕ) := Matrix (Fin n) (Fin n) ℤ /-- Even diagonal. For a sym
-- `T` **DualScaleStream2.Lattice.even_quadratic_form_of_even_diag** — `{n : ℕ} (G : Gram n) (hsymm : Gᵀ = G)` — An integral lattice of rank `n`, presented by its Gram matrix in a chosen basis. -/ abbrev Gram (n : ℕ) := Matrix (Fin n) (Fin n) ℤ /-- Even diagonal. For a sym
-- `T` **DualScaleStream2.Lattice.isUnimodular_of_mul_eq_one** — `{n : ℕ} (G H : Gram n) (h : H * G = 1) :` — An integral lattice of rank `n`, presented by its Gram matrix in a chosen basis. -/ abbrev Gram (n : ℕ) := Matrix (Fin n) (Fin n) ℤ /-- Even diagonal. For a sym
+- `D` **DualScaleStream2.Lattice.IsEvenDiag** — `{n : ℕ} (G : Gram n) : Prop := ∀ i, Even (G i i)` — An integral lattice of rank `n`, presented by its Gram matrix in a chosen basis: `G i j` is the bilinear-form pairing of basis vector `i` with basis vector `j`.
+- `D` **DualScaleStream2.Lattice.IsUnimodular** — `{n : ℕ} (G : Gram n) : Prop := G.det = 1 ∨ G.det = -1` — An integral lattice of rank `n`, presented by its Gram matrix in a chosen basis: `G i j` is the bilinear-form pairing of basis vector `i` with basis vector `j`.
+- `T` **DualScaleStream2.Lattice.even_quadratic_form_of_even_diag** — `{n : ℕ} (G : Gram n) (hsymm : Gᵀ = G)` — An integral lattice of rank `n`, presented by its Gram matrix in a chosen basis: `G i j` is the bilinear-form pairing of basis vector `i` with basis vector `j`.
+- `T` **DualScaleStream2.Lattice.isUnimodular_of_mul_eq_one** — `{n : ℕ} (G H : Gram n) (h : H * G = 1) :` — An integral lattice of rank `n`, presented by its Gram matrix in a chosen basis: `G i j` is the bilinear-form pairing of basis vector `i` with basis vector `j`.
 
 ### DualScaleStream2.Lattice.E8  (`DualScaleStream2/Lattice/E8.lean`)
 
-- `D` **DualScaleStream2.Lattice.cartanE8** — `: Gram 8 :=` — Cartan matrix of `E8` (positive definite form).
-- `D` **DualScaleStream2.Lattice.cartanE8Inv** — `: Gram 8 :=` — Cartan matrix of `E8` (positive definite form). -/ def cartanE8 : Gram 8 := !![ 2, -1, 0, 0, 0, 0, 0, 0; -1, 2, -1, 0, 0, 0, 0, 0; 0, -1, 2, -1, 0, 0, 0, 0; 0, 
-- `T` **DualScaleStream2.Lattice.cartanE8Inv_mul** — `: cartanE8Inv * cartanE8 = 1 := by`
-- `T` **DualScaleStream2.Lattice.cartanE8_evenDiag** — `: IsEvenDiag cartanE8 := by`
-- `T` **DualScaleStream2.Lattice.cartanE8_symm** — `: cartanE8ᵀ = cartanE8 := by`
-- `T` **DualScaleStream2.Lattice.cartanE8_unimodular** — `: IsUnimodular cartanE8 :=` — Cartan matrix of `E8` (positive definite form). -/ def cartanE8 : Gram 8 := !![ 2, -1, 0, 0, 0, 0, 0, 0; -1, 2, -1, 0, 0, 0, 0, 0; 0, -1, 2, -1, 0, 0, 0, 0; 0, 
-- `D` **DualScaleStream2.Lattice.e8Neg** — `: Gram 8 := -cartanE8` — Cartan matrix of `E8` (positive definite form). -/ def cartanE8 : Gram 8 := !![ 2, -1, 0, 0, 0, 0, 0, 0; -1, 2, -1, 0, 0, 0, 0, 0; 0, -1, 2, -1, 0, 0, 0, 0; 0, 
-- `T` **DualScaleStream2.Lattice.e8Neg_evenDiag** — `: IsEvenDiag e8Neg := by`
-- `T` **DualScaleStream2.Lattice.e8Neg_symm** — `: e8Negᵀ = e8Neg := by`
-- `T` **DualScaleStream2.Lattice.e8Neg_unimodular** — `: IsUnimodular e8Neg := by`
+- `D` **DualScaleStream2.Lattice.cartanE8** — `: Gram 8 :=` — The Cartan matrix of the root system `E8`, in the Dynkin labelling fixed in the module docstring: `2` on the diagonal (each simple root has norm `2` before the 
+- `D` **DualScaleStream2.Lattice.cartanE8Inv** — `: Gram 8 :=` — The Cartan matrix of the root system `E8`, in the Dynkin labelling fixed in the module docstring: `2` on the diagonal (each simple root has norm `2` before the 
+- `T` **DualScaleStream2.Lattice.cartanE8Inv_mul** — `: cartanE8Inv * cartanE8 = 1 := by` — The Cartan matrix of the root system `E8`, in the Dynkin labelling fixed in the module docstring: `2` on the diagonal (each simple root has norm `2` before the 
+- `T` **DualScaleStream2.Lattice.cartanE8_evenDiag** — `: IsEvenDiag cartanE8 := by` — The Cartan matrix of the root system `E8`, in the Dynkin labelling fixed in the module docstring: `2` on the diagonal (each simple root has norm `2` before the 
+- `T` **DualScaleStream2.Lattice.cartanE8_symm** — `: cartanE8ᵀ = cartanE8 := by` — The Cartan matrix of the root system `E8`, in the Dynkin labelling fixed in the module docstring: `2` on the diagonal (each simple root has norm `2` before the 
+- `T` **DualScaleStream2.Lattice.cartanE8_unimodular** — `: IsUnimodular cartanE8 :=` — The Cartan matrix of the root system `E8`, in the Dynkin labelling fixed in the module docstring: `2` on the diagonal (each simple root has norm `2` before the 
+- `D` **DualScaleStream2.Lattice.e8Neg** — `: Gram 8 := -cartanE8` — The Cartan matrix of the root system `E8`, in the Dynkin labelling fixed in the module docstring: `2` on the diagonal (each simple root has norm `2` before the 
+- `T` **DualScaleStream2.Lattice.e8Neg_evenDiag** — `: IsEvenDiag e8Neg := by` — The Cartan matrix of the root system `E8`, in the Dynkin labelling fixed in the module docstring: `2` on the diagonal (each simple root has norm `2` before the 
+- `T` **DualScaleStream2.Lattice.e8Neg_symm** — `: e8Negᵀ = e8Neg := by` — The Cartan matrix of the root system `E8`, in the Dynkin labelling fixed in the module docstring: `2` on the diagonal (each simple root has norm `2` before the 
+- `T` **DualScaleStream2.Lattice.e8Neg_unimodular** — `: IsUnimodular e8Neg := by` — The Cartan matrix of the root system `E8`, in the Dynkin labelling fixed in the module docstring: `2` on the diagonal (each simple root has norm `2` before the 
 
 ### DualScaleStream2.Lattice.E8PosDef  (`DualScaleStream2/Lattice/E8PosDef.lean`)
 
-- `D` **DualScaleStream2.Lattice.cartanE8R** — `: Matrix (Fin 8) (Fin 8) ℝ := cartanE8.map (Int.cast : ℤ → ℝ)` — Unit lower-triangular factor. -/ noncomputable def e8L : Matrix (Fin 8) (Fin 8) ℝ := !![1, 0, 0, 0, 0, 0, 0, 0; -1/2, 1, 0, 0, 0, 0, 0, 0; 0, -2/3, 1, 0, 0, 0, 
-- `T` **DualScaleStream2.Lattice.cartanE8_det** — `: cartanE8.det = 1 := by` — Unit lower-triangular factor. -/ noncomputable def e8L : Matrix (Fin 8) (Fin 8) ℝ := !![1, 0, 0, 0, 0, 0, 0, 0; -1/2, 1, 0, 0, 0, 0, 0, 0; 0, -2/3, 1, 0, 0, 0, 
-- `T` **DualScaleStream2.Lattice.cartanE8_posDef** — `: cartanE8R.PosDef := by` — Unit lower-triangular factor. -/ noncomputable def e8L : Matrix (Fin 8) (Fin 8) ℝ := !![1, 0, 0, 0, 0, 0, 0, 0; -1/2, 1, 0, 0, 0, 0, 0, 0; 0, -2/3, 1, 0, 0, 0, 
-- `D` **DualScaleStream2.Lattice.e8D** — `: Matrix (Fin 8) (Fin 8) ℝ :=` — Unit lower-triangular factor. -/ noncomputable def e8L : Matrix (Fin 8) (Fin 8) ℝ := !![1, 0, 0, 0, 0, 0, 0, 0; -1/2, 1, 0, 0, 0, 0, 0, 0; 0, -2/3, 1, 0, 0, 0, 
-- `D` **DualScaleStream2.Lattice.e8L** — `: Matrix (Fin 8) (Fin 8) ℝ :=` — Unit lower-triangular factor.
-- `T` **DualScaleStream2.Lattice.e8_LDL** — `: e8L * e8D * e8Lᵀ = cartanE8R := by` — Unit lower-triangular factor. -/ noncomputable def e8L : Matrix (Fin 8) (Fin 8) ℝ := !![1, 0, 0, 0, 0, 0, 0, 0; -1/2, 1, 0, 0, 0, 0, 0, 0; 0, -2/3, 1, 0, 0, 0, 
+- `D` **DualScaleStream2.Lattice.cartanE8R** — `: Matrix (Fin 8) (Fin 8) ℝ := cartanE8.map (Int.cast : ℤ → ℝ)` — Unit lower-triangular `LDLᵀ` factor of `cartanE8` (Gaussian elimination with no pivoting needed, since all pivots turn out positive). Produced outside Lean (sym
+- `T` **DualScaleStream2.Lattice.cartanE8_det** — `: cartanE8.det = 1 := by` — Unit lower-triangular `LDLᵀ` factor of `cartanE8` (Gaussian elimination with no pivoting needed, since all pivots turn out positive). Produced outside Lean (sym
+- `T` **DualScaleStream2.Lattice.cartanE8_posDef** — `: cartanE8R.PosDef := by` — Unit lower-triangular `LDLᵀ` factor of `cartanE8` (Gaussian elimination with no pivoting needed, since all pivots turn out positive). Produced outside Lean (sym
+- `D` **DualScaleStream2.Lattice.e8D** — `: Matrix (Fin 8) (Fin 8) ℝ :=` — Unit lower-triangular `LDLᵀ` factor of `cartanE8` (Gaussian elimination with no pivoting needed, since all pivots turn out positive). Produced outside Lean (sym
+- `D` **DualScaleStream2.Lattice.e8L** — `: Matrix (Fin 8) (Fin 8) ℝ :=` — Unit lower-triangular `LDLᵀ` factor of `cartanE8` (Gaussian elimination with no pivoting needed, since all pivots turn out positive). Produced outside Lean (sym
+- `T` **DualScaleStream2.Lattice.e8_LDL** — `: e8L * e8D * e8Lᵀ = cartanE8R := by` — Unit lower-triangular `LDLᵀ` factor of `cartanE8` (Gaussian elimination with no pivoting needed, since all pivots turn out positive). Produced outside Lean (sym
 
 ### DualScaleStream2.Lattice.Hyperbolic  (`DualScaleStream2/Lattice/Hyperbolic.lean`)
 
-- `D` **DualScaleStream2.Lattice.hyperbolicU** — `: Gram 2 := !![0, 1; 1, 0]` — Hyperbolic plane `U`.
-- `T` **DualScaleStream2.Lattice.hyperbolicU_congruence** — `:` — Hyperbolic plane `U`. -/ def hyperbolicU : Gram 2 := !![0, 1; 1, 0] theorem hyperbolicU_symm : hyperbolicUᵀ = hyperbolicU := by ext i j fin_cases i <;> fin_case
-- `T` **DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram** — `:` — Hyperbolic plane `U`. -/ def hyperbolicU : Gram 2 := !![0, 1; 1, 0] theorem hyperbolicU_symm : hyperbolicUᵀ = hyperbolicU := by ext i j fin_cases i <;> fin_case
-- `T` **DualScaleStream2.Lattice.hyperbolicU_evenDiag** — `: IsEvenDiag hyperbolicU := by`
-- `T` **DualScaleStream2.Lattice.hyperbolicU_mul_self** — `: hyperbolicU * hyperbolicU = 1 := by` — Hyperbolic plane `U`. -/ def hyperbolicU : Gram 2 := !![0, 1; 1, 0] theorem hyperbolicU_symm : hyperbolicUᵀ = hyperbolicU := by ext i j fin_cases i <;> fin_case
-- `T` **DualScaleStream2.Lattice.hyperbolicU_symm** — `: hyperbolicUᵀ = hyperbolicU := by`
-- `T` **DualScaleStream2.Lattice.hyperbolicU_unimodular** — `: IsUnimodular hyperbolicU :=`
+- `D` **DualScaleStream2.Lattice.hyperbolicU** — `: Gram 2 := !![0, 1; 1, 0]` — The hyperbolic plane `U`, as a Gram matrix: `!![0,1;1,0]`. In string-theory terms this is the momentum/winding pairing `(n,w)·(n',w') = n w' + n' w` of one comp
+- `T` **DualScaleStream2.Lattice.hyperbolicU_congruence** — `:` — The hyperbolic plane `U`, as a Gram matrix: `!![0,1;1,0]`. In string-theory terms this is the momentum/winding pairing `(n,w)·(n',w') = n w' + n' w` of one comp
+- `T` **DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram** — `:` — The hyperbolic plane `U`, as a Gram matrix: `!![0,1;1,0]`. In string-theory terms this is the momentum/winding pairing `(n,w)·(n',w') = n w' + n' w` of one comp
+- `T` **DualScaleStream2.Lattice.hyperbolicU_evenDiag** — `: IsEvenDiag hyperbolicU := by` — The hyperbolic plane `U`, as a Gram matrix: `!![0,1;1,0]`. In string-theory terms this is the momentum/winding pairing `(n,w)·(n',w') = n w' + n' w` of one comp
+- `T` **DualScaleStream2.Lattice.hyperbolicU_mul_self** — `: hyperbolicU * hyperbolicU = 1 := by` — The hyperbolic plane `U`, as a Gram matrix: `!![0,1;1,0]`. In string-theory terms this is the momentum/winding pairing `(n,w)·(n',w') = n w' + n' w` of one comp
+- `T` **DualScaleStream2.Lattice.hyperbolicU_symm** — `: hyperbolicUᵀ = hyperbolicU := by` — The hyperbolic plane `U`, as a Gram matrix: `!![0,1;1,0]`. In string-theory terms this is the momentum/winding pairing `(n,w)·(n',w') = n w' + n' w` of one comp
+- `T` **DualScaleStream2.Lattice.hyperbolicU_unimodular** — `: IsUnimodular hyperbolicU :=` — The hyperbolic plane `U`, as a Gram matrix: `!![0,1;1,0]`. In string-theory terms this is the momentum/winding pairing `(n,w)·(n',w') = n w' + n' w` of one comp
 
 ### DualScaleStream2.Lattice.K3T2Signature  (`DualScaleStream2/Lattice/K3T2Signature.lean`)
 
-- `S` **DualScaleStream2.Lattice.Signature** — `where` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form.
+- `S` **DualScaleStream2.Lattice.Signature** — `where` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
 - `T` **DualScaleStream2.Lattice.Signature.add_neg** — ``
 - `T` **DualScaleStream2.Lattice.Signature.add_pos** — ``
-- `D` **DualScaleStream2.Lattice.Signature.index** — `(s : Signature) : ℤ := (s.pos : ℤ) - s.neg` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form. -/ structure Signature where pos : ℕ neg : ℕ deriving DecidableEq, Repr namespace Signature instan
+- `D` **DualScaleStream2.Lattice.Signature.index** — `(s : Signature) : ℤ := (s.pos : ℤ) - s.neg` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
 - `D` **DualScaleStream2.Lattice.Signature.neg** — ``
 - `D` **DualScaleStream2.Lattice.Signature.pos** — ``
-- `D` **DualScaleStream2.Lattice.Signature.rank** — `(s : Signature) : ℕ := s.pos + s.neg`
-- `T` **DualScaleStream2.Lattice.index_mod_eight** — `:` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form. -/ structure Signature where pos : ℕ neg : ℕ deriving DecidableEq, Repr namespace Signature instan
-- `T` **DualScaleStream2.Lattice.rank_K3** — `: sigK3.rank = 22 := by`
-- `T` **DualScaleStream2.Lattice.rank_K3T2** — `: sigK3T2.rank = 28 := by`
-- `D` **DualScaleStream2.Lattice.sigE8Neg** — `: Signature := ⟨0, 8⟩` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form. -/ structure Signature where pos : ℕ neg : ℕ deriving DecidableEq, Repr namespace Signature instan
-- `D` **DualScaleStream2.Lattice.sigK3** — `: Signature := sigE8Neg + sigE8Neg + sigU + sigU + sigU` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form. -/ structure Signature where pos : ℕ neg : ℕ deriving DecidableEq, Repr namespace Signature instan
-- `D` **DualScaleStream2.Lattice.sigK3T2** — `: Signature := sigMukai + sigT2` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form. -/ structure Signature where pos : ℕ neg : ℕ deriving DecidableEq, Repr namespace Signature instan
-- `T` **DualScaleStream2.Lattice.sigK3T2_eq** — `: sigK3T2 = ⟨6, 22⟩ := by`
-- `T` **DualScaleStream2.Lattice.sigK3_eq** — `: sigK3 = ⟨3, 19⟩ := by`
-- `T` **DualScaleStream2.Lattice.sigK3_matches_hodge** — `:` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form. -/ structure Signature where pos : ℕ neg : ℕ deriving DecidableEq, Repr namespace Signature instan
-- `D` **DualScaleStream2.Lattice.sigMukai** — `: Signature := sigK3 + sigU` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form. -/ structure Signature where pos : ℕ neg : ℕ deriving DecidableEq, Repr namespace Signature instan
-- `T` **DualScaleStream2.Lattice.sigMukai_eq** — `: sigMukai = ⟨4, 20⟩ := by`
-- `D` **DualScaleStream2.Lattice.sigT2** — `: Signature := sigU + sigU` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form. -/ structure Signature where pos : ℕ neg : ℕ deriving DecidableEq, Repr namespace Signature instan
-- `D` **DualScaleStream2.Lattice.sigU** — `: Signature := ⟨1, 1⟩` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form. -/ structure Signature where pos : ℕ neg : ℕ deriving DecidableEq, Repr namespace Signature instan
+- `D` **DualScaleStream2.Lattice.Signature.rank** — `(s : Signature) : ℕ := s.pos + s.neg` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `T` **DualScaleStream2.Lattice.index_mod_eight** — `:` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `T` **DualScaleStream2.Lattice.rank_K3** — `: sigK3.rank = 22 := by` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `T` **DualScaleStream2.Lattice.rank_K3T2** — `: sigK3T2.rank = 28 := by` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `D` **DualScaleStream2.Lattice.sigE8Neg** — `: Signature := ⟨0, 8⟩` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `D` **DualScaleStream2.Lattice.sigK3** — `: Signature := sigE8Neg + sigE8Neg + sigU + sigU + sigU` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `D` **DualScaleStream2.Lattice.sigK3T2** — `: Signature := sigMukai + sigT2` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `T` **DualScaleStream2.Lattice.sigK3T2_eq** — `: sigK3T2 = ⟨6, 22⟩ := by` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `T` **DualScaleStream2.Lattice.sigK3_eq** — `: sigK3 = ⟨3, 19⟩ := by` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `T` **DualScaleStream2.Lattice.sigK3_matches_hodge** — `:` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `D` **DualScaleStream2.Lattice.sigMukai** — `: Signature := sigK3 + sigU` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `T` **DualScaleStream2.Lattice.sigMukai_eq** — `: sigMukai = ⟨4, 20⟩ := by` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `D` **DualScaleStream2.Lattice.sigT2** — `: Signature := sigU + sigU` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
+- `D` **DualScaleStream2.Lattice.sigU** — `: Signature := ⟨1, 1⟩` — Signature `(b₊, b₋)` of a non-degenerate real quadratic form: `pos` real dimensions where the form is positive, `neg` where it is negative (`b₊ − b₋` is the phy
 
 ### DualScaleStream2.Lattice.Mukai  (`DualScaleStream2/Lattice/Mukai.lean`)
 
-- `S` **DualScaleStream2.Lattice.MukaiVec** — `(n : ℕ) where` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴`.
+- `S` **DualScaleStream2.Lattice.MukaiVec** — `(n : ℕ) where` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴` (Huybrechts Def. 1.2): `r` the rank, `c` the first Chern class (an `H²` vector in the ambient rank-`n` lattice), `s` t
 - `D` **DualScaleStream2.Lattice.MukaiVec.c** — ``
 - `D` **DualScaleStream2.Lattice.MukaiVec.r** — ``
 - `D` **DualScaleStream2.Lattice.MukaiVec.s** — ``
-- `D` **DualScaleStream2.Lattice.hyperbolicUNeg** — `: Gram 2 := !![0, -1; -1, 0]` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴`. -/ structure MukaiVec (n : ℕ) where (r : ℤ) (c : Fin n → ℤ) (s : ℤ) /-- Huybrechts Def. 1.4. -/ def mukaiPair {n : ℕ}
-- `T` **DualScaleStream2.Lattice.hyperbolicUNeg_mul_self** — `: hyperbolicUNeg * hyperbolicUNeg = 1 := by`
-- `T` **DualScaleStream2.Lattice.hyperbolicUNeg_unimodular** — `: IsUnimodular hyperbolicUNeg :=`
-- `D` **DualScaleStream2.Lattice.mukaiPair** — `{n : ℕ} (L : Gram n) (v w : MukaiVec n) : ℤ :=` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴`. -/ structure MukaiVec (n : ℕ) where (r : ℤ) (c : Fin n → ℤ) (s : ℤ) /-- Huybrechts Def. 1.4.
-- `T` **DualScaleStream2.Lattice.mukaiPair_even** — `{n : ℕ} (L : Gram n) (hL : Lᵀ = L) (heven : IsEvenDiag L)` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴`. -/ structure MukaiVec (n : ℕ) where (r : ℤ) (c : Fin n → ℤ) (s : ℤ) /-- Huybrechts Def. 1.4. -/ def mukaiPair {n : ℕ}
-- `T` **DualScaleStream2.Lattice.mukaiPair_self** — `{n : ℕ} (L : Gram n) (v : MukaiVec n) :`
-- `T` **DualScaleStream2.Lattice.mukaiPair_symm** — `{n : ℕ} (L : Gram n) (hL : Lᵀ = L) (v w : MukaiVec n) :`
-- `T` **DualScaleStream2.Lattice.structureSheaf_mukai_sq** — `{n : ℕ} (L : Gram n) :` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴`. -/ structure MukaiVec (n : ℕ) where (r : ℤ) (c : Fin n → ℤ) (s : ℤ) /-- Huybrechts Def. 1.4. -/ def mukaiPair {n : ℕ}
+- `D` **DualScaleStream2.Lattice.hyperbolicUNeg** — `: Gram 2 := !![0, -1; -1, 0]` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴` (Huybrechts Def. 1.2): `r` the rank, `c` the first Chern class (an `H²` vector in the ambient rank-`n` lattice), `s` t
+- `T` **DualScaleStream2.Lattice.hyperbolicUNeg_mul_self** — `: hyperbolicUNeg * hyperbolicUNeg = 1 := by` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴` (Huybrechts Def. 1.2): `r` the rank, `c` the first Chern class (an `H²` vector in the ambient rank-`n` lattice), `s` t
+- `T` **DualScaleStream2.Lattice.hyperbolicUNeg_unimodular** — `: IsUnimodular hyperbolicUNeg :=` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴` (Huybrechts Def. 1.2): `r` the rank, `c` the first Chern class (an `H²` vector in the ambient rank-`n` lattice), `s` t
+- `D` **DualScaleStream2.Lattice.mukaiPair** — `{n : ℕ} (L : Gram n) (v w : MukaiVec n) : ℤ :=` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴` (Huybrechts Def. 1.2): `r` the rank, `c` the first Chern class (an `H²` vector in the ambient rank-`n` lattice), `s` t
+- `T` **DualScaleStream2.Lattice.mukaiPair_even** — `{n : ℕ} (L : Gram n) (hL : Lᵀ = L) (heven : IsEvenDiag L)` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴` (Huybrechts Def. 1.2): `r` the rank, `c` the first Chern class (an `H²` vector in the ambient rank-`n` lattice), `s` t
+- `T` **DualScaleStream2.Lattice.mukaiPair_self** — `{n : ℕ} (L : Gram n) (v : MukaiVec n) :` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴` (Huybrechts Def. 1.2): `r` the rank, `c` the first Chern class (an `H²` vector in the ambient rank-`n` lattice), `s` t
+- `T` **DualScaleStream2.Lattice.mukaiPair_symm** — `{n : ℕ} (L : Gram n) (hL : Lᵀ = L) (v w : MukaiVec n) :` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴` (Huybrechts Def. 1.2): `r` the rank, `c` the first Chern class (an `H²` vector in the ambient rank-`n` lattice), `s` t
+- `T` **DualScaleStream2.Lattice.structureSheaf_mukai_sq** — `{n : ℕ} (L : Gram n) :` — A Mukai vector `(r, c, s) ∈ H⁰ ⊕ H² ⊕ H⁴` (Huybrechts Def. 1.2): `r` the rank, `c` the first Chern class (an `H²` vector in the ambient rank-`n` lattice), `s` t
 
 ### DualScaleStream2.Lattice.Reflection  (`DualScaleStream2/Lattice/Reflection.lean`)
 
-- `T` **DualScaleStream2.Lattice.e8Neg_simpleRoot_norm** — `(i : Fin 8) : latticeNorm e8Neg (Pi.single i 1) = -2 := by` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). -/ def reflection (L : Gram n) (v : Fin n → ℤ) : Gram n := 1 + vecMulVe
-- `T` **DualScaleStream2.Lattice.e8Neg_weyl_isometry** — `(i : Fin 8) :` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). -/ def reflection (L : Gram n) (v : Fin n → ℤ) : Gram n := 1 + vecMulVe
-- `D` **DualScaleStream2.Lattice.latticeNorm** — `(L : Gram n) (v : Fin n → ℤ) : ℤ := v ⬝ᵥ (L *ᵥ v)` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). -/ def reflection (L : Gram n) (v : Fin n → ℤ) : Gram n := 1 + vecMulVe
-- `D` **DualScaleStream2.Lattice.reflection** — `(L : Gram n) (v : Fin n → ℤ) : Gram n :=` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`).
-- `T` **DualScaleStream2.Lattice.reflection_involution** — `(L : Gram n) (v : Fin n → ℤ) (hv : latticeNorm L v = -2) :` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). -/ def reflection (L : Gram n) (v : Fin n → ℤ) : Gram n := 1 + vecMulVe
-- `T` **DualScaleStream2.Lattice.reflection_isometry** — `(L : Gram n) (hL : Lᵀ = L) (v : Fin n → ℤ)` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). -/ def reflection (L : Gram n) (v : Fin n → ℤ) : Gram n := 1 + vecMulVe
-- `T` **DualScaleStream2.Lattice.vecMulVec_mul_self** — `(L : Gram n) (v : Fin n → ℤ) :` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). -/ def reflection (L : Gram n) (v : Fin n → ℤ) : Gram n := 1 + vecMulVe
+- `T` **DualScaleStream2.Lattice.e8Neg_simpleRoot_norm** — `(i : Fin 8) : latticeNorm e8Neg (Pi.single i 1) = -2 := by` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). This is the candidate for the reflection `sδ : x ↦ x − 2(x·δ)/(δ)² · δ`
+- `T` **DualScaleStream2.Lattice.e8Neg_weyl_isometry** — `(i : Fin 8) :` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). This is the candidate for the reflection `sδ : x ↦ x − 2(x·δ)/(δ)² · δ`
+- `D` **DualScaleStream2.Lattice.latticeNorm** — `(L : Gram n) (v : Fin n → ℤ) : ℤ := v ⬝ᵥ (L *ᵥ v)` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). This is the candidate for the reflection `sδ : x ↦ x − 2(x·δ)/(δ)² · δ`
+- `D` **DualScaleStream2.Lattice.reflection** — `(L : Gram n) (v : Fin n → ℤ) : Gram n :=` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). This is the candidate for the reflection `sδ : x ↦ x − 2(x·δ)/(δ)² · δ`
+- `T` **DualScaleStream2.Lattice.reflection_involution** — `(L : Gram n) (v : Fin n → ℤ) (hv : latticeNorm L v = -2) :` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). This is the candidate for the reflection `sδ : x ↦ x − 2(x·δ)/(δ)² · δ`
+- `T` **DualScaleStream2.Lattice.reflection_isometry** — `(L : Gram n) (hL : Lᵀ = L) (v : Fin n → ℤ)` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). This is the candidate for the reflection `sδ : x ↦ x − 2(x·δ)/(δ)² · δ`
+- `T` **DualScaleStream2.Lattice.vecMulVec_mul_self** — `(L : Gram n) (v : Fin n → ℤ) :` — Reflection matrix `s_v = 1 + v vᵀ L` (so `s_v x = x + ⟨x, v⟩ v` with `⟨x, v⟩ = vᵀ L x`). This is the candidate for the reflection `sδ : x ↦ x − 2(x·δ)/(δ)² · δ`
 
 ### DualScaleStream2.Moonshine.EOT  (`DualScaleStream2/Moonshine/EOT.lean`)
 
@@ -167,60 +167,60 @@ before quoting a statement in the book.
 
 ### DualScaleStream2.TDuality.Factorized  (`DualScaleStream2/TDuality/Factorized.lean`)
 
-- `D` **DualScaleStream2.TDuality.chargeNorm** — `(Z : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z)` — `e_k`: the matrix unit at `(k,k)`. -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d) ℤ := single k k 1 /-- Factorized duality `D_k` (GPR eq. (2.4.29)). -/ def fa
-- `T` **DualScaleStream2.TDuality.chargeNorm_even** — `(Z : Charge d → ℤ) : Even (chargeNorm Z) := by` — `e_k`: the matrix unit at `(k,k)`. -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d) ℤ := single k k 1 /-- Factorized duality `D_k` (GPR eq. (2.4.29)). -/ def fa
-- `T` **DualScaleStream2.TDuality.chargeNorm_invariant** — `(g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g)` — `e_k`: the matrix unit at `(k,k)`. -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d) ℤ := single k k 1 /-- Factorized duality `D_k` (GPR eq. (2.4.29)). -/ def fa
-- `T` **DualScaleStream2.TDuality.chargeNorm_sumElim** — `(n w : Fin d → ℤ) :`
-- `D` **DualScaleStream2.TDuality.factorized** — `(k : Fin d) : Matrix (Charge d) (Charge d) ℤ :=` — `e_k`: the matrix unit at `(k,k)`. -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d) ℤ := single k k 1 /-- Factorized duality `D_k` (GPR eq. (2.4.29)).
-- `T` **DualScaleStream2.TDuality.factorized_comm** — `(k l : Fin d) :`
-- `T` **DualScaleStream2.TDuality.factorized_isODD** — `(k : Fin d) : IsODD (factorized k) := by`
-- `T` **DualScaleStream2.TDuality.factorized_mul_self** — `(k : Fin d) : factorized k * factorized k = 1 := by`
-- `T` **DualScaleStream2.TDuality.factorized_two** — `: factorized (0 : Fin 2) * factorized 1 = eta 2 := by` — `e_k`: the matrix unit at `(k,k)`. -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d) ℤ := single k k 1 /-- Factorized duality `D_k` (GPR eq. (2.4.29)). -/ def fa
-- `D` **DualScaleStream2.TDuality.proj** — `(k : Fin d) : Matrix (Fin d) (Fin d) ℤ := single k k 1` — `e_k`: the matrix unit at `(k,k)`.
-- `T` **DualScaleStream2.TDuality.proj_comm** — `(k l : Fin d) : proj k * proj l = proj l * proj k := by` — `e_k`: the matrix unit at `(k,k)`. -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d) ℤ := single k k 1 /-- Factorized duality `D_k` (GPR eq. (2.4.29)). -/ def fa
-- `T` **DualScaleStream2.TDuality.proj_mul_self** — `(k : Fin d) : proj k * proj k = proj k := by`
-- `T` **DualScaleStream2.TDuality.proj_transpose** — `(k : Fin d) : (proj k)ᵀ = proj k := by`
+- `D` **DualScaleStream2.TDuality.chargeNorm** — `(Z : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z)` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
+- `T` **DualScaleStream2.TDuality.chargeNorm_even** — `(Z : Charge d → ℤ) : Even (chargeNorm Z) := by` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
+- `T` **DualScaleStream2.TDuality.chargeNorm_invariant** — `(g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g)` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
+- `T` **DualScaleStream2.TDuality.chargeNorm_sumElim** — `(n w : Fin d → ℤ) :` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
+- `D` **DualScaleStream2.TDuality.factorized** — `(k : Fin d) : Matrix (Charge d) (Charge d) ℤ :=` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
+- `T` **DualScaleStream2.TDuality.factorized_comm** — `(k l : Fin d) :` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
+- `T` **DualScaleStream2.TDuality.factorized_isODD** — `(k : Fin d) : IsODD (factorized k) := by` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
+- `T` **DualScaleStream2.TDuality.factorized_mul_self** — `(k : Fin d) : factorized k * factorized k = 1 := by` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
+- `T` **DualScaleStream2.TDuality.factorized_two** — `: factorized (0 : Fin 2) * factorized 1 = eta 2 := by` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
+- `D` **DualScaleStream2.TDuality.proj** — `(k : Fin d) : Matrix (Fin d) (Fin d) ℤ := single k k 1` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below.
+- `T` **DualScaleStream2.TDuality.proj_comm** — `(k l : Fin d) : proj k * proj l = proj l * proj k := by` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
+- `T` **DualScaleStream2.TDuality.proj_mul_self** — `(k : Fin d) : proj k * proj k = proj k := by` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
+- `T` **DualScaleStream2.TDuality.proj_transpose** — `(k : Fin d) : (proj k)ᵀ = proj k := by` — `e_k`: the matrix unit at `(k,k)`, i.e. the diagonal projector onto the `k`-th coordinate. Used to isolate "act on direction `k` only" in `factorized` below. -/
 
 ### DualScaleStream2.TDuality.Mirror  (`DualScaleStream2/TDuality/Mirror.lean`)
 
-- `D` **DualScaleStream2.TDuality.mirrorTheta** — `: Matrix (Fin 2) (Fin 2) ℤ := !![0, -1; 1, 0]` — `T = [[1,1],[0,1]]`. -/ def tauShift : Matrix (Fin 2) (Fin 2) ℤ := !![1, 1; 0, 1] /-- `(Tᵀ)⁻¹ = [[1,0],[-1,1]]`. -/ def tauShiftDual : Matrix (Fin 2) (Fin 2) ℤ 
-- `T` **DualScaleStream2.TDuality.mirrorTheta_antisymm** — `: mirrorThetaᵀ = -mirrorTheta := by`
-- `T` **DualScaleStream2.TDuality.mirror_conjugates_tauShift** — `:` — `T = [[1,1],[0,1]]`. -/ def tauShift : Matrix (Fin 2) (Fin 2) ℤ := !![1, 1; 0, 1] /-- `(Tᵀ)⁻¹ = [[1,0],[-1,1]]`. -/ def tauShiftDual : Matrix (Fin 2) (Fin 2) ℤ 
-- `D` **DualScaleStream2.TDuality.tauShift** — `: Matrix (Fin 2) (Fin 2) ℤ := !![1, 1; 0, 1]` — `T = [[1,1],[0,1]]`.
-- `D` **DualScaleStream2.TDuality.tauShiftDual** — `: Matrix (Fin 2) (Fin 2) ℤ := !![1, 0; -1, 1]` — `T = [[1,1],[0,1]]`. -/ def tauShift : Matrix (Fin 2) (Fin 2) ℤ := !![1, 1; 0, 1] /-- `(Tᵀ)⁻¹ = [[1,0],[-1,1]]`.
-- `T` **DualScaleStream2.TDuality.tauShift_dual_spec** — `: tauShiftᵀ * tauShiftDual = 1 := by`
-- `T` **DualScaleStream2.TDuality.tauShift_isODD** — `: IsODD (basisChange tauShift tauShiftDual) :=` — `T = [[1,1],[0,1]]`. -/ def tauShift : Matrix (Fin 2) (Fin 2) ℤ := !![1, 1; 0, 1] /-- `(Tᵀ)⁻¹ = [[1,0],[-1,1]]`. -/ def tauShiftDual : Matrix (Fin 2) (Fin 2) ℤ 
+- `D` **DualScaleStream2.TDuality.mirrorTheta** — `: Matrix (Fin 2) (Fin 2) ℤ := !![0, -1; 1, 0]` — `T = [[1,1],[0,1]]`: the standard `SL(2,ℤ)` generator implementing `τ ↦ τ + 1` (a unimodular change of basis of the `T²` lattice; `A = T` in `ODD.basisChange`).
+- `T` **DualScaleStream2.TDuality.mirrorTheta_antisymm** — `: mirrorThetaᵀ = -mirrorTheta := by` — `T = [[1,1],[0,1]]`: the standard `SL(2,ℤ)` generator implementing `τ ↦ τ + 1` (a unimodular change of basis of the `T²` lattice; `A = T` in `ODD.basisChange`).
+- `T` **DualScaleStream2.TDuality.mirror_conjugates_tauShift** — `:` — `T = [[1,1],[0,1]]`: the standard `SL(2,ℤ)` generator implementing `τ ↦ τ + 1` (a unimodular change of basis of the `T²` lattice; `A = T` in `ODD.basisChange`).
+- `D` **DualScaleStream2.TDuality.tauShift** — `: Matrix (Fin 2) (Fin 2) ℤ := !![1, 1; 0, 1]` — `T = [[1,1],[0,1]]`: the standard `SL(2,ℤ)` generator implementing `τ ↦ τ + 1` (a unimodular change of basis of the `T²` lattice; `A = T` in `ODD.basisChange`).
+- `D` **DualScaleStream2.TDuality.tauShiftDual** — `: Matrix (Fin 2) (Fin 2) ℤ := !![1, 0; -1, 1]` — `T = [[1,1],[0,1]]`: the standard `SL(2,ℤ)` generator implementing `τ ↦ τ + 1` (a unimodular change of basis of the `T²` lattice; `A = T` in `ODD.basisChange`).
+- `T` **DualScaleStream2.TDuality.tauShift_dual_spec** — `: tauShiftᵀ * tauShiftDual = 1 := by` — `T = [[1,1],[0,1]]`: the standard `SL(2,ℤ)` generator implementing `τ ↦ τ + 1` (a unimodular change of basis of the `T²` lattice; `A = T` in `ODD.basisChange`).
+- `T` **DualScaleStream2.TDuality.tauShift_isODD** — `: IsODD (basisChange tauShift tauShiftDual) :=` — `T = [[1,1],[0,1]]`: the standard `SL(2,ℤ)` generator implementing `τ ↦ τ + 1` (a unimodular change of basis of the `T²` lattice; `A = T` in `ODD.basisChange`).
 
 ### DualScaleStream2.TDuality.ODD  (`DualScaleStream2/TDuality/ODD.lean`)
 
 - `D` **DualScaleStream2.TDuality.Charge** — ``
-- `D` **DualScaleStream2.TDuality.IsODD** — `(g : Matrix (Charge d) (Charge d) ℤ) : Prop := gᵀ * eta d * g = eta d` — Charge-lattice index set: `d` momenta ⊕ `d` windings. -/ abbrev Charge (d : ℕ) := Fin d ⊕ Fin d /-- The `O(d,d)`-invariant form `η = [[0, I],[I, 0]]`. -/ def et
-- `D` **DualScaleStream2.TDuality.basisChange** — `(A B : Matrix (Fin d) (Fin d) ℤ) : Matrix (Charge d) (Charge d) ℤ :=` — Charge-lattice index set: `d` momenta ⊕ `d` windings. -/ abbrev Charge (d : ℕ) := Fin d ⊕ Fin d /-- The `O(d,d)`-invariant form `η = [[0, I],[I, 0]]`. -/ def et
-- `T` **DualScaleStream2.TDuality.basisChange_isODD** — `(A B : Matrix (Fin d) (Fin d) ℤ) (h : Aᵀ * B = 1) :`
-- `D` **DualScaleStream2.TDuality.eta** — `(d : ℕ) : Matrix (Charge d) (Charge d) ℤ := fromBlocks 0 1 1 0` — Charge-lattice index set: `d` momenta ⊕ `d` windings. -/ abbrev Charge (d : ℕ) := Fin d ⊕ Fin d /-- The `O(d,d)`-invariant form `η = [[0, I],[I, 0]]`.
-- `T` **DualScaleStream2.TDuality.eta_isODD** — `: IsODD (eta d) := by` — Charge-lattice index set: `d` momenta ⊕ `d` windings. -/ abbrev Charge (d : ℕ) := Fin d ⊕ Fin d /-- The `O(d,d)`-invariant form `η = [[0, I],[I, 0]]`. -/ def et
-- `T` **DualScaleStream2.TDuality.eta_mul_self** — `: eta d * eta d = 1 := by` — Charge-lattice index set: `d` momenta ⊕ `d` windings. -/ abbrev Charge (d : ℕ) := Fin d ⊕ Fin d /-- The `O(d,d)`-invariant form `η = [[0, I],[I, 0]]`. -/ def et
-- `T` **DualScaleStream2.TDuality.eta_one_reindex** — `:` — Charge-lattice index set: `d` momenta ⊕ `d` windings. -/ abbrev Charge (d : ℕ) := Fin d ⊕ Fin d /-- The `O(d,d)`-invariant form `η = [[0, I],[I, 0]]`. -/ def et
-- `T` **DualScaleStream2.TDuality.isODD_mul** — `(g h : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g) (hh : IsODD h) :` — Charge-lattice index set: `d` momenta ⊕ `d` windings. -/ abbrev Charge (d : ℕ) := Fin d ⊕ Fin d /-- The `O(d,d)`-invariant form `η = [[0, I],[I, 0]]`. -/ def et
-- `D` **DualScaleStream2.TDuality.thetaShift** — `(Θ : Matrix (Fin d) (Fin d) ℤ) : Matrix (Charge d) (Charge d) ℤ :=` — Charge-lattice index set: `d` momenta ⊕ `d` windings. -/ abbrev Charge (d : ℕ) := Fin d ⊕ Fin d /-- The `O(d,d)`-invariant form `η = [[0, I],[I, 0]]`. -/ def et
-- `T` **DualScaleStream2.TDuality.thetaShift_isODD** — `(Θ : Matrix (Fin d) (Fin d) ℤ) (hΘ : Θᵀ = -Θ) :`
+- `D` **DualScaleStream2.TDuality.IsODD** — `(g : Matrix (Charge d) (Charge d) ℤ) : Prop := gᵀ * eta d * g = eta d` — Charge-lattice index set: `d` momenta ⊕ `d` windings. As a Lean type this is `Fin d ⊕ Fin d`; physically it indexes the `2d` integers `(n_1,…,n_d,w_1,…,w_d)` la
+- `D` **DualScaleStream2.TDuality.basisChange** — `(A B : Matrix (Fin d) (Fin d) ℤ) : Matrix (Charge d) (Charge d) ℤ :=` — Charge-lattice index set: `d` momenta ⊕ `d` windings. As a Lean type this is `Fin d ⊕ Fin d`; physically it indexes the `2d` integers `(n_1,…,n_d,w_1,…,w_d)` la
+- `T` **DualScaleStream2.TDuality.basisChange_isODD** — `(A B : Matrix (Fin d) (Fin d) ℤ) (h : Aᵀ * B = 1) :` — Charge-lattice index set: `d` momenta ⊕ `d` windings. As a Lean type this is `Fin d ⊕ Fin d`; physically it indexes the `2d` integers `(n_1,…,n_d,w_1,…,w_d)` la
+- `D` **DualScaleStream2.TDuality.eta** — `(d : ℕ) : Matrix (Charge d) (Charge d) ℤ := fromBlocks 0 1 1 0` — Charge-lattice index set: `d` momenta ⊕ `d` windings. As a Lean type this is `Fin d ⊕ Fin d`; physically it indexes the `2d` integers `(n_1,…,n_d,w_1,…,w_d)` la
+- `T` **DualScaleStream2.TDuality.eta_isODD** — `: IsODD (eta d) := by` — Charge-lattice index set: `d` momenta ⊕ `d` windings. As a Lean type this is `Fin d ⊕ Fin d`; physically it indexes the `2d` integers `(n_1,…,n_d,w_1,…,w_d)` la
+- `T` **DualScaleStream2.TDuality.eta_mul_self** — `: eta d * eta d = 1 := by` — Charge-lattice index set: `d` momenta ⊕ `d` windings. As a Lean type this is `Fin d ⊕ Fin d`; physically it indexes the `2d` integers `(n_1,…,n_d,w_1,…,w_d)` la
+- `T` **DualScaleStream2.TDuality.eta_one_reindex** — `:` — Charge-lattice index set: `d` momenta ⊕ `d` windings. As a Lean type this is `Fin d ⊕ Fin d`; physically it indexes the `2d` integers `(n_1,…,n_d,w_1,…,w_d)` la
+- `T` **DualScaleStream2.TDuality.isODD_mul** — `(g h : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g) (hh : IsODD h) :` — Charge-lattice index set: `d` momenta ⊕ `d` windings. As a Lean type this is `Fin d ⊕ Fin d`; physically it indexes the `2d` integers `(n_1,…,n_d,w_1,…,w_d)` la
+- `D` **DualScaleStream2.TDuality.thetaShift** — `(Θ : Matrix (Fin d) (Fin d) ℤ) : Matrix (Charge d) (Charge d) ℤ :=` — Charge-lattice index set: `d` momenta ⊕ `d` windings. As a Lean type this is `Fin d ⊕ Fin d`; physically it indexes the `2d` integers `(n_1,…,n_d,w_1,…,w_d)` la
+- `T` **DualScaleStream2.TDuality.thetaShift_isODD** — `(Θ : Matrix (Fin d) (Fin d) ℤ) (hΘ : Θᵀ = -Θ) :` — Charge-lattice index set: `d` momenta ⊕ `d` windings. As a Lean type this is `Fin d ⊕ Fin d`; physically it indexes the `2d` integers `(n_1,…,n_d,w_1,…,w_d)` la
 
 ### DualScaleStream2.TDuality.SL2Product  (`DualScaleStream2/TDuality/SL2Product.lean`)
 
-- `T` **DualScaleStream2.TDuality.basisChange_comm_thetaShift** — `(A B : Matrix (Fin 2) (Fin 2) ℤ) (hAB : Aᵀ * B = 1)` — `J = [[0,1],[-1,0]]`. -/ def jMat : Matrix (Fin 2) (Fin 2) ℤ := !![0, 1; -1, 0] theorem mul_jMat_mul_transpose (A : Matrix (Fin 2) (Fin 2) ℤ) : A * jMat * Aᵀ = 
-- `T` **DualScaleStream2.TDuality.basisChange_mul** — `{d : ℕ} (A B A' B' : Matrix (Fin d) (Fin d) ℤ) :`
-- `D` **DualScaleStream2.TDuality.jMat** — `: Matrix (Fin 2) (Fin 2) ℤ := !![0, 1; -1, 0]` — `J = [[0,1],[-1,0]]`.
-- `T` **DualScaleStream2.TDuality.mul_jMat_mul_transpose** — `(A : Matrix (Fin 2) (Fin 2) ℤ) :`
-- `T` **DualScaleStream2.TDuality.thetaShift_mul** — `{d : ℕ} (Θ Θ' : Matrix (Fin d) (Fin d) ℤ) :`
+- `T` **DualScaleStream2.TDuality.basisChange_comm_thetaShift** — `(A B : Matrix (Fin 2) (Fin 2) ℤ) (hAB : Aᵀ * B = 1)` — `J = [[0,1],[-1,0]]`: the antisymmetric generator along which the `ρ`-translations `thetaShift (t • jMat)` (`t ∈ ℤ`) run, `ρ ↦ ρ + t`. -/ def jMat : Matrix (Fin
+- `T` **DualScaleStream2.TDuality.basisChange_mul** — `{d : ℕ} (A B A' B' : Matrix (Fin d) (Fin d) ℤ) :` — `J = [[0,1],[-1,0]]`: the antisymmetric generator along which the `ρ`-translations `thetaShift (t • jMat)` (`t ∈ ℤ`) run, `ρ ↦ ρ + t`. -/ def jMat : Matrix (Fin
+- `D` **DualScaleStream2.TDuality.jMat** — `: Matrix (Fin 2) (Fin 2) ℤ := !![0, 1; -1, 0]` — `J = [[0,1],[-1,0]]`: the antisymmetric generator along which the `ρ`-translations `thetaShift (t • jMat)` (`t ∈ ℤ`) run, `ρ ↦ ρ + t`.
+- `T` **DualScaleStream2.TDuality.mul_jMat_mul_transpose** — `(A : Matrix (Fin 2) (Fin 2) ℤ) :` — `J = [[0,1],[-1,0]]`: the antisymmetric generator along which the `ρ`-translations `thetaShift (t • jMat)` (`t ∈ ℤ`) run, `ρ ↦ ρ + t`. -/ def jMat : Matrix (Fin
+- `T` **DualScaleStream2.TDuality.thetaShift_mul** — `{d : ℕ} (Θ Θ' : Matrix (Fin d) (Fin d) ℤ) :` — `J = [[0,1],[-1,0]]`: the antisymmetric generator along which the `ρ`-translations `thetaShift (t • jMat)` (`t ∈ ℤ`) run, `ρ ↦ ρ + t`. -/ def jMat : Matrix (Fin
 
 ### DualScaleStream2.TDuality.Spectrum  (`DualScaleStream2/TDuality/Spectrum.lean`)
 
-- `T` **DualScaleStream2.TDuality.eta_transpose** — `: (eta d)ᵀ = eta d := by` — Helper: `η` is symmetric.
-- `T` **DualScaleStream2.TDuality.isODD_inv_isODD** — `(g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g) :`
-- `T` **DualScaleStream2.TDuality.isODD_left_inv** — `(g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g) :`
-- `T` **DualScaleStream2.TDuality.isODD_right_inv** — `(g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g) :`
-- `T` **DualScaleStream2.TDuality.spectrum_equivalence** — `(g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g)` — Helper: `η` is symmetric. -/ theorem eta_transpose : (eta d)ᵀ = eta d := by unfold eta rw [fromBlocks_transpose] simp theorem isODD_inv_isODD (g : Matrix (Charg
-- `D` **DualScaleStream2.TDuality.toReal** — `(g : Matrix (Charge d) (Charge d) ℤ) : Matrix (Charge d) (Charge d) ℝ :=` — Helper: `η` is symmetric. -/ theorem eta_transpose : (eta d)ᵀ = eta d := by unfold eta rw [fromBlocks_transpose] simp theorem isODD_inv_isODD (g : Matrix (Charg
+- `T` **DualScaleStream2.TDuality.eta_transpose** — `: (eta d)ᵀ = eta d := by` — **`η gᵀ η` is a left inverse of `g`** for any `g ∈ O(d,d;ℤ)`: `(η gᵀ η) g = 1`. Proof idea: regroup as `η (gᵀ η g) = η η` using `hg : gᵀ η g = η`, which collaps
+- `T` **DualScaleStream2.TDuality.isODD_inv_isODD** — `(g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g) :` — **`η gᵀ η` is a left inverse of `g`** for any `g ∈ O(d,d;ℤ)`: `(η gᵀ η) g = 1`. Proof idea: regroup as `η (gᵀ η g) = η η` using `hg : gᵀ η g = η`, which collaps
+- `T` **DualScaleStream2.TDuality.isODD_left_inv** — `(g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g) :` — **`η gᵀ η` is a left inverse of `g`** for any `g ∈ O(d,d;ℤ)`: `(η gᵀ η) g = 1`. Proof idea: regroup as `η (gᵀ η g) = η η` using `hg : gᵀ η g = η`, which collaps
+- `T` **DualScaleStream2.TDuality.isODD_right_inv** — `(g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g) :` — **`η gᵀ η` is a left inverse of `g`** for any `g ∈ O(d,d;ℤ)`: `(η gᵀ η) g = 1`. Proof idea: regroup as `η (gᵀ η g) = η η` using `hg : gᵀ η g = η`, which collaps
+- `T` **DualScaleStream2.TDuality.spectrum_equivalence** — `(g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g)` — **`η gᵀ η` is a left inverse of `g`** for any `g ∈ O(d,d;ℤ)`: `(η gᵀ η) g = 1`. Proof idea: regroup as `η (gᵀ η g) = η η` using `hg : gᵀ η g = η`, which collaps
+- `D` **DualScaleStream2.TDuality.toReal** — `(g : Matrix (Charge d) (Charge d) ℤ) : Matrix (Charge d) (Charge d) ℝ :=` — **`η gᵀ η` is a left inverse of `g`** for any `g ∈ O(d,d;ℤ)`: `(η gᵀ η) g = 1`. Proof idea: regroup as `η (gᵀ η g) = η η` using `hg : gᵀ η g = η`, which collaps
 
 ## StringTheoryFormalization
 
@@ -241,15 +241,15 @@ before quoting a statement in the book.
 
 ### StringTheoryFormalization.Frontier.ChiralPrimaries  (`StringTheoryFormalization/Frontier/ChiralPrimaries.lean`)
 
-- `D` **StringTheory.Frontier.K3ChiralPrimaryCount** — `: Fin 3 → ℕ` — N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h ≥ 0. -/ confWeight : ℚ /-- U(1)_R charge q ∈ ℤ (after spectral
-- `S` **StringTheory.Frontier.N2State** — `where` — N=2 superconformal algebra charges for a state.
+- `D` **StringTheory.Frontier.K3ChiralPrimaryCount** — `: Fin 3 → ℕ` — A pair of `N=2` superconformal quantum numbers `(h, q)` for a state: a conformal weight and a `U(1)_R` charge. Physically `h ≥ 0` in any unitary representation,
+- `S` **StringTheory.Frontier.N2State** — `where` — A pair of `N=2` superconformal quantum numbers `(h, q)` for a state: a conformal weight and a `U(1)_R` charge. Physically `h ≥ 0` in any unitary representation,
 - `D` **StringTheory.Frontier.N2State.confWeight** — ``
 - `D` **StringTheory.Frontier.N2State.u1Charge** — ``
-- `D` **StringTheory.Frontier.bpsBound** — `(s : N2State) : Prop :=` — N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h ≥ 0. -/ confWeight : ℚ /-- U(1)_R charge q ∈ ℤ (after spectral
-- `T` **StringTheory.Frontier.chiral_primary_ring_associativity** — `:` — N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h ≥ 0. -/ confWeight : ℚ /-- U(1)_R charge q ∈ ℤ (after spectral
-- `T` **StringTheory.Frontier.chiral_primary_saturates_bps** — `(s : N2State) (h : isChiralPrimary s) :` — N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h ≥ 0. -/ confWeight : ℚ /-- U(1)_R charge q ∈ ℤ (after spectral
-- `D` **StringTheory.Frontier.isChiralPrimary** — `(s : N2State) : Prop :=` — N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h ≥ 0. -/ confWeight : ℚ /-- U(1)_R charge q ∈ ℤ (after spectral
-- `T` **StringTheory.Frontier.k3_chiral_primary_total** — `:` — N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h ≥ 0. -/ confWeight : ℚ /-- U(1)_R charge q ∈ ℤ (after spectral
+- `D` **StringTheory.Frontier.bpsBound** — `(s : N2State) : Prop :=` — A pair of `N=2` superconformal quantum numbers `(h, q)` for a state: a conformal weight and a `U(1)_R` charge. Physically `h ≥ 0` in any unitary representation,
+- `T` **StringTheory.Frontier.chiral_primary_ring_associativity** — `:` — A pair of `N=2` superconformal quantum numbers `(h, q)` for a state: a conformal weight and a `U(1)_R` charge. Physically `h ≥ 0` in any unitary representation,
+- `T` **StringTheory.Frontier.chiral_primary_saturates_bps** — `(s : N2State) (h : isChiralPrimary s) :` — A pair of `N=2` superconformal quantum numbers `(h, q)` for a state: a conformal weight and a `U(1)_R` charge. Physically `h ≥ 0` in any unitary representation,
+- `D` **StringTheory.Frontier.isChiralPrimary** — `(s : N2State) : Prop :=` — A pair of `N=2` superconformal quantum numbers `(h, q)` for a state: a conformal weight and a `U(1)_R` charge. Physically `h ≥ 0` in any unitary representation,
+- `T` **StringTheory.Frontier.k3_chiral_primary_total** — `:` — A pair of `N=2` superconformal quantum numbers `(h, q)` for a state: a conformal weight and a `U(1)_R` charge. Physically `h ≥ 0` in any unitary representation,
 
 ### StringTheoryFormalization.Frontier.FTermPotential  (`StringTheoryFormalization/Frontier/FTermPotential.lean`)
 
@@ -271,33 +271,33 @@ before quoting a statement in the book.
 
 ### StringTheoryFormalization.Frontier.HodgeNumbers  (`StringTheoryFormalization/Frontier/HodgeNumbers.lean`)
 
-- `T` **StringTheory.Frontier.hodge11_from_kummer** — `:` — The Hodge numbers of K3 as a function (p,q) → ℕ. -/ def k3HodgeNumber : Fin 3 → Fin 3 → ℕ | ⟨0, _⟩, ⟨0, _⟩ => 1 -- h^{0,0} = 1 | ⟨0, _⟩, ⟨1, _⟩ => 0 -- h^{0,1} 
-- `D` **StringTheory.Frontier.k3HodgeNumber** — `: Fin 3 → Fin 3 → ℕ` — The Hodge numbers of K3 as a function (p,q) → ℕ.
-- `T` **StringTheory.Frontier.k3_b2** — `:` — The Hodge numbers of K3 as a function (p,q) → ℕ. -/ def k3HodgeNumber : Fin 3 → Fin 3 → ℕ | ⟨0, _⟩, ⟨0, _⟩ => 1 -- h^{0,0} = 1 | ⟨0, _⟩, ⟨1, _⟩ => 0 -- h^{0,1} 
-- `T` **StringTheory.Frontier.k3_euler_characteristic** — `:` — The Hodge numbers of K3 as a function (p,q) → ℕ. -/ def k3HodgeNumber : Fin 3 → Fin 3 → ℕ | ⟨0, _⟩, ⟨0, _⟩ => 1 -- h^{0,0} = 1 | ⟨0, _⟩, ⟨1, _⟩ => 0 -- h^{0,1} 
-- `T` **StringTheory.Frontier.k3_hodge_symmetry** — `(p q : Fin 3) :` — The Hodge numbers of K3 as a function (p,q) → ℕ. -/ def k3HodgeNumber : Fin 3 → Fin 3 → ℕ | ⟨0, _⟩, ⟨0, _⟩ => 1 -- h^{0,0} = 1 | ⟨0, _⟩, ⟨1, _⟩ => 0 -- h^{0,1} 
-- `T` **StringTheory.Frontier.k3_serre_duality** — `(p q : Fin 3) :` — The Hodge numbers of K3 as a function (p,q) → ℕ. -/ def k3HodgeNumber : Fin 3 → Fin 3 → ℕ | ⟨0, _⟩, ⟨0, _⟩ => 1 -- h^{0,0} = 1 | ⟨0, _⟩, ⟨1, _⟩ => 0 -- h^{0,1} 
+- `T` **StringTheory.Frontier.hodge11_from_kummer** — `:` — The Hodge numbers of K3, `h^{p,q} = dim H^q(K3,Ω^p)`, as a hand-written lookup table `Fin 3 → Fin 3 → ℕ` matching the standard diamond (see the module docstring
+- `D` **StringTheory.Frontier.k3HodgeNumber** — `: Fin 3 → Fin 3 → ℕ` — The Hodge numbers of K3, `h^{p,q} = dim H^q(K3,Ω^p)`, as a hand-written lookup table `Fin 3 → Fin 3 → ℕ` matching the standard diamond (see the module docstring
+- `T` **StringTheory.Frontier.k3_b2** — `:` — The Hodge numbers of K3, `h^{p,q} = dim H^q(K3,Ω^p)`, as a hand-written lookup table `Fin 3 → Fin 3 → ℕ` matching the standard diamond (see the module docstring
+- `T` **StringTheory.Frontier.k3_euler_characteristic** — `:` — The Hodge numbers of K3, `h^{p,q} = dim H^q(K3,Ω^p)`, as a hand-written lookup table `Fin 3 → Fin 3 → ℕ` matching the standard diamond (see the module docstring
+- `T` **StringTheory.Frontier.k3_hodge_symmetry** — `(p q : Fin 3) :` — The Hodge numbers of K3, `h^{p,q} = dim H^q(K3,Ω^p)`, as a hand-written lookup table `Fin 3 → Fin 3 → ℕ` matching the standard diamond (see the module docstring
+- `T` **StringTheory.Frontier.k3_serre_duality** — `(p q : Fin 3) :` — The Hodge numbers of K3, `h^{p,q} = dim H^q(K3,Ω^p)`, as a hand-written lookup table `Fin 3 → Fin 3 → ℕ` matching the standard diamond (see the module docstring
 
 ### StringTheoryFormalization.Frontier.ModuliGeodesics  (`StringTheoryFormalization/Frontier/ModuliGeodesics.lean`)
 
-- `S` **StringTheory.Frontier.K3ModuliPoint** — `where` — A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}.
+- `S` **StringTheory.Frontier.K3ModuliPoint** — `where` — A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. `periodPoint` is stored but not
 - `T` **StringTheory.Frontier.K3ModuliPoint.norm_pos** — ``
 - `D` **StringTheory.Frontier.K3ModuliPoint.periodNorm** — ``
 - `D` **StringTheory.Frontier.K3ModuliPoint.periodPoint** — ``
-- `S` **StringTheory.Frontier.ModuliGeodesic** — `where` — A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. -/ structure K3ModuliPoint where /-- Period
+- `S` **StringTheory.Frontier.ModuliGeodesic** — `where` — A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. `periodPoint` is stored but not
 - `D` **StringTheory.Frontier.ModuliGeodesic.path** — ``
 - `T` **StringTheory.Frontier.ModuliGeodesic.path_smooth** — ``
 - `T` **StringTheory.Frontier.ModuliGeodesic.range_nonempty** — ``
 - `D` **StringTheory.Frontier.ModuliGeodesic.t₀** — ``
 - `D` **StringTheory.Frontier.ModuliGeodesic.t₁** — ``
-- `T` **StringTheory.Frontier.geodesic_equation_kummer_locus** — `(γ : ModuliGeodesic) (t : ℝ)` — A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. -/ structure K3ModuliPoint where /-- Period
-- `T` **StringTheory.Frontier.poincare_geodesic_atlas_curvature** — `:` — A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. -/ structure K3ModuliPoint where /-- Period
-- `T` **StringTheory.Frontier.poincare_geodesic_kinetic_energy_nonneg** — `(y y' : ℝ) (hy : 0 < y) :` — A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. -/ structure K3ModuliPoint where /-- Period
-- `D` **StringTheory.Frontier.wpKahlerPotential** — `(p : K3ModuliPoint) : ℝ :=` — A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. -/ structure K3ModuliPoint where /-- Period
-- `D` **StringTheory.Frontier.wpMetricComponent** — `(p : K3ModuliPoint) (i j : Fin 20) : ℝ :=` — A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. -/ structure K3ModuliPoint where /-- Period
-- `D` **StringTheory.Frontier.wpVolume** — `: ℝ :=` — A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. -/ structure K3ModuliPoint where /-- Period
-- `T` **StringTheory.Frontier.wp_geodesic_completeness** — `(γ : ModuliGeodesic) :` — A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. -/ structure K3ModuliPoint where /-- Period
-- `T` **StringTheory.Frontier.wp_metric_positive_diagonal** — `(p : K3ModuliPoint) (i : Fin 20) :` — A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. -/ structure K3ModuliPoint where /-- Period
+- `T` **StringTheory.Frontier.geodesic_equation_kummer_locus** — `(γ : ModuliGeodesic) (t : ℝ)` — A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. `periodPoint` is stored but not
+- `T` **StringTheory.Frontier.poincare_geodesic_atlas_curvature** — `:` — A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. `periodPoint` is stored but not
+- `T` **StringTheory.Frontier.poincare_geodesic_kinetic_energy_nonneg** — `(y y' : ℝ) (hy : 0 < y) :` — A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. `periodPoint` is stored but not
+- `D` **StringTheory.Frontier.wpKahlerPotential** — `(p : K3ModuliPoint) : ℝ :=` — A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. `periodPoint` is stored but not
+- `D` **StringTheory.Frontier.wpMetricComponent** — `(p : K3ModuliPoint) (i j : Fin 20) : ℝ :=` — A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. `periodPoint` is stored but not
+- `D` **StringTheory.Frontier.wpVolume** — `: ℝ :=` — A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. `periodPoint` is stored but not
+- `T` **StringTheory.Frontier.wp_geodesic_completeness** — `(γ : ModuliGeodesic) :` — A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. `periodPoint` is stored but not
+- `T` **StringTheory.Frontier.wp_metric_positive_diagonal** — `(p : K3ModuliPoint) (i : Fin 20) :` — A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice Γ^{4,20}. `periodPoint` is stored but not
 
 ### StringTheoryFormalization.Frontier.SL2CSymmetry  (`StringTheoryFormalization/Frontier/SL2CSymmetry.lean`)
 
@@ -447,22 +447,22 @@ before quoting a statement in the book.
 
 ### StringTheoryFormalization.StringDynamics.BPSMultiplicities  (`StringTheoryFormalization/StringDynamics/BPSMultiplicities.lean`)
 
-- `D` **StringTheory.StringDynamics.bpsMultiplicity** — `(n : ℕ) : ℝ :=` — The BPS index ratio ℛ_BPS = 77/60, arising from the ratio of the K3 Euler characteristic χ(K3) = 24 to the index density. -/ def bpsRatio : ℚ := 77 / 60 /-- Num
-- `D` **StringTheory.StringDynamics.bpsRatio** — `: ℚ := 77 / 60` — The BPS index ratio ℛ_BPS = 77/60, arising from the ratio of the K3 Euler characteristic χ(K3) = 24 to the index density.
-- `T` **StringTheory.StringDynamics.bps_ratio_pos** — `: (0 : ℚ) < bpsRatio := by` — The BPS index ratio ℛ_BPS = 77/60, arising from the ratio of the K3 Euler characteristic χ(K3) = 24 to the index density. -/ def bpsRatio : ℚ := 77 / 60 /-- Num
-- `T` **StringTheory.StringDynamics.bps_ratio_reduced** — `:` — The BPS index ratio ℛ_BPS = 77/60, arising from the ratio of the K3 Euler characteristic χ(K3) = 24 to the index density. -/ def bpsRatio : ℚ := 77 / 60 /-- Num
+- `D` **StringTheory.StringDynamics.bpsMultiplicity** — `(n : ℕ) : ℝ :=` — The literal `77/60`, called the "BPS index ratio" by this project. This is a Tier C naming choice, not a definition derived from BPS-state counting in this file
+- `D` **StringTheory.StringDynamics.bpsRatio** — `: ℚ := 77 / 60` — The literal `77/60`, called the "BPS index ratio" by this project. This is a Tier C naming choice, not a definition derived from BPS-state counting in this file
+- `T` **StringTheory.StringDynamics.bps_ratio_pos** — `: (0 : ℚ) < bpsRatio := by` — The literal `77/60`, called the "BPS index ratio" by this project. This is a Tier C naming choice, not a definition derived from BPS-state counting in this file
+- `T` **StringTheory.StringDynamics.bps_ratio_reduced** — `:` — The literal `77/60`, called the "BPS index ratio" by this project. This is a Tier C naming choice, not a definition derived from BPS-state counting in this file
 
 ### StringTheoryFormalization.StringDynamics.FourierMukai  (`StringTheoryFormalization/StringDynamics/FourierMukai.lean`)
 
-- `S` **StringTheory.StringDynamics.DerivedCategory** — `(X : Type*) where` — Placeholder type for a triangulated category (D^b of coherent sheaves).
+- `S` **StringTheory.StringDynamics.DerivedCategory** — `(X : Type*) where` — A one-field wrapper holding a `String` tag for a "derived category of `X`" — **not** a category: it carries no objects beyond the wrapper itself, no morphisms, 
 - `D` **StringTheory.StringDynamics.DerivedCategory.name** — ``
-- `S` **StringTheory.StringDynamics.FourierMukaiTransform** — `(K3 K3hat : Type*) where` — Placeholder type for a triangulated category (D^b of coherent sheaves). -/ structure DerivedCategory (X : Type*) where name : String /-- The Fourier-Mukai funct
+- `S` **StringTheory.StringDynamics.FourierMukaiTransform** — `(K3 K3hat : Type*) where` — A one-field wrapper holding a `String` tag for a "derived category of `X`" — **not** a category: it carries no objects beyond the wrapper itself, no morphisms, 
 - `D` **StringTheory.StringDynamics.FourierMukaiTransform.isEquivalence** — ``
 - `D` **StringTheory.StringDynamics.FourierMukaiTransform.kernel** — ``
 - `D` **StringTheory.StringDynamics.FourierMukaiTransform.source** — ``
 - `D` **StringTheory.StringDynamics.FourierMukaiTransform.target** — ``
-- `T` **StringTheory.StringDynamics.fm_isEquivalence_of_mk** — `(K3 K3hat : Type*)` — Placeholder type for a triangulated category (D^b of coherent sheaves). -/ structure DerivedCategory (X : Type*) where name : String /-- The Fourier-Mukai funct
-- `T` **StringTheory.StringDynamics.fm_squared_is_shift** — `:` — Placeholder type for a triangulated category (D^b of coherent sheaves). -/ structure DerivedCategory (X : Type*) where name : String /-- The Fourier-Mukai funct
+- `T` **StringTheory.StringDynamics.fm_isEquivalence_of_mk** — `(K3 K3hat : Type*)` — A one-field wrapper holding a `String` tag for a "derived category of `X`" — **not** a category: it carries no objects beyond the wrapper itself, no morphisms, 
+- `T` **StringTheory.StringDynamics.fm_squared_is_shift** — `:` — A one-field wrapper holding a `String` tag for a "derived category of `X`" — **not** a category: it carries no objects beyond the wrapper itself, no morphisms, 
 
 ### StringTheoryFormalization.StringDynamics.InvariantLocks  (`StringTheoryFormalization/StringDynamics/InvariantLocks.lean`)
 
@@ -474,10 +474,10 @@ before quoting a statement in the book.
 
 ### StringTheoryFormalization.StringDynamics.KummerBlowup  (`StringTheoryFormalization/StringDynamics/KummerBlowup.lean`)
 
-- `T` **StringTheory.StringDynamics.exceptional_self_intersection** — `(i : Fin 16) :` — The 16 exceptional divisors from the Kummer blowup of T⁴/ℤ₂. -/ def kummerExceptionalDivisors : Fin 16 → String := fun i => s!"E_{i.val}" /-- Intersection form:
-- `D` **StringTheory.StringDynamics.kummerExceptionalDivisors** — `: Fin 16 → String :=` — The 16 exceptional divisors from the Kummer blowup of T⁴/ℤ₂.
-- `D` **StringTheory.StringDynamics.kummerIntersectionForm** — `(i j : Fin 16) : ℤ :=` — The 16 exceptional divisors from the Kummer blowup of T⁴/ℤ₂. -/ def kummerExceptionalDivisors : Fin 16 → String := fun i => s!"E_{i.val}" /-- Intersection form:
-- `T` **StringTheory.StringDynamics.kummer_lattice_contribution** — `:` — The 16 exceptional divisors from the Kummer blowup of T⁴/ℤ₂. -/ def kummerExceptionalDivisors : Fin 16 → String := fun i => s!"E_{i.val}" /-- Intersection form:
+- `T` **StringTheory.StringDynamics.exceptional_self_intersection** — `(i : Fin 16) :` — Names the 16 indices `0,…,15` as the strings `"E_0",…,"E_15"`, standing for the 16 exceptional `(-2)`-curves produced by resolving the 16 `A₁` singularities of 
+- `D` **StringTheory.StringDynamics.kummerExceptionalDivisors** — `: Fin 16 → String :=` — Names the 16 indices `0,…,15` as the strings `"E_0",…,"E_15"`, standing for the 16 exceptional `(-2)`-curves produced by resolving the 16 `A₁` singularities of 
+- `D` **StringTheory.StringDynamics.kummerIntersectionForm** — `(i j : Fin 16) : ℤ :=` — Names the 16 indices `0,…,15` as the strings `"E_0",…,"E_15"`, standing for the 16 exceptional `(-2)`-curves produced by resolving the 16 `A₁` singularities of 
+- `T` **StringTheory.StringDynamics.kummer_lattice_contribution** — `:` — Names the 16 indices `0,…,15` as the strings `"E_0",…,"E_15"`, standing for the 16 exceptional `(-2)`-curves produced by resolving the 16 `A₁` singularities of 
 
 ### StringTheoryFormalization.StringDynamics.MathieuM24  (`StringTheoryFormalization/StringDynamics/MathieuM24.lean`)
 
@@ -488,31 +488,31 @@ before quoting a statement in the book.
 
 ### StringTheoryFormalization.StringDynamics.MukaiLattice  (`StringTheoryFormalization/StringDynamics/MukaiLattice.lean`)
 
-- `S` **StringTheory.StringDynamics.MukaiLattice** — `where` — Signature (4,20) lattice for K3 cohomology. Rank = 24, signature = (4,20), discriminant = 1 (unimodular).
+- `S` **StringTheory.StringDynamics.MukaiLattice** — `where` — A record of four bookkeeping numbers describing a lattice's numerical invariants — **not** a lattice (no group, no bilinear form is carried). Defaults `(24, 4, 
 - `D` **StringTheory.StringDynamics.MukaiLattice.negSignature** — ``
 - `D` **StringTheory.StringDynamics.MukaiLattice.posSignature** — ``
 - `D` **StringTheory.StringDynamics.MukaiLattice.rank** — ``
 - `D` **StringTheory.StringDynamics.MukaiLattice.unimodular** — ``
-- `D` **StringTheory.StringDynamics.canonicalMukaiLattice** — `: MukaiLattice := {}` — Signature (4,20) lattice for K3 cohomology. Rank = 24, signature = (4,20), discriminant = 1 (unimodular). -/ structure MukaiLattice where /-- Basis vectors as ℤ
-- `D` **StringTheory.StringDynamics.h2Lattice** — `: MukaiLattice where` — Signature (4,20) lattice for K3 cohomology. Rank = 24, signature = (4,20), discriminant = 1 (unimodular). -/ structure MukaiLattice where /-- Basis vectors as ℤ
-- `T` **StringTheory.StringDynamics.kummer_sublattice_rank** — `:` — Signature (4,20) lattice for K3 cohomology. Rank = 24, signature = (4,20), discriminant = 1 (unimodular). -/ structure MukaiLattice where /-- Basis vectors as ℤ
-- `T` **StringTheory.StringDynamics.mukai_rank** — `:` — Signature (4,20) lattice for K3 cohomology. Rank = 24, signature = (4,20), discriminant = 1 (unimodular). -/ structure MukaiLattice where /-- Basis vectors as ℤ
+- `D` **StringTheory.StringDynamics.canonicalMukaiLattice** — `: MukaiLattice := {}` — A record of four bookkeeping numbers describing a lattice's numerical invariants — **not** a lattice (no group, no bilinear form is carried). Defaults `(24, 4, 
+- `D` **StringTheory.StringDynamics.h2Lattice** — `: MukaiLattice where` — A record of four bookkeeping numbers describing a lattice's numerical invariants — **not** a lattice (no group, no bilinear form is carried). Defaults `(24, 4, 
+- `T` **StringTheory.StringDynamics.kummer_sublattice_rank** — `:` — A record of four bookkeeping numbers describing a lattice's numerical invariants — **not** a lattice (no group, no bilinear form is carried). Defaults `(24, 4, 
+- `T` **StringTheory.StringDynamics.mukai_rank** — `:` — A record of four bookkeeping numbers describing a lattice's numerical invariants — **not** a lattice (no group, no bilinear form is carried). Defaults `(24, 4, 
 
 ### StringTheoryFormalization.StringDynamics.MukhanovSasaki  (`StringTheoryFormalization/StringDynamics/MukhanovSasaki.lean`)
 
-- `S` **StringTheory.StringDynamics.MSSolution** — `where` — Mukhanov-Sasaki variable v_k in Fourier space. Satisfies: v_k'' + (k² - z''/z) v_k = 0 where z = a φ' / H (slow-roll pump field).
+- `S` **StringTheory.StringDynamics.MSSolution** — `where` — A comoving wavenumber `k > 0` together with an arbitrary complex-valued function `v : ℝ → ℂ` of conformal time `η`, tagged with an unused `wronskian_normalized`
 - `D` **StringTheory.StringDynamics.MSSolution.k** — ``
 - `T` **StringTheory.StringDynamics.MSSolution.k_pos** — ``
 - `D` **StringTheory.StringDynamics.MSSolution.v** — ``
 - `D` **StringTheory.StringDynamics.MSSolution.wronskian_normalized** — ``
-- `T` **StringTheory.StringDynamics.ms_superhorizon_freezing** — `(sol : MSSolution) (η : ℝ) (hη : η < 0) :` — Mukhanov-Sasaki variable v_k in Fourier space. Satisfies: v_k'' + (k² - z''/z) v_k = 0 where z = a φ' / H (slow-roll pump field). -/ structure MSSolution where 
-- `D` **StringTheory.StringDynamics.scalarPowerSpectrum** — `(sol : MSSolution) (z : ℝ → ℝ) (η : ℝ) : ℝ :=` — Mukhanov-Sasaki variable v_k in Fourier space. Satisfies: v_k'' + (k² - z''/z) v_k = 0 where z = a φ' / H (slow-roll pump field). -/ structure MSSolution where 
+- `T` **StringTheory.StringDynamics.ms_superhorizon_freezing** — `(sol : MSSolution) (η : ℝ) (hη : η < 0) :` — A comoving wavenumber `k > 0` together with an arbitrary complex-valued function `v : ℝ → ℂ` of conformal time `η`, tagged with an unused `wronskian_normalized`
+- `D` **StringTheory.StringDynamics.scalarPowerSpectrum** — `(sol : MSSolution) (z : ℝ → ℝ) (η : ℝ) : ℝ :=` — A comoving wavenumber `k > 0` together with an arbitrary complex-valued function `v : ℝ → ℂ` of conformal time `η`, tagged with an unused `wronskian_normalized`
 
 ### StringTheoryFormalization.StringDynamics.ODDMetric  (`StringTheoryFormalization/StringDynamics/ODDMetric.lean`)
 
-- `D` **StringTheory.StringDynamics.oddMetric** — `: Matrix (Fin (2 * D)) (Fin (2 * D)) ℤ :=` — The O(D,D) invariant metric η_{MN} = [[0, 1_D],[1_D, 0]]. This is the split-signature metric on ℝ^{2D}.
-- `T` **StringTheory.StringDynamics.odd_metric_d1** — `:` — The O(D,D) invariant metric η_{MN} = [[0, 1_D],[1_D, 0]]. This is the split-signature metric on ℝ^{2D}. -/ def oddMetric : Matrix (Fin (2 * D)) (Fin (2 * D)) ℤ 
-- `T` **StringTheory.StringDynamics.odd_metric_symm** — `: (oddMetric D)ᵀ = oddMetric D := by` — The O(D,D) invariant metric η_{MN} = [[0, 1_D],[1_D, 0]]. This is the split-signature metric on ℝ^{2D}. -/ def oddMetric : Matrix (Fin (2 * D)) (Fin (2 * D)) ℤ 
+- `D` **StringTheory.StringDynamics.oddMetric** — `: Matrix (Fin (2 * D)) (Fin (2 * D)) ℤ :=` — The `2D×2D` integer block matrix `η = [[0, 1_D],[1_D, 0]]`: entry `1` at `(i, i+D)` and `(i+D, i)` for `i < D`, `0` everywhere else. This is the O(D,D)-invarian
+- `T` **StringTheory.StringDynamics.odd_metric_d1** — `:` — The `2D×2D` integer block matrix `η = [[0, 1_D],[1_D, 0]]`: entry `1` at `(i, i+D)` and `(i+D, i)` for `i < D`, `0` everywhere else. This is the O(D,D)-invarian
+- `T` **StringTheory.StringDynamics.odd_metric_symm** — `: (oddMetric D)ᵀ = oddMetric D := by` — The `2D×2D` integer block matrix `η = [[0, 1_D],[1_D, 0]]`: entry `1` at `(i, i+D)` and `(i+D, i)` for `i < D`, `0` everywhere else. This is the O(D,D)-invarian
 
 ### StringTheoryFormalization.StringDynamics.PicardSpectral  (`StringTheoryFormalization/StringDynamics/PicardSpectral.lean`)
 
@@ -533,15 +533,15 @@ before quoting a statement in the book.
 
 ### StringTheoryFormalization.StringDynamics.SwamplandSafe  (`StringTheoryFormalization/StringDynamics/SwamplandSafe.lean`)
 
-- `S` **StringTheory.StringDynamics.SDCBound** — `where` — The Swampland Distance Conjecture (SDC): Along any geodesic in moduli space of length Δ ≥ O(1) in Planck units, an infinite tower of states becomes light: m ≤ m
+- `S` **StringTheory.StringDynamics.SDCBound** — `where` — A pair of positive reals `(α, m₀)` with their positivity proofs, parametrizing the one-exponential family `towerMass` below. Physically `α` is the SDC decay rat
 - `D` **StringTheory.StringDynamics.SDCBound.m₀** — ``
 - `T` **StringTheory.StringDynamics.SDCBound.m₀_pos** — ``
 - `D` **StringTheory.StringDynamics.SDCBound.α** — ``
 - `T` **StringTheory.StringDynamics.SDCBound.α_pos** — ``
-- `T` **StringTheory.StringDynamics.de_sitter_conjecture** — `(c : ℝ) (hc : 0 < c) (V : ℝ → ℝ) (gradV : ℝ → ℝ)` — The Swampland Distance Conjecture (SDC): Along any geodesic in moduli space of length Δ ≥ O(1) in Planck units, an infinite tower of states becomes light: m ≤ m
-- `T` **StringTheory.StringDynamics.sdc_tower_mass_pos** — `(bound : SDCBound) (Δ : ℝ) :` — The Swampland Distance Conjecture (SDC): Along any geodesic in moduli space of length Δ ≥ O(1) in Planck units, an infinite tower of states becomes light: m ≤ m
-- `T` **StringTheory.StringDynamics.sdc_tower_suppression** — `(bound : SDCBound) (Δ : ℝ) (hΔ : 0 ≤ Δ) :` — The Swampland Distance Conjecture (SDC): Along any geodesic in moduli space of length Δ ≥ O(1) in Planck units, an infinite tower of states becomes light: m ≤ m
-- `D` **StringTheory.StringDynamics.towerMass** — `(bound : SDCBound) (Δ : ℝ) : ℝ :=` — The Swampland Distance Conjecture (SDC): Along any geodesic in moduli space of length Δ ≥ O(1) in Planck units, an infinite tower of states becomes light: m ≤ m
+- `T` **StringTheory.StringDynamics.de_sitter_conjecture** — `(c : ℝ) (hc : 0 < c) (V : ℝ → ℝ) (gradV : ℝ → ℝ)` — A pair of positive reals `(α, m₀)` with their positivity proofs, parametrizing the one-exponential family `towerMass` below. Physically `α` is the SDC decay rat
+- `T` **StringTheory.StringDynamics.sdc_tower_mass_pos** — `(bound : SDCBound) (Δ : ℝ) :` — A pair of positive reals `(α, m₀)` with their positivity proofs, parametrizing the one-exponential family `towerMass` below. Physically `α` is the SDC decay rat
+- `T` **StringTheory.StringDynamics.sdc_tower_suppression** — `(bound : SDCBound) (Δ : ℝ) (hΔ : 0 ≤ Δ) :` — A pair of positive reals `(α, m₀)` with their positivity proofs, parametrizing the one-exponential family `towerMass` below. Physically `α` is the SDC decay rat
+- `D` **StringTheory.StringDynamics.towerMass** — `(bound : SDCBound) (Δ : ℝ) : ℝ :=` — A pair of positive reals `(α, m₀)` with their positivity proofs, parametrizing the one-exponential family `towerMass` below. Physically `α` is the SDC decay rat
 
 ### StringTheoryFormalization.StringDynamics.TDAMapper  (`StringTheoryFormalization/StringDynamics/TDAMapper.lean`)
 
@@ -561,22 +561,22 @@ before quoting a statement in the book.
 
 ### StringTheoryFormalization.StringDynamics.TDualityGysin  (`StringTheoryFormalization/StringDynamics/TDualityGysin.lean`)
 
-- `S` **StringTheory.StringDynamics.TDualState** — `where` — T-duality radius inversion: R ↦ α'/R. -/ noncomputable def tDualityRadius (R α' : ℝ) (hR : 0 < R) (hα : 0 < α') : ℝ := α' / R /-- T-duality swaps winding and mo
+- `S` **StringTheory.StringDynamics.TDualState** — `where` — Computes `α'/R`, the T-dual radius under `R ↦ α'/R` (`papers/foundations/tong_string_theory_0908_0333.txt`, ll. 11371–11460, and BOOK_BIBLE.md §5). The hypothes
 - `D` **StringTheory.StringDynamics.TDualState.momentumNum** — ``
 - `D` **StringTheory.StringDynamics.TDualState.windingNum** — ``
-- `D` **StringTheory.StringDynamics.gysinPushforward** — `(coeff : ℤ → ℤ) : ℤ :=` — T-duality radius inversion: R ↦ α'/R. -/ noncomputable def tDualityRadius (R α' : ℝ) (hR : 0 < R) (hα : 0 < α') : ℝ := α' / R /-- T-duality swaps winding and mo
-- `D` **StringTheory.StringDynamics.tDualityAction** — `(s : TDualState) : TDualState :=`
-- `D` **StringTheory.StringDynamics.tDualityRadius** — `(R α' : ℝ) (hR : 0 < R) (hα : 0 < α') : ℝ := α' / R` — T-duality radius inversion: R ↦ α'/R.
-- `T` **StringTheory.StringDynamics.tduality_involution** — `(s : TDualState) :` — T-duality radius inversion: R ↦ α'/R. -/ noncomputable def tDualityRadius (R α' : ℝ) (hR : 0 < R) (hα : 0 < α') : ℝ := α' / R /-- T-duality swaps winding and mo
+- `D` **StringTheory.StringDynamics.gysinPushforward** — `(coeff : ℤ → ℤ) : ℤ :=` — Computes `α'/R`, the T-dual radius under `R ↦ α'/R` (`papers/foundations/tong_string_theory_0908_0333.txt`, ll. 11371–11460, and BOOK_BIBLE.md §5). The hypothes
+- `D` **StringTheory.StringDynamics.tDualityAction** — `(s : TDualState) : TDualState :=` — Computes `α'/R`, the T-dual radius under `R ↦ α'/R` (`papers/foundations/tong_string_theory_0908_0333.txt`, ll. 11371–11460, and BOOK_BIBLE.md §5). The hypothes
+- `D` **StringTheory.StringDynamics.tDualityRadius** — `(R α' : ℝ) (hR : 0 < R) (hα : 0 < α') : ℝ := α' / R` — Computes `α'/R`, the T-dual radius under `R ↦ α'/R` (`papers/foundations/tong_string_theory_0908_0333.txt`, ll. 11371–11460, and BOOK_BIBLE.md §5). The hypothes
+- `T` **StringTheory.StringDynamics.tduality_involution** — `(s : TDualState) :` — Computes `α'/R`, the T-dual radius under `R ↦ α'/R` (`papers/foundations/tong_string_theory_0908_0333.txt`, ll. 11371–11460, and BOOK_BIBLE.md §5). The hypothes
 
 ### StringTheoryFormalization.StringDynamics.TadpoleConstraint  (`StringTheoryFormalization/StringDynamics/TadpoleConstraint.lean`)
 
-- `S` **StringTheory.StringDynamics.BraneStack** — `where` — A D3-brane charge contribution at a stack location.
+- `S` **StringTheory.StringDynamics.BraneStack** — `where` — A single stack's contribution to the D3-brane tadpole: an integer `charge` (positive for branes, negative for anti-branes) and an integer `euler`, the Euler cha
 - `D` **StringTheory.StringDynamics.BraneStack.charge** — ``
 - `D` **StringTheory.StringDynamics.BraneStack.euler** — ``
-- `D` **StringTheory.StringDynamics.fluxTadpole** — `(H₃_quanta F₃_quanta : ℤ) : ℤ := H₃_quanta * F₃_quanta` — A D3-brane charge contribution at a stack location. -/ structure BraneStack where /-- Number of D3 branes (positive = brane, negative = anti-brane). -/ charge :
-- `T` **StringTheory.StringDynamics.tadpole_cancellation** — `(braneStacks : Fin 4 → BraneStack)` — A D3-brane charge contribution at a stack location. -/ structure BraneStack where /-- Number of D3 branes (positive = brane, negative = anti-brane). -/ charge :
-- `D` **StringTheory.StringDynamics.totalTadpole** — `(braneStacks : Fin 4 → BraneStack)` — A D3-brane charge contribution at a stack location. -/ structure BraneStack where /-- Number of D3 branes (positive = brane, negative = anti-brane). -/ charge :
+- `D` **StringTheory.StringDynamics.fluxTadpole** — `(H₃_quanta F₃_quanta : ℤ) : ℤ := H₃_quanta * F₃_quanta` — A single stack's contribution to the D3-brane tadpole: an integer `charge` (positive for branes, negative for anti-branes) and an integer `euler`, the Euler cha
+- `T` **StringTheory.StringDynamics.tadpole_cancellation** — `(braneStacks : Fin 4 → BraneStack)` — A single stack's contribution to the D3-brane tadpole: an integer `charge` (positive for branes, negative for anti-branes) and an integer `euler`, the Euler cha
+- `D` **StringTheory.StringDynamics.totalTadpole** — `(braneStacks : Fin 4 → BraneStack)` — A single stack's contribution to the D3-brane tadpole: an integer `charge` (positive for branes, negative for anti-branes) and an integer `euler`, the Euler cha
 
 ### StringTheoryFormalization.StringDynamics.VertexOperators  (`StringTheoryFormalization/StringDynamics/VertexOperators.lean`)
 
@@ -606,29 +606,29 @@ before quoting a statement in the book.
 ### StringTheoryFormalization.UseCases.K3SignatureTheorem  (`StringTheoryFormalization/UseCases/K3SignatureTheorem.lean`)
 
 - `D` **StringTheory.UseCases.K3Signature.bMinus** — `: ℕ := k3HodgeNumber ⟨1, by norm_num⟩ ⟨1, by norm_num⟩ - 1` — The positive-definite part of the intersection form: `2h^{2,0} + 1`. -/ def bPlus : ℕ := 2 * k3HodgeNumber ⟨2, by norm_num⟩ ⟨0, by norm_num⟩ + 1 /-- The negativ
-- `T` **StringTheory.UseCases.K3Signature.bMinus_eq_nineteen** — `: bMinus = 19 := by`
+- `T` **StringTheory.UseCases.K3Signature.bMinus_eq_nineteen** — `: bMinus = 19 := by` — The positive-definite part of the intersection form: `2h^{2,0} + 1`. -/ def bPlus : ℕ := 2 * k3HodgeNumber ⟨2, by norm_num⟩ ⟨0, by norm_num⟩ + 1 /-- The negativ
 - `D` **StringTheory.UseCases.K3Signature.bPlus** — `: ℕ := 2 * k3HodgeNumber ⟨2, by norm_num⟩ ⟨0, by norm_num⟩ + 1` — The positive-definite part of the intersection form: `2h^{2,0} + 1`.
-- `T` **StringTheory.UseCases.K3Signature.bPlus_eq_three** — `: bPlus = 3 := by`
+- `T` **StringTheory.UseCases.K3Signature.bPlus_eq_three** — `: bPlus = 3 := by` — The positive-definite part of the intersection form: `2h^{2,0} + 1`. -/ def bPlus : ℕ := 2 * k3HodgeNumber ⟨2, by norm_num⟩ ⟨0, by norm_num⟩ + 1 /-- The negativ
 - `T` **StringTheory.UseCases.K3Signature.betti_decomposition_matches_b2** — `:` — The positive-definite part of the intersection form: `2h^{2,0} + 1`. -/ def bPlus : ℕ := 2 * k3HodgeNumber ⟨2, by norm_num⟩ ⟨0, by norm_num⟩ + 1 /-- The negativ
-- `T` **StringTheory.UseCases.K3Signature.betti_sum_eq_b2** — `: bPlus + bMinus = 22 := by`
+- `T` **StringTheory.UseCases.K3Signature.betti_sum_eq_b2** — `: bPlus + bMinus = 22 := by` — The positive-definite part of the intersection form: `2h^{2,0} + 1`. -/ def bPlus : ℕ := 2 * k3HodgeNumber ⟨2, by norm_num⟩ ⟨0, by norm_num⟩ + 1 /-- The negativ
 - `T` **StringTheory.UseCases.K3Signature.k3_signature_eq_neg_sixteen** — `: (bPlus : ℤ) - (bMinus : ℤ) = -16 := by` — The positive-definite part of the intersection form: `2h^{2,0} + 1`. -/ def bPlus : ℕ := 2 * k3HodgeNumber ⟨2, by norm_num⟩ ⟨0, by norm_num⟩ + 1 /-- The negativ
 
 ### StringTheoryFormalization.UseCases.MathieuTower  (`StringTheoryFormalization/UseCases/MathieuTower.lean`)
 
-- `T` **StringTheory.UseCases.MathieuTower.M21_order_factorization** — `: orderM21 = 2 ^ 6 * 3 ^ 2 * 5 * 7 := by` — Order of `M₂₃` (ATLAS). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (ATLAS). -/ def orderM22 : ℕ := 443520 /-- Order of `M₂₁ ≅ PSL(3,4)` (ATLAS). -/ def 
-- `T` **StringTheory.UseCases.MathieuTower.M22_stabilizer_index** — `: orderM22 = 22 * orderM21 := by` — Order of `M₂₃` (ATLAS). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (ATLAS). -/ def orderM22 : ℕ := 443520 /-- Order of `M₂₁ ≅ PSL(3,4)` (ATLAS). -/ def 
-- `T` **StringTheory.UseCases.MathieuTower.M23_stabilizer_index** — `: orderM23 = 23 * orderM22 := by` — Order of `M₂₃` (ATLAS). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (ATLAS). -/ def orderM22 : ℕ := 443520 /-- Order of `M₂₁ ≅ PSL(3,4)` (ATLAS). -/ def 
-- `T` **StringTheory.UseCases.MathieuTower.M24_stabilizer_index** — `: 244823040 = 24 * orderM23 := by` — Order of `M₂₃` (ATLAS). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (ATLAS). -/ def orderM22 : ℕ := 443520 /-- Order of `M₂₁ ≅ PSL(3,4)` (ATLAS). -/ def 
-- `T` **StringTheory.UseCases.MathieuTower.mathieu_tower_consistent** — `:` — Order of `M₂₃` (ATLAS). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (ATLAS). -/ def orderM22 : ℕ := 443520 /-- Order of `M₂₁ ≅ PSL(3,4)` (ATLAS). -/ def 
-- `T` **StringTheory.UseCases.MathieuTower.mathieu_tower_matches_certified_order** — `:` — Order of `M₂₃` (ATLAS). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (ATLAS). -/ def orderM22 : ℕ := 443520 /-- Order of `M₂₁ ≅ PSL(3,4)` (ATLAS). -/ def 
-- `D` **StringTheory.UseCases.MathieuTower.orderM21** — `: ℕ := 20160` — Order of `M₂₃` (ATLAS). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (ATLAS). -/ def orderM22 : ℕ := 443520 /-- Order of `M₂₁ ≅ PSL(3,4)` (ATLAS).
-- `D` **StringTheory.UseCases.MathieuTower.orderM22** — `: ℕ := 443520` — Order of `M₂₃` (ATLAS). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (ATLAS).
-- `D` **StringTheory.UseCases.MathieuTower.orderM23** — `: ℕ := 10200960` — Order of `M₂₃` (ATLAS).
+- `T` **StringTheory.UseCases.MathieuTower.M21_order_factorization** — `: orderM21 = 2 ^ 6 * 3 ^ 2 * 5 * 7 := by` — Order of `M₂₃` (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (standard ATLAS value; not re
+- `T` **StringTheory.UseCases.MathieuTower.M22_stabilizer_index** — `: orderM22 = 22 * orderM21 := by` — Order of `M₂₃` (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (standard ATLAS value; not re
+- `T` **StringTheory.UseCases.MathieuTower.M23_stabilizer_index** — `: orderM23 = 23 * orderM22 := by` — Order of `M₂₃` (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (standard ATLAS value; not re
+- `T` **StringTheory.UseCases.MathieuTower.M24_stabilizer_index** — `: 244823040 = 24 * orderM23 := by` — Order of `M₂₃` (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (standard ATLAS value; not re
+- `T` **StringTheory.UseCases.MathieuTower.mathieu_tower_consistent** — `:` — Order of `M₂₃` (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (standard ATLAS value; not re
+- `T` **StringTheory.UseCases.MathieuTower.mathieu_tower_matches_certified_order** — `:` — Order of `M₂₃` (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (standard ATLAS value; not re
+- `D` **StringTheory.UseCases.MathieuTower.orderM21** — `: ℕ := 20160` — Order of `M₂₃` (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (standard ATLAS value; not re
+- `D` **StringTheory.UseCases.MathieuTower.orderM22** — `: ℕ := 443520` — Order of `M₂₃` (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 : ℕ := 10200960 /-- Order of `M₂₂` (standard ATLAS value; not re
+- `D` **StringTheory.UseCases.MathieuTower.orderM23** — `: ℕ := 10200960` — Order of `M₂₃` (standard ATLAS value; not re-derived from a group action here).
 
 ### StringTheoryFormalization.UseCases.NarainLattice  (`StringTheoryFormalization/UseCases/NarainLattice.lean`)
 
 - `D` **StringTheory.UseCases.NarainLattice.B** — `(n w n' w' : ℤ) : ℤ := n * w' + n' * w` — Left-moving momentum (see also `UseCases.TDuality.leftMomentum`, restated self-contained here so this file's Narain-specific claims don't accidentally depend on
-- `T` **StringTheory.UseCases.NarainLattice.B_is_polarization_of_Q** — `(n w n' w' : ℤ) :`
+- `T` **StringTheory.UseCases.NarainLattice.B_is_polarization_of_Q** — `(n w n' w' : ℤ) :` — Left-moving momentum (see also `UseCases.TDuality.leftMomentum`, restated self-contained here so this file's Narain-specific claims don't accidentally depend on
 - `D` **StringTheory.UseCases.NarainLattice.Q** — `(n w : ℤ) : ℤ := 2 * n * w` — Left-moving momentum (see also `UseCases.TDuality.leftMomentum`, restated self-contained here so this file's Narain-specific claims don't accidentally depend on
 - `D` **StringTheory.UseCases.NarainLattice.gram** — `: Matrix (Fin 2) (Fin 2) ℤ :=` — Left-moving momentum (see also `UseCases.TDuality.leftMomentum`, restated self-contained here so this file's Narain-specific claims don't accidentally depend on
 - `T` **StringTheory.UseCases.NarainLattice.gram_eq_hyperbolic** — `: gram = !![0, 1; 1, 0] := by` — Left-moving momentum (see also `UseCases.TDuality.leftMomentum`, restated self-contained here so this file's Narain-specific claims don't accidentally depend on

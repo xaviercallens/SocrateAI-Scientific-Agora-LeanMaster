@@ -4,45 +4,45 @@
 
 ## Hubs (own declarations used by most theorems)
 - DualScaleStream2.TDuality.Charge (def): used by 36 theorems, e.g. etaPair_self, etaR_genMetric_sq, etaR_mul_self, eta_momentum_to_winding
-- DualScaleStream2.Lattice.Gram (def): used by 20 theorems, e.g. flux_half_selfIntersection_integral, kronForm_even, kronForm_evenDiag, kronForm_symm
 - DualScaleStream2.TDuality.eta (def): used by 20 theorems, e.g. etaPair_self, eta_momentum_to_winding, isSection_image, momentumFrame_isSection
-- DualScaleStream2.TDuality.IsODD (def): used by 12 theorems, e.g. isSection_image, basisChange_isODD, chargeNorm_invariant, eta_isODD
+- DualScaleStream2.Lattice.Gram (def): used by 20 theorems, e.g. flux_half_selfIntersection_integral, kronForm_even, kronForm_evenDiag, kronForm_symm
 - StringTheory.Frontier.k3HodgeNumber (def): used by 12 theorems, e.g. euler_K3, k3k3_anomaly, k3t2_euler_zero, hodge11_from_kummer
+- DualScaleStream2.TDuality.IsODD (def): used by 12 theorems, e.g. isSection_image, basisChange_isODD, chargeNorm_invariant, eta_isODD
 - SocrateAI.Epistemic.Tier (inductive): used by 11 theorems, e.g. eq_A_of_A_le, no_kernel_claim_rests_on_weaker, not_A_of_weak_support, tier_A_is_maximal
-- DoubleFieldTheory.CourantAlgebroid.CourantSection (inductive): used by 8 theorems, e.g. cbracket_antisymm, cbracket_v_zero, dorfman_cbracket_diff, dorfman_symmetric_exact
-- DoubleFieldTheory.CourantAlgebroid.CourantSection.v (def): used by 8 theorems, e.g. cbracket_antisymm, cbracket_v_zero, dorfman_cbracket_diff, dorfman_symmetric_exact
 - DualScaleStream2.Lattice.IsEvenDiag (def): used by 8 theorems, e.g. flux_half_selfIntersection_integral, kronForm_even, kronForm_evenDiag, cartanE8_evenDiag
+- DoubleFieldTheory.CourantAlgebroid.CourantSection.v (def): used by 8 theorems, e.g. cbracket_antisymm, cbracket_v_zero, dorfman_cbracket_diff, dorfman_symmetric_exact
+- DoubleFieldTheory.CourantAlgebroid.CourantSection (inductive): used by 8 theorems, e.g. cbracket_antisymm, cbracket_v_zero, dorfman_cbracket_diff, dorfman_symmetric_exact
+- DualScaleStream2.Lattice.cartanE8 (def): used by 7 theorems, e.g. cartanE8Inv_mul, cartanE8_det, cartanE8_evenDiag, cartanE8_posDef
 - DualScaleStream2.DFT.genMetric (def): used by 7 theorems, e.g. etaR_genMetric_sq, genMetric_bshift, genMetric_bshift_cancel, genMetric_symm
 - DoubleFieldTheory.CourantAlgebroid.CBracket (def): used by 7 theorems, e.g. cbracket_antisymm, cbracket_v_zero, dorfman_cbracket_diff, jacobiator_vector_vanishes
-- DualScaleStream2.Lattice.cartanE8 (def): used by 7 theorems, e.g. cartanE8Inv_mul, cartanE8_det, cartanE8_evenDiag, cartanE8_posDef
 - DualScaleStream2.Lattice.hyperbolicU (def): used by 7 theorems, e.g. hyperbolicU_congruence, hyperbolicU_eq_narain_gram, hyperbolicU_evenDiag, hyperbolicU_mul_self
-- DoubleFieldTheory.CourantAlgebroid.CourantSection.alpha (def): used by 6 theorems, e.g. cbracket_antisymm, dorfman_cbracket_diff, dorfman_symmetric_exact, dsl_cbracket_antisymm
+- StringTheory.StringDynamics.M24RepDim (def): used by 6 theorems, e.g. A6_decomposition, A6_not_irrep, A7_decomposition, first_five_are_irreps
 - DualScaleStream2.TDuality.proj (def): used by 6 theorems, e.g. factorized_comm, factorized_isODD, factorized_mul_self, proj_comm
 - DualScaleStream2.TDuality.chargeNorm (def): used by 6 theorems, e.g. etaPair_self, levelMatching_iff, chargeNorm_even, chargeNorm_invariant
-- StringTheory.StringDynamics.M24RepDim (def): used by 6 theorems, e.g. A6_decomposition, A6_not_irrep, A7_decomposition, first_five_are_irreps
+- DoubleFieldTheory.CourantAlgebroid.CourantSection.alpha (def): used by 6 theorems, e.g. cbracket_antisymm, dorfman_cbracket_diff, dorfman_symmetric_exact, dsl_cbracket_antisymm
+- StringTheory.UseCases.CriticalDimension.fermionicGhostCharge (def): used by 5 theorems, e.g. bc_ghost_charge_eq, bosonic_dimension_unique, bosonic_eq_neg_fermionic, bosonic_string_critical_dimension
+- DualScaleStream2.DualScale.dualScale (def): used by 5 theorems, e.g. dualScale_circle, dualScale_eq, dualScale_ge, dualScale_inv
 - DoubleFieldTheory.GeneralizedGeometry.Mat2 (inductive): used by 5 theorems, e.g. gen_metric_duality, odd_inversion_generator, inversion_generator_properties, t_duality_congruence
 - DoubleFieldTheory.GeneralizedGeometry.MatMul (def): used by 5 theorems, e.g. btwist_preserves_eta, gen_metric_duality, odd_inversion_generator, inversion_generator_properties
-- DualScaleStream2.Lattice.IsUnimodular (def): used by 5 theorems, e.g. cartanE8_unimodular, e8Neg_unimodular, hyperbolicUNeg_unimodular, hyperbolicU_unimodular
-- DualScaleStream2.DualScale.dualScale (def): used by 5 theorems, e.g. dualScale_circle, dualScale_eq, dualScale_ge, dualScale_inv
-- StringTheory.UseCases.CriticalDimension.fermionicGhostCharge (def): used by 5 theorems, e.g. bc_ghost_charge_eq, bosonic_dimension_unique, bosonic_eq_neg_fermionic, bosonic_string_critical_dimension
-- DualScaleStream2.TDuality.basisChange (def): used by 5 theorems, e.g. basisChange_comm_thetaShift, basisChange_isODD, basisChange_mul, mirror_conjugates_tauShift
 - StringTheory.UseCases.K3Signature.bPlus (def): used by 5 theorems, e.g. sigK3_matches_hodge, bPlus_eq_three, betti_decomposition_matches_b2, betti_sum_eq_b2
-- StringTheory.UseCases.K3Signature.bMinus (def): used by 5 theorems, e.g. sigK3_matches_hodge, bMinus_eq_nineteen, betti_decomposition_matches_b2, betti_sum_eq_b2
+- DualScaleStream2.TDuality.basisChange (def): used by 5 theorems, e.g. basisChange_comm_thetaShift, basisChange_isODD, basisChange_mul, mirror_conjugates_tauShift
 - SocrateAI.Epistemic.Claim.tier (def): used by 5 theorems, e.g. no_kernel_claim_rests_on_weaker, not_A_of_weak_support, tier_le_of_depends, witnessSound_sound
 - SocrateAI.Epistemic.Sound (def): used by 5 theorems, e.g. no_kernel_claim_rests_on_weaker, not_A_of_weak_support, tier_le_of_depends, witnessSound_sound
-- SocrateAI.Moonshine.eqFrac (def): used by 5 theorems, e.g. conformal_exponent_sum, delta12_value, delta1_is_half, delta2_is_five_halves
-- SocrateAI.Epistemic.Tier.toNat (def): used by 5 theorems, e.g. tier_A_is_maximal, tier_X_is_minimal, tier_antisymm, tier_refl
-- DualScaleStream2.Lattice.Signature (inductive): used by 5 theorems, e.g. rank_K3, rank_K3T2, sigK3T2_eq, sigK3_eq
 - DualScaleStream2.TDuality.factorized (def): used by 5 theorems, e.g. factorized_comm, factorized_isODD, factorized_mul_self, factorized_two
+- SocrateAI.Moonshine.eqFrac (def): used by 5 theorems, e.g. conformal_exponent_sum, delta12_value, delta1_is_half, delta2_is_five_halves
+- DualScaleStream2.Lattice.IsUnimodular (def): used by 5 theorems, e.g. cartanE8_unimodular, e8Neg_unimodular, hyperbolicUNeg_unimodular, hyperbolicU_unimodular
+- DualScaleStream2.Lattice.Signature (inductive): used by 5 theorems, e.g. rank_K3, rank_K3T2, sigK3T2_eq, sigK3_eq
 - DualScaleStream2.Lattice.e8Neg (def): used by 5 theorems, e.g. e8Neg_evenDiag, e8Neg_simpleRoot_norm, e8Neg_symm, e8Neg_unimodular
-- DualScaleStream2.DFT.etaR (def): used by 4 theorems, e.g. etaR_genMetric_sq, etaR_mul_self, tduality_inverts_metric, thetaShiftR_preserves_eta
+- SocrateAI.Epistemic.Tier.toNat (def): used by 5 theorems, e.g. tier_A_is_maximal, tier_X_is_minimal, tier_antisymm, tier_refl
+- StringTheory.UseCases.K3Signature.bMinus (def): used by 5 theorems, e.g. sigK3_matches_hodge, bMinus_eq_nineteen, betti_decomposition_matches_b2, betti_sum_eq_b2
+- StringTheory.Foundation.Core.Topology.bettiK3 (def): used by 4 theorems, e.g. euler_char_K3, golay_length_matches_k3_euler, euler_char_vanishes, strominger_nodal_fibers_match_euler
+- StringTheory.Foundation.Core.Topology.eulerChar4D (def): used by 4 theorems, e.g. euler_char_K3, golay_length_matches_k3_euler, euler_char_vanishes, strominger_nodal_fibers_match_euler
+- Lean5Corpus.Problems.FluxSwampland.FluxVacuumState (inductive): used by 4 theorems, e.g. desitter_steepness_bound, desitter_swampland_master_contract, flux_energy_strictly_positive, no_flat_desitter_vacuum
+- Lean5Corpus.Problems.FluxSwampland.flux_potential_numerator (def): used by 4 theorems, e.g. desitter_steepness_bound, desitter_swampland_master_contract, flux_energy_strictly_positive, no_flat_desitter_vacuum
+- DoubleFieldTheory.GeneralizedGeometry.GenVector.v (def): used by 4 theorems, e.g. courant_pairing_symm, gen_energy_pos, odd_metric_eval, dsl_courant_pairing_symm
 - DoubleFieldTheory.GeneralizedGeometry.ODD_Eta (def): used by 4 theorems, e.g. btwist_preserves_eta, gen_metric_duality, odd_inversion_generator, odd_metric_eval
-- DualScaleStream2.Lattice.MukaiVec.s (def): used by 4 theorems, e.g. mukaiPair_even, mukaiPair_self, mukaiPair_symm, structureSheaf_mukai_sq
-- DualScaleStream2.Lattice.mukaiPair (def): used by 4 theorems, e.g. mukaiPair_even, mukaiPair_self, mukaiPair_symm, structureSheaf_mukai_sq
-- DualScaleStream2.Lattice.MukaiVec.c (def): used by 4 theorems, e.g. mukaiPair_even, mukaiPair_self, mukaiPair_symm, structureSheaf_mukai_sq
-- DualScaleStream2.Lattice.MukaiVec.r (def): used by 4 theorems, e.g. mukaiPair_even, mukaiPair_self, mukaiPair_symm, structureSheaf_mukai_sq
-- DualScaleStream2.Lattice.isUnimodular_of_mul_eq_one (theorem): used by 4 theorems, e.g. cartanE8_unimodular, e8Neg_unimodular, hyperbolicUNeg_unimodular, hyperbolicU_unimodular
-- SocrateAI.DualScale.MicroL2Operator (inductive): used by 4 theorems, e.g. sym2_det_identity, sym2_fibonacci_verification, sym2_modular_attractor_verification, sym2_pell_verification
+- DoubleFieldTheory.GeneralizedGeometry.GenVector (inductive): used by 4 theorems, e.g. courant_pairing_symm, gen_energy_pos, odd_metric_eval, dsl_courant_pairing_symm
+- DoubleFieldTheory.GeneralizedGeometry.GenVector.xi (def): used by 4 theorems, e.g. courant_pairing_symm, gen_energy_pos, odd_metric_eval, dsl_courant_pairing_symm
 
 ## Cross-library bridges (theorem → declaration of another library)
 - DualScaleStream2.DFT.massForm_circle → StringTheory.UseCases.TDuality.leftMomentum
@@ -67,228 +67,228 @@
 
 ## Shared external (Mathlib/core) foundations used by ≥3 theorems
 - Fintype.complete: 29 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, dualScale_circle, cartanE8Inv_mul, cartanE8_det
-- Matrix.ext: 22 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, dualScale_circle, cartanE8Inv_mul, cartanE8_symm
 - MulZeroClass.mul_zero: 22 theorems in DualScaleStream2, StringTheoryFormalization; e.g. etaR_mul_self, massForm_circle, tduality_inverts_metric, thetaShiftR_preserves_eta
-- Finset.sum_congr: 17 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, euler_K3, euler_T2, k3t2_euler_zero
+- Matrix.ext: 22 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, dualScale_circle, cartanE8Inv_mul, cartanE8_symm
 - Matrix.cons_val': 17 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, dualScale_circle, cartanE8Inv_mul, cartanE8_det
 - Matrix.cons_val_fin_one: 17 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, dualScale_circle, cartanE8Inv_mul, cartanE8_det
+- Finset.sum_congr: 17 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, euler_K3, euler_T2, k3t2_euler_zero
 - MulZeroClass.zero_mul: 15 theorems in DualScaleStream2, StringTheoryFormalization; e.g. etaR_genMetric_sq, massForm_circle, tduality_inverts_metric, thetaShiftR_preserves_eta
 - Matrix.fromBlocks_multiply: 13 theorems in DualScaleStream2; e.g. etaR_genMetric_sq, etaR_mul_self, genMetric_bshift, tduality_inverts_metric
-- Finset.univ_unique: 12 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, euler_T2, cartanE8Inv_mul, cartanE8_det
 - Real.instIsStrictOrderedRing: 12 theorems in DualScaleStream2, StringTheoryFormalization; e.g. circle_effective_scale_ge_two, dualScale_ge, cartanE8_posDef, fterm_potential_nonneg
-- Iff.mpr: 11 theorems in DualScaleStream2, StringTheoryFormalization; e.g. etaR_genMetric_sq, genMetric_bshift, genMetric_symm, circle_effective_scale_ge_two
+- Finset.univ_unique: 12 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, euler_T2, cartanE8Inv_mul, cartanE8_det
 - IsOrderedAddMonoid.toAddLeftMono: 11 theorems in DualScaleStream2, StringTheoryFormalization; e.g. circle_effective_scale_ge_two, dualScale_ge, cartanE8_posDef, torus_weight_pos
 - Real.instIsOrderedRing: 11 theorems in DualScaleStream2, StringTheoryFormalization; e.g. circle_effective_scale_ge_two, dualScale_ge, cartanE8_posDef, torus_weight_pos
+- Iff.mpr: 11 theorems in DualScaleStream2, StringTheoryFormalization; e.g. etaR_genMetric_sq, genMetric_bshift, genMetric_symm, circle_effective_scale_ge_two
 - Real.instIsOrderedAddMonoid: 10 theorems in DualScaleStream2, StringTheoryFormalization; e.g. circle_effective_scale_ge_two, dualScale_ge, cartanE8_posDef, torus_weight_pos
 - IsStrictOrderedRing.toIsOrderedRing: 10 theorems in DualScaleStream2, StringTheoryFormalization; e.g. cartanE8_posDef, fterm_potential_nonneg, poincare_geodesic_kinetic_energy_nonneg, energy_dissipation
-- Matrix.cons_val_succ: 9 theorems in DualScaleStream2; e.g. cartanE8Inv_mul, cartanE8_det, cartanE8_posDef, e8_LDL
 - Matrix.transpose_one: 9 theorems in DualScaleStream2; e.g. genMetric_bshift, thetaShiftR_preserves_eta, dualScale_ge, reflection_isometry
+- Rat.instCharZero: 9 theorems in StringTheoryFormalization; e.g. central_charge_k3_eq_six, virasoro_algebra_commutator, virasoro_ope_central_term, bps_ratio_pos
+- Matrix.cons_val_succ: 9 theorems in DualScaleStream2; e.g. cartanE8Inv_mul, cartanE8_det, cartanE8_posDef, e8_LDL
 - Finset.sum_const: 9 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, euler_T2, cartanE8Inv_mul, e8_LDL
 - Finset.card_singleton: 9 theorems in DualScaleStream2; e.g. massForm_circle, euler_T2, cartanE8Inv_mul, cartanE8_det
-- Rat.instCharZero: 9 theorems in StringTheoryFormalization; e.g. central_charge_k3_eq_six, virasoro_algebra_commutator, virasoro_ope_central_term, bps_ratio_pos
-- FloorSemiring.instCharZero: 8 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, circle_effective_scale_ge_two, cartanE8_det, cartanE8_posDef
-- AddGroup.existsAddOfLE: 8 theorems in DualScaleStream2, StringTheoryFormalization; e.g. circle_effective_scale_ge_two, cartanE8_posDef, fterm_potential_nonneg, poincare_geodesic_kinetic_energy_nonneg
-- one_ne_zero._simp_1: 8 theorems in DualScaleStream2, StringTheoryFormalization; e.g. euler_T2, k3t2_euler_zero, cartanE8Inv_mul, hyperbolicUNeg_mul_self
 - Matrix.fromBlocks_transpose: 8 theorems in DualScaleStream2; e.g. genMetric_bshift, genMetric_symm, thetaShiftR_preserves_eta, basisChange_isODD
 - IsCancelMulZero.toIsLeftCancelMulZero: 8 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, circle_effective_scale_ge_two, dualScale_circle, mobius_compose
 - NeZero.one: 8 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, circle_effective_scale_ge_two, dualScale_circle, mobius_compose
 - GroupWithZero.toNontrivial: 8 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, circle_effective_scale_ge_two, dualScale_circle, mobius_compose
+- one_ne_zero._simp_1: 8 theorems in DualScaleStream2, StringTheoryFormalization; e.g. euler_T2, k3t2_euler_zero, cartanE8Inv_mul, hyperbolicUNeg_mul_self
+- FloorSemiring.instCharZero: 8 theorems in DualScaleStream2, StringTheoryFormalization; e.g. massForm_circle, circle_effective_scale_ge_two, cartanE8_det, cartanE8_posDef
+- AddGroup.existsAddOfLE: 8 theorems in DualScaleStream2, StringTheoryFormalization; e.g. circle_effective_scale_ge_two, cartanE8_posDef, fterm_potential_nonneg, poincare_geodesic_kinetic_energy_nonneg
 - Finset.sum_const_zero: 7 theorems in DualScaleStream2; e.g. euler_T2, cartanE8Inv_mul, e8_LDL, hyperbolicUNeg_mul_self
+- IsStrictOrderedRing.toPosMulStrictMono: 6 theorems in DualScaleStream2, StringTheoryFormalization; e.g. circle_effective_scale_ge_two, cartanE8_posDef, poincare_geodesic_kinetic_energy_nonneg, wp_metric_positive_diagonal
+- Matrix.one_apply_eq: 6 theorems in DualScaleStream2; e.g. massForm_circle, dualScale_circle, cartanE8Inv_mul, hyperbolicUNeg_mul_self
 - Matrix.fromBlocks_inj: 6 theorems in DualScaleStream2; e.g. etaR_genMetric_sq, genMetric_bshift, genMetric_symm, factorized_comm
 - Matrix.mul_assoc: 6 theorems in DualScaleStream2; e.g. genMetric_bshift, genMetric_bshift_cancel, basisChange_comm_thetaShift, isODD_inv_isODD
+- Finset.sum_neg_distrib: 6 theorems in DualScaleStream2, StringTheoryFormalization; e.g. euler_T2, cartanE8Inv_mul, e8Neg_simpleRoot_norm, hyperbolicU_congruence
 - IsOrderedRing.toPosMulMono: 6 theorems in DualScaleStream2, StringTheoryFormalization; e.g. circle_effective_scale_ge_two, cartanE8_posDef, energy_dissipation, regularity_lifting
 - Even.pow_nonneg: 6 theorems in DualScaleStream2, StringTheoryFormalization; e.g. cartanE8_posDef, fterm_potential_nonneg, poincare_geodesic_kinetic_energy_nonneg, energy_dissipation
-- IsStrictOrderedRing.toPosMulStrictMono: 6 theorems in DualScaleStream2, StringTheoryFormalization; e.g. circle_effective_scale_ge_two, cartanE8_posDef, poincare_geodesic_kinetic_energy_nonneg, wp_metric_positive_diagonal
 - IsOrderedRing.toMulPosMono: 6 theorems in StringTheoryFormalization; e.g. energy_dissipation, regularity_lifting, sobolev_embedding, implicit_euler_denominator_lower_bound
-- Finset.sum_neg_distrib: 6 theorems in DualScaleStream2, StringTheoryFormalization; e.g. euler_T2, cartanE8Inv_mul, e8Neg_simpleRoot_norm, hyperbolicU_congruence
-- Matrix.one_apply_eq: 6 theorems in DualScaleStream2; e.g. massForm_circle, dualScale_circle, cartanE8Inv_mul, hyperbolicUNeg_mul_self
+- Fintype.card_fin: 5 theorems in DualScaleStream2, StringTheoryFormalization; e.g. dualScale_ge, dualScale_one, hodge11_from_kummer, kummer_lattice_contribution
+- IsLeftCancelAdd.addLeftReflectLE_of_addLeftReflectLT: 5 theorems in StringTheoryFormalization; e.g. sobolev_embedding, M24RepDim_sum_sq, implicit_euler_denominator_lower_bound, sdc_tower_suppression
+- Matrix.transpose_mul: 5 theorems in DualScaleStream2; e.g. genMetric_symm, reflection_isometry, basisChange_isODD, isODD_inv_isODD
+- zero_ne_one._simp_1: 5 theorems in DualScaleStream2, StringTheoryFormalization; e.g. cartanE8Inv_mul, hyperbolicUNeg_mul_self, hyperbolicU_mul_self, tauShift_dual_spec
 - PosMulReflectLE.toPosMulReflectLT: 5 theorems in DualScaleStream2, StringTheoryFormalization; e.g. circle_effective_scale_ge_two, cartanE8_posDef, poincare_geodesic_kinetic_energy_nonneg, wp_metric_positive_diagonal
 - PosMulStrictMono.toPosMulReflectLE: 5 theorems in DualScaleStream2, StringTheoryFormalization; e.g. circle_effective_scale_ge_two, cartanE8_posDef, poincare_geodesic_kinetic_energy_nonneg, wp_metric_positive_diagonal
-- zero_ne_one._simp_1: 5 theorems in DualScaleStream2, StringTheoryFormalization; e.g. cartanE8Inv_mul, hyperbolicUNeg_mul_self, hyperbolicU_mul_self, tauShift_dual_spec
 - StarOrderedRing.toExistsAddOfLE: 5 theorems in StringTheoryFormalization; e.g. regularity_lifting, sobolev_embedding, implicit_euler_denominator_lower_bound, potential_decreases_along_flow
 - Real.instStarOrderedRing: 5 theorems in StringTheoryFormalization; e.g. regularity_lifting, sobolev_embedding, implicit_euler_denominator_lower_bound, potential_decreases_along_flow
-- Fintype.card_fin: 5 theorems in DualScaleStream2, StringTheoryFormalization; e.g. dualScale_ge, dualScale_one, hodge11_from_kummer, kummer_lattice_contribution
-- Matrix.transpose_mul: 5 theorems in DualScaleStream2; e.g. genMetric_symm, reflection_isometry, basisChange_isODD, isODD_inv_isODD
-- IsLeftCancelAdd.addLeftReflectLE_of_addLeftReflectLT: 5 theorems in StringTheoryFormalization; e.g. sobolev_embedding, M24RepDim_sum_sq, implicit_euler_denominator_lower_bound, sdc_tower_suppression
-- Matrix.fromBlocks_one: 4 theorems in DualScaleStream2; e.g. etaR_genMetric_sq, etaR_mul_self, eta_mul_self, factorized_mul_self
-- Real.instNontrivial: 4 theorems in DualScaleStream2, StringTheoryFormalization; e.g. cartanE8_posDef, torus_weight_pos, energy_dissipation, regularity_lifting
-- Not.intro: 4 theorems in DualScaleStream2, StringTheoryFormalization; e.g. cartanE8_posDef, tadpole_cancellation, bosonic_dimension_unique, self_dual_radius_unique
 - Iff.mp: 4 theorems in DualScaleStream2, DualScaleValidation; e.g. dualScale_ge, cartanE8_posDef, isODD_right_inv, moduli_potential_zero_iff
+- Matrix.fromBlocks_one: 4 theorems in DualScaleStream2; e.g. etaR_genMetric_sq, etaR_mul_self, eta_mul_self, factorized_mul_self
+- AddLeftCancelSemigroup.toIsLeftCancelAdd: 4 theorems in StringTheoryFormalization; e.g. M24RepDim_sum_sq, implicit_euler_denominator_lower_bound, sdc_tower_suppression, self_dual_radius_unique
 - Matrix.transpose_zero: 4 theorems in DualScaleStream2; e.g. genMetric_bshift, thetaShiftR_preserves_eta, basisChange_isODD, thetaShift_isODD
+- Matrix.mulVec_mulVec: 4 theorems in DualScaleStream2; e.g. isSection_image, massForm_covariant, chargeNorm_invariant, spectrum_equivalence
+- Matrix.dotProduct_mulVec: 4 theorems in DualScaleStream2; e.g. isSection_image, even_quadratic_form_of_even_diag, vecMulVec_mul_self, chargeNorm_invariant
+- Matrix.one_apply_ne: 4 theorems in DualScaleStream2; e.g. cartanE8Inv_mul, hyperbolicUNeg_mul_self, hyperbolicU_mul_self, tauShift_dual_spec
 - Matrix.fromBlocks_mulVec: 4 theorems in DualScaleStream2; e.g. eta_momentum_to_winding, massForm_circle, windingFrame_isSection, chargeNorm_sumElim
 - Matrix.zero_mulVec: 4 theorems in DualScaleStream2; e.g. eta_momentum_to_winding, massForm_circle, windingFrame_isSection, chargeNorm_sumElim
 - Matrix.one_mulVec: 4 theorems in DualScaleStream2; e.g. eta_momentum_to_winding, windingFrame_isSection, chargeNorm_sumElim, spectrum_equivalence
-- Matrix.one_apply_ne: 4 theorems in DualScaleStream2; e.g. cartanE8Inv_mul, hyperbolicUNeg_mul_self, hyperbolicU_mul_self, tauShift_dual_spec
-- Matrix.dotProduct_mulVec: 4 theorems in DualScaleStream2; e.g. isSection_image, even_quadratic_form_of_even_diag, vecMulVec_mul_self, chargeNorm_invariant
-- AddLeftCancelSemigroup.toIsLeftCancelAdd: 4 theorems in StringTheoryFormalization; e.g. M24RepDim_sum_sq, implicit_euler_denominator_lower_bound, sdc_tower_suppression, self_dual_radius_unique
 - StarOrderedRing.toIsOrderedRing: 4 theorems in DualScaleStream2, StringTheoryFormalization; e.g. first_five_are_irreps, M24_first_coefficient, betti_decomposition_matches_b2, betti_sum_eq_b2
-- Matrix.mulVec_mulVec: 4 theorems in DualScaleStream2; e.g. isSection_image, massForm_covariant, chargeNorm_invariant, spectrum_equivalence
-- Finset.sum_singleton: 3 theorems in DualScaleStream2, StringTheoryFormalization; e.g. cartanE8_posDef, mul_jMat_mul_transpose, M24RepDim_sum_sq
+- Real.instNontrivial: 4 theorems in DualScaleStream2, StringTheoryFormalization; e.g. cartanE8_posDef, torus_weight_pos, energy_dissipation, regularity_lifting
+- Not.intro: 4 theorems in DualScaleStream2, StringTheoryFormalization; e.g. cartanE8_posDef, tadpole_cancellation, bosonic_dimension_unique, self_dual_radius_unique
 - Matrix.transpose_sub: 3 theorems in DualScaleStream2; e.g. genMetric_symm, dualScale_ge, factorized_isODD
 - Matrix.mul_one: 3 theorems in DualScaleStream2; e.g. genMetric_bshift, dualScale_ge, isODD_inv_isODD
+- Distrib.rightDistribClass: 3 theorems in DualScaleStream2; e.g. kronForm_evenDiag, reflection_involution, reflection_isometry
 
 ## Most similar statements across libraries (TF-IDF cosine; dep-Jaccard in brackets)
-- 0.631 [0.108] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  SocrateAI.Moonshine.k3_euler_eq_24
-- 0.571 [0.016] Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature  ~  StringTheory.StringDynamics.mukai_rank
-- 0.557 [0.009] DualScaleStream2.Flux.k3t2_euler_zero  ~  SocrateAI.Moonshine.k3t2_euler_char_eq_zero
-- 0.547 [0.012] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
-- 0.531 [0.452] DualScaleStream2.Flux.euler_K3  ~  StringTheory.Frontier.k3_euler_characteristic
-- 0.518 [0.025] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
-- 0.514 [0.021] DualScaleValidation.UseCase3.rr_tadpole_cancellation  ~  StringTheory.StringDynamics.tadpole_cancellation
-- 0.513 [0.253] SocrateAI.Moonshine.kummer_exceptional_intersection  ~  StringTheory.StringDynamics.exceptional_self_intersection
-- 0.494 [0.009] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  StringTheory.Frontier.k3_euler_characteristic
-- 0.472 [0.091] Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature  ~  StringTheory.Foundation.ModularForms.mukai_signature_difference
-- 0.469 [0.009] SocrateAI.Moonshine.k3_euler_eq_24  ~  StringTheory.Frontier.k3_euler_characteristic
-- 0.464 [0.015] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity
-- 0.463 [0.113] SocrateAI.Moonshine.d7_positive_charge  ~  StringTheory.Foundation.StringTheory.TadpoleCancellation.total_D7_charge_is_64
-- 0.461 [0.029] DoubleFieldTheory.PhysicsDSL.dsl_self_dual_minimum  ~  DualScaleValidation.UseCase1.self_dual_is_global_minimum
-- 0.458 [0.041] Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature  ~  StringTheory.Foundation.ModularForms.mukai_lattice_rank_equals_24
-- 0.457 [0.002] Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
-- 0.443 [0.674] DualScaleStream2.Flux.k3t2_euler_zero  ~  StringTheory.Frontier.k3_euler_characteristic
-- 0.441 [0.007] StringTheory.Foundation.PhysLib.odd_metric_involutive  ~  StringTheory.StringDynamics.odd_metric_d1
-- 0.437 [0.009] DoubleFieldTheory.K3Topology.k3_second_betti_hodge  ~  StringTheory.Frontier.k3_euler_characteristic
-- 0.434 [0.351] DoubleFieldTheory.TDualityBuscher.buscher_log_involution  ~  DualScaleValidation.UseCase1.buscher_log_involution
-- 0.433 [0.022] Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
-- 0.429 [0.03] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.conductor_divisible_by_first_five_primes
-- 0.427 [0.081] DualScaleValidation.UseCase3.rr_tadpole_cancellation  ~  SocrateAI.Moonshine.rr_tadpole_cancellation
-- 0.427 [0.019] Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity  ~  SocrateAI.Moonshine.k3_euler_eq_24
-- 0.423 [0.108] DoubleFieldTheory.K3Topology.k3_second_betti_hodge  ~  SocrateAI.Moonshine.k3_euler_eq_24
-- 0.423 [0.015] DoubleFieldTheory.K3Topology.k3_second_betti_hodge  ~  Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity
-- 0.422 [0.014] StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity  ~  StringTheory.StringDynamics.sdc_tower_mass_pos
-- 0.421 [0.052] DualScaleStream2.Flux.euler_K3  ~  StringTheory.Frontier.k3_b2
-- 0.421 [0.022] DualScaleStream2.Lattice.rank_K3T2  ~  SocrateAI.FrontierTriad.total_k3t2_moduli_dim_eq_80
-- 0.416 [0.016] DualScaleStream2.Lattice.rank_K3  ~  Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature
-- 0.415 [0.074] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  SocrateAI.Moonshine.kummer_exceptional_intersection
-- 0.408 [0.495] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  SocrateAI.Moonshine.k3t2_euler_char_eq_zero
-- 0.406 [0.013] Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
-- 0.404 [0.334] StringTheory.Foundation.Atlas.atlas_poincare_curvature_negative  ~  StringTheory.Frontier.poincare_geodesic_atlas_curvature
-- 0.404 [0.006] SocrateAI.Moonshine.rr_tadpole_cancellation  ~  StringTheory.StringDynamics.tadpole_cancellation
-- 0.401 [0.105] Lean5Corpus.Problems.FluxSwampland.flux_energy_strictly_positive  ~  SocrateAI.FrontierTriad.cdl_action_strictly_positive
-- 0.398 [0.095] DoubleFieldTheory.K3Topology.k3_hirzebruch_signature  ~  SocrateAI.Moonshine.k3_euler_eq_24
-- 0.395 [0.021] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.m24_conductor_quotient
-- 0.392 [0.027] StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity  ~  StringTheory.StringDynamics.de_sitter_conjecture
-- 0.391 [0.149] DoubleFieldTheory.PhysicsDSL.dsl_self_dual_minimum  ~  DualScaleValidation.UseCase1.dual_scale_self_dual_value
-- 0.388 [0.144] StringTheory.Foundation.ModularForms.mukai_lattice_rank_equals_24  ~  StringTheory.StringDynamics.mukai_rank
-- 0.385 [0.057] Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
-- 0.382 [0.099] SocrateAI.Moonshine.o7_negative_charge  ~  StringTheory.Foundation.StringTheory.TadpoleCancellation.total_D7_charge_is_64
-- 0.382 [0.129] DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig  ~  SocrateAI.Moonshine.kummer_exceptional_intersection
-- 0.378 [0.108] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  SocrateAI.Moonshine.rr_tadpole_cancellation
-- 0.375 [0.212] DualScaleValidation.UseCase2.bps_lock_exact_equality  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A2_factorization
-- 0.375 [0.137] DualScaleValidation.UseCase2.bps_lock_exact_equality  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A1_factorization
-- 0.373 [0.008] StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity  ~  StringTheory.StringDynamics.sdc_tower_suppression
-- 0.373 [0.127] SocrateAI.Moonshine.kummer_exceptional_intersection  ~  StringTheory.StringDynamics.kummer_lattice_contribution
-- 0.368 [0.099] SocrateAI.Moonshine.d7_positive_charge  ~  StringTheory.Foundation.StringTheory.TadpoleCancellation.total_O7_charge_is_minus_64
+- 0.642 [0.108] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  SocrateAI.Moonshine.k3_euler_eq_24
+- 0.565 [0.009] DualScaleStream2.Flux.k3t2_euler_zero  ~  SocrateAI.Moonshine.k3t2_euler_char_eq_zero
+- 0.551 [0.012] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
+- 0.538 [0.025] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
+- 0.484 [0.113] SocrateAI.Moonshine.d7_positive_charge  ~  StringTheory.Foundation.StringTheory.TadpoleCancellation.total_D7_charge_is_64
+- 0.48 [0.091] Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature  ~  StringTheory.Foundation.ModularForms.mukai_signature_difference
+- 0.478 [0.015] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity
+- 0.46 [0.029] DoubleFieldTheory.PhysicsDSL.dsl_self_dual_minimum  ~  DualScaleValidation.UseCase1.self_dual_is_global_minimum
+- 0.46 [0.095] DoubleFieldTheory.K3Topology.k3_hirzebruch_signature  ~  SocrateAI.Moonshine.k3_euler_eq_24
+- 0.459 [0.002] Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
+- 0.454 [0.006] SocrateAI.Moonshine.rr_tadpole_cancellation  ~  StringTheory.StringDynamics.tadpole_cancellation
+- 0.452 [0.021] DualScaleValidation.UseCase3.rr_tadpole_cancellation  ~  StringTheory.StringDynamics.tadpole_cancellation
+- 0.448 [0.022] Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
+- 0.448 [0.041] Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature  ~  StringTheory.Foundation.ModularForms.mukai_lattice_rank_equals_24
+- 0.445 [0.351] DoubleFieldTheory.TDualityBuscher.buscher_log_involution  ~  DualScaleValidation.UseCase1.buscher_log_involution
+- 0.437 [0.019] Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity  ~  SocrateAI.Moonshine.k3_euler_eq_24
+- 0.435 [0.015] DoubleFieldTheory.K3Topology.k3_second_betti_hodge  ~  Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity
+- 0.435 [0.108] DoubleFieldTheory.K3Topology.k3_second_betti_hodge  ~  SocrateAI.Moonshine.k3_euler_eq_24
+- 0.431 [0.074] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  SocrateAI.Moonshine.kummer_exceptional_intersection
+- 0.428 [0.099] SocrateAI.Moonshine.o7_negative_charge  ~  StringTheory.Foundation.StringTheory.TadpoleCancellation.total_D7_charge_is_64
+- 0.425 [0.081] DualScaleValidation.UseCase3.rr_tadpole_cancellation  ~  SocrateAI.Moonshine.rr_tadpole_cancellation
+- 0.423 [0.495] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  SocrateAI.Moonshine.k3t2_euler_char_eq_zero
+- 0.422 [0.03] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.conductor_divisible_by_first_five_primes
+- 0.408 [0.013] Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
+- 0.399 [0.057] Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
+- 0.398 [0.149] DoubleFieldTheory.PhysicsDSL.dsl_self_dual_minimum  ~  DualScaleValidation.UseCase1.dual_scale_self_dual_value
+- 0.392 [0.014] SocrateAI.Moonshine.total_chiral_weight_value  ~  StringTheory.Frontier.k3_chiral_primary_total
+- 0.39 [0.108] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  SocrateAI.Moonshine.rr_tadpole_cancellation
+- 0.39 [0.105] Lean5Corpus.Problems.FluxSwampland.flux_energy_strictly_positive  ~  SocrateAI.FrontierTriad.cdl_action_strictly_positive
+- 0.389 [0.021] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.m24_conductor_quotient
+- 0.388 [0.129] DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig  ~  SocrateAI.Moonshine.kummer_exceptional_intersection
+- 0.384 [0.099] SocrateAI.Moonshine.d7_positive_charge  ~  StringTheory.Foundation.StringTheory.TadpoleCancellation.total_O7_charge_is_minus_64
+- 0.382 [0.334] StringTheory.Foundation.Atlas.atlas_poincare_curvature_negative  ~  StringTheory.Frontier.poincare_geodesic_atlas_curvature
+- 0.38 [0.068] DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig  ~  SocrateAI.Moonshine.k3_euler_eq_24
+- 0.373 [0.016] DualScaleStream2.Lattice.rank_K3  ~  Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature
+- 0.373 [0.015] Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity  ~  SocrateAI.Moonshine.k3t2_euler_char_eq_zero
+- 0.372 [0.008] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.ryu_takayanagi_positive_cut
+- 0.369 [0.112] SocrateAI.Moonshine.rr_tadpole_cancellation  ~  StringTheory.Foundation.StringTheory.TadpoleCancellation.d7_tadpole_cancellation
+- 0.368 [0.253] SocrateAI.Moonshine.kummer_exceptional_intersection  ~  StringTheory.StringDynamics.exceptional_self_intersection
 - 0.367 [0.477] DoubleFieldTheory.PhysicsDSL.dsl_effective_radius_strictly_super_planckian  ~  Lean5Corpus.Problems.DualScaleTCC.wavelength_strictly_super_planckian
-- 0.367 [0.2] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A2_factorization
-- 0.367 [0.132] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A1_factorization
-- 0.364 [0.151] DualScaleValidation.UseCase2.bps_cross_multiplication_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A2_factorization
-- 0.364 [0.111] DualScaleValidation.UseCase2.bps_cross_multiplication_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A1_factorization
-- 0.363 [0.008] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.ryu_takayanagi_positive_cut
-- 0.362 [0.068] DoubleFieldTheory.K3Topology.k3_intersection_lattice_rank_sig  ~  SocrateAI.Moonshine.k3_euler_eq_24
-- 0.362 [0.015] Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity  ~  SocrateAI.Moonshine.k3t2_euler_char_eq_zero
-- 0.361 [0.257] DualScaleValidation.UseCase2.bps_cross_multiplication_lock  ~  SocrateAI.Moonshine.r_bps_cross_multiplication
-- 0.36 [0.001] DualScaleValidation.UseCase1.buscher_log_involution  ~  SocrateAI.DualScale.buscher_involution
+- 0.366 [0.212] DualScaleValidation.UseCase2.bps_lock_exact_equality  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A2_factorization
+- 0.366 [0.137] DualScaleValidation.UseCase2.bps_lock_exact_equality  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A1_factorization
+- 0.365 [0.257] DualScaleValidation.UseCase2.bps_cross_multiplication_lock  ~  SocrateAI.Moonshine.r_bps_cross_multiplication
+- 0.364 [0.003] DualScaleStream2.Lattice.reflection_involution  ~  Lean5Corpus.Problems.MukaiMonodromy.buscher_reflection_involution
+- 0.363 [0.014] DoubleFieldTheory.K3Topology.k3_hirzebruch_signature  ~  Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity
+- 0.359 [0.019] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  SocrateAI.Moonshine.kuenneth_b3_derivation
+- 0.359 [0.001] DualScaleValidation.UseCase1.buscher_log_involution  ~  SocrateAI.DualScale.buscher_involution
+- 0.358 [0.0] Lean5Corpus.Problems.GolayHolography.nonzero_codeword_weight_positive  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
+- 0.358 [0.2] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A2_factorization
+- 0.358 [0.132] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A1_factorization
+- 0.357 [0.033] Lean5Corpus.Problems.KolmogorovCascade.dissipation_strictly_positive  ~  StringTheory.Foundation.FluidDynamics.energy_dissipation_monotonic
+- 0.357 [0.007] StringTheory.Foundation.PhysLib.odd_metric_involutive  ~  StringTheory.StringDynamics.odd_metric_d1
+- 0.355 [0.151] DualScaleValidation.UseCase2.bps_cross_multiplication_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A2_factorization
+- 0.355 [0.111] DualScaleValidation.UseCase2.bps_cross_multiplication_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.dim_A1_factorization
+- 0.351 [0.027] Lean5Corpus.Problems.GolayHolography.nonzero_codeword_weight_positive  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
+- 0.351 [0.223] DualScaleValidation.UseCase3.rr_tadpole_cancellation  ~  StringTheory.Foundation.StringTheory.TadpoleCancellation.d7_tadpole_cancellation
+- 0.348 [0.028] DualScaleValidation.UseCase3.tachyon_condensation_endpoint  ~  SocrateAI.FrontierTriad.tachyon_condensation_preserves_rr_charge
+- 0.346 [0.079] DualScaleValidation.UseCase2.sym2_A1_value  ~  SocrateAI.Moonshine.sym2_A1_dimension_is_4095
+- 0.343 [0.011] DualScaleValidation.UseCase3.sdc_mass_suppression  ~  StringTheory.StringDynamics.sdc_tower_suppression
+- 0.34 [0.127] DualScaleValidation.UseCase2.bps_lock_exact_equality  ~  Lean5Corpus.Problems.MathieuFrobenius.mathieu_frobenius_master_contract
 
 ## Strongest dependency intersections between modules (weighted Jaccard; cosine in brackets)
-- 0.925 [0.112] StringTheory.StringDynamics.M24_order  ∩  StringTheory.UseCases.MathieuTower.M21_order_factorization
-- 0.904 [0.286] DualScaleStream2.Lattice.cartanE8_symm  ∩  DualScaleStream2.Lattice.hyperbolicU_symm
-- 0.9 [0.277] DualScaleStream2.Lattice.e8Neg_symm  ∩  DualScaleStream2.Lattice.hyperbolicU_symm
-- 0.891 [0.0] DualScaleStream2.Lattice.cartanE8Inv_mul  ∩  DualScaleStream2.TDuality.tauShift_dual_spec
-- 0.883 [0.0] DualScaleStream2.Lattice.hyperbolicUNeg_mul_self  ∩  DualScaleStream2.TDuality.tauShift_dual_spec
-- 0.85 [0.165] DualScaleStream2.Lattice.hyperbolicUNeg_mul_self  ∩  DualScaleStream2.Lattice.hyperbolicU_mul_self
-- 0.846 [0.151] DualScaleStream2.Lattice.cartanE8Inv_mul  ∩  DualScaleStream2.Lattice.hyperbolicUNeg_mul_self
-- 0.84 [0.057] StringTheory.StringDynamics.implicit_euler_denominator_lower_bound  ∩  StringTheory.StringDynamics.sdc_tower_suppression
-- 0.825 [0.033] DualScaleStream2.Lattice.cartanE8_symm  ∩  DualScaleStream2.TDuality.mirrorTheta_antisymm
-- 0.825 [0.033] DualScaleStream2.Lattice.hyperbolicU_symm  ∩  DualScaleStream2.TDuality.mirrorTheta_antisymm
-- 0.822 [0.032] DualScaleStream2.Lattice.e8Neg_symm  ∩  DualScaleStream2.TDuality.mirrorTheta_antisymm
+- 0.925 [0.092] StringTheory.StringDynamics.M24_order  ∩  StringTheory.UseCases.MathieuTower.M21_order_factorization
+- 0.904 [0.13] DualScaleStream2.Lattice.cartanE8_symm  ∩  DualScaleStream2.Lattice.hyperbolicU_symm
+- 0.9 [0.127] DualScaleStream2.Lattice.e8Neg_symm  ∩  DualScaleStream2.Lattice.hyperbolicU_symm
+- 0.891 [0.007] DualScaleStream2.Lattice.cartanE8Inv_mul  ∩  DualScaleStream2.TDuality.tauShift_dual_spec
+- 0.883 [0.018] DualScaleStream2.Lattice.hyperbolicUNeg_mul_self  ∩  DualScaleStream2.TDuality.tauShift_dual_spec
+- 0.85 [0.122] DualScaleStream2.Lattice.hyperbolicUNeg_mul_self  ∩  DualScaleStream2.Lattice.hyperbolicU_mul_self
+- 0.846 [0.065] DualScaleStream2.Lattice.cartanE8Inv_mul  ∩  DualScaleStream2.Lattice.hyperbolicUNeg_mul_self
+- 0.84 [0.046] StringTheory.StringDynamics.implicit_euler_denominator_lower_bound  ∩  StringTheory.StringDynamics.sdc_tower_suppression
+- 0.825 [0.024] DualScaleStream2.Lattice.hyperbolicU_symm  ∩  DualScaleStream2.TDuality.mirrorTheta_antisymm
+- 0.825 [0.021] DualScaleStream2.Lattice.cartanE8_symm  ∩  DualScaleStream2.TDuality.mirrorTheta_antisymm
+- 0.822 [0.021] DualScaleStream2.Lattice.e8Neg_symm  ∩  DualScaleStream2.TDuality.mirrorTheta_antisymm
+- 0.818 [0.048] DualScaleStream2.Lattice.cartanE8_symm  ∩  StringTheory.Frontier.k3_hodge_symmetry
 - 0.818 [0.0] DualScaleStream2.Lattice.hyperbolicU_symm  ∩  StringTheory.Frontier.k3_hodge_symmetry
-- 0.818 [0.0] DualScaleStream2.Lattice.cartanE8_symm  ∩  StringTheory.Frontier.k3_hodge_symmetry
-- 0.815 [0.0] DualScaleStream2.Lattice.e8Neg_symm  ∩  StringTheory.Frontier.k3_hodge_symmetry
-- 0.807 [0.095] DualScaleStream2.TDuality.factorized_two  ∩  DualScaleStream2.TDuality.mirror_conjugates_tauShift
-- 0.789 [0.019] DualScaleStream2.Lattice.hyperbolicU_mul_self  ∩  DualScaleStream2.TDuality.tauShift_dual_spec
-- 0.784 [0.106] DualScaleStream2.Lattice.cartanE8Inv_mul  ∩  DualScaleStream2.Lattice.hyperbolicU_mul_self
-- 0.783 [0.039] DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram  ∩  StringTheory.Frontier.k3_hodge_symmetry
-- 0.782 [0.107] DualScaleStream2.Lattice.cartanE8_symm  ∩  DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram
-- 0.779 [0.104] DualScaleStream2.Lattice.e8Neg_symm  ∩  DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram
-- 0.772 [0.507] DualScaleStream2.Lattice.cartanE8_evenDiag  ∩  DualScaleStream2.Lattice.hyperbolicU_evenDiag
-- 0.766 [0.435] DoubleFieldTheory.CourantAlgebroid.strong_section_condition  ∩  DoubleFieldTheory.PhysicsDSL.dsl_strong_section_condition
-- 0.762 [0.02] DualScaleStream2.Lattice.hyperbolicU_congruence  ∩  DualScaleStream2.TDuality.tauShift_dual_spec
-- 0.759 [0.463] DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff  ∩  DoubleFieldTheory.PhysicsDSL.dsl_dorfman_cbracket_diff
-- 0.748 [0.0] DualScaleStream2.Lattice.cartanE8Inv_mul  ∩  DualScaleStream2.Lattice.hyperbolicU_congruence
-- 0.746 [0.0] DualScaleStream2.TDuality.mirrorTheta_antisymm  ∩  StringTheory.Frontier.k3_hodge_symmetry
-- 0.745 [0.338] DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm  ∩  DoubleFieldTheory.PhysicsDSL.dsl_cbracket_antisymm
-- 0.737 [0.009] StringTheory.Frontier.k3_b2  ∩  StringTheory.StringDynamics.M24_first_coefficient
-- 0.734 [0.433] DoubleFieldTheory.GeneralizedGeometry.courant_pairing_symm  ∩  DoubleFieldTheory.PhysicsDSL.dsl_courant_pairing_symm
-- 0.721 [0.206] StringTheory.UseCases.NarainLattice.narain_norm_R_independent  ∩  StringTheory.UseCases.TDuality.tduality_flips_right_momentum
-- 0.719 [0.019] DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram  ∩  DualScaleStream2.TDuality.mirrorTheta_antisymm
+- 0.815 [0.047] DualScaleStream2.Lattice.e8Neg_symm  ∩  StringTheory.Frontier.k3_hodge_symmetry
+- 0.807 [0.034] DualScaleStream2.TDuality.factorized_two  ∩  DualScaleStream2.TDuality.mirror_conjugates_tauShift
+- 0.789 [0.008] DualScaleStream2.Lattice.hyperbolicU_mul_self  ∩  DualScaleStream2.TDuality.tauShift_dual_spec
+- 0.784 [0.076] DualScaleStream2.Lattice.cartanE8Inv_mul  ∩  DualScaleStream2.Lattice.hyperbolicU_mul_self
+- 0.783 [0.0] DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram  ∩  StringTheory.Frontier.k3_hodge_symmetry
+- 0.782 [0.008] DualScaleStream2.Lattice.cartanE8_symm  ∩  DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram
+- 0.779 [0.008] DualScaleStream2.Lattice.e8Neg_symm  ∩  DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram
+- 0.772 [0.216] DualScaleStream2.Lattice.cartanE8_evenDiag  ∩  DualScaleStream2.Lattice.hyperbolicU_evenDiag
+- 0.766 [0.431] DoubleFieldTheory.CourantAlgebroid.strong_section_condition  ∩  DoubleFieldTheory.PhysicsDSL.dsl_strong_section_condition
+- 0.762 [0.009] DualScaleStream2.Lattice.hyperbolicU_congruence  ∩  DualScaleStream2.TDuality.tauShift_dual_spec
+- 0.759 [0.464] DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff  ∩  DoubleFieldTheory.PhysicsDSL.dsl_dorfman_cbracket_diff
+- 0.748 [0.008] DualScaleStream2.Lattice.cartanE8Inv_mul  ∩  DualScaleStream2.Lattice.hyperbolicU_congruence
+- 0.746 [0.046] DualScaleStream2.TDuality.mirrorTheta_antisymm  ∩  StringTheory.Frontier.k3_hodge_symmetry
+- 0.745 [0.339] DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm  ∩  DoubleFieldTheory.PhysicsDSL.dsl_cbracket_antisymm
+- 0.737 [0.0] StringTheory.Frontier.k3_b2  ∩  StringTheory.StringDynamics.M24_first_coefficient
+- 0.734 [0.416] DoubleFieldTheory.GeneralizedGeometry.courant_pairing_symm  ∩  DoubleFieldTheory.PhysicsDSL.dsl_courant_pairing_symm
+- 0.721 [0.204] StringTheory.UseCases.NarainLattice.narain_norm_R_independent  ∩  StringTheory.UseCases.TDuality.tduality_flips_right_momentum
+- 0.719 [0.008] DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram  ∩  DualScaleStream2.TDuality.mirrorTheta_antisymm
 - 0.706 [0.0] DualScaleStream2.Lattice.hyperbolicUNeg_mul_self  ∩  DualScaleStream2.Lattice.hyperbolicU_congruence
-- 0.698 [0.187] DualScaleStream2.TDuality.chargeNorm_even  ∩  StringTheory.UseCases.NarainLattice.narain_form_even
-- 0.684 [0.0] DualScaleStream2.Lattice.mukaiPair_self  ∩  StringTheory.UseCases.NarainLattice.B_is_polarization_of_Q
-- 0.68 [0.0] DualScaleStream2.Lattice.hyperbolicU_symm  ∩  DualScaleStream2.TDuality.eta_one_reindex
-- 0.674 [0.443] DualScaleStream2.Flux.k3t2_euler_zero  ∩  StringTheory.Frontier.k3_euler_characteristic
+- 0.698 [0.185] DualScaleStream2.TDuality.chargeNorm_even  ∩  StringTheory.UseCases.NarainLattice.narain_form_even
+- 0.684 [0.025] DualScaleStream2.Lattice.mukaiPair_self  ∩  StringTheory.UseCases.NarainLattice.B_is_polarization_of_Q
+- 0.68 [0.082] DualScaleStream2.Lattice.hyperbolicU_symm  ∩  DualScaleStream2.TDuality.eta_one_reindex
+- 0.674 [0.3] DualScaleStream2.Flux.k3t2_euler_zero  ∩  StringTheory.Frontier.k3_euler_characteristic
 - 0.668 [0.068] DualScaleValidation.UseCase2.bps_ratio_coprime  ∩  SocrateAI.Moonshine.r_bps_is_irreducible
-- 0.661 [0.181] DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff  ∩  DoubleFieldTheory.PhysicsDSL.dsl_cbracket_self_vanishes
-- 0.657 [0.202] DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm  ∩  DoubleFieldTheory.PhysicsDSL.dsl_cbracket_self_vanishes
-- 0.655 [0.122] DualScaleStream2.DFT.thetaShiftR_preserves_eta  ∩  DualScaleStream2.TDuality.thetaShift_isODD
+- 0.661 [0.179] DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff  ∩  DoubleFieldTheory.PhysicsDSL.dsl_cbracket_self_vanishes
+- 0.657 [0.199] DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm  ∩  DoubleFieldTheory.PhysicsDSL.dsl_cbracket_self_vanishes
+- 0.655 [0.109] DualScaleStream2.DFT.thetaShiftR_preserves_eta  ∩  DualScaleStream2.TDuality.thetaShift_isODD
 - 0.653 [0.0] StringTheory.Frontier.k3_b2  ∩  StringTheory.UseCases.K3Signature.betti_sum_eq_b2
-- 0.646 [0.0] DualScaleStream2.DFT.etaR_mul_self  ∩  DualScaleStream2.DFT.thetaShiftR_preserves_eta
-- 0.639 [0.246] DualScaleStream2.TDuality.eta_mul_self  ∩  DualScaleStream2.TDuality.thetaShift_mul
+- 0.646 [0.148] DualScaleStream2.DFT.etaR_mul_self  ∩  DualScaleStream2.DFT.thetaShiftR_preserves_eta
+- 0.639 [0.135] DualScaleStream2.TDuality.eta_mul_self  ∩  DualScaleStream2.TDuality.thetaShift_mul
 - 0.636 [0.0] DualScaleStream2.Flux.flux_half_selfIntersection_integral  ∩  StringTheory.UseCases.NarainLattice.narain_form_even
-- 0.634 [0.023] DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram  ∩  DualScaleStream2.TDuality.eta_one_reindex
-- 0.626 [0.241] StringTheory.UseCases.NarainLattice.narain_norm_R_independent  ∩  StringTheory.UseCases.TDuality.tduality_fixes_left_momentum
-- 0.623 [0.0] DualScaleStream2.Lattice.cartanE8_symm  ∩  DualScaleStream2.TDuality.eta_one_reindex
-- 0.621 [0.196] DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact  ∩  DoubleFieldTheory.PhysicsDSL.dsl_dorfman_cbracket_diff
-- 0.621 [0.0] DualScaleStream2.Lattice.e8Neg_symm  ∩  DualScaleStream2.TDuality.eta_one_reindex
+- 0.634 [0.084] DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram  ∩  DualScaleStream2.TDuality.eta_one_reindex
+- 0.626 [0.238] StringTheory.UseCases.NarainLattice.narain_norm_R_independent  ∩  StringTheory.UseCases.TDuality.tduality_fixes_left_momentum
+- 0.623 [0.031] DualScaleStream2.Lattice.cartanE8_symm  ∩  DualScaleStream2.TDuality.eta_one_reindex
+- 0.621 [0.193] DoubleFieldTheory.CourantAlgebroid.dorfman_symmetric_exact  ∩  DoubleFieldTheory.PhysicsDSL.dsl_dorfman_cbracket_diff
+- 0.621 [0.031] DualScaleStream2.Lattice.e8Neg_symm  ∩  DualScaleStream2.TDuality.eta_one_reindex
+- 0.614 [0.047] DualScaleStream2.Lattice.cartanE8_symm  ∩  StringTheory.Frontier.k3_serre_duality
 - 0.614 [0.0] DualScaleStream2.Lattice.hyperbolicU_symm  ∩  StringTheory.Frontier.k3_serre_duality
-- 0.614 [0.0] DualScaleStream2.Lattice.cartanE8_symm  ∩  StringTheory.Frontier.k3_serre_duality
-- 0.612 [0.0] DualScaleStream2.Lattice.e8Neg_symm  ∩  StringTheory.Frontier.k3_serre_duality
-- 0.611 [0.694] DualScaleStream2.TDuality.thetaShift_isODD  ∩  DualScaleStream2.TDuality.thetaShift_mul
-- 0.604 [0.496] DualScaleStream2.Lattice.e8Neg_evenDiag  ∩  DualScaleStream2.Lattice.hyperbolicU_evenDiag
+- 0.612 [0.046] DualScaleStream2.Lattice.e8Neg_symm  ∩  StringTheory.Frontier.k3_serre_duality
+- 0.611 [0.306] DualScaleStream2.TDuality.thetaShift_isODD  ∩  DualScaleStream2.TDuality.thetaShift_mul
+- 0.604 [0.213] DualScaleStream2.Lattice.e8Neg_evenDiag  ∩  DualScaleStream2.Lattice.hyperbolicU_evenDiag
 - 0.601 [0.144] StringTheory.Frontier.central_charge_k3_eq_six  ∩  StringTheory.UseCases.CriticalDimension.superstring_critical_dimension
-- 0.598 [0.233] DualScaleStream2.DFT.etaR_mul_self  ∩  DualScaleStream2.TDuality.eta_mul_self
-- 0.596 [0.16] DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm  ∩  DoubleFieldTheory.PhysicsDSL.dsl_dorfman_cbracket_diff
+- 0.598 [0.17] DualScaleStream2.DFT.etaR_mul_self  ∩  DualScaleStream2.TDuality.eta_mul_self
 - 0.596 [0.159] DoubleFieldTheory.CourantAlgebroid.dorfman_cbracket_diff  ∩  DoubleFieldTheory.PhysicsDSL.dsl_cbracket_antisymm
-- 0.594 [0.038] DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram  ∩  StringTheory.Frontier.k3_serre_duality
-- 0.593 [0.066] DualScaleStream2.Flux.flux_half_selfIntersection_integral  ∩  DualScaleStream2.TDuality.chargeNorm_even
+- 0.596 [0.16] DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm  ∩  DoubleFieldTheory.PhysicsDSL.dsl_dorfman_cbracket_diff
+- 0.594 [0.0] DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram  ∩  StringTheory.Frontier.k3_serre_duality
+- 0.593 [0.05] DualScaleStream2.Flux.flux_half_selfIntersection_integral  ∩  DualScaleStream2.TDuality.chargeNorm_even
 
 ## Unification candidates: similar statements, essentially disjoint proofs
-- 0.571 [0.016] Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature  ~  StringTheory.StringDynamics.mukai_rank
-- 0.557 [0.009] DualScaleStream2.Flux.k3t2_euler_zero  ~  SocrateAI.Moonshine.k3t2_euler_char_eq_zero
-- 0.547 [0.012] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
-- 0.518 [0.025] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
-- 0.514 [0.021] DualScaleValidation.UseCase3.rr_tadpole_cancellation  ~  StringTheory.StringDynamics.tadpole_cancellation
-- 0.494 [0.009] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  StringTheory.Frontier.k3_euler_characteristic
-- 0.469 [0.009] SocrateAI.Moonshine.k3_euler_eq_24  ~  StringTheory.Frontier.k3_euler_characteristic
-- 0.464 [0.015] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity
-- 0.461 [0.029] DoubleFieldTheory.PhysicsDSL.dsl_self_dual_minimum  ~  DualScaleValidation.UseCase1.self_dual_is_global_minimum
-- 0.458 [0.041] Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature  ~  StringTheory.Foundation.ModularForms.mukai_lattice_rank_equals_24
-- 0.457 [0.002] Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
-- 0.441 [0.007] StringTheory.Foundation.PhysLib.odd_metric_involutive  ~  StringTheory.StringDynamics.odd_metric_d1
-- 0.437 [0.009] DoubleFieldTheory.K3Topology.k3_second_betti_hodge  ~  StringTheory.Frontier.k3_euler_characteristic
-- 0.433 [0.022] Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
-- 0.429 [0.03] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.conductor_divisible_by_first_five_primes
-- 0.427 [0.019] Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity  ~  SocrateAI.Moonshine.k3_euler_eq_24
-- 0.423 [0.015] DoubleFieldTheory.K3Topology.k3_second_betti_hodge  ~  Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity
-- 0.422 [0.014] StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity  ~  StringTheory.StringDynamics.sdc_tower_mass_pos
-- 0.421 [0.022] DualScaleStream2.Lattice.rank_K3T2  ~  SocrateAI.FrontierTriad.total_k3t2_moduli_dim_eq_80
-- 0.416 [0.016] DualScaleStream2.Lattice.rank_K3  ~  Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature
-- 0.406 [0.013] Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
-- 0.404 [0.006] SocrateAI.Moonshine.rr_tadpole_cancellation  ~  StringTheory.StringDynamics.tadpole_cancellation
-- 0.395 [0.021] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.m24_conductor_quotient
-- 0.392 [0.027] StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity  ~  StringTheory.StringDynamics.de_sitter_conjecture
-- 0.373 [0.008] StringTheory.Foundation.StringTheory.Swampland.distance_conjecture_monotonicity  ~  StringTheory.StringDynamics.sdc_tower_suppression
-- 0.363 [0.008] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.ryu_takayanagi_positive_cut
-- 0.362 [0.015] Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity  ~  SocrateAI.Moonshine.k3t2_euler_char_eq_zero
-- 0.36 [0.001] DualScaleValidation.UseCase1.buscher_log_involution  ~  SocrateAI.DualScale.buscher_involution
-- 0.36 [0.003] DualScaleStream2.Lattice.reflection_involution  ~  Lean5Corpus.Problems.MukaiMonodromy.buscher_reflection_involution
-- 0.358 [0.014] SocrateAI.Moonshine.total_chiral_weight_value  ~  StringTheory.Frontier.k3_chiral_primary_total
-- 0.355 [0.032] DoubleFieldTheory.K3Topology.k3_second_betti_hodge  ~  StringTheory.UseCases.K3Signature.betti_sum_eq_b2
-- 0.354 [0.005] DualScaleStream2.Lattice.rank_K3T2  ~  SocrateAI.Moonshine.k3t2_euler_char_eq_zero
-- 0.354 [0.033] Lean5Corpus.Problems.KolmogorovCascade.dissipation_strictly_positive  ~  StringTheory.Foundation.FluidDynamics.energy_dissipation_monotonic
-- 0.354 [0.0] Lean5Corpus.Problems.GolayHolography.nonzero_codeword_weight_positive  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
-- 0.352 [0.032] StringTheory.Foundation.PhysLib.odd_metric_involutive  ~  StringTheory.StringDynamics.odd_metric_symm
-- 0.349 [0.024] Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature  ~  StringTheory.StringDynamics.kummer_sublattice_rank
-- 0.347 [0.006] StringTheory.Foundation.StringTheory.Swampland.unit_state_satisfies_wgc  ~  StringTheory.StringDynamics.sdc_tower_mass_pos
-- 0.347 [0.019] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  SocrateAI.Moonshine.kuenneth_b3_derivation
-- 0.346 [0.002] StringTheory.Foundation.StringTheory.VafaSwampland.vafa_sdc_4d_decay_rate  ~  StringTheory.StringDynamics.sdc_tower_mass_pos
-- 0.339 [0.009] StringTheory.Foundation.StringTheory.VafaSwampland.vafa_sdc_4d_decay_rate  ~  StringTheory.StringDynamics.sdc_tower_suppression
+- 0.565 [0.009] DualScaleStream2.Flux.k3t2_euler_zero  ~  SocrateAI.Moonshine.k3t2_euler_char_eq_zero
+- 0.551 [0.012] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
+- 0.538 [0.025] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
+- 0.478 [0.015] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity
+- 0.46 [0.029] DoubleFieldTheory.PhysicsDSL.dsl_self_dual_minimum  ~  DualScaleValidation.UseCase1.self_dual_is_global_minimum
+- 0.459 [0.002] Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
+- 0.454 [0.006] SocrateAI.Moonshine.rr_tadpole_cancellation  ~  StringTheory.StringDynamics.tadpole_cancellation
+- 0.452 [0.021] DualScaleValidation.UseCase3.rr_tadpole_cancellation  ~  StringTheory.StringDynamics.tadpole_cancellation
+- 0.448 [0.022] Lean5Corpus.Problems.GolayHolography.golay_holography_master_contract  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
+- 0.448 [0.041] Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature  ~  StringTheory.Foundation.ModularForms.mukai_lattice_rank_equals_24
+- 0.437 [0.019] Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity  ~  SocrateAI.Moonshine.k3_euler_eq_24
+- 0.435 [0.015] DoubleFieldTheory.K3Topology.k3_second_betti_hodge  ~  Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity
+- 0.422 [0.03] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.conductor_divisible_by_first_five_primes
+- 0.408 [0.013] Lean5Corpus.Problems.GolayHolography.golay_error_radius_equals_three  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
+- 0.392 [0.014] SocrateAI.Moonshine.total_chiral_weight_value  ~  StringTheory.Frontier.k3_chiral_primary_total
+- 0.389 [0.021] DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock  ~  Lean5Corpus.Problems.MathieuFrobenius.m24_conductor_quotient
+- 0.373 [0.016] DualScaleStream2.Lattice.rank_K3  ~  Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature
+- 0.373 [0.015] Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity  ~  SocrateAI.Moonshine.k3t2_euler_char_eq_zero
+- 0.372 [0.008] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.ryu_takayanagi_positive_cut
+- 0.364 [0.003] DualScaleStream2.Lattice.reflection_involution  ~  Lean5Corpus.Problems.MukaiMonodromy.buscher_reflection_involution
+- 0.363 [0.014] DoubleFieldTheory.K3Topology.k3_hirzebruch_signature  ~  Lean5Corpus.Problems.KummerModularity.k3_euler_characteristic_identity
+- 0.359 [0.019] DoubleFieldTheory.K3Topology.k3_euler_characteristic  ~  SocrateAI.Moonshine.kuenneth_b3_derivation
+- 0.359 [0.001] DualScaleValidation.UseCase1.buscher_log_involution  ~  SocrateAI.DualScale.buscher_involution
+- 0.358 [0.0] Lean5Corpus.Problems.GolayHolography.nonzero_codeword_weight_positive  ~  StringTheory.Foundation.Quantum.golay_length_matches_k3_euler
+- 0.357 [0.033] Lean5Corpus.Problems.KolmogorovCascade.dissipation_strictly_positive  ~  StringTheory.Foundation.FluidDynamics.energy_dissipation_monotonic
+- 0.357 [0.007] StringTheory.Foundation.PhysLib.odd_metric_involutive  ~  StringTheory.StringDynamics.odd_metric_d1
+- 0.351 [0.027] Lean5Corpus.Problems.GolayHolography.nonzero_codeword_weight_positive  ~  StringTheory.Foundation.Quantum.golay_code_rate_is_half
+- 0.348 [0.028] DualScaleValidation.UseCase3.tachyon_condensation_endpoint  ~  SocrateAI.FrontierTriad.tachyon_condensation_preserves_rr_charge
+- 0.343 [0.011] DualScaleValidation.UseCase3.sdc_mass_suppression  ~  StringTheory.StringDynamics.sdc_tower_suppression
+- 0.339 [0.016] DualScaleStream2.Lattice.rank_K3T2  ~  Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature
+- 0.338 [0.038] DualScaleStream2.Lattice.structureSheaf_mukai_sq  ~  Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature
+- 0.334 [0.016] DoubleFieldTheory.K3Topology.k3_su2_holonomy_reduction  ~  SocrateAI.Moonshine.k3_euler_eq_24
+- 0.333 [0.04] Lean5Corpus.Problems.GolayHolography.golay_self_dual_dimension  ~  StringTheory.Foundation.Quantum.ryu_takayanagi_empty_cut
+- 0.328 [0.005] DualScaleStream2.Lattice.structureSheaf_mukai_sq  ~  StringTheory.Foundation.ModularForms.mukai_lattice_rank_equals_24
+- 0.325 [0.002] StringTheory.Foundation.StringTheory.VafaSwampland.vafa_sdc_4d_decay_rate  ~  StringTheory.StringDynamics.sdc_tower_mass_pos
+- 0.324 [0.008] DoubleFieldTheory.K3Topology.k3_second_betti_hodge  ~  DualScaleStream2.Flux.euler_T2
+- 0.322 [0.016] Lean5Corpus.Problems.MukaiMonodromy.mukai_rank_and_signature  ~  StringTheory.StringDynamics.mukai_rank
+- 0.319 [0.009] StringTheory.Foundation.StringTheory.VafaSwampland.vafa_sdc_4d_decay_rate  ~  StringTheory.StringDynamics.sdc_tower_suppression
+- 0.318 [0.008] DoubleFieldTheory.PhysicsDSL.dsl_cbracket_self_vanishes  ~  DualScaleValidation.UseCase1.dual_scale_self_dual_value
+- 0.316 [0.012] DualScaleValidation.UseCase1.dual_scale_self_dual_value  ~  SocrateAI.DualScale.self_dual_symmetric

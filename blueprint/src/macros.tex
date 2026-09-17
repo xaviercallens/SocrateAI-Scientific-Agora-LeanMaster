@@ -1,8 +1,16 @@
-% Lean Blueprint Macros for Certified String Theory & Dual-Scale Framework
-\newcommand{\lean}[1]{\marginpar{\texttt{#1}}}
-\newcommand{\leanok}{\checkmark}
+% Lean Blueprint macros for the SocrateAI LeanMaster formalization.
+% \lean{Name} prints the fully qualified Lean declaration (raw underscores allowed; tools/build_blueprint.py
+% parses the same text). \leanok marks a declaration whose proof is kernel-checked with only the standard
+% axioms (propext, Classical.choice, Quot.sound). Every \lean name is checked against the compiled
+% environment (.leancache/depgraph.jsonl) before the blueprint is published.
+\newcommand{\lean}[1]{\par\noindent{\small\textsf{Lean:} \path{#1}}\par}
+\makeatletter\g@addto@macro\UrlBreaks{\do\_\do\.}\makeatother
+\newcommand{\leanok}{{\small\ (\textsf{kernel-checked})}}
 \newcommand{\uses}[1]{}
 \newcommand{\proves}[1]{}
+\newcommand{\TA}{\textbf{[Tier A]}}
+\newcommand{\TL}{\textbf{[Tier L]}}
+\newcommand{\TC}{\textbf{[Tier C]}}
 
 \newcommand{\Reff}{R_{\mathrm{eff}}}
 \newcommand{\Mukai}{\Gamma^{4,20}}

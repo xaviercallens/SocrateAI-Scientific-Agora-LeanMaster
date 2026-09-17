@@ -14,29 +14,68 @@ open StringTheory.StringDynamics
 /-!
 # The Mathieu Point-Stabilizer Tower
 
-`M₂₄` — the sporadic group central to Mathieu Moonshine (already certified in
-`StringDynamics.MathieuM24.M24_order`, order `244823040 = 2^10·3^3·5·7·11·23`)
-— is constructed as automorphisms of the extended binary Golay code acting on
-24 points. This action is 5-transitive, and successively stabilizing points
-peels off a *tower* of smaller Mathieu groups:
+## Physical background
 
-    M₂₄  ⊃  M₂₃  ⊃  M₂₂  ⊃  M₂₁ ≅ PSL(3,4)
-  (24 pts)  (23 pts)  (22 pts)   (21 pts)
+`M₂₄` is the sporadic simple group that appears in Mathieu Moonshine: the elliptic
+genus of K3 decomposes into characters of the `N=4` superconformal algebra whose
+multiplicities are (twice) dimensions of `M₂₄` representations (Eguchi-Ooguri-Tachikawa
+2010; Gaberdiel-Hohenegger-Volpato, `papers/foundations/
+gaberdiel_hohenegger_volpato_mathieu_1006_0221.txt`, who work extensively with the
+subgroup chain `M₂₃ ⊂ M₂₄` when computing twining genera for group elements that fix a
+point — e.g. l.811, "elements in `M₂₄` that are not in `M₂₃`"). `M₂₄` acts on the 24
+points of the extended binary Golay code; this action is 5-transitive, and successively
+fixing points peels off the point-stabilizer tower `M₂₄ ⊃ M₂₃ ⊃ M₂₂ ⊃ M₂₁ ≅ PSL(3,4)`,
+with each step an orbit-stabilizer relation `|Gₙ| = n·|Gₙ₋₁|`. The individual group
+orders themselves (`|M₂₃|=10200960` etc.) are standard ATLAS-of-Finite-Groups data
+(Conway et al. 1985; Conway-Norton 1979); they are **not checked against a source in
+this book's library** — this project has no formalization of the Golay code or of group
+actions, only the numerical orders, taken as given.
 
-with `|M₂₄| = 24·|M₂₃|`, `|M₂₃| = 23·|M₂₂|`, `|M₂₂| = 22·|M₂₁|` (orbit-stabilizer,
-since each action is transitive on the indicated number of points). This file
-certifies that the four standard ATLAS orders are arithmetically consistent
-with that tower, and that the tower composes back to exactly the already
-certified `M24_order`.
+## Mathematical content
+
+`orderM23`, `orderM22`, `orderM21` are hard-coded natural-number constants (the ATLAS
+values). The file proves four arithmetic facts about them and the numeral
+`244823040 = |M₂₄|` (itself proved equal to `2^10·3^3·5·7·11·23` in the already-certified
+`StringDynamics.MathieuM24.M24_order`): the three orbit-stabilizer index relations
+`244823040 = 24·orderM23`, `orderM23 = 23·orderM22`, `orderM22 = 22·orderM21`; the prime
+factorization of `orderM21 = 2^6·3^2·5·7`; and the **main result**
+`mathieu_tower_consistent`, that composing the tower `24·(23·(22·orderM21))` lands back
+on `244823040`. This is a check that four given numerals multiply out consistently — it
+is **not** a formalization of the Mathieu group, its Golay-code action, transitivity, or
+the orbit-stabilizer theorem itself; no group, group action or code appears anywhere in
+this file, only their orders as bare numerals.
+
+## Proof techniques
+
+Every proof is `unfold` followed by `norm_num` (verifying one numeral equation) or, for
+the two composition theorems, a chain of `rw` substituting the already-proved index
+relations (and, in `mathieu_tower_matches_certified_order`, the imported `M24_order`)
+into each other so the final numeral equality is definitional.
+
+## Related declarations
+
+* `StringTheory.StringDynamics.M24_order` (imported) is the declaration
+  `mathieu_tower_matches_certified_order` ties back to; the atlas records the pair
+  `M24_order ∩ M21_order_factorization` at dep-Jaccard 0.925 but cosine only 0.112 —
+  the high overlap is shared `norm_num`/numeral machinery, not a mathematical
+  coincidence, since one literally imports and cites the other by name in this file.
+* `StringTheory.StringDynamics.M24RepDim`/`M24RepDim_sum_sq` (same source file) certify
+  a *different* fact about `M₂₄` — that a hard-coded list of representation dimensions
+  squares-and-sums to `|M₂₄|` — complementary Moonshine bookkeeping, not overlapping
+  with the stabilizer tower proved here.
+* `DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock` (cosine 0.429 with
+  `Lean5Corpus.Problems.MathieuFrobenius.conductor_divisible_by_first_five_primes`) is an
+  independent re-proof, in a different library, of a related divisibility fact about
+  `|M₂₄|`; it does not use this file's tower directly.
 -/
 
-/-- Order of `M₂₃` (ATLAS). -/
+/-- Order of `M₂₃` (standard ATLAS value; not re-derived from a group action here). -/
 def orderM23 : ℕ := 10200960
 
-/-- Order of `M₂₂` (ATLAS). -/
+/-- Order of `M₂₂` (standard ATLAS value; not re-derived from a group action here). -/
 def orderM22 : ℕ := 443520
 
-/-- Order of `M₂₁ ≅ PSL(3,4)` (ATLAS). -/
+/-- Order of `M₂₁ ≅ PSL(3,4)` (standard ATLAS value; not re-derived here). -/
 def orderM21 : ℕ := 20160
 
 /-- `M₂₄` acts transitively on 24 points with point stabilizer `M₂₃`. -/

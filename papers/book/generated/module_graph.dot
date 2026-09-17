@@ -48,8 +48,8 @@ digraph modules { rankdir=LR; node [shape=box,fontsize=9,fontname=Helvetica]; ed
   "DualScaleStream2.TDuality.Mirror" -> "DualScaleStream2.TDuality.ODD" [penwidth=1.5];
   "DualScaleStream2.TDuality.Mirror" -> "DualScaleStream2.TDuality.Factorized" [penwidth=0.7];
   "DualScaleStream2.DFT.GeneralizedMetric" -> "DualScaleStream2.TDuality.ODD" [penwidth=2.0];
-  "DualScaleStream2.TDuality.Spectrum" -> "DualScaleStream2.DFT.GeneralizedMetric" [penwidth=0.8];
   "DualScaleStream2.TDuality.Spectrum" -> "DualScaleStream2.TDuality.Factorized" [penwidth=0.8];
+  "DualScaleStream2.TDuality.Spectrum" -> "DualScaleStream2.DFT.GeneralizedMetric" [penwidth=0.8];
   "DualScaleStream2.TDuality.Spectrum" -> "DualScaleStream2.TDuality.ODD" [penwidth=3.0];
   "DoubleFieldTheory.TDualityBuscher" -> "DoubleFieldTheory.GeneralizedGeometry" [penwidth=3.0];
   "DualScaleStream2.Lattice.E8" -> "DualScaleStream2.Lattice.Basic" [penwidth=2.3];
@@ -78,8 +78,8 @@ digraph modules { rankdir=LR; node [shape=box,fontsize=9,fontname=Helvetica]; ed
   "StringTheoryFormalization.Frontier.ModuliGeodesics" -> "StringTheoryFoundation.Atlas.AtlasGeometryBridge" [penwidth=0.8];
   "DualScaleStream2.Lattice.Hyperbolic" -> "StringTheoryFormalization.UseCases.NarainLattice" [penwidth=0.7];
   "DoubleFieldTheory.TorusMoonshine" -> "DoubleFieldTheory.GeneralizedGeometry" [penwidth=1.3];
-  "StringTheoryFormalization.Frontier.FTermPotential" -> "StringTheoryFoundation.StringTheory.VafaSwampland" [penwidth=0.7];
   "StringTheoryFormalization.Frontier.FTermPotential" -> "StringTheoryFoundation.StringTheory.TadpoleCancellation" [penwidth=1.0];
+  "StringTheoryFormalization.Frontier.FTermPotential" -> "StringTheoryFoundation.StringTheory.VafaSwampland" [penwidth=0.7];
   "DoubleFieldTheory.TorusMoonshine" -> "DoubleFieldTheory.K3Topology" [penwidth=0.7];
   "StringTheoryFoundation.StringTheory.StromingerSYZ" -> "StringTheoryFoundation.Core.Topology" [penwidth=0.8];
   "StringTheoryFoundation.StringTheory.K3xT2" -> "StringTheoryFoundation.Core.Topology" [penwidth=1.5];

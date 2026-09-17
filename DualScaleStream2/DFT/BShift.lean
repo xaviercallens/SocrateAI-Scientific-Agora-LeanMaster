@@ -15,6 +15,46 @@ holds, so the sign/ordering here is not a guess.
 Combined with `TDuality.thetaShift_isODD` (the Θ-shift lies in `O(d,d;ℤ)`) this says the
 periodic identification `B ∼ B + Θ` of the B-field is an `O(d,d;ℤ)` duality of the DFT
 background.
+
+### Physical background
+An integer antisymmetric shift of the `B`-field, `B ↦ B + Θ` with `Θᵀ = −Θ` and `Θ`
+integer-valued, changes the string worldsheet action only by a total derivative and hence
+by a multiple of `2π` in the path integral phase (Giveon–Porrati–Rabinovici §2.4, around
+eq. (2.4.25), `papers/foundations/giveon_hep-th_9401139.txt` lines 1355–1373): it is
+physically invisible, a "large gauge transformation" of the doubled background, realized as
+the block matrix `g_Θ = [[I,Θ],[0,I]]` acting on the doubled charge/coordinate vector. This
+file checks the DFT-side counterpart of that statement: that `g_Θ` acts on the generalized
+metric `H(G,B)` exactly by shifting its `B`-argument.
+
+### Mathematical content
+Defines `thetaShiftR Θ`, the real block matrix `[[I,Θ],[0,I]]` (the field-theoretic, `ℝ`-
+valued counterpart of `TDuality.thetaShift`, which is the same block pattern over `ℤ`).
+Proves `genMetric_bshift`: for symmetric invertible `G`, antisymmetric `B` and antisymmetric
+`Θ`, conjugating `H(G,B)` by `g_Θ` (as `g_Θ · H · g_Θᵀ`) gives exactly `H(G, B+Θ)`; the sign
+and left/right placement of `g_Θ` in this identity is not a free choice — a preliminary
+`sympy` check at `d = 2` with generic symbols (recorded in the module comment above) ruled
+out the three other combinations of `g Hgᵀ`/`gᵀHg` with `±Θ`. Proves `thetaShiftR_preserves_eta`,
+the real analogue of `TDuality.thetaShift_isODD`: `g_Θ` preserves the `O(d,d)` form `η`.
+Proves `genMetric_bshift_cancel`, the purely algebraic fact that shifting by `Θ` then by
+`−Θ` returns the original metric — this one needs no antisymmetry hypothesis on `Θ` at all,
+since `B + Θ + (−Θ)` simplifies to `B` in any ring. **Not proved here**: that the shift is a
+symmetry of the full string spectrum or path integral (that identification is Tier L, the
+GPR argument quoted above) — only that it acts as claimed on the algebraic object `H`.
+
+### Proof techniques
+Same block-matrix method as `GeneralizedMetric.lean`: `fromBlocks_multiply`/`fromBlocks_transpose`
+expose the product as a `2×2` block matrix, `fromBlocks_inj` reduces the goal to four scalar
+block equations, each closed by ring/module normalization (`abel`) after substituting
+`hΘ : Θᵀ = −Θ`.
+
+### Related declarations
+`thetaShiftR_preserves_eta` and `TDuality.thetaShift_isODD` are the atlas's most similar
+pair originating from this file (dependency-Jaccard 0.694 with `TDuality.thetaShift_mul`,
+and directly analogous statements to each other): the same shift, proved to preserve the
+same bilinear form, once over `ℝ` (for the DFT metric) and once over `ℤ` (for the T-duality
+group) — independent proofs of the same fact in two different rings, not one reused from
+the other. `genMetric_bshift` depends on `DFT.GeneralizedMetric.genMetric`, a **special
+case** of which (`B = 0`) is `tduality_inverts_metric` in that file.
 -/
 import DualScaleStream2.DFT.GeneralizedMetric
 
@@ -28,7 +68,11 @@ variable {d : ℕ}
 noncomputable def thetaShiftR (Θ : Matrix (Fin d) (Fin d) ℝ) : Matrix (Charge d) (Charge d) ℝ :=
   fromBlocks 1 Θ 0 1
 
-/-- **B-shift covariance.** -/
+/-- **B-shift covariance.** Conjugating the generalized metric `H(G,B)` by the Θ-shift
+`g_Θ` produces `H(G, B+Θ)`: acting with the large gauge transformation on the doubled
+background is the same as shifting the `B`-field by `Θ` before building `H`. Proved by
+reducing the `2×2` block-matrix identity to its four scalar blocks and simplifying each
+with the antisymmetry of `B` and `Θ`. -/
 theorem genMetric_bshift (G B Θ : Matrix (Fin d) (Fin d) ℝ) (hG : IsUnit G.det)
     (hGs : Gᵀ = G) (hB : Bᵀ = -B) (hΘ : Θᵀ = -Θ) :
     thetaShiftR Θ * genMetric G B * (thetaShiftR Θ)ᵀ = genMetric G (B + Θ) := by
@@ -59,9 +103,15 @@ theorem thetaShiftR_preserves_eta (Θ : Matrix (Fin d) (Fin d) ℝ) (hΘ : Θᵀ
     Matrix.transpose_zero, hΘ]
   simp
 
-/-- Shifting by `Θ` and then by `-Θ` returns the original background. -/
+/-- Shifting by `Θ` and then by `-Θ` returns the original background. This is pure ring
+algebra (`B + Θ + (−Θ) = B` inside the `G − BG⁻¹B` block once distributed), needing no
+antisymmetry hypothesis on `Θ` at all — unlike `genMetric_bshift`, which needs `Θᵀ = −Θ`
+to identify the *conjugation* by `g_Θ` with this shift in the first place. -/
 theorem genMetric_bshift_cancel (G B Θ : Matrix (Fin d) (Fin d) ℝ) :
     genMetric G (B + Θ + -Θ) = genMetric G B := by
+  -- distribute (B+Θ-Θ)·G⁻¹·(B+Θ-Θ) and cancel the Θ/−Θ cross terms; the repeated
+  -- simp/abel passes below are a robustness idiom (later passes clean up terms the
+  -- earlier `simp` left in a form `abel` alone could not close), not separate proof steps.
   simp [genMetric, Matrix.mul_add, Matrix.add_mul, Matrix.mul_assoc]
   <;>
     abel

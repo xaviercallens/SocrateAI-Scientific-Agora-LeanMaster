@@ -4,6 +4,10 @@
 probe below was re-run on the working tree at `0b8215b` + documentation-only edits (statement lock OK).
 Toolchain `leanprover/lean4:v4.33.1`, Mathlib tag `v4.33.1` (`0df444a3…`).
 
+**Re-gated 2026-09-17 after the documentation pass** (40 `.lean` files, docstrings and comments only):
+comment-stripped code byte-identical to the gated version for all 40 files; `lake build DualScaleStream2
+StringTheoryFormalization` 3708 jobs, 0 errors; axiom audit 99 + 89 theorems, 0 failing; statement lock OK.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) |
 |---|---|---|---|
@@ -25,6 +29,9 @@ package, imports `DualScaleStream2` and `StringTheoryFormalization`, and proves 
 * **Not Tier A**: that these matrices, lattices and inequalities *are* string theory. The physical
   identification is Tier L (literature; pinned in `papers/foundations/`) or Tier C (conjecture, in
   particular every cosmological use of the dual-scale bound).
+* **Signature theorems are bookkeeping**: `sigK3_eq` / `sigMukai_eq` / `sigK3T2_eq` add signature records whose
+  inputs `sigU = (1,1)` and `sigE8Neg = (0,8)` are definitions marked Tier L in the source; they are not computed
+  from the Gram matrices. (Positive definiteness of `E8` is proved separately: `cartanE8_posDef`.)
 * **One-direction results stay one-direction**: `thetaShift_isODD` (antisymmetric Θ ⇒ O(d,d), not ⇔);
   `basisChange_comm_thetaShift` (det A = 1 ⇒ commute; the converse was only checked symbolically);
   `dualScale_one` (bound attained at G = 1; uniqueness of the minimizer is not formalized);

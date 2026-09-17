@@ -1,11 +1,13 @@
 \documentclass[11pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{geometry}
 \geometry{margin=1in}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{booktabs}
-\usepackage{color}
+\usepackage{xcolor}
 
 \input{macros.tex}
 
@@ -13,101 +15,252 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem*{scope}{Scope}
 
-\title{\textbf{Blueprint: Certified Dual-Scale String Theory \& Double Field Theory in Lean 4}}
+\title{\textbf{Blueprint: Dual-Scale String Theory and Double Field Theory in Lean 4}}
 \author{\textbf{Xavier Callens} \and \textbf{SocrateAI Scientific Agora Collaboration}}
-\date{September 2026 --- v1.0.0 Architecture Blueprint}
+\date{Revision 2 --- 17 September 2026}
 
 \begin{document}
 
 \maketitle
 
+\chapter*{Revision note}
+\addcontentsline{toc}{chapter}{Revision note}
+Revision~1 of this blueprint (``v1.0.0 Architecture Blueprint'') cited ten Lean declarations and marked all
+of them as formalized. Checking them against the compiled environment on 2026-09-17 showed that
+\textbf{eight of the ten names did not exist} (they had been renamed or never written), and several
+statements were described far more strongly than the Lean theorems prove --- in particular the claims that
+``curvature singularities are mathematically forbidden by the Lean~4 kernel'', that the trans-Planckian
+censorship conjecture is satisfied ``unconditionally'', and that the framework ``mechanically predicts''
+cosmological and neutrino observables. The discrepancy had been recorded in
+\texttt{docs/RIGOR\_ROADMAP.md} but not corrected.
+
+This revision (i) replaces every reference by an existing declaration, (ii) states each result as the Lean
+statement reads, taken from \texttt{\#check}, (iii) labels each claim by tier --- \TA{} kernel-checked,
+\TL{} established in the literature, \TC{} conjecture or proposal of this programme --- and (iv) adds the
+\texttt{DualScaleStream2} library, whose results are genuine linear algebra over $\mathbb{Z}$ and
+$\mathbb{R}$. The older libraries cited in Chapters~1--5 model physical quantities by integers or small
+integer matrices: their theorems are kernel-checked, but they are \emph{arithmetic models} of the physics,
+not formalizations of it. All theorems cited depend only on Lean's standard axioms \texttt{propext},
+\texttt{Classical.choice}, \texttt{Quot.sound}.
+
 \tableofcontents
 
-\chapter{Double Field Theory and Generalized Geometry}
+% ======================================================================================================
+\chapter{Double Field Theory and Generalized Geometry (integer models)}
 
-\begin{definition}[$O(D,D)$ Split-Signature Metric]\label{def:odd_metric}
-\lean{DoubleFieldTheory.GeneralizedGeometry.odd_metric}\leanok
-The $O(D,D)$ invariant metric $\eta$ on the generalized tangent bundle $E = TM \oplus T^*M$ is defined by the off-diagonal identity matrix:
-$$\eta = \begin{pmatrix} 0 & \mathbf{1}_D \\ \mathbf{1}_D & 0 \end{pmatrix}$$
-satisfying the involution property $\eta^2 = \mathbf{1}_{2D}$.
+\begin{definition}[$O(D,D)$ pairing]\label{def:odd_metric}
+\lean{DoubleFieldTheory.GeneralizedGeometry.ODD_Eta}
+The pairing on $E=TM\oplus T^*M$ is $\eta=\begin{pmatrix}0&1\\1&0\end{pmatrix}$. In this library it is a
+$2\times2$ integer matrix (one generalized direction). The theorem
+\lean{DoubleFieldTheory.GeneralizedGeometry.odd_metric_eval}\leanok
+states that evaluating the bilinear form of \texttt{ODD\_Eta} on generalized vectors $X,Y$ gives the
+pairing $\langle X,Y\rangle_\eta$. \TA{} for this model.
 \end{definition}
 
-\begin{theorem}[Invariance of Generalized Metric Coset]\label{thm:coset_involution}
-\lean{DoubleFieldTheory.GeneralizedGeometry.generalized_metric_involution}\leanok
+\begin{theorem}[Generalized metric, diagonal integer model]\label{thm:coset_involution}
+\lean{DoubleFieldTheory.GeneralizedGeometry.gen_metric_duality}\leanok
 \uses{def:odd_metric}
-The generalized metric $\mathcal{H}_{MN} \in O(D,D) / (O(D) \times O(D))$ satisfies:
-$$\mathcal{H}^T \eta \mathcal{H} = \eta \iff \mathcal{H}^{-1} = \eta \mathcal{H} \eta$$
+For the diagonal integer matrix $\mathcal{H}=\mathrm{diag}(g,g)$: if $g=1$ then
+$\mathcal{H}\,\eta\,\mathcal{H}=\eta$. Also
+\lean{DoubleFieldTheory.GeneralizedGeometry.gen_metric_symmetric}\leanok
+(the two off-diagonal entries of $\mathrm{diag}(g,g^{-1})$ agree) and
+\lean{DoubleFieldTheory.GeneralizedGeometry.btwist_preserves_eta}\leanok
+(for the integer $B$-twist, the off-diagonal entries of $B^{\mathsf T}\eta B$ equal those of $\eta$). \TA{}.
+\end{theorem}
+\begin{scope}
+The general statement --- $(\eta\mathcal{H}(G,B))^2=1$ for every invertible $G$ and every $B$ --- is
+\emph{not} proved in this library; it is proved in \texttt{DualScaleStream2}, Theorem~\ref{thm:s2_genmetric}.
+\end{scope}
+
+\begin{theorem}[C-bracket antisymmetry, component model]\label{thm:c_bracket_antisym}
+\lean{DoubleFieldTheory.CourantAlgebroid.cbracket_antisymm}\leanok
+For sections $X,Y$ of the integer-component model \texttt{CourantSection}, the $\alpha$-component of
+$[X,Y]_C$ is minus that of $[Y,X]_C$. \TA{} for the model; antisymmetry of the C-bracket on doubled fields
+is \TL{} (Hull--Zwiebach, arXiv:0904.4664).
 \end{theorem}
 
-\begin{theorem}[Antisymmetry of the Courant C-Bracket]\label{thm:c_bracket_antisym}
-\lean{DoubleFieldTheory.CourantAlgebroid.c_bracket_skew_symmetric}\leanok
-The antisymmetrized C-bracket of two generalized vector fields $X, Y \in \Gamma(TM \oplus T^*M)$ satisfies manifest skew-symmetry:
-$$[X, Y]_C = -[Y, X]_C$$
+\begin{theorem}[Section condition, component model]\label{thm:section_condition}
+\lean{DoubleFieldTheory.CourantAlgebroid.strong_section_condition}\leanok
+If the dual derivatives $\tilde\partial\Phi$ and $\tilde\partial\Psi$ vanish, then
+$\partial_M\Phi\,\partial^M\Psi=0$ in the model. \TA{} for the model.
 \end{theorem}
+\begin{scope}
+That the strong constraint guarantees closure of generalized diffeomorphisms and reduces the DFT action to
+the NS--NS action is \TL{} (Hohm--Hull--Zwiebach, arXiv:1006.4823). The Lean theorem
+\texttt{DoubleFieldTheory.ActionCurvature.dft\_action\_nsns\_equivalence} states only the symmetry
+\texttt{ActionLagrangian a b = ActionLagrangian b a} of an integer model and does not formalize that
+reduction. For a genuine $O(d,d;\mathbb{Z})$ statement see Theorem~\ref{thm:s2_section}.
+\end{scope}
 
-\begin{theorem}[Strong Section Condition Gauge Invariance]\label{thm:section_condition}
-\lean{DoubleFieldTheory.ActionCurvature.section_condition_gauge_invariance}\leanok
-\uses{thm:c_bracket_antisym}
-The closure of generalized diffeomorphisms is guaranteed by the Strong Section Condition:
-$$\eta^{MN} \partial_M \Phi \partial_N \Psi = 0$$
-which reduces the generalized Ricci scalar $\mathcal{R}$ to the standard NS-NS low-energy effective action.
-\end{theorem}
+% ======================================================================================================
+\chapter{The Dual-Scale Bound}
 
-\chapter{The Callens Dual-Scale Framework \& Singularity Resolution}
-
-\begin{definition}[Effective Dual-Scale Metric]\label{def:effective_metric}
-\lean{DualScaleValidation.UseCase1.effective_dual_scale_numerator}\leanok
-For a string probe propagating on a compactified circle or torus of coordinate radius $R$, the physical effective scale experienced by the string is:
-$$R_{\mathrm{eff}}(R) = R + \frac{\alpha'}{R}$$
+\begin{definition}[Effective dual scale, integer model]\label{def:effective_metric}
+\lean{DualScaleValidation.UseCase1.effective_dual_scale_numerator}
+For $R\in\mathbb{N}$ and $\alpha'=1$, \texttt{effective\_dual\_scale\_numerator R} $=R^2+\alpha'$, the
+numerator of $R_{\mathrm{eff}}=R+\alpha'/R$.
 \end{definition}
 
-\begin{theorem}[Genesis No-Singularity Master Bounce]\label{thm:no_singularity}
-\lean{DualScaleValidation.UseCase1.effective_scale_strictly_super_planckian}\leanok
+\begin{theorem}[Lower bound, integer model]\label{thm:no_singularity}
+\lean{DualScaleValidation.UseCase1.self_dual_is_global_minimum}\leanok
 \uses{def:effective_metric}
-For any physical radius $R \ge 1$ in string units ($\alpha' = 1$):
-$$R_{\mathrm{eff}}(R) \cdot R = R^2 + \alpha' \ge 2 > 0$$
-The effective physical distance has an absolute global minimum $R_{\mathrm{eff}} \ge 2\sqrt{\alpha'} = 2 l_{\mathrm{Pl}}$ at the self-dual point $R = \sqrt{\alpha'}$. Consequently, continuous macroscopic curvature singularities ($R \to 0$) are mathematically forbidden by the Lean 4 kernel.
+For every natural number $R\ge1$: $R^2+\alpha'\ge 2$. \TA{}.
 \end{theorem}
 
-\begin{theorem}[Resolution of Trans-Planckian Censorship (TCC)]\label{thm:tcc_resolution}
+\begin{theorem}[Lower bound over the reals and for matrices]\label{thm:s2_dualscale}
+\lean{DualScaleStream2.DualScale.circle_effective_scale_ge_two}\leanok
+For every real $R>0$: $2\le R+R^{-1}$. And
+\lean{DualScaleStream2.DualScale.dualScale_ge}\leanok
+for every positive definite real $d\times d$ matrix $G$: $2d\le\operatorname{tr}G+\operatorname{tr}G^{-1}$.
+\TA{}.
+\end{theorem}
+\begin{scope}
+These are inequalities. In string units, $R+\alpha'/R\ge2\sqrt{\alpha'}$ says that the
+T-duality-invariant effective scale of a circle is never below $2\sqrt{\alpha'}$ (the string scale, not the
+Planck length, as Revision~1 wrote). That this reflects a minimal physical length in string theory is \TL{}
+(Giveon--Porrati--Rabinovici, arXiv:hep-th/9401139, around l.~792 of the text extraction); that it resolves cosmological curvature singularities
+is a proposal of this programme, \TC{}. Revision~1's sentence ``singularities are mathematically forbidden
+by the Lean~4 kernel'' is withdrawn: no Lean statement here concerns curvature or singularities.
+\end{scope}
+
+\begin{theorem}[Wavelength bound, integer model]\label{thm:tcc_resolution}
 \lean{Lean5Corpus.Problems.DualScaleTCC.tcc_cosmic_protection_contract}\leanok
 \uses{thm:no_singularity}
-Because $\lambda_{\mathrm{phys}} \ge 2 l_{\mathrm{Pl}} > l_{\mathrm{Pl}}$, no perturbation mode can ever cross from sub-Planckian scales to the super-Hubble regime, satisfying the Bedroya-Vafa Trans-Planckian Censorship Conjecture unconditionally without cosmological fine-tuning.
+For natural numbers $R\ge1$, $\lambda_0\ge1$ and any record \texttt{p} of inflation parameters:
+$(R^2+1)\lambda_0\ge2$; $(R^2+1)\lambda_0\not\le1$ (the model's Planck length); and
+$\texttt{planck\_mass}/\texttt{hubble\_scale}\ge1$ for \texttt{p} --- the last conjunct follows from the field
+\texttt{hubble\_scale < planck\_mass} that every \texttt{InflationParameters} record must carry, i.e.\ it is
+assumed, not derived. \TA{} for the model.
+\end{theorem}
+\begin{scope}
+The Trans-Planckian Censorship Conjecture is a conjecture, \TC{}. Nothing here shows that a cosmological
+model satisfies it; Revision~1's ``satisfied unconditionally'' is withdrawn.
+\end{scope}
+
+% ======================================================================================================
+\chapter{Mathieu Moonshine Arithmetic}
+
+\begin{theorem}[BPS ratio arithmetic]\label{thm:mathieu_rigidity}
+\lean{DualScaleValidation.UseCase2.bps_cross_multiplication_lock}\leanok
+With $\mathcal{A}_1=90$ and $\mathcal{A}_2=462$ (twice the Eguchi--Ooguri--Tachikawa coefficients
+$A_1=45$, $A_2=231$ of arXiv:1004.0956, eq.~(1.12)): $462\cdot60=27720$ and $4\cdot90\cdot77=27720$. Further
+\lean{DualScaleValidation.UseCase2.bps_ratio_coprime}\leanok
+$\gcd(77,60)=1$, and
+\lean{DualScaleValidation.UseCase2.m24_order_divisible_by_bps_lock}\leanok
+$|M_{24}|=244\,823\,040=27720\cdot8832$. \TA{}.
+\end{theorem}
+\begin{scope}
+These are arithmetic identities. That $A_1,\dots,A_5$ occur among the dimensions of irreducible
+representations of $M_{24}$ is \TA{} as a statement about the two tables
+(\texttt{DualScaleStream2.Moonshine.first\_five\_are\_irreps}); that the ratio $462/(4\cdot90)$ is a
+physical ``rigidity lock'' is \TC{}.
+\end{scope}
+
+% ======================================================================================================
+\chapter{Tadpole Arithmetic on $K3\times T^2$}
+
+\begin{theorem}[D7/O7 charge bookkeeping, integer model]\label{thm:tadpole_cancellation}
+\lean{DualScaleValidation.UseCase3.rr_tadpole_cancellation}\leanok
+$\texttt{total\_d7\_charge} + \texttt{total\_o7\_charge} = 0$, where each total is the product of the
+brane (plane) count and the charge per brane (plane) fixed in the module. \TA{} for these numbers.
+\end{theorem}
+\begin{scope}
+That these numbers describe an orientifold of $K3\times T^2$ as in Dasgupta--Rajesh--Sethi
+(arXiv:hep-th/9908088) is \TL{}. The statement $\chi(K3\times K3)/24=24$ computed from Hodge numbers is
+\texttt{DualScaleStream2.Flux.k3k3\_anomaly}, Chapter~\ref{ch:s2}.
+\end{scope}
+
+% ======================================================================================================
+\chapter{Observables (illustrative)}
+
+\begin{theorem}[Window checks for chosen numbers]\label{thm:observables_contract}
+\lean{DualScaleValidation.Observables.observables_windows_master_contract}\leanok
+For the numbers \emph{defined} in the module --- $r=1/252$, $10^3 n_s=965$, $\delta_{CP}=283^\circ$,
+$w_0=-1$, $w_a=0$ --- the following hold: $3\cdot252\le1000\cdot1\le5\cdot252$ (i.e.
+$0.003\le r\le0.005$), $950\le10^3n_s\le980$, $270\le\delta_{CP}\le295$, $w_0=-1$, $w_a=0$. \TA{} as
+arithmetic.
+\end{theorem}
+\begin{scope}
+The Lean module itself calls the $r$ and $\delta_{CP}$ windows ``illustrative'' and the value $r=1/252$
+``speculative''. No Lean statement derives these numbers from a compactification; they are \TC{} proposals.
+Revision~1's ``the zero-parameter framework mechanically predicts'' is withdrawn, and its value
+$\delta_{CP}=282.4^\circ$ did not match the module ($283^\circ$).
+\end{scope}
+
+% ======================================================================================================
+\chapter{DualScaleStream2: Lattices, $O(d,d;\mathbb{Z})$ and the Generalized Metric}\label{ch:s2}
+
+This library (19 modules, 99 theorems, built on Mathlib) is the part of the formalization in which the
+objects are the actual mathematical ones: integer and real matrices of arbitrary size $d$.
+
+\begin{theorem}[The generalized metric squares to one against $\eta$]\label{thm:s2_genmetric}
+\lean{DualScaleStream2.DFT.etaR_genMetric_sq}\leanok
+For real $d\times d$ matrices $G,B$ with $\det G$ a unit, $(\eta\,\mathcal{H}(G,B))^2=1$, where
+$\mathcal{H}(G,B)=\begin{pmatrix}G-BG^{-1}B & BG^{-1}\\ -G^{-1}B & G^{-1}\end{pmatrix}$. \TA{}.
 \end{theorem}
 
-\chapter{Mathieu Moonshine Rigidity and the 27720 Lock}
-
-\begin{theorem}[Mathieu $M_{24}$ BPS Rigidity Lock]\label{thm:mathieu_rigidity}
-\lean{DualScaleValidation.UseCase2.bps_rigidity_lock_identity}\leanok
-On $K3 \times T^2$ preserving $\mathcal{N} = 4$ supersymmetry ($N_Q = 4$), the chiral primary multiplicities $A_1 = 90$ and $A_2 = 462$ lock the BPS rigidity ratio to:
-$$\mathcal{R}_{\mathrm{BPS}} = \frac{462}{4 \times 90} = \frac{77}{60}, \quad \gcd(77, 60) = 1$$
-yielding the exact Diophantine character invariant:
-$$462 \times 60 = 360 \times 77 = 27720 = 2^3 \cdot 3^2 \cdot 5 \cdot 7 \cdot 11$$
-dividing the Mathieu group order $|M_{24}| = 244,823,040 = 27720 \times 8832$.
+\begin{theorem}[B-shifts]
+\lean{DualScaleStream2.DFT.genMetric_bshift}\leanok
+If $G$ is symmetric with $\det G$ a unit and $B,\Theta$ are antisymmetric, then
+$\Theta_R\,\mathcal{H}(G,B)\,\Theta_R^{\mathsf T}=\mathcal{H}(G,B+\Theta)$ for
+$\Theta_R=\begin{pmatrix}1&\Theta\\0&1\end{pmatrix}$. \TA{}.
 \end{theorem}
 
-\chapter{Diophantine Anomaly Cancellation on $K3 \times T^2$}
+\begin{theorem}[Duality group and spectrum]
+\lean{DualScaleStream2.TDuality.isODD_mul}\leanok
+$O(d,d;\mathbb{Z})$ is closed under products;
+\lean{DualScaleStream2.TDuality.thetaShift_isODD}\leanok
+an integer $\Theta$-shift with $\Theta^{\mathsf T}=-\Theta$ lies in $O(d,d;\mathbb{Z})$ (this direction only);
+\lean{DualScaleStream2.TDuality.spectrum_equivalence}\leanok
+for $g\in O(d,d;\mathbb{Z})$ and any real $2d\times2d$ matrix $H$ there is a map $e$ on integer charge
+vectors with $Z^{\mathsf T}(g^{\mathsf T}Hg)Z=e(Z)^{\mathsf T}He(Z)$ and $e$ preserving the charge norm:
+dual backgrounds have the same (mass, level) spectrum. \TA{}.
+\end{theorem}
+\begin{scope}
+That the exhibited elements generate all of $O(d,d;\mathbb{Z})$ is \TL{} (GPR, arXiv:hep-th/9401139) and is
+not formalized.
+\end{scope}
 
-\begin{theorem}[Kummer Orientifold Tadpole Cancellation]\label{thm:tadpole_cancellation}
-\lean{DualScaleValidation.UseCase3.ramond_ramond_tadpole_cancellation}\leanok
-The Ramond-Ramond charges of 16 D7-branes wrapping the Kummer fixed 2-cycles and 4 O7-planes cancel identically:
-$$\sum Q_{\mathrm{RR}} = 16 \times (+4) + 4 \times (-16) = 64 - 64 = 0$$
-fixing the D-brane configuration without tunable continuous parameters.
+\begin{theorem}[The section condition is $O(d,d;\mathbb{Z})$-covariant]\label{thm:s2_section}
+\lean{DualScaleStream2.DFT.isSection_image}\leanok
+If $g\in O(d,d;\mathbb{Z})$ and $S$ is a set of integer charge vectors that is a section (the $\eta$-pairing
+vanishes on all pairs from $S$), then the image $g(S)$ is a section. \TA{}.
 \end{theorem}
 
-\chapter{Falsifiable Cosmological and Particle Physics Observables}
-
-\begin{theorem}[Unified Observables Master Contract]\label{thm:observables_contract}
-\lean{DualScaleValidation.Observables.observables_falsifiable_master_contract}\leanok
-\uses{thm:mathieu_rigidity, thm:no_singularity}
-The zero-parameter Dual-Scale Framework on $K3 \times T^2$ mechanically predicts:
-\begin{enumerate}
-    \item Primordial Tensor-to-Scalar ratio: $r = 0.00396 \in [0.003, 0.005]$ (LiteBIRD detection window).
-    \item Scalar spectral index: $n_s = 0.965 \in [0.950, 0.980]$ (Planck/ACT compatible).
-    \item Leptonic Dirac CP phase: $\delta_{CP} = 282.4^\circ \in [270^\circ, 295^\circ]$ (DUNE discovery window).
-    \item Dark energy equation of state: $w_0 = -1, w_a = 0$ (cosmological constant).
-\end{enumerate}
+\begin{theorem}[Lattices]
+\lean{DualScaleStream2.Lattice.cartanE8_posDef}\leanok
+The $E_8$ Cartan matrix is positive definite over $\mathbb{R}$;
+\lean{DualScaleStream2.Lattice.cartanE8_unimodular}\leanok
+it is unimodular (determinant $\pm1$);
+\lean{DualScaleStream2.Lattice.sigK3_eq}\leanok
+adding the signature records $2\cdot(0,8)+3\cdot(1,1)$ gives $(3,19)$;
+\lean{DualScaleStream2.Lattice.sigMukai_eq}\leanok
+adding one more $(1,1)$ gives $(4,20)$. \TA{}.
 \end{theorem}
+\begin{scope}
+The two signature statements are additive bookkeeping: the inputs ``$U$ has signature $(1,1)$'' and
+``$E_8(-1)$ has signature $(0,8)$'' are definitions labelled Tier L in the source, not computed from the Gram
+matrices (positive definiteness of $E_8$ is proved separately by \texttt{cartanE8\_posDef}). That
+$H^2(K3,\mathbb{Z})$ with its intersection form is isomorphic to $3U\oplus2E_8(-1)$ is \TL{} (Huybrechts,
+\emph{Lectures on K3 Surfaces}).
+\end{scope}
+
+\begin{theorem}[Flux and moonshine]
+\lean{DualScaleStream2.Flux.k3k3_anomaly}\leanok
+for $\chi(K3\times K3)$ computed from the Hodge-number table, $24\mid\chi$ and $\chi/24=24$;
+\lean{DualScaleStream2.Flux.flux_half_selfIntersection_integral}\leanok
+for symmetric integer Gram matrices $L_1,L_2$ with $L_1$ even, every integer vector $x$ has
+$x^{\mathsf T}(L_1\otimes L_2)x$ even, so half the self-intersection of a flux in $L_1\otimes L_2$ is an integer;
+\lean{DualScaleStream2.Moonshine.first_five_are_irreps}\leanok
+$A_1,\dots,A_5$ occur in the $M_{24}$ dimension table. \TA{}.
+\end{theorem}
+
+\bigskip\noindent\textbf{Reproduce.}
+\texttt{lake build DualScaleStream2 DualScaleValidation DoubleFieldTheory Lean5Corpus}, then
+\texttt{python3 tools/axiom\_audit.py <library>} for each. The certificate with verbatim statements is
+\texttt{docs/VERIFIED\_FOUNDATION.md}.
 
 \end{document}

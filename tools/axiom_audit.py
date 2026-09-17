@@ -18,6 +18,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 # Reusable from any Lake project: set LEAN_PROJECT_ROOT=/path/to/project (default: this repository).
 ROOT = Path(os.environ.get("LEAN_PROJECT_ROOT") or Path(__file__).resolve().parent.parent).resolve()
 STANDARD = {"propext", "Classical.choice", "Quot.sound"}
@@ -26,7 +28,10 @@ NAMESPACE = re.compile(r"^(namespace|end)\s+([A-Za-z0-9_.]+)\s*$", re.MULTILINE)
 
 
 def qualified_names(path: Path) -> list[str]:
-    text = path.read_text(encoding="utf-8")
+    # Comments and docstrings are removed first: a docstring line that begins with "theorem ..." must not
+    # be mistaken for a declaration (it made the probe file unparsable after a documentation pass).
+    from statement_lock import strip_comments
+    text = strip_comments(path.read_text(encoding="utf-8"))
     events = sorted(
         [(m.start(), "ns", m.group(1), m.group(2)) for m in NAMESPACE.finditer(text)]
         + [(m.start(), "decl", m.group(1), None) for m in DECL.finditer(text)]
