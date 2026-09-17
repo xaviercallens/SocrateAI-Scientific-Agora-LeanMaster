@@ -19,6 +19,7 @@ Usage:
 """
 
 import argparse
+import os
 import json
 import re
 import subprocess
@@ -27,7 +28,8 @@ import time
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+# Reusable from any Lake project: set LEAN_PROJECT_ROOT=/path/to/project (default: this repository).
+ROOT = Path(os.environ.get("LEAN_PROJECT_ROOT") or Path(__file__).resolve().parent.parent).resolve()
 LOG = ROOT / ".leancache" / "prover_attempts.jsonl"
 OLLAMA = "http://127.0.0.1:11434/api/chat"
 FORBIDDEN = re.compile(r"\b(sorry|admit|native_decide)\b|^\s*axiom\b", re.MULTILINE)

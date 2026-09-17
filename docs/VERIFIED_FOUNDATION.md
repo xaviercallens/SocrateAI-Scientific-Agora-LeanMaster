@@ -1,0 +1,289 @@
+# Verified foundation — what other projects and sessions may build on
+
+**Status as of 2026-09-17.** Release tag `v2.1.0` (commit `46af79b`) passed the full gate; the key-theorem
+probe below was re-run on the working tree at `0b8215b` + documentation-only edits (statement lock OK).
+Toolchain `leanprover/lean4:v4.33.1`, Mathlib tag `v4.33.1` (`0df444a3…`).
+
+## 1. Gate results (run by the orchestrator, not reported by a subagent)
+| Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) |
+|---|---|---|---|
+| `lake build <lib>` | 3670 jobs, 0 errors | 3296 jobs, 0 errors | 61 jobs, 0 errors |
+| `sorry` in source | 0 | 0 | 0 |
+| `tools/axiom_audit.py` | 99 theorems, 0 failing | 89 theorems, 0 failing | 23 + 53 + 44 + 56 + 61 = 237 theorems, 0 failing |
+| `tools/statement_lock.py --check` | OK (150 declarations) | locked 2026-09-17 (205 declarations) | not locked |
+
+"0 failing" means: every theorem depends on no axioms beyond `propext`, `Classical.choice`, `Quot.sound`
+(no `sorryAx`, no `native_decide`/`Lean.ofReduceBool`). Total audited: 99 + 326 = 425 theorems.
+
+**Downstream use is tested**: `examples/consumer_demo/` is a separate Lake project that `require`s this
+package, imports `DualScaleStream2` and `StringTheoryFormalization`, and proves a new statement from
+`thetaShift_isODD` and `isODD_mul` (build: 3709 jobs, 0 errors; axioms of the reused theorem: the standard three).
+
+## 2. What "verified" does and does not cover
+* **Tier A (kernel-checked)**: exactly the Lean statements, as written. Section 3 prints them verbatim
+  from `#check`. Read the statement, not its name or docstring.
+* **Not Tier A**: that these matrices, lattices and inequalities *are* string theory. The physical
+  identification is Tier L (literature; pinned in `papers/foundations/`) or Tier C (conjecture, in
+  particular every cosmological use of the dual-scale bound).
+* **One-direction results stay one-direction**: `thetaShift_isODD` (antisymmetric Θ ⇒ O(d,d), not ⇔);
+  `basisChange_comm_thetaShift` (det A = 1 ⇒ commute; the converse was only checked symbolically);
+  `dualScale_one` (bound attained at G = 1; uniqueness of the minimizer is not formalized);
+  generation of O(d,d;ℤ) by the exhibited elements is Tier L (GPR), not proved.
+* **Depth differs by library**: `DualScaleStream2` and much of `StringTheoryFormalization` are genuine linear
+  algebra over ℤ/ℝ with Mathlib. The five Mathlib-free libraries model physical quantities by integers or
+  rationals ("arithmetic shadows"): kernel-checked, but thin. Several facts are proved more than once in
+  different libraries (see `papers/book/generated/atlas.md`, "Unification candidates"); build on the
+  `DualScaleStream2` version.
+
+## 3. Key theorems, verbatim from Lean (`#check`), with their axioms (`#print axioms`)
+
+
+### `DualScaleStream2.Lattice.E8`
+
+* **`DualScaleStream2.Lattice.cartanE8_unimodular`**  
+  `DualScaleStream2.Lattice.IsUnimodular DualScaleStream2.Lattice.cartanE8`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.Lattice.E8PosDef`
+
+* **`DualScaleStream2.Lattice.cartanE8_posDef`**  
+  `DualScaleStream2.Lattice.cartanE8R.PosDef`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.Lattice.cartanE8_det`**  
+  `Matrix.det DualScaleStream2.Lattice.cartanE8 = 1`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.Lattice.Hyperbolic`
+
+* **`DualScaleStream2.Lattice.hyperbolicU_unimodular`**  
+  `DualScaleStream2.Lattice.IsUnimodular DualScaleStream2.Lattice.hyperbolicU`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.Lattice.hyperbolicU_eq_narain_gram`**  
+  `DualScaleStream2.Lattice.hyperbolicU = StringTheory.UseCases.NarainLattice.gram`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.Lattice.K3T2Signature`
+
+* **`DualScaleStream2.Lattice.sigK3_eq`**  
+  `DualScaleStream2.Lattice.sigK3 = { pos := 3, neg := 19 }`  
+  axioms: none
+* **`DualScaleStream2.Lattice.sigMukai_eq`**  
+  `DualScaleStream2.Lattice.sigMukai = { pos := 4, neg := 20 }`  
+  axioms: none
+* **`DualScaleStream2.Lattice.sigK3T2_eq`**  
+  `DualScaleStream2.Lattice.sigK3T2 = { pos := 6, neg := 22 }`  
+  axioms: none
+* **`DualScaleStream2.Lattice.index_mod_eight`**  
+  `DualScaleStream2.Lattice.sigK3.index % 8 = 0 ∧ DualScaleStream2.Lattice.sigMukai.index % 8 = 0 ∧ DualScaleStream2.Lattice.sigK3T2.index % 8 = 0`  
+  axioms: none
+
+### `DualScaleStream2.Lattice.Mukai`
+
+* **`DualScaleStream2.Lattice.mukaiPair_even`**  
+  `∀ {n : ℕ} (L : DualScaleStream2.Lattice.Gram n), Matrix.transpose L = L → DualScaleStream2.Lattice.IsEvenDiag L → ∀ (v : DualScaleStream2.Lattice.MukaiVec n), Even (DualScaleStream2.Lattice.mukaiPair L v v)`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.Lattice.structureSheaf_mukai_sq`**  
+  `∀ {n : ℕ} (L : DualScaleStream2.Lattice.Gram n), DualScaleStream2.Lattice.mukaiPair L { r := 1, c := 0, s := 1 } { r := 1, c := 0, s := 1 } = -2`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.Lattice.Reflection`
+
+* **`DualScaleStream2.Lattice.reflection_isometry`**  
+  `∀ {n : ℕ} (L : DualScaleStream2.Lattice.Gram n), Matrix.transpose L = L → ∀ (v : Fin n → ℤ), DualScaleStream2.Lattice.latticeNorm L v = -2 → Matrix.transpose (DualScaleStream2.Lattice.reflection L v) * L * DualScaleStream2.Lattice.reflection L v = L`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.Lattice.reflection_involution`**  
+  `∀ {n : ℕ} (L : DualScaleStream2.Lattice.Gram n) (v : Fin n → ℤ), DualScaleStream2.Lattice.latticeNorm L v = -2 → DualScaleStream2.Lattice.reflection L v * DualScaleStream2.Lattice.reflection L v = 1`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.Lattice.e8Neg_weyl_isometry`**  
+  `∀ (i : Fin 8), Matrix.transpose (DualScaleStream2.Lattice.reflection DualScaleStream2.Lattice.e8Neg (Pi.single i 1)) * DualScaleStream2.Lattice.e8Neg * DualScaleStream2.Lattice.reflection DualScaleStream2.Lattice.e8Neg (Pi.single i 1) = DualScaleStream2.Lattice.e8Neg`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.TDuality.ODD`
+
+* **`DualScaleStream2.TDuality.thetaShift_isODD`**  
+  `∀ {d : ℕ} (Θ : Matrix (Fin d) (Fin d) ℤ), Θ.transpose = -Θ → DualScaleStream2.TDuality.IsODD (DualScaleStream2.TDuality.thetaShift Θ)`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.TDuality.basisChange_isODD`**  
+  `∀ {d : ℕ} (A B : Matrix (Fin d) (Fin d) ℤ), A.transpose * B = 1 → DualScaleStream2.TDuality.IsODD (DualScaleStream2.TDuality.basisChange A B)`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.TDuality.eta_isODD`**  
+  `∀ {d : ℕ}, DualScaleStream2.TDuality.IsODD (DualScaleStream2.TDuality.eta d)`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.TDuality.isODD_mul`**  
+  `∀ {d : ℕ} (g h : Matrix (DualScaleStream2.TDuality.Charge d) (DualScaleStream2.TDuality.Charge d) ℤ), DualScaleStream2.TDuality.IsODD g → DualScaleStream2.TDuality.IsODD h → DualScaleStream2.TDuality.IsODD (g * h)`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.TDuality.Factorized`
+
+* **`DualScaleStream2.TDuality.factorized_isODD`**  
+  `∀ {d : ℕ} (k : Fin d), DualScaleStream2.TDuality.IsODD (DualScaleStream2.TDuality.factorized k)`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.TDuality.factorized_mul_self`**  
+  `∀ {d : ℕ} (k : Fin d), DualScaleStream2.TDuality.factorized k * DualScaleStream2.TDuality.factorized k = 1`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.TDuality.chargeNorm_invariant`**  
+  `∀ {d : ℕ} (g : Matrix (DualScaleStream2.TDuality.Charge d) (DualScaleStream2.TDuality.Charge d) ℤ), DualScaleStream2.TDuality.IsODD g → ∀ (Z : DualScaleStream2.TDuality.Charge d → ℤ), DualScaleStream2.TDuality.chargeNorm (g.mulVec Z) = DualScaleStream2.TDuality.chargeNorm Z`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.TDuality.Spectrum`
+
+* **`DualScaleStream2.TDuality.spectrum_equivalence`**  
+  `∀ {d : ℕ} (g : Matrix (DualScaleStream2.TDuality.Charge d) (DualScaleStream2.TDuality.Charge d) ℤ), DualScaleStream2.TDuality.IsODD g → ∀ (H : Matrix (DualScaleStream2.TDuality.Charge d) (DualScaleStream2.TDuality.Charge d) ℝ), ∃ e, ∀ (Z : DualScaleStream2.TDuality.Charge d → ℤ), ((DualScaleStream2.DFT.massForm ((DualScaleStream2.TDuality.toReal g).transpose * H * DualScaleStream2.TDuality.toReal g) fun i ↦ ↑(Z i)) = DualScaleStream2.DFT.massForm H fun i ↦ ↑(e Z i)) ∧ DualScaleStream2.TDuality.chargeNorm (e Z) = DualScaleStream2.TDuality.chargeNorm Z`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.TDuality.Mirror`
+
+* **`DualScaleStream2.TDuality.mirror_conjugates_tauShift`**  
+  `DualScaleStream2.TDuality.factorized 0 * DualScaleStream2.TDuality.basisChange DualScaleStream2.TDuality.tauShift DualScaleStream2.TDuality.tauShiftDual * DualScaleStream2.TDuality.factorized 0 = (DualScaleStream2.TDuality.thetaShift DualScaleStream2.TDuality.mirrorTheta).transpose`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.TDuality.SL2Product`
+
+* **`DualScaleStream2.TDuality.basisChange_comm_thetaShift`**  
+  `∀ (A B : Matrix (Fin 2) (Fin 2) ℤ), A.transpose * B = 1 → A.det = 1 → ∀ (t : ℤ), DualScaleStream2.TDuality.basisChange A B * DualScaleStream2.TDuality.thetaShift (t • DualScaleStream2.TDuality.jMat) = DualScaleStream2.TDuality.thetaShift (t • DualScaleStream2.TDuality.jMat) * DualScaleStream2.TDuality.basisChange A B`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.DFT.GeneralizedMetric`
+
+* **`DualScaleStream2.DFT.etaR_genMetric_sq`**  
+  `∀ {d : ℕ} (G B : Matrix (Fin d) (Fin d) ℝ), IsUnit G.det → DualScaleStream2.DFT.etaR d * DualScaleStream2.DFT.genMetric G B * (DualScaleStream2.DFT.etaR d * DualScaleStream2.DFT.genMetric G B) = 1`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.DFT.genMetric_symm`**  
+  `∀ {d : ℕ} (G B : Matrix (Fin d) (Fin d) ℝ), IsUnit G.det → G.transpose = G → B.transpose = -B → (DualScaleStream2.DFT.genMetric G B).transpose = DualScaleStream2.DFT.genMetric G B`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.DFT.tduality_inverts_metric`**  
+  `∀ {d : ℕ} (G : Matrix (Fin d) (Fin d) ℝ), IsUnit G.det → DualScaleStream2.DFT.etaR d * DualScaleStream2.DFT.genMetric G 0 * DualScaleStream2.DFT.etaR d = DualScaleStream2.DFT.genMetric G⁻¹ 0`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.DFT.massForm_covariant`**  
+  `∀ {d : ℕ} (g H : Matrix (DualScaleStream2.TDuality.Charge d) (DualScaleStream2.TDuality.Charge d) ℝ) (Z : DualScaleStream2.TDuality.Charge d → ℝ), DualScaleStream2.DFT.massForm (g.transpose * H * g) Z = DualScaleStream2.DFT.massForm H (g.mulVec Z)`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.DFT.massForm_circle`**  
+  `∀ (n w R : ℚ), R ≠ 0 → DualScaleStream2.DFT.massForm (DualScaleStream2.DFT.genMetric !![↑R ^ 2] 0) (Sum.elim ![↑w] ![↑n]) = ↑(StringTheory.UseCases.TDuality.momentumMassSq n w R) / 2`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.DFT.BShift`
+
+* **`DualScaleStream2.DFT.genMetric_bshift`**  
+  `∀ {d : ℕ} (G B Θ : Matrix (Fin d) (Fin d) ℝ), IsUnit G.det → G.transpose = G → B.transpose = -B → Θ.transpose = -Θ → DualScaleStream2.DFT.thetaShiftR Θ * DualScaleStream2.DFT.genMetric G B * (DualScaleStream2.DFT.thetaShiftR Θ).transpose = DualScaleStream2.DFT.genMetric G (B + Θ)`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.DFT.SectionCondition`
+
+* **`DualScaleStream2.DFT.isSection_image`**  
+  `∀ {d : ℕ} (g : Matrix (DualScaleStream2.TDuality.Charge d) (DualScaleStream2.TDuality.Charge d) ℤ), DualScaleStream2.TDuality.IsODD g → ∀ (S : Set (DualScaleStream2.TDuality.Charge d → ℤ)), DualScaleStream2.DFT.IsSection S → DualScaleStream2.DFT.IsSection ((fun Z ↦ g.mulVec Z) '' S)`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.DFT.momentumFrame_isSection`**  
+  `∀ {d : ℕ}, DualScaleStream2.DFT.IsSection (DualScaleStream2.DFT.momentumFrame d)`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.DFT.levelMatching_iff`**  
+  `∀ {d : ℕ} (n w : Fin d → ℤ), DualScaleStream2.TDuality.chargeNorm (Sum.elim n w) = 0 ↔ n ⬝ᵥ w = 0`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.DualScale.TraceBound`
+
+* **`DualScaleStream2.DualScale.dualScale_ge`**  
+  `∀ {d : ℕ} (G : Matrix (Fin d) (Fin d) ℝ), G.PosDef → 2 * ↑d ≤ DualScaleStream2.DualScale.dualScale G`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.DualScale.dualScale_inv`**  
+  `∀ {d : ℕ} (G : Matrix (Fin d) (Fin d) ℝ), IsUnit G.det → DualScaleStream2.DualScale.dualScale G⁻¹ = DualScaleStream2.DualScale.dualScale G`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.DualScale.dualScale_one`**  
+  `∀ {d : ℕ}, DualScaleStream2.DualScale.dualScale 1 = 2 * ↑d`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.DualScale.circle_effective_scale_ge_two`**  
+  `∀ (R : ℝ), 0 < R → 2 ≤ R + R⁻¹`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.Flux.Tadpole`
+
+* **`DualScaleStream2.Flux.k3k3_anomaly`**  
+  `DualScaleStream2.Flux.chiK3K3 % 24 = 0 ∧ DualScaleStream2.Flux.chiK3K3 / 24 = 24`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.Flux.tadpole_budget`**  
+  `∀ (flux n : ℕ), flux + n = 24 → n ≤ 24 ∧ (flux = 0 → n = 24)`  
+  axioms: Quot.sound, propext
+* **`DualScaleStream2.Flux.k3t2_euler_zero`**  
+  `DualScaleStream2.Flux.eulerFromHodge StringTheory.Frontier.k3HodgeNumber * DualScaleStream2.Flux.eulerFromHodge DualScaleStream2.Flux.t2HodgeNumber = 0`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.Flux.Integrality`
+
+* **`DualScaleStream2.Flux.flux_half_selfIntersection_integral`**  
+  `∀ {n m : ℕ} (L₁ : DualScaleStream2.Lattice.Gram n) (L₂ : DualScaleStream2.Lattice.Gram m), Matrix.transpose L₁ = L₁ → Matrix.transpose L₂ = L₂ → DualScaleStream2.Lattice.IsEvenDiag L₁ → ∀ (x : Fin n × Fin m → ℤ), ∃ k, x ⬝ᵥ (DualScaleStream2.Flux.kronForm L₁ L₂).mulVec x = 2 * k`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `DualScaleStream2.Moonshine.EOT`
+
+* **`DualScaleStream2.Moonshine.first_five_are_irreps`**  
+  `∀ (n : Fin 5), ∃ i, StringTheory.StringDynamics.M24RepDim i = DualScaleStream2.Moonshine.eotA (Fin.castLE ⋯ n)`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`DualScaleStream2.Moonshine.A6_decomposition`**  
+  `DualScaleStream2.Moonshine.eotA 5 = StringTheory.StringDynamics.M24RepDim 21 + StringTheory.StringDynamics.M24RepDim 25`  
+  axioms: Quot.sound, propext
+
+### `StringTheoryFormalization.UseCases.TDualityMassSpectrum`
+
+* **`StringTheory.UseCases.TDuality.tduality_invariant_mass_squared`**  
+  `∀ (n w R : ℚ), R ≠ 0 → StringTheory.UseCases.TDuality.momentumMassSq w n (1 / R) = StringTheory.UseCases.TDuality.momentumMassSq n w R`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`StringTheory.UseCases.TDuality.self_dual_radius_unique`**  
+  `∀ (R : ℚ), 0 < R → 1 / R = R → R = 1`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `StringTheoryFormalization.UseCases.NarainLattice`
+
+* **`StringTheory.UseCases.NarainLattice.narain_form_even`**  
+  `∀ (n w : ℤ), Even (StringTheory.UseCases.NarainLattice.Q n w)`  
+  axioms: propext
+* **`StringTheory.UseCases.NarainLattice.narain_gram_unimodular`**  
+  `StringTheory.UseCases.NarainLattice.gram.det = -1`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `StringTheoryFormalization.UseCases.CriticalDimension`
+
+* **`StringTheory.UseCases.CriticalDimension.bosonic_string_critical_dimension`**  
+  `26 * 1 + StringTheory.UseCases.CriticalDimension.fermionicGhostCharge 2 = 0`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`StringTheory.UseCases.CriticalDimension.superstring_critical_dimension`**  
+  `10 * 1 + 10 * (1 / 2) + StringTheory.UseCases.CriticalDimension.fermionicGhostCharge 2 + StringTheory.UseCases.CriticalDimension.bosonicGhostCharge (3 / 2) = 0`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `StringTheoryFormalization.UseCases.K3SignatureTheorem`
+
+* **`StringTheory.UseCases.K3Signature.k3_signature_eq_neg_sixteen`**  
+  `↑StringTheory.UseCases.K3Signature.bPlus - ↑StringTheory.UseCases.K3Signature.bMinus = -16`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `StringTheoryFormalization.StringDynamics.MathieuM24`
+
+* **`StringTheory.StringDynamics.M24_order`**  
+  `244823040 = 2 ^ 10 * 3 ^ 3 * 5 * 7 * 11 * 23`  
+  axioms: propext
+* **`StringTheory.StringDynamics.M24RepDim_sum_sq`**  
+  `∑ i, StringTheory.StringDynamics.M24RepDim i ^ 2 = 244823040`  
+  axioms: Classical.choice, Quot.sound, propext
+
+### `StringTheoryFormalization.UseCases.MathieuTower`
+
+* **`StringTheory.UseCases.MathieuTower.mathieu_tower_consistent`**  
+  `24 * (23 * (22 * StringTheory.UseCases.MathieuTower.orderM21)) = 244823040`  
+  axioms: propext
+
+### `StringTheoryFormalization.Frontier.FTermPotential`
+
+* **`StringTheory.Frontier.fterm_potential_nonneg`**  
+  `∀ (W : StringTheory.Frontier.GVWSuperpotential) (τ : ℂ), 0 < τ.im → 0 ≤ ‖StringTheory.Frontier.fTermCondition W τ‖ ^ 2`  
+  axioms: Classical.choice, Quot.sound, propext
+* **`StringTheory.Frontier.no_scale_identity`**  
+  `3 = 3`  
+  axioms: Quot.sound, propext
+
+## 4. How to re-confirm (5 commands)
+```bash
+cd ~/SocrateAI-Scientific-Agora-LeanMaster
+lake build DualScaleStream2 StringTheoryFormalization
+python3 tools/axiom_audit.py DualScaleStream2 | tail -1
+python3 tools/axiom_audit.py StringTheoryFormalization | tail -1
+python3 tools/statement_lock.py --check $(find DualScaleStream2 StringTheoryFormalization -name '*.lean') | tail -1
+```
+If any of these disagrees with Section 1, this document is stale: trust the commands, fix the document.

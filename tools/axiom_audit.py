@@ -11,13 +11,15 @@ Usage:
   lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 """
 
+import os
 import re
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+# Reusable from any Lake project: set LEAN_PROJECT_ROOT=/path/to/project (default: this repository).
+ROOT = Path(os.environ.get("LEAN_PROJECT_ROOT") or Path(__file__).resolve().parent.parent).resolve()
 STANDARD = {"propext", "Classical.choice", "Quot.sound"}
 DECL = re.compile(r"^(?:theorem|lemma)\s+([A-Za-z0-9_'.]+)", re.MULTILINE)
 NAMESPACE = re.compile(r"^(namespace|end)\s+([A-Za-z0-9_.]+)\s*$", re.MULTILINE)

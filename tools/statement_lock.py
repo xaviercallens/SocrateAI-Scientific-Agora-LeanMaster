@@ -24,11 +24,13 @@ declarations (e.g. helper lemmas) are reported but do not fail the check.
 import argparse
 import hashlib
 import json
+import os
 import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+# Reusable from any Lake project: set LEAN_PROJECT_ROOT=/path/to/project (default: this repository).
+ROOT = Path(os.environ.get("LEAN_PROJECT_ROOT") or Path(__file__).resolve().parent.parent).resolve()
 LOCK = ROOT / "docs" / "statement_lock.json"
 HEAD = re.compile(
     r"^(?P<kind>theorem|lemma|def|abbrev|structure|noncomputable def)\s+(?P<name>[A-Za-z0-9_'.]+)",
