@@ -49,7 +49,10 @@ def compile_lean(text: str, timeout: int) -> tuple[int, int, str]:
         f.write(text)
         tmp = f.name
     try:
-        r = subprocess.run(["lake", "env", "lean", tmp], cwd=ROOT, capture_output=True, text=True, timeout=timeout)
+        # Match lakefile.lean's package leanOptions; bare `lake env lean` would otherwise use
+        # Lean's default 200000 heartbeats and reject proofs `lake build` accepts.
+        r = subprocess.run(["lake", "env", "lean", "-DmaxHeartbeats=1000000", "-DmaxRecDepth=8000", tmp],
+                           cwd=ROOT, capture_output=True, text=True, timeout=timeout)
         out = r.stdout + r.stderr
     except subprocess.TimeoutExpired:
         return 1, -1, "TIMEOUT"

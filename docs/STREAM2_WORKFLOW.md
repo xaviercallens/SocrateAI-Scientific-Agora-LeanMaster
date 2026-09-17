@@ -104,7 +104,45 @@ T3 → T2 → T1 put Sonnet on 3 of 26 goals (11.5%).
   Replaced with Eguchi–Ooguri–Tachikawa (A.3) and guarded by a new theorem
   `M24RepDim_sum_sq : ∑ dim² = 244823040` (Burnside).
 
-### P2.2 – P2.6 — in progress (results appended at each gate)
+### P2.3 / P2.4-core / P2.5 / P2.6 (23 goals) — **23/23 closed**, gate G3 passed
+
+| Module | Goals | T3 DeepSeek | T2 Haiku | T1 Sonnet |
+|---|---|---|---|---|
+| `Lattice.Mukai` (Huybrechts Ch. 9 Def. 1.4) | 5 | 3 | 2 | — |
+| `Lattice.E8PosDef` (LDLᵀ certificate, `det = 1`, positive definite) | 3 | 0 | 0 | 3 |
+| `DFT.GeneralizedMetric` (Hull–Zwiebach eq. 2.17: `(ηH)² = 1`, symmetry, T-duality = `G ↦ G⁻¹`, mass covariance, circle cross-link to Stream 1) | 6 | 0 | 1 | 5 |
+| `Flux.Tadpole` (DRS: `χ(K3×K3)/24 = 24`, `χ(K3×T²) = 0`, D3 budget) | 5 | 4 | 1 | — |
+| `Moonshine.EOT` (EOT (1.12), (1.14), (1.15) vs. the Burnside-checked M₂₄ table) | 4 | 2 | 2 | — |
+| **Total** | **23** | **9** | **6** | **8** |
+
+Gate G3: `lake build` of the five modules green (0 `sorry`); `tools/axiom_audit.py`: 24 theorems,
+0 failing. The brute-force `first_five_are_irreps` proof the local prover produced (26 blind
+`try use i; rfl` branches) was replaced by the orchestrator with the five explicit irrep
+witnesses — kernel-valid proofs are not automatically readable ones.
+
+**Process findings this round (measured, not anticipated):**
+- **From P2.2 on, T2/T1 prompts carried orchestrator-written math sketches** (P2.1's Haiku run
+  had none). Closure rates above are therefore *with* sketches.
+- **Two Haiku reports misstated compile status**: one claimed 5 clean `sorry`s but left
+  8 compile errors (`GeneralizedMetric`); one claimed "no compilation errors" with 3 errors
+  (`Factorized`). Both caught only because the orchestrator recompiles every report
+  (producer ≠ verifier); both files were restored to a clean `sorry` baseline before
+  escalation. Prompts now require "unsolved goal = exactly `sorry`, final compile 0 errors".
+- **Harness–build config mismatch**: `lake env lean` ignores `lakefile.lean`'s
+  `maxHeartbeats := 1000000`, so agents and `tools/prover_loop.py` compiled under Lean's
+  default 200000 — stricter than `lake build` (can reject valid proofs, never accept invalid
+  ones). A Haiku agent abandoned `e8_LDL` on a heartbeat timeout that the real budget does not
+  hit. Fixed in `prover_loop.py` (passes `-DmaxHeartbeats=1000000 -DmaxRecDepth=8000`) and in
+  all later prompts.
+- **Wall-clock**: several Haiku agents ran for hours on a handful of goals (one: 3 goals,
+  6.7 h), dominated by CPU contention from up to six concurrent `lean` processes on one VM,
+  not by reasoning. Timeboxes stated as "compile attempts" did not bound wall-clock time;
+  prompts now also carry a wall-clock limit.
+- **Route choice beats tier**: `cartanE8_posDef` failed at T2 via the 64-entry `LDLᵀ` matrix
+  product; T1 closed it via the orchestrator-derived (sympy-verified) sum-of-squares identity
+  `xᵀE8x = Σ Dₖ yₖ²`, checked by `ring`, plus back-substitution.
+
+### P2.2 (factorized dualities), P2.2b (spectrum equivalence), dual-scale trace bound — in progress
 
 ## 7. Running this as an orchestrated workflow
 
