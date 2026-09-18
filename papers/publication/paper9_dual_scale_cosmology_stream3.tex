@@ -1,0 +1,710 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{cite}
+\usepackage{microtype}
+\usepackage{tcolorbox}
+\usepackage{slashed}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=red,
+    urlcolor=cyan,
+    pdftitle={Testing a Micro/Macro Dual-Scale Hypothesis on K3 x T2: Scale-Factor Duality, the Cohen-Kaplan-Nelson Bound, and the Dark-Energy Length in Lean 4},
+    pdfauthor={Xavier Callens and the SocrateAI Scientific Agora Collaboration}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ---------------------------------------------------------------------------
+% Epistemic tier badges, following the convention of papers 7-8
+% (papers/publication/paper{7,8}_*.tex) and docs/PAPER_REVISION_BRIEF_2026_09_17.md §0.
+% ---------------------------------------------------------------------------
+\newcommand{\tierA}{\colorbox{green!15}{\textsf{\scriptsize Tier A --- Lean kernel}}}
+\newcommand{\tierL}{\colorbox{blue!10}{\textsf{\scriptsize Tier L --- literature}}}
+\newcommand{\tierC}{\colorbox{orange!15}{\textsf{\scriptsize Tier C --- conjecture}}}
+
+\newtcolorbox{scopebox}{%
+  colback=gray!5, colframe=gray!45, boxrule=0.4pt, arc=1pt,
+  left=6pt, right=6pt, top=3pt, bottom=3pt,
+  fonttitle=\bfseries\small, title={Scope of Lean 4 verification}
+}
+\newtcolorbox{casebox}[1]{%
+  colback=red!4, colframe=red!45!black, boxrule=0.4pt, arc=1pt,
+  left=6pt, right=6pt, top=3pt, bottom=3pt,
+  fonttitle=\bfseries\small, title={#1}
+}
+
+\title{\Huge \textbf{Testing a Micro/Macro Dual-Scale Hypothesis}\\[0.3em]
+\LARGE \textbf{on $K3\times T^2$:}\\[0.2em]
+Scale-Factor Duality, the Cohen--Kaplan--Nelson Bound,\\
+and the Dark-Energy Length in Lean~4}
+
+\author{\textbf{Xavier Callens}$^{1}$ \and \textbf{SocrateAI Scientific Agora Collaboration}$^{1}$ \\[0.5em]
+$^{1}$\textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal Verification}}
+
+\date{September 2026}
+
+% [layout] allow long Lean identifiers to break after underscores
+\makeatletter\let\LMoldunderscore\_\renewcommand{\_}{\LMoldunderscore\allowbreak}\makeatother
+\setlength{\emergencystretch}{3em}
+% [/layout]
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We report \texttt{DualScaleCosmology} (Lean~4, toolchain \texttt{v4.33.1}, Mathlib), a companion
+library that formally tests one reading of a ``micro/macro dual-scale'' hypothesis motivating this
+research programme: that a microscopic length $\ell_{\mathrm{micro}}\sim\ell_P$ and a macroscopic
+length $\ell_{\mathrm{macro}}\sim H_0^{-1}$ are linked by non-perturbative duality. The hypothesis
+is not, and cannot be, a theorem; we instead formalize the two pieces of the literature that
+actually bear on it --- string-cosmology scale-factor duality (Gasperini--Veneziano) and the
+Cohen--Kaplan--Nelson (CKN) ultraviolet/infrared bound --- and test their numerical and structural
+consequences. The results are mixed and mostly negative for the literal hypothesis. Taken
+literally, $\ell_P$ as the ultraviolet cutoff at $H_0^{-1}$ fails the CKN bound by more than
+$10^{30}$ (Tier~A arithmetic on Tier~L constants). Read instead as a T-dual pair, the two scales
+saturate the CKN bound exactly at their self-dual length $s=\sqrt{\ell_P\,c/H_0}\approx47\,\mu$m;
+we then prove, as an exact identity, that $s$ equals the observed dark-energy length
+$\Lambda^{-1/4}$ up to a fixed, computable factor $(8\pi/3\Omega_\Lambda)^{1/4}$ --- so the
+numerical coincidence often quoted between such lengths is algebra, not independent evidence. As a
+string (Regge) scale $s$ is excluded by collider data by more than $10^{30}$ in $\alpha'$; as the
+radius of a single extra dimension it is disfavored only by an order-one factor, indistinguishable
+at this level of rigor from the ``dark dimension'' proposal of Montero--Vafa--Valenzuela. We also
+report, as a matter of methodological record, a citation error caught only by computing a numeric
+consequence of it, and an infrastructure misconfiguration that silently starved a local prover of
+its models for most of a work session. All Lean content is Tier~A (44 declarations, 31 theorems,
+0 \texttt{sorry}, standard axioms only); every physical identification is stated as Tier~L
+(literature) or Tier~C (this project's own reading), never conflated with the former. We close with
+a concrete list of open problems and proposed research directions for the community.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The hypothesis under study}
+Perturbative superstring theories fix the fundamental string tension $T=1/(2\pi\alpha')$ near the
+Planck scale, $\ell_s\sim\ell_P\sim10^{-35}$~m. A dual-scale framework, motivating this
+programme's earlier papers~\cite{Callens2026Paper1,Callens2026Paper7}, proposes instead a pair of
+dynamically coupled length scales: a microscopic scale $\ell_{\mathrm{micro}}\sim\ell_P$
+(quantum-gravity corrections, ultraviolet completion) and a macroscopic scale
+$\ell_{\mathrm{macro}}\sim H_0^{-1}$ or an intermediate galactic/dark-sector scale, linked by
+non-perturbative duality transformations, scale-invariance breaking, or topological defects. This
+is \emph{not} a theorem anywhere in the literature, and this paper does not treat it as one. It is
+a Tier~C proposal, and the question this paper answers is narrower and more disciplined: which
+pieces of existing physics literature actually relate a micro and a macro length by a precise
+mathematical statement, and what do their kernel-checked consequences say about the hypothesis as
+stated?
+
+\subsection{Two literature anchors, not a re-derivation}
+Two, and — after a systematic search — only two, published results were found that relate a
+Planck-scale ultraviolet input to a cosmological infrared scale with a precise statement rather
+than a general expectation.
+
+\begin{enumerate}
+\item \textbf{Scale-factor duality.} Gasperini and Veneziano~\cite{GasperiniVeneziano1993} show
+that the scale factor $a(t)$ of an FRW background is odd under $a\mapsto a^{-1}$ in exactly the
+$O(d,d)$ sense that a compactification radius is odd under Buscher T-duality $R\mapsto\alpha'/R$
+(paper~1's Theorem~2.1). This is a genuine duality, but it is a symmetry of the early-universe
+string effective action, not on its own a statement relating today's Hubble scale to the Planck
+scale.
+\item \textbf{The Cohen--Kaplan--Nelson bound.} Cohen, Kaplan, and Nelson~\cite{CKN1999} show that
+an effective field theory with ultraviolet cutoff $\Lambda$ in a box of infrared size $L$, demanding
+no state already collapsed to a black hole, satisfies $L^3\Lambda^4\lesssim LM_P^2$. This is an
+actual inequality --- not a duality --- tying a micro (UV) scale to a macro (IR) scale, and the
+authors themselves instantiate it with $L$ at the current cosmological horizon. If any published
+result deserves the name ``micro/macro dual scale,'' this is it, and it predates this project's
+hypothesis by 28~years.
+\end{enumerate}
+Nothing else in the literature search (cosmic-string tension bounds, the swampland distance
+conjecture, the ``dark dimension'' proposal) relates a Planck-scale and a Hubble-scale length by a
+precise, checkable statement rather than an order-of-magnitude expectation; those sources are used
+below, but as tests of the two anchors above, not as further anchors.
+
+\subsection{Contents and how to read the tier labels}
+\Cref{sec:tiers} restates this project's epistemic tier system. \Cref{sec:duality} formalizes
+scale-factor duality. \Cref{sec:ckn} formalizes the CKN bound, including a citation error caught
+and corrected in the course of this work. \Cref{sec:falsify} tests the literal hypothesis
+numerically and finds it fails. \Cref{sec:selfdual} finds where the two anchors meet: a self-dual
+length at which the CKN bound is saturated. \Cref{sec:readings} gives that length two physical
+readings --- excluded as a string scale, disfavored (not excluded) as an extra-dimension radius ---
+and \Cref{sec:identity} proves it is, as an exact identity, the observed dark-energy length.
+\Cref{sec:strings} formalizes cosmic F-strings, the one genuinely micro object that can be
+cosmologically long. \Cref{sec:towers} tests whether the swampland distance conjecture is an
+independent third route, or shares scale-factor duality's structure. \Cref{sec:outofscope} records
+what was deliberately \emph{not} formalized, and why. \Cref{sec:scope} summarizes what is and is
+not proved. \Cref{sec:methods} reports two verification-discipline case studies. \Cref{sec:open}
+and \Cref{sec:directions} close with open problems and proposed research directions for the
+community. \Cref{app:repro} is a reproducibility appendix.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Epistemic tiers}
+\label{sec:tiers}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+As in this programme's earlier papers, every claim below carries one of three tags.
+\begin{itemize}
+  \item \tierA\ --- accepted by the Lean~4 kernel: \texttt{\#print axioms} reports only
+  \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; no \texttt{sorry}, no
+  \texttt{admit}, no \texttt{native\_decide}, no project-declared \texttt{axiom}.
+  \item \tierL\ --- established in the cited literature, quoted with a file and line range in
+  \texttt{papers/foundations/*.txt} that a reader can \texttt{grep}, not re-derived here.
+  \item \tierC\ --- a modeling choice or conjecture introduced by this project. \textbf{The
+  identification of a Lean object with a physical quantity is never Tier~A}, no matter how the
+  surrounding prose reads.
+\end{itemize}
+Two conventions specific to this paper, both forced by incidents recorded in
+\Cref{sec:methods}: every numeric bound quoted from a source is rounded in the direction that
+\emph{weakens} the conclusion being drawn (never in the direction that helps it); and every
+Lean theorem name is checked to be plain ASCII, because this project's own audit tooling silently
+mis-parses non-ASCII identifiers (\Cref{sec:methods}).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Scale-factor duality}
+\label{sec:duality}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Gasperini--Veneziano~\cite{GasperiniVeneziano1993} (ll.~372--373): ``the Hubble parameter is odd
+under scale factor duality, $H\to-H$, so that a duality transformation $a\to a^{-1}$ maps an
+expanding solution'' to a contracting one; the self-dual case is ``a metric that satisfies
+$a^{-1}(t)=a(-t)$'' (ll.~639--640). \tierL.
+
+\begin{theorem}[Scale-factor duality is an involution] \label{thm:invol} \tierA\
+For $a\ne0$, \textnormal{(}\texttt{ScaleFactorDuality.scaleFactorDual\_invol}\textnormal{)}
+$(a^{-1})^{-1}=a$.
+\end{theorem}
+
+\begin{theorem}[Self-dual point] \label{thm:fixed} \tierA\
+For $a>0$, $a^{-1}=a\iff a=1$ \textnormal{(}\texttt{scaleFactorDual\_fixed\_iff}\textnormal{)} ---
+the $t=0$ instance of $a^{-1}(t)=a(-t)$.
+\end{theorem}
+
+\begin{theorem}[The Hubble parameter is odd under the duality] \label{thm:hubble} \tierA\
+For $a:\mathbb{R}\to\mathbb{R}$ differentiable at $t$ with $a(t)\ne0$, with
+$H(t):=a'(t)/a(t)$,
+\[
+H\big(s\mapsto a(s)^{-1}\big)(t)\;=\;-\,H(a)(t) \qquad \textnormal{(\texttt{hubble\_dual})}.
+\]
+\end{theorem}
+This is a genuine differentiation, via Mathlib's \texttt{HasDerivAt.inv}, not an arithmetic
+shadow. An earlier draft of this work left \Cref{thm:hubble} as Tier~L, on the assumption that
+real differentiation was out of scope for this project's usual style; that assumption was checked
+against confirmed proof work in a sibling repository and found wrong (\Cref{sec:methods}).
+
+\begin{theorem}[Transferred dual-scale bound] \label{thm:sum} \tierA\
+For $a>0$, $a+a^{-1}\ge2$ \textnormal{(}\texttt{cosmoDualScale\_ge\_two}\textnormal{)}, the exact
+algebraic transfer of Stream~2's torus bound
+$\operatorname{tr}G+\operatorname{tr}G^{-1}\ge2d$~\cite{Callens2026Paper8} to the scale factor.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Cohen--Kaplan--Nelson bound}
+\label{sec:ckn}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{casebox}{Case study: a citation error caught only by computing something}
+An earlier commit of this work stated CKN's eq.~(2) as $L^3\Lambda^4\le M_P^2$. This compiled as
+valid Lean and was reported, correctly, as Tier~A --- but it is \emph{dimensionally
+inconsistent} ($[L^3\Lambda^4]=\mathrm{GeV}$, $[M_P^2]=\mathrm{GeV}^2$) and therefore not what the
+paper says. The kernel cannot catch a false Tier~L citation; only a human re-reading the source
+can. The error was found not by re-reading in the abstract, but by trying to \emph{use} the
+statement for the numeric test of \Cref{sec:falsify} and finding the units did not close.
+Re-extracting the source with \texttt{pdftotext~-layout} (rather than trusting the first,
+unlayouted pass) gives the actual eq.~(2): $L^3\Lambda^4\lesssim L\,M_P^2$
+(ll.~77--78)~\cite{CKN1999}, dimensionally consistent, and — dividing by $L>0$ — exactly the
+well-known holographic-dark-energy scaling $L^2\Lambda^4\lesssim M_P^2$. Fixing the exponent
+\emph{simplified} the Lean proofs below: no fractional-power (\texttt{Real.rpow}) machinery is
+needed for the corrected statement, only one \texttt{nlinarith} step.
+\end{casebox}
+
+CKN, ll.~77--78, 80~\cite{CKN1999}: $L^3\Lambda^4\lesssim L\,M_P^2$, so ``the IR cutoff scales
+like $\Lambda^{-2}$.'' \tierL.
+
+\begin{theorem}[CKN bound, simplified form] \label{thm:cknbound} \tierA\
+For $L>0$, $L^3\Lambda^4\le LM^2\implies L^2\Lambda^4\le M^2$ \textnormal{(}\texttt{CKNBound.ckn\_bound}\textnormal{)}.
+\end{theorem}
+
+\begin{theorem}[Solved for the combination $L\Lambda^2$] \label{thm:cknla} \tierA\
+For $L,\Lambda,M>0$, $L^2\Lambda^4\le M^2\implies L\Lambda^2\le M$
+\textnormal{(}\texttt{ckn\_L\_Lambda\_sq\_le}\textnormal{)}: since $L^2\Lambda^4=(L\Lambda^2)^2$, this
+is a one-step square-root extraction, not a fractional power.
+\end{theorem}
+
+\begin{corollary}[Solved for each variable] \label{cor:cknvars} \tierA\
+$L\le M/\Lambda^2$ \textnormal{(}\texttt{ckn\_L\_le}\textnormal{)} and $\Lambda^2\le M/L$
+\textnormal{(}\texttt{ckn\_Lambda\_sq\_le}\textnormal{)}.
+\end{corollary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Testing the literal hypothesis}
+\label{sec:falsify}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CKN's own worked example, ll.~113--114~\cite{CKN1999}: fixing the IR cutoff $L$ at the current
+cosmological horizon, eq.~(2) implies $\Lambda\sim10^{-2.5}\,\mathrm{eV}$. \tierL. We use this
+number directly, rather than re-deriving $H_0^{-1}$ in Planck units from CODATA constants, to
+avoid re-introducing exactly the kind of unit-conversion error of the case study above.
+
+\begin{theorem}[The literal hypothesis fails by $\ge10^{30}$] \label{thm:falsify} \tierA\
+With $\Lambda_{\mathrm{CKN}}:=3.2\times10^{-3}\,\mathrm{eV}$ (CKN's value, rounded \emph{up},
+conservative) and $M_P:=1.2\times10^{28}\,\mathrm{eV}$ (CODATA 2018 Planck energy, rounded
+\emph{down}, conservative),
+\[
+M_P\;\ge\;10^{30}\,\Lambda_{\mathrm{CKN}} \qquad\textnormal{(\texttt{CKNInstance.planckEnergy\_gt\_ckn\_horizon\_cutoff})}.
+\]
+\end{theorem}
+The true ratio is $\approx3.9\times10^{30}$; both roundings understate it. \textbf{Reading:} if the
+Stream~3 hypothesis's ``$\ell_{\mathrm{micro}}\sim\ell_P$'' is the ultraviolet cutoff the CKN bound
+would allow at ``$\ell_{\mathrm{macro}}\sim H_0^{-1}$,'' it is not --- by 30 orders of magnitude.
+This is a direct, literature-sourced counter-example to the literal reading of the hypothesis.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Where the bound meets the duality: the self-dual length}
+\label{sec:selfdual}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Cref{thm:falsify} tests one specific reading. This section asks what \emph{does} follow if
+$\ell_{\mathrm{micro}}$ and $\ell_{\mathrm{macro}}$ are instead read as a T-dual pair --- the
+reading \Cref{sec:duality} actually formalizes --- with $\alpha':=\ell_{\mathrm{micro}}\ell_{\mathrm{macro}}$
+and CKN's Planck mass identified with $M=1/\ell_{\mathrm{micro}}$ (natural units). Both
+identifications are this project's choices, stated here as explicit hypotheses, not results.
+\tierC.
+
+\begin{theorem}[The pair is a scale-factor-duality pair] \label{thm:pairisdual} \tierA\
+In units of $s:=\sqrt{\ell_{\mathrm{micro}}\ell_{\mathrm{macro}}}$,
+$\ell_{\mathrm{macro}}/s=(\ell_{\mathrm{micro}}/s)^{-1}$
+\textnormal{(}\texttt{SelfDualCutoff.selfDual\_pair\_is\_scaleFactorDual}\textnormal{)}.
+\end{theorem}
+
+\begin{theorem}[CKN $\iff$ UV length at least the self-dual length] \label{thm:ckniff} \tierA\
+With $L=\ell_{\mathrm{macro}}$, $M=1/\ell_{\mathrm{micro}}$, $\Lambda=1/\ell_{\mathrm{UV}}$,
+\[
+L^2\Lambda^4\le M^2 \;\iff\; \ell_{\mathrm{micro}}\,\ell_{\mathrm{macro}}\le\ell_{\mathrm{UV}}^2
+\qquad\textnormal{(\texttt{ckn\_iff\_uvLength\_ge\_selfDual})},
+\]
+saturated at equality \textnormal{(}\texttt{ckn\_saturated\_at\_selfDual}\textnormal{)}. Being an
+\textsf{iff} between non-equivalent-looking statements, this cannot be vacuous: it fails in each
+direction for suitable $\ell_{\mathrm{UV}}$.
+\end{theorem}
+
+\begin{proposition}[Numeric bracket] \label{prop:bracket} \tierA\
+With $\ell_P=1.616255\times10^{-35}$~m (CODATA 2018) and $c/H_0=1.3672\times10^{26}$~m
+($H_0=67.66$~km/s/Mpc, Planck~2018 VI~\cite{Planck2018VI}, Table~2, via
+\texttt{astropy.cosmology.Planck18}),
+\[
+40\,\mu\mathrm{m}\;\le\;\sqrt{\ell_P\,c/H_0}\;\le\;70\,\mu\mathrm{m}
+\qquad\textnormal{(\texttt{selfDual\_length\_sq\_bracket})},
+\]
+and CKN's own horizon-scale cutoff length $\hbar c/\Lambda_{\mathrm{CKN}}$ lies in the same
+bracket \textnormal{(}\texttt{cknHorizon\_length\_bracket}\textnormal{)}: $s\approx47.0\,\mu$m,
+$\hbar c/\Lambda_{\mathrm{CKN}}\approx62\,\mu$m.
+\end{proposition}
+\textbf{Reading:} the hypothesis's ``$\ell_{\mathrm{micro}}\sim\ell_P$'' is not where the CKN
+bound's implied micro cutoff sits (\Cref{thm:falsify}); the geometric mean
+$s=\sqrt{\ell_P\,\ell_{\mathrm{macro}}}$ is.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Two physical readings of the self-dual length}
+\label{sec:readings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{As a string scale: excluded}
+\label{sec:strings-scale}
+If $\alpha'=s^2$ is the fundamental string's Regge slope, then, since $M^2=(N-1)/\alpha'$ at
+level $N$~\cite{Tong2009} (§1.3), string excitations sit near $\hbar c/s\approx4$~meV. CMS-EXO-19-012,
+137~fb$^{-1}$ at 13~TeV, ll.~1044--1048~\cite{CMS2020}: string resonances (Regge excitations of
+quarks and gluons, l.~63) are excluded below 7.9~TeV at 95\%~CL, in the low-string-scale models of
+its own references. \tierL.
+
+\begin{theorem}[Excluded as a Regge slope] \label{thm:regge} \tierA\
+$\ell_P\,c/H_0\;\ge\;10^{30}\,(\hbar c/7.9\,\mathrm{TeV})^2$ \textnormal{(both sides
+$\mathrm{m}^2$; \texttt{CosmicString.selfDual\_alphaPrime\_exceeds\_cms\_ceiling}}\textnormal{)}.
+\end{theorem}
+This excludes only the \emph{Regge-slope} reading; it says nothing about $s$ as a
+\emph{compactification radius} (\Cref{sec:strings-radius}), and it is model-dependent on CMS's own
+low-string-scale models, stated as such.
+
+\subsection{As an extra-dimension radius: disfavored, not excluded}
+\label{sec:strings-radius}
+Torsion-balance tests (Lee et al., ll.~285--289~\cite{LeeAdelberger2020}): gravitational-strength
+Yukawa interactions are excluded for range $<38.6\,\mu$m; a single large extra dimension's toroidal
+radius must be $<30\,\mu$m at 95\%~CL. \tierL.
+
+\begin{theorem}[Above the torsion-balance bound] \label{thm:torsion} \tierA\
+$(1.5\times30\,\mu\mathrm{m})^2\le\ell_P\,c/H_0$ \textnormal{(}\texttt{DarkEnergyScale.selfDual\_above\_torsion\_radius\_bound}\textnormal{)}.
+\end{theorem}
+So identifying $s$ directly with a large extra-dimension radius exceeds the experimental bound by a
+factor of only $\approx1.6$ --- an order-one margin, not the $10^{30}$ of \Cref{thm:regge}. This
+paper does \emph{not} claim the extra-dimension reading is excluded.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The self-dual length is the dark-energy length}
+\label{sec:identity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+With $\rho_\Lambda=\Omega_\Lambda\cdot3H_0^2/(8\pi G)$ (critical-density form used by
+Copeland--Kibble, eq.~(4.1), ll.~430--434~\cite{CopelandKibble2009}) and $G=\ell_P^2$
+($\hbar=c=1$):
+
+\begin{theorem}[An exact identity] \label{thm:identity} \tierA\
+\[
+\rho_\Lambda^{-1}\;=\;\frac{8\pi}{3\Omega_\Lambda}\,(\ell_P\,H_0^{-1})^2
+\qquad\textnormal{(\texttt{DarkEnergyScale.rhoLambda\_inv\_eq})},
+\]
+i.e.\ $\rho_\Lambda^{-1/4}=(8\pi/3\Omega_\Lambda)^{1/4}\,s$: the self-dual length \emph{is} the
+dark-energy length $\Lambda_{\mathrm{cc}}^{-1/4}$, up to a fixed, $\ell_P$- and
+$H_0$-independent number. Equivalently, in Montero--Vafa--Valenzuela's (MVV) parameterization
+$l=\lambda\,\Lambda_{\mathrm{cc}}^{-1/4}$ (l.~67~\cite{MonteroVafaValenzuela2023}), $s$ has
+$\lambda_s=(3\Omega_\Lambda/8\pi)^{1/4}$, \textnormal{\textbf{a pure number}}
+\textnormal{(}\texttt{selfDual\_lambda4\_eq}\textnormal{)}.
+\end{theorem}
+
+\begin{casebox}{Why this blocks a natural-looking argument}
+MVV quote $\Lambda_{\mathrm{cc}}^{-1/4}\approx88\,\mu$m (l.~303). CKN's own horizon cutoff length is
+$\approx62\,\mu$m (\Cref{prop:bracket}), and $s\approx47.0\,\mu$m. \emph{These are not three
+independent numbers agreeing}: by \Cref{thm:identity} they are the same formula evaluated with
+different order-one conventions (reduced vs.\ non-reduced Planck mass gives a factor
+$(8\pi)^{1/4}\approx2.2$ in length). A numeric bracket test alone
+(\texttt{darkEnergyLength4\_bracket}, giving $85$--$90\,\mu$m for $\Lambda_{\mathrm{cc}}^{-1/4}$)
+would sit \emph{outside} the earlier $[40,70]\,\mu$m bracket of \Cref{prop:bracket} --- which by
+itself is evidence the bracket is convention-dependent, not physical. No document in this
+programme should cite the numerical closeness of $s$, the CKN horizon length, and
+$\Lambda_{\mathrm{cc}}^{-1/4}$ as independent corroboration.
+\end{casebox}
+
+\begin{proposition}[$\lambda_s$ vs.\ MVV's range] \label{prop:lambda} \tierA\
+$\lambda_s^4\in[0.5^4,1)$, i.e.\ $\lambda_s\approx0.535$
+\textnormal{(}\texttt{selfDual\_lambda\_above\_mvv\_range}\textnormal{)}: inside MVV's broad range
+$10^{-4}<\lambda<1$ (l.~424) but $\ge5\times$ their central estimate's upper end $\lambda\sim10^{-1}$
+(ll.~424--427). MVV separately exclude a light \emph{string} tower at this scale, on different
+grounds (local EFT breakdown, ll.~313--316) --- consistent with \Cref{thm:regge}.
+\end{proposition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Cosmic F-strings: a genuine micro object at macro scale}
+\label{sec:strings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A cosmic superstring is literally a micro object (string tension) stretched to cosmological
+length --- the most direct candidate for the hypothesis's mechanism. Copeland--Myers--Polchinski
+(CMP)~\cite{CopelandMyersPolchinski2004} give the ten-dimensional $(p,q)$ tension, eq.~(3.3),
+ll.~502--506, and the four-dimensional tension $\mu=e^{2A}\bar\mu$ with warp factor $e^{2A}$,
+eq.~(3.2), l.~497. \tierL. For the fundamental string, $(p,q)=(1,0)$, unwarped ($e^{2A}=1$, a
+Tier~C simplification that can only \emph{lower} $\mu$ if relaxed), $G\mu/c^2=\ell_P^2/(2\pi\alpha')$.
+
+\begin{theorem}[An observational bound on $G\mu$ is a lower bound on $\alpha'$] \label{thm:gmu} \tierA\
+For $\alpha'>0$, $G\mu/c^2\le g\iff\ell_P^2\le2\pi g\,\alpha'$
+\textnormal{(}\texttt{CosmicString.fStringGmu\_le\_iff}\textnormal{)}. For the self-dual pair,
+$\alpha'=\ell_P L\implies G\mu/c^2=\ell_P/(2\pi L)$
+\textnormal{(}\texttt{fStringGmu\_selfDual}\textnormal{)}.
+\end{theorem}
+
+\begin{proposition}[The self-dual $\alpha'$ gives a badly under-tense string] \label{prop:cmpwindow} \tierA\
+$G\mu/c^2\le10^{-61}$ for the self-dual pair
+\textnormal{(}\texttt{selfDual\_Gmu\_below\_cmp\_window}\textnormal{)}, more than 50 orders below
+the lower end $10^{-11}$ of CMP's brane-inflation window (eq.~(5.1), ll.~782--783), whose own
+caveat (ll.~809--811) notes the window assumes inflaton-driven perturbations.
+\end{proposition}
+\textbf{Not formalized}: the defect-formation and horizon-scaling mechanism (Kibble, network
+scaling) that would let a cosmic string carry the macro scale in the first place ---
+\Cref{sec:outofscope}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dual towers and the swampland distance conjecture}
+\label{sec:towers}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The Swampland Distance Conjecture (SDC, due to Ooguri--Vafa, quoted at
+ll.~2167--2181~\cite{PaltiReview2019}): from any point $P$ in moduli space there is a point $Q$ at
+infinite geodesic distance and an infinite tower of states with $M(Q)\sim M(P)e^{-\alpha
+d(P,Q)}$, $\alpha>0$. \tierL.
+
+\begin{casebox}{Why eq.~(2.100) itself is not formalized}
+The SDC's own equation is asymptotic, with an unspecified $\alpha$ and an ``$\sim$''. Any Lean
+theorem about the bare expression $M_0e^{-\alpha d}$ (positive, monotone, tends to zero) is a fact
+about \texttt{Real.exp}, not physics, and would restate its own definition --- the exact vacuous-check
+failure a sibling project in this ecosystem retracted after finding it in its own work (see
+\Cref{sec:methods}). We formalize instead Palti's \emph{motivating remark} just above the SDC box
+(ll.~2158--2161): dual towers whose mass product is constant, under an explicit Tier~C model
+$M_1M_2=M_0^2$.
+\end{casebox}
+
+\begin{theorem}[The dual-tower structure is P3.1's involution] \label{thm:towersum} \tierA\
+Under $M_1M_2=M_0^2$ (Tier~C), $M_1+M_2\ge2M_0$
+\textnormal{(}\texttt{DualTower.dualTower\_sum\_ge}\textnormal{)}, proved by rescaling to
+$a=M_1/M_0$ and invoking \Cref{thm:sum} \emph{unchanged}. So the dual-tower structure is not an
+independent piece of algebra: it is scale-factor duality again.
+\end{theorem}
+
+\begin{proposition}[Negative controls] \label{prop:negctrl} \tierA\
+Without $M_1M_2=M_0^2$, both $\forall M_0,M_1,M_2{>}0,\,2M_0\le M_1{+}M_2$ and
+$\forall M_0{>}0,\,\min(M_1,M_2)\le M_0$ are \emph{false}, by explicit kernel-checked
+counterexample \textnormal{(}\texttt{dualTower\_sum\_ge\_needs\_product},
+\texttt{dualTower\_min\_le\_needs\_product}\textnormal{)}. \Cref{thm:towersum} is therefore not
+vacuous.
+\end{proposition}
+
+\begin{proposition}[Bridge to the exponential form] \label{prop:exptower} \tierA\
+$(M_0e^{-\alpha d})(M_0e^{\alpha d})=M_0^2$ \textnormal{(}\texttt{expTowerPair\_product}\textnormal{)}
+--- a fact about \texttt{Real.exp}, connecting the SDC's shape to the model above, not a
+formalization of the SDC itself.
+\end{proposition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Closed as out of scope: defect networks and domain walls}
+\label{sec:outofscope}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+How a defect network grows to carry the macro scale is a \emph{simulation} result, not a theorem:
+string networks reach a scaling regime $\xi/t\approx\text{const}$ by ``general agreement from
+several simulations'' (Copeland--Kibble, ll.~421--423~\cite{CopelandKibble2009}), with
+$\rho_{\mathrm{str}}/\rho=8\pi G\mu\gamma^2/(3\nu^2)$ (eq.~(4.1)); domain walls reach
+$\rho_{\mathrm{wall}}=A\sigma/t$ with $A\approx0.8\pm0.1$ from field-theory simulations
+(Saikawa, eqs.~(2.17)--(2.18), ll.~269--283~\cite{Saikawa2017}). \tierL. Formalizing
+$\rho_{\mathrm{str}}=\mu/\xi^2$ or $\rho_{\mathrm{wall}}=A\sigma/t$ in Lean would only restate
+their own defining equations --- exactly the vacuity failure this project's own gate exists to
+catch (\Cref{sec:methods}) --- so neither is formalized. The one structural fact recorded, Tier~L,
+not proved: a defect network carries the macro scale \emph{by causality}
+($\xi\lesssim t$~\cite{CopelandKibble2009}, ll.~272--276), while the micro scale enters only
+through the tension; the two are not related by a duality in this mechanism, unlike
+\Cref{sec:duality}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{What is, and is not, proved}
+\label{sec:scope}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scopebox}
+\textbf{Is proved (Tier~A, kernel-checked, 44 declarations / 31 theorems, 0 \texttt{sorry},
+standard axioms only):} that scale-factor duality is an involution with self-dual point $a=1$ and
+odd Hubble parameter; that the corrected CKN bound $L^2\Lambda^4\le M^2$ follows from CKN's own
+eq.~(2) and implies $L\Lambda^2\le M$; the numeric gap $\ge10^{30}$ between CKN's own horizon
+cutoff and the Planck energy; that the CKN bound holds \emph{iff} the UV length is at least a
+T-dual pair's self-dual length, with that length bracketed at $40$--$70\,\mu$m; that this length
+is excluded as a Regge slope by $\ge10^{30}$ in $\alpha'$ and lies only $\approx1.6\times$ above a
+torsion-balance bound as an extra-dimension radius; the \emph{exact identity} between that length
+and the dark-energy length; a cosmic F-string's tension formula and its numeric position 50+ orders
+below a literature brane-inflation window; that the dual-tower structure behind the swampland
+distance conjecture is scale-factor duality's own involution, with kernel-checked negative
+controls.
+
+\textbf{Is not proved, anywhere in this paper:} the micro/macro dual-scale hypothesis itself, in
+any reading; that any of the Tier~C identifications used above (T-dual pair, $M=1/\ell_{\mathrm{micro}}$,
+$M_1M_2=M_0^2$) is physics rather than a modeling choice; the SDC's own asymptotic statement,
+eq.~(2.100); the defect-network scaling mechanism or domain-wall dynamics (\Cref{sec:outofscope});
+that a string scale of $\sim50\,\mu$m or an extra dimension of that size exists; and, as always in
+this project, that any Lean object \emph{is} the physical system it is named after.
+\end{scopebox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Methods: two verification-discipline case studies}
+\label{sec:methods}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Beyond the citation-transcription error of \Cref{sec:ckn}, two further incidents are recorded here
+because they generalize beyond this paper.
+
+\subsection{A false ``models still resident'' claim}
+An early version of this work's workflow log stated that both local prover models were confirmed
+resident on the GPU after an Ollama restart. This was false: the restart had killed the system
+service and launched a user-level server pointing at an empty model directory, which then
+crash-looped on a port conflict for roughly two hours; the \texttt{/api/tags} check that appeared
+to confirm the models was run \emph{before} the restart, not after. No result in this paper depends
+on the local prover having been available during that window, because every Stream~3 goal through
+\Cref{sec:towers} was closed by the human orchestrator directly. The error was found only when a
+later prover invocation returned \texttt{HTTP~404} for every attempt in four seconds --- an
+implausibly fast failure for a model that should take over a minute to cold-load. \textbf{Lesson:}
+a status check taken before an action is not evidence about the state after it, and a suspiciously
+fast ``success'' is itself a signal to distrust.
+
+\subsection{Identifier ASCII-only}
+An early draft named a theorem \texttt{ckn\_$\Lambda$\_le}. This project's own axiom-audit tool
+matches declaration names with the regular expression \texttt{[A-Za-z0-9\_'.]+}, which does not
+include Greek letters; it silently truncated the name to \texttt{ckn\_} and then reported that no
+such declaration existed, rather than reporting a parse failure. No existing declaration anywhere
+in this repository's seven prior libraries used a non-ASCII identifier (checked by grep before
+this rule was written); this project now keeps that invariant explicitly.
+
+Both incidents, together with the citation error of \Cref{sec:ckn}, are why this paper reports
+their discovery rather than only their fixes: the discipline that catches an error is at least as
+reportable as the theorem it protects.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Open problems for the community}
+\label{sec:open}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Each item below names the specific gap, not just the headline claim, following this project's
+own convention that a precise open problem is worth more than a vague one.
+
+\begin{enumerate}
+\item \textbf{The extra-dimension reading is untested at the right precision.}
+\Cref{thm:torsion} shows only an order-one margin against a 2020 torsion-balance bound. A
+tighter, more recent bound (or the forecast sensitivity of a proposed experiment) formalized the
+same way as \Cref{thm:regge} would either exclude or further constrain the reading, resolving the
+current ``disfavored, not excluded'' verdict one way or the other.
+\item \textbf{The Tier~C identifications are never derived.} $\alpha'=\ell_{\mathrm{micro}}\ell_{\mathrm{macro}}$
+and $M=1/\ell_{\mathrm{micro}}$ (\Cref{sec:selfdual}) and $M_1M_2=M_0^2$ (\Cref{sec:towers}) are
+this project's modeling choices, stated as hypotheses. A derivation of any of them from an
+explicit worldsheet or effective-field-theory argument --- rather than an assumption --- would
+upgrade the corresponding results from conditional Tier~A to something closer to Tier~L+A.
+\item \textbf{The reduced-vs-non-reduced Planck-mass ambiguity is prose, not Lean.} The factor
+$(8\pi)^{1/4}\approx2.2$ separating conventions in \Cref{thm:identity} is discussed but not
+formalized as an explicit, named parameter; a Lean statement carrying the convention as an
+argument (rather than a fixed numeral) would make every downstream numeric claim
+convention-parametric and auditable.
+\item \textbf{The SDC itself remains unformalized, for a principled reason (\Cref{sec:towers}).}
+An explicit, non-asymptotic toy moduli space --- for instance the circle compactification already
+present in Stream~1~\cite{Callens2026Paper7}, where geodesic distance and tower mass are both
+concrete --- could support a genuinely non-vacuous, non-asymptotic instance of eq.~(2.100),
+where the general statement cannot.
+\item \textbf{The defect-network mechanism (\Cref{sec:outofscope}) has no non-vacuous target
+identified.} Saikawa's wall-domination time $t_{\mathrm{dom}}=3M_{\mathrm{Pl}}^2/(4A\sigma)$
+(eq.~(2.19)) is a genuine arithmetic consequence, not a restatement of the scaling law itself, and
+is a candidate for a first Tier~A statement in this area once a specific $\sigma$ is pinned to a
+source.
+\item \textbf{Numeric brackets are hand-rounded, not interval arithmetic.} Every bracket in
+\Cref{sec:selfdual,sec:identity} uses conservatively rounded decimal literals chosen by the
+authors. A Lean interval-arithmetic treatment computed directly from the CODATA/Planck-18 constants
+would remove the rounding-direction judgment call entirely and tighten every bracket.
+\item \textbf{Relevance to $K3\times T^2$ is stated, not derived.} If the ``dark dimension'' reading
+of $s$ is taken seriously, the only natural single large direction on this programme's own
+compactification is one $T^2$ circle, whose T-dual partner would then be sub-Planckian; nothing in
+this repository derives such a decompactification limit or checks it against Stream~2's torus
+bound~\cite{Callens2026Paper8}.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proposed research directions}
+\label{sec:directions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+\item \textbf{A general ``duality $\iff$ bound-saturation'' lemma.} \Cref{thm:ckniff}'s pattern ---
+a monotone bound holds exactly when a length exceeds the self-dual point of a paired duality ---
+did not require anything specific to CKN beyond monotonicity in each variable. Formalizing this
+as an abstract lemma over an arbitrary duality-bound pair could turn this paper's central
+observation into a reusable tool, applicable to other swampland-type UV/IR bounds (the species
+scale, the Weak Gravity Conjecture) with the same methodology.
+\item \textbf{A systematic library of swampland bounds}, each tested the way \Cref{sec:falsify,sec:readings}
+test CKN: state the bound from its source, instantiate it at project-relevant scales, and report
+the numeric gap (or lack of one) as a Tier~A fact. This would make ``does hypothesis X survive
+bound Y'' a repeatable, auditable procedure rather than a one-off calculation.
+\item \textbf{Machine-generated negative controls as a general pattern.} \Cref{prop:negctrl} was
+written by hand; a tactic or script that, given a Tier~A theorem with a nontrivial hypothesis,
+automatically searches for a counterexample when the hypothesis is dropped would let every future
+Stream check its own theorems for the vacuity failure discussed in \Cref{sec:towers} without a
+human writing the counterexample each time.
+\item \textbf{Confronting the extra-dimension reading with forecast, not only current, data.}
+Item~1 of \Cref{sec:open} generalizes: a Lean statement parameterized by an experimental
+sensitivity (rather than a fixed 2020 bound) could be re-evaluated as new torsion-balance or
+collider results appear, turning \Cref{thm:torsion} into a living, re-checkable claim rather than a
+snapshot.
+\item \textbf{The compile-time infrastructure recommended for this repository's book
+(\texttt{papers/book/chapters/ch38\_open.tex}, items~23--24)} --- attribute-level Tier tracking
+and an anti-vacuity linter --- would apply directly to future Stream~3-style work, where every new
+theorem in this paper had to be checked by hand against the vacuity failure of \Cref{sec:towers}.
+\item \textbf{A first continuous (non-arithmetic-shadow) theorem}, as recommended by an external
+review of this programme's book: the classical equivalence of the Nambu--Goto and Polyakov
+actions, eliminating the worldsheet metric through its own equation of motion~\cite{Tong2009}
+(§1.3, ll.~1255--1280). The pointwise, finite-dimensional step is provable with Mathlib as it
+stands; the field-level calculus-of-variations statement is not yet, and closing that gap would be
+this programme's first genuinely continuous physics theorem rather than an arithmetic or algebraic
+shadow of one.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\label{sec:conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Scale-factor duality and the Cohen--Kaplan--Nelson bound are formalized from pinned sources, and
+the dual-tower structure behind the swampland distance conjecture is shown to share scale-factor
+duality's algebra rather than adding an independent route. Read literally, the micro/macro
+dual-scale hypothesis motivating this stream fails the CKN test by at least $10^{30}$. Read as a
+T-dual pair, the two scales meet the CKN bound exactly at their self-dual length, and that length
+is --- as an exact identity, not a numerical coincidence --- the observed dark-energy length. It
+cannot be the fundamental string's scale, and as an extra-dimension radius it is at present
+indistinguishable from an existing, unrelated proposal in the literature. None of this is a proof
+or a disproof of the hypothesis; it is a record of what two decades-old pieces of physics actually
+imply for it, kernel-checked, with every physical identification labelled for what it is. We
+consider the value of this exercise to lie exactly there --- and in the two verification-discipline
+failures of \Cref{sec:methods}, each caught by trying to use a claim rather than by reading it, as
+much as in the theorems themselves.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\section{Reproducibility}
+\label{app:repro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Build}
+\begin{center}
+\footnotesize\ttfamily
+lake build DualScaleStream2 StringTheoryFormalization StringTheoryFoundation \textbackslash\\
+  DualScaleM24Formalization DoubleFieldTheory DualScaleValidation Lean5Corpus DualScaleCosmology
+\end{center}
+3781 jobs, 0 errors (release tag \texttt{v3.4.0}/\texttt{v3.5.x}). The job count is dominated by
+Mathlib's own dependency graph, not this library's proof content.
+
+\subsection{Axiom audit}
+\begin{center}
+\footnotesize\ttfamily
+python3 tools/axiom\_audit.py DualScaleCosmology
+\end{center}
+reports \textbf{31 theorems, 0 failing}, every declaration's axiom footprint limited to
+\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}. Across all eight libraries in
+this repository: \textbf{456 theorems, 0 failing}.
+
+\subsection{Statement lock}
+\begin{center}
+\footnotesize\ttfamily
+python3 tools/statement\_lock.py --check \$(find DualScaleCosmology -name '*.lean')
+\end{center}
+locks all 44 declarations across the 7 files of \texttt{DualScaleCosmology}:
+{\small\texttt{ScaleFactorDuality.lean, CKNBound.lean, CKNInstance.lean, DualTower.lean,
+SelfDualCutoff.lean, CosmicString.lean, DarkEnergyScale.lean}}.
+
+\subsection{Roadmap coverage}
+\texttt{docs/STREAM3\_WORKFLOW.md}~\S6 records every item P3.1--P3.9 as either \checkmark{}
+(closed with the theorems reported above) or explicitly closed as out of scope with the reason
+stated in \Cref{sec:outofscope}, per the definition of done fixed before the last work package.
+
+\subsection{Sources pinned}
+The following are each hash-pinned in \texttt{papers/foundations/MANIFEST.md}, with the line
+range quoted at the point of use above:
+{\small\texttt{hep-th/9211021, hep-th/9803132, 1903.06239, hep-th/0312067, 1303.5085,
+1911.03947, 2002.11761, 2205.12293, 0911.1345, 1703.02576}}.
+CODATA~2018 and Planck~2018~VI constants via \texttt{astropy}.
+
+\begin{thebibliography}{99}
+\bibitem{Callens2026Paper1} X.~Callens and the SocrateAI Agora Collaboration, ``Dual-Scale Generalized Geometry and Non-Perturbative Moduli Stabilization on $K3\times T^2$,'' \textit{SocrateAI Laboratory for Mathematical Physics \& Formal Verification} (2026).
+\bibitem{Callens2026Paper7} X.~Callens and the SocrateAI Agora Collaboration, ``The Dual-Scale String Theory: Mechanized Foundations, Singularity Resolution, Mathieu Moonshine, and a Zero-Free-Parameter Cosmological Conjecture on $K3\times T^2$,'' \textit{SocrateAI Laboratory for Mathematical Physics \& Formal Verification} (2026).
+\bibitem{Callens2026Paper8} X.~Callens and the SocrateAI Agora Collaboration, ``Lattices, T-Duality, and Double Field Theory on $K3\times T^2$: A Lean 4 Companion Formalization,'' \textit{SocrateAI Laboratory for Mathematical Physics \& Formal Verification} (2026).
+\bibitem{GasperiniVeneziano1993} M.~Gasperini and G.~Veneziano, ``Pre-Big-Bang in String Cosmology,'' \textit{Astropart. Phys.} 1 (1993) 317--339, \textit{arXiv:hep-th/9211021}.
+\bibitem{CKN1999} A.~G.~Cohen, D.~B.~Kaplan, and A.~E.~Nelson, ``Effective Field Theory, Black Holes, and the Cosmological Constant,'' \textit{Phys. Rev. Lett.} 82 (1999) 4971--4974, \textit{arXiv:hep-th/9803132}.
+\bibitem{PaltiReview2019} E.~Palti, ``The Swampland: Introduction and Review,'' \textit{Fortsch. Phys.} 67 (2019) 1900037, \textit{arXiv:1903.06239}.
+\bibitem{CopelandMyersPolchinski2004} E.~J.~Copeland, R.~C.~Myers, and J.~Polchinski, ``Cosmic F- and D-strings,'' \textit{JHEP} 06 (2004) 013, \textit{arXiv:hep-th/0312067}.
+\bibitem{Planck2013XXV} Planck Collaboration, ``Planck 2013 results. XXV. Searches for cosmic strings and other topological defects,'' \textit{Astron. Astrophys.} 571 (2014) A25, \textit{arXiv:1303.5085}.
+\bibitem{CMS2020} CMS Collaboration, ``Search for high mass dijet resonances with a new background prediction method in proton-proton collisions at $\sqrt{s}=13$~TeV,'' \textit{JHEP} 05 (2020) 033, \textit{arXiv:1911.03947}.
+\bibitem{LeeAdelberger2020} J.~G.~Lee, E.~G.~Adelberger, T.~S.~Cook, S.~M.~Fleischer, and B.~R.~Heckel, ``New Test of the Gravitational $1/r^2$ Law at Separations down to $52\,\mu$m,'' \textit{Phys. Rev. Lett.} 124 (2020) 101101, \textit{arXiv:2002.11761}.
+\bibitem{MonteroVafaValenzuela2023} M.~Montero, C.~Vafa, and I.~Valenzuela, ``The Dark Dimension and the Swampland,'' \textit{JHEP} 02 (2023) 022, \textit{arXiv:2205.12293}.
+\bibitem{CopelandKibble2009} E.~J.~Copeland and T.~W.~B.~Kibble, ``Cosmic Strings and Superstrings,'' \textit{Proc. Roy. Soc. Lond. A} 466 (2010) 623--657, \textit{arXiv:0911.1345}.
+\bibitem{Saikawa2017} K.~Saikawa, ``A review of gravitational waves from cosmic domain walls,'' \textit{Universe} 3 (2017) 40, \textit{arXiv:1703.02576}.
+\bibitem{Tong2009} D.~Tong, ``Lectures on String Theory,'' \textit{arXiv:0908.0333} (2009).
+\bibitem{Planck2018VI} Planck Collaboration, ``Planck 2018 results. VI. Cosmological parameters,'' \textit{Astron. Astrophys.} 641 (2020) A6, \textit{arXiv:1807.06209}.
+
+\end{thebibliography}
+
+\end{document}

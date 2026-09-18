@@ -5,7 +5,7 @@
 [![Zero Sorry](https://img.shields.io/badge/Kernel_Soundness-Strict_0_Sorry_(Certified)-success.svg)](https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster)
 [![Free Parameters](https://img.shields.io/badge/Free_Parameters-0_(Conjecture%2C_Tier_C)-yellow.svg)](#3-a-zero-free-parameter-conjecture-what-is-and-isnt-mechanically-locked)
 [![Solved Problems](https://img.shields.io/badge/Frontier_Problems-11_Certified-purple.svg)](#5-the-lean-5-scientific-agora-corpus-11-certified-frontier-problems)
-[![Publication Papers](https://img.shields.io/badge/Scientific_Papers-8_PDFs_Compiled-red.svg)](papers/publication/)
+[![Publication Papers](https://img.shields.io/badge/Scientific_Papers-9_PDFs_Compiled-red.svg)](papers/publication/)
 [![Book](https://img.shields.io/badge/Book-The_Dual--Scale_String_(38_ch%2C_709_pp)-8A2BE2.svg)](papers/book/)
 [![Lean Blueprint](https://img.shields.io/badge/Lean_Blueprint-Interactive_Epistemic_Ledger-blueviolet.svg)](blueprint/web/index.html)
 [![LeanGraph](https://img.shields.io/badge/LeanGraph-867_Nodes_%7C_1603_Edges-orange.svg)](graph/index.html)
@@ -57,7 +57,7 @@ worth:
 1. **(Tier A + Tier L) DFT algebraic-shape formalization:** the *algebraic shape* of $O(D,D)$ generalized geometry, Courant algebroids, the Strong Section Condition, and Buscher T-duality is certified on a 1-dimensional scalar model (Tier A); the differential-geometric theory itself (vector bundles, 1-forms on an actual manifold) is Tier L, quoted from Hull–Zwiebach, not re-derived here — see the paper's §2 scope box.
 2. **(Tier L + Tier A instance) The effective dual scale:** $R_{\mathrm{eff}}(R) = R + \alpha'/R \ge 2\sqrt{\alpha'}$ is a real-analytic bound from the T-duality/string-gas literature (Brandenberger–Vafa 1989; Giveon–Porrati–Rabinovici 1994); the integer instance $R\ge1 \Rightarrow R^2+1\ge2$ is Tier A.
 3. **(Tier C) A zero-free-parameter conjecture:** five integer/topological facts (§3) motivate, but do not prove, the conjecture that a consistent completion of this scenario would have zero continuous free parameters. No such theorem is stated or proved in this corpus; see §3 for the caveats (in particular, $27720=\mathrm{lcm}(1,\dots,12)$, which weakens how surprising the "lock" is).
-4. **The Lean 5 Scientific Agora Corpus:** 11 solved frontier problems in mathematical physics verified in Lean 4 (Tier A arithmetic instances of Tier L source results), accompanied by 8 publication-grade scientific papers with compiled PDFs and LaTeX sources (§6).
+4. **The Lean 5 Scientific Agora Corpus:** 11 solved frontier problems in mathematical physics verified in Lean 4 (Tier A arithmetic instances of Tier L source results), accompanied by 9 publication-grade scientific papers with compiled PDFs and LaTeX sources (§6).
 5. **A 38-chapter textbook**, *The Dual-Scale String: T-Duality, K3 × T², and Their Formalization in Lean 4 — A Student's Companion* (709 pp., `papers/book/`), which develops the physics and the mathematics from scratch and states, chapter by chapter, exactly what the kernel has and has not checked (§6).
 6. **LeanGraph Knowledge Discovery:** semantic dependency extraction (867 nodes, 1603 edges, verified acyclic DAG) with an interactive D3/KaTeX visual explorer (`graph/index.html`), plus a kernel-level theorem atlas (§7).
 7. **(Tier A algebra + Tier C readings) Stream 3 — micro/macro dual-scale cosmology** (`DualScaleCosmology`, [`docs/STREAM3_WORKFLOW.md`](docs/STREAM3_WORKFLOW.md)): scale-factor duality `H(a⁻¹) = −H(a)`; the Cohen–Kaplan–Nelson bound; and the finding that, read as a T-dual pair, `ℓ_P` and `c/H₀` meet the CKN bound exactly at the self-dual length `√(ℓ_P·c/H₀) ≈ 47 μm` — **which is the dark-energy length up to `(8π/3Ω_Λ)^{1/4}`** (an identity, so the numerical agreements it produces are algebra, not corroboration). That length is **excluded as a string (Regge) scale** by ≥10³⁰ in `α'` (CMS dijet limit on string resonances, model-dependent) and **not excluded** as an extra-dimension radius (disfavored by O(1) only). The literal hypothesis "`ℓ_micro ~ ℓ_P` is the UV cutoff at `ℓ_macro ~ H₀⁻¹`" fails the CKN test by ≥10³⁰.
@@ -285,7 +285,7 @@ The **Lean 5 Agora Corpus** comprises 11 solved frontier problems, each verified
 
 ## 6. Publication Papers and the Book (LaTeX & Compiled PDFs)
 
-The repository provides 8 publication-ready scientific papers with complete LaTeX source and compiled PDFs:
+The repository provides 9 publication-ready scientific papers with complete LaTeX source and compiled PDFs:
 
 | Paper | Title | LaTeX Source | Compiled PDF | Pages |
 |---|---|:---:|:---:|:---:|
@@ -297,6 +297,7 @@ The repository provides 8 publication-ready scientific papers with complete LaTe
 | **Paper 6** | *Formal Resolution of Three Advanced Frontier Problems: Kummer Surface Modularity, Non-Perturbative SYM Instantons, and Holographic Entanglement Strong Subadditivity* | [`paper6.tex`](papers/publication/paper6_lean5_advanced_frontier_formalization.tex) | [**`paper6.pdf`**](papers/publication/paper6_lean5_advanced_frontier_formalization.pdf) | 6 |
 | **Paper 7** | *The Dual-Scale Theory: A Master Demonstration* (tier-labeled revision; see the audit note at the top of this README) | [`paper7.tex`](papers/publication/paper7_dual_scale_theory_master_demonstration.tex) | [**`paper7.pdf`**](papers/publication/paper7_dual_scale_theory_master_demonstration.pdf) | — |
 | **Paper 8** | *Dual-Scale K3 × T² T-Duality in Lean 4* (Stream 2: the Mathlib-backed lattice / O(d,d;ℤ) / DFT layer) | [`paper8.tex`](papers/publication/paper8_dual_scale_k3t2_tduality_lean4.tex) | [**`paper8.pdf`**](papers/publication/paper8_dual_scale_k3t2_tduality_lean4.pdf) | — |
+| **Paper 9** | *Testing a Micro/Macro Dual-Scale Hypothesis on K3 × T²: Scale-Factor Duality, the Cohen–Kaplan–Nelson Bound, and the Dark-Energy Length in Lean 4* (Stream 3: the literal hypothesis fails by ≥10³⁰; the self-dual length is an identity with the dark-energy length; open problems and research directions for the community) | [`paper9.tex`](papers/publication/paper9_dual_scale_cosmology_stream3.tex) | [**`paper9.pdf`**](papers/publication/paper9_dual_scale_cosmology_stream3.pdf) | 13 |
 
 ### The Book: *The Dual-Scale String — A Student's Companion*
 
