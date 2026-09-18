@@ -30,6 +30,18 @@ twining test to paper 7's "27720 lock", which fails it. Gates: nine-library buil
 `DualScaleMoonshine` 28 theorems, 0 failing (axioms: `propext` only); statement lock 52 declarations in 4
 files; no file of the other eight libraries changed. Total audited: **485**.
 
+**`v3.8.0` (2026-09-18): Stream 4 phase P4.3 completed at every conjugacy class.** Two files added to
+`DualScaleMoonshine`: `TwiningAll.lean` computes the sixteen remaining twined series of Cheng–Duncan–Harvey's
+Table 20 (eta quotients, the newforms `f₁₁, f₁₄, f₁₅, f₂₃,ₐ, f₂₃,ᵦ`, prefactors `2/5, 1/3, 1/4, 1/3, 1/11`)
+and proves each equal to the printed column through `q⁹`; `CharactersAll.lean` transcribes the full `M₂₄`
+character table over `ℤ[b₇]`, `ℤ[b₁₅]`, `ℤ[b₂₃]`, guards it (centralizer orders from column norms, class
+equation, full row orthogonality), and proves that at **all 26 classes** and levels 1–7 the traces on EOT's
+representations equal the computed twined coefficients. The forger's test now fails at all 25 non-identity
+classes. Gates: nine-library build 3789 jobs, 0 errors; `DualScaleMoonshine` 66 theorems, 0 failing
+(axioms: `propext` only); statement lock 151 declarations in 6 files (the pre-update check showed the four
+existing files unchanged and only the two new files unlocked); no file of the other eight libraries
+changed. Total audited: **523**.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) |
 |---|---|---|---|---|
@@ -374,7 +386,21 @@ package, imports `DualScaleStream2` and `StringTheoryFormalization`, and proves 
   `¬ratioTwines (twined24 9 8 2 (-16))`  — paper 7's 27720 ratio relation does not survive twining  
   axioms: propext
 
-## 4. How to re-confirm (8 commands)
+### `DualScaleMoonshine`, all classes (probe on the `v3.8.0` tree)
+* **`DualScaleMoonshine.twined_23AB`**  
+  `twinedD dataF23AB = scaled dataF23AB table23AB`  — `F_23AB = (1/11)(−Λ₂₃ + 23f₂₃,ₐ + 69f₂₃,ᵦ)` reproduces the printed column  
+  axioms: propext
+* **`DualScaleMoonshine.gram_ok`**  
+  `gramOK charTab = true`  — first orthogonality relation for all 26 × 26 pairs, irrational columns included  
+  axioms: propext
+* **`DualScaleMoonshine.trace_eq_twined_coeff_all`**  
+  `∀ (j : Fin 26), List.map (traceQ ↑j) eotMult = List.map (fun x => (x, 0)) (List.take 7 (List.drop 1 (computedSeries.getD ↑j [])))`  
+  axioms: propext
+* **`DualScaleMoonshine.ratio_fails_at_every_class`**  
+  `∀ (j : Fin 26), ↑j ≠ 0 → ¬ratioTwines (List.map (fun x => 24 * x) (computedSeries.getD ↑j []))`  
+  axioms: propext
+
+## 4. How to re-confirm (10 commands)
 ```bash
 cd ~/SocrateAI-Scientific-Agora-LeanMaster
 lake build DualScaleStream2 StringTheoryFormalization
@@ -387,6 +413,7 @@ python3 tools/axiom_audit.py DualScaleCosmology | tail -1
 # Stream 4
 lake build DualScaleMoonshine
 python3 tools/axiom_audit.py DualScaleMoonshine | tail -1
+python3 tools/statement_lock.py --check $(find DualScaleMoonshine -name '*.lean') | tail -1
 python3 tools/statement_lock.py --check $(find DualScaleCosmology -name '*.lean') | tail -1
 ```
 If any of these disagrees with Section 1, this document is stale: trust the commands, fix the document.

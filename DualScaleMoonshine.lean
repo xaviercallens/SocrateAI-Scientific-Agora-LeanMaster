@@ -5,3 +5,5 @@ import DualScaleMoonshine.QSeries
 import DualScaleMoonshine.Twining
 import DualScaleMoonshine.Characters
 import DualScaleMoonshine.ForgerTest
+import DualScaleMoonshine.TwiningAll
+import DualScaleMoonshine.CharactersAll

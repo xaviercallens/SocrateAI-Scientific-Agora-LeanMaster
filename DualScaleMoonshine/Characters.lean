@@ -27,8 +27,8 @@ second orthogonality relation — Tier L for the interpretation, Tier A for the 
 the coefficient of the twined series **computed** in `Twining.lean`.
 
 ### What is not proved
-Levels 8–9 (EOT give no decomposition there); classes other than `2A`, `3A` (irrational character
-values need `ℤ[(−1+√−7)/2]` etc.); existence of the module (Gannon, Tier L).
+Levels 8–9 (EOT give no decomposition there); existence of the module (Gannon, Tier L). Classes other
+than `2A`, `3A`, whose character values lie in `ℤ[(−1+√−7)/2]` etc., are treated in `CharactersAll.lean`.
 -/
 import DualScaleMoonshine.Twining
 
