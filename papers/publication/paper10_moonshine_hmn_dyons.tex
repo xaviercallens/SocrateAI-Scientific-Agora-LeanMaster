@@ -1,0 +1,625 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{cite}
+\usepackage{microtype}
+\usepackage{tcolorbox}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=red,
+    urlcolor=cyan,
+    pdftitle={Mathieu Moonshine Computed, the Double-Scaled Little String Bridge, and Dyons on K3 x T2 in Lean 4},
+    pdfauthor={Xavier Callens and the SocrateAI Scientific Agora Collaboration}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ---------------------------------------------------------------------------
+% Epistemic tier badges, following papers 7-9.
+% ---------------------------------------------------------------------------
+\newcommand{\tierA}{\colorbox{green!15}{\textsf{\scriptsize Tier A --- Lean kernel}}}
+\newcommand{\tierL}{\colorbox{blue!10}{\textsf{\scriptsize Tier L --- literature}}}
+\newcommand{\tierC}{\colorbox{orange!15}{\textsf{\scriptsize Tier C --- conjecture}}}
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\Mtf}{M_{24}}
+
+\newtcolorbox{scopebox}{%
+  colback=gray!5, colframe=gray!45, boxrule=0.4pt, arc=1pt,
+  left=6pt, right=6pt, top=3pt, bottom=3pt,
+  fonttitle=\bfseries\small, title={Scope of Lean 4 verification}
+}
+\newtcolorbox{casebox}[1]{%
+  colback=red!4, colframe=red!45!black, boxrule=0.4pt, arc=1pt,
+  left=6pt, right=6pt, top=3pt, bottom=3pt,
+  fonttitle=\bfseries\small, title={#1}
+}
+
+\title{\Huge \textbf{Mathieu Moonshine Computed,}\\[0.3em]
+\LARGE \textbf{the Double-Scaled Little String Bridge,}\\[0.2em]
+and Dyons on $K3\times T^2$ in Lean~4}
+
+\author{\textbf{Xavier Callens}$^{1}$ \and \textbf{SocrateAI Scientific Agora Collaboration}$^{1}$ \\[0.5em]
+$^{1}$\textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal Verification}}
+
+\date{September 2026}
+
+% [layout] allow long Lean identifiers to break after underscores
+\makeatletter\let\LMoldunderscore\_\renewcommand{\_}{\LMoldunderscore\allowbreak}\makeatother
+\setlength{\emergencystretch}{3em}
+% [/layout]
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We report two Lean~4 libraries (toolchain \texttt{v4.33.1}, Mathlib) in which the mathematics
+around the $K3$ elliptic genus is \emph{computed} from closed formulas rather than transcribed from
+tables. \texttt{DualScaleMoonshine} (Stream~4) computes Mathieu moonshine from both sides: the
+mock modular form $H^{(2)}=(-2E_2+48F_2)/\eta^3$ and its 21 twined series from their formulas, and
+the traces of all 26 conjugacy classes of $\Mtf$ from the character table over $\mathbb{Z}[b_7]$,
+$\mathbb{Z}[b_{15}]$, $\mathbb{Z}[b_{23}]$; the two meet at every class, and the first ten graded
+pieces of the moonshine module decompose, from computed data, exactly as in Cheng--Duncan--Harvey's
+printed table. The same library locates the ``24'' of the shadow in the polar/finite decomposition of
+the elliptic genus, and reproduces the arithmetic of Harvey--Murthy--Nazaroglu's double-scaled little
+string theories, including a two-sided proof of a divisibility they left unexplained.
+\texttt{DualScaleDyons} (Stream~5) builds the quarter-BPS dyon partition function $1/\Phi_{10}$ on
+$K3\times T^2$ from the computed elliptic genus, and shows through the orders stated that its
+single-centred (``immortal'') part at $m=1,2,3$ is given by Hurwitz class numbers, and that its
+$\Mtf$-twisted versions have virtual-character coefficients. The twining (``forger's'') test, applied
+throughout, rejects an integer coincidence proposed earlier in this programme (the ``27720 lock'')
+at all 25 non-identity classes, while $24=\chi(K3)$ and the Göttsche numbers pass it. Four
+reading notes on the literature are recorded. Everything computed is Tier~A (kernel-checked; 101
+and 44 theorems, 0 failing; axioms \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}
+at most); every physical reading is Tier~L or Tier~C. These are results about the mathematics of
+$\mathcal{N}=4$ string compactifications on $K3\times T^2$, not about our universe: the one
+experimental prediction of this programme has separately been found excluded by existing data.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Computed, not typed}
+Earlier libraries of this programme checked Mathieu moonshine as one typed table against another:
+the coefficients $A_1,\dots,A_9$ of Eguchi--Ooguri--Tachikawa~\cite{EOT2010} against the dimensions
+of the irreducible representations of $\Mtf$. A transcription matching a transcription is weak
+evidence --- and this project has already caught one mistyped $\Mtf$ table. The two libraries reported
+here replace transcriptions by computations. The coefficients come from a closed formula; the twined
+coefficients from the formula for $H_g$; the group-theoretic traces from the character table; the
+dyon degeneracies from a Borcherds product whose only input is the $K3$ elliptic genus computed from
+Jacobi theta functions. Where two independent computations meet, the coincidence is checked by the
+Lean kernel, not copied. Where a printed table is used, it is used as a \emph{transcription control}
+that a misreading would break.
+
+\subsection{The forger's test}
+What separated monstrous moonshine from numerology was that the coincidence survives \emph{twining}:
+replacing a dimension by the trace of every group element. We apply the same test to this programme's
+own integers (\Cref{sec:forger}). A relation proposed in paper~7~\cite{Callens2026Paper7}
+(Theorem~6.1, the ``27720 lock'') fails it at every non-identity class; $24=\chi(K3)$ and the
+numbers built from it pass it everywhere they are tested.
+
+\subsection{Contents}
+\Cref{sec:tiers} restates the tier system. \Cref{sec:moonshine} computes Mathieu moonshine from both
+sides. \Cref{sec:forger} applies the forger's test. \Cref{sec:shadow} locates the ``24'' of the
+shadow. \Cref{sec:hmn} reproduces Harvey--Murthy--Nazaroglu's double-scaled little strings.
+\Cref{sec:dyons} builds the dyon partition function on $K3\times T^2$ and its single-centred part.
+\Cref{sec:twisted} treats the $\Mtf$-twisted dyons. \Cref{sec:notes} records four reading notes on
+the literature. \Cref{sec:context} places these results against the programme's experimental verdict.
+\Cref{sec:scope} states what is and is not proved; \Cref{sec:methods} records methods;
+\Cref{sec:open,sec:directions} give open problems and research directions; \Cref{app:repro} is a
+reproducibility appendix.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Epistemic tiers}
+\label{sec:tiers}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+As in papers~7--9, every claim carries one of three tags.
+\begin{itemize}
+  \item \tierA\ --- accepted by the Lean~4 kernel: \texttt{\#print axioms} reports at most
+  \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; no \texttt{sorry}, no
+  \texttt{admit}, no project-declared \texttt{axiom}, and no compiled evaluation
+  (\texttt{native\_decide} is not used anywhere).
+  \item \tierL\ --- established in the cited literature, quoted with a file and line range in
+  \texttt{papers/foundations/*.txt}.
+  \item \tierC\ --- a reading or conjecture introduced by this project. \textbf{The identification of
+  a Lean object with a physical quantity is never Tier~A.}
+\end{itemize}
+Nearly all Tier~A statements below are finite identities between truncated power series with integer
+(or Laurent-polynomial) coefficients, decided by kernel evaluation; each theorem states its truncation
+order. ``Through $q^N$'' means exactly that and nothing beyond.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mathieu moonshine from both sides}
+\label{sec:moonshine}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The modular side}
+Cheng--Harrison~\cite{ChengHarrison2014} (\texttt{1406\_0619.txt} ll.~800--813, eqs.~(3.5)--(3.6))
+give $H^{(2)}(\tau)=(-2E_2(\tau)+48F_2^{(2)}(\tau))/\eta(\tau)^3$ with
+$F_2^{(2)}=\sum_{r>s>0,\ r-s\text{ odd}}(-1)^r s\,q^{rs/2}$. \tierL.
+
+\begin{theorem}[Computed equals typed] \tierA\
+The series computed from this formula, divided exactly by $\prod(1-q^n)^3$, equals
+$-2,2A_1,\dots,2A_9$ of the EOT table (\lean{hComputed\_eq\_table}); the transcription of $F_2$ is
+checked separately (\lean{f2\_control}).
+\end{theorem}
+
+Cheng--Duncan--Harvey (CDH)~\cite{CDH2012} give the twined series $H_g=(\chi_g/24)H+F_g/\eta^3$
+(\texttt{1204\_2779.txt} l.~2934, eq.~(4.18)) with $F_g$ the weight-2 forms of their Table~3
+(ll.~2882--2915): multiples of $\Lambda_N$, eta quotients, and the newforms
+$f_{11},f_{14},f_{15},f_{23,a},f_{23,b}$ with prefactors $2/5,1/3,1/4,1/3,1/11$. \tierL.
+
+\begin{theorem}[All 21 columns of CDH Table~20] \tierA\
+For every conjugacy class, the twined series computed as $24D\cdot H_g$ over $\mathbb{Z}$ equals $24D$
+times the printed column of CDH Table~20 (ll.~4494--4512) through $q^9$: \lean{twined\_2A},
+\lean{twined\_3A}, \lean{twined\_5A}, \lean{twined\_7AB} and \lean{twined\_2B}, \dots,
+\lean{twined\_23AB}; the division by $24D$ is exact (\lean{twined\_div24}, \lean{twinedAll\_div}).
+\end{theorem}
+Negative controls: dropping $F_g$ breaks the match (\lean{twined\_2A\_needs\_F}); dropping the newforms
+breaks $11A$ and $23AB$ (\lean{twined\_11A\_needs\_newform}, \lean{twined\_23AB\_needs\_newforms}); a
+wrong exponent in the $12A$ eta quotient breaks it (\lean{twined\_12A\_exponent\_matters}). The two
+forms that CDH print both as $\Lambda$-combinations and as eta quotients agree
+(\lean{eta\_lambda\_agree\_2B}, \lean{eta\_lambda\_agree\_4A}).
+
+\subsection{The group side}
+CDH Table~8 (ll.~4170--4209) is the character table of $\Mtf$, with irrational values
+$b_n=(-1+\sqrt{-n})/2$ for $n=7,15,23$. We store $a+b\,b_n$ as a pair $(a,b)$ with $b_n^2=-b_n-(n+1)/4$,
+and accumulate inner products as a tuple (rational part, $\omega_7$-, $\omega_{15}$-, $\omega_{23}$-part);
+since $1,\sqrt{-7},\sqrt{-15},\sqrt{-23}$ are $\mathbb{Q}$-linearly independent, an inner product equals
+an integer exactly when the tuple is (integer, 0, 0, 0).
+
+\begin{theorem}[Guards on the transcription] \tierA\
+The column norms of the transcribed table are the centralizer orders (\lean{colNorm\_eq\_cent}), each
+divisible by the element order and dividing $|\Mtf|$ (\lean{cent\_divides}); the class equation holds
+(\lean{class\_equation}); the first orthogonality relation holds for all $26\times26$ pairs of rows,
+irrational columns included (\lean{gram\_ok}); a misreading outside the relabelling orbit violates it
+(\lean{misread\_fails\_gram}).
+\end{theorem}
+The flattened PDF text loses the overlines ($b_7$ and $\bar b_7$ both print as \texttt{b7}). An
+exhaustive search (Python, \emph{not} a kernel proof) found 128 readings passing orthogonality, exactly
+the orbit under renaming classes and characters, all with the same traces.
+
+\begin{theorem}[Moonshine at every class] \tierA\
+For all 26 classes $g$ and levels $n=1,\dots,7$, the trace of $g$ on EOT's representation is a rational
+integer (the irrational parts vanish) and equals the coefficient of the computed $H_g$
+(\lean{trace\_eq\_twined\_coeff\_all}); algebraically conjugate classes have equal traces
+(\lean{trace\_pairs\_equal}); swapping two classes breaks the match (\lean{trace\_7A\_ne\_series\_23A}).
+\end{theorem}
+
+\subsection{Levels 0--9: the module, from computed data}
+Reversing the direction, the multiplicity of each irreducible in the graded piece $K_n$ is
+$\langle T_n,\chi_i\rangle$ with $T_n(g)$ the computed coefficient. CDH print the decompositions in their
+Table~48 (ll.~5305--5330). \tierL.
+
+\begin{theorem}[The first ten graded pieces] \tierA\
+For $n=0,\dots,9$ every multiplicity is an integer, equal to CDH Table~48, and non-negative from $n=1$
+(\lean{moonshine\_modules\_decompose}, \lean{moonshine\_multiplicities\_nonneg}). In particular levels
+$8$ and $9$, for which EOT give no decomposition, are characters of genuine $\Mtf$-modules; e.g.
+$K_8=990\oplus\overline{990}\oplus1035'\oplus1035''\oplus2\cdot1265\oplus\cdots\oplus6\cdot10395$.
+\end{theorem}
+Cheng~\cite{Cheng2010} (\texttt{1005\_5415.txt} ll.~540--548) observed that EOT's original proposal
+$30843=10395+2\cdot5796+5544+3312$ at level~7 is inconsistent with the twined series and proposed
+$10395+5796+5544+5313+2024+1771$; the first is refuted by \lean{eot\_level7\_proposal\_inconsistent},
+the second is the decomposition used in \lean{trace\_eq\_twined\_coeff\_all}. \tierA.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The forger's test}
+\label{sec:forger}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Paper~7's Theorem~6.1 relates the first two coefficients, $\mathcal{A}_2/(N_Q\mathcal{A}_1)=462/360$,
+with product $27720$. It holds at the identity, now from the computed series (\lean{lock\_at\_identity}).
+
+\begin{theorem}[The lock fails twining] \tierA\
+The ratio form of the lock, with each twined series' own coefficients, fails at all 25 non-identity
+classes (\lean{ratio\_fails\_at\_every\_class}; first shown at $2A,3A,5A,7AB$ by
+\lean{ratio\_fails\_at\_2A}, \dots). At $2A$, $\mathcal{A}_2/\mathcal{A}_1=14/(-6)$, not $462/90$.
+\end{theorem}
+Relations that encode module structure survive twining; this ratio does not. By that criterion the lock
+is numerology. \tierC\ (the criterion is a reading; the failure is \tierA).
+
+By contrast, the integers of the dyon sector pass. CDH's Frame shapes (Table~14, ll.~4349--4364) have
+degree 24 and fixed points $\chi_g$ (\lean{frame\_degree}, \lean{frame\_fixed\_points}) and agree with the
+power maps of Table~8 (\lean{frame\_power\_maps}); the twined Göttsche numbers
+$T_k(g)=[p^k]\prod_{n\ge1}\det(1-p^ng\,|\,\mathbb{C}^{24})^{-1}$ equal $p_{24}(k)$ at $g=1$
+(\lean{twined\_goettsche\_identity}) and, for $k\le4$, are characters of $\Mtf$ with non-negative
+integer multiplicities (\lean{twined\_goettsche\_is\_character}); e.g.
+$H^*(\mathrm{Hilb}^2K3)=3\cdot\mathbf{1}\oplus3\cdot\mathbf{23}\oplus\mathbf{252}$
+(\lean{twined\_goettsche\_k2}). \tierA. This is mathematically expected (symmetric powers of a
+permutation module); its value is the certified cross-check of three transcribed tables and the contrast
+with the lock.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Where the 24 of the shadow comes from}
+\label{sec:shadow}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Harvey--Murthy--Nazaroglu (HMN)~\cite{HMN2014} state that the shadow of $H^{(2)}$ is $24\eta^3$
+(\texttt{1410\_6174.txt} l.~246), and that $\eta^3H$ is a mixed mock modular form whose completion is,
+up to $-\tfrac12$, the second helicity supertrace of the double-scaled little string theory at $k=2$
+(ll.~262--270). \tierL. No completion or modular transformation is formalized here. What is formalized
+is the arithmetic skeleton, following CDH §2.3 (\texttt{1204\_2779.txt} ll.~657--711, eqs.~(2.19)--(2.25)):
+$\psi=\Psi_{1,1}\,Z=\chi\,\mathrm{Av}^{(2)}[(y+1)/(y-1)]+H\,\hat\theta_1$, with $Z=8(f_2^2+f_3^2+f_4^2)$
+((2.49), (2.62), ll.~1266, 1397), cleared of denominators into an identity of $q$-series with exact
+Laurent-polynomial coefficients in $y$.
+
+\begin{theorem}[The polar/finite decomposition] \tierA\
+Through $q^9$: $Z(\tau,0)=24$ with every higher coefficient zero (\lean{ellipticGenus\_z0}); $Z$ begins
+$2y+20+2y^{-1}+q(20y^2-128y+216-128y^{-1}+20y^{-2})$ (\lean{ellipticGenus\_first\_terms}); the cleared
+$\Psi_{1,1}$ reproduces CDH's printed expansion (\lean{psi11\_expansion}); the decomposition holds with
+$\chi=24$ and $H$ the series computed from $(-2E_2+48F_2)/\eta^3$ (\lean{decomposition}), and fails for
+$\chi=23,25$ (\lean{decomposition\_pins\_chi}) and for $H$ replaced by $H_{2A}$
+(\lean{decomposition\_needs\_H}); the unary theta series whose multiple is the shadow equals $\eta^3$
+(\lean{shadowTheta\_eq\_eta3}); CDH's twined shadow multiplicities are traces on $\mathbf{1}\oplus\mathbf{23}$
+(\lean{shadow\_coeff\_eq\_perm\_trace}).
+\end{theorem}
+Two independent facts meet at $24$: the value $Z(\tau,0)$ and the multiplicity of the polar part. That
+this multiplicity is the shadow's coefficient is Zwegers' theorem as recast by CDH. \tierL. Reading the
+polar (massless) and finite (massive) parts as ``macro'' and ``micro'' sectors is \tierC.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Double-scaled little strings}
+\label{sec:hmn}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+HMN attach to each ADE root system $Y$ with Coxeter number $k$ (the lattice of vanishing $(-2)$-cycles of
+$k$ NS5-branes) a BPS index $\chi_2^Y=\mathrm{rk}(Y)E_2-24F_2^Y$ (\texttt{1410\_6174.txt} l.~732,
+eq.~(2.36)), with $F_2^{(k,d)}$ an explicit divisor sum (l.~703, eq.~(2.29)) combined according to their
+Table~1, and relate it to umbral moonshine for $X=Y^{24/\mathrm{rk}(Y)}$ by
+$\chi_2^Y=-(\mathrm{rk}(Y)/2)\chi_2^X$ (l.~1266, eq.~(4.9)). \tierL.
+
+\begin{theorem}[HMN's formula, reproduced] \tierA\
+The formula reproduces HMN's printed series for $Y=A_3$ and $Y=A_7$ (ll.~1295, 1299;
+\lean{hmn\_A3\_printed}, \lean{hmn\_A7\_printed}); HMN's $F_2^{(2,1)}$ equals Cheng--Harrison's $F_2$
+through $q^{40}$ (\lean{f2kd\_k2\_eq\_f2Coeff}); and at $k=2$, $-2\chi_2^{A_1}=\eta^3H=-2E_2+48F_2$ through
+$q^9$ (\lean{hmn\_k2\_eq\_moonshine}).
+\end{theorem}
+
+\begin{theorem}[The umbral relation (4.9)] \tierA\
+For $\ell=2,3,4,5,7,13$ the umbral Jacobi forms $Z^{(\ell)}=2\phi_1^{(\ell)}$ built from theta functions
+(CDH (2.49)--(2.51)) are integral (\lean{umbral\_exact}), satisfy $Z^{(\ell)}(\tau,0)=24/(\ell-1)$
+(\lean{umbral\_chi}), their polar part removes the pole (\lean{umbral\_pole\_removed},
+\lean{umbral\_pole\_removed\_13}), and HMN's (4.9) holds against $Y=A_{\ell-1}$ through $q^6$
+(\lean{hmn\_umbral\_relation\_2}, \dots, \lean{hmn\_umbral\_relation\_13}); pairing $\ell=3$ with $A_3$
+fails (\lean{hmn\_umbral\_relation\_wrong\_Y}).
+\end{theorem}
+
+HMN observe (ll.~1284--1299) that for umbral $Y$ all coefficients of $\chi_2^Y$ are divisible by
+$\mathrm{rk}(Y)$, ``but it is not clear why'' for the massive states, and that $A_7$ fails.
+
+\begin{theorem}[The divisibility, both directions] \tierA\
+For every $Y$ and every $n$, $\mathrm{rk}(Y)\mid24$ implies $\mathrm{rk}(Y)\mid[q^n]\chi_2^Y$
+(\lean{divisible\_of\_dvd\_24}; all coefficients, not a truncation, since
+$[q^n]\chi_2^Y=-24(\mathrm{rk}(Y)\sigma(n)+F_2^Y(n))$ with $F_2^Y(n)\in\mathbb{Z}$). Conversely, for every
+$A_{k-1}$ ($k\ge2$) and every $D_{j+1}$ ($j\ge3$), all coefficients are divisible by the rank \emph{iff}
+the rank divides 24, with the $q^1$ coefficient as witness (\lean{A\_divisible\_iff},
+\lean{D\_divisible\_iff}); $E_6,E_8$ divide and $E_7$ fails (\lean{E\_divisibility}).
+\end{theorem}
+The divisible $Y$ are exactly HMN's umbral list. Within HMN's own formula, the puzzle has an elementary
+cause: the massive coefficients are $24\times$ integers. Why the factor in (2.36) is $24$ is not addressed;
+reading it as $\chi(K3)$ is \tierC.
+
+\begin{casebox}{Closed as not available: the link to $(-2)$-reflections}
+The Stream~4 plan asked to relate this counting to the kernel-checked fact that reflections in
+$(-2)$-vectors are lattice isometries (paper~8), or to show that no formal relation is available. In HMN
+the lattice-theoretic structure enters through the Niemeier lattice $L_X$ and its Weyl group,
+$G^X=\mathrm{Aut}(L_X)/W_X$ (\texttt{1410\_6174.txt} l.~277, eq.~(1.10)). Nothing computed above involves a
+reflection or an isometry; $\mathrm{rk}(Y)$ enters only as a number. Constructing $L_{A_1^{24}}$ would not
+close the gap, which is the isomorphism $\mathrm{Aut}(L_X)/W_X\cong\Mtf$; we record the link as not
+available rather than implying a closure.
+\end{casebox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\texorpdfstring{Dyons on $K3\times T^2$}{Dyons on K3 x T2}}
+\label{sec:dyons}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The partition function from the elliptic genus}
+Dabholkar--Murthy--Zagier (DMZ)~\cite{DMZ2012}: quarter-BPS dyons of type~II string theory on
+$K3\times T^2$ are counted by $1/\Phi_{10}(\Omega)=\sum_{m\ge-1}\psi_m(\tau,z)p^m$ (\texttt{1208\_4074.txt}
+l.~177, eq.~(1.1)); $\Phi_{10}$ is the Borcherds (multiplicative) lift of the $K3$ elliptic genus
+$2\phi_{0,1}=\sum c(4n-l^2)q^ny^l$ (l.~1820, eq.~(5.13)). Hence $\Delta\psi_m=A^{-1}G_{m+1}$ with
+$A=\phi_{-2,1}$ and $\sum_kG_kp^k=\prod_{r\ge1,s\ge0,t}(1-p^rq^sy^t)^{-c(4rs-t^2)}$. \tierL.
+
+\begin{theorem}[The product, from our $Z_{K3}$] \tierA\
+The coefficients of the computed $Z_{K3}$ depend only on $4n-l^2$ (\lean{c\_depends\_only\_on\_D});
+every $c(D)$ the truncated products read is available through $q^9$ (\lean{dmvv\_reachable}, an
+enumerated guard, with a failing example \lean{dmvv\_unreachable\_example}); the integer divisions in the
+product are exact (\lean{negBinom\_exact}). At $z=0$, $G_k=p_{24}(k)=1,24,324,3200,25650,176256$ for
+$k\le5$, constant in $\tau$ (\lean{goettsche}, \lean{p24\_values}) --- the Euler numbers of
+$\mathrm{Hilb}^kK3$, with $p_{24}$ the 24-coloured partitions (DMZ l.~1070; $p_{24}(3)=3200$ at l.~3639).
+\end{theorem}
+
+\begin{theorem}[DMZ (5.16)] \tierA\
+The six printed identities $\Delta\psi_{-1}=A^{-1}$, \dots,
+$72\Delta\psi_4=51A^{-1}B^5+155E_4AB^3+93E_6A^2B^2+102E_4^2A^3B+31E_4E_6A^4$ (\texttt{1208\_4074.txt}
+ll.~1879--1888), with $A$, $B=\phi_{0,1}$ from theta products and $E_4,E_6$ from divisor sums, hold
+(\lean{dmz\_516\_q1}: $k\le5$ through $q^1$; \lean{dmz\_516\_q2}: $k\le4$ through $q^2$).
+\end{theorem}
+
+\subsection{Two-centred and single-centred parts}
+DMZ's canonical decomposition $\psi_m=\psi_m^F+\psi_m^P$ has polar part
+$\psi_m^P=p_{24}(m+1)\Delta^{-1}A_{2,m}$, $A_{2,m}=\sum_sq^{ms^2+s}y^{2ms+1}/(1-q^sy)^2$ (ll.~196--204,
+eqs.~(1.2)--(1.3)), counting two-centred configurations that appear and disappear across walls of
+marginal stability, while $\psi_m^F$ counts single-centred (``immortal'') black holes (ll.~424--443).
+\tierL. $A_{2,m}$ has different Fourier expansions in different strips; all statements below use
+$|q|<|y|<1$.
+
+\begin{theorem}[The polar part] \tierA\
+In the strip, the direct expansion of (1.3) equals DMZ's (9.55) (l.~5210; \lean{a2m\_strip\_eq\_955});
+$G_{m+1}-p_{24}(m+1)A\,A_{2,m}$ vanishes to second order at $y=1$ at every order in $q$, $m=1,2,3$
+(\lean{polar\_part\_removes\_pole}), and $p_{24}(m+1)\pm1$ do not (\lean{polar\_coefficient\_pinned}).
+\end{theorem}
+The second-order condition is automatic by $y\leftrightarrow y^{-1}$ symmetry; what these two theorems
+discriminate is the first-order condition --- the pole coefficient is $G_{m+1}(\tau,0)=p_{24}(m+1)$. The
+full second-order content (exact division by $A$) is carried by the theorems below.
+
+\begin{theorem}[Immortal dyons are class numbers] \tierA\
+With $H$ the generating function of Hurwitz class numbers, computed by counting reduced binary quadratic
+forms (\lean{hurwitz\_values}), the single-centred counting functions computed from the product satisfy,
+through the orders stated,
+\[
+\Delta\psi_1^F=3E_4A-648H\ \ (q^3),\qquad
+3\Delta\psi_2^F=-800\,(12H|V_2)+22E_4AB-10E_6A^2\ \ (q^2),
+\]
+\[
+48\Delta\psi_3^F=-102600\,(12H|V_3)+467E_4AB^2-430E_6A^2B+203E_4^2A^3\ \ (q^2),
+\]
+where $12(H|V_p)$ has coefficients $12H(\Delta)+p\cdot12H(\Delta/p^2)$
+(\lean{immortal\_m1}, \lean{immortal\_m2}, \lean{immortal\_m3}; exactness \lean{immortal\_m1\_exact},
+\lean{immortal\_exact\_m23}). Dropping $H$ breaks $m=1$ (\lean{immortal\_m1\_needs\_H}); dropping the
+Hecke correction breaks $m=2$ (\lean{immortal\_m2\_needs\_V2}).
+\end{theorem}
+The combinations follow from (5.16) and DMZ's optimal forms: Example~5 (ll.~3530--3558), (9.10) (l.~3774),
+(9.11) (l.~3793), (9.12)--(9.13) (ll.~3830, 3850). These are checked, not cited: the finite parts of
+$\psi_{0,3}^{\mathrm{opt}}/A$ and $\psi_{0,4}^{\mathrm{opt}}/A$ are $-12^{m+1}H|V_m$
+(\lean{dmz\_911\_verified}, \lean{dmz\_913\_verified\_m3}), and DMZ's printed tables are reproduced
+(\lean{example5\_tables}, \lean{dmz\_911\_table}, \lean{dmz\_912\_table}). \tierA.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\texorpdfstring{$\Mtf$-twisted dyons}{M24-twisted dyons}}
+\label{sec:twisted}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Cheng~\cite{Cheng2010} proposes twisted denominators
+$\Phi_g=e^{4\pi i(\rho,\Omega)}\prod_\alpha\exp\big(-\sum_{k\ge1}\tfrac1kc_{g^k}(|\alpha|^2)e^{2\pi ik(\alpha,\Omega)}\big)$
+built from the twisted elliptic genera $Z_{g^k}$ (\texttt{1005\_5415.txt} ll.~933--942, eqs.~(3.9)--(3.10)),
+with a pole factorizing into two twisted half-BPS functions $1/\eta_g$ (l.~985, eq.~(3.11)); for the
+geometric classes $Z_{g_p}=\tfrac2{p+1}\phi_{0,1}+\dots$ (l.~423, eq.~(2.5)). \tierL. We compute
+$Z_g=(\chi_g/24)Z-F_g\,A$ for all 26 classes from Stream~4's data (a consequence of CDH (4.18) and the
+decomposition of \Cref{sec:shadow}), and the product by Newton's identities with CDH's power maps.
+
+\begin{theorem}[Twisted dyons are virtual characters] \tierA\
+The 26 twisted genera are integral, index~1 and satisfy $Z_g(\tau,0)=\chi_g$ (\lean{twined\_genus\_exact},
+\lean{twined\_genus\_index1}, \lean{twined\_genus\_z0}); Newton's divisions are exact
+(\lean{newton\_exact}); $g=1A$ recovers the untwisted product (\lean{twisted\_product\_untwisted}); at $z=0$
+the $p$-coefficients are the twined Göttsche numbers (\lean{twisted\_goettsche}); every coefficient of
+$G_1^{(g)},G_2^{(g)}$ through $q^2$ is a virtual character of $\Mtf$ (\lean{twisted\_dyons\_are\_characters});
+for all 26 classes $T_2(g)\,A_{2,1}$ removes the double pole (\lean{twisted\_polar\_removes\_pole}); and the
+twisted single-centred counting function at $m=1$ has virtual-character coefficients
+(\lean{twisted\_immortal\_are\_characters}), e.g. the $q^1y^0$ coefficient
+$-1800=2\cdot\mathbf1+2\cdot\mathbf{23}+2\cdot\mathbf{45}+2\cdot\overline{\mathbf{45}}-\mathbf{231}
+-\overline{\mathbf{231}}+2\cdot\mathbf{252}-\mathbf{1035}'-\mathbf{1035}''$ (\lean{twisted\_immortal\_example}).
+\end{theorem}
+Once the twisted genera are characters (Gannon's theorem, \tierL), the later steps are linear and
+class-independent, so character-valuedness is expected; the content is the certified end-to-end
+computation from modular data and CDH's power maps. That $1/\Phi_g$ counts twisted dyons, and any
+$\Mtf$ action on black-hole microstates, is \tierL/\tierC.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reading notes on the literature}
+\label{sec:notes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+These are recorded as observations, not corrections; each is backed by a kernel-checked computation.
+\begin{enumerate}
+\item \textbf{HMN (4.2).} \texttt{1410\_6174.txt} l.~1194 prints $\chi_2^Y=-\mathrm{rk}(Y)E_2+24F_2^Y$,
+the opposite overall sign of their (2.36) (l.~732). Their printed series (4.10)--(4.11) (ll.~1295, 1299)
+and the count of $\mathrm{rk}(Y)$ massless vector multiplets require the sign of (2.36), which is the one
+used (\lean{hmn\_A3\_printed}, \lean{hmn\_A7\_printed}).
+\item \textbf{DMZ (1.4).} \texttt{1208\_4074.txt} l.~211 lists, for the strip $0<\mathrm{Im}\,z<\mathrm{Im}\,\tau$,
+the terms $\ell q^{(r^2-\ell^2)/4m}y^r$ with $r\ge\ell>0$. The direct expansion of (1.3) in that strip, and
+DMZ's own general formula (9.55), also contain the mirror terms with $y^{-r}$, $r>\ell>0$ (from $s\le-1$);
+the formalization uses (9.55) (\lean{a2m\_strip\_eq\_955}).
+\item \textbf{Cheng's $c_g(-1)$.} \texttt{1005\_5415.txt} l.~960 writes $c_g(-1)=-2$. In Cheng's own
+(2.5) and in the normalization used here the coefficient of $y^{\pm1}q^0$ is $+2$ for all 26 classes
+(\lean{twisted\_genus\_q0}, \lean{c\_minus\_one}); the printed $-2$ is a sign convention or a misprint.
+\item \textbf{EOT's level-7 decomposition.} Already noted by Cheng (ll.~540--548); confirmed by
+\lean{eot\_level7\_proposal\_inconsistent}.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Context: the programme's experimental verdict}
+\label{sec:context}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Streams~4 and~5 study the mathematics of $\mathcal{N}=4$ string compactifications on $K3\times T^2$; they
+make no prediction about our universe. The programme's single experimental prediction came from
+Stream~3 (paper~9~\cite{Callens2026Paper9}): the self-dual length $s=\sqrt{\ell_P\,c/H_0}\approx47\,\mu$m
+read as the radius of one large extra dimension. In Stream~6 that prediction was frozen (git tag
+\texttt{stream6-p1-frozen}; the freeze was made after the bounds were known, and is disclosed as a
+retrodiction) and compared with the Eöt-Wash 2020 bounds~\cite{LeeAdelberger2020} (toroidal radius
+$<30\,\mu$m, Yukawa range $<38.6\,\mu$m; \texttt{2002\_11761.txt} ll.~285--289) and the neutron-star bound
+of Montero--Vafa--Valenzuela~\cite{MonteroVafaValenzuela2023} ($<44\,\mu$m; \texttt{2205\_12293.txt}
+l.~327): it fails all three and is excluded by the pre-registered rule
+(\lean{DualScaleCosmology.Stream6Verdict.p1\_verdict\_excluded}); the programme's own T-duality fixes the
+order-one factor at $1$ (\lean{p62\_selfdual\_fixed\_point}), so no convention rescues it. The results of
+this paper are unaffected: they are Tier~A mathematics, and the ``micro/macro'' readings above were
+labelled Tier~C throughout.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{What is, and is not, proved}
+\label{sec:scope}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scopebox}
+\textbf{Is proved (Tier~A; \texttt{DualScaleMoonshine} 101 theorems, \texttt{DualScaleDyons} 44 theorems,
+0 failing, 0 \texttt{sorry}; axioms at most \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}):}
+finite identities between truncated series, each through the order stated in its theorem ---
+$H^{(2)}$ and all 21 twined series from their formulas; consistency guards and full orthogonality of the
+transcribed character table; traces equal computed coefficients at all 26 classes (levels 1--7);
+multiplicities of $K_0,\dots,K_9$ equal CDH Table~48; the lock's failure at 25 classes; the polar/finite
+decomposition of $\Psi_{1,1}Z$ with multiplicity $24$; HMN's formula and umbral relation for six
+lambencies; the divisibility theorem in both directions for all $A$ and $D$ types; the dyon product from
+$Z_{K3}$, DMZ's (5.16), the polar coefficient $p_{24}(m+1)$, the immortal parts at $m=1,2,3$ via class
+numbers; the twisted dyon products and their character-valued coefficients.
+
+\textbf{Is not proved:} mock modularity of any series, any shadow, completion or modular transformation;
+anything past the stated truncations; the Siegel-modularity of $\Phi_{10}$ or convergence of the product;
+that $1/\Phi_{10}$ or $1/\Phi_g$ counts dyons, or that $\psi_m^F$ counts single-centred black holes; the
+existence of the moonshine module (Gannon); the general statements behind the finite checks (e.g. DMZ's
+(9.13) for all primes); that the transcribed character table \emph{is} the character table of $\Mtf$ (the
+guards are consistency checks it must pass, not a construction of $\Mtf$); the link to
+$(-2)$-reflections (\Cref{sec:hmn}); and any statement about our universe.
+\end{scopebox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Methods}
+\label{sec:methods}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Exact arithmetic.} Series are lists of integers; Jacobi-form coefficients are Laurent polynomials
+stored as (offset, coefficient list), with exact convolution --- no truncation in $y$. Denominators are
+cleared by hand and the cleared identities are what the kernel checks; exact divisions are asserted by
+separate theorems. Every formula was prototyped numerically before being stated in Lean.
+
+\textbf{Kernel evaluation.} All decisions use \texttt{decide}; the heaviest (umbral forms at
+$\ell=13$, twisted dyons) use \texttt{decide +kernel}, in which the kernel evaluates the decision procedure
+directly --- no compiled evaluation and no additional axiom. The HMN file takes about 17 minutes to check,
+the twisted-dyon file about 8.
+
+\textbf{Guards against silent truncation.} A truncated product silently reads unavailable coefficients as
+zero. The reachability of every coefficient read by the dyon product is an enumerated theorem with a
+failing example, and every negative control in this paper is a theorem that the corresponding identity is
+\emph{false}.
+
+\textbf{Two errors caught by computation.} An off-by-one in the indexing of $p_{24}$ (DMZ use the number of
+24-coloured partitions of $n$, so $p_{24}(2)=324$) made a first prototype of the polar-part check fail for
+every coefficient, including the correct one; the failure of the positive case is what exposed it. A
+reachability estimate stated as ``$KQ\le9$'' was replaced by an enumeration after review, because the
+estimate was not connected to the computation it guarded.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Open problems for the community}
+\label{sec:open}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+\item \textbf{Mock modularity in a proof assistant.} No statement here involves a completion or a modular
+transformation. Formalizing Zwegers' completion of an Appell--Lerch sum (even for one example) would turn
+the Tier~L step ``polar multiplicity $=$ shadow coefficient'' into Tier~A.
+\item \textbf{The general theorems behind the finite checks.} DMZ's (9.13) ($\Phi^{\mathrm{opt}}_{2,p}=-H|V_p$
+for all primes $p$) and HMN's (4.9) for all umbral $Y$ are checked here at small order and small index only.
+\item \textbf{$D$- and $E$-type umbral forms.} The umbral relation is checked for pure $A$-type Niemeier root
+systems; the $D$ and $E$ cases need umbral forms not constructed from the theta products used here.
+\item \textbf{The reflection bridge.} Formalizing $\mathrm{Aut}(L_X)/W_X\cong\Mtf$ for $X=A_1^{24}$, or any
+Niemeier lattice, would reopen the link closed as not available in \Cref{sec:hmn}.
+\item \textbf{Twisted immortal counts at higher order.} The character-valuedness of the twisted
+single-centred counts is checked through $q^2$ at $m=1$; kernel cost grows quickly with $m$ and $q$.
+\item \textbf{Why 24 in HMN's (2.36)?} The divisibility theorem reduces HMN's puzzle to the factor 24; a
+derivation of that factor from the DSLST on $K3$ would complete the explanation.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proposed research directions}
+\label{sec:directions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+\item \textbf{A library of computed moonshine.} The same method (closed formula, twined formula, character
+table, kernel comparison) applies to the other umbral groups; CDH's tables for $\ell=3,4,5,7,13$ are pinned
+and would serve as transcription controls.
+\item \textbf{The forger's test as a standard.} Any integer coincidence proposed as physics should first be
+twined; formalizing the test for a proposed relation costs little once the twined series exist.
+\item \textbf{Wall-crossing formalized.} The strip dependence of $A_{2,m}$ (DMZ (9.55)) is the arithmetic of
+wall-crossing; checking the jump across a wall against the two-centred degeneracy formula would connect
+the polar part to its physical interpretation at the level of identities.
+\item \textbf{CHL models.} For the geometric classes, Cheng's twisted denominators coincide with CHL dyon
+counting functions; checking this identification for $p=2,3,5,7$ would link the twisted products to an
+independent physical computation.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\label{sec:conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Starting from the $K3$ elliptic genus computed from theta functions, and from printed tables used only as
+controls, the kernel confirms Mathieu moonshine at every class and at the first ten levels, locates the
+$24$ of the shadow, reproduces the arithmetic of double-scaled little strings with a two-sided divisibility
+theorem, and builds the dyon partition function on $K3\times T^2$ whose single-centred part at $m=1,2,3$
+is given by class numbers and whose twisted versions are character-valued. The number $24=\chi(K3)$ passes
+every twining test applied to it; a coincidence proposed earlier in this programme does not. These are
+results about mathematics, recorded with their scope; the programme's attempt to extract a prediction
+about our universe from the same structure has been tested separately and found excluded.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\section{Reproducibility}
+\label{app:repro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Build}
+\begin{center}
+\footnotesize\ttfamily
+lake build StringTheoryFoundation DualScaleM24Formalization DoubleFieldTheory \textbackslash\\
+  DualScaleValidation Lean5Corpus StringTheoryFormalization DualScaleStream2 \textbackslash\\
+  DualScaleCosmology DualScaleMoonshine DualScaleDyons
+\end{center}
+All ten libraries build without error (3799 jobs at the Stream~5 release; release tag \texttt{v3.14.0}).
+
+\subsection{Axiom audit}
+\begin{center}
+\footnotesize\ttfamily
+python3 tools/axiom\_audit.py DualScaleMoonshine\\
+python3 tools/axiom\_audit.py DualScaleDyons
+\end{center}
+report \textbf{101} and \textbf{44 theorems, 0 failing}. The computational theorems depend on
+\texttt{propext} only (six, across the two libraries, on no axiom at all); the divisibility proofs of \Cref{sec:hmn} use the three standard
+axioms. Across the ten libraries of the repository: \textbf{611 theorems, 0 failing}.
+
+\subsection{Statement lock}
+\begin{center}
+\footnotesize\ttfamily
+python3 tools/statement\_lock.py --check \$(find DualScaleMoonshine DualScaleDyons -name '*.lean')
+\end{center}
+locks the declarations of both libraries (Stream~4: 9 files; Stream~5: 6 files); every addition was
+checked to add entries only.
+
+\subsection{Sources pinned}
+Hash-pinned in \texttt{papers/foundations/MANIFEST.md}, line ranges quoted at the point of use:
+{\small\texttt{1004.0956, 1406.0619, 1204.2779, 1410.6174, 1208.4074, 1005.5415, 2002.11761,
+2205.12293}}.
+
+\subsection{Plans}
+\texttt{docs/STREAM4\_WORKFLOW.md} and \texttt{docs/STREAM5\_WORKFLOW.md} record every phase as closed
+(\checkmark) or closed as not available with the reason; \texttt{docs/STREAM6\_EXPERIMENT\_PLAN.md} records
+the experimental verdict.
+
+\begin{thebibliography}{99}
+\bibitem{Callens2026Paper7} X.~Callens and the SocrateAI Agora Collaboration, ``The Dual-Scale String Theory: Mechanized Foundations, Singularity Resolution, Mathieu Moonshine, and a Zero-Free-Parameter Cosmological Conjecture on $K3\times T^2$,'' \textit{SocrateAI Laboratory for Mathematical Physics \& Formal Verification} (2026).
+\bibitem{Callens2026Paper9} X.~Callens and the SocrateAI Agora Collaboration, ``Testing a Micro/Macro Dual-Scale Hypothesis on $K3\times T^2$: Scale-Factor Duality, the Cohen--Kaplan--Nelson Bound, and the Dark-Energy Length in Lean~4,'' \textit{SocrateAI Laboratory for Mathematical Physics \& Formal Verification} (2026).
+\bibitem{EOT2010} T.~Eguchi, H.~Ooguri, and Y.~Tachikawa, ``Notes on the K3 Surface and the Mathieu group $M_{24}$,'' \textit{Exper. Math.} 20 (2011) 91--96, \textit{arXiv:1004.0956}.
+\bibitem{ChengHarrison2014} M.~C.~N.~Cheng and S.~Harrison, ``Umbral Moonshine and K3 Surfaces,'' \textit{Commun. Math. Phys.} 339 (2015) 221--261, \textit{arXiv:1406.0619}.
+\bibitem{CDH2012} M.~C.~N.~Cheng, J.~F.~R.~Duncan, and J.~A.~Harvey, ``Umbral Moonshine,'' \textit{Commun. Number Theory Phys.} 8 (2014) 101--242, \textit{arXiv:1204.2779}.
+\bibitem{HMN2014} J.~A.~Harvey, S.~Murthy, and C.~Nazaroglu, ``ADE Double Scaled Little String Theories, Mock Modular Forms and Umbral Moonshine,'' \textit{JHEP} 05 (2015) 126, \textit{arXiv:1410.6174}.
+\bibitem{DMZ2012} A.~Dabholkar, S.~Murthy, and D.~Zagier, ``Quantum Black Holes, Wall Crossing, and Mock Modular Forms,'' \textit{arXiv:1208.4074} (2012).
+\bibitem{Cheng2010} M.~C.~N.~Cheng, ``K3 Surfaces, N=4 Dyons, and the Mathieu Group M24,'' \textit{Commun. Num. Theor. Phys.} 4 (2010) 623--657, \textit{arXiv:1005.5415}.
+\bibitem{LeeAdelberger2020} J.~G.~Lee, E.~G.~Adelberger, T.~S.~Cook, S.~M.~Fleischer, and B.~R.~Heckel, ``New Test of the Gravitational $1/r^2$ Law at Separations down to $52\,\mu$m,'' \textit{Phys. Rev. Lett.} 124 (2020) 101101, \textit{arXiv:2002.11761}.
+\bibitem{MonteroVafaValenzuela2023} M.~Montero, C.~Vafa, and I.~Valenzuela, ``The Dark Dimension and the Swampland,'' \textit{JHEP} 02 (2023) 022, \textit{arXiv:2205.12293}.
+\end{thebibliography}
+
+\end{document}

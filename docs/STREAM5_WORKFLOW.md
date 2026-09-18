@@ -101,7 +101,7 @@ Statement lock: 74 declarations in 4 files (pre-update check: only `ImmortalHigh
 
 ## 10. Results at `v3.13.0` (P5.7) and what next
 * **Twisted genera.** `Z_g = (χ_g/24)Z − F_g·A` for all 26 classes, integral, index 1 (`c_g` depends only on
-  `4n − l²`), `Z_g(τ,0) = χ_g`. (Cheng prints `c_g(−1) = −2` at l. 968; in the normalisation used here and
+  `4n − l²`), `Z_g(τ,0) = χ_g`. (Cheng prints `c_g(−1) = −2` at l. 960; in the normalisation used here and
   in his own (2.5), the coefficient of `y^{±1}q⁰` is `+2`; checked for all 26 classes in `TwistedNotes.lean`
   (`c_minus_one`, `twisted_genus_q0`), so the printed `−2` is a sign convention or misprint.)
 * **Twisted dyon partition functions.** Cheng's (3.10) by Newton's identities (exact divisions checked):

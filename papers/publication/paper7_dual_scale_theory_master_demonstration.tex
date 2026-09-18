@@ -55,7 +55,7 @@ and a Zero-Free-Parameter Cosmological Conjecture on $K3 \times T^2$}
 \author{\textbf{Xavier Callens}$^{1}$ \and \textbf{SocrateAI Scientific Agora Collaboration}$^{1}$ \\[0.5em]
 $^{1}$\textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal Verification}}
 
-\date{Revision 4 --- September 18, 2026}
+\date{Revision 5 --- September 18, 2026}
 
 \usepackage{graphicx}
 \graphicspath{{../book/generated/figures/}}
@@ -96,6 +96,22 @@ and $(w_0,w_a)$ with current data, including the DESI DR2 preference for a time-
 equation of state at $3.1\sigma$ over $(w_0,w_a)=(-1,0)$. We close with a roadmap for promoting the
 central real-analytic claims (currently Tier L or Tier C) to kernel-checked Tier A theorems using
 Mathlib --- a roadmap Stream~2 has already begun executing.
+
+\textbf{Revision 5 --- verdicts.} Three later streams of the same repository test this paper's
+claims, and we report their outcome here without softening it. (i)~The twining (``forger's'') test:
+the ratio form of the ``27720 lock'' of \Cref{thm:bpslock}, recomputed from $M_{24}$-twined
+McKay--Thompson series, \emph{fails at all 25 non-identity conjugacy classes} of $M_{24}$; the lock
+remains a correct arithmetic identity (Tier A) but, by the criterion that separates moonshine from
+numerology, it is numerology, and we withdraw every structural or physical reading of it
+(\Cref{sec:twining-verdict}). (ii)~The literal dual-scale hypothesis fails the Cohen--Kaplan--Nelson
+bound by a factor $\ge10^{30}$. (iii)~The programme's only experimental prediction --- the self-dual
+length $\sqrt{\ell_P\,c/H_0}\approx47\,\mu$m read as the radius of one large extra dimension --- was
+frozen before comparison (disclosed as a retrodiction) and is \emph{excluded} by the E\"ot-Wash 2020
+bounds and fails the neutron-star bound; the programme's own T-duality fixes the $O(1)$ factor that
+could have rescued it (\Cref{sec:stream6-verdict}). \textbf{The zero-free-parameter cosmological
+conjecture, in the only form in which it makes a testable prediction, does not survive existing
+data.} The formal mathematics (Tier~A) is unaffected: as of release \texttt{v3.14.0} the repository
+totals 611 audited theorems across ten libraries, 0 failing, standard axioms only.
 \end{abstract}
 
 \newpage
@@ -214,6 +230,27 @@ specific reviewer request; none alters a Lean statement.
 \end{enumerate}
 The abstract's $\mathrm{ind}(\slashed D)=2$ is correct in the source; some PDF text extractors render
 the slashed $D$ as ``/'' followed by $D$.
+
+\paragraph{Revision 5 (2026-09-18), in the light of Streams 3, 4 and 6.} This revision changes no Lean
+statement cited in Revisions 1--4. It adds the outcomes of three tests that later streams of the
+repository applied to this paper's own claims; each is Tier A arithmetic on the stated inputs, and
+each goes against the paper's physical proposal.
+\begin{enumerate}
+  \item \Cref{sec:twining-verdict} (new): the twining test applied to the ``27720 lock'' of
+    \Cref{thm:bpslock} (library \texttt{DualScaleMoonshine}); it fails at every non-identity class of
+    $M_{24}$, so the lock is withdrawn as a structural fact and kept only as an arithmetic identity.
+  \item \Cref{sec:ckn-verdict} and \Cref{sec:stream6-verdict} (new): the Cohen--Kaplan--Nelson test of the
+    literal hypothesis (library \texttt{DualScaleCosmology}, Stream~3) and the pre-registered verdict on
+    its one experimental prediction (Stream~6, frozen prediction
+    \texttt{docs/\discretionary{}{}{}STREAM6\_\discretionary{}{}{}PREDICTION\_\discretionary{}{}{}P1.md}, git tag
+    \texttt{stream6-p1-frozen}).
+  \item The abstract, \Cref{conj:zeroparam} (a status remark), \Cref{tab:phenomenology}, the claim ledger
+    and the conclusion now state plainly that the conjecture, in its testable form, does not survive
+    existing data. The title is kept unchanged so that the paper remains citable under the name it was
+    deposited with; it names the conjecture examined, not a result.
+\end{enumerate}
+Repository counts at this revision: 611 audited theorems across ten libraries, 0 failing (release
+\texttt{v3.14.0}); earlier counts quoted below (326, 99) are those of the revisions that introduced them.
 
 \subsection{AI-assisted tooling}
 The Lean formalization, the audit that produced this revision, and portions of this manuscript's
@@ -551,6 +588,37 @@ unaffected by this fix, since it covers only the five-library Mathlib-free core 
 library (\Cref{sec:formalization}).
 \end{scopebox}
 
+\paragraph{The twining test (Revision 5).} \label{sec:twining-verdict}
+A numerical coincidence between a coefficient of a modular object and a dimension of a group
+representation proves little by itself. What distinguished monstrous and Mathieu moonshine from
+numerology is that the coincidence survives \emph{twining}: replacing each dimension by the trace of a
+group element $g$ produces again a distinguished function, the McKay--Thompson series $H_g$. Library
+\texttt{DualScaleMoonshine} of this repository computes $H_g$ for all 26 conjugacy classes of $M_{24}$
+from the closed formulas of Cheng--Duncan--Harvey \cite{CDH2012} (eq.~(4.18), Table~3; the computed
+series equal their Table~20, file \texttt{1204\_2779.txt}, ll.~4494--4512),
+and applies the same test to \Cref{thm:bpslock}. At the identity the relation holds, now from the
+computed series (\texttt{ForgerTest.\discretionary{}{}{}lock\_\discretionary{}{}{}at\_\discretionary{}{}{}identity},
+Tier A). Its twined form --- the same ratio relation $\mathcal A_2(g)\cdot N_Q\mathcal A_1(1)=
+\mathcal A_2(1)\cdot N_Q\mathcal A_1(g)$ with each series' own coefficients --- \textbf{fails at
+every one of the 25 non-identity classes}
+(\texttt{ForgerTest.\discretionary{}{}{}ratio\_\discretionary{}{}{}fails\_\discretionary{}{}{}at\_\discretionary{}{}{}2A},
+\texttt{\dots\_3A}, \texttt{\dots\_5A}, \texttt{\dots\_7AB}, and for all classes
+\texttt{CharactersAll.\discretionary{}{}{}ratio\_\discretionary{}{}{}fails\_\discretionary{}{}{}at\_\discretionary{}{}{}every\_\discretionary{}{}{}class};
+Tier A). At $g=2A$, for instance, $\mathcal A_2/\mathcal A_1=14/(-6)$, not $462/90$. Relations that
+encode module structure --- decompositions into irreducibles --- survive twining: the same library
+proves that the traces of every class on the $M_{24}$-modules equal the computed twined coefficients at
+levels $1$--$7$ (\texttt{CharactersAll.\discretionary{}{}{}trace\_\discretionary{}{}{}eq\_\discretionary{}{}{}twined\_\discretionary{}{}{}coeff\_\discretionary{}{}{}all}),
+and that at levels $0$--$9$ the computed twined series decompose into irreducibles with integer
+multiplicities, non-negative from level~1 on, equal to \cite{CDH2012} Table~48
+(\texttt{Decompositions.\discretionary{}{}{}moonshine\_\discretionary{}{}{}modules\_\discretionary{}{}{}decompose}). This ratio does not. \textbf{By the twining criterion, the 27720 lock is numerology.}
+\Cref{thm:bpslock,thm:mathieufactor} remain correct arithmetic identities (Tier A), and the
+interpretive caveat above ($27720=\mathrm{lcm}(1,\dots,12)$) already weakened them; Revision~5 withdraws
+any reading of them as a structural ``lock'' of the $K3\times T^2$ theory, and the phenomenological
+relations of \Cref{sec:phenomenology} that are built from $27720$ and $77/360$ inherit this status. The
+integer that \emph{does} pass the twining test is $\chi(K3)=24$: its twined version is the trace on the
+$24$-dimensional permutation representation, a genuine character, at every class
+(\texttt{Shadow.\discretionary{}{}{}shadow\_\discretionary{}{}{}coeff\_\discretionary{}{}{}eq\_\discretionary{}{}{}perm\_\discretionary{}{}{}trace}, Tier A).
+
 The Mathieu group $M_{24}$ is the automorphism group of the extended binary Golay code
 $\mathcal{G}_{24}\subset\mathbb{F}_2^{24}$, a $[24,12,8]$ self-dual linear code.
 
@@ -608,6 +676,16 @@ definition of $\mathcal{M}^{\mathrm{phys}}_{K3\times T^2}$ is given in this corp
 five \emph{integers}, none of which is a priori a coordinate on the moduli space of vacua (a
 continuous modulus being frozen at, say, the self-dual radius is a dynamical claim requiring the
 potential of \Cref{sec:moduli-obstruction}, not a consequence of Fact~1 alone).
+
+\begin{remark}[Status of \Cref{conj:zeroparam} at Revision 5] \label{rem:conj-status}
+Fact~2 of \Cref{tab:locks} fails the twining test (\Cref{sec:twining-verdict}); the literal dual-scale
+reading fails the CKN bound by $\ge10^{30}$ (\Cref{sec:ckn-verdict}); and the one experimental prediction
+the dual-scale programme makes is excluded by existing laboratory data, with no $O(1)$ freedom left to
+rescue it (\Cref{sec:stream6-verdict}). The conjecture was never above Tier~C; after Revision~5 we state
+plainly that \emph{in the only form in which it makes a testable prediction, it does not survive existing
+data.} A different completion would need a new observable, derived independently and frozen before any
+comparison.
+\end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Confrontation with Data}
@@ -688,6 +766,48 @@ $(8\pi/3\Omega_\Lambda)^{1/4}$ (\texttt{DarkEnergyScale.rhoLambda\_inv\_eq}, Tie
 identity that re-expresses $\rho_\Lambda=\Omega_\Lambda\rho_c$, it does not fix $\Omega_\Lambda$, and so
 it does not rescue the conjecture.
 
+\subsection{The literal dual-scale hypothesis and the CKN bound (Stream 3, Tier A arithmetic)}
+\label{sec:ckn-verdict}
+Library \texttt{DualScaleCosmology} (Stream~3, \texttt{docs/STREAM3\_WORKFLOW.md}) formalizes the
+Cohen--Kaplan--Nelson bound $L^3\Lambda^4\lesssim L\,M_P^2$ \cite{CKN1999} and instantiates it at CKN's own
+horizon-scale example. Taken literally --- $\ell_{\mathrm{micro}}\sim\ell_P$ as the UV cutoff at
+$\ell_{\mathrm{macro}}\sim H_0^{-1}$ --- the dual-scale hypothesis fails: the Planck energy exceeds CKN's
+horizon cutoff by a factor of at least $10^{30}$
+(\texttt{CKNInstance.\discretionary{}{}{}planckEnergy\_\discretionary{}{}{}gt\_\discretionary{}{}{}ckn\_\discretionary{}{}{}horizon\_\discretionary{}{}{}cutoff},
+Tier A on CODATA/Planck inputs). Read instead as a T-dual pair, $\ell_P$ and $c/H_0$ meet the bound
+exactly at their self-dual length $s=\sqrt{\ell_P\,c/H_0}\approx47\,\mu$m; read as a Regge slope,
+$\alpha'=s^2$ is excluded by $\ge10^{30}$ (\texttt{CosmicString.\discretionary{}{}{}selfDual\_\discretionary{}{}{}alphaPrime\_\discretionary{}{}{}exceeds\_\discretionary{}{}{}cms\_\discretionary{}{}{}ceiling}).
+The one remaining reading is tested next.
+
+\subsection{The self-dual length as an extra-dimension radius (Stream 6, pre-registered verdict)}
+\label{sec:stream6-verdict}
+\textbf{Prediction P1} (frozen in \texttt{docs/\discretionary{}{}{}STREAM6\_\discretionary{}{}{}PREDICTION\_\discretionary{}{}{}P1.md},
+git tag \texttt{stream6-p1-frozen}): one large extra dimension with Kaluza--Klein scale $m\sim1/R$ and
+$R=s=\sqrt{\ell_P\,c/H_0}\approx47.0\,\mu$m (Tier~C identification). The decision rules were fixed before
+the verdict was computed. \emph{Disclosure:} the bounds below were already known to the authors when
+P1 was frozen, so this is a pre-registered record of a retrodiction, not a blind test; its purpose is
+that no convention can later be adjusted to move the number.
+\begin{itemize}
+  \item T1, E\"ot-Wash 2020 \cite{LeeEotWash2020} (\texttt{2002\_11761.txt}, l.~289): the largest extra
+    dimension has toroidal radius $<30\,\mu$m (\emph{measurement}).
+  \item T2, same (l.~285): any gravitational-strength Yukawa interaction has range $\lambda<38.6\,\mu$m,
+    $2\sigma$ (\emph{measurement}; $\lambda=R$ for the lowest KK mode is Tier C).
+  \item T3, Montero--Vafa--Valenzuela \cite{MVV2022} (\texttt{2205\_12293.txt}, ll.~320--327): heating of old
+    neutron stars bounds one extra dimension to $l<44\,\mu$m (\emph{astrophysical bound}).
+\end{itemize}
+\textbf{Verdict: excluded.} $R$ exceeds all three bounds
+(\texttt{Stream6Verdict.\discretionary{}{}{}p1\_\discretionary{}{}{}fails\_\discretionary{}{}{}T1}, \texttt{\dots\_T2}, \texttt{\dots\_T3},
+combined in \texttt{Stream6Verdict.\discretionary{}{}{}p1\_\discretionary{}{}{}verdict\_\discretionary{}{}{}excluded}; Tier A on the
+inputs above), with margins $R>1.5\times30\,\mu$m and $R>1.06\times44\,\mu$m. Passing T1 would require
+$R=\kappa s$ with $\kappa<0.64$ (\texttt{p1\_\discretionary{}{}{}factor\_\discretionary{}{}{}needed}) --- recorded, not chosen.
+\textbf{No $O(1)$ rescue:} within the programme's own T-duality $R\mapsto\alpha'/R$ with $\alpha'=s^2$, the
+self-dual radius is the unique positive fixed point $R=s$
+(\texttt{Stream6Verdict.\discretionary{}{}{}p62\_\discretionary{}{}{}selfdual\_\discretionary{}{}{}fixed\_\discretionary{}{}{}point}), where the KK and
+winding scales coincide; with the standard normalization $m_n=n/R$ this gives $\kappa=1$. Taking both
+circles of $T^2$ large makes matters worse: MVV's two-dimension bound $l<1.6\times10^{-4}\,\mu$m
+(\texttt{2205\_12293.txt}, l.~329) is missed by more than $10^5$
+(\texttt{Stream6Verdict.\discretionary{}{}{}p62\_\discretionary{}{}{}two\_\discretionary{}{}{}dims\_\discretionary{}{}{}excluded}).
+
 \subsection{Scalar spectral index \texorpdfstring{$n_s$}{ns} (benchmark input, not a prediction)}
 No formula in this corpus produces $n_s$. The value $n_s=0.965$ (stored in Lean as the constant
 $965/1000$) is the Planck 2018 central value, $n_s=0.9649\pm0.0042$ \cite{Planck2018}, restated. It is
@@ -699,7 +819,8 @@ input cannot fail to agree with the measurement it was taken from. An earlier re
 \centering
 \footnotesize
 \caption{\textbf{Confrontation summary.} All predictions are Tier C (\Cref{sec:phenomenology}); none
-is derived from a Lagrangian, and $n_s$ is an input, not a prediction.}
+is derived from a Lagrangian, and $n_s$ is an input, not a prediction. The last two rows are added in
+Revision~5 (\Cref{sec:stream6-verdict,sec:twining-verdict}).}
 \label{tab:phenomenology}
 \begin{tabular}{@{}l l >{\raggedright\arraybackslash}p{5.8cm} >{\raggedright\arraybackslash}p{2.1cm}@{}}
 \toprule
@@ -708,7 +829,9 @@ is derived from a Lagrangian, and $n_s$ is an input, not a prediction.}
 $r$ & $1/252\approx0.00397$ & $\lesssim0.03$--$0.04$ (BICEP/Keck+Planck, meas.);\newline $\delta r\approx0.001$ (LiteBIRD, forecast) & untestable now \\[2pt]
 $\delta_{\mathrm{CP}}$ & $283^\circ$ & $197^{+42}_{-25}$ NO / $286^{+27}_{-32}$ IO\newline (NuFIT 5.2, meas.) & consistent (near IO); tension w/ preferred NO \\[2pt]
 $(w_0,w_a)$ & $(-1,0)$ & $w_0>-1,\,w_a<0$ at $3.1\sigma$\newline (DESI DR2+CMB+SNe, meas.) & tension \\[2pt]
-$n_s$ & (none) & $0.9649\pm0.0042$ (Planck 2018); $0.965$ is this value restated & input, not a prediction \\
+$n_s$ & (none) & $0.9649\pm0.0042$ (Planck 2018); $0.965$ is this value restated & input, not a prediction \\[2pt]
+$R_{\mathrm{extra}}$ (P1) & $s\approx47\,\mu$m & $<30\,\mu$m, $\lambda<38.6\,\mu$m (E\"ot-Wash 2020, meas.);\newline $<44\,\mu$m (neutron stars, MVV) & \textbf{excluded} (pre-registered) \\[2pt]
+27720 lock & twined form & fails at all 25 non-identity classes of $M_{24}$ (computed) & numerology \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1098,6 +1221,17 @@ with DESI DR2). We consider this an improvement, not a retreat: a claim that sur
 against its own formal artifact and against current data is worth more than a stronger claim that
 does not.
 
+\paragraph{After Revision 5.} The tests that later streams applied to this paper's proposal all went
+against it: the 27720 lock fails the twining test at every non-identity class of $M_{24}$ and is
+numerology by that criterion (\Cref{sec:twining-verdict}); the literal dual-scale reading fails the CKN
+bound by $\ge10^{30}$ (\Cref{sec:ckn-verdict}); and the programme's one experimental prediction, the
+self-dual length $\approx47\,\mu$m as an extra-dimension radius, is excluded by existing laboratory data
+with its $O(1)$ factor fixed by the programme's own T-duality (\Cref{sec:stream6-verdict}). \textbf{The
+zero-free-parameter cosmological conjecture, in its testable form, does not survive existing data.}
+What survives is the formal mathematics, which is Tier A and independent of that verdict --- together
+with the finding that, of the integers this paper built on, $\chi(K3)=24$ is the one that passes the
+twining test.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix
 \section{Claim Ledger}
@@ -1127,6 +1261,10 @@ does not.
 \ref{sec:moonshine} & \texttt{Moonshine.EOT} & \texttt{first\_\discretionary{}{}{}five\_\discretionary{}{}{}are\_\discretionary{}{}{}irreps}, \texttt{A6\_\discretionary{}{}{}decomposition}, \texttt{A7\_\discretionary{}{}{}decomposition} & A & arithmetic cross-check of EOT (1.12), (1.14)--(1.15) against \texttt{M24RepDim}; the $M_{24}$ action itself is Tier L \\
 \ref{sec:moonshine} & \texttt{StringDynamics} & \texttt{bps\_\discretionary{}{}{}ratio\_\discretionary{}{}{}reduced} (fixed, 2026-09-16) & A & now \texttt{norm\_\discretionary{}{}{}num}; previously \texttt{native\_\discretionary{}{}{}decide} (axiom \texttt{Lean.\discretionary{}{}{}ofReduceBool}) \\
 \ref{sec:stream2} & \texttt{DualScaleStream2} (19 modules) & 99 theorems total, see \Cref{sec:stream2} & A & aggregate audit (\texttt{tools/axiom\_\discretionary{}{}{}audit.py}); individual claims/tiers itemized in \Cref{sec:stream2} \\
+\ref{sec:twining-verdict} & \texttt{ForgerTest} & \texttt{ratio\_\discretionary{}{}{}fails\_\discretionary{}{}{}at\_\discretionary{}{}{}2A} (also \texttt{3A}, \texttt{5A}, \texttt{7AB}) & A & Rev.~5; twined 27720 relation fails \\
+\ref{sec:twining-verdict} & \texttt{CharactersAll} & \texttt{ratio\_\discretionary{}{}{}fails\_\discretionary{}{}{}at\_\discretionary{}{}{}every\_\discretionary{}{}{}class} & A & Rev.~5; all 25 non-identity classes \\
+\ref{sec:ckn-verdict} & \texttt{CKNInstance} & \texttt{planckEnergy\_\discretionary{}{}{}gt\_\discretionary{}{}{}ckn\_\discretionary{}{}{}horizon\_\discretionary{}{}{}cutoff} & A & Rev.~5; arithmetic on CODATA/Planck inputs; CKN bound itself Tier L \\
+\ref{sec:stream6-verdict} & \texttt{Stream6Verdict} & \texttt{p1\_\discretionary{}{}{}verdict\_\discretionary{}{}{}excluded}, \texttt{p62\_\discretionary{}{}{}selfdual\_\discretionary{}{}{}fixed\_\discretionary{}{}{}point}, \texttt{p62\_\discretionary{}{}{}two\_\discretionary{}{}{}dims\_\discretionary{}{}{}excluded} & A & Rev.~5; bounds Tier L; the extra-dimension identification Tier C \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -1207,6 +1345,10 @@ figures in this appendix and in \Cref{sec:stream2} support, and is the only clai
 \bibitem{DasguptaRajeshSethi1999} K.~Dasgupta, G.~Rajesh, and S.~Sethi, ``M Theory, Orientifolds and G-Flux,'' \textit{arXiv:hep-th/9908088} (1999).
 \bibitem{EguchiOoguriTachikawa2011} T.~Eguchi, H.~Ooguri, and Y.~Tachikawa, ``Notes on the K3 Surface and the Mathieu Group $M_{24}$,'' \textit{Exper. Math.} 20 (2011) 91--96, \textit{arXiv:1004.0956}.
 \bibitem{Cheng2010} M.~C.~N.~Cheng, ``K3 Surfaces, $N=4$ Dyons, and the Mathieu Group $M_{24}$,'' \textit{Commun. Num. Theor. Phys.} 4 (2010) 623--657, \textit{arXiv:1005.5415}.
+\bibitem{CDH2012} M.~C.~N.~Cheng, J.~F.~R.~Duncan, and J.~A.~Harvey, ``Umbral Moonshine,'' \textit{Commun. Num. Theor. Phys.} 8 (2014) 101--242, \textit{arXiv:1204.2779}.
+\bibitem{CKN1999} A.~G.~Cohen, D.~B.~Kaplan, and A.~E.~Nelson, ``Effective Field Theory, Black Holes, and the Cosmological Constant,'' \textit{Phys. Rev. Lett.} 82 (1999) 4971--4974, \textit{arXiv:hep-th/9803132}.
+\bibitem{LeeEotWash2020} J.~G.~Lee, E.~G.~Adelberger, T.~S.~Cook, S.~M.~Fleischer, and B.~R.~Heckel, ``New Test of the Gravitational $1/r^2$ Law at Separations down to 52~$\mu$m,'' \textit{Phys. Rev. Lett.} 124 (2020) 101101, \textit{arXiv:2002.11761}.
+\bibitem{MVV2022} M.~Montero, C.~Vafa, and I.~Valenzuela, ``The Dark Dimension and the Swampland,'' \textit{JHEP} 02 (2023) 022, \textit{arXiv:2205.12293}.
 \bibitem{Gannon2013} T.~Gannon, ``Much ado about Mathieu,'' \textit{Adv. Math.} 301 (2016) 322--358, \textit{arXiv:1211.5531}.
 \bibitem{AlmheiriDongHarlow2015} A.~Almheiri, X.~Dong, and D.~Harlow, ``Bulk Locality and Quantum Error Correction in AdS/CFT,'' \textit{JHEP} 04 (2015) 163, \textit{arXiv:1411.7041}.
 \bibitem{PastawskiEtAl2015} F.~Pastawski, B.~Yoshida, D.~Harlow, and J.~Preskill, ``Holographic quantum error-correcting codes: Toy models for the bulk/boundary correspondence,'' \textit{JHEP} 06 (2015) 149, \textit{arXiv:1503.06237}.

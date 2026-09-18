@@ -1,7 +1,7 @@
 /-
 Stream 5 · reading note made checkable — the sign of `c_g(−1)`.
 
-Cheng (`papers/foundations/1005_5415.txt`, l. 968) writes `c_g(−1) = −2` when deriving the pole
+Cheng (`papers/foundations/1005_5415.txt`, l. 960) writes `c_g(−1) = −2` when deriving the pole
 factorisation (3.11). In his own formula (2.5), `Z_{g_p} = (2/(p+1))φ₀,₁ + …`, and in the normalisation
 used throughout this repository (`Z = 2φ₀,₁ = 2y + 20 + 2y⁻¹ + O(q)`), the coefficient is `+2`. The twisted
 products of `TwistedDyons.lean` use `+2`, and they recover the untwisted product (`twisted_product_untwisted`)
