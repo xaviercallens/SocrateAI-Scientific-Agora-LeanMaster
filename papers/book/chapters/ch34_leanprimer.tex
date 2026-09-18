@@ -1,0 +1,935 @@
+\chapter{Lean 4 for Physicists: A Crash Course}\label{ch:leanprimer}
+
+Every earlier chapter ends with a section ``What the machine has checked'', and every
+theorem there carries the badge \TA. This chapter explains what that badge costs and what it
+buys. The question it answers is practical: \emph{how does a physicist read a Lean 4
+statement, decide whether it says what the prose claims, and check it on her own machine?}
+The answer does not require learning to write proofs from scratch. It requires three things:
+knowing what a type is and why a theorem is one; knowing how Mathlib writes a matrix, a
+transpose and an inverse; and knowing what the dozen tactics that appear in this book's
+proofs actually do. We build these up on the four files that the rest of the book quotes
+most often---the lattice definitions of \cref{ch:lattices}, the duality group of
+\cref{ch:odd}, the dual-scale bound of \cref{ch:dualscale} and the circle mass spectrum of
+\cref{ch:tduality}---and then read one proof, \lean{thetaShift\_isODD}, line by line. A
+student should care because a proof assistant is only as useful as the reader who can tell
+a strong theorem from a weak one: the kernel checks that a proof proves its statement, and
+nothing else. Reading the statement is the reader's job, and this chapter teaches it.
+
+%=====================================================================================
+\section{What a proof assistant is, and what it is not}\label{sec:leanprimer:kernel}
+
+Lean 4\index{Lean 4} is a programming language whose type system is strong enough to
+express mathematical statements, together with a small program, the
+\emph{kernel}\index{kernel (Lean)}, that checks whether a given term has a given type. A
+theorem is a type; a proof is a term of that type; ``the theorem is proved'' means the
+kernel has accepted the term. Everything else---the tactic language, the editor, the
+automation, the large-language-model agents described in \cref{ch:pipeline}---is
+machinery for \emph{producing} the term. None of it has to be trusted. If a tactic has a
+bug and produces a wrong term, the kernel rejects it.
+
+Three things are trusted, and the student should know them by name.
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item \textbf{The kernel itself}, a small program by the standards of a compiler, small
+  enough that independent re-implementations exist and can be run on the same proof terms.
+\item \textbf{The axioms.}\index{axioms (Lean)} Lean's logic is a dependent type theory;
+  its core library declares exactly three axioms: \lean{propext} (two logically equivalent propositions are
+  equal), \lean{Quot.sound} (quotients behave as quotients) and \lean{Classical.choice}
+  (a choice function exists, which gives the law of excluded middle). Every theorem in this
+  book depends on at most these three. The command \lean{\#print axioms} lists what a
+  theorem depends on (\cref{sec:leanprimer:axioms}); anything beyond the three is a
+  warning sign.
+\item \textbf{The statement.} The kernel checks that the proof proves the statement as
+  written. It does not check that the statement is the one you meant, that the definition
+  \lean{leftMomentum} is what a physicist calls the left-moving momentum, or that a matrix
+  named \lean{cartanE8} is the Cartan matrix of $E_8$. This is why the bible of this book
+  says that the identification of a Lean object with a physical system is never Tier A.
+\end{enumerate}
+
+\begin{pitfallbox}[The kernel checks the proof, not the statement]
+Two incidents from this project's own log illustrate the third point.
+A revision brief said that the $\Theta$-shift preserves $\eta$ ``iff $\Theta$ is
+antisymmetric''; the Lean theorem proves only the ``if'' direction
+\source{LL.md §S2.13, ll.~109--112}. And since the kernel cannot notice that a hypothesis
+was quietly weakened between review and proof, the project hashes every theorem statement
+into a lock file\index{statement lock} and re-checks the hashes before accepting a proof
+\source{LL.md §S2.10, ll.~87--92}. The lesson for a reader is simple: before quoting a
+theorem, read its statement in the \lean{.lean} file, not the prose that summarizes it.
+\end{pitfallbox}
+
+\begin{physicsbox}[What ``formalizing physics'' can mean]
+No proof assistant checks that nature obeys an equation. What can be checked is a chain of
+implications: \emph{if} the mass formula is $M^2 = p_L^2 + p_R^2 + \dots$ and \emph{if}
+T-duality acts as $(n,w,R)\mapsto(w,n,\ap/R)$, \emph{then} $M^2$ is invariant. The two
+``if''s are definitions in a file; the ``then'' is a theorem. Older libraries in this
+repository go further and replace real numbers by integers or rationals: those theorems are
+\emph{arithmetic shadows}\index{arithmetic shadow} of the physical statement, true as
+arithmetic, silent about the continuum. The four files of this chapter are honest about
+which kind they are: \lean{TDualityMassSpectrum.lean} works over $\Q$ with $\ap=1$;
+\lean{TraceBound.lean} works over $\R$ with genuine real matrices.
+\end{physicsbox}
+
+%=====================================================================================
+\section{Terms, types and propositions}\label{sec:leanprimer:types}
+
+Every expression in Lean has a type, written with a colon: \lean{(3 : ℕ)}, \lean{(R : ℝ)},
+\lean{(G : Matrix (Fin d) (Fin d) ℝ)}. Types themselves have types: \lean{ℝ : Type}. The
+key idea, due to Curry and Howard and usually called \emph{propositions as
+types}\index{propositions as types}, is that a mathematical statement is also a type, whose
+inhabitants are its proofs. Statements live in a special universe called
+\lean{Prop}\index{Prop@\lean{Prop}}. So
+\begin{leancode}
+2 ≤ R + R⁻¹          -- a Prop: the type of proofs that R + 1/R ≥ 2
+Even (G i i)         -- a Prop: the type of proofs that G i i is even
+Gᵀ = G               -- a Prop
+\end{leancode}
+are types, and a theorem is a named term of such a type. \Cref{tab:leanprimer:dict}
+translates the vocabulary.
+
+\begin{table}[ht]\centering\footnotesize
+\begin{tabular}{@{}p{2.3cm}p{4.6cm}p{7.6cm}@{}}\toprule
+Mathematics & Lean & Example from the repository \\ \midrule
+a set or a space & a \lean{Type} & \lean{Matrix (Fin d) (Fin d) ℤ} \\
+an element & a term \lean{x : T} & \lean{eta d : Matrix (Charge d) (Charge d) ℤ} \\
+a statement & a term of \lean{Prop} & \lean{IsODD g} \\
+a proof & a term of that \lean{Prop} & \lean{eta\_isODD : IsODD (eta d)} \\
+a definition & \lean{def} & \lean{def leftMomentum (n w R : ℚ) : ℚ := n / R + w * R} \\
+a theorem & \lean{theorem} & \lean{theorem eta\_mul\_self : eta d * eta d = 1} \\
+``for all $x$'' & \lean{∀ x, ...} or an argument \lean{(x : T)} & \lean{∀ i, Even (G i i)} \\
+``there is $x$'' & \lean{∃ x, ...} & \lean{∃ i : Fin 26, M24RepDim i = ...} \\
+``and'' / ``or'' & \lean{∧} / \lean{∨} & \lean{G.det = 1 ∨ G.det = -1} \\
+\bottomrule\end{tabular}
+\caption{The dictionary between ordinary mathematics and Lean. All examples are taken
+from the files quoted in this chapter.}\label{tab:leanprimer:dict}
+\end{table}
+
+\subsection{\lean{def} versus \lean{theorem}}
+A \lean{def} introduces an object that later code can \emph{compute with} and
+\emph{unfold}. A \lean{theorem} introduces a proof, and Lean deliberately forgets the
+proof's internal structure once it is checked (``proof irrelevance''): two proofs of the
+same proposition are equal, and a theorem can never be unfolded, only \emph{applied}. Here
+is the circle mass spectrum as it is written in
+\lean{StringTheoryFormalization/UseCases/TDualityMassSpectrum.lean}:
+\begin{leancode}
+def leftMomentum (n w R : ℚ) : ℚ := n / R + w * R
+def rightMomentum (n w R : ℚ) : ℚ := n / R - w * R
+def momentumMassSq (n w R : ℚ) : ℚ :=
+  (leftMomentum n w R) ^ 2 + (rightMomentum n w R) ^ 2
+
+theorem tduality_fixes_left_momentum (n w R : ℚ) (hR : R ≠ 0) :
+    leftMomentum w n (1 / R) = leftMomentum n w R := by ...
+\end{leancode}
+Read the theorem as a sentence: ``for all rationals $n,w,R$, and given a proof \lean{hR}
+that $R\neq0$, the left momentum of the dual data $(w,n,1/R)$ equals the left momentum of
+$(n,w,R)$.'' The arguments before the colon are universally quantified; \lean{hR} is a
+hypothesis, itself a term whose type is the proposition \lean{R ≠ 0}. The conventions are
+those of \cref{ch:tduality} with $\ap=1$: $p_L = n/R + wR$, $p_R = n/R - wR$, and the file's
+header says so \source{TDualityMassSpectrum.lean header, ll.~17--22}. Note what is
+\emph{not} in the statement: no oscillators, no $\ap$, no real numbers. The theorem is
+about rational functions of $R$; it is an arithmetic shadow of Tong's statement, and a
+faithful one, because the algebra is the same over $\Q$ and $\R$.
+
+\subsection{Implicit arguments and \lean{variable}}
+Curly braces mark an argument Lean should infer: in \lean{IsEvenDiag \{n : ℕ\} (G : Gram n)}
+the rank \lean{n} is read off from the type of \lean{G}, so the user writes
+\lean{IsEvenDiag G}, not \lean{IsEvenDiag 8 G}. A line \lean{variable \{d : ℕ\}} at the
+top of a file makes \lean{d} an implicit argument of every declaration below that mentions
+it; that is why the theorems of \lean{ODD.lean} are stated for arbitrary $d$ without
+repeating \lean{(d : ℕ)} each time.
+
+\subsection{Reading a hypothesis as a physical assumption}
+Hypotheses carry physics. In \lean{dualScale\_ge} the hypothesis \lean{hG : G.PosDef}
+says that the torus metric is a genuine Riemannian metric; in \lean{dualScale\_inv} the
+weaker \lean{hG : IsUnit G.det} says only that $G$ is invertible, because T-duality
+$G\mapsto G^{-1}$ makes sense for any invertible $G$, positive or not. A theorem with a
+weaker hypothesis is a stronger theorem. A theorem with no hypothesis at all, such as
+\lean{eta\_mul\_self}, is a pure identity. Get into the habit of reading the hypothesis
+list first: it is the fastest way to see what a formal theorem does and does not cover.
+
+%=====================================================================================
+\section{Definitions and structures}\label{sec:leanprimer:structures}
+
+\subsection{Predicates}
+The lattice file \lean{DualScaleStream2/Lattice/Basic.lean} contains the two definitions on
+which every ``this lattice is even and unimodular'' statement of \cref{ch:lattices,ch:k3lattice}
+rests:
+\begin{leancode}
+abbrev Gram (n : ℕ) := Matrix (Fin n) (Fin n) ℤ
+def IsEvenDiag {n : ℕ} (G : Gram n) : Prop := ∀ i, Even (G i i)
+def IsUnimodular {n : ℕ} (G : Gram n) : Prop := G.det = 1 ∨ G.det = -1
+\end{leancode}
+\lean{abbrev} is a \lean{def} that Lean unfolds eagerly: a \lean{Gram n} \emph{is} an
+$n\times n$ integer matrix, and every matrix lemma applies to it unchanged. The other two
+are \emph{predicates}\index{predicate}: functions from matrices to \lean{Prop}. Note the
+honesty of the names. \lean{IsEvenDiag} asks only that the diagonal be even; that this
+implies evenness of the whole quadratic form $x^{\mathsf T}Gx$ is a separate theorem,
+\lean{even\_quadratic\_form\_of\_even\_diag}, which needs the extra hypothesis
+\lean{Gᵀ = G}. A lattice is identified with its Gram matrix in a fixed basis; no abstract
+$\Z$-module is introduced, and the file header says so
+\source{Lattice/Basic.lean header, ll.~29--38}.
+
+\subsection{Structures}
+A \lean{structure}\index{structure (Lean)} bundles named fields, like a C \texttt{struct} or a Python dataclass.
+From the file \lean{K3T2Signature.lean} in the directory
+\lean{DualScaleStream2/Lattice/}:
+\begin{leancode}
+structure Signature where
+  pos : ℕ
+  neg : ℕ
+  deriving DecidableEq, Repr
+
+instance : Add Signature := ⟨fun a b => ⟨a.pos + b.pos, a.neg + b.neg⟩⟩
+@[simp] theorem add_pos (a b : Signature) : (a + b).pos = a.pos + b.pos := rfl
+\end{leancode}
+A term of type \lean{Signature} is built with angle brackets, \lean{⟨3, 19⟩}, and its
+fields are read with dot notation, \lean{s.pos}. The \lean{instance} line teaches Lean what
+\lean{+} means on signatures (the direct sum adds the positive and negative dimensions
+separately), and the theorem \lean{add\_pos} is proved by \lean{rfl}, ``reflexivity'':
+both sides unfold to the same term. The attribute \lean{@[simp]} registers it as a rewrite
+rule for the \lean{simp} tactic. Notice, again, what the structure does not contain: a
+\lean{Signature} is a pair of naturals with no attached quadratic form. The statement
+``the K3 lattice has signature $(3,19)$'' is, in this file, a \lean{def} assigning the pair
+$\langle 3,19\rangle$ to a name; the theorem \lean{sigK3\_matches\_hodge} then checks that
+this pair agrees with the Hodge-theoretic numbers tabulated independently in Stream~1. That
+is a consistency check between two tables, not a derivation of either.
+
+\begin{pitfallbox}[Multi-name structure fields: parenthesize them]
+In Lean 4 the declaration
+\begin{leancode}
+structure Foo where
+  a b c d : Nat        -- WRONG: one field `a`, a function of b c d
+\end{leancode}
+does not declare four natural-number fields. It declares a \emph{single} field \lean{a}
+whose type is a curried function taking auto-bound implicit arguments \lean{b c d} and
+returning \lean{Nat}. Any later use of \lean{a}, \lean{b}, \lean{c}, \lean{d} as scalars
+fails with dependent-function-type errors that do not mention the cause. This reproduces
+in vanilla Lean 4 with no Mathlib. The fix is to parenthesize the group,
+\lean{(a b c d : Nat)}, or to write one field per line as \lean{Signature} does. The bug
+was found twice, independently, in this repository's Stream~1 code
+\source{LL.md §0.4, ll.~188--199}.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{Matrices in Mathlib}\label{sec:leanprimer:matrices}
+
+All the block-matrix algebra of \cref{ch:odd,ch:genmetric,ch:dualscale} is written against
+Mathlib's \lean{Matrix}. A few facts make the notation readable.
+
+\paragraph{A matrix is a function.}\index{Matrix@\lean{Matrix} (Mathlib)}
+\index{fromBlocks@\lean{fromBlocks}} \lean{Matrix m n α} is, by definition, the function
+type \lean{m → n → α}: a matrix is a function of two indices. Hence \lean{G i j} is the
+entry, \lean{fun i j => if i < j then G i j else 0} is the strict upper triangle, and two
+matrices are equal when they agree at every pair of indices (the \lean{ext} tactic,
+\cref{sec:leanprimer:tactics}). The index types need not be \lean{Fin n}: any finite type
+will do, and \lean{ODD.lean} indexes charge vectors by the disjoint union
+\begin{leancode}
+abbrev Charge (d : ℕ) := Fin d ⊕ Fin d
+\end{leancode}
+so that a $2d\times2d$ matrix is naturally a $2\times2$ array of $d\times d$ blocks.
+\index{Fin d@\lean{Fin d}}
+
+\paragraph{Blocks.} \lean{fromBlocks A B C D} is the block matrix
+$\begin{psmallmatrix}A&B\\C&D\end{psmallmatrix}$ on \lean{Fin d ⊕ Fin d}. The two Mathlib
+lemmas that drive every proof in \lean{ODD.lean} are
+\begin{align}
+(\mathrm{fromBlocks}\,A\,B\,C\,D)^{\mathsf T} &= \mathrm{fromBlocks}\,A^{\mathsf T}\,C^{\mathsf T}\,B^{\mathsf T}\,D^{\mathsf T},
+\label{eq:leanprimer:fbT}\\
+\begin{pmatrix}A&B\\C&D\end{pmatrix}\begin{pmatrix}A'&B'\\C'&D'\end{pmatrix}
+&=\begin{pmatrix}AA'+BC' & AB'+BD'\\ CA'+DC' & CB'+DD'\end{pmatrix},
+\label{eq:leanprimer:fbmul}
+\end{align}
+named \lean{Matrix.fromBlocks\_transpose} and \lean{Matrix.fromBlocks\_multiply}. Both
+are what a student would write by hand; the point of naming them is that \lean{rw} can
+apply them mechanically.
+
+\paragraph{Concrete matrices.} The notation \lean{!![0, 1; 1, 0]} builds a literal matrix
+over \lean{Fin 2}, and \lean{!![R \^{} 2]} a $1\times1$ matrix over \lean{Fin 1}.
+
+\paragraph{Operations.} \lean{Gᵀ} is the transpose, \lean{Gᴴ} the conjugate transpose
+(over $\R$ they coincide, and \lean{TraceBound.lean} needs a lemma,
+\lean{Matrix.conjTranspose\_eq\_transpose\_of\_trivial}, to say so, because Mathlib's
+positive-definiteness lemmas are stated with \lean{ᴴ}). \lean{G *ᵥ x} is the
+matrix--vector product $Gx$, \lean{x ⬝ᵥ y} the dot product $\sum_i x_i y_i$, so
+$x^{\mathsf T}Gx$ is \lean{x ⬝ᵥ (G *ᵥ x)}. \lean{G.trace} and \lean{G.det} are the trace
+and determinant.
+
+\paragraph{The inverse is total.} \lean{G⁻¹} is defined for \emph{every} square matrix,
+by the adjugate formula $G^{-1} = \det(G)^{-1}\operatorname{adj}G$ with the convention
+that the ring inverse of a non-unit is $0$. So \lean{G⁻¹ * G = 1} is \emph{not} a theorem
+about all $G$; it is \lean{Matrix.nonsing\_inv\_mul G hdet}, which needs a proof
+\lean{hdet : IsUnit G.det} that the determinant is invertible in the ground ring. Over a
+field this means $\det G\neq0$; over $\Z$ it means $\det G=\pm1$, which is why
+unimodularity is exactly the condition for an integer Gram matrix to have an integer
+inverse.
+
+\paragraph{Positivity.} Mathlib's definition of positive semidefiniteness, from the
+file \lean{PosDef.lean} in \lean{Mathlib/LinearAlgebra/Matrix/}, is
+\begin{leancode}
+def PosSemidef (M : Matrix n n R) : Prop :=
+  M.IsHermitian ∧
+    ∀ x : n →₀ R, 0 ≤ x.sum fun i xi ↦ x.sum fun j xj ↦ star xi * M i j * xj
+\end{leancode}
+that is, $M$ is Hermitian and $\sum_{ij}\bar x_i M_{ij}x_j\ge0$ for all finitely
+supported $x$. \lean{PosDef} is defined in the same file by the same two clauses, with the
+inequality strict for every $x\neq0$ (its binder for \lean{x} is Lean's ``strict
+implicit'' bracket, which we do not reproduce here). A \lean{PosDef} hypothesis therefore contains a symmetry statement
+for free, which \lean{dualScale\_ge} extracts as \lean{hG.isHermitian}.
+
+\begin{pitfallbox}[Three ways to be wrong about \lean{G⁻¹}]
+(i) Forgetting that \lean{G⁻¹} exists for singular \lean{G} and equals $0$ there: a theorem
+about \lean{G⁻¹} with no invertibility hypothesis is usually vacuous or false.
+(ii) Expecting \lean{(G⁻¹)⁻¹ = G} to be definitional: it is the lemma
+\lean{Matrix.nonsing\_inv\_nonsing\_inv}, and it too needs \lean{IsUnit G.det}.
+(iii) Over $\Z$, reading \lean{IsUnit G.det} as $\det G\neq0$: it is $\det G=\pm1$.
+\end{pitfallbox}
+
+\begin{example}[An integer inverse as a certificate]\label{ex:leanprimer:certificate}
+\index{certificate (proof by witness)}
+Let $U=\begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}$, the hyperbolic plane of
+\cref{ch:lattices}. Then $UU=\mathbf 1$ and $\det U=-1$. The theorem
+\begin{leancode}
+theorem isUnimodular_of_mul_eq_one {n : ℕ} (G H : Gram n) (h : H * G = 1) :
+    IsUnimodular G := by ...
+\end{leancode}
+turns the one-line computation $UU=\mathbf 1$ into a proof that $\det U=\pm1$, without
+ever computing the determinant: from $HG=\mathbf 1$ and multiplicativity,
+$\det G\cdot\det H=\det\mathbf 1=1$ in $\Z$, and the only factorizations of $1$ in $\Z$
+are $1\cdot1$ and $(-1)(-1)$. The same theorem is instantiated, never re-proved, for the
+$8\times8$ Cartan matrix of $E_8$, where the kernel checks the 64-entry product
+$E_8^{-1}E_8=\mathbf 1$ directly. Certificates of this kind---an explicit witness whose
+verification is mechanical---are the cheapest kind of Lean proof, and \cref{ch:pipeline}
+reports that a small local prover closed essentially all of them
+\source{STREAM2\_WORKFLOW.md §6, ll.~107--114}.
+\end{example}
+
+%=====================================================================================
+\section{The tactic toolbox}\label{sec:leanprimer:tactics}
+
+A proof written as an explicit term is unreadable for anything longer than a line. Instead,
+after \lean{:= by}, one writes \emph{tactics}\index{tactic}: commands that transform the
+current \emph{goal} (a list of hypotheses and a target proposition) until no goal is left.
+Each tactic, behind the scenes, builds a piece of the proof term; the kernel checks the
+assembled term at the end. \Cref{tab:leanprimer:tactics} lists every tactic used in the
+proofs quoted in this book, with the file in which a student can see it at work. The
+remainder of this section shows six of them on real goals.
+
+\begin{table}[ht]\centering\footnotesize
+\begin{tabular}{@{}p{2.5cm}p{6.4cm}p{5.7cm}@{}}\toprule
+Tactic & What it does to the goal & Seen in \\ \midrule
+\lean{unfold f} & replaces \lean{f} by its definition & \lean{thetaShift\_isODD} \\
+\lean{rw [h]} & rewrites the goal left-to-right with equation \lean{h}; \lean{← h} goes right-to-left & \lean{isUnimodular\_of\_mul\_eq\_one} \\
+\lean{exact t} & closes the goal with the term \lean{t}, whose type must match exactly & \lean{isUnimodular\_of\_mul\_eq\_one} \\
+\lean{apply t} & closes the goal with \lean{t} applied to new goals for its missing hypotheses & \lean{circle\_effective\_scale\_ge\_two} \\
+\lean{intro x} & moves a $\forall x$ or a hypothesis from the target into the context & \lean{cartanE8\_evenDiag} \\
+\lean{rintro ⟨a, h, rfl⟩} & \lean{intro} that also destructures pairs, existentials and equations & \lean{isSection\_image} \\
+\lean{constructor} & splits \lean{P ∧ Q} into two goals (or \lean{↔} into two implications) & \lean{index\_mod\_eight} \\
+\lean{rcases h with a | b} & case split on an \lean{∨} or an inductive hypothesis & \lean{even\_quadratic\_form\_of\_even\_diag} \\
+\lean{have h : P := by ...} & proves an intermediate statement and names it & everywhere \\
+\lean{calc} & a chain of equalities or inequalities, each step justified & \lean{isODD\_mul} \\
+\lean{ext i j} & to prove two matrices (functions) equal, prove equality at every entry & \lean{cartanE8\_symm} \\
+\lean{fin\_cases i} & splits a goal about \lean{i : Fin n} into $n$ concrete goals & \lean{eta\_one\_reindex} \\
+\lean{simp [lemmas]} & rewrites with the \lean{@[simp]} lemma set plus the ones listed, until nothing changes & \lean{thetaShift\_isODD} \\
+\lean{ring} & proves identities in a commutative ring by normalizing both sides & \lean{tduality\_fixes\_left\_momentum} \\
+\lean{field\_simp} & clears denominators, given hypotheses that they are non-zero & \lean{tduality\_fixes\_left\_momentum} \\
+\lean{norm\_num} & evaluates numerical expressions and decides numeral (in)equalities & \lean{k3k3\_anomaly} \\
+\lean{decide} & evaluates a decidable proposition by computation inside the kernel & \lean{cartanE8\_evenDiag} \\
+\lean{rfl} & both sides are the same term after unfolding & \lean{add\_pos}, \lean{eta\_one\_reindex} \\
+\lean{linarith} & finds a linear combination of hypotheses that proves a linear (in)equality & \lean{dualScale\_ge} \\
+\lean{nlinarith [hints]} & \lean{linarith} after multiplying pairs of hypotheses and hints & \lean{self\_dual\_radius\_unique} \\
+\lean{t1 <;> t2} & run \lean{t2} on every goal that \lean{t1} produced & \lean{cartanE8\_symm} \\
+\bottomrule\end{tabular}
+\caption{The tactics used in the proofs quoted in this book.}\label{tab:leanprimer:tactics}
+\end{table}
+
+\subsection{\lean{unfold}, \lean{field\_simp}, \lean{ring}: an algebraic identity}
+The proof of \lean{tduality\_fixes\_left\_momentum} is three lines:
+\begin{leancode}
+theorem tduality_fixes_left_momentum (n w R : ℚ) (hR : R ≠ 0) :
+    leftMomentum w n (1 / R) = leftMomentum n w R := by
+  unfold leftMomentum
+  field_simp
+  ring
+\end{leancode}
+After \lean{unfold} the goal is $w/(1/R) + n\cdot(1/R) = n/R + wR$. \lean{field\_simp}
+finds the hypothesis \lean{hR} in the context, multiplies through by $R$ and clears every
+fraction, leaving a polynomial identity; \lean{ring} normalizes both sides to the same
+polynomial and closes the goal. Without \lean{hR} the tactic would refuse: division by zero
+is defined in Lean (as $0$), so $w/(1/R)=wR$ is false at $R=0$, and the kernel would
+never accept the theorem without the hypothesis. This is a small example of how the
+hypothesis list is forced by the mathematics and not by taste.
+
+\subsection{\lean{constructor}, \lean{rfl}: a conjunction of numerical facts}
+\begin{leancode}
+theorem index_mod_eight :
+    sigK3.index % 8 = 0 ∧ sigMukai.index % 8 = 0 ∧ sigK3T2.index % 8 = 0 := by
+  constructor
+  · rfl
+  constructor
+  · rfl
+  · rfl
+\end{leancode}
+\lean{constructor} splits the conjunction; the bullets \lean{·} focus one goal at a time;
+\lean{rfl} succeeds because \lean{sigK3.index} unfolds by computation to the numeral
+$3-19=-16$, and $-16 \bmod 8$ evaluates to $0$. The theorem does not prove the mod-8
+theorem for even unimodular lattices; it checks three instances of it, and its docstring
+says so \source{Lattice/K3T2Signature.lean, ll.~176--185}.
+
+\subsection{\lean{ext}, \lean{fin\_cases}, \lean{decide}: finite matrices}
+\begin{leancode}
+theorem cartanE8_symm : cartanE8ᵀ = cartanE8 := by
+  ext i j
+  fin_cases i <;> fin_cases j <;> rfl
+\end{leancode}
+\lean{ext i j} reduces the matrix equation to the entry equation
+\lean{cartanE8ᵀ i j = cartanE8 i j} for arbitrary \lean{i j : Fin 8}. \lean{fin\_cases i}
+replaces this by eight goals with \lean{i = 0, ..., 7}; the second \lean{fin\_cases}
+replaces each by eight more; \lean{rfl} closes all 64 by evaluation. This is the pattern
+for every fixed-size statement in the repository (\lean{eta\_one\_reindex},
+\lean{tauShift\_dual\_spec}, the $E_8$ inverse check). Where the entries are not literally
+identical but merely equal after arithmetic, \lean{decide} or \lean{norm\_num} replaces
+\lean{rfl}. The cost grows as $n^2$ goals, each cheap; the benefit is that no idea is
+needed.
+
+\subsection{\lean{nlinarith}: an inequality with a hint}
+\index{nlinarith@\lean{nlinarith}}\index{self-dual radius!in Lean}
+\begin{leancode}
+theorem self_dual_radius_unique (R : ℚ) (hR : 0 < R) (hFix : (1 : ℚ) / R = R) :
+    R = 1 := by
+  have hR' : R ≠ 0 := ne_of_gt hR
+  field_simp at hFix
+  nlinarith [sq_nonneg (R - 1), sq_nonneg (R + 1)]
+\end{leancode}
+After \lean{field\_simp at hFix} the hypothesis reads $R^2=1$ (up to the exact form the
+tactic chooses). \lean{linarith} treats the monomials $R$, $R^2$, $R^3$ as independent
+unknowns and looks for a linear combination of hypotheses proving the goal; it cannot see
+that $R^2=1$ and $R>0$ force $R=1$, because that needs a product. \lean{nlinarith} adds
+pairwise products of the hypotheses and the supplied hints, then calls \lean{linarith}. A
+certificate of the kind it finds: from the hint $(R-1)^2\ge0$ and $R^2=1$,
+$0\le R^2-2R+1 = 2-2R$, so $R\le1$; from $R>0$ times the same hint, $0\le R(R-1)^2 =
+R^3-2R^2+R$, and $R^3=R\cdot R^2=R$ (the product of $R$ with \lean{hFix}), so
+$0\le 2R-2$ and $R\ge1$. Both inequalities together give $R=1$. The second hint
+$(R+1)^2\ge0$ is harmless; the physics behind the first is that $R=1$ is the self-dual
+radius of \cref{ch:tduality} in units $\ap=1$, and the theorem says it is the
+\emph{unique} positive fixed point of $R\mapsto1/R$.
+
+\subsection{\lean{calc}: closure of the duality group}
+\begin{leancode}
+theorem isODD_mul (g h : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g)
+    (hh : IsODD h) : IsODD (g * h) := by
+  unfold IsODD at *
+  calc (g * h)ᵀ * eta d * (g * h)
+    = hᵀ * (gᵀ * eta d * g) * h := by
+        simp [Matrix.transpose_mul, Matrix.mul_assoc]
+    _ = hᵀ * eta d * h := by rw [hg]
+    _ = eta d := by rw [hh]
+\end{leancode}
+A \lean{calc} block is the formal version of a chain of equalities on a blackboard. Each
+step names its justification. \lean{unfold IsODD at *} unfolds the definition in the goal
+\emph{and} in the hypotheses, so that \lean{hg} becomes the equation
+\lean{gᵀ * eta d * g = eta d} which \lean{rw} can use. The first step is
+$(gh)^{\mathsf T}\eta(gh) = h^{\mathsf T}(g^{\mathsf T}\eta g)h$, which is just
+$(gh)^{\mathsf T}=h^{\mathsf T}g^{\mathsf T}$ and associativity; \lean{simp} with those two
+lemmas does the regrouping.
+
+%=====================================================================================
+\section{One proof, line by line: the \texorpdfstring{$\Theta$}{Theta}-shift}
+\label{sec:leanprimer:walkthrough}\index{Theta-shift@$\Theta$-shift!in Lean}
+\index{simp@\lean{simp}}
+
+We now read a complete proof at the speed of the kernel. The theorem is the first
+generator of $\Odd{d}$ in \cref{ch:odd}: an integer antisymmetric shift of the
+$B$-field, $g_\Theta = \begin{psmallmatrix}\mathbf 1&\Theta\\0&\mathbf 1\end{psmallmatrix}$,
+preserves the momentum--winding pairing $\eta=\begin{psmallmatrix}0&\mathbf 1\\\mathbf 1&0\end{psmallmatrix}$.
+Giveon, Porrati and Rabinovici write the element, require $\Theta_{ij}\in\Z$ and
+$\Theta_{ji}=-\Theta_{ij}$, and explain the physics: the constant $B$-term in the action is
+a total derivative, so an integer shift changes the action by a multiple of $2\pi$ and drops
+out of the path integral \source{GPR §2.4, ll.~1355--1373}.
+
+\subsection{The computation on paper}
+With $g=g_\Theta$,
+\begin{equation}
+g^{\mathsf T}\eta g
+=\begin{pmatrix}\mathbf 1&0\\\Theta^{\mathsf T}&\mathbf 1\end{pmatrix}
+ \begin{pmatrix}0&\mathbf 1\\\mathbf 1&0\end{pmatrix}
+ \begin{pmatrix}\mathbf 1&\Theta\\0&\mathbf 1\end{pmatrix}
+=\begin{pmatrix}\mathbf 1&0\\\Theta^{\mathsf T}&\mathbf 1\end{pmatrix}
+ \begin{pmatrix}0&\mathbf 1\\\mathbf 1&\Theta\end{pmatrix}
+=\begin{pmatrix}0&\mathbf 1\\\mathbf 1&\Theta^{\mathsf T}+\Theta\end{pmatrix}.
+\label{eq:leanprimer:thetacomp}
+\end{equation}
+So $g^{\mathsf T}\eta g=\eta$ exactly when $\Theta^{\mathsf T}+\Theta=0$. (We checked
+\eqref{eq:leanprimer:thetacomp} symbolically for $d=2$ with a general $\Theta$; the
+residual lower-right block is $\Theta+\Theta^{\mathsf T}$, as it should be. This is a
+symbolic check, not part of the Tier A claim.) The paper computation has three steps:
+transpose $g$, multiply blocks, use antisymmetry. The Lean proof has the same three steps.
+
+\subsection{The proof}
+\begin{leancode}
+theorem thetaShift_isODD (Θ : Matrix (Fin d) (Fin d) ℤ) (hΘ : Θᵀ = -Θ) :
+    IsODD (thetaShift Θ) := by
+  unfold IsODD thetaShift eta
+  rw [fromBlocks_transpose, fromBlocks_multiply, fromBlocks_multiply,
+    Matrix.transpose_one, Matrix.transpose_zero, hΘ]
+  simp
+\end{leancode}
+
+\paragraph{The statement.} For every $d$ (implicit, from the file's \lean{variable}
+line), every integer $d\times d$ matrix $\Theta$, and a proof \lean{hΘ} that
+$\Theta^{\mathsf T}=-\Theta$: the matrix \lean{thetaShift Θ} satisfies \lean{IsODD}. Lean
+prints the fully elaborated statement, with every implicit argument and namespace made
+visible, on request:
+\begin{leancode}
+#check @DualScaleStream2.TDuality.thetaShift_isODD
+-- ∀ {d : ℕ} (Θ : Matrix (Fin d) (Fin d) ℤ),
+--   Θ.transpose = -Θ → IsODD (thetaShift Θ)
+\end{leancode}
+This is the ``if'' direction only. The converse, that \lean{IsODD (thetaShift Θ)} forces
+antisymmetry, is true by \eqref{eq:leanprimer:thetacomp} but is not in the file
+(\cref{ex:leanprimer:converse}).
+
+\paragraph{Line 1: \lean{unfold IsODD thetaShift eta}.} The goal
+\lean{IsODD (thetaShift Θ)} is replaced by the definitions' bodies:
+\begin{leancode}
+⊢ (fromBlocks 1 Θ 0 1)ᵀ * fromBlocks 0 1 1 0 * fromBlocks 1 Θ 0 1
+    = fromBlocks 0 1 1 0
+\end{leancode}
+Here \lean{1} and \lean{0} are the $d\times d$ identity and zero blocks; matrix
+multiplication associates to the left, so the expression is $(g^{\mathsf T}\eta)g$.
+
+\paragraph{Line 2: the \lean{rw} chain.} Rewrites are applied in order, each to the first
+matching sub-expression.
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item \lean{fromBlocks\_transpose}, equation \eqref{eq:leanprimer:fbT}, turns
+  \lean{(fromBlocks 1 Θ 0 1)ᵀ} into \lean{fromBlocks 1ᵀ 0ᵀ Θᵀ 1ᵀ}.
+\item The first \lean{fromBlocks\_multiply}, equation \eqref{eq:leanprimer:fbmul},
+  multiplies the two leftmost block matrices. The goal's left side becomes
+  \lean{fromBlocks (1ᵀ * 0 + 0ᵀ * 1) (1ᵀ * 1 + 0ᵀ * 0) (Θᵀ * 0 + 1ᵀ * 1) (Θᵀ * 1 + 1ᵀ * 0)}
+  times \lean{fromBlocks 1 Θ 0 1}.
+\item The second \lean{fromBlocks\_multiply} performs the remaining product, producing a
+  single \lean{fromBlocks} whose four entries are sums of products of \lean{0},
+  \lean{1}, \lean{Θ} and \lean{Θᵀ}. The lower-right entry is
+  \lean{(Θᵀ * 0 + 1ᵀ * 1) * Θ + (Θᵀ * 1 + 1ᵀ * 0) * 1}.
+\item \lean{Matrix.transpose\_one} and \lean{Matrix.transpose\_zero} replace \lean{1ᵀ}
+  by \lean{1} and \lean{0ᵀ} by \lean{0}.
+\item \lean{hΘ} replaces every \lean{Θᵀ} by \lean{-Θ}. This is the only place the
+  hypothesis is used; the lower-right entry now reads
+  \lean{(-Θ * 0 + 1 * 1) * Θ + (-Θ * 1 + 1 * 0) * 1}.
+\end{itemize}
+
+\paragraph{Line 3: \lean{simp}.} The simplifier applies the ring lemmas for \lean{0} and
+\lean{1} (\lean{mul\_zero}, \lean{one\_mul}, \lean{add\_zero}, \lean{neg\_mul}, ...)
+until every block is in normal form. The upper-left block becomes \lean{0}, both
+off-diagonal blocks \lean{1}, and the lower-right block
+\lean{1 * Θ + (-Θ) * 1 = Θ - Θ = 0}. The goal is then
+\lean{fromBlocks 0 1 1 0 = fromBlocks 0 1 1 0}, which \lean{simp} closes by reflexivity.
+Had \lean{hΘ} been omitted from the \lean{rw} list, \lean{simp} would stop with the
+unsolved goal \lean{Θ + Θᵀ = 0}: the same residual as in
+\eqref{eq:leanprimer:thetacomp}. That is what ``the proof uses the hypothesis exactly where
+the mathematics does'' means in practice.
+
+\paragraph{What the kernel saw.} The tactics produced a proof term whose leaves are the
+Mathlib lemmas named above, the hypothesis \lean{hΘ}, and reflexivity. The term type-checks
+against the statement; the check depends only on the three standard axioms
+(\cref{sec:leanprimer:axioms}). Note that $d$ was never specialized: the proof is one term
+valid for all $d$, which is why no \lean{fin\_cases} appears. \Cref{ch:pipeline} records
+that this goal was closed by the mid-tier language model, not by the local prover, which
+handles only fixed-size goals \source{STREAM2\_WORKFLOW.md §6, ll.~109--114}.
+
+%=====================================================================================
+\section{Reading a longer proof: the dual-scale bound}\label{sec:leanprimer:longproof}
+\index{dual-scale bound!in Lean}
+
+Most proofs in the repository are longer than three lines, and one reads them by their
+\lean{have} skeleton: the intermediate statements are the proof; the tactics between them
+are bookkeeping. \lean{dualScale\_ge} in \lean{DualScaleStream2/DualScale/TraceBound.lean}
+proves the bound of \cref{ch:dualscale},
+\begin{equation}
+\Tr G+\Tr G^{-1}\ \ge\ 2d\qquad\text{for every positive-definite }G\in\R^{d\times d},
+\label{eq:leanprimer:bound}
+\end{equation}
+where $\Tr G+\Tr G^{-1}$ is the trace of the generalized metric $\HH(G,0)$ of
+\cref{ch:genmetric}, defined in Lean as
+\lean{dualScale G := (genMetric G 0).trace} with
+\lean{genMetric G B := fromBlocks (G - B * G⁻¹ * B) (B * G⁻¹) (-(G⁻¹ * B)) G⁻¹}.
+The idea that avoids diagonalizing $G$ is the identity
+\begin{equation}
+(G-\mathbf 1)\,G^{-1}\,(G-\mathbf 1) = (G-\mathbf 1)-(\mathbf 1-G^{-1}),
+\qquad\text{so}\qquad
+\Tr\big[(G-\mathbf 1)G^{-1}(G-\mathbf 1)\big] = \Tr G+\Tr G^{-1}-2d,
+\label{eq:leanprimer:sandwich}
+\end{equation}
+together with the fact that the left side is a trace of $M^{\mathsf T}PM$ with $P=G^{-1}$
+positive semidefinite, hence non-negative. (We verified \eqref{eq:leanprimer:sandwich} with
+a symbolic $2\times2$ matrix; the expansion is
+$(G-\mathbf 1)G^{-1}(G-\mathbf 1)=G-\mathbf 1-\mathbf 1+G^{-1}$ using $GG^{-1}=G^{-1}G=\mathbf 1$.)
+The skeleton of the Lean proof is exactly this list:
+\begin{leancode}
+theorem dualScale_ge (G : Matrix (Fin d) (Fin d) ℝ) (hG : G.PosDef) :
+    (2 * d : ℝ) ≤ dualScale G := by
+  rw [dualScale_eq]                                  -- goal: 2d ≤ tr G + tr G⁻¹
+  have hdet : IsUnit G.det := ...                    -- PosDef gives invertible
+  have hl : G⁻¹ * G = 1 := Matrix.nonsing_inv_mul G hdet
+  have hr : G * G⁻¹ = 1 := Matrix.mul_nonsing_inv G hdet
+  have hGinv_psd : G⁻¹.PosSemidef := hG.posSemidef.inv
+  have hGT : Gᵀ = G := ...                           -- from hG.isHermitian
+  have hMh : (G - 1)ᴴ = G - 1 := ...
+  have hpsd : ((G - 1)ᴴ * G⁻¹ * (G - 1)).PosSemidef :=
+    Matrix.PosSemidef.conjTranspose_mul_mul_same hGinv_psd (G - 1)
+  rw [hMh] at hpsd
+  have htrace_nonneg : 0 ≤ ((G - 1) * G⁻¹ * (G - 1)).trace := hpsd.trace_nonneg
+  have hexpand : (G - 1) * G⁻¹ * (G - 1) = (G - 1) - (1 - G⁻¹) := ...
+  rw [hexpand] at htrace_nonneg
+  rw [Matrix.trace_sub, Matrix.trace_sub, Matrix.trace_sub, Matrix.trace_one]
+    at htrace_nonneg
+  simp only [Fintype.card_fin] at htrace_nonneg      -- tr 1 = d
+  linarith
+\end{leancode}
+Every \lean{have} is a sentence of the paper proof. The three Mathlib inputs are named:
+positive-definite implies invertible (\lean{hdet}); the inverse of a positive-semidefinite
+matrix is positive-semidefinite (\lean{PosSemidef.inv}); a sandwich $M^{\mathsf H}PM$ of a
+positive-semidefinite $P$ is positive-semidefinite and has non-negative trace (the lemmas
+\lean{conjTranspose\_mul\_mul\_same} and \lean{trace\_nonneg} of the \lean{PosSemidef}
+namespace). The final \lean{linarith} sees the hypothesis
+$0\le(\Tr G-d)-(d-\Tr G^{-1})$ and the goal $2d\le\Tr G+\Tr G^{-1}$, which are the same
+linear inequality in the atoms $\Tr G$, $\Tr G^{-1}$, $d$.
+
+\begin{example}[Numbers]\label{ex:leanprimer:numbers}
+Take $d=2$ and $G=\diag(4,\tfrac14)$, a rectangular torus with radii $2$ and $\tfrac12$ in
+string units. Then $\Tr G+\Tr G^{-1} = 4+\tfrac14+\tfrac14+4 = 8.5\ge4=2d$. The sandwich
+is $\diag\big(3^2/4,\ (-\tfrac34)^2\cdot4\big)=\diag(2.25,2.25)$ with trace $4.5$, and
+indeed $8.5-4=4.5$. Equality in \eqref{eq:leanprimer:bound} holds only for $G=\mathbf 1$,
+where the sandwich vanishes; Lean proves the value $2d$ at $G=\mathbf 1$ as
+\lean{dualScale\_one} but not uniqueness of the minimizer.
+\end{example}
+
+The circle case is the corollary \lean{circle\_effective\_scale\_ge\_two}:
+$2\le R+R^{-1}$ for $R>0$, proved from $R+R^{-1}-2=(R-1)^2/R$ with \lean{field\_simp},
+\lean{ring}, \lean{div\_nonneg} and \lean{linarith}. This is the dual-scale inequality of
+\cref{ch:dualscale} in units $\ap=1$; its status as mathematics is \TA, its physical
+reading is discussed there.
+
+%=====================================================================================
+\section{Reading \lean{\#print axioms}}\label{sec:leanprimer:axioms}
+\index{print axioms@\lean{\#print axioms}}\index{axioms (Lean)}
+
+A green build is not the whole gate. Two things can hide inside a compiled file. A
+\lean{sorry}\index{sorry@\lean{sorry}}\index{native decide@\lean{native\_decide}} is a
+placeholder that makes Lean accept any statement; it is reported as a
+warning, and a theorem that merely \emph{uses} a sorried lemma inherits the gap silently.
+And \lean{native\_decide} asks Lean to trust the compiled evaluator rather than the kernel,
+adding the axiom \lean{Lean.ofReduceBool}. The command \lean{\#print axioms} exposes both.
+We ran it, from a scratch file that imports the four modules of this chapter, on the
+project's built library:
+\begin{leancode}
+#print axioms DualScaleStream2.TDuality.thetaShift_isODD
+-- 'DualScaleStream2.TDuality.thetaShift_isODD' depends on axioms:
+--   [propext, Classical.choice, Quot.sound]
+#print axioms DualScaleStream2.DualScale.dualScale_ge
+-- [propext, Classical.choice, Quot.sound]
+#print axioms DualScaleStream2.Lattice.isUnimodular_of_mul_eq_one
+-- [propext, Classical.choice, Quot.sound]
+#print axioms StringTheory.UseCases.TDuality.self_dual_radius_unique
+-- [propext, Classical.choice, Quot.sound]
+\end{leancode}
+Anything else in the list---\lean{sorryAx}, \lean{Lean.ofReduceBool}, or a user-declared
+\lean{axiom}---means the theorem is not Tier A. The project's gate script
+\lean{tools/axiom\_audit.py} runs this command over every theorem of a library and fails
+unless each depends only on the three standard axioms
+\source{STREAM2\_WORKFLOW.md §2, ll.~22--24}. It earned its place: the first run found a
+\lean{native\_decide} in a Stream 1 file that every build and every \lean{sorry} search had
+passed, and it was replaced by a kernel-checked \lean{norm\_num} proof
+\source{LL.md §S2.5, ll.~56--61}.
+
+\begin{pitfallbox}[Zero axioms, one hundred percent]
+Every Mathlib-based theorem depends on \lean{propext}, \lean{Classical.choice} and
+\lean{Quot.sound}; ``zero axioms'' is not a state a theorem in this book can be in, and a
+document that claims it has not run the command. Likewise a count of theorems in a
+vendored library is not a measure of what this project proved; the project's own log
+records a headline figure of that kind as an overclaim \source{LL.md, ll.~3--13}.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{Checking a theorem yourself}\label{sec:leanprimer:setup}
+
+The whole point of a machine-checked book is that the reader does not have to believe the
+authors. The steps below reproduce the check on a Linux or macOS machine with enough free disk for
+Mathlib's compiled object files (several gigabytes); the toolchain and Mathlib version are
+pinned in the repository.\index{lake@\lean{lake}}
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item Install \lean{elan}, the Lean version manager (one shell command from the Lean
+  website). It reads the file \lean{lean-toolchain} in the repository, which pins
+  \lean{leanprover/lean4:v4.33.1}, and installs exactly that compiler.
+\item Clone the repository and run \lean{lake exe cache get} in its root. This downloads
+  pre-compiled Mathlib object files for the pinned Mathlib tag \lean{v4.33.1} instead of
+  compiling Mathlib, which would take hours; the repository's setup notes record that
+  \lean{lake update} triggers this automatically \source{docs/INFRA\_SETUP.md, ll.~53--60}.
+\item Run \lean{lake build DualScaleStream2}. The Stream 2 library is a separate
+  \lean{lean\_lib} in \lean{lakefile.lean}, built by name so that a failure there can never
+  turn the Stream 1 core red \source{STREAM2\_WORKFLOW.md §2, ll.~32--33}. A clean build
+  ends with no error and no \lean{sorry} warning.
+\item Write a probe file, say \lean{Probe.lean}, containing the imports and the
+  \lean{\#print axioms} lines of \cref{sec:leanprimer:axioms}, and run
+  \lean{lake env lean -DmaxHeartbeats=1000000 Probe.lean}. The output should be the four
+  lines shown there.
+\item To read a statement with all implicit arguments, add \lean{\#check @name}. To see a
+  goal state, open the file in VS Code with the Lean 4 extension, place the cursor after
+  any tactic line, and read the ``Lean Infoview'' panel; this is how the goal states of
+  \cref{sec:leanprimer:walkthrough} were obtained.
+\end{enumerate}
+
+\begin{pitfallbox}[Heartbeats: the single-file check is stricter than the build]
+\index{heartbeats (Lean)}Lean bounds the work per declaration by a ``heartbeat'' budget. The repository's
+\lean{lakefile.lean} raises it to $10^6$ for \lean{lake build}, but a bare
+\lean{lake env lean file.lean} uses the default $2\times10^5$ and can time out on a proof
+that the real build accepts. Always pass \lean{-DmaxHeartbeats=1000000} (and
+\lean{-DmaxRecDepth=8000}) to single-file compiles. A stricter budget can reject a valid
+proof; it can never accept an invalid one, so no wrong result enters the library this way,
+only wasted time \source{LL.md §S2.4, ll.~47--54}.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:leanprimer:lean}
+
+The four files used as examples in this chapter are quoted in full elsewhere in the book
+(\cref{ch:lattices,ch:odd,ch:dualscale,ch:tduality}). Here we record only what has been
+verified about them from the point of view of this chapter: the statements as read, the
+axioms as printed, and the gaps a reader should not paper over. All declarations below
+compile in the project's build of 2026-09-17 and depend only on \lean{propext},
+\lean{Classical.choice} and \lean{Quot.sound} (\cref{sec:leanprimer:axioms}).
+
+\begin{leanbox}[Lattice predicates and the two general lemmas]
+\begin{leancode}
+theorem isUnimodular_of_mul_eq_one {n : ℕ} (G H : Gram n) (h : H * G = 1) :
+    IsUnimodular G := by ...
+theorem even_quadratic_form_of_even_diag {n : ℕ} (G : Gram n) (hsymm : Gᵀ = G)
+    (heven : IsEvenDiag G) (x : Fin n → ℤ) : Even (x ⬝ᵥ (G *ᵥ x)) := by ...
+\end{leancode}
+\textbf{Reading.} For every rank $n$ and integer Gram matrix $G$: an integer left inverse
+proves $\det G=\pm1$; and if $G$ is symmetric with even diagonal then $x^{\mathsf T}Gx$ is
+even for every integer vector $x$. \textbf{Proof idea.} The first is
+$\det G\det H=1$ in $\Z$ (\lean{Matrix.det\_mul}, \lean{Matrix.det\_one},
+\lean{Int.eq\_one\_or\_neg\_one\_of\_mul\_eq\_one}). The second splits
+$G=D+U+U^{\mathsf T}$ into diagonal and strict upper triangle by a three-way case split
+\lean{rcases lt\_trichotomy i j}, then $x^{\mathsf T}Gx = x^{\mathsf T}Dx + 2\,x^{\mathsf T}Ux$.
+\textbf{Not proved.} The converse (an even form has even diagonal) is not stated; no
+abstract lattice, isomorphism or classification appears
+\source{Lattice/Basic.lean header, ll.~40--45}. \TA
+\end{leanbox}
+
+\begin{leanbox}[The duality group for every $d$]
+\begin{leancode}
+theorem thetaShift_isODD (Θ : Matrix (Fin d) (Fin d) ℤ) (hΘ : Θᵀ = -Θ) :
+    IsODD (thetaShift Θ) := by ...
+theorem basisChange_isODD (A B : Matrix (Fin d) (Fin d) ℤ) (h : Aᵀ * B = 1) :
+    IsODD (basisChange A B) := by ...
+theorem eta_mul_self : eta d * eta d = 1 := by ...
+theorem eta_isODD : IsODD (eta d) := by ...
+theorem isODD_mul (g h : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g)
+    (hh : IsODD h) : IsODD (g * h) := by ...
+theorem eta_one_reindex :
+    (eta 1).reindex finSumFinEquiv finSumFinEquiv
+      = DualScaleStream2.Lattice.hyperbolicU := by ...
+\end{leancode}
+\textbf{Reading.} The $\Theta$-shift with antisymmetric $\Theta$, the basis change
+$\diag(A,B)$ with $A^{\mathsf T}B=\mathbf 1$, and $\eta$ itself satisfy
+$g^{\mathsf T}\eta g=\eta$; the predicate is closed under products; at $d=1$ the matrix
+$\eta$, reindexed from \lean{Fin 1 ⊕ Fin 1} to \lean{Fin 2}, is literally the hyperbolic
+plane $U$. Each of the first two is one direction of an ``iff''. \textbf{Proof idea.}
+Block transpose, two block multiplications, the hypothesis, \lean{simp}
+(\cref{sec:leanprimer:walkthrough}). \textbf{Not proved.} That the three families generate
+$\Odd{d}$; any group structure; the moduli-space quotient
+\source{TDuality/ODD.lean header, ll.~33--36}. \TA
+\end{leanbox}
+
+\begin{leanbox}[The dual-scale bound]
+\begin{leancode}
+noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ :=
+  (genMetric G 0).trace
+theorem dualScale_eq (G : Matrix (Fin d) (Fin d) ℝ) :
+    dualScale G = G.trace + G⁻¹.trace := by ...
+theorem dualScale_inv (G : Matrix (Fin d) (Fin d) ℝ) (hG : IsUnit G.det) :
+    dualScale G⁻¹ = dualScale G := by ...
+theorem dualScale_ge (G : Matrix (Fin d) (Fin d) ℝ) (hG : G.PosDef) :
+    (2 * d : ℝ) ≤ dualScale G := by ...
+theorem dualScale_one :
+    dualScale (1 : Matrix (Fin d) (Fin d) ℝ) = 2 * d := by ...
+theorem dualScale_circle (R : ℝ) (hR : R ≠ 0) :
+    dualScale (!![R ^ 2] : Matrix (Fin 1) (Fin 1) ℝ)
+      = (R + R⁻¹) ^ 2 - 2 := by ...
+theorem circle_effective_scale_ge_two (R : ℝ) (hR : 0 < R) :
+    2 ≤ R + R⁻¹ := by ...
+\end{leancode}
+\textbf{Reading.} Over the real numbers, for every $d$: the trace of $\HH(G,0)$ is
+$\Tr G+\Tr G^{-1}$; it is invariant under $G\mapsto G^{-1}$ for invertible $G$; it is at
+least $2d$ for positive-definite $G$; it equals $2d$ at $G=\mathbf 1$; at $d=1$ with
+$G=R^2$ it equals $(R+1/R)^2-2$; and $R+1/R\ge2$ for $R>0$. \lean{noncomputable} marks a
+definition involving real numbers, which cannot be evaluated by a program; it does not
+weaken the theorems. \textbf{Proof idea.} \Cref{sec:leanprimer:longproof}. \textbf{Not
+proved.} That $G=\mathbf 1$ is the unique minimizer; anything at $B\neq0$; any physical
+interpretation, which the file itself labels Tier C
+\source{DualScale/TraceBound.lean header, ll.~44--47}. \TA
+\end{leanbox}
+
+\begin{leanbox}[The circle mass spectrum over $\Q$]
+\begin{leancode}
+theorem tduality_fixes_left_momentum (n w R : ℚ) (hR : R ≠ 0) :
+    leftMomentum w n (1 / R) = leftMomentum n w R := by ...
+theorem tduality_flips_right_momentum (n w R : ℚ) (hR : R ≠ 0) :
+    rightMomentum w n (1 / R) = - rightMomentum n w R := by ...
+theorem tduality_invariant_mass_squared (n w R : ℚ) (hR : R ≠ 0) :
+    momentumMassSq w n (1 / R) = momentumMassSq n w R := by ...
+theorem self_dual_radius_unique (R : ℚ) (hR : 0 < R) (hFix : (1 : ℚ) / R = R) :
+    R = 1 := by ...
+\end{leancode}
+\textbf{Reading.} With $\ap=1$ and $n,w,R$ rational: T-duality fixes $p_L$, negates
+$p_R$, hence fixes $p_L^2+p_R^2$; and $R=1$ is the only positive fixed point of
+$R\mapsto1/R$. \textbf{Proof idea.} \lean{unfold}, \lean{field\_simp}, \lean{ring};
+\lean{nlinarith} with two square hints (\cref{sec:leanprimer:tactics}). \textbf{Not
+proved.} Nothing about oscillators or the full CFT; $n$ and $w$ are not restricted to
+integers, so the theorem is about rational functions, an arithmetic shadow of the physical
+statement whose algebra happens to be identical \source{TDualityMassSpectrum.lean header,
+ll.~35--50}. \TA
+\end{leanbox}
+
+\begin{center}\small
+\begin{tabular}{@{}p{5.6cm}cp{7.2cm}@{}}\toprule
+Claim & Tier & Where \\ \midrule
+The theorems above, as stated & \TA & the four files; axioms printed in \cref{sec:leanprimer:axioms} \\
+$g_\Theta\in\Odd{d}$ \emph{iff} $\Theta$ antisymmetric & \TL & GPR §2.4; ``only if'' by \eqref{eq:leanprimer:thetacomp}, not in Lean \\
+$g_\Theta$ is a symmetry of the string spectrum & \TL & GPR §2.4 (total-derivative argument) \\
+\lean{leftMomentum} \emph{is} the physical $p_L$ & --- & an identification; never Tier A \\
+\bottomrule\end{tabular}
+\end{center}
+
+%=====================================================================================
+\begin{summarybox}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item A theorem is a type in \lean{Prop}; a proof is a term of that type; the kernel checks
+  the term against the type and trusts nothing else. Three things remain to be trusted: the
+  kernel, the three axioms \lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}, and
+  the statement itself.
+\item \lean{def} makes an object that can be unfolded; \lean{theorem} makes a proof that can
+  only be applied. Read the hypothesis list first: it tells you what a formal theorem
+  covers.
+\item A Mathlib matrix is a function of two indices; \lean{fromBlocks} builds
+  $2\times2$ block matrices on \lean{Fin d ⊕ Fin d}; \lean{G⁻¹} is total and needs
+  \lean{IsUnit G.det} to behave; \lean{PosDef} includes symmetry.
+\item Tactics transform goals. Identities: \lean{unfold}, \lean{rw}, \lean{simp},
+  \lean{ring}, \lean{field\_simp}. Finite computations: \lean{ext}, \lean{fin\_cases},
+  \lean{decide}, \lean{norm\_num}, \lean{rfl}. Inequalities: \lean{linarith},
+  \lean{nlinarith}. Structure: \lean{have}, \lean{calc}, \lean{constructor},
+  \lean{intro}.
+\item \lean{thetaShift\_isODD} is proved by unfolding, two block multiplications, one use
+  of antisymmetry and \lean{simp}; the hypothesis is used exactly where the paper
+  computation uses it. It proves one direction only.
+\item \lean{\#print axioms} is the last gate: \lean{sorryAx} or \lean{Lean.ofReduceBool}
+  in the list disqualifies a theorem from Tier A. Single-file checks need
+  \lean{-DmaxHeartbeats=1000000}.
+\end{itemize}
+\end{summarybox}
+
+%=====================================================================================
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$ Reading statements]\label{ex:leanprimer:reading}
+For each of \lean{dualScale\_inv}, \lean{dualScale\_ge} and \lean{eta\_one\_reindex},
+write in one English sentence what is quantified, what is assumed, and what is concluded.
+Then say which of the three would still be true, and which would become false or
+meaningless, if its hypothesis were deleted.
+\end{exercise}
+
+\begin{exercise}[$\star$ The other generator]\label{ex:leanprimer:basischange}
+Repeat the paper computation \eqref{eq:leanprimer:thetacomp} for
+$g=\diag(A,B)$ and show that $g^{\mathsf T}\eta g=\eta$ is equivalent to
+$A^{\mathsf T}B=\mathbf 1$ and $B^{\mathsf T}A=\mathbf 1$. Explain why the Lean proof of
+\lean{basisChange\_isODD} needs the auxiliary \lean{have h' : Bᵀ * A = 1}, and how it
+obtains it from \lean{h} by transposing.
+\end{exercise}
+
+\begin{exercise}[$\star$ Goal states]\label{ex:leanprimer:goals}
+Open \lean{ODD.lean} in an editor with the Lean extension, place the cursor after the
+\lean{rw} line of \lean{thetaShift\_isODD}, and copy the goal. Identify the four blocks and
+match them with the entries of \eqref{eq:leanprimer:thetacomp}. Then delete \lean{hΘ}
+from the \lean{rw} list and report the goal \lean{simp} leaves open.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Lean: the converse]\label{ex:leanprimer:converse}
+State and prove
+\begin{leancode}
+theorem thetaShift_isODD_iff (Θ : Matrix (Fin d) (Fin d) ℤ) :
+    IsODD (thetaShift Θ) ↔ Θᵀ = -Θ := by ...
+\end{leancode}
+Use \lean{constructor}; the reverse direction is
+\lean{thetaShift\_isODD}. For the forward direction, unfold and rewrite as in
+\cref{sec:leanprimer:walkthrough} to reach an equation between two \lean{fromBlocks}
+matrices, then extract the lower-right block (Mathlib has \lean{toBlocks₂₂} and the
+lemma \lean{toBlocks\_fromBlocks₂₂} in the \lean{Matrix} namespace) and solve for
+\lean{Θᵀ}.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Lean: a certificate]\label{ex:leanprimer:certificate2}
+Define \lean{U : Gram 2 := !![0, 1; 1, 0]} and prove \lean{IsUnimodular U} by applying
+\lean{isUnimodular\_of\_mul\_eq\_one} with \lean{H := U}; prove the side condition
+\lean{U * U = 1} by \lean{ext i j; fin\_cases i <;> fin\_cases j <;> rfl} (you may need
+\lean{simp [Matrix.mul\_apply, Fin.sum\_univ\_succ]} before \lean{rfl}). Then prove
+\lean{IsEvenDiag U}. Compare with \lean{hyperbolicU} in \lean{Lattice/Hyperbolic.lean}.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Lean: numbers]\label{ex:leanprimer:numbers2}
+Prove \lean{example : (2 : ℝ) ≤ 4 + (4 : ℝ)⁻¹} with \lean{norm\_num}, and
+\lean{example : (2 : ℝ) ≤ dualScale (!![(2 : ℝ) \^{} 2] : Matrix (Fin 1) (Fin 1) ℝ)} by
+rewriting with \lean{dualScale\_circle} and then \lean{norm\_num}. Which hypothesis of
+\lean{dualScale\_circle} must you discharge, and how?
+\end{exercise}
+
+\begin{exercise}[$\star\star$ The sandwich]\label{ex:leanprimer:sandwich}
+Verify \eqref{eq:leanprimer:sandwich} by hand for a general invertible $G$, and
+compute both sides for $G=\begin{psmallmatrix}2&1\\1&1\end{psmallmatrix}$. Then show that
+$\Tr[(G-\mathbf 1)G^{-1}(G-\mathbf 1)]=0$ forces $G=\mathbf 1$ when $G$ is positive
+definite, which is the uniqueness statement that \lean{TraceBound.lean} does not contain.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$ Lean: a faithful version]
+\label{ex:leanprimer:faithful}
+The circle theorems of \cref{sec:leanprimer:types} live over $\Q$ with $\ap=1$. Restate
+the invariance theorem \lean{tduality\_invariant\_mass\_squared} over $\R$, with $\ap$ a
+positive real parameter: define $p_L = n/R + wR/\ap$ and $p_R = n/R - wR/\ap$ with
+$n, w : \Z$ cast to $\R$, and prove that $(n,w,R)\mapsto(w,n,\ap/R)$ fixes $p_L^2+p_R^2$. You will need
+\lean{hα : 0 < α'} and \lean{hR : 0 < R} for \lean{field\_simp}. Then add the oscillator
+term $(2/\ap)(N+\tilde N-2)$ as a further argument and explain why the proof does not
+change.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$ Audit]\label{ex:leanprimer:audit}
+Write a file that proves \lean{example : (10 : ℕ) \^{} 3 = 1000} twice, once with
+\lean{decide} and once with \lean{native\_decide}, name the two proofs, and run
+\lean{\#print axioms} on both. Explain from the output why the project's gate rejects the
+second and what would have to be trusted to accept it.
+\end{exercise}
+
+%=====================================================================================
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item The Lean sources used in this chapter: \lean{Basic.lean}, \lean{ODD.lean} and
+ \lean{TraceBound.lean} in the directories \lean{Lattice/}, \lean{TDuality/} and
+ \lean{DualScale/} of \lean{DualScaleStream2/}, and \lean{TDualityMassSpectrum.lean} in
+ \lean{StringTheoryFormalization/UseCases/}. Each header
+ states its physical background, its mathematical content, what is not proved, and the
+ proof techniques; read the header before the code.
+\item The physics of the $\Theta$-shift and the basis change, with the total-derivative
+ argument: \source{GPR §2.4, ll.~1355--1373}.
+\item The project's gate: the kernel as the only accept criterion, the three standard
+ axioms, and ``producer $\neq$ verifier'' \source{STREAM2\_WORKFLOW.md §2, ll.~20--38};
+ measured results of the tiered proving pipeline
+ \source{STREAM2\_WORKFLOW.md §6, ll.~105--124}. The lessons on statement locking, axiom
+ auditing, heartbeats and the structure-field parser pitfall
+ \source{LL.md §S2.4--S2.13, ll.~47--112} and \source{LL.md §0.4, ll.~188--199}. The
+ architecture of the libraries is described in \cref{ch:architecture}; the atlas of
+ theorems in \cref{ch:atlas}; the pipeline in \cref{ch:pipeline}.
+\item For Lean itself, the official documentation and Mathlib's reference pages are the
+ authoritative sources; the definitions of \lean{Matrix}, \lean{fromBlocks},
+ \lean{PosDef} and the nonsingular inverse quoted above are from the pinned Mathlib tag
+ \lean{v4.33.1} in \lean{lakefile.lean}. Standard; not checked against a source in this
+ book's library.
+\end{itemize}

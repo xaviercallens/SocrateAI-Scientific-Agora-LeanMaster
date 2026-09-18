@@ -1,0 +1,877 @@
+\chapter{Compactification on \texorpdfstring{$\KT$}{K3 x T2}}\label{ch:k3t2}
+
+The ten-dimensional superstring has six dimensions too many. \Cref{ch:stringsk3} removed four
+of them by wrapping the string on a K3 surface and found a six-dimensional theory whose moduli
+space is governed by the lattice $\Gamma^{4,20}$. This chapter removes the last two on a
+two-torus and asks the question a student should ask of any compactification: \emph{what
+four-dimensional theory comes out?} Concretely: what is the topology of the six-dimensional
+internal space $\KT$; how much supersymmetry survives and why; how many massless scalars and
+gauge fields appear; on which space do the scalars take their values; and which discrete group
+identifies apparently different compactifications. The answers are unusually clean. The
+product $\KT$ is, up to free quotients, the \emph{only} compact six-dimensional space of
+holonomy $SU(2)$, the four-dimensional theory has $N=4$ supersymmetry, and its $134$ scalars
+and $28$ gauge fields are organised by a single even unimodular lattice of signature $(6,22)$.
+That lattice is obtained from the K3 lattice of \cref{ch:k3lattice} by adding hyperbolic planes,
+and the arithmetic of this addition is one of the things the Lean library checks. At the end
+of the chapter we lower the supersymmetry to $N=2$ and $N=1$ with orientifolds and fluxes; this
+is the setting of the tadpole condition of \cref{ch:tadpole}.
+
+Two pieces of input are used throughout. From \cref{ch:k3}: a K3 surface $X$ is a compact
+simply connected complex surface with trivial canonical bundle; its Betti numbers are
+$(1,0,22,0,1)$, its Hodge numbers are $h^{2,0}=h^{0,2}=1$, $h^{1,1}=20$, and its Euler number
+is $\chi(X)=24$. From \cref{ch:torus2}: the flat two-torus with metric $G$ and $B$-field
+$B_{12}$ is described by two points $\tau,\rho$ of the upper half-plane.
+
+\section{The topology of the product}\label{sec:k3t2:topology}
+
+\subsection{The K\"unneth formula}
+Let $M$ and $N$ be compact manifolds. A closed $p$-form on $M$ and a closed $q$-form on $N$
+can be pulled back to $M\times N$ and wedged together to give a closed $(p+q)$-form. The
+\emph{K\"unneth formula}\index{K\"unneth formula} states that, with real coefficients, nothing
+else is needed:
+\begin{equation}\label{eq:k3t2:kunneth}
+ H^k(M\times N;\R)\;\cong\;\bigoplus_{p+q=k}H^p(M;\R)\otimes H^q(N;\R),
+ \qquad\text{so}\qquad b_k(M\times N)=\sum_{p+q=k}b_p(M)\,b_q(N).
+\end{equation}
+(This is a standard theorem of algebraic topology; it is quoted, not proved, in this book and
+is not checked against a source in the book's library.) A convenient way to organise the
+convolution in \eqref{eq:k3t2:kunneth} is the \emph{Poincar\'e polynomial}%
+\index{Poincar\'e polynomial} $P_M(t)=\sum_k b_k(M)\,t^k$, for which
+\eqref{eq:k3t2:kunneth} reads $P_{M\times N}=P_M\,P_N$. Because the Euler number%
+\index{Euler characteristic} is $\chi(M)=\sum_k(-1)^kb_k(M)=P_M(-1)$, multiplicativity follows
+at once:
+\begin{equation}\label{eq:k3t2:chimult}
+ \chi(M\times N)=P_M(-1)\,P_N(-1)=\chi(M)\,\chi(N).
+\end{equation}
+
+\begin{example}[Betti numbers of $\KT$]\label{ex:k3t2:betti}
+The torus $T^2=S^1\times S^1$ has $P_{S^1}=1+t$, hence $P_{T^2}=(1+t)^2=1+2t+t^2$: one
+point class, two independent one-cycles (the $a$- and $b$-cycles), one volume class. For a K3
+surface $P_X=1+22t^2+t^4$. Multiplying,
+\begin{align}
+ P_{\KT}(t)&=(1+22t^2+t^4)(1+2t+t^2)\notag\\
+ &=1+2t+(22+1)t^2+(2\cdot 22)t^3+(1+22)t^4+2t^5+t^6 ,\label{eq:k3t2:poincare}
+\end{align}
+so that
+\begin{equation}\label{eq:k3t2:betti}
+ (b_0,\dots,b_6)=(1,\;2,\;23,\;44,\;23,\;2,\;1),\qquad
+ \chi(\KT)=1-2+23-44+23-2+1=0 .
+\end{equation}
+Each number has a face. The two one-cycles are those of the torus, because a K3 surface has
+none. The $23$ two-cycles are the $22$ two-cycles of K3 together with the torus itself. The
+$44$ three-cycles are products of a two-cycle of K3 with a one-cycle of the torus; there is no
+other way to make degree three, since $b_1(X)=b_3(X)=0$. Poincar\'e duality,
+$b_k=b_{6-k}$, is visible in \eqref{eq:k3t2:betti}. The Euler number vanishes because
+$\chi(T^2)=1-2+1=0$; by \eqref{eq:k3t2:chimult} \emph{any} product with a torus has
+$\chi=0$.
+\end{example}
+
+\subsection{The Hodge diamond}
+Both factors are K\"ahler, and the K\"unneth decomposition respects the type of a form:
+$h^{p,q}(M\times N)=\sum h^{a,b}(M)\,h^{p-a,q-b}(N)$. In terms of the Hodge polynomial
+$h_M(x,y)=\sum h^{p,q}x^py^q$ this is again a product. With
+$h_X=1+x^2+y^2+20xy+x^2y^2$ and $h_{T^2}=(1+x)(1+y)$ one finds, for example,
+\begin{align}
+ h^{1,1}(\KT)&=h^{1,1}(X)\,h^{0,0}(T^2)+h^{0,0}(X)\,h^{1,1}(T^2)=20+1=21,\notag\\
+ h^{2,1}(\KT)&=h^{2,0}(X)\,h^{0,1}(T^2)+h^{1,1}(X)\,h^{1,0}(T^2)=1+20=21,\label{eq:k3t2:hodge}\\
+ h^{3,0}(\KT)&=h^{2,0}(X)\,h^{1,0}(T^2)=1,\qquad h^{1,0}(\KT)=h^{1,0}(T^2)=1 .\notag
+\end{align}
+The full diamond is shown in \cref{fig:k3t2:diamond}. One checks
+$b_2=2h^{2,0}+h^{1,1}=2+21=23$ and $b_3=2(h^{3,0}+h^{2,1})=2(1+21)=44$, in agreement with
+\eqref{eq:k3t2:betti}. (The product of the two Hodge polynomials was expanded with sympy as
+an independent symbolic check of \cref{fig:k3t2:diamond}.)
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=0.62,every node/.style={font=\small}]
+ % K3 diamond
+ \begin{scope}
+ \node at (0,2) {$1$};
+ \node at (-0.5,1) {$0$};\node at (0.5,1) {$0$};
+ \node at (-1,0) {$1$};\node at (0,0) {$20$};\node at (1,0) {$1$};
+ \node at (-0.5,-1) {$0$};\node at (0.5,-1) {$0$};
+ \node at (0,-2) {$1$};
+ \node at (0,-3.2) {K3};
+ \end{scope}
+ \node at (2.2,0) {$\otimes$};
+ % T2 diamond
+ \begin{scope}[xshift=4.2cm]
+ \node at (0,1) {$1$};
+ \node at (-0.5,0) {$1$};\node at (0.5,0) {$1$};
+ \node at (0,-1) {$1$};
+ \node at (0,-3.2) {$T^2$};
+ \end{scope}
+ \node at (6.2,0) {$=$};
+ % product diamond
+ \begin{scope}[xshift=10cm]
+ \node at (0,3) {$1$};
+ \node at (-0.6,2) {$1$};\node at (0.6,2) {$1$};
+ \node at (-1.2,1) {$1$};\node[blue!60!black] at (0,1) {$21$};\node at (1.2,1) {$1$};
+ \node at (-1.8,0) {$1$};\node[blue!60!black] at (-0.6,0) {$21$};
+ \node[blue!60!black] at (0.6,0) {$21$};\node at (1.8,0) {$1$};
+ \node at (-1.2,-1) {$1$};\node[blue!60!black] at (0,-1) {$21$};\node at (1.2,-1) {$1$};
+ \node at (-0.6,-2) {$1$};\node at (0.6,-2) {$1$};
+ \node at (0,-3) {$1$};
+ \node at (0,-4.2) {$\KT$};
+ \draw[<-,gray] (2.1,0)--(3.2,0) node[right,black]{$h^{3,0}=1$};
+ \draw[<-,gray] (1.0,2)--(3.2,2) node[right,black]{$h^{1,0}=1$};
+ \end{scope}
+\end{tikzpicture}
+\caption{Hodge diamonds. Row $k$ from the top lists $h^{p,q}$ with $p+q=k$, with $h^{k,0}$
+at the right end. The diamond of the product is the ``convolution'' of the two factors;
+row sums give the Betti numbers $1,2,23,44,23,2,1$.}
+\label{fig:k3t2:diamond}
+\end{figure}
+
+\begin{pitfallbox}[Common pitfall: ``$\KT$ is a Calabi--Yau threefold'']
+The product has a nowhere-vanishing holomorphic three-form, $\Omega_X\wedge\dd z$, so
+$h^{3,0}=1$ and $c_1=0$. In the loose sense (``compact K\"ahler with $c_1=0$'') it is a
+Calabi--Yau threefold. In the strict sense used in most of string phenomenology---holonomy
+\emph{exactly} $SU(3)$---it is not: a manifold of holonomy exactly $SU(3)$ has $h^{1,0}=
+h^{2,0}=0$, whereas here $h^{1,0}=h^{2,0}=1$. The extra holomorphic forms are the fingerprints
+of the smaller holonomy group $SU(2)$, and smaller holonomy means \emph{more} supersymmetry
+($N=4$ instead of $N=2$ for type~II strings). Formulas derived for strict Calabi--Yau
+threefolds, such as ``type IIA gives $h^{1,1}$ vector multiplets and $h^{2,1}+1$
+hypermultiplets'', must not be applied blindly to $\KT$.
+\end{pitfallbox}
+
+\section{Holonomy \texorpdfstring{$SU(2)$}{SU(2)} and the amount of supersymmetry}
+\label{sec:k3t2:susy}
+
+\subsection{Counting unbroken supercharges}
+A supersymmetry of the ten-dimensional theory survives compactification on a manifold $Y$ if
+its spinor parameter can be chosen covariantly constant on $Y$. Parallel transport around a
+closed loop rotates a spinor by an element of the holonomy group\index{holonomy} of $Y$, so a
+covariantly constant spinor exists exactly for each component of the spinor on which the
+holonomy group acts trivially. The rule is therefore: decompose the ten-dimensional spinor under
+$so(1,d-1)\oplus so(10-d)$, restrict $so(10-d)$ to the holonomy algebra, and keep the
+singlets \source{Asp §4.1, ll.~2258--2265}.
+
+For a flat torus the holonomy is trivial and everything survives. For a K3 surface the
+holonomy is $SU(2)$. Aspinwall carries out the decomposition for one ten-dimensional
+Majorana--Weyl spinor, which has $16$ real components:
+\begin{equation}\label{eq:k3t2:spinor}
+ so(1,9)\supset so(1,5)\oplus su(2)\oplus su(2),\qquad
+ \mathbf{16}\to(\mathbf 4,\mathbf 2,\mathbf 1)\oplus(\mathbf 4,\mathbf 1,\mathbf 2).
+\end{equation}
+If the second $su(2)$ is the holonomy algebra, the first summand consists of singlets and
+survives; the second does not. Eight of the sixteen components are kept: ``compactification on
+a smooth K3 surface will preserve half as many supersymmetries as compactifying on a torus''
+\source{Asp §4.1, ll.~2273--2295}. Reducing further on $T^2$ costs nothing. The count for the
+theories of interest is then as follows; recall that in four dimensions the minimal spinor has
+four real components, so $N$ supersymmetries means $4N$ real supercharges
+\source{Asp Table~2, ll.~2207--2254}.
+
+\begin{center}
+\begin{tabular}{@{}llcc@{}}
+\toprule
+ten-dimensional theory & internal space & real supercharges & four-dimensional $N$\\
+\midrule
+type IIA or IIB ($32$) & $T^6$ & $32$ & $8$\\
+type IIA or IIB ($32$) & $\KT$ & $16$ & $4$\\
+heterotic ($16$) & $T^6$ & $16$ & $4$\\
+heterotic ($16$) & $\KT$ & $8$ & $2$\\
+type IIB orientifold ($32\to16$) & $\KT/\Z_2$ & $8$ & $2$\\
+the same, with generic flux & $\KT/\Z_2$ & $4$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first four rows follow from \eqref{eq:k3t2:spinor}; the second and third are the two
+sides of the duality of \cref{sec:k3t2:moduli}, and the fourth is the starting point of the
+$N=2$ heterotic/type~II dual pairs \source{Asp §5.3, ll.~3074--3078}. The last two rows are
+discussed in \cref{sec:k3t2:less} and are taken from \source{DRS §1, ll.~130--136; §4,
+ll.~1262--1266}.
+
+\begin{physicsbox}[Physical picture: why a curved space costs supersymmetry]
+A supersymmetry transformation needs a spinor parameter $\epsilon(y)$ defined over the whole
+internal space. On flat $T^6$ we may take $\epsilon$ constant, in any of its components. On
+a curved space, a ``constant'' spinor must mean covariantly constant, and curvature obstructs
+this: carrying $\epsilon$ around a small loop rotates it by the curvature. A K3 surface is
+Ricci-flat but not flat; its curvature lies in one $su(2)$ factor of $so(4)=su(2)\oplus su(2)$
+(this is what ``holonomy $SU(2)$'' means). Spinors charged under that factor are rotated and
+cannot be constant; spinors charged only under the other factor do not feel the curvature at
+all. That is the content of \eqref{eq:k3t2:spinor}. The torus factor of $\KT$ is flat and is
+invisible to this argument.
+\end{physicsbox}
+
+\subsection{Why \texorpdfstring{$\KT$}{K3 x T2} and nothing else}
+One may turn the argument around and ask for all compact six-manifolds on which a type~II
+string yields $N=4$ in four dimensions, that is, all complex threefolds of holonomy $SU(2)$.
+Aspinwall's argument runs as follows \source{Asp §5.2, ll.~2881--2894}. A covariantly constant
+holomorphic two-form forces $h^{2,0}=1$, and an index argument then gives $h^{1,0}=1$, so the
+manifold is not simply connected. By the Cheeger--Gromoll theorem the universal cover of a
+compact Ricci-flat manifold is isometric to $M\times\R^n$ with $M$ compact and simply
+connected; here it must be $K3\times\R^2$. Hence \emph{any complex threefold with holonomy
+$SU(2)$ is isometric to $\KT$ or a quotient of it} \TL. The quotient group must preserve the
+holomorphic two-form of the K3 surface; such an action always has fixed points on K3, so to
+act freely it must be accompanied by a translation of $T^2$, and the group is therefore abelian.
+These free quotients give further $N=4$ theories with fewer gauge fields
+(\cref{sec:k3t2:less}). Compare \cref{fig:k3t2:diamond}: the values $h^{2,0}=h^{1,0}=1$ are
+exactly what the product produces.
+
+\section{The massless fields of the type IIA string on \texorpdfstring{$\KT$}{K3 x T2}}
+\label{sec:k3t2:fields}
+
+\subsection{Scalars: \texorpdfstring{$80+4+2+44+2+2=134$}{134}}
+Massless scalars in four dimensions arise from zero modes of the ten-dimensional fields on the
+internal space. For a $p$-form gauge field the rule is that each independent $p$-cycle of the
+internal space gives one scalar, namely the integral of the field over the cycle
+\source{Asp §4.2, ll.~2350--2355}. We go through the fields of the type IIA string.
+
+\emph{Metric and $B$-field.} Deformations of the Ricci-flat metric together with the periods
+of $B$ are the deformations of the worldsheet conformal field theory. For the K3 factor there
+are $58+22=80$ of them (\cref{ch:stringsk3}); for the torus there are $3+1=4$, the three
+components of the flat metric and $B_{12}$. Are there mixed deformations, with one leg on K3
+and one on $T^2$? A mixed $B$-field zero mode would be a class in $H^1(X)\otimes H^1(T^2)$,
+and a mixed metric zero mode would require a harmonic one-form on K3 as well. Both are absent
+because $b_1(X)=0$. This is the K\"unneth formula at work: $b_2(\KT)=23=22+1$ has no mixed
+term, and the space of conformal field theories on $\KT$ is locally the product of the two
+factors,
+\begin{equation}\label{eq:k3t2:nsns}
+ \frac{O(4,20)}{O(4)\times O(20)}\times\frac{O(2,2)}{O(2)\times O(2)},\qquad
+ \dim=4\cdot 20+2\cdot2=84 .
+\end{equation}
+Here we used that the Grassmannian\index{Grassmannian} $O(p,q)/(O(p)\times O(q))$ of
+positive $p$-planes in $\R^{p,q}$ has dimension $pq$ (\cref{ch:narain}): a nearby plane is the
+graph of a linear map from the $p$-plane to its $q$-dimensional orthogonal complement.
+
+\emph{Ramond--Ramond fields.} Type IIA has a one-form $C_1$ and a three-form $C_3$. The
+one-form integrated over the $b_1(\KT)=2$ one-cycles gives $2$ scalars; the three-form
+integrated over the $b_3(\KT)=44$ three-cycles gives $44$ scalars. In addition, $C_3$ with one
+leg along each of the $b_1=2$ one-cycles is a two-form in four dimensions, and a two-form in
+four dimensions is dual to a scalar ($\dd b=\star\,\dd a$): $2$ more scalars. (The printed
+text of the source says ``1-form'' twice in this sentence; the second instance, which is
+paired with $b_3=44$, is the three-form.)
+
+\emph{Dilaton and axion.} The dilaton $\Phi$ is one scalar, and the four-dimensional
+components $B_{\mu\nu}$ of the $B$-field are dual to a second, the axion\index{axion}: $2$
+scalars.
+
+Adding up, Aspinwall obtains \source{Asp §5.1, ll.~2743--2749}
+\begin{equation}\label{eq:k3t2:134}
+ \underbrace{80}_{\text{K3 CFT}}+\underbrace{4}_{T^2\text{ CFT}}
+ +\underbrace{2}_{C_1}+\underbrace{44}_{C_3}+\underbrace{2}_{C_3\to b_{\mu\nu}}
+ +\underbrace{2}_{\Phi,\ B_{\mu\nu}}=134 .
+\end{equation}
+
+\subsection{Vectors: \texorpdfstring{$2+2+1+23=28$}{28}}
+The same rules give the gauge fields; this count is not spelled out in the source and we
+derive it here. A $p$-form with one leg in spacetime and $p-1$ legs on an internal
+$(p-1)$-cycle is a four-dimensional vector.
+\begin{itemize}[leftmargin=*]
+ \item The metric components $g_{\mu m}$, $m$ a torus direction, are the two Kaluza--Klein
+ gauge fields of the two isometries of $T^2$. K3 has no continuous isometries and
+ contributes none.
+ \item $B_{\mu m}$ gives $b_1(\KT)=2$ vectors; these couple to string winding on the torus.
+ \item $C_1$ gives $b_0=1$ vector, $C_\mu$ itself.
+ \item $C_3$ gives $b_2(\KT)=23$ vectors.
+\end{itemize}
+In total $2+2+1+23=28$. Aspinwall states the result in the form ``the gauge group is always
+of rank~28'' \source{Asp §5.1, ll.~2856--2858}. It is no accident that
+$28=6+22$ is also the rank of the lattice that will appear in \eqref{eq:k3t2:modspace}: the
+$28$ electric charges of a state under the $28$ gauge fields form a vector in a lattice of
+rank $28$.
+
+\subsection{Assembling \texorpdfstring{$N=4$}{N=4} multiplets}
+$N=4$ supersymmetry in four dimensions has only two multiplets that contain scalars
+\source{Asp §5.1, ll.~2715--2723}: the supergravity multiplet, which contains one complex
+scalar (the dilaton--axion), and matter multiplets, which contain six real scalars each,
+transforming as a $\mathbf 6$ of $so(6)$. (That the supergravity multiplet also contains six
+vectors, the graviphotons, and each matter multiplet one vector, is standard and is not
+checked against a source in this book's library.) If $m$ is the number of matter multiplets,
+\begin{equation}\label{eq:k3t2:m22}
+ \text{scalars: } 2+6m=134\ \Longrightarrow\ m=22,\qquad
+ \text{vectors: } 6+m=28\ \Longrightarrow\ m=22 .
+\end{equation}
+The two counts are independent and agree. The reader should appreciate that this is a
+non-trivial consistency check on \cref{ex:k3t2:betti}: had we made an error in $b_3$, the
+number $134-2$ would not have been divisible by six.
+
+\begin{example}[The same numbers from the heterotic string on $T^6$]\label{ex:k3t2:het}
+The heterotic string of \cref{ch:narain} compactified on $T^6$ has the following massless
+scalars: the $6\cdot7/2=21$ components of the torus metric, the $6\cdot5/2=15$ components of
+the $B$-field, and $16\cdot 6=96$ Wilson lines of the sixteen Cartan gauge fields along the
+six circles. That is $21+15+96=132=6\cdot 22$, the dimension of the Narain moduli space
+$O(6,22)/(O(6)\times O(22))$. Together with the dilaton and the axion: $134$. The vectors are
+$g_{\mu m}$ ($6$), $B_{\mu m}$ ($6$) and the sixteen Cartan gauge fields: $28$. Both numbers
+agree with \eqref{eq:k3t2:134} and the vector count above, although on the type IIA side they
+were assembled from entirely different ingredients, the Betti numbers $2,23,44$ of $\KT$.
+\end{example}
+
+\section{The moduli space and the duality group}\label{sec:k3t2:moduli}
+
+\subsection{The local form}
+Supersymmetry fixes the local geometry of the scalar manifold. The argument is the same as in
+six dimensions (\cref{ch:stringsk3}): the holonomy algebra of the $N=4$ theory is
+$u(4)\cong u(1)\oplus so(6)$; the dilaton--axion is charged only under $u(1)$ and the matter
+scalars only under $so(6)$, so the moduli space factorises, and the Teichm\"uller space is
+\source{Asp §5.1 eq.~(99), ll.~2717--2737}
+\begin{equation}\label{eq:k3t2:local}
+ \frac{O(6,m)}{O(6)\times O(m)}\times\frac{SL(2)}{U(1)},\qquad m=22,\qquad
+ \dim = 6\cdot22+2=134 .
+\end{equation}
+For the heterotic string on $T^6$ the interpretation is immediate
+(\cref{ex:k3t2:het}): the first factor is the Narain moduli space and the second, the upper
+half-plane $SL(2)/U(1)$, is parametrised by the dilaton--axion. For the type IIA string on
+$\KT$ it is less obvious which two of the $134$ scalars split off.
+
+\subsection{The torus moduli \texorpdfstring{$\tau$}{tau} and \texorpdfstring{$\rho$}{rho}}
+Recall from \cref{ch:torus2} that the four moduli of the conformal field theory on $T^2$
+form two complex numbers in the upper half-plane,
+\begin{equation}\label{eq:k3t2:taurho}
+ \tau=\frac{G_{12}}{G_{22}}+\ii\,\frac{\sqrt{\det G}}{G_{22}},\qquad
+ \rho=B_{12}+\ii\sqrt{\det G},
+\end{equation}
+($G$ measured in units of $\ap$): $\tau$ is the complex structure (shape) and $\rho$ the
+complexified K\"ahler modulus (area and $B$-field). Correspondingly
+\source{Asp §5.1 eq.~(100), ll.~2751--2764}
+\begin{equation}\label{eq:k3t2:o22}
+ \frac{O(2,2)}{O(2)\times O(2)}\;\cong\;\frac{SL(2)}{U(1)}\bigg|_\tau\times
+ \frac{SL(2)}{U(1)}\bigg|_\rho
+\end{equation}
+up to $\Z_2$ identifications.
+
+Which factor of \eqref{eq:k3t2:local} is the separate $SL(2)/U(1)$? Aspinwall answers with a
+short computation \source{Asp §5.1 eqs.~(101)--(102), ll.~2766--2806}. Start from the
+six-dimensional duality of \cref{ch:stringsk3}, type IIA on K3 $=$ heterotic on $T^4$, under
+which $\Phi_{\rm Het}=-\Phi_{\rm IIA}$ and the six-dimensional metrics are related by
+$g_{6,\rm Het}=\ee^{2\Phi_{\rm Het}}g_{6,\rm IIA}$ \source{Asp eq.~(93), ll.~2405--2413}.
+Compactify both sides on a two-torus. The heterotic action is
+\begin{equation}\label{eq:k3t2:action}
+ S=\int\!\dd^6X\sqrt{g_6}\;\ee^{-2\Phi_{6,\rm Het}}(R+\dots)
+ =\int\!\dd^4X\sqrt{g_4}\;A_{\rm Het}\,\ee^{-2\Phi_{6,\rm Het}}(R+\dots),
+\end{equation}
+where $A_{\rm Het}$ is the area of the torus in the heterotic metric; the coefficient of $R$
+is by definition $\ee^{-2\Phi_{4,\rm Het}}$. Now express the area in the type IIA metric. An
+area scales with one power of the metric, so
+$A_{\rm Het}=\ee^{2\Phi_{6,\rm Het}}A_{\rm IIA}$, and therefore
+\begin{equation}\label{eq:k3t2:area}
+ \ee^{-2\Phi_{4,\rm Het}}=A_{\rm Het}\,\ee^{-2\Phi_{6,\rm Het}}=A_{\rm IIA}.
+\end{equation}
+The four-dimensional heterotic coupling is the inverse area of the type IIA torus. Since the
+heterotic dilaton--axion spans the separate factor in \eqref{eq:k3t2:local}, in type IIA
+language \emph{that factor is $\rho$, the area and $B$-field of the torus.} The other $132$
+scalars---the $80$ moduli of the K3 sigma model, the shape $\tau$ of the torus, all $48$
+Ramond--Ramond scalars and the type IIA dilaton--axion---fill out the $O(6,22)$ coset:
+$80+2+48+2=132$.
+
+\subsection{The global form}
+The discrete identifications come from two sources. The conformal field theory on $T^2$ is
+invariant under $\SLZ$ acting on $\rho$ (integer shifts of $B_{12}$ and the inversion of
+\cref{ch:torus2}). The heterotic string on $T^6$ is invariant under the isometry group
+$O(\Gamma^{6,22})$ of its Narain lattice\index{Narain lattice}, the even unimodular lattice of
+signature $(6,22)$ (\cref{ch:narain,ch:odd}). Combining the two:
+
+\begin{theorem}[Aspinwall's Proposition~4, \TL]\label{thm:k3t2:modspace}
+Assume the six-dimensional duality between the type IIA string on K3 and the heterotic string
+on $T^4$ (\cref{ch:stringsk3}). Then the type IIA string on $\KT$ is equivalent to the
+heterotic string on $T^6$, with moduli space
+\begin{equation}\label{eq:k3t2:modspace}
+ \mathcal M_{N=4}=\Bigl(O(\Gamma^{6,22})\backslash O(6,22)/\bigl(O(6)\times O(22)\bigr)\Bigr)
+ \times\Bigl(\SLZ\backslash SL(2)/U(1)\Bigr).
+\end{equation}
+\source{Asp §5.1, Prop.~4 and eq.~(103), ll.~2807--2816}
+\end{theorem}
+
+The word ``theorem'' is used in the sense of the source: a statement derived from stated
+assumptions, which include the six-dimensional duality and the completeness assumptions of
+\cref{ch:stringsk3}; it is Tier~L and conditional, not a mathematical theorem about a defined
+object.
+
+\begin{physicsbox}[Physical picture: three roles of one modular group]
+The $\SLZ$ in \eqref{eq:k3t2:modspace} acts on a complex scalar that has three different
+names \source{Asp §5.1, ll.~2840--2844}: for the heterotic string it is the dilaton--axion,
+so $\SLZ$ is a strong--weak coupling duality (S-duality)\index{S-duality} of the
+four-dimensional theory; for the type IIA string it is $\rho$, so the same $\SLZ$ is an
+ordinary T-duality of the torus, visible in perturbation theory; for the type IIB string,
+obtained from IIA by $R\to\ap/R$ on one circle, which exchanges $\rho$ and $\tau$
+(\cref{ex:k3t2:mirror}), it is the shape of the torus, and $\SLZ$ is a plain change of basis
+of the lattice defining $T^2$. A non-perturbative duality of one description is a geometric
+triviality of another. Conversely, the S-duality of the ten-dimensional type IIB string ends
+up inside $O(\Gamma^{6,22})$ \source{Asp §5.1, ll.~2852--2855}.
+\end{physicsbox}
+
+\subsection{The lattice \texorpdfstring{$\Gamma^{6,22}$}{Gamma(6,22)} and its sublattices}
+By the classification of \cref{ch:lattices}, an indefinite even unimodular lattice is determined
+by its signature $(n_+,n_-)$, which must satisfy $n_+-n_-\equiv0\pmod 8$. Hence
+\begin{equation}\label{eq:k3t2:tower}
+ \underbrace{3U\oplus2E_8(-1)}_{\Gamma^{3,19}=H^2(X,\Z)}\ \subset\
+ \underbrace{\Gamma^{3,19}\oplus U}_{\Gamma^{4,20}=H^*(X,\Z)}\ \subset\
+ \underbrace{\Gamma^{4,20}\oplus U\oplus U}_{\Gamma^{6,22}},
+\end{equation}
+with signatures obtained by adding $(1,1)$ for each hyperbolic plane\index{hyperbolic plane}
+$U$ and $(0,8)$ for each $E_8(-1)$:
+\begin{equation}\label{eq:k3t2:sig}
+ 2\,(0,8)+3\,(1,1)=(3,19),\qquad (3,19)+(1,1)=(4,20),\qquad (4,20)+2\,(1,1)=(6,22).
+\end{equation}
+The indices are $-16,-16,-16$, all divisible by eight, and the ranks are $22$, $24$ and $28$.
+The decomposition $\Gamma^{6,22}\cong\Gamma^{4,20}\oplus\Gamma^{2,2}$ with
+$\Gamma^{2,2}=U\oplus U$ is used by Aspinwall to describe the action of geometric symmetries
+of $\KT$ on the charge lattice \source{Asp §5.2, ll.~2898--2906}. It is summarised in
+\cref{fig:k3t2:tower}.
+
+\begin{figure}[b]
+\centering
+\begin{tikzpicture}[>=Stealth,
+  box/.style={draw,rounded corners=2pt,minimum height=8mm,minimum width=13mm,font=\small},
+  lab/.style={font=\footnotesize,align=center}]
+ \node[box,fill=red!8] (e1) at (0,0) {$E_8(-1)$};
+ \node[box,fill=red!8] (e2) at (1.7,0) {$E_8(-1)$};
+ \node[box,fill=blue!8] (u1) at (3.2,0) {$U$};
+ \node[box,fill=blue!8] (u2) at (4.7,0) {$U$};
+ \node[box,fill=blue!8] (u3) at (6.2,0) {$U$};
+ \node[box,fill=green!10] (u4) at (7.9,0) {$U$};
+ \node[box,fill=orange!15] (u5) at (9.6,0) {$U$};
+ \node[box,fill=orange!15] (u6) at (11.1,0) {$U$};
+ \draw[|-|,thin] (-0.7,-0.7)--(6.9,-0.7)
+   node[midway,below=2pt,lab]{$\Gamma^{3,19}=H^2(K3,\Z)$\\ rank $22$};
+ \draw[|-|,thin] (7.2,-0.7)--(8.6,-0.7)
+   node[midway,below=2pt,lab]{$H^0\oplus H^4$};
+ \draw[|-|,thin] (8.9,-0.7)--(11.8,-0.7)
+   node[midway,below=2pt,lab]{$\Gamma^{2,2}$ of the torus};
+ \draw[|-|,thin] (-0.7,0.7)--(8.6,0.7)
+   node[midway,above=2pt,lab]{$\Gamma^{4,20}$, rank $24$};
+ \draw[|-|,thin] (-0.7,1.7)--(11.8,1.7)
+   node[midway,above=2pt,lab]{$\Gamma^{6,22}$, rank $28$: one charge for each of the $28$ gauge fields};
+\end{tikzpicture}
+\caption{The charge lattice of the $N=4$ theory as an orthogonal sum. Each block $U$ adds
+$(1,1)$ to the signature and each $E_8(-1)$ adds $(0,8)$.}
+\label{fig:k3t2:tower}
+\end{figure}
+
+An isometry of a summand, extended by the identity on the orthogonal complement, is an isometry
+of the sum. Therefore
+\begin{equation}\label{eq:k3t2:subgroup}
+ O(\Gamma^{4,20})\times O(\Gamma^{2,2})\ \subset\ O(\Gamma^{6,22}),
+\end{equation}
+and both factors have been met before: $O(\Gamma^{4,20})$ is the duality group of the K3
+sigma model (\cref{ch:stringsk3,ch:mukai}) and $O(\Gamma^{2,2})=\Odd{2}$ is the T-duality
+group of a two-torus, which contains the modular transformations of $\tau$, those of $\rho$,
+and the mirror exchange $\tau\leftrightarrow\rho$ (\cref{ch:torus2}). The inclusion \eqref{eq:k3t2:subgroup} is
+proper by a wide margin: $O(\Gamma^{6,22})$ also contains isometries that mix the K3 block
+with the torus block, and these have no description as symmetries of the conformal field
+theory on either factor.
+
+\begin{pitfallbox}[Common pitfall: which $\Gamma^{2,2}$?]
+It is tempting to read \eqref{eq:k3t2:subgroup} as ``the perturbative T-duality group of
+the type IIA string on $\KT$, $O(\Gamma^{4,20})\times\Odd{2}$, sits inside
+$O(\Gamma^{6,22})$''. This is not quite right. We have just seen that the K\"ahler modulus
+$\rho$ of the type IIA torus is \emph{not} among the $132$ coordinates of the $O(6,22)$
+coset; its modular group is the separate $\SLZ$ factor of \eqref{eq:k3t2:modspace}. What is
+true is that the perturbative group sits inside the full modular group
+$O(\Gamma^{6,22})\times\SLZ$, with $O(\Gamma^{4,20})$ and $\SLZ_\tau$ in the first factor and
+$\SLZ_\rho$ being the second. In the heterotic description the summand $\Gamma^{2,2}$ is
+literally the Narain lattice of the last two circles of $T^6=T^4\times T^2$, containing
+$\tau_{\rm Het}$ and $\rho_{\rm Het}$; the duality map then sends the heterotic
+dilaton--axion to $\rho_{\rm IIA}$ by \eqref{eq:k3t2:area}. (That it sends
+$\rho_{\rm Het}$ to the type IIA dilaton--axion is the natural completion of this statement;
+it is standard but is not spelled out in the source lines read for this chapter.)
+\end{pitfallbox}
+
+\begin{example}[Rectangular torus: numbers]\label{ex:k3t2:mirror}
+Take $T^2$ rectangular with radii $R_1=3\sqrt{\ap}$, $R_2=\tfrac12\sqrt{\ap}$ and $B_{12}=0$.
+In the conventions of \cref{ch:torus2}, $\tau=\ii R_1/R_2=6\ii$ and
+$\rho=\ii R_1R_2/\ap=\tfrac32\ii$. T-duality on the second circle, $R_2\to\ap/R_2=2\sqrt\ap$,
+gives $\tau'=\ii R_1R_2/\ap=\tfrac32\ii=\rho$ and $\rho'=\ii R_1/R_2=6\ii=\tau$: shape and
+size are exchanged, which is the statement that one T-duality is a mirror map and turns type
+IIA into type IIB \source{Asp §5.1, Prop.~5 and ll.~2826--2831}. Next apply the inversion of
+the separate $\SLZ$ in type IIA, $\rho\to-1/\rho=\tfrac23\ii$, at fixed $\tau$: from
+$R_1/R_2=6$ and $R_1R_2=\tfrac23\ap$ we get $R_1=2\sqrt\ap$, $R_2=\tfrac13\sqrt\ap$, that is,
+both radii inverted, $R_i\to\ap/R_i$, and the circles exchanged. By
+\eqref{eq:k3t2:area} the heterotic dual of this torus has
+$\ee^{-2\Phi_{4,\rm Het}}=A_{\rm IIA}\propto\rho_2$, so $\rho_2=\tfrac32\to\tfrac23$ is the
+exchange of a moderately weakly coupled heterotic string with a moderately strongly coupled
+one. In the language of \cref{ch:dualscale}, each circle contributes an effective scale
+$R_i+\ap/R_i\ge2\sqrt\ap$ that is unchanged by the inversion:
+$3+\tfrac13=\tfrac{10}3$ and $\tfrac12+2=\tfrac52$ in units of $\sqrt\ap$ before, and
+$2+\tfrac12$, $\tfrac13+3$ after.
+\end{example}
+
+\section{Less supersymmetry: quotients, bundles, orientifolds and flux}\label{sec:k3t2:less}
+
+$N=4$ supersymmetry is too rigid for particle physics; the interest of $\KT$ is that it is
+the simplest starting point from which the supersymmetry can be lowered in a controlled way.
+
+\subsection{Free quotients: still \texorpdfstring{$N=4$}{N=4}, smaller rank}
+A finite abelian group $G$ acting on K3 preserving the holomorphic two-form, combined with a
+translation of $T^2$ (\cref{sec:k3t2:susy}), acts freely on $\KT$ and preserves the $SU(2)$
+holonomy. Its action on $\Gamma^{6,22}\cong\Gamma^{4,20}\oplus\Gamma^{2,2}$ is a lattice
+rotation on the first summand and a null shift on the second. In the dual heterotic
+description this is an asymmetric orbifold of $T^6$, and only the $G$-invariant sublattice of
+$\Gamma^{6,22}$ survives; the rank of the gauge group drops from $28$ to $28-M$, where $M$ is
+the rank of the sublattice of $H^2(X,\Z)$ on which $G$ acts non-trivially ($M=8$ for
+$G=\Z_2$) \source{Asp §5.2, ll.~2888--2906 and 2985--3000; Table~3, l.~2945}. Finite groups of symmetries of K3 that preserve the holomorphic two-form are taken up
+again, from the point of view of the Mathieu group, in \cref{ch:moonshine}.
+
+\subsection{The heterotic string on \texorpdfstring{$\KT$}{K3 x T2}: \texorpdfstring{$N=2$}{N=2}}
+By the table of \cref{sec:k3t2:susy} the heterotic string on $\KT$ keeps $8$ supercharges,
+$N=2$. A heterotic compactification requires, besides the manifold, a gauge bundle $E$ subject
+to the anomaly condition $c_2(E)=c_2(TX)$; on K3 this means $c_2(E)=24$, integrated over the
+surface, so the bundle cannot be flat \source{Asp §5.3, ll.~3108--3120}. The number $24$ is
+$\chi(K3)$: for a complex surface the integral of $c_2$ of the tangent bundle is the Euler
+number. The many choices of bundle are what allows these models to be dual to type~II
+strings on the many Calabi--Yau threefolds; the moduli space is a product
+$\mathcal M_V\times\mathcal M_H$ of a K\"ahler manifold (vector multiplets) and a
+quaternionic K\"ahler manifold (hypermultiplets) \source{Asp §5.3 eq.~(108), ll.~3125--3148}.
+
+\subsection{The type IIB orientifold and flux: \texorpdfstring{$N=2$ and $N=1$}{N=2 and N=1}}
+Dasgupta, Rajesh and Sethi consider type IIB on $\KT$ divided by
+$\Omega(-1)^{F_L}\Z_2$, where $\Omega$ is worldsheet parity, $F_L$ the left-moving spacetime
+fermion number and $\Z_2:z\mapsto-z$ the reflection of the torus coordinate
+\source{DRS §4.1, ll.~1288--1292}\index{orientifold}. The reflection has four fixed points
+on $T^2$, namely $z=0,\tfrac12,\tfrac\tau2,\tfrac{1+\tau}2$ in units of the periods, because
+$z\equiv-z$ modulo the lattice means $2z\in\Z+\tau\Z$. At each fixed point sits an orientifold
+seven-plane (O7) wrapping K3 and filling spacetime; its Ramond--Ramond charge is cancelled
+locally by D7-branes, and with a trivial gauge bundle the gauge group is $SO(8)^4$
+\source{DRS §4.1, ll.~1310--1314}. The quotient $T^2/\Z_2$ is a sphere with four conical
+points (\cref{fig:k3t2:pillow}). The orientifold projection halves the $16$ supercharges of
+type IIB on $\KT$: $N=2$.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.0,>=Stealth]
+ % torus fundamental cell
+ \draw[thick] (0,0) rectangle (3,2);
+ \draw[dashed] (1.5,0)--(1.5,2);
+ \foreach \p in {(0,0),(1.5,0),(0,1),(1.5,1)} \fill[red!70!black] \p circle (2.2pt);
+ \foreach \p in {(3,0),(0,2),(3,2),(1.5,2),(3,1)} \fill[red!30] \p circle (2.2pt);
+ \node[below] at (1.5,-0.55) {\small $T^2$, with $z\sim-z$};
+ \node[left] at (0,0) {\small$0$};\node[below] at (1.5,-0.02) {\small$\tfrac12$};
+ \node[left] at (0,1) {\small$\tfrac\tau2$};\node[right] at (1.5,1.05) {\small$\tfrac{1+\tau}2$};
+ \draw[->,thick] (3.6,1)--(4.8,1);
+ % pillow
+ \begin{scope}[xshift=5.4cm,yshift=0.1cm,scale=1.6]
+ \draw[thick,fill=blue!5] (0,0) .. controls (0.75,0.25) .. (1.5,0) .. controls (1.3,0.5) ..
+   (1.5,1) .. controls (0.75,0.8) .. (0,1) .. controls (0.2,0.5) .. (0,0);
+ \foreach \p in {(0,0),(1.5,0),(0,1),(1.5,1)} \fill[red!70!black] \p circle (2.2pt);
+ \node[right,align=left] at (1.75,0.5) {\small $T^2/\Z_2\cong S^2$: four O7-planes,\\
+   \small each with four D7-branes, $SO(8)^4$};
+ \end{scope}
+\end{tikzpicture}
+\caption{The reflection $z\mapsto-z$ of the torus has four fixed points (dark dots; the light
+dots are their lattice translates). Half of the cell, to the left of the dashed line, is a
+fundamental domain; folding it gives a ``pillow'' with four corners. The seven-planes sit at
+the corners and wrap the K3 surface.}
+\label{fig:k3t2:pillow}
+\end{figure}
+
+This orientifold is a special point in the moduli space of F-theory on the fourfold
+$K3\times K3$ \source{DRS §4.1, ll.~1292--1293}, and with that comes a constraint. For
+M- and F-theory on a Calabi--Yau fourfold $\mathcal M$ there is a tadpole\index{tadpole}
+proportional to $\chi(\mathcal M)/24$ which must be cancelled by $n$ spacetime-filling branes
+and by flux \source{DRS §1 eq.~(1.2), ll.~50--80}:
+\begin{equation}\label{eq:k3t2:tadpole}
+ \frac{\chi(\mathcal M)}{24}=\frac1{8\pi^2}\int_{\mathcal M}G\wedge G+n
+ \qquad\Longrightarrow\qquad
+ \frac12\int\frac G{2\pi}\wedge\frac G{2\pi}+n=24\quad\text{for }\mathcal M=K3\times K3,
+\end{equation}
+since $\chi(K3\times K3)=24^2=576$ by \eqref{eq:k3t2:chimult} and $576/24=24$
+\source{DRS §3.1, ll.~637--641; §4.2, ll.~1362--1370}. The two forms of the flux term agree
+because $\tfrac12(2\pi)^{-2}=1/(8\pi^2)$. Without flux one needs $n=24$ D3-branes; after two
+T-dualities along the torus this becomes the type~I string on $\KT$ with $24$ D5-branes
+wrapping $T^2$ \source{DRS §4, ll.~1267--1276}. With flux
+\begin{equation}\label{eq:k3t2:gflux}
+ \frac G{2\pi}=\alpha\wedge\dd z^1\dd\bar z^2+\beta\wedge\dd\bar z^1\dd\bar z^2
+ +\text{c.c.},\qquad
+ \alpha\in H^{1,1}(K3),\ \beta\in H^{2,0}(K3),
+\end{equation}
+fewer branes are needed, and the supersymmetry depends on the flux: ``if $\beta=0$, the model
+has $N=2$ supersymmetry'', otherwise $N=1$ \source{DRS §4.2 eq.~(4.4), ll.~1372--1382}.
+(The placement of the bars in \eqref{eq:k3t2:gflux} is reconstructed: the text extraction of
+the source drops them. We have fixed them by requiring that $G$ be real and that every term
+be of type $(2,2)$ on $K3\times T^4$, which supersymmetry demands
+\source{DRS §2.2, ll.~315--319}; for instance $\beta\wedge\dd z^1\dd z^2$ would be of type
+$(4,0)$.) The flux also gives
+masses to some of the $134$ moduli; this is the subject of
+\cref{ch:stabilization}, and the integrality and positivity properties of the flux term are
+treated in \cref{ch:tadpole}.
+
+\begin{pitfallbox}[Common pitfall: ``$\chi(\KT)=0$, so there is no tadpole'']
+The Euler number that enters \eqref{eq:k3t2:tadpole} is that of the elliptically fibred
+\emph{fourfold}, here $K3\times K3$ with $\chi=576$, not that of the six-dimensional space
+on which the type IIB string is compactified. The threefold $\KT$ has $\chi=0$ and, without
+an orientifold, type~II strings on it have no tadpole at all: that is the $N=4$ theory of
+\cref{sec:k3t2:moduli}. The $24$ units of D3-brane charge of the orientifold come from the
+curvature of the K3 surface wrapped by the seven-branes, and $24=\chi(K3)$. Both statements,
+$\chi(\KT)=0$ and $\chi(K3\times K3)/24=24$, are checked in Lean below, and they refer to
+different manifolds.
+\end{pitfallbox}
+
+\section{What the machine has checked}\label{sec:k3t2:lean}
+
+Three Lean files touch the material of this chapter. None of them defines a manifold, a
+cohomology group or a lattice with a bilinear form. What they contain is the
+\emph{arithmetic} of the chapter---signatures added as pairs of natural numbers, Euler
+numbers computed from tables---and the honest description is ``arithmetic shadow''
+(\cref{ch:architecture}). The inputs to that arithmetic (the Hodge numbers of K3, the
+signatures of $U$ and $E_8(-1)$, the K\"unneth formula) are Tier~L.
+
+\begin{leanbox}[In Lean: the signature tower \eqref{eq:k3t2:sig}]
+File \lean{DualScaleStream2/Lattice/K3T2Signature.lean}, namespace
+\lean{DualScaleStream2.Lattice}. A signature is a bare pair of naturals with componentwise
+addition:
+\begin{leancode}
+structure Signature where
+  pos : ℕ
+  neg : ℕ
+
+def sigU : Signature := ⟨1, 1⟩
+def sigE8Neg : Signature := ⟨0, 8⟩
+def sigK3 : Signature := sigE8Neg + sigE8Neg + sigU + sigU + sigU
+def sigMukai : Signature := sigK3 + sigU
+def sigT2 : Signature := sigU + sigU
+def sigK3T2 : Signature := sigMukai + sigT2
+
+theorem sigK3T2_eq : sigK3T2 = ⟨6, 22⟩ := by rfl
+theorem rank_K3T2 : sigK3T2.rank = 28 := by ...
+theorem index_mod_eight :
+    sigK3.index % 8 = 0 ∧ sigMukai.index % 8 = 0 ∧ sigK3T2.index % 8 = 0 := by ...
+\end{leancode}
+\textbf{Reading.} \lean{sigK3T2\_eq} says that the pair obtained by adding $(0,8)$ twice and
+$(1,1)$ six times is $(6,22)$; \lean{rank\_K3T2} says $6+22=28$; \lean{index\_mod\_eight} says
+that $3-19$, $4-20$ and $6-22$ are divisible by $8$. Companion theorems \lean{sigK3\_eq},
+\lean{sigMukai\_eq} and \lean{rank\_K3} give $(3,19)$, $(4,20)$ and $22$, and
+\lean{sigK3\_matches\_hodge} checks that $(3,19)$ agrees with the pair
+$(2h^{2,0}+1,\,h^{1,1}-1)$ computed from the Hodge table of another library.
+\textbf{What is not said.} The structure \lean{Signature} is not attached to any quadratic
+form: that $U$ has signature $(1,1)$ and $E_8(-1)$ has $(0,8)$ is entered by hand in
+\lean{sigU} and \lean{sigE8Neg}. The mod-$8$ theorem for even unimodular lattices is not
+proved; it is verified at three numerical instances. \textbf{Proof idea.} All terms are closed
+numerals, so both sides reduce to the same normal form and \lean{rfl} (or \lean{simp}
+followed by \lean{rfl}) closes the goal.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: Euler numbers from Hodge tables]
+File \lean{DualScaleStream2/Flux/Tadpole.lean}, namespace \lean{DualScaleStream2.Flux}:
+\begin{leancode}
+def t2HodgeNumber : Fin 2 → Fin 2 → ℕ := fun _ _ => 1
+
+def eulerFromHodge {m : ℕ} (h : Fin m → Fin m → ℕ) : ℤ :=
+  ∑ p : Fin m, ∑ q : Fin m,
+    (if (p.val + q.val) % 2 = 0 then 1 else -1 : ℤ) * (h p q : ℤ)
+
+theorem euler_T2 : eulerFromHodge t2HodgeNumber = 0 := by ...
+
+theorem k3t2_euler_zero :
+    eulerFromHodge StringTheory.Frontier.k3HodgeNumber
+      * eulerFromHodge t2HodgeNumber = 0 := by ...
+
+theorem k3k3_anomaly : chiK3K3 % 24 = 0 ∧ chiK3K3 / 24 = 24 := by ...
+
+theorem tadpole_budget (flux n : ℕ) (h : flux + n = 24) :
+    n ≤ 24 ∧ (flux = 0 → n = 24) := by ...
+\end{leancode}
+\textbf{Reading.} \lean{eulerFromHodge} is the alternating sum
+$\sum_{p,q}(-1)^{p+q}h^{p,q}$ of an $m\times m$ table. \lean{euler\_T2} evaluates it on the
+all-ones $2\times2$ table of the torus: $1-1-1+1=0$. \lean{k3t2\_euler\_zero} states that the
+\emph{product of two integers}, the alternating sum of the K3 table (which a companion theorem
+\lean{euler\_K3} shows to be $24$) and that of the torus table, is zero. It is the right-hand
+side of \eqref{eq:k3t2:chimult}; the K\"unneth formula, which makes this product the Euler
+number of $\KT$, is not formalised. \lean{k3k3\_anomaly} is $576\bmod 24=0$ and $576/24=24$,
+where \lean{chiK3K3} is defined as the square of the K3 alternating sum.
+\lean{tadpole\_budget} is a statement about two natural numbers whose sum is $24$; it says
+nothing about whether a flux with a given value exists. \textbf{Proof idea.} The finite sums
+are unfolded (\lean{Fin.sum\_univ\_succ}) and evaluated; the last two theorems are closed by
+\lean{norm\_num} and \lean{omega}.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: dimension and supercharge bookkeeping]
+File \lean{StringTheoryFoundation/StringTheory/K3xT2.lean}, namespace
+\lean{StringTheory.Foundation.StringTheory.K3xT2}:
+\begin{leancode}
+def dimRealK3xT2 : Nat := 4 + 2
+theorem dim_real_k3xt2_is_6 : dimRealK3xT2 = 6 := by rfl
+
+def targetSpacetimeDim : Nat := 10 - dimRealK3xT2
+theorem target_spacetime_is_4d : targetSpacetimeDim = 4 := by rfl
+
+def typeII_4D_supercharges : Nat := 32 / 2
+def typeII_4D_N : Nat := typeII_4D_supercharges / 4
+theorem typeII_k3xt2_susy_N4 : typeII_4D_N = 4 := by rfl
+
+def heterotic_T6_supercharges : Nat := 16
+theorem string_duality_susy_match :
+    typeII_4D_supercharges = heterotic_T6_supercharges := by rfl
+
+theorem euler_char_vanishes :
+    eulerChar4D bettiK3 * eulerChar2D bettiT2 = 0 := by ...
+\end{leancode}
+\textbf{Reading.} These are the numerals of the table in \cref{sec:k3t2:susy}:
+$4+2=6$, $10-6=4$, $(32/2)/4=4$ and $32/2=16$. The division by two that represents ``K3
+breaks half of the supersymmetry'' is written into the definition; the spinor decomposition
+\eqref{eq:k3t2:spinor} that justifies it is not formalised. The name
+\lean{string\_duality\_susy\_match} should be read with care: the theorem is $16=16$ in
+$\N$, a necessary condition for the duality of \cref{thm:k3t2:modspace}, not evidence
+for it. \lean{euler\_char\_vanishes} is a second, independent version of $24\cdot0=0$, this
+time from Betti-number records \lean{bettiK3} $=(1,0,22,0,1)$ and \lean{bettiT2} $=(1,2,1)$
+rather than Hodge tables.
+\end{leanbox}
+
+Two further declarations elsewhere in the repository are worth knowing. In the namespace
+\lean{SocrateAI.Moonshine}, the Betti numbers \eqref{eq:k3t2:betti} of the product are entered
+as seven definitions (\lean{k3t2\_b0} $=1$, \dots, \lean{k3t2\_b3} $=44$, \dots) and
+\lean{k3t2\_euler\_char\_eq\_zero} verifies by \lean{decide} that their alternating sum is
+zero; this is the left-hand side of \eqref{eq:k3t2:chimult}, where
+\lean{k3t2\_euler\_zero} is the right-hand side. Neither file derives the seven numbers from
+those of the factors (see \cref{exe:k3t2:leanconv}). Second, the theorem
+\lean{SocrateAI.FrontierTriad.total\_k3t2\_moduli\_dim\_eq\_80} proves $(3\cdot19+1)+22=80$.
+Despite its name and docstring, the number $80=58+22$ is the dimension of the moduli space
+of the sigma model on K3 \emph{alone} (metric plus $B$-field, \cref{ch:stringsk3}); the $\KT$
+compactification has $84$ such moduli by \eqref{eq:k3t2:nsns} and $134$ scalars in all. The
+Lean statement is a correct sum of numerals; its name is a mislabel, and it should not be
+quoted as a fact about $\KT$.
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.56\textwidth}cp{0.30\textwidth}@{}}
+\toprule
+Claim & Tier & Evidence\\
+\midrule
+$2(0,8)+6(1,1)=(6,22)$; rank $28$; index $\equiv0$ mod $8$ & \TA &
+ \lean{sigK3T2\_eq}, \lean{rank\_K3T2}, \lean{index\_mod\_eight}\\
+Alternating sums: torus table $0$; K3 table times torus table $0$ & \TA &
+ \lean{euler\_T2}, \lean{k3t2\_euler\_zero}, \lean{euler\_char\_vanishes}\\
+$1-2+23-44+23-2+1=0$ & \TA & \lean{k3t2\_euler\_char\_eq\_zero}\\
+$576/24=24$; $\mathit{flux}+n=24\Rightarrow n\le24$ & \TA &
+ \lean{k3k3\_anomaly}, \lean{tadpole\_budget}\\
+K\"unneth formula; Betti and Hodge numbers of $\KT$ & \TL & standard; sympy check of
+ \eqref{eq:k3t2:poincare}, \eqref{eq:k3t2:hodge}\\
+Holonomy $SU(2)$ $\Rightarrow$ $\KT$ or a quotient & \TL & Asp §5.2\\
+$134$ scalars, $m=22$, moduli space \eqref{eq:k3t2:modspace} & \TL & Asp §5.1 (conditional
+ on IIA/heterotic duality)\\
+Tadpole $\tfrac12\int\frac G{2\pi}\wedge\frac G{2\pi}+n=24$; $N=2$ or $1$ with flux & \TL &
+ DRS §1, §4\\
+``\lean{Signature} $(6,22)$ \emph{is} the charge lattice of a physical theory'' & --- &
+ an identification, never Tier~A\\
+\bottomrule
+\end{tabular}
+\end{center}
+All Tier~A entries depend only on the standard axioms \lean{propext},
+\lean{Classical.choice} and \lean{Quot.sound}.
+
+\begin{summarybox}
+\begin{itemize}[leftmargin=*]
+ \item K\"unneth: Poincar\'e polynomials multiply. For $\KT$ the Betti numbers are
+ $(1,2,23,44,23,2,1)$, the Hodge numbers $h^{1,1}=h^{2,1}=21$, $h^{1,0}=h^{2,0}=h^{3,0}=1$,
+ and $\chi=24\cdot0=0$.
+ \item Holonomy $SU(2)$ preserves half of the supercharges: type~II on $\KT$ gives $N=4$ in
+ four dimensions, the heterotic string gives $N=2$. Every complex threefold of holonomy
+ $SU(2)$ is $\KT$ or a free quotient.
+ \item Type IIA on $\KT$ has $80+4+2+44+2+2=134$ massless scalars and $2+2+1+23=28$ vectors:
+ the supergravity multiplet plus $22$ matter multiplets.
+ \item The moduli space is $O(\Gamma^{6,22})\backslash O(6,22)/(O(6)\times O(22))\times
+ \SLZ\backslash SL(2)/U(1)$; it is the same as for the heterotic string on $T^6$. The $\SLZ$
+ factor is heterotic S-duality, type IIA T-duality of $\rho$, and the type IIB torus shape.
+ \item $\Gamma^{6,22}\cong\Gamma^{4,20}\oplus\Gamma^{2,2}$, so
+ $O(\Gamma^{4,20})\times\Odd{2}\subset O(\Gamma^{6,22})$; the signature arithmetic
+ $(3,19)\to(4,20)\to(6,22)$ is kernel-checked, the lattices themselves are not formalised
+ in these files.
+ \item Orientifolding by $\Omega(-1)^{F_L}\Z_2$ gives $N=2$, four O7-planes, a D3 tadpole
+ of $24=\chi(K3\times K3)/24$; flux with a $(2,0)$ component lowers this to $N=1$.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{exe:k3t2:t4}
+Compute the Betti numbers and the Euler number of $T^4$, of $K3\times K3$ and of
+$K3\times T^4$ from Poincar\'e polynomials. Check Poincar\'e duality in each case, and
+confirm $\chi(K3\times K3)=576$.
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Using the Hodge polynomials of \cref{sec:k3t2:topology}, compute the full Hodge diamond of
+$K3\times K3$. Verify $h^{4,0}=1$, $h^{2,0}=2$, $h^{1,1}=40$, $h^{3,1}=40$, $h^{2,2}=404$ and
+recover $\chi=576$ from the alternating sum.
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Repeat the scalar count of \cref{sec:k3t2:fields} for the type IIA string on $T^6$ and show
+that the number of scalars is $70$. (Use $b_k(T^6)=\binom6k$; the conformal field theory on
+$T^6$ has $6\cdot6=36$ moduli. Do not forget the scalar dual to $C_3$ with one internal leg,
+which here comes in $b_1=6$ copies.) The $N=8$ theory has the coset $E_{7(7)}/SU(8)$ of
+dimension $133-63$ as its scalar manifold; this fact is not used elsewhere in the book.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Type IIB has Ramond--Ramond potentials $C_0$, $C_2$ and $C_4$ with self-dual field strength.
+Count the massless scalars of type IIB on $\KT$ and show that the total is again $134$.
+(Hints: $C_2$ contributes $b_2$ scalars and one more from its four-dimensional two-form
+component; $C_4$ contributes $b_4$ scalars, and its components with two legs in spacetime
+are related to these by self-duality and must not be counted again; the NS--NS sector is the
+same as for IIA.)
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Show that $O(p,q)/(O(p)\times O(q))$ has dimension $pq$ by counting generators:
+$\dim O(n)=n(n-1)/2$ and $\dim O(p,q)=\dim O(p+q)$. Deduce that the $N=4$ moduli space with
+$m$ matter multiplets has dimension $6m+2$, and that the rank reduction of
+\cref{sec:k3t2:less} for $G=\Z_2$ ($M=8$) leaves a moduli space of dimension $86$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+A point $z$ of the torus $\C/(\Z+\tau\Z)$ is fixed by $z\mapsto-z$ iff $2z\in\Z+\tau\Z$.
+(a) Show that there are exactly four fixed points. (b) The Euler number of a quotient by a
+$\Z_2$ with $k$ isolated fixed points is $\chi(M/\Z_2)=(\chi(M)+k)/2$. Conclude
+$\chi(T^2/\Z_2)=2$, consistent with \cref{fig:k3t2:pillow}. (c) The same formula applied to
+$T^4/\Z_2$ with its $16$ fixed points gives $8$; blowing up each point replaces it by a
+sphere and adds $1$ to $\chi$. Recover $\chi(K3)=24$ (\cref{ch:kummer}).
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]
+In a file importing \lean{DualScaleStream2.Lattice.K3T2Signature}, replace the three
+\lean{sorry}s:
+\begin{leancode}
+open DualScaleStream2.Lattice
+
+example : sigT2 = ⟨2, 2⟩ := by sorry
+example : sigK3T2.index = -16 := by sorry
+example (a b : Signature) : (a + b).rank = a.rank + b.rank := by sorry
+\end{leancode}
+The first two should fall to \lean{rfl} or \lean{decide}; for the third unfold
+\lean{Signature.rank}, use the simp lemmas \lean{Signature.add\_pos} and
+\lean{Signature.add\_neg}, and finish with \lean{omega}. Explain why the third, unlike the
+first two, is a statement about infinitely many cases, and why the mod-$8$ property is
+\emph{not} of this kind: $(a+b).\lean{index}\bmod 8$ can be anything even when
+$a.\lean{index}\bmod 8=0$.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]\label{exe:k3t2:leanconv}
+The repository checks $\chi(\KT)=0$ twice, once as a product of two alternating sums and once
+as the alternating sum of seven hand-entered numbers, but never connects the two. Close the
+gap at the level of lists. Define the convolution of two lists of integers (the coefficient
+list of a product of polynomials) and the alternating sum of a list. (a) Prove by
+\lean{decide} that the convolution of \lean{[1,0,22,0,1]} and \lean{[1,2,1]} is
+\lean{[1,2,23,44,23,2,1]}. (b) Prove in general that the alternating sum of a convolution is
+the product of the alternating sums. (Hint: induct on the first list; you will need a lemma
+about the alternating sum of a list shifted by one place.) Which part of the K\"unneth
+theorem remains unformalised after (b)?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]
+Let $\Lambda=\Lambda_1\oplus\Lambda_2$ be an orthogonal sum of lattices. (a) Show that
+$O(\Lambda_1)\times O(\Lambda_2)\subset O(\Lambda)$. (b) For $\Lambda_1=\Lambda_2=U$ with
+bases $(e_i,f_i)$, $e_i^2=f_i^2=0$, $e_i\cdot f_i=1$, exhibit an isometry of $U\oplus U$
+which is not in $O(U)\times O(U)$, not even after exchanging the two summands. (Try
+$e_1\mapsto e_1$, $e_2\mapsto e_2+e_1$, and find the images of $f_1,f_2$.) (c) Interpret
+your isometry, under $U\oplus U=\Gamma^{2,2}$, as one of the generators of $\Odd2$ of
+\cref{ch:odd}.
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*]
+ \item $N=4$ theories in four dimensions, the count $134$, the three roles of $\SLZ$ and
+ Proposition~4: \source{Asp §5.1, ll.~2713--2858}. Threefolds of holonomy $SU(2)$ and the
+ free quotients: \source{Asp §5.2, ll.~2862--3000}. The passage to $N=2$:
+ \source{Asp §5.3, ll.~3063--3150}.
+ \item Supersymmetry counting by holonomy and the table of maximal supersymmetries:
+ \source{Asp §4.1, ll.~2188--2295}.
+ \item The tadpole $\chi/24$, flux and the orientifold of $\KT$:
+ \source{DRS §1, ll.~40--130; §2.2, ll.~267--319; §3.1, ll.~636--660; §4--4.2,
+ ll.~1262--1382}.
+ \item The lattices $U$, $E_8$ and the mod-$8$ condition: \cref{ch:lattices}; the K3 lattice
+ and the Mukai lattice: \cref{ch:k3lattice,ch:mukai}; the two-torus and $\Odd2$:
+ \cref{ch:torus2,ch:odd}; how the tadpole is used: \cref{ch:tadpole,ch:stabilization}.
+\end{itemize}

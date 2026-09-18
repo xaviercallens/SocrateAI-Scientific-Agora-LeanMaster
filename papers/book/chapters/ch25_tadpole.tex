@@ -1,0 +1,1026 @@
+\chapter{Fluxes, Tadpoles and \texorpdfstring{$\chi/24$}{chi/24}}\label{ch:tadpole}
+
+On a compact space a charge cannot be alone. The field lines that leave it must end
+somewhere, and if the space has no boundary and no infinity they can only end on other
+charges of the opposite sign. This elementary remark about Gauss's law becomes, in string
+theory, one of the sharpest consistency conditions a compactification has to pass: the
+\emph{tadpole condition}. It is sharp because it is an equation between integers. For
+M-theory or F-theory on a Calabi--Yau fourfold $X_8$ it reads
+\begin{equation}\label{eq:tadpole:master}
+ \frac{\chi(X_8)}{24}\;=\;n\;+\;\frac12\int_{X_8}\frac{G}{2\pi}\wedge\frac{G}{2\pi},
+\end{equation}
+where $\chi$ is the Euler number, $n$ counts space-filling branes and $G$ is the four-form
+flux. This chapter answers four questions about \eqref{eq:tadpole:master}. Why is there such
+an equation at all? Why does the curvature of the internal space enter through the number
+$\chi/24$, and when is that number a positive integer? Why is the flux term an integer? And
+what does the equation look like in the perturbative type IIB description of our main example,
+the orientifold $\KT/\Z_2$ of \cref{ch:k3t2}, where the branes are D7- and D3-branes and the
+negative charges sit on orientifold planes? For the product of two K3 surfaces every number
+can be computed by hand: $\chi(K3\times K3)=576$, the budget is $576/24=24$, and the flux term
+is an integer because the K3 lattice of \cref{ch:k3lattice} is even. These last statements
+are arithmetic and lattice theory, and they are what the Lean library checks.
+
+We use the following input. From \cref{ch:k3}: a K3 surface has Betti numbers $(1,0,22,0,1)$,
+Hodge numbers $h^{0,0}=h^{2,0}=h^{0,2}=h^{2,2}=1$, $h^{1,1}=20$, and Euler number $24$. From
+\cref{ch:k3lattice,ch:lattices}: $H^2(K3;\Z)$ with the cup product is the even unimodular
+lattice $3U\oplus2E_8(-1)$ of signature $(3,19)$. From \cref{ch:dbranes}: a D$p$-brane is a
+source of charge $\mu_p$ for the Ramond--Ramond potential $C_{p+1}$.
+
+\section{Gauss's law on a compact space}\label{sec:tadpole:gauss}
+
+\subsection{Electrodynamics first}
+Let $M$ be a compact manifold without boundary, of dimension $d$, and let a gauge field with
+field strength $F=\dd A$ be sourced by a charge density $\rho$. Gauss's law is the statement
+\begin{equation}\label{eq:tadpole:gausslaw}
+ \dd{\star F}\;=\;\rho\,\mathrm{vol}_M ,
+\end{equation}
+where $\star$ is the Hodge star of $M$ and $\mathrm{vol}_M$ its volume form. Integrate both
+sides over $M$. The left-hand side is the integral of an exact form over a manifold without
+boundary, which vanishes by Stokes's theorem. Hence
+\begin{equation}\label{eq:tadpole:zero}
+ Q_{\text{total}}=\int_M\rho\,\mathrm{vol}_M=0 .
+\end{equation}
+On $\R^3$ the same integration over a ball gives the flux of the electric field through the
+boundary sphere, which can be anything; the difference is entirely the absence of a boundary.
+Two features of this one-line argument will survive every generalization below. First, the
+step uses only that $\star F$ is a \emph{globally defined} form: if it were defined only
+patch by patch the integral of its differential need not vanish. Second, the conclusion is
+insensitive to the metric; \eqref{eq:tadpole:zero} is a topological constraint on the sources.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+ % left: compact circle direction with two opposite charges
+ \draw[thick] (0,0) circle (1.5);
+ \fill[tierC] (-1.5,0) circle (0.11) node[left] {\small $+$};
+ \fill[tierL] (1.5,0) circle (0.11) node[right] {\small $-$};
+ \foreach \a in {150,120,90,60,30} {\draw[->,thin] (\a+8:1.5) arc (\a+8:\a-8:1.5);}
+ \foreach \a in {210,240,270,300,330} {\draw[->,thin] (\a-8:1.5) arc (\a-8:\a+8:1.5);}
+ \node at (0,-2.1) {\small (a) total charge $0$: consistent};
+ % right: single charge
+ \begin{scope}[xshift=6.2cm]
+ \draw[thick] (0,0) circle (1.5);
+ \fill[tierC] (-1.5,0) circle (0.11) node[left] {\small $+$};
+ \foreach \a in {150,120,90,60,30} {\draw[->,thin] (\a+8:1.5) arc (\a+8:\a-8:1.5);}
+ \foreach \a in {210,240,270,300,330} {\draw[->,thin] (\a-8:1.5) arc (\a-8:\a+8:1.5);}
+ \node[right] at (1.55,0) {\small ?};
+ \node at (0,-2.1) {\small (b) total charge $\ne0$: no solution};
+ \end{scope}
+\end{tikzpicture}
+\caption{Gauss's law on a compact space, drawn for a circle. The flux leaving a positive
+charge in both directions must be absorbed by a negative charge (a). With a single charge
+(b) the two streams of flux meet head-on at the antipodal point and
+\eqref{eq:tadpole:gausslaw} has no solution.}
+\label{fig:tadpole:gauss}
+\end{figure}
+
+\begin{physicsbox}[Physical picture: flux lines have no place to go]
+Polchinski's phrase for \eqref{eq:tadpole:zero} is that with a nonzero total
+Ramond--Ramond source ``the field equations are inconsistent, because R-R flux lines have no
+place to go in the compact space'' \source{Pol Lecture~3, ll.~1987--1989}. He contrasts this with a
+nonzero total \emph{tension}, which is only a source for the graviton and dilaton and makes
+those fields time dependent: an uncancelled tension changes the solution, an uncancelled
+charge means there is no solution \source{Pol Lecture~3, ll.~1985--1989}.
+\end{physicsbox}
+
+\subsection{Why the word ``tadpole''}
+In perturbation theory, a term in the effective action that is \emph{linear} in a field
+$\phi$, $\delta S=\int J\,\phi$, produces a one-point function: a Feynman diagram with a
+single external leg ending in a blob, which looks like a tadpole. A linear term means that
+$\phi=0$ does not solve the equations of motion. If $\phi$ has a potential, the vacuum
+merely shifts. For a gauge potential $C$ whose constant mode
+has no potential at all, the equation of motion obtained by varying that constant mode is
+simply $\int J=0$, and if the total source $\int J$ does not vanish there is no solution.
+This is \eqref{eq:tadpole:zero} in the language of diagrams.\index{tadpole}
+Sethi, Vafa and Witten introduce the subject in exactly these terms: a one-loop interaction
+``results in a one-point function for the $B$ field of the effective two-dimensional theory,
+destabilizing the vacuum'' \source{SVW §1, ll.~45--64}.
+
+\subsection{A first example: orientifold planes and sixteen D-branes}
+The oldest stringy instance is the type~I string and its T-duals (\cref{ch:dbranes}).
+T-dualizing type~I on $9-p$ circles produces a torus $T^{9-p}$ divided by the reflection of
+all its coordinates, combined with worldsheet orientation reversal. The reflection has
+$2^{9-p}$ fixed points on the torus; at each sits an \emph{orientifold plane}
+(O$p$-plane),\index{orientifold plane} a $p$-dimensional object which is not dynamical but
+carries tension and Ramond--Ramond charge. In terms of the charge $\mu_p$ of a D$p$-brane the
+result is \source{Pol Lecture~3, eq.~(93), ll.~1968--1984}
+\begin{equation}\label{eq:tadpole:oplane}
+ \mu_p'=-2^{\,p-5}\mu_p\quad\text{per O$p$-plane},\qquad
+ 2^{\,9-p}\times\bigl(-2^{\,p-5}\bigr)\mu_p=-16\,\mu_p\quad\text{in total}
+\end{equation}
+(for the orthogonal projection; the symplectic projection has the opposite sign). The total is
+independent of $p$, as it must be, since T-duality cannot change whether the theory is
+consistent. Gauss's law \eqref{eq:tadpole:zero} on the compact torus then demands exactly
+$16$ D$p$-branes, ``giving the T-dual of $SO(32)$'' \source{Pol Lecture~3, ll.~1989--1990}.
+\Cref{tab:tadpole:oplanes} lists the cases used in this chapter.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+$p$ & compact space & number of O$p$-planes & charge of each (units of $\mu_p$) & total\\
+\midrule
+$9$ & --- & $1$ & $-16$ & $-16$\\
+$7$ & $T^2/\Z_2$ & $4$ & $-4$ & $-16$\\
+$5$ & $T^4/\Z_2$ & $16$ & $-1$ & $-16$\\
+$3$ & $T^6/\Z_2$ & $64$ & $-\tfrac14$ & $-16$\\
+\bottomrule
+\end{tabular}
+\caption{Orientifold-plane charges from \eqref{eq:tadpole:oplane}. In each row sixteen
+D$p$-branes cancel the total. The last row agrees with the statement that $T^6/\Z_2$ is a
+compact solution ``with 16 D3-branes and 64 O3-planes'', so that the O3 tension is
+$-\tfrac14T_3$ \source{GKP §2.1, ll.~419--422}.}
+\label{tab:tadpole:oplanes}
+\end{table}
+
+\begin{pitfallbox}[Common pitfall: counting branes and their images]
+In the covering torus every D-brane away from a fixed point has a mirror image under the
+reflection. Some authors count the brane and its image separately (``32 D-branes''), assign
+each half the charge, and double the orientifold charge accordingly; others rescale all
+charges by a common factor. Only the \emph{ratio} of plane charge to brane charge,
+$-2^{p-5}$, and the vanishing of the total are convention independent. The Lean libraries contain
+three different bookkeepings of this cancellation (\cref{sec:tadpole:lean}); none is wrong
+as arithmetic, but they cannot be compared digit by digit.
+\end{pitfallbox}
+
+\section{Curvature as a charge: the origin of \texorpdfstring{$\chi/24$}{chi/24}}
+\label{sec:tadpole:chi24}
+
+\subsection{The interaction \texorpdfstring{$C\wedge X_8$}{C X8}}
+So far the sources were branes and planes. The new feature of compactifications to two, three
+and four dimensions is that the \emph{curvature of the internal space itself} is a source.
+In type IIA string theory there is a one-loop interaction
+\begin{equation}\label{eq:tadpole:BX8}
+ \delta S=-\int B\wedge X_8(R),
+\end{equation}
+where $B$ is the Neveu--Schwarz two-form, the field that couples to the string, and $X_8(R)$
+is an eight-form built as a quartic polynomial in the curvature
+\source{SVW §1, eq.~(1.1), ll.~45--54}. The same term appears in M-theory with $B$ replaced
+by the three-form $C$ that couples to the membrane, and in F-theory with the four-form that
+couples to the D3-brane \source{SVW §1, ll.~64--71}. In eleven-dimensional language it is an
+eight-derivative correction to supergravity, suppressed by six powers of the Planck mass,
+of the form $-\int C\wedge X_8(R)$ \source{DRS §2.1, eq.~(2.1), ll.~167--180}.
+
+Compactify on an eight-manifold $N$, so that spacetime is $\R^{n}\times N$ with $n=2,3,4$ for
+type IIA, M-theory and F-theory respectively. If $C$ is constant along $N$ and has its legs
+along $\R^n$, \eqref{eq:tadpole:BX8} becomes $-\bigl(\int_N X_8\bigr)\int_{\R^n}C$: a term
+linear in $C$, a tadpole, with coefficient
+\begin{equation}\label{eq:tadpole:I}
+ I\;=\;-\int_N X_8 \;=\;\frac{\chi(N)}{24}
+ \qquad\text{\source{SVW §1, eq.~(1.2) and ll.~93--107}.}
+\end{equation}
+The first equality is the definition of $I$. The second holds for a Calabi--Yau fourfold;\index{Calabi--Yau fourfold} SVW
+obtain it by observing that the one-loop computation reduces to the worldsheet index
+$\Tr(-1)^F$ of the sigma model on $N$, which is the Euler number, with a proportionality
+constant fixed in the original calculation. Becker and Becker reach the same conclusion from
+the differential-form side: for an eight-manifold admitting a nowhere-vanishing spinor the
+Pontryagin numbers obey $p_1^2-4p_2+8\chi=0$, the polynomial $X_8$ is proportional to
+$P_1^2-4P_2$, and therefore $\int X_8$ is a fixed multiple of $\chi$
+\source{BB §2, eqs.~(2.19)--(2.22), ll.~292--339}. \TL
+
+\begin{pitfallbox}[Common pitfall: normalizations of \texorpdfstring{$X_8$}{X8} and of
+\texorpdfstring{$G$}{G}]
+The three papers normalize differently. BB write $\int_{K^8}X_8=-\chi/\bigl(4!\,(2\pi)^4\bigr)$
+and a flux constraint $\int F\wedge F+\chi/12=0$ for their field strength $F$
+\source{BB eqs.~(2.22), (2.58), ll.~328--339, 706--713}; SVW use $I=-\int X_8=\chi/24$; DRS
+absorb a sign and write the source as $+4\pi^2X_8$ in \eqref{eq:tadpole:warp} below. This
+book follows DRS and GVW: the integrally quantized object is $G/2\pi$, and the tadpole
+condition is \eqref{eq:tadpole:master}. When you read another paper, fix the dictionary by
+the one convention-independent statement: with no flux, the number of branes is $\chi/24$.
+\end{pitfallbox}
+
+\subsection{Cancelling the tadpole with branes}
+The membrane\index{membrane} couples to $C$ by $\int_{\R^3\times\{y\}}C$ with unit charge. Placing $n$
+membranes at points $y_1,\dots,y_n$ of $N$, stretched along $\R^3$, adds $n$ to the
+coefficient of the term linear in $C$, with the sign such that branes (not anti-branes)
+compensate a positive $I$. So the simplest cure for the tadpole is to ``include in the vacuum
+$I$ strings, membranes, and three-branes in Type IIA, M-theory, and F-theory, respectively''
+\source{SVW §1, ll.~74--78}. Two obstructions are immediately visible
+\source{SVW §1, ll.~79--92}:
+\begin{enumerate}[leftmargin=2em]
+\item $I$ may be \emph{fractional}. Branes carry integer charge, so nothing can be done with
+ branes alone unless $\chi/24\in\Z$.
+\item $I$ may be a \emph{negative} integer. Then anti-branes are needed. The vacuum is free
+ of tadpoles, but supersymmetry is completely broken: the fourfold preserves supersymmetries
+ of one eight-dimensional chirality, a brane preserves those of the same chirality by
+ definition, and an anti-brane preserves only the opposite ones.
+\end{enumerate}
+Hence, with branes alone, a supersymmetric tadpole-free vacuum exists if and only if
+$\chi/24$ is a non-negative integer. \TL
+
+\subsection{Cancelling the tadpole with flux}
+There is a second contribution. Eleven-dimensional supergravity contains the Chern--Simons
+interaction $\int C\wedge G\wedge G$ with $G=\dd C$ \source{DRS §1, eq.~(1.1), ll.~59--68}.
+If $G$ has an expectation value along $N$, this term too is linear in the components of $C$
+along $\R^3$: a flux on the internal space carries membrane charge. The cleanest way to see
+all three contributions at once is the equation for the warp factor. With flux the metric is
+no longer a product but
+\begin{equation}\label{eq:tadpole:metric}
+ \dd s^2=\ee^{-\phi(y)}\,\eta_{\mu\nu}\,\dd x^\mu\dd x^\nu
+ +\ee^{\frac12\phi(y)}\,g_{a\bar b}\,\dd y^a\dd y^{\bar b},
+\end{equation}
+with $g$ a Ricci-flat K\"ahler metric on the fourfold, and the warp factor\index{warp factor} obeys
+\source{DRS §2.1, eqs.~(2.2), (2.5), ll.~180--228}
+\begin{equation}\label{eq:tadpole:warp}
+ \Delta\bigl(\ee^{\frac32\phi}\bigr)=\star\Bigl\{4\pi^2X_8-\tfrac12\,G\wedge G
+ -4\pi^2\sum_{i=1}^{n}\delta^8(y-y_i)\Bigr\}.
+\end{equation}
+Here $\Delta$ and $\star$ are the Laplacian and Hodge star of $g$, and the $\delta^8$ are
+eight-forms of unit integral. Equation \eqref{eq:tadpole:warp} is Gauss's law
+\eqref{eq:tadpole:gausslaw} for the electric component
+$G_{\mu\nu\rho a}=\epsilon_{\mu\nu\rho}\partial_a\ee^{-\frac32\phi}$ of the four-form: the
+warp factor plays the role of the electrostatic potential. Now integrate over the compact
+fourfold. The left-hand side is the integral of a Laplacian of a globally defined function
+and vanishes. Therefore
+\begin{equation}\label{eq:tadpole:integrated}
+ 0=4\pi^2\int_N X_8-\frac12\int_N G\wedge G-4\pi^2 n
+ \quad\Longrightarrow\quad
+ \int_NX_8=n+\frac{1}{8\pi^2}\int_NG\wedge G .
+\end{equation}
+Setting $G=0$ and comparing with the brane-only result $n=\chi/24$ of
+\eqref{eq:tadpole:I} fixes $\int_NX_8=\chi/24$ in this normalization. Since
+$8\pi^2=2(2\pi)^2$, we obtain
+\begin{equation}\label{eq:tadpole:drs}
+ \frac{\chi}{24}=\frac{1}{8\pi^2}\int_N G\wedge G+n
+ =\frac12\int_N\frac{G}{2\pi}\wedge\frac{G}{2\pi}+n ,
+\end{equation}
+which is \eqref{eq:tadpole:master} \source{DRS §1, eq.~(1.2), ll.~70--80; GVW §2.1,
+eq.~(2.1), ll.~94--110}. GVW allow anti-membranes as well and let $n$ be the difference of
+the numbers of membranes and anti-membranes, ``a positive or negative integer''. \TL
+
+\subsection{The flux term is non-negative}
+Supersymmetry restricts the internal flux to be a $(2,2)$-form that is \emph{primitive},
+$J\wedge G=0$ with $J$ the K\"ahler form, and these conditions imply that $G$ is self-dual,\index{self-dual flux}
+$G=\star G$ \source{DRS §2.1, eqs.~(2.3), (2.8)--(2.10), ll.~193--263}.\index{primitive form}
+\index{G-flux} For any real form, $G\wedge\star G=|G|^2\,\mathrm{vol}$ with $|G|^2\ge0$
+pointwise. Hence
+\begin{equation}\label{eq:tadpole:pos}
+ \int_NG\wedge G=\int_NG\wedge\star G=\int_N|G|^2\,\mathrm{vol}\;\ge\;0,
+ \qquad\text{with equality only for }G=0 .
+\end{equation}
+Combined with $n\ge0$ (no anti-branes, for supersymmetry), \eqref{eq:tadpole:drs} becomes a
+\emph{budget}: two non-negative quantities add up to the fixed number $\chi/24$. In
+particular
+\begin{equation}\label{eq:tadpole:budget}
+ 0\le n\le\frac{\chi}{24},\qquad 0\le\frac12\int_N\frac{G}{2\pi}\wedge\frac{G}{2\pi}\le
+ \frac{\chi}{24},\qquad G=0\iff n=\frac{\chi}{24}.
+\end{equation}
+DRS state the middle inequality for $K3\times K3$ as
+$\frac12\int\frac G{2\pi}\wedge\frac G{2\pi}\le24$ \source{DRS §3.1, ll.~640--649}. The
+elementary step from \eqref{eq:tadpole:drs} to \eqref{eq:tadpole:budget}, for natural numbers
+adding up to $24$, is the Lean theorem \lean{tadpole\_budget}
+(\cref{sec:tadpole:lean}).\index{tadpole!budget}
+
+\begin{physicsbox}[Physical picture: an electrostatics problem with three kinds of charge]
+Read \eqref{eq:tadpole:warp} as electrostatics on the fourfold. The curvature is a smooth
+background charge density of total charge $+\chi/24$ (in units where a membrane has charge
+$1$ and we have moved everything to one side). Membranes are point charges; self-dual flux
+is a smooth charge density of the same sign as the membranes. The warp factor is the
+potential they generate together, and it exists only if the total vanishes. The only
+situation in which one may forget all this is the non-compact one: on $\R^8$, or on a local
+model of a singularity, ``flux can escape to infinity, and hence [the tadpole condition] no
+longer holds''; the flux measured at infinity appears as an extra term
+\source{GVW §2.2, ll.~380--399}.
+\end{physicsbox}
+
+\section{How large is \texorpdfstring{$\chi/24$}{chi/24}?}\label{sec:tadpole:euler}
+
+The left-hand side of \eqref{eq:tadpole:master} is pure topology. We compute it in three
+ways for $K3\times K3$, and then ask what can be said in general.
+
+\subsection{Three routes to \texorpdfstring{$\chi(K3\times K3)=576$}{chi(K3 x K3) = 576}}
+\emph{Route 1: K\"unneth.}\index{K\"unneth formula} The cohomology of a product is the tensor
+product of the cohomologies, so Poincar\'e polynomials multiply. With
+$P_{K3}(t)=1+22t^2+t^4$,
+\begin{equation}\label{eq:tadpole:poincare}
+ P_{K3\times K3}(t)=\bigl(1+22t^2+t^4\bigr)^2=1+44t^2+486t^4+44t^6+t^8 ,
+\end{equation}
+so the Betti numbers are $(1,0,44,0,486,0,44,0,1)$ and
+$\chi=P(-1)=1+44+486+44+1=576=24^2$. The Euler number is multiplicative because
+$P_{X\times Y}(-1)=P_X(-1)P_Y(-1)$. The middle Betti number decomposes as
+\begin{equation}\label{eq:tadpole:b4}
+ b_4=486=\underbrace{1\cdot1}_{H^0\otimes H^4}+\underbrace{22\cdot22}_{H^2\otimes H^2}
+ +\underbrace{1\cdot1}_{H^4\otimes H^0},
+\end{equation}
+a decomposition we shall need in \cref{sec:tadpole:integrality}: $G$-flux lives in $H^4$.
+
+\emph{Route 2: Hodge numbers.} The Hodge numbers of a product are given by the same rule,
+$h^{p,q}(X\times Y)=\sum_{r,s}h^{r,s}(X)\,h^{p-r,q-s}(Y)$. From the K3 diamond one finds
+the $5\times5$ table
+\begin{equation}\label{eq:tadpole:hodge}
+ \bigl(h^{p,q}(K3\times K3)\bigr)=
+ \begin{pmatrix}1&0&2&0&1\\0&40&0&40&0\\2&0&404&0&2\\0&40&0&40&0\\1&0&2&0&1\end{pmatrix},
+ \qquad \chi=\sum_{p,q}(-1)^{p+q}h^{p,q}=576 .
+\end{equation}
+For instance $h^{2,2}=1\cdot1+20\cdot20+1\cdot1+2\cdot(1\cdot1)=404$: the last term counts
+$h^{2,0}h^{0,2}+h^{0,2}h^{2,0}$. Every nonzero entry has $p+q$ even, so all signs are $+$ and
+the entries add up to $576$. Note $h^{2,0}=2$: the product has two holomorphic two-forms,
+one from each factor. Its holonomy is $SU(2)\times SU(2)$, smaller than $SU(4)$, and M-theory
+on it has $N=4$ rather than $N=2$ supersymmetry in three dimensions
+\source{DRS §3.1, ll.~638--640}.
+
+\emph{Route 3: Chern classes.} For a complex fourfold $\chi=\int c_4$. The tangent bundle of
+a product is the sum of the pull-backs, so total Chern classes multiply:
+$c(K3\times K3)=(1+c_2^{(1)})(1+c_2^{(2)})$, where $c_2^{(i)}$ is the second Chern class of
+the $i$-th factor, with $\int_{K3}c_2=24$ and $c_1=0$. Hence
+\begin{equation}\label{eq:tadpole:chern}
+ c_2=c_2^{(1)}+c_2^{(2)},\qquad c_4=c_2^{(1)}c_2^{(2)},\qquad
+ \int c_4=24\cdot24=576,\qquad \int c_2^2=2\cdot24\cdot24=1152 .
+\end{equation}
+All three routes give $\chi/24=24$, the value quoted by SVW and DRS
+\source{SVW §2.2, ll.~252--255; §2.4, l.~535; DRS §3.1, l.~640}. The arithmetic
+$576=24\cdot24$ and $576/24=24$ with remainder $0$ is the Lean theorem
+\lean{k3k3\_anomaly}. \TA{} for the arithmetic, \TL{} for the K\"unneth formula.
+
+\subsection{The general fourfold: \texorpdfstring{$\chi$}{chi} is divisible by six}
+Is $\chi/24$ always an integer? No, and the argument of SVW shows exactly how far one can
+go. Let $N$ be a Calabi--Yau fourfold and
+$\chi_p=\sum_{q=0}^{4}(-1)^qh^{p,q}$ the index of the Dolbeault operator on $(p,0)$-forms.
+The index theorem expresses $\chi_p$ through Chern numbers; since $c_1=0$ only
+$\int c_2^2$ and $\int c_4=\chi$ can appear \source{SVW §2.1, eq.~(2.1), ll.~125--155}:
+\begin{equation}\label{eq:tadpole:todd}
+ \chi_0=\frac{1}{720}\int\bigl(3c_2^2-c_4\bigr),\qquad
+ \chi_1=\frac{1}{180}\int\bigl(3c_2^2-31c_4\bigr),\qquad
+ \chi_2=\frac{1}{120}\int\bigl(3c_2^2+79c_4\bigr).
+\end{equation}
+Eliminate $\int c_2^2$ with the first equation, $\int c_2^2=240\chi_0+\chi/3$:
+\begin{equation}\label{eq:tadpole:div6}
+ \chi_1=\frac{720\chi_0+\chi-31\chi}{180}=4\chi_0-\frac{\chi}{6},\qquad
+ \chi_2=\frac{720\chi_0+\chi+79\chi}{120}=6\chi_0+\frac{2\chi}{3}.
+\end{equation}
+For holonomy exactly $SU(4)$ one has $h^{0,q}=(1,0,0,0,1)$, so $\chi_0=2$, and
+\eqref{eq:tadpole:div6} becomes the formulas of SVW, $\int c_2^2=480+\chi/3$,
+$\chi_1=8-\chi/6$ and $\chi_2=12+2\chi/3$ \source{SVW §2.1, ll.~158--204}. Since $\chi_1$ and
+$\chi_0$ are integers, \emph{$\chi$ is divisible by $6$}; the possible fractional parts of
+$\chi/24$ are $0,\tfrac14,\tfrac12,\tfrac34$ and ``the obstruction takes values in $\Z_4$''
+\source{SVW §2.1, ll.~121--124}.\index{Euler characteristic!divisibility by six} \TL
+
+\begin{example}[Checking \eqref{eq:tadpole:div6} on $K3\times K3$]\label{ex:tadpole:check}
+Here $\chi_0=1-0+2-0+1=4$ from the first row of \eqref{eq:tadpole:hodge}, not $2$, because the
+holonomy is smaller than $SU(4)$. The second row gives $\chi_1=-40-40=-80$ and the third
+$\chi_2=2+404+2=408$. The formulas predict $4\cdot4-576/6=16-96=-80$ and
+$6\cdot4+2\cdot576/3=24+384=408$. The Chern numbers \eqref{eq:tadpole:chern} give
+$\chi_0=(3\cdot1152-576)/720=2880/720=4$. All agree (symbolic check with sympy).
+\end{example}
+
+\begin{example}[A fractional tadpole: the sextic fourfold]\label{ex:tadpole:sextic}
+Let $N\subset\mathbb P^5$ be a smooth hypersurface of degree six, a Calabi--Yau fourfold.
+By adjunction its total Chern class is $c(N)=(1+H)^6/(1+6H)$ with $H$ the hyperplane class.
+Expanding,
+\[
+ \frac{(1+H)^6}{1+6H}=1+0\cdot H+15H^2-70H^3+435H^4+\dots
+\]
+The vanishing coefficient of $H$ confirms $c_1=0$. Since $\int_NH^4=6$ (a degree-six
+hypersurface meets a line in six points), $\chi=6\cdot435=2610$. This is divisible by $6$
+($2610=6\cdot435$) but $2610=24\cdot108+18$, so
+\[
+ \frac{\chi}{24}=108\tfrac34 ,
+\]
+as stated in \source{SVW §2.1, ll.~205--213}. No number of membranes cancels this tadpole.
+DRS point out the way out: ``for cases where $\chi/24$ is not integral, $G$-flux is actually
+required'' \source{DRS §1, ll.~70--72}. Such a flux cannot be an integral class $\xi$: then
+$\tfrac12\int\xi\wedge\xi\in\tfrac12\Z$ could never supply the fractional part $\tfrac34$.
+It lies in the shifted lattice described in \cref{sec:tadpole:integrality}.
+\end{example}
+
+\subsection{Elliptic fibrations, and a negative example}
+For F-theory one needs $N$ elliptically fibred over a threefold $B$, with a section and a
+smooth Weierstrass model. Then $\chi$ can be written in terms of the Chern classes $c_i$ of
+the base \source{SVW §2.2, eqs.~(2.3), (2.10)--(2.12), ll.~258--386}:
+\begin{equation}\label{eq:tadpole:elliptic}
+ \chi(N)=12\int_Bc_1\bigl(c_2+30c_1^2\bigr),\qquad
+ \frac{\chi}{24}=\int_B\Bigl(15c_1^3+\tfrac12c_1c_2\Bigr).
+\end{equation}
+Two checks. For $B=K3\times\mathbb P^1$ the fourfold is $K3\times K3$ with one factor
+elliptic; $c_1(B)$ is twice the point class of $\mathbb P^1$, so $c_1^3=0$ and
+$\int c_1c_2=2\cdot24=48$, giving $\chi/24=24$. For $B=\mathbb P^3$, $c_1=4H$ and $c_2=6H^2$,
+so $\int c_1c_2=24$, $\int c_1^3=64$ and $\chi/24=15\cdot64+12=972$, the value quoted by SVW.
+When $N$ has full $SU(4)$ holonomy the arithmetic genus of $B$ is $\int_Bc_1c_2/24=1$, and
+\eqref{eq:tadpole:elliptic} becomes $\chi/24=12+15\int_Bc_1^3$, a positive integer: in this
+class supersymmetric tadpole cancellation by branes is always possible
+\source{SVW §2.2, eq.~(2.4), ll.~270--291}. \TL
+
+The sign obstruction is rarer. SVW find it in a conformal field theory rather than a smooth
+manifold: the orbifold $T^8/(\Z_2\times\Z_2)$ is a singular point of $K3\times K3$, but
+\emph{with discrete torsion}\index{discrete torsion} its Hodge diamond becomes
+\begin{equation}\label{eq:tadpole:torsion}
+ \begin{pmatrix}1&0&2&0&1\\0&8&64&8&0\\2&64&20&64&2\\0&8&64&8&0\\1&0&2&0&1\end{pmatrix},
+ \qquad \chi=4-48-104-48+4=-192=-8\cdot24 ,
+\end{equation}
+where we summed the rows with signs $(-1)^{p+q}$. Thus $\chi/24=-8$: eight anti-branes are
+needed and supersymmetry is broken \source{SVW §2.3, ll.~429--515}. The large odd entries
+$h^{2,1}=h^{1,2}=64$ are what drives $\chi$ negative.
+
+\section{Flux quantization and why \texorpdfstring{$\tfrac12\int G\wedge G$}{half of G wedge G}
+is an integer}\label{sec:tadpole:integrality}
+
+\subsection{Dirac quantization of \texorpdfstring{$G$}{G}}
+The flux term in \eqref{eq:tadpole:master} must be an integer whenever $\chi/24$ is, for
+otherwise no integer $n$ solves the equation. Where does this come from? The membrane
+couples to $C$ as a charged particle couples to a gauge potential, and the usual Dirac
+argument (the phase $\exp(\ii\int C)$ must be well defined when the membrane worldvolume is
+deformed across a four-cycle) requires the periods of $G/2\pi$ over four-cycles to be
+integers:\index{flux quantization}
+\begin{equation}\label{eq:tadpole:dirac}
+ \xi:=\Bigl[\frac{G}{2\pi}\Bigr]\in H^4(N;\Z)\qquad\text{(first approximation).}
+\end{equation}
+The precise statement carries a shift. The periods of $G/2\pi$ coincide with those of
+$c_2(N)/2$ modulo integers \source{GVW §5, ll.~1993--1996}, so that $\xi$ lives in a
+translate of the lattice $H^4(N;\Z)$; this shift ``arises precisely when the intersection
+form on $H^4(Y;\Z)$ is not even'', and with the shifted condition the right-hand side of the
+tadpole formula is always integral \source{GVW §2.1, ll.~112--125}. DRS phrase the same fact
+as: $[G/\pi]$ is always integral, and ``if $\chi/24\in\Z$ then $[G/2\pi]$ is an integer
+cohomology class'' \source{DRS §2.1, ll.~230--234}. \TL
+
+For $K3\times K3$ there is no shift, and we can see this directly. By
+\eqref{eq:tadpole:chern}, $c_2/2=\tfrac12c_2^{(1)}+\tfrac12c_2^{(2)}$. The class
+$c_2^{(1)}$ is $24$ times the generator of $H^4(K3_1;\Z)$, so $c_2/2$ is $12$ times a
+generator plus $12$ times another: an integral class. Its periods are integers, and
+\eqref{eq:tadpole:dirac} holds as written. What remains is to understand why \emph{half} the
+self-intersection of an integral class is an integer. That is a property of the lattice.
+
+\subsection{The lattice \texorpdfstring{$H^4(K3\times K3;\Z)$}{H4(K3 x K3; Z)}}
+Let $\Lambda=H^2(K3;\Z)\cong3U\oplus2E_8(-1)$ with Gram matrix $L$ in a basis $e_1,\dots,
+e_{22}$, so $L_{ik}=\int_{K3}e_i\wedge e_k$. The K\"unneth decomposition
+\eqref{eq:tadpole:b4} holds over $\Z$ because the cohomology of K3 has no torsion:
+\begin{equation}\label{eq:tadpole:H4}
+ H^4(K3_1\times K3_2;\Z)\;=\;\underbrace{\Z\,[K3_1\times\mathrm{pt}]^\vee\oplus
+ \Z\,[\mathrm{pt}\times K3_2]^\vee}_{\text{rank }2}\;\oplus\;
+ \underbrace{\Lambda_1\otimes\Lambda_2}_{\text{rank }484}.
+\end{equation}
+The two classes in the first summand are the volume forms of the two factors; each squares
+to zero (a volume form of a four-manifold wedged with itself vanishes) and their product
+integrates to $1$, so they span a hyperbolic plane $U$. On the second summand take the basis
+$e_i\otimes f_j$, represented by $\pi_1^*e_i\wedge\pi_2^*f_j$. Two-forms commute, so
+\begin{equation}\label{eq:tadpole:kron}
+ \int_{K3_1\times K3_2}(e_i\wedge f_j)\wedge(e_k\wedge f_l)
+ =\int_{K3_1}e_i\wedge e_k\int_{K3_2}f_j\wedge f_l=L_{ik}\,L_{jl} .
+\end{equation}
+The Gram matrix of $\Lambda_1\otimes\Lambda_2$ is therefore the \emph{Kronecker product}
+$L\otimes L$, a $484\times484$ integer matrix with entries
+$(L\otimes L)_{(i,j),(k,l)}=L_{ik}L_{jl}$.\index{Kronecker product} A flux in this summand is
+$\xi=\sum_{i,j}x_{ij}\,e_i\otimes f_j$ with integers $x_{ij}$, and
+\begin{equation}\label{eq:tadpole:Q}
+ \int\xi\wedge\xi=Q(x):=\sum_{i,j,k,l}x_{ij}\,L_{ik}L_{jl}\,x_{kl}.
+\end{equation}
+For a decomposable flux $\xi=a\otimes b$, i.e.\ $x_{ij}=a_ib_j$, this factorizes:
+$Q=(a\cdot a)(b\cdot b)$, the product of the two self-intersections on the two K3 surfaces.
+
+\begin{proposition}[Evenness of the flux lattice]\label{prop:tadpole:even}
+Let $L_1$, $L_2$ be symmetric integer matrices and suppose every diagonal entry of $L_1$ is
+even. Then $x^{\mathsf T}(L_1\otimes L_2)\,x$ is even for every integer vector $x$. Consequently
+$\tfrac12\int\xi\wedge\xi\in\Z$ for every $\xi\in\Lambda_1\otimes\Lambda_2$.
+\end{proposition}
+\begin{proof}
+Write $M=L_1\otimes L_2$ and label its rows by pairs $p=(i,j)$. $M$ is symmetric because
+$M_{(i,j),(k,l)}=(L_1)_{ik}(L_2)_{jl}=(L_1)_{ki}(L_2)_{lj}=M_{(k,l),(i,j)}$. Its diagonal is
+$M_{pp}=(L_1)_{ii}(L_2)_{jj}$, a product with an even factor, hence even. For any symmetric
+integer matrix,
+\[
+ x^{\mathsf T}Mx=\sum_pM_{pp}\,x_p^2+2\sum_{p<q}M_{pq}\,x_px_q ,
+\]
+after choosing any total order on the labels. The second sum is visibly even and the first
+is even because each $M_{pp}$ is.
+\end{proof}
+Two remarks. First, \emph{nothing is assumed about $L_2$} beyond symmetry: one even factor
+suffices, and unimodularity plays no role. Second, the statement is about all of
+$\Lambda_1\otimes\Lambda_2$, not only about decomposable elements, for which it would be
+trivial. The proposition is the Lean theorem \lean{kronForm\_even}, and its corollary is
+\lean{flux\_half\_selfIntersection\_integral}. \TA
+
+Adding the hyperbolic plane of \eqref{eq:tadpole:H4}, which is also even, the whole lattice
+$H^4(K3\times K3;\Z)\cong U\oplus(\Lambda\otimes\Lambda)$ is even, consistently with the
+absence of a shift in the quantization condition. Its signature follows from that of
+$\Lambda$, $(3,19)$: a tensor product of a positive with a positive or a negative with a
+negative direction is positive, so
+\begin{equation}\label{eq:tadpole:sig}
+\begin{aligned}
+ (n_+,n_-)&=\bigl(3\cdot3+19\cdot19+1,\;2\cdot3\cdot19+1\bigr)=(371,115),\\
+ 371+115&=486,\qquad 371-115=256=(-16)^2 ,
+\end{aligned}
+\end{equation}
+the last equality being the multiplicativity of the signature, $\sigma(K3)=-16$. A
+supersymmetric flux is self-dual and so lies in the $371$-dimensional positive part, in
+agreement with \eqref{eq:tadpole:pos}.
+
+\begin{pitfallbox}[Common pitfall: ``the form is indefinite, so the flux term can be negative'']
+The lattice $H^4$ is indefinite, and an arbitrary integral class $\xi$ can have
+$\int\xi\wedge\xi<0$. Such a class is not a solution of the equations of motion with
+unbroken supersymmetry: it fails self-duality. The positivity \eqref{eq:tadpole:pos} is a
+statement about the solutions, the evenness of \cref{prop:tadpole:even} is a statement about
+the whole lattice. The tadpole budget uses both.
+\end{pitfallbox}
+
+\subsection{Worked example: three ways to spend a budget of 24}\label{sec:tadpole:worked}
+We follow \source{DRS §3.1, eqs.~(3.1)--(3.5), ll.~660--728}. Take for each K3 a smooth
+hypersurface of degree $(2,2,2)$ in $\mathbb P^1\times\mathbb P^1\times\mathbb P^1$. It has
+three natural divisor classes $C_1,C_2,C_3$, obtained by fixing a point in one of the three
+$\mathbb P^1$ factors. Two distinct $C_i$ meet where two coordinates are fixed, which leaves
+a quadratic equation on the third $\mathbb P^1$: two points. A $C_i$ can be moved off itself,
+so $C_i\cdot C_i=0$. The Gram matrix of the sublattice they span is
+\begin{equation}\label{eq:tadpole:drsgram}
+ L_{\mathrm{DRS}}=\begin{pmatrix}0&2&2\\2&0&2\\2&2&0\end{pmatrix},\qquad\det L_{\mathrm{DRS}}=16 .
+\end{equation}
+It is symmetric with even (zero) diagonal, so \cref{prop:tadpole:even} applies to it although
+it is far from unimodular. Take $J=C_1+C_2+C_3$ as K\"ahler class, and
+\[
+ \alpha=C_1-C_2,\qquad\beta=C_1-C_3 .
+\]
+With $L_{\mathrm{DRS}}$ one computes
+$\alpha\cdot\alpha=0+0-2\cdot2=-4$, likewise $\beta\cdot\beta=-4$,
+$\alpha\cdot\beta=C_1^2-C_1C_3-C_2C_1+C_2C_3=0-2-2+2=-2$, and
+$J\cdot\alpha=(2+2)-(2+2)=0=J\cdot\beta$. So $\alpha,\beta$ are primitive $(1,1)$ classes.
+On a K\"ahler surface a primitive $(1,1)$-form is anti-self-dual (the two-form computation in
+\source{DRS §2.1, eq.~(2.7), ll.~240--241}), and on a product of two four-manifolds $\star(a\wedge b)=\star_1a\wedge\star_2b$ for
+two-forms $a,b$ pulled back from the factors, so the wedge product of two anti-self-dual
+two-forms is self-dual: $(-a)\wedge(-b)=a\wedge b$. With subscripts for the
+two K3 factors, three flux choices are:
+\begin{center}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+flux $\xi=G/2\pi$ & $\int\xi\wedge\xi$ & $\tfrac12\int\xi\wedge\xi$ & membranes $n$\\
+\midrule
+$0$ & $0$ & $0$ & $24$\\
+$\alpha_1\wedge\alpha_2$ & $(-4)(-4)=16$ & $8$ & $16$\\
+$(\alpha_1+\beta_1)\wedge\alpha_2$ & $(-12)(-4)=48$ & $24$ & $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+using $(\alpha+\beta)^2=-4-4+2(-2)=-12$. The second and third rows are DRS's equations (3.4)
+and (3.5): ``we can place 16 membranes'' or ``cancel the anomaly completely without branes''.
+A non-decomposable flux is just as easy with \eqref{eq:tadpole:Q}: for
+$\xi=\alpha_1\wedge\alpha_2+\beta_1\wedge\beta_2$,
+\[
+ \int\xi\wedge\xi=(\alpha\cdot\alpha)^2+(\beta\cdot\beta)^2+2(\alpha\cdot\beta)^2=16+16+8=40,
+ \qquad n=24-20=4 .
+\]
+All self-intersections are even, as \cref{prop:tadpole:even} guarantees, and all four rows
+satisfy \eqref{eq:tadpole:budget}. \Cref{fig:tadpole:budget} displays the result.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=0.42cm,y=0.62cm]
+ \foreach \y/\f/\lab in {3/0/{$\xi=0$},2/8/{$\alpha_1\wedge\alpha_2$},
+   1/20/{$\alpha_1\wedge\alpha_2+\beta_1\wedge\beta_2$},0/24/{$(\alpha_1+\beta_1)\wedge\alpha_2$}} {
+   \fill[tierL!45] (0,\y) rectangle (\f,\y+0.6);
+   \fill[tierC!35] (\f,\y) rectangle (24,\y+0.6);
+   \draw (0,\y) rectangle (24,\y+0.6);
+   \node[left] at (0,\y+0.3) {\small \lab};
+ }
+ \node at (4,3.3) {\small $n=24$};
+ \node at (4,2.3) {\small $8$}; \node at (16,2.3) {\small $n=16$};
+ \node at (10,1.3) {\small $20$}; \node at (22,1.3) {\small $4$};
+ \node at (12,0.3) {\small $24$};
+ \draw[->] (0,-0.5) -- (25.5,-0.5) node[right] {\small $\chi/24$};
+ \foreach \x in {0,8,16,24} {\draw (\x,-0.4) -- (\x,-0.6) node[below] {\small \x};}
+ \fill[tierL!45] (3,-2.3) rectangle (4,-1.8); \node[right] at (4.1,-2.05) {\small flux
+   $\tfrac12\int\xi\wedge\xi$};
+ \fill[tierC!35] (14,-2.3) rectangle (15,-1.8); \node[right] at (15.1,-2.05) {\small membranes $n$};
+\end{tikzpicture}
+\caption{The tadpole budget of $K3\times K3$ for the four fluxes of
+\cref{sec:tadpole:worked}. Flux and branes are both non-negative and add up to $\chi/24=24$.}
+\label{fig:tadpole:budget}
+\end{figure}
+
+\begin{physicsbox}[Physical picture: flux freezes moduli]
+The second and third rows are possible only on special K3 surfaces. A generic K3 has no
+integral $(1,1)$ classes at all (its Picard lattice is trivial, \cref{ch:k3lattice}), and DRS
+begin their construction with exactly this remark \source{DRS §3.1, ll.~673--676}. Once an
+integral class $\xi$ is chosen, the requirement that it be of type $(2,2)$ and primitive
+is a condition on the complex structure and on the K\"ahler class: for non-zero $G$ ``we
+must adjust the complex structure of $X$ so that $G^{0,4}=G^{1,3}=0$'', and the K\"ahler
+class so that $G$ is primitive \source{GVW §2.4, eqs.~(2.36)--(2.37), ll.~898--911}.
+Turning this around, a chosen flux restricts the moduli to
+the locus where it is supersymmetric. This is the mechanism of moduli stabilization, the
+subject of \cref{ch:stabilization}. Because both terms of the budget are non-negative, GVW note that there are only finitely many
+possible choices of $n$ and $G$ at a fixed value of the total \source{GVW §2.2, ll.~401--405}.
+\end{physicsbox}
+
+\section{The type IIB picture: \texorpdfstring{$\KT/\Z_2$}{K3 x T2 / Z2} with O7-planes and
+D7-branes}\label{sec:tadpole:iib}
+
+\subsection{From M-theory on \texorpdfstring{$K3\times K3$}{K3 x K3} to the orientifold}
+F-theory is reached from M-theory by taking one K3 to be elliptically fibred and shrinking
+the fibre; M-theory on the fourfold goes over to type IIB on the base $B$, with the complex
+structure $\tau$ of the fibre as the varying type IIB coupling
+\source{DRS §1, ll.~45--52}.\index{F-theory} Take the elliptic K3 at its orbifold point
+$T^4/\Z_2=(T^2_{\text{base}}\times T^2_{\text{fibre}})/\Z_2$. Then the base of the fibration
+is $T^2/\Z_2$ and the fourfold $K3\times T^4/\Z_2$ describes type IIB on
+\begin{equation}\label{eq:tadpole:orientifold}
+ \frac{\KT}{\Omega(-1)^{F_L}\,\Z_2},\qquad \Z_2:\ z^1\mapsto-z^1\ \text{on }T^2 ,
+\end{equation}
+where $\Omega$ is worldsheet parity and $(-1)^{F_L}$ the left-moving fermion number
+\source{DRS §4.1, ll.~1289--1293; §4.2, ll.~1350--1352}. This orientifold ``is a special
+point in the moduli space of F theory on $K3\times K3$''. The dictionary between the two
+pictures is explicit in DRS's account of the sixteen fixed points
+\source{DRS §2.4, ll.~511--541}:\index{orientifold!of K3 x T2}
+\begin{itemize}[leftmargin=2em]
+\item M-theory on $T^4/\Z_2$ has $22$ gauge fields from reducing $C$ on $H^2(K3;\Z)$: sixteen
+ from the twisted sectors (the $A_1$ singularities of \cref{ch:kummer}) and six untwisted.
+\item In the F-theory limit the two untwisted forms dual to the fibre and its Hodge dual
+ drop out; the element $\Omega(-1)^{F_L}$ acts on the doublet of two-forms $(B,B')$ as
+ $-\mathbf 1\in\SLZ$, so only components with one leg on $T^2$ survive.
+\item ``The 16 fixed points coalesce into 4 groups of coincident $A_1$ singularities'', one
+ group at each of the four fixed points of $z^1\mapsto-z^1$ on $T^2$. The gauge group is
+ enhanced $SU(2)^4\to SO(8)$ at each, which in the orientifold arises ``from placing 4
+ D7-branes at the location of each O7-plane''. The total gauge group is $SO(8)^4$
+ \source{DRS §4.1, ll.~1311--1315}.
+\end{itemize}
+
+\subsection{Two tadpoles, not one}
+The orientifold \eqref{eq:tadpole:orientifold} has \emph{two} Gauss laws, and it is important
+to keep them apart.
+
+\emph{The seven-brane tadpole.}\index{O7-plane}\index{D7-brane} O7-planes and D7-branes fill spacetime and wrap K3; they are
+points on $T^2/\Z_2$. They are charged under the Ramond--Ramond eight-form $C_8$, whose
+field strength has flux lines spreading in the two transverse directions, the compact
+pillow $T^2/\Z_2$. Gauss's law \eqref{eq:tadpole:zero} on the pillow, with the $p=7$ row
+of \cref{tab:tadpole:oplanes}, reads
+\begin{equation}\label{eq:tadpole:d7}
+ \underbrace{4\times(-4)}_{\text{O7-planes}}+\underbrace{16\times(+1)}_{\text{D7-branes}}=0
+ \qquad\text{(units of }\mu_7\text{)} .
+\end{equation}
+With four D7-branes on top of each O7-plane the cancellation is \emph{local}:
+$-4+4=0$ at each fixed point, no $C_8$ flux lines run across the pillow, the coupling
+$\tau$ is constant, and perturbation theory applies everywhere. This is why the $SO(8)^4$
+point is the orientifold limit of F-theory (\cref{fig:tadpole:pillow}). No choice of
+three-form flux enters \eqref{eq:tadpole:d7}.
+
+\emph{The three-brane tadpole.}\index{D3-brane}\index{tadpole!three-brane} D3-branes fill spacetime and are points in the full
+six-dimensional internal space. They are charged under the four-form $D^+$ of type IIB,
+the field into which the membrane's $C_{\mu\nu\rho}$ lifts
+\source{DRS §2.4, eq.~(2.27), ll.~479--486}. A $G$-flux with one leg along the elliptic fibre,
+$G/2\pi=\dd z\wedge\omega-\dd\bar z\wedge\star\omega$ with $\omega\in H^{1,2}(B)$, lifts to
+the Neveu--Schwarz and Ramond--Ramond three-form field strengths
+\begin{equation}\label{eq:tadpole:HH}
+ H=\omega-\star\omega,\qquad H'=\omega\tau-\star\omega\,\bar\tau ,
+\end{equation}
+and the tadpole condition \eqref{eq:tadpole:master} becomes
+\begin{equation}\label{eq:tadpole:d3}
+ \frac{\chi}{24}=n-\int_BH\wedge H' ,\qquad n=\text{number of D3-branes},
+\end{equation}
+in the normalization of \source{DRS §2.4, eqs.~(2.30)--(2.32), ll.~549--578}; the
+combination $-\int H\wedge H'$ is the image of the non-negative M-theory flux term. It
+comes from the type IIB Chern--Simons interaction $\int D^+\wedge H\wedge H'$
+\source{DRS §1, eq.~(1.3), ll.~92--100}, the descendant of $\int C\wedge G\wedge G$. In the
+conventions of GKP the same statement is the integrated Bianchi identity for the five-form,
+$(2\kappa_{10}^2T_3)^{-1}\int H_{(3)}\wedge F_{(3)}+Q_3^{\rm loc}=0$, with $Q_3^{\rm loc}$
+the D3 charge of all localized sources \source{GKP §2.1, eqs.~(2.23)--(2.24), ll.~483--502}.
+For our orientifold the number on the
+left of \eqref{eq:tadpole:d3} is $\chi(K3\times K3)/24=24$,
+\begin{equation}\label{eq:tadpole:d3k3}
+ -\int H\wedge H'+n=24 ,
+\end{equation}
+which DRS write in its M-theory form $\frac12\int\frac G{2\pi}\wedge\frac G{2\pi}+n=24$ on
+$K3\times T^4/\Z_2$ before lifting the flux \source{DRS §4.2, eqs.~(4.4)--(4.5),
+ll.~1358--1390}.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=1.0]
+ \draw[thick,rounded corners=10pt,fill=blue!4] (0,0) rectangle (4.2,2.6);
+ \foreach \x/\y in {0.45/0.45,3.75/0.45,0.45/2.15,3.75/2.15} {
+   \draw[tierC,very thick] (\x-0.11,\y-0.11) -- (\x+0.11,\y+0.11) (\x-0.11,\y+0.11) -- (\x+0.11,\y-0.11);
+   \foreach \k in {0,1,2,3} {\fill[tierL] (\x+0.17+0.11*\k,\y+0.24) circle (0.04);}
+ }
+ \node at (2.1,1.3) {\small $T^2/\Z_2$};
+ \node[right,align=left] at (4.6,2.0) {\small $\times$: O7-plane, $C_8$ charge $-4$};
+ \node[right,align=left] at (4.6,1.45) {\small $\bullet$: D7-brane, $C_8$ charge $+1$ each};
+ \node[right,align=left] at (4.6,0.9) {\small per corner: $-4+4=0$\quad($SO(8)$)};
+ \node[right,align=left] at (4.6,0.35) {\small D3 budget of the whole space: $24$};
+\end{tikzpicture}
+\caption{Charge bookkeeping on the pillow $T^2/\Z_2$, in units of the D7 charge $\mu_7$.
+Each seven-brane also wraps the K3 (not drawn). The seven-brane tadpole cancels corner by
+corner; the three-brane tadpole $24$ must still be cancelled by D3-branes and three-form
+flux. The geometry of the pillow is described in \cref{ch:k3t2}.}
+\label{fig:tadpole:pillow}
+\end{figure}
+
+\begin{remark}[Where the $24$ sits in the type IIB picture]\label{rem:tadpole:where}
+In M-theory the number $24$ is smeared over the curvature of $K3\times K3$. In type IIB the
+internal space $\KT$ has $\chi=0$ (\cref{ch:k3t2}) and cannot be the source. The source is
+the curvature of the \emph{seven-brane worldvolumes}: through a Chern--Simons coupling of the
+form $\int C_{(4)}\wedge p_1(R)$, ``a D7-brane wrapped on K3 has $-1$ unit of D3 charge'', and
+in F-theory the total background charge of all seven-branes is
+$Q_3^{\rm D7}=-\chi(X)/24$ \source{GKP §2.1, eqs.~(2.20), (2.22), ll.~428--474}; SVW make the
+same observation, the induced charge of a worldvolume $K$ being $c_2(K)/24$
+\source{SVW §2.2, ll.~387--399}. Note $\chi(K3)/24=1$. Sixteen D7-branes account for $-16$
+of the $-24$. The remaining $-8$ must be carried by the four O7-planes, $-2$ each; this last
+division is standard but has not been checked against a source in this book's library.
+\end{remark}
+
+\subsection{A chain of dualities as a consistency check}
+With no flux, \eqref{eq:tadpole:d3k3} requires $24$ D3-branes. Two T-dualities along the
+$T^2$ invert both radii, $R_i\mapsto\ap/R_i$ (\cref{ch:tduality}), map
+$\Omega(-1)^{F_L}\Z_2$ to $\Omega$, the O7/D7 system to the O9/D9 system of type~I, and each
+D3-brane to a D5-brane wrapped on the dual torus: ``the resulting theory is type I on
+$\KT$ with 24 D5-branes wrapping the $T^2$'' \source{DRS §4, ll.~1270--1276; §4.1,
+ll.~1298--1311}. An S-duality turns this into the $SO(32)$ heterotic string on $\KT$. SVW use exactly this chain, in the opposite direction, as ``a check on the proportionality
+constant in the formula $I=\chi/24$'': F-theory on $K3\times K3$ is dual to the heterotic
+string on $\KT$, where, if no gauge bundle is excited on the K3, the worldsheet anomaly is
+cancelled by $24$ five-branes wrapped on $T^2$; the eight-dimensional duality turns them into
+$24$ three-branes \source{SVW §2.4, ll.~526--535}. \TL
+
+
+\begin{physicsbox}[Physical picture: what flux buys, and what it costs]
+Replacing some of the $24$ D3-branes by three-form flux changes the four-dimensional physics.
+DRS's flux \eqref{eq:tadpole:HH} on $\KT/\Z_2$ is built from a class $\alpha\in H^{1,1}(K3)$
+and a class $\beta\in H^{2,0}(K3)$; ``if $\beta=0$, the model has $N=2$ supersymmetry'' and
+otherwise $N=1$ \source{DRS §4.2, eq.~(4.4), ll.~1374--1383}. The metric is no longer a
+product but is warped, conformal to $\KT$ \source{DRS §4, ll.~1268--1270}, and after the two
+T-dualities the type~I and heterotic duals live on a space that is complex but not K\"ahler,
+with non-zero three-form flux (torsion) \source{DRS §4, ll.~1276--1286}. T-duality is
+here the tool that turns a flux compactification one understands into one that would be hard
+to find directly.
+\end{physicsbox}
+
+\section{What the machine has checked}\label{sec:tadpole:lean}
+
+The physics of this chapter (the interaction $C\wedge X_8$, the identification
+$\int X_8=\chi/24$, supersymmetry conditions, dualities) is Tier~L throughout. What Lean
+checks is the integer arithmetic of the budget and the lattice-theoretic
+\cref{prop:tadpole:even}. The relevant files are \lean{DualScaleStream2/Flux/Tadpole.lean} and
+\lean{DualScaleStream2/Flux/Integrality.lean}, and four files in older libraries that model
+the orientifold charges by integer literals. All audited theorems depend only on the axioms
+\lean{propext}, \lean{Classical.choice} and \lean{Quot.sound}.
+
+\begin{leanbox}[In Lean: Euler numbers and the anomaly of $K3\times K3$]
+\begin{leancode}
+def eulerFromHodge {m : ℕ} (h : Fin m → Fin m → ℕ) : ℤ :=
+  ∑ p : Fin m, ∑ q : Fin m,
+    (if (p.val + q.val) % 2 = 0 then 1 else -1 : ℤ) * (h p q : ℤ)
+
+theorem euler_K3 :
+    eulerFromHodge StringTheory.Frontier.k3HodgeNumber = 24 := by ...
+
+def chiK3K3 : ℤ := eulerFromHodge StringTheory.Frontier.k3HodgeNumber *
+  eulerFromHodge StringTheory.Frontier.k3HodgeNumber
+
+theorem k3k3_anomaly : chiK3K3 % 24 = 0 ∧ chiK3K3 / 24 = 24 := by ...
+\end{leancode}
+\emph{Reading.} \lean{eulerFromHodge} is the alternating sum $\sum(-1)^{p+q}h^{p,q}$ of an
+arbitrary square table of natural numbers. \lean{k3HodgeNumber} is the $3\times3$ table
+$(1,0,1;0,20,0;1,0,1)$, entered by hand in another library; \lean{euler\_K3} says its
+alternating sum is $24$. The Euler number of $K3\times K3$ is \emph{defined} as the product
+$24\cdot24$: multiplicativity (K\"unneth) is an input, not a theorem. \lean{k3k3\_anomaly}
+then states that this integer is divisible by $24$ with quotient $24$. It does not know what
+a K3 surface is, and it says nothing about $X_8$. \emph{Proof idea.} Unfold the double sum
+over \lean{Fin 3}, evaluate, and finish with \lean{norm\_num} after rewriting with
+\lean{euler\_K3}. The companions \lean{euler\_T2} and \lean{k3t2\_euler\_zero} are discussed
+in \cref{ch:k3t2}.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the budget \eqref{eq:tadpole:budget}]
+\begin{leancode}
+theorem tadpole_budget (flux n : ℕ) (h : flux + n = 24) :
+    n ≤ 24 ∧ (flux = 0 → n = 24) := by ...
+\end{leancode}
+\emph{Reading.} For natural numbers \lean{flux} and \lean{n} adding up to $24$, $n\le24$, and
+$n=24$ if the flux term vanishes. The two physical inputs of \eqref{eq:tadpole:budget} are
+encoded in the \emph{types}: \lean{flux : ℕ} is the positivity \eqref{eq:tadpole:pos} together
+with the integrality of \cref{prop:tadpole:even}, and \lean{n : ℕ} is the absence of
+anti-branes. The hypothesis \lean{h} is the tadpole condition itself, assumed. The theorem
+constructs no flux and proves the existence of no vacuum. \emph{Proof idea.} Linear
+arithmetic over $\N$, closed by \lean{omega}.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: \cref{prop:tadpole:even}]
+\begin{leancode}
+def kronForm (L₁ : Gram n) (L₂ : Gram m) :
+    Matrix (Fin n × Fin m) (Fin n × Fin m) ℤ :=
+  kroneckerMap (· * ·) L₁ L₂
+
+theorem kronForm_even (L₁ : Gram n) (L₂ : Gram m)
+    (h₁s : L₁ᵀ = L₁) (h₂s : L₂ᵀ = L₂)
+    (h₁ : IsEvenDiag L₁) (x : Fin n × Fin m → ℤ) :
+    Even (x ⬝ᵥ (kronForm L₁ L₂ *ᵥ x)) := by ...
+
+theorem flux_half_selfIntersection_integral (L₁ : Gram n) (L₂ : Gram m)
+    (h₁s : L₁ᵀ = L₁) (h₂s : L₂ᵀ = L₂) (h₁ : IsEvenDiag L₁)
+    (x : Fin n × Fin m → ℤ) :
+    ∃ k : ℤ, x ⬝ᵥ (kronForm L₁ L₂ *ᵥ x) = 2 * k := by ...
+\end{leancode}
+\emph{Reading.} \lean{Gram n} is the type of $n\times n$ integer matrices and
+\lean{IsEvenDiag L} says every diagonal entry is even. \lean{kronForm} is the matrix
+\eqref{eq:tadpole:kron} indexed by pairs. The theorems say: for symmetric $L_1,L_2$ with $L_1$
+even on the diagonal, and \emph{every} integer vector $x$ indexed by pairs,
+$x^{\mathsf T}(L_1\otimes L_2)x$ is even, i.e.\ equals $2k$ for an integer $k$. This is a
+theorem about all pairs of integer matrices of all sizes; it is genuinely general, and the
+example \eqref{eq:tadpole:drsgram} is an instance. It is \emph{not} a statement about the
+$22\times22$ K3 matrix specifically: to apply it to $3U\oplus2E_8(-1)$ one needs that Gram
+matrix to be symmetric with even diagonal, for which the library provides the blocks
+\lean{hyperbolicU\_evenDiag} and \lean{cartanE8\_evenDiag} (\cref{ch:lattices}). Nor does it
+cover the rank-two summand of \eqref{eq:tadpole:H4}, or say that fluxes are elements of this
+lattice; those are Tier~L. \emph{Proof idea.} The pair index is flattened by the bijection
+\lean{finProdFinEquiv} between \lean{Fin n × Fin m} and \lean{Fin (n * m)}; symmetry and even
+diagonal survive the relabelling (\lean{kronForm\_symm}, \lean{kronForm\_evenDiag}); then the
+single-index lemma \lean{even\_quadratic\_form\_of\_even\_diag}, which is the computation in
+the proof of \cref{prop:tadpole:even}, is applied and the result transported back.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: orientifold charges in the older libraries (arithmetic shadows)]
+\begin{leancode}
+-- StringTheory.StringDynamics (TadpoleConstraint.lean)
+def totalTadpole (braneStacks : Fin 4 → BraneStack) (H₃ F₃ : ℤ) : ℤ :=
+  (∑ i, (braneStacks i).charge) + fluxTadpole H₃ F₃ - 24
+theorem tadpole_cancellation (braneStacks : Fin 4 → BraneStack) (H₃ F₃ : ℤ)
+    (h : totalTadpole braneStacks H₃ F₃ = 0) :
+    (∑ i, (braneStacks i).charge) + fluxTadpole H₃ F₃ = 24 := by ...
+
+-- StringTheory.Foundation.StringTheory.TadpoleCancellation
+theorem d7_tadpole_cancellation : totalD7Charge + totalO7Charge = 0 := by rfl
+theorem d3_tadpole_target_is_one : d3TadpoleTarget = 1 := by rfl
+
+-- SocrateAI.Moonshine (KummerTadpole.lean)
+theorem rr_tadpole_cancellation : net_tadpole_charge = 0 := by rfl
+-- DualScaleValidation.UseCase3, with its own copies of the definitions
+theorem rr_tadpole_cancellation :
+    total_d7_charge + total_o7_charge = 0 := rfl
+\end{leancode}
+\emph{Reading.} These are statements about integer literals. \lean{fluxTadpole} is the
+product of two integers; \lean{tadpole\_cancellation} says that if
+$\sum_i q_i+H_3F_3-24=0$ then $\sum_iq_i+H_3F_3=24$, a rearrangement of its own hypothesis
+(the \lean{euler} field of \lean{BraneStack} is never used).
+\lean{d7\_tadpole\_cancellation} unfolds to $32\cdot2+16\cdot(-4)=0$ and
+both \lean{rr\_tadpole\_cancellation} to $16\cdot4+4\cdot(-16)=0$; all are proved by
+\lean{rfl}.
+Compare with \eqref{eq:tadpole:d7}: the second is the $p=7$ row of
+\cref{tab:tadpole:oplanes} ($4$ planes, $16$ branes, ratio $-4$) with all charges multiplied
+by $4$. The first has $16$ planes; by \eqref{eq:tadpole:oplane} sixteen planes belong to
+$p=5$, where the ratio of plane to brane charge is $-1$, and $32\cdot2$ against $16\cdot(-4)$
+is that row with branes and images counted separately and charges again multiplied by $4$, so
+the label ``O7'' in that file does not match its numbers. This is the convention issue of the
+pitfall box in \cref{sec:tadpole:gauss}; the Lean statements themselves are correct
+arithmetic and carry no information about which convention is meant.
+\lean{d3\_tadpole\_target\_is\_one} is $24/24=1$, the number that appears in
+\cref{rem:tadpole:where}. Finally,
+\begin{leancode}
+theorem flux_tadpole_quantization_exact
+    (s : StringTheory.Foundation.StringTheory.VafaSwampland.GVWFluxState) :
+    StringTheory.Foundation.StringTheory.TadpoleCancellation.totalD7Charge +
+    StringTheory.Foundation.StringTheory.TadpoleCancellation.totalO7Charge
+      = 0 := ...
+\end{leancode}
+(in \lean{StringTheoryFormalization/Frontier/FTermPotential.lean}) never uses its argument
+\lean{s} and is proved by quoting \lean{d7\_tadpole\_cancellation}. Despite its name it
+contains no flux and no quantization. A faithful formalization of \eqref{eq:tadpole:d7} would
+need at least the fixed-point set of the involution on a torus as a finite type of
+cardinality $2^{9-p}$ and the charge ratio $-2^{p-5}$ as a function of $p$, so that the
+independence of the total from $p$ becomes a theorem; see \cref{exe:tadpole:leanoplane}.
+\end{leanbox}
+
+\paragraph{Unification candidates.} The atlas of \cref{ch:atlas} compares statements across
+libraries by text similarity and by overlap of their dependencies. Under the heading
+``similar statements, essentially disjoint proofs'' it lists two pairs from this chapter
+\source{\texttt{papers/book/generated/atlas.md}, ll.~254--262}:
+\begin{itemize}[leftmargin=2em,nosep]
+\item \lean{rr\_tadpole\_cancellation} (in \lean{UseCase3}) and
+ \lean{tadpole\_cancellation}\\ (in \lean{StringDynamics}): similarity $0.514$,
+ dependency overlap $0.021$;
+\item \lean{k3t2\_euler\_zero} (in \lean{Flux}) and \lean{k3t2\_euler\_char\_eq\_zero}
+ (in \lean{Moonshine}):\\ similarity $0.557$, dependency overlap $0.009$.
+\end{itemize}
+The reading
+above explains the finding: the tadpole of this chapter has been written down four times with
+four sets of private definitions. A single definition of the budget, with the Euler number
+supplied by \lean{eulerFromHodge} and the flux term by \lean{kronForm}, would let these
+statements share content.
+
+{\small
+\begin{longtable}{@{}p{0.44\textwidth}cp{0.43\textwidth}@{}}
+\toprule
+Claim & Tier & Evidence\\
+\midrule
+Alternating sum of the K3 Hodge table is $24$; $24^2\bmod24=0$, $24^2/24=24$ & \TA &
+ \lean{euler\_K3}, \lean{k3k3\_anomaly}\\
+$\mathit{flux}+n=24$ in $\N$ $\Rightarrow$ $n\le24$, and $n=24$ if $\mathit{flux}=0$ & \TA &
+ \lean{tadpole\_budget}\\
+$L_1$ even-diagonal, $L_1,L_2$ symmetric $\Rightarrow$ $x^{\mathsf T}(L_1\otimes L_2)x$ even
+ for all $x$ & \TA & \lean{kronForm\_even},\newline
+ \lean{flux\_half\_selfIntersection\_integral}\\
+$64-64=0$ in two bookkeepings; $24/24=1$ & \TA & \lean{rr\_tadpole\_cancellation},
+ \lean{d7\_tadpole\_cancellation}, \lean{d3\_tadpole\_target\_is\_one}\\
+Betti and Hodge numbers of $K3\times K3$, \eqref{eq:tadpole:div6}, $2610$, $972$, $-192$,
+ signature $(371,115)$, table of \cref{sec:tadpole:worked} & --- & symbolic checks (sympy), not
+ Tier~A\\
+$I=-\int X_8=\chi/24$; tadpole condition \eqref{eq:tadpole:master}; obstructions & \TL &
+ SVW §1; BB §2; DRS §1--2; GVW §2.1\\
+$6\mid\chi$; \eqref{eq:tadpole:elliptic}; shifted quantization of $G$; supersymmetric $G$
+ primitive and self-dual & \TL & SVW §2.1--2.2; GVW §2.1, §5; DRS §2.1\\
+O$p$-plane charge $-2^{p-5}\mu_p$; $SO(8)^4$; $24$ D3 $\leftrightarrow$ $24$ D5
+ $\leftrightarrow$ $24$ five-branes & \TL & Pol Lecture~3; DRS §2.4, §4; SVW §2.4\\
+``\lean{kronForm L L} \emph{is} the flux lattice of M-theory on $K3\times K3$'' & --- &
+ an identification, never Tier~A\\
+\bottomrule
+\end{longtable}}
+
+\begin{summarybox}
+\begin{itemize}[leftmargin=1.5em]
+\item On a compact space Gauss's law forces the total charge of every gauge field to vanish.
+ A violation appears in perturbation theory as a one-point function, a tadpole, and means
+ that the field equations have no solution.
+\item In compactifications on a Calabi--Yau fourfold the curvature carries charge
+ $\chi/24$ through the interaction $C\wedge X_8$. It must be balanced by $n$ space-filling
+ branes and by flux: $\chi/24=n+\tfrac12\int\frac G{2\pi}\wedge\frac G{2\pi}$.
+\item Supersymmetry requires $n\ge0$ and a primitive, hence self-dual, $G$, so both terms are
+ non-negative: a budget, equal to $576/24=24$ for $K3\times K3$. Branes alone suffice only if
+ $\chi/24$ is a non-negative integer;
+ $\chi$ is always divisible by $6$ but not always by $24$ (sextic: $108\tfrac34$), and can be
+ negative in orbifolds with discrete torsion ($-8$).
+\item Flux is quantized, $[G/2\pi]\in H^4(N;\Z)$ up to a shift by $c_2/2$ that is absent when
+ the intersection form is even. On $H^2(K3)\otimes H^2(K3)$ the form is the Kronecker product
+ $L\otimes L$, which is even because $L$ is; hence $\tfrac12\int\xi\wedge\xi\in\Z$.
+\item In type IIB on $\KT/\Z_2$ there are two tadpoles. The seven-brane tadpole is cancelled
+ locally, $4\times(-4)+16=0$, giving $SO(8)^4$. The three-brane tadpole is $24$ and is shared
+ between D3-branes and $H\wedge H'$ flux; without flux it is T-dual to type~I with $24$
+ D5-branes.
+\item Lean checks the arithmetic ($576/24=24$, the budget inequality, $64-64=0$) and the
+ general evenness of Kronecker forms. The physical identifications are Tier~L.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]
+Two point charges $q_1,q_2$ sit on a circle of circumference $\ell$ and the electric field
+obeys $\partial_xE=\sum_iq_i\delta(x-x_i)$. Show directly, by solving for the piecewise
+constant $E(x)$ and demanding periodicity, that a solution exists if and only if
+$q_1+q_2=0$. Which step fails on the real line?
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Compute the Betti numbers and the Euler number of $K3\times T^4$ and of $T^8$ from Poincar\'e
+polynomials. What does the tadpole condition say about M-theory on these spaces with
+unbroken supersymmetry? (Use \eqref{eq:tadpole:budget}.)
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exe:tadpole:hodge}
+A Calabi--Yau fourfold with holonomy exactly $SU(4)$ has independent Hodge numbers
+$h^{1,1},h^{2,1},h^{3,1}$ and $h^{2,2}$. (a) Write $\chi_1$ and $\chi$ in terms of them.
+(b) Use $\chi_1=8-\chi/6$ to derive $h^{2,2}=2\,(22+2h^{1,1}+2h^{3,1}-h^{2,1})$ and
+$\chi=6\,(8+h^{1,1}+h^{3,1}-h^{2,1})$. (c) The sextic has $h^{1,1}=1$, $h^{2,1}=0$,
+$h^{3,1}=426$. Recover $\chi=2610$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+For the lattice \eqref{eq:tadpole:drsgram}, compute $\tfrac12\int\xi\wedge\xi$ for the nine
+decomposable fluxes $\xi=a_1\wedge a_2$ with $a_1,a_2\in\{\alpha,\beta,\alpha+\beta\}$. Which
+of them fit in the budget, and with how many membranes? Show that every integral class
+$a=xC_1+yC_2+zC_3$ orthogonal to $J$ has $a\cdot a=-2(x^2+y^2+z^2)$, and conclude that only
+finitely many decomposable primitive fluxes satisfy \eqref{eq:tadpole:budget}.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Show that the rank-two summand in \eqref{eq:tadpole:H4} has Gram matrix
+$\bigl(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\bigr)$ and is orthogonal to
+$\Lambda_1\otimes\Lambda_2$. Deduce the signature \eqref{eq:tadpole:sig} and check it against
+$\sigma(X\times Y)=\sigma(X)\sigma(Y)$. Is $U\oplus(\Lambda\otimes\Lambda)$ unimodular?
+(Hint: $\det(A\otimes B)=(\det A)^{m}(\det B)^{n}$.)
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]
+State and prove in Lean the strengthening of \lean{tadpole\_budget} that is symmetric in its
+two arguments: for \lean{flux n : ℕ} with \lean{flux + n = 24}, also \lean{flux ≤ 24} and
+\lean{n = 0 ↔ flux = 24}. Which tactic closes it? Then explain why the statement would be
+false for \lean{flux n : ℤ} and what physical assumption the type \lean{ℕ} encodes.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]
+Instantiate \lean{flux\_half\_selfIntersection\_integral} with
+$L_1=L_2=L_{\mathrm{DRS}}$ of \eqref{eq:tadpole:drsgram}, written as
+\lean{!![0,2,2;2,0,2;2,2,0]}: prove the two symmetry hypotheses and \lean{IsEvenDiag} (by
+\lean{decide} or \lean{fin\_cases}). Then state, for \lean{a b : Fin 3 → ℤ} and
+\lean{x := fun p => a p.1 * b p.2}, the factorization
+$x^{\mathsf T}(L_1\otimes L_2)x=(a^{\mathsf T}L_1a)(b^{\mathsf T}L_2b)$ and prove it for
+general \lean{Gram n} and \lean{Gram m}. (Hint: use \lean{Matrix.kroneckerMap\_apply}
+and\\ \lean{Finset.sum\_mul\_sum}.)
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]\label{exe:tadpole:leanoplane}
+Replace the integer literals of \lean{d7\_tadpole\_cancellation} by a statement with content.
+Work in units of a quarter of $\mu_p$ so that all charges are integers for $3\le p\le9$:
+define \lean{planes p := 2 \^{} (9 - p)} and \lean{planeCharge p := -(2 \^{} (p - 3) : ℤ)} and prove
+that \lean{(planes p : ℤ) * planeCharge p + 16 * 4 = 0} for every \lean{p} with
+\lean{3 ≤ p} and \lean{p ≤ 9}. Identify which of the two older bookkeepings
+($16\cdot4-4\cdot16$ and $32\cdot2-16\cdot4$) your statement reproduces at $p=7$ and at $p=5$.
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=1.5em]
+\item The tadpole $\chi/24$, its two obstructions, divisibility by six, the elliptic formula
+ and the $K3\times K3$ duality check: \source{SVW §1--2, ll.~34--546}. Its Section~3 notes
+ that blowing up a point of the base removes $120$ branes \source{SVW §3, ll.~571--588}.
+\item The supergravity solution with warp factor and the flux constraint from the Bianchi
+ identity: \source{BB §2, eqs.~(2.6)--(2.7), (2.56)--(2.59), ll.~117--146, 668--735}.
+\item $G$-flux on $K3\times K3$, the lift to F-theory, the orientifold of $\KT$ and its type~I
+ and heterotic duals: \source{DRS §1--4, ll.~53--148, 156--266, 457--578, 636--808,
+ 1262--1400}.
+\item Flux quantization, its shift, vacua as states of one model, and the F-theory analogue
+ of $G$: \source{GVW §2.1, ll.~84--135; §2.5, ll.~1068--1111}. The superpotential generated by
+ $G$ is the subject of \cref{ch:stabilization}.
+\item Orientifold-plane charges and the sixteen D-branes: \source{Pol Lecture~3,
+ ll.~1968--2000}. D3 charge induced on wrapped seven-branes and the integrated Bianchi
+ identity in type IIB: \source{GKP §2.1, ll.~419--502}.
+\end{itemize}

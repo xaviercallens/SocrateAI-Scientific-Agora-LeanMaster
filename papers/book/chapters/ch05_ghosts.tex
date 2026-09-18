@@ -1,0 +1,952 @@
+\chapter{The Polyakov Path Integral, Ghosts and the Superstring in Brief}\label{ch:ghosts}
+
+\Cref{ch:quantum} found the critical dimension $D=26$ by demanding Lorentz invariance in
+lightcone gauge, a calculation in which the number $26$ appears at the end of a long
+commutator. This chapter answers a sharper question: \emph{where does $26$ come from, and is it
+really a number of dimensions?} The answer uses the conformal field theory of \cref{ch:cft}.
+The worldsheet metric is a gauge field; removing it from the path integral costs a Jacobian;
+the Jacobian can be written as a new conformal field theory of anticommuting ``ghost'' fields;
+and that theory has central charge $c=-26$. Consistency of the gauge symmetry then demands
+that everything else on the worldsheet has $c=+26$. A student should care for two reasons.
+First, the result is a \emph{budget}: any conformal field theory with the right central charge
+is a legitimate string background, which is what makes compactification on circles, tori and
+K3 surfaces (the subject of most of this book) possible at all. Second, the same argument,
+repeated for the superstring, gives $D=10$ and the budget $c=6$ for a K3 surface that returns
+in \cref{ch:stringsk3,ch:ellgenus}. We end with a short, descriptive account of the
+superstring theories, at the level needed later, and with an exact statement of which parts
+of the chapter's arithmetic have been checked in Lean.
+
+\section{The problem: a gauge symmetry with an anomaly}\label{sec:ghosts:problem}
+
+Recall from \cref{ch:classical} that the Polyakov action\index{Polyakov action} for $D$
+scalar fields $X^\mu(\sigma)$ on a worldsheet with metric $g_{\alpha\beta}$ is, in Euclidean
+signature,
+\begin{equation}\label{eq:ghosts:poly}
+  S_{\mathrm{Poly}}[X,g]=\frac{1}{4\pi\ap}\int \dd^2\sigma\,\sqrt{g}\;
+  g^{\alpha\beta}\,\partial_\alpha X^\mu\,\partial_\beta X^\nu\,\delta_{\mu\nu},
+\end{equation}
+\source{Tong §5.1, ll.~6300--6308}. It has two local symmetries. \emph{Diffeomorphisms}
+$\sigma^\alpha\to\sigma'^\alpha(\sigma)$ relabel the points of the worldsheet. \emph{Weyl
+transformations}\index{Weyl transformation} $g_{\alpha\beta}\to\ee^{2\omega(\sigma)}g_{\alpha\beta}$
+rescale the metric point by point and leave $X^\mu$ alone; they are a symmetry because
+$\sqrt{g}\,g^{\alpha\beta}$ is unchanged in two dimensions
+($\sqrt{g}\to\ee^{2\omega}\sqrt g$ and $g^{\alpha\beta}\to\ee^{-2\omega}g^{\alpha\beta}$).
+
+Both are \emph{gauge} symmetries. A gauge symmetry is not a symmetry of nature but a
+redundancy of the description: two configurations related by it are the same physical state.
+A global symmetry may be broken by quantum effects and the theory survives; if a gauge
+symmetry is broken, the redundancy no longer cancels and the unphysical degrees of freedom
+(here, the timelike oscillators with negative norm met in \cref{ch:quantum}) no longer
+decouple. A gauge anomaly is therefore fatal \source{Tong §5, ll.~6274--6290}.
+
+Now recall two facts from \cref{ch:cft}. First, on a curved worldsheet with Ricci scalar $R$,
+the trace of the stress tensor of a conformal field theory with central charge $c$ does not
+vanish:
+\begin{equation}\label{eq:ghosts:weylanomaly}
+  \vev{T^\alpha{}_\alpha}=-\frac{c}{12}\,R
+\end{equation}
+\source{Tong §4.4.2, ll.~5094--5112}. Since $T^\alpha{}_\alpha$ is the response of the theory
+to a Weyl rescaling (it is $g^{\alpha\beta}\,\delta S/\delta g^{\alpha\beta}$ up to
+normalization), \cref{eq:ghosts:weylanomaly} says that the quantum theory is \emph{not} Weyl
+invariant unless $c=0$. This is the Weyl anomaly\index{Weyl anomaly}. Second, every
+non-trivial unitary conformal field theory has $c>0$; for instance $D$ free scalars have
+$c=D$. On a fixed background this is harmless. In string theory, where we integrate over the
+metric, it looks like a contradiction: we need $c=0$ and cannot have it
+\source{Tong §5, ll.~6290--6299}.
+
+The loophole is that we have not yet computed the path integral correctly. Removing the gauge
+redundancy produces additional fields, and these fields are not unitary: they carry
+\emph{negative} central charge. The condition $c=0$ applies to the total.
+
+\section{The Faddeev--Popov method}\label{sec:ghosts:fp}
+
+\subsection{What ``dividing by the volume'' means}
+
+The quantum string is defined by the path integral\index{path integral!Polyakov}
+\begin{equation}\label{eq:ghosts:Z}
+  Z=\frac{1}{\mathrm{Vol}}\int \mathcal{D}g\,\mathcal{D}X\;\ee^{-S_{\mathrm{Poly}}[X,g]},
+\end{equation}
+where ``Vol'' is the volume of the group of diffeomorphisms and Weyl transformations
+\source{Tong §5.1, ll.~6316--6340}. The integrand is constant along each \emph{gauge
+orbit}\index{gauge orbit} (the set of all configurations obtained from one by gauge
+transformations), so the integral over all metrics overcounts each physical configuration by
+the volume of its orbit. We want to integrate once over each orbit. To do so we choose a
+\emph{gauge slice}: a surface in field space that meets every orbit exactly once
+(\cref{fig:ghosts:orbits}). Changing variables from ``all fields'' to ``position on the
+slice'' and ``position along the orbit'' costs a Jacobian. The method of Faddeev and Popov
+\index{Faddeev--Popov method} computes this Jacobian for any gauge symmetry
+\source{Tong §5.1, ll.~6341--6353}.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=0.95]
+  \foreach \r in {0.7,1.3,1.9,2.5} {\draw[thick] (0,0) circle (\r);}
+  \draw[dashed,very thick,blue!60!black] (0,0) -- (3.1,0) node[right] {slice $y=0,\ x>0$};
+  \foreach \r in {0.7,1.3,1.9,2.5} {\fill[blue!60!black] (\r,0) circle (1.6pt);}
+  \draw[-{Stealth}] (1.9,0) ++(40:1.9) arc (40:70:1.9);
+  \node at (2.0,2.05) {\small orbit};
+  \fill (0,0) circle (1.2pt);
+  \draw[dotted,thick] (-3.0,0) -- (0,0);
+  \foreach \r in {0.7,1.3,1.9,2.5} {\draw[thick,fill=white] (-\r,0) circle (2pt);}
+  \node[align=right,left] at (-3.05,0) {\small second crossings of $y=0$\\\small (Gribov copies)};
+\end{tikzpicture}
+\caption{Gauge orbits (solid circles) of the rotation group acting on the plane, and a gauge
+slice (dashed half-line) that meets each orbit once. The full line $y=0$ would meet each orbit
+twice. In string theory the plane is replaced by the space of worldsheet metrics, the rotations
+by diffeomorphisms and Weyl transformations, and the slice by a choice of fiducial metric
+$\hat g$.}
+\label{fig:ghosts:orbits}
+\end{figure}
+
+\subsection{A warm-up with numbers}
+
+\begin{example}[Faddeev--Popov in the plane]\label{ex:ghosts:plane}
+Let the ``fields'' be a point $\vec x=(x,y)\in\R^2$, the ``action'' $S=x^2+y^2=r^2$, and the
+gauge group the rotations $\vec x\to\vec x^{\,\theta}$ by an angle $\theta\in[0,2\pi)$, with
+$\mathrm{Vol}=2\pi$. The quantity to compute is
+\[
+  Z=\frac{1}{2\pi}\int_{\R^2}\dd x\,\dd y\;\ee^{-(x^2+y^2)}=\frac{1}{2\pi}\cdot\pi=\frac12 .
+\]
+Now repeat the computation the Faddeev--Popov way. Choose the slice $y=0$, $x>0$. Define
+$\Delta(\vec x)$ by
+\[
+  \Delta(\vec x)^{-1}=\int_0^{2\pi}\dd\theta\;\delta\bigl(y^\theta\bigr)\Big|_{x^\theta>0},
+  \qquad y^\theta=r\sin(\theta+\theta_0),
+\]
+where $\theta_0$ is the polar angle of $\vec x$. Using
+$\int\dd\theta\,\delta(f(\theta))=1/|f'(\theta_*)|$ at the zero $\theta_*=-\theta_0$ gives
+$\Delta^{-1}=1/(r\cos 0)=1/r$, so $\Delta(\vec x)=r$; it depends only on the orbit, not on
+the position along it. Insert
+$1=\Delta(\vec x)\int\dd\theta\,\delta(y^\theta)$ into $Z$, change variables
+$\vec x\to\vec x^{\,-\theta}$ (the measure and the action are rotation invariant), and the
+$\theta$ integral factors out as $2\pi=\mathrm{Vol}$:
+\[
+  Z=\int\dd x\,\dd y\;\Delta(\vec x)\,\delta(y)\Big|_{x>0}\,\ee^{-(x^2+y^2)}
+   =\int_0^\infty\dd x\;x\,\ee^{-x^2}=\frac12 .
+\]
+The two answers agree. The Jacobian $\Delta=r$ is nothing but the $r$ in
+$\dd x\,\dd y=r\,\dd r\,\dd\theta$. Had we forgotten it we would have obtained
+$\int_0^\infty\ee^{-x^2}\dd x=\sqrt\pi/2\approx0.886$, which is wrong. Had we used the whole
+line $y=0$ as the slice we would have counted each orbit twice; such repeated intersections
+are called \emph{Gribov copies}\index{Gribov copies} \source{Tong §5.1.1, ll.~6396--6401}.
+\end{example}
+
+\subsection{The same steps for the string}
+
+Write $\zeta$ for a combined diffeomorphism and Weyl transformation, and $g^\zeta$ for the
+transformed metric,
+$g^\zeta_{\alpha\beta}(\sigma')=\ee^{2\omega(\sigma)}\,
+\frac{\partial\sigma^\gamma}{\partial\sigma'^\alpha}\frac{\partial\sigma^\delta}{\partial\sigma'^\beta}\,
+g_{\gamma\delta}(\sigma)$. A metric in two dimensions has three independent components, and
+$\zeta$ contains three arbitrary functions ($\omega$ and the two components of $\sigma'$). So
+locally every metric can be brought to a chosen \emph{fiducial metric}\index{fiducial metric}
+$\hat g$; this is the slice. Two caveats are postponed: globally this fails on worldsheets of
+higher genus, where a finite number of parameters (moduli) survive, and even locally a
+residual symmetry, the conformal group, remains \source{Tong §5.1.1, ll.~6354--6378}.
+
+Define the Faddeev--Popov determinant\index{Faddeev--Popov determinant} $\Delta_{FP}[g]$ by
+\begin{equation}\label{eq:ghosts:fpdef}
+  \Delta_{FP}[g]^{-1}=\int\mathcal{D}\zeta\;\delta\bigl(g-\hat g^{\zeta}\bigr),
+\end{equation}
+the exact analogue of $\Delta^{-1}=\int\dd\theta\,\delta(y^\theta)$
+\source{Tong §5.1.1, ll.~6379--6392}. The measure $\mathcal D\zeta$ is assumed invariant
+under the group, $\mathcal D\zeta=\mathcal D(\zeta'\zeta)$, like $\dd\theta$ above.
+
+\begin{lemma}\label{lem:ghosts:inv}
+$\Delta_{FP}$ is gauge invariant: $\Delta_{FP}[g^\zeta]=\Delta_{FP}[g]$.
+\end{lemma}
+\begin{proof}
+$\Delta_{FP}[g^\zeta]^{-1}=\int\mathcal D\zeta'\,\delta(g^\zeta-\hat g^{\zeta'})
+=\int\mathcal D\zeta'\,\delta(g-\hat g^{\zeta^{-1}\zeta'})
+=\int\mathcal D\zeta''\,\delta(g-\hat g^{\zeta''})$, where the second step acts with
+$\zeta^{-1}$ on both arguments of the delta functional and the third uses the invariance of
+the measure with $\zeta''=\zeta^{-1}\zeta'$ \source{Tong §5.1.1, ll.~6406--6419}.
+\end{proof}
+
+Insert $1=\Delta_{FP}[g]\int\mathcal D\zeta\,\delta(g-\hat g^\zeta)$ into
+\cref{eq:ghosts:Z}. The delta functional performs the integral over $g$ and sets
+$g=\hat g^\zeta$:
+\begin{align}
+  Z[\hat g]&=\frac{1}{\mathrm{Vol}}\int\mathcal D\zeta\,\mathcal DX\;
+     \Delta_{FP}[\hat g^\zeta]\;\ee^{-S_{\mathrm{Poly}}[X,\hat g^\zeta]}\notag\\
+  &=\frac{1}{\mathrm{Vol}}\int\mathcal D\zeta\,\mathcal DX\;
+     \Delta_{FP}[\hat g]\;\ee^{-S_{\mathrm{Poly}}[X,\hat g]}
+  =\int\mathcal DX\;\Delta_{FP}[\hat g]\;\ee^{-S_{\mathrm{Poly}}[X,\hat g]} .
+  \label{eq:ghosts:Zfixed}
+\end{align}
+The second line uses \cref{lem:ghosts:inv} and the gauge invariance of the action (together
+with a relabelling of the integration variable $X$); after that nothing depends on $\zeta$
+and $\int\mathcal D\zeta=\mathrm{Vol}$ cancels the prefactor
+\source{Tong §5.1.1, ll.~6421--6480}.
+
+\begin{pitfallbox}[Common pitfall: the hidden assumption]
+The step ``the action and the measure are gauge invariant'' is exactly where an anomaly would
+enter. The combined measure $\mathcal DX\,\Delta_{FP}$ is invariant under diffeomorphisms, but
+under a Weyl transformation it changes by the anomaly of \cref{eq:ghosts:weylanomaly}, with $c$
+the \emph{total} central charge. The result $Z[\hat g]$ is independent of the arbitrary choice
+of $\hat g$, as a gauge-fixed answer must be, only if that total vanishes. The rest of this
+chapter computes the total.
+\end{pitfallbox}
+
+\section{From a determinant to ghost fields}\label{sec:ghosts:ghosts}
+
+\subsection{Evaluating the determinant}
+
+Near the identity, a gauge transformation is an infinitesimal Weyl rescaling $\omega(\sigma)$
+and an infinitesimal diffeomorphism $\delta\sigma^\alpha=v^\alpha(\sigma)$. The metric changes
+by
+\begin{equation}\label{eq:ghosts:deltag}
+  \delta\hat g_{\alpha\beta}=2\omega\,\hat g_{\alpha\beta}+\nabla_\alpha v_\beta+\nabla_\beta v_\alpha ,
+\end{equation}
+By \cref{lem:ghosts:inv} we need $\Delta_{FP}$ only at $g=\hat g$. There, assuming the slice
+meets each orbit once, the delta functional in \cref{eq:ghosts:fpdef} is supported at the
+identity transformation, so it suffices to expand $\hat g^\zeta$ to first order, and the
+integral over the group becomes an integral over its Lie algebra, $\Delta_{FP}[\hat g]^{-1}=\int\mathcal D\omega\,\mathcal Dv\;
+\delta(2\omega\hat g_{\alpha\beta}+\nabla_\alpha v_\beta+\nabla_\beta v_\alpha)$
+\source{Tong §5.1.2, ll.~6482--6500}. A delta functional restricts a symmetric tensor field
+to vanish, so its Fourier representation needs a symmetric tensor field $\beta^{\alpha\beta}$
+as the conjugate variable:
+\[
+  \Delta_{FP}[\hat g]^{-1}=\int\mathcal D\omega\,\mathcal Dv\,\mathcal D\beta\;
+  \exp\Bigl(2\pi\ii\int\dd^2\sigma\sqrt{\hat g}\;\beta^{\alpha\beta}
+  \bigl[2\omega\hat g_{\alpha\beta}+\nabla_\alpha v_\beta+\nabla_\beta v_\alpha\bigr]\Bigr).
+\]
+The field $\omega$ appears without derivatives and linearly. Integrating over it gives
+another delta functional, which sets $\beta^{\alpha\beta}\hat g_{\alpha\beta}=0$: from now on
+$\beta^{\alpha\beta}$ is symmetric and \emph{traceless}. Using the symmetry of $\beta$ to
+combine the two remaining terms,
+\begin{equation}\label{eq:ghosts:fpinv}
+  \Delta_{FP}[\hat g]^{-1}=\int\mathcal Dv\,\mathcal D\beta\;
+  \exp\Bigl(4\pi\ii\int\dd^2\sigma\sqrt{\hat g}\;\beta^{\alpha\beta}\nabla_\alpha v_\beta\Bigr)
+\end{equation}
+\source{Tong §5.1.2, ll.~6501--6527}. The counting is consistent: in two dimensions a
+symmetric traceless tensor has $3-1=2$ components and so does the vector $v_\beta$. The
+operator in the exponent maps vectors to symmetric traceless tensors and can be treated as a
+square matrix, which is necessary for a determinant to make sense.
+
+\subsection{Commuting versus anticommuting variables}
+
+\Cref{eq:ghosts:fpinv} is a Gaussian integral over commuting variables, which produces an
+\emph{inverse} determinant. We want the determinant itself. The tool is integration over
+Grassmann (anticommuting) variables\index{Grassmann variables}. For a single pair
+$\theta,\bar\theta$ with $\theta^2=\bar\theta^2=0$, $\theta\bar\theta=-\bar\theta\theta$, and the
+rules $\int\dd\theta\,1=0$, $\int\dd\theta\,\theta=1$, one has
+\[
+  \int\dd\bar\theta\,\dd\theta\;\ee^{-\bar\theta a\theta}
+  =\int\dd\bar\theta\,\dd\theta\,\bigl(1-a\,\bar\theta\theta\bigr)
+  =a\int\dd\bar\theta\,\dd\theta\;\theta\bar\theta = a ,
+\]
+whereas for a complex commuting variable
+$\int\dd\bar z\,\dd z\,\ee^{-\bar z a z}\propto 1/a$. For $n$ pairs and a matrix $M$ the same
+computation gives
+\begin{equation}\label{eq:ghosts:berezin}
+  \int\prod_i\dd\bar\theta_i\,\dd\theta_i\;\ee^{-\bar\theta M\theta}=\det M,
+  \qquad
+  \int\prod_i\dd\bar z_i\,\dd z_i\;\ee^{-\bar z M z}\propto\frac{1}{\det M},
+\end{equation}
+because expanding the exponential to order $n$ and keeping the terms that contain every
+$\theta_i$ and every $\bar\theta_i$ once reproduces the signed sum over permutations that
+defines the determinant (\cref{exr:ghosts:berezin} asks for the $2\times2$ case). This is
+standard material, not taken from a source in this book's library.
+
+So to invert \cref{eq:ghosts:fpinv} we replace the commuting fields by anticommuting fields
+with the same index structure,
+\[
+  \beta_{\alpha\beta}\longrightarrow b_{\alpha\beta},\qquad v^\alpha\longrightarrow c^\alpha ,
+\]
+and obtain, after a rescaling of the fields that changes only the overall normalization of
+$Z$ and after rotating back to Euclidean signature,
+\begin{equation}\label{eq:ghosts:Sghost}
+  \Delta_{FP}[\hat g]=\int\mathcal Db\,\mathcal Dc\;\ee^{-S_{\mathrm{ghost}}},\qquad
+  S_{\mathrm{ghost}}=\frac{1}{2\pi}\int\dd^2\sigma\sqrt{g}\;b_{\alpha\beta}\nabla^\alpha c^\beta
+\end{equation}
+\source{Tong §5.1.3, ll.~6529--6560}. The fields $b_{\alpha\beta}$ (symmetric, traceless)
+and $c^\alpha$ are the Faddeev--Popov ghosts\index{ghosts!Faddeev--Popov}\index{bc ghost system}.
+The gauge-fixed partition function \cref{eq:ghosts:Zfixed} is
+\begin{equation}\label{eq:ghosts:Zfull}
+  Z[\hat g]=\int\mathcal DX\,\mathcal Db\,\mathcal Dc\;
+  \exp\bigl(-S_{\mathrm{Poly}}[X,\hat g]-S_{\mathrm{ghost}}[b,c,\hat g]\bigr).
+\end{equation}
+
+\begin{physicsbox}[Physical picture: what ghosts are for]
+Ghosts are anticommuting fields of integer spin. They violate the spin--statistics theorem,
+so they cannot describe physical particles, and they are not meant to: they are a local way
+of writing a Jacobian. Their effect is to cancel the unphysical, gauge degrees of freedom of
+$X^\mu$, leaving the $D-2$ transverse oscillations found in lightcone gauge, but without
+breaking manifest Lorentz invariance \source{Tong §5.1.3, ll.~6566--6574}. Tong's
+one-loop partition function is computed in lightcone gauge with $24$ oscillators precisely
+to avoid carrying the ghosts along \source{Tong §6.4.2, ll.~8519--8527}; in the covariant
+computation the ghost oscillators remove the contribution of two of the $26$ directions
+(standard; not checked against a source in this book's library). Do not confuse these ghosts with the negative-norm states of covariant quantization
+in \cref{ch:quantum}, which are also called ghosts; the Faddeev--Popov ghosts are the cure,
+those states are the disease.
+\end{physicsbox}
+
+\subsection{Conformal gauge}
+
+Choose the fiducial metric $\hat g_{\alpha\beta}=\ee^{2\omega}\delta_{\alpha\beta}$ and
+complex coordinates $z=\sigma^1+\ii\sigma^2$ as in \cref{ch:cft}. Tracelessness,
+$\hat g^{\alpha\beta}b_{\alpha\beta}\propto b_{z\bar z}=0$, leaves the components $b_{zz}$ and
+$b_{\bar z\bar z}$. With $\sqrt{\hat g}=\ee^{2\omega}$, $\dd^2\sigma=\tfrac12\dd^2z$ and
+$\nabla^z=\hat g^{z\bar z}\nabla_{\bar z}=2\ee^{-2\omega}\nabla_{\bar z}$, the factors of
+$\ee^{2\omega}$ cancel:
+\[
+  S_{\mathrm{ghost}}=\frac{1}{2\pi}\int\dd^2z\;
+  \bigl(b_{zz}\nabla_{\bar z}c^z+b_{\bar z\bar z}\nabla_z c^{\bar z}\bigr).
+\]
+The covariant derivative is $\nabla_{\bar z}c^z=\partial_{\bar z}c^z+\Gamma^z_{\bar z\alpha}c^\alpha$,
+and $\Gamma^z_{\bar z\alpha}=\tfrac12 g^{z\bar z}(\partial_{\bar z}g_{\alpha\bar z}
++\partial_\alpha g_{\bar z\bar z}-\partial_{\bar z}g_{\bar z\alpha})=0$: the first and third
+terms cancel and $g_{\bar z\bar z}=0$ in conformal gauge. Writing
+$b=b_{zz}$, $c=c^z$, $\bar b=b_{\bar z\bar z}$, $\bar c=c^{\bar z}$, $\partial=\partial_z$ and
+$\bar\partial=\partial_{\bar z}$,
+\begin{equation}\label{eq:ghosts:Sbc}
+  S_{\mathrm{ghost}}=\frac{1}{2\pi}\int\dd^2z\;\bigl(b\,\bar\partial c+\bar b\,\partial\bar c\bigr)
+\end{equation}
+\source{Tong §5.1.3--5.2, ll.~6578--6640}. Two observations. The conformal factor $\omega$
+has dropped out, so the ghost action is Weyl invariant with $b_{\alpha\beta}$ and $c^\alpha$
+inert; this holds for this index placement only, since raising or lowering an index
+introduces the metric. And the equations of motion $\bar\partial b=\bar\partial c=0$,
+$\partial\bar b=\partial\bar c=0$ say that $b,c$ are holomorphic and $\bar b,\bar c$
+antiholomorphic: the ghosts form a free conformal field theory, to which all the tools of
+\cref{ch:cft} apply.
+
+\section{The ghost conformal field theory}\label{sec:ghosts:cft}
+
+We treat the holomorphic half; the antiholomorphic half is identical. It costs nothing to be
+slightly more general than the string requires, and the generality pays off in
+\cref{sec:ghosts:super}. Consider anticommuting fields $b$ and $c$ with action
+$\frac{1}{2\pi}\int\dd^2z\,b\,\bar\partial c$, and suppose $b$ has conformal weight $\lambda$ and
+$c$ has weight $1-\lambda$, so that $b\,\bar\partial c$ has weight $(1,1)$ and the action is
+conformally invariant. The reparametrization ghosts have $\lambda=2$, because $b_{zz}$ has two
+lower holomorphic indices and $c^z$ one upper index.
+
+\subsection{Propagator}
+
+As in \cref{ch:cft}, the operator product follows from the statement that the path integral
+of a total functional derivative vanishes:
+\[
+  0=\int\mathcal Db\,\mathcal Dc\;\frac{\delta}{\delta b(\sigma)}
+  \Bigl[\ee^{-S_{\mathrm{ghost}}}\,b(\sigma')\Bigr]
+  =\int\mathcal Db\,\mathcal Dc\;\ee^{-S_{\mathrm{ghost}}}
+  \Bigl[-\frac{1}{2\pi}\bar\partial c(\sigma)\,b(\sigma')+\delta(\sigma-\sigma')\Bigr],
+\]
+that is, $\bar\partial c(\sigma)\,b(\sigma')=2\pi\,\delta(\sigma-\sigma')$ inside correlation
+functions. Since $\bar\partial(1/z)=2\pi\,\delta(z,\bar z)$, this integrates to
+\begin{equation}\label{eq:ghosts:bcope}
+  c(z)\,b(w)\sim\frac{1}{z-w},\qquad b(z)\,c(w)\sim\frac{1}{z-w},
+\end{equation}
+where $\sim$ means ``equal up to terms regular as $z\to w$''. The second relation follows
+from the first and anticommutativity: $b(z)c(w)=-c(w)b(z)\sim-1/(w-z)=1/(z-w)$. The products
+$b(z)b(w)$ and $c(z)c(w)$ are regular \source{Tong §5.2, ll.~6674--6720}.\index{operator product expansion!ghosts}
+
+\subsection{Stress tensor and conformal weights}
+
+The stress tensor is
+\begin{equation}\label{eq:ghosts:T}
+  T(z)=-\lambda\,{:}b\,\partial c{:}(z)+(1-\lambda)\,{:}\partial b\,c{:}(z) .
+\end{equation}
+For $\lambda=2$ this is $T=-2\,{:}b\,\partial c{:}-{:}\partial b\,c{:}
+=2\,{:}\partial c\,b{:}+{:}c\,\partial b{:}$, which is the result Tong obtains by varying the
+covariant action \cref{eq:ghosts:Sghost} with respect to the metric
+\source{Tong §5.2, ll.~6650--6672, 6721--6726}. For general $\lambda$ we do not derive
+\cref{eq:ghosts:T} from an action; we justify it by checking that it assigns the intended
+weights. A primary field $\mathcal O$ of weight $h$ satisfies
+$T(z)\mathcal O(w)\sim h\,\mathcal O(w)/(z-w)^2+\partial\mathcal O(w)/(z-w)$
+(\cref{ch:cft}).
+
+\emph{The field $b$.} Contract the $c$ in each term of $T(z)$ with $b(w)$, using
+$\partial c(z)\,b(w)\sim\partial_z(z-w)^{-1}=-(z-w)^{-2}$:
+\[
+  T(z)\,b(w)\sim-\lambda\,b(z)\cdot\frac{-1}{(z-w)^2}+(1-\lambda)\,\frac{\partial b(z)}{z-w}
+  =\frac{\lambda\,b(w)}{(z-w)^2}+\frac{\bigl[\lambda+(1-\lambda)\bigr]\partial b(w)}{z-w},
+\]
+after the Taylor expansion $b(z)=b(w)+(z-w)\partial b(w)+\dots$. So $b$ is primary of weight
+$\lambda$.
+
+\emph{The field $c$.} Now the $b$ in each term of $T(z)$ is contracted with $c(w)$, and
+$c(w)$ must first be moved past one anticommuting field, which costs a sign:
+${:}b\,\partial c{:}(z)\,c(w)\to-\partial c(z)/(z-w)$ and
+${:}\partial b\,c{:}(z)\,c(w)\to-\partial_z(z-w)^{-1}c(z)=c(z)/(z-w)^2$. Hence
+\[
+  T(z)\,c(w)\sim\frac{\lambda\,\partial c(z)}{z-w}+\frac{(1-\lambda)\,c(z)}{(z-w)^2}
+  =\frac{(1-\lambda)\,c(w)}{(z-w)^2}+\frac{\partial c(w)}{z-w},
+\]
+so $c$ is primary of weight $1-\lambda$. For $\lambda=2$: $h_b=2$ and $h_c=-1$
+\source{Tong §5.2, ll.~6727--6769}. These are the weights dictated by the index structure
+$b_{zz}$, $c^z$: a field with $n$ lower $z$ indices has weight $n$, and an upper index counts
+as $-1$. A negative weight is a sign that the theory is not unitary, which is what we need to
+evade the bound $c>0$.
+
+\subsection{The central charge}
+
+The central charge is read off from the most singular term of
+$T(z)T(w)\sim\frac{c/2}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial T(w)}{z-w}$
+\source{Tong §4.4, ll.~4895--4915}. The $(z-w)^{-4}$ term comes from contracting both fields
+of $T(z)$ with both fields of $T(w)$. There are four products of terms, and in each exactly
+one pairing is possible ($b$ with $c$). In every case the field being moved passes two
+anticommuting fields, so the reordering sign is $+$. With $G=(z-w)^{-1}$ and
+\[
+  \partial_wG=\frac{1}{(z-w)^2},\qquad\partial_zG=\frac{-1}{(z-w)^2},\qquad
+  \partial_z\partial_wG=\frac{-2}{(z-w)^3},
+\]
+the four double contractions are as follows. In the column ``pairings'' the first factor is
+the contraction of the $b$-type field at $z$ with the $c$-type field at $w$, and the second
+that of the $c$-type field at $z$ with the $b$-type field at $w$; each is a derivative of
+\cref{eq:ghosts:bcope}.
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}llll@{}}
+\toprule
+product & pairings & value $\times(z-w)^4$ & at $\lambda=2$\\
+\midrule
+$\lambda^2\;{:}b\,\partial c{:}(z)\,{:}b\,\partial c{:}(w)$ &
+  $\partial_wG\cdot\partial_zG$ & $-\lambda^2$ & $-4$\\
+$-\lambda(1-\lambda)\;{:}b\,\partial c{:}(z)\,{:}\partial b\,c{:}(w)$ &
+  $G\cdot\partial_z\partial_wG$ & $+2\lambda(1-\lambda)$ & $-4$\\
+$-\lambda(1-\lambda)\;{:}\partial b\,c{:}(z)\,{:}b\,\partial c{:}(w)$ &
+  $\partial_z\partial_wG\cdot G$ & $+2\lambda(1-\lambda)$ & $-4$\\
+$(1-\lambda)^2\;{:}\partial b\,c{:}(z)\,{:}\partial b\,c{:}(w)$ &
+  $\partial_zG\cdot\partial_wG$ & $-(1-\lambda)^2$ & $-1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The sum is $c/2=-\lambda^2+4\lambda(1-\lambda)-(1-\lambda)^2=-6\lambda^2+6\lambda-1$, that is
+\begin{equation}\label{eq:ghosts:cbc}
+  \boxed{\,c_{bc}(\lambda)=-2\,(6\lambda^2-6\lambda+1)=1-3\,(2\lambda-1)^2\,}
+\end{equation}
+(the two forms agree: $1-3(4\lambda^2-4\lambda+1)=-12\lambda^2+12\lambda-2$; the table and
+this identity were also confirmed by a symbolic check in sympy). For the reparametrization
+ghosts the last column adds up to $-13$, so\index{central charge!of the bc ghosts}
+\begin{equation}\label{eq:ghosts:minus26}
+  T(z)\,T(w)\sim\frac{-13}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial T(w)}{z-w},
+  \qquad c_{bc}(2)=-26,
+\end{equation}
+in agreement with \source{Tong §5.2, ll.~6770--6839}, who carries out the $\lambda=2$ case
+including the less singular terms. The general-$\lambda$ formula is standard; here it is
+derived on the page rather than quoted.
+
+\begin{example}[The formula at the weights that matter]\label{ex:ghosts:table}
+\Cref{eq:ghosts:cbc} is a downward parabola in $\lambda$, symmetric under
+$\lambda\leftrightarrow1-\lambda$ (exchange of the roles of $b$ and $c$), with maximum $c=1$
+at $\lambda=\tfrac12$ (\cref{fig:ghosts:parabola}).
+\begin{center}
+\begin{tabular}{@{}ccccl@{}}
+\toprule
+$\lambda$ & $1-\lambda$ & $(2\lambda-1)^2$ & $c_{bc}(\lambda)$ & system\\
+\midrule
+$1/2$ & $1/2$ & $0$ & $+1$ & a complex free fermion $=$ two real fermions\\
+$1$ & $0$ & $1$ & $-2$ & \\
+$3/2$ & $-1/2$ & $4$ & $-11$ & (the commuting version has $+11$, see \cref{sec:ghosts:super})\\
+$2$ & $-1$ & $9$ & $-26$ & reparametrization ghosts\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first row is a useful by-product. At $\lambda=\tfrac12$ the fields $b$ and $c$ both have
+weight $\tfrac12$ and can be combined into two real (Majorana) fermions
+$\psi_{1,2}=(b\pm c)/\sqrt2$ up to a factor of $\ii$. So one real free fermion has
+\[
+  c_\psi=\tfrac12 ,
+\]
+the value used for the superstring below.\index{central charge!of a free fermion}
+\end{example}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[xscale=2.6,yscale=0.14]
+  \draw[-{Stealth}] (-1.25,0) -- (2.4,0) node[right] {$\lambda$};
+  \draw[-{Stealth}] (0,-29) -- (0,5) node[above] {$c_{bc}(\lambda)$};
+  \draw[thick,domain=-1.02:2.02,samples=60] plot (\x,{1-3*(2*\x-1)*(2*\x-1)});
+  \foreach \x/\y/\lab/\pos in {0.5/1/{$(\tfrac12,1)$}/above right, 1.5/-11/{$(\tfrac32,-11)$}/right,
+     2/-26/{$(2,-26)$}/right, 1/-2/{$(1,-2)$}/right}
+     {\fill (\x,\y) circle[x radius=0.025, y radius=0.46]; \node[\pos,font=\small] at (\x,\y) {\lab};}
+  \fill (-1,-26) circle[x radius=0.025, y radius=0.46];
+  \node[left,font=\small] at (-1,-26) {$(-1,-26)$};
+  \draw[dashed] (-1,-26) -- (2,-26);
+  \foreach \y in {-26,-11} {\draw (-0.03,\y) -- (0.03,\y);}
+  \node[left,font=\small] at (-0.03,-11) {$-11$};
+\end{tikzpicture}
+\caption{The central charge $c_{bc}(\lambda)=1-3(2\lambda-1)^2$ of an anticommuting
+first-order system whose fields have weights $\lambda$ and $1-\lambda$. The points
+$\lambda=2$ and $\lambda=-1$ describe the same system with the names of $b$ and $c$
+exchanged. The commuting system of the same weights has the opposite central charge.}
+\label{fig:ghosts:parabola}
+\end{figure}
+
+\section{The critical central charge}\label{sec:ghosts:critical}
+
+Collect the pieces. After gauge fixing, the worldsheet theory in \cref{eq:ghosts:Zfull} consists
+of a ``matter'' conformal field theory (so far, $D$ free scalars) and the ghosts. Central
+charges of decoupled theories add, because their stress tensors add and have no singular
+product with each other. The Weyl anomaly of the full theory, \cref{eq:ghosts:weylanomaly}, is
+proportional to
+\begin{equation}\label{eq:ghosts:ctot}
+  c_{\mathrm{tot}}=c_{\mathrm{matter}}+c_{bc}(2)=c_{\mathrm{matter}}-26 ,
+\end{equation}
+and the gauge symmetry we used to fix the metric survives quantization only if
+$c_{\mathrm{tot}}=0$:
+
+\begin{proposition}[Critical central charge \TL]\label{prop:ghosts:26}
+The gauge-fixed bosonic string is Weyl invariant if and only if the matter conformal field
+theory has $c_{\mathrm{matter}}=\tilde c_{\mathrm{matter}}=26$. If the matter theory consists
+of $D$ free scalars, each with $c=1$, this requires $D=26$
+\source{Tong §5.3, ll.~6840--6851}.\index{critical dimension}\index{critical central charge}
+\end{proposition}
+
+This agrees with the lightcone result of \cref{ch:quantum}, but the logic is different and
+more informative. There, $D=26$ was needed to keep a global symmetry (Lorentz invariance)
+that the gauge choice had hidden. Here, Lorentz invariance is manifest throughout and
+$c=26$ is needed to keep the gauge symmetry itself.
+
+\begin{physicsbox}[Physical picture: a budget, not a dimension]
+Nothing in the argument required the matter theory to be free scalars. \emph{Any} conformal
+field theory with $c=\tilde c=26$ gives a consistent gauge-fixed string, and each describes a
+different background in which the string propagates. ``Critical dimension'' is thus a
+misnomer for ``critical central charge'': only for special conformal field theories can $c$
+be read as a number of spacetime dimensions. To describe strings in four-dimensional
+Minkowski space one takes four free scalars and an ``internal'' conformal field theory with
+$c=26-4=22$, which may or may not have a geometric interpretation
+\source{Tong §5.3, ll.~6852--6867}. When this book compactifies on a circle
+(\cref{ch:circle}), a torus (\cref{ch:narain}) or a K3 surface (\cref{ch:stringsk3}), it is
+choosing the internal theory. T-duality will turn out to be the statement that two
+different-looking geometries give the \emph{same} internal conformal field theory.
+\end{physicsbox}
+
+\begin{remark}[Time]\label{rem:ghosts:time}
+One direction must be timelike, i.e.\ have a wrong-sign kinetic term. The safe construction
+keeps $X^0$ as a free scalar and lets the remaining $c=25$ be an arbitrary conformal field
+theory, which excludes backgrounds that evolve in time. The worldsheet description of
+time-dependent backgrounds has unresolved technical obstacles, and string cosmology is
+usually studied through the low-energy effective action of \cref{ch:backgrounds} instead
+\source{Tong §5.3, ll.~6868--6877}. This caveat applies to the cosmological discussion of
+\cref{ch:cosmology}.
+\end{remark}
+
+\begin{remark}[Non-critical strings]\label{rem:ghosts:liouville}
+If $c_{\mathrm{matter}}=D\neq26$ one may give up Weyl invariance from the start. The
+conformal factor $\omega$ of the metric then does not decouple: integrating the anomaly
+equation with $c=D-26$ shows that $\omega$ acquires a kinetic term proportional to
+$(26-D)$ and, if a worldsheet cosmological constant $\mu$ is present, an exponential
+potential $\mu\,\ee^{2\omega}$. It becomes a new dynamical field, the Liouville
+field\index{Liouville field} \source{Tong §5.3.2, ll.~6892--6987}. We shall not use
+non-critical strings; the remark shows that ``$D\neq26$'' does not simply fail but turns into
+a different and harder theory.
+\end{remark}
+
+\subsection{Physical states without BRST}
+
+With the ghosts present the space of states is larger, not smaller, and one needs a criterion
+for physical states. The systematic answer is BRST quantization\index{BRST quantization},
+which neither Tong nor this book develops \source{Tong §5.4, ll.~6988--7001}. The following
+shortcut is enough for our purposes. By the state--operator map of \cref{ch:cft}, a state
+corresponds to a local operator $\mathcal O(z,\bar z)$ of the matter theory. An operator at a
+point is not diffeomorphism invariant; its integral over the worldsheet is:
+\begin{equation}\label{eq:ghosts:vertex}
+  V\sim\int\dd^2z\;\mathcal O(z,\bar z).
+\end{equation}
+Under a rescaling the measure $\dd^2z$ has weight $(-1,-1)$, so Weyl invariance of $V$
+requires $\mathcal O$ to be a primary operator of weight $(h,\tilde h)=(1,1)$. Such $V$ are
+the \emph{vertex operators}\index{vertex operator} \source{Tong §5.4, ll.~7020--7059}.
+
+\begin{example}[Masses from weights]\label{ex:ghosts:masses}
+The operator ${:}\ee^{\ii p\cdot X}{:}$ has weight $h=\tilde h=\ap p^2/4$ (\cref{ch:cft}).
+Setting $h=1$ gives $p^2=4/\ap$, i.e.\ $M^2=-p^2=-4/\ap$: the tachyon. The operator
+${:}\ee^{\ii p\cdot X}\partial X^\mu\bar\partial X^\nu{:}\,\zeta_{\mu\nu}$ has
+$h=\tilde h=1+\ap p^2/4$, so $h=1$ gives $M^2=0$; demanding that it be primary (no
+$(z-w)^{-3}$ term in its product with $T$) imposes the transversality conditions
+$p^\mu\zeta_{\mu\nu}=p^\nu\zeta_{\mu\nu}=0$ \source{Tong §5.4.1, ll.~7060--7116}. Both
+masses agree with the book's mass formula $M^2=\frac{2}{\ap}(N+\tilde N-2)$ at
+$N=\tilde N=0$ and $N=\tilde N=1$. The intercept ``$-2$'' of that formula, which in
+\cref{ch:quantum} came from a regularized sum over zero-point energies, comes here from the
+requirement of weight $(1,1)$.
+\end{example}
+
+Ghosts can also be ignored in tree-level scattering: on the sphere they decouple from the
+matter fields, whereas on surfaces of higher genus the moduli of the metric couple the two,
+in analogy with the field-theory statement that ghosts matter only in loops
+\source{Tong §6.1.1, ll.~7444--7458}.
+
+\section{The superstring in brief}\label{sec:ghosts:super}
+
+This book works mostly with the bosonic fields $G$, $B$ and the dilaton, which are common to
+all string theories, so a full treatment of the superstring is not needed. But the K3 part of
+the book (\cref{ch:stringsk3,ch:k3t2,ch:ellgenus}) takes place in superstring theory, and
+the student needs to know what the words mean. Tong's notes, our main source, deliberately
+give ``nothing more than a list of facts'' about the superstring
+\source{Tong §2.5, ll.~2958--2961}; we do the same, and mark what goes beyond that source.
+Everything in this section is \TL.
+
+\subsection{Worldsheet fermions and \texorpdfstring{$D=10$}{D = 10}}
+
+In the Neveu--Schwarz--Ramond formulation the worldsheet theory contains, besides the scalars
+$X^\mu$, anticommuting fields $\psi^\mu$ of weight $\tfrac12$ (and/or their antiholomorphic
+partners $\tilde\psi^\mu$), related to $X^\mu$ by a worldsheet supersymmetry\index{superstring}
+\index{worldsheet supersymmetry}. This supersymmetry is a further \emph{gauge} symmetry on the
+worldsheet, so gauge fixing it produces further ghosts, the $\beta\gamma$
+system\index{beta-gamma ghost system@$\beta\gamma$ ghost system}, with central charge $+11$.
+The matter theory must therefore have
+\[
+  c_{\mathrm{matter}}=26-11=15 .
+\]
+Supersymmetry pairs each boson ($c=1$) with a fermion ($c=\tfrac12$; compare
+\cref{ex:ghosts:table}), so $D$ flat dimensions contribute $\tfrac32D$, and
+\begin{equation}\label{eq:ghosts:D10}
+  \tfrac32\,D=15\quad\Longrightarrow\quad D=10
+\end{equation}
+\source{Tong §5.3.1, ll.~6878--6891}.\index{critical dimension!of the superstring}
+
+Where does $+11$ come from? Tong states the number without derivation. It follows from
+\cref{sec:ghosts:cft} with two changes. (i) The gauge parameter of a local supersymmetry is a
+spinor, a ``square root'' of the vector $c^z$ of weight $-1$; its ghost $\gamma$ has weight
+$-\tfrac12$, and the conjugate field $\beta$ has weight $\lambda=\tfrac32$. (ii) Ghosts have
+the opposite statistics to the gauge parameter, so $\beta,\gamma$ \emph{commute}. For
+commuting fields with the same action $\frac{1}{2\pi}\int\dd^2z\,\beta\bar\partial\gamma$ the
+derivation of \cref{eq:ghosts:bcope} still gives $\gamma(z)\beta(w)\sim1/(z-w)$, but now
+$\beta(z)\gamma(w)=+\gamma(w)\beta(z)\sim1/(w-z)=-1/(z-w)$. In the computation of the weights
+this sign replaces the reordering sign of the anticommuting case, so the weights are still
+$(\lambda,1-\lambda)$. In each of the four double contractions of the table in
+\cref{sec:ghosts:cft} exactly one of the two pairings is of the type $\beta(z)\gamma(w)$, so
+every entry changes sign:
+\begin{equation}\label{eq:ghosts:cbg}
+  c_{\beta\gamma}(\lambda)=-c_{bc}(\lambda)=3(2\lambda-1)^2-1,\qquad
+  c_{\beta\gamma}\bigl(\tfrac32\bigr)=3\cdot4-1=11 .
+\end{equation}
+The identification of the weights in (i) is standard but is not checked against a source in
+this book's library; the sign argument in (ii) is derived here.
+
+\begin{example}[The budget for $\KT$]\label{ex:ghosts:budget}
+Take the superstring on $\R^{1,3}\times T^2\times K3$ (\cref{ch:k3t2}). The ghosts contribute
+$-26+11=-15$. The matter side is
+\begin{center}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+factor & real dimensions & $c$ per dimension & $c$\\
+\midrule
+$\R^{1,3}$ & $4$ & $1+\tfrac12$ & $6$\\
+$T^2$ & $2$ & $1+\tfrac12$ & $3$\\
+K3 & $4$ & $1+\tfrac12$ & $6$\\
+\midrule
+total & $10$ & & $15$\\
+\bottomrule
+\end{tabular}
+\end{center}
+and $15-15=0$. The entry for K3 deserves a comment. A K3 surface is curved, and its sigma
+model is an interacting theory, not four free bosons and four free fermions. The value $c=6$
+is nevertheless correct, because the anomaly budget leaves exactly $15-9=6$ for the internal
+theory once $\R^{1,3}\times T^2$ is accounted for, and because a Ricci-flat target preserves
+conformal invariance to the order discussed in \cref{ch:backgrounds}. The free-field count
+$4\cdot1+4\cdot\tfrac12$ is a mnemonic (it is exact for the orbifold $T^4/\Z_2$ of
+\cref{ch:kummer}). The same number $c=6$ labels the $N=4$ superconformal algebra whose
+characters organize the elliptic genus in \cref{ch:ellgenus}.
+\end{example}
+
+\subsection{The five theories}
+
+The bosonic string is unique, but there are discrete choices in adding fermions to the
+worldsheet. The main one is whether fermions are added to both the left- and right-moving
+sectors or to one sector only \source{Tong §2.5, ll.~2969--2985}. In all cases $D=10$,
+there is no tachyon, and the massless bosonic fields include the metric $G_{\mu\nu}$, the
+two-form $B_{\mu\nu}$ and the dilaton $\Phi$ \source{Tong §2.5, ll.~2958--2968}, which is why
+the results of \cref{ch:backgrounds,ch:tduality,ch:buscher} carry over.
+\index{type IIA string}\index{type IIB string}\index{heterotic string}\index{type I string}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{26mm}p{30mm}p{18mm}p{60mm}@{}}
+\toprule
+theory & worldsheet fermions & super\-charges & additional massless bosons\\
+\midrule
+type IIA & both sectors & $32$ & Ramond--Ramond one-form $C_1$ and three-form $C_3$\\
+type IIB & both sectors & $32$ & Ramond--Ramond $C_0$, $C_2$, $C_4$; the field strength of
+  $C_4$ is self-dual, $F_5=\star F_5$\\
+heterotic $SO(32)$ & one sector & $16$ & $SO(32)$ gauge field\\
+heterotic $E_8\times E_8$ & one sector & $16$ & $E_8\times E_8$ gauge field\\
+type I & (open and closed strings) & & mentioned by Tong only in passing\\
+\bottomrule
+\end{tabular}
+\end{center}
+\source{Tong §2.5, ll.~2981--3008}. Three comments connect this table to later chapters.
+
+\emph{Heterotic strings and lattices.} In a heterotic string one sector is that of the
+superstring, with matter central charge $15$, and the other is that of the bosonic string,
+with matter central charge $26$. Ten dimensions use $10$ of the $26$, and the remaining
+$26-10=16$ units are carried by an internal theory that produces the gauge group; both
+$SO(32)$ and $E_8\times E_8$ have rank $16$. The consistent choices are governed by even
+unimodular lattices of rank $16$, the subject of \cref{ch:lattices}, and on a torus by the
+Narain lattices of \cref{ch:narain}. (This paragraph is standard; Tong gives only the list of
+gauge groups, and the counting is not checked against a source in this book's library.)
+
+\emph{T-duality.} The superstring theories are not individually invariant under
+$R\to\ap/R$; they are exchanged in pairs. Type IIA on a circle of radius $R$ is equivalent to
+type IIB on a circle of radius $\ap/R$, and the two heterotic strings are likewise exchanged
+\source{Tong §8.3.3, ll.~11828--11835}. This is consistent with the D-brane content: type IIA
+has stable D$p$-branes with $p$ even, type IIB with $p$ odd, and T-duality along a circle
+changes $p$ by one (\cref{ch:dbranes}).
+
+\emph{K3.} Aspinwall's lectures, the main source for \cref{ch:stringsk3}, state their goal as
+understanding ``the type II string and the heterotic string compactified on a K3 surface and
+what such models are dual to'', and remark that the heterotic string appears to be
+intrinsically tied to the geometry of K3 \source{Asp §1, ll.~112--190}. The student who knows
+the table above knows enough to follow that discussion.
+
+\begin{pitfallbox}[Common pitfall: two meanings of ``supersymmetry'']
+The supersymmetry used in \cref{eq:ghosts:D10} lives on the worldsheet and is a gauge
+redundancy. The ``$32$ supercharges'' of the table refer to spacetime supersymmetry of the
+ten-dimensional theory, which is a physical symmetry. The second does not follow from the
+first by inspection; it requires a projection on the spectrum that this book does not
+describe (standard; not covered by the sources in this book's library).
+\end{pitfallbox}
+
+\begin{historybox}
+The analysis of the string path integral described in this chapter is due to Polyakov,
+``Quantum geometry of bosonic strings'', Phys.\ Lett.\ B \textbf{103}, 207 (1981), a paper of
+four pages, followed by ``Quantum geometry of fermionic strings'', Phys.\ Lett.\ B
+\textbf{103}, 211 (1981), for the superstring. Polyakov's main interest was the non-critical
+string of \cref{rem:ghosts:liouville}, not $D=26$
+\source{Tong §5.1, ll.~6312--6315; §5.3.2, ll.~6892--6896}.
+\end{historybox}
+
+\section{What the machine has checked}\label{sec:ghosts:lean}
+
+Two files of the library \lean{StringTheoryFormalization} concern this chapter. Both model
+central charges as rational numbers and prove arithmetic facts about them. In the language of
+this book they are \emph{arithmetic shadows}: they check the last line of the argument, not
+the argument. No path integral, no Grassmann field, no operator product and no Virasoro
+algebra is defined in either file.
+
+\begin{leanbox}[In Lean: \texttt{UseCases/CriticalDimension.lean}]
+The two central-charge formulas \cref{eq:ghosts:cbc,eq:ghosts:cbg} are \emph{definitions}:
+\begin{leancode}
+def fermionicGhostCharge (lam : ℚ) : ℚ := 1 - 3 * (2 * lam - 1) ^ 2
+def bosonicGhostCharge (lam : ℚ) : ℚ := 3 * (2 * lam - 1) ^ 2 - 1
+\end{leancode}
+The theorems proved about them, in the namespace
+\lean{StringTheory.UseCases.CriticalDimension}, are:
+\begin{leancode}
+theorem bosonic_eq_neg_fermionic (lam : ℚ) :
+    bosonicGhostCharge lam = - fermionicGhostCharge lam := by ...
+
+theorem bc_ghost_charge_eq : fermionicGhostCharge 2 = -26 := by ...
+
+theorem betagamma_ghost_charge_eq : bosonicGhostCharge (3 / 2) = 11 := by ...
+
+theorem bosonic_string_critical_dimension :
+    (26 : ℚ) * 1 + fermionicGhostCharge 2 = 0 := by ...
+
+theorem superstring_critical_dimension :
+    (10 : ℚ) * 1 + 10 * (1 / 2) + fermionicGhostCharge 2
+      + bosonicGhostCharge (3 / 2) = 0 := by ...
+
+theorem bosonic_dimension_unique (D : ℚ)
+    (h : D * 1 + fermionicGhostCharge 2 = 0) :
+    D = 26 := by ...
+\end{leancode}
+\textbf{Plain reading.} The polynomial $3(2\lambda-1)^2-1$ is the negative of
+$1-3(2\lambda-1)^2$ for every rational $\lambda$; the first polynomial equals $11$ at
+$\lambda=\tfrac32$ and the second equals $-26$ at $\lambda=2$; $26-26=0$;
+$10+5-26+11=0$; and the only rational $D$ with $D-26=0$ is $26$. The numerals $1$ and
+$\tfrac12$ multiplying $26$ and $10$ stand for the central charges of a free boson and a free
+fermion, but in the statements they are just numerals.
+
+\textbf{Proof idea.} Unfold the definitions; \lean{ring} proves the polynomial identity,
+\lean{norm\_num} evaluates at a fixed rational number, and \lean{linarith} solves the linear
+equation in \lean{bosonic\_dimension\_unique}.
+
+\textbf{What is not proved.} That a $bc$ system of weight $\lambda$ has central charge
+\lean{fermionicGhostCharge}~$\lambda$ (our derivation of \cref{eq:ghosts:cbc} is on paper
+only); that the Faddeev--Popov ghosts have $\lambda=2$; that the Weyl anomaly is proportional
+to the total central charge; or that a consistent conformal field theory with $c=26$ exists.
+There is also no uniqueness statement for the superstring in the file
+(\cref{exr:ghosts:leanunique}).
+\end{leanbox}
+
+\begin{leanbox}[In Lean: \texttt{Frontier/CentralCharge.lean}]
+In the namespace \lean{StringTheory.Frontier}:
+\begin{leancode}
+def centralChargeBoson : ℚ := 1
+def centralChargeFermion : ℚ := 1/2
+def centralChargeK3 : ℚ :=
+  4 * centralChargeBoson + 4 * centralChargeFermion
+
+theorem central_charge_k3_eq_six : centralChargeK3 = 6 := by ...
+\end{leancode}
+\textbf{Plain reading.} $4\cdot1+4\cdot\tfrac12=6$ in $\Q$. This is the K3 row of
+\cref{ex:ghosts:budget}, with the free-field mnemonic taken as the definition.
+
+The same file contains three theorems whose names promise more than their statements
+deliver, as the file's own documentation says explicitly:
+\begin{leancode}
+theorem virasoro_ope_central_term (z w : ℂ) (h : z ≠ w) :
+    (centralChargeK3 / 2 : ℚ) = 3 := by ...
+
+theorem virasoro_algebra_commutator (c : ℚ) (m n : ℤ) (L : ℤ → ℤ) :
+    c / 12 * (m^3 - m) = c * m * (m^2 - 1) / 12 := by ...
+
+theorem central_charge_from_worldsheet_action :
+    ∃ (c : ℚ), c = centralChargeK3 ∧ c = 6 := by ...
+\end{leancode}
+The first does not use $z$, $w$ or $h$ and states that $6/2=3$. The second does not use $n$
+or $L$ and is the identity $\frac{c}{12}(m^3-m)=\frac{c\,m(m^2-1)}{12}$, valid for every $c$;
+it says nothing about commutators $[L_m,L_n]$. The third is witnessed by $c=6$ and involves
+no action. They are recorded here so that a reader who meets these names in the catalogue
+(\cref{ch:atlas}) is not misled. One sentence of that file's documentation should also be read
+with care: it describes the bookkeeping as ``$26=20+6$'', which mixes the bosonic budget $26$
+with the superstring value $c=6$. The consistent superstring bookkeeping is $15=9+6$, as in
+\cref{ex:ghosts:budget}. This affects a comment only, not a theorem.
+\end{leanbox}
+
+All declarations above depend only on the axioms \lean{propext}, \lean{Classical.choice} and
+\lean{Quot.sound}.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{70mm}c>{\raggedright\arraybackslash\footnotesize}p{62mm}@{}}
+\toprule
+statement & tier & evidence\\
+\midrule
+$1-3(2\lambda-1)^2$ equals $-26$ at $\lambda=2$; its negative equals $11$ at $\tfrac32$ & \TA &
+  \lean{bc\_ghost\_charge\_eq}, \lean{betagamma\_ghost\_charge\_eq}\\
+$26-26=0$; $10+5-26+11=0$; $D-26=0\Rightarrow D=26$ & \TA &
+  \lean{bosonic\_string\_critical\_dimension}, \lean{superstring\_critical\_dimension},
+  \lean{bosonic\_dimension\_unique}\\
+$4\cdot1+4\cdot\frac12=6$ & \TA & \lean{central\_charge\_k3\_eq\_six}\\
+$c_{bc}(\lambda)=1-3(2\lambda-1)^2$ for a $bc$ system of weight $\lambda$ & \TL &
+  derived in \cref{sec:ghosts:cft}; sympy check; $\lambda=2$ in Tong §5.2\\
+Gauge fixing yields $bc$ ghosts with $\lambda=2$; Weyl invariance iff $c_{\mathrm{matter}}=26$ &
+  \TL & Tong §5.1--5.3\\
+$\beta\gamma$ ghosts have $c=11$; superstring has $D=10$ & \TL & Tong §5.3.1\\
+Identification of the rational numbers in the Lean files with central charges of worldsheet
+theories & --- & a modelling statement, never Tier A\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}[What a faithful formalization would need]\label{rem:ghosts:faithful}
+To make \cref{prop:ghosts:26} a theorem one would need, at the least: a definition of a
+(chiral) conformal field theory or vertex operator algebra with a stress tensor and its
+central charge; the construction of the $bc$ system as such an object for each $\lambda$; a
+proof that its central charge is \cref{eq:ghosts:cbc}, which is a finite computation with
+formal power series once the definitions exist; and additivity of $c$ under tensor products.
+None of these is available in Mathlib at the time of writing, to our knowledge. The
+path-integral steps of \cref{sec:ghosts:fp,sec:ghosts:ghosts} are formal manipulations even
+on paper and are further still from formalization. \Cref{ch:open} returns to this.
+\end{remark}
+
+\begin{summarybox}
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item Diffeomorphisms and Weyl transformations are gauge redundancies of the Polyakov path
+  integral. Dividing by their volume is done by the Faddeev--Popov method: choose a fiducial
+  metric $\hat g$ and pay the Jacobian $\Delta_{FP}[\hat g]$.
+\item $\Delta_{FP}$ is the determinant of the operator taking a vector $v$ to the traceless
+  part of $\nabla_\alpha v_\beta+\nabla_\beta v_\alpha$. Written as a Grassmann integral it
+  becomes the ghost action $\frac{1}{2\pi}\int\dd^2z\,(b\bar\partial c+\bar b\partial\bar c)$.
+\item The ghosts form a conformal field theory with $h_b=2$, $h_c=-1$ and $c=-26$. For general
+  weight, $c_{bc}(\lambda)=1-3(2\lambda-1)^2$; the commuting system has the opposite sign.
+\item The Weyl anomaly is proportional to the total central charge. Consistency requires
+  $c_{\mathrm{matter}}=26$ for the bosonic string and $15$ for the superstring; with free
+  fields, $D=26$ and $D=10$. These are budgets for a conformal field theory, not only counts
+  of dimensions; a K3 surface uses $c=6$.
+\item Physical states correspond to matter primaries of weight $(1,1)$.
+\item There are five superstring theories in ten dimensions. Type IIA and IIB are exchanged
+  by T-duality, as are the two heterotic strings.
+\item Lean checks the arithmetic of the final step (values of two polynomials, three linear
+  identities, one uniqueness statement). Everything connecting that arithmetic to the
+  worldsheet is Tier L.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{exr:ghosts:plane3}
+Repeat \cref{ex:ghosts:plane} in $\R^3$, declaring the direction of $\vec x$ to be pure
+gauge, so that the orbits are spheres and $\mathrm{Vol}=4\pi$. Compute
+$Z=\frac{1}{4\pi}\int\dd^3x\,\ee^{-|\vec x|^2}$ directly and with the slice ``positive
+$z$-axis'', and identify the Faddeev--Popov Jacobian. (Answer: $\Delta=r^2$,
+$Z=\sqrt\pi/4$.)
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{exr:ghosts:berezin}
+Verify \cref{eq:ghosts:berezin} for $n=2$: expand
+$\exp(-\sum_{ij}\bar\theta_iM_{ij}\theta_j)$ to second order and show that the coefficient of
+$\theta_1\bar\theta_1\theta_2\bar\theta_2$ is $M_{11}M_{22}-M_{12}M_{21}$.
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{exr:ghosts:count}
+In $n$ worldsheet dimensions, count the components of a symmetric traceless tensor and of a
+vector. Show that they agree only for $n=2$. What does this say about the attempt to gauge
+away the whole metric of a membrane worldvolume ($n=3$) with diffeomorphisms and Weyl
+transformations?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:ghosts:lesssing}
+For $\lambda=2$, compute the $(z-w)^{-2}$ term of $T(z)T(w)$ from the single contractions and
+show that it equals $2T(w)$. You will need to Taylor expand fields at $z$ around $w$ and to
+keep track of one reordering sign per term.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:ghosts:symmetry}
+Show directly from \cref{eq:ghosts:T} that exchanging the names $b\leftrightarrow c$ together
+with $\lambda\to1-\lambda$ maps $T$ to itself (use ${:}c\,\partial b{:}=-{:}\partial b\,c{:}$),
+and conclude that $c_{bc}(\lambda)=c_{bc}(1-\lambda)$. Then state and prove in Lean:
+\begin{leancode}
+theorem fermionicGhostCharge_symm (lam : ℚ) :
+    fermionicGhostCharge lam = fermionicGhostCharge (1 - lam) := by
+  sorry
+\end{leancode}
+(Hint: \lean{unfold fermionicGhostCharge; ring}.)
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:ghosts:leanunique}
+The Lean file proves uniqueness of $D=26$ but not of $D=10$. State and prove the missing
+theorem: for $D:\Q$, if
+\lean{D * 1 + D * (1 / 2) + fermionicGhostCharge 2 + bosonicGhostCharge (3 / 2) = 0} then
+$D=10$. Which two existing theorems should you rewrite with before calling \lean{linarith}?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:ghosts:fermion}
+Prove in Lean that \lean{fermionicGhostCharge (1 / 2) = 1}. Explain in two sentences why
+this supports the value $c=\tfrac12$ for one real fermion, which the second file records as
+the constant \lean{centralChargeFermion}. Is your explanation part of what Lean checked?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:ghosts:internal}
+(a) For the bosonic string on $\R^{1,d-1}$ times an internal theory, give the internal central
+charge as a function of $d$. (b) Do the same for the superstring, and find the internal central
+charge for $d=4$ and $d=6$. (c) A Calabi--Yau threefold has real dimension $6$. Check that its
+free-field count of $c$ matches (b) for $d=4$, and that K3 matches $d=6$.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]\label{exr:ghosts:liouville}
+Starting from the anomaly equation
+$\frac{1}{Z}\frac{\partial Z}{\partial\omega}=\frac{c}{24\pi}\sqrt g\,(R-2\nabla^2\omega)$
+with $\mu=0$ and $c=D-26$ (\cref{rem:ghosts:liouville}), integrate in $\omega$ to show that
+\[
+  Z[\ee^{2\omega}g]=Z[g]\,\exp\Bigl(\frac{c}{24\pi}\int\dd^2\sigma\sqrt g\;
+  \bigl(g^{\alpha\beta}\partial_\alpha\omega\,\partial_\beta\omega+R\,\omega\bigr)\Bigr).
+\]
+For which sign of
+$D-26$ does the Liouville field have a kinetic term of the conventional sign? Compare with
+\source{Tong §5.3.2, ll.~6940--6985}.
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item \source{Tong §5.1, ll.~6300--6613}: the Faddeev--Popov procedure for the string, in the
+  form followed here. \source{Tong §5.2, ll.~6614--6839}: the ghost conformal field theory and
+  the full $TT$ product for $\lambda=2$.
+\item \source{Tong §5.3, ll.~6840--6987}: critical central charge, the superstring count and
+  non-critical strings. \source{Tong §5.4, ll.~6988--7116}: vertex operators.
+\item \source{Tong §2.5, ll.~2948--3008} and \source{Tong §8.3.3, ll.~11828--11835}: the list
+  of superstring theories and their behaviour under T-duality.
+\item \source{Tong §6.1.1, ll.~7329--7412}: the sum over worldsheet topologies and the string
+  coupling, which complete the definition of the path integral begun here.
+\item \source{Asp §1, ll.~112--190}: why type II and heterotic strings on K3 are the natural
+  setting for the second half of this book.
+\item BRST quantization and the general first-order system are treated in Polchinski's
+  textbook, to which Tong refers \source{Tong §5.4, ll.~6997--7001}; that book is not in
+  this book's library, and the Lean file cites its equations (2.7.20) and (10.4.10) for the
+  two ghost-charge formulas without our having checked them against it.
+\end{itemize}

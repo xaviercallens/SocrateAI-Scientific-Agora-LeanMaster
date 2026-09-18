@@ -1,0 +1,1021 @@
+\chapter{T-Duality and the Self-Dual Radius}\label{ch:tduality}
+
+In \cref{ch:circle} we compactified one direction of space on a circle of radius $R$ and found
+that a closed string carries two integers there: a momentum number $n$, as any quantum particle
+on a circle does, and a winding number $w$, which only an extended object can have. This
+chapter asks what happens when the circle is made small. For a point particle the answer is
+dull: the Kaluza--Klein momentum states become infinitely heavy, the circle disappears from
+low-energy physics, and that is all. For a string the answer is that \emph{nothing singular
+happens at all}: the theory on a circle of radius $R$ is the same theory as on a circle of
+radius $\ap/R$, with the roles of momentum and winding exchanged. This statement is called
+\emph{T-duality}\index{T-duality}. It is the simplest example of a phenomenon with no
+counterpart in field theory, it is the seed from which the duality group $\Odd{d}$, the
+doubled coordinates and the generalized metric of Parts~II and~III grow, and it is the origin
+of the ``two scales'' in the title of this book.
+
+We shall be careful about one thing that is often blurred. ``T-duality is a symmetry'' can mean
+four different statements of increasing strength: that the mass formula is invariant; that the
+two conformal field theories are the same; that string perturbation theory agrees at every
+loop order; and that the full theory is the same. The evidence, and the part that a machine
+has checked, differ from level to level, and a student should know at each moment which level is
+being discussed. \Cref{sec:tduality:levels} lays out this ladder; the rest of the chapter climbs it.
+
+\section{The symmetry of the mass formula}\label{sec:tduality:mass}
+
+\subsection{Data carried over from the circle}
+
+We use the conventions of \cref{ch:circle}: $\ap$ has dimension length$^2$, the string
+length is $\ell_s=\sqrt{\ap}$, the compact coordinate is $X\equiv X^{25}\sim X+2\pi R$, the
+momentum along the circle is $n/R$ with $n\in\Z$, and the string may close only up to a winding,
+$X(\sigma+2\pi)=X(\sigma)+2\pi wR$ with $w\in\Z$\index{winding number}\index{momentum number}. (Tong calls the winding number $m$; we write $w$
+throughout.) The zero modes are packaged into the left- and right-moving momenta
+\begin{equation}\label{eq:tduality:pLpR}
+  p_L=\frac nR+\frac{wR}{\ap},\qquad p_R=\frac nR-\frac{wR}{\ap},
+\end{equation}
+which appear in the mode expansion $X=X_L(\sigma^+)+X_R(\sigma^-)$, $\sigma^\pm=\tau\pm\sigma$,
+\begin{equation}\label{eq:tduality:modes}
+\begin{aligned}
+  X_L(\sigma^+)&=\tfrac12x+\tfrac12\ap\,p_L\,\sigma^+
+     +\ii\sqrt{\tfrac{\ap}{2}}\sum_{k\ne0}\frac1k\,\tilde\alpha_k\,\ee^{-\ii k\sigma^+},\\
+  X_R(\sigma^-)&=\tfrac12x+\tfrac12\ap\,p_R\,\sigma^-
+     +\ii\sqrt{\tfrac{\ap}{2}}\sum_{k\ne0}\frac1k\,\alpha_k\,\ee^{-\ii k\sigma^-}
+\end{aligned}
+\end{equation}
+\source{Tong §8.2, eq.~(8.4), ll.~11351--11415}. As a check, adding the two lines gives
+$X=x+\frac12\ap(p_L+p_R)\tau+\frac12\ap(p_L-p_R)\sigma+\dots=x+\ap\frac nR\tau+wR\,\sigma+\dots$: the
+centre of mass moves with momentum $n/R$ and the string winds $w$ times. The $L_0$ and
+$\tilde L_0$ constraints give the mass seen by an observer in the 25 non-compact dimensions,
+\begin{equation}\label{eq:tduality:M2LR}
+  M^2=p_L^2+\frac4{\ap}(\tilde N-1)=p_R^2+\frac4{\ap}(N-1),
+\end{equation}
+where $N$ and $\tilde N$ are the oscillator levels of the $\alpha_k$ and the $\tilde\alpha_k$
+\source{Tong §8.2, ll.~11430--11452}. The \emph{difference} of the two expressions is the
+level-matching condition\index{level matching}, and their \emph{average} is the mass formula:
+\begin{align}
+  p_L^2-p_R^2=\frac{4nw}{\ap}\quad&\Longrightarrow\quad N-\tilde N=nw,
+     \label{eq:tduality:level}\\
+  M^2=\tfrac12(p_L^2+p_R^2)+\frac2{\ap}(N+\tilde N-2)
+     &=\frac{n^2}{R^2}+\frac{w^2R^2}{\ap^2}+\frac2{\ap}(N+\tilde N-2)
+     \label{eq:tduality:M2}
+\end{align}
+\source{Tong §8.2, eqs.~(8.5)--(8.6), ll.~11458--11480}. The two new terms have transparent
+meanings. A state with momentum $n/R$ along a hidden direction looks, in the lower-dimensional
+world, like a particle of mass $|n|/R$. A string wound $w$ times around a circle of circumference
+$2\pi R$ has length $2\pi|w|R$ and therefore rest energy $2\pi|w|R\,T=|w|R/\ap$, with
+$T=1/(2\pi\ap)$ the tension \source{Tong §8.2, ll.~11482--11487}.
+
+\subsection{The duality map}
+
+\begin{definition}\label{def:tduality:map}
+The \emph{T-duality map} on the labels of closed-string states on a circle is
+\begin{equation}\label{eq:tduality:map}
+  \mathsf T:\quad R\longmapsto\tilde R=\frac{\ap}{R},\qquad (n,w)\longmapsto(\tilde n,\tilde w)=(w,n),
+  \qquad (N,\tilde N)\longmapsto(N,\tilde N).
+\end{equation}
+\end{definition}
+
+\begin{proposition}[T-duality of the zero modes]\label{thm:tduality:pLpR}
+Under $\mathsf T$,
+\begin{equation}\label{eq:tduality:pflip}
+  p_L\longmapsto p_L,\qquad p_R\longmapsto-p_R .
+\end{equation}
+Consequently the mass formula \eqref{eq:tduality:M2} and the level-matching condition
+\eqref{eq:tduality:level} are invariant: the states at radius $R$ and the states at radius
+$\ap/R$ are in one-to-one correspondence, with equal masses.
+\end{proposition}
+
+\begin{proof}
+Substitute \eqref{eq:tduality:map} into \eqref{eq:tduality:pLpR}:
+\[
+  \tilde p_L=\frac{\tilde n}{\tilde R}+\frac{\tilde w\tilde R}{\ap}
+    =\frac{wR}{\ap}+\frac{n}{\ap}\cdot\frac{\ap}{R}=\frac{wR}{\ap}+\frac nR=p_L,\qquad
+  \tilde p_R=\frac{wR}{\ap}-\frac nR=-p_R .
+\]
+The mass \eqref{eq:tduality:M2LR} contains only $p_L^2$, $p_R^2$, $N$ and $\tilde N$, so it is
+unchanged. Level matching involves the product $nw=wn$, also unchanged. The map is a bijection
+of $\Z^2$ because it is its own inverse.
+\end{proof}
+
+The rule \eqref{eq:tduality:pflip} is what Tong and Giveon--Porrati--Rabinovici state
+\source{Tong §8.3, ll.~11627--11640, 11665--11670; GPR §2.2, eq.~(2.2.11), ll.~731--743}. GPR use the
+dimensionless momenta $\sqrt{\ap/2}\,p_{L,R}$ and the dimensionless radius $R/\sqrt{\ap}$; in
+those variables the map reads $R\mapsto1/R$. The proposition is a statement of elementary algebra,
+and it is the part of this chapter that has been checked in Lean (\cref{sec:tduality:lean}).
+
+Two features of \eqref{eq:tduality:pflip} deserve emphasis, because they are stronger than
+the invariance of $M^2$.
+\begin{itemize}[leftmargin=*]
+\item \emph{The two chiral halves are treated differently.} The left-movers do not notice the
+ duality at all, while the right-moving momentum is reflected. We shall see in
+ \cref{sec:tduality:Y} that the same is true of the whole right-moving field, oscillators
+ included. T-duality is a parity transformation acting on one chirality of the worldsheet
+ theory\index{T-duality!as one-sided parity}.
+\item \emph{The two Kaluza--Klein gauge fields are exchanged.} In \cref{ch:circle} we saw
+ that the charge under the gauge field $A_\mu$ coming from the metric is proportional to
+ $p_L+p_R=2n/R$, and the charge under $\tilde A_\mu$ coming from the $B$-field is proportional to
+ $p_L-p_R=2wR/\ap$ \source{Tong §8.2.2, ll.~11527--11560}. Since $\mathsf T$ exchanges
+ $p_L+p_R\leftrightarrow p_L-p_R$, it exchanges $A_\mu\leftrightarrow\tilde A_\mu$: what one
+ observer calls ``the photon of geometry'' the dual observer calls ``the photon of the
+ $B$-field''.
+\end{itemize}
+
+\begin{physicsbox}[Physical picture: what it means to move and what it means to wind]
+Take $R\gg\ell_s$. Winding states cost an energy $\sim R/\ap$ and are out of reach; momentum
+states are spaced by $1/R$ and, as $R\to\infty$, merge into a continuum. A continuum of
+momentum states is precisely how a low-energy observer recognises a large dimension. Now take
+$R\ll\ell_s$. The momentum states are heavy and drop out, but the winding states are now spaced
+by $R/\ap=1/\tilde R$ and form a continuum as $R\to0$: the spectrum looks exactly as if a
+\emph{new} large dimension of radius $\tilde R=\ap/R$ had opened up
+\source{Tong §8.3, ll.~11643--11654}. A point particle has no winding states, which is why
+Kaluza--Klein field theory on a small circle simply loses a dimension, while string theory
+does not.
+\end{physicsbox}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=2.6cm,y=1.35cm,>=Stealth]
+  \draw[->] (0,0)--(3.45,0) node[right]{$R/\ell_s$};
+  \draw[->] (0,0)--(0,3.4) node[left]{$M\ell_s$};
+  \foreach \x in {1,2,3} \draw (\x,0.06)--(\x,-0.06) node[below]{\small$\x$};
+  \foreach \y in {1,2,3} \draw (0.04,\y)--(-0.04,\y) node[left]{\small$\y$};
+  \draw[thick,tierL,domain=0.31:3.2,samples=60] plot (\x,{1/\x});
+  \draw[thick,tierC,domain=0:3.2] plot (\x,{\x});
+  \draw[thick,tierL,dashed,domain=0.62:3.2,samples=60] plot (\x,{2/\x});
+  \draw[thick,tierC,dashed,domain=0:1.62] plot (\x,{2*\x});
+  \draw[dotted] (1,0)--(1,3.3);
+  \fill (1,1) circle (1.6pt);
+  \fill (1,2) circle (1.6pt);
+  \node[tierL,below] at (2.9,0.33) {\small$n=1$};
+  \node[tierL,above] at (2.9,0.72) {\small$n=2$};
+  \node[tierC,right] at (2.85,2.6) {\small$w=1$};
+  \node[tierC,right] at (1.55,3.0) {\small$w=2$};
+  \node[above right] at (1,-0.02) {\small self-dual};
+\end{tikzpicture}
+\caption{The zero-mode contributions $|n|/R$ (momentum) and $|w|R/\ap$ (winding) to the mass, in
+string units. The picture is symmetric under reflection $R/\ell_s\mapsto\ell_s/R$ together
+with the exchange of the two families of curves. Light momentum states signal a large circle;
+light winding states signal a large \emph{dual} circle. The full $M^2$ of
+\eqref{eq:tduality:M2} adds the oscillator term, which does not depend on $R$.}
+\label{fig:tduality:spectrum}
+\end{figure}
+
+\subsection{A worked example: $R=2\ell_s$ against $R=\ell_s/2$}\label{sec:tduality:example}
+
+\begin{example}\label{ex:tduality:table}
+Set $\ap=1$ and compare the circle of radius $R=2$ with its dual of radius $\tilde R=\frac12$.
+At $R=2$, \eqref{eq:tduality:M2} reads $M^2=\frac14n^2+4w^2+2(N+\tilde N-2)$ with
+$N-\tilde N=nw$; at $\tilde R=\frac12$ it reads $M^2=4\tilde n^2+\frac14\tilde w^2+2(N+\tilde N-2)$.
+Listing all label sets $(n,w;N,\tilde N)$ with $M^2\le\frac94$ gives \cref{tab:tduality:example}.
+
+\begin{table}[ht]
+\centering
+\caption{Lightest sectors of the bosonic string on a circle, $\ap=1$. ``Sectors'' counts label
+sets $(n,w;N,\tilde N)$, not states: a sector with $N=1$ contains one state for each
+polarization of the oscillator. The two columns are related by $n\leftrightarrow w$.}
+\label{tab:tduality:example}
+\small
+\begin{tabular}{@{}rcp{0.36\textwidth}p{0.36\textwidth}@{}}\toprule
+$M^2$ & sectors & $(n,w;N,\tilde N)$ at $R=2$ & $(\tilde n,\tilde w;N,\tilde N)$ at $\tilde R=\frac12$\\\midrule
+$-4$ & 1 & $(0,0;0,0)$ & $(0,0;0,0)$\\
+$-\frac{15}4$ & 2 & $(\pm1,0;0,0)$ & $(0,\pm1;0,0)$\\
+$-3$ & 2 & $(\pm2,0;0,0)$ & $(0,\pm2;0,0)$\\
+$-\frac74$ & 2 & $(\pm3,0;0,0)$ & $(0,\pm3;0,0)$\\
+$0$ & 5 & $(\pm4,0;0,0)$, $(0,\pm1;0,0)$, $(0,0;1,1)$ & $(0,\pm4;0,0)$, $(\pm1,0;0,0)$, $(0,0;1,1)$\\
+$\frac14$ & 2 & $(\pm1,0;1,1)$ & $(0,\pm1;1,1)$\\
+$1$ & 2 & $(\pm2,0;1,1)$ & $(0,\pm2;1,1)$\\
+$\frac94$ & 8 & $(\pm5,0;0,0)$, $(\pm3,0;1,1)$, $\pm(1,1;1,0)$, $\pm(1,-1;0,1)$ &
+  $(0,\pm5;0,0)$, $(0,\pm3;1,1)$, $\pm(1,1;1,0)$, $\pm(-1,1;0,1)$\\\bottomrule
+\end{tabular}
+\end{table}
+
+Three lessons can be read off. First, the two lists of masses and multiplicities coincide, as
+\cref{thm:tduality:pLpR} guarantees; the table was generated by enumerating integers, not by
+using the proposition, so it is an independent check. Second, a \emph{given} label does not
+keep its mass: the state $(n,w)=(1,0)$ with $N=\tilde N=0$ has $M^2=-\frac{15}4$ at $R=2$ but
+$M^2=0$ at $R=\frac12$. T-duality is not the statement that each state is insensitive to $R$;
+it is the statement that the two \emph{collections} of states agree after relabelling. Third,
+the bosonic string has tachyons ($M^2<0$) in both descriptions. This disease of the bosonic
+string is unrelated to the circle and is cured in the superstring (\cref{ch:ghosts});
+T-duality maps tachyons to tachyons.
+\end{example}
+
+\section{Four meanings of ``T-duality is a symmetry''}\label{sec:tduality:levels}
+
+\Cref{thm:tduality:pLpR} is an identity between two lists of numbers. It is natural to ask how
+much more is true. We distinguish four levels.
+\begin{description}[leftmargin=1.2em]
+\item[Level 1: the free spectrum.] The sets of masses, with multiplicities and charges, agree
+ at radius $R$ and $\ap/R$. Equivalently the one-loop (torus) partition function agrees, because
+ it is a trace over the spectrum. This is \cref{thm:tduality:pLpR}, extended from the zero modes
+ to all states in \cref{sec:tduality:Y}.
+\item[Level 2: the conformal field theory.] There is a one-to-one map between the local
+ operators of the two worldsheet theories under which \emph{all} operator product expansions
+ agree. Since tree-level string scattering amplitudes are correlation functions of vertex
+ operators on the sphere (\cref{ch:ghosts}), level~2 implies that tree-level interactions
+ agree. Two theories can have the same spectrum without being equivalent, in the same way that
+ two drums of different shapes can sound the same notes, so level~2 is a genuinely stronger claim.
+\item[Level 3: string perturbation theory.] The sum over worldsheets of all genera agrees.
+ This requires a new ingredient: the string coupling must be transformed together with $R$
+ (\cref{sec:tduality:dilaton}).
+\item[Level 4: the exact theory.] The duality holds beyond perturbation theory. For the bosonic
+ string this has no sharp meaning, since its perturbation series is already ill-defined because
+ of the tachyon \source{GPR §2.3, ll.~1023--1029}. The best available argument, reviewed in
+ \cref{sec:tduality:selfdual}, is that T-duality is a remnant of a \emph{gauge} symmetry, and gauge
+ symmetries cannot be broken by quantum corrections.
+\end{description}
+Levels~1--3 are results of the literature, \TL. Only the zero-mode algebra underlying level~1
+is kernel-checked in this book's library, \TA. No level is a statement about experiments: a
+symmetry of string theory on a circle is a mathematical property of a model.
+
+\section{The dual coordinate}\label{sec:tduality:Y}
+
+\subsection{Flipping the right-movers}
+
+The rule $p_L\mapsto p_L$, $p_R\mapsto-p_R$ suggests defining a new worldsheet field in which the
+whole right-moving half of $X$ is reflected:
+\begin{equation}\label{eq:tduality:Y}
+  Y(\tau,\sigma)=X_L(\sigma^+)-X_R(\sigma^-)
+\end{equation}
+\source{Tong §8.3, ll.~11665--11678}\index{dual coordinate}. Let us find out what kind of field
+$Y$ is. Insert the expansions \eqref{eq:tduality:modes}:
+\begin{align}
+  Y&=y+\tfrac12\ap(p_L-p_R)\,\tau+\tfrac12\ap(p_L+p_R)\,\sigma+\text{oscillators}\notag\\
+   &=y+wR\,\tau+\ap\frac nR\,\sigma+\dots
+    \;=\;y+\ap\frac{w}{\tilde R}\,\tau+n\tilde R\,\sigma+\dots,\qquad\tilde R=\frac{\ap}{R}.
+    \label{eq:tduality:Ymodes}
+\end{align}
+Compare with $X=x+\ap\frac nR\tau+wR\sigma+\dots$. The field $Y$ is a free boson that advances by
+$2\pi n\tilde R$ when $\sigma\to\sigma+2\pi$, and whose centre of mass carries momentum
+$w/\tilde R$. In other words, $Y$ is a coordinate on a circle of radius $\tilde R=\ap/R$, on which
+the string has winding number $n$ and momentum number $w$. The oscillators of $Y$ are
+$\tilde\alpha_k$ and $-\alpha_k$, which is the rule
+\begin{equation}\label{eq:tduality:osc}
+  \alpha_k\longmapsto-\alpha_k,\qquad\tilde\alpha_k\longmapsto\tilde\alpha_k
+\end{equation}
+of \source{GPR §2.2, eq.~(2.2.12), ll.~742--750}. The level operators
+$N=\sum_{k>0}\alpha_{-k}\alpha_k$ and $\tilde N$ are quadratic in the oscillators and therefore
+invariant, which justifies the last entry of \eqref{eq:tduality:map}. So are the contributions
+$\frac{\ap}4p_R^2+N$ and $\frac{\ap}4p_L^2+\tilde N$ of the compact direction to $L_0$ and
+$\tilde L_0$, and more generally all the Virasoro generators, which are quadratic in
+$\partial_\pm X$.
+
+The relation between $X$ and $Y$ can be written without splitting into movers. From
+$\partial_\tau=\partial_++\partial_-$ and $\partial_\sigma=\partial_+-\partial_-$,
+\[
+ \partial_\tau X=X_L'+X_R'=\partial_\sigma Y,\qquad
+ \partial_\sigma X=X_L'-X_R'=\partial_\tau Y,
+\]
+or, covariantly,
+\begin{equation}\label{eq:tduality:eps}
+  \partial_\alpha X=\epsilon_{\alpha\beta}\,\partial^\beta Y,\qquad
+  \epsilon_{\tau\sigma}=-\epsilon_{\sigma\tau}=+1,
+\end{equation}
+where the index is raised with the worldsheet Minkowski metric \source{Tong §8.3,
+eq.~(8.9), ll.~11679--11690}. This is a two-dimensional version of electric--magnetic duality: the
+one-form $\dd X$ is exchanged with its Hodge dual. It exchanges the equation of motion
+$\partial_\alpha\partial^\alpha X=0$ with the Bianchi identity
+$\epsilon^{\alpha\beta}\partial_\alpha\partial_\beta Y=0$, and the Noether charge of translations
+(momentum, $\oint\dd\sigma\,\partial_\tau X$) with the topological charge (winding,
+$\oint\dd\sigma\,\partial_\sigma X$). Note that \eqref{eq:tduality:eps} is non-local: $Y$ is
+obtained from $X$ by integrating its derivatives, not by a pointwise change of variables. No
+redefinition of the target-space coordinate $X\mapsto f(X)$ produces $Y$.
+
+\subsection{From the spectrum to the operator algebra}
+
+Pass to the Euclidean worldsheet and complex coordinates as in \cref{ch:cft}, where
+left-movers become holomorphic and right-movers antiholomorphic: $X(z,\bar z)=X(z)+\bar X(\bar z)$.
+The basic operator products are
+\begin{equation}\label{eq:tduality:ope}
+  X(z)X(w)\sim-\frac{\ap}2\ln(z-w),\qquad
+  \bar X(\bar z)\bar X(\bar w)\sim-\frac{\ap}2\ln(\bar z-\bar w),\qquad
+  X(z)\bar X(\bar w)\sim0 .
+\end{equation}
+Each is quadratic in the field to which the reflection is applied, so the fields
+$Y(z)=X(z)$ and $\bar Y(\bar z)=-\bar X(\bar z)$ obey the same operator products, and the stress
+tensors $T=-\frac1{\ap}\partial X\partial X$, $\bar T=-\frac1{\ap}\bar\partial\bar X\bar\partial\bar X$
+are literally unchanged. Tong summarises: all OPEs of $Y$ coincide with those of $X$, and
+this is sufficient to ensure that all interactions defined in the conformal field theory are
+the same \source{Tong §8.3, ll.~11675--11678}.
+
+It is instructive to see how this works for the operators that carry momentum and winding. A
+state with labels $(n,w)$ is created by the vertex operator
+\begin{equation}\label{eq:tduality:vertex}
+  V_{n,w}(z,\bar z)={:}\exp\!\big(\ii p_LX(z)+\ii p_R\bar X(\bar z)\big){:}
+   \;=\;{:}\exp\!\big(\ii p_LY(z)+\ii(-p_R)\bar Y(\bar z)\big){:}
+\end{equation}
+\source{Tong §8.2.2, ll.~11536--11545}. The second form is the key point: the \emph{same}
+operator, expressed through $Y$, is a vertex operator with momenta $(p_L,-p_R)$, that is, with
+labels $(w,n)$ on the circle of radius $\tilde R$. Nothing has been transformed; an operator
+algebra has been given a second set of names. With the rule of \cref{ch:cft} that
+$\ee^{\ii kX(z)}$ has weight $\ap k^2/4$, the weights of $V_{n,w}$ and the product of two such
+operators are
+\begin{gather}
+  (h,\bar h)=\Big(\frac{\ap p_L^2}4,\frac{\ap p_R^2}4\Big),\qquad h-\bar h=nw\in\Z,
+   \label{eq:tduality:weights}\\
+  V_{n,w}(z,\bar z)\,V_{n',w'}(0)\sim
+   z^{\ap p_Lp_L'/2}\;\bar z^{\ap p_Rp_R'/2}\;V_{n+n',w+w'}(0)+\dots,\notag\\
+   \frac{\ap}2\big(p_Lp_L'-p_Rp_R'\big)=nw'+wn' .\label{eq:tduality:VV}
+\end{gather}
+The exponents depend on the right-moving momenta only through the product $p_Rp_R'$, which is
+invariant under the simultaneous reflection of both factors. So the operator product
+coefficients agree in the two descriptions: this is level~2. The last identity in
+\eqref{eq:tduality:VV}, which follows by expanding \eqref{eq:tduality:pLpR}, shows that the
+difference of the two exponents is an integer, so the product is single-valued when $z$
+circles the origin. That integer, $nw'+wn'$, is a bilinear form on the charge lattice
+$\Z^2\ni(n,w)$ which is independent of $R$ and invariant under $n\leftrightarrow w$; it will
+reappear in \cref{ch:narain} as the form $\eta$ of signature $(1,1)$ whose automorphisms make
+up the duality group $\Odd{1}$ (\cref{ch:odd}).
+
+\begin{remark}
+A complete treatment must also attach sign factors (``cocycles'') to the operators
+$V_{n,w}$ so that they commute rather than anticommute when $nw'+wn'$ is odd, and must check
+that the duality map can be chosen compatibly with them. This point is standard but is not
+discussed in the sources of this book's library, and we do not pursue it.
+\end{remark}
+
+\begin{pitfallbox}[Common pitfall: ``the physics does not depend on $R$'']
+T-duality does \emph{not} say that physics is independent of the radius. The spectrum at
+$R=2\ell_s$ differs from the spectrum at $R=3\ell_s$; an observer can measure the spacing of the
+light tower and distinguish them. What cannot be distinguished is $R=2\ell_s$ from
+$R=\ell_s/2$. The symmetry is a discrete identification of the parameter space, not the
+absence of a parameter.
+\end{pitfallbox}
+
+\section{The path integral, the string coupling and the dilaton}\label{sec:tduality:dilaton}
+
+\subsection{A derivation that does not split into movers}
+
+The argument of \cref{sec:tduality:Y} used the special solvability of the free boson. There is a
+second derivation which works directly in the path integral, and which is the prototype of
+the Buscher procedure\index{Buscher rules} of \cref{ch:buscher}, where it is applied to curved
+backgrounds. We follow \source{Tong §8.3.1, ll.~11716--11803}; the general version is
+\source{AAL §2.1, ll.~215--300 and 336--376}.
+
+Write $X=R\varphi$ with $\varphi\sim\varphi+2\pi$, so that the radius appears as a coupling
+constant. On a Euclidean worldsheet,
+\begin{equation}\label{eq:tduality:Sphi}
+  S[\varphi]=\frac{R^2}{4\pi\ap}\int\dd^2\sigma\;\partial_\alpha\varphi\,\partial^\alpha\varphi .
+\end{equation}
+\emph{Step 1: gauge the shift symmetry.} The action is invariant under
+$\varphi\to\varphi+\lambda$. Introduce a worldsheet gauge field $A_\alpha\to A_\alpha-\partial_\alpha\lambda$
+and the covariant derivative $D_\alpha\varphi=\partial_\alpha\varphi+A_\alpha$. By itself this
+would change the theory, so add a Lagrange multiplier $\theta$ that forces the gauge field to
+be trivial:
+\begin{equation}\label{eq:tduality:Sgauged}
+  S[\varphi,\theta,A]=\frac{R^2}{4\pi\ap}\int\dd^2\sigma\;D_\alpha\varphi\,D^\alpha\varphi
+    +\frac{\ii}{2\pi}\int\dd^2\sigma\;\theta\,\epsilon^{\alpha\beta}\partial_\alpha A_\beta .
+\end{equation}
+\emph{Step 2: integrate out $\theta$.} This sets $\epsilon^{\alpha\beta}\partial_\alpha A_\beta=0$.
+On a worldsheet with the topology of the plane, $A$ is then pure gauge and can be set to
+zero, giving back \eqref{eq:tduality:Sphi}. On a worldsheet with handles a flat gauge field
+can still have holonomies around the non-contractible cycles. If $\theta$ is itself periodic
+with period $2\pi$, the sum over its winding sectors restricts these holonomies to multiples
+of $2\pi$, and those are removed by gauge transformations $\lambda$ that wind around the cycle,
+which are allowed because $\varphi$ is periodic. So \eqref{eq:tduality:Sgauged}, divided
+by the volume of the gauge group, defines the same theory as \eqref{eq:tduality:Sphi} on every
+worldsheet.
+
+\emph{Step 3: integrate in the other order.} Fix the gauge $\varphi=0$ instead and
+integrate the multiplier term by parts. The action becomes quadratic in $A$ with no
+derivatives:
+\[
+  S=\frac{R^2}{4\pi\ap}\int\dd^2\sigma\,A_\alpha A^\alpha
+    -\frac{\ii}{2\pi}\int\dd^2\sigma\,\epsilon^{\alpha\beta}(\partial_\alpha\theta)A_\beta .
+\]
+The Gaussian integral is done by solving the equation of motion of $A$,
+\[
+  \frac{R^2}{2\pi\ap}A^\beta=\frac{\ii}{2\pi}\epsilon^{\alpha\beta}\partial_\alpha\theta
+  \quad\Longrightarrow\quad
+  A^\beta=\ii\,\frac{\ap}{R^2}\,\epsilon^{\alpha\beta}\partial_\alpha\theta ,
+\]
+and substituting back. Using $\epsilon^{\alpha\beta}\epsilon_{\gamma\beta}=\delta^\alpha_\gamma$ in
+Euclidean signature, the first term gives $-\frac{\ap}{4\pi R^2}(\partial\theta)^2$ and the
+second $+\frac{\ap}{2\pi R^2}(\partial\theta)^2$, so
+\begin{equation}\label{eq:tduality:Stheta}
+  S[\theta]=\frac{\ap}{4\pi R^2}\int\dd^2\sigma\;\partial_\alpha\theta\,\partial^\alpha\theta
+   =\frac{\tilde R^2}{4\pi\ap}\int\dd^2\sigma\;\partial_\alpha\theta\,\partial^\alpha\theta,
+   \qquad\tilde R=\frac{\ap}{R}.
+\end{equation}
+This is \eqref{eq:tduality:Sphi} for a $2\pi$-periodic boson on a circle of radius $\tilde R$.
+The equation of motion of $A$, at $\varphi=0$ where $A_\alpha$ stands for $D_\alpha\varphi$, is
+the Euclidean form of \eqref{eq:tduality:eps} with $Y=\tilde R\theta$: the factor $\ii$ is the
+usual consequence of the Wick rotation. The derivation never refers to the genus of the
+worldsheet, so it supports level~3 of \cref{sec:tduality:levels}. One thing was discarded on
+the way: the Gaussian integral over $A$ produces a field-independent factor, proportional to
+$\sqrt{\ap}/R$ for each mode, which Tong sets aside with the remark that a more careful
+treatment turns it into a shift of the dilaton \source{Tong §8.3.1, ll.~11795--11803}.
+We now obtain that shift in two independent ways.
+
+\subsection{The dilaton shift from the effective action}
+
+Recall from \cref{ch:backgrounds} that the string coupling is the expectation value of the
+dilaton, $g_s=\ee^{\Phi}$\index{string coupling}, and that a worldsheet of genus $g$ is weighted by $g_s^{2g-2}$.
+The low-energy effective action in 26 dimensions is multiplied by $1/g_s^2$. Reducing on
+the circle, the integral over $X^{25}$ gives a factor $2\pi R$, so the 25-dimensional
+gravitational action comes with the coefficient
+\begin{equation}\label{eq:tduality:G25}
+  \frac{2\pi R}{\ell_s^{24}\,g_s^2}
+\end{equation}
+up to a number. An observer in 25 dimensions measures this combination, which is an inverse
+Newton constant, not $R$ and $g_s$ separately. If the two descriptions are to be
+indistinguishable we need $R/g_s^2=\tilde R/\tilde g_s^2$, that is,
+\begin{equation}\label{eq:tduality:gs}
+  \tilde g_s=g_s\sqrt{\frac{\tilde R}{R}}=\frac{\sqrt{\ap}}{R}\,g_s,\qquad
+  \tilde\Phi=\Phi-\ln\frac{R}{\sqrt{\ap}}
+\end{equation}
+\source{Tong §8.3, eq.~(8.10), ll.~11691--11715}\index{dilaton!shift under T-duality}. This is a
+plausibility argument, as Tong says. It can be restated by saying that the 25-dimensional dilaton
+$\Phi_{25}=\Phi-\frac12\ln(R/\sqrt{\ap})$ is T-duality invariant: indeed
+$\tilde\Phi-\frac12\ln(\tilde R/\sqrt{\ap})=\Phi-\ln(R/\sqrt{\ap})+\frac12\ln(R/\sqrt{\ap})$. The
+same rule, in the form $\tilde\phi=\phi-\frac12\ln g_{00}$ with $g_{00}=R^2/\ap$ the metric
+component along the circle, comes out of a regularized treatment of the Gaussian determinant
+\source{AAL §2.1, eqs.~(2.1.6)--(2.1.7), ll.~296--312}; it is one of the Buscher rules of
+\cref{ch:buscher}. Two consistency checks: at $R=\sqrt{\ap}$ the coupling does not change, as it
+must at a fixed point; and applying \eqref{eq:tduality:gs} twice returns $g_s$, since
+$(\sqrt{\ap}/\tilde R)(\sqrt{\ap}/R)=1$.
+
+\subsection{The dilaton shift from the sum over genera}
+
+Giveon, Porrati and Rabinovici obtain the same result from the partition function. Let $r=R/\sqrt{\ap}$
+be the dimensionless radius. On a worldsheet of genus $g$ the compact boson has $2g$
+integers, its windings around the $a$- and $b$-cycles. After a Poisson resummation over half of
+them, the sum over these sectors becomes a sum over $g$ copies of the pairs $(p_L,p_R)$ that is
+manifestly invariant under $r\to1/r$ with the integers exchanged, multiplied by an explicit
+power of the radius:
+\begin{equation}\label{eq:tduality:Zg}
+  Z_g(r)=r^{1-g}\,F_g\big(r\big),\quad F_g(1/r)=F_g(r)\qquad\Longrightarrow\qquad
+  Z_g(1/r)=r^{2g-2}\,Z_g(r)
+\end{equation}
+\source{GPR §2.3, eqs.~(2.3.6)--(2.3.9), ll.~930--997}. One power of $r$ comes from the volume of
+the zero mode of $X$, and $r^{-g}$ from the resummation. At genus one the factor is absent:
+$Z_1(1/r)=Z_1(r)$. This is level~1, since the torus amplitude is a trace over the spectrum
+and the integers $n,w$ are summation variables \source{GPR §2.2, ll.~778--786}. At genus
+$g\ne1$ the partition functions differ, but only by a power of $r$ that depends on the
+genus exactly as the weight $g_s^{2g-2}$ does. Hence
+\begin{equation}\label{eq:tduality:Zfull}
+  \sum_{g\ge0}\tilde g_s^{\,2g-2}Z_g(1/r)=\sum_{g\ge0}\big(\tilde g_s\,r\big)^{2g-2}Z_g(r)
+  =\sum_{g\ge0}g_s^{2g-2}Z_g(r)\qquad\text{iff}\qquad\tilde g_s=\frac{g_s}{r},
+\end{equation}
+which is \eqref{eq:tduality:gs} again. GPR write the weight as $\ee^{(1-g)\Phi_{\rm GPR}}$, so that
+$\Phi_{\rm GPR}=-2\Phi$, and state the result as $\Phi_{\rm GPR}\to\Phi_{\rm GPR}+2\ln r$
+\source{GPR §2.3, eqs.~(2.3.10)--(2.3.11), ll.~998--1029}; converting, $\tilde\Phi=\Phi-\ln r$, in
+agreement with \eqref{eq:tduality:gs}. Their conclusion is worth quoting in substance: a
+compactification of small radius is equivalent to one of large radius \emph{provided} the
+dilaton expectation value is changed as well.
+
+\begin{pitfallbox}[Common pitfall: forgetting the coupling]
+``$R\to\ap/R$ is a symmetry of string theory'' is false as it stands: by
+\eqref{eq:tduality:Zg} only the torus amplitude is invariant under the inversion of $R$ alone. The
+symmetry is $(R,g_s)\to(\ap/R,\;g_s\sqrt{\ap}/R)$. For $R\ll\ell_s$ the dual coupling is
+\emph{larger} than the original one: a weakly coupled string on a very small circle is dual to
+a string on a large circle whose ten- or twenty-six-dimensional coupling is stronger, although
+the lower-dimensional coupling \eqref{eq:tduality:G25} is the same.
+\end{pitfallbox}
+
+\section{The self-dual radius}\label{sec:tduality:selfdual}
+
+\subsection{The fixed point and the moduli space}
+
+The map $R\mapsto\ap/R$ on the positive reals has exactly one fixed point,
+\begin{equation}\label{eq:tduality:sd}
+  R=\frac{\ap}{R}\iff R^2=\ap\iff R=\sqrt{\ap}=\ell_s ,
+\end{equation}
+the \emph{self-dual radius}\index{self-dual radius}. The radius is not a fixed parameter of the
+theory but the expectation value of a massless scalar field, the radion $\sigma$ of
+\cref{ch:circle}; such a parameter is called a \emph{modulus}\index{moduli space!of the circle},
+and the set of its inequivalent values is the moduli space. Naively this is the half-line
+$R\in(0,\infty)$. T-duality tells us that $R$ and $\ap/R$ label the same theory, so the true
+moduli space is the quotient
+\begin{equation}\label{eq:tduality:moduli}
+  \mathcal M_{S^1}=(0,\infty)\big/\big(R\sim\ap/R\big)\;\cong\;[\sqrt{\ap},\infty).
+\end{equation}
+In the logarithmic coordinate $x=\ln(R/\sqrt{\ap})$ the duality is the reflection
+$x\mapsto-x$ of the real line, and $\mathcal M_{S^1}=\R/\Z_2=[0,\infty)$: a half-line whose
+end point is the self-dual radius (\cref{fig:tduality:moduli}). Every circle compactification is
+equivalent to one with $R\ge\ell_s$. The coordinate $x$ is also the natural one for measuring
+distances in moduli space, a fact that becomes important in \cref{ch:swampland}.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=Stealth]
+  \draw[->] (-4.6,0)--(4.8,0) node[right]{$x=\ln(R/\ell_s)$};
+  \fill (0,0) circle (2pt) node[below=3pt]{\small$0$};
+  \draw[<->,tierL,thick] (-2.5,0.2) .. controls (-1.2,1.0) and (1.2,1.0) .. (2.5,0.2);
+  \node[tierL] at (0,1.05) {\small$\mathsf T:\;x\mapsto-x$};
+  \fill[tierC] (2.5,0) circle (1.6pt) node[below=3pt]{\small$R$};
+  \fill[tierC] (-2.5,0) circle (1.6pt) node[below=3pt]{\small$\ap/R$};
+  \node[below] at (-4.1,-0.05) {\small$R\to0$};
+  \node[below] at (4.2,-0.05) {\small$R\to\infty$};
+  \draw[->] (0,-0.75)--(0,-1.45) node[midway,right]{\small quotient by $\Z_2$};
+  \draw[very thick] (0,-2)--(4.4,-2);
+  \draw[very thick,dotted] (4.4,-2)--(5.0,-2);
+  \fill (0,-2) circle (2.4pt);
+  \node[below] at (0,-2.1) {\small$R=\ell_s$: $SU(2)\times SU(2)$};
+  \node[above] at (2.9,-1.95) {\small$U(1)\times U(1)$};
+  \node[below] at (4.5,-2.1) {\small$R\to\infty$};
+\end{tikzpicture}
+\caption{Top: T-duality acts on the logarithm of the radius as a reflection. Bottom: the
+moduli space of the circle compactification is the quotient, a half-line. At its end point
+the gauge symmetry is enhanced.}
+\label{fig:tduality:moduli}
+\end{figure}
+
+\subsection{Extra massless states}
+
+End points of moduli spaces are where something happens. Set $R=\sqrt{\ap}$ in
+\eqref{eq:tduality:M2}:
+\begin{equation}\label{eq:tduality:M2sd}
+  \ap M^2=n^2+w^2+2(N+\tilde N)-4,\qquad N-\tilde N=nw .
+\end{equation}
+We look for all solutions with $M^2=0$. Since $N+\tilde N\ge|N-\tilde N|=|nw|$, we need
+$n^2+w^2+2|nw|\le4$, that is $(|n|+|w|)^2\le4$. The possibilities are therefore:
+\begin{enumerate}[leftmargin=*,label=(\roman*)]
+\item $n=w=0$, $N=\tilde N=1$: the states
+ $\alpha^M_{-1}\tilde\alpha^{M'}_{-1}\ket{0;p}$ that are massless at every radius. With both indices
+ non-compact they give the graviton, the $B$-field and the dilaton in 25 dimensions; with one
+ index along the circle, the two gauge fields $A_\mu$, $\tilde A_\mu$; with both along the
+ circle, the radion \source{Tong §8.2.1, ll.~11491--11526}.
+\item $(n,w)=(\pm2,0)$ or $(0,\pm2)$, $N=\tilde N=0$: four scalars, momentum and winding modes of
+ the tachyon.
+\item $(n,w)=\pm(1,1)$, so $nw=1$ and $(N,\tilde N)=(1,0)$: the states $\alpha^M_{-1}\ket{n,w}$. For
+ $M=\mu$ these are two \emph{vectors}; for $M=25$, two scalars.
+\item $(n,w)=\pm(1,-1)$, so $nw=-1$ and $(N,\tilde N)=(0,1)$: the states
+ $\tilde\alpha^M_{-1}\ket{n,w}$; again two vectors and two scalars.
+\end{enumerate}
+This agrees with the list of \source{Tong §8.2.3, ll.~11561--11612} (where the levels of the
+last item should read $N=0$, $\tilde N=1$, as level matching requires) and with the direct
+enumeration of \cref{ex:tduality:table} repeated at $R=1$, which finds nine label sets at
+$M^2=0$. Away from the self-dual radius the new states are massive. For the vectors of
+item~(iii),
+\begin{equation}\label{eq:tduality:W}
+  M^2=\frac1{R^2}+\frac{R^2}{\ap^2}-\frac2{\ap}=\Big(\frac1R-\frac R{\ap}\Big)^2=p_R^2,
+  \qquad M\simeq\frac{2}{\ap}\,|R-\sqrt{\ap}|\ \text{ near }R=\sqrt{\ap}.
+\end{equation}
+
+\subsection{Enhanced gauge symmetry and T-duality as a gauge transformation}
+
+Massless vectors that carry charge under $U(1)\times U(1)$ can only be consistent as the
+gauge bosons of a non-abelian group. The charges are $(p_L+p_R,p_L-p_R)\propto(n,w)$, equal to
+$\pm(1,1)$ and $\pm(1,-1)$; together with the two neutral photons this is the content of
+\begin{equation}\label{eq:tduality:su2}
+  U(1)\times U(1)\;\longrightarrow\;SU(2)\times SU(2)\qquad\text{at }R=\sqrt{\ap}
+\end{equation}
+\source{Tong §8.2.3, ll.~11608--11621}\index{enhanced gauge symmetry}. In terms of $p_L,p_R$: the
+vectors of item~(iii) have $p_R=0$, $p_L=\pm2/\sqrt{\ap}$ and are charged only under the
+left-moving combination of the photons; those of item~(iv) have $p_L=0$ and are charged only under
+the right-moving one. So one $SU(2)$ is carried by left-movers and one by right-movers. The
+scalars organise accordingly. There are $1+4+2+2=9$ of them, and they fill the representation
+$(\mathbf3,\mathbf3)$; GPR describe them as scalars of spin $(1,1)$ under $SU(2)_L\times SU(2)_R$
+\source{GPR §2.6.1, ll.~2416--2422}. Moving away from the self-dual radius is giving an
+expectation value to one of these scalars, the radion, and \eqref{eq:tduality:W} is the Higgs
+mechanism\index{Higgs mechanism}: the charged vectors acquire a mass proportional to the expectation value, and
+$SU(2)\times SU(2)$ is broken to its Cartan subgroup $U(1)\times U(1)$.
+
+On the worldsheet the enhancement is visible as extra conserved currents. At any radius
+$\partial X(z)$ is a holomorphic current of weight $(1,0)$. By \eqref{eq:tduality:weights} the
+operator $V_{n,w}$ has weights $(1,0)$ precisely when $p_R=0$ and $\ap p_L^2=4$, which at
+$R=\sqrt{\ap}$ is solved by $(n,w)=\pm(1,1)$. So exactly at the self-dual radius there are three
+holomorphic currents,
+\begin{equation}\label{eq:tduality:currents}
+  J^3(z)\propto\ii\,\partial X(z),\qquad J^\pm(z)={:}\exp\!\big(\pm2\ii X(z)/\sqrt{\ap}\big){:},
+\end{equation}
+and three antiholomorphic ones $\bar J^3,\bar J^\pm$ built in the same way from $\bar X$; they
+generate the two $SU(2)$ current algebras \source{GPR §2.6.1, ll.~2474--2481}.
+
+We can now see what T-duality is at the self-dual point. It acts as $\bar X\mapsto-\bar X$ and
+trivially on $X(z)$, hence
+\begin{equation}\label{eq:tduality:weyl}
+  \bar J^3\longmapsto-\bar J^3,\qquad\bar J^\pm\longmapsto\bar J^\mp,\qquad J^a\longmapsto J^a .
+\end{equation}
+This is a rotation by $\pi$ about the $1$-axis of $SU(2)_R$: the non-trivial element of the Weyl
+group\index{Weyl group} of $SU(2)_R$. It is therefore a \emph{gauge transformation} of the
+25-dimensional theory. A small deformation $R=\sqrt{\ap}(1+\delta)$ is a perturbation of the
+worldsheet action by the operator $\delta\cdot J^3\bar J^3$, which the rotation maps to
+$-\delta\cdot J^3\bar J^3$, i.e.\ to $R=\sqrt{\ap}(1-\delta)\approx\ap/R$. The theories at $R$ and
+at $\ap/R$ are thus related by a gauge transformation of the enhanced symmetry
+\source{GPR §2.6.1, ll.~2436--2481}. This is the conceptual reason to believe in level~4 of
+\cref{sec:tduality:levels}: two configurations related by a gauge transformation are not merely
+similar but are the same physical state, and gauge redundancies are not broken by loop or
+non-perturbative effects.
+
+\begin{remark}
+The bosonic mechanism of enhancement uses momentum and winding modes of the tachyon and
+does not operate in the type~II superstrings; it does operate in the heterotic string
+\source{Tong §8.2.3, ll.~11622--11625}. T-duality itself survives in all of them, with
+modifications discussed in \cref{ch:dbranes}.
+\end{remark}
+
+\section{Minimal length as physics}\label{sec:tduality:minlength}
+
+\subsection{What an observer can measure}
+
+All three of our sources draw the same moral: T-duality is a mechanism by which string theory
+exhibits a minimal length\index{minimal length}. As the circle shrinks below $R=\sqrt{\ap}$ ``the
+theory acts as if the circle is growing again, with winding modes playing the role of momentum
+modes'' \source{Tong §8.3, ll.~11659--11662}; a small radius ``is completely equivalent to a very
+large one'' \source{GPR §2.2, ll.~784--793}. To turn the slogan into a statement we must say how a
+length is measured. An observer in the non-compact dimensions has no ruler to lay along the
+circle. What she can do is find the lightest tower of equally spaced states and \emph{define}
+the radius as the inverse spacing, because this is how a Kaluza--Klein circle shows up in
+experiments. For $R>\ell_s$ the lightest tower is the momentum tower, with spacing $1/R$; for
+$R<\ell_s$ it is the winding tower, with spacing $R/\ap$. The operationally defined radius is
+therefore
+\begin{equation}\label{eq:tduality:Robs}
+  R_{\rm obs}=\max\!\Big(R,\frac{\ap}{R}\Big)\;\ge\;\sqrt{\ap}.
+\end{equation}
+\'Alvarez, \'Alvarez-Gaum\'e and Lozano make the same point with correlation functions:
+distances extracted from the large-separation behaviour of correlators come out differently
+for pure momentum probes and for pure winding probes, the latter seeing a circle of radius
+$\ap/R$, and this leads ``in a natural way'' to restricting the outcome of distance measurements
+to the interval $d\in(1,\infty)$ in string units \source{AAL §6, ll.~1289--1301}. The
+parameter $R$ can be made as small as we like; the \emph{measured} size cannot.
+
+\begin{example}
+Let $R=0.1\,\ell_s$. The momentum states have masses $10|n|/\ell_s$; the winding states have
+masses $0.1|w|/\ell_s$. The light tower has spacing $0.1/\ell_s$, and the observer reports a circle
+of radius $R_{\rm obs}=10\,\ell_s$. If she also measures the lower-dimensional Newton constant she
+finds the value appropriate to a circle of radius $10\ell_s$ and coupling $\tilde g_s=10\,g_s$,
+by \eqref{eq:tduality:gs}. There is no measurement whose outcome is ``$0.1\,\ell_s$''.
+\end{example}
+
+\subsection{The dual-scale function}
+
+The function \eqref{eq:tduality:Robs} is duality invariant but not smooth at the self-dual
+point. This programme uses instead the simplest smooth invariant built from the two radii,
+the \emph{effective} or \emph{dual scale}\index{dual-scale principle}\index{effective scale}
+\begin{equation}\label{eq:tduality:Reff}
+  R_{\rm eff}(R)=R+\frac{\ap}{R}=2\sqrt{\ap}\,\cosh x,\qquad x=\ln\frac{R}{\sqrt{\ap}} .
+\end{equation}
+It treats $R$ and $\tilde R$ on an equal footing, and:
+\begin{proposition}\label{thm:tduality:Reff}
+For all $R>0$: (a) $R_{\rm eff}(\ap/R)=R_{\rm eff}(R)$; (b) $R_{\rm eff}(R)\ge2\sqrt{\ap}$, with
+equality if and only if $R=\sqrt{\ap}$; (c) $R_{\rm obs}\le R_{\rm eff}\le2R_{\rm obs}$.
+\end{proposition}
+\begin{proof}
+(a) is the symmetry of a sum. (b) follows from
+\[
+  R+\frac{\ap}{R}-2\sqrt{\ap}=\Big(\sqrt R-\sqrt{\ap/R}\Big)^2=\frac{(R-\sqrt{\ap})^2}{R}\ge0,
+\]
+which vanishes only for $R=\sqrt{\ap}$; this is the inequality between the arithmetic and the
+geometric mean of $R$ and $\ap/R$, whose product is fixed. (c) A sum of two positive numbers
+lies between the larger of them and twice the larger.
+\end{proof}
+Part~(c) says that $R_{\rm eff}$ agrees with the operational radius up to a factor of at most two
+and coincides with it asymptotically, $R_{\rm eff}/R_{\rm obs}\to1$ as $R\to0$ or $\infty$. A
+closely related invariant appears directly in the mass formula. With $r=R/\sqrt{\ap}$ the
+zero-mode part of \eqref{eq:tduality:M2} is
+\begin{equation}\label{eq:tduality:massform}
+  \ap M^2_{\text{zero modes}}=\frac{n^2}{r^2}+w^2r^2=
+   \begin{pmatrix}w&n\end{pmatrix}\begin{pmatrix}r^2&0\\0&r^{-2}\end{pmatrix}
+   \begin{pmatrix}w\\n\end{pmatrix},
+\end{equation}
+a quadratic form in the doubled charge vector $Z=(w,n)$\index{doubled charge vector} whose matrix,
+$\HH=\diag(r^2,r^{-2})$, is the $d=1$, $B=0$ generalized metric\index{generalized metric} of
+\cref{ch:genmetric}. T-duality acts on it as $\HH\mapsto\eta\HH\eta$ with
+$\eta=\big(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\big)$, which exchanges the two diagonal
+entries. Its trace is invariant and equals
+\begin{equation}\label{eq:tduality:trace}
+  \Tr\HH=r^2+r^{-2}=\Big(r+\frac1r\Big)^2-2=\frac{R_{\rm eff}^2}{\ap}-2\;\ge\;2 .
+\end{equation}
+The bound $\Tr\HH\ge2$ is the $d=1$ case of the inequality $\Tr G+\Tr G^{-1}\ge2d$ for tori
+proved in \cref{ch:dualscale}.
+
+The status of these statements must be kept apart. The inequality of
+\cref{thm:tduality:Reff}(b) and the identity \eqref{eq:tduality:trace} are mathematics, \TA{} in
+the units $\ap=1$ (\cref{sec:tduality:lean}); the remaining parts of the proposition are proved
+above by hand. That T-duality implies a minimal \emph{measurable} compactification
+radius for closed-string probes is the view of the literature quoted above, \TL. That
+$R_{\rm eff}$, rather than $R_{\rm obs}$ or any other invariant, is ``the'' physical scale, and
+that it regulates cosmological singularities, is a proposal of this programme, \TC, examined
+in \cref{ch:dualscale,ch:cosmology}. One caveat from the literature belongs here already:
+the minimal length concerns closed strings as probes. Polchinski reports evidence that D-branes
+probe length scales shorter than the string length, ``in conflict with the idea that the
+string length is a minimum distance'' \source{Pol, ll.~3020--3025}. The minimal length of this
+section is a property of perturbative closed-string physics on a circle, not a theorem about
+quantum gravity.
+
+\section{What the machine has checked}\label{sec:tduality:lean}
+
+Four Lean files touch the material of this chapter. They differ greatly in how much they
+say, and we go through them from the most faithful to the least. As everywhere in this book,
+a kernel-checked statement is a statement about the Lean objects that appear in it; that those
+objects model a string on a circle is our reading and is never \TA. According to
+\lean{\#print axioms}, the theorems quoted below use no axioms beyond the standard
+\lean{propext}, \lean{Classical.choice} and \lean{Quot.sound}.
+
+\subsection{Zero-mode T-duality over the rationals}
+
+File \path{StringTheoryFormalization/UseCases/TDualityMassSpectrum.lean}, namespace\\
+\lean{StringTheory.UseCases.TDuality}. Units $\ap=1$; argument order $(n,w,R)$.
+
+\begin{leanbox}[In Lean: the momenta and their transformation]
+\begin{leancode}
+def leftMomentum (n w R : ℚ) : ℚ := n / R + w * R
+
+def rightMomentum (n w R : ℚ) : ℚ := n / R - w * R
+
+def momentumMassSq (n w R : ℚ) : ℚ :=
+  (leftMomentum n w R) ^ 2 + (rightMomentum n w R) ^ 2
+
+theorem tduality_fixes_left_momentum (n w R : ℚ) (hR : R ≠ 0) :
+    leftMomentum w n (1 / R) = leftMomentum n w R := by ...
+
+theorem tduality_flips_right_momentum (n w R : ℚ) (hR : R ≠ 0) :
+    rightMomentum w n (1 / R) = - rightMomentum n w R := by ...
+\end{leancode}
+\textbf{Reading.} The definitions are \eqref{eq:tduality:pLpR} at $\ap=1$, as functions
+$\Q^3\to\Q$. Note that $n$, $w$ are arbitrary rationals here, not integers: the theorems hold for
+all rational values, in particular the integral ones, and integrality is never used. The two
+theorems are exactly \eqref{eq:tduality:pflip}: swapping the first two arguments and
+replacing $R$ by $1/R$ fixes the first function and negates the second, for every $R\ne0$
+(positivity of $R$ is not needed). \textbf{Proof idea.} Unfold, clear denominators with
+\lean{field\_simp} using $R\ne0$, and close the polynomial identity with \lean{ring}.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: invariance of the zero-mode mass]
+\begin{leancode}
+theorem tduality_invariant_mass_squared (n w R : ℚ) (hR : R ≠ 0) :
+    momentumMassSq w n (1 / R) = momentumMassSq n w R := by ...
+\end{leancode}
+\textbf{Reading.} The quantity $p_L^2+p_R^2=2(n^2/R^2+w^2R^2)$ is invariant under the duality
+map. By \eqref{eq:tduality:M2} this is \emph{twice} the zero-mode contribution to $M^2$; the
+factor is harmless but should be remembered when comparing with other files. The oscillator
+term $\frac2{\ap}(N+\tilde N-2)$ and level matching are not modelled: the theorem is the
+zero-mode core of level~1 of \cref{sec:tduality:levels}, and says nothing about levels~2--4.
+\textbf{Proof idea.} Rewrite with the two previous theorems; then $(-p_R)^2=p_R^2$ by
+\lean{ring}. The proof thus follows the logic of \cref{thm:tduality:pLpR}: the stronger
+statement about $p_L,p_R$ first, the mass as a corollary.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the self-dual radius]
+\begin{leancode}
+theorem self_dual_radius_unique (R : ℚ) (hR : 0 < R)
+    (hFix : (1 : ℚ) / R = R) : R = 1 := by ...
+\end{leancode}
+\textbf{Reading.} A positive rational fixed by $R\mapsto1/R$ equals $1$. This is the
+uniqueness half of \eqref{eq:tduality:sd} in units $\ap=1$; existence ($1/1=1$) is trivial and
+not stated. \textbf{Proof idea.} \lean{field\_simp} turns the hypothesis into $1=R^2$ (up to
+orientation); \lean{nlinarith}, given the hints $(R-1)^2\ge0$ and $(R+1)^2\ge0$ and $R>0$, excludes
+the root $R=-1$.
+\end{leanbox}
+
+\begin{pitfallbox}[Common pitfall: units hidden in a number field]
+Working over $\Q$ with $\ap=1$ is not an innocent choice. For general $\ap$ the fixed-point
+equation is $R^2=\ap$, which has \emph{no} rational solution when, say, $\ap=2$. A version of
+\lean{self\_dual\_radius\_unique} with a parameter $\ap$ must live over $\R$ and conclude
+$R=\sqrt{\ap}$ (\cref{ex:tduality:leansqrt}). Setting $\ap=1$ is legitimate, since it is a
+choice of unit of length, but then ``$R=1$'' means ``$R=\ell_s$''.
+\end{pitfallbox}
+
+The same momenta are consumed by a theorem of the newer library, \lean{massForm\_circle} in
+the namespace \lean{DualScaleStream2.DFT}, which states that the quadratic form
+\eqref{eq:tduality:massform}, evaluated with the generalized metric of $G=R^2$, $B=0$ on the
+charge vector $(w,n)$, equals \lean{momentumMassSq n w R} divided by two. It is discussed in
+\cref{ch:genmetric}; we mention it because it fixes the convention $Z=(w,n)$ and confirms the
+factor of two noted above.
+
+\subsection{The dual-scale bound over the reals}
+
+File \path{DualScaleStream2/DualScale/TraceBound.lean}, with namespace\\
+\lean{DualScaleStream2.DualScale}. Here \lean{dualScale G} is defined as the trace of the
+generalized metric at $B=0$, for a real $d\times d$ matrix $G$; the file proves
+$\lean{dualScale}\,G=\Tr G+\Tr G^{-1}$ (\lean{dualScale\_eq}), its invariance under
+$G\mapsto G^{-1}$ (\lean{dualScale\_inv}) and the bound $2d$ for positive-definite $G$
+(\lean{dualScale\_ge}), which belong to \cref{ch:dualscale}. Two statements concern the circle.
+
+\begin{leanbox}[In Lean: the circle case of the dual scale]
+\begin{leancode}
+theorem dualScale_circle (R : ℝ) (hR : R ≠ 0) :
+    dualScale (!![R ^ 2] : Matrix (Fin 1) (Fin 1) ℝ)
+      = (R + R⁻¹) ^ 2 - 2 := by ...
+
+theorem circle_effective_scale_ge_two (R : ℝ) (hR : 0 < R) :
+    2 ≤ R + R⁻¹ := by ...
+\end{leancode}
+\textbf{Reading.} The first theorem is \eqref{eq:tduality:trace}: for the $1\times1$ metric
+$G=(R^2)$ the trace of the generalized metric is $(R+1/R)^2-2$. The second is
+\cref{thm:tduality:Reff}(b) at $\ap=1$, over the real numbers: $R+1/R\ge2$ for $R>0$. The
+equality case and the invariance under $R\mapsto1/R$ are not part of these two statements
+(the invariance is the $d=1$ case of \lean{dualScale\_inv}). Nothing in either statement
+refers to strings, measurement or cosmology. \textbf{Proof idea.} For the first, compute
+the inverse of a $1\times1$ matrix through the adjugate formula, then \lean{field\_simp} and
+\lean{ring}. For the second, rewrite $R+R^{-1}-2=(R-1)^2/R$ and use that a square divided by a
+positive number is non-negative: the proof of \cref{thm:tduality:Reff}(b), line by line.
+\end{leanbox}
+
+\subsection{Arithmetic shadows in the older libraries}
+
+Two further files carry T-duality in their names. They belong to the older layer of the
+project, in which physical quantities are replaced by integers or natural numbers, and their
+theorems are far weaker than their documentation strings suggest. We record them so that the
+reader who meets them in the repository knows what they are.
+
+\begin{leanbox}[In Lean: \texttt{DualScaleValidation.UseCase1}]
+\begin{leancode}
+def alpha_prime : Nat := 1
+def effective_dual_scale_numerator (R : Nat) : Nat := R * R + alpha_prime
+
+theorem buscher_log_involution (x : Int) : -(-x) = x := by ...
+theorem dual_scale_self_dual_value :
+    effective_dual_scale_numerator 1 = 2 := by ...
+theorem self_dual_is_global_minimum (R : Nat) (h : R ≥ 1) :
+    effective_dual_scale_numerator R ≥ 2 := by ...
+\end{leancode}
+\textbf{Reading.} The first theorem is the fact that negation of integers is an involution;
+it is an arithmetic shadow of ``$x\mapsto-x$ squares to the identity'' in
+\cref{fig:tduality:moduli}, with the real coordinate $x$ replaced by an integer. The second
+is $1\cdot1+1=2$. The third says $R^2+1\ge2$ for natural numbers $R\ge1$. Since
+$R^2+\ap=R\cdot R_{\rm eff}(R)$, this is a statement about $R\cdot R_{\rm eff}$, not about
+$R_{\rm eff}$: the inequality equivalent to $R_{\rm eff}\ge2$ would be $R^2+1\ge2R$, which is
+not what is stated, and on natural numbers $R\ge1$ the dual region $R<1$ is absent altogether.
+The file's comments speak of minimal length and of the elimination of cosmological
+singularities; none of that is contained in these statements. A faithful version is
+\lean{circle\_effective\_scale\_ge\_two} above. \textbf{Proof idea.} \lean{omega} and
+\lean{rfl}.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: \texttt{StringTheory.StringDynamics} (file \texttt{TDualityGysin.lean})]
+\begin{leancode}
+structure TDualState where
+  momentumNum : ℤ   -- n (KK momentum)
+  windingNum : ℤ    -- w (winding number)
+
+def tDualityAction (s : TDualState) : TDualState :=
+  { momentumNum := s.windingNum
+    windingNum  := s.momentumNum }
+
+theorem tduality_involution (s : TDualState) :
+    tDualityAction (tDualityAction s) = s := by ...
+\end{leancode}
+\textbf{Reading.} Swapping the two components of a pair of integers twice gives back the
+pair: a correct, if minimal, formal statement of $\mathsf T^2=1$ on the charges, with no
+radius, mass or Hilbert space involved. The same file defines \lean{tDualityRadius} as the quotient $\ap/R$ of two reals
+(its positivity hypotheses are unused) and \lean{gysinPushforward}, which evaluates an integer
+sequence at $0$; despite its name the latter constructs no cohomology and no fibre
+integration, as the file's own header states. \textbf{Proof idea.} \lean{simp} after unfolding.
+\end{leanbox}
+
+\subsection{Tier table and what is missing}
+
+\begin{table}[ht]
+\centering
+\caption{Epistemic status of the main claims of this chapter.}\label{tab:tduality:tiers}
+\small
+\begin{tabular}{@{}p{0.47\textwidth}cp{0.40\textwidth}@{}}\toprule
+Claim & Tier & Basis\\\midrule
+$p_L\mapsto p_L$, $p_R\mapsto-p_R$ under $R\mapsto1/R$, $n\leftrightarrow w$ ($\ap=1$, over $\Q$) & \TA &
+  \lean{tduality\_fixes\_left\_momentum}, \lean{tduality\_flips\_right\_momentum}\\
+$p_L^2+p_R^2$ invariant & \TA & \lean{tduality\_invariant\_mass\_squared}\\
+$R=1$ is the only positive rational fixed point of $R\mapsto1/R$ & \TA & \lean{self\_dual\_radius\_unique}\\
+$\Tr\HH=(R+1/R)^2-2$; $R+1/R\ge2$ on $\R_{>0}$ & \TA &
+  \lean{dualScale\_circle}, \lean{circle\_effective\_scale\_ge\_two}\\
+$(n,w)\mapsto(w,n)$ is an involution of $\Z^2$ & \TA & \lean{tduality\_involution}\\
+Full spectrum, oscillators included, agrees (level 1) & \TL & Tong §8.3; GPR §2.2\\
+All OPEs agree; tree amplitudes agree (level 2) & \TL & Tong §8.3; AAL §2.1\\
+All genera agree with $\tilde g_s=g_s\sqrt{\ap}/R$ (level 3) & \TL & GPR §2.3; Tong §8.3.1\\
+$SU(2)\times SU(2)$ at $R=\sqrt{\ap}$; T-duality is a Weyl reflection & \TL & Tong §8.2.3; GPR §2.6.1\\
+Minimal measurable radius for closed-string probes & \TL & Tong §8.3; GPR §2.2; AAL §6\\
+Masses in \cref{tab:tduality:example}; nine massless label sets at $R=\ell_s$ & --- & enumeration
+  by script; symbolic check, not Tier~A\\
+$R_{\rm eff}$ is the physical scale; it regulates singularities & \TC & this programme\\\bottomrule
+\end{tabular}
+\end{table}
+
+What would a faithful formalization of T-duality on a circle need? In increasing order of
+difficulty: (i) the integrality of $n,w$ and the level-matching constraint, so that the
+\emph{set} of states and its bijection can be stated, which is a modest extension of the present
+file; (ii) the Fock space of the oscillators and a unitary operator implementing
+\eqref{eq:tduality:osc}, intertwining the two Hamiltonians, which needs infinite-dimensional
+Hilbert spaces but no new mathematics; (iii) the vertex operator algebra of the lattice
+$\Z^2$ with the form $nw'+wn'$, and the statement that \eqref{eq:tduality:map} induces an isomorphism
+of it, which is level~2 and would require a library of vertex algebras that Mathlib does not
+currently provide; (iv) higher-genus partition functions and \eqref{eq:tduality:Zg}, which need
+theta functions on Riemann surfaces. None of (ii)--(iv) exists in this project.
+
+\begin{summarybox}
+\begin{itemize}[leftmargin=*]
+\item T-duality of the circle is the map $R\mapsto\ap/R$, $n\leftrightarrow w$. On the zero modes
+ it acts as $p_L\mapsto p_L$, $p_R\mapsto-p_R$; on the field as $X=X_L+X_R\mapsto Y=X_L-X_R$, that is
+ $\partial_\alpha X=\epsilon_{\alpha\beta}\partial^\beta Y$; on the oscillators as
+ $\alpha_k\mapsto-\alpha_k$, $\tilde\alpha_k\mapsto\tilde\alpha_k$.
+\item ``Symmetry'' has four levels: spectrum, conformal field theory, perturbation theory, exact
+ theory. The mass formula shows the first; the invariance of all OPEs under a one-sided
+ reflection shows the second; the path integral and the genus expansion show the third,
+ provided $g_s\mapsto g_s\sqrt{\ap}/R$; the interpretation as a gauge transformation supports
+ the fourth.
+\item T-duality is a relabelling of one theory, not an invariance of each state, and not the
+ statement that physics is independent of $R$.
+\item The self-dual radius $R=\sqrt{\ap}$ is the unique fixed point. There, four extra massless
+ vectors and eight extra massless scalars appear, $U(1)^2$ is enhanced to $SU(2)\times SU(2)$, and
+ T-duality is the Weyl reflection of one $SU(2)$. The moduli space is the half-line
+ $R\ge\sqrt{\ap}$.
+\item Closed strings cannot measure a radius below $\sqrt{\ap}$: $R_{\rm obs}=\max(R,\ap/R)$. The
+ smooth invariant $R_{\rm eff}=R+\ap/R\ge2\sqrt{\ap}$ is the basic object of the dual-scale
+ programme; the inequality is \TA, its physical role is \TL{} or \TC{} as specified in
+ \cref{sec:tduality:minlength}.
+\item Lean has checked the zero-mode algebra over $\Q$ at $\ap=1$, the uniqueness of the fixed
+ point, and $R+1/R\ge2$ over $\R$. It has not checked anything about oscillators, operator
+ algebras, loops or the dilaton.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]
+Extend \cref{tab:tduality:example} to the circle of radius $R=3\ell_s$: list all label sets with
+$\ap M^2\le1$, and write down the corresponding list at $\tilde R=\ell_s/3$ without further
+computation. Which states are massless, and is either radius a point of enhanced gauge symmetry?
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Show that the map $(R,g_s)\mapsto(\ap/R,\;g_s\sqrt{\ap}/R)$ is an involution and that
+$g_s^2/R$ and $\Phi-\frac12\ln(R/\sqrt{\ap})$ are invariant under it. For $R=\ell_s/5$ and
+$g_s=0.01$, find the dual radius and coupling, and compare the two values of the combination
+\eqref{eq:tduality:G25}.
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{ex:tduality:special}
+Besides the self-dual radius there are radii at which only extra massless \emph{scalars}
+appear. With $N=\tilde N=0$, show that a pure winding state is massless when $R^2=4\ap/w^2$ and
+a pure momentum state when $R^2=n^2\ap/4$ \source{Tong §8.2.3, ll.~11565--11590}. Check that these
+two families of special radii are exchanged by T-duality, and explain why no massless charged
+\emph{vector} can occur at any $R\ne\sqrt{\ap}$. (Hint: for $N=1$, $\tilde N=0$ show that
+$M^2=p_R^2$.)
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Starting from $Y=X_L-X_R$, derive \eqref{eq:tduality:eps}. Show that under $X\to Y$ the
+equation of motion and the identity $\partial_\tau\partial_\sigma X=\partial_\sigma\partial_\tau X$
+are exchanged. Compute $\oint\dd\sigma\,\partial_\sigma Y$ and
+$\frac1{2\pi\ap}\oint\dd\sigma\,\partial_\tau Y$ from \eqref{eq:tduality:Ymodes} and interpret the
+results as winding and momentum on the dual circle.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Prove the identity $\frac{\ap}2(p_Lp_L'-p_Rp_R')=nw'+wn'$ of \eqref{eq:tduality:VV}. Deduce
+$h-\bar h=nw$ for $V_{n,w}$, and show that the bilinear form $\langle(n,w),(n',w')\rangle=nw'+wn'$
+on $\Z^2$ is even, has signature $(1,1)$, and is preserved by exactly four integer matrices:
+$\pm1$ and $\pm$ the swap. Which of these is T-duality, and what do the others do to $X_L$ and
+$X_R$?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Show that $R_{\rm eff}=2\sqrt{\ap}\cosh x$ and $\Tr\HH=2\cosh2x$, with
+$x=\ln(R/\sqrt{\ap})$. Expand both to second order around the self-dual point. Show that any
+smooth duality-invariant function $f(R)$ has $\dd f/\dd x=0$ at $x=0$, so that the self-dual
+radius is a critical point of every duality-invariant potential for the radion. Why does this
+not by itself show that the radius is stabilized there?
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]
+In the namespace \lean{StringTheory.UseCases.TDuality}, state and prove that T-duality
+exchanges the two $U(1)$ charges:
+\begin{leancode}
+theorem tduality_swaps_charges (n w R : ℚ) (hR : R ≠ 0) :
+    leftMomentum w n (1 / R) + rightMomentum w n (1 / R)
+      = leftMomentum n w R - rightMomentum n w R := by
+  sorry
+\end{leancode}
+Give a proof that uses the two existing theorems and \lean{ring}, and a second one from the
+definitions with \lean{field\_simp}. Which is more robust against a change of the definitions?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]\label{ex:tduality:leansqrt}
+State and prove the self-dual radius with $\ap$ restored:
+for real $R>0$ and $\ap>0$ with $\ap/R=R$, one has $R=\sqrt{\ap}$ (\lean{Real.sqrt}). A possible
+route: derive $R^2=\ap$ with \lean{field\_simp}, rewrite the goal with it, and use
+\lean{Real.sqrt\_sq}. Is the hypothesis $\ap>0$ needed? Then explain why the analogous statement over $\Q$ cannot even be
+formulated with a conclusion of the form $R=c$ for $\ap=2$.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]
+(Genus one by hand.) Let $\tau=\tau_1+\ii\tau_2$, $r=R/\sqrt{\ap}$, $q=\ee^{2\pi\ii\tau}$. Use the Poisson
+formula $\sum_{m\in\Z}\ee^{-\pi a(m+b)^2}=a^{-1/2}\sum_{k\in\Z}\ee^{-\pi k^2/a+2\pi\ii kb}$ to show that
+\[
+  \sum_{m,n\in\Z}\exp\!\Big(-\frac{\pi r^2}{\tau_2}\,|m+n\tau|^2\Big)
+  =\frac{\sqrt{\tau_2}}{r}\sum_{k,n\in\Z}q^{\frac12P_L^2}\,\bar q^{\frac12P_R^2},\qquad
+  P_{L,R}=\frac1{\sqrt2}\Big(\frac kr\pm nr\Big),
+\]
+where $P_{L,R}=\sqrt{\ap/2}\,p_{L,R}$ are the dimensionless momenta of GPR. Including the factor
+$r$ from the zero mode, conclude that $Z_1(1/r)=Z_1(r)$, the case $g=1$ of \eqref{eq:tduality:Zg}.
+(The identity can be tested numerically, for instance at $r=1.3$, $\tau=0.23+0.9\,\ii$, where both
+sides equal $1.01830\ldots$)
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*]
+\item The spectrum on a circle, enhanced symmetry, T-duality, the dual coordinate, the dilaton
+ shift and the path-integral derivation: \source{Tong §8.2--8.3.1, ll.~11351--11803}.
+\item Circle duality in the operator formalism, the one-loop and higher-genus partition
+ functions and the dilaton: \source{GPR §2.2--2.3, ll.~576--1029}. Duality as a gauge symmetry
+ and the Weyl reflection: \source{GPR §2.6.1, ll.~2377--2490}.
+\item Abelian duality by gauging an isometry, global issues and the dilaton determinant:
+ \source{AAL §2.1, ll.~215--376}; the operational definition of distance:
+ \source{AAL §6, ll.~1289--1320}.
+\item In this book: the general Buscher rules in \cref{ch:buscher}; the lattice of $(p_L,p_R)$ in
+ \cref{ch:narain}; the group generated by dualities, shifts and basis changes in \cref{ch:odd};
+ open strings and D-branes under T-duality in \cref{ch:dbranes}; the dual-scale bound for tori in
+ \cref{ch:dualscale}.
+\end{itemize}

@@ -1,0 +1,926 @@
+\chapter{The Mukai Lattice and Fourier--Mukai Transforms}\label{ch:mukai}
+
+In \cref{ch:k3lattice} the second cohomology $H^2(X,\Z)$ of a K3 surface $X$, with its
+intersection form, turned out to be the even unimodular lattice $3U\oplus 2E_8(-1)$ of signature
+$(3,19)$, and the position of the holomorphic two-form inside it determined the surface. String
+theory on a K3 surface, however, is governed by a lattice of signature $(4,20)$, not $(3,19)$
+(\cref{ch:stringsk3}). Where do the extra two directions come from? The answer of this chapter is:
+from $H^0(X,\Z)$ and $H^4(X,\Z)$, the two one-dimensional pieces of cohomology that an
+algebraic geometer usually ignores because they carry ``no information''. Put together with
+$H^2$ and given a pairing with one carefully chosen sign, they form the \emph{Mukai lattice}
+\index{Mukai lattice}
+\[
+  \widetilde H(X,\Z)\;=\;H^0(X,\Z)\oplus H^2(X,\Z)\oplus H^4(X,\Z)\;\cong\;4U\oplus 2E_8(-1),
+\]
+even, unimodular, of signature $(4,20)$. The question we answer is: \emph{why is this the natural
+lattice, and what acts on it?} Two facts make it natural. First, every coherent sheaf $E$ on $X$
+(a vector bundle, a point, a curve with a line bundle on it) has a \emph{Mukai vector}
+$v(E)\in\widetilde H(X,\Z)$, and the Riemann--Roch theorem becomes the one-line statement
+$\chi(E,F)=-\langle v(E),v(F)\rangle$. Second, symmetries of the \emph{derived category} of
+sheaves on $X$, the Fourier--Mukai transforms, act on $\widetilde H(X,\Z)$ by lattice isometries
+that mix $H^0$, $H^2$ and $H^4$. For a physicist the first fact says that $\widetilde H(X,\Z)$ is
+the charge lattice of branes wrapped on $X$, and the second says that there are dualities that
+exchange a point-like brane with a brane filling the whole surface --- the K3 analogue of
+exchanging momentum and winding on a circle (\cref{ch:tduality}).
+
+The chapter is organized as follows. \Cref{sec:mukai:hrr} derives the Mukai vector and the Mukai
+pairing from the Hirzebruch--Riemann--Roch formula, step by step. \Cref{sec:mukai:lattice}
+studies the resulting lattice. \Cref{sec:mukai:fm} introduces derived categories and
+Fourier--Mukai transforms at the level needed to understand how they act on cohomology, and
+works out the action in a rank-three example. \Cref{sec:mukai:physics} gives the physical
+reading. \Cref{sec:mukai:lean} states precisely what has been machine-checked: the linear
+algebra of the pairing is checked for every integral Gram matrix; the sheaf theory and the
+derived categories are not formalized at all.
+
+\section{From Riemann--Roch to the Mukai pairing}\label{sec:mukai:hrr}
+
+\subsection{The Euler pairing}
+Let $X$ be a K3 surface (\cref{ch:k3}): a compact complex surface with trivial canonical bundle
+$\omega_X\cong\mathcal O_X$ and $H^1(X,\mathcal O_X)=0$. For two coherent sheaves $E$, $F$ on $X$
+the groups $\operatorname{Ext}^i(E,F)$ are finite-dimensional complex vector spaces:
+$\operatorname{Ext}^0=\operatorname{Hom}$ is the space of sheaf homomorphisms,
+$\operatorname{Ext}^1(E,F)$ classifies extensions $0\to F\to G\to E\to0$, and
+$\operatorname{Ext}^1(E,E)$ is the space of first-order deformations of $E$. For sheaves on a
+surface, $\operatorname{Ext}^i$ vanishes unless $0\le i\le 2$. The \emph{Euler pairing}
+\index{Euler pairing} is the alternating sum
+\begin{equation}\label{eq:mukai:euler}
+  \chi(E,F)\;:=\;\sum_{i=0}^{2}(-1)^i\dim\operatorname{Ext}^i(E,F).
+\end{equation}
+Two properties make it the right object to study. It is additive in short exact sequences in
+each argument, so it only depends on coarse, topological data of $E$ and $F$. And on a K3
+surface it is \emph{symmetric}: Serre duality\index{Serre duality} on a surface with trivial
+canonical bundle reads
+\begin{equation}\label{eq:mukai:serre}
+  \operatorname{Ext}^i(E,F)\;\cong\;\operatorname{Ext}^{2-i}(F,E)^*,
+\end{equation}
+so the three terms of $\chi(E,F)$ are those of $\chi(F,E)$ in reverse order, with the same signs
+because $(-1)^i=(-1)^{2-i}$ \source{Huy ch.~9 §1.2, ll.~7393--7411 and 7444--7447}. A symmetric
+integer-valued bilinear form is exactly the structure of a lattice (\cref{ch:lattices}). The
+task is to find the lattice.
+
+For $E=\mathcal O_X$ one has $\operatorname{Ext}^i(\mathcal O_X,F)=H^i(X,F)$, hence
+$\chi(\mathcal O_X,F)=\chi(F)$, the usual holomorphic Euler characteristic. More generally, for
+a vector bundle $E$ with dual $E^*$, $\chi(E,F)=\chi(E^*\otimes F)$
+\source{Huy ch.~9 §1.2, ll.~7447--7449}.
+
+\subsection{Hirzebruch--Riemann--Roch on a K3 surface}
+The Hirzebruch--Riemann--Roch theorem computes $\chi(F)$ from characteristic classes:
+$\chi(F)=\int_X \operatorname{ch}(F)\,\operatorname{td}(X)$. We need three ingredients.
+\begin{itemize}[leftmargin=*]
+\item The Chern character\index{Chern character} of a sheaf of rank $r$ with Chern classes
+  $c_1$, $c_2$ is
+  $\operatorname{ch}(F)=\bigl(r,\;c_1,\;\operatorname{ch}_2\bigr)$ with
+  $\operatorname{ch}_2=\tfrac12c_1^2-c_2$, the three entries lying in $H^0$, $H^2$, $H^4$. We
+  identify $H^0(X,\Z)=\Z$ (generated by $1$) and $H^4(X,\Z)=\Z$ (generated by the class of a
+  point, so that $\int_X$ reads off the $H^4$ entry).
+\item The Todd class of a surface is $\operatorname{td}=1+\tfrac12c_1(X)+\tfrac1{12}\bigl(c_1(X)^2
+  +c_2(X)\bigr)$. For a K3 surface $c_1(X)=0$ and $\int_Xc_2(X)=\chi_{\rm top}(X)=24$
+  (\cref{ch:k3}), so
+  \begin{equation}\label{eq:mukai:todd}
+    \operatorname{td}(X)=(1,\,0,\,2),\qquad \sqrt{\operatorname{td}(X)}=(1,\,0,\,1),
+  \end{equation}
+  the square root being taken in the cohomology ring: $(1,0,1)^2=(1,0,2)$ because the
+  $H^4$ entry squares to zero.
+\item The dual Chern character $\operatorname{ch}^*$, defined by
+  $\operatorname{ch}^*_i=(-1)^i\operatorname{ch}_i$, i.e.\
+  $\operatorname{ch}^*(E)=(r,-c_1,\operatorname{ch}_2)$; for a vector bundle it equals
+  $\operatorname{ch}(E^*)$.
+\end{itemize}
+With these, $\chi(F)=\operatorname{ch}_2(F)+2\,\rk(F)$ and, replacing $F$ by ``$E^*\otimes F$'',
+\begin{equation}\label{eq:mukai:hrr}
+  \chi(E,F)=\int_X\operatorname{ch}^*(E)\,\operatorname{ch}(F)\,\operatorname{td}(X)
+  =\int_X\Bigl(\operatorname{ch}^*(E)\sqrt{\operatorname{td}(X)}\Bigr)
+          \Bigl(\operatorname{ch}(F)\sqrt{\operatorname{td}(X)}\Bigr)
+\end{equation}
+\source{Huy ch.~9 §1.2, eqs.~(1.2)--(1.3), ll.~7440--7459}. The second form is the key idea:
+\emph{split the Todd class symmetrically between the two sheaves}. Each factor then depends on
+one sheaf only.
+
+\begin{definition}[Mukai vector]\label{def:mukai:vector}\index{Mukai vector}
+The Mukai vector of a coherent sheaf (or a bounded complex of sheaves) $E$ on a K3 surface is
+\begin{equation}\label{eq:mukai:vector}
+  v(E):=\operatorname{ch}(E)\sqrt{\operatorname{td}(X)}
+  =\bigl(\rk E,\;c_1(E),\;\operatorname{ch}_2(E)+\rk E\bigr)
+  =\bigl(\rk E,\;c_1(E),\;\chi(E)-\rk E\bigr).
+\end{equation}
+\source{Huy ch.~9, Def.~1.2, ll.~7461--7464}
+\end{definition}
+The second equality is the product $(r,c_1,\operatorname{ch}_2)\cdot(1,0,1)=(r,c_1,
+\operatorname{ch}_2+r)$; the third uses $\chi(E)=\operatorname{ch}_2+2r$. We write a general
+Mukai vector as $v=(r,c,s)$ with $r,s\in\Z$ and $c\in H^2(X,\Z)$. That $s$ is an integer even
+though $\operatorname{ch}_2=\frac12c_1^2-c_2$ contains a $\frac12$ follows from the evenness
+of the K3 lattice, or directly from $s=\chi(E)-\rk E$
+\source{Huy ch.~16 §3.1, ll.~15616--15624}.
+
+\subsection{Deriving the pairing}
+Now compute \eqref{eq:mukai:hrr} in components. Write $v(E)=(r,c,s)$ and $v(F)=(r',c',s')$.
+The factor belonging to $E$ is $\operatorname{ch}^*(E)\sqrt{\operatorname{td}}=(r,-c,s)$: the
+dual only flips the sign of the $H^2$ entry. The product of $(r,-c,s)$ and $(r',c',s')$ in the
+cohomology ring has $H^4$ entry $rs'+sr'-(c.c')$, where $(c.c')$ is the intersection form on
+$H^2$. Hence
+\begin{equation}\label{eq:mukai:hrrcomponents}
+  \chi(E,F)=rs'+sr'-(c.c').
+\end{equation}
+The right-hand side is symmetric and bilinear in the two vectors, as it must be. One would like
+to call it ``the'' pairing on $H^0\oplus H^2\oplus H^4$, but it restricts to \emph{minus} the
+intersection form on $H^2$. To keep the intersection form on $H^2$ --- the form used throughout
+\cref{ch:k3lattice} --- one defines the pairing with the opposite overall sign.
+
+\begin{definition}[Mukai pairing]\label{def:mukai:pairing}\index{Mukai pairing}
+For $\alpha=(\alpha_0,\alpha_2,\alpha_4)$ and $\beta=(\beta_0,\beta_2,\beta_4)$ in
+$H^*(X,\Z)$,
+\begin{equation}\label{eq:mukai:pairing}
+  \langle\alpha,\beta\rangle:=(\alpha_2.\beta_2)-\alpha_0\beta_4-\alpha_4\beta_0 .
+\end{equation}
+\source{Huy ch.~9, Def.~1.4, ll.~7475--7480}
+\end{definition}
+In words: the Mukai pairing differs from the ordinary intersection pairing on $H^*(X,\Z)$
+(which pairs $H^0$ with $H^4$ by $+\alpha_0\beta_4$) only by a sign on $H^0\oplus H^4$.
+Equation \eqref{eq:mukai:hrrcomponents} becomes
+
+\begin{theorem}[Riemann--Roch in Mukai form \TL]\label{thm:mukai:hrr}
+For coherent sheaves (or bounded complexes) $E$, $F$ on a K3 surface,
+\begin{equation}\label{eq:mukai:hrrmukai}
+  \chi(E,F)=-\langle v(E),v(F)\rangle .
+\end{equation}
+\source{Huy ch.~9, eq.~(1.4), ll.~7481--7482}
+\end{theorem}
+All Todd-class corrections have disappeared into the definition of $v$. In particular the
+self-pairing of a Mukai vector is
+\begin{equation}\label{eq:mukai:square}
+  v^2:=\langle v,v\rangle=(c.c)-2rs .
+\end{equation}
+
+\begin{pitfallbox}[Common pitfall: three signs]
+(1) The minus sign in \eqref{eq:mukai:hrrmukai} is a convention forced by wanting
+$\langle\ ,\ \rangle$ to restrict to $+(\ .\ )$ on $H^2$; a sheaf with many deformations has
+\emph{large positive} $v^2$. (2) The Mukai vector is $\operatorname{ch}\sqrt{\operatorname{td}}$,
+not $\operatorname{ch}$: forgetting the factor $(1,0,1)$ gives $(1,0,0)$ for the structure sheaf,
+whose square is $0$ instead of $-2$. (3) The third entry of $v$ is $\operatorname{ch}_2+r$, not
+the second Chern class $c_2$; for a rank-two bundle with $c_1=0$ and $c_2=24$ it equals $-22$.
+\end{pitfallbox}
+
+\subsection{Worked examples}\label{sec:mukai:examples}
+\begin{example}[Structure sheaf]\label{ex:mukai:O}
+$\mathcal O_X$ has rank $1$, $c_1=0$, $\operatorname{ch}_2=0$, so $v(\mathcal O_X)=(1,0,1)$ and
+$v^2=0-2\cdot1\cdot1=-2$. \Cref{thm:mukai:hrr} gives $\chi(\mathcal O_X,\mathcal O_X)=2$. Check
+it directly: $\operatorname{Ext}^i(\mathcal O_X,\mathcal O_X)=H^i(X,\mathcal O_X)$ has
+dimensions $1,0,1$ for a K3 surface, so $\chi=1-0+1=2$. The arithmetic step
+$\langle(1,0,1),(1,0,1)\rangle=-2$ is the Lean theorem \lean{structureSheaf\_mukai\_sq} of
+\cref{sec:mukai:lean}.
+\end{example}
+
+\begin{example}[A point]\label{ex:mukai:point}
+The skyscraper sheaf $k(x)$ of a point $x\in X$ has rank $0$, $c_1=0$ and $\chi(k(x))=1$, so
+$v(k(x))=(0,0,1)$ and $v^2=0$. Directly: $\operatorname{Ext}^i(k(x),k(x))\cong\Lambda^iT_xX$ has
+dimensions $1,2,1$, so $\chi=1-2+1=0$. The two-dimensional $\operatorname{Ext}^1$ is the tangent
+space to $X$ at $x$: a point deforms by moving on the surface. (The identification of
+$\operatorname{Ext}^i(k(x),k(x))$ with $\Lambda^iT_xX$ is standard; not checked against a source
+in this book's library.)
+\end{example}
+
+\begin{example}[Line bundles]\label{ex:mukai:line}
+For $L\in\operatorname{Pic}(X)$ with $\ell=c_1(L)$, $\operatorname{ch}(L)=\ee^{\ell}=(1,\ell,
+\ell^2/2)$ and $v(L)=(1,\ell,\ell^2/2+1)$ \source{Huy ch.~9, Ex.~1.3, ll.~7469--7471}. Then
+$v(L)^2=\ell^2-2(\ell^2/2+1)=-2$ for every $L$. For two line bundles with classes $\ell,m$,
+\[
+  -\langle v(L),v(M)\rangle=-\Bigl[(\ell.m)-\tfrac{m^2}{2}-1-\tfrac{\ell^2}{2}-1\Bigr]
+  =\tfrac12(m-\ell)^2+2,
+\]
+which is the classical Riemann--Roch formula $\chi(N)=\frac12c_1(N)^2+2$ for the line bundle
+$N=L^*\otimes M$, as it should be since $\chi(L,M)=\chi(L^*\otimes M)$. Numerically: on a smooth
+quartic $X\subset\mathbb P^3$ with hyperplane class $h$, $h^2=4$, the bundle $\mathcal O_X(1)$ has
+$v=(1,h,3)$ and $\chi(\mathcal O_X,\mathcal O_X(1))=-\langle(1,0,1),(1,h,3)\rangle=3+1=4$, the
+four linear forms on $\mathbb P^3$.
+\end{example}
+
+\begin{example}[A rational curve]\label{ex:mukai:curve}
+If $C\cong\mathbb P^1$ is a smooth rational curve in $X$, then $\mathcal O_C(k)$, viewed as a sheaf
+on $X$, has $v=(0,[C],k+1)$ and $v^2=[C]^2=-2$, the self-intersection of a $(-2)$-curve
+(\cref{ch:kummer}) \source{Huy ch.~16, Ex.~2.7(ii), ll.~15509--15513}.
+\end{example}
+
+\begin{example}[The tangent bundle]\label{ex:mukai:tangent}
+$T_X$ has rank $2$, $c_1=0$, $c_2=24$, so $\operatorname{ch}_2=-24$ and $v(T_X)=(2,0,-22)$.
+Then $v^2=0-2\cdot2\cdot(-22)=88$ \source{Huy ch.~9 §1.3, ll.~7523--7526}. We use this number
+below.
+\end{example}
+
+\subsection{What $v^2$ measures}
+A sheaf $E$ is \emph{simple}\index{simple sheaf} if its only endomorphisms are scalars,
+$\operatorname{Hom}(E,E)=\C$. By Serre duality \eqref{eq:mukai:serre} then also
+$\operatorname{Ext}^2(E,E)\cong\C$, and \cref{thm:mukai:hrr} gives
+\begin{equation}\label{eq:mukai:ext1}
+  \dim\operatorname{Ext}^1(E,E)=2-\chi(E,E)=v(E)^2+2 .
+\end{equation}
+Since a dimension is non-negative, every simple sheaf has $v^2\ge-2$
+\source{Huy ch.~9 §1.3, ll.~7485--7491}. The extreme case $v^2=-2$ means
+$\operatorname{Ext}^1(E,E)=0$: the sheaf is \emph{rigid}, it has no deformations. Line bundles
+and $\mathcal O_C(k)$ are rigid; a point has $v^2=0$ and a two-dimensional deformation space;
+the tangent bundle, which is simple for a complex K3 surface, has
+$\dim\operatorname{Ext}^1(T_X,T_X)=88+2=90$ \source{Huy ch.~9 §1.3, ll.~7523--7526}. More
+generally, for a primitive Mukai vector $v$ and a generic polarization $H$, the moduli space
+$M_H(v)$ of stable sheaves with Mukai vector $v$ is, if non-empty, smooth and projective of
+dimension $v^2+2$ \source{Huy ch.~10, Prop.~2.5, ll.~8816--8818}. Moreover the Serre duality
+pairing on $\operatorname{Ext}^1(E,E)$ is non-degenerate and alternating
+\source{Huy ch.~9, Prop.~1.1, ll.~7408--7417}, which is why \eqref{eq:mukai:ext1} is always even
+and why these moduli spaces carry a holomorphic symplectic form.
+
+\begin{physicsbox}[Physical picture: $v^2+2$ counts moduli of a brane]
+Think of $E$ as a brane wrapped on $X$ and of $v(E)$ as its charge vector. Then
+$\operatorname{Ext}^1(E,E)$ is the space of massless deformations of the brane, and
+\eqref{eq:mukai:ext1} says that the number of such moduli is fixed by the charge alone:
+$v^2+2$. Charges with $v^2=-2$ belong to rigid objects, which have no moduli; these are the
+charges that will generate reflections of the lattice in \cref{sec:mukai:fm}. Charges with
+$v^2=0$, such as the point $(0,0,1)$, have a two-dimensional moduli space, and this moduli
+space is (for primitive $v$ and when
+non-empty) again a K3 surface --- possibly a different one. This is the geometric origin of the
+dualities of this chapter.
+\end{physicsbox}
+
+\section{The Mukai lattice}\label{sec:mukai:lattice}
+
+\subsection{Structure: \texorpdfstring{$H^2\oplus U(-1)$}{H2 + U(-1)}}
+In the basis $\{1\in H^0,\ [\mathrm{pt}]\in H^4\}$ the restriction of \eqref{eq:mukai:pairing} to
+$H^0\oplus H^4$ has Gram matrix
+\begin{equation}\label{eq:mukai:uneg}
+  U(-1)=\begin{pmatrix}0&-1\\-1&0\end{pmatrix},
+\end{equation}
+the hyperbolic plane\index{hyperbolic plane} $U$ of \cref{ch:lattices} with its form negated.
+It is even (zero diagonal), unimodular ($\det=-1$; in fact $U(-1)^2=1$, so $U(-1)$ is its own
+integral inverse) and of signature $(1,1)$: the vectors $(1,-1)$ and $(1,1)$ have squares
+$+2$ and $-2$. Moreover $U(-1)\cong U$ as lattices: the change of basis
+$[\mathrm{pt}]\mapsto-[\mathrm{pt}]$ turns one Gram matrix into the other. Therefore
+\begin{equation}\label{eq:mukai:decomp}
+  \widetilde H(X,\Z):=\bigl(H^*(X,\Z),\langle\ ,\ \rangle\bigr)
+  = H^2(X,\Z)\oplus U(-1)\;\cong\;\bigl(3U\oplus2E_8(-1)\bigr)\oplus U=4U\oplus 2E_8(-1).
+\end{equation}
+This is the \emph{extended K3 lattice} or \emph{Mukai lattice}, written $\widetilde\Lambda$ or
+$II_{4,20}$; it is even, unimodular, of signature $(4,20)$ and rank $24$
+\source{Huy ch.~14 §0.3(vi), ll.~12873--12880; ch.~16 §3.1, ll.~15601--15606}. Each property is
+inherited summand by summand: a direct sum of even lattices is even, determinants multiply, and
+signatures add, $(3,19)+(1,1)=(4,20)$. \Cref{fig:mukai:decomp} summarizes the structure.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=Stealth,
+  box/.style={draw,rounded corners=2pt,minimum height=9mm,minimum width=24mm,align=center}]
+  \node[box] (h0) at (0,0) {$H^0(X,\Z)=\Z$\\[-1pt]\footnotesize rank $r$};
+  \node[box,minimum width=44mm] (h2) at (4.6,0)
+     {$H^2(X,\Z)\cong 3U\oplus2E_8(-1)$\\[-1pt]\footnotesize first Chern class $c$};
+  \node[box] (h4) at (9.2,0) {$H^4(X,\Z)=\Z$\\[-1pt]\footnotesize $s=\mathrm{ch}_2+r$};
+  \draw[<->] (h0.north) .. controls (2,1.9) and (7.2,1.9) .. (h4.north)
+     node[midway,above] {\small $-\alpha_0\beta_4-\alpha_4\beta_0$\quad (the summand $U(-1)$)};
+  \draw[<->] (h2.south west)++(0.6,0) .. controls (3.6,-1.3) and (5.6,-1.3) ..
+     ($(h2.south east)+(-0.6,0)$) node[midway,below] {\small $+(\alpha_2.\beta_2)$,
+     signature $(3,19)$};
+\end{tikzpicture}
+\caption{The Mukai lattice. $H^2$ is paired with itself by the intersection form; $H^0$ is
+paired with $H^4$ with a minus sign. Total signature $(3,19)+(1,1)=(4,20)$.}
+\label{fig:mukai:decomp}
+\end{figure}
+
+\begin{pitfallbox}[Common pitfall: two pairings on the same group]
+Aspinwall describes $\Gamma^{4,20}$ as the lattice of total cohomology with the \emph{unflipped}
+rule ``the product of two cycles is zero unless their dimensions add up to $4$''
+\source{Asp §3.4, ll.~1952--1957}, i.e.\ $H^2\oplus U$. Huybrechts uses $H^2\oplus U(-1)$. Both
+are the same abstract lattice $II_{4,20}$ because $U\cong U(-1)$, but formulas written in
+coordinates differ by $s\mapsto-s$. Riemann--Roch in the form \eqref{eq:mukai:hrrmukai}, and all
+Lean statements of this chapter, use the Mukai sign \eqref{eq:mukai:pairing}.
+\end{pitfallbox}
+
+\subsection{The ring structure and \texorpdfstring{$B$}{B}-field shifts}
+$H^*(X,\Z)$ is not only a lattice but a ring: $(r,c,s)\cdot(r',c',s')=(rr',\;rc'+r'c,\;
+rs'+r's+(c.c'))$. For $B\in H^2(X,\Z)$ put
+\begin{equation}\label{eq:mukai:expB}
+  \exp(B):=\bigl(1,\,B,\,\tfrac12(B.B)\bigr),\qquad
+  \exp(B)\cdot(r,c,s)=\bigl(r,\;c+rB,\;s+(B.c)+\tfrac r2(B.B)\bigr).
+\end{equation}
+Evenness of $H^2$ makes $\frac12(B.B)$ an integer. Multiplication by $\exp(B)$ is called a
+\emph{$B$-field shift}\index{B-field shift}.
+
+\begin{lemma}\label{lem:mukai:expB}
+Multiplication by $\exp(B)$ is an isometry of the Mukai lattice, with inverse $\exp(-B)$.
+\source{Huy ch.~14, Lemma~2.8, ll.~13265--13281 (stated there for $\Lambda\oplus U$)}
+\end{lemma}
+\begin{proof}
+Let $v=(r,c,s)$, $w=(r',c',s')$ and denote the shifted vectors by $\hat v,\hat w$. Then
+\begin{align*}
+ (\hat c.\hat c')&=(c.c')+r'(B.c)+r(B.c')+rr'(B.B),\\
+ -\hat r\hat s'&=-rs'-r(B.c')-\tfrac12rr'(B.B),\qquad
+ -\hat s\hat r'=-sr'-r'(B.c)-\tfrac12rr'(B.B).
+\end{align*}
+Adding the three lines, all terms containing $B$ cancel and
+$\langle\hat v,\hat w\rangle=\langle v,w\rangle$. The inverse follows from
+$\exp(B)\exp(-B)=(1,0,\frac12B^2+\frac12B^2-B^2)=(1,0,0)$. (We also confirmed the cancellation
+symbolically with sympy for a general symmetric Gram matrix; this is a symbolic check, not a
+Lean theorem.)
+\end{proof}
+If $L$ is a line bundle with $c_1(L)=\ell$, then $\operatorname{ch}(E\otimes L)=\operatorname{ch}(E)
+\,\ee^{\ell}$, so $v(E\otimes L)=\exp(\ell)\cdot v(E)$: tensoring with a line bundle acts on
+Mukai vectors by a $B$-field shift \source{Huy ch.~16 §2.4, ll.~15554--15556}. For instance
+$\exp(\ell)\cdot(1,0,1)=(1,\ell,\ell^2/2+1)=v(L)$, reproducing \cref{ex:mukai:line}, and
+\cref{lem:mukai:expB} explains at once why $v(L)^2=v(\mathcal O_X)^2=-2$.
+
+\subsection{The Hodge structure}
+For a complex K3 surface the Mukai lattice carries a weight-two Hodge structure
+\index{Hodge structure!on the Mukai lattice} extending the one on $H^2$ (\cref{ch:k3lattice}):
+\begin{equation}\label{eq:mukai:hodge}
+  \widetilde H^{2,0}(X):=H^{2,0}(X),\qquad
+  \widetilde H^{1,1}(X):=H^{1,1}(X)\oplus(H^0\oplus H^4)(X,\C),
+\end{equation}
+so $H^0$ and $H^4$ are declared to be of type $(1,1)$ \source{Huy ch.~16 §3.1,
+ll.~15601--15612}. The integral $(1,1)$ classes form the \emph{extended N\'eron--Severi lattice}
+\index{N\'eron--Severi lattice!extended}
+\begin{equation}\label{eq:mukai:NX}
+  N(X)=\Z\oplus\operatorname{NS}(X)\oplus\Z\cong\operatorname{NS}(X)\oplus U,
+\end{equation}
+which is exactly where Mukai vectors of sheaves live, because $c_1(E)$ is always an algebraic
+class \source{Huy ch.~16 §2.4 and §3.1, ll.~15533--15545 and 15612--15618}. If the Picard number
+of $X$ is $\rho$, then $N(X)$ has rank $\rho+2$ and signature $(2,\rho)$ for projective $X$
+(signature $(1,\rho-1)$ of $\operatorname{NS}(X)$ plus $(1,1)$).
+
+\section{Derived categories and Fourier--Mukai transforms}\label{sec:mukai:fm}
+
+\subsection{Why complexes}
+The Euler pairing and the Mukai vector are additive, so they extend from sheaves to formal
+differences of sheaves, and negative ranks appear: $-v(E)$ is not the Mukai vector of any sheaf if
+$\rk E>0$. The natural objects carrying \emph{all} vectors of $N(X)$ are bounded complexes of
+coherent sheaves
+$E^\bullet=(\cdots\to E^{i-1}\to E^i\to E^{i+1}\to\cdots)$, with
+$v(E^\bullet)=\sum_i(-1)^iv(E^i)$. The \emph{bounded derived category}\index{derived category}
+$D^b(X)$ has these complexes as objects; its morphisms are obtained from maps of complexes by
+first identifying homotopic maps and then formally inverting quasi-isomorphisms (maps inducing
+isomorphisms on all cohomology sheaves) \source{Huy ch.~16 §1.1, ll.~15130--15185}. Three
+features are all we need:
+\begin{itemize}[leftmargin=*]
+\item the \emph{shift} $E\mapsto E[1]$, $E[1]^i=E^{i+1}$, which moves a complex one step to the
+  left. Since it changes the parity of every position, $v(E[1])=-v(E)$
+  \source{Huy ch.~16 §1.1--1.2, ll.~15185--15188 and 15221--15224};
+\item sheaves sit inside $D^b(X)$ as complexes concentrated in degree $0$, and one has
+  \[\operatorname{Ext}^i(E,F)=\operatorname{Hom}_{D^b(X)}(E,F[i]),\]
+  so \eqref{eq:mukai:euler} makes sense for complexes \source{Huy ch.~16 §1.1, ll.~15204--15211};
+\item Serre duality holds in $D^b(X)$; for a K3 surface the Serre functor is the double shift
+  $E\mapsto E[2]$ \source{Huy ch.~16 §1.3, ll.~15244--15253}.
+\end{itemize}
+
+\begin{physicsbox}[Physical picture: branes and anti-branes]
+In the brane interpretation the shift $[1]$ turns a brane into its anti-brane: all charges
+change sign, $v\mapsto-v$, while the mass is unchanged. A complex is a bound state of branes (even
+positions) and anti-branes (odd positions), the maps between consecutive terms playing the role
+of the tachyon fields that let them partially annihilate. This dictionary is standard in the
+D-brane literature but is not checked against a source in this book's library; we use it only as
+intuition.
+\end{physicsbox}
+
+\subsection{Fourier--Mukai transforms}
+\begin{definition}\label{def:mukai:fm}\index{Fourier--Mukai transform}
+Let $X$, $Y$ be smooth projective varieties with projections $q:X\times Y\to X$ and
+$p:X\times Y\to Y$, and let $\mathcal P\in D^b(X\times Y)$. The Fourier--Mukai transform with
+kernel $\mathcal P$ is the functor
+\begin{equation}\label{eq:mukai:fm}
+  \Phi_{\mathcal P}:D^b(X)\to D^b(Y),\qquad
+  \Phi_{\mathcal P}(E)=p_*\bigl(q^*E\otimes\mathcal P\bigr),
+\end{equation}
+all functors being derived. \source{Huy ch.~16, Def.~1.1, ll.~15259--15271}
+\end{definition}
+The analogy with the classical Fourier transform $\hat f(y)=\int f(x)\,\ee^{\ii xy}\,\dd x$ is
+exact in structure: pull the ``function'' $E$ back to the product, multiply by a kernel,
+integrate along the fibres of $p$. The original example is the Poincar\'e line bundle on
+$A\times\hat A$ for an abelian variety $A$ and its dual, which is the algebro-geometric form of
+T-duality on a torus (\cref{ch:dbranes}; this remark is standard, not checked against a source in
+this book's library). By a theorem of Orlov every exact equivalence
+$D^b(X)\simeq D^b(Y)$ is of the form \eqref{eq:mukai:fm}
+\source{Huy ch.~16 §1.3, ll.~15300--15303}, so nothing is lost by studying kernels. Elementary
+examples \source{Huy ch.~16 §2.3, ll.~15466--15478}: the structure sheaf of the diagonal
+$\mathcal O_\Delta$ gives the identity; $\Delta_*L$ gives $E\mapsto E\otimes L$;
+$\mathcal O_\Delta[1]$ gives the shift.
+
+The same formula makes sense in cohomology. The \emph{cohomological Fourier--Mukai transform}
+is
+\begin{equation}\label{eq:mukai:fmH}
+  \Phi^H_{\mathcal P}:H^*(X,\Q)\to H^*(Y,\Q),\qquad
+  \alpha\mapsto p_*\bigl(q^*\alpha\cdot v(\mathcal P)\bigr),\qquad
+  v(\mathcal P)=\operatorname{ch}(\mathcal P)\sqrt{\operatorname{td}(X\times Y)},
+\end{equation}
+and the Grothendieck--Riemann--Roch theorem shows that it is compatible with the functor:
+$\Phi^H_{\mathcal P}(v(E))=v(\Phi_{\mathcal P}(E))$ \source{Huy ch.~16, Rem.~3.3,
+ll.~15659--15666}. The square root of the Todd class in \cref{def:mukai:vector} is what makes
+this compatibility hold without correction factors.
+
+\begin{theorem}[Mukai; Orlov \TL]\label{thm:mukai:isometry}
+Let $\Phi_{\mathcal P}:D^b(X)\xrightarrow{\ \sim\ }D^b(Y)$ be a derived equivalence between K3
+surfaces. Then $\Phi^H_{\mathcal P}$ maps integral classes to integral classes and is a
+\emph{Hodge isometry}\index{Hodge isometry}
+$\widetilde H(X,\Z)\xrightarrow{\ \sim\ }\widetilde H(Y,\Z)$: it preserves the Mukai pairing and
+the Hodge structure \eqref{eq:mukai:hodge}. Conversely, two complex projective K3 surfaces are
+derived equivalent if and only if such a Hodge isometry exists, if and only if their
+transcendental lattices are Hodge isometric.
+\source{Huy ch.~16, Prop.~3.2, Prop.~3.5, Cor.~3.7, ll.~15628--15632, 15690--15692, 15725--15727}
+\end{theorem}
+The reason the pairing is preserved is simple on the sublattice $N(X)$ spanned by Mukai vectors:
+an equivalence of categories preserves all $\operatorname{Ext}$ groups, hence
+$\chi(E,F)=\chi(\Phi(E),\Phi(F))$, and by \cref{thm:mukai:hrr} this is the statement
+$\langle v(E),v(F)\rangle=\langle v(\Phi E),v(\Phi F)\rangle$. For transcendental classes one needs
+the adjoint kernel and the projection formula \source{Huy ch.~16, proof of Prop.~3.2,
+ll.~15634--15656}. What $\Phi^H$ does \emph{not} preserve is the grading: $H^0$, $H^2$, $H^4$
+get mixed. The second half of the theorem is the derived analogue of the Torelli theorem of
+\cref{ch:k3lattice}: the ordinary Torelli theorem says that $X\cong Y$ iff the Hodge structures
+on $H^2$ are isometric; the derived version replaces $H^2$ by $\widetilde H$ and ``isomorphic''
+by ``derived equivalent''. A consequence is that derived-equivalent K3 surfaces have the same
+Picard number, although their N\'eron--Severi lattices need not be isometric
+\source{Huy ch.~16, Cor.~2.8 and Rem.~2.10, ll.~15558--15561 and 15579--15582}.
+
+\subsection{Three families of isometries}
+The group of autoequivalences of $D^b(X)$ acts on $\widetilde H(X,\Z)$ through the following
+building blocks.
+\begin{enumerate}[leftmargin=*,label=(\roman*)]
+\item \emph{Shift.} $E\mapsto E[1]$ acts by $-\mathrm{id}$.
+\item \emph{Line bundle twists.} $E\mapsto E\otimes L$ acts by the $B$-field shift
+  $\exp(c_1(L))$ of \eqref{eq:mukai:expB} \source{Huy ch.~16, Ex.~3.4(ii), ll.~15678--15679}.
+\item \emph{Spherical twists.}\index{spherical twist}\index{spherical object} An object
+  $E\in D^b(X)$ is \emph{spherical} if $\operatorname{Ext}^i(E,E)$ is $\C$ for $i=0,2$ and zero
+  otherwise --- the $\operatorname{Ext}$-groups have the dimensions of the cohomology of a
+  two-sphere. By \eqref{eq:mukai:ext1} a spherical object has $v(E)^2=-2$. Line bundles and the
+  sheaves $\mathcal O_C(k)$ of \cref{ex:mukai:curve} are spherical. To each spherical $E$ is
+  associated an autoequivalence $T_E$, the spherical twist, which acts on cohomology as the
+  reflection
+  \begin{equation}\label{eq:mukai:reflection}
+    T_E^H=s_{\delta}:\ \alpha\mapsto\alpha+\langle\alpha,\delta\rangle\,\delta,\qquad
+    \delta=v(E),\ \delta^2=-2
+  \end{equation}
+  \source{Huy ch.~16, Defs.~2.5--2.6, eq.~(2.3), Ex.~3.4(i), ll.~15481--15497, 15550--15552,
+  15670--15674}.
+\end{enumerate}
+That \eqref{eq:mukai:reflection} is an isometry is a two-line computation valid in any lattice:
+$\langle s_\delta\alpha,s_\delta\beta\rangle=\langle\alpha,\beta\rangle
++2\langle\alpha,\delta\rangle\langle\beta,\delta\rangle
++\langle\alpha,\delta\rangle\langle\beta,\delta\rangle\delta^2$, and the last two terms cancel
+precisely when $\delta^2=-2$. Also $s_\delta(\delta)=\delta-2\delta=-\delta$ and $s_\delta^2=
+\mathrm{id}$. (At the level of categories $T_E(E)\cong E[-1]$, consistent with
+$v\mapsto-v$, but $T_E^2$ is \emph{not} the identity functor; it lies in the kernel of the
+representation on cohomology \source{Huy ch.~16 §2.3 and §3.4, ll.~15499--15501 and
+15849--15856}.)
+
+\begin{example}[The twist by $\mathcal O_X$ exchanges $H^0$ and $H^4$]\label{ex:mukai:TO}
+Take $\delta=v(\mathcal O_X)=(1,0,1)$. For $\alpha=(r,c,s)$ one finds
+$\langle\alpha,\delta\rangle=-r-s$, hence
+\begin{equation}\label{eq:mukai:TO}
+  T^H_{\mathcal O}(r,c,s)=(r,c,s)-(r+s)(1,0,1)=(-s,\;c,\;-r).
+\end{equation}
+It is the identity on $H^2$ and sends $(r,0,s)\mapsto(-s,0,-r)$
+\source{Huy ch.~16, Ex.~3.4(i), ll.~15672--15674}. A point, $(0,0,1)$, is sent to
+$(-1,0,0)$: the class of a rank-one object with all lower charges switched off, shifted by
+$[1]$. \Cref{fig:mukai:reflection} shows this reflection in the $(r,s)$-plane.
+\end{example}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=1.15]
+  \draw[->] (-2.8,0) -- (3.1,0) node[right] {$r$};
+  \draw[->] (0,-2.8) -- (0,3.1) node[above] {$s$};
+  \foreach \x in {-2,-1,0,1,2} \foreach \y in {-2,-1,0,1,2} \fill[black!45] (\x,\y) circle (0.9pt);
+  \draw[thick,tierL] (-2.6,2.6) -- (2.6,-2.6) node[below right,align=left] {\small mirror
+     $r+s=0$};
+  \draw[very thick,->,tierC] (0,0) -- (1,1);
+  \node[tierC,above] at (1.45,1.45) {\small $\delta=(1,1)$, $\delta^2=-2$};
+  \draw[thick,->] (0,0) -- (0,1);
+  \node[above left] at (-0.05,1.0) {\small $v(k(x))=(0,1)$};
+  \draw[thick,->] (0,0) -- (-1,0);
+  \node[below left] at (-0.9,-0.05) {\small $T^H_{\mathcal O}v(k(x))=(-1,0)$};
+  \draw[dashed,->] (-0.08,0.95) .. controls (-0.7,0.9) and (-0.95,0.7) .. (-1.0,0.1);
+  \draw[thick,->] (0,0) -- (2,1);
+  \node[right] at (2.05,1.05) {\small $(2,1)$};
+  \draw[thick,->] (0,0) -- (-1,-2);
+  \node[left] at (-1.05,-2.05) {\small $(-1,-2)$};
+\end{tikzpicture}
+\caption{The $H^0\oplus H^4$ plane with coordinates $(r,s)$ and quadratic form $-2rs$. The
+spherical twist by $\mathcal O_X$ acts as the reflection $(r,s)\mapsto(-s,-r)$ in the line
+$r+s=0$ orthogonal to $\delta=(1,1)$. The null vector $(0,1)$ of a point goes to the null vector
+$(-1,0)$, and $(2,1)$ goes to $(-1,-2)$; both have the same square $-2rs$.}
+\label{fig:mukai:reflection}
+\end{figure}
+
+\subsection{Worked example: a quartic surface of Picard number one}\label{sec:mukai:quartic}
+Let $X\subset\mathbb P^3$ be a quartic with $\operatorname{NS}(X)=\Z h$, $h^2=4$. Then
+$N(X)=\Z^3$ with coordinates $(r,x,s)$ standing for $(r,xh,s)$, and \eqref{eq:mukai:square} reads
+$v^2=4x^2-2rs$. The Gram matrix and the two basic isometries are
+\[
+  G=\begin{pmatrix}0&0&-1\\0&4&0\\-1&0&0\end{pmatrix},\qquad
+  \exp(h)=\begin{pmatrix}1&0&0\\1&1&0\\2&4&1\end{pmatrix},\qquad
+  T_{\mathcal O}^H=\begin{pmatrix}0&0&-1\\0&1&0\\-1&0&0\end{pmatrix},
+\]
+acting on column vectors. The second matrix is \eqref{eq:mukai:expB} with $B=h$: $x\mapsto x+r$
+and $s\mapsto s+4x+2r$. One checks $M^{\mathsf T}GM=G$ for both (we did, with sympy); $\det G=-4$
+and the signature is $(2,1)$, in agreement with \eqref{eq:mukai:NX} for $\rho=1$.
+
+Now some numbers. (a) $v(\mathcal O_X(1))=\exp(h)(1,0,1)^{\mathsf T}=(1,1,3)$, as in
+\cref{ex:mukai:line}, with $v^2=4-6=-2$. (b) The composite $T^H_{\mathcal O}\exp(h)$ sends the
+point class $(0,0,1)$ to $(-1,0,0)$ and the class $(1,0,1)$ of $\mathcal O_X$ to
+$T^H_{\mathcal O}(1,1,3)=(-3,1,-1)$, again of square $4-6=-2$. (c) The vector $v=(2,1,1)$ is
+primitive with $v^2=4-4=0$, and $v'=(-1,0,0)$ satisfies $\langle v,v'\rangle=1$. By
+\eqref{eq:mukai:ext1} stable sheaves with this Mukai vector (rank two, $c_1=h$) move in a
+two-dimensional family. The proof of the derived Torelli theorem shows that in this situation
+the moduli space $M=M_H(v)$ is a K3 surface, that the existence of $v'$ makes it a \emph{fine}
+moduli space with a universal sheaf $\mathcal E$ on $M\times X$, and that
+$\Phi_{\mathcal E}:D^b(M)\to D^b(X)$ is an equivalence with
+$\Phi^H_{\mathcal E}(0,0,1)=v$: a point of $M$ \emph{is} a rank-two bundle on $X$
+\source{Huy ch.~16, Prop.~2.3, Ex.~3.4(iii) and proof of Prop.~3.5 step ii), ll.~15435--15438,
+15682--15685, 15702--15711}. Rank has been exchanged for point-like charge by an isometry that
+is not in $O(H^2)$.
+
+\section{Physical reading: brane charges and the stringy moduli space}\label{sec:mukai:physics}
+
+\subsection{The lattice of Ramond--Ramond charges}
+Compactify type II string theory on a K3 surface. Besides the metric and the $B$-field, the
+theory has Ramond--Ramond gauge potentials, and their zero modes on $X$ are counted by the
+Betti numbers $b_0+b_2+b_4=1+22+1=24$: they fill out $H^0\oplus H^2\oplus H^4=H^*(X)$
+\source{Asp §4.4 (R-R moduli of type IIB), ll.~2587--2629}. D-branes (\cref{ch:dbranes}) are the
+objects charged under these potentials. In type IIA, a D4-brane wrapping $X$ $r$ times, D2-branes
+wrapping a two-cycle Poincar\'e dual to $c\in H^2(X,\Z)$, and D0-branes at points together
+carry a charge vector $(r,c,s)\in H^*(X,\Z)$, and the correct integral charge of a brane carrying
+a gauge bundle $E$ is not $\operatorname{ch}(E)$ but the Mukai vector
+$\operatorname{ch}(E)\sqrt{\operatorname{td}(X)}$: the curvature of $X$ itself induces lower-brane
+charge, which is the shift $s=\operatorname{ch}_2+r$. This identification of the Mukai vector
+with D-brane charge is standard in the D-brane literature \TL, but it is \emph{not} contained in
+the sources of this book's library (Aspinwall's lectures deliberately avoid D-branes,
+\source{Asp §1, ll.~156--165}); we record it as ``standard; not checked against a source in this
+book's library''. What \emph{is} in our sources is the lattice and its automorphism group, to
+which we now turn.
+
+\subsection{The moduli space \texorpdfstring{$O(\Gamma^{4,20})\backslash O(4,20)/(O(4)\times O(20))$}{of sigma models}}
+A non-linear sigma model on a K3 surface is specified by a Ricci-flat metric ($58$ real
+parameters) and a $B$-field class in $H^2(X,\R)$ ($b_2=22$ parameters), $80$ in all
+\source{Asp §3.2, ll.~1640--1654 and 1670}. The local structure of the moduli space is forced by
+the $N=(4,4)$ superconformal symmetry to be
+\begin{equation}\label{eq:mukai:teich}
+  \mathcal T_\sigma=\frac{O(4,20)}{O(4)\times O(20)},
+\end{equation}
+the Grassmannian of positive-definite four-planes $\Pi\subset\R^{4,20}$
+\source{Asp §3.2--3.3, Theorem~5, eq.~(64), ll.~1697--1713 and 1733}. Its dimension is
+$4\times20=80$ --- a useful check, since the dimension of $O(p,q)/(O(p)\times O(q))$ is $pq$
+(\cref{ch:narain}). Compare the moduli space of Einstein metrics of unit volume,
+$O(3,19)/(O(3)\times O(19))$, of dimension $3\times19=57$: the decomposition
+\begin{equation}\label{eq:mukai:decompmoduli}
+  \frac{O(4,20)}{O(4)\times O(20)}\;\cong\;\frac{O(3,19)}{O(3)\times O(19)}\times\R^{22}\times\R_+,
+  \qquad 80=57+22+1,
+\end{equation}
+exhibits metric, $B$-field and volume \source{Asp §3.3, eq.~(67), ll.~1770--1784}. This is the
+same counting as for the Narain moduli space of a torus, $d^2=\frac12d(d+1)+\frac12d(d-1)$ for
+$G$ and $B$ (\cref{ch:narain}), with the lattice $\Gamma^{d,d}$ replaced by $\Gamma^{4,20}$.
+
+The decomposition \eqref{eq:mukai:decompmoduli} is not canonical. It requires the choice of a
+primitive null vector $w\in\Gamma^{4,20}$, $w^2=0$; then $w^\perp/w\cong\Gamma^{3,19}$ is
+identified with $H^2(X,\Z)$, and a second null vector $w^*$ with $w.w^*=1$ completes the
+hyperbolic plane \source{Asp §3.3, ll.~1741--1753}. In Mukai's language $w$ is the generator of
+$H^4$ --- the class $(0,0,1)$ of a point --- and $w^*$ spans $H^0$ (up to the sign convention of
+the pitfall box above). Aspinwall's conclusion is worth quoting in full: a point in the moduli
+space determines the conformal field theory uniquely, but one must choose $w$ before one can
+speak of a K3 geometry with a metric and a $B$-field; ``this choice is arbitrary and different
+choices will lead to potentially very different looking K3 surfaces which give the same
+conformal field theory. This may be viewed as a kind of T-duality''
+\source{Asp §3.4, ll.~1958--1963}.
+
+The discrete identifications are then the full isometry group of the lattice
+\index{stringy moduli space of K3}:
+\begin{equation}\label{eq:mukai:modulispace}
+  \mathcal M_\sigma=O(\Gamma^{4,20})\,\backslash\, O(4,20)/(O(4)\times O(20))
+\end{equation}
+\source{Asp §3.4, Theorem~6, eq.~(76), ll.~1944--1948} \TL, under the assumptions stated there
+(completeness and Hausdorffness of the moduli space). The part of $O(\Gamma^{4,20})$ visible in
+the sigma-model action is the subgroup fixing $w$: classical diffeomorphisms, giving
+$O(\Gamma^{3,19})$, and integral shifts $B\mapsto B+e$ with $e\in H^2(X,\Z)$, which change the
+action by $2\pi\ii\,\Z$ \source{Asp §3.3, ll.~1802--1828, eq.~(69)}. Together they form
+$O(\Gamma^{3,19})\ltimes\Gamma^{3,19}$. One further element, supplied by mirror symmetry, is
+needed to generate everything \source{Asp §3.4, ll.~1935--1943}.
+
+\begin{physicsbox}[Physical picture: a dictionary between two literatures]
+The three kinds of isometries of \cref{sec:mukai:fm} line up with the generators of the stringy
+duality group. The integral $B$-shift $B\mapsto B+e$ is multiplication by $\exp(e)$, i.e.\
+tensoring all branes with a line bundle of first Chern class $e$; on the lattice it is the
+translation part of $O(\Gamma^{3,19})\ltimes\Gamma^{3,19}$. Isometries of $H^2$ are the classical
+symmetries of \cref{ch:k3lattice}. The isometries that move $w=(0,0,1)$, such as
+$T^H_{\mathcal O}$ in \eqref{eq:mukai:TO} or $\Phi^H_{\mathcal E}$ of
+\cref{sec:mukai:quartic}, are the genuinely stringy ones: they change which charges are called
+``point-like'', exactly as $R\mapsto\ap/R$ exchanges momentum and winding. The purely
+lattice-theoretic counterpart is Wall's theorem: for $\Lambda$ even unimodular of signature
+$(n_+,n_-)$ with $n_\pm\ge2$, $O(\Lambda\oplus U)$ is generated by $O(\Lambda)$, $O(U)$ and the
+$B$-shifts $\exp(B)$ \source{Huy ch.~14, Prop.~2.9, ll.~13282--13285}. Matching the
+\emph{physical} duality group with the image of $\operatorname{Aut}(D^b(X))$ element by element
+is beyond our sources; treat it as a guide \TC, not a theorem.
+\end{physicsbox}
+
+The relation to the rest of this book: on $\KT$ the charge lattice becomes
+$\Gamma^{4,20}\oplus\Gamma^{2,2}$ of signature $(6,22)$ (\cref{ch:k3t2}); the number $24$, the
+rank of the Mukai lattice, equals $\chi_{\rm top}(K3)$ and is the number that reappears in the
+tadpole (\cref{ch:tadpole}) and in Mathieu moonshine (\cref{ch:moonshine}), where symmetries of
+K3 sigma models are studied through their action on $\Gamma^{4,20}$.
+
+\section{What the machine has checked}\label{sec:mukai:lean}
+
+Four Lean files concern this chapter. They are of very different strength, and the student should
+learn to tell them apart by reading the \emph{statements}.
+
+\subsection{The Mukai pairing over an arbitrary Gram matrix}
+The module \lean{DualScaleStream2/Lattice/Mukai.lean} formalizes \cref{def:mukai:pairing} as
+linear algebra over $\Z$. The lattice $H^2$ is represented by an integral Gram matrix
+\lean{L : Gram n} (an $n\times n$ integer matrix, \cref{ch:lattices}), and a Mukai vector is bare
+data:
+\begin{leancode}
+structure MukaiVec (n : ℕ) where
+  (r : ℤ)
+  (c : Fin n → ℤ)
+  (s : ℤ)
+
+def mukaiPair {n : ℕ} (L : Gram n) (v w : MukaiVec n) : ℤ :=
+  v.c ⬝ᵥ (L *ᵥ w.c) - v.r * w.s - v.s * w.r
+\end{leancode}
+Here the first term (a dot product with a matrix--vector product) is $c_v^{\mathsf T}L\,c_w$, the intersection number $(c_v.c_w)$ in
+coordinates. Nothing in \lean{MukaiVec} refers to a sheaf: it is a triple $(r,c,s)$.
+
+\begin{leanbox}[In Lean: symmetry, the norm formula, evenness]
+\begin{leancode}
+theorem mukaiPair_symm {n : ℕ} (L : Gram n) (hL : Lᵀ = L)
+    (v w : MukaiVec n) : mukaiPair L v w = mukaiPair L w v := by ...
+
+theorem mukaiPair_self {n : ℕ} (L : Gram n) (v : MukaiVec n) :
+    mukaiPair L v v = v.c ⬝ᵥ (L *ᵥ v.c) - 2 * v.r * v.s := by ...
+
+theorem mukaiPair_even {n : ℕ} (L : Gram n) (hL : Lᵀ = L)
+    (heven : IsEvenDiag L) (v : MukaiVec n) :
+    Even (mukaiPair L v v) := by ...
+\end{leancode}
+\textbf{Reading.} For every $n$ and every integer matrix $L$: if $L$ is symmetric then the Mukai
+pairing built from $L$ is symmetric; the self-pairing is $c^{\mathsf T}Lc-2rs$, which is
+\eqref{eq:mukai:square}; and if $L$ is symmetric with even diagonal then every Mukai vector has
+even square, i.e.\ $H^2\oplus U(-1)$ is an even lattice whenever $H^2$ is. \textbf{Proof idea.}
+Symmetry uses Mathlib's \lean{Matrix.dotProduct\_transpose\_mulVec} to swap the two $H^2$
+vectors and \lean{ring} for the rest. Evenness rewrites with \lean{mukaiPair\_self}, applies the
+general lemma \lean{even\_quadratic\_form\_of\_even\_diag} of \cref{ch:lattices} to
+$c^{\mathsf T}Lc$, and notes that $2rs$ is visibly even. \textbf{Tier} \TA, as statements about
+integer matrices.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the summand $U(-1)$ and the structure sheaf]
+\begin{leancode}
+def hyperbolicUNeg : Gram 2 := !![0, -1; -1, 0]
+
+theorem hyperbolicUNeg_mul_self : hyperbolicUNeg * hyperbolicUNeg = 1 := by ...
+
+theorem hyperbolicUNeg_unimodular : IsUnimodular hyperbolicUNeg :=
+  isUnimodular_of_mul_eq_one _ _ hyperbolicUNeg_mul_self
+
+theorem structureSheaf_mukai_sq {n : ℕ} (L : Gram n) :
+    mukaiPair L ⟨1, 0, 1⟩ ⟨1, 0, 1⟩ = -2 := by ...
+\end{leancode}
+\textbf{Reading.} The matrix \eqref{eq:mukai:uneg} squares to the identity, hence has an
+integral inverse, hence $\det=\pm1$ (\lean{IsUnimodular} is literally
+``$\det=1\lor\det=-1$''). And the vector $(1,0,1)$ has Mukai square $-2$ for \emph{every} Gram
+matrix $L$ --- because its $H^2$ component is zero, $L$ never enters. \textbf{Proof idea.} A
+case split over the four matrix entries (\lean{fin\_cases}) for the first; the certificate lemma
+\lean{isUnimodular\_of\_mul\_eq\_one} for the second; \lean{simp} and \lean{norm\_num} for the
+third. \textbf{Tier} \TA\ for the arithmetic. That $(1,0,1)$ \emph{is} $v(\mathcal O_X)$, and
+that $-\langle v,v\rangle$ \emph{is} $\chi(\mathcal O_X,\mathcal O_X)=2$ (\cref{ex:mukai:O}), is
+\TL: Lean knows nothing of sheaves here.
+\end{leanbox}
+
+\subsection{The signature \texorpdfstring{$(4,20)$}{(4,20)}}
+In \lean{DualScaleStream2/Lattice/K3T2Signature.lean} a \lean{Signature} is a pair of natural
+numbers with componentwise addition. The inputs \lean{sigU}, defined as the pair $(1,1)$, and
+\lean{sigE8Neg}, defined as $(0,8)$, are asserted, and then
+\begin{leancode}
+def sigMukai : Signature := sigK3 + sigU
+
+theorem sigMukai_eq : sigMukai = ⟨4, 20⟩ := by
+  rfl
+\end{leancode}
+\textbf{Reading.} $(0,8)+(0,8)+3\cdot(1,1)+(1,1)=(4,20)$. This is the bookkeeping step
+``signatures add'' of \eqref{eq:mukai:decomp}, \TA\ as arithmetic of pairs. It is not a proof
+that some $24\times24$ Gram matrix has four positive and twenty negative eigenvalues; the
+signatures of $U$ and $E_8(-1)$ enter as \TL\ inputs (see \cref{ch:lattices} for what is proved
+about $E_8$). The same file checks $4-20\equiv0\pmod 8$ in \lean{index\_mod\_eight}, the
+necessary condition for an even unimodular lattice, at these specific numbers only.
+
+\subsection{Arithmetic shadows in the older libraries}
+\begin{leanbox}[In Lean: a record of four numbers]
+\begin{leancode}
+structure MukaiLattice where
+  rank : ℕ := 24
+  posSignature : ℕ := 4
+  negSignature : ℕ := 20
+  unimodular : Bool := true
+
+def canonicalMukaiLattice : MukaiLattice := {}
+
+theorem mukai_rank :
+    canonicalMukaiLattice.rank = canonicalMukaiLattice.posSignature +
+    canonicalMukaiLattice.negSignature := by rfl
+\end{leancode}
+\textbf{Reading} (\lean{StringTheoryFormalization/StringDynamics/MukaiLattice.lean}).
+\lean{MukaiLattice} is not a lattice: it has no underlying group and no bilinear form. It is a
+record of three numbers and a Boolean flag that may be set to \lean{true} or \lean{false} at
+will. \lean{mukai\_rank} says $24=4+20$ for the default values. The companion
+\lean{kummer\_sublattice\_rank} says that the type \lean{Fin 16} has $16$ elements and mentions
+no lattice at all. These are \emph{arithmetic shadows} in the sense of \cref{ch:architecture}:
+\TA\ as numerals, silent about the mathematics their names evoke.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: Fourier--Mukai as bookkeeping --- read the statement, not the name]
+\begin{leancode}
+structure DerivedCategory (X : Type*) where
+  name : String
+
+theorem fm_isEquivalence_of_mk (K3 K3hat : Type*)
+    (src : DerivedCategory K3) (tgt : DerivedCategory K3hat)
+    (ker : String) :
+    (FourierMukaiTransform.mk src tgt ker true).isEquivalence = true := rfl
+
+theorem fm_squared_is_shift :
+    True := trivial
+\end{leancode}
+\textbf{Reading} (\lean{StringTheoryFormalization/StringDynamics/FourierMukai.lean}).
+\lean{DerivedCategory} wraps a character string; \lean{FourierMukaiTransform} is a record with
+two such tags, a kernel \emph{name} and a Boolean field \lean{isEquivalence}. The first theorem
+says: if you build a record with the flag set to \lean{true} and read the flag back, you get
+\lean{true}. The second theorem is the proposition \lean{True}. Neither says anything about
+functors, shifts or \cref{thm:mukai:isometry}. The file's own scope note records that an earlier
+declaration named \lean{fm\_lattice\_isometry} was \emph{false as stated} (the flag can be set to
+\lean{false}) and was removed when the file was first compiled. \Cref{thm:mukai:isometry}
+remains \TL; formalizing it would require derived categories of coherent sheaves, the
+Grothendieck--Riemann--Roch theorem and the cohomology of K3 surfaces, none of which is
+available in this corpus.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the swap $(r,s)\mapsto(s,r)$ on three integers]
+\begin{leancode}
+structure MukaiVector where
+  r : Int   -- D0-brane rank / momentum
+  c2 : Int  -- c^2 = c · c in H^2(K3, Z)
+  s : Int   -- D4-brane charge / winding
+  deriving Repr, DecidableEq
+
+def mukai_norm (v : MukaiVector) : Int :=
+  v.c2 - 2 * v.r * v.s
+
+def buscher_reflection (v : MukaiVector) : MukaiVector :=
+  { r := v.s, c2 := v.c2, s := v.r }
+
+theorem mukai_norm_buscher_invariant (v : MukaiVector) :
+    mukai_norm (buscher_reflection v) = mukai_norm v := by ...
+\end{leancode}
+\textbf{Reading} (\lean{Lean5Corpus/Problems/Problem4\_MukaiMonodromy.lean}). Here a
+``Mukai vector'' is three integers $(r,c_2,s)$, where the single integer $c_2$ stands for the
+\emph{number} $(c.c)$, not for a class $c\in H^2$. The theorem says $c_2-2sr=c_2-2rs$:
+commutativity of integer multiplication. Its companions
+\lean{buscher\_reflection\_involution} (swapping twice is the identity) and
+\lean{mukai\_rank\_and\_signature} ($24=24$ and $4-20=-16$) are equally elementary. \TA\ as
+integer arithmetic. The words ``Buscher'', ``monodromy'' and ``non-perturbative'' in that file
+are interpretation \TC; note also that its comments label $r$ as D0 and $s$ as D4 charge, the
+opposite of the convention of \cref{sec:mukai:physics}, which is harmless only because the
+statement is symmetric under $r\leftrightarrow s$.
+\end{leanbox}
+
+\begin{remark}[How the swap relates to a genuine autoequivalence]
+The swap $(r,c,s)\mapsto(s,c,r)$ \emph{is} an isometry of the Mukai lattice; by
+\eqref{eq:mukai:TO} it equals $-T^H_{\mathcal O}$ composed with $c\mapsto-c$ on $H^2$. The
+isometry actually induced by the spherical twist is $(r,c,s)\mapsto(-s,c,-r)$. A record that
+remembers only the number $(c.c)$ cannot distinguish $c$ from $-c$, nor express the pairing of
+two different vectors, so the Lean statement cannot see these differences. A faithful version
+would be stated with \lean{MukaiVec} and \lean{mukaiPair}; see
+Exercises~\ref{exo:mukai:leanswap} and~\ref{exo:mukai:leanreflection}.
+\end{remark}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}p{0.48\textwidth}p{0.33\textwidth}c@{}}
+\toprule
+Claim & Where & Tier\\
+\midrule
+Mukai pairing symmetric; $v^2=c^{\mathsf T}Lc-2rs$; even if $L$ even &
+  \lean{mukaiPair\_symm}, \lean{\_self}, \lean{\_even} & \TA\\
+$U(-1)^2=1$, $U(-1)$ unimodular & \lean{hyperbolicUNeg\_mul\_self}, \lean{\_unimodular} & \TA\\
+$\langle(1,0,1),(1,0,1)\rangle=-2$ for all $L$ & \lean{structureSheaf\_mukai\_sq} & \TA\\
+$(3,19)+(1,1)=(4,20)$ & \lean{sigMukai\_eq} & \TA\\
+$24=4+20$; swap preserves $c_2-2rs$ & \lean{mukai\_rank}, \lean{mukai\_norm\_buscher\_invariant}
+  & \TA\ (shadow)\\
+$v(\mathcal O_X)=(1,0,1)$; $\chi(E,F)=-\langle v(E),v(F)\rangle$ & Huy ch.~9 §1 & \TL\\
+$\widetilde H(X,\Z)\cong4U\oplus2E_8(-1)$, signature $(4,20)$ & Huy ch.~14 & \TL\\
+Derived equivalences act by Hodge isometries; derived Torelli & Huy ch.~16 §3 & \TL\\
+$\mathcal M_\sigma=O(\Gamma^{4,20})\backslash O(4,20)/(O(4)\times O(20))$ & Asp §3.4, Thm.~6 & \TL\\
+Mukai vector $=$ D-brane charge & standard, not in library & \TL\\
+``Buscher reflection'' reading of $(r,s)\mapsto(s,r)$; match of $\operatorname{Aut}D^b(X)$ with
+  the physical duality group & this programme & \TC\\
+\bottomrule
+\end{tabular}
+\caption{Tier table for this chapter. All \TA\ entries depend only on the axioms
+\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}.}
+\label{tab:mukai:tiers}
+\end{table}
+
+\begin{summarybox}
+\begin{itemize}[leftmargin=*]
+\item The Mukai vector $v(E)=\operatorname{ch}(E)\sqrt{\operatorname{td}X}=(r,c_1,
+  \operatorname{ch}_2+r)$ and the Mukai pairing
+  $\langle\alpha,\beta\rangle=(\alpha_2.\beta_2)-\alpha_0\beta_4-\alpha_4\beta_0$ turn
+  Riemann--Roch on a K3 surface into $\chi(E,F)=-\langle v(E),v(F)\rangle$.
+\item $v^2=(c.c)-2rs$; a simple sheaf has $v^2+2$ deformation parameters, so $v^2\ge-2$.
+  $v(\mathcal O_X)=(1,0,1)$ has $v^2=-2$; a point has $v=(0,0,1)$, $v^2=0$; $v(T_X)^2=88$.
+\item $\widetilde H(X,\Z)=H^2\oplus U(-1)\cong4U\oplus2E_8(-1)$ is even, unimodular, of signature
+  $(4,20)$ and rank $24$.
+\item Derived equivalences of K3 surfaces act on $\widetilde H$ by Hodge isometries that mix
+  $H^0,H^2,H^4$: shifts ($-1$), line-bundle twists ($\exp B$), spherical twists (reflections in
+  $(-2)$-vectors). Two projective K3 surfaces are derived equivalent iff their Mukai lattices are
+  Hodge isometric.
+\item Physically $\widetilde H(X,\Z)=\Gamma^{4,20}$ is the charge lattice, the sigma-model moduli
+  space is $O(\Gamma^{4,20})\backslash O(4,20)/(O(4)\times O(20))$ of dimension $80=58+22$, and
+  the choice of the null vector $w=(0,0,1)$ is the choice of a geometric interpretation.
+\item Lean checks the integer linear algebra of the pairing for all Gram matrices and the
+  signature arithmetic. It does not contain sheaves, derived categories or Fourier--Mukai
+  functors; the declarations with those names are bookkeeping records.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{exo:mukai:todd}
+Verify $\sqrt{\operatorname{td}(X)}=(1,0,1)$ from $\operatorname{td}(X)=(1,0,2)$, and compute
+$v(E)$ and $v(E)^2$ for $E=\mathcal O_X\oplus\mathcal O_X$. Why does the result $v^2=-8<-2$ not
+contradict the bound $v^2\ge-2$?
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{exo:mukai:ideal}
+Let $I_Z$ be the ideal sheaf of $n$ distinct points. Use additivity of $v$ in
+$0\to I_Z\to\mathcal O_X\to\mathcal O_Z\to0$ to show $v(I_Z)=(1,0,1-n)$ and $v^2=2n-2$. Interpret
+$v^2+2=2n$ geometrically.
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{exo:mukai:uneg}
+Show that $U(-1)\cong U$ by exhibiting $P\in GL(2,\Z)$ with $P^{\mathsf T}U(-1)P=U$, and show
+that, in contrast, $E_8(-1)\not\cong E_8$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exo:mukai:bogomolov}
+Expand $v(E)^2\ge-2$ for a simple sheaf of rank $r$ and Chern classes $c_1,c_2$ to obtain
+$\Delta(E):=2rc_2-(r-1)c_1^2\ge2(r^2-1)$ \source{Huy ch.~9, Rem.~1.5, ll.~7493--7499}. Check it
+on $T_X$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exo:mukai:order}
+In the quartic example of \cref{sec:mukai:quartic}, compute the matrix
+$M=T^H_{\mathcal O}\exp(h)$, verify $M^{\mathsf T}GM=G$, and find the images of $(0,0,1)$,
+$(1,0,1)$ and $(2,1,1)$. Which of the images can be Mukai vectors of sheaves, and which only of
+complexes?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exo:mukai:count}
+Show that $\dim O(p,q)/(O(p)\times O(q))=pq$ by counting dimensions of orthogonal groups, and
+verify $80=57+22+1$ in \eqref{eq:mukai:decompmoduli}. What is the analogous count for the
+$(5,21)$ Grassmannian that appears when the R-R moduli and the dilaton of type IIB are included
+\source{Asp §4.4, ll.~2587--2621}?
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{exo:mukai:leanswap}
+With \lean{MukaiVec} and \lean{mukaiPair} as in \cref{sec:mukai:lean}, define
+a function \lean{swap} sending $(r,c,s)$ to $(s,c,r)$ and prove
+\lean{mukaiPair L (swap v) (swap w) = mukaiPair L v w}. No hypothesis on \lean{L} is needed.
+Explain why this statement is strictly stronger than the theorem
+\lean{mukai\_norm\_buscher\_invariant} quoted above.
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{exo:mukai:leanline}
+State and prove in Lean: for a symmetric \lean{L} and an integer vector \lean{c} with
+$c^{\mathsf T}Lc=2k$ (written with \lean{mukaiPair}-style dot products), the Mukai vector
+$(1,c,k+1)$ has Mukai square $-2$. This is
+$v(L)^2=-2$ of \cref{ex:mukai:line}; which hypothesis replaces ``$\ell^2/2$ is an integer''?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]\label{exo:mukai:leanreflection}
+Define the reflection $s_\delta(v)=v+\langle v,\delta\rangle\delta$ on \lean{MukaiVec n}
+(componentwise) and prove that for symmetric \lean{L} and a vector \lean{d} with \lean{mukaiPair L d d = -2} it
+preserves \lean{mukaiPair}. Then specialize to $\delta=(1,0,1)$ and recover
+\eqref{eq:mukai:TO}. Hint: first prove bilinearity lemmas for \lean{mukaiPair} in each argument.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]\label{exo:mukai:expBwall}
+Prove \cref{lem:mukai:expB} in Lean-ready form: write $\exp(B)$ as a $(n+2)\times(n+2)$ integer
+matrix $M_B$ acting on $(r,c,s)$, write the Mukai Gram matrix $\widetilde G$ in block form, and
+show $M_B^{\mathsf T}\widetilde GM_B=\widetilde G$ assuming $B^{\mathsf T}LB$ is even. Compare
+$M_B$ with the $B$-shift element of $\Odd{d}$ in \cref{ch:odd}: what plays the role of the
+antisymmetric matrix there?
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*]
+\item Mukai vector, Mukai pairing and Riemann--Roch: \source{Huy ch.~9 §1, ll.~7369--7526}.
+\item The extended K3 lattice, $B$-field shifts and Wall's generators of $O(\Lambda\oplus U)$:
+  \source{Huy ch.~14, ll.~12873--12880 and 13265--13285}.
+\item Derived categories, Fourier--Mukai kernels, spherical twists:
+  \source{Huy ch.~16 §§1--2, ll.~15107--15582}; the action on cohomology and the derived Torelli
+  theorem: \source{Huy ch.~16 §3, ll.~15591--15740}.
+\item Moduli of stable sheaves with a given Mukai vector: \source{Huy ch.~10 §2, ll.~8810--8822}.
+\item The $(4,20)$ lattice in string theory, the role of the null vector $w$ and the moduli
+  space of sigma models: \source{Asp §3.2--3.4, ll.~1640--1963}; R-R moduli and the $(5,21)$
+  extension: \source{Asp §4.4, ll.~2587--2632}. These are developed in \cref{ch:stringsk3}.
+\end{itemize}

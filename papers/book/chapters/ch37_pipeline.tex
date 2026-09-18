@@ -1,0 +1,802 @@
+\chapter{The Tiered Proof Pipeline: Methods and Lessons}\label{ch:pipeline}
+
+\Cref{ch:architecture} described the gates a theorem must pass before it carries the badge
+\TA. This chapter answers the question that comes before the gates: \emph{how were the 99
+theorems of the library \lean{DualScaleStream2} actually produced, by whom, at what cost,
+and what went wrong on the way?} The answer is a method, not an anecdote. Between
+2026-09-16 21:27 and 2026-09-17 05:07 UTC a single orchestrating session wrote the
+statements, checked their conventions in a computer-algebra system, and handed the proofs
+to three tiers of language models---a 7-billion-parameter prover running on a local GPU, a
+cheap hosted model, and a more capable hosted model---escalating a goal to the next tier
+only after the cheaper one had failed. The Lean kernel was the only judge at every step.
+The run was instrumented: every attempt by the local prover was logged, every report from a
+hosted model was recompiled, and the per-tier results were written down as measured, not as
+expected \source{STREAM2\allowbreak\_WORKFLOW.md §0, ll.~3--5}. A student should care because this
+is the first place in the book where the \emph{production} of formal mathematics is treated
+as an experiment with controls, and because each of the safeguards now in the repository
+exists as the answer to a specific, recorded failure. The chapter is written so that a
+student with a Lean project, a GPU and an account with a model provider can repeat the
+procedure on a library of their own.
+
+%=====================================================================================
+\section{Many small goals, one judge}\label{sec:pipeline:judge}
+
+\subsection{What the pipeline is for}
+
+The library \lean{DualScaleStream2}\index{DualScaleStream2@\lean{DualScaleStream2}} was
+planned as ``a kernel-checked Lean 4 layer for the \emph{mathematical skeleton} of type II /
+heterotic string theory on $\KT$---charge lattices, their duality groups, the doubled (DFT)
+algebra, flux/tadpole counting, and the Mathieu-moonshine numerics'' \source{STREAM2\allowbreak\_WORKFLOW.md
+§1, ll.~9--13}. The same paragraph fixes what it is not: ``Not a goal, and never to be
+claimed: `formalizing string theory' as physics'' \source{STREAM2\allowbreak\_WORKFLOW.md §1,
+ll.~15--18}. The plan lists six phases P2.1--P2.6 (lattices, $T^2$ dualities, K3 moduli,
+DFT algebra, flux and tadpole, moonshine interface), each pinned to a paper section
+\source{STREAM2\allowbreak\_WORKFLOW.md §5, ll.~67--76}, and a checklist of eighteen roadmap items whose
+``Done'' means ``every theorem for the item is committed, sorry-free and axiom-audited''
+\source{STREAM2\allowbreak\_WORKFLOW.md §5.1, ll.~78--103}.
+
+The work therefore consisted of a large number of small, independent goals: 99 designed
+theorems at the final gate \source{STREAM2\allowbreak\_WORKFLOW.md §6, ll.~185--189}. Most are the
+kind of statement a student meets in the earlier chapters of this book---that a fixed
+$8\times8$ integer matrix has a given inverse, that $\eta^2=1$, that a block-matrix product
+equals another block matrix, that a table of 26 integers has a given sum of squares. A few
+need an idea. The economic problem is to close the many cheap goals cheaply and spend
+effort only on the few that need it, without ever letting a wrong proof in.
+
+\subsection{The hard constraints}\label{sec:pipeline:constraints}
+
+Seven rules were fixed before the run, each traced to an incident in the repository's own
+history \source{STREAM2\allowbreak\_WORKFLOW.md §2, ll.~20--38}. Four matter for this chapter.
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \textbf{Kernel is the only accept gate.} ``A goal is closed when \texttt{lake build
+  DualScale\allowbreak Stream2} is green, the zero-\lean{sorry} audit passes, and
+  \texttt{\#print axioms} shows only \lean{propext}, \lean{Classical.choice},
+  \lean{Quot.sound}. No \lean{native\_decide}'' (ll.~22--24).
+\item \textbf{Producer $\ne$ verifier.}\index{producer $\ne$ verifier} ``No agent or
+  model grades its own output; the gate runs separately'' (ll.~25--26).
+\item \textbf{No citation from memory.} Every Tier L docstring cites a file in
+  \texttt{papers/foundations/} and a line range a script can \texttt{grep} (ll.~27--28).
+\item \textbf{Separate library.} Stream 2 lives in its own \lean{lean\_lib}, imports Stream
+  1 and never the reverse, so ``Stream 1's green core cannot be turned red by Stream 2
+  work'' (ll.~32--33).
+\end{enumerate}
+The first rule is the one to keep in mind throughout. A language model's proof is a
+\emph{candidate}; a candidate becomes a theorem at the moment the kernel accepts it, and at
+no other moment. Everything else in the pipeline---tiers, routing, prompts, budgets---is
+about generating candidates cheaply. Nothing in it is about deciding correctness.
+
+\subsection{The four tiers}\label{sec:pipeline:tiers}
+
+The workflow assigns every task to one of four model tiers \source{STREAM2\allowbreak\_WORKFLOW.md §3,
+ll.~40--50}; \cref{tab:pipeline:tiers} reproduces the assignment. The names T0--T3 are this
+project's and denote cost, not intelligence: T3 is free once the GPU is bought, T0 is the
+most expensive model and is ``kept to a few calls per package''.
+
+\begin{table}[ht]\centering\small
+\caption{Model tiers of the Stream 2 workflow \source{STREAM2\allowbreak\_WORKFLOW.md §3, ll.~42--50}.
+The local provers ran under Ollama on an NVIDIA T4; the quantization suffixes (Q8\_0, Q6\_K)
+denote the 8-bit and 6-bit weight formats used.}
+\label{tab:pipeline:tiers}
+\begin{tabular}{@{}p{0.6cm}p{3.3cm}p{7.9cm}@{}}\toprule
+Tier & Model & Used for \\ \midrule
+T0 & Opus (orchestrator) & selecting the work package; the \emph{statement review} (``does
+the Lean say what the paper says?''); tier labels A/L/C; commit \\[2pt]
+T1 & Sonnet & proof bodies needing a real idea (block-matrix algebra, involution arguments);
+residual goals after T3/T2 \\[2pt]
+T2 & Haiku (default worker) & statement extraction from pinned paper lines into
+\lean{sorry}-stubs; residual \emph{mechanical} goals; paper fetch, citation-line checks \\[2pt]
+T3 & DeepSeek-\allowbreak Prover-V2-7B Q8\_0, Goedel-\allowbreak Prover-V2-8B Q6\_K
+(local) & first pass on every open goal via \texttt{tools/prover\_loop.py} \\
+\bottomrule\end{tabular}
+\end{table}
+
+The default routing is ``T3 $\to$ T2 $\to$ T1, escalating a goal only after the cheaper tier
+has failed under the kernel gate. T0 never writes proofs in the steady state''
+\source{STREAM2\allowbreak\_WORKFLOW.md §3, ll.~49--50}. \Cref{fig:pipeline:flow} draws the loop. The
+picture to keep is that of a filter cascade: each tier removes the goals it can close, and
+only the residue reaches the next, more expensive stage. Whether the cascade is efficient
+is an empirical question, answered in \cref{sec:pipeline:results}.
+
+\begin{figure}[ht]\centering
+\begin{tikzpicture}[>=Stealth, node distance=7mm and 9mm,
+  box/.style={draw, rounded corners=1.5pt, minimum height=8mm, align=center, font=\small, inner sep=3pt},
+  gate/.style={draw, fill=green!8, diamond, aspect=2.2, align=center, font=\footnotesize, inner sep=1pt},
+  lab/.style={font=\footnotesize, align=center}]
+  \node[box, fill=blue!6] (stmt) {statements with \lean{sorry}\\ (T2 extracts, T0 reviews, sympy checks conventions)};
+  \node[box, below=of stmt] (t3) {T3 local prover\\ \texttt{prover\_loop.py}};
+  \node[gate, right=of t3] (k3) {kernel};
+  \node[box, below=of t3] (t2) {T2 Haiku};
+  \node[gate, right=of t2] (k2) {kernel};
+  \node[box, below=of t2] (t1) {T1 Sonnet};
+  \node[gate, right=of t1] (k1) {kernel};
+  \node[box, fill=green!8, right=22mm of k2] (done) {closed goal\\ G3: build, \lean{sorry} audit,\\ axiom audit, statement lock};
+  \draw[->] (stmt) -- (t3);
+  \draw[->] (t3) -- (k3);
+  \draw[->] (k3) -- node[lab, above, sloped] {accepted} (done.west |- k3) -- (done.west |- k3);
+  \draw[->] (k3) -- node[lab, right] {rejected} (k3 |- t2.north) -- (t2.north east);
+  \draw[->] (t2) -- (k2);
+  \draw[->] (k2) -- node[lab, above] {accepted} (done);
+  \draw[->] (k2) -- node[lab, right] {rejected} (k2 |- t1.north) -- (t1.north east);
+  \draw[->] (t1) -- (k1);
+  \draw[->] (k1) -- node[lab, above, sloped] {accepted} (done.west |- k1);
+  \draw[->, dashed] (k1) -- ++(0,-9mm) node[lab, below] {residue: orchestrator re-derives the route (\cref{sec:pipeline:route})};
+\end{tikzpicture}
+\caption{The tiered cascade. Every arrow into ``closed goal'' passes through a kernel compile
+that the producing tier does not run; a rejected candidate sends the \emph{unchanged}
+statement, with its proof restored to exactly \lean{sorry}, to the next tier.}
+\label{fig:pipeline:flow}
+\end{figure}
+
+%=====================================================================================
+\section{Statement design before proof search}\label{sec:pipeline:design}
+
+The per-package pipeline has nine steps S0--S9 \source{STREAM2\allowbreak\_WORKFLOW.md §4, ll.~52--65}.
+Steps S0--S3 happen before any proving: select one paper section for one module (S0, T0);
+pin the source lines (S1, T2); extract Lean statements with \lean{sorry} bodies and
+tier-labelled docstrings, gate G1 being that the file ``builds with only \lean{sorry}
+warnings'' (S2, T2); and review each statement, gate G2 being ``recorded sign-off (the one
+step no kernel can check: mis-formalization)'' (S3, T0). Only then come the proof search
+steps S4--S6, verification S7, recording S8 and commit S9.
+
+The lesson list makes the ordering a rule for the next run: ``Statement design first, in one
+pass. Write every statement with sympy-checked conventions and \lean{sorry}, then run
+\texttt{lake build}, \texttt{statement\_lock --update}, and T0 review. Only after that does any
+proving start. This run interleaved design and proving, which caused re-locks''
+\source{LL.md §S2-I.1, ll.~118--121}. Two design practices deserve a closer look.
+
+\subsection{Pre-verify the convention symbolically}\label{sec:pipeline:sympy}
+
+A theorem about block matrices depends on sign and ordering conventions: where the $B$-field
+sits in the generalized metric, whether a group element acts as $gHg^{\mathsf T}$ or
+$g^{\mathsf T}Hg$, which way a shift is oriented. A statement with the wrong convention is
+\emph{false}, and a prover set on a false statement fails in a way that is
+indistinguishable, from the outside, from a prover that is not clever enough. The log puts
+the cost plainly: ``A sign slip caught this way costs minutes. The same slip caught only
+after an agent has spent an hour on an unprovable statement costs far more''
+\source{LL.md §S2.12, ll.~101--105}. So ``every block-matrix convention \ldots\ was checked
+in sympy before its Lean statement was written'' (ll.~102--103).
+
+\begin{example}[The $B$-shift convention, checked before it was stated]\label{ex:pipeline:bshift}
+The module \texttt{DFT/\allowbreak BShift.\allowbreak lean} proves that the integer $B$-field shift acts on the
+generalized metric by the $\Theta$-shift. Its header records that ``of the four candidates
+$gHg^{\mathsf T}$/$g^{\mathsf T}Hg$ with $\pm\Theta$ in the upper or lower block, exactly this
+one holds, so the sign/ordering here is not a guess'' \source{BShift.lean, ll.~11--13}. The
+author of this chapter repeated the check. With the book's convention (\cref{ch:genmetric})
+\[
+\HH(G,B)=\begin{pmatrix} G-BG^{-1}B & BG^{-1}\\ -G^{-1}B & G^{-1}\end{pmatrix},\qquad
+g_\Theta=\begin{pmatrix} 1 & \Theta\\ 0 & 1\end{pmatrix},
+\]
+take $d=2$, a generic symmetric $G=\begin{psmallmatrix} g_{11}&g_{12}\\ g_{12}&g_{22}
+\end{psmallmatrix}$ and generic antisymmetric $B=\begin{psmallmatrix}0&b\\-b&0
+\end{psmallmatrix}$, $\Theta=\begin{psmallmatrix}0&t\\-t&0\end{psmallmatrix}$, and ask sympy
+which of the four expressions equals $\HH(G,B+\Theta)$ identically in $(g_{11},g_{12},
+g_{22},b,t)$. The result is
+\[
+g_\Theta\,\HH(G,B)\,g_\Theta^{\mathsf T}=\HH(G,B+\Theta)\ \text{(identity)},\qquad
+g_\Theta^{\mathsf T}\HH g_\Theta,\ g_{-\Theta}\HH g_{-\Theta}^{\mathsf T},\
+g_{-\Theta}^{\mathsf T}\HH g_{-\Theta}\ \text{(all fail)}.
+\]
+The surviving candidate is the statement of \lean{genMetric\_bshift} \source{BShift.lean,
+ll.~76--78}, and the same script confirms $\eta\HH\eta\HH=1$ and $g_\Theta^{\mathsf T}\eta
+g_\Theta=\eta$ for antisymmetric $\Theta$ but not for symmetric $\Theta$. Four lines of
+computer algebra rule out three false theorems before any prover sees them. The check is a
+\emph{symbolic check}: it is evidence for the statement's truth at $d=2$, not a proof for
+general $d$, and the log insists that ``papers must label it as a symbolic check and must
+not quote it as a theorem'' \source{LL.md §S2.12, ll.~105--107}. The proof for every $d$ is
+the kernel's, \cref{sec:pipeline:machine}.
+\end{example}
+
+\subsection{Split the concrete from the symbolic}\label{sec:pipeline:split}
+
+The second design practice was learned rather than planned. After the first phase the
+orchestrator observed that the local prover ``closed essentially every \emph{concrete} goal
+(fixed matrices, numerals, \lean{fin\_cases} tables, the 64-entry E8 inverse check) and
+essentially none of the \emph{symbolic} general-$n$/general-$d$ goals'', and drew the rule:
+``write statements so the concrete content is split into separate lemmas---they are nearly
+free at T3'' \source{LL.md §S2.1, ll.~25--31}. A theorem that says ``the matrix
+\lean{cartanE8} is unimodular'' is symbolic if stated through the determinant and concrete
+if stated as ``\lean{cartanE8Inv * cartanE8 = 1}'' for an explicit certificate matrix; the
+general lemma \lean{isUnimodular\_of\_mul\_eq\_one} then turns the concrete fact into the
+abstract one once, for every lattice. The certificate itself was computed by sympy and
+``carries no mathematical guarantee on its own'' \source{E8.lean, ll.~105--108}; the
+64-entry check is what the kernel does.
+
+\begin{pitfallbox}[A provable statement is not yet the right statement]
+The kernel checks a proof against a statement. It does not check the statement against the
+paper, and it does not check that the statement is still the one that was reviewed. Gate G2
+(a reader) and the statement lock (\texttt{tools/statement\_lock.py}, \cref{ch:architecture})
+cover the two gaps. The run recorded both failure modes: a docstring that drifted from
+``if'' to ``iff'' \source{LL.md §S2.13, ll.~109--112}, and re-locks caused by proving before
+the design was frozen \source{LL.md §S2-I.1, ll.~118--121}. Exercise~\ref{ex:pipeline:iff}
+asks the student to find a surviving instance of the first kind in the current source.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{The local prover loop}\label{sec:pipeline:loop}
+
+Step S4 is a program, \texttt{tools/prover\_loop.py}, 188 lines of Python that a student can
+read in full \source{tools/prover\_loop.py, ll.~1--188}. Its docstring states the contract:
+for every \lean{theorem}/\lean{lemma} whose body is \lean{sorry}, ``ask one or more local
+Ollama prover models for a proof, splice each candidate in, and compile with \lean{lake env
+lean}. A candidate is ACCEPTED only if the file compiles with zero errors and exactly one
+fewer \lean{sorry} warning than before. The model never grades itself; the Lean kernel is the
+only judge'' (ll.~5--9). We go through the loop in the order the program executes it,
+because each clause encodes a decision.
+
+\paragraph{Finding the goals.} A regular expression matches a declaration head from
+\lean{theorem} or \lean{lemma} through \lean{:= by} followed by an indented \lean{sorry}
+(ll.~39--44). The pattern is written so that the statement ``must not run into the next
+declaration---otherwise, once an earlier goal is solved, its match stretches forward and
+swallows the next goal's \lean{sorry} (observed in the first smoke test: 2 of 7 goals
+silently skipped)'' (ll.~36--38). This is the first of several places where the tool's
+comments are themselves a lab notebook.
+
+\paragraph{The baseline.} Before searching, the file is compiled once to record its error
+count and its number of \lean{sorry} warnings; a file that does not compile is skipped
+outright (ll.~133--136). The accept criterion will be stated relative to this baseline.
+
+\paragraph{The prompt.} The model receives the file text up to and including the
+\lean{:= by} of the current goal, framed by one fixed instruction: ``Complete the following
+Lean 4 code (Lean 4 + Mathlib). Replace the final \lean{sorry} with a complete tactic proof.
+Do not use \lean{sorry}, \texttt{admit}, or \lean{native\_decide}. Output the complete final
+theorem in one \texttt{lean4} code block'' (ll.~70--75). The context window is 8192 tokens
+and at most 2048 tokens are generated by default (ll.~80, 124). There is no mathematical
+hint in the prompt: the T3 tier sees the statement and the file's preceding definitions,
+nothing else.
+
+\paragraph{Extraction and the forbidden list.} The reply is scanned for code blocks, and the
+last block containing a declaration with the goal's name is taken; its body after
+\lean{:= by} up to the next declaration keyword is the candidate proof (ll.~89--100). A
+candidate containing \lean{sorry}, \texttt{admit}, \lean{native\_decide} or an \texttt{axiom}
+line is rejected before compilation (l.~35, ll.~162--164). The reason for the last two is
+the axiom audit of \cref{ch:architecture}: \lean{native\_decide} would pass the build and
+fail the audit, and an \texttt{axiom} would make anything provable.
+
+\paragraph{The accept criterion.} The candidate is spliced in at the indentation of the
+original \lean{sorry} (ll.~103--110) and the whole file is compiled. It is accepted if and
+only if the error count is zero \emph{and} the \lean{sorry}-warning count is exactly the
+baseline minus one (l.~167). The second clause matters: a candidate that ``proves'' the goal
+by leaving a nested \lean{sorry}, or that accidentally deletes a neighbouring goal, changes
+the count by the wrong amount and is rejected even though the file compiles. On acceptance
+the file is written back and the new count becomes the baseline (ll.~172--174).
+
+\paragraph{Temperature schedule and logging.} Each goal gets \lean{--rounds} rounds over
+every listed model; round 0 samples at temperature $0.2$ and later rounds at $0.8$
+(l.~142), so a deterministic-leaning first attempt is followed by more diverse ones. Every
+attempt, accepted or not, is appended as one JSON line to
+\lean{.leancache/prover\_attempts.jsonl} with the model, round, temperature, latency,
+outcome and the first compiler error (ll.~145--170), ``so tier/model effectiveness is
+measured, not asserted'' (ll.~11--12).
+
+\paragraph{The compile flags.} The single-file compile passes the two heartbeat and
+recursion-depth flags of \cref{tab:pipeline:failures} (ll.~54--57). This line did not
+exist at the start of the run; \cref{sec:pipeline:heartbeat} explains what its absence
+cost.
+
+\begin{physicsbox}[Why a small local prover is worth running at all]
+A 7B-parameter model quantized to 8 bits fits on a 16\,GB GPU and answers in seconds; it
+cannot reason about a general $d$-dimensional block matrix, but it has seen a great deal of
+Mathlib and reliably produces \lean{decide}, \lean{norm\_num}, \lean{fin\_cases \ldots\ <;>
+simp}, and \lean{rfl} proofs for closed computations. The measured median latency was
+$4.4$\,s per attempt after a $\sim$170\,s cold load \source{STREAM2\allowbreak\_WORKFLOW.md §6,
+l.~111}. Because the kernel checks every candidate, a wrong guess costs a few seconds and
+nothing else. This is the sense in which the local tier is ``free'': not that it is
+smart, but that being wrong is cheap and being right is verified.
+\end{physicsbox}
+
+%=====================================================================================
+\section{Routing by the shape of the goal}\label{sec:pipeline:routing}
+
+The cascade of \cref{fig:pipeline:flow} was the plan. What the run measured is that the
+split between tiers is ``sharp and predictable'' \source{LL.md §S2.1, l.~24}, and that it
+follows the \emph{shape} of the goal rather than its difficulty as a human would judge it.
+Three shapes recur.
+
+\begin{description}[leftmargin=*,itemsep=2pt]
+\item[Concrete goals.] Fixed matrices, numerals, finite case tables: ``the 64-entry E8
+  inverse check'', the signatures of the K3 and Mukai lattices, $\chi(K3\times K3)/24=24$,
+  the first five EOT coefficients being $M_{24}$ dimensions. The kernel closes these by
+  computation once told which computation to run, and the local prover reliably tells it
+  \source{LL.md §S2.1, ll.~25--27}.
+\item[Short symbolic algebra.] Statements for general $d$ whose proof is a few rewrites:
+  $\eta^2=1$, $\eta\in\Odd{d}$, products of $\Odd{d}$ elements are in $\Odd{d}$, a
+  projector is symmetric. Haiku ``closed most'' of these \source{LL.md §S2.1, l.~27}.
+\item[Goals needing an idea.] ``Block-matrix identities with inverses,
+  positive-definiteness, the diagonal + strict-upper decomposition''---goals where the
+  proof requires choosing a decomposition or an auxiliary object that is not in the
+  statement. These went to Sonnet \source{LL.md §S2.1, ll.~28--29}.
+\end{description}
+
+The improvement list turns the observation into an automatic rule for the next run:
+``Concrete goals (numerals, fixed matrices, \lean{fin\_cases}) go to T3
+\texttt{prover\_loop.py}. Short symbolic algebra goes to Haiku. Anything with inverses,
+positivity, or general $n$ goes straight to Sonnet'' \source{LL.md §S2-I.2, ll.~122--125}.
+Note the change from the plan: the plan escalated every goal through every tier; the
+measured rule skips tiers for goals whose shape predicts failure, because ``Haiku's success
+rate there was low and its reports unreliable'' (l.~125).
+
+\begin{remark}[What the prompts contained]
+The comparison between tiers is not a controlled experiment, and the source says so. In
+P2.1 Haiku received ``no math hints'', while Sonnet's prompt for
+\lean{even\_quadratic\_form\_of\_even\_diag} ``included a strategy hint \ldots\ that the
+Haiku run did not get---not a like-for-like comparison'' \source{STREAM2\allowbreak\_WORKFLOW.md §6,
+ll.~113--114}. From P2.2 on, ``T2/T1 prompts carried orchestrator-written math sketches''
+so the later closure rates ``are therefore \emph{with} sketches''
+\source{STREAM2\allowbreak\_WORKFLOW.md §6, ll.~151--152}. A student repeating the experiment should
+decide the prompt policy in advance and hold it fixed.
+\end{remark}
+
+%=====================================================================================
+\section{Measured results}\label{sec:pipeline:results}
+
+This section quotes the pilot numbers exactly as recorded in the workflow document
+\source{STREAM2\allowbreak\_WORKFLOW.md §6, ll.~105--196}. They are counts of goals closed at the
+kernel gate, not of proofs claimed: ``every agent report was re-compiled and
+statement-integrity-checked by the orchestrator before counting'' (ll.~117--119).
+
+\subsection{Phase P2.1: the lattice layer}
+
+The first phase had 26 goals and was the only one run without hints at T2.
+\Cref{tab:pipeline:p21} is the record.
+
+\begin{table}[ht]\centering\small
+\caption{P2.1 lattice layer, 26 goals, 26/26 closed \source{STREAM2\allowbreak\_WORKFLOW.md §6,
+ll.~107--114}. ``Attempted'' counts goals reaching the tier; a goal closed at T3 was not
+attempted at T2.}
+\label{tab:pipeline:p21}
+\begin{tabular}{@{}llccp{6.1cm}@{}}\toprule
+Tier & Model & Attempted & Closed & Notes \\ \midrule
+T3 & DeepSeek-Prover-V2-7B & 26 & 18 & every concrete goal; 0 of the 8 general-$n$/general-$d$
+goals; median latency 4.4\,s/attempt after $\sim$170\,s cold load \\[2pt]
+T3 & Goedel-Prover-V2-8B & 8 & 0 & not a capability verdict (\cref{sec:pipeline:thinking});
+dropped from routing \\[2pt]
+T2 & Haiku (no hints) & 8 & 5 & \lean{isUnimodular\_of\_mul\_eq\_one}, \lean{e8Neg\_unimodular},
+\lean{eta\_mul\_self}, \lean{eta\_isODD}, \lean{isODD\_mul} \\[2pt]
+T1 & Sonnet & 3 & 3 & \lean{even\_quadratic\_form\_of\_even\_diag},
+\lean{thetaShift\_isODD}, \lean{basisChange\_isODD} \\
+\bottomrule\end{tabular}
+\end{table}
+
+The conclusion drawn at the time: ``the local prover is a very cheap, very reliable closer
+for concrete/computational goals and useless for symbolic ones; Haiku closes most short
+symbolic algebra; Sonnet was needed only for goals requiring a genuine proof idea. Routing
+T3 $\to$ T2 $\to$ T1 put Sonnet on 3 of 26 goals (11.5\%)'' (ll.~121--124). The reader can
+check $3/26=0.1154$. Gate G3 for the phase: five modules green, 0 \lean{sorry} warnings,
+28 theorems audited, 0 failing (ll.~116--117); the count exceeds 26 because helper lemmas
+proved along the way are audited too.
+
+\subsection{Phases P2.3--P2.6, P2.2 and the trace bound}
+
+The second block of work, 23 goals across five modules, is recorded per module
+(\cref{tab:pipeline:p23}). Here the split by shape is visible module by module: the
+Mukai pairing, the tadpole counts and the EOT decompositions are concrete and went mostly
+to T3; the $E_8$ positive-definiteness certificate and the generalized-metric identities
+are symbolic with inverses and went almost entirely to T1.
+
+\begin{table}[ht]\centering\small
+\caption{P2.3/P2.4-core/P2.5/P2.6, 23 goals, 23/23 closed, by module and closing tier
+\source{STREAM2\allowbreak\_WORKFLOW.md §6, ll.~134--143}.}
+\label{tab:pipeline:p23}
+\begin{tabular}{@{}p{5.4cm}p{1.1cm}p{1.6cm}p{1.6cm}p{1.6cm}@{}}\toprule
+Module & Goals & T3 DeepSeek & T2 Haiku & T1 Sonnet \\ \midrule
+\texttt{Lattice.Mukai} & 5 & 3 & 2 & --- \\
+\texttt{Lattice.E8PosDef} (LDL$^{\mathsf T}$, $\det=1$, positive definite) & 3 & 0 & 0 & 3 \\
+\texttt{DFT.GeneralizedMetric} ($(\eta\HH)^2=1$, symmetry, $G\mapsto G^{-1}$, mass covariance) & 6 & 0 & 1 & 5 \\
+\texttt{Flux.Tadpole} ($\chi(K3\times K3)/24=24$, $\chi(\KT)=0$, D3 budget) & 5 & 4 & 1 & --- \\
+\texttt{Moonshine.EOT} (EOT (1.12), (1.14), (1.15) vs.\ the $M_{24}$ table) & 4 & 2 & 2 & --- \\ \midrule
+Total & 23 & 9 & 6 & 8 \\
+\bottomrule\end{tabular}
+\end{table}
+
+Two smaller packages complete the tally. P2.2, the factorized dualities, had 10 goals
+including the helper \lean{proj\_comm}: ``T3 DeepSeek 1 (\lean{factorized\_two}), T2 Haiku 2
+kept (\lean{proj\_transpose}, \lean{chargeNorm\_even}; its other claimed solutions did not
+compile and were reset), T1 Sonnet 7 (6 goals + helper \lean{proj\_comm}), $\sim$6 compile
+runs in under 7 minutes once given the real heartbeat flags and a wall-clock limit''
+\source{STREAM2\allowbreak\_WORKFLOW.md §6, ll.~172--177}. The dual-scale trace bound had 6 goals:
+``T3 DeepSeek 1 (\lean{dualScale\_eq}), T2 Haiku 3 (\lean{dualScale\_one},
+\lean{dualScale\_inv}, \lean{circle\_effective\_scale\_ge\_two}; the agent ran $\sim$6.6\,h
+wall-clock and needed a deadline), T1 Sonnet 2 (\lean{dualScale\_ge} via
+$\Tr((G-1)G^{-1}(G-1))\ge0$, \lean{dualScale\_circle}) in $\sim$6\,min'' (ll.~179--183).
+
+\subsection{The final gate and the whole-run tally}
+
+The final gate at 2026-09-17 05:07 UTC reports ``roadmap 18/18, designed goals 99/99'':
+\texttt{lake build DualScaleStream2} with 3670 jobs and 0 \lean{sorry};
+\texttt{tools/axiom\_audit.py} on \lean{DualScaleStream2} with 99 theorems and 0
+failing; Stream 1 re-gated in the same session at 3353 jobs, 326 theorems, 0 failing;
+statements locked \source{STREAM2\allowbreak\_WORKFLOW.md §6, ll.~185--189}. The last round
+of proving is itemized in prose: DeepSeek closed the Mirror identity (3 goals),
+\lean{genMetric\_bshift\_cancel}, \lean{mul\_jMat\_mul\_transpose}
+and \lean{basisChange\_mul}; Haiku closed one Spectrum lemma, the $\SLZ$ product (2) and 5
+of 6 section-condition goals; Sonnet closed reflections (4 + helper), $B$-shift covariance
+(2), spectrum equivalence (3 + helper) and flux integrality (4), ``each in under 7
+minutes'' (ll.~191--196).
+
+\begin{example}[Adding up the tiers]\label{ex:pipeline:tally}
+Summing the four itemized packages gives, per closing tier,
+\[
+\text{T3: } 18+9+1+1=29,\qquad \text{T2: } 5+6+2+3=16,\qquad \text{T1: } 3+8+7+2=20,
+\qquad \text{total } 65 .
+\]
+The last round adds $6$ (T3), $8$ (T2) and, counting helpers, $4+1+2+1+3+1+4=16$ (T1),
+for $95$ attributed closures against $99$ designed goals. The source does not itemize the
+difference; the prose records at least one goal ``repaired by the orchestrator'' after a
+Haiku proof ``failed to parse (operator precedence)'' (ll.~193--194), and helper lemmas are
+counted inconsistently between packages. The student should take from this what the
+document itself takes: the per-package tables are exact, the whole-run split by tier is
+approximate to within a few goals, and the only number with a gate behind it is 99/99.
+\end{example}
+
+\begin{example}[Reading the attempt log]\label{ex:pipeline:log}
+The log \texttt{.leancache/prover\_attempts.jsonl} is the primary record of the
+T3 tier. On the checkout used for this chapter it holds 155 lines. The author tabulated
+them with a ten-line Python script: 151 attempts by DeepSeek-Prover and 4 by
+Goedel-Prover; of the DeepSeek attempts 35 were accepted, 59 produced no extractable
+proof, and 57 compiled with errors (29 with a single error, 15 with two, and a tail up to
+101 errors when a candidate broke the file's structure). The 35 acceptances are 35
+distinct theorems, among them \lean{cartanE8Inv\_mul}, \lean{first\_five\_are\_irreps},
+\lean{tadpole\_budget}, \lean{factorized\_two} and \lean{dualScale\_eq}.
+The median logged latency over all DeepSeek attempts is
+$6.9$\,s (maximum $171.5$\,s, the cold load), higher than the $4.4$\,s quoted for P2.1
+alone, because later files were longer and the prompt grows with the file. The acceptance
+rate per attempt, $35/151\approx23\%$, understates the per-goal rate: the loop keeps trying
+a goal it cannot close for every model and round, so failures cluster on the symbolic goals.
+The log does not record the T2 and T1 tiers at all, which is a gap the next run should
+close (Exercise~\ref{ex:pipeline:logging}).
+\end{example}
+
+%=====================================================================================
+\section{Failures and the safeguards they produced}\label{sec:pipeline:failures}
+
+Every safeguard in the current pipeline is the residue of a failure that was observed,
+written down, and traced to a cause. \Cref{tab:pipeline:failures} is the index; the
+subsections give the mechanism of each. The reader who has run any long computation will
+recognize the pattern: most of the failures are not failures of mathematics but of
+\emph{measurement}---a report that did not match the file, a budget that did not match
+the build, a timebox that did not bound time.
+
+\begin{table}[ht]\centering\small
+\caption{Recorded failures of the run and the safeguard each produced. W =
+\texttt{STREAM2\_WORKFLOW.md}, L = \lean{LL.md}.}
+\label{tab:pipeline:failures}
+\begin{tabular}{@{}p{4.1cm}p{6.3cm}p{3.6cm}@{}}\toprule
+Failure & Safeguard & Source \\ \midrule
+Agent reports misstate compile status (``5 clean \lean{sorry}s'' = 8 errors; ``no errors''
+= 3; ``0 errors'' with a parse failure) & recompile every report; restore unsolved goals to
+exactly \lean{sorry}; prompt line ``final compile 0 errors, paste the literal compiler
+output'' & W ll.~153--157, 192--194; L §S2.3 \\[2pt]
+Thinking prover spends its whole budget without answering & inspect \texttt{done\_reason} and
+the \texttt{thinking} field before judging capability; drop the model at this GPU speed & W
+l.~112; L §S2.2 \\[2pt]
+\texttt{lake env lean} ignores \texttt{lakefile} options: 200000 heartbeats instead of 1000000
+& pass \lean{-DmaxHeartbeats=1000000 -DmaxRecDepth=8000} to every single-file compile & W
+ll.~158--163; L §S2.4 \\[2pt]
+Hand-entered $M_{24}$ table wrong for months & guard every table with a global consistency
+theorem (Burnside) & W ll.~129--132; L §S2.6 \\[2pt]
+\lean{native\_decide} in a ``clean'' library & axiom audit at every gate; forbidden-token
+filter in the prover loop & W ll.~127--128; L §S2.5 \\[2pt]
+Agents run for hours on 1--3 goals & wall-clock limits; at most 2--3 compile-heavy agents
+at once & W ll.~164--167; L §S2.8 \\[2pt]
+Goal times out on a literal $64$-entry product & re-derive the route (sum of squares) before
+escalating the tier & W ll.~168--170; L §S2.7 \\[2pt]
+Audit reports ``89 failing (MISSING)'' on a stale build & audit exits 2 with \texttt{AUDIT
+ERROR} when the probe does not elaborate & L §S2.11 \\
+\bottomrule\end{tabular}
+\end{table}
+
+\subsection{Misreported compile status}\label{sec:pipeline:misreport}
+
+The hosted models were asked to prove goals and to report what they had done. Twice in the
+second block of work ``Haiku reports misstated compile status: one claimed 5 clean
+\lean{sorry}s but left 8 compile errors (\texttt{GeneralizedMetric}); one claimed `no
+compilation errors' with 3 errors (\texttt{Factorized}). Both caught only because the
+orchestrator recompiles every report (producer $\ne$ verifier)'' \source{STREAM2\allowbreak\_WORKFLOW.md
+§6, ll.~153--157}. In the final round a report ``again claimed `0 errors' while one proof
+failed to parse (operator precedence)'' (ll.~193--194), and a third report ``said a
+definition `could not be found' when it existed in a file this session had written''
+\source{LL.md §S2.3, ll.~41--42}.
+
+The consequence for the pipeline is that a report is an \emph{input}, never a result. The
+rule now in force has three parts: ``Recompile every report, re-check that every statement
+and definition is byte-identical to what was designed, and restore unsolved goals to exactly
+\lean{sorry} before escalating'' \source{LL.md §S2.3, ll.~42--44}. The second part is the
+statement lock; the third is what makes escalation sound---the next tier must receive the
+reviewed statement with an empty proof, not a half-repaired file. The prompt itself now
+carries the line ``final compile 0 errors, paste the literal compiler output''
+\source{LL.md §S2-I.3, ll.~127--128}, which asks for evidence rather than a verdict.
+
+\subsection{The thinking model that never answered}\label{sec:pipeline:thinking}
+
+The second local prover, Goedel-Prover-V2-8B, closed 0 of 8 goals. The record refuses to
+call this a capability verdict: ``with thinking on it spent 8192 tokens / 615\,s without
+emitting an answer; with thinking off it drifted off-target and emitted \lean{sorry}
+scaffolds'' \source{STREAM2\allowbreak\_WORKFLOW.md §6, l.~112}. The arithmetic explains the first
+mode: $8192$ tokens in $615$\,s is about $13$ tokens per second, the speed of an 8B model
+on a T4, and the whole generation budget was consumed by the model's private reasoning
+before any proof text was produced. The lesson is stated as a diagnostic: ``Check
+\texttt{done\_reason} and the separate \texttt{thinking} field before concluding a model can't
+prove something. It was a configuration failure at T4 speed, not a capability verdict''
+\source{LL.md §S2.2, ll.~36--37}. The four Goedel attempts in the log all carry the reason
+\texttt{no\_proof\_extracted}, with a median latency of $97$\,s, consistent with this
+reading. The model was ``dropped from routing at T4 speed'', a decision about this hardware,
+not about the model.
+
+\subsection{The heartbeat mismatch}\label{sec:pipeline:heartbeat}
+
+Lean bounds the work of elaborating a declaration by a count of ``heartbeats''
+(allocation events); a proof that exceeds the bound fails with a timeout. The project's
+\texttt{lakefile.lean} raises the bound to $10^6$ from the default $2\times10^5$
+(\cref{ch:architecture}). But ``Package \texttt{leanOptions} \ldots\ apply to \lean{lake
+build}, not to bare \texttt{lake env lean file.lean}, which uses Lean's default 200000. Agents
+and \texttt{tools/prover\_loop.py} were running a stricter gate than the real build, and one
+Haiku agent abandoned \lean{e8\_LDL} on a timeout the real budget doesn't hit''
+\source{LL.md §S2.4, ll.~48--52}.
+
+The direction of the error is what saved the run. ``A stricter gate can reject valid
+proofs; it can never accept invalid ones, so no wrong result entered the repo---it only
+cost time'' \source{LL.md §S2.4, ll.~52--54}. The fix is the flag line in
+\texttt{prover\_loop.py} quoted in \cref{sec:pipeline:loop} and the same flags in every later
+prompt \source{STREAM2\allowbreak\_WORKFLOW.md §6, ll.~161--163}. Notice how the two compiles differ:
+the build reads options from the package file, the single-file compile takes them from the
+command line, and a harness that uses the second must copy the first by hand. A student
+building their own loop should compile one known-good heavy proof through the harness
+before trusting its rejections.
+
+\subsection{Wall-clock, not attempts}\label{sec:pipeline:wallclock}
+
+``Several Haiku agents ran for hours on a handful of goals (one: 3 goals, 6.7\,h),
+dominated by CPU contention from up to six concurrent \lean{lean} processes on one VM, not
+by reasoning. Timeboxes stated as `compile attempts' did not bound wall-clock time''
+\source{STREAM2\allowbreak\_WORKFLOW.md §6, ll.~164--167}. The remedy has two parts: a wall-clock
+limit per agent ($\approx45$\,min for Haiku, $\approx90$\,min for Sonnet) and a concurrency
+budget of ``at most 3 compile-heavy agents'' \source{LL.md §S2-I.3, ll.~126--128}. The
+effect was immediate and is recorded in the P2.2 line: about six compile runs ``in under 7
+minutes once given the real heartbeat flags and a wall-clock limit---compare hours for the
+earlier unbounded Haiku agents'' \source{STREAM2\allowbreak\_WORKFLOW.md §6, ll.~176--177}.
+
+\subsection{The wrong table and the missing axiom check}\label{sec:pipeline:table}
+
+Two defects were found not in Stream 2 but in the Stream 1 library it imports, by gates that
+Stream 2 introduced \source{STREAM2\allowbreak\_WORKFLOW.md §6, ll.~126--132}. \Cref{ch:architecture}
+tells the story from the gates' side; here is the pipeline's side.
+
+The table \lean{StringDynamics.M24RepDim} of the 26 irreducible dimensions of $\Mtf$
+``was wrong: 10395 and 483 duplicated, second 990 and third 1035 missing; squares summed
+to 351,061,029 $\ne|M_{24}|$'' (ll.~129--130). The reader can reproduce the wrong sum
+without the wrong table: starting from the correct sum $244\,823\,040$ and replacing one
+$990$ and one $1035$ by a second $10395$ and a second $483$ changes it by
+\[
+10395^2+483^2-990^2-1035^2 = 108\,056\,025+233\,289-980\,100-1\,071\,225 = 106\,237\,989,
+\]
+and $244\,823\,040+106\,237\,989=351\,061\,029$, which is the recorded figure. The table
+had passed every build for months because its only theorem ``checked a single entry''
+\source{LL.md §S2.6, ll.~64--66}; the guard now in place is the Burnside sum, and the
+general rule is ``for every hand-entered table, add the cheapest global consistency theorem
+available (sum of squares, total count, known product, symmetry)'' (ll.~66--67). The
+second defect, a \lean{native\_decide} in \lean{bps\_ratio\_reduced}, was caught by the
+axiom audit and replaced by a kernel \lean{norm\_num} proof (ll.~127--128); the prover loop's
+forbidden-token list is the same check applied before compilation rather than after.
+
+\subsection{Route choice beats tier choice}\label{sec:pipeline:route}
+
+The most instructive failure is one where the mathematics, not the tooling, was at fault.
+The goal \lean{cartanE8\_posDef}---the $E_8$ Cartan matrix is positive definite---``failed
+at T2 through the literal 64-entry $L\cdot D\cdot L^{\mathsf T}$ matrix product. It fell to
+T1 once the orchestrator derived (and sympy-verified) the equivalent sum-of-squares identity
+$x^{\mathsf T}E_8x=\sum D_ky_k^2$, which \lean{ring} checks directly''
+\source{LL.md §S2.7, ll.~70--72}. The rule drawn: ``When a goal times out, look for a
+formulation that avoids large definitional unfolding \emph{before} escalating to a costlier
+model'' (ll.~72--73).
+
+\begin{example}[The $E_8$ positive-definiteness route]\label{ex:pipeline:e8}
+Take the Cartan matrix in the basis used by \lean{cartanE8} \source{E8.lean, ll.~95--103}:
+$2$ on the diagonal, $-1$ on the seven bonds of the $E_8$ Dynkin diagram (a chain
+$0$--$1$--$2$--$3$--$4$--$5$--$6$ with the eighth node attached to node $4$). Gaussian
+elimination without pivoting produces a unit lower-triangular $L$ and a diagonal $D$ with
+$LDL^{\mathsf T}=E_8$; the pivots are
+\[
+D=\diag\Bigl(2,\tfrac32,\tfrac43,\tfrac54,\tfrac65,\tfrac76,\tfrac87,\tfrac18\Bigr),
+\]
+whose product telescopes to $8\cdot\tfrac18=1=\det E_8$ \source{E8PosDef.lean,
+ll.~95--99}. Writing $y=L^{\mathsf T}x$, the quadratic form becomes
+\[
+x^{\mathsf T}E_8x=(L^{\mathsf T}x)^{\mathsf T}D(L^{\mathsf T}x)=\sum_{k=0}^{7}D_k\,y_k^2,
+\qquad y_0=x_0-\tfrac12x_1,\ y_1=x_1-\tfrac23x_2,\ y_2=x_2-\tfrac34x_3,\ \ldots
+\]
+The author re-derived $L$, $D$ and the identity with sympy: $LDL^{\mathsf T}=E_8$ exactly,
+the expanded difference $x^{\mathsf T}E_8x-\sum_kD_ky_k^2$ is the zero polynomial in eight
+variables, and the first four $y_k$ agree with the \texttt{set} lines of the Lean proof
+\source{E8PosDef.lean, ll.~172--175}. Every $D_k>0$, so the sum is $\ge0$ and vanishes only
+if all $y_k=0$; back-substitution through the unit-triangular $L^{\mathsf T}$ then forces
+$x=0$. Why did the route matter? The first formulation asked the kernel to multiply three
+$8\times8$ matrices symbolically and compare 64 entries \emph{inside} a positivity argument;
+the second isolates the 64-entry check as its own concrete lemma \lean{e8\_LDL}
+(\lean{fin\_cases} on both indices, then \lean{simp} and \lean{ring}
+\source{E8PosDef.lean, ll.~108--112}) and leaves the positivity argument a polynomial
+identity that \lean{ring} verifies without unfolding any matrix. That is the concrete/symbolic
+split of \cref{sec:pipeline:split} applied inside a single proof.
+\end{example}
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:pipeline:machine}
+
+The pipeline itself is not a theorem. The tier assignments, the wall-clock numbers, the
+count "18/18 roadmap items, 99/99 goals" are an experimental log, reproducible from
+\texttt{docs/STREAM2\allowbreak\_WORKFLOW.md} and \texttt{LL.md} but not kernel-checked; nothing in
+this chapter is \TA\ \emph{as a claim about the pipeline}. What is \TA\ are the two
+theorems this chapter has followed most closely, one from each end of the tier ladder: the
+dual-scale bound, escalated all the way to T1, and the \(E_8\) positivity route of
+\cref{ex:pipeline:e8}, whose second formulation is what let T1 close in minutes rather than
+time out.
+
+\begin{leanbox}[The dual-scale bound, produced by the process of \cref{sec:pipeline:results}]
+\begin{leancode}
+noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ :=
+  (genMetric G 0).trace
+theorem dualScale_ge (G : Matrix (Fin d) (Fin d) ℝ) (hG : G.PosDef) :
+    (2 * d : ℝ) ≤ dualScale G := by ...
+theorem dualScale_one : dualScale (1 : Matrix (Fin d) (Fin d) ℝ) = 2 * d := by ...
+theorem dualScale_circle (R : ℝ) (hR : R ≠ 0) :
+    dualScale (!![R ^ 2] : Matrix (Fin 1) (Fin 1) ℝ) = (R + R⁻¹) ^ 2 - 2 := by ...
+\end{leancode}
+\textbf{Reading.} For every positive-definite $d\times d$ metric $G$, $\Tr G+\Tr G^{-1}\ge
+2d$, with equality at the self-dual point $G=1$; on one circle this is $(R+1/R)^2-2$,
+recovering \cref{ch:circle}'s $R+1/R\ge2$ after the shift by $-2$. \textbf{Proof idea.}
+$\Tr\bigl((G-1)G^{-1}(G-1)\bigr)\ge0$ because it is a trace of the form $M^{\mathsf T}PM$
+with $P=G^{-1}$ positive-semidefinite; expanding that same trace with $G^{-1}G=GG^{-1}=1$
+gives exactly $\Tr G+\Tr G^{-1}-2d$ \source{TraceBound.lean, ll.~105--143}. No eigenvalue
+of $G$ is ever computed, which is why the statement is genuinely $d$-independent and why
+T1 closed it in about six minutes once given this route \source{STREAM2\allowbreak\_WORKFLOW.md §6,
+final gate}. \textbf{Not proved.} That $G=1$ is the \emph{only} minimizer up to
+$O(d)$-conjugation (\cref{ex:open:dualscale-unique} of \cref{ch:open}); the physical
+reading of $\mathcal D(G)$ as a minimal length is \TC. \TA
+\end{leanbox}
+
+\begin{leanbox}[Route choice, not tier, closed $E_8$ positivity]
+\begin{leancode}
+theorem e8_LDL : e8L * e8D * e8Lᵀ = cartanE8R := by ...
+theorem cartanE8_posDef : cartanE8R.PosDef := by ...
+\end{leancode}
+\textbf{Reading.} The $E_8$ Cartan matrix is positive definite. \textbf{Proof idea.} An
+explicit $LDL^{\mathsf T}$ decomposition with rational pivots turns the quadratic form into
+$\sum_k D_k y_k^2$ with every $D_k>0$; \lean{ring} then verifies the polynomial identity
+without ever unfolding an $8\times8$ product \source{LL.md §S2.7, ll.~70--72}.
+\textbf{Not proved.} That every even unimodular positive- or negative-definite lattice of
+rank 8 is isometric to $E_8$ (the classification fact motivating why this matrix was worth
+proving positive-definite in the first place) — a literature fact (\TL, Serre, quoted at
+\cref{ch:lattices}), not re-derived here. \TA
+\end{leanbox}
+
+\begin{center}\small
+\begin{tabular}{@{}p{6.3cm}cp{6.5cm}@{}}\toprule
+Claim & Tier & Where \\ \midrule
+The 99 theorems of \lean{DualScaleStream2}, as stated & \TA & \texttt{lake build}
+  3670 jobs, 0 \lean{sorry}; \texttt{axiom\_audit.py} 99/99, axioms \lean{propext},
+  \lean{Classical.choice}, \lean{Quot.sound} only \\
+"18/18 roadmap items, 99/99 designed goals" & --- & an experimental tally, reproducible
+  from \texttt{docs/STREAM2\allowbreak\_WORKFLOW.md}, not a theorem \\
+Per-tier closure rates and wall-clock hours & --- & measured this run only; a different
+  goal mix or model version would change them \\
+That route choice matters more than tier choice & \TC & an engineering judgement of this
+  programme, argued from the single case of \cref{ex:pipeline:e8} \\
+\bottomrule\end{tabular}
+\end{center}
+
+\begin{summarybox}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item Four tiers, escalated only on failure: T3 a local 7B prover (concrete, closed goals),
+  T2 a cheap hosted model (short symbolic algebra), T1 a capable hosted model (anything
+  with inverses, positivity, or a free variable $n$), T0 a human or orchestrator review.
+\item Design the statement, pre-verify its convention in sympy, and lock it
+  (\cref{sec:pipeline:sympy}) \emph{before} any proof search begins; this run interleaved
+  the two and paid for it in re-locks (LL.md §S2-I item 1).
+\item Never trust a report of "0 errors" or "solved": two Haiku reports this run misstated
+  compile status, caught only because the orchestrator recompiled every claim
+  (\cref{sec:pipeline:misreport}) --- producer $\ne$ verifier.
+\item \texttt{lake env lean} silently uses a stricter heartbeat budget than \texttt{lake build};
+  an agent can correctly abandon a goal that the real gate would have accepted
+  (\cref{sec:pipeline:heartbeat}).
+\item Bound agents by wall-clock, not attempt count: unbounded Haiku agents ran for hours
+  on goals Sonnet closed in minutes once the route was right
+  (\cref{sec:pipeline:wallclock,sec:pipeline:route}).
+\item A green build and zero \lean{sorry} are not the whole gate: axiom audit and statement
+  lock catch what a naive grep misses (\cref{sec:pipeline:table}).
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+
+\begin{exercise}[$\star$]
+State, in one sentence each, the four tiers of \cref{sec:pipeline:tiers} and the one
+condition that sends a goal to the next tier. Which tier would you assign
+\lean{hyperbolicU\_unimodular} (\cref{ch:lattices}), and which would you assign a general
+proof that $\Odd{d}$ is generated by reflections and $\SLZ$ for every $d$?
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Re-derive by hand, or with sympy, the eight $LDL^{\mathsf T}$ pivots of
+\cref{ex:pipeline:e8} from the $E_8$ Cartan matrix of \cref{ch:lattices}, and check that
+their product equals $\det E_8=1$.
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Read \texttt{docs/STREAM2\allowbreak\_WORKFLOW.md §6} and reproduce the final tally --- 99 theorems,
+0 failing axiom audit --- against \texttt{papers/book/generated/atlas.md}'s
+per-library count for \lean{DualScaleStream2}. Do the two independent counts agree?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+\cref{sec:pipeline:heartbeat} reports that \texttt{lake env lean} ignores
+\texttt{maxHeartbeats} set in \texttt{lakefile.lean}. Run a single-file compile of a slow
+goal both with and without the flags \lean{-DmaxHeartbeats=\allowbreak 1000000
+-DmaxRecDepth=\allowbreak 8000} and record the two heartbeat counts Lean reports on
+timeout. Why does this asymmetry make a \emph{false abandon} more likely than a
+\emph{false accept}?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+The $E_8$ example replaced a 64-entry matrix product inside a positivity argument by a
+polynomial identity in eight free variables. Try the naive route yourself: state
+\lean{cartanE8\_posDef} and attempt it with \lean{decide} after unfolding
+\lean{Matrix.PosDef} directly (no $LDL^{\mathsf T}$). Where, concretely, does the naive
+proof stall?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+\cref{sec:pipeline:misreport} describes a Haiku report that claimed "no compilation
+errors" while three errors remained. Propose one line to add to every proving prompt that
+would make such a report harder to produce by accident (not by the agent lying, but by an
+ambiguous instruction), and explain the failure mode it targets.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{ex:pipeline:iff}
+The pitfall box of \cref{sec:pipeline:design} records that this run caught a docstring
+that had drifted from "if" to "iff" \source{LL.md §S2.13, ll.~109--112}. Pick three
+theorems cited in this book whose plain-language "Reading" states an implication, grep
+their statements for a genuine \lean{Iff} (or a proof structured as \lean{constructor}
+into two directions), and confirm the prose does not silently claim more than the
+statement. Report any mismatch you find, however small, as precisely as the pitfall box
+does.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{ex:pipeline:logging}
+\cref{sec:pipeline:results} notes that the local prover's log recorded every T3 attempt
+but the run's T2 and T1 attempts were not logged in the same structured way, a gap the
+text flags as one the next run should close. Extend \texttt{tools/prover\_loop.py} (or
+write a thin wrapper around a hosted-model call) so that every attempt at every tier
+writes one line with at least: goal name, tier, model, wall-clock time, and kernel
+verdict. Re-derive the P2.1 table's closure counts (\cref{sec:pipeline:results}) from your
+log format alone, without consulting the chapter text, and check they agree.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]
+Using \texttt{tools/prover\_loop.py} and a small goal set of your own (five to ten
+concrete \lean{decide}-able lemmas), reproduce the T3 tier of this pipeline against a
+local prover model. Record closure rate and wall-clock time, and compare them to the
+P2.1--P2.6 rows of \cref{sec:pipeline:results}. Does a different goal mix change which
+tier dominates?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]
+Design one new statement for a fact not yet in \lean{DualScaleStream2} (see
+\cref{ch:open} for candidates), pre-verify its convention symbolically, lock it with
+\texttt{tools/statement\_\allowbreak lock.py}, and route it through the tiers of this
+chapter by hand. Report which tier closed it and whether the routing rule of
+\cref{sec:pipeline:routing} predicted that correctly in advance.
+\end{exercise}
+
+\section*{Further reading}
+
+The full log is the workflow document cited throughout this chapter as
+\texttt{STREAM2\allowbreak\_WORKFLOW.md}. The lessons distilled from it are
+\texttt{LL.md §S2.1--§S2.13} (this run) and
+\texttt{§S2-I} (what to change next, read in full at \cref{ch:open}). The tools
+referenced in this chapter:
+\texttt{tools/prover\_loop.py} (T3), \texttt{tools/axiom\_audit.py} (the axiom gate),
+\texttt{tools/statement\_lock.py} (the comment-insensitive lock), and
+\texttt{tools/gate.sh} proposed in \texttt{LL.md §S2-I} item 4 to wrap all of them in one
+script. For the mathematics produced by this process: \cref{ch:lattices,ch:dualscale} and
+the final tally of \cref{sec:pipeline:results}. For what the atlas found once the library
+was built --- including the duplication this pipeline's problem-by-problem structure
+tends to produce --- \cref{ch:atlas}.

@@ -1,0 +1,950 @@
+\chapter{Architecture of the Formalization}\label{ch:architecture}
+
+\Cref{ch:leanprimer} taught the student to read a single Lean statement. This chapter
+answers the next question: \emph{where do the statements quoted in this book live, how are
+they organized, how much of the physics do they really capture, and what has to happen before
+a theorem is allowed to carry the badge \TA?} The answer is an inventory and a procedure. The
+inventory is a single Lake project containing seven libraries, five of them written without
+Mathlib and two on top of it, whose compiled theorems number $326+99=425$ at the audit of
+2026-09-17. The procedure is a chain of gates---build, \lean{sorry} count, axiom audit,
+statement lock, and the rule that whoever produced a proof never grades it---each of which
+exists because of a specific failure the project recorded. A student should care for two
+reasons. First, the honest reading of any theorem in this book depends on knowing which
+library it comes from: the older libraries model physical quantities by integers and prove
+arithmetic consequences, while the newest one proves statements about real matrices of every
+size. Second, the gates are the answer to the question every physicist asks of a proof
+assistant---``if the machine checked it, what exactly can still go wrong?''---and the answer
+is more interesting than ``nothing''.
+
+%=====================================================================================
+\section{One project, seven libraries}\label{sec:architecture:libraries}
+
+A Lean 4 project is described by a file \lean{lakefile.lean}\index{lakefile}, read by the
+build tool Lake. The project's file declares one package, pins one external dependency, and
+registers seven libraries \source{lakefile.lean, ll.~1--53}. Three facts from that file
+matter for everything that follows.
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \textbf{The toolchain and Mathlib are pinned to the same tag.} The project uses Lean
+  \lean{v4.33.1} and requires Mathlib at the git tag \lean{v4.33.1}, whose own
+  \lean{lean-toolchain} file names exactly that compiler \source{lakefile.lean,
+  ll.~12--17}. The comment in the file records why this is not pedantry: an earlier
+  document had pinned a commit belonging to the \lean{v4.33.0} tag, which would have
+  produced a cache of compiled Mathlib files unusable by the project's compiler. A
+  formalization is reproducible only if the reader can rebuild it, and rebuilding Mathlib
+  from source takes hours; the pin is what makes the pre-built cache usable.
+\item \textbf{Two compiler limits are raised.} The package sets \lean{maxHeartbeats} to
+  $10^6$ (the default is $2\times10^5$) and \lean{maxRecDepth} to $8000$
+  \source{lakefile.lean, ll.~6--10}. Heartbeats are Lean's unit of elaboration work; a proof
+  that exceeds the budget is rejected with a timeout, not accepted. \Cref{sec:architecture:gates}
+  returns to a consequence of this setting that cost the project several hours.
+\item \textbf{Five libraries are default targets; two are not.} A plain \lean{lake build}
+  compiles the five libraries in the upper rows of \cref{tab:architecture:libraries}, none
+  of which imports Mathlib \source{lakefile.lean, ll.~19--39}. The Mathlib-based libraries
+  \lean{StringTheoryFormalization} and \lean{DualScaleStream2} must be named explicitly,
+  as in \lean{lake build} \lean{DualScaleStream2}. This is by design: the file says the
+  second was kept off the default list ``so a Stream 2 failure never turns the green
+  Stream 1 core red'' \source{lakefile.lean, ll.~41--53}.
+\end{enumerate}
+
+\Cref{tab:architecture:libraries} lists the seven libraries with the numbers that the
+project's own audit reports. The theorem counts are those of \lean{tools/axiom\_audit.py}
+run on 2026-09-17, quoted from the revision brief \source{PAPER\_REVISION\_BRIEF §1,
+ll.~25--35}; the module counts are the number of \lean{.lean} files imported by each
+library's root file, counted by the author of this chapter on the same checkout.
+
+\begin{table}[ht]\centering\small
+\caption{The seven libraries. ``Mathlib'' says whether any module imports Mathlib.
+``Imports'' lists the other project libraries the library depends on. Theorem counts are
+the audited \lean{theorem}/\lean{lemma} declarations \source{PAPER\_REVISION\_BRIEF §1,
+ll.~25--35}.}\label{tab:architecture:libraries}
+\begin{tabular}{@{}lccc>{\raggedright\arraybackslash}p{4.6cm}@{}}\toprule
+Library & Modules & Theorems & Mathlib & Imports (project libraries) \\ \midrule
+\lean{StringTheoryFoundation}    & 16 & 56 & no  & --- \\
+\lean{DualScaleM24Formalization} & 11 & 61 & no  & --- \\
+\lean{DoubleFieldTheory}         & 7  & 44 & no  & --- \\
+\lean{DualScaleValidation}       & 4  & 23 & no  & \lean{DoubleFieldTheory}, \lean{DualScaleM24Formalization} \\
+\lean{Lean5Corpus}               & 12 & 53 & no  & the three above and \lean{StringTheoryFoundation} \\
+\lean{StringTheoryFormalization} & 35 & 89 & yes & \lean{StringTheoryFoundation} \\
+\lean{DualScaleStream2}          & 19 & 99 & yes & \lean{StringTheoryFormalization} \\ \midrule
+Stream 1 (first six)             & 85 & 326 & & 3353 build jobs \\
+Stream 2 (last)                  & 19 & 99  & & 3670 build jobs \\
+\bottomrule\end{tabular}
+\end{table}
+
+The words \emph{Stream 1} and \emph{Stream 2}\index{Stream 1, Stream 2} are the project's
+names for the two generations of the corpus: Stream 1 is everything that existed before
+2026-09-16, re-gated in the same session; Stream 2 is the library \lean{DualScaleStream2} written
+during the tiered proving run of 2026-09-16/17 described in \cref{ch:pipeline}
+\source{STREAM2\_WORKFLOW.md §1, ll.~7--18}. The job counts are what Lake reports when it
+compiles a target together with everything it depends on; the 3670 jobs of Stream 2 include
+the parts of Mathlib it imports, which is why a nineteen-module library needs more jobs than
+the eighty-five modules of Stream 1.
+
+\begin{figure}[ht]\centering
+\begin{tikzpicture}[
+  lib/.style={draw,rounded corners=2pt,minimum height=7mm,inner sep=4pt,font=\small\ttfamily,align=center},
+  core/.style={lib,fill=green!8,draw=tierA},
+  ml/.style={lib,fill=blue!6,draw=blue!45!black},
+  ext/.style={lib,fill=black!6,draw=black!55,font=\small\sffamily},
+  imp/.style={-{Stealth[length=2mm]},thick}]
+  \node[core] (STF)  at (0,4.2)   {StringTheoryFoundation\\[-2pt]{\scriptsize\sffamily 16 modules, 56 thm}};
+  \node[core] (DSM)  at (5.2,4.2) {DualScaleM24Formalization\\[-2pt]{\scriptsize\sffamily 11, 61}};
+  \node[core] (DFT)  at (10.2,4.2){DoubleFieldTheory\\[-2pt]{\scriptsize\sffamily 7, 44}};
+  \node[core] (DSV)  at (7.7,2.4) {DualScaleValidation\\[-2pt]{\scriptsize\sffamily 4, 23}};
+  \node[core] (L5C)  at (3.6,2.4) {Lean5Corpus\\[-2pt]{\scriptsize\sffamily 12, 53}};
+  \node[ml]   (STFo) at (0,0.6)   {StringTheoryFormalization\\[-2pt]{\scriptsize\sffamily 35, 89}};
+  \node[ml]   (DSS2) at (5.2,0.6) {DualScaleStream2\\[-2pt]{\scriptsize\sffamily 19, 99}};
+  \node[ext]  (MLB)  at (10.2,0.6){Mathlib v4.33.1};
+  \draw[imp] (DSV) -- (DFT);  \draw[imp] (DSV) -- (DSM);
+  \draw[imp] (L5C) -- (DSV);  \draw[imp] (L5C) -- (STF); \draw[imp] (L5C) to[bend right=12] (DFT);
+  \draw[imp] (STFo) -- (STF); \draw[imp] (STFo) -- (MLB);
+  \draw[imp] (DSS2) -- (STFo); \draw[imp] (DSS2) -- (MLB);
+  \draw[dashed,black!60] (-2.2,1.55) -- (12.2,1.55);
+  \node[font=\scriptsize\sffamily,anchor=west,black!70] at (-2.2,1.85) {Mathlib-free core (default targets)};
+  \node[font=\scriptsize\sffamily,anchor=west,black!70] at (-2.2,1.25) {Mathlib-based (built by name)};
+\end{tikzpicture}
+\caption{Import structure of the seven libraries. An arrow $A\to B$ means some module of
+$A$ imports a module of $B$. Above the dashed line nothing imports Mathlib; the two
+libraries below it do. \lean{DualScaleStream2} imports five modules of
+\lean{StringTheoryFormalization} and nothing else in the project; no library imports
+\lean{DualScaleStream2}.}\label{fig:architecture:imports}
+\end{figure}
+
+\Cref{fig:architecture:imports} shows the import graph, obtained by grepping every
+\lean{import} line in the checkout. Two features deserve comment. The three libraries in the
+top row import nothing but themselves: each is self-contained, which is why they could be
+written before Mathlib was available to the project at all. The Mathlib-based libraries form
+a chain: \lean{DualScaleStream2} imports exactly five modules of
+\lean{StringTheoryFormalization} (the circle mass spectrum, the Hodge numbers, the Narain
+lattice, the K3 signature theorem and the $M_{24}$ table), which in turn imports three
+modules of \lean{StringTheoryFoundation}. The workflow document states the
+design rule behind the chain: ``Stream 2 lives in \lean{DualScaleStream2}, imports Stream 1,
+never the reverse; Stream 1's green core cannot be turned red by Stream 2 work''
+\source{STREAM2\_WORKFLOW.md §2, ll.~32--33}. The rule is enforced by the import direction
+itself: a broken file in \lean{DualScaleStream2} cannot stop any other library from
+compiling, because nothing depends on it.
+
+\begin{physicsbox}[Why cross-library imports are the interesting ones]
+An import from \lean{DualScaleStream2} into Stream 1 is not bookkeeping; it is a theorem
+that two independently written pieces of mathematics agree. The module
+\lean{DFT/GeneralizedMetric.lean} imports Stream 1's \lean{TDualityMassSpectrum} in order to
+prove that the doubled mass form $Z^{\mathsf T}\HH Z$ on a circle equals half of Stream 1's
+$P_L^2+P_R^2$ (\cref{ch:genmetric}); \lean{Lattice/Hyperbolic.lean} imports
+\lean{NarainLattice} to prove that Stream 2's hyperbolic plane $U$ is \emph{equal} to Stream
+1's Narain Gram matrix; \lean{Lattice/K3T2Signature.lean} imports \lean{K3SignatureTheorem}
+to prove that the lattice signature $(3,19)$ agrees with the Hodge-theoretic
+$(2h^{2,0}+1,\,h^{1,1}-1)$ \source{PAPER\_REVISION\_BRIEF §3.1, ll.~78--84}. Each such
+theorem is a consistency check between two formalizations of the same physics, checked by
+the kernel. A physicist would call them cross-calibrations.
+\end{physicsbox}
+
+%=====================================================================================
+\section{What each library contains}\label{sec:architecture:contents}
+
+The following inventory names each library's modules and says, in one or two sentences,
+what kind of mathematics each contains. It is deliberately flat: the depth of the
+statements, which is what determines how a theorem may be quoted, is the subject of
+\cref{sec:architecture:depth}.
+
+\paragraph{\lean{StringTheoryFoundation} (16 modules, 56 theorems).} The oldest library.
+Its modules are grouped by physical topic---\lean{Core/Topology} (Euler characteristics of
+$K3$ and $T^2$ from Betti-number records), \lean{Duality/T\_Duality} (the exchange
+$(n,w)\mapsto(w,n)$ of integer quantum numbers as an involution), \lean{Duality/DualScale}
+(dual length pairs as integer relations), \lean{K3/K3Surfaces} (Betti numbers),
+\lean{StringTheory/K3xT2}, \lean{StromingerSYZ}, \lean{Swampland}, \lean{VafaSwampland},
+\lean{TadpoleCancellation}, \lean{WittenDuality}---together with four modules named after
+external formalizations (Navier--Stokes, Fermat and modular forms, statistical learning,
+ATLAS geometry; listed and described in \cref{sec:architecture:bridges}) and two
+physics-library bridges (\lean{PhysLibKinematicsBridge}, \lean{TensorNetworkBridge}).
+
+\paragraph{\lean{DualScaleM24Formalization} (11 modules, 61 theorems).} The library of the
+programme's own claims: \lean{DualScale/EffectiveMetric} (the effective scale
+$R+\ap/R$ and its lower bound, \cref{ch:dualscale}), \lean{DualScale/Sym2Lock},
+\lean{Moonshine/MathieuRigidity} (the ratio $77/60$ and the identity $462\cdot60=360\cdot77=27720$,
+\cref{ch:moonshine}), \lean{Moonshine/KummerTadpole}, \lean{Moonshine/GysinBEMSequence}, the
+four \lean{FrontierTriad} modules (\cref{ch:triad}), and the two \lean{Epistemic} modules,
+\lean{Tier} and \lean{Ledger}, which formalize the tier system itself and are the subject
+of \cref{sec:architecture:epistemic}.
+
+\paragraph{\lean{DoubleFieldTheory} (7 modules, 44 theorems).} Integer-valued
+$2\times2$ matrix models of the DFT objects of \cref{ch:doubled,ch:genmetric,ch:courant,ch:dftaction}:
+\lean{GeneralizedGeometry} (a structure \lean{Mat2} with four integer entries, the pairing
+$\eta$, a $B$-twist, a generalized metric), \lean{CourantAlgebroid}, \lean{ActionCurvature},
+\lean{TDualityBuscher}, \lean{K3Topology}, \lean{TorusMoonshine} and a \lean{PhysicsDSL}.
+
+\paragraph{\lean{DualScaleValidation} (4 modules, 23 theorems).} Three ``use case''
+modules and an \lean{Observables} module of exact rational identities and window
+inequalities. The module header of \lean{Observables} is unusually explicit about its own
+scope: ``Tier A for its arithmetic only \ldots\ not a derivation of any physical observable
+from first principles'', with the numerical relations labelled Tier C
+\source{Observables.lean, ll.~9--24}. \Cref{sec:architecture:epistemic} returns to the
+lesson in that header.
+
+\paragraph{\lean{Lean5Corpus} (12 modules, 53 theorems).} A \lean{Foundations/Narrative}
+module and eleven \lean{Problems/Problem$k$} modules, one per named problem (Navier--Stokes
+helicity, Mathieu--Frobenius rigidity, dual-scale TCC, Mukai monodromy, Kolmogorov cascade,
+flux swampland, Courant torsion, Golay holography, Kummer modularity, SYM instanton,
+entanglement entropy). It imports the three libraries above and \lean{StringTheoryFoundation}
+and is the only library that ties the Mathlib-free core together.
+
+\paragraph{\lean{StringTheoryFormalization} (35 modules, 89 theorems).} The first
+Mathlib-based library. Its \lean{Frontier} modules (central charge, chiral primaries,
+Hodge numbers, moduli geodesics, $SL(2,\C)$ symmetry, F-term potential), its
+\lean{StringDynamics} modules (Kummer blow-up, tadpole constraint, the $M_{24}$ table,
+BPS multiplicities, Mukai lattice, T-duality Gysin, vertex operators, and several numerical
+or search-related modules), its five \lean{UseCases} (critical dimension, K3 signature,
+Mathieu tower, Narain lattice, T-duality mass spectrum) and its \lean{NSMath} modules
+(fractional Sobolev spaces, Fourier multipliers, mild PDEs, energy bounds). Several of its
+theorems are quoted in earlier chapters, for instance the circle mass spectrum of
+\cref{ch:tduality} and the Narain Gram matrix of \cref{ch:narain}. Its header history is
+instructive: the library ``had 8 real build failures despite being self-documented as
+26--28/30 modules, complete'' when the checkout was rebuilt on 2026-09-16
+\source{LL.md §0, ll.~148--155}.
+
+\paragraph{\lean{DualScaleStream2} (19 modules, 99 theorems).} The library written by the
+tiered pipeline, in six groups that mirror the workflow's phases \source{STREAM2\_WORKFLOW.md
+§5, ll.~67--76}: \lean{Lattice} (\lean{Basic}, \lean{E8}, \lean{E8PosDef}, \lean{Hyperbolic},
+\lean{K3T2Signature}, \lean{Mukai}, \lean{Reflection}; \cref{ch:lattices,ch:k3lattice,ch:mukai}),
+\lean{TDuality} (\lean{ODD}, \lean{Factorized}, \lean{Spectrum}, \lean{Mirror},
+\lean{SL2Product}; \cref{ch:odd,ch:torus2}), \lean{DFT} (\lean{GeneralizedMetric},
+\lean{BShift}, \lean{SectionCondition}; \cref{ch:genmetric,ch:doubled}),
+\lean{DualScale/TraceBound} (\cref{ch:dualscale}), \lean{Flux} (\lean{Tadpole},
+\lean{Integrality}; \cref{ch:tadpole}) and \lean{Moonshine/EOT} (\cref{ch:moonshine}). Every
+module header states the physical background, the pinned literature sources with line
+numbers, what is not proved, and the proof techniques used.
+
+%=====================================================================================
+\section{Depth: arithmetic shadows and faithful linear algebra}\label{sec:architecture:depth}
+
+Two libraries in the project both contain a theorem that ``the generalized metric satisfies
+$\HH\eta\HH=\eta$''. Read side by side, they show exactly what the phrase \emph{arithmetic
+shadow}\index{arithmetic shadow} means in this book, and why the library a theorem comes
+from changes how it may be quoted.
+
+In \lean{DoubleFieldTheory/GeneralizedGeometry.lean} the generalized metric is a
+$2\times2$ matrix with integer entries, built from an integer $g$ and an integer standing for
+$g^{-1}$ \source{DoubleFieldTheory/GeneralizedGeometry.lean, ll.~189--209}:
+\begin{leancode}
+def GenMetric (g : Int) (ginv : Int) : Mat2 :=
+  { a := g, b := 0, c := 0, d := ginv }
+theorem gen_metric_symmetric (g ginv : Int) :
+    (GenMetric g ginv).b = (GenMetric g ginv).c := by rfl
+theorem gen_metric_duality (g : Int) (h : g = 1) :
+    MatMul (GenMetric g g) (MatMul ODD_Eta (GenMetric g g)) = ODD_Eta := by ...
+\end{leancode}
+Read literally: \lean{GenMetric g ginv} is the diagonal matrix $\diag(g,g^{-1})$ with the
+inverse supplied by hand, and the ``duality'' theorem says that $\HH\eta\HH=\eta$ holds for
+$\HH=\diag(1,1)$, under the hypothesis $g=1$. Both proofs are \lean{rfl}: the statements
+are true by computation on literals. This is the $d=1$, $B=0$, self-dual-radius corner of
+the physics, and only that corner. It is a correct theorem, and it is Tier A, but it is a
+theorem about the integer $1$.
+
+In \lean{DualScaleStream2/DFT/GeneralizedMetric.lean} the same object is a block matrix
+over $\R$ of size $2d\times2d$ for every $d$, built from an arbitrary $G$ and $B$
+\source{DFT/GeneralizedMetric.lean, ll.~91--92, 103--104}:
+\begin{leancode}
+noncomputable def genMetric (G B : Matrix (Fin d) (Fin d) ℝ) :
+    Matrix (Charge d) (Charge d) ℝ :=
+  fromBlocks (G - B * G⁻¹ * B) (B * G⁻¹) (-(G⁻¹ * B)) G⁻¹
+theorem etaR_genMetric_sq (G B : Matrix (Fin d) (Fin d) ℝ) (hG : IsUnit G.det) :
+    (etaR d * genMetric G B) * (etaR d * genMetric G B) = 1 := by ...
+\end{leancode}
+Here $G^{-1}$ is Mathlib's matrix inverse, the hypothesis is that $G$ is invertible, $B$ is
+arbitrary, and the conclusion $(\eta\HH)^2=1$ is equivalent to $\HH\eta\HH=\eta$ because
+$\eta^2=1$. This is the statement a physicist means (\cref{ch:genmetric}): it covers every
+torus dimension, every metric and every $B$-field. The proof is genuine block-matrix
+algebra with inverses, and it needed the most capable model tier in the pipeline
+\source{STREAM2\_WORKFLOW.md §6, ll.~136--143}.
+
+\begin{definition}[Arithmetic shadow]\label{def:architecture:shadow}
+A Lean theorem is an \emph{arithmetic shadow} of a physical statement when its objects are
+integers, rationals or fixed small matrices standing in for the physical quantities, so that
+the theorem is a numerical instance or a consistency check of the physical statement rather
+than the statement itself. Five of the seven libraries---\lean{DoubleFieldTheory},
+\lean{StringTheoryFoundation}, \lean{DualScaleM24Formalization}, \lean{Lean5Corpus},
+\lean{DualScaleValidation}---consist mostly of shadows in this sense; this is how the book's
+bible instructs authors to describe them.
+\end{definition}
+
+A shadow is not worthless. The identity $\chi(K3)=1-0+22-0+1=24$ is a shadow of the
+Betti-number computation, and it is exactly the arithmetic a student does on paper. The
+Burnside check $\sum_i \dim(\rho_i)^2 = |M_{24}| = 244\,823\,040$ over the 26 irreducible
+dimensions is a shadow, and it caught a wrong table that had been in the repository for
+months (\cref{sec:architecture:gates}). What a shadow cannot do is stand in for the general
+theorem. To turn \lean{gen\_metric\_duality} into \lean{etaR\_genMetric\_sq} one needs, in
+order: a type of $d\times d$ real matrices with a genuine inverse (Mathlib's
+\lean{Matrix.nonsing\_inv}), block matrices (\lean{Matrix.fromBlocks}), the invertibility
+hypothesis in place of $g=1$, and a proof that is a computation with the algebraic laws of
+inverses rather than a computation on literals. That is precisely the gap Mathlib fills, and
+it is why the two Mathlib-based libraries are where the faithful statements live.
+
+\begin{pitfallbox}[A theorem about a fixed matrix is not a theorem about all lattices]
+The temptation runs the other way too. \lean{DualScaleStream2/Lattice/E8.lean} proves that
+one explicit $8\times8$ integer matrix is symmetric, even and unimodular; it does not prove
+that ``the $E_8$ lattice'' has these properties, because no lattice, no basis change and no
+isomorphism appears in the file (\cref{ch:lattices}). Similarly the signature arithmetic in
+\lean{K3T2Signature} adds up signatures of named summands; that $H^2(K3,\Z)$ \emph{is}
+$E_8(-1)^{\oplus2}\oplus U^{\oplus3}$ is Tier L, pinned to Huybrechts
+\source{PAPER\_REVISION\_BRIEF §3.1, ll.~81--87}. The rule of thumb: the tier badge attaches
+to the Lean statement as written, and the physical name in the docstring is a promise the
+kernel never checked.
+\end{pitfallbox}
+
+\begin{example}[Reading the depth of a statement]\label{ex:architecture:depth}
+A student wants to cite ``the $E_8$ Cartan matrix is positive definite'' with a Tier A
+badge. She finds three candidate statements. (i) \lean{cartanE8\_det} in
+\lean{DualScaleStream2/Lattice/E8PosDef.lean}, which says that the integer determinant of
+the explicit matrix is $1$. (ii) \lean{cartanE8\_posDef} in the same file, whose statement is
+Mathlib's \lean{Matrix.PosDef} predicate applied to the explicit matrix over $\R$, proved
+through the sum-of-squares identity $x^{\mathsf T}E_8x=\sum_k D_k y_k^2$ with pivots
+$2,\tfrac32,\tfrac43,\ldots,\tfrac18$ \source{PAPER\_REVISION\_BRIEF §3.1, ll.~75--77}.
+(iii) A sympy script that computes the eigenvalues. Only (ii) is the Tier A statement she
+wants; (i) is a shadow of $\det E_8=1$, which does not imply positive definiteness; (iii) is
+a symbolic check and by the book's rules is never Tier A. The product of the pivots is
+$2\cdot\tfrac32\cdot\tfrac43\cdot\tfrac54\cdot\tfrac65\cdot\tfrac76\cdot\tfrac87\cdot\tfrac18
+= 8\cdot\tfrac18 = 1$, which is the determinant---a two-line check the student can do herself
+before trusting the file.
+\end{example}
+
+%=====================================================================================
+\section{The peripheral bridge modules}\label{sec:architecture:bridges}
+
+Four modules of \lean{StringTheoryFoundation} carry the names of external formalization
+projects:
+\begin{itemize}[leftmargin=*,itemsep=0pt]
+\item \lean{FluidDynamics/NavierStokesBridge} (a Navier--Stokes formalization),
+\item \lean{ModularForms/FermatModularBridge} (a Fermat--modularity formalization),
+\item \lean{StatisticalLearning/StatisticalLearningBridge} (a statistical-learning library),
+\item \lean{Atlas/AtlasGeometryBridge} (an autoformalized textbook library).
+\end{itemize}
+The projects they name are vendored, read-only, as git submodules under
+\lean{lean4basesource/}. This section states what the four modules contain, because their
+names promise more than their code delivers and the project's own review says so in each
+file.
+
+Every one of the four carries a ``scope note'' inserted after review. The note in the
+Navier--Stokes module is representative: the file ``does \textbf{not} import anything from
+that project---check the \lean{import} lines above; there is only
+\lean{StringTheoryFoundation.Core.Topology}, this project's own file. The theorems below are
+self-contained \lean{Nat}/\lean{Int} arithmetic named after, and inspired by, the cited
+external work, not a machine-checked bridge to it'' \source{NavierStokesBridge.lean,
+ll.~40--47}. The Fermat and statistical-learning modules carry the same sentence
+\source{FermatModularBridge.lean, ll.~42--49; StatisticalLearningBridge.lean, ll.~40--44},
+and the Atlas module notes that it ``has \textbf{no} \lean{import} statement at all''
+\source{AtlasGeometryBridge.lean, ll.~15--21}. The workflow document records the technical
+reason no genuine bridge is possible at present: the external corpora are pinned to other
+Lean versions (\lean{atlas-lean} at v4.29.0, the Navier--Stokes project at v4.34.0-rc2) and
+``cannot be \lean{require}d at this project's v4.33.1 pin'' \source{STREAM2\_WORKFLOW.md §2,
+ll.~34--37}. \Cref{tab:architecture:bridges} lists what each module actually proves.
+
+\begin{table}[ht]\centering\small
+\caption{The four bridge modules and their theorems, read literally from the source. All are
+Tier A as arithmetic; none imports the external project it is named after.}
+\label{tab:architecture:bridges}
+\begin{tabular}{@{}p{3.8cm}>{\raggedright\arraybackslash}p{5.5cm}>{\raggedright\arraybackslash}p{5.2cm}@{}}\toprule
+Module & Theorems & What is literally proved \\ \midrule
+\lean{NavierStokesBridge} \newline\source{ll.~53--111} &
+\lean{zero\_mode\_laplacian}, \lean{fundamental\_mode\_positive},
+\lean{energy\_dissipation\_monotonic}, \lean{sound\_speed\_is\_luminal} &
+$0^2+0^2=0$ and $1^2+0^2=1$ for an integer wave-vector; $e-d\le e$ for natural numbers
+$e,d$ (truncated subtraction); $1/(2-1)=1$ in $\N$. \\[3pt]
+\lean{FermatModularBridge} \newline\source{ll.~60--113} &
+\lean{kummer\_fixed\_points\_dim4}, \lean{exceptional\_divisor\_cartan\_a1},
+\lean{mukai\_lattice\_rank\_equals\_24}, \lean{mukai\_signature\_difference} &
+$2^4=16$; the constant $-2$ equals $-2$; $1+22+1=24$; $4-20=-16$. \\[3pt]
+\lean{Statistical}\allowbreak\lean{LearningBridge} \newline\source{ll.~46--81} &
+\lean{zero\_empirical\_risk\_}\allowbreak\lean{on\_perfect\_proofs},
+\lean{rademacher\_bound\_positive} &
+$(n-n)\cdot10^4/n=0$ for $n>0$; $2k>0$ for $k>0$. \\[3pt]
+\lean{AtlasGeometryBridge} \newline\source{ll.~23--78} &
+\lean{atlas\_k3\_euler\_}\allowbreak\lean{characteristic}, \lean{atlas\_k3\_signature},
+\lean{atlas\_poincare\_}\allowbreak\lean{curvature\_negative} &
+$1-0+22-0+1=24$; $3-19=-16$; the constant $-1$ equals $-1$. \\
+\bottomrule\end{tabular}
+\end{table}
+
+Three of these facts are genuine, if elementary, shadows of physics the book has met:
+$\chi(K3)=24$ (\cref{ch:k3}), the signature $-16$ of the intersection form and $(4,20)$ of
+the Mukai lattice (\cref{ch:k3lattice,ch:mukai}), and the $16$ fixed points of the Kummer
+involution (\cref{ch:kummer}). The others are definitional restatements, and the files say
+so: the comment above \lean{exceptional\_divisor\_cartan\_a1} reads ``This is a definitional
+restatement, not a derivation; recorded for cross-reference from other modules rather than
+as an independent check'' \source{FermatModularBridge.lean, ll.~72--76}, and a theorem
+that had checked $24=24$ was removed \source{FermatModularBridge.lean, ll.~99--103}. The
+Navier--Stokes energy theorem once took $e_2\le e_1$ as a hypothesis and returned it as the
+conclusion; it now derives $e-d\le e$ from \lean{Nat.sub\_le}
+\source{NavierStokesBridge.lean, ll.~87--97}.
+
+The honest summary is the one the project's own review reached. These modules are
+\emph{documents of intent}: each header describes a real piece of mathematics (the
+fluid--gravity correspondence, the modularity theorem, PAC generalization bounds,
+autoformalized four-manifold topology) and a real external formalization, and each body
+proves a handful of integer identities that would survive in any faithful version. They are
+the smallest shadows in the corpus, they are counted among the 56 audited theorems of
+\lean{StringTheoryFoundation}, and no chapter of this book cites them as evidence for the
+physics in their headers. A faithful bridge would begin by importing the external
+declarations that the Navier--Stokes file's own ``verified pointer'' names
+\source{NavierStokesBridge.lean, ll.~48--51}, which the pinned toolchains currently forbid.
+
+%=====================================================================================
+\section{The gates}\label{sec:architecture:gates}
+
+A theorem enters this book with the badge \TA{} only after passing a fixed sequence of
+checks. The workflow document states the accept criterion in one sentence
+\source{STREAM2\_WORKFLOW.md §2, ll.~22--24}:
+\begin{quote}
+``A goal is closed when \lean{lake build} \lean{DualScaleStream2} is green, the
+zero-\lean{sorry} audit passes, and \lean{\#print axioms} shows only\\
+\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}. No \lean{native\_decide}.''
+\end{quote}
+The per-package pipeline names the gates G1--G4 \source{STREAM2\_WORKFLOW.md §4,
+ll.~52--65}; \cref{tab:architecture:gates} collects them with the failure each one was
+built to catch. We take them in order.
+
+\begin{table}[ht]\centering\small
+\caption{The gates, the tool that implements each, and the recorded failure that motivated
+it. Line references are to \lean{STREAM2\_WORKFLOW.md} (W) and \lean{LL.md} (L).}
+\label{tab:architecture:gates}
+\begin{tabular}{@{}p{2.6cm}p{4.2cm}p{7.6cm}@{}}\toprule
+Gate & Tool & Catches \ldots \\ \midrule
+Build (G1) & \lean{lake build <lib>} & files that do not elaborate; a self-reported
+``26--28/30 modules'' that was 8 real failures \source{L §0.2, ll.~168--177} \\[2pt]
+\lean{sorry} count & regex after stripping comments & goals left open; a report claiming ``5
+clean \lean{sorry}s'' that had 8 compile errors \source{W §6, ll.~153--157} \\[2pt]
+Statement review (G2) & a human or orchestrator reads each statement & mis-formalization,
+``the one step no kernel can check'' \source{W §4, l.~59} \\[2pt]
+Axiom audit (G3) & \lean{tools/axiom\_audit.py} & \lean{sorryAx} inherited through
+dependencies; \lean{native\_decide} in a ``clean'' library \source{L §S2.5, ll.~56--61} \\[2pt]
+Statement lock & \lean{tools/statement\_lock.py} & a statement weakened between review and
+proof \source{L §S2.10, ll.~87--92} \\[2pt]
+Producer $\ne$ verifier & the gate runs separately from the prover & agents misstating their
+own compile status \source{L §S2.3, ll.~39--45} \\[2pt]
+Record (G4) & declaration index, graph, ledger entry pinned to a commit hash & counts that
+drift from the code \source{W §4, l.~64} \\
+\bottomrule\end{tabular}
+\end{table}
+
+\subsection{Build and \lean{sorry} count}\label{sec:architecture:build}
+
+The build is the gate everyone expects, and the project's log shows why it must be re-run
+rather than believed. Lesson 0.2 of the log records that a library documented as complete
+had eight real failures once ``the full dependency chain was exercised'', and draws the
+general rule: ``after any claim of `X builds clean' from a document, memory note, or your own
+earlier turn \ldots\ re-run the actual build before trusting it'' \source{LL.md §0.2,
+ll.~168--177}. Lesson 0.3 adds a subtlety a student of any compiled language will
+recognize: fixing one file can \emph{unblock} elaboration of files that depend on it and so
+reveal failures that were always present but never reached, which is why the whole target
+must be rebuilt after every fix \source{LL.md §0.3, ll.~179--186}.
+
+The keyword \lean{sorry}\index{sorry@\lean{sorry}} closes any goal without a proof and makes
+Lean emit a warning; a library can build green with hundreds of them. The count is taken by
+a regular expression after stripping comments, so that a docstring mentioning the word does
+not count \source{tools/axiom\_audit.py, ll.~30--34}. A \lean{sorry} is not a defect during
+development---the pipeline of \cref{ch:pipeline} deliberately begins with statements whose
+proofs are \lean{sorry}---but the count must be zero at the gate, and the audit of the next
+subsection makes the count redundant by catching \lean{sorry} at the axiom level.
+
+\subsection{The axiom audit}\label{sec:architecture:axioms}
+
+The decisive check is \lean{\#print axioms}. Every Lean theorem, when printed this way,
+lists the axioms its proof term ultimately depends on. Three are standard and harmless
+(\cref{ch:leanprimer}): \lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}. Two
+others signal trouble. A theorem proved with \lean{sorry} depends on the axiom
+\lean{sorryAx}, and so does every theorem that uses it, however indirectly: the axiom
+propagates through the dependency graph, which a \lean{sorry} grep cannot follow. A theorem
+proved by \lean{native\_decide} depends on \lean{Lean.ofReduceBool}, an axiom asserting that
+the compiled evaluator agrees with the kernel; the kernel did not check the computation, the
+compiler did.
+
+The script \lean{tools/axiom\_audit.py} automates this over a whole library
+\source{tools/axiom\_audit.py, ll.~1--102}. Its logic is short enough to describe fully.
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item Collect every \lean{theorem}/\lean{lemma} name from the library's source files,
+  tracking \lean{namespace}/\lean{end} blocks to build the fully qualified name, after
+  stripping comments (ll.~30--49).
+\item Write a probe file that imports the built library and contains one
+  \lean{\#print axioms} line per name; run it with \lean{lake env lean} (ll.~62--67).
+\item If the probe itself fails to elaborate---typically because the library was not
+  rebuilt---exit with code 2 and the message \lean{AUDIT ERROR} (ll.~70--77). This clause
+  was added after an audit of a stale build reported ``89 theorems audited, 89 failing
+  (MISSING)'', which ``looks like a proof result, but it was an infrastructure failure''
+  \source{LL.md §S2.11, ll.~94--99}.
+\item Parse each theorem's axiom list, subtract the standard set
+  \lean{\{propext, Classical.choice, Quot.sound\}}, and fail the gate if anything remains
+  (ll.~79--98).
+\end{enumerate}
+The audit is validated the way an experimentalist validates a detector: with a positive
+control (a library known to be clean) and a negative control (a library with known
+\lean{sorry}s) before its verdicts are trusted \source{LL.md §S2.5, ll.~59--61}.
+
+\begin{example}[Running the audit by hand on the epistemic module]\label{ex:architecture:audit}
+The author of this chapter ran a five-line probe against the compiled library on the
+checkout of 2026-09-17:
+\begin{leancode}
+import DualScaleM24Formalization.Epistemic.Ledger
+#print axioms SocrateAI.Epistemic.tier_trans
+#print axioms SocrateAI.Epistemic.tier_le_of_depends
+#print axioms SocrateAI.Epistemic.no_kernel_claim_rests_on_weaker
+#print axioms SocrateAI.Epistemic.witnessSound_sound
+#print axioms SocrateAI.Epistemic.witnessUnsound_not_sound
+\end{leancode}
+The output was \lean{[propext, Quot.sound]} for the first three and \lean{[propext]} for
+the two witnesses. All five pass: the sets are subsets of the standard three, and none is
+\lean{sorryAx} or \lean{Lean.ofReduceBool}. The student should notice two things. First,
+\lean{Classical.choice} is absent: these proofs (by \lean{omega}, induction and
+\lean{decide}) never invoke the axiom of choice, and the audit records that fact for free.
+Second, the
+count of axioms is not a measure of strength---the witnesses use fewer axioms than the
+general theorem only because \lean{decide} evaluates a finite case by computation.
+\end{example}
+
+\subsection{What the audit found in a ``verified'' library}\label{sec:architecture:found}
+
+The reason the project trusts this gate is that it found real defects in code that the
+build and the \lean{sorry} grep had passed for months.
+
+\begin{historybox}[Two defects caught by the audit and by a guard theorem]
+Both are recorded in the workflow document and the revision brief. (1)
+\lean{StringDynamics.bps\_ratio\_reduced}, the theorem that $77/60$ is in lowest terms,
+``had relied on \lean{native\_decide} (trusts compiled code, not the kernel); it is now a
+kernel proof'' by \lean{norm\_num} \source{PAPER\_REVISION\_BRIEF §2, ll.~44--45;
+STREAM2\_WORKFLOW.md §6, ll.~127--128}. (2) The table \lean{StringDynamics.M24RepDim} of the
+26 irreducible dimensions of $M_{24}$ ``was wrong: 10395 and 483 duplicated, second 990
+and third 1035 missing; squares summed to 351,061,029 $\neq |M_{24}|$'', because its only
+theorem checked a single entry. It was replaced by the table of Eguchi--Ooguri--Tachikawa
+and guarded by \lean{M24RepDim\_sum\_sq}, whose statement is
+$\sum_{i<26}\lean{M24RepDim}(i)^2 = 244\,823\,040$ \source{STREAM2\_WORKFLOW.md §6,
+ll.~129--132; MathieuM24.lean, ll.~118--121}. The lesson the log draws is general: ``guard
+every data table with a theorem that would break if the table were wrong''
+\source{LL.md §S2.6, ll.~63--67}.
+\end{historybox}
+
+The second defect deserves a moment's arithmetic, because it shows what a guard theorem
+buys. The order of $M_{24}$ is $2^{10}\cdot3^3\cdot5\cdot7\cdot11\cdot23=244\,823\,040$
+(\cref{ch:m24}). Burnside's identity $\sum_i\dim(\rho_i)^2=|G|$ holds for every finite group
+(Tier L, standard; not checked against a source in this book's library). The wrong table
+summed to $351\,061\,029$, a discrepancy of $106\,237\,989$, so a single theorem comparing
+the sum to the group order rejects it. The kernel evaluates the sum by unfolding the 26
+cases (\lean{simp [Fin.sum\_univ\_succ, M24RepDim]}), which is a shadow computation in the
+sense of \cref{def:architecture:shadow}---but a shadow attached to the right invariant is a
+strong test, exactly as a checksum is.
+
+\subsection{The statement lock}\label{sec:architecture:lock}
+
+The kernel checks that a proof proves its statement. It cannot check that the statement is
+still the one that was reviewed. In a workflow where proofs are searched for by automated
+agents this is the central vulnerability: ``An agent (or a person) can make a goal
+`provable' by weakening it'' \source{tools/statement\_lock.py, ll.~5--7}. The tool that
+closes the gap hashes statements \source{tools/statement\_lock.py, ll.~1--137}:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item for a \lean{theorem} or \lean{lemma}, the text from the keyword up to the top-level
+  \lean{:=}, tracked with a bracket-depth counter so that a \lean{:=} inside a binder does
+  not end the statement early (ll.~69--83); replacing \lean{:= by sorry} with a proof
+  therefore leaves the hash unchanged;
+\item for a \lean{def}, \lean{abbrev} or \lean{structure}, the whole declaration including
+  its body, ``changing a definition changes the meaning of every statement that uses it''
+  (ll.~9--13);
+\item after removing comments with a small scanner that handles Lean's nested block
+  comments, and normalizing whitespace, so documentation can change freely (ll.~46--66).
+\end{itemize}
+The first 16 hex digits of the SHA-256 of the normalized text are stored per file and per
+declaration in \lean{docs/statement\_lock.json}; \lean{--update} is run after statement
+review, \lean{--check} before any proof is accepted, and a changed or vanished locked
+declaration fails the check while a new one is only reported (ll.~17--22, 117--133). On the
+checkout used for this chapter the lock covers 54 files and 355 declarations, all in the
+two Mathlib-based libraries; the Mathlib-free core is not locked.
+
+\begin{example}[Hashing a statement by hand]\label{ex:architecture:lock}
+Applying the tool's own \lean{strip\_comments} and \lean{statement\_text} functions to
+\lean{Epistemic/Tier.lean} gives, for the transitivity theorem, the normalized text
+\begin{leancode}
+theorem tier_trans {t1 t2 t3 : Tier} (h12 : t1 ≤ t2) (h23 : t2 ≤ t3) : t1 ≤ t3
+\end{leancode}
+whose SHA-256 begins \lean{94394facb0c97f29}. Everything after \lean{:=}---the two
+\lean{have} lines and \lean{omega}---is absent from the hash. If an agent replaced the
+hypothesis \lean{(h23 : t2 ≤ t3)} by \lean{(h23 : t1 ≤ t3)}, making the theorem trivially
+provable, the normalized text would change and so would the hash; the check would print
+\lean{CHANGED} and exit 1. If instead the agent edited \lean{Tier.toNat} so that
+\lean{Tier.A} mapped to $3$ and \lean{Tier.B} to $4$, no theorem statement would change,
+but the definition's hash (\lean{d839f1061e526f25} on the current text) would, and the
+check would fail for the same reason: every theorem about $\le$ on tiers now means something
+else. This is why definitions are hashed whole and theorems only up to \lean{:=}.
+\end{example}
+
+\subsection{Producer $\ne$ verifier}\label{sec:architecture:producer}
+
+The last gate is a rule about people and programs rather than a script: ``No agent or model
+grades its own output; the gate runs separately'' \source{STREAM2\_WORKFLOW.md §2,
+ll.~25--26}. The measured justification is in the pilot results. Two reports from the
+cheapest model tier ``misstated compile status: one claimed 5 clean \lean{sorry}s but left
+8 compile errors; one claimed `no compilation errors' with 3 errors. Both caught only because
+the orchestrator recompiles every report'' \source{STREAM2\_WORKFLOW.md §6, ll.~153--157};
+in the final round a report ``again claimed `0 errors' while one proof failed to parse''
+\source{STREAM2\_WORKFLOW.md §6, ll.~192--194}. None of these errors entered the repository,
+because the verifier's compile, not the producer's report, is the accept event.
+
+The same principle applies to the project's own tooling. Lesson 0.5 of the log records that
+an engine function \lean{sync\_epistemic\_claims} ``injects the same 3 hardcoded claims into
+\lean{ledger.jsonl} any time the whole corpus builds with aggregate zero-sorry, regardless of
+whether those 3 specific claims are what was actually just proved'', and that a
+``prover'' module was a static list with no proving logic \source{LL.md §0.5,
+ll.~201--216}. The workflow's rule that ledger entries ``pin a commit hash and build job
+count'' is the direct response \source{STREAM2\_WORKFLOW.md §2, ll.~29--31}. A student
+reading any auto-generated claim table should ask the question the log asks: which program
+wrote this row, and did that program run the kernel?
+
+\begin{pitfallbox}[The gate that no kernel can run]
+Gate G2, statement review, is listed in the pipeline as ``the one step no kernel can check:
+mis-formalization'' \source{STREAM2\_WORKFLOW.md §4, l.~59}. Two recorded instances show
+its two failure modes. Prose drifting past the theorem: a brief said the $\Theta$-shift
+preserves $\eta$ ``iff $\Theta$ antisymmetric'' where the Lean proves only ``if''
+\source{LL.md §S2.13, ll.~109--113}. And conventions unverified before the statement was
+written: every block-matrix sign convention was checked in sympy first, because ``a sign
+slip caught this way costs minutes'' and one caught after an agent has spent an hour on an
+unprovable statement ``costs far more'' \source{LL.md §S2.12, ll.~101--107}. The lock
+freezes the statement; it does not make it right. Only reading does.
+\end{pitfallbox}
+
+\subsection{A worked audit: the numbers}\label{sec:architecture:numbers}
+
+The two numbers that this book quotes for the size of the corpus are 326 and 99 audited
+theorems. They are the number of \lean{theorem}/\lean{lemma} declarations the audit's
+collector finds after stripping comments, every one of which returned an axiom list within
+the standard three on a green build. (A naive \lean{grep} for \lean{\textasciicircum
+theorem} gives slightly different numbers, because it also counts declarations quoted
+inside comments; the author re-ran the audit's own collector on the checkout and obtained
+the seven numbers below exactly.) Per library the brief reports
+\source{PAPER\_REVISION\_BRIEF §1, ll.~27--35}:
+\[
+\underbrace{23}_{\text{Validation}}+\underbrace{53}_{\text{Lean5Corpus}}
++\underbrace{44}_{\text{DFT}}+\underbrace{56}_{\text{Foundation}}
++\underbrace{61}_{\text{M24Form.}}+\underbrace{89}_{\text{STFormalization}}=326,
+\qquad 326+99=425 .
+\]
+The reader can reproduce the sum and should. Three cautions attach to the number. It counts
+theorems, not physics: the four bridge modules of \cref{sec:architecture:bridges}
+contribute 13 of the 56 theorems of the oldest library. It
+depends on the build being fresh: the 89 for \lean{StringTheoryFormalization} was reported
+as ``89 failing (MISSING)'' once, on a stale \lean{.olean} \source{LL.md §S2.11,
+ll.~94--96}. And it is a count \emph{of this plan}: the brief insists that Stream 2's
+``18 of 18 planned items'' is ``100\% of that plan, not of string theory''
+\source{PAPER\_REVISION\_BRIEF §1, ll.~33--35}. The same brief forbids the phrases ``zero
+axioms'', ``100\% mathematical rigor'' and ``formalizes string theory''
+\source{PAPER\_REVISION\_BRIEF §0, ll.~15--19}. The correct form, which this book uses
+throughout, is: proved in Lean 4 with no axioms beyond the three standard ones.
+
+%=====================================================================================
+\section{The tier system, formalized}\label{sec:architecture:epistemic}
+
+The badges \TA, \TL{} and \TC{} used throughout this book are three of five tiers that
+the project defines in Lean itself, in \lean{DualScaleM24Formalization/Epistemic/Tier.lean}
+and \lean{Ledger.lean}. The two files are short, Mathlib-free, and---unusually for the
+Mathlib-free core---not shadows: they state and prove a general theorem about an arbitrary
+index type. They are worth reading in full because they make precise a rule that is
+otherwise only a convention: \emph{a claim may never be filed at a higher tier than the
+claims it rests on.}
+
+\subsection{Tiers as an inductive type}
+
+The tier is an inductive type with five constructors, ordered by a map to $\N$
+\source{Tier.lean, ll.~16--38}:
+\begin{leancode}
+inductive Tier : Type where
+  | X : Tier  -- Exploratory / Float
+  | C : Tier  -- Conjecture
+  | L : Tier  -- Literature
+  | B : Tier  -- Exact-Arithmetic Checkable
+  | A : Tier  -- Kernel-Verified (Lean 4, zero sorry)
+deriving DecidableEq, Repr
+
+def Tier.toNat : Tier → Nat
+  | Tier.X => 0 | Tier.C => 1 | Tier.L => 2 | Tier.B => 3 | Tier.A => 4
+
+def Tier.le (t1 t2 : Tier) : Prop := t1.toNat ≤ t2.toNat
+\end{leancode}
+The module header glosses the five: A is kernel-verified; B is ``deterministic
+$\Q/\Z$ check + negative control that fails''; L is literature; C is conjecture; X is
+``floats, sampling, LLM output'' \source{Tier.lean, ll.~5--11}. The book collapses B into
+symbolic checks and never awards it, and uses X nowhere; the ordering $X<C<L<B<A$ is what
+matters. Six theorems establish that $\le$ is a partial order with top element A and bottom
+element X, and that nothing but A sits above A \source{Tier.lean, ll.~40--65}. Their
+proofs are one-liners: \lean{omega} for the arithmetic ones, \lean{cases t <;> decide} for
+the finite case analyses.
+
+\subsection{Ledgers, soundness and transitive support}
+
+A ledger is a function from an index type $\iota$ (the claim identifiers) to rows, each row
+carrying a tier and the list of identifiers it cites \source{Ledger.lean, ll.~16--27}:
+\begin{leancode}
+structure Claim (ι : Type) where
+  tier : Tier
+  supports : List ι
+
+abbrev Ledger (ι : Type) := ι → Claim ι
+
+def Sound {ι : Type} (L : Ledger ι) : Prop :=
+  ∀ a b, b ∈ (L a).supports → (L a).tier ≤ (L b).tier
+\end{leancode}
+Soundness says: for every row $a$ and every $b$ it cites directly, $\text{tier}(a)\le
+\text{tier}(b)$. The interesting content is that the same then holds along chains.
+Transitive dependence is an inductive predicate \source{Ledger.lean, ll.~29--43}:
+\begin{leancode}
+inductive Depends {ι : Type} (L : Ledger ι) : ι → ι → Prop where
+  | direct {a b} : b ∈ (L a).supports → Depends L a b
+  | step {a b c} : b ∈ (L a).supports → Depends L b c → Depends L a c
+\end{leancode}
+and the main theorem is proved by induction on it: in a sound ledger, if $a$ depends on $b$
+through any chain then $\text{tier}(a)\le\text{tier}(b)$. Two corollaries follow
+\source{Ledger.lean, ll.~45--68}.
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item \lean{no\_kernel\_claim\_rests\_on\_weaker}, the one that names the rule: if $a$ is
+  filed at A and depends on $b$, then $b$ is at A---because $A\le\text{tier}(b)$ forces
+  $\text{tier}(b)=A$ by \lean{eq\_A\_of\_A\_le}.
+\item \lean{not\_A\_of\_weak\_support}, its contrapositive and the form one uses in
+  practice: one weak link anywhere in the support chain, and the citing claim is not Tier A.
+\end{itemize}
+
+Let us do the induction on paper, since it is the whole proof. Suppose $L$ is sound. Case
+\lean{direct}: $b\in\text{supports}(a)$, so soundness gives $\text{tier}(a)\le\text{tier}(b)$
+at once. Case \lean{step}: $b\in\text{supports}(a)$ and, by the induction hypothesis on
+$\text{Depends}\,L\,b\,c$, $\text{tier}(b)\le\text{tier}(c)$; soundness gives
+$\text{tier}(a)\le\text{tier}(b)$, and \lean{tier\_trans} chains the two. That is the
+entire Lean proof \source{Ledger.lean, ll.~47--52}: the inductive predicate builds the
+chain $a=x_0,\ldots,x_k=b$ into the proof principle, so no list ever has to be handled.
+
+\subsection{Positive and negative controls}
+
+The file ends with two concrete ledgers \source{Ledger.lean, ll.~70--91}. The first has
+three rows over \lean{Fin 3}: row 0 at A citing row 1, row 1 at A citing nothing, row 2 at C
+citing nothing; \lean{witnessSound\_sound} proves it sound by \lean{decide}, which checks
+the finitely many pairs $(a,b)$. The second has two rows: row 0 at A citing row 1, row 1 at
+C; \lean{witnessUnsound\_not\_sound} proves it is \emph{not} sound---the instance $a=0,b=1$
+of the soundness condition would require $A\le C$, which \lean{decide} refutes. This is the
+``negative control that fails'' of tier B applied to the tier system itself: a definition of
+soundness that accepted the second ledger would be vacuous, and the theorem shows it does
+not.
+
+\begin{physicsbox}[What the ledger theorem does and does not say]
+The theorem is about an abstract function $\iota\to\text{Claim}\,\iota$. The project also
+keeps a concrete file \lean{ledger.jsonl} with, on the current checkout, 38 rows (34 filed at
+A, 3 at L, 1 at B), each naming a Lean source file and a list of dependencies, together with
+a Markdown rendering \lean{LEDGER.md} whose header quotes the transitivity theorem. Two
+things a student must keep apart. First, no Lean theorem says that \lean{ledger.jsonl} is a
+\lean{Sound} ledger: the JSON is not a term of type \lean{Ledger ι}, and the ``dependencies''
+column is bookkeeping, not imports---eleven of the Stream 1 rows list the ledger theorem
+\lean{K3T2-A-0001} itself as their dependency, while the source file behind one of them,
+\lean{EffectiveMetric.lean}, has no \lean{import} line at all. Second, the \emph{statement
+text} of a row can promise more than the Lean it points to. The row \lean{OBS-VAL-0001}
+is filed at A with the words ``Certified Falsifiable Observables \ldots\ LiteBIRD $r =
+0.00396$''; the module it names proves that $1/252$ lies in the window $[0.003,0.005]$ and
+similar inequalities between literals, and its own header says it is ``Tier A for its
+arithmetic only'' with the physical relations Tier C \source{Observables.lean, ll.~9--24}.
+The ledger theorem guarantees nothing about how a row is worded. The tier badge in this
+book therefore attaches to the Lean statement, never to a ledger row.
+\end{physicsbox}
+
+\begin{remark}[What a faithful ledger would need]
+To make the theorem bite on the real corpus one would generate the \lean{Ledger} term from
+the declaration graph (\cref{ch:atlas}): identifiers are declaration names, \lean{supports}
+is the list of project declarations a proof term uses, and \lean{tier} is read from a
+docstring tag. Soundness would then be decidable by \lean{decide} exactly as for
+\lean{witnessSound}, and a Tier A theorem citing a Tier L definition would fail to compile.
+Nothing in the present files does this; it is one of the improvements the log lists for the
+next run (``paper claims come from the Lean source'') \source{LL.md §S2-I, ll.~139--141}.
+\end{remark}
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:architecture:lean}
+
+This chapter's Lean content is the epistemic module itself; the theorems of the other
+libraries are the subject of their own chapters. Every statement below was read from the
+source file and audited by the author of this chapter as in \cref{ex:architecture:audit}.
+
+\begin{leanbox}[The tier order]
+\begin{leancode}
+theorem tier_refl (t : Tier) : t ≤ t := by ...
+theorem tier_trans {t1 t2 t3 : Tier} (h12 : t1 ≤ t2) (h23 : t2 ≤ t3) :
+    t1 ≤ t3 := by ...
+theorem tier_antisymm {t1 t2 : Tier} (h12 : t1 ≤ t2) (h21 : t2 ≤ t1) :
+    t1 = t2 := by ...
+theorem tier_A_is_maximal (t : Tier) : t ≤ Tier.A := by ...
+theorem tier_X_is_minimal (t : Tier) : Tier.X ≤ t := by ...
+theorem eq_A_of_A_le {s : Tier} (h : Tier.A ≤ s) : s = Tier.A := by ...
+\end{leancode}
+\textbf{Reading.} The relation $t_1\le t_2 :\Leftrightarrow \text{toNat}(t_1)\le
+\text{toNat}(t_2)$ on the five-element type is reflexive, transitive and antisymmetric;
+A is the greatest element, X the least, and the only tier $\ge$ A is A.
+\textbf{Proof idea.} Unfold to $\N$ and call \lean{omega}; for antisymmetry, derive equality
+of the images and split into the $25$ constructor cases, each closed by \lean{rfl} or
+\lean{contradiction} \source{Tier.lean, ll.~40--65}. \textbf{Not proved.} Nothing about
+what the tiers mean; the type carries no semantics beyond the order. \TA
+\end{leanbox}
+
+\begin{leanbox}[Transitive soundness of a ledger]
+\begin{leancode}
+theorem tier_le_of_depends {ι : Type} {L : Ledger ι} (hL : Sound L) :
+    ∀ {a b : ι}, Depends L a b → (L a).tier ≤ (L b).tier := by ...
+theorem no_kernel_claim_rests_on_weaker {ι : Type} {L : Ledger ι} (hL : Sound L)
+    {a b : ι} (ha : (L a).tier = Tier.A) (hab : Depends L a b) :
+    (L b).tier = Tier.A := by ...
+theorem not_A_of_weak_support {ι : Type} {L : Ledger ι} (hL : Sound L)
+    {a b : ι} (hab : Depends L a b) (hb : (L b).tier ≠ Tier.A) :
+    (L a).tier ≠ Tier.A := ...
+theorem witnessSound_sound : Sound witnessSound := by ...
+theorem witnessUnsound_not_sound : ¬ Sound witnessUnsound := by ...
+\end{leancode}
+\textbf{Reading.} For every index type and every ledger satisfying the one-step condition
+\lean{Sound}: tiers are monotone along every dependency chain; a Tier A row's entire
+transitive support is Tier A; a row with any non-A support is not A. The two witnesses are
+a three-row sound ledger and a two-row unsound one. \textbf{Proof idea.} Induction on the
+inductive predicate \lean{Depends}, using soundness at each step and \lean{tier\_trans};
+the corollary rewrites with \lean{ha} and applies \lean{eq\_A\_of\_A\_le}; the witnesses
+are finite and closed by \lean{decide} \source{Ledger.lean, ll.~45--91}. \textbf{Not
+proved.} That any actual file (\lean{ledger.jsonl}, the declaration graph) is a
+\lean{Sound} ledger; that a row's wording matches its source. \TA
+\end{leanbox}
+
+\begin{center}\small
+\begin{tabular}{@{}p{7.4cm}p{1.2cm}p{5.6cm}@{}}\toprule
+Claim & Tier & Where \\ \midrule
+Tier order: partial order, A maximal, X minimal & \TA & \lean{Tier.lean} \\
+Transitive tier monotonicity in a sound ledger; A rests only on A & \TA & \lean{Ledger.lean} \\
+Positive and negative control ledgers & \TA & \lean{Ledger.lean} \\
+Axiom footprint of the five theorems above: $\subseteq\{\lean{propext},\lean{Quot.sound}\}$ & \TA & \cref{ex:architecture:audit} \\
+$(\eta\HH)^2=1$ for all invertible real $G$, all $B$, all $d$ & \TA & \lean{DFT/GeneralizedMetric.lean} \\
+Burnside guard $\sum\dim^2=|M_{24}|$ on the corrected table & \TA & \lean{MathieuM24.lean} \\
+Burnside's identity itself; $H^2(K3,\Z)\cong E_8(-1)^2\oplus U^3$ & \TL & standard; Huybrechts, via the brief \\
+\lean{ledger.jsonl} is a sound ledger; any row's physical wording & --- & not formalized; not a Lean claim \\
+The seven-library split and gate sequence are the right architecture & \TC & this programme's design choice \\
+\bottomrule\end{tabular}
+\end{center}
+
+\begin{summarybox}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item One Lake project, Lean and Mathlib pinned to \lean{v4.33.1}, seven libraries: five
+  Mathlib-free default targets (\lean{StringTheoryFoundation},
+  \lean{DualScaleM24Formalization}, \lean{DoubleFieldTheory}, \lean{DualScaleValidation},
+  \lean{Lean5Corpus}) and two Mathlib-based libraries built by name
+  (\lean{StringTheoryFormalization}, \lean{DualScaleStream2}). Imports run one way:
+  Stream 2 imports Stream 1, never the reverse.
+\item Audited on 2026-09-17: $326$ theorems in Stream 1 ($23+53+44+56+61+89$) and $99$ in
+  Stream 2, every one depending only on \lean{propext}, \lean{Classical.choice},
+  \lean{Quot.sound}.
+\item Depth differs by library. The Mathlib-free core mostly proves arithmetic shadows
+  (integer and rational instances, fixed small matrices); the Mathlib-based libraries prove
+  the general statements (real $d\times d$ matrices, every $d$). Quote the statement as
+  written, and name its library.
+\item Four bridge modules named after external formalizations import nothing from them and
+  prove thirteen integer identities; each says so in a scope note.
+\item Gates: build, \lean{sorry} count, statement review, axiom audit
+  (\lean{\#print axioms}, catching \lean{sorryAx} and \lean{Lean.ofReduceBool}), statement
+  lock (SHA-256 of the statement up to \lean{:=}, of definitions whole), producer $\ne$
+  verifier, and ledger rows pinned to a commit. Each exists because of a recorded failure.
+\item The tier system is itself formalized: in a \lean{Sound} ledger a Tier A claim rests
+  only on Tier A claims (\lean{no\_kernel\_claim\_rests\_on\_weaker}), a theorem about an
+  abstract ledger type, not about any file.
+\end{itemize}
+\end{summarybox}
+
+%=====================================================================================
+\section*{Exercises}\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]
+Reproduce the audit totals: add the six Stream 1 counts of
+\cref{tab:architecture:libraries} and check that they give 326, then add Stream 2. Which
+library contributes the most theorems per module, and which the fewest? (Use the module
+counts in the table.)
+\end{exercise}
+
+\begin{exercise}[$\star$]
+From \cref{fig:architecture:imports}, list every library that can be compiled without
+Mathlib installed. Explain why a compile error in \lean{DualScaleStream2} cannot break
+\lean{Lean5Corpus}, and why an error in \lean{StringTheoryFoundation} can break four
+other libraries.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Explain precisely why \lean{gen\_metric\_duality} (hypothesis $g=1$, integer entries) does
+not imply \lean{etaR\_genMetric\_sq} even for $d=1$. Then write, in Mathlib notation, the
+$d=1$ real statement: for $G=(g)$ with $g\neq0$ and $B=(0)$, the matrix $\eta\HH$ squares to
+the identity. Check it by hand: $\HH=\diag(g,g^{-1})$, $\eta\HH=\begin{psmallmatrix}0&g^{-1}\\
+g&0\end{psmallmatrix}$, and $(\eta\HH)^2=\mathbf 1$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+For each edit, say whether \lean{statement\_lock.py --check} would report \lean{CHANGED},
+and why: (a) replacing \lean{:= by sorry} with \lean{:= by omega} in \lean{tier\_trans};
+(b) adding the hypothesis \lean{(h : t1 = t2)} to \lean{tier\_antisymm}; (c) rewriting the
+docstring of \lean{Sound}; (d) changing \lean{Tier.toNat} so that \lean{Tier.L} maps to $3$
+and \lean{Tier.B} to $2$; (e) reformatting \lean{Depends} onto one line.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Which of the following \lean{\#print axioms} outputs pass the audit of
+\cref{sec:architecture:axioms}, and what does each failing one indicate?
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0pt]
+\item \lean{[propext]};
+\item \lean{[propext, Classical.choice, Quot.sound]};
+\item \lean{[propext, sorryAx]};
+\item \lean{[Lean.ofReduceBool]};
+\item ``does not depend on any axioms''.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Lean]
+In a file importing \lean{DualScaleM24Formalization.Epistemic.Tier}, state and prove
+\begin{leancode}
+theorem B_le_A : Tier.B ≤ Tier.A := by sorry
+theorem not_A_le_C : ¬ (Tier.A ≤ Tier.C) := by sorry
+\end{leancode}
+(Hint: both are closed by \lean{decide}, since \lean{≤} on \lean{Tier} was given a
+\lean{Decidable} instance \source{Tier.lean, ll.~37--38}.)
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$ Lean]
+Define a four-row ledger over \lean{Fin 4} in which row 0 (tier A) cites row 1, row 1
+(tier A) cites row 2, row 2 (tier L) cites row 3 and row 3 is tier C. Prove it is not
+\lean{Sound}, and identify the offending pair. Then modify the tiers minimally so that it is
+sound, prove soundness by \lean{decide}, and use \lean{tier\_le\_of\_depends} to conclude
+that the tier of row 0 is at most that of row 3.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]
+The theorem \lean{energy\_dissipation\_monotonic (e d : Nat) : e - d ≤ e} uses truncated
+subtraction, so $e-d=0$ whenever $d>e$. State the energy inequality
+$\frac{\dd}{\dd t}\|u\|_{L^2}^2=-2\nu\|\nabla u\|_{L^2}^2\le0$ that the module header
+describes \source{NavierStokesBridge.lean, ll.~17--37}, and list the objects a faithful Lean
+statement would need (a function space, a time derivative, an integral, a hypothesis that
+$u$ solves the equation). Which of them does Mathlib provide, and why can none of them
+appear in a Mathlib-free library?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Eleven rows of \lean{ledger.jsonl} list \lean{K3T2-A-0001} (the ledger theorem itself) as
+their sole dependency. Is this consistent with \lean{Sound}? Is it a mathematical
+dependency? Propose a rule for what ``dependency'' should mean in a machine-generated
+ledger, and say how the declaration graph of \cref{ch:atlas} would supply it.
+\end{exercise}
+
+%=====================================================================================
+\section*{Further reading}\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item The build description itself: \lean{lakefile.lean} \source{ll.~1--53}, in particular
+  the comments on the Mathlib pin and on why the two Mathlib-based libraries are not default
+  targets.
+\item The workflow that produced Stream 2: hard constraints \source{STREAM2\_WORKFLOW.md §2,
+  ll.~20--38}, the per-package gates \source{§4, ll.~52--65}, and the final gate numbers
+  \source{§6, ll.~185--189}. \Cref{ch:pipeline} discusses the measured tier split.
+\item The verified-facts brief that fixes the vocabulary and the audit numbers used in this
+  book \source{PAPER\_REVISION\_BRIEF §0--§1, ll.~8--35} and the corrections that must
+  appear in the papers \source{§2, ll.~37--62}.
+\item The lessons behind each gate: recovery and build-fix \source{LL.md §0, ll.~145--259},
+  the axiom audit \source{§S2.5, ll.~56--61}, guard theorems \source{§S2.6, ll.~63--67},
+  the statement lock \source{§S2.10, ll.~87--92}, failing loudly \source{§S2.11,
+  ll.~94--99}, and the planned single gate script \source{§S2-I, ll.~116--143}.
+\item The tools \lean{tools/axiom\_audit.py} \source{ll.~1--102} and
+  \lean{tools/statement\_lock.py} \source{ll.~1--137}, both under 150 lines, and the two
+  epistemic modules \lean{Epistemic/Tier.lean} \source{ll.~1--67} and
+  \lean{Epistemic/Ledger.lean} \source{ll.~1--93}; a student can read all four in an evening.
+\end{itemize}

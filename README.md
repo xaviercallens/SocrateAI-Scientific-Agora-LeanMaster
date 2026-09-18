@@ -5,9 +5,10 @@
 [![Zero Sorry](https://img.shields.io/badge/Kernel_Soundness-Strict_0_Sorry_(Certified)-success.svg)](https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster)
 [![Free Parameters](https://img.shields.io/badge/Free_Parameters-0_(Conjecture%2C_Tier_C)-yellow.svg)](#3-a-zero-free-parameter-conjecture-what-is-and-isnt-mechanically-locked)
 [![Solved Problems](https://img.shields.io/badge/Frontier_Problems-11_Certified-purple.svg)](#5-the-lean-5-scientific-agora-corpus-11-certified-frontier-problems)
-[![Publication Papers](https://img.shields.io/badge/Scientific_Papers-6_PDFs_Compiled-red.svg)](papers/publication/)
+[![Publication Papers](https://img.shields.io/badge/Scientific_Papers-8_PDFs_Compiled-red.svg)](papers/publication/)
+[![Book](https://img.shields.io/badge/Book-The_Dual--Scale_String_(38_ch%2C_709_pp)-8A2BE2.svg)](papers/book/)
 [![Lean Blueprint](https://img.shields.io/badge/Lean_Blueprint-Interactive_Epistemic_Ledger-blueviolet.svg)](blueprint/web/index.html)
-[![LeanGraph](https://img.shields.io/badge/LeanGraph-538_Nodes_%7C_807_Edges-orange.svg)](graph/index.html)
+[![LeanGraph](https://img.shields.io/badge/LeanGraph-867_Nodes_%7C_1603_Edges-orange.svg)](graph/index.html)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster)
 [![License](https://img.shields.io/badge/License-Apache_2.0-lightgrey.svg)](LICENSE)
 
@@ -39,15 +40,26 @@ literature (Tier L) versus this project's own conjectures (Tier C, not yet deriv
 
 Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
 invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
-every theorem and lemma (238/238 in the main project depend on nothing beyond the three standard Lean
-axioms — see §10).
+every theorem and lemma (**425 audited theorems across the seven first-party libraries** depend on
+nothing beyond the three standard Lean axioms — see §10 and
+[`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md), which is the authoritative,
+gate-by-gate status document that this README summarizes).
+
+The seven libraries fall in two groups, and the distinction matters for how much each result is
+worth:
+
+| Group | Libraries | Depth |
+|---|---|---|
+| **Mathlib-backed** | `DualScaleStream2` (Stream 2: K3 × T² lattices, O(d,d;ℤ), DFT generalized metric, the dual-scale bound, flux/tadpole arithmetic), `StringTheoryFormalization` (Stream 1) | genuine linear algebra over ℤ/ℝ with Mathlib |
+| **Mathlib-free core** | `DoubleFieldTheory`, `DualScaleValidation`, `DualScaleM24Formalization`, `StringTheoryFoundation`, `Lean5Corpus` | *arithmetic shadows*: physical quantities modeled by integers/rationals — kernel-checked, but thin |
 
 ### Key Claims, By Tier:
 1. **(Tier A + Tier L) DFT algebraic-shape formalization:** the *algebraic shape* of $O(D,D)$ generalized geometry, Courant algebroids, the Strong Section Condition, and Buscher T-duality is certified on a 1-dimensional scalar model (Tier A); the differential-geometric theory itself (vector bundles, 1-forms on an actual manifold) is Tier L, quoted from Hull–Zwiebach, not re-derived here — see the paper's §2 scope box.
 2. **(Tier L + Tier A instance) The effective dual scale:** $R_{\mathrm{eff}}(R) = R + \alpha'/R \ge 2\sqrt{\alpha'}$ is a real-analytic bound from the T-duality/string-gas literature (Brandenberger–Vafa 1989; Giveon–Porrati–Rabinovici 1994); the integer instance $R\ge1 \Rightarrow R^2+1\ge2$ is Tier A.
 3. **(Tier C) A zero-free-parameter conjecture:** five integer/topological facts (§3) motivate, but do not prove, the conjecture that a consistent completion of this scenario would have zero continuous free parameters. No such theorem is stated or proved in this corpus; see §3 for the caveats (in particular, $27720=\mathrm{lcm}(1,\dots,12)$, which weakens how surprising the "lock" is).
-4. **The Lean 5 Scientific Agora Corpus:** 11 solved frontier problems in mathematical physics verified in Lean 4 (Tier A arithmetic instances of Tier L source results), accompanied by 6 publication-grade scientific papers with compiled PDFs and LaTeX sources.
-5. **LeanGraph Knowledge Discovery:** semantic dependency extraction (538 declarations, 807 edges, verified acyclic DAG — regenerate via `tools/leangraph_corpus_analyzer.py`-family tooling before citing a fresher number) with an interactive D3/KaTeX visual explorer (`graph/index.html`).
+4. **The Lean 5 Scientific Agora Corpus:** 11 solved frontier problems in mathematical physics verified in Lean 4 (Tier A arithmetic instances of Tier L source results), accompanied by 8 publication-grade scientific papers with compiled PDFs and LaTeX sources (§6).
+5. **A 38-chapter textbook**, *The Dual-Scale String: T-Duality, K3 × T², and Their Formalization in Lean 4 — A Student's Companion* (709 pp., `papers/book/`), which develops the physics and the mathematics from scratch and states, chapter by chapter, exactly what the kernel has and has not checked (§6).
+6. **LeanGraph Knowledge Discovery:** semantic dependency extraction (867 nodes, 1603 edges, verified acyclic DAG) with an interactive D3/KaTeX visual explorer (`graph/index.html`), plus a kernel-level theorem atlas (§7).
 
 ---
 
@@ -153,7 +165,7 @@ continuous parameter survives.
 | **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
 | **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
 | **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
-| **Kernel Verification** | None (paper only) | 238/238 theorems & lemmas in the main project: 0 sorry, standard axioms only | Tier A |
+| **Kernel Verification** | None (paper only) | 425/425 audited theorems across seven libraries: 0 sorry, standard axioms only | Tier A |
 
 The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
 (Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
@@ -225,9 +237,27 @@ def InversionGen : Mat2 := { a := 0, b := 1, c := 1, d := 0 }
 theorem odd_inversion_generator : IsODD InversionGen := by
   rfl
 ```
-`Mat2` is a plain 4-field `structure` over `Int` defined earlier in the same file — this project has
-no Mathlib `Matrix` type; see §9 for what promoting this to a real bundle-valued formalization would
-require.
+`Mat2` is a plain 4-field `structure` over `Int` defined earlier in the same file: `DoubleFieldTheory`
+is one of the five **Mathlib-free** libraries, so it cannot use Mathlib's `Matrix` type. The project as
+a whole *does* depend on Mathlib (pinned at tag `v4.33.1`, see `lakefile.lean` and
+`lake-manifest.json`), and the two Mathlib-backed libraries state the same structures over genuine
+matrices — see Example 5.
+
+### Example 5: The Dual-Scale Bound over ℝ, for Every Dimension (Stream 2, Mathlib-backed)
+From [`DualScaleStream2/DualScale/TraceBound.lean`](DualScaleStream2/DualScale/TraceBound.lean):
+```lean
+/-- Dual scale `𝒟(G) = tr H(G, 0)`. -/
+noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ℝ) : ℝ := (genMetric G 0).trace
+
+theorem dualScale_ge (G : Matrix (Fin d) (Fin d) ℝ) (hG : G.PosDef) :
+    (2 * d : ℝ) ≤ dualScale G := by ...
+
+theorem dualScale_one : dualScale (1 : Matrix (Fin d) (Fin d) ℝ) = 2 * d := by ...
+```
+This is the general-$d$, real-valued statement $\operatorname{tr}G + \operatorname{tr}G^{-1} \ge 2d$
+for every positive-definite torus metric $G$, attained at the self-dual point $G = \mathbf{1}$ — the
+honest version of what Example 1's $\mathbb{N}$-instance only gestures at. Uniqueness of the
+minimizer is *not* formalized, and the cosmological reading remains Tier C.
 
 ---
 
@@ -252,9 +282,9 @@ The **Lean 5 Agora Corpus** comprises 11 solved frontier problems, each verified
 
 ---
 
-## 6. Peer-Reviewed Publication Papers (LaTeX & Compiled PDFs)
+## 6. Publication Papers and the Book (LaTeX & Compiled PDFs)
 
-The repository provides 6 publication-ready scientific papers with complete LaTeX source and compiled PDFs:
+The repository provides 8 publication-ready scientific papers with complete LaTeX source and compiled PDFs:
 
 | Paper | Title | LaTeX Source | Compiled PDF | Pages |
 |---|---|:---:|:---:|:---:|
@@ -264,21 +294,51 @@ The repository provides 6 publication-ready scientific papers with complete LaTe
 | **Paper 4** | *Formal Resolution of Three Conjectures: Navier-Stokes Helicity, Mathieu Frobenius Rigidity, and Dual-Scale Horizon Censorship* | [`paper4.tex`](papers/publication/paper4_lean5_open_problems_formalization.tex) | [**`paper4.pdf`**](papers/publication/paper4_lean5_open_problems_formalization.pdf) | 5 |
 | **Paper 5** | *Formal Resolution of Five Frontier Problems: Mukai Monodromy, Kolmogorov Turbulence, Flux Swampland, Courant Torsion, and Golay Holography* | [`paper5.tex`](papers/publication/paper5_lean5_frontier_problems_formalization.tex) | [**`paper5.pdf`**](papers/publication/paper5_lean5_frontier_problems_formalization.pdf) | 8 |
 | **Paper 6** | *Formal Resolution of Three Advanced Frontier Problems: Kummer Surface Modularity, Non-Perturbative SYM Instantons, and Holographic Entanglement Strong Subadditivity* | [`paper6.tex`](papers/publication/paper6_lean5_advanced_frontier_formalization.tex) | [**`paper6.pdf`**](papers/publication/paper6_lean5_advanced_frontier_formalization.pdf) | 6 |
+| **Paper 7** | *The Dual-Scale Theory: A Master Demonstration* (tier-labeled revision; see the audit note at the top of this README) | [`paper7.tex`](papers/publication/paper7_dual_scale_theory_master_demonstration.tex) | [**`paper7.pdf`**](papers/publication/paper7_dual_scale_theory_master_demonstration.pdf) | — |
+| **Paper 8** | *Dual-Scale K3 × T² T-Duality in Lean 4* (Stream 2: the Mathlib-backed lattice / O(d,d;ℤ) / DFT layer) | [`paper8.tex`](papers/publication/paper8_dual_scale_k3t2_tduality_lean4.tex) | [**`paper8.pdf`**](papers/publication/paper8_dual_scale_k3t2_tduality_lean4.pdf) | — |
+
+### The Book: *The Dual-Scale String — A Student's Companion*
+
+[`papers/book/The_Dual_Scale_String.pdf`](papers/book/) is a 38-chapter, 709-page textbook written for
+a beginning graduate student who knows quantum mechanics and linear algebra but has never seen string
+theory or a proof assistant. It develops the physics (worldsheet, compactification, T-duality, double
+field theory, K3, moonshine) and the mathematics (lattices, O(d,d;ℤ), the Mukai lattice) from scratch,
+and every chapter ends with a section, *"What the machine has checked"*, that states verbatim what
+Lean proves and — equally important — what it does not. The final two chapters document the proving
+pipeline itself and give a graded roadmap of ~22 open formalization and physics problems.
+
+```bash
+papers/book/build_book.sh          # assembles and compiles the whole book
+papers/book/compile_chapter.sh chapters/ch07_circle.tex   # one chapter, standalone
+```
+
+Every Lean identifier printed in the book is checked against the compiled environment by
+[`tools/check_book_lean_names.py`](tools/check_book_lean_names.py).
 
 ---
 
 ## 7. LeanGraph Semantic Knowledge Discovery
 
-`LeanGraph` extracts full AST and kernel environment dependencies across the entire corpus:
-- **Total Declarations (Nodes):** **528** (224 theorems/lemmas, 245 definitions, 57 structures/classes).
-- **Total Dependencies (Edges):** **785**.
+`LeanGraph` extracts full AST and kernel environment dependencies across the entire corpus
+(`graph/leangraph.json`, regenerate before citing a fresher number):
+- **Total Declarations (Nodes):** **867** (423 theorems/lemmas, 351 definitions, 88 structures/classes).
+- **Total Dependencies (Edges):** **1603**.
 - **Acyclicity Guarantee:** Verified Directed Acyclic Graph (`is_dag = True`, **0 cycles**).
-- **Hasse Transitive Reduction:** 11 redundant shortcut edges pruned for maximum reasoning clarity.
+- **Hasse Transitive Reduction:** 65 redundant shortcut edges identified.
 - **Interactive Web Explorer:** Launch the local visualizer:
   ```bash
   python3 -m http.server 8080 --directory graph
   # Open http://localhost:8080/ in your browser
   ```
+
+### Kernel-Level Theorem Atlas
+A second, independent extractor reads the *compiled environment* rather than the source AST
+([`tools/lean_depgraph.lean`](tools/lean_depgraph.lean) + [`tools/theorem_atlas.py`](tools/theorem_atlas.py),
+output in [`papers/book/generated/atlas.md`](papers/book/generated/atlas.md)). It reports **1224
+declarations, 423 theorems**, 42 module edges and **19 cross-library bridges**, and — most usefully —
+a ranked list of *unification candidates*: statements proved independently in two libraries that
+ought to be one theorem with a corollary (for example, $\chi(K3)=24$ is currently proved six times in
+five libraries). Chapter 36 of the book works through the refactor; chapter 38 lists what remains.
 
 ---
 
@@ -366,12 +426,19 @@ python3 tools/antigravity_agent_swarm.py run --dry-run
 git clone https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster.git
 cd SocrateAI-Scientific-Agora-LeanMaster
 
-# Build all 61 jobs with 0 sorrys
+# The five Mathlib-free libraries (default targets): 61 jobs, no Mathlib download needed
 lake build
 
-# Recompile and verify Lean5Corpus specifically
-lake build Lean5Corpus
+# The two Mathlib-backed libraries (Stream 1 + Stream 2): 3708 jobs
+lake exe cache get                 # hydrate the Mathlib olean cache first
+lake build DualScaleStream2 StringTheoryFormalization
 ```
+Last verified on 2026-09-17: `lake build` → 61 jobs, 0 errors; `lake build DualScaleStream2
+StringTheoryFormalization` → 3708 jobs, 0 errors.
+
+> **Single-file compiles need explicit options.** `lake env lean` does *not* apply the `leanOptions`
+> from `lakefile.lean`, so a file that builds under `lake build` can spuriously time out:
+> `lake env lean -DmaxHeartbeats=1000000 -DmaxRecDepth=8000 File.lean`.
 
 ### Auditing Zero-Sorry Compliance
 The naive substring check that used to live here (`'sorry' not in content`) actually raised an
@@ -387,16 +454,46 @@ grep -rnE '(:=|by|<;>|;)[[:space:]]*sorry\b|^[[:space:]]*sorry[[:space:]]*$|(:=|
 ### Full Axiom Footprint (not just a cited subset)
 Grepping for `sorry` only proves no *literal* `sorry` token was typed; the kernel-level guarantee is
 `#print axioms`, which reveals a `sorryAx` dependency even if a proof were structured to avoid the
-bare keyword. Every one of the 238 `theorem`/`lemma` declarations across the five built libraries has
-been checked this way (regenerate the list and script with the two-step recipe below); as of this
-revision, **all 238 depend on nothing beyond `propext`, `Classical.choice`, and `Quot.sound`** — zero
-`sorryAx`, zero custom axioms:
+bare keyword — and it also catches `native_decide` (`Lean.ofReduceBool`), which this project forbids.
+[`tools/axiom_audit.py`](tools/axiom_audit.py) automates this for a whole library:
 ```bash
-# 1. Collect every theorem/lemma's fully-qualified name (adjust the libs list if it changes)
-# 2. Feed '#print axioms <name>' for each into `lake env lean --stdin`
-# See PAPER7_IMPROVEMENT_PROPOSAL.md's methodology section for the exact script used to produce
-# papers/publication/axiom_audit_log.txt (a similar, paper-scoped run of the same technique).
+lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 ```
+Last full run (2026-09-17), **425 theorems audited across all seven libraries, 0 failing**:
+
+| Library | Theorems audited | Failing |
+|---|:---:|:---:|
+| `DualScaleStream2` | 99 | 0 |
+| `StringTheoryFormalization` | 89 | 0 |
+| `DualScaleM24Formalization` | 61 | 0 |
+| `StringTheoryFoundation` | 56 | 0 |
+| `Lean5Corpus` | 53 | 0 |
+| `DoubleFieldTheory` | 44 | 0 |
+| `DualScaleValidation` | 23 | 0 |
+| **Total** | **425** | **0** |
+
+"0 failing" means every theorem depends on nothing beyond `propext`, `Classical.choice` and
+`Quot.sound`.
+
+### Statement Lock (the gate a green build does *not* give you)
+The kernel checks that a proof proves its statement — not that the statement is still the one that was
+reviewed. A proof can always be "made to work" by weakening the goal, so the reviewed statement text
+is hashed (comment-insensitive) into [`docs/statement_lock.json`](docs/statement_lock.json):
+```bash
+python3 tools/statement_lock.py --check DualScaleStream2/**/*.lean   # before accepting any proof
+python3 tools/statement_lock.py --update DualScaleStream2/**/*.lean  # only after statement review
+```
+Last run: **OK across 54 locked files.**
+
+### The Five Gates, in Order
+Nothing in this repository should be described as "proved" until all five pass, and the last one
+matters as much as the rest:
+1. `lake build <lib>` — green;
+2. the `sorry`/`admit` tactic grep above — empty;
+3. `python3 tools/axiom_audit.py <lib>` — 0 failing;
+4. `python3 tools/statement_lock.py --check ...` — OK;
+5. **producer ≠ verifier** — whoever (or whatever) produced a proof does not get to certify it;
+   recompile every claimed result yourself. The `lean-proof-gate` skill packages all five.
 
 ### Running LeanGraph Analysis
 ```bash
@@ -406,7 +503,34 @@ python3 tools/leangraph_corpus_analyzer.py
 
 ---
 
-## 11. Citation & Academic Credits
+## 11. Reusing This Work in Another Project
+
+| Document | What it is for |
+|---|---|
+| [`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md) | **The authoritative status certificate**: gate results, the exact theorem statements (verbatim from `#check`) with their axioms, and an explicit list of what is *not* covered. Read this before relying on anything here. |
+| [`docs/USING_LEANMASTER.md`](docs/USING_LEANMASTER.md) | How another project or session depends on this one, with a tested downstream example. |
+| [`CLAUDE.md`](CLAUDE.md) | Working rules for AI sessions in this repo (tiers, gates, where large data goes). |
+| [`LL.md`](LL.md) | Lessons learned, newest first — including the ones that cost a day to discover. |
+| [`docs/STREAM2_WORKFLOW.md`](docs/STREAM2_WORKFLOW.md) | The tiered proving pipeline as actually run, with measured per-tier results. |
+
+[`examples/consumer_demo/`](examples/consumer_demo/) is a working downstream Lake project that
+`require`s this package and proves a new theorem from the exported ones (tested: 3709 jobs, 0 errors,
+standard axioms only).
+
+Five reusable Claude skills live in `.claude/skills/` and install into any project with
+`bash tools/install_skills.sh`:
+
+| Skill | Use it when |
+|---|---|
+| `leanmaster-onboard` | first contact with this repo |
+| `string-theory-foundation` | importing, citing or extending the verified results |
+| `lean-proof-gate` | before calling anything "proved", in *any* Lake project |
+| `lean-tiered-proving` | closing a batch of `sorry`s with AI provers, cheaply and safely |
+| `leanmaster-theorem-search` | before stating a new theorem: find what already exists |
+
+---
+
+## 12. Citation & Academic Credits
 
 If you use this work, the Dual-Scale string theory formalization, or the Lean 5 Scientific Agora Corpus in academic research, please cite:
 

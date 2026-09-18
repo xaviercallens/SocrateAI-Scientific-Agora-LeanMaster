@@ -1,0 +1,1085 @@
+\chapter{The K3 Lattice, Periods and the Torelli Theorem}\label{ch:k3lattice}
+
+\Cref{ch:k3} showed that all K3 surfaces are one and the same smooth four-manifold, with
+$b_2=22$ and signature $-16$, while as complex manifolds they form a family with twenty
+complex parameters. This chapter answers the question that these two facts raise:
+\emph{how does one tell two K3 surfaces apart, and what does the space of all of them look
+like?} The answer is a piece of linear algebra. The second cohomology $H^2(X,\Z)$ with its
+intersection pairing is always the same lattice, $3U\oplus2E_8(-1)$ of \cref{ch:lattices}. A
+complex structure is recorded by the position of one complex line, spanned by the class of
+the holomorphic two-form, relative to that lattice; a Ricci-flat metric is recorded by the
+position of a positive three-plane. The Torelli theorem says that nothing else is needed.
+
+A student of string theory should care because this is the model for every moduli space that
+follows. For a torus the moduli space was
+$\Odd{d}\backslash\OddR{d}/(O(d)\times O(d))$: the positions of a positive $d$-plane relative
+to the Narain lattice, up to lattice automorphisms (\cref{ch:narain,ch:odd}). For K3 we shall
+find $O(\Gamma^{3,19})\backslash O(3,19)/(O(3)\times O(19))\times\R_+$, a space of the same
+kind, and in \cref{ch:stringsk3} the $B$-field will enlarge $(3,19)$ to $(4,20)$. The points
+of the moduli space at which the three-plane becomes orthogonal to a lattice vector of square
+$-2$ are the K3 analogue of the self-dual radius of \cref{ch:tduality}: there the surface
+develops an ADE singularity and the type~IIA string acquires a non-abelian gauge symmetry.
+
+Conventions. $X$ is a complex K3 surface (\cref{ch:k3}), $\Lambda:=3U\oplus2E_8(-1)$ is the K3
+lattice, also written $\Gamma^{3,19}$; $(x\cdot y)$ is the pairing, $x^2:=(x\cdot x)$, and
+signatures are written $(n_+,n_-)$. The holomorphic two-form and its cohomology class are
+both written $\Omega$ (Huybrechts writes $\sigma$). Vectors of positive square are called
+space-like, following Aspinwall.
+
+%=====================================================================================
+\section{The intersection form on \texorpdfstring{$H^2(X,\Z)$}{H2(X,Z)}}
+\label{sec:k3lattice:form}
+
+\subsection{From cycles to a lattice}
+On a compact oriented four-manifold two closed surfaces in general position meet in finitely
+many points, and counting these points with orientation signs gives an integer
+\begin{equation}\label{eq:k3lattice:intersection}
+ \alpha_1\cdot\alpha_2=\#(\alpha_1\cap\alpha_2),\qquad \alpha_1,\alpha_2\in H_2(X,\Z)
+ \qquad\text{\source{Asp §2.3, ll.~514--518}} .
+\end{equation}
+In terms of differential forms the same pairing is $(a\cdot b)=\int_X a\wedge b$ for closed
+two-forms $a,b$; because two-forms commute under the wedge product the pairing is symmetric.
+Since a K3 surface is simply connected, $H_2(X,\Z)$ has no torsion and is isomorphic to
+$\Z^{22}$ as a group \source{Asp §2.3, ll.~513--514 and footnote~4}. A free abelian group
+with a symmetric integer pairing is a lattice\index{lattice} in the sense of
+\cref{ch:lattices}, provided the pairing is non-degenerate. We now determine its three
+invariants: discriminant, parity and signature.
+
+\paragraph{Unimodular, from Poincaré duality.}\index{Poincaré duality}
+Poincaré duality states that for a basis $\{e_i\}$ of $H_2(X,\Z)$ there is a second basis
+$\{e_j^*\}$ with
+\begin{equation}\label{eq:k3lattice:PD}
+ e_i\cdot e_j^*=\delta_{ij}\qquad\text{\source{Asp §2.3, ll.~536--545}} .
+\end{equation}
+Let $G_{ij}=e_i\cdot e_j$ be the Gram matrix and write $e_j^*=\sum_kP_{kj}e_k$ with an integer
+matrix $P$. Then \eqref{eq:k3lattice:PD} reads $GP=\mathbf 1$: the Gram matrix has an integer
+inverse. By \cref{ch:lattices} this is one of the equivalent forms of
+unimodularity\index{unimodular lattice}: $\det G\cdot\det P=1$ in $\Z$ forces $\det G=\pm1$,
+and the dual lattice $\Lambda^*$ equals $\Lambda$. Duality also identifies the lattice of
+integral homology $H_2(X,\Z)$ with that of integral cohomology $H^2(X,\Z)$, and from now on
+we do not distinguish them. Huybrechts quotes the same fact in the form: the intersection
+form of a compact oriented four-manifold, modulo torsion, is unimodular
+\source{Huy ch.~1 §3.3, ll.~586--589}.
+
+\paragraph{Even, from Wu's formula.}\index{Wu's formula}\index{even lattice}
+The intersection form of a compact smooth four-manifold $M$ is even if and only if the second
+Stiefel--Whitney class $w_2(M)$ vanishes, and for any almost complex structure
+$w_2(M)\equiv c_1\pmod 2$ \source{Huy ch.~1, proof of Prop.~3.5, ll.~610--613}. The mechanism
+behind the first statement is the congruence $x^2\equiv(x\cdot w_2)\pmod2$ for all
+$x\in H^2(M,\Z)$ (this is the usual form of Wu's formula; it is standard, and our sources
+quote only its consequence). For a K3 surface $c_1=0$, so
+\begin{equation}\label{eq:k3lattice:even}
+ x^2\in2\Z\qquad\text{for all }x\in H^2(X,\Z)\qquad\text{\source{Asp §2.3, ll.~546--552}} .
+\end{equation}
+The condition $w_2=0$ is the condition for $M$ to admit spinors. The evenness of the K3
+lattice is therefore the lattice-theoretic trace of the fact that fermions can be defined on
+a K3 surface.
+
+A student can test \eqref{eq:k3lattice:even} on holomorphic curves without knowing Wu's
+formula. For a smooth curve $C$ of genus $g$ in a surface with trivial canonical bundle the
+adjunction formula gives
+\begin{equation}\label{eq:k3lattice:adjunction}
+ C^2=2g-2\qquad\text{\source{Asp §2.6, eq.~(53), ll.~1178--1184}} ,
+\end{equation}
+because the degrees of the normal bundle and of the tangent bundle of $C$, which are $C^2$
+and $2-2g$, must add up to $c_1(X)|_C=0$. On a quartic $X\subset\mathbb{P}^3$ a plane section
+is a smooth plane quartic curve, of genus $(4-1)(4-2)/2=3$, so $C^2=4$; and indeed two planes
+meet in a line, which meets the quartic in four points \source{Asp §2.5, ll.~964--967}. A
+sphere ($g=0$) always has $C^2=-2$. Such curves will be the main actors of
+\cref{sec:k3lattice:roots}. This test is not a proof of evenness, because for a fixed complex
+structure the classes of curves do not span $H^2(X,\Z)$
+\source{Huy ch.~1, footnote~11, ll.~641--643}.
+
+\paragraph{Signature $(3,19)$, by two routes.}\index{signature}
+The signature theorem gives $b_+-b_-=\tfrac13(c_1^2-2c_2)=-\tfrac23\chi(X)=-16$
+\source{Asp §2.3, eq.~(20), ll.~527--535; Huy ll.~614--618}, as computed in \cref{ch:k3}. With
+$b_++b_-=b_2=22$ one finds $(b_+,b_-)=(3,19)$. The second route uses Hodge theory and tells
+us \emph{which} three directions are positive. Decompose
+\begin{equation}\label{eq:k3lattice:hodgesplit}
+ H^2(X,\R)=\bigl(H^{2,0}\oplus H^{0,2}\bigr)_\R\;\oplus\;H^{1,1}_\R,\qquad
+ \dim=2h^{2,0}+h^{1,1}=2+20 .
+\end{equation}
+On the first summand, spanned by $\operatorname{Re}\Omega$ and $\operatorname{Im}\Omega$, the
+form is positive definite (we prove this in \cref{sec:k3lattice:periods}). On $H^{1,1}_\R$ the
+Hodge index theorem allows exactly one positive direction, that of a Kähler class
+\source{Huy ch.~1, Remark~3.4, ll.~553--557}. Hence
+\begin{equation}\label{eq:k3lattice:bpm}
+ b_+=2h^{2,0}+1=3,\qquad b_-=h^{1,1}-1=19 .
+\end{equation}
+The two routes use different inputs (characteristic classes; Hodge numbers) and agree. The
+second one is what the Lean theorem \lean{sigK3\_matches\_hodge} of
+\cref{sec:k3lattice:lean} compares with the lattice decomposition.
+
+\subsection{The theorem and what it does not say}
+An indefinite even unimodular lattice is determined up to isomorphism by its signature, and
+exists only if $n_+-n_-\equiv0\pmod8$ (\cref{ch:lattices};
+\source{Asp §2.3, eq.~(23), ll.~557--566}). For $(3,19)$ we have $3-19=-16$, and the lattice
+with that signature built from the two blocks of \cref{ch:lattices} is
+$U^{\oplus3}\oplus E_8(-1)^{\oplus2}$, with $3\cdot(1,1)+2\cdot(0,8)=(3,19)$.
+
+\begin{theorem}[The K3 lattice; Tier~L]\label{thm:k3lattice:lattice}\index{K3 lattice}
+For every complex K3 surface $X$ there is an isometry of lattices
+\begin{equation}\label{eq:k3lattice:lattice}
+ H^2(X,\Z)\;\cong\;\Lambda:=E_8(-1)\oplus E_8(-1)\oplus U\oplus U\oplus U .
+\end{equation}
+\TL{} \source{Huy ch.~1, Prop.~3.5, eq.~(3.4), ll.~600--618; Asp §2.3, eq.~(24), ll.~567--631}
+\end{theorem}
+
+\begin{example}[The Gram matrix, checked by machine arithmetic]\label{ex:k3lattice:gram}
+In a basis adapted to \eqref{eq:k3lattice:lattice} the Gram matrix is the block-diagonal
+$22\times22$ integer matrix $G_\Lambda=\diag(-E_8,-E_8,U,U,U)$, where $E_8$ is the Cartan
+matrix of \cref{ch:lattices} and
+$U=\bigl(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\bigr)$. Its invariants follow block by
+block: the diagonal entries are $-2$ and $0$, hence even; $\det G_\Lambda=(\det(-E_8))^2(\det
+U)^3=(+1)^2(-1)^3=-1$; each $U$ has eigenvalues $\pm1$ and each $-E_8$ is negative definite,
+giving $3$ positive and $16+3=19$ negative eigenvalues. A symbolic check (sympy, exact
+determinant; numerical eigenvalues) confirms $\det=-1$ and the inertia $(3,19)$. In Lean the
+blocks are certified separately (\cref{ch:lattices}) and the signature arithmetic is the
+theorem \lean{sigK3\_eq}.
+\end{example}
+
+\begin{pitfallbox}[``Abstractly isomorphic'' is not ``equal'']
+\Cref{thm:k3lattice:lattice} does not hand us $22$ surfaces inside $X$ that intersect
+according to $G_\Lambda$. It says that such a basis of \emph{classes} exists, and the proof
+finds it by classification, not by geometry. Huybrechts remarks that it would be interesting
+to see the decomposition directly on some K3 surface by writing down cycles, and proposes
+the Kummer surface as a candidate \source{Huy ll.~620--623}; see \cref{ch:kummer}. Moreover,
+the isometry in \eqref{eq:k3lattice:lattice} is far from unique: it can be composed with any
+element of the infinite group $O(\Lambda)$. Choosing one is extra data, called a marking
+(\cref{def:k3lattice:marking}), and keeping track of this choice is the main bookkeeping
+task of the chapter.
+\end{pitfallbox}
+
+A second caveat concerns the converse. A simply connected complex surface whose
+intersection form is \eqref{eq:k3lattice:lattice} need not be diffeomorphic to a K3 surface,
+although by Freedman's results it is homeomorphic to one
+\source{Huy ch.~1, Remark~3.6(ii), ll.~633--639}. The lattice determines the topological type
+of the manifold, but not its smooth structure.
+
+%=====================================================================================
+\section{Periods}\label{sec:k3lattice:periods}
+
+\subsection{The two relations satisfied by \texorpdfstring{$\Omega$}{Omega}}
+The lattice is the same for all K3 surfaces, so it cannot distinguish them. What varies is
+the position of the Hodge decomposition \eqref{eq:k3lattice:hodgesplit} relative to the
+lattice. To measure it, choose a basis $\{e_i\}$ of two-cycles and integrate the holomorphic
+two-form:
+\begin{equation}\label{eq:k3lattice:periods}
+ \varpi_i=\int_{e_i}\Omega ,\qquad i=1,\dots,22
+ \qquad\text{\source{Asp §2.3, eq.~(26), ll.~651--655}} .
+\end{equation}
+These $22$ complex numbers are the \emph{periods}\index{period} of $X$. They are the
+coordinates of the class $\Omega\in H^2(X,\C)=\Lambda\otimes\C$ in the basis dual to
+$\{e_i\}$. Since $\Omega$ is defined only up to a nonzero complex factor (\cref{ch:k3}), the
+meaningful object is the point $[\Omega]=[\varpi_1:\dots:\varpi_{22}]$ of the projective
+space $\mathbb{P}(\Lambda_\C)\cong\mathbb{P}^{21}$.
+
+Not every point of $\mathbb{P}^{21}$ can occur. Write $\Omega=x+\ii y$ with
+$x,y\in H^2(X,\R)$. In local coordinates $\Omega=f\,\dd z_1\wedge\dd z_2$, so
+$\Omega\wedge\Omega$ is a $(4,0)$-form and vanishes on a complex surface, where only
+$(2,2)$-forms can be integrated. Hence
+\begin{equation}\label{eq:k3lattice:OmegaOmega}
+ 0=\int_X\Omega\wedge\Omega=(x+\ii y)\cdot(x+\ii y)=(x^2-y^2)+2\ii\,(x\cdot y)
+ \qquad\text{\source{Asp §2.3, eq.~(29), ll.~672--682}} ,
+\end{equation}
+so $x^2=y^2$ and $x\cdot y=0$. On the other hand $\Omega\wedge\bar\Omega
+=|f|^2\,\dd z_1\wedge\dd z_2\wedge\dd\bar z_1\wedge\dd\bar z_2$ is a positive multiple of the
+volume form (in real coordinates $z_k=u_k+\ii v_k$ it equals
+$4|f|^2\,\dd u_1\wedge\dd v_1\wedge\dd u_2\wedge\dd v_2$), so
+\begin{equation}\label{eq:k3lattice:OmegaOmegabar}
+ 0<\int_X\Omega\wedge\bar\Omega=(x+\ii y)\cdot(x-\ii y)=x^2+y^2
+ \qquad\text{\source{Asp §2.3, eq.~(30), ll.~683--694}} .
+\end{equation}
+Together: $x^2=y^2>0$ and $x\cdot y=0$. The real and imaginary parts of $\Omega$ are
+orthogonal vectors of equal positive length. They span a plane in $H^2(X,\R)\cong\R^{3,19}$
+on which the form is positive definite, a \emph{space-like two-plane}, and the ordered pair
+$(x,y)$ orients it. Rescaling $\Omega\mapsto\lambda\Omega$ with $\lambda=r\ee^{\ii\theta}$
+rotates $(x,y)$ by the angle $\theta$ and stretches it by $r$: plane and orientation are
+unchanged. Complex conjugation $(x,y)\mapsto(x,-y)$ reverses the orientation
+\source{Asp §2.3, ll.~697--702}. This proves the claim used for
+\eqref{eq:k3lattice:bpm}, and it shows that the data carried by the periods is exactly an
+oriented positive two-plane.
+
+\subsection{The period domain}
+\begin{definition}[Period domain]\label{def:k3lattice:D}\index{period domain}
+For a lattice $\Lambda$ of signature $(n_+,n_-)$ with $n_+\ge2$,
+\begin{equation}\label{eq:k3lattice:D}
+ D:=\bigl\{[x]\in\mathbb{P}(\Lambda_\C)\;\big|\;x^2=0,\ (x\cdot\bar x)>0\bigr\}
+ \qquad\text{\source{Huy ch.~6 §1.1, ll.~4281--4290}} .
+\end{equation}
+\end{definition}
+The second condition is well posed because $(\lambda x\cdot\overline{\lambda x})
+=|\lambda|^2(x\cdot\bar x)$. For the K3 lattice, $D$ is an open subset (in the classical
+topology) of a smooth quadric hypersurface in $\mathbb{P}^{21}$, hence a complex manifold of
+dimension $21-1=20$. This is the number $h^{1,1}=20$ of complex-structure deformations found
+in \cref{ch:k3}, and it is the first sign that periods are good coordinates.
+
+\begin{proposition}[Three descriptions of $D$; Tier~L]\label{prop:k3lattice:grass}
+The map $[x]\mapsto\R\operatorname{Re}x\oplus\R\operatorname{Im}x$ identifies $D$ with the
+Grassmannian $\mathrm{Gr}^{po}(2,\Lambda_\R)$ of oriented positive two-planes, and
+\begin{equation}\label{eq:k3lattice:homog}
+ D\;\cong\;\mathrm{Gr}^{po}(2,\Lambda_\R)\;\cong\;O(n_+,n_-)\big/\bigl(SO(2)\times
+ O(n_+-2,n_-)\bigr) .
+\end{equation}
+\TL{} \source{Huy ch.~6, Prop.~1.5, ll.~4347--4363; Asp §2.3, eq.~(31), ll.~726--747}
+\end{proposition}
+\begin{proof}[Idea]
+We have already seen that $x^2=0$, $(x\cdot\bar x)>0$ make $\operatorname{Re}x$,
+$\operatorname{Im}x$ an orthogonal basis of equal positive length of a plane, and that
+$\lambda x$ gives the same oriented plane. Conversely an oriented positive plane with oriented
+orthonormal basis $e_1,e_2$ is the image of $e_1+\ii e_2$. For the second isomorphism,
+$O(n_+,n_-)$ acts transitively on oriented positive planes, and the stabilizer of one of them
+consists of rotations inside the plane, $SO(2)$, times arbitrary isometries of its orthogonal
+complement, which has signature $(n_+-2,n_-)$.
+\end{proof}
+
+As a check, count real dimensions with $\dim O(p,q)=\tfrac12(p+q)(p+q-1)$:
+\begin{equation}\label{eq:k3lattice:dim40}
+ \dim_\R D=\dim O(3,19)-\dim SO(2)-\dim O(1,19)=231-1-190=40=2\cdot20 .
+\end{equation}
+The count can also be done by hand: a two-plane in $\R^{22}$ is given by two vectors ($44$
+numbers) up to $GL(2,\R)$ ($4$ numbers), and positivity is an open condition.
+
+A point of $D$ determines the whole Hodge decomposition\index{Hodge structure of K3 type},
+not only $H^{2,0}$: set $H^{2,0}=\C x$, $H^{0,2}=\C\bar x$, and let $H^{1,1}$ be the
+orthogonal complement of both. This is the unique Hodge structure on $\Lambda$ with
+$H^{2,0}=\C x$ for which $H^{1,1}\perp H^{2,0}$ \source{Huy ch.~6, Prop.~1.2, ll.~4304--4318}.
+The orthogonality is geometric: for a $(1,1)$-form $a$ the product $a\wedge\Omega$ is of type
+$(3,1)$ and vanishes. In particular the period determines which integral classes are of type
+$(1,1)$:
+\begin{equation}\label{eq:k3lattice:NS}
+ \mathrm{NS}(X)=\mathrm{Pic}(X)=H^2(X,\Z)\cap H^{1,1}(X)
+ =\{v\in H^2(X,\Z)\mid(v\cdot\Omega)=0\} ,
+\end{equation}
+the \emph{Picard} or Néron--Severi lattice\index{Picard lattice}\index{Néron--Severi
+lattice}, of rank $\rho(X)\le20$ \source{Huy ch.~1, eqs.~(3.2)--(3.3), ll.~570--575; Asp §2.5,
+eq.~(41), ll.~921--930}. (The second equality in \eqref{eq:k3lattice:NS} holds because an
+integral class is real, so $(v\cdot\Omega)=0$ implies $(v\cdot\bar\Omega)=0$.) The condition
+$(v\cdot\Omega)=0$ is one complex linear equation on the period for each $v$. A generic
+period satisfies none of them, and the corresponding K3 surface contains no curves at all:
+$\rho=0$ \source{Asp §2.5, ll.~931--935}. If $X$ is algebraic, $\mathrm{NS}(X)$ has signature
+$(1,\rho-1)$, because it is orthogonal to the positive plane of $\Omega$ and contains the
+class of a hyperplane section \source{Asp §2.5, ll.~1018--1022}. Its orthogonal complement
+in $H^2(X,\Z)$ is the \emph{transcendental lattice}\index{transcendental lattice} $T(X)$, of
+signature $(2,20-\rho)$; it is rarely unimodular \source{Asp §2.5, ll.~1027--1029}.
+
+\begin{example}[A period point with $\rho=20$]\label{ex:k3lattice:rho20}
+Let $e_k,f_k$ ($k=1,2,3$) be the standard bases of the three copies of $U$:
+$e_k^2=f_k^2=0$, $e_k\cdot f_k=1$. Put
+\[
+ x=e_1+f_1,\qquad y=e_2+f_2,\qquad \Omega=x+\ii y .
+\]
+Then $x^2=2(e_1\cdot f_1)=2$, $y^2=2$ and $x\cdot y=0$ because the two copies of $U$ are
+orthogonal. Therefore $\Omega^2=x^2-y^2+2\ii\,x\cdot y=0$ and
+$\Omega\cdot\bar\Omega=x^2+y^2=4>0$: the point $[\Omega]$ lies in $D$. By
+\eqref{eq:k3lattice:NS} the Picard lattice consists of the integral vectors orthogonal to $x$
+and $y$. A vector $ae_1+bf_1$ has $(ae_1+bf_1)\cdot x=a+b$, so the orthogonal complement of
+$x$ in the first $U$ is spanned by $e_1-f_1$, of square $-2$. Hence
+\[
+ \mathrm{NS}=\Z(e_1-f_1)\oplus\Z(e_2-f_2)\oplus U\oplus E_8(-1)^{\oplus2},\qquad
+ \rho=1+1+2+16=20,
+\]
+of signature $(1,19)$ as predicted, and $T=\Z x\oplus\Z y$ with Gram matrix
+$\bigl(\begin{smallmatrix}2&0\\0&2\end{smallmatrix}\bigr)$, of determinant $4\ne\pm1$. The
+period has the largest possible Picard number. That a K3 surface with this period exists is
+guaranteed by \cref{thm:k3lattice:surj} below; we did not have to write down an equation. We
+return to this surface in \cref{ex:k3lattice:maximal}. (Symbolic check of all pairings:
+sympy.)
+\end{example}
+
+\begin{remark}[The case $n_+=2$: upper half-planes]\label{rem:k3lattice:tube}
+For algebraic K3 surfaces the hyperplane class $\ell$ stays of type $(1,1)$, the period is
+confined to $\ell^\perp$ of signature $(2,19)$, and the quartic surfaces, for example, have
+the moduli space $O(\Lambda_C)\backslash O(2,19)/(O(2)\times O(19))$ of complex dimension
+$\tfrac12(210-1-171)=19$. This matches the $35-16=19$ coefficients of a quartic polynomial
+modulo $GL(4,\C)$; one of the $20$ deformations is lost
+\source{Asp §2.5, eq.~(44), ll.~968--983}. For $n_+=2$ the period domain has a familiar
+shape. Split $\Lambda_\R=U_\R\oplus W$ and send $\zeta\in W_\C$ to
+$x=e-\tfrac12\zeta^2f+\zeta$. Then $x^2=2\cdot(-\tfrac12\zeta^2)+\zeta^2=0$ identically, and
+with $\zeta=a+\ii b$ one finds $(x\cdot\bar x)=-\operatorname{Re}\zeta^2+\zeta\cdot\bar\zeta
+=-(a^2-b^2)+(a^2+b^2)=2b^2$. So $D$ is the tube domain $\{\zeta\mid(\operatorname{Im}
+\zeta)^2>0\}$ (this is \source{Huy ch.~6, Prop.~1.7, ll.~4384--4396} with $\zeta=\sqrt2z$).
+For $W$ of signature $(1,0)$ this is the union of the upper and the lower half-plane: the
+parameter $\tau$ of \cref{ch:torus2} is a period in exactly this sense, and $D$ for
+signature $(2,n_-)$ is its higher-dimensional analogue. For $n_+=2$, $D$ has two
+components exchanged by complex conjugation; for the full K3 lattice, $n_+=3$, it is
+connected \source{Huy ch.~6, Remark~1.6, ll.~4365--4373}.
+\end{remark}
+
+%=====================================================================================
+\section{Markings, the period map and the Torelli theorems}\label{sec:k3lattice:torelli}
+
+\subsection{Marked K3 surfaces}
+To compare the periods of two different surfaces they must be written in the same
+coordinates, that is, in the fixed lattice $\Lambda$.
+
+\begin{definition}[Marking]\label{def:k3lattice:marking}\index{marking}\index{marked K3 surface}
+A \emph{marking} of a K3 surface $X$ is an isometry $\varphi\colon H^2(X,\Z)\to\Lambda$. Two
+marked surfaces $(X,\varphi)$, $(X',\varphi')$ are equivalent if there is a biholomorphic
+map $g\colon X\to X'$ with $\varphi\circ g^*=\varphi'$. The set of equivalence classes is
+denoted $N$. \source{Huy ch.~7 §2.1, ll.~5600--5606; Asp §2.3, ll.~656--660}
+\end{definition}
+Concretely, a marking is a choice of which $22$ cycles are used in
+\eqref{eq:k3lattice:periods}. The \emph{period map}\index{period map} is
+\begin{equation}\label{eq:k3lattice:periodmap}
+ \mathcal P\colon N\to D\subset\mathbb P(\Lambda_\C),\qquad
+ (X,\varphi)\mapsto[\varphi_\C(\Omega_X)] ,
+\end{equation}
+and by \cref{sec:k3lattice:periods} it does take values in $D$. Three theorems describe it.
+All three are Tier~L; none is formalized in this book's Lean libraries, and none could be
+stated there at present, because the libraries contain no complex manifolds.
+
+\begin{theorem}[Local Torelli; Tier~L]\label{thm:k3lattice:local}\index{Torelli theorem!local}
+A K3 surface $X_0$ has a smooth universal deformation space $\mathrm{Def}(X_0)$ of complex
+dimension $20$, and the period map $\mathcal P\colon\mathrm{Def}(X_0)\to D$ is a local
+isomorphism. \TL{} \source{Huy ch.~6, Cor.~2.7 and Prop.~2.8, ll.~4646--4670}
+\end{theorem}
+The proof explains why it is true. First-order deformations of the complex structure are
+classified by $H^1(X_0,T_{X_0})$, where $T$ is the holomorphic tangent bundle. The tangent
+space of $D$ at the line $\ell=H^{2,0}$ is $\mathrm{Hom}(\ell,\ell^\perp/\ell)\cong
+\mathrm{Hom}(H^{2,0},H^{1,1})$ \source{Huy ch.~6, Remark~1.1, ll.~4296--4302}, and the
+differential of $\mathcal P$ sends a deformation $v$ to the map $\Omega\mapsto v\lrcorner
+\Omega$. Because $\Omega$ vanishes nowhere, contraction with it is an isomorphism of bundles
+$T_X\to\Omega^1_X$, hence an isomorphism $H^1(T_X)\to H^1(\Omega^1_X)=H^{1,1}$ of
+$20$-dimensional spaces. In words: to first order a change of complex structure is the same
+thing as a change of the class of $\Omega$ in the $(1,1)$ directions. Gluing the local
+deformation spaces makes $N$ a $20$-dimensional complex manifold, which however is not
+Hausdorff \source{Huy ch.~7 §2.1, ll.~5607--5616}.
+
+\begin{theorem}[Surjectivity of the period map; Tier~L]\label{thm:k3lattice:surj}
+\index{period map!surjectivity}
+On each connected component $N^o$ of $N$ the period map $\mathcal P\colon N^o\to D$ is
+surjective: every point of the period domain is the period of a marked K3 surface. \TL{}
+\source{Huy ch.~7, Thm.~4.1, ll.~5892--5895; first proved by Todorov, ll.~5884--5885}
+\end{theorem}
+
+\begin{theorem}[Global Torelli; Tier~L]\label{thm:k3lattice:torelli}
+\index{Torelli theorem!global}\index{Hodge isometry}
+Two complex K3 surfaces $X,X'$ are isomorphic if and only if there is a \emph{Hodge isometry}
+$\psi\colon H^2(X,\Z)\to H^2(X',\Z)$, that is, an isometry of lattices whose complexification
+maps $H^{2,0}(X)$ to $H^{2,0}(X')$. Moreover, if $\psi$ maps at least one Kähler class of $X$
+to a Kähler class of $X'$, then $\psi=f^*$ for a unique isomorphism $f\colon X'\to X$. \TL{}
+\source{Huy ch.~7, Thm.~5.3, ll.~5969--5972}
+\end{theorem}
+In the language of markings: if $\mathcal P(X,\varphi)=\mathcal P(X',\varphi')$ then
+$\psi=\varphi'^{-1}\circ\varphi$ is a Hodge isometry, so $X\cong X'$. The period is a complete
+invariant of the complex structure. Aspinwall states the combination of
+\cref{thm:k3lattice:surj,thm:k3lattice:torelli} as one sentence: the moduli space of complex
+structures on a marked K3 surface, including orbifold points, is the space of possible
+periods \source{Asp §2.3, Theorem~2, ll.~721--725}.
+
+\begin{pitfallbox}[A Hodge isometry need not come from a map of surfaces]
+The first half of \cref{thm:k3lattice:torelli} says that $X$ and $X'$ are isomorphic; it does
+not say that the given $\psi$ is induced by an isomorphism. The isometry $-\mathrm{id}$ is a
+Hodge isometry of every K3 surface and acts trivially on $D$, but it is never of the form
+$f^*$, because it maps Kähler classes to their negatives
+\source{Huy ch.~7 §5.2, ll.~5982--5984}. The reflections of \cref{sec:k3lattice:roots} in
+classes of curves are further examples. This is the reason for the Kähler-cone condition in
+the second half, and the reason why $N$ fails to be Hausdorff: several marked surfaces,
+differing by such isometries, sit over the same period point and cannot be separated.
+\end{pitfallbox}
+
+\subsection{Forgetting the marking}
+To obtain the moduli space of unmarked surfaces one divides by the changes of marking. Which
+elements of $O(\Lambda)$ should be regarded as trivial? Those induced by diffeomorphisms of
+the underlying four-manifold. Let $O^+(\Lambda)\subset O(\Lambda)$ be the subgroup of index
+two that preserves the orientation of the positive three-planes; equivalently, the
+isometries of spinor norm $+1$ \source{Huy ch.~7 §5.4, ll.~6031--6041}. Every element of
+$O^+(\Lambda)$ is induced by a diffeomorphism and no element outside it is
+\source{Asp §2.3, ll.~757--761}; Huybrechts proves the closely related statement that the
+monodromy group of K3 surfaces is exactly $O^+(H^2(X,\Z))$
+\source{Huy ch.~7, Prop.~5.5, ll.~6049--6051}. Therefore the moduli space of complex
+structures on a K3 surface, including orbifold points, is
+\begin{equation}\label{eq:k3lattice:Mc}
+ \mathcal M_c\;\cong\;O^+(\Gamma^{3,19})\big\backslash O^+(3,19)\big/
+ \bigl(O(2)\times O(1,19)\bigr)^+
+ \qquad\text{\TL\ \source{Asp §2.3, eq.~(32), ll.~762--766}} ,
+\end{equation}
+where the superscripts $+$ restrict to the index-two subgroups preserving the orientation of
+the space-like directions. The structure is that of \cref{ch:odd}: a Teichm\"uller space
+$D$ (all periods), divided by a modular group $O^+(\Gamma^{3,19})$ (relabellings of the
+cycles). But there is a difference of substance. The action of $O^+(\Gamma^{3,19})$ on $D$ is
+ergodic, and $\mathcal M_c$ is not Hausdorff \source{Asp §2.3, ll.~767--769; Huy ch.~6 §1.3,
+ll.~4409--4412}. Underlying this is the fact that the stabilizer $SO(2)\times O(1,19)$ of a point
+is not compact, so that the discrete group need not act properly discontinuously. A
+geometric symptom: a K3 surface may have an infinite automorphism group, which then fixes
+its period point \source{Huy ch.~6, Example~1.9, ll.~4414--4420}. Aspinwall notes that
+$\mathcal M_c$ does not seem to make a natural appearance in string theory, whereas the
+moduli spaces which do appear are Hausdorff \source{Asp §2.3, ll.~770--774}. The next two
+sections construct the first of them.
+
+%=====================================================================================
+\section{\texorpdfstring{$(-2)$}{(-2)}-curves, reflections and the Kähler cone}
+\label{sec:k3lattice:roots}
+
+A complex structure fixes the plane of $\Omega$. A Kähler metric adds a Kähler class
+$J\in H^{1,1}_\R$ with $J^2=\int_XJ\wedge J>0$. Which classes are Kähler? By
+\eqref{eq:k3lattice:bpm} the form on $H^{1,1}_\R\cong\R^{1,19}$ is Lorentzian, so the set
+$\{\alpha\mid\alpha^2>0\}$ is the interior of a light-cone with two components. The
+\emph{positive cone}\index{positive cone} $\mathcal C_X$ is the component containing a Kähler
+class, and the Kähler cone\index{Kähler cone} satisfies $\mathcal K_X\subset\mathcal C_X$
+\source{Huy ch.~7 §3.2, ll.~5812--5818}. It is cut out of $\mathcal C_X$ by the spheres
+contained in $X$.
+
+\begin{definition}[Roots]\label{def:k3lattice:roots}\index{root}\index{$(-2)$-curve}
+A \emph{root} of a lattice is a vector $\delta$ with $\delta^2=-2$. A
+\emph{$(-2)$-curve} on $X$ is a smooth rational curve $C\cong\mathbb P^1\subset X$; by
+\eqref{eq:k3lattice:adjunction} its class is a root of $\mathrm{NS}(X)$.
+\end{definition}
+There is a converse: if $\delta\in\mathrm{NS}(X)$ is a root, then $\delta$ or $-\delta$ is
+the class of an effective curve. The reason is the Riemann--Roch theorem: the line bundle $L$
+with $c_1(L)=\delta$ has $\chi(L)=2+\tfrac12\delta^2=1>0$, so $L$ or its dual has a section
+\source{Huy ch.~8 §2.2, footnote~3, ll.~6486--6488; Asp §2.6, ll.~1203--1206}. If $\mathrm{NS}(X)=\Z\delta$,
+that curve is a single smooth $\mathbb P^1$ \source{Huy ch.~7, proof of Prop.~5.5,
+ll.~6055--6059}.
+
+\begin{theorem}[Kähler cone; Tier~L]\label{thm:k3lattice:kahler}
+The Kähler cone of a K3 surface $X$ is
+\begin{equation}\label{eq:k3lattice:kahler}
+ \mathcal K_X=\{\alpha\in\mathcal C_X\mid(\alpha\cdot C)>0\text{ for all smooth rational
+ curves }C\subset X\} .
+\end{equation}
+In particular, if $\mathrm{Pic}(X)=0$ then $\mathcal K_X=\mathcal C_X$. \TL{}
+\source{Huy ch.~8, Thm.~5.2 and Cor.~5.3, ll.~7209--7218}
+\end{theorem}
+The condition is necessary for an obvious reason: $(J\cdot C)=\int_CJ$ is the area of $C$ in
+the Kähler metric, and areas of holomorphic curves are positive. The content of the theorem
+is that it is sufficient.
+
+\subsection{Walls, chambers and the Weyl group}
+Each root $\delta\in\mathrm{NS}(X)$ defines a \emph{wall}\index{wall} $\delta^\perp\cap
+\mathcal C_X$. The walls are locally finite in $\mathcal C_X$, and the connected components
+of their complement are called \emph{chambers}\index{chamber}
+\source{Huy ch.~8 §2.2, ll.~6494--6519}. By \cref{thm:k3lattice:kahler} the Kähler cone is
+one of the chambers. The reflection\index{reflection}
+\begin{equation}\label{eq:k3lattice:refl}
+ s_\delta(x)=x+(x\cdot\delta)\,\delta,\qquad\delta^2=-2
+ \qquad\text{\source{Huy ch.~8 §2.2, ll.~6483--6493}} ,
+\end{equation}
+is an integral isometry and an involution (\cref{ch:lattices}, where this is proved on the
+page and in Lean). It fixes the wall $\delta^\perp$ pointwise, sends $\delta\mapsto-\delta$,
+and preserves the positive cone, because $(s_\delta(x)\cdot x)=x^2+(x\cdot\delta)^2>0$ for
+$x\in\mathcal C_X$, so that $x$ and $s_\delta(x)$ lie in the same component. Since $\delta$
+is of type $(1,1)$, $s_\delta$ fixes $\Omega$: it is a Hodge isometry. The group $W$
+generated by all $s_\delta$ is the \emph{Weyl group}\index{Weyl group} of $X$.
+
+\begin{proposition}[Tier~L]\label{prop:k3lattice:weyl}
+$W$ acts simply transitively on the set of chambers, and it is generated by the reflections
+in the walls of any one chamber. \TL{}
+\source{Huy ch.~8, Remark~2.5 and Prop.~2.6, ll.~6542--6563}
+\end{proposition}
+The source proves this for a lattice of signature $(1,n)$, such as $\mathrm{NS}(X)$ of an
+algebraic K3 surface, and treats the Kähler cone of a general K3 surface by the same method
+in its §8.5.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=1.9]
+ \begin{scope}
+ \clip (0,0) circle (1);
+ \fill[blue!12] (-0.2,-1) -- (0.75,0.7) -- (1,0.3) -- (1,-1) -- cycle;
+ \fill[white] (1.2,-0.15) -- (0.2,-1.1) -- (1.2,-1.1) -- cycle;
+ \draw[thick] (-0.2,-1) -- (0.85,0.88);
+ \draw[thick] (1.2,-0.15) -- (0.2,-1.1);
+ \draw (-1,0.35) -- (0.6,1);
+ \draw (-1,-0.3) -- (0.1,-1);
+ \draw (-0.75,1) -- (-0.45,-1);
+ \draw (0.55,1) -- (1,0.55);
+ \end{scope}
+ \draw[thick] (0,0) circle (1);
+ \node at (0.62,-0.18) {$\mathcal K_X$};
+ \node[font=\small] at (-0.02,0.25) {$s_\delta\mathcal K_X$};
+ \node[font=\small,rotate=61] at (0.22,-0.43) {$\delta^\perp$};
+ \draw[<->,>=Stealth] (0.45,0.42) to[bend right=35] (0.12,0.58);
+ \node[font=\small] at (1.55,0.85) {$\partial\mathcal C_X$: $\alpha^2=0$};
+ \draw[->,>=Stealth] (1.35,0.72) -- (0.93,0.45);
+\end{tikzpicture}
+\caption{A section $\alpha^2=1$ of the positive cone $\mathcal C_X\subset\R^{1,19}$, drawn
+as a disc (a hyperbolic space in the projective model, where hyperplanes are chords). The
+walls $\delta^\perp$ of roots cut it into chambers; the shaded chamber is the Kähler cone,
+and the reflection $s_\delta$ maps it to the adjacent chamber. Schematic: for $\rho=20$ there
+are in general infinitely many walls, accumulating only at the boundary.}
+\label{fig:k3lattice:chambers}
+\end{figure}
+
+\Cref{fig:k3lattice:chambers} shows the picture. It completes the Torelli theorem: given a
+Hodge isometry $\psi$ between $X$ and $X'$, first replace $\psi$ by $-\psi$ if necessary so
+that positive cones correspond; then $\psi(\mathcal K_X)$ is one of the chambers of $X'$, and
+by \cref{prop:k3lattice:weyl} exactly one $w\in W$ moves it onto $\mathcal K_{X'}$. The
+corrected isometry $w\circ\psi$ satisfies the hypothesis of the second half of
+\cref{thm:k3lattice:torelli} and is induced by a unique isomorphism. So the group of Hodge
+isometries of $X$ is $\{\pm1\}\times W$ extended by the automorphisms of $X$.
+
+\begin{physicsbox}[Compare the circle]
+In \cref{ch:lattices} the T-duality $n\leftrightarrow w$ of a circle was identified with the
+reflection $s_{e-f}$ of $U$ in the root $e-f$. The half-line of radii $R>0$ is cut by one
+``wall'', the self-dual radius $R=\sqrt{\ap}$ fixed by the reflection, into two chambers
+exchanged by it, and either chamber is a fundamental domain. For K3 surfaces the Kähler cone
+plays the role of the fundamental domain $R\ge\sqrt{\ap}$, the walls are the loci where a
+sphere shrinks to zero area, and on the wall something becomes massless in both cases
+(\cref{sec:k3lattice:ade}). The analogy is structural; it is not a statement that $s_\delta$
+for a geometric $(-2)$-curve is a T-duality.
+\end{physicsbox}
+
+\paragraph{Reflections as monodromies and as generators.} Reflections also arise from
+families. If a family of K3 surfaces over a disc acquires an $A_1$ singularity at the centre,
+transporting $H^2$ once around the centre acts as $s_\delta$, where $\delta$ is the class of
+the exceptional $(-2)$-curve \source{Huy ch.~6 §5, ll.~5398--5401}. This is how
+$O^+(\Lambda)$ entered \eqref{eq:k3lattice:Mc}: by a theorem essentially due to Wall, every
+element of $O^+(\Lambda)$ is a product of reflections $s_{\delta_i}$ in roots
+\source{Huy ch.~7 §5.4, ll.~6041--6044}, and each reflection is a monodromy, hence induced
+by a diffeomorphism. Note the two different uses of roots. For the monodromy statement
+\emph{all} roots of the rank-$22$ lattice $\Lambda$ are used. For the Weyl group of a given
+surface only the roots in $\mathrm{NS}(X)$, which depend on the period, are used.
+
+%=====================================================================================
+\section{The moduli space of Einstein metrics}\label{sec:k3lattice:einstein}
+
+\subsection{From a two-plane to a three-plane}
+A Kähler metric on a K3 surface whose Ricci tensor is proportional to the metric is in fact
+Ricci-flat, so ``Einstein'' and ``Ricci-flat'' can be used interchangeably
+\source{Asp §2.4, ll.~787--789}. By Yau's theorem\index{Yau's theorem}, for a fixed complex
+structure and a fixed Kähler class there is exactly one Ricci-flat Kähler metric
+\source{Asp §2.4, ll.~841--844}. The data of such a metric are therefore the two-plane of
+$\Omega$ together with a vector $J$ that is
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item orthogonal to the plane, because $J$ is of type $(1,1)$ and $J\wedge\Omega$ is of type
+ $(3,1)$;
+\item space-like, because $J^2=\int_XJ\wedge J$ is, up to normalization, the volume of $X$
+ \source{Asp §2.4, eq.~(38), ll.~849--856}.
+\end{itemize}
+Thus a Ricci-flat Kähler metric determines a positive \emph{three}-plane
+\begin{equation}\label{eq:k3lattice:Sigma}
+ \Sigma=\langle\operatorname{Re}\Omega,\operatorname{Im}\Omega,J\rangle\subset
+ H^2(X,\R)\cong\R^{3,19} ,
+\end{equation}
+and a number, the volume. Since $b_+=3$, the plane $\Sigma$ is a \emph{maximal} positive
+subspace. It has an intrinsic meaning. The Hodge star $*$ of a Riemannian metric on a
+four-manifold squares to $+1$ on two-forms, and harmonic two-forms split into self-dual and
+anti-self-dual ones: $H^2(X,\R)=H^+\oplus H^-$. From $\alpha\wedge{*\alpha}=|\alpha|^2\,
+\mathrm{vol}$ one reads off that $\alpha^2>0$ for $\alpha=*\alpha$ and $\alpha^2<0$ for
+$\alpha=-{*\alpha}$, so $\dim H^+=3$ and $\dim H^-=19$
+\source{Asp §2.4, eqs.~(33)--(36), ll.~790--817}. In a local orthonormal coframe
+$e^1,\dots,e^4$ with $\dd z_1=e^1+\ii e^2$, $\dd z_2=e^3+\ii e^4$ the self-dual forms are
+spanned by
+\begin{equation}\label{eq:k3lattice:sd}
+ s_1=e^{12}+e^{34},\qquad s_2=e^{13}+e^{42},\qquad s_3=e^{14}+e^{23},
+ \qquad e^{ij}:=e^i\wedge e^j ,
+\end{equation}
+and one checks directly that $\tfrac{\ii}{2}(\dd z_1\wedge\dd\bar z_1+\dd z_2\wedge\dd\bar
+z_2)=s_1$ is the Kähler form, while $\dd z_1\wedge\dd z_2=(e^{13}-e^{24})+\ii(e^{14}+e^{23})
+=s_2+\ii s_3$ is the holomorphic two-form. Hence
+\begin{equation}\label{eq:k3lattice:SigmaHplus}
+ \Sigma=H^+\qquad\text{\source{Asp §2.4, eq.~(37) and ll.~825--840}} .
+\end{equation}
+
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[scale=1.5,>=Stealth]
+ \draw[thick] (0,0) circle (1);
+ \draw[dashed] (-1,0) arc (180:0:1 and 0.3);
+ \draw (-1,0) arc (180:360:1 and 0.3);
+ \draw[->,thick] (0,0) -- (0,1.45) node[above] {$J$};
+ \draw[->,thick] (0,0) -- (1.45,-0.12) node[right] {$\operatorname{Im}\Omega$};
+ \draw[->,thick] (0,0) -- (-0.75,-0.62) node[below left] {$\operatorname{Re}\Omega$};
+ \draw[->,thick,blue!60!black] (0,0) -- (0.62,0.78);
+ \fill[blue!60!black] (0.62,0.78) circle (0.035) node[above right] {$J'$};
+ \node at (-1.45,1.0) {$\Sigma=H^+\cong\R^{3,0}$};
+ \node[draw,rounded corners,align=center,font=\small] at (3.9,0.35)
+  {$\Sigma^\perp=H^-\cong\R^{0,19}$\\[2pt] roots $\delta\in\Gamma^{3,19}$ with
+  $\delta\perp\Sigma$\\ $\Longleftrightarrow$ shrunken spheres};
+\end{tikzpicture}
+\caption{The positive three-plane $\Sigma\subset\R^{3,19}$ of a Ricci-flat metric. A point
+$J'$ of the unit sphere in $\Sigma$ selects a Kähler direction, and the plane orthogonal to
+it inside $\Sigma$ is the period plane of the corresponding complex structure. All points of
+the sphere give the same metric.}
+\label{fig:k3lattice:sigma}
+\end{figure}
+
+\begin{physicsbox}[One metric, a two-sphere of complex structures]
+\index{hyperkähler structure}
+The metric determines $\Sigma=H^+$ but \emph{not} its splitting into $\Omega$ and $J$.
+Any unit vector $\hat\jmath\in\Sigma$ may be declared to be the direction of the Kähler form;
+the orthogonal plane in $\Sigma$ then plays the role of $\Omega$. A K3 surface regarded as a
+Riemannian manifold therefore carries a whole two-sphere $S^2$ of complex structures, all
+with the same Ricci-flat metric \source{Asp §2.4, ll.~864--874}. This is the hyperkähler
+structure: the holonomy $SU(2)\cong Sp(1)$ of \cref{ch:k3} commutes with three complex
+structures $I_1,I_2,I_3$ obeying the quaternion relations, and the combinations
+$aI_1+bI_2+cI_3$ with $a^2+b^2+c^2=1$ form the $S^2$. For the string this means that the splitting into ``complex structure moduli''
+and ``Kähler moduli'', which organizes Calabi--Yau threefolds, has no invariant meaning on
+K3. \Cref{fig:k3lattice:sigma} illustrates the geometry.
+\end{physicsbox}
+
+\subsection{The moduli space}
+\begin{theorem}[Moduli of Einstein metrics; Tier~L]\label{thm:k3lattice:einstein}
+\index{moduli space!of Einstein metrics on K3}
+The moduli space of Einstein metrics on a K3 surface, including orbifold points, is the
+Grassmannian of oriented positive three-planes in $\R^{3,19}$, times the volume, modulo the
+diffeomorphisms acting on the lattice:
+\begin{equation}\label{eq:k3lattice:ME}
+\begin{aligned}
+ \mathcal M_E&\cong O^+(\Gamma^{3,19})\big\backslash O^+(3,19)\big/\bigl(SO(3)\times
+ O(19)\bigr)\times\R_+\\
+ &\cong O(\Gamma^{3,19})\big\backslash O(3,19)\big/\bigl(O(3)\times O(19)\bigr)\times\R_+ .
+\end{aligned}
+\end{equation}
+\TL{} \source{Asp §2.4, Theorem~3 and eqs.~(39)--(40), ll.~877--903}
+\end{theorem}
+The second form follows from the first because the extra generator $-\mathbf1$ is central
+in $O(3,19)$, so adjoining it on the left and on the right changes nothing
+\source{Asp §2.4, ll.~900--903}. Let us count dimensions:
+\begin{equation}\label{eq:k3lattice:dim58}
+ \dim\mathcal M_E=\dim O(3,19)-\dim O(3)-\dim O(19)+1=231-3-171+1=58 .
+\end{equation}
+Two independent checks. (i) A positive three-plane near a given $\Sigma$ is the graph of a
+linear map $\Sigma\to\Sigma^\perp$, which has $3\cdot19=57$ entries; add $1$ for the
+volume. (ii) Complex structures have $40$ real parameters \eqref{eq:k3lattice:dim40} and
+Kähler classes $20$; the pairs $(\Omega,J)$ fibre over the metrics with fibre $S^2$, and
+$40+20-2=58$. Both agree with \eqref{eq:k3lattice:dim58}.
+
+In contrast to \eqref{eq:k3lattice:Mc}, the stabilizer $O(3)\times O(19)$ is now compact, the
+discrete group acts properly discontinuously, and $\mathcal M_E$ is Hausdorff
+\source{Asp §2.4, ll.~903--906}. Adding the Kähler class has repaired the defect of
+$\mathcal M_c$. Comparing with \cref{ch:narain}, $\mathcal M_E$ without the volume factor has
+exactly the form of a Narain moduli space with $(d,d)$ replaced by $(3,19)$: a maximal
+positive subspace moving relative to an even self-dual lattice. In the torus case the
+positive subspace was the space of left-moving momenta; here it is the space of self-dual
+harmonic forms. \Cref{ch:stringsk3} adds the $B$-field and the volume to $\Sigma$, obtaining
+a positive four-plane in $\R^{4,20}$ and a moduli space of real dimension $4\cdot20=80$ that
+is literally of Narain type.
+
+%=====================================================================================
+\section{ADE singularities and enhanced gauge symmetry}\label{sec:k3lattice:ade}
+
+\subsection{Where the metric degenerates}
+The theorems above included ``orbifold points''. We can now say where they are. Let
+$\delta\in\Gamma^{3,19}$ be a root with $\delta\perp\Sigma$. Then $\delta\perp\Omega$, so
+$\delta\in\mathrm{NS}(X)$ by \eqref{eq:k3lattice:NS}, and $\pm\delta$ is the class of a
+rational curve $C$. But also $\delta\perp J$, so the area $(J\cdot C)$ vanishes: by
+\cref{thm:k3lattice:kahler} $J$ is not a Kähler class but lies on a wall of the Kähler cone,
+and the sphere $C$ has shrunk to a point.
+
+\begin{theorem}[Orbifold points; Tier~L]\label{thm:k3lattice:orbifold}\index{orbifold}
+A point of $\mathcal M_E$ corresponds to an orbifold if and only if the three-plane $\Sigma$
+is orthogonal to a root of $\Gamma^{3,19}$. \TL{}
+\source{Asp §2.6, Theorem~4 and its proof, ll.~1203--1217}
+\end{theorem}
+Curves of genus $g\ge1$ cannot shrink in this way: their classes have $C^2=2g-2\ge0$ and
+cannot be orthogonal to $\Sigma$, whose orthogonal complement is negative definite
+\source{Asp §2.6, ll.~1214--1216}. The simplest local model is the blow-down of one
+$(-2)$-curve, which produces the singularity $\C^2/\Z_2$, that is $x_0x_1=x_2^2$ in $\C^3$
+with $x_0=\xi^2,x_1=\eta^2,x_2=\xi\eta$ \source{Asp §2.6, eq.~(50), ll.~1082--1090}. The
+process is continuous in the moduli space: keep the complex structure fixed and move $J$
+until $J\cdot C=0$ \source{Asp §2.6, ll.~1196--1202}.
+
+In general, let $R_\Sigma:=\{\delta\in\Gamma^{3,19}\mid\delta^2=-2,\ \delta\perp\Sigma\}$.
+These roots lie in the negative definite space $\Sigma^\perp$, so they form a finite root
+system, and the Gram matrix of a set of simple roots has $-2$ on the diagonal and is negative
+definite. This is, up to sign, the defining property of the Cartan matrix of a simply-laced
+Lie algebra, and the classification is the same: connected components are of type $A_n$,
+$D_n$, $E_6$, $E_7$, $E_8$\index{ADE classification} \source{Asp §2.6, ll.~1218--1228}.
+Geometrically, the simple roots of one component are spheres which intersect according to
+the Dynkin diagram and which are all contracted to one point. For $A_{n-1}$ the singularity
+is $\C^2/\Z_n$, that is $x_0x_1=x_2^n$, and its resolution is a chain of $n-1$ spheres
+\source{Asp §2.6, ll.~1229--1330}; see \cref{fig:k3lattice:chain}.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=0.95,>=Stealth]
+ \foreach \k/\a in {0/35,1/-35,2/35} {
+   \draw[thick,rotate around={\a:(1.1*\k,0)}] (1.1*\k-0.95,0) -- (1.1*\k+0.95,0);
+ }
+ \node[font=\small] at (-0.75,-0.8) {$E_1$};
+ \node[font=\small] at (1.1,0.85) {$E_2$};
+ \node[font=\small] at (2.95,0.85) {$E_3$};
+ \draw[->] (4.1,0) -- (5.1,0);
+ \foreach \k in {0,1,2} { \fill (5.9+0.9*\k,0) circle (0.09); }
+ \draw (5.9,0) -- (7.7,0);
+ \node[font=\small] at (6.8,-0.45) {$A_3$};
+ \node at (10.2,0) {$-\begin{pmatrix}2&-1&0\\-1&2&-1\\0&-1&2\end{pmatrix}$};
+\end{tikzpicture}
+\caption{The resolution of $\C^2/\Z_4$: three $(-2)$-curves (drawn as lines), adjacent ones
+meeting transversally in one point; the dual graph, which is the Dynkin diagram $A_3$; and
+the intersection matrix $E_i\cdot E_j$, minus the Cartan matrix of $SU(4)$.}
+\label{fig:k3lattice:chain}
+\end{figure}
+
+\begin{example}[A maximally singular K3 surface]\label{ex:k3lattice:maximal}
+Continue \cref{ex:k3lattice:rho20}: $\Omega=(e_1+f_1)+\ii(e_2+f_2)$, and choose $J=e_3+f_3$.
+Then $J^2=2>0$ and $J\perp\Omega$, so $\Sigma=\langle e_1+f_1,e_2+f_2,e_3+f_3\rangle$ is a
+positive three-plane with Gram matrix $2\cdot\mathbf 1_3$, and
+\[
+ \Sigma^\perp\cap\Gamma^{3,19}=\Z(e_1-f_1)\oplus\Z(e_2-f_2)\oplus\Z(e_3-f_3)\oplus
+ E_8(-1)^{\oplus2}\;=\;A_1(-1)^{\oplus3}\oplus E_8(-1)^{\oplus2},
+\]
+a negative definite lattice of rank $19$ and discriminant $(-2)^3=-8$. In an orthogonal sum
+of negative definite even lattices a vector of square $-2$ has all its components but one
+equal to zero (the squares of the components are even, non-positive, and add up to $-2$).
+So $R_\Sigma$ is the union of the roots of the summands: $2+2+2+240+240=486$ roots, a root
+system of type $3A_1+2E_8$ and rank $19$, the largest rank that $\Sigma^\perp\cong\R^{0,19}$
+allows. The corresponding point of $\mathcal M_E$ is a K3 orbifold with two $E_8$
+singularities and three $\C^2/\Z_2$ singularities, in which $19$ independent spheres have
+been shrunk. Moving $J$ to $J_t=e_3+tf_3$ with $t\ne1$, $t>0$, gives
+$J_t\cdot(e_3-f_3)=t-1\ne0$ and resolves one of the $A_1$ points, the sphere acquiring area
+$|t-1|$. (Symbolic check of the rank, the discriminant and the orthogonality relations:
+sympy. The count $240$ is Tier~L, \cref{ch:lattices}.)
+\end{example}
+
+\subsection{What the string sees}
+Compactify the type~IIA string on a K3 surface (\cref{ch:stringsk3}). The Ramond--Ramond
+three-form, reduced on the $22$ two-cycles, gives $22$ abelian gauge fields; the one-form
+and the dual of the three-form give two more, so the gauge group is generically $U(1)^{24}$,
+and perturbative string theory cannot produce charged states for it
+\source{Asp §4.3, ll.~2433--2442}. The heterotic string on $T^4$ has the same moduli space
+and also $U(1)^{24}$, but there non-abelian gauge groups appear by the mechanism of
+\cref{ch:tduality}: a lattice vector $\alpha$ with $\alpha^2=-2$ becomes orthogonal to the
+positive plane, the state has $p_L=0$, $p_R^2=-2$ in the conventions of the source, and it is
+a massless vector boson \source{Asp §4.3, ll.~2450--2483}. If the two theories are dual, the
+type~IIA string must do the same.
+
+\begin{proposition}[Aspinwall's Proposition~2; Tier~L, conditional]
+\label{prop:k3lattice:gauge}\index{enhanced gauge symmetry}
+If a K3 surface has an orbifold singularity, a type~IIA string compactified on it can
+exhibit a non-abelian gauge group, and the ADE type of the singularity is the ADE type of the
+gauge algebra; for instance $\C^2/\Z_n$ gives $SU(n)$. \TL{}
+\source{Asp §4.3, Proposition~2, ll.~2525--2531}
+\end{proposition}
+Two qualifications belong to the statement. First, it rests on the duality between the
+type~IIA string on K3 and the heterotic string on $T^4$, which the source presents as a
+proposition that cannot at present be proved, together with the assumptions made in
+constructing the moduli spaces \source{Asp §4.3, ll.~2527--2528}. Its tier is that of a
+well-tested conjecture of the literature. Secondly, the singularity is necessary but not
+sufficient: the component of the $B$-field along the vanishing cycle must also vanish, while
+the solvable orbifold conformal field theories have $B=\tfrac12$ there. This is why string
+theory on an orbifold is perfectly regular and yet shows no enhanced symmetry
+\source{Asp §4.3, ll.~2530--2546}. In \cref{ex:k3lattice:maximal} the enhanced gauge algebra
+at $B=0$ would be $E_8\oplus E_8\oplus SU(2)^3$, of rank $19$, inside the total rank $24$.
+
+\begin{pitfallbox}[Three meanings of ``$E_8$'' in this chapter]
+(i) The summand $E_8(-1)$ of the abstract lattice $\Lambda$, present for every K3 surface,
+including smooth ones with no curves at all. (ii) An $E_8$ \emph{singularity}, present only
+at special points of $\mathcal M_E$, where eight spheres with the $E_8$ intersection matrix
+have zero area. (iii) An $E_8$ \emph{gauge symmetry} of the type~IIA string, present only if
+in addition the $B$-field vanishes on these spheres. The implication is (iii) $\Rightarrow$
+(ii) $\Rightarrow$ (i) and none of the converses holds. The Lean results below concern (i)
+only.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:k3lattice:lean}
+
+Almost everything in this chapter is geometry and analysis on complex manifolds, and none
+of that is formalized: the Lean libraries of this book contain no manifolds, no cohomology
+and no Hodge structures. What is formalized is the finite arithmetic which the geometry rests
+on. Three files of the directory \lean{DualScaleStream2/Lattice/} are relevant:
+\lean{K3T2Signature.lean}, \lean{E8.lean} and \lean{Reflection.lean}. The last two were
+presented in \cref{ch:lattices}; here we describe what they contribute to the K3 lattice. All
+theorems quoted depend only on the axioms \lean{propext}, \lean{Classical.choice} and
+\lean{Quot.sound}.
+
+\begin{leanbox}[Signature bookkeeping (\lean{K3T2Signature.lean})]
+\begin{leancode}
+structure Signature where
+  pos : ℕ
+  neg : ℕ
+  deriving DecidableEq, Repr
+
+namespace Signature
+instance : Add Signature := ⟨fun a b => ⟨a.pos + b.pos, a.neg + b.neg⟩⟩
+def rank (s : Signature) : ℕ := s.pos + s.neg
+def index (s : Signature) : ℤ := (s.pos : ℤ) - s.neg
+end Signature
+
+def sigU : Signature := ⟨1, 1⟩
+def sigE8Neg : Signature := ⟨0, 8⟩
+def sigK3 : Signature := sigE8Neg + sigE8Neg + sigU + sigU + sigU
+def sigMukai : Signature := sigK3 + sigU
+
+theorem sigK3_eq : sigK3 = ⟨3, 19⟩ := by rfl
+theorem rank_K3 : sigK3.rank = 22 := by ...
+theorem index_mod_eight :
+    sigK3.index % 8 = 0 ∧ sigMukai.index % 8 = 0 ∧ sigK3T2.index % 8 = 0 := by ...
+\end{leancode}
+\textbf{Reading.} A \lean{Signature} is a bare pair of natural numbers. Nothing in the
+structure ties it to a quadratic form. \lean{sigU} and \lean{sigE8Neg} are
+\emph{definitions}: the numbers $(1,1)$ and $(0,8)$ are entered by hand. They are justified
+on paper by Sylvester's law together with the Lean theorems \lean{hyperbolicU\_congruence}
+and \lean{cartanE8\_posDef} of \cref{ch:lattices}, but no Lean statement derives the pairs
+from those theorems, since the library has no definition of the signature of a matrix.
+\lean{sigK3\_eq} then says: adding the pair $(0,8)$ twice and the pair $(1,1)$ three times
+gives $(3,19)$. \lean{rank\_K3} says $3+19=22$. \lean{index\_mod\_eight} says that
+$3-19=-16$, $4-20=-16$ and $6-22=-16$ are divisible by $8$ (for integers Lean's \lean{\%}
+returns a non-negative remainder, and $-16=(-2)\cdot8+0$); \lean{sigK3T2}, of value $(6,22)$,
+belongs to \cref{ch:k3t2}. This verifies the necessary condition of the classification
+theorem at three points. It is not the theorem that every even unimodular lattice satisfies
+$n_+\equiv n_-\pmod8$, which remains Tier~L.
+
+\textbf{Proof idea.} Each statement reduces by unfolding definitions to a closed equation
+between numerals, which the kernel evaluates: \lean{rfl} for \lean{sigK3\_eq} and for the
+three conjuncts of \lean{index\_mod\_eight}, \lean{simp} with the definitions followed by
+\lean{rfl} for \lean{rank\_K3}.
+\end{leanbox}
+
+\begin{leanbox}[Two routes to $(3,19)$ compared (\lean{K3T2Signature.lean})]
+\begin{leancode}
+theorem sigK3_matches_hodge :
+    sigK3.pos = StringTheory.UseCases.K3Signature.bPlus ∧
+    sigK3.neg = StringTheory.UseCases.K3Signature.bMinus := by ...
+\end{leancode}
+\textbf{Reading.} In an older library of the project the numbers \lean{bPlus} and
+\lean{bMinus} are defined from a table of the Hodge numbers of K3 by the formulas
+\eqref{eq:k3lattice:bpm}, $b_+=2h^{2,0}+1$ and $b_-=h^{1,1}-1$, and the theorems
+\lean{bPlus\_eq\_three}, \lean{bMinus\_eq\_nineteen} and
+\lean{k3\_signature\_eq\_neg\_sixteen} evaluate them. The present theorem says that the
+lattice-decomposition route and the Hodge route produce the same two natural numbers. This
+is the formal counterpart of the paragraph ``Signature $(3,19)$, by two routes'' in
+\cref{sec:k3lattice:form}. Both inputs are tabulated Tier~L facts. Their agreement is a
+consistency check of the bookkeeping; it is not a derivation of the signature of a K3
+surface, and the formulas \eqref{eq:k3lattice:bpm} themselves (the Hodge index theorem) are
+not proved in Lean.
+
+\textbf{Proof idea.} Both sides unfold to the numerals $3$ and $19$; \lean{rfl} closes each
+half.
+\end{leanbox}
+
+\begin{leanbox}[The summand $E_8(-1)$ (\lean{E8.lean})]
+\begin{leancode}
+def e8Neg : Gram 8 := -cartanE8
+
+theorem e8Neg_symm : e8Negᵀ = e8Neg := by ...
+theorem e8Neg_evenDiag : IsEvenDiag e8Neg := by ...
+theorem e8Neg_unimodular : IsUnimodular e8Neg := by ...
+\end{leancode}
+\textbf{Reading.} \lean{Gram 8} is the type of $8\times8$ integer matrices and
+\lean{cartanE8} is the Cartan matrix of \cref{ch:lattices}. The three theorems say that the
+matrix $-E_8$ is symmetric, has even diagonal entries (all equal to $-2$), and has
+determinant $\pm1$. Combined with the general lemma
+\lean{even\_quadratic\_form\_of\_even\_diag} of \cref{ch:lattices} the first two give that
+$x^{\mathsf T}(-E_8)x$ is even for every integer vector $x$. These are exactly the three
+properties that \cref{sec:k3lattice:form} derived for $H^2(X,\Z)$ from Poincaré duality and
+Wu's formula, verified here for one block of the right-hand side of
+\eqref{eq:k3lattice:lattice}. The same properties of $U$ are \lean{hyperbolicU\_symm},
+\lean{hyperbolicU\_evenDiag} and \lean{hyperbolicU\_unimodular}. The $22\times22$ matrix
+$G_\Lambda$ of \cref{ex:k3lattice:gram} is not assembled in Lean, and no Lean statement
+asserts that a direct sum of even unimodular Gram matrices is even unimodular, although on
+paper this is immediate: the diagonal is the union of the diagonals and the determinant is
+the product.
+
+\textbf{Proof idea.} Symmetry and the diagonal are decided entry by entry (\lean{fin\_cases}).
+Unimodularity uses a certificate: the integer matrix \lean{cartanE8Inv} satisfies
+\lean{cartanE8Inv * cartanE8 = 1} (theorem \lean{cartanE8Inv\_mul}, $64$ entries checked by
+the kernel), hence $(-E_8^{-1})(-E_8)=\mathbf1$, and \lean{isUnimodular\_of\_mul\_eq\_one}
+converts an integer inverse into $\det=\pm1$. Note that this is the argument used for
+\eqref{eq:k3lattice:PD}: Poincaré duality provides an integer inverse of the Gram matrix.
+\end{leanbox}
+
+\begin{leanbox}[Reflections in $(-2)$-vectors (\lean{Reflection.lean})]
+\begin{leancode}
+def reflection (L : Gram n) (v : Fin n → ℤ) : Gram n :=
+  1 + vecMulVec v v * L
+def latticeNorm (L : Gram n) (v : Fin n → ℤ) : ℤ := v ⬝ᵥ (L *ᵥ v)
+
+theorem reflection_isometry (L : Gram n) (hL : Lᵀ = L) (v : Fin n → ℤ)
+    (hv : latticeNorm L v = -2) :
+    (reflection L v)ᵀ * L * reflection L v = L := by ...
+
+theorem e8Neg_simpleRoot_norm (i : Fin 8) :
+    latticeNorm e8Neg (Pi.single i 1) = -2 := by ...
+
+theorem e8Neg_weyl_isometry (i : Fin 8) :
+    (reflection e8Neg (Pi.single i 1))ᵀ * e8Neg
+      * reflection e8Neg (Pi.single i 1) = e8Neg := ...
+\end{leancode}
+\textbf{Reading.} \lean{reflection L v} is the matrix $\mathbf1+vv^{\mathsf T}L$ of the map
+\eqref{eq:k3lattice:refl}. \lean{reflection\_isometry} holds for every rank $n$ and every
+symmetric integer matrix $L$, so in particular for the $22\times22$ matrix $G_\Lambda$ and
+any root $\delta$ of the K3 lattice, even though $G_\Lambda$ is not defined in Lean: the
+reflection in a vector of square $-2$ preserves the form. Its companion
+\lean{reflection\_involution} gives $s_\delta^2=\mathbf1$. \lean{Pi.single i 1} is the $i$-th
+standard basis vector, that is, the $i$-th simple root $\alpha_i$.
+\lean{e8Neg\_simpleRoot\_norm} says $\alpha_i^2=-2$, and \lean{e8Neg\_weyl\_isometry} says
+that each of the eight simple reflections preserves $-E_8$. The theorem covers eight
+reflections. It does not define the Weyl group, does not show that these eight generate it,
+and says nothing about the other $232$ roots, though \lean{reflection\_isometry} would apply
+to each of them once its norm is computed. No Lean statement connects these matrices with
+curves on a surface, with monodromy, or with gauge bosons.
+
+\textbf{Proof idea.} The key identity is $(vv^{\mathsf T}L)(vv^{\mathsf T}L)=
+(v^{\mathsf T}Lv)\,vv^{\mathsf T}L$ (\lean{vecMulVec\_mul\_self}); at norm $-2$ the quadratic
+term in the expansion of $(\mathbf1+Lvv^{\mathsf T})L(\mathbf1+vv^{\mathsf T}L)$ cancels the
+two linear terms. The $E_8$ statements are instances: the norm is computed by
+\lean{fin\_cases} and \lean{simp}, and \lean{e8Neg\_weyl\_isometry} is
+\lean{reflection\_isometry} applied to \lean{e8Neg\_symm} and \lean{e8Neg\_simpleRoot\_norm}.
+\end{leanbox}
+
+\paragraph{What a faithful formalization would need.} To state even
+\cref{thm:k3lattice:lattice} in Lean one needs singular cohomology of a manifold with its cup
+product, Poincaré duality, characteristic classes for Wu's formula and the signature
+theorem, and the classification of indefinite unimodular forms. To state the Torelli theorem
+one needs in addition complex manifolds, Hodge decomposition and deformation theory. None of
+this was available in the Mathlib version used by the project, and the programme did not
+attempt it. A realistic intermediate goal, purely algebraic, would be (compare \cref{ch:open}):
+define lattices as $\Z$-modules with a form, define isometries and direct sums, prove that
+$G_\Lambda$ is even and unimodular, and prove that $s_\delta\in O(\Lambda)$ generate a group
+acting on the set of roots. Exercises~\ref{ex:k3lattice:exlean1} and~\ref{ex:k3lattice:exlean2} are first steps.
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.47\textwidth}cp{0.40\textwidth}@{}}
+\toprule
+Statement & Tier & Where\\
+\midrule
+$(0,8)+(0,8)+3\,(1,1)=(3,19)$; rank $22$; $-16\equiv0\ (8)$ & \TA &
+ \lean{sigK3\_eq}, \lean{rank\_K3}, \lean{index\_mod\_eight}\\[2pt]
+Lattice route and Hodge route give the same pair & \TA & \lean{sigK3\_matches\_hodge}\\[2pt]
+$-E_8$ symmetric, even diagonal, $\det=\pm1$ & \TA & \lean{e8Neg\_symm},
+ \lean{e8Neg\_evenDiag}, \lean{e8Neg\_unimodular}\\[2pt]
+$s_v$ is an isometry and an involution if $v^{\mathsf T}Lv=-2$; the eight simple
+ reflections of $-E_8$ & \TA & \lean{reflection\_isometry}, \lean{reflection\_involution},
+ \lean{e8Neg\_weyl\_isometry}\\[2pt]
+$G_\Lambda$: $\det=-1$, inertia $(3,19)$; \cref{ex:k3lattice:rho20,ex:k3lattice:maximal} &
+ --- & symbolic checks (sympy) and derivations on the page\\[2pt]
+$H^2(X,\Z)$ is even, unimodular, of signature $(3,19)$, hence $\cong\Lambda$ & \TL &
+ Huy ch.~1 Prop.~3.5; Asp §2.3\\[2pt]
+Local Torelli, surjectivity, global Torelli; Kähler cone; $W$ simply transitive on
+ chambers; $\mathrm{Mon}(X)=O^+$ & \TL & Huy ch.~6--8\\[2pt]
+$\mathcal M_c$, $\mathcal M_E$ as double cosets; orbifold points $\Leftrightarrow$
+ root $\perp\Sigma$; ADE & \TL & Asp §2.3--2.6\\[2pt]
+ADE singularity with $B=0$ $\Rightarrow$ non-abelian gauge symmetry of type IIA & \TL &
+ Asp §4.3, conditional on IIA/heterotic duality\\[2pt]
+A Lean \lean{Signature} or Gram matrix ``is'' the cohomology of a K3 surface & --- &
+ an identification, never Tier~A\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%=====================================================================================
+\begin{summarybox}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item $H^2(X,\Z)$ of a K3 surface with the intersection pairing is a lattice of rank $22$. It
+ is unimodular by Poincaré duality (the dual basis is an integer inverse of the Gram matrix),
+ even by Wu's formula and $c_1=0$, and of signature $(3,19)$ by the signature theorem or by
+ $b_+=2h^{2,0}+1$. Classification then gives $H^2(X,\Z)\cong3U\oplus2E_8(-1)$, abstractly.
+\item The class $\Omega=x+\ii y$ satisfies $\Omega^2=0$, $\Omega\cdot\bar\Omega>0$:
+ $x\perp y$, $x^2=y^2>0$. The period is the point $[\Omega]$ of the $20$-dimensional period
+ domain $D\cong O(3,19)/(SO(2)\times O(1,19))$, equivalently an oriented positive two-plane.
+ It determines the Hodge decomposition and the Picard lattice $\Omega^\perp\cap H^2(X,\Z)$.
+\item Torelli theorems (Tier~L): the period map is a local isomorphism, surjective, and a
+ Hodge isometry implies isomorphism. A Hodge isometry comes from a unique isomorphism if it
+ respects Kähler cones. The moduli space $\mathcal M_c$ of complex structures is a double
+ coset by $O^+(\Gamma^{3,19})$ and is not Hausdorff.
+\item Roots $\delta^2=-2$ of $\mathrm{NS}(X)$ are, up to sign, classes of curves; $(-2)$-curves
+ bound the Kähler cone, which is one chamber of the positive cone; the Weyl group generated
+ by $s_\delta(x)=x+(x\cdot\delta)\delta$ permutes the chambers simply transitively.
+\item A Ricci-flat metric is a positive three-plane $\Sigma=H^+=\langle\Omega,J\rangle$ and a
+ volume: $\mathcal M_E\cong O(\Gamma^{3,19})\backslash O(3,19)/(O(3)\times O(19))\times\R_+$, of
+ dimension $57+1=58$, Hausdorff, of Narain type. One metric carries an $S^2$ of complex
+ structures.
+\item $\Sigma\perp$ root $\Leftrightarrow$ orbifold point; the roots orthogonal to $\Sigma$
+ form an ADE root system of rank $\le19$; with vanishing $B$-field the type~IIA string has
+ the corresponding non-abelian gauge symmetry (conditional on string duality).
+\item Lean checks the signature arithmetic, the evenness and unimodularity of the block
+ $-E_8$, and that reflections in $(-2)$-vectors are involutive isometries. It does not
+ contain K3 surfaces, periods or the Torelli theorem.
+\end{itemize}
+\end{summarybox}
+
+%=====================================================================================
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{ex:k3lattice:exsig}
+Solve $b_++b_-=22$, $b_+-b_-=-16$. Then repeat the computation for the four-torus $T^4$,
+which has $\chi=0$, $c_1=0$ and $b_2=6$: find its signature, and use the classification of
+\cref{ch:lattices} to show that $H^2(T^4,\Z)\cong3U$, given that it is even. Compare with the
+K3 lattice: which summand is ``new''?
+\end{exercise}
+
+\begin{exercise}[$\star$]
+A smooth quartic surface may contain a line $\ell\cong\mathbb P^1$. Check that the Fermat
+quartic $x_0^4+x_1^4+x_2^4+x_3^4=0$ contains the line $x_0=\zeta x_1$, $x_2=\zeta x_3$ for
+$\zeta^4=-1$. Use \eqref{eq:k3lattice:adjunction} to find
+$\ell^2$, and compute the Gram matrix of the sublattice of $\mathrm{NS}(X)$ spanned by the
+hyperplane class $h$ and $\ell$, using $h\cdot\ell=1$. Verify that its signature is $(1,1)$,
+in accordance with the signature $(1,\rho-1)$ of the Picard lattice.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Let $\Omega=x+\ii y$ with $x=e_1+2f_1$ and $y=\sqrt2\,(e_2+f_2)$ in the notation of
+\cref{ex:k3lattice:rho20}. (a) Verify that $[\Omega]\in D$. (b) Show that a lattice vector
+$v=ae_1+bf_1+ce_2+df_2+\dots$ is orthogonal to $\Omega$ if and only if $2a+b=0$ and $c+d=0$,
+and conclude that $\rho=20$ again. (c) Replace $\sqrt2$ by a transcendental number $t$ and
+$x$ by $e_1+t'f_1$ with $t'$ chosen such that $x^2=y^2$. What is $\rho$ now? The Picard number is not constant on $D$: it jumps at special periods.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Let $\delta,\delta'$ be roots of a lattice and $g$ an isometry. (a) Prove
+$g\circ s_\delta=s_{g(\delta)}\circ g$. (b) If $\delta\cdot\delta'=0$, show that $s_\delta$
+and $s_{\delta'}$ commute. (c) If $\delta\cdot\delta'=1$, show that $s_\delta(\delta')
+=\delta+\delta'$ is a root and that $(s_\delta s_{\delta'})^3=1$. These are the relations of
+the Weyl group of $A_2$, the symmetric group $S_3$. Which singularity and which gauge group
+correspond to this configuration?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+In \cref{ex:k3lattice:maximal} replace $J$ by $J'=e_3+f_3+\epsilon\,w$, where $w$ is a vector
+in the first $E_8(-1)\otimes\R$ with $(w\cdot\alpha_i)\ne0$ for all simple roots except
+$\alpha_0$ and $\alpha_1$, and $\epsilon$ is small. Check that $J'$ is still orthogonal to
+$\Omega$ and space-like. Which roots of the first $E_8(-1)$ remain orthogonal to $\Sigma$?
+Describe the singularities of the resulting orbifold and the gauge algebra at $B=0$. (Hint:
+a root orthogonal to $w$ must be a combination of simple roots orthogonal to $w$, if $w$ is
+chosen in the closure of the fundamental chamber.)
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{ex:k3lattice:exlean1}
+State and prove in Lean, in the style of \lean{sigK3\_eq}, that the signature pair of
+$3U$ is $(3,3)$, that its rank is $6$ and that its index is divisible by $8$. Then state
+(without proving anything about lattices) the pair for $E_8(-1)^{\oplus3}\oplus U^{\oplus k}$
+and find, by \lean{decide}, for which $k\le4$ the rank equals $26$. Which part of
+Exercise~\ref{ex:k3lattice:exsig} is invisible to this arithmetic?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]\label{ex:k3lattice:exlean2}
+Define in Lean the vector \lean{v : Fin 8 → ℤ} of the root $\alpha_3+\alpha_4$ of $E_8(-1)$
+and prove \lean{latticeNorm e8Neg v = -2}. Deduce from \lean{reflection\_isometry} that the
+reflection in this non-simple root is an isometry of \lean{e8Neg}. Then prove the matrix
+identity $s_{\alpha_4}s_{\alpha_3}s_{\alpha_4}=s_{\alpha_3+\alpha_4}$ for the corresponding
+\lean{reflection} matrices (a finite computation: \lean{ext i j}, \lean{fin\_cases},
+\lean{simp}). This is the identity of part~(a) of the exercise on isometries above with
+$g=s_{\alpha_4}$.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]
+(A period domain that is an upper half-plane.) Let $\Lambda'=U\oplus\langle2\rangle$, with
+basis $e,f,w$ and $w^2=2$; its signature is $(2,1)$. Using \cref{rem:k3lattice:tube}, show that $D$ is the union of the
+upper and lower half-planes with coordinate $\zeta=\tau w$, and that the reflection in the
+root $e-f$ acts on the period $[1:-\tau^2:\tau]$ (coordinates along $e,f,w$) by
+$\tau\mapsto-1/\tau$. Compare with the T-duality and S-transformations of
+\cref{ch:torus2}.
+\end{exercise}
+
+%=====================================================================================
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item The K3 lattice: \source{Huy ch.~1 §3.3, Prop.~3.5 and Remarks~3.6--3.7, ll.~561--660};
+ the physicist's derivation with Poincaré duality and the period relations,
+ \source{Asp §2.3, ll.~502--774}.
+\item Period domains, their Grassmannian and tube-domain descriptions, and the action of
+ $O(\Lambda)$: \source{Huy ch.~6 §1, ll.~4272--4420}; local Torelli,
+ \source{Huy ch.~6 §2, Prop.~2.8, ll.~4654--4670}.
+\item Moduli of marked surfaces, surjectivity of the period map and the global Torelli theorem
+ via monodromy: \source{Huy ch.~7 §§2--5, ll.~5594--6060}.
+\item Chambers, walls, the Weyl group and the Kähler cone:
+ \source{Huy ch.~8 §2, ll.~6423--6563, and §5, ll.~7195--7222}.
+\item Einstein metrics, the three-plane $\Sigma$ and hyperkähler rotation:
+ \source{Asp §2.4, ll.~777--908}; algebraic K3 surfaces and the transcendental lattice,
+ \source{Asp §2.5, ll.~910--1029}; orbifolds, blow-ups and the ADE classification,
+ \source{Asp §2.6, ll.~1033--1330}; enhanced gauge symmetry,
+ \source{Asp §4.3, ll.~2428--2560}.
+\item The three Lean files of \cref{sec:k3lattice:lean} are short and carry detailed module
+ documentation.
+ The lattice theory behind them is \cref{ch:lattices}; the explicit cycles realizing part of
+ $\Lambda$ on a Kummer surface are in \cref{ch:kummer}; the extension to $\Gamma^{4,20}$ is in
+ \cref{ch:mukai,ch:stringsk3}.
+\end{itemize}

@@ -1,0 +1,1008 @@
+\chapter{Quantization, the Spectrum and the Critical Dimension}\label{ch:quantum}
+
+\Cref{ch:classical} described a classical relativistic string: $D$ free fields $X^\mu(\sigma,\tau)$
+on the worldsheet, subject to constraints. This chapter asks what that system becomes in quantum
+mechanics. Which particles does one quantized string describe? What are their masses and spins?
+And why does the answer depend on the number $D$ of spacetime dimensions, so that a consistent
+bosonic string exists only for $D=26$? A student should care for two reasons. First, the
+spectrum derived here contains a massless spin-two particle, and this is the reason string
+theory is a theory of gravity. It also contains the two other massless fields, $B_{\mu\nu}$ and
+the dilaton $\Phi$, from which the whole of T-duality and double field theory in Parts II and
+III is built. Second, the mass formula obtained here, $M^2=\frac{4}{\ap}(N-1)$, is the
+$R\to\infty$ limit of the formula with momentum and winding in \cref{ch:circle}; every later
+statement about dual scales is a statement about how this formula changes on a circle.
+The chapter closes by stating exactly which part of the ``$D=26$'' story has been checked in
+Lean~4: the arithmetic of central charges, and nothing more.
+
+Conventions are those of \cref{ch:classical}: $\hbar=c=1$, mostly-plus Minkowski metric
+$\eta_{\mu\nu}$, $\ap$ of dimension length$^2$, tension $T=1/(2\pi\ap)$, closed strings with
+$\sigma\sim\sigma+2\pi$. A dot between two vectors is the Minkowski product,
+$A\cdot B=\eta_{\mu\nu}A^\mu B^\nu$.
+
+%=====================================================================================
+\section{Canonical quantization: from fields to oscillators}\label{sec:quantum:canonical}
+
+\subsection{Two roads}
+
+The string action has a gauge symmetry (reparametrizations and Weyl rescalings of the
+worldsheet), and a gauge theory can be quantized in two ways \source{Tong §2, ll.~1683--1707}.
+\begin{itemize}[leftmargin=*]
+\item \emph{Covariant quantization}\index{covariant quantization}: quantize all $D$ fields
+$X^\mu$, including the time $X^0$, and afterwards impose the constraints as conditions on
+states. This is the analogue of the Gupta--Bleuler treatment of electrodynamics in Lorentz
+gauge. Lorentz invariance is manifest; positivity of the Hilbert space is not.
+\item \emph{Lightcone quantization}\index{lightcone quantization}: solve the constraints
+classically, find the independent degrees of freedom, and quantize only those. This is the
+analogue of Coulomb gauge. Positivity is manifest; Lorentz invariance is not.
+\end{itemize}
+If both are carried out correctly they agree. We follow Tong: a short look at the first
+road, to see where the difficulties are, and then the second road to the end.
+
+\subsection{Commutation relations for the modes}
+
+In conformal gauge the action is that of $D$ free scalar fields,
+$S=-\frac{1}{4\pi\ap}\int\dd^2\sigma\,\partial_\alpha X\cdot\partial^\alpha X$, and the
+constraints are
+\begin{equation}\label{eq:quantum:constraints}
+  \dot X\cdot X'=0,\qquad \dot X^2+X'^2=0 ,
+\end{equation}
+where a dot is $\partial_\tau$ and a prime is $\partial_\sigma$
+\source{Tong §2.1, ll.~1708--1713}. With worldsheet lightcone coordinates
+$\sigma^\pm=\tau\pm\sigma$ the general periodic solution of the wave equation
+$\partial_+\partial_-X^\mu=0$ is $X^\mu=X^\mu_L(\sigma^+)+X^\mu_R(\sigma^-)$ with
+\begin{equation}\label{eq:quantum:modes}
+\begin{aligned}
+ X_L^\mu(\sigma^+)&=\tfrac12x^\mu+\tfrac12\ap p^\mu\sigma^+
+   +\ii\sqrt{\tfrac{\ap}{2}}\sum_{n\neq0}\frac1n\,\tilde\alpha^\mu_n\,\ee^{-\ii n\sigma^+},\\
+ X_R^\mu(\sigma^-)&=\tfrac12x^\mu+\tfrac12\ap p^\mu\sigma^-
+   +\ii\sqrt{\tfrac{\ap}{2}}\sum_{n\neq0}\frac1n\,\alpha^\mu_n\,\ee^{-\ii n\sigma^-},
+\end{aligned}
+\end{equation}
+\source{Tong §1.4, ll.~1502--1563}. Here $x^\mu$ and $p^\mu$ are the position and momentum of
+the centre of mass, $\alpha_n^\mu$ are the amplitudes of right-moving waves,
+$\tilde\alpha_n^\mu$ those of left-moving waves, and reality of $X^\mu$ requires
+$\alpha_{-n}^\mu=(\alpha_n^\mu)^*$. One also defines
+$\alpha_0^\mu=\tilde\alpha_0^\mu=\sqrt{\ap/2}\,p^\mu$.
+
+The momentum conjugate to $X^\mu$ is $\Pi_\mu=\partial\mathcal L/\partial\dot X^\mu
+=\dot X_\mu/(2\pi\ap)$. Quantization replaces fields by operators with the equal-time
+commutators\index{canonical quantization}
+\begin{equation}\label{eq:quantum:ccr}
+ [X^\mu(\sigma,\tau),\Pi_\nu(\sigma',\tau)]=\ii\,\delta(\sigma-\sigma')\,\delta^\mu{}_\nu,
+ \qquad [X^\mu,X^\nu]=[\Pi_\mu,\Pi_\nu]=0 ,
+\end{equation}
+and these are equivalent to
+\begin{equation}\label{eq:quantum:osc}
+ [x^\mu,p_\nu]=\ii\,\delta^\mu{}_\nu,\qquad
+ [\alpha^\mu_n,\alpha^\nu_m]=[\tilde\alpha^\mu_n,\tilde\alpha^\nu_m]
+   =n\,\eta^{\mu\nu}\,\delta_{n+m,0},
+\end{equation}
+with all other commutators zero \source{Tong §2.1, ll.~1714--1742}.
+
+It is worth checking once that \cref{eq:quantum:osc} reproduces \cref{eq:quantum:ccr},
+because the check fixes every normalization in \cref{eq:quantum:modes}. At $\tau=0$ one has
+$\ee^{-\ii n\sigma^-}=\ee^{\ii n\sigma}$ and $\ee^{-\ii n\sigma^+}=\ee^{-\ii n\sigma}$, and
+\[
+ \dot X^\nu(\sigma')=\ap p^\nu+\sqrt{\tfrac{\ap}{2}}\sum_{m\ne0}
+   \big(\alpha^\nu_m\ee^{\ii m\sigma'}+\tilde\alpha^\nu_m\ee^{-\ii m\sigma'}\big).
+\]
+The zero modes give $[x^\mu,\ap p^\nu]=\ii\ap\eta^{\mu\nu}$. In the oscillator part the
+commutator $[\alpha^\mu_n,\alpha^\nu_m]=n\eta^{\mu\nu}\delta_{n+m,0}$ cancels the factor $1/n$
+and sets $m=-n$:
+\[
+ \ii\,\frac{\ap}{2}\sum_{n\ne0}\frac1n\,n\,\eta^{\mu\nu}
+   \big(\ee^{\ii n(\sigma-\sigma')}+\ee^{-\ii n(\sigma-\sigma')}\big)
+ =\ii\ap\,\eta^{\mu\nu}\sum_{n\neq0}\ee^{\ii n(\sigma-\sigma')} .
+\]
+Add the two pieces and use the Fourier series of the periodic delta function,
+$\sum_{n\in\Z}\ee^{\ii n(\sigma-\sigma')}=2\pi\delta(\sigma-\sigma')$. The result is
+\[
+ [X^\mu(\sigma),\dot X^\nu(\sigma')]=2\pi\ii\ap\,\eta^{\mu\nu}\,\delta(\sigma-\sigma') ,
+\]
+and dividing by $2\pi\ap$ gives \cref{eq:quantum:ccr}. The factor $n$ on the right of
+\cref{eq:quantum:osc} is therefore forced by the $1/n$ in the mode expansion.
+
+\subsection{Harmonic oscillators and the Fock space}
+
+For a single direction $\mu$ and $n>0$ define
+\begin{equation}\label{eq:quantum:ladder}
+  a_n=\frac{\alpha_n}{\sqrt n},\qquad a_n^\dagger=\frac{\alpha_{-n}}{\sqrt n}
+  \qquad\Longrightarrow\qquad [a_n,a_m^\dagger]=\delta_{nm}
+\end{equation}
+\source{Tong §2.1, ll.~1743--1757}. Each spatial field $X^i$ is therefore two infinite
+towers of harmonic oscillators: $\alpha_n$ with $n>0$ annihilates a right-moving quantum of
+worldsheet frequency $n$ and $\alpha_{-n}$ creates one; the $\tilde\alpha_n$ do the same for
+left-movers.
+
+\begin{physicsbox}[Physical picture: a violin string with infinitely many notes]
+A classical closed string vibrates in normal modes labelled by an integer $n$ (the number of
+wavelengths around the string), a direction $\mu$ and a sense of travel (left or right).
+Quantization turns each normal mode into a harmonic oscillator whose excitations come in
+integer quanta. Seen from far away, a small vibrating loop looks like a point particle, and
+the vibrational energy appears as the rest mass of that particle. One string, excited in
+different ways, is therefore an infinite list of particle species
+\source{Tong §2.1, ll.~1790--1800}.
+\end{physicsbox}
+
+The vacuum of the oscillators is defined by
+\begin{equation}\label{eq:quantum:vacuum}
+ \alpha^\mu_n\ket{0;p}=\tilde\alpha^\mu_n\ket{0;p}=0\quad(n>0),\qquad
+ \hat p^\mu\ket{0;p}=p^\mu\ket{0;p},
+\end{equation}
+where the label $p$ is needed because the zero modes $x^\mu,p^\mu$ act as in the quantum
+mechanics of a free particle. This state is the ground state of \emph{one string} with
+centre-of-mass momentum $p$. It is not the vacuum of spacetime, which contains no string at
+all \source{Tong §2.1, ll.~1758--1782}. The Fock space\index{Fock space} is spanned by the
+states obtained by acting on $\ket{0;p}$ with any finite number of creation operators
+$\alpha^\mu_{-n},\tilde\alpha^\mu_{-n}$, $n>0$.
+
+%=====================================================================================
+\section{Negative norms and the Virasoro constraints}\label{sec:quantum:virasoro}
+
+\subsection{The problem with the time direction}
+
+The Fock space just built is not a Hilbert space. Because $\eta^{00}=-1$, the commutator
+in \cref{eq:quantum:osc} for the time direction reads $[\alpha^0_n,\alpha^0_{-n}]=-n$, so
+\begin{equation}\label{eq:quantum:negnorm}
+ \big\|\alpha^0_{-1}\ket{0;p}\big\|^2=\bra{0;p'}\alpha^0_1\alpha^0_{-1}\ket{0;p}
+   =\bra{0;p'}[\alpha^0_1,\alpha^0_{-1}]\ket{0;p}=-\,\delta^D(p-p') .
+\end{equation}
+States with an odd number of timelike oscillators have negative norm; such states are called
+\emph{ghosts}\index{ghost (negative-norm state)} \source{Tong §2.1.1, ll.~1802--1822}. A
+negative norm would mean a negative probability, so these states must not appear in any
+physical process. In electrodynamics the same problem occurs for the timelike photon, and
+the gauge-fixing condition removes it. In string theory the constraints of
+\cref{eq:quantum:constraints} must do this job.
+
+\begin{pitfallbox}[Common pitfall: two meanings of ``ghost'']
+In this chapter a ghost is a \emph{state of negative norm}. In \cref{ch:ghosts} the word
+also denotes the anticommuting Faddeev--Popov fields $b,c$ introduced when the path integral
+is gauge-fixed. The two are related, since the Faddeev--Popov fields are what cancels the
+unphysical polarizations, but they are different objects. The Lean file discussed in
+\cref{sec:quantum:lean} is about the central charge of the second kind.
+\end{pitfallbox}
+
+\subsection{The constraints in modes}
+
+In lightcone worldsheet coordinates the constraints of \cref{eq:quantum:constraints} read
+$(\partial_+X)^2=(\partial_-X)^2=0$. From \cref{eq:quantum:modes},
+$\partial_-X^\mu=\sqrt{\ap/2}\,\sum_{n\in\Z}\alpha^\mu_n\ee^{-\ii n\sigma^-}$, where the $n=0$
+term is the definition of $\alpha_0^\mu$. Squaring,
+\begin{equation}\label{eq:quantum:Ln}
+ (\partial_-X)^2=\ap\sum_{n\in\Z}L_n\,\ee^{-\ii n\sigma^-},\qquad
+ L_n=\frac12\sum_{m\in\Z}\alpha_{n-m}\cdot\alpha_m ,
+\end{equation}
+and similarly $\tilde L_n$ from the left-movers \source{Tong §1.4.1, ll.~1565--1630}.
+Classically the constraints are $L_n=\tilde L_n=0$ for all $n$. The $L_n$ are the
+\emph{Virasoro generators}\index{Virasoro generators}; their algebra, and the central charge
+that appears in it, are the subject of \cref{ch:cft}.
+
+The $n=0$ constraint is special because it contains
+$\frac12\alpha_0^2=\frac{\ap}{4}p^2=-\frac{\ap}{4}M^2$, where $M$ is the rest mass of the
+string seen as a particle, $p_\mu p^\mu=-M^2$. Classically
+$L_0=\frac{\ap}{4}p^2+\sum_{n>0}\alpha_{-n}\cdot\alpha_n=0$ gives
+\begin{equation}\label{eq:quantum:classmass}
+ M^2=\frac4\ap\sum_{n>0}\alpha_{-n}\cdot\alpha_n
+    =\frac4\ap\sum_{n>0}\tilde\alpha_{-n}\cdot\tilde\alpha_n
+\end{equation}
+\source{Tong §1.4.1, ll.~1650--1680}. The mass is the vibrational energy. The second equality,
+from $\tilde L_0=0$, holds because $\alpha_0=\tilde\alpha_0$: left- and right-movers share the
+same centre-of-mass momentum. It is called \emph{level matching}\index{level matching}.
+
+\subsection{Imposing the constraints on states}
+
+In the quantum theory one cannot demand $L_n\ket{\rm phys}=0$ for all $n$; as in
+Gupta--Bleuler quantization one demands only that matrix elements between physical states
+vanish. Since $L_n^\dagger=L_{-n}$, it suffices that
+\begin{equation}\label{eq:quantum:phys}
+ L_n\ket{\rm phys}=\tilde L_n\ket{\rm phys}=0\qquad (n>0)
+\end{equation}
+\source{Tong §2.1.2, ll.~1823--1846}. For $n\neq0$ the two factors in each term of
+\cref{eq:quantum:Ln} commute, so $L_n$ is unambiguous. For $n=0$ they do not: $\alpha_{-m}$
+and $\alpha_m$ fail to commute, and different orderings differ by a constant. One fixes an
+ordering, the normal ordering with annihilation operators on the right,
+\begin{equation}\label{eq:quantum:L0}
+ L_0=\frac12\alpha_0^2+\sum_{m=1}^\infty\alpha_{-m}\cdot\alpha_m ,\qquad
+ \tilde L_0=\frac12\tilde\alpha_0^2+\sum_{m=1}^\infty\tilde\alpha_{-m}\cdot\tilde\alpha_m ,
+\end{equation}
+and parametrizes the ignorance by a constant $a$:
+\begin{equation}\label{eq:quantum:L0a}
+ (L_0-a)\ket{\rm phys}=(\tilde L_0-a)\ket{\rm phys}=0 .
+\end{equation}
+Inserting $\frac12\alpha_0^2=-\frac\ap4M^2$ into \cref{eq:quantum:L0}, these two conditions
+read
+\begin{equation}\label{eq:quantum:massL0a}
+ M^2=\frac4\ap\Big(\sum_{m\ge1}\alpha_{-m}\cdot\alpha_m-a\Big)
+    =\frac4\ap\Big(\sum_{m\ge1}\tilde\alpha_{-m}\cdot\tilde\alpha_m-a\Big)
+\end{equation}
+\source{Tong §2.1.2, ll.~1847--1912}. The constant $a$\index{normal-ordering constant} is not
+a harmless convention: it shifts the mass of every state. Determining $a$, together with $D$,
+is the main task of this chapter.
+
+\begin{example}[The first excited level, covariantly]\label{ex:quantum:level1}
+This example shows why $a=1$ is special before we derive it. For brevity keep only the
+right-movers (the left-movers behave identically) and consider
+$\ket{\zeta}=\zeta_\mu\alpha^\mu_{-1}\ket{0;p}$ with a polarization vector $\zeta$. The
+calculation is a short exercise with \cref{eq:quantum:osc}; the argument is standard but is
+not spelled out in this book's source library, where Tong refers to Green, Schwarz and
+Witten for it \source{Tong §2.1.2, ll.~1920--1931}.
+
+\emph{Mass shell.} $\sum_{m\ge1}\alpha_{-m}\cdot\alpha_m\ket\zeta=\ket\zeta$, so
+\cref{eq:quantum:massL0a} gives $M^2=-p^2=4(1-a)/\ap$.
+
+\emph{Constraint.} In $L_1=\alpha_0\cdot\alpha_1+\alpha_{-1}\cdot\alpha_2+\dots$ only the first
+term acts non-trivially:
+$L_1\ket\zeta=\alpha_0^\mu\zeta^\nu[\alpha_{1\mu},\alpha_{-1\,\nu}]\ket{0;p}
+=\sqrt{\ap/2}\,(p\cdot\zeta)\ket{0;p}$. So \cref{eq:quantum:phys} requires $p\cdot\zeta=0$: the
+polarization is transverse to the momentum. $L_n$ with $n\ge2$ annihilates $\ket\zeta$
+automatically.
+
+\emph{Norm.} $\langle\zeta|\zeta\rangle\propto\zeta^*\cdot\zeta$. Three cases:
+\begin{itemize}[leftmargin=*]
+\item $a<1$: $M^2>0$. In the rest frame $p=(M,0,\dots,0)$, so $p\cdot\zeta=0$ removes
+$\zeta^0$. The $D-1$ remaining states have positive norm: a massive vector.
+\item $a>1$: $M^2<0$, $p$ is spacelike, say $p=(0,\dots,0,|M|)$. Then $\zeta=(1,0,\dots,0)$
+is allowed and has $\zeta\cdot\zeta=-1$: a physical ghost. The theory is inconsistent.
+\item $a=1$: $M^2=0$. Take $p=(k,0,\dots,0,k)$. The condition $p\cdot\zeta=0$ allows the
+$D-2$ transverse $\zeta$, of positive norm, and also $\zeta\propto p$, of norm
+$p\cdot p=0$. This null state is orthogonal to all physical states and decouples. It
+expresses the gauge invariance $\zeta_\mu\to\zeta_\mu+\lambda p_\mu$ of a massless vector.
+\end{itemize}
+The boundary value $a=1$ is where the theory is as rich as possible without ghosts: a massless
+particle with $D-2$ polarizations and a gauge symmetry. For the closed string, with both
+$\alpha_{-1}$ and $\tilde\alpha_{-1}$ acting, the same computation gives a polarization tensor
+$\zeta_{\mu\nu}$ with $p^\mu\zeta_{\mu\nu}=\zeta_{\mu\nu}p^\nu=0$ and the invariance
+$\zeta_{\mu\nu}\to\zeta_{\mu\nu}+p_\mu\xi_\nu+\xi'_\mu p_\nu$, which in its symmetric part is
+the linearized diffeomorphism $h_{\mu\nu}\to h_{\mu\nu}+\partial_\mu\xi_\nu+\partial_\nu\xi_\mu$
+\source{Tong §2.3.2, ll.~2725--2770}.
+\end{example}
+
+The full covariant analysis shows that the absence of ghosts at all levels requires $a=1$
+and $D=26$ \TL\ \source{Tong §2.1.2, ll.~1920--1931}. We shall obtain the same values on the
+second road.
+
+%=====================================================================================
+\section{Lightcone gauge: solving the constraints}\label{sec:quantum:lightcone}
+
+\subsection{The residual gauge symmetry}
+
+Conformal gauge $g_{\alpha\beta}=\eta_{\alpha\beta}$ does not use up all the gauge freedom.
+The flat worldsheet metric is $\dd s^2=-\dd\sigma^+\dd\sigma^-$, so a reparametrization
+\begin{equation}\label{eq:quantum:residual}
+ \sigma^+\to\tilde\sigma^+(\sigma^+),\qquad \sigma^-\to\tilde\sigma^-(\sigma^-)
+\end{equation}
+only multiplies the metric by a function, which a Weyl rescaling removes
+\source{Tong §2.2, ll.~1932--1962}. This has a consequence for the counting of degrees of
+freedom. The solutions $X_L^\mu(\sigma^+)+X_R^\mu(\sigma^-)$ are $2D$ functions of one
+variable. The constraints $(\partial_\pm X)^2=0$ remove two, and the freedom of
+\cref{eq:quantum:residual} shows that two more are pure gauge. What remains is
+\begin{equation}\label{eq:quantum:count}
+ 2D-2-2=2(D-2)\ \text{functions},
+\end{equation}
+the left- and right-moving \emph{transverse} oscillations of the string
+\source{Tong §2.2, ll.~1963--1985}. A relativistic string has no longitudinal vibrations: a
+motion of the string along itself is a relabelling of $\sigma$ and not a physical motion.
+
+\subsection{The gauge choice}
+
+Introduce spacetime lightcone coordinates\index{lightcone coordinates}
+\begin{equation}\label{eq:quantum:lc}
+ X^\pm=\frac{1}{\sqrt2}\big(X^0\pm X^{D-1}\big),\qquad
+ \dd s^2=-2\,\dd X^+\dd X^-+\sum_{i=1}^{D-2}\dd X^i\dd X^i,
+\end{equation}
+so that $A\cdot B=-A^+B^--A^-B^++A^iB^i$ and $A_\pm=-A^\mp$
+\source{Tong §2.2.1, ll.~1992--2035}. The choice singles out one spatial direction, and
+Lorentz invariance is no longer manifest; we return to this in
+\cref{sec:quantum:lorentz}. The field $X^+$ solves the wave equation, so
+$X^+=X^+_L(\sigma^+)+X^+_R(\sigma^-)$, and the residual freedom of \cref{eq:quantum:residual} is
+exactly a choice of what the functions $X_L^+$ and $X_R^+$ are. One uses it to remove all
+oscillators from $X^+$:
+\begin{equation}\label{eq:quantum:lcgauge}
+ X^+=x^++\ap p^+\tau\qquad\text{(lightcone gauge)}
+\end{equation}
+\index{lightcone gauge}\source{Tong §2.2.1, ll.~2036--2066}. The zero modes $x^+$ and $p^+$
+survive, because a reparametrization must respect the periodicity in $\sigma$. In this
+gauge the worldsheet time $\tau$ is, up to a shift and a scale, the spacetime coordinate
+$X^+$: every point of the string carries the same ``lightcone clock''. The gauge is good as long as $p^+\neq0$.
+
+\subsection{Solving for \texorpdfstring{$X^-$}{X-}}
+
+The benefit of the gauge choice in \cref{eq:quantum:lcgauge} is that the constraints become \emph{linear} in
+$X^-$. Written with \cref{eq:quantum:lc}, the constraint $(\partial_+X)^2=0$ is
+$2\,\partial_+X^-\partial_+X^+=\sum_i\partial_+X^i\partial_+X^i$, and
+\cref{eq:quantum:lcgauge} gives $\partial_+X^+=\frac12\ap p^+$. Hence
+\begin{equation}\label{eq:quantum:Xminus}
+ \partial_+X^-=\frac{1}{\ap p^+}\sum_{i=1}^{D-2}\partial_+X^i\partial_+X^i,\qquad
+ \partial_-X^-=\frac{1}{\ap p^+}\sum_{i=1}^{D-2}\partial_-X^i\partial_-X^i
+\end{equation}
+\source{Tong §2.2.1, ll.~2068--2113}. The field $X^-$ is determined by the transverse fields
+up to one integration constant $x^-$. In modes, insert
+$\partial_-X^-=\sqrt{\ap/2}\sum_n\alpha^-_n\ee^{-\ii n\sigma^-}$ and
+$(\partial_-X^i)^2=\frac\ap2\sum_n\sum_m\alpha^i_{n-m}\alpha^i_m\ee^{-\ii n\sigma^-}$ and
+compare coefficients:
+\begin{equation}\label{eq:quantum:alphaminus}
+ \alpha^-_n=\frac{1}{\sqrt{2\ap}\,p^+}\sum_{m\in\Z}\sum_{i=1}^{D-2}\alpha^i_{n-m}\alpha^i_m
+\end{equation}
+\source{Tong §2.2.1, ll.~2114--2141}. The case $n=0$, with $\alpha_0^-=\sqrt{\ap/2}\,p^-$ and
+$\alpha_0^i\alpha_0^i=\frac\ap2p^ip^i$, is an equation for $p^-$:
+\begin{equation}\label{eq:quantum:pminus}
+ \frac{\ap p^-}{2}=\frac{1}{2p^+}\sum_{i=1}^{D-2}
+   \Big(\frac\ap2\,p^ip^i+\sum_{n\neq0}\alpha^i_{-n}\alpha^i_n\Big),
+\end{equation}
+and the left-movers give the same equation with $\tilde\alpha$
+\source{Tong §2.2.1, ll.~2142--2200}. Now compute the mass. Since
+$p^2=-2p^+p^-+p^ip^i$,
+\begin{equation}\label{eq:quantum:lcmass}
+ M^2=2p^+p^--p^ip^i
+    =\frac2\ap\sum_i\sum_{n\ne0}\alpha^i_{-n}\alpha^i_n
+    =\frac4\ap\sum_{i=1}^{D-2}\sum_{n>0}\alpha^i_{-n}\alpha^i_n
+    =\frac4\ap\sum_{i=1}^{D-2}\sum_{n>0}\tilde\alpha^i_{-n}\tilde\alpha^i_n ,
+\end{equation}
+where the third step uses that classical amplitudes commute. This is
+\cref{eq:quantum:classmass} again, with the essential difference that only the $D-2$
+transverse directions appear \source{Tong §2.2.1, ll.~2201--2238}. The independent variables
+are $x^i,p^i,x^-,p^+$ and the transverse oscillators $\alpha^i_n,\tilde\alpha^i_n$. Note that
+$p^-$ generates translations of $x^+$, that is, of $\tau$: \cref{eq:quantum:pminus} is the
+lightcone Hamiltonian of the string.
+
+%=====================================================================================
+\section{Lightcone quantization and the normal-ordering constant}\label{sec:quantum:a}
+
+\subsection{A positive Hilbert space}
+
+Quantize the independent variables:
+\begin{equation}\label{eq:quantum:lcccr}
+ [x^i,p^j]=\ii\delta^{ij},\qquad [x^-,p^+]=-\ii,\qquad
+ [\alpha^i_n,\alpha^j_m]=[\tilde\alpha^i_n,\tilde\alpha^j_m]=n\,\delta^{ij}\delta_{n+m,0}
+\end{equation}
+\source{Tong §2.2.2, ll.~2239--2256}. (That the naive commutators survive the elimination of
+$X^\pm$ requires an argument, because $\alpha^-_n$ is a function of the $\alpha^i_n$. It
+holds because $X^+$ in \cref{eq:quantum:lcgauge} has no oscillators, so the symplectic form
+receives no contribution from $\alpha_n^-$ \source{Tong §2.2.2, ll.~2294--2313}.) The Fock
+space is built on $\ket{0;p}$ with the transverse creation operators only. Since
+$\delta^{ij}$ is positive definite, every state has positive norm. There are no ghosts, by
+construction \source{Tong §2.2.2, ll.~2276--2290}.
+
+The constraint of \cref{eq:quantum:pminus} must be imposed on states, and it has the ordering
+ambiguity met before. With the \emph{level operators}\index{level (oscillator number)}
+\begin{equation}\label{eq:quantum:N}
+ N=\sum_{i=1}^{D-2}\sum_{n>0}\alpha^i_{-n}\alpha^i_n,\qquad
+ \tilde N=\sum_{i=1}^{D-2}\sum_{n>0}\tilde\alpha^i_{-n}\tilde\alpha^i_n ,
+\end{equation}
+the quantum mass formula is
+\begin{equation}\label{eq:quantum:massa}
+ M^2=\frac4\ap(N-a)=\frac4\ap(\tilde N-a)
+\end{equation}
+\source{Tong §2.2.2, ll.~2318--2387}. In terms of \cref{eq:quantum:ladder},
+$\alpha_{-n}\alpha_n=n\,a_n^\dagger a_n$, so $N$ is not the number of quanta but the sum of
+their mode numbers: $\alpha^i_{-2}\ket{0;p}$ and $\alpha^i_{-1}\alpha^j_{-1}\ket{0;p}$ both have
+$N=2$. Indeed, from $[\alpha^i_{-m}\alpha^i_m,\alpha^j_{-n}]=n\,\alpha^j_{-n}\delta_{mn}$ one
+finds $[N,\alpha^j_{-n}]=n\,\alpha^j_{-n}$: each $\alpha_{-n}$ raises $N$ by $n$.
+
+\subsection{Level matching as a symmetry}\label{sec:quantum:levelmatching}
+
+The second equality in \cref{eq:quantum:massa}, $N=\tilde N$, has a simple meaning, which
+we derive because it will be modified in \cref{ch:circle}. No point on a closed string is
+marked, so a rigid shift $\sigma\to\sigma+\delta$ must act trivially on physical states.
+In \cref{eq:quantum:modes} the shift sends $\ee^{-\ii n\sigma^-}\to\ee^{\ii n\delta}
+\ee^{-\ii n\sigma^-}$ and $\ee^{-\ii n\sigma^+}\to\ee^{-\ii n\delta}\ee^{-\ii n\sigma^+}$, that
+is,
+\[
+ \alpha_n\to\ee^{\ii n\delta}\alpha_n,\qquad \tilde\alpha_n\to\ee^{-\ii n\delta}\tilde\alpha_n .
+\]
+Since $[N,\alpha_n]=-n\alpha_n$, the operator $U_\delta=\ee^{-\ii\delta(N-\tilde N)}$
+implements exactly this: $U_\delta\alpha_nU_\delta^{-1}=\ee^{\ii n\delta}\alpha_n$ and
+$U_\delta\tilde\alpha_nU_\delta^{-1}=\ee^{-\ii n\delta}\tilde\alpha_n$. A state is invariant
+under all $U_\delta$ if and only if $(N-\tilde N)\ket\psi=0$. Level matching is the
+statement that the origin of $\sigma$ is unobservable. On a circle the zero modes also
+transform, and the condition becomes $N-\tilde N=nw$ (\cref{ch:circle}).
+
+\subsection{The constant \texorpdfstring{$a$}{a} as a Casimir energy}
+
+Here is Tong's heuristic determination of $a$ \source{Tong §2.2.2, ll.~2391--2498}. Take the
+classical expression $\frac12\sum_{n\neq0}\alpha^i_{-n}\alpha^i_n$ from
+\cref{eq:quantum:pminus} at face value and bring it to normal-ordered form. The terms with
+$n<0$ are in the wrong order; relabel $n\to-n$ and use
+$\alpha^i_n\alpha^i_{-n}=\alpha^i_{-n}\alpha^i_n+n(D-2)$ (summed over $i$):
+\begin{equation}\label{eq:quantum:ordering}
+ \frac12\sum_{n\neq0}\alpha^i_{-n}\alpha^i_n
+  =\frac12\sum_{n>0}\alpha^i_{-n}\alpha^i_n+\frac12\sum_{n>0}\alpha^i_{n}\alpha^i_{-n}
+  =\sum_{n>0}\alpha^i_{-n}\alpha^i_n+\frac{D-2}{2}\sum_{n>0}n .
+\end{equation}
+The last term is the sum of the zero-point energies $\frac12\omega_n=\frac12n$ of $D-2$ towers
+of oscillators. It diverges, as the vacuum energy does in any field theory. In a finite
+box, however, the \emph{finite part} of such a sum is physical: it is the Casimir
+energy\index{Casimir energy}. Regulate with a cutoff $\epsilon\ll1$ that suppresses high
+frequencies,
+\begin{equation}\label{eq:quantum:cutoff}
+ \sum_{n=1}^\infty n\,\ee^{-\epsilon n}
+ =-\frac{\partial}{\partial\epsilon}\sum_{n=1}^\infty\ee^{-\epsilon n}
+ =-\frac{\partial}{\partial\epsilon}\frac{1}{\ee^{\epsilon}-1}
+ =\frac{1}{\epsilon^2}-\frac1{12}+\frac{\epsilon^2}{240}+O(\epsilon^4).
+\end{equation}
+The expansion follows from $1/(\ee^\epsilon-1)=1/\epsilon-\frac12+\frac{\epsilon}{12}
+-\frac{\epsilon^3}{720}+\dots$; we have confirmed it with a symbolic check in sympy. The
+divergent term $1/\epsilon^2$ is independent of the state and has the form of a
+cosmological constant on the worldsheet. It must be cancelled by a counterterm, because such
+a term would violate the Weyl invariance of the Polyakov action. The finite remainder is
+\begin{equation}\label{eq:quantum:zeta}
+ \sum_{n=1}^\infty n\ \longrightarrow\ -\frac1{12}
+ \qquad\Longrightarrow\qquad a=\frac{D-2}{24},\qquad
+ M^2=\frac4\ap\Big(N-\frac{D-2}{24}\Big).
+\end{equation}
+The same number is obtained from \emph{zeta-function regularization}%
+\index{zeta-function regularization}: the series $\zeta(s)=\sum_{n\ge1}n^{-s}$ converges for
+$\mathrm{Re}\,s>1$, has a unique analytic continuation, and $\zeta(-1)=-\frac1{12}$
+\source{Tong §2.2.2, ll.~2507--2530}.
+
+\begin{example}[The cutoff sum with numbers]\label{ex:quantum:casimir}
+Take $\epsilon=0.1$. Summing the series numerically gives
+$\sum_nn\,\ee^{-0.1n}=99.916708\dots$, while $1/\epsilon^2-\frac1{12}=99.916667$ and the next
+term $\epsilon^2/240=0.000042$ accounts for the difference. With $\epsilon=0.01$ the sum is
+$9999.9166671$ against $10^4-\frac1{12}=9999.9166667$. The divergent part changes by a factor
+$100$; the constant $-\frac1{12}=-0.08333\dots$ does not move. This stability is what makes
+the finite part meaningful.
+\end{example}
+
+\begin{pitfallbox}[Common pitfall: ``$1+2+3+\dots=-\frac1{12}$'']
+The divergent series does not equal $-\frac1{12}$ in any ordinary sense, and nothing in the
+argument uses such an equality. What is claimed is: (i) the regulated sum has the structure
+(divergent, state-independent) $+$ (finite) $+$ (vanishing with the cutoff); (ii) the
+divergent part is removed by a local counterterm that the symmetries require anyway; (iii)
+the finite part does not depend on how the cutoff is chosen. Point (iii) is not proved by
+\cref{eq:quantum:cutoff}, which uses one particular cutoff. The derivation that does not
+discard infinities uses conformal field theory: a theory of central charge $c$ on a cylinder
+of circumference $2\pi$ has ground-state energy $-(c+\tilde c)/24$, and a free boson has
+$c=\tilde c=1$, so each transverse direction contributes $-\frac1{24}$ to $L_0$ and to
+$\tilde L_0$ \source{Tong §4.4.1, ll.~5018--5074}; see \cref{ch:cft}.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{The spectrum}\label{sec:quantum:spectrum}
+
+We can now list the states of the closed bosonic string level by level, using
+$M^2=\frac4\ap\big(N-\frac{D-2}{24}\big)$ with $N=\tilde N$.
+
+\subsection{The ground state: a tachyon}
+
+The state $\ket{0;p}$ has $N=\tilde N=0$ and
+\begin{equation}\label{eq:quantum:tachyon}
+ M^2=-\frac{1}{\ap}\,\frac{D-2}{6}
+\end{equation}
+\source{Tong §2.3.1, ll.~2535--2544}. A particle with $M^2<0$ is a
+\emph{tachyon}\index{tachyon}. The right reading is field-theoretic. If $T(X)$ is the
+spacetime field whose quantum this particle is, then $M^2=\partial^2V/\partial T^2$ at
+$T=0$, so $M^2<0$ says that $T=0$ is a \emph{maximum} of the potential $V(T)$
+(\cref{fig:quantum:tachyon}). The expansion is carried out around an unstable point, just as
+the Higgs field at $H=0$ is tachyonic. Whether $V(T)$ for the closed bosonic string has a
+stable minimum is not known: the cubic term produces one, the quartic term removes it again,
+and $T$ mixes with other scalars \source{Tong §2.3.1, ll.~2546--2580}. The superstring has no
+tachyon, and the lessons of the bosonic string carry over to it; but the instability of the
+bosonic vacuum should be kept in mind throughout Part~I.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=0.95]
+ % left: tachyon potential
+ \begin{scope}
+ \draw[-{Stealth}] (-2.4,0)--(2.8,0) node[above]{$T$};
+ \draw[-{Stealth}] (0,-1.5)--(0,1.6) node[left]{$V(T)$};
+ \draw[thick,domain=-1.9:1.5,samples=60] plot (\x,{0.9-0.5*\x*\x});
+ \draw[thick,dashed,domain=0:0.95,samples=20]
+   plot ({1.5+\x},{-0.225-1.5*\x+1.8*\x*\x});
+ \fill (0,0.9) circle (1.6pt);
+ \node[above right] at (0,0.9) {\small $T=0$};
+ \node at (1.95,-0.85) {\small ?};
+ \end{scope}
+ % right: spectrum
+ \begin{scope}[xshift=5.2cm,yshift=-0.9cm]
+ \draw[-{Stealth}] (-0.3,0.8)--(5.2,0.8) node[below]{$N=\tilde N$};
+ \draw[-{Stealth}] (0,-0.3)--(0,2.9) node[left]{$\ap M^2$};
+ \foreach \n/\y/\lab in {0/0/-4,1/0.8/0,2/1.6/4,3/2.4/8}{
+   \draw (-0.07,\y)--(0.07,\y); \node[left] at (-0.05,\y) {\small $\lab$};
+   \fill (1.2*\n+0.6,\y) circle (2pt);
+   \draw (1.2*\n+0.6,0.73)--(1.2*\n+0.6,0.87);
+ }
+ \draw[dotted] (0.6,0)--(4.2,2.4);
+ \node[below] at (0.6,0.0) {\small $1$};
+ \node[below right] at (1.8,0.8) {\small $24^2$};
+ \node[below right] at (3.0,1.6) {\small $324^2$};
+ \node[below right] at (4.2,2.4) {\small $3200^2$};
+ \end{scope}
+\end{tikzpicture}
+\caption{Left: a negative $M^2$ means that the expansion point $T=0$ is a maximum of the
+tachyon potential; whether a minimum exists elsewhere (dashed) is not known. Right: the first four levels of the
+closed bosonic string in $D=26$, with $\ap M^2=4(N-1)$ and the number of states at each
+level (\cref{ex:quantum:counting}).}
+\label{fig:quantum:tachyon}
+\end{figure}
+
+\subsection{The first excited level and \texorpdfstring{$D=26$}{D=26}}
+
+Level matching forbids a single oscillator. The first excited states are
+\begin{equation}\label{eq:quantum:level1}
+ \alpha^i_{-1}\tilde\alpha^j_{-1}\ket{0;p},\qquad i,j=1,\dots,D-2,\qquad
+ M^2=\frac4\ap\Big(1-\frac{D-2}{24}\Big),
+\end{equation}
+$(D-2)^2$ states in all \source{Tong §2.3.2, ll.~2595--2622}. They transform as a two-index
+tensor of the rotation group $SO(D-2)$ of the transverse directions, which is all that
+lightcone gauge leaves manifest. They must nevertheless form a representation of the full
+Lorentz group $SO(1,D-1)$. Wigner's classification\index{little group} says how
+\source{Tong §2.3.2, ll.~2631--2650}:
+\begin{itemize}[leftmargin=*]
+\item a \emph{massive} particle can be brought to rest, $p^\mu=(M,0,\dots,0)$; the rotations
+that preserve this momentum form $SO(D-1)$, and the internal states must fill
+representations of that group, $SO(D-1)$;
+\item a \emph{massless} particle cannot be brought to rest; one takes $p^\mu=(k,0,\dots,0,k)$,
+which is preserved by $SO(D-2)$, and the internal states need only fill representations of
+$SO(D-2)$. This is why a photon in four dimensions has two polarizations while a massive
+vector has three.
+\end{itemize}
+The $(D-2)^2$ states of \cref{eq:quantum:level1} form a tensor of $SO(D-2)$. They cannot be
+completed into a representation of $SO(D-1)$: a two-index tensor of $SO(D-1)$ would need
+$(D-1)^2$ states, and nothing else is available at this level. Lorentz invariance therefore
+requires these states to be massless, and \cref{eq:quantum:level1} then gives
+\begin{equation}\label{eq:quantum:D26}
+ 1-\frac{D-2}{24}=0\qquad\Longleftrightarrow\qquad D=26,\qquad a=1
+\end{equation}
+\index{critical dimension}\TL\ \source{Tong §2.3.2, ll.~2643--2653}. This agrees with
+\cref{ex:quantum:level1}: $a=1$ is the value at which the first level is a massless gauge
+particle. With $D=26$ the mass formula takes the form used in the rest of the book,
+\begin{equation}\label{eq:quantum:massfinal}
+ M^2=\frac4\ap(N-1)=\frac{2}{\ap}\big(N+\tilde N-2\big),\qquad N=\tilde N .
+\end{equation}
+
+\subsection{Graviton, \texorpdfstring{$B$}{B}-field and dilaton}
+
+For $D=26$ the massless states are a tensor $\zeta_{ij}$ of $SO(24)$ with $24^2=576$
+components. A two-index tensor decomposes into irreducible parts,
+\begin{equation}\label{eq:quantum:decomp}
+ \underbrace{\mathbf{24}\otimes\mathbf{24}}_{576}
+ =\underbrace{\text{traceless symmetric}}_{\frac12\cdot24\cdot25-1\,=\,299}
+ \ \oplus\ \underbrace{\text{antisymmetric}}_{\frac12\cdot24\cdot23\,=\,276}
+ \ \oplus\ \underbrace{\text{trace}}_{1},
+\end{equation}
+and to each part corresponds a massless field in spacetime
+\source{Tong §2.3.2, ll.~2655--2684}:
+\begin{center}
+\begin{tabular}{@{}llll@{}}\toprule
+$SO(24)$ representation & states & field & name\\\midrule
+traceless symmetric & 299 & $G_{\mu\nu}(X)$ & metric; its quantum is the graviton\index{graviton}\\
+antisymmetric & 276 & $B_{\mu\nu}(X)$ & Kalb--Ramond field, or 2-form\index{Kalb--Ramond field}\\
+singlet & 1 & $\Phi(X)$ & dilaton\index{dilaton}\\\bottomrule
+\end{tabular}
+\end{center}
+These three fields are common to all string theories. The fields carry spacetime indices
+$\mu,\nu=0,\dots,25$ and not just $i,j$, because $G_{\mu\nu}$ and $B_{\mu\nu}$ possess gauge
+symmetries that remove the extra components; lightcone gauge shows only the physical
+polarizations, and \cref{ex:quantum:level1} showed where the gauge symmetry comes from
+\source{Tong §2.3.2, ll.~2760--2770}.
+
+\begin{physicsbox}[Why a massless spin-two particle means gravity]
+A massless spin-two field $h_{\mu\nu}$ quantized covariantly has negative-norm states,
+created by operators with one timelike index, for the same reason as
+\cref{eq:quantum:negnorm}. They decouple only if the theory has the gauge symmetry
+$h_{\mu\nu}\to h_{\mu\nu}+\partial_\mu\xi_\nu+\partial_\nu\xi_\mu$. An argument due to Feynman
+and Weinberg shows that this symmetry survives interactions only if the full theory is
+invariant under diffeomorphisms, that is, if it is general relativity, possibly with
+higher-derivative corrections \source{Tong §2.3.2, ll.~2686--2757}. The string was not
+designed to contain gravity. The graviton appears because the constraint algebra forces
+$a=1$. How Einstein's equations themselves emerge is the subject of \cref{ch:backgrounds};
+the roles of $B_{\mu\nu}$ and $\Phi$ in T-duality begin in \cref{ch:buscher}.
+\end{physicsbox}
+
+\subsection{Massive levels}
+
+At higher levels all states are massive and must fill representations of $SO(D-1)=SO(25)$,
+although only $SO(24)$ is manifest. At level $N=2$ the right-moving states are
+$\alpha^i_{-1}\alpha^j_{-1}\ket0$ (symmetric in $i,j$) and $\alpha^i_{-2}\ket0$. Their number is
+\begin{equation}\label{eq:quantum:level2}
+ \tfrac12(D-2)(D-1)+(D-2)=\tfrac12D(D-1)-1 ,
+\end{equation}
+which is exactly the dimension of the traceless symmetric tensor of $SO(D-1)$
+\source{Tong §2.3.3, ll.~2771--2806}. (A symmetric tensor of $SO(n)$ has $\frac12n(n+1)$
+components, and removing the trace gives $\frac12n(n+1)-1$; put $n=D-1$.) The vector
+$\alpha^i_{-2}\ket0$ of $SO(24)$ supplies precisely the components that the symmetric tensor of
+$SO(24)$ lacks. One can show that all higher levels also assemble into $SO(D-1)$
+representations, so the only condition from this argument is the one at level 1
+\source{Tong §2.3.3, ll.~2807--2812}.
+
+\begin{example}[Counting states with a generating function]\label{ex:quantum:counting}
+Each right-moving oscillator $\alpha^i_{-n}$ may be excited $k=0,1,2,\dots$ times and then
+contributes $kn$ to $N$. The number $d_N$ of right-moving states at level $N$ is therefore
+the coefficient of $q^N$ in
+\[
+ \prod_{n=1}^\infty\Big(\frac{1}{1-q^n}\Big)^{24}=1+24\,q+324\,q^2+3200\,q^3+25650\,q^4+\dots
+\]
+(expansion obtained by a symbolic check in sympy). Check the first entries by hand:
+$d_1=24$; $d_2=\frac12\cdot24\cdot25+24=324=\frac12\cdot25\cdot26-1$, in agreement with
+\cref{eq:quantum:level2}; and $d_3=24+24^2+\binom{26}{3}=24+576+2600=3200$ from
+$\alpha_{-3}$, $\alpha_{-2}\alpha_{-1}$ and $\alpha_{-1}\alpha_{-1}\alpha_{-1}$. For $SO(25)$
+the traceless symmetric three-index tensor has $\binom{27}{3}-25=2900$ components and the
+antisymmetric two-index tensor has $\binom{25}{2}=300$; the sum is $3200$, as required for a
+massive level. The closed string at level $N=\tilde N$ has $d_N^2$ states:
+\begin{center}
+\begin{tabular}{@{}ccccl@{}}\toprule
+$N=\tilde N$ & $\ap M^2$ & $d_N$ & closed-string states & content\\\midrule
+0 & $-4$ & 1 & 1 & tachyon\\
+1 & $0$ & 24 & 576 & $G_{\mu\nu}$, $B_{\mu\nu}$, $\Phi$\\
+2 & $4$ & 324 & 104\,976 & massive, from $\mathbf{324}\otimes\mathbf{324}$ of $SO(25)$\\
+3 & $8$ & 3200 & 10\,240\,000 & massive\\\bottomrule
+\end{tabular}
+\end{center}
+The spacing of the levels is $\Delta M^2=4/\ap$. If $\sqrt\ap$ is of the order of the Planck
+length, the first massive level has $M=2/\sqrt{\ap}$, near the Planck mass, far beyond any
+accelerator \source{Tong §2.3.3, ll.~2813--2819}. At low energy only the massless level
+matters; this is why \cref{ch:backgrounds} can describe the string by a field theory of
+$G$, $B$ and $\Phi$.
+\end{example}
+
+The same product appears, with $q=\ee^{2\pi\ii\tau}$, in the one-loop partition function of the
+string, and its analogue for K3 in the elliptic genus of \cref{ch:ellgenus}.
+
+%=====================================================================================
+\section{Lorentz invariance revisited}\label{sec:quantum:lorentz}
+
+The argument for $D=26$ in the previous section was quick: it fixed $a$ by a regularization
+and $D$ by one representation-theoretic observation. A more systematic test within lightcone
+quantization is to construct the Lorentz generators and verify their algebra
+\source{Tong §2.4, ll.~2820--2835}.
+
+Before gauge fixing, the action is invariant under the global Poincar\'e transformations
+$X^\mu\to\Lambda^\mu{}_\nu X^\nu+c^\mu$. The Noether currents are
+\begin{equation}\label{eq:quantum:currents}
+ P^\alpha_\mu=T\,\partial^\alpha X_\mu,\qquad
+ J^\alpha_{\mu\nu}=P^\alpha_\mu X_\nu-P^\alpha_\nu X_\mu ,
+\end{equation}
+conserved by the equations of motion \source{Tong §2.4, ll.~2836--2860}. The charges
+$M^{\mu\nu}=\int_0^{2\pi}\dd\sigma\,J^{\tau\,\mu\nu}$ are, in modes,
+\begin{equation}\label{eq:quantum:Mmunu}
+ M^{\mu\nu}=\underbrace{(p^\mu x^\nu-p^\nu x^\mu)}_{l^{\mu\nu}}
+  \ \underbrace{-\,\ii\sum_{n=1}^\infty\frac1n\big(\alpha^\nu_{-n}\alpha^\mu_n
+      -\alpha^\mu_{-n}\alpha^\nu_n\big)}_{S^{\mu\nu}}
+  \ +\ \tilde S^{\mu\nu},
+\end{equation}
+where $l^{\mu\nu}$ is the orbital angular momentum of the centre of mass, $S^{\mu\nu}$ the
+spin carried by right-moving oscillators and $\tilde S^{\mu\nu}$ the same expression with
+$\tilde\alpha$ \source{Tong §2.4, ll.~2861--2880}. In covariant quantization these operators
+obey the Lorentz algebra\index{Lorentz algebra}
+\begin{equation}\label{eq:quantum:lorentzalg}
+ [M^{\rho\sigma},M^{\tau\nu}]=\eta^{\sigma\tau}M^{\rho\nu}-\eta^{\rho\tau}M^{\sigma\nu}
+   +\eta^{\rho\nu}M^{\sigma\tau}-\eta^{\sigma\nu}M^{\rho\tau}
+\end{equation}
+without difficulty. In lightcone gauge the generators $M^{i-}$ are dangerous. They contain
+$\alpha^-_n$ and $p^-$, which by \cref{eq:quantum:alphaminus,eq:quantum:pminus} are
+\emph{quadratic} in the transverse oscillators and carry the ordering constant $a$. So
+$M^{i-}$ is cubic in oscillators, and its commutators can produce anomalous terms. The
+algebra of \cref{eq:quantum:lorentzalg} demands
+\begin{equation}\label{eq:quantum:smoking}
+ [M^{i-},M^{j-}]=0 ,
+\end{equation}
+because with $\rho=i$, $\tau=j$, $\sigma=\nu=-$ every term on the right of
+\cref{eq:quantum:lorentzalg} vanishes: $\eta^{--}=\eta^{i-}=\eta^{-j}=0$ in the metric
+of \cref{eq:quantum:lc}, and the remaining term is $-\delta^{ij}M^{--}$, which is zero by
+antisymmetry. Keeping $a$ and $D$ arbitrary, a long calculation gives
+instead
+\begin{equation}\label{eq:quantum:anomaly}
+ [M^{i-},M^{j-}]=\frac{2}{(p^+)^2}\sum_{n>0}
+  \Big(\Big[\frac{D-2}{24}-1\Big]n+\frac1n\Big[a-\frac{D-2}{24}\Big]\Big)
+  \big(\alpha^i_{-n}\alpha^j_n-\alpha^j_{-n}\alpha^i_n\big)+(\alpha\leftrightarrow\tilde\alpha)
+\end{equation}
+\TL\ \source{Tong §2.4, ll.~2905--2945}. The operators
+$\alpha^i_{-n}\alpha^j_n-\alpha^j_{-n}\alpha^i_n$ for different $n$ are independent, so each
+coefficient must vanish. The coefficient is a combination of $n$ and $1/n$, and it vanishes
+for all $n\geq1$ only if both brackets vanish:
+\begin{equation}\label{eq:quantum:D26a1}
+ \frac{D-2}{24}=1\quad\text{and}\quad a=\frac{D-2}{24}
+ \qquad\Longleftrightarrow\qquad D=26,\quad a=1
+\end{equation}
+\source{Tong §2.4, ll.~2953--2956}. Two remarks. First, the second condition is
+\cref{eq:quantum:zeta}: the Lorentz algebra confirms the Casimir value of $a$ without any
+regularization. Second, this is an \emph{anomaly}\index{anomaly}: a symmetry of the classical
+theory that fails in the quantum theory unless a condition is met. We have not carried out
+the calculation leading to \cref{eq:quantum:anomaly}; neither does Tong, and neither does
+the Lean library (\cref{sec:quantum:lean}).
+
+\begin{historybox}
+Lightcone quantization of the string was first carried out by Goddard, Goldstone, Rebbi and
+Thorn, ``Quantum Dynamics of a Massless Relativistic String'', Nucl.\ Phys.\ B56 (1973); the
+commutator in \cref{eq:quantum:anomaly} is the central computation of that paper
+\source{Tong §2.4, footnote, ll.~2949--2951}.
+\end{historybox}
+
+%=====================================================================================
+\section{The critical dimension as a central charge; the superstring}
+\label{sec:quantum:centralcharge}
+
+The number 26 will be derived a third time in \cref{ch:ghosts}, and that derivation is the
+one formalized in Lean, so we summarize it here. Gauge-fixing the Polyakov path integral
+introduces anticommuting Faddeev--Popov fields $b,c$. They form a conformal field theory, and
+any conformal field theory has a \emph{central charge}\index{central charge} $c$, a number
+that measures its response to a rescaling of the worldsheet metric (\cref{ch:cft}). The
+results needed are \TL\ \source{Tong §5.2--5.3, ll.~6832--6850}:
+\begin{itemize}[leftmargin=*]
+\item a free scalar field has $c=1$, so $D$ fields $X^\mu$ have $c=D$;
+\item the $bc$ ghost system has $c=-26$;
+\item the Weyl symmetry is anomalous unless the total central charge vanishes.
+\end{itemize}
+Since the Weyl symmetry is a gauge symmetry, it must not be anomalous. Hence $D-26=0$. In
+this form the statement is more general than ``spacetime has 26 dimensions'': the matter
+sector may be \emph{any} conformal field theory with $c=26$, for instance four free scalars
+for Minkowski space together with an ``internal'' theory of $c=22$. The critical dimension
+is really a critical central charge \source{Tong §5.3, ll.~6851--6868}.
+
+The lightcone result and the central-charge result are connected by the Casimir energy. A
+conformal field theory on the cylinder has ground-state energy $-(c+\tilde c)/24$
+\source{Tong §4.4.1, ll.~5060--5074}, which gives $a=c_\perp/24$ for a transverse theory of
+central charge $c_\perp$; with $c_\perp=D-2$ this is \cref{eq:quantum:zeta}. The identity
+\[
+ a=\frac{D-2}{24}=1+\frac{D-26}{24}
+\]
+then shows that the ordering constant takes the ghost-free value $a=1$ of
+\cref{ex:quantum:level1} exactly when the total central charge $D-26$ vanishes. In both
+languages two of the $D$ directions do not contribute physical oscillators: in lightcone
+gauge they are eliminated by hand, in the covariant path integral the $bc$ system cancels
+them.
+
+\paragraph{The superstring.} Adding fermions $\psi^\mu$ to the worldsheet, related to the
+$X^\mu$ by worldsheet supersymmetry, gives the superstring. Supersymmetry is a further gauge
+symmetry and requires further Faddeev--Popov fields, the commuting $\beta\gamma$ system, with
+$c=+11$. The matter sector must then have $c=26-11=15$. A free fermion has $c=\frac12$, and
+supersymmetry pairs each boson with a fermion, so $D(1+\frac12)=15$ and
+\begin{equation}\label{eq:quantum:D10}
+ D=10
+\end{equation}
+\index{superstring}\TL\ \source{Tong §5.3.1, ll.~6884--6891}. The quantized superstring has no
+tachyon, and its massless bosons include $G_{\mu\nu}$, $B_{\mu\nu}$ and $\Phi$ again
+\source{Tong §2.5, ll.~2957--2975}. There are several superstring theories, distinguished by
+discrete choices: type~II (worldsheet fermions moving in both directions, 32 supercharges in
+$D=10$), subdivided into IIA and IIB by their additional Ramond--Ramond fields; heterotic
+(fermions in one direction only, 16 supercharges) with gauge group $SO(32)$ or $E_8\times
+E_8$; and type~I with open strings \source{Tong §2.5, ll.~2976--3008}. For this book the
+important consequences are these. In $D=10$ one can compactify six dimensions, for instance
+on $\KT$ (\cref{ch:k3t2}). By the same counting, a supersymmetric sigma model on a space of
+four real dimensions, such as a K3 surface, has four bosons and four fermions and hence
+$c=4\cdot1+4\cdot\frac12=6$, the value used in \cref{ch:ellgenus}. And the appearance of the lattice $E_8$ in a string
+theory is one motivation for \cref{ch:lattices}.
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:quantum:lean}
+
+The Lean file for this chapter is
+\begin{center}
+\path{StringTheoryFormalization/UseCases/CriticalDimension.lean}
+\end{center}
+and all its declarations live in the namespace
+\lean{StringTheory.UseCases.CriticalDimension}. The file belongs to the older part
+of the library, in which a physical quantity is modelled by a rational number and the
+theorems are arithmetic. It is a good first Lean file to read, because every proof is one
+line. It is also a good first lesson in reading a formal statement for what it literally
+says.
+
+\begin{leanbox}[In Lean: the two ghost central-charge formulas]
+\begin{leancode}
+def fermionicGhostCharge (lam : ℚ) : ℚ := 1 - 3 * (2 * lam - 1) ^ 2
+
+def bosonicGhostCharge (lam : ℚ) : ℚ := 3 * (2 * lam - 1) ^ 2 - 1
+
+theorem bosonic_eq_neg_fermionic (lam : ℚ) :
+    bosonicGhostCharge lam = - fermionicGhostCharge lam := by ...
+\end{leancode}
+\textbf{Reading.} These are \emph{definitions} of two functions $\Q\to\Q$:
+$c_{bc}(\lambda)=1-3(2\lambda-1)^2$ and $c_{\beta\gamma}(\lambda)=3(2\lambda-1)^2-1$. In the
+literature they are the central charges of an anticommuting, respectively commuting,
+first-order system whose fields have conformal weights $\lambda$ and $1-\lambda$ (the file's
+header cites Polchinski and Green--Schwarz--Witten for them; these are not in this book's
+source library; Tong computes only the case $\lambda=2$, where $b$ has weight $2$ and $c$
+weight $-1$ \source{Tong §5.2, ll.~6700--6839}). Lean has not derived these
+formulas from an operator product expansion; they are input. The theorem states that the
+second polynomial is the negative of the first. \textbf{Proof idea.} Unfold the definitions;
+the tactic \lean{ring} verifies the polynomial identity.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: evaluation and the two cancellations]
+\begin{leancode}
+theorem bc_ghost_charge_eq : fermionicGhostCharge 2 = -26 := by ...
+
+theorem betagamma_ghost_charge_eq : bosonicGhostCharge (3 / 2) = 11 := by ...
+
+theorem bosonic_string_critical_dimension :
+    (26 : ℚ) * 1 + fermionicGhostCharge 2 = 0 := by ...
+
+theorem superstring_critical_dimension :
+    (10 : ℚ) * 1 + 10 * (1 / 2) + fermionicGhostCharge 2
+      + bosonicGhostCharge (3 / 2) = 0 := by ...
+\end{leancode}
+\textbf{Reading.} The first two theorems evaluate the polynomials: $1-3\cdot3^2=-26$ and
+$3\cdot2^2-1=11$. The third says $26\cdot1+(-26)=0$ in $\Q$; the fourth says
+$10\cdot1+10\cdot\frac12-26+11=0$ in $\Q$. The literals \texttt{1} and \texttt{1/2} stand for
+the central charges of a free boson and a free fermion, but in the statement they are just
+rational numbers. \textbf{Proof idea.} \lean{norm\_num} evaluates the arithmetic after the
+definitions are unfolded; the last two theorems first rewrite with the first two.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: uniqueness of the solution]
+\begin{leancode}
+theorem bosonic_dimension_unique (D : ℚ)
+    (h : D * 1 + fermionicGhostCharge 2 = 0) :
+    D = 26 := by ...
+\end{leancode}
+\textbf{Reading.} If a rational number $D$ satisfies $D\cdot1+c_{bc}(2)=0$, then $D=26$. This
+is the solution of one linear equation. Note that $D$ is a rational number, not a natural
+number, so the theorem is slightly stronger than ``no other integer dimension works''.
+\textbf{Proof idea.} Rewrite the hypothesis with \lean{bc\_ghost\_charge\_eq} to obtain
+$D-26=0$, then \lean{linarith}.
+\end{leanbox}
+
+\paragraph{What this does and does not establish.} The chain of reasoning behind $D=26$ in
+the central-charge form has four links: (1) gauge fixing produces the $bc$ system with
+$\lambda=2$; (2) a first-order system of weight $\lambda$ has $c=1-3(2\lambda-1)^2$, and a
+free boson has $c=1$; (3) consistency requires $c_{\rm total}=0$; (4) arithmetic. The Lean
+file checks link (4) and records link (2) as a definition. Links (1)--(3) are physics and
+conformal field theory established in the literature. In particular the file does
+\emph{not}:
+\begin{itemize}[leftmargin=*]
+\item define the Virasoro algebra, an operator product expansion or a central charge as a
+mathematical object (so it cannot \emph{derive} $-26$);
+\item contain the oscillators $\alpha^\mu_n$, the generators $M^{\mu\nu}$, or the commutator
+of \cref{eq:quantum:anomaly}; it does not derive the closure of the Lorentz algebra, which is
+the content of \cref{sec:quantum:lorentz};
+\item determine the normal-ordering constant $a$, prove a no-ghost theorem, or construct
+any conformal field theory with $c=26$.
+\end{itemize}
+In the language of this book, the file proves an \emph{arithmetic shadow} of the
+critical-dimension statement. A faithful formalization would need, at least, a Lie-algebra
+definition of the Virasoro algebra with its central extension, the Fock-space representation
+built from \cref{eq:quantum:osc}, and a proof that the normal-ordered $L_n$ satisfy the
+algebra with $c=D$; Exercise~\ref{exo:quantum:virasoro} indicates the first step. All
+theorems of the file depend only on the axioms \lean{propext}, \lean{Classical.choice} and
+\lean{Quot.sound}; this was checked with \lean{\#print axioms} for each of the six theorems.
+\Cref{tab:quantum:tiers} collects the status of the claims of this chapter.
+
+\begin{table}[t]
+\centering\small
+\caption{Epistemic status of the main claims of this chapter.}\label{tab:quantum:tiers}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.43\textwidth}cp{0.45\textwidth}@{}}\toprule
+Claim & Tier & Basis\\\midrule
+$1-3(2\lambda-1)^2=-26$ at $\lambda=2$ & \TA & \lean{bc\_ghost\_charge\_eq}\\
+$3(2\lambda-1)^2-1=11$ at $\lambda=\frac32$ & \TA & \lean{betagamma\_ghost\_charge\_eq}\\
+$26\cdot1-26=0$ in $\Q$ & \TA & \lean{bosonic\_string\_critical\_dimension}\\
+$10\cdot1+10\cdot\frac12-26+11=0$ in $\Q$ & \TA & \lean{superstring\_critical\_dimension}\\
+$D\in\Q$ and $D-26=0$ imply $D=26$ & \TA & \lean{bosonic\_dimension\_unique}\\
+$c_{\beta\gamma}(\lambda)=-c_{bc}(\lambda)$ as polynomials & \TA & \lean{bosonic\_eq\_neg\_fermionic}\\
+The $bc$ ghosts have $c=-26$, the $\beta\gamma$ ghosts $c=11$ & \TL & Tong §5.2--5.3.1\\
+Weyl invariance needs $c_{\rm total}=0$, so $D=26$ (resp.\ $10$) & \TL & Tong §5.3, §5.3.1\\
+Lightcone Lorentz algebra closes iff $D=26$, $a=1$ & \TL & Tong §2.4\\
+$\sum_n n\,\ee^{-\epsilon n}=\epsilon^{-2}-\frac1{12}+O(\epsilon^2)$;
+  $d_N=1,24,324,3200$ & --- & symbolic check (sympy), not Tier A\\
+\bottomrule
+\end{tabular}
+\end{table}
+The identification of the rational numbers in these theorems with central charges of
+worldsheet theories is part of the physical modelling and carries no tier~A status.
+
+%=====================================================================================
+\begin{summarybox}
+\begin{itemize}[leftmargin=*]
+\item Canonical quantization turns the modes of $X^\mu$ into oscillators,
+$[\alpha^\mu_n,\alpha^\nu_m]=n\eta^{\mu\nu}\delta_{n+m,0}$. The timelike oscillators create
+negative-norm states, which the Virasoro constraints $L_n\ket{\rm phys}=0$ $(n>0)$ and
+$(L_0-a)\ket{\rm phys}=0$ must remove.
+\item In lightcone gauge $X^+=x^++\ap p^+\tau$ the constraints determine $X^-$; only $D-2$
+transverse oscillators remain and the Hilbert space is positive. The price is that Lorentz
+invariance must be checked.
+\item The mass formula is $M^2=\frac4\ap(N-a)$ with $N=\tilde N$ (level matching $=$ invariance
+under shifts of $\sigma$). The ordering constant is a Casimir energy, $a=(D-2)/24$.
+\item Level 0 is a tachyon, $M^2=-4/\ap$ for $D=26$. Level 1 has $(D-2)^2$ states, which can
+represent the Lorentz group only if massless: $D=26$, $a=1$. They are the graviton
+$G_{\mu\nu}$, the Kalb--Ramond field $B_{\mu\nu}$ and the dilaton $\Phi$ ($299+276+1=576$).
+\item The same values follow from closure of the lightcone Lorentz algebra,
+$[M^{i-},M^{j-}]=0$, and from cancellation of the central charge, $D-26=0$. For the
+superstring, $\frac32D-26+11=0$ gives $D=10$.
+\item Lean checks the central-charge arithmetic \TA. The origin of the numbers $-26$, $11$,
+$1$, $\frac12$ and the requirement $c_{\rm total}=0$ are \TL.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]
+Using \cref{eq:quantum:osc}, show that $[N,\alpha^j_{-n}]=n\,\alpha^j_{-n}$ and
+$[N,\alpha^j_n]=-n\,\alpha^j_n$ for $n>0$. Deduce that
+$\alpha^{i}_{-2}\alpha^{j}_{-1}\alpha^{k}_{-1}\ket{0;p}$ has $N=4$, and find the
+state(s) with which level matching allows it to be combined if the left-moving part contains
+only oscillators $\tilde\alpha_{-1}$ and $\tilde\alpha_{-3}$.
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Compute the norm of $\alpha^0_{-1}\alpha^0_{-1}\ket{0;p}$ and of
+$\alpha^0_{-1}\alpha^1_{-1}\ket{0;p}$ (strip off the momentum delta function). Conclude that
+the sign of the norm is $(-1)^{k}$, with $k$ the number of timelike oscillators.
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Verify the decomposition in \cref{eq:quantum:decomp} for general $n=D-2$: show that
+$\big[\frac12n(n+1)-1\big]+\frac12n(n-1)+1=n^2$. In $D=4$ (not a consistent bosonic string,
+but a useful check) how many polarizations would the ``graviton'', ``$B$-field'' and
+``dilaton'' have? Compare with the two helicities of the four-dimensional graviton.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Repeat the regularization of \cref{eq:quantum:cutoff} with a Gaussian cutoff, that is, for
+the sum $\sum_nn\,\ee^{-\epsilon^2n^2}$. Use the Euler--Maclaurin formula
+\[
+ \sum_{n\ge0}f(n)=\int_0^\infty f(x)\,\dd x+\tfrac12f(0)-\tfrac1{12}f'(0)+\tfrac1{720}f'''(0)-\dots
+\]
+Show that the
+divergent part changes but the finite part is again $-\frac1{12}$. Why does every smooth
+cutoff function $f(n)=n\,g(\epsilon n)$ with $g(0)=1$ give the same finite part?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Open strings with free ends in all directions (\cref{ch:dbranes}) have a single set of
+oscillators and $M^2=\frac1\ap(N-a)$ \source{Tong §3.1, ll.~3270--3290}, with the same
+$a=(D-2)/24$. Repeat the argument of
+\cref{sec:quantum:spectrum}: how many states are there at $N=1$, which little group must they
+represent, and what follows for $D$? Identify the massless particle.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+(a) Show that the number of right-moving states at level 4 in $D=26$ is $25650$ by listing
+the partitions of 4 and counting the states for each. (b) For $SO(25)$ the traceless
+symmetric tensors of rank $r$ have dimension $\binom{24+r}{r}-\binom{22+r}{r-2}$, and the
+traceless three-index tensor of mixed symmetry has dimension $\frac13n(n^2-1)-n$ with
+$n=25$. Check that the traceless symmetric tensors of rank 4 and rank 2, the mixed tensor
+and a singlet have total dimension $25650$. (A dimension count does not prove that the states
+transform in these representations; what else would be needed?)
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exo:quantum:superunique}
+The library proves uniqueness only for the bosonic string. State and prove in Lean the
+superstring analogue: for a rational number $D$, the hypothesis
+\begin{leancode}
+D * 1 + D * (1 / 2) + fermionicGhostCharge 2 + bosonicGhostCharge (3 / 2) = 0
+\end{leancode}
+implies $D=10$. Hint: rewrite the hypothesis with the two evaluation theorems of
+\cref{sec:quantum:lean}, then use \lean{linarith}. This statement is an exercise; it is not
+a declaration of the library.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Evaluate \lean{fermionicGhostCharge} at $\lambda=1$ and $\lambda=\frac12$ by hand, and prove
+both values in Lean with \lean{norm\_num}. Then prove that \lean{fermionicGhostCharge} is
+symmetric under $\lambda\to1-\lambda$, i.e.\
+\lean{fermionicGhostCharge (1 - lam) = fermionicGhostCharge lam}. What is the physical
+meaning of this symmetry for a system with fields of weights $\lambda$ and $1-\lambda$?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]\label{exo:quantum:virasoro}
+(a) Using only \cref{eq:quantum:osc}, show that $[L_m,\alpha^\mu_n]=-n\,\alpha^\mu_{m+n}$.
+(b) Deduce that $[L_m,L_n]=(m-n)L_{m+n}$ for $m+n\neq0$. (c) For $m+n=0$ the normal ordering
+of $L_0$ produces an extra constant $A(m)$. Compute $A(1)$ and $A(2)$ by evaluating
+$\bra{0;0}[L_m,L_{-m}]\ket{0;0}$ directly, and check that they agree with
+$A(m)=\frac{D}{12}m(m^2-1)$. (d) Write a Lean \texttt{structure} whose fields are a family
+$L:\Z\to V$ in a Lie algebra $V$ over $\Q$, a central element, and the commutation relation
+with central term $\frac{c}{12}m(m^2-1)\delta_{m+n,0}$. This is the first step towards a
+formalization in which ``$c=D$'' could be a theorem and not a definition.
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*]
+\item Covariant quantization, ghosts and the constraints:
+\source{Tong §2.1, ll.~1708--1931}.
+\item Lightcone gauge, quantization, the Casimir energy and zeta-function regularization:
+\source{Tong §2.2, ll.~1932--2530}.
+\item The spectrum, Wigner's little-group argument, and why massless spin two means general
+relativity: \source{Tong §2.3, ll.~2533--2819}.
+\item The Lorentz algebra in lightcone gauge and the original reference:
+\source{Tong §2.4, ll.~2820--2956}. The superstring in outline:
+\source{Tong §2.5, ll.~2957--3008}.
+\item The Casimir energy from the Schwarzian derivative, without discarded infinities:
+\source{Tong §4.4.1, ll.~5018--5074}. The ghost central charge and the critical central
+charge: \source{Tong §5.2--5.3.1, ll.~6832--6891}; both are developed in
+\cref{ch:cft,ch:ghosts}.
+\item The Lean source, including its own account of what is and is not proved:\\
+\path{StringTheoryFormalization/UseCases/CriticalDimension.lean}.
+\end{itemize}

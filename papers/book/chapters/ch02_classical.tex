@@ -1,0 +1,1045 @@
+\chapter{The Relativistic String: Nambu--Goto and Polyakov}\label{ch:classical}
+
+What is the simplest relativistic dynamics that a one-dimensional object can have, and how
+does one solve it? This chapter answers that question for the classical closed string. The
+answer has three layers. First, an action: the area of the surface that the string sweeps
+out in spacetime, in the same way that the action of a free particle is the length of its
+worldline. Second, a reformulation, the Polyakov action, which removes the square root at the
+price of a new field and a new gauge symmetry. Third, a solution: in a suitable gauge the
+string obeys the free wave equation, its general motion is a superposition of left-moving and
+right-moving waves, and what remains of the gauge symmetry appears as an infinite set of
+quadratic constraints on the Fourier modes. A student should care because every later
+chapter starts from the end point of this one. The momentum and winding of
+\cref{ch:circle}, the duality $R\mapsto\ap/R$ of \cref{ch:tduality}, the Narain lattice of
+\cref{ch:narain} are all statements about the zero modes and the constraints $L_0=\tilde
+L_0=0$ derived here. The chapter also marks a boundary of this book's formal content: almost
+nothing in it is machine-checked, and \cref{sec:classical:lean} explains why that is the
+expected state of affairs and not an omission.
+
+Conventions are those of the whole book: $\hbar=c=1$, mostly-plus signature
+$\eta_{\mu\nu}=\diag(-1,+1,\dots,+1)$ in $D$ spacetime dimensions
+\source{Tong §1.1, ll.~688--693}, and $A\cdot B=A^\mu B^\nu\eta_{\mu\nu}$, $A^2=A\cdot A$. A
+timelike vector has $A^2<0$.
+
+%=====================================================================================
+\section{Warm-up: the relativistic point particle}\label{sec:classical:particle}
+
+Every feature of the string action has a simpler counterpart for the particle. It pays to
+see each one there first.
+
+\subsection{From a frame-dependent to a covariant action}
+
+Fix an inertial frame with coordinates $X^\mu=(t,\vec x)$. A free particle of mass $m$ has the
+action
+\begin{equation}\label{eq:classical:particle-frame}
+  S=-m\int \dd t\,\sqrt{1-\dot{\vec x}\cdot\dot{\vec x}}\,,\qquad \dot{\vec x}=\dd\vec x/\dd t
+\end{equation}
+\source{Tong §1.1, ll.~694--712}. One checks it by computing the conjugate momentum and the
+energy. With $L=-m\sqrt{1-\dot{\vec x}^{\,2}}$,
+\begin{equation}\label{eq:classical:particle-p}
+  \vec p=\frac{\partial L}{\partial\dot{\vec x}}=\frac{m\dot{\vec x}}{\sqrt{1-\dot{\vec x}^{\,2}}},
+  \qquad
+  E=\vec p\cdot\dot{\vec x}-L=\frac{m\dot{\vec x}^{\,2}}{\sqrt{1-\dot{\vec x}^{\,2}}}+m\sqrt{1-\dot{\vec x}^{\,2}}
+   =\frac{m}{\sqrt{1-\dot{\vec x}^{\,2}}}\,,
+\end{equation}
+so that $E^2-\vec p^{\,2}=m^2(1-\dot{\vec x}^{\,2})/(1-\dot{\vec x}^{\,2})=m^2$, the relativistic
+dispersion relation $E=\sqrt{m^2+\vec p^{\,2}}$.
+
+The action \eqref{eq:classical:particle-frame} is correct but treats $t$ and $\vec x$
+differently: $\vec x$ is a dynamical variable, $t$ a label. Lorentz transformations mix them, so
+Lorentz invariance is hidden. The remedy is to let $t$ become a dynamical variable too, and
+to pay for it with a gauge symmetry \source{Tong §1.1, ll.~713--738}. Introduce an
+arbitrary parameter $\tau$ along the worldline\index{worldline} and write
+\begin{equation}\label{eq:classical:particle-cov}
+  S=-m\int\dd\tau\,\sqrt{-\dot X^\mu\dot X^\nu\eta_{\mu\nu}}\,,\qquad \dot X^\mu=\dd X^\mu/\dd\tau,
+  \qquad \mu=0,\dots,D-1
+\end{equation}
+\source{Tong §1.1, ll.~739--760}. Since $\dd s=\sqrt{-\dd X\cdot\dd X}$ is the proper time
+elapsed along an element of a timelike curve, the action is $-m$ times the total proper
+time, that is, $-m$ times the Lorentzian length of the worldline. It is manifestly invariant
+under the Poincar\'e transformations\index{Poincar\'e invariance}
+$X^\mu\to\Lambda^\mu{}_\nu X^\nu+c^\mu$, because only the invariant $\dot X^2$ enters
+\source{Tong §1.1, ll.~815--822}.
+
+\subsection{Reparametrization invariance is a gauge symmetry}
+
+The action \eqref{eq:classical:particle-cov} now has $D$ functions $X^\mu(\tau)$, one more than
+the $D-1$ functions $\vec x(t)$ we started with. The extra one is not physical, because the
+action does not depend on the choice of parameter. Let $\tilde\tau(\tau)$ be any monotonic
+function. Then $\dd\tau=\dd\tilde\tau\,|\dd\tau/\dd\tilde\tau|$ and
+$\dd X^\mu/\dd\tau=(\dd X^\mu/\dd\tilde\tau)(\dd\tilde\tau/\dd\tau)$. The square root is
+homogeneous of degree one in the velocities, so the two Jacobian factors cancel:
+\begin{equation}\label{eq:classical:reparam}
+  S=-m\int\dd\tilde\tau\,\sqrt{-\frac{\dd X^\mu}{\dd\tilde\tau}\frac{\dd X^\nu}{\dd\tilde\tau}\eta_{\mu\nu}}
+\end{equation}
+\source{Tong §1.1, ll.~765--782}. This \emph{reparametrization invariance}%
+\index{reparametrization invariance} is a redundancy of the description, not a symmetry
+relating different physical states. We can use it to choose $\tau=X^0(\tau)=t$; then
+$-\dot X^2=1-\dot{\vec x}^{\,2}$ and \eqref{eq:classical:particle-cov} reduces to
+\eqref{eq:classical:particle-frame} \source{Tong §1.1, ll.~783--797}.
+
+The redundancy is also visible in the momenta. From \eqref{eq:classical:particle-cov},
+\begin{equation}\label{eq:classical:particle-momenta}
+  p_\mu=\frac{\partial L}{\partial\dot X^\mu}=\frac{m\,\dot X^\nu\eta_{\mu\nu}}{\sqrt{-\dot X^2}}
+  \qquad\Longrightarrow\qquad
+  p_\mu p^\mu=\frac{m^2\dot X^2}{-\dot X^2}=-m^2 .
+\end{equation}
+The $D$ momenta are not independent; they satisfy the \emph{mass-shell constraint}%
+\index{mass-shell constraint} $p^2+m^2=0$ identically, for every trajectory, before any
+equation of motion is used \source{Tong §1.1, ll.~798--814}. A second consequence of the same
+homogeneity: the canonical Hamiltonian vanishes,
+\begin{equation}\label{eq:classical:Hzero}
+  H=\dot X^\mu p_\mu-L=\frac{m\dot X^2}{\sqrt{-\dot X^2}}+m\sqrt{-\dot X^2}=-m\sqrt{-\dot X^2}+m\sqrt{-\dot X^2}=0
+\end{equation}
+\source{Tong §1.1.1, ll.~826--840}. There is no evolution in $\tau$ because $\tau$ means
+nothing; all the dynamics sits in the constraint. In the quantum theory the constraint is
+imposed on wavefunctions, $(p^2+m^2)\Psi=0$ with $p_\mu=-\ii\partial/\partial X^\mu$, which is
+the Klein--Gordon equation \source{Tong §1.1.1, ll.~848--857}.
+
+\begin{physicsbox}[Physical picture: a constraint for every gauge symmetry]
+A gauge symmetry with one arbitrary function of $\tau$ removes one function from the
+physical data and produces one constraint on the momenta. Remember this bookkeeping. The
+string has worldsheet reparametrizations with \emph{two} arbitrary functions of \emph{two}
+variables; it will have two constraints at every point of the string, and their Fourier
+modes will be the $L_n$ and $\tilde L_n$ of \cref{sec:classical:modes}.
+\end{physicsbox}
+
+\subsection{The einbein: removing the square root}\label{sec:classical:einbein}
+
+There is a second action for the particle. Introduce an additional worldline field $e(\tau)>0$,
+the \emph{einbein}\index{einbein}, and set
+\begin{equation}\label{eq:classical:einbein}
+  S=\frac12\int\dd\tau\,\Big(e^{-1}\dot X^2-e\,m^2\Big)
+\end{equation}
+\source{Tong §1.1.2, ll.~885--897}. No derivative of $e$ appears, so its equation of motion is
+algebraic: $\partial L/\partial e=-\tfrac12 e^{-2}\dot X^2-\tfrac12 m^2=0$, that is
+\begin{equation}\label{eq:classical:einbein-eom}
+  \dot X^2+e^2m^2=0,\qquad e=\frac{\sqrt{-\dot X^2}}{m}.
+\end{equation}
+Substituting back,
+$\tfrac12\big(e^{-1}\dot X^2-e\,m^2\big)=\tfrac12\big(-m\sqrt{-\dot X^2}-m\sqrt{-\dot X^2}\big)
+=-m\sqrt{-\dot X^2}$, which is \eqref{eq:classical:particle-cov}
+\source{Tong §1.1.2, ll.~913--918}. The two actions are classically equivalent. The new one
+has two advantages: it makes sense for $m=0$, and it is quadratic in $X$, which is what a path
+integral needs \source{Tong §1.1.2, ll.~919--922}. Writing $e=\sqrt{-g_{\tau\tau}}$ shows
+that $e$ is a metric on the one-dimensional worldline, so \eqref{eq:classical:einbein} is
+``$D$ scalar fields coupled to one-dimensional gravity'' \source{Tong §1.1.2, ll.~898--912}.
+Under $\tau\to\tau-\eta(\tau)$ the fields transform as $\delta X^\mu=\eta\,\dot X^\mu$ (a
+scalar) and $\delta e=\frac{\dd}{\dd\tau}(\eta e)$ (a density)
+\source{Tong §1.1.2, ll.~923--938}.
+
+The step from \eqref{eq:classical:particle-cov} to \eqref{eq:classical:einbein} is the model
+for the step from the Nambu--Goto action to the Polyakov action below.
+
+%=====================================================================================
+\section{The Nambu--Goto action}\label{sec:classical:ng}
+
+\subsection{Worldsheet, induced metric, area}
+
+A particle sweeps out a worldline; a string sweeps out a two-dimensional surface, the
+\emph{worldsheet}\index{worldsheet}. Parametrize it by a timelike coordinate $\tau$ and a
+spacelike coordinate $\sigma$, collected as $\sigma^\alpha=(\tau,\sigma)$, $\alpha=0,1$. The
+string is described by $D$ functions $X^\mu(\tau,\sigma)$, a map from the worldsheet into
+spacetime, which in this context is called the \emph{target space}\index{target space}. This
+chapter treats closed strings: $\sigma$ is periodic,
+\begin{equation}\label{eq:classical:periodicity}
+  \sigma\in[0,2\pi),\qquad X^\mu(\tau,\sigma+2\pi)=X^\mu(\tau,\sigma)
+\end{equation}
+\source{Tong §1.2, ll.~945--968}; see \cref{fig:classical:worldsheet}. Open strings appear in
+\cref{ch:dbranes}.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  % axes
+  \draw[->] (-0.3,0)--(2.3,0) node[below]{$\vec x$};
+  \draw[->] (0,-0.3)--(0,4.3) node[left]{$X^0$};
+  % worldline
+  \draw[thick] (0.9,0.2) .. controls (1.4,1.4) and (0.6,2.6) .. (1.3,4.0);
+  \fill (1.04,1.2) circle (1.3pt) node[right]{\small $\tau_1$};
+  \fill (1.0,2.6) circle (1.3pt) node[right]{\small $\tau_2$};
+  \node at (1.0,-0.7){\small (a) worldline $X^\mu(\tau)$};
+  % worldsheet
+  \begin{scope}[xshift=5.5cm]
+    \draw[->] (-1.9,0)--(2.4,0) node[below]{$\vec x$};
+    \draw[->] (-1.6,-0.3)--(-1.6,4.3) node[left]{$X^0$};
+    \draw[thick] (-0.9,0.5) .. controls (-0.5,1.6) and (-1.1,2.8) .. (-0.6,3.9);
+    \draw[thick] (1.1,0.5) .. controls (1.6,1.6) and (0.9,2.8) .. (1.5,3.9);
+    \draw[thick] (0.1,0.5) ellipse (1.0 and 0.22);
+    \draw[thick] (0.45,3.9) ellipse (1.05 and 0.22);
+    \draw[densely dashed] (-0.76,1.6) arc (180:360:0.98 and 0.2);
+    \draw[densely dashed] (-0.88,2.7) arc (180:360:1.0 and 0.2);
+    \draw[->] (1.9,1.4)--(1.9,2.6) node[right]{$\tau$};
+    \draw[->] (0.0,4.3) .. controls (0.3,4.42) and (0.7,4.42) .. (1.0,4.3) node[right]{$\sigma$};
+    \node at (0.3,-0.7){\small (b) worldsheet $X^\mu(\tau,\sigma)$};
+  \end{scope}
+\end{tikzpicture}
+\caption{(a) A particle traces a worldline; the parameter $\tau$ labels its points and has no
+physical meaning. (b) A closed string traces a tube, the worldsheet. Dashed curves are lines
+of constant $\tau$, one snapshot of the string each; $\sigma\sim\sigma+2\pi$ runs around the
+tube.}
+\label{fig:classical:worldsheet}
+\end{figure}
+
+We want an action that depends on the surface and not on the coordinates $\sigma^\alpha$ used
+to describe it. For the particle the answer was the length of the worldline. For the string it
+is the area of the worldsheet. To compute it, note that the flat metric of spacetime induces a
+metric on the surface: two nearby worldsheet points separated by $\dd\sigma^\alpha$ are
+separated in spacetime by $\dd X^\mu=\partial_\alpha X^\mu\dd\sigma^\alpha$, hence by the
+invariant interval $\dd s^2=\eta_{\mu\nu}\partial_\alpha X^\mu\partial_\beta X^\nu\,
+\dd\sigma^\alpha\dd\sigma^\beta$. The \emph{induced metric}\index{induced metric} (or pull-back
+of $\eta$) is therefore
+\begin{equation}\label{eq:classical:induced}
+  \gamma_{\alpha\beta}=\frac{\partial X^\mu}{\partial\sigma^\alpha}\frac{\partial X^\nu}{\partial\sigma^\beta}\,\eta_{\mu\nu}
+  =\begin{pmatrix}\dot X^2 & \dot X\cdot X'\\ \dot X\cdot X' & X'^2\end{pmatrix},
+  \qquad \dot X^\mu=\partial_\tau X^\mu,\quad X'^\mu=\partial_\sigma X^\mu,
+\end{equation}
+and the \emph{Nambu--Goto action}\index{Nambu--Goto action} is
+\begin{equation}\label{eq:classical:ng}
+  S_{\rm NG}=-T\int\dd^2\sigma\,\sqrt{-\det\gamma}
+   =-T\int\dd^2\sigma\,\sqrt{(\dot X\cdot X')^2-\dot X^2\,X'^2}
+\end{equation}
+\source{Tong §1.2, ll.~969--1016}. The second form follows from $\det\gamma=\dot X^2X'^2-(\dot
+X\cdot X')^2$. For a physical worldsheet $\dot X$ is timelike and $X'$ spacelike, so
+$\det\gamma<0$ and the square root is real. The constant $T$ is fixed below.
+
+Why is $\sqrt{|\det\gamma|}\,\dd^2\sigma$ an area? Consider first a surface in Euclidean space,
+$\vec X(\tau,\sigma)$. The coordinate cell $\dd\tau\,\dd\sigma$ is mapped to the parallelogram
+spanned by $\vec u=\partial_\tau\vec X\,\dd\tau$ and $\vec v=\partial_\sigma\vec X\,\dd\sigma$, with
+angle $\theta$ between them. Its area is
+\begin{equation}\label{eq:classical:area}
+  |\vec u||\vec v|\sin\theta=\sqrt{\vec u^{\,2}\vec v^{\,2}(1-\cos^2\theta)}
+   =\sqrt{\vec u^{\,2}\,\vec v^{\,2}-(\vec u\cdot\vec v)^2}
+   =\sqrt{\det\gamma}\;\dd\tau\,\dd\sigma
+\end{equation}
+\source{Tong §1.2, ll.~1018--1060}. The quantity under the root is non-negative by the
+Cauchy--Schwarz inequality. In Minkowski signature the sign under the root flips, which is the
+origin of the minus sign in \eqref{eq:classical:ng}. The area is also manifestly independent of
+coordinates: under $\sigma^\alpha\to\tilde\sigma^\alpha(\sigma)$ with Jacobian matrix
+$J^\gamma{}_\alpha=\partial\sigma^\gamma/\partial\tilde\sigma^\alpha$, the induced metric
+becomes $\tilde\gamma=J^{\mathsf T}\gamma J$, so $\sqrt{-\det\tilde\gamma}=|\det
+J|\sqrt{-\det\gamma}$, while $\dd^2\tilde\sigma=|\det J|^{-1}\dd^2\sigma$. This is the
+two-dimensional version of the cancellation that led to \eqref{eq:classical:reparam}.
+
+\subsection{Tension, \texorpdfstring{$\ap$}{alpha'} and the string length}
+
+To interpret $T$, take a string momentarily at rest. Choose the parametrization so that
+$X^0=t=R\tau$ with $R$ a constant of dimension length, and suppose $\dot{\vec x}=0$ at the
+instant considered. Then $\dot X^2=-R^2$, $\dot X\cdot X'=0$, $X'^2=(\dd\vec x/\dd\sigma)^2$, and
+\begin{equation}\label{eq:classical:tension}
+  S_{\rm NG}=-T\int\dd\tau\,\dd\sigma\,R\sqrt{(\dd\vec x/\dd\sigma)^2}
+   =-T\int\dd t\,\times(\text{length of the string})
+\end{equation}
+\source{Tong §1.2, ll.~1061--1086}. For a system at rest the Lagrangian is minus the potential
+energy, hence
+\[
+  \text{potential energy}=T\times\text{length}.
+\]
+$T$ is the energy per unit length, the \emph{tension}\index{string tension}. The energy
+grows linearly with the length, unlike a Hooke spring, whose energy grows quadratically; a
+classical string lowers its energy by shrinking \source{Tong §1.2, ll.~1087--1096}.
+
+The book-wide parametrization of the tension is
+\begin{equation}\label{eq:classical:alphaprime}
+  T=\frac{1}{2\pi\ap},\qquad \ap=\ell_s^2
+\end{equation}
+\source{Tong §1.2, ll.~1097--1123}, where $\ap$\index{alpha-prime@$\ap$} is called the
+universal Regge slope for historical reasons and $\ell_s$\index{string length} is the string
+length. Dimensional analysis confirms the powers. With $\hbar=1$ the action is dimensionless;
+$X^\mu$ has dimension of length and $\sigma^\alpha$ is dimensionless (it is an angle,
+\cref{eq:classical:periodicity}). The integrand of \eqref{eq:classical:ng} then has dimension
+length$^2$, so $T$ has dimension length$^{-2}$, which for $c=\hbar=1$ is energy per length, and
+$\ap$ is a length squared. For fundamental strings $\ell_s$ is the only dimensionful
+parameter of the theory. Its value is not known; the tension is typically taken an order of
+magnitude or so below the Planck scale, $T\lesssim(10^{18}\ \text{GeV})^2$
+\source{Tong §1.2, ll.~1143--1156}.
+
+\begin{example}[The tension of a QCD flux tube in everyday units]\label{ex:classical:qcd}
+The Nambu--Goto action also describes, approximately, string-like objects of finite width
+such as the chromo-electric flux tubes of QCD, as long as they are nearly straight on the
+scale of their width; for those $T\sim(1\ \text{GeV})^2$ \source{Tong §1.2, ll.~1124--1142}.
+Take $T=1\ \text{GeV}^2$ exactly to see the sizes involved. Restoring units with
+$\hbar c=0.1973\ \text{GeV\,fm}$ (standard value; not taken from this book's library),
+\[
+  T=\frac{1\ \text{GeV}^2}{\hbar c}=5.07\ \frac{\text{GeV}}{\text{fm}}
+   =5.07\times\frac{1.602\times10^{-10}\ \text{J}}{10^{-15}\ \text{m}}\approx 8\times10^{5}\ \text{N},
+\]
+the weight of about eighty tonnes, acting between two quarks. The corresponding string length
+is $\ell_s=\sqrt{\ap}=(2\pi T)^{-1/2}=0.399\ \text{GeV}^{-1}=0.079$ fm. A fundamental string
+with $T$ near $(10^{18}\ \text{GeV})^2$ has a tension larger by a factor $10^{36}$ and a
+length $\ell_s$ smaller by a factor $10^{18}$.
+\end{example}
+
+\subsection{Symmetries, momenta and equations of motion}\label{sec:classical:ngeom}
+
+The Nambu--Goto action has two symmetries of different nature
+\source{Tong §1.2.1, ll.~1159--1170}:
+\begin{itemize}[nosep]
+\item \emph{Poincar\'e invariance} $X^\mu\to\Lambda^\mu{}_\nu X^\nu+c^\mu$. From the
+worldsheet point of view this is a \emph{global} symmetry: $\Lambda$ and $c$ do not depend on
+$\sigma^\alpha$. By Noether's theorem it yields conserved momentum and angular momentum.
+\item \emph{Reparametrization invariance} $\sigma^\alpha\to\tilde\sigma^\alpha(\sigma)$, a
+\emph{gauge} symmetry, shown above.
+\end{itemize}
+Define the worldsheet momentum densities, with ${\cal L}$ the integrand of
+\eqref{eq:classical:ng},
+\begin{equation}\label{eq:classical:ngmomenta}
+  \Pi^\tau_\mu=\frac{\partial{\cal L}}{\partial\dot X^\mu}
+   =-T\,\frac{(\dot X\cdot X')X'_\mu-X'^2\,\dot X_\mu}{\sqrt{(\dot X\cdot X')^2-\dot X^2X'^2}},
+  \qquad
+  \Pi^\sigma_\mu=\frac{\partial{\cal L}}{\partial X'^\mu}
+   =-T\,\frac{(\dot X\cdot X')\dot X_\mu-\dot X^2\,X'_\mu}{\sqrt{(\dot X\cdot X')^2-\dot X^2X'^2}} .
+\end{equation}
+The Euler--Lagrange equations are
+\begin{equation}\label{eq:classical:ngeom}
+  \partial_\tau\Pi^\tau_\mu+\partial_\sigma\Pi^\sigma_\mu=0
+  \qquad\Longleftrightarrow\qquad
+  \partial_\alpha\big(\sqrt{-\det\gamma}\,\gamma^{\alpha\beta}\partial_\beta X^\mu\big)=0
+\end{equation}
+\source{Tong §1.2.2, ll.~1171--1208}. The second form uses $\delta\sqrt{-\gamma}=\tfrac12
+\sqrt{-\gamma}\,\gamma^{\alpha\beta}\delta\gamma_{\alpha\beta}$ and
+$\delta\gamma_{\alpha\beta}=2\,\partial_\alpha X\cdot\partial_\beta\delta X$ (by symmetry in
+$\alpha\beta$), followed by an integration by parts. Both forms are non-linear in $X$.
+
+As for the particle, the momenta are constrained. Contracting
+\eqref{eq:classical:ngmomenta} with $X'^\mu$ and with itself gives, identically,
+\begin{equation}\label{eq:classical:ngconstraints}
+  \Pi^\tau\cdot X'=0,\qquad (\Pi^\tau)^2+T^2X'^2=0 .
+\end{equation}
+The first is immediate: the numerator becomes $(\dot X\cdot X')X'^2-X'^2(\dot X\cdot X')$. For
+the second, the square of the numerator is $X'^2\big[X'^2\dot X^2-(\dot X\cdot X')^2\big]$,
+which is $-X'^2$ times the expression under the root. (Both identities were also confirmed by
+a symbolic check for $D=4$.) There are two constraints at each point of the string, as the
+counting in the box of \cref{sec:classical:particle} predicted. They are the
+string's version of $p^2+m^2=0$, and they will reappear in a simpler gauge as
+\eqref{eq:classical:constraints}.
+
+%=====================================================================================
+\section{The Polyakov action}\label{sec:classical:polyakov}
+
+\subsection{Trading the square root for a worldsheet metric}
+
+The square root makes the Nambu--Goto action awkward, in particular in a path integral. The
+cure is the one that worked for the particle: introduce an independent metric
+$g_{\alpha\beta}(\tau,\sigma)$ on the worldsheet, of signature $(-,+)$, and write
+\begin{equation}\label{eq:classical:polyakov}
+  S_{\rm P}=-\frac{1}{4\pi\ap}\int\dd^2\sigma\,\sqrt{-g}\;g^{\alpha\beta}\,
+  \partial_\alpha X^\mu\partial_\beta X^\nu\,\eta_{\mu\nu},\qquad g=\det g_{\alpha\beta},
+\end{equation}
+the \emph{Polyakov action}\index{Polyakov action} \source{Tong §1.3, ll.~1209--1227}. From
+the worldsheet point of view it describes $D$ massless scalar fields $X^\mu$ coupled to
+two-dimensional gravity. Note the prefactor: $1/(4\pi\ap)=T/2$.
+
+\begin{historybox}
+The action \eqref{eq:classical:polyakov} was not discovered by Polyakov; it carries his name
+because he understood how to use it in the path integral
+\source{Tong §1.3, ll.~1220--1223}. That use is the subject of \cref{ch:ghosts}.
+\end{historybox}
+
+\paragraph{Equation of motion for $X$.} Varying $X^\mu$ with $g_{\alpha\beta}$ fixed gives
+\begin{equation}\label{eq:classical:poly-eomX}
+  \partial_\alpha\big(\sqrt{-g}\,g^{\alpha\beta}\partial_\beta X^\mu\big)=0,
+\end{equation}
+the same as \eqref{eq:classical:ngeom} but with $g$ in place of $\gamma$
+\source{Tong §1.3, ll.~1228--1235}.
+
+\paragraph{Equation of motion for $g$.} We need $\delta\sqrt{-g}$. From
+$\delta\det g=\det g\; g^{\alpha\beta}\delta g_{\alpha\beta}$ and
+$g^{\alpha\beta}\delta g_{\alpha\beta}=-g_{\alpha\beta}\delta g^{\alpha\beta}$ (vary
+$g^{\alpha\beta}g_{\beta\gamma}=\delta^\alpha_\gamma$),
+\begin{equation}\label{eq:classical:varsqrtg}
+  \delta\sqrt{-g}=\tfrac12\sqrt{-g}\,g^{\alpha\beta}\delta g_{\alpha\beta}
+   =-\tfrac12\sqrt{-g}\,g_{\alpha\beta}\,\delta g^{\alpha\beta}.
+\end{equation}
+Therefore
+\begin{equation}\label{eq:classical:varg}
+  \delta S_{\rm P}=-\frac{T}{2}\int\dd^2\sigma\,\sqrt{-g}\;\delta g^{\alpha\beta}
+  \Big(\partial_\alpha X\cdot\partial_\beta X-\tfrac12\,g_{\alpha\beta}\,g^{\rho\sigma}\partial_\rho X\cdot\partial_\sigma X\Big)=0
+\end{equation}
+\source{Tong §1.3, ll.~1236--1256}. The bracket must vanish. Recognizing
+$\partial_\alpha X\cdot\partial_\beta X=\gamma_{\alpha\beta}$, this says
+\begin{equation}\label{eq:classical:gsol}
+  g_{\alpha\beta}=2f(\tau,\sigma)\,\gamma_{\alpha\beta},\qquad
+  f^{-1}=g^{\rho\sigma}\gamma_{\rho\sigma}
+\end{equation}
+\source{Tong §1.3, ll.~1257--1268}: the worldsheet metric equals the induced metric up to a
+positive function $f$ that the equation leaves undetermined. (Insert
+$g=2f\gamma$ into the definition of $f$: $g^{\rho\sigma}\gamma_{\rho\sigma}=(2f)^{-1}
+\gamma^{\rho\sigma}\gamma_{\rho\sigma}=(2f)^{-1}\cdot2=f^{-1}$, an identity; $f>0$ is needed
+for $g$ to have the signature of $\gamma$.)
+
+\paragraph{Classical equivalence.} Substitute \eqref{eq:classical:gsol} into
+\eqref{eq:classical:polyakov}. In two dimensions $\sqrt{-\det(2f\gamma)}=2f\sqrt{-\det\gamma}$
+and $g^{\alpha\beta}=(2f)^{-1}\gamma^{\alpha\beta}$, so
+\begin{equation}\label{eq:classical:equiv}
+  \sqrt{-g}\,g^{\alpha\beta}\gamma_{\alpha\beta}
+  =2f\sqrt{-\gamma}\cdot\frac{1}{2f}\,\gamma^{\alpha\beta}\gamma_{\alpha\beta}=2\sqrt{-\gamma},
+  \qquad S_{\rm P}\to-\frac{2}{4\pi\ap}\int\dd^2\sigma\sqrt{-\gamma}=S_{\rm NG}
+\end{equation}
+\source{Tong §1.3, ll.~1269--1281}. The function $f$ cancels, both here and in
+\eqref{eq:classical:poly-eomX}. This cancellation signals a new symmetry.
+
+\subsection{Symmetries: Poincar\'e, diffeomorphisms and Weyl}\label{sec:classical:symm}
+
+The Polyakov action has \source{Tong §1.3.1, ll.~1283--1327}:
+\begin{enumerate}[nosep]
+\item \emph{Poincar\'e invariance}, global on the worldsheet, as before.
+\item \emph{Diffeomorphism invariance}\index{diffeomorphism invariance}
+$\sigma^\alpha\to\tilde\sigma^\alpha(\sigma)$, under which $X^\mu$ is a scalar,
+$\tilde X^\mu(\tilde\sigma)=X^\mu(\sigma)$, and $g_{\alpha\beta}$ a tensor,
+$\tilde g_{\alpha\beta}(\tilde\sigma)=\frac{\partial\sigma^\gamma}{\partial\tilde\sigma^\alpha}
+\frac{\partial\sigma^\delta}{\partial\tilde\sigma^\beta}g_{\gamma\delta}(\sigma)$.
+Infinitesimally, for $\tilde\sigma^\alpha=\sigma^\alpha-\eta^\alpha(\sigma)$:
+$\delta X^\mu=\eta^\alpha\partial_\alpha X^\mu$ and
+$\delta g_{\alpha\beta}=\nabla_\alpha\eta_\beta+\nabla_\beta\eta_\alpha$, with $\nabla$ the
+Levi-Civita connection of $g$. Compare with the einbein transformations of
+\cref{sec:classical:einbein}.
+\item \emph{Weyl invariance}\index{Weyl invariance}, which is new:
+\begin{equation}\label{eq:classical:weyl}
+  X^\mu(\sigma)\to X^\mu(\sigma),\qquad g_{\alpha\beta}(\sigma)\to\Omega^2(\sigma)\,g_{\alpha\beta}(\sigma).
+\end{equation}
+\end{enumerate}
+A Weyl transformation is not a change of coordinates. It is a position-dependent change of
+the unit of length on the worldsheet which preserves angles. The Polyakov string regards
+two metrics related by \eqref{eq:classical:weyl} as the same physical configuration.
+
+To verify the invariance, and to see why it is special to strings, do the computation on a
+worldvolume of dimension $n$. Under \eqref{eq:classical:weyl},
+$\det g\to\Omega^{2n}\det g$ and $g^{\alpha\beta}\to\Omega^{-2}g^{\alpha\beta}$, so
+\begin{equation}\label{eq:classical:weyl-n}
+  \sqrt{-g}\,g^{\alpha\beta}\;\longrightarrow\;\Omega^{\,n-2}\,\sqrt{-g}\,g^{\alpha\beta}.
+\end{equation}
+The combination that enters \eqref{eq:classical:polyakov} is invariant if and only if $n=2$
+\source{Tong §1.3.1, ll.~1328--1338}. A particle ($n=1$) or a membrane ($n=3$) has no such
+symmetry. Even for $n=2$ the symmetry is fragile: a potential $\int\dd^2\sigma\sqrt{-g}\,V(X)$
+or a worldsheet cosmological constant $\mu\int\dd^2\sigma\sqrt{-g}$ scales with $\Omega^2$ and
+breaks it \source{Tong §1.3.1, ll.~1339--1356}. In the quantum theory the requirement of
+Weyl invariance becomes much stronger; it fixes the spacetime dimension (\cref{ch:quantum},
+\cref{ch:ghosts}) and yields the equations of motion of the background fields
+(\cref{ch:backgrounds}).
+
+\begin{pitfallbox}[Common pitfall: three metrics, one symbol]
+Three different metrics are in play and sources often write them all as ``$g$'' or
+``$\eta$''. (i) The spacetime metric $\eta_{\mu\nu}$, fixed, with indices $\mu,\nu$.
+(ii) The induced metric $\gamma_{\alpha\beta}$ of \eqref{eq:classical:induced}, a function of
+the $X^\mu$, not an independent field. (iii) The worldsheet metric $g_{\alpha\beta}$ of the
+Polyakov action, an independent field. On solutions $g=2f\gamma$, and only the conformal
+class of $g$ is determined. When conformal gauge sets $g_{\alpha\beta}=\eta_{\alpha\beta}$
+below, that $\eta$ is a two-by-two worldsheet object and has nothing to do with (i); in
+particular $\gamma_{\alpha\beta}$ is then \emph{not} equal to $\eta_{\alpha\beta}$ but to
+$\eta_{\alpha\beta}/(2f)$.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{Conformal gauge: wave equation plus constraints}\label{sec:classical:gauge}
+
+\subsection{Counting and fixing}
+
+A symmetric two-by-two metric has three independent components. Diffeomorphisms provide two
+arbitrary functions, a Weyl transformation a third. One therefore expects to be able to
+remove the metric completely \source{Tong §1.3.2, ll.~1357--1380}. In two steps: first use
+the two reparametrizations to bring the metric to the \emph{conformally flat} form
+\begin{equation}\label{eq:classical:confgauge}
+  g_{\alpha\beta}=\ee^{2\phi(\tau,\sigma)}\,\eta_{\alpha\beta},\qquad \eta_{\alpha\beta}=\diag(-1,+1),
+\end{equation}
+which is called \emph{conformal gauge}\index{conformal gauge}; then use a Weyl transformation
+with $\Omega=\ee^{-\phi}$ to set $\phi=0$, so that $g_{\alpha\beta}=\eta_{\alpha\beta}$. That
+the first step is possible, at least locally, is an existence statement for a system of
+partial differential equations. A quick argument in Euclidean signature: under
+$g'_{\alpha\beta}=\ee^{2\phi}g_{\alpha\beta}$ the Ricci scalar obeys
+$\sqrt{g'}R'=\sqrt{g}\,(R-2\nabla^2\phi)$; choose $\phi$ to solve $2\nabla^2\phi=R$, so that
+$R'=0$; in two dimensions the Riemann tensor is $R_{\alpha\beta\gamma\delta}=\frac R2(g_{\alpha
+\gamma}g_{\beta\delta}-g_{\alpha\delta}g_{\beta\gamma})$, so $R'=0$ implies that $g'$ is flat
+\source{Tong §1.3.2, ll.~1381--1411} \TL.
+
+\subsection{Equations of motion and the stress tensor}
+
+With $g_{\alpha\beta}=\eta_{\alpha\beta}$ the Polyakov action becomes the action of $D$ free
+massless scalar fields in two dimensions,
+\begin{equation}\label{eq:classical:freeaction}
+  S=-\frac{1}{4\pi\ap}\int\dd^2\sigma\,\partial_\alpha X\cdot\partial^\alpha X
+   =\frac{1}{4\pi\ap}\int\dd\tau\,\dd\sigma\,\big(\dot X^2-X'^2\big),
+\end{equation}
+and \eqref{eq:classical:poly-eomX} becomes the wave equation\index{wave equation}
+\begin{equation}\label{eq:classical:wave}
+  \partial_\alpha\partial^\alpha X^\mu=0\qquad\Longleftrightarrow\qquad \ddot X^\mu-X''^\mu=0
+\end{equation}
+\source{Tong §1.3.2, ll.~1412--1426}. (In fact any conformal gauge gives the same, since
+$\sqrt{-g}g^{\alpha\beta}$ does not depend on $\phi$.) The non-linear equations
+\eqref{eq:classical:ngeom} have become linear. This cannot be the whole story, and it is not:
+fixing $g$ by a gauge choice does not remove its equation of motion. The equation
+\eqref{eq:classical:varg} must still be imposed. Define the worldsheet
+\emph{stress-energy tensor}\index{stress-energy tensor}
+\begin{equation}\label{eq:classical:Tdef}
+  T_{\alpha\beta}=-\frac{2}{T}\frac{1}{\sqrt{-g}}\frac{\partial S_{\rm P}}{\partial g^{\alpha\beta}}
+  \;\;\xrightarrow{\;g=\eta\;}\;\;
+  T_{\alpha\beta}=\partial_\alpha X\cdot\partial_\beta X-\tfrac12\eta_{\alpha\beta}\,\eta^{\rho\sigma}\partial_\rho X\cdot\partial_\sigma X
+\end{equation}
+\source{Tong §1.3.2, ll.~1427--1447}. (The stress tensor always carries indices; the bare
+letter $T$ remains the tension.) The equation of motion of the metric is
+$T_{\alpha\beta}=0$. Write out the components with $\eta^{\rho\sigma}\partial_\rho
+X\cdot\partial_\sigma X=-\dot X^2+X'^2$:
+\begin{align}
+  T_{01}&=\dot X\cdot X', \nonumber\\
+  T_{00}&=\dot X^2+\tfrac12(-\dot X^2+X'^2)=\tfrac12(\dot X^2+X'^2),\label{eq:classical:Tcomp}\\
+  T_{11}&=X'^2-\tfrac12(-\dot X^2+X'^2)=\tfrac12(\dot X^2+X'^2). \nonumber
+\end{align}
+The trace $\eta^{\alpha\beta}T_{\alpha\beta}=-T_{00}+T_{11}$ vanishes identically. That is a
+consequence of Weyl invariance: a Weyl variation is $\delta g^{\alpha\beta}=-2\phi\,
+g^{\alpha\beta}$, and invariance of $S_{\rm P}$ under it for arbitrary $\phi(\sigma)$ forces
+$g^{\alpha\beta}T_{\alpha\beta}=0$. Only two of the three equations $T_{\alpha\beta}=0$ are
+therefore independent:
+\begin{equation}\label{eq:classical:constraints}
+  \dot X\cdot X'=0,\qquad \dot X^2+X'^2=0
+\end{equation}
+\source{Tong §1.3.2, ll.~1448--1460}. \emph{The classical string is the free wave equation
+\eqref{eq:classical:wave} subject to the two constraints
+\eqref{eq:classical:constraints}.}\index{Virasoro constraints} All the non-linearity of the
+Nambu--Goto equations has been moved into the constraints.
+
+These are the constraints \eqref{eq:classical:ngconstraints} in a new guise. In conformal
+gauge the momentum density is $\Pi^\tau_\mu=\partial{\cal L}/\partial\dot X^\mu=T\dot X_\mu$,
+so $\Pi^\tau\cdot X'=0$ is $\dot X\cdot X'=0$ and $(\Pi^\tau)^2+T^2X'^2=0$ is
+$\dot X^2+X'^2=0$. Moreover the canonical Hamiltonian of \eqref{eq:classical:freeaction} is
+$H=\frac T2\int\dd\sigma(\dot X^2+X'^2)=T\int\dd\sigma\,T_{00}$. It vanishes on the second
+constraint, exactly as $H=0$ for the particle in \eqref{eq:classical:Hzero}.
+
+\subsection{What the constraints mean}\label{sec:classical:static}
+
+Conformal gauge leaves some freedom, described in \cref{sec:classical:residual}, which is
+enough to reach \emph{static gauge}\index{static gauge} $X^0=t=R\tau$ for a constant $R$. With
+$X^\mu=(t,\vec x)$ we have $\dot X^2=-R^2+\dot{\vec x}^{\,2}$ and $X'^2=\vec x^{\,\prime2}$, and the
+system becomes
+\begin{equation}\label{eq:classical:staticgauge}
+  \ddot{\vec x}-\vec x^{\,\prime\prime}=0,\qquad \dot{\vec x}\cdot\vec x^{\,\prime}=0,\qquad
+  \dot{\vec x}^{\,2}+\vec x^{\,\prime2}=R^2
+\end{equation}
+\source{Tong §1.3.2, ll.~1461--1489}. The first constraint says that the velocity is
+perpendicular to the string. A motion of the string along itself would only relabel its
+points, which is a gauge transformation; the physical oscillations are
+\emph{transverse}\index{transverse oscillations}. The second constraint fixes the meaning of
+$R$: at an instant when $\dot{\vec x}=0$, $|\vec x^{\,\prime}|=R$, so the length of the string is
+$\int_0^{2\pi}\dd\sigma\,|\vec x^{\,\prime}|=2\pi R$ \source{Tong §1.3.2, ll.~1490--1498}. When
+the string moves, the same equation trades stretching $|\vec x^{\,\prime}|$ against speed: since
+$\dd\vec x/\dd t=\dot{\vec x}/R$, it reads $|\dd\vec x/\dd t|^2+|\vec x^{\,\prime}|^2/R^2=1$. A
+point where the string is momentarily unstretched, $\vec x^{\,\prime}=0$, moves at the speed
+of light.
+
+\subsection{Residual symmetry}\label{sec:classical:residual}
+
+Introduce worldsheet \emph{lightcone coordinates}\index{lightcone coordinates (worldsheet)}
+\begin{equation}\label{eq:classical:lc}
+  \sigma^\pm=\tau\pm\sigma,\qquad \partial_\pm=\tfrac12(\partial_\tau\pm\partial_\sigma),\qquad
+  \dd s^2=-\dd\tau^2+\dd\sigma^2=-\dd\sigma^+\dd\sigma^- .
+\end{equation}
+A reparametrization of the special form $\sigma^+\to\tilde\sigma^+(\sigma^+)$,
+$\sigma^-\to\tilde\sigma^-(\sigma^-)$ multiplies the flat metric by a function,
+$\dd\tilde\sigma^+\dd\tilde\sigma^-=(\partial_+\tilde\sigma^+)(\partial_-\tilde\sigma^-)\,
+\dd\sigma^+\dd\sigma^-$, and this factor can be removed by a compensating Weyl transformation.
+The combination preserves $g_{\alpha\beta}=\eta_{\alpha\beta}$
+\source{Tong §2.2, ll.~1937--1957}. The counting of \cref{sec:classical:gauge} was not wrong:
+these transformations depend on functions of one variable only, a negligible subset of the
+functions of two variables that we used up. They are the \emph{conformal transformations}%
+\index{conformal transformations} of the flat worldsheet and the reason why conformal field
+theory (\cref{ch:cft}) is the natural language of the quantum string. For the classical
+string they complete the count of degrees of freedom: the general solution of
+\eqref{eq:classical:wave} contains $2D$ functions of one variable; the two constraints remove
+two; the residual symmetry removes two more; $2(D-2)$ remain, the left- and right-moving
+waves in the $D-2$ transverse directions \source{Tong §2.2, ll.~1966--1985}.
+
+%=====================================================================================
+\section{Mode expansion: left- and right-movers}\label{sec:classical:modes}
+
+\subsection{General solution}
+
+In lightcone coordinates $\partial_\alpha\partial^\alpha=-\partial_\tau^2+\partial_\sigma^2
+=-4\partial_+\partial_-$, so the wave equation is $\partial_+\partial_-X^\mu=0$ and its
+general solution is
+\begin{equation}\label{eq:classical:LR}
+  X^\mu(\tau,\sigma)=X_L^\mu(\sigma^+)+X_R^\mu(\sigma^-)
+\end{equation}
+with arbitrary functions $X_L$, $X_R$ \source{Tong §1.4, ll.~1500--1512}. A function of
+$\sigma^+=\tau+\sigma$ keeps its shape and moves towards decreasing $\sigma$ as $\tau$ grows;
+it is called \emph{left-moving}\index{left-movers and right-movers}. A function of $\sigma^-$
+is \emph{right-moving}. The two sets of waves pass through each other without interacting;
+see \cref{fig:classical:movers}. This decoupling is the single most useful fact about the
+closed string, and it survives quantization: the quantum closed string is, to a first
+approximation, two copies of one structure, tied together only by the zero modes and by one
+constraint (level matching, below).
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.9]
+  \draw[->] (-0.2,0)--(6.8,0) node[below]{$\sigma$};
+  \draw[->] (0,-0.2)--(0,3.9) node[left]{$\tau$};
+  \draw (6.28,0.08)--(6.28,-0.08) node[below]{\small $2\pi$};
+  \draw (0,0.08)--(0,-0.08) node[below]{\small $0$};
+  \draw[densely dotted] (6.28,0)--(6.28,3.7);
+  % right-mover: sigma^- const, slope +1
+  \foreach \s in {0.6,1.0}{\draw[tierL,thick] (\s,0)--(\s+3.2,3.2);}
+  \node[tierL,above right] at (3.6,3.2){\small $\sigma^-=\text{const}$};
+  % left-mover: sigma^+ const, slope -1
+  \foreach \s in {5.2,5.6}{\draw[tierC,thick] (\s,0)--(\s-3.2,3.2);}
+  \node[tierC,above left] at (2.6,3.2){\small $\sigma^+=\text{const}$};
+  \draw[->,tierL] (1.0,-0.75)--(2.0,-0.75) node[right]{\small right-mover $X_R(\tau-\sigma)$};
+  \draw[->,tierC] (5.6,-1.25)--(4.6,-1.25) node[left]{\small left-mover $X_L(\tau+\sigma)$};
+\end{tikzpicture}
+\caption{The worldsheet cylinder cut open along $\sigma=0\sim2\pi$. A right-moving pulse is
+constant along lines $\sigma^-=\tau-\sigma=\text{const}$ and travels towards increasing
+$\sigma$ at unit coordinate speed; a left-moving pulse travels the other way. The two pass
+through each other unchanged.}
+\label{fig:classical:movers}
+\end{figure}
+
+Now impose periodicity \eqref{eq:classical:periodicity}. A periodic function is a Fourier
+series; but $X_L$ and $X_R$ need not be separately periodic, only their sum. The derivative
+$\partial_+X_L$ must be periodic (it equals $\partial_+X$), so $X_L$ is a Fourier series plus
+a term linear in $\sigma^+$, and likewise $X_R$. The standard parametrization is
+\begin{align}
+  X_L^\mu(\sigma^+)&=\tfrac12x^\mu+\tfrac12\ap\,p^\mu\,\sigma^+
+     +\ii\sqrt{\frac{\ap}{2}}\sum_{n\neq0}\frac1n\,\tilde\alpha_n^\mu\,\ee^{-\ii n\sigma^+},\nonumber\\
+  X_R^\mu(\sigma^-)&=\tfrac12x^\mu+\tfrac12\ap\,p^\mu\,\sigma^-
+     +\ii\sqrt{\frac{\ap}{2}}\sum_{n\neq0}\frac1n\,\alpha_n^\mu\,\ee^{-\ii n\sigma^-}
+     \label{eq:classical:modeexp}
+\end{align}
+\source{Tong §1.4, ll.~1513--1538}\index{mode expansion}. The normalizations are chosen for
+later convenience. Three remarks make the formula concrete.
+
+\emph{(i) The linear terms.} Their sum is $\tfrac12\ap p^\mu(\sigma^++\sigma^-)=\ap p^\mu\tau$,
+which is periodic in $\sigma$ although neither piece is. Had we allowed different
+coefficients $p_L^\mu\neq p_R^\mu$, the sum would contain
+$\tfrac12\ap(p_L-p_R)^\mu\sigma$, which is not periodic. In flat, non-compact spacetime
+periodicity therefore forces equal left and right zero modes. This is exactly the point
+that changes in \cref{ch:circle}; see \cref{rem:classical:circle}.
+
+\emph{(ii) Centre of mass.} Averaging over the string,
+$\frac{1}{2\pi}\int_0^{2\pi}\dd\sigma\,X^\mu=x^\mu+\ap p^\mu\tau$: the oscillators drop out and
+the centre of mass moves on a straight line. The constant $p^\mu$ is the total spacetime
+momentum. Indeed, the Noether current of the translation symmetry $X^\mu\to X^\mu+c^\mu$ of
+\eqref{eq:classical:freeaction} is $P^\alpha_\mu=-T\,\partial^\alpha X_\mu$, conserved by
+\eqref{eq:classical:wave}, and its charge is
+\begin{equation}\label{eq:classical:momentum}
+  \int_0^{2\pi}\dd\sigma\,P^\tau_\mu=T\int_0^{2\pi}\dd\sigma\,\dot X_\mu
+  =\frac{1}{2\pi\ap}\cdot2\pi\cdot\ap\,p_\mu=p_\mu
+\end{equation}
+\source{Tong §1.4, ll.~1545--1549}. This is why the factor $\ap$ accompanies $p^\mu$ in
+\eqref{eq:classical:modeexp}.
+
+\emph{(iii) Reality.} $X^\mu$ is real, hence
+\begin{equation}\label{eq:classical:reality}
+  \alpha_{-n}^\mu=(\alpha_n^\mu)^\ast,\qquad \tilde\alpha_{-n}^\mu=(\tilde\alpha_n^\mu)^\ast
+\end{equation}
+\source{Tong §1.4, ll.~1550--1563}. Each pair $(\alpha_n^\mu,\alpha_{-n}^\mu)$, $n>0$, is the
+complex amplitude of one right-moving harmonic of frequency $n$. In \cref{ch:quantum} these
+amplitudes become annihilation and creation operators.
+
+\subsection{The constraints in modes: \texorpdfstring{$L_n$}{Ln} and \texorpdfstring{$\tilde L_n$}{Ln-tilde}}
+
+From \eqref{eq:classical:lc}, $\partial_\pm X=\tfrac12(\dot X\pm X')$, so
+\begin{equation}\label{eq:classical:lcconstraints}
+  (\partial_\pm X)^2=\tfrac14\big(\dot X^2+X'^2\pm2\dot X\cdot X'\big)=\tfrac12\big(T_{00}\pm T_{01}\big),
+\end{equation}
+and the two constraints \eqref{eq:classical:constraints} are equivalent to
+$(\partial_+X)^2=(\partial_-X)^2=0$ \source{Tong §1.4.1, ll.~1565--1570}: one constraint on
+the left-movers alone, one on the right-movers alone. Differentiate
+\eqref{eq:classical:modeexp}; each oscillator term contributes
+$\ii\sqrt{\ap/2}\cdot\frac1n\cdot(-\ii n)=\sqrt{\ap/2}$ times $\alpha_n\ee^{-\ii n\sigma^-}$:
+\begin{equation}\label{eq:classical:dminusX}
+  \partial_-X^\mu=\frac{\ap}{2}p^\mu+\sqrt{\frac{\ap}{2}}\sum_{n\neq0}\alpha_n^\mu\,\ee^{-\ii n\sigma^-}
+   =\sqrt{\frac{\ap}{2}}\sum_{n\in\Z}\alpha_n^\mu\,\ee^{-\ii n\sigma^-},
+  \qquad \alpha_0^\mu\equiv\sqrt{\frac{\ap}{2}}\,p^\mu .
+\end{equation}
+Squaring and collecting the coefficient of $\ee^{-\ii n\sigma^-}$,
+\begin{equation}\label{eq:classical:Ln}
+  (\partial_-X)^2=\frac{\ap}{2}\sum_{m,k}\alpha_m\cdot\alpha_k\,\ee^{-\ii(m+k)\sigma^-}
+  =\ap\sum_{n\in\Z}L_n\,\ee^{-\ii n\sigma^-},\qquad
+  L_n=\frac12\sum_{m\in\Z}\alpha_{n-m}\cdot\alpha_m ,
+\end{equation}
+and in the same way $(\partial_+X)^2=\ap\sum_n\tilde L_n\ee^{-\ii n\sigma^+}$ with
+$\tilde L_n=\frac12\sum_m\tilde\alpha_{n-m}\cdot\tilde\alpha_m$ and
+$\tilde\alpha_0^\mu\equiv\sqrt{\ap/2}\,p^\mu=\alpha_0^\mu$
+\source{Tong §1.4.1, ll.~1571--1650}. A Fourier series vanishes only if every coefficient
+does. A classical closed string is therefore a set of amplitudes obeying the infinitely many
+quadratic conditions
+\begin{equation}\label{eq:classical:virasoro}
+  L_n=\tilde L_n=0\qquad\text{for all }n\in\Z .
+\end{equation}
+The $L_n$ are the Fourier modes of the stress tensor. In \cref{ch:cft} they return as
+generators of the Virasoro algebra\index{Virasoro generators}; here they are just numbers.
+
+\subsection{The mass formula and level matching}
+
+The conditions with $n=0$ contain $\alpha_0^2=\frac{\ap}{2}p^2$, and $p^2=-M^2$ is minus the
+squared rest mass of the string regarded as a particle. Separate the $m=0$ term in $L_0$ and
+use $\alpha_{-m}\cdot\alpha_m=\alpha_m\cdot\alpha_{-m}$ (classical amplitudes commute) to
+combine $m$ and $-m$:
+\begin{equation}\label{eq:classical:L0}
+  L_0=\frac12\alpha_0^2+\sum_{n>0}\alpha_{-n}\cdot\alpha_n=-\frac{\ap}{4}M^2+\sum_{n>0}\alpha_{-n}\cdot\alpha_n .
+\end{equation}
+Setting $L_0=0$ and $\tilde L_0=0$ gives two expressions for the same mass,
+\begin{equation}\label{eq:classical:mass}
+  M^2=\frac{4}{\ap}\sum_{n>0}\alpha_{-n}\cdot\alpha_n=\frac{4}{\ap}\sum_{n>0}\tilde\alpha_{-n}\cdot\tilde\alpha_n
+\end{equation}
+\source{Tong §1.4.1, ll.~1651--1679} \TL. The equality of the right-moving and the left-moving
+sums is \emph{level matching}\index{level matching}. It holds because
+$\alpha_0=\tilde\alpha_0$, which in turn came from periodicity in remark (i). The mass of a
+string is the energy stored in its oscillations: by \eqref{eq:classical:reality},
+$\alpha_{-n}\cdot\alpha_n=\sum_\mu\eta_{\mu\mu}|\alpha_n^\mu|^2$, a sum of squared
+amplitudes (with a minus sign for $\mu=0$, which the constraints $L_{n\neq0}=0$ keep under
+control). Classically $M^2$ is any non-negative real number. Quantization
+(\cref{ch:quantum}) makes the sums integer-valued, $\sum_{n>0}\alpha_{-n}\cdot\alpha_n\to N$,
+and adds a constant from normal ordering, giving the book's convention
+$M^2=\frac{2}{\ap}(N+\tilde N-2)$ with $N=\tilde N$ in non-compact flat space.
+
+\begin{remark}[What changes on a circle: a preview]\label{rem:classical:circle}
+Suppose one coordinate is periodic, $X\sim X+2\pi R$. Then a closed string may close only up
+to this identification, $X(\tau,\sigma+2\pi)=X(\tau,\sigma)+2\pi Rw$ with $w\in\Z$ the
+\emph{winding number}\index{winding number}. Remark (i) is then modified: allow
+$p_L\neq p_R$ in \eqref{eq:classical:modeexp}. The zero-mode part is
+$\tfrac{\ap}{2}(p_L+p_R)\tau+\tfrac{\ap}{2}(p_L-p_R)\sigma$, and matching it to
+$\ap p\,\tau+wR\,\sigma$ gives
+\begin{equation}\label{eq:classical:pLpR}
+  p_L=p+\frac{wR}{\ap},\qquad p_R=p-\frac{wR}{\ap},\qquad
+  \alpha_0=\sqrt{\tfrac{\ap}{2}}\,p_R,\quad\tilde\alpha_0=\sqrt{\tfrac{\ap}{2}}\,p_L .
+\end{equation}
+Now $\alpha_0\neq\tilde\alpha_0$, the two sums in \eqref{eq:classical:mass} differ by
+$\frac{\ap}{4}(p_L^2-p_R^2)=p\,wR$, and after quantization, where $p=n/R$, level matching
+becomes $N-\tilde N=nw$. This short computation (derived here, not quoted) is the seed of
+\cref{ch:circle} and of T-duality in \cref{ch:tduality}: the exchange
+$p_R\to-p_R$, $p_L\to p_L$ is the exchange $p\leftrightarrow wR/\ap$.
+\end{remark}
+
+%=====================================================================================
+\section{Worked example: a pulsating loop}\label{sec:classical:example}
+
+Take $D\geq3$ and look for a circular string in the $(x^1,x^2)$-plane that starts at rest with
+radius $R$. In static gauge $X^0=R\tau$ try
+\begin{equation}\label{eq:classical:loop}
+  \vec x(\tau,\sigma)=R\cos\tau\,(\cos\sigma,\ \sin\sigma).
+\end{equation}
+
+\paragraph{Equations of motion and constraints.} $\ddot{\vec x}=-\vec x=\vec x^{\,\prime\prime}$,
+so the wave equation holds. Further $\dot{\vec x}=-R\sin\tau(\cos\sigma,\sin\sigma)$ is radial
+and $\vec x^{\,\prime}=R\cos\tau(-\sin\sigma,\cos\sigma)$ is tangential, so
+$\dot{\vec x}\cdot\vec x^{\,\prime}=0$; and
+$\dot{\vec x}^{\,2}+\vec x^{\,\prime2}=R^2\sin^2\tau+R^2\cos^2\tau=R^2$. All of
+\eqref{eq:classical:staticgauge} is satisfied. Note that the constant in static gauge had to
+be the initial radius: the constraint ties the unit of worldsheet time to the size of the
+string.
+
+\paragraph{Motion.} In terms of target-space time $t=R\tau$ the radius is $r(t)=R\,|\cos(t/R)|$
+(\cref{fig:classical:loop}). The tension pulls the loop inward; it collapses to a point at
+$t=\pi R/2$. Its radial speed is $|\dd r/\dd t|=|\sin(t/R)|$, which reaches the speed of light
+at the moment of collapse, in agreement with the remark after
+\eqref{eq:classical:staticgauge}, since there $\vec x^{\,\prime}=0$. The loop then re-expands to
+radius $R$ at $t=\pi R$. (At the collapse point the Nambu--Goto description is singular, since
+$\det\gamma=0$; the conformal-gauge solution passes through it smoothly.)
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \foreach \r/\st in {2.0/thick,1.73/semithick,1.0/thin,0.35/very thin}{\draw[\st] (0,0) circle (\r);}
+  \fill (0,0) circle (1.2pt);
+  \draw[thin] (35:2.0)--(2.5,1.5) node[right]{\small $\tau=0$};
+  \draw[thin] (10:1.73)--(2.5,0.6) node[right]{\small $\tau=\pi/6$};
+  \draw[thin] (-20:1.0)--(2.5,-0.4) node[right]{\small $\tau=\pi/3$};
+  \foreach \a in {90,180,270}{\draw[->] (\a:1.95)--(\a:1.35);}
+  \begin{scope}[xshift=5.6cm,yshift=-1.6cm]
+    \draw[->] (0,0)--(5.4,0) node[below]{$t/R$};
+    \draw[->] (0,0)--(0,3.4) node[left]{$r/R$};
+    \draw[thick,domain=0:1.5708,samples=40] plot ({1.5*\x},{3*cos(\x r)});
+    \draw[thick,domain=1.5708:3.1416,samples=40] plot ({1.5*\x},{-3*cos(\x r)});
+    \draw (2.356,0.08)--(2.356,-0.08) node[below]{\small $\pi/2$};
+    \draw (4.712,0.08)--(4.712,-0.08) node[below]{\small $\pi$};
+    \draw (0.08,3)--(-0.08,3) node[left]{\small $1$};
+  \end{scope}
+\end{tikzpicture}
+\caption{The pulsating loop \eqref{eq:classical:loop}. Left: snapshots of the string at
+$\tau=0,\pi/6,\pi/3$ and shortly before collapse. Right: radius against time; the slope at
+$t=\pi R/2$ is $\mp1$, the speed of light.}
+\label{fig:classical:loop}
+\end{figure}
+
+\paragraph{Energy and mass.} From \eqref{eq:classical:momentum},
+$E=p^0=T\int\dd\sigma\,\dot X^0=2\pi RT=R/\ap$; consistently, comparing $X^0=R\tau$ with the
+zero-mode term $\ap p^0\tau$ gives $p^0=R/\ap$. This is the tension times the initial length
+$2\pi R$, as it must be for a string initially at rest, and it is conserved although the
+length is not: potential energy is converted into kinetic energy. The total spatial momentum
+vanishes, so $M=E=R/\ap$.
+
+\paragraph{The same mass from the oscillators.} Use $2\cos\tau\cos\sigma=\cos\sigma^++\cos
+\sigma^-$ and $2\cos\tau\sin\sigma=\sin\sigma^+-\sin\sigma^-$ to split
+\eqref{eq:classical:loop} into movers:
+\[
+  X_R^1=\tfrac R2\cos\sigma^-,\quad X_R^2=-\tfrac R2\sin\sigma^-,\qquad
+  X_L^1=\tfrac R2\cos\sigma^+,\quad X_L^2=+\tfrac R2\sin\sigma^+ .
+\]
+Only $n=\pm1$ appear. For $n=\pm1$ the oscillator part of \eqref{eq:classical:modeexp} is
+$\ii\sqrt{\ap/2}\,\big(\alpha_1\ee^{-\ii s}-\alpha_1^\ast\ee^{\ii s}\big)
+=-2\sqrt{\ap/2}\;\operatorname{Im}\!\big(\alpha_1\ee^{-\ii s}\big)$. With
+$c\equiv R/(2\sqrt{2\ap})$ one finds by inspection
+\begin{equation}\label{eq:classical:loopmodes}
+  \alpha_1^1=-\ii c,\quad \alpha_1^2=-c,\qquad \tilde\alpha_1^1=-\ii c,\quad\tilde\alpha_1^2=+c .
+\end{equation}
+(Check the first: $\operatorname{Im}(-\ii c\,\ee^{-\ii s})=-c\cos s$, so
+$X_R^1=2c\sqrt{\ap/2}\cos s=\frac R2\cos s$.) Then
+\[
+  \sum_{n>0}\alpha_{-n}\cdot\alpha_n=|\alpha_1^1|^2+|\alpha_1^2|^2=2c^2=\frac{R^2}{4\ap},
+  \qquad M^2=\frac4\ap\cdot\frac{R^2}{4\ap}=\frac{R^2}{\ap^2},
+\]
+in agreement with $M=R/\ap$; the left-movers give the same, so the level-matching condition
+holds. The remaining constraints hold too: $L_{\pm1}\propto\alpha_0\cdot\alpha_{\pm1}=0$
+because $\alpha_0$ points in the time direction and $\alpha_{\pm1}$ in space, and
+$L_2=\tfrac12\alpha_1\cdot\alpha_1=\tfrac12\big((-\ii c)^2+(-c)^2\big)=0$, likewise $\tilde
+L_2=\tfrac12\big((-\ii c)^2+c^2\big)=0$. The vanishing of $L_2$ is the statement that the
+right-mover is circularly polarized; a linearly polarized mode, say $\alpha_1^2=0$, would
+violate it. (All formulas of this example were confirmed by a symbolic check.)
+
+\paragraph{Numbers.} Take $R=10\,\ell_s$. Then $M=10/\ell_s$, the loop collapses after
+$t=\pi R/2\approx15.7\,\ell_s$, and the oscillator sum is $R^2/(4\ap)=25$. In the quantum theory
+the corresponding level is $N=\tilde N\approx25$ (the normal-ordering constant of
+\cref{ch:quantum} shifts the precise value by one). For comparison with
+\cref{ch:circle}: a string wound once around a circle of the same radius, $X=R\sigma$, has
+$M=2\pi R\,T=R/\ap$ as well, but it cannot collapse, because its winding number is conserved.
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:classical:lean}
+
+\subsection{The honest inventory}
+
+The short answer for this chapter is: nothing about strings. The Lean module assigned to
+this chapter, \texttt{StringTheoryFormalization/Foundations/MathlibCore.lean}, contains
+exactly one declaration.
+
+\begin{leanbox}[In Lean: the foundation layer]
+\begin{leancode}
+import Mathlib.Algebra.Category.ModuleCat.Basic
+import Mathlib.Analysis.SpecialFunctions.Complex.Circle
+import Mathlib.Analysis.InnerProductSpace.Basic
+import Mathlib.Topology.Algebra.Module.FiniteDimension
+import Mathlib.CategoryTheory.Functor.Basic
+import Mathlib.MeasureTheory.Function.L2Space
+
+namespace StringTheory.Foundations
+
+/-- Re-export summary: all Mathlib primitives used by the pipeline.
+    This namespace is `open`ed in every downstream block. -/
+def mathlib_version : String := "Mathlib4 @ v4.33.1"
+
+end StringTheory.Foundations
+\end{leancode}
+\textbf{Plain-language reading.} The file imports six Mathlib modules (categories of modules,
+the unit circle in $\C$, inner product spaces, finite-dimensional topological vector spaces,
+functors, $L^2$ spaces) and defines a constant of type \lean{String}. The definition
+\lean{StringTheory.Foundations.mathlib\_version} is a label, not a proposition; it has no
+proof because there is nothing to prove. The file's header comment describes it as
+``verified'' with no \lean{sorry}; that is true and vacuous. The comment also says that the
+file is consumed by all downstream blocks; a text search of the repository finds its name
+in eight \texttt{.lean} files including itself. Comments are not checked by the kernel, and
+neither is the agreement of the string with the toolchain (the repository's
+\texttt{lake-manifest.json} does pin Mathlib at the revision \texttt{v4.33.1}).
+
+\textbf{What it contributes.} Importing a module makes its theorems available. One of them is
+relevant to this chapter: Mathlib's \lean{real\_inner\_mul\_inner\_self\_le}, in
+\texttt{Mathlib/Analysis/InnerProductSpace/Basic.lean}, is the Cauchy--Schwarz inequality
+$\langle u,v\rangle^2\le\langle u,u\rangle\langle v,v\rangle$, the fact that makes the
+Euclidean area element \eqref{eq:classical:area} real. It is a theorem of Mathlib, not of
+this project.
+\end{leanbox}
+
+\subsection{Why an action functional is harder to formalize than its consequences}
+
+This is not an accident of scheduling. Compare what is needed to \emph{state} the two kinds
+of result in this chapter.
+
+\emph{The end products are algebra.} The mass formula \eqref{eq:classical:mass}, the zero
+modes \eqref{eq:classical:pLpR}, and everything built on them in \cref{ch:circle} and
+\cref{ch:tduality} are identities and inequalities among finitely many integers, rationals
+or reals. Lean states them in one line, and tactics such as \lean{ring}, \lean{linarith} and
+\lean{nlinarith} often prove them in one more. The Tier~A content of this book lives there.
+
+\emph{The starting point is analysis on infinite-dimensional spaces.} To state ``the
+Polyakov action is Weyl invariant and its critical points are the solutions of the wave
+equation with constraints'' faithfully, one needs at least the following.
+\begin{enumerate}[nosep]
+\item A type of field configurations: smooth maps $X:\Sigma\to\R^{1,D-1}$ from a
+two-manifold, together with Lorentzian metrics on $\Sigma$. These are not Banach spaces, so
+the Fr\'echet derivative for normed spaces, which Mathlib has, does not directly apply.
+\item The action as an integral over a non-compact $\Sigma$. It diverges for most
+configurations; ``stationary'' must be defined through compactly supported variations, and
+every integration by parts that we performed silently (from \eqref{eq:classical:varg} or to
+\eqref{eq:classical:ngeom}) needs a version of Stokes' theorem with its hypotheses.
+\item Lorentzian signature. A text search of the Mathlib revision pinned by this repository
+finds Riemannian (positive-definite) metrics on manifolds and lengths of paths, but no file
+mentioning pseudo-Riemannian metrics or Euler--Lagrange equations. The expression
+$\sqrt{-\det g}$ needs the signature hypothesis merely to be well defined.
+\item Gauge redundancy. The physical configuration space is a quotient by diffeomorphisms
+and Weyl transformations. ``Every metric can be brought to conformal gauge'' is an existence
+theorem for a partial differential equation (isothermal coordinates), true only locally.
+\item A dictionary. Even with 1--4 in place, that the resulting mathematical object
+\emph{is} a string is a modelling statement, never Tier~A.
+\end{enumerate}
+None of this is out of reach in principle, but each item is a project of its own, while the
+algebra downstream is accessible today. The pointwise algebraic cores of this chapter's
+derivations can be isolated and proved: the determinant identity in
+\eqref{eq:classical:ng}, the cancellation \eqref{eq:classical:weyl-n}, the einbein
+elimination, the tracelessness in \eqref{eq:classical:Tcomp}. Exercises
+\ref{exr:classical:leanweyl}--\ref{exr:classical:leangram} ask for them. The authors checked
+that the statements given there compile against the repository's Mathlib, but they are not
+declarations of the project and carry no tier.
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.50\textwidth}cp{0.36\textwidth}@{}}
+\toprule
+Claim & Tier & Basis\\
+\midrule
+Particle: reparametrization invariance, $p^2+m^2=0$, $H=0$ & \TL & Tong §1.1; derived on the page\\
+Nambu--Goto action $=$ $-T\times$ area; $T$ is energy per length & \TL & Tong §1.2; derived on the page\\
+Constraints \eqref{eq:classical:ngconstraints} & \TL & derived; symbolic check\\
+Polyakov $\Leftrightarrow$ Nambu--Goto classically & \TL & Tong §1.3; derived on the page\\
+Weyl invariance only for $n=2$ & \TL & Tong §1.3.1; derived on the page\\
+Conformal gauge exists locally & \TL & Tong §1.3.2 (sketch only)\\
+Mode expansion, $L_n=\tilde L_n=0$, mass formula & \TL & Tong §1.4; derived on the page\\
+Pulsating loop, $M=R/\ap$ & \TL & derived; symbolic check\\
+$p_{L,R}=p\pm wR/\ap$ (preview) & \TL & derived; see \cref{ch:circle}\\
+Cauchy--Schwarz (area is real) & --- & Mathlib theorem, kernel-checked there\\
+\lean{mathlib\_version} & \TA & a \lean{String} constant; no mathematical content\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%=====================================================================================
+\begin{summarybox}
+\begin{itemize}[nosep,leftmargin=*]
+\item The covariant particle action is $-m\times$ proper time. Reparametrization invariance
+makes one of the $D$ coordinates unphysical and produces the constraint $p^2+m^2=0$ and
+$H=0$. An einbein removes the square root.
+\item The Nambu--Goto action is $-T\times$ the area of the worldsheet, computed with the
+induced metric $\gamma_{\alpha\beta}=\partial_\alpha X\cdot\partial_\beta X$. $T=1/(2\pi\ap)$
+is the energy per unit length, and $\ell_s=\sqrt{\ap}$ is the only scale.
+\item The Polyakov action introduces an independent worldsheet metric. Its equation of
+motion gives $g=2f\gamma$; substituting back returns Nambu--Goto. It has Poincar\'e,
+diffeomorphism and Weyl invariance; the last exists only for two-dimensional worldvolumes.
+\item In conformal gauge $g_{\alpha\beta}=\eta_{\alpha\beta}$ the string obeys
+$\ddot X=X''$ with constraints $\dot X\cdot X'=0$, $\dot X^2+X'^2=0$, i.e.\ $T_{\alpha\beta}=0$.
+Physical oscillations are transverse; $2(D-2)$ functions of one variable remain.
+\item $X=X_L(\sigma^+)+X_R(\sigma^-)$. Periodicity forces equal zero modes
+$\alpha_0=\tilde\alpha_0=\sqrt{\ap/2}\,p$ in non-compact space. The constraints are
+$L_n=\tilde L_n=0$; $n=0$ gives $M^2=\frac4\ap\sum_{n>0}\alpha_{-n}\cdot\alpha_n$ and level
+matching.
+\item On a circle the zero modes split, $p_{L,R}=p\pm wR/\ap$: the entry point of
+\cref{ch:circle}.
+\item Tier status: everything here is Tier~L. The assigned Lean file contains a version
+string and imports. Formalizing an action principle needs global analysis that is not yet
+available in the library; the algebra that follows from it is what later chapters check.
+\end{itemize}
+\end{summarybox}
+
+%=====================================================================================
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]
+Expand \eqref{eq:classical:particle-frame} for $|\dot{\vec x}|\ll1$ to second order and identify
+the two terms. Then show directly from \eqref{eq:classical:particle-p} that $\vec p/E$ is the
+velocity.
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Set $m=0$ in the einbein action \eqref{eq:classical:einbein}. Derive the equations of motion
+of $X^\mu$ and of $e$ and show that the particle moves on a null straight line. Verify that
+the action is invariant under the transformations $\delta X^\mu=\eta\dot X^\mu$,
+$\delta e=\frac{\dd}{\dd\tau}(\eta e)$ up to a total derivative.
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Verify the two identities \eqref{eq:classical:ngconstraints} from
+\eqref{eq:classical:ngmomenta}. Then show that in static gauge with $\dot{\vec x}=0$ the density
+$-\Pi^\tau_0$ integrates to $T\times$ length, confirming \eqref{eq:classical:tension} from the
+Hamiltonian side.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Consider a $p$-dimensional extended object with worldvolume dimension $n=p+1$ and the action
+$-\frac{T_p}{2}\int\dd^n\sigma\sqrt{-g}\,\big(g^{\alpha\beta}\partial_\alpha X\cdot\partial_\beta
+X-(n-2)\big)$. Show that the equation of motion of $g_{\alpha\beta}$ is solved by
+$g_{\alpha\beta}=\gamma_{\alpha\beta}$ for $n\neq2$, with no free function, and that
+substituting back gives $-T_p\int\dd^n\sigma\sqrt{-\gamma}$. Explain the role of
+\eqref{eq:classical:weyl-n} in the difference between $n=2$ and $n\neq2$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:classical:trace}
+Show, for an arbitrary worldsheet metric and without using the equations of motion, that
+$g^{\alpha\beta}T_{\alpha\beta}=0$ for the tensor in the bracket of \eqref{eq:classical:varg}.
+Which property of two dimensions did you use?
+\end{exercise}
+
+\begin{exercise}[$\star\star$ A rotating folded string and the Regge slope]
+In static gauge $X^0=R\tau$ consider $\vec x=R\cos\sigma\,(\cos\tau,\sin\tau)$. (a) Verify
+\eqref{eq:classical:staticgauge}. (b) Describe the motion; which points move at the speed of
+light? (c) Compute $E=T\int\dd\sigma\,\dot X^0$ and the angular momentum
+$J=T\int\dd\sigma\,(x^1\dot x^2-x^2\dot x^1)$ and show $J=\tfrac12\ap E^2$. This linear
+relation between spin and mass squared is the origin of the name ``Regge slope'' for $\ap$.
+(d) Find the non-zero $\alpha_n^\mu$, $\tilde\alpha_n^\mu$ and check $L_2=\tilde L_2=0$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Repeat the derivation of \cref{rem:classical:circle} in full: starting from
+\eqref{eq:classical:modeexp} with independent $p_L$, $p_R$ in one compact direction, compute
+$L_0-\tilde L_0$ and show that the classical level-matching condition reads
+$\sum_{n>0}\alpha_{-n}\cdot\alpha_n-\sum_{n>0}\tilde\alpha_{-n}\cdot\tilde\alpha_n=p\,wR$. Show
+that under $R\to\ap/R$ together with $p\leftrightarrow wR/\ap$ the pair $(p_L,p_R)$ goes to
+$(p_L,-p_R)$ and that both $L_0$ and $\tilde L_0$ are unchanged.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Lean]\label{exr:classical:leanweyl}
+Prove in Lean~4 with Mathlib the pointwise core of \eqref{eq:classical:weyl-n} for $n=2$: a
+Weyl rescaling multiplies the determinant of a symmetric two-by-two matrix by $\Omega^4$.
+\begin{leancode}
+example (Ω a b c : ℝ) :
+    (Ω^2 * a) * (Ω^2 * c) - (Ω^2 * b)^2 = Ω^4 * (a * c - b^2) := by
+  sorry
+\end{leancode}
+Then state and prove the einbein elimination of \cref{sec:classical:einbein}: for $m>0$ and
+$s>0$ (standing for $\sqrt{-\dot X^2}$),
+$\tfrac12\big((s/m)^{-1}(-s^2)-(s/m)\,m^2\big)=-ms$. Hint: \lean{field\_simp} then \lean{ring}.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$ Lean]\label{exr:classical:leangram}
+Let $F$ be a real inner product space. Prove that the Gram determinant of two vectors is
+non-negative, so that the Euclidean area element \eqref{eq:classical:area} is real. Use the
+Mathlib theorem \lean{real\_inner\_mul\_inner\_self\_le}.
+\begin{leancode}
+example {F : Type*} [NormedAddCommGroup F] [InnerProductSpace ℝ F]
+    (u v : F) :
+    0 ≤ inner ℝ u u * inner ℝ v v - inner ℝ u v * inner ℝ u v := by
+  sorry
+\end{leancode}
+Then explain in a paragraph why the analogous statement in Minkowski signature,
+$(\dot X\cdot X')^2-\dot X^2X'^2\ge0$, is \emph{not} a theorem about arbitrary pairs of
+vectors, and formulate a hypothesis on $\dot X$ and $X'$ under which it holds.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]
+Show that a reparametrization $\sigma^\pm\to\tilde\sigma^\pm(\sigma^\pm)$ maps solutions of
+\eqref{eq:classical:wave} and \eqref{eq:classical:constraints} to solutions. Use it to show
+that any solution can be brought to static gauge $X^0=R\tau$. (Hint: $X^0$ itself solves the
+wave equation, so $X^0=X^0_L(\sigma^+)+X^0_R(\sigma^-)$; choose the new coordinates
+proportional to $X^0_L$ and $X^0_R$. What must be assumed about these functions?)
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[nosep,leftmargin=*]
+\item The chapter follows \source{Tong §1, ll.~681--1680} throughout: particle §1.1
+(ll.~688--938), Nambu--Goto §1.2 (ll.~945--1208), Polyakov §1.3 (ll.~1209--1498), mode
+expansions §1.4 (ll.~1500--1680).
+\item Residual conformal symmetry and the counting of $2(D-2)$ transverse functions:
+\source{Tong §2.2, ll.~1932--1990}; lightcone gauge, which solves the constraints
+explicitly, is taken up in \cref{ch:quantum}.
+\item Strings of finite width (flux tubes, cosmic strings) and corrections to the
+Nambu--Goto action: \source{Tong §1.2, ll.~1124--1142}.
+\item For the state of the formal library: \cref{ch:leanprimer} and \cref{ch:architecture};
+for the open problem of formalizing variational principles, \cref{ch:open}.
+\end{itemize}

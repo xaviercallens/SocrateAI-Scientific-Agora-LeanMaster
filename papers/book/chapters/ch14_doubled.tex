@@ -1,0 +1,841 @@
+\chapter{Doubled Coordinates and the Strong Constraint}\label{ch:doubled}
+
+A point particle on a circle has one integer quantum number, its momentum $n$, and one
+coordinate $x$ conjugate to it: the wave function of the state $\ket{n}$ is $\ee^{\ii nx}$. A
+closed string on a circle has \emph{two} integers, momentum $n$ and winding $w$
+(\cref{ch:circle}), and T-duality exchanges them (\cref{ch:tduality}). If we want a field theory
+in which T-duality acts as simply as a rotation acts on ordinary fields, the winding number
+should be treated exactly like the momentum, and then it needs a coordinate of its own. This
+chapter answers three questions. What is the coordinate $\tilde x$ conjugate to winding, and
+where does it come from? If fields depend on both $x$ and $\tilde x$, what becomes of the
+level-matching condition of the closed string? And how does one get back from $2d$ coordinates
+to the $d$ coordinates of the space we observe, without breaking the duality symmetry that
+motivated the doubling? The answers are the \emph{doubled torus}, the \emph{weak constraint}
+$\partial_a\tilde\partial^a\phi=0$, and the \emph{strong constraint} or \emph{section condition},
+whose solutions are the maximal totally null subspaces of the doubled space. The duality group
+$\Odd{d}$ of \cref{ch:odd} permutes these solutions. This is the kinematical basis of double
+field theory; the fields that live on the doubled space and their action are the subject of
+\cref{ch:genmetric,ch:courant,ch:dftaction}.
+
+Throughout, $d$ is the number of compact directions, indices $a,b=1,\dots,d$ label them, and
+$x^\mu$ are the coordinates of the non-compact Minkowski factor. Repeated indices are summed.
+
+\section{Why double: a coordinate for the winding number}\label{sec:doubled:why}
+
+\subsection{The dual coordinate on the worldsheet}
+
+Take one compact direction, $X\sim X+2\pi R$. In the conventions of this book the closed-string
+solution splits into a left-moving and a right-moving part, $X(\tau,\sigma)=X_L(\sigma^+)+
+X_R(\sigma^-)$ with $\sigma^\pm=\tau\pm\sigma$, and the zero-mode parts are
+\begin{equation}\label{eq:doubled:XLXR}
+X_L=x_L+\tfrac{\ap}{2}\,p_L\,\sigma^+ +\dots,\qquad
+X_R=x_R+\tfrac{\ap}{2}\,p_R\,\sigma^- +\dots,\qquad
+p_{L,R}=\frac nR\pm\frac{wR}{\ap},
+\end{equation}
+where the dots are oscillators. Adding the two lines gives
+$X=x+\ap\frac nR\,\tau+wR\,\sigma+\dots$ with $x=x_L+x_R$: the centre of mass moves with momentum
+$p=n/R$ and the string closes only up to $w$ turns, $X(\sigma+2\pi)=X(\sigma)+2\pi Rw$. The
+\emph{difference} of the two halves is an equally good free field,
+\begin{equation}\label{eq:doubled:Xtilde}
+\tilde X\equiv X_L-X_R=\tilde x+wR\,\tau+\ap\frac nR\,\sigma+\dots,\qquad \tilde x=x_L-x_R ,
+\end{equation}
+\index{dual coordinate}%
+which Tong calls ``the new direction in spacetime'' and which satisfies $\partial_\tau X=
+\partial_\sigma\tilde X$, $\partial_\sigma X=\partial_\tau\tilde X$ \source{Tong §8.3,
+ll.~11664--11683}. Compare \eqref{eq:doubled:Xtilde} with the expansion of $X$. In $\tilde X$
+the coefficient of $\tau$ is $\ap\cdot(wR/\ap)$, so $\tilde X$ has centre-of-mass momentum
+$wR/\ap=w/\tilde R$ with $\tilde R=\ap/R$, and the coefficient of $\sigma$ is $n\tilde R$, so it
+winds $n$ times around a circle of radius $\tilde R$. The field $\tilde X$ is the coordinate of
+the T-dual circle, and its zero mode $\tilde x\sim\tilde x+2\pi\ap/R$ is conjugate to the winding
+number in the same way as $x$ is conjugate to the momentum.\index{winding number!conjugate coordinate}
+
+The combination $\tilde x$ is invisible in the sigma-model action, which contains only $X$. It
+becomes visible as soon as one writes the operator that creates a state with both charges. The
+zero-mode part of the vertex operator of a state with momenta $(p_L,p_R)$ is
+$\exp(\ii p_LX_L+\ii p_RX_R)$ (\cref{ch:circle,ch:narain}), and the elementary
+identity
+\begin{equation}\label{eq:doubled:vertex}
+p_LX_L+p_RX_R=\tfrac12(p_L+p_R)(X_L+X_R)+\tfrac12(p_L-p_R)(X_L-X_R)
+=\frac nR\,X+\frac{wR}{\ap}\,\tilde X
+\end{equation}
+shows that a state with $w\neq0$ has a wave function that depends on $\tilde x$. The doubling
+is therefore not an extra assumption: the zero modes $x_L$ and $x_R$ of a compact boson are
+independent operators, and $(x,\tilde x)$ is a basis for them adapted to momentum and winding.
+Hull and Zwiebach stress that ``the toroidal zero modes are doubled; no new oscillators are
+added'' \source{HZ §1, ll.~286--288}.
+
+\subsection{From the string field to fields on a doubled torus}
+
+Let us now take $d$ compact directions and use, as Hull and Zwiebach do, dimensionless
+coordinates of period $2\pi$: $x^a\sim x^a+2\pi$ and $\tilde x_a\sim\tilde x_a+2\pi$. The radii
+and, more generally, the constant metric and $B$-field of the torus then sit in the background
+matrix $E=G+B$ and not in the periodicities \source{HZ §2.2, ll.~573--650}. The momentum and
+winding operators have integer eigenvalues and
+\begin{equation}\label{eq:doubled:ccr}
+[x^a,p_b]=\ii\,\delta^a_b,\qquad [\tilde x_a,w^b]=\ii\,\delta_a^b,\qquad
+p_a=-\ii\frac{\partial}{\partial x^a}\equiv-\ii\,\partial_a,\qquad
+w^a=-\ii\frac{\partial}{\partial\tilde x_a}\equiv-\ii\,\tilde\partial^a
+\end{equation}
+\source{HZ §2.2, eq.~(2.20) and ll.~700--765}. A general state of the first-quantized closed
+string is a superposition over the oscillator content $I$ and over all charges,
+\begin{equation}\label{eq:doubled:stringfield}
+\ket{\Psi}=\sum_I\int\!\dd k\sum_{n,w\in\Z^d}\hat\phi_I(k_\mu,n_a,w^a)\;
+\mathcal O_I\ket{k_\mu,n_a,w^a},
+\end{equation}
+where $\mathcal O_I$ is a product of oscillators \source{HZ §1, eq.~(1.1), ll.~205--216}. In
+string field theory the coefficient functions $\hat\phi_I$ are the dynamical variables. A Fourier
+transformation in $k_\mu$ and $n_a$ turns them into functions of $x^\mu$ and $x^a$, as in any
+Kaluza--Klein reduction. Nothing prevents us from transforming in $w^a$ as well:
+\begin{equation}\label{eq:doubled:fourier}
+\phi_I(x^\mu,x^a,\tilde x_a)=\sum_{n,w\in\Z^d}\hat\phi_I(x^\mu;n,w)\;
+\ee^{\ii(n_ax^a+w^a\tilde x_a)} .
+\end{equation}
+The component fields of the closed string on $\R^{1,D-d-1}\times T^d$ are thus fields on
+$\R^{1,D-d-1}\times T^{2d}$, where the \emph{doubled torus}\index{doubled torus} $T^{2d}$ has the
+periodic coordinates $(x^a,\tilde x_a)$ \source{HZ §1, eq.~(1.2), ll.~217--230}. The tensor
+indices of the fields are \emph{not} doubled: the massless level $N=\tilde N=1$ still gives a
+symmetric tensor $h_{ij}$, an antisymmetric tensor $b_{ij}$ and a scalar $d$ with
+$i,j=0,\dots,D-1$, each now a function of $(x^\mu,x^a,\tilde x_a)$ \source{HZ §1, eq.~(1.10),
+ll.~333--343}. Double field theory\index{double field theory} is the theory of these three
+fields; it keeps the states that would be massless in the decompactification limit but keeps
+\emph{all} their momentum and winding excitations \source{AMN §3, ll.~473--492}.
+
+We collect coordinates, derivatives and charges in $2d$-component objects. In this chapter we
+follow the ordering of the Lean library, momentum first:
+\begin{equation}\label{eq:doubled:XZ}
+\mathbb X=\begin{pmatrix}x^a\\ \tilde x_a\end{pmatrix},\qquad
+\partial_M=\begin{pmatrix}\partial_a\\ \tilde\partial^a\end{pmatrix},\qquad
+Z=\begin{pmatrix}n_a\\ w^a\end{pmatrix}\in\Z^{2d},\qquad
+\ee^{\ii Z\cdot\mathbb X}=\ee^{\ii(n_ax^a+w^a\tilde x_a)},
+\end{equation}
+where $Z\cdot\mathbb X$ is the ordinary dot product. Hull and Zwiebach and the review of
+Aldazabal, Marqu\'es and N\'u\~nez put the winding entry first, $v=(m,n)$ and
+$X^M=(\tilde x_i,x^i)$ \source{HZ §5.1, eq.~(5.4), ll.~3686--3700; AMN §3.3, eq.~(3.25), ll.~970--978}. For everything in this
+chapter the ordering is immaterial, because the only structure we use is the pairing
+\begin{equation}\label{eq:doubled:eta}
+Z\circ Z'\equiv Z^{\mathsf T}\eta\,Z'=n\cdot w'+w\cdot n',\qquad
+\eta=\begin{pmatrix}0&\mathbf 1_d\\ \mathbf 1_d&0\end{pmatrix},
+\end{equation}
+\index{eta@$\eta$ ($O(d,d)$ metric)}%
+which is symmetric under the exchange of the two blocks. (The ordering does matter for the
+block form of the generalized metric; see \cref{ch:genmetric}.)
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=0.95,>=Stealth]
+  % left: R = 2 l_s
+  \begin{scope}
+    \draw[fill=blue!6] (0,0) rectangle (4,1);
+    \draw[->] (-0.3,0)--(4.6,0) node[right]{$u$};
+    \draw[->] (0,-0.3)--(0,1.9) node[above]{$\tilde u$};
+    \draw[very thick,blue!60!black] (0,0.5)--(4,0.5);
+    \draw[very thick,red!70!black] (2,0)--(2,1);
+    \node[below] at (4,0) {\small $2\pi R$};
+    \node[left] at (0,1) {\small $2\pi\ap/R$};
+    \node at (2,-0.9) {\small $R=2\ell_s$};
+  \end{scope}
+  % right: R = l_s/2
+  \begin{scope}[xshift=7.2cm]
+    \draw[fill=blue!6] (0,0) rectangle (1,4);
+    \draw[->] (-0.3,0)--(1.9,0) node[right]{$u$};
+    \draw[->] (0,-0.3)--(0,4.6) node[above]{$\tilde u$};
+    \draw[very thick,blue!60!black] (0,2)--(1,2);
+    \draw[very thick,red!70!black] (0.5,0)--(0.5,4);
+    \node[below] at (1,0) {\small $2\pi R$};
+    \node[left] at (0,4) {\small $2\pi\ap/R$};
+    \node at (0.6,-0.9) {\small $R=\ell_s/2$};
+  \end{scope}
+  \draw[<->,thick] (4.9,1.2)--(6.6,1.2) node[midway,above]{\small $u\leftrightarrow\tilde u$};
+\end{tikzpicture}
+\caption{The doubled torus for $d=1$ in coordinates of physical length, $u=Rx$ and
+$\tilde u=(\ap/R)\tilde x$. Opposite sides of each rectangle are identified. The horizontal
+circle (blue) is the spacetime circle, the vertical circle (red) is its T-dual. The area
+$4\pi^2\ap$ does not depend on $R$; T-duality exchanges the two axes and maps the left
+rectangle to the right one.}\label{fig:doubled:torus}
+\end{figure}
+
+\begin{example}[The doubled torus of a circle]\label{ex:doubled:circle}
+For $d=1$ and a circle of radius $R$, introduce coordinates of physical length
+$u=Rx\sim u+2\pi R$ and $\tilde u=(\ap/R)\,\tilde x\sim\tilde u+2\pi\ap/R$
+\source{HZ §2.2, eq.~(2.36), ll.~1012--1024}. The mode \eqref{eq:doubled:XZ} becomes
+$\exp\bigl(\ii\frac nR u+\ii\frac{wR}{\ap}\tilde u\bigr)$, in agreement with
+\eqref{eq:doubled:vertex}. Take $R=2\ell_s$ with $\ell_s=\sqrt{\ap}$. The doubled torus is a
+rectangle with sides $4\pi\ell_s$ and $\pi\ell_s$ (\cref{fig:doubled:torus}, left). The mode
+$(n,w)=(1,0)$ has wave number $1/(2\ell_s)$ along $u$; the mode $(0,1)$ has wave number
+$2/\ell_s$ along $\tilde u$, four times larger. These wave numbers are the contributions
+$n/R$ and $wR/\ap$ to the mass formula of \cref{ch:circle}. For any $R$ the area is
+$2\pi R\cdot2\pi\ap/R=4\pi^2\ap$: shrinking the spacetime circle stretches the dual circle, and
+the doubled torus cannot be made small in both directions at once.
+\end{example}
+
+\begin{physicsbox}[Physical picture: who sees which coordinate]
+A wave packet built from momentum modes is localized in $x$ and spread out in $\tilde x$; a
+packet built from winding modes is localized in $\tilde x$. When $R\gg\ell_s$ the winding
+modes cost an energy of order $R/\ap$ each, low-energy observers excite only momentum modes,
+and all fields they can prepare are independent of $\tilde x$: they see a circle of radius
+$R$. When $R\ll\ell_s$ the roles are exchanged and the light fields depend only on $\tilde x$:
+the observers see a large circle of radius $\ap/R$ \source{Tong §8.3, ll.~11643--11652}.
+Hull and Zwiebach put it this way: the doubled torus contains the original torus together with
+all the tori related to it by T-duality, and T-duality changes ``which $T^d$ subspace of the
+doubled torus is to be regarded as part of the spacetime'' \source{HZ §1, ll.~123--128}.
+\end{physicsbox}
+
+\section{Level matching becomes a differential constraint}\label{sec:doubled:weak}
+
+\subsection{The operator \texorpdfstring{$\Delta$}{Delta}}
+
+A closed string has no preferred origin of $\sigma$, and physical states must be invariant
+under rigid shifts of $\sigma$ (``there are no special points in a closed string'',
+\source{AMN §3.1, eq.~(3.2), ll.~524--529}). The generator of these shifts is $L_0-\bar L_0$, so
+every physical state obeys the level-matching condition\index{level matching}. On a torus it reads
+\begin{equation}\label{eq:doubled:LM}
+L_0-\bar L_0=N-\bar N-p_aw^a=0
+\end{equation}
+\source{HZ §1, eq.~(1.3), ll.~230--234}, which for $d=1$ is the condition $N-\tilde N=nw$ of
+\cref{ch:circle}; we write $\bar N$ or $\tilde N$ interchangeably for the second number
+operator. The derivation is one line: the zero modes contribute
+$\frac{\ap}{4}(p_L^2-p_R^2)$ to the difference of the two Virasoro generators, and with
+\eqref{eq:doubled:XLXR}
+\[
+\tfrac{\ap}{4}\bigl(p_L^2-p_R^2\bigr)=\tfrac{\ap}{4}\cdot4\,\frac nR\cdot\frac{wR}{\ap}=nw .
+\]
+The radius has dropped out. This remains true for a general torus: $p_aw^a$ contains no metric
+and no $B$-field.
+
+In string field theory the two physical-state conditions play different roles. The mass-shell
+condition $L_0+\bar L_0-2=0$ is the linearized \emph{equation of motion} of the component
+fields. Level matching is imposed \emph{off shell}, as a constraint on the string field and on
+the gauge parameters, $(L_0-\bar L_0)\ket\Psi=0$ \source{HZ §1, eqs.~(1.6)--(1.7), ll.~289--298;
+§2.2, ll.~936--941}. Let us translate it into a statement about the component fields
+\eqref{eq:doubled:fourier}. Acting on the mode $\ee^{\ii Z\cdot\mathbb X}$, the operators
+\eqref{eq:doubled:ccr} give $p_aw^a\to(-\ii)^2\partial_a\tilde\partial^a=-\partial_a
+\tilde\partial^a$. Hence a component field at oscillator level $(N_I,\bar N_I)$ satisfies
+\begin{equation}\label{eq:doubled:Delta}
+(N_I-\bar N_I)\,\phi_I=\tfrac{\ap}{2}\,\Delta\,\phi_I,\qquad
+\Delta\equiv-\frac{2}{\ap}\,\frac{\partial}{\partial x^a}\frac{\partial}{\partial\tilde x_a}
+=-\frac1{\ap}\,\partial^{\mathsf T}\eta\,\partial
+\end{equation}
+\source{HZ §1, eq.~(1.9), ll.~310--323; §2.2, eqs.~(2.32)--(2.33), ll.~907--935}. As a check,
+$-\partial_a\tilde\partial^a\,\ee^{\ii(n\cdot x+w\cdot\tilde x)}=-(\ii n_a)(\ii w^a)\,
+\ee^{\ii(\dots)}=n\cdot w\;\ee^{\ii(\dots)}$, which reproduces \eqref{eq:doubled:LM}.
+
+\begin{definition}[Weak constraint]\label{def:doubled:weak}\index{weak constraint}
+A field $\phi(x^\mu,x^a,\tilde x_a)$ at level $N=\bar N$ satisfies the \emph{weak constraint} if
+\begin{equation}\label{eq:doubled:weak}
+\Delta\phi=0\qquad\Longleftrightarrow\qquad \partial_a\tilde\partial^a\phi=0
+\qquad\Longleftrightarrow\qquad \eta^{MN}\partial_M\partial_N\phi=0 .
+\end{equation}
+\end{definition}
+
+All fields of double field theory, $h_{ij}$, $b_{ij}$ and $d$, have $N=\bar N=1$ and obey
+\eqref{eq:doubled:weak}, and so do the gauge parameters \source{HZ §1, ll.~338--350}. In Fourier
+space the constraint is algebraic. Since $\eta^{MN}\partial_M\partial_N\,\ee^{\ii Z\cdot\mathbb X}
+=-(Z\circ Z)\,\ee^{\ii Z\cdot\mathbb X}$ and $Z\circ Z=2\,n\cdot w$ by \eqref{eq:doubled:eta},
+\begin{equation}\label{eq:doubled:null}
+\Delta\phi=0\quad\Longleftrightarrow\quad\hat\phi(Z)=0\ \text{unless}\ Z\circ Z=0
+\quad\Longleftrightarrow\quad\hat\phi(n,w)=0\ \text{unless}\ n\cdot w=0 .
+\end{equation}
+The allowed charges are the integer points of the null cone\index{null cone} of $\eta$ in
+$\R^{2d}$. For $N\neq\bar N$ the cone is replaced by the hyperboloid
+$\frac12Z\circ Z=N-\bar N$ \source{HZ §5.1, eqs.~(5.3)--(5.6), ll.~3676--3717; §5.3,
+eqs.~(5.19)--(5.20), ll.~3922--3935}. \Cref{fig:doubled:cone} shows both for $d=1$.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=0.62,>=Stealth]
+  \draw[->,gray] (-4.6,0)--(4.9,0) node[right,black]{$n$};
+  \draw[->,gray] (0,-4.6)--(0,4.9) node[above,black]{$w$};
+  \foreach \i in {-4,...,4}{\foreach \j in {-4,...,4}{\fill[gray!55] (\i,\j) circle (1.3pt);}}
+  \foreach \i in {-4,...,4}{\fill[blue!70!black] (\i,0) circle (3pt);}
+  \foreach \j in {-4,-3,-2,-1,1,2,3,4}{\fill[red!75!black] (0,\j) circle (3pt);}
+  \draw[domain=0.23:4.4,samples=60,smooth,thick,green!45!black] plot (\x,{1/\x});
+  \draw[domain=-4.4:-0.23,samples=60,smooth,thick,green!45!black] plot (\x,{1/\x});
+  \draw[domain=0.23:4.4,samples=60,smooth,thick,dashed,orange!80!black] plot (\x,{-1/\x});
+  \draw[domain=-4.4:-0.23,samples=60,smooth,thick,dashed,orange!80!black] plot (\x,{-1/\x});
+  \draw[green!45!black] (1,1) circle (4.5pt); \draw[green!45!black] (-1,-1) circle (4.5pt);
+  \draw[orange!80!black] (1,-1) circle (4.5pt); \draw[orange!80!black] (-1,1) circle (4.5pt);
+  \node[right,green!35!black] at (0.35,4.3) {\small $nw=1$};
+  \node[left,orange!60!black] at (-0.35,4.3) {\small $nw=-1$};
+  \node[blue!70!black,left] at (-4.7,0) {\small momentum frame};
+  \node[red!75!black,below] at (0,-4.7) {\small winding frame};
+\end{tikzpicture}
+\caption{The charge lattice $\Z^2$ of a circle. The null cone $nw=0$ consists of the two
+axes; its integer points (large dots) are the charges allowed at $N=\bar N$. States with
+$N-\bar N=\pm1$ have charges on the hyperbolas $nw=\pm1$, which contain only the four circled
+lattice points. The inversion $\eta$ reflects the picture in the diagonal $n=w$.}
+\label{fig:doubled:cone}
+\end{figure}
+
+\subsection{Two operators, two metrics}
+
+It is instructive to set the mass-shell operator next to $\Delta$. With the generalized metric
+$\HH(E)$ of the torus, to be studied in \cref{ch:genmetric} (its block form depends on the
+ordering of $\partial_M$; we do not need it here), the zero-mode part of
+$L_0+\bar L_0$ is the Laplacian $\square=\frac1{\ap}\,\partial^{\mathsf T}\HH(E)\,\partial$,
+while $\Delta=-\frac1{\ap}\partial^{\mathsf T}\eta\,\partial$. In the words of Hull and
+Zwiebach, $\square$ is a Laplacian for the metric $\HH(E)$ and $\Delta$ is one for the
+$O(d,d)$-invariant metric $\eta$\index{generalized metric!versus $\eta$}; ``no background fields are required'' in $\Delta$
+\source{HZ §2.2, eqs.~(2.30)--(2.33), ll.~893--935}. For the circle of
+\cref{ex:doubled:circle} we have $\partial_x=R\,\partial_u$ and
+$\partial_{\tilde x}=(\ap/R)\,\partial_{\tilde u}$, so
+\begin{equation}\label{eq:doubled:circleops}
+\square\big|_{T^2}=\frac{\partial^2}{\partial u^2}+\frac{\partial^2}{\partial\tilde u^2},
+\qquad
+\Delta=-\frac2{\ap}\,R\cdot\frac{\ap}{R}\,\frac{\partial}{\partial u}\frac{\partial}{\partial
+\tilde u}=-2\,\frac{\partial}{\partial u}\frac{\partial}{\partial\tilde u} .
+\end{equation}
+On the mode $\exp(\ii\frac nRu+\ii\frac{wR}{\ap}\tilde u)$ the first operator gives
+$-(n^2/R^2+w^2R^2/\ap^2)$, the zero-mode part of the mass formula, which depends on $R$; the
+second gives $2nw$, which does not. The doubled space thus carries two metrics: a
+positive-definite one, $\HH$, which encodes the moduli and measures energies, and an indefinite
+one of signature $(d,d)$, $\eta$, which is fixed once and for all and encodes level matching.
+The rest of this chapter uses only $\eta$.
+
+\subsection{What the weak constraint allows}
+
+For $d=1$ the condition $nw=0$ forces $n=0$ or $w=0$. Every Fourier mode depends on $x$ alone
+or on $\tilde x$ alone, and the general solution of the weak constraint is
+$\phi=f(x)+g(\tilde x)$ (\cref{ex:doubled:d1}). For $d\ge2$ there are genuinely mixed
+solutions, such as
+\begin{equation}\label{eq:doubled:mixedmode}
+\phi=\ee^{\ii(x^1+\tilde x_2)},\qquad n=(1,0),\quad w=(0,1),\quad n\cdot w=0 .
+\end{equation}
+This is the content of the remark that string field theory ``is a theory of constrained fields,
+but the constraint still allows fields with non-trivial dependence on both $x^a$ and
+$\tilde x_a$ if $d>1$'' \source{HZ §1, ll.~320--323}.
+
+\begin{example}[Counting allowed charges on $T^2$]\label{ex:doubled:count}
+Let $d=2$ and consider the $3^4=81$ charges $Z=(n_1,n_2;w^1,w^2)$ with all entries in
+$\{-1,0,1\}$. The weak constraint is $n_1w^1+n_2w^2=0$. If $w=0$ all $9$ choices of $n$ are
+allowed; if $n=0$ and $w\ne0$ there are $8$ more. If both are non-zero we need $n\perp w$. A
+vector with one vanishing entry, such as $n=(\pm1,0)$, is orthogonal to the two vectors
+$w=(0,\pm1)$; there are $4$ such $n$, giving $4\cdot2=8$ pairs. A vector with two non-vanishing
+entries, such as $n=(1,1)$, is orthogonal to $w=\pm(1,-1)$; again $4\cdot2=8$ pairs. In total
+$9+8+8+8=33$ of the $81$ charges are null, and $16$ of them are mixed. (A direct enumeration by
+script confirms $33$, and gives $129$ of $625$ for entries in $\{-2,\dots,2\}$; this is a
+symbolic check.) A field satisfying the weak constraint can contain all $33$ modes at once.
+\end{example}
+
+\section{Products of fields and the strong constraint}\label{sec:doubled:strong}
+
+\subsection{The weak constraint is not preserved by multiplication}
+
+An interacting field theory multiplies fields. Let $\phi=\ee^{\ii Z\cdot\mathbb X}$ and
+$\phi'=\ee^{\ii Z'\cdot\mathbb X}$ with $Z$ and $Z'$ null. The product has charge $Z+Z'$ and, by
+bilinearity and symmetry of the pairing,
+\begin{equation}\label{eq:doubled:polar}
+(Z+Z')\circ(Z+Z')=Z\circ Z+2\,Z\circ Z'+Z'\circ Z'=2\,Z\circ Z' ,
+\end{equation}
+so that $\Delta(\phi\phi')=0$ if and only if $Z\circ Z'=0$: the two charges must be
+\emph{mutually} orthogonal, not only null \source{HZ §5.1, eq.~(5.7), ll.~3722--3735}. In
+position space the same fact is the Leibniz rule for a second-order operator,
+\begin{equation}\label{eq:doubled:leibniz}
+\eta^{MN}\partial_M\partial_N(AB)=(\eta^{MN}\partial_M\partial_NA)\,B+A\,(\eta^{MN}\partial_M
+\partial_NB)+2\,\eta^{MN}\partial_MA\,\partial_NB ,
+\end{equation}
+with the cross term $\eta^{MN}\partial_MA\,\partial_NB=\partial_aA\,\tilde\partial^aB+
+\tilde\partial^aA\,\partial_aB$.
+
+\begin{example}[The simplest failure]\label{ex:doubled:failure}
+For $d=1$ take $A=\ee^{\ii x}$ (one unit of momentum) and $B=\ee^{\ii\tilde x}$ (one unit of
+winding). Both satisfy the weak constraint. Their product $\ee^{\ii(x+\tilde x)}$ has
+$(n,w)=(1,1)$ and $\partial_x\partial_{\tilde x}(AB)=-AB\neq0$. Indeed $(1,1)$ lies on the
+hyperbola $nw=1$ of \cref{fig:doubled:cone}: it is the charge of a state with
+$N-\bar N=1$, not of a field with $N=\bar N$. For $d=2$ the two mixed modes with
+$Z=(1,0;0,1)$ and $Z'=(0,1;1,0)$ are both null, but $Z\circ Z'=n\cdot w'+w\cdot n'=1+1=2$.
+\end{example}
+
+String field theory deals with this by building a projector into the string product. For a
+function $A=\sum_Z\hat A(Z)\,\ee^{\ii Z\cdot\mathbb X}$ on the doubled torus one defines
+\begin{equation}\label{eq:doubled:proj}
+[[A]]\equiv\sum_{Z\in\Z^{2d}}\delta_{Z\circ Z,0}\;\hat A(Z)\,\ee^{\ii Z\cdot\mathbb X},
+\qquad \Delta[[A]]=0,\qquad [[\,[[A]]\,]]=[[A]] ,
+\end{equation}
+\index{projector onto the kernel of $\Delta$}%
+and replaces products $AB$ in the gauge transformations by $[[AB]]$ \source{HZ §5.1,
+eqs.~(5.8)--(5.13), ll.~3736--3822}. The price is high: the projected product is not
+associative (\cref{ex:doubled:nonassoc}), the gauge algebra does not satisfy the Jacobi
+identity, and sign factors (cocycles) appear in the vertices \source{HZ §5.1, ll.~3646--3670;
+§5.3, ll.~3953--3958}. Hull and Zwiebach constructed the weakly constrained theory to cubic
+order in the fields \source{HZ §1, ll.~137--141}.
+
+\subsection{The strong constraint}
+
+The alternative is to demand more of the fields, so that products are automatically allowed.
+
+\begin{definition}[Strong constraint, section condition]\label{def:doubled:strong}
+\index{strong constraint}\index{section condition}%
+A collection $\mathcal F$ of fields and gauge parameters on the doubled space satisfies the
+\emph{strong constraint} (or \emph{section condition}) if
+\begin{equation}\label{eq:doubled:strong}
+\eta^{MN}\partial_M\partial_N A=0\quad\text{and}\quad
+\eta^{MN}\partial_MA\,\partial_NB=\partial_aA\,\tilde\partial^aB+\tilde\partial^aA\,\partial_aB
+=0\qquad\text{for all }A,B\in\mathcal F .
+\end{equation}
+\end{definition}
+
+By \eqref{eq:doubled:leibniz} this is equivalent to requiring $\eta^{MN}\partial_M\partial_N$ to
+annihilate all fields, all gauge parameters \emph{and all their products}, which is how the
+review of Aldazabal, Marqu\'es and N\'u\~nez states it \source{AMN §3.3, eqs.~(3.29)--(3.32),
+ll.~1021--1050}. In Fourier space, let $S\subset\Z^{2d}$ be the set of all charges that occur in
+any member of $\mathcal F$. The first condition in \eqref{eq:doubled:strong} says $Z\circ Z=0$
+for $Z\in S$; the second, applied to two single modes, gives
+$-(Z\circ Z')\,\ee^{\ii(Z+Z')\cdot\mathbb X}=0$. Therefore
+\begin{equation}\label{eq:doubled:totallynull}
+\mathcal F\ \text{satisfies the strong constraint}\quad\Longleftrightarrow\quad
+Z\circ Z'=0\ \ \text{for all }Z,Z'\in S .
+\end{equation}
+A set with this property is called \emph{totally null} or \emph{totally isotropic}
+\index{totally null subspace}\index{isotropic subspace}; Hull and Zwiebach call the null cone
+the ``large space'' and a totally null set of charges a ``small space''\index{large and small spaces} \source{HZ §5.3,
+ll.~3922--3965}. Property \eqref{eq:doubled:totallynull} is exactly what the Lean predicate
+\lean{IsSection} expresses (\cref{sec:doubled:lean}).
+
+\begin{pitfallbox}[Common pitfall: null is not totally null]
+The null cone is not a linear space. In \cref{fig:doubled:cone} the charges $(1,0)$ and $(0,1)$
+are both null but their sum $(1,1)$ is not. A set of charges in which every element is null can
+fail to be a section; what is needed is that every \emph{pair} is orthogonal. The two notions
+agree only for sets closed under addition, by the polarization identity
+\eqref{eq:doubled:polar} (\cref{ex:doubled:leanpolar}). Correspondingly, the weak constraint is
+a linear condition on one field, while the strong constraint is a condition on a whole
+collection of fields and is not linear: the sum of two solutions belonging to different
+sections, such as $f(x)+g(\tilde x)$, solves the weak but not the strong constraint.
+\end{pitfallbox}
+
+\section{Solutions: maximal isotropic subspaces}
+\label{sec:doubled:sections}
+
+\subsection{At most half of the coordinates}
+
+\begin{proposition}\label{thm:doubled:dimbound}
+Let $V\subset\R^{2d}$ be a linear subspace that is totally null for $\eta$. Then
+$\dim V\le d$, and the bound is attained.
+\end{proposition}
+\begin{proof}
+Let $V^\perp=\{u\in\R^{2d}:u\circ v=0\text{ for all }v\in V\}$. The map
+$\R^{2d}\to V^*$, $u\mapsto(u\circ\,\cdot\,)|_V$, is surjective: $u\mapsto u\circ\,\cdot\,$ is an isomorphism
+onto the dual of $\R^{2d}$ because $\eta$ is non-degenerate ($\eta^2=\mathbf 1$), and every linear
+functional on $V$ extends to $\R^{2d}$. Its kernel is $V^\perp$; hence $\dim V^\perp=
+2d-\dim V$. Total nullity means $V\subseteq V^\perp$, so $\dim V\le2d-\dim V$. The subspace
+$\{(n,0)\}$ has dimension $d$ and is totally null by \eqref{eq:doubled:eta}.
+\end{proof}
+
+A totally null subspace of the maximal dimension $d$ is called \emph{maximal isotropic}
+\index{maximal isotropic subspace} or, in this context, a \emph{section}\index{section}. Now
+let $S$ be as in \eqref{eq:doubled:totallynull} and let $V$ be its real span. By bilinearity
+$V$ is totally null, so $r=\dim V\le d$. Choose a basis $Z_1,\dots,Z_r$ of $V$ and put
+$y^k=Z_k\cdot\mathbb X$. Every mode with $Z=\sum_kc_kZ_k\in V$ is a function of the $y^k$ alone,
+$\ee^{\ii Z\cdot\mathbb X}=\ee^{\ii c_ky^k}$. We have shown:
+
+\begin{corollary}\label{thm:doubled:half}
+Fields that satisfy the strong constraint depend on at most $d$ linear combinations
+$y^k=Z_k\cdot\mathbb X$ of the $2d$ doubled coordinates, and the charges $Z_k$ are null and
+mutually orthogonal. In particular, the fields are constant along the directions $\eta V$,
+because $(\eta Z')\cdot Z=Z'\circ Z=0$ for $Z,Z'\in V$.
+\end{corollary}
+
+For $V=\{(n,0)\}$ the constant directions are $\eta V=\{(0,n)\}$, the $\tilde x$ directions:
+$\tilde\partial^a(\dots)=0$. This is the \emph{supergravity frame}\index{supergravity frame}, in
+which $h_{ij}$, $b_{ij}$ and $d$ reduce to the ordinary metric fluctuation, Kalb--Ramond field
+and dilaton on the undoubled space \source{HZ §1, ll.~338--343; AMN §3.3, ll.~1050--1058}.
+Hull and Zwiebach note that in such a frame, with null coordinates $y^a$ and complementary
+coordinates $\tilde y_a$, one has $\Delta=-\frac2{\ap}\partial_{y^a}\partial_{\tilde y_a}$; for
+fields independent of $\tilde y$ the constraint holds identically, all products satisfy it, and
+neither projectors nor cocycles are needed \source{HZ §5.3, eq.~(5.21), ll.~3946--3960}.
+
+\subsection{A gallery of sections}
+
+\begin{enumerate}[leftmargin=*,label=(\roman*)]
+\item \emph{Momentum frame} $\{(n,0)\}$: fields depend on $x^a$ only. This is the description
+ natural at large radii.
+\item \emph{Winding frame} $\{(0,w)\}$: fields depend on $\tilde x_a$ only, the ``dual versions
+ of these fields'' \source{HZ §1, ll.~340--342}.
+\item \emph{Mixed coordinate frames}. For a subset $K\subseteq\{1,\dots,d\}$ keep $w^a$ for
+ $a\in K$ and $n_a$ for $a\notin K$. For $d=2$, $K=\{2\}$ this is $\{(n_1,0;0,w^2)\}$, and
+ $Z\circ Z'=n_1\cdot0+0\cdot w'^2+(\text{same with primes exchanged})=0$. The mode
+ \eqref{eq:doubled:mixedmode} lives in this frame. There are $2^d$ coordinate frames; they
+ describe the torus with the circles in $K$ replaced by their T-duals.
+\item \emph{Tilted frames}. Let $\Theta$ be an antisymmetric $d\times d$ matrix. The graph
+ $\{(n,\Theta n)\}$ is totally null because $n\cdot\Theta n'+\Theta n\cdot n'=
+ n^{\mathsf T}(\Theta+\Theta^{\mathsf T})n'=0$, and so is $\{(\Theta w,w)\}$. Conversely, a
+ $d$-dimensional totally null subspace that projects isomorphically onto the momentum frame is
+ the graph of a linear map $\Theta$, and total nullity forces $\Theta^{\mathsf T}=-\Theta$. The
+ sections near the momentum frame are therefore parametrized by the $d(d-1)/2$ entries of an
+ antisymmetric matrix. For $d=1$ there is no such parameter, and \cref{fig:doubled:cone} shows
+ why: the only null lines are the two axes.
+\end{enumerate}
+
+Is every solution of the strong constraint obtained from the supergravity frame by a duality
+rotation? Aldazabal, Marqu\'es and N\'u\~nez assert that a possible solution is
+$\tilde\partial^i(\dots)=0$ ``or any $O(D,D)$ rotation of this. Actually, it can be proven that
+this is the only solution'' \source{AMN §3.3, ll.~1050--1056}. \TL{} Over the real numbers this
+is an instance of Witt's theorem, which says that the orthogonal group of a non-degenerate
+quadratic form acts transitively on isotropic subspaces of a given dimension (standard; not
+checked against a source in this book's library). Item~(iv) and \cref{ex:doubled:graph} prove the statement on the page for sections that are
+graphs over the momentum frame or over the winding frame. Nothing of this
+classification has been formalized.
+
+\begin{pitfallbox}[Common pitfall: the strong constraint is not level matching]
+The weak constraint is the level-matching condition of the states with $N=\bar N$ on a torus,
+as derived above. The strong constraint is \emph{stronger than anything string theory requires}
+of those states: the $16$ mixed charges of \cref{ex:doubled:count} are perfectly good string
+states, but no single section contains all of them. The review of Aldazabal, Marqu\'es and
+N\'u\~nez warns that, in a background-independent formulation, ``the level matching condition
+should not be identified with the strong constraint (or any weaker version)''
+\source{AMN §3.3, ll.~1059--1070}. The strong constraint is a sufficient condition for the
+gauge algebra of double field theory to close (\cref{ch:courant}; \source{AMN §3.3,
+ll.~1078--1083}). With it, the theory restricted to one section is a conventional local field
+theory written in a duality-covariant way \source{HZ §5.3, ll.~3956--3964}; the genuinely
+stringy, weakly constrained theory is known to cubic order only.
+\end{pitfallbox}
+
+\section{\texorpdfstring{$O(d,d)$}{O(d,d)} rotates one frame into another}
+\label{sec:doubled:rotation}
+
+Recall from \cref{ch:odd} that $g\in\Odd{d}$ means that $g$ is an integer $2d\times2d$ matrix
+with $g^{\mathsf T}\eta\,g=\eta$. The group acts on charges by $Z\mapsto gZ$ and on the doubled
+coordinates linearly, preserving their periodicities because $g$ and $g^{-1}$ are integer
+matrices \source{HZ §1, ll.~276--283; §4.1, eq.~(4.1), ll.~2803--2812; AMN §3.3, eq.~(3.27),
+ll.~996--1005}. Two facts make the constraints duality covariant.
+
+\begin{lemma}\label{thm:doubled:inverse}
+If $g^{\mathsf T}\eta\,g=\eta$ then $g^{-1}=\eta\,g^{\mathsf T}\eta$ and
+$g\,\eta\,g^{\mathsf T}=\eta$.
+\end{lemma}
+\begin{proof}
+Multiply $g^{\mathsf T}\eta g=\eta$ from the left by $\eta$ and use $\eta^2=\mathbf 1$:
+$(\eta g^{\mathsf T}\eta)\,g=\mathbf 1$, so $g$ is invertible with the stated inverse. Then
+$g\,(\eta g^{\mathsf T}\eta)=\mathbf 1$, and multiplying from the right by $\eta$ gives
+$g\eta g^{\mathsf T}=\eta$.
+\end{proof}
+
+\begin{proposition}[Covariance of the constraints]\label{thm:doubled:covariance}
+Let $g^{\mathsf T}\eta\,g=\eta$. \emph{(a)} For all $Z,Z'$: $(gZ)\circ(gZ')=Z\circ Z'$. In
+particular $g$ maps null charges to null charges and totally null sets to totally null sets.
+\emph{(b)} Under the change of coordinates $\mathbb X'=g\mathbb X$ the operator
+$\eta^{MN}\partial_M\partial_N$ keeps its form.
+\end{proposition}
+\begin{proof}
+(a) $(gZ)^{\mathsf T}\eta\,(gZ')=Z^{\mathsf T}(g^{\mathsf T}\eta g)Z'=Z^{\mathsf T}\eta Z'$.
+(b) By the chain rule $\partial=g^{\mathsf T}\partial'$, so $\partial^{\mathsf T}\eta\,\partial
+=\partial'^{\mathsf T}(g\eta g^{\mathsf T})\partial'=\partial'^{\mathsf T}\eta\,\partial'$ by
+\cref{thm:doubled:inverse}.
+\end{proof}
+
+So ``if a given configuration solves the strong constraint, any T-duality transformation of it
+will also do'' \source{AMN §3.3, ll.~1044--1047}, and any $T^d$ obtained from the $x$-torus or
+the $\tilde x$-torus by acting with $\Odd{d}$ is again totally null \source{HZ §5.3,
+ll.~3940--3946}. Let us see what the three families of generators of \cref{ch:odd} do to the
+gallery above.\index{T-duality!as a change of section}\index{O(d,d;Z)@$O(d,d;\Z)$!action on sections}
+
+\begin{itemize}[leftmargin=*]
+\item The full inversion $g=\eta$ sends $(n,w)\mapsto(w,n)$. It maps the momentum frame onto
+ the winding frame: the theory written in the coordinates $x$ becomes the same theory written in
+ $\tilde x$. For a rectangular torus this is $R_a\mapsto\ap/R_a$ in every direction
+ \source{HZ §1, ll.~276--283}.
+\item A factorized duality in the direction $k$ exchanges $n_k\leftrightarrow w^k$ and leaves
+ the other entries alone. Starting from the momentum frame, the dualities in the directions
+ $k\in K$ produce the mixed coordinate frame labelled by $K$. For $d=2$ and $k=2$ the matrix is
+ the permutation $(n_1,n_2;w^1,w^2)\mapsto(n_1,w^2;w^1,n_2)$, which sends $(n_1,n_2;0,0)$ to
+ $(n_1,0;0,n_2)$.
+\item A $\Theta$-shift $g_\Theta=\bigl(\begin{smallmatrix}\mathbf 1&\Theta\\0&\mathbf
+ 1\end{smallmatrix}\bigr)$, with $\Theta$ an antisymmetric integer matrix, sends
+ $(n,w)\mapsto(n+\Theta w,\,w)$. It fixes every charge of the momentum frame, which is why an
+ integer shift of the $B$-field is invisible in supergravity, and it tilts the winding frame
+ into $\{(\Theta w,w)\}$. For $d=2$ and $\Theta=\bigl(\begin{smallmatrix}0&1\\-1&0
+ \end{smallmatrix}\bigr)$ the image of $(0,0;w^1,w^2)$ is $(w^2,-w^1;w^1,w^2)$, and
+ $Z\circ Z'=(w^2w'^1-w^1w'^2)+(w'^2w^1-w'^1w^2)=0$, as it must be.
+ A basis change $\diag(A,(A^{\mathsf T})^{-1})$ maps each of the two standard frames to
+ itself.
+\end{itemize}
+
+For the circle the whole story fits in \cref{fig:doubled:cone}. The equations
+$g^{\mathsf T}\eta g=\eta$ for $g=\bigl(\begin{smallmatrix}a&b\\c&e\end{smallmatrix}\bigr)$
+read $ac=0$, $be=0$, $ae+bc=1$, whose integer solutions are $g=\pm\mathbf 1$ and $g=\pm\eta$.
+The group $O(1,1;\Z)$ has four elements; $\pm\mathbf1$ preserve each axis, and $\pm\eta$
+exchange the two axes, which are the only two sections.
+
+\begin{physicsbox}[Physical picture: a choice of polarization]
+The following analogy, which is an aid to intuition and not a derivation, may help. The
+situation resembles the choice of a polarization in quantum mechanics. Phase space has
+$2d$ coordinates $(q,p)$ and a fixed antisymmetric form; wave functions depend on half of them,
+say on $q$, and a linear canonical transformation trades the $q$-representation for the
+$p$-representation without changing the physics. Here the doubled space has $2d$ coordinates
+and a fixed \emph{symmetric} form $\eta$; fields depend on a maximal null half, and a duality
+transformation trades one half for another. In neither case is there a preferred half. What
+selects the $x$-frame in practice is dynamics, that is the second metric $\HH$: at large radius
+the modes that depend on $x$ are the light ones.
+\end{physicsbox}
+
+\begin{historybox}
+Hull and Zwiebach place their construction in a line of earlier work that they cite: the closed
+string field theory on tori of Kugo and Zwiebach, which already showed how T-duality is realised
+as a symmetry of the string field theory; Tseytlin's first-quantized approach with separate
+left- and right-moving coordinates; Siegel's duality-covariant field theory for the massless
+sector under the assumption that all momenta are mutually orthogonal, which is the strongly
+constrained theory in today's language; and Hull's doubled sigma models, in which T-duality
+changes which $T^d\subset T^{2d}$ is regarded as spacetime \source{HZ §1, ll.~107--148; §5.3,
+ll.~3960--3967; refs.~[2], [6]--[8], ll.~4079--4092}.
+\end{historybox}
+
+\section{What the machine has checked}\label{sec:doubled:lean}
+
+The Lean library contains the \emph{charge-lattice shadow} of this chapter: everything that
+can be said about the strong constraint in Fourier space, on the integer lattice
+$\Z^d\oplus\Z^d$, for every $d$. It contains no differential operators, no functions on a
+torus and no Fourier series; the dictionary \eqref{eq:doubled:null},
+\eqref{eq:doubled:totallynull} between fields and sets of charges is our reading and is not
+\TA. Two files are involved:
+\begin{itemize}[leftmargin=*]
+\item \path{DualScaleStream2/TDuality/ODD.lean}, namespace\\ \lean{DualScaleStream2.TDuality},
+ discussed in detail in \cref{ch:odd};
+\item \path{DualScaleStream2/DFT/SectionCondition.lean}, namespace\\ \lean{DualScaleStream2.DFT}.
+\end{itemize}
+Running \lean{\#print axioms} on the six theorems of the second file reports the three
+standard axioms \lean{propext}, \lean{Classical.choice}, \lean{Quot.sound} and nothing else.
+
+\begin{leanbox}[In Lean: the ambient data (from \texttt{ODD.lean} and \texttt{Factorized.lean})]
+\begin{leancode}
+abbrev Charge (d : ℕ) := Fin d ⊕ Fin d
+
+def eta (d : ℕ) : Matrix (Charge d) (Charge d) ℤ := fromBlocks 0 1 1 0
+
+def IsODD (g : Matrix (Charge d) (Charge d) ℤ) : Prop := gᵀ * eta d * g = eta d
+
+def chargeNorm (Z : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z)
+
+theorem chargeNorm_sumElim (n w : Fin d → ℤ) :
+    chargeNorm (Sum.elim n w) = 2 * (n ⬝ᵥ w) := by ...
+\end{leancode}
+\textbf{Reading.} A charge is a function from the index type \lean{Fin d ⊕ Fin d} to $\Z$;
+\lean{Sum.elim n w} is the charge with momentum part $n$ (left summand) and winding part $w$
+(right summand), which fixes the convention $Z=(n,w)$ of \eqref{eq:doubled:XZ}. The matrix
+\lean{eta d} is $\eta$ of \eqref{eq:doubled:eta}, \lean{IsODD g} is the equation
+$g^{\mathsf T}\eta g=\eta$ as a predicate on integer matrices, and \lean{chargeNorm} is
+$Z\circ Z$, shown to equal $2\,n\cdot w$. The same file proves \lean{eta\_mul\_self}
+($\eta^2=1$), \lean{eta\_isODD}, \lean{isODD\_mul} (closure under products) and
+\lean{thetaShift\_isODD}, \lean{basisChange\_isODD} for the generators used in
+\cref{sec:doubled:rotation}. There is no group structure and no statement that these matrices
+generate $\Odd{d}$.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the pairing, sections, and level matching]
+\begin{leancode}
+def etaPair (Z Z' : Charge d → ℤ) : ℤ := Z ⬝ᵥ (eta d *ᵥ Z')
+
+def IsSection (S : Set (Charge d → ℤ)) : Prop :=
+  ∀ Z ∈ S, ∀ Z' ∈ S, etaPair Z Z' = 0
+
+theorem etaPair_self (Z : Charge d → ℤ) : etaPair Z Z = chargeNorm Z := by ...
+
+theorem levelMatching_iff (n w : Fin d → ℤ) :
+    chargeNorm (Sum.elim n w) = 0 ↔ n ⬝ᵥ w = 0 := by ...
+\end{leancode}
+\textbf{Reading.} \lean{etaPair} is $Z\circ Z'$. \lean{IsSection S} says that the set $S$ is
+totally null, which is the right-hand side of \eqref{eq:doubled:totallynull}. Note what the
+definition does \emph{not} ask: $S$ need not be a subgroup, need not have rank $d$, and need not
+be maximal. The empty set and $\{0\}$ are sections in this sense; the name records the intended
+use. \lean{levelMatching\_iff} says that over the integers $2(n\cdot w)=0$ if and only if
+$n\cdot w=0$, i.e.\ that a charge is $\eta$-null exactly when \eqref{eq:doubled:null} holds. The
+number operators $N,\bar N$ do not occur; the theorem is the $N=\bar N$ case of
+\eqref{eq:doubled:LM} once one accepts that $\frac12Z\circ Z$ represents $p_aw^a$.
+\textbf{Proof idea.} \lean{etaPair\_self} holds by unfolding (\lean{rfl}): the two definitions are
+the same expression. For the equivalence, rewrite with \lean{chargeNorm\_sumElim} and let the
+linear-arithmetic procedure \lean{omega} decide $2k=0\leftrightarrow k=0$.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the two standard frames]
+\begin{leancode}
+def momentumFrame (d : ℕ) : Set (Charge d → ℤ) :=
+  {Z | ∃ n : Fin d → ℤ, Z = Sum.elim n (0 : Fin d → ℤ)}
+
+def windingFrame (d : ℕ) : Set (Charge d → ℤ) :=
+  {Z | ∃ w : Fin d → ℤ, Z = Sum.elim (0 : Fin d → ℤ) w}
+
+theorem eta_momentum_to_winding (n : Fin d → ℤ) :
+    eta d *ᵥ Sum.elim n (0 : Fin d → ℤ) = Sum.elim (0 : Fin d → ℤ) n := by ...
+
+theorem momentumFrame_isSection : IsSection (momentumFrame d) := by ...
+
+theorem windingFrame_isSection : IsSection (windingFrame d) := by ...
+\end{leancode}
+\textbf{Reading.} The frames are items (i) and (ii) of the gallery, as sets of integer charges.
+The first theorem is $\eta\,(n,0)=(0,n)$: the full inversion sends each pure-momentum charge to
+the pure-winding charge with the same integers. The other two say that $(n,0)\circ(n',0)=0$ and
+$(0,w)\circ(0,w')=0$ for all integer vectors, for every $d$. That these frames have the maximal
+rank $d$ (\cref{thm:doubled:dimbound}) is not stated in Lean. \textbf{Proof idea.} Destructure
+the membership hypotheses to obtain $n$, $n'$; compute $\eta Z'$ blockwise with Mathlib's
+\lean{fromBlocks\_mulVec}; the dot product of \lean{Sum.elim n 0} with \lean{Sum.elim 0 n'}
+splits into $n\cdot0+0\cdot n'$, which \lean{simp} evaluates to $0$.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: dualities map sections to sections]
+\begin{leancode}
+theorem isSection_image (g : Matrix (Charge d) (Charge d) ℤ) (hg : IsODD g)
+    (S : Set (Charge d → ℤ)) (hS : IsSection S) :
+    IsSection ((fun Z => g *ᵥ Z) '' S) := by ...
+\end{leancode}
+\textbf{Reading.} This is part (a) of \cref{thm:doubled:covariance} for sets: if $S$ is totally
+null and $g^{\mathsf T}\eta g=\eta$, then the image $\{gZ:Z\in S\}$ is totally null. It is a
+one-directional statement (the converse also holds, by \cref{thm:doubled:inverse}, but is not in
+the library), it concerns integer matrices only, and it does not say that every section arises
+as an image of \lean{momentumFrame}. Combined with \lean{eta\_isODD}, \lean{thetaShift\_isODD}
+and \lean{momentumFrame\_isSection} it yields, without further work, that the winding frame
+and all tilted frames $g_\Theta(\text{winding frame})$ are sections. \textbf{Proof idea.} The
+proof is the computation in the text: a lemma \lean{key} rewrites
+$(gZ)\cdot\eta(gZ')$ as $Z\cdot(g^{\mathsf T}\eta g)Z'$ using associativity of \lean{mulVec} and
+\lean{dotProduct\_mulVec}; the hypothesis \lean{hg} replaces the bracket by $\eta$; what remains
+is an instance of \lean{hS}.
+\end{leanbox}
+
+\begin{table}[ht]
+\centering
+\caption{Epistemic status of the main claims of this chapter.}\label{tab:doubled:tiers}
+\small
+\begin{tabular}{@{}p{0.49\textwidth}cp{0.38\textwidth}@{}}\toprule
+Claim & Tier & Basis\\\midrule
+$Z\circ Z=2\,n\cdot w$; null $\Leftrightarrow n\cdot w=0$ (over $\Z$, all $d$) & \TA &
+  \lean{chargeNorm\_sumElim}, \lean{levelMatching\_iff}, \lean{etaPair\_self}\\
+Momentum and winding frames are totally null & \TA &
+  \lean{momentumFrame\_isSection}, \lean{windingFrame\_isSection}\\
+$\eta$ maps $(n,0)$ to $(0,n)$ & \TA & \lean{eta\_momentum\_to\_winding}\\
+$\Odd{d}$ maps totally null sets to totally null sets & \TA & \lean{isSection\_image}\\
+Component fields live on $T^{2d}$; $L_0-\bar L_0=0$ becomes $\Delta\phi=0$ & \TL &
+  HZ §1, §2.2\\
+Products need $Z\circ Z'=0$; projector $[[\cdot]]$; small and large spaces & \TL & HZ §5.1, §5.3\\
+Strong constraint and its duality covariance & \TL & AMN §3.3\\
+Every solution is a rotation of the supergravity frame & \TL & AMN §3.3 (asserted there)\\
+$\dim V\le d$ for totally null $V$; tilted frames $\leftrightarrow$ antisymmetric $\Theta$ &
+  --- & proved on the page; not formalized\\
+Counts $33/81$ and $129/625$ in \cref{ex:doubled:count} & --- & enumeration by script; symbolic
+  check\\
+Identification of \lean{IsSection} with the strong constraint on fields & --- & reading; never
+  Tier~A\\\bottomrule
+\end{tabular}
+\end{table}
+
+What would a faithful formalization need? First, the \emph{linear algebra} of this chapter:
+\cref{thm:doubled:dimbound}, maximality, and the transitivity of the orthogonal group on
+maximal isotropic subspaces. Mathlib has bilinear and quadratic forms and orthogonal
+complements, so the dimension bound is within reach (\cref{ex:doubled:leandim}). Second, the
+\emph{analysis}: smooth functions on $T^{2d}$, their Fourier coefficients, and the statement
+that $\eta^{MN}\partial_M\partial_N$ acts on the coefficient $\hat\phi(Z)$ by multiplication
+with $-Z\circ Z$; this would turn \eqref{eq:doubled:null} and \eqref{eq:doubled:totallynull}
+into theorems and connect \lean{IsSection} to differential equations. Third, the step from
+the operator $L_0-\bar L_0$ of a conformal field theory to $\Delta$, which requires a
+formalized Fock space of the compact boson and is far from the present library.
+
+\begin{summarybox}
+\begin{itemize}[leftmargin=*]
+\item A compact boson has two independent zero modes. In the basis $x=x_L+x_R$,
+ $\tilde x=x_L-x_R$ the first is conjugate to momentum and the second to winding; a state with
+ charges $(n,w)$ has the wave function $\ee^{\ii(n\cdot x+w\cdot\tilde x)}$. The component
+ fields of closed string field theory on $T^d$ are functions on the doubled torus $T^{2d}$.
+\item Level matching at $N=\bar N$ becomes the weak constraint $\partial_a\tilde\partial^a\phi
+ =0$, i.e.\ all Fourier charges are null, $Z\circ Z=2\,n\cdot w=0$. The operator involves only
+ $\eta$, never the radii or the $B$-field.
+\item Products of weakly constrained fields violate the constraint unless the charges are
+ mutually orthogonal. The strong constraint demands $Z\circ Z'=0$ for all charges in all
+ fields: the set of charges is totally null.
+\item A totally null subspace of $(\R^{2d},\eta)$ has dimension at most $d$. Strongly
+ constrained fields depend on at most $d$ coordinates: the momentum frame (supergravity), the
+ winding frame, $2^d$ mixed frames, and frames tilted by an antisymmetric $\Theta$.
+\item $\Odd{d}$ preserves $\circ$, hence both constraints, and maps sections to sections:
+ T-duality changes which half of the doubled torus is called spacetime.
+\item Kernel-checked (Tier A): nullity $\Leftrightarrow n\cdot w=0$, the two standard frames
+ are sections, $\eta$ maps one to the other, and $\Odd{d}$-images of sections are sections,
+ all on the integer charge lattice. Not formalized: fields, derivatives, the dimension bound,
+ and the classification of sections.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{ex:doubled:d1}
+Let $d=1$. Using the Fourier expansion \eqref{eq:doubled:fourier}, show that the general
+solution of $\partial_x\partial_{\tilde x}\phi=0$ on the doubled torus is
+$\phi=f(x)+g(\tilde x)$ with $f,g$ periodic. Which of these solutions satisfy the strong
+constraint when $\mathcal F=\{\phi\}$?
+\end{exercise}
+
+\begin{exercise}[$\star$]
+For a rectangular torus with radii $R_1,\dots,R_d$, use the coordinates of
+\cref{ex:doubled:circle} in each direction to show that the volume of the doubled torus is
+$(4\pi^2\ap)^d$. For $d=1$ and $R=3\ell_s$, give the two periods, and the wave numbers of the
+modes $(n,w)=(2,0)$ and $(0,2)$ along $u$ and $\tilde u$. At which radius is the doubled torus
+a square?
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Verify the zero-mode expansion \eqref{eq:doubled:Xtilde} from \eqref{eq:doubled:XLXR} and check
+$\partial_\tau X=\partial_\sigma\tilde X$ and $\partial_\sigma X=\partial_\tau\tilde X$ on the
+zero modes. Then verify the identity \eqref{eq:doubled:vertex}.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Repeat the count of \cref{ex:doubled:count} for $d=2$ and entries in $\{-2,\dots,2\}$ by hand
+or by a short program, and confirm $129$ null charges out of $625$. How many of them lie in the
+momentum frame, in the winding frame, and in the mixed frame $\{(n_1,0;0,w^2)\}$? Exhibit two
+null charges that lie in no common section.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{ex:doubled:nonassoc}
+Let $d=1$, $A=\ee^{\ii x}$, $B=\ee^{\ii\tilde x}$, $C=\ee^{-\ii\tilde x}$. With the projector
+\eqref{eq:doubled:proj}, compute $[[\,[[AB]]\,C\,]]$ and $[[\,A\,[[BC]]\,]]$ and conclude that
+the projected product is not associative. Explain why no such failure can occur if $A$, $B$,
+$C$ belong to a collection that satisfies the strong constraint.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{ex:doubled:graph}
+Let $V\subset\R^{2d}$ be a $d$-dimensional totally null subspace whose projection to the
+winding part is an isomorphism. (a) Show that $V=\{(\Theta w,w)\}$ for a unique matrix $\Theta$
+and that $\Theta^{\mathsf T}=-\Theta$. (b) Show that $g_\Theta=\bigl(\begin{smallmatrix}\mathbf
+1&\Theta\\0&\mathbf 1\end{smallmatrix}\bigr)$ satisfies $g_\Theta^{\mathsf T}\eta g_\Theta=\eta$
+and maps the winding frame onto $V$. (c) Deduce that $V$ is the image of the momentum frame
+under $g_\Theta\eta$. For which $\Theta$ does this rotation preserve the integer lattice?
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]
+State and prove in Lean, importing \path{DualScaleStream2.DFT.SectionCondition}: (a) a subset
+of a section is a section; (b) every element $Z$ of a section satisfies
+\lean{chargeNorm Z = 0}. Part (a) is a one-line term; for (b) rewrite with
+\lean{etaPair\_self} from right to left. Then use \lean{isSection\_image}, \lean{eta\_isODD}
+and \lean{momentumFrame\_isSection} to show that the image of \lean{momentumFrame d} under
+\lean{eta d} is a section, without unfolding any definition.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]\label{ex:doubled:leanpolar}
+Formalize the polarization argument of \eqref{eq:doubled:polar}: if a set $S$ of charges is
+closed under addition and every $Z\in S$ satisfies \lean{etaPair Z Z = 0}, then
+\lean{IsSection S}. You will need the symmetry of \lean{etaPair} (prove it from
+$\eta^{\mathsf T}=\eta$) and its additivity in each argument (Mathlib: \lean{mulVec\_add},
+\lean{add\_dotProduct}, \lean{dotProduct\_add}); the final step $2k=0\Rightarrow k=0$ is done
+by \lean{omega}.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]\label{ex:doubled:leandim}
+Formulate \cref{thm:doubled:dimbound} in Lean for the real form
+$\eta_\R$ on $\R^{2d}$: for a submodule $V$ on which the bilinear form vanishes identically,
+\lean{Module.finrank ℝ V ≤ d}. Locate in Mathlib the statement that the orthogonal complement
+of $V$ with respect to a non-degenerate bilinear form has dimension $2d-\dim V$, and reduce the
+bound to it. (This statement is not in the book's library; treat it as a small project.)
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*]
+\item Doubled torus, string field components depending on $x$ and $\tilde x$, the constraint
+ $\Delta=0$ and the massless fields: \source{HZ §1, ll.~100--350}. Mode expansions, zero modes,
+ the operators $\square$ and $\Delta$, rectangular tori: \source{HZ §2.2, ll.~573--1030}.
+\item Null charges, the projector $[[\cdot]]$, failure of the Jacobi identity, large and small
+ spaces, totally null subspaces: \source{HZ §5.1, ll.~3644--3858; §5.3, ll.~3920--3967}.
+\item T-duality basics, the generalized momentum and level matching in $O(D,D)$ form:
+ \source{AMN §3.1, ll.~494--660}. Double space, the strong constraint, the supergravity frame
+ and the caveat about level matching: \source{AMN §3.3, ll.~919--1084}.
+\item The dual coordinate $X_L-X_R$ on the worldsheet: \source{Tong §8.3, ll.~11626--11683}.
+\item In this book: momentum and winding in \cref{ch:circle}; the group $\Odd{d}$ and its
+ generators in \cref{ch:odd}; the metric $\HH$ on the doubled space in \cref{ch:genmetric};
+ the gauge algebra whose closure requires the strong constraint in \cref{ch:courant}; the action
+ in \cref{ch:dftaction}; the architecture of the Lean library in \cref{ch:architecture}.
+\end{itemize}

@@ -1,0 +1,912 @@
+\chapter{Buscher Rules: T-Duality from the Worldsheet}\label{ch:buscher}
+
+In \cref{ch:tduality} T-duality appeared as a property of a spectrum: the mass formula of the
+string on a circle does not change under $R\to\ap/R$, $n\leftrightarrow w$. That argument uses
+the exact solution of a free theory. It says nothing about a string moving in a curved
+background, where no mode expansion is available, and it does not explain \emph{why} the
+two descriptions agree. This chapter answers a sharper question: given a sigma model with
+metric $G$, Kalb--Ramond field $B$ and dilaton $\Phi$, and given only that the background
+does not depend on one coordinate $\theta$, what is the dual background
+$(\tilde G,\tilde B,\tilde\Phi)$? The answer is a set of algebraic formulas, the
+\emph{Buscher rules}\index{Buscher rules}, and the derivation is a short manipulation of the
+worldsheet path integral: make the shift symmetry of $\theta$ local, add a Lagrange multiplier
+that undoes the gauging, and integrate out the fields in two different orders. One order
+returns the original model; the other gives the dual one, with the Lagrange multiplier
+promoted to the dual coordinate.
+
+A student should care for three reasons. First, the method is the prototype for many
+dualities in field theory: electric--magnetic duality in four dimensions and particle--vortex
+duality in three can be derived in the same way (a standard fact, not checked against a source
+in this book's library). Second, the rules are used every time T-duality
+is applied to a background that is not a flat torus: D-brane solutions
+(\cref{ch:dbranes}), backgrounds with flux (\cref{ch:tadpole}), and the torus fibres of
+\cref{ch:k3t2}. Third, the rules look complicated in components but are one matrix
+conjugation of the generalized metric $\HH(G,B)$; seeing this here prepares the $\Odd{d}$
+action of \cref{ch:narain,ch:odd} and the doubled formalism of \cref{ch:doubled,ch:genmetric}.
+The chapter closes with an account of what the Lean file
+\lean{DoubleFieldTheory/TDualityBuscher.lean} states. It is an integer model of the
+one-circle case, and we describe its scope precisely.
+
+\paragraph{Conventions.} The worldsheet is Euclidean with coordinates $\sigma^a$, $a=1,2$, and
+metric $h_{ab}$; $\varepsilon^{ab}$ is the antisymmetric symbol with $\varepsilon^{12}=+1$.
+Target-space coordinates are $X^i$, $i=0,\dots,d-1$. As in the rest of the book $\ap$ has
+dimension length$^2$ and $\ell_s=\sqrt{\ap}$. In this chapter the coordinate along the
+isometry is called $\theta=X^0$ and is given the period
+\begin{equation}\label{eq:buscher:period}
+ \theta\sim\theta+2\pi\ell_s ,
+\end{equation}
+so that the metric components are dimensionless. A circle of physical radius $R$ is then
+described by $G_{00}=R^2/\ap$, because the circumference is
+$\sqrt{G_{00}}\cdot2\pi\ell_s=2\pi R$. This choice matters for the dilaton and for the global
+analysis; \cref{sec:buscher:global} explains what changes for other periods.
+
+%=====================================================================================
+\section{The sigma model with an isometry}\label{sec:buscher:setup}
+
+The starting point is the non-linear sigma model\index{sigma model} of \cref{ch:backgrounds},
+written in Euclidean signature,
+\begin{equation}\label{eq:buscher:sigma}
+ S=\frac{1}{4\pi\ap}\int\dd^2\sigma\,\Big[\sqrt{h}\,h^{ab}G_{ij}(X)\,\partial_aX^i\partial_bX^j
+   +\ii\,\varepsilon^{ab}B_{ij}(X)\,\partial_aX^i\partial_bX^j
+   +\ap\sqrt{h}\,R^{(2)}\Phi(X)\Big],
+\end{equation}
+where $G_{ij}$ is the target-space metric, $B_{ij}=-B_{ji}$ the Kalb--Ramond
+field\index{Kalb--Ramond field} (called ``torsion'' in part of the literature), $\Phi$ the
+dilaton\index{dilaton} and $R^{(2)}$ the scalar curvature of $h_{ab}$
+\source{AAL §2.1, ll.~217--235}. The factor $\ii$ in the $B$-term is a consequence of the
+Wick rotation: a term with one time derivative, such as
+$\varepsilon^{ab}\partial_aX^i\partial_bX^j$, picks up one factor of $\ii$ under
+$\tau\to-\ii\tau$, whereas the kinetic term, with two, stays real. The $B$-term does not
+involve $h_{ab}$ at all: it is the integral of the two-form $B$ pulled back to the worldsheet.
+
+Assume that the background has an \emph{abelian isometry}\index{isometry}: there is a vector
+field $k$ such that the action is invariant under $\delta X^i=\epsilon\,k^i(X)$. Invariance of
+the three terms of \eqref{eq:buscher:sigma} requires $k$ to be a Killing vector of $G$, the
+field strength $H=\dd B$ to be invariant, and $k^i\partial_i\Phi=0$
+\source{GPR §4.1, ll.~5935--5953}. Under these conditions one can choose \emph{adapted
+coordinates}\index{adapted coordinates} $X^i=(\theta,x^\alpha)$, $\alpha=1,\dots,d-1$, in which
+$k=\partial_\theta$ and none of $G$, $B$, $\Phi$ depends on $\theta$; for $B$ this may require
+a gauge transformation $B\to B+\dd\lambda$ \source{GPR §4.1, ll.~5954--5958}. In adapted
+coordinates the isometry is the shift $\theta\to\theta+\epsilon$ and the Lagrangian of
+\eqref{eq:buscher:sigma} splits as
+\begin{align}\label{eq:buscher:split}
+ 4\pi\ap\,\mathcal L={}&\sqrt h\,h^{ab}\big(G_{00}\,\partial_a\theta\partial_b\theta
+   +2G_{0\alpha}\,\partial_a\theta\,\partial_bx^\alpha
+   +G_{\alpha\beta}\,\partial_ax^\alpha\partial_bx^\beta\big)\notag\\
+ &+\ii\varepsilon^{ab}\big(2B_{0\alpha}\,\partial_a\theta\,\partial_bx^\alpha
+   +B_{\alpha\beta}\,\partial_ax^\alpha\partial_bx^\beta\big)+\ap\sqrt h\,R^{(2)}\Phi .
+\end{align}
+The factor $2$ in the mixed $B$-term comes from the two orderings $(i,j)=(0,\alpha)$ and
+$(\alpha,0)$: $B_{\alpha0}\varepsilon^{ab}\partial_ax^\alpha\partial_b\theta
+=B_{0\alpha}\varepsilon^{ab}\partial_a\theta\partial_bx^\alpha$, since both $B$ and
+$\varepsilon$ are antisymmetric. The field $\theta$ enters \eqref{eq:buscher:split} only
+through its derivative $\partial_a\theta$. The whole construction depends on this fact.
+
+For the derivations below we take the worldsheet metric flat, $h_{ab}=\delta_{ab}$, and write
+$A\cdot B=A_aB_a$. Nothing is lost: in two dimensions one can always choose
+$h_{ab}=\ee^{2\omega}\delta_{ab}$ locally, the kinetic term $\sqrt h h^{ab}$ is independent of
+$\omega$, and the $\varepsilon$-terms never contained $h_{ab}$. The curvature term is the only
+place where $h_{ab}$ matters, and it returns in \cref{sec:buscher:dilaton}.
+
+%=====================================================================================
+\section{Warm-up: the circle in three steps}\label{sec:buscher:circle}
+
+Take first a single field $\theta$ with constant $G_{00}=R^2/\ap$ and nothing else:
+\begin{equation}\label{eq:buscher:circleaction}
+ S[\theta]=\frac{G_{00}}{4\pi\ap}\int\dd^2\sigma\;\partial_a\theta\,\partial_a\theta .
+\end{equation}
+With $\theta=\ell_s\varphi$ this is Tong's action $\frac{R^2}{4\pi\ap}\int(\partial\varphi)^2$
+for a field $\varphi$ of period $2\pi$ \source{Tong §8.3.1, ll.~11718--11731}. We follow his
+argument and keep track of the normalizations.
+
+\paragraph{Step 1: gauge the shift symmetry.} The symmetry $\theta\to\theta+\lambda$ with
+constant $\lambda$ is made local by introducing a worldsheet gauge field $A_a$ with
+$A_a\to A_a-\partial_a\lambda$ and replacing $\partial_a\theta$ by the covariant derivative
+$D_a\theta=\partial_a\theta+A_a$ \source{Tong §8.3.1, ll.~11732--11735}. This changes the
+theory: $A_a$ is a new integration variable.
+
+\paragraph{Step 2: add a Lagrange multiplier that undoes Step 1.} Introduce one more scalar
+$\tilde\theta$ and the \emph{master action}\index{master action}\index{Lagrange multiplier}
+\begin{equation}\label{eq:buscher:master1}
+ S[\theta,A,\tilde\theta]=\frac{1}{4\pi\ap}\int\dd^2\sigma\,
+   \Big[G_{00}\,D_a\theta\,D_a\theta+2\ii\,\tilde\theta\,\varepsilon^{ab}\partial_aA_b\Big].
+\end{equation}
+The new term is gauge invariant because
+$\varepsilon^{ab}\partial_a\partial_b\lambda=0$. In terms of fields of period $2\pi$,
+$\tilde\theta=\ell_s\vartheta$ and $A=\ell_s\mathcal A$, it reads
+$\frac{\ii}{2\pi}\int\vartheta\,\varepsilon^{ab}\partial_a\mathcal A_b$, which is the
+normalization of Tong's (8.12) \source{Tong §8.3.1, ll.~11736--11746}. The functional integral
+over $\tilde\theta$ of $\exp(-S)$ is a functional delta function,
+\[
+ \int\mathcal D\tilde\theta\;
+ \exp\Big(-\frac{\ii}{2\pi\ap}\int\dd^2\sigma\,\tilde\theta\,F\Big)\;\propto\;\delta[F],
+ \qquad F=\varepsilon^{ab}\partial_aA_b=\partial_1A_2-\partial_2A_1 .
+\]
+This is why the multiplier term must be imaginary in Euclidean signature: a real exponent would
+give a Gaussian damping, not a constraint. On a worldsheet with the topology of the plane or
+the sphere, $F=0$ implies $A_a=\partial_a\chi$ for some function $\chi$; the gauge
+transformation $\lambda=\chi$ then sets $A_a=0$ and \eqref{eq:buscher:master1} reduces to
+\eqref{eq:buscher:circleaction}. On worldsheets with non-contractible cycles this conclusion
+needs an extra argument, given in \cref{sec:buscher:global}.
+
+\paragraph{Step 3: integrate in the other order.} Alternatively, use the gauge freedom first to
+set $\theta=0$, so that $D_a\theta=A_a$, and integrate the multiplier term by parts,
+\begin{equation}\label{eq:buscher:byparts}
+ \int\dd^2\sigma\;\tilde\theta\,\varepsilon^{ab}\partial_aA_b
+ =-\int\dd^2\sigma\;\varepsilon^{ab}\,\partial_a\tilde\theta\,A_b
+ =\int\dd^2\sigma\;\varepsilon^{ab}A_a\,\partial_b\tilde\theta ,
+\end{equation}
+where the last step renames $a\leftrightarrow b$ and uses
+$\varepsilon^{ba}=-\varepsilon^{ab}$. The action is now quadratic in $A_a$ with no
+derivatives acting on it:
+\begin{equation}\label{eq:buscher:quadratic1}
+ 4\pi\ap\,\mathcal L=G_{00}\,A_aA_a+2A_a\,j_a,\qquad
+ j_a=\ii\,\varepsilon^{ab}\partial_b\tilde\theta .
+\end{equation}
+A Gaussian integral is evaluated by completing the square,
+$G_{00}A\cdot A+2A\cdot j=G_{00}\,(A+j/G_{00})^2-j\cdot j/G_{00}$. The shifted integral gives
+a field-independent factor (for constant $G_{00}$), and what remains is the value of the
+action at the stationary point
+\begin{equation}\label{eq:buscher:dualrel1}
+ A_a=-\frac{\ii}{G_{00}}\,\varepsilon^{ab}\partial_b\tilde\theta .
+\end{equation}
+Since $\varepsilon^{ab}\varepsilon^{ac}=\delta^{bc}$, one has
+$j\cdot j=-\partial_b\tilde\theta\,\partial_b\tilde\theta$. The two factors of $\ii$ turn
+the sign of $-j\cdot j/G_{00}$ into a plus and produce a kinetic term of the correct sign:
+\begin{equation}\label{eq:buscher:dualcircle}
+ \tilde S[\tilde\theta]=\frac{1}{4\pi\ap}\,\frac{1}{G_{00}}\int\dd^2\sigma\;
+   \partial_a\tilde\theta\,\partial_a\tilde\theta .
+\end{equation}
+This is again a circle sigma model, with $\tilde G_{00}=1/G_{00}=\ap/R^2$. If $\tilde\theta$
+has the same period $2\pi\ell_s$ as $\theta$ (which \cref{sec:buscher:global} shows to be the
+case), the dual radius is $\tilde R=\ell_s\sqrt{\tilde G_{00}}=\ap/R$
+\source{Tong §8.3.1, ll.~11770--11799}. No mode expansion was used.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[>=Stealth,node distance=12mm,
+  box/.style={draw,rounded corners=2pt,align=center,inner sep=4pt,font=\small}]
+ \node[box] (m) at (0,0) {master action $S[\theta,A,\tilde\theta]$\\
+    gauged isometry $+$ multiplier $\tilde\theta\,\varepsilon^{ab}\partial_aA_b$};
+ \node[box] (o) at (-4.3,-2.6) {original model\\ $(G,B,\Phi)$, coordinate $\theta$};
+ \node[box] (d) at (4.3,-2.6) {dual model\\ $(\tilde G,\tilde B,\tilde\Phi)$, coordinate
+    $\tilde\theta$};
+ \draw[->] (m.south west) -- node[left,align=right,font=\footnotesize,xshift=-2mm]
+    {integrate $\tilde\theta$:\\ $F=0$, $A$ pure gauge} (o.north);
+ \draw[->] (m.south east) -- node[right,align=left,font=\footnotesize,xshift=2mm]
+    {fix $\theta=0$,\\ integrate $A$ (Gaussian)} (d.north);
+ \draw[<->,dashed] (o) -- node[below,font=\footnotesize]
+    {same partition function} (d);
+\end{tikzpicture}
+\caption{The logic of the Buscher procedure. Both sigma models are obtained from one path
+integral by performing the integrations in different orders; they are therefore two
+descriptions of the same quantum theory, provided the global conditions of
+\cref{sec:buscher:global} hold.}
+\label{fig:buscher:logic}
+\end{figure}
+
+\begin{physicsbox}[Momentum becomes winding]
+Combine the two halves of the argument. Without fixing the gauge, the stationary point
+\eqref{eq:buscher:dualrel1} reads $D_a\theta=-\frac{\ii}{G_{00}}\varepsilon^{ab}
+\partial_b\tilde\theta$, because only the gauge-invariant combination
+$D_a\theta=\partial_a\theta+A_a$ enters. The multiplier constraint allows the other gauge
+choice, $A_a=0$, in which $D_a\theta=\partial_a\theta$. The two fields are therefore related
+by
+\begin{equation}\label{eq:buscher:dualrelcircle}
+ G_{00}\,\partial_a\theta=-\ii\,\varepsilon^{ab}\partial_b\tilde\theta .
+\end{equation}
+The left-hand side is the Noether current of the shift symmetry of $\theta$; its charge is the
+momentum along the circle. The right-hand side is a current that is conserved identically,
+$\partial_a(\varepsilon^{ab}\partial_b\tilde\theta)=0$, whatever the equations of motion; its
+charge counts how many times $\tilde\theta$ winds. So the duality maps the momentum of
+$\theta$ to the winding of $\tilde\theta$, which is the exchange $n\leftrightarrow w$ of
+\cref{ch:tduality}. After continuation to Lorentzian signature, where the factor $\ii$
+disappears, \eqref{eq:buscher:dualrelcircle} is Tong's relation
+$\partial_\alpha X=\epsilon_{\alpha\beta}\partial^\beta Y$ between the coordinate
+$X=X_L+X_R$ and the dual coordinate $Y=X_L-X_R$ \source{Tong §8.3, ll.~11673--11689}.
+\end{physicsbox}
+
+%=====================================================================================
+\section{A general background: deriving the Buscher rules}\label{sec:buscher:rules}
+
+Return to the general Lagrangian \eqref{eq:buscher:split}. Since $\theta$ appears only through
+$\partial_a\theta$, Steps 1--3 can be merged: after gauge fixing $\theta=0$ the covariant
+derivative is just $A_a$, which we rename $V_a$. The master action is obtained from
+\eqref{eq:buscher:split} by the substitution $\partial_a\theta\to V_a$, with $V_a$ an
+independent field, plus the multiplier term \source{AAL §2.1, eq.~(2.1.2), ll.~236--248}:
+\begin{align}\label{eq:buscher:master}
+ 4\pi\ap\,\mathcal L_{\rm master}={}&G_{00}\,V\!\cdot\! V+2G_{0\alpha}\,V\!\cdot\!\partial x^\alpha
+  +G_{\alpha\beta}\,\partial x^\alpha\!\cdot\!\partial x^\beta\notag\\
+ &+\ii\varepsilon^{ab}\big(2B_{0\alpha}V_a\partial_bx^\alpha
+  +B_{\alpha\beta}\partial_ax^\alpha\partial_bx^\beta\big)
+  +2\ii\,\tilde\theta\,\varepsilon^{ab}\partial_aV_b+\ap R^{(2)}\Phi .
+\end{align}
+Integrating over $\tilde\theta$ imposes $\varepsilon^{ab}\partial_aV_b=0$, hence
+$V_a=\partial_a\theta$ on a topologically trivial worldsheet, and one is back at
+\eqref{eq:buscher:split} \source{AAL §2.1, ll.~249--250}. The version with an explicit gauge
+field and $\theta$ kept, due to Ro\v{c}ek and Verlinde, is equivalent and makes the geometric
+meaning clearer: the dual model is obtained by gauging the isometry with a flat connection
+\source{AAL §2.1, eq.~(2.1.8), ll.~342--370}.
+
+Now integrate over $V_a$ instead. Use \eqref{eq:buscher:byparts} for the multiplier term and
+collect everything linear in $V_a$:
+\begin{equation}\label{eq:buscher:J}
+ 4\pi\ap\,\mathcal L_{\rm master}=G_{00}\,V\!\cdot\! V+2\,V\!\cdot\! J+(\text{terms without }V),
+ \qquad
+ J_a=G_{0\alpha}\partial_ax^\alpha+\ii\,\varepsilon^{ab}K_b ,
+\end{equation}
+with the abbreviation $K_b=\partial_b\tilde\theta+B_{0\alpha}\partial_bx^\alpha$. Completing
+the square as before, the stationary point is
+\begin{equation}\label{eq:buscher:Vsol}
+ V_a=-\frac{J_a}{G_{00}}
+ =-\frac{1}{G_{00}}\Big(G_{0\alpha}\partial_ax^\alpha
+   +\ii\,\varepsilon^{ab}\big(B_{0\alpha}\partial_bx^\alpha+\partial_b\tilde\theta\big)\Big),
+\end{equation}
+in agreement with \source{AAL §2.1, eq.~(2.1.3), ll.~250--257}, and the $V$-dependent terms
+are replaced by $-J\cdot J/G_{00}$. It remains to expand $J\cdot J$:
+\begin{align}
+ J\cdot J&=G_{0\alpha}G_{0\beta}\,\partial x^\alpha\!\cdot\!\partial x^\beta
+  +2\ii\,G_{0\alpha}\,\varepsilon^{ab}\partial_ax^\alpha K_b
+  -\varepsilon^{ab}\varepsilon^{ac}K_bK_c\notag\\
+ &=G_{0\alpha}G_{0\beta}\,\partial x^\alpha\!\cdot\!\partial x^\beta
+  -K\!\cdot\! K+2\ii\,G_{0\alpha}\,\varepsilon^{ab}\partial_ax^\alpha K_b ,
+  \label{eq:buscher:JJ}\\
+ K\!\cdot\! K&=\partial\tilde\theta\!\cdot\!\partial\tilde\theta
+  +2B_{0\alpha}\,\partial\tilde\theta\!\cdot\!\partial x^\alpha
+  +B_{0\alpha}B_{0\beta}\,\partial x^\alpha\!\cdot\!\partial x^\beta .\notag
+\end{align}
+Insert this into $-J\cdot J/G_{00}$ and sort the result by structure. The terms symmetric in
+the worldsheet indices build the dual metric, those with $\varepsilon^{ab}$ build the dual
+$B$-field:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item $\partial\tilde\theta\cdot\partial\tilde\theta$ has coefficient $1/G_{00}$;
+\item $2\,\partial\tilde\theta\cdot\partial x^\alpha$ has coefficient $B_{0\alpha}/G_{00}$;
+\item $\partial x^\alpha\cdot\partial x^\beta$ receives
+ $-(G_{0\alpha}G_{0\beta}-B_{0\alpha}B_{0\beta})/G_{00}$ in addition to $G_{\alpha\beta}$;
+\item the term $-\frac{2\ii}{G_{00}}G_{0\alpha}\varepsilon^{ab}\partial_ax^\alpha
+ \partial_b\tilde\theta=+\frac{2\ii}{G_{00}}G_{0\alpha}\,\varepsilon^{ab}
+ \partial_a\tilde\theta\,\partial_bx^\alpha$ has the form of the mixed $B$-term in
+ \eqref{eq:buscher:split} with $B_{0\alpha}$ replaced by $G_{0\alpha}/G_{00}$;
+\item the term $-\frac{2\ii}{G_{00}}G_{0\alpha}B_{0\beta}\,\varepsilon^{ab}
+ \partial_ax^\alpha\partial_bx^\beta$ is antisymmetrized by $\varepsilon^{ab}$ and adds
+ $-(G_{0\alpha}B_{0\beta}-G_{0\beta}B_{0\alpha})/G_{00}$ to $B_{\alpha\beta}$.
+\end{itemize}
+The outcome is a sigma model of the form \eqref{eq:buscher:split} for the coordinates
+$(\tilde\theta,x^\alpha)$.
+
+\begin{theorem}[Buscher rules]\label{thm:buscher:rules}
+Let $(G,B,\Phi)$ be independent of $\theta=X^0$ and $G_{00}\neq0$. Integrating out $V_a$ in
+\eqref{eq:buscher:master} gives the sigma model with background
+\begin{equation}\label{eq:buscher:rules}
+\begin{aligned}
+ \tilde G_{00}&=\frac{1}{G_{00}}, &
+ \tilde G_{0\alpha}&=\frac{B_{0\alpha}}{G_{00}}, &
+ \tilde G_{\alpha\beta}&=G_{\alpha\beta}
+   -\frac{G_{0\alpha}G_{0\beta}-B_{0\alpha}B_{0\beta}}{G_{00}},\\
+ && \tilde B_{0\alpha}&=\frac{G_{0\alpha}}{G_{00}}, &
+ \tilde B_{\alpha\beta}&=B_{\alpha\beta}
+   -\frac{G_{0\alpha}B_{0\beta}-G_{0\beta}B_{0\alpha}}{G_{00}},
+\end{aligned}
+\end{equation}
+together with the dilaton shift of \cref{sec:buscher:dilaton},
+$\tilde\Phi=\Phi-\tfrac12\log G_{00}$. \TL\
+\source{AAL §2.1, eqs.~(2.1.4)--(2.1.6), ll.~258--303; GPR §4.1, eq.~(4.1.9), ll.~6032--6065}
+\end{theorem}
+
+The extracted text of both sources garbles the layout of these equations. The assignment of
+right-hand sides above is fixed by the derivation just given, and it agrees with GPR's
+(4.1.9) once $B_{a0}=-B_{0a}$ is used there.
+
+Three features deserve comment.
+
+\emph{Metric and $B$-field mix.} The mixed components are exchanged,
+$\tilde G_{0\alpha}\leftrightarrow B_{0\alpha}/G_{00}$ and
+$\tilde B_{0\alpha}\leftrightarrow G_{0\alpha}/G_{00}$. In Kaluza--Klein language
+(\cref{ch:circle}) $G_{0\alpha}/G_{00}$ is the gauge field that couples to momentum and
+$B_{0\alpha}$ is the gauge field that couples to winding. The exchange of the two gauge fields
+is the background-field version of $n\leftrightarrow w$.
+
+\emph{A compact form.} In terms of $E_{ij}=G_{ij}+B_{ij}$ the five rules
+\eqref{eq:buscher:rules} become four:
+\begin{equation}\label{eq:buscher:Erules}
+ \tilde E_{00}=\frac{1}{E_{00}},\qquad
+ \tilde E_{0\alpha}=\frac{E_{0\alpha}}{E_{00}},\qquad
+ \tilde E_{\alpha0}=-\frac{E_{\alpha0}}{E_{00}},\qquad
+ \tilde E_{\alpha\beta}=E_{\alpha\beta}-\frac{E_{\alpha0}E_{0\beta}}{E_{00}} .
+\end{equation}
+To check, note $E_{00}=G_{00}$, and take symmetric and antisymmetric parts: for instance
+$\tilde E_{0\alpha}+\tilde E_{\alpha0}=(E_{0\alpha}-E_{\alpha0})/E_{00}=2B_{0\alpha}/G_{00}
+=2\tilde G_{0\alpha}$. The last rule is a Schur complement\index{Schur complement}: it is what
+remains of a matrix after one row and column have been eliminated, as expected from a
+Gaussian integration.
+
+\emph{The rules are an involution.} The dual background is independent of $\tilde\theta$, so
+the procedure can be repeated. Applying \eqref{eq:buscher:Erules} twice gives
+$\tilde{\tilde E}_{00}=E_{00}$,
+$\tilde{\tilde E}_{0\alpha}=(E_{0\alpha}/E_{00})\,E_{00}=E_{0\alpha}$,
+$\tilde{\tilde E}_{\alpha0}=E_{\alpha0}$, and
+$\tilde{\tilde E}_{\alpha\beta}=E_{\alpha\beta}-E_{\alpha0}E_{0\beta}/E_{00}
+-(-E_{\alpha0}/E_{00})(E_{0\beta}/E_{00})E_{00}=E_{\alpha\beta}$. Dualizing twice returns the
+original model \source{AAL §2.1, ll.~317--318}.
+
+\begin{pitfallbox}[Signs and the orientation of the worldsheet]
+The signs of the mixed components in \eqref{eq:buscher:rules}--\eqref{eq:buscher:Erules}
+depend on conventions that differ between papers: the sign of the $B$-term in
+\eqref{eq:buscher:sigma}, the sign of $\varepsilon^{12}$, and the sign of the multiplier
+term. Flipping the orientation of the worldsheet, $\sigma^1\to-\sigma^1$, is equivalent to
+$B\to-B$ \source{GPR §2.4, ll.~1423--1424} and changes $\tilde G_{0\alpha}$ and
+$\tilde B_{0\alpha}$ by a sign, which can be absorbed by $\tilde\theta\to-\tilde\theta$. The
+components $\tilde G_{00}$, $\tilde G_{\alpha\beta}$ and $\tilde B_{\alpha\beta}$ are quadratic
+in the mixed fields and are not affected. Always check a formula taken from the literature on
+one example before using it.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{The dilaton shift}\label{sec:buscher:dilaton}
+
+The Gaussian integral over $V_a$ yields more than the stationary value of the action. It also
+gives a determinant. At each worldsheet point the integral over the two components of $V_a$
+contributes a factor proportional to $1/G_{00}(x(\sigma))$, so that, formally,
+\begin{equation}\label{eq:buscher:formaldet}
+ \int\mathcal DV\;\ee^{-S_{\rm master}}\;=\;\ee^{-\tilde S}\;\times
+ \prod_{\sigma}\frac{1}{G_{00}\big(x(\sigma)\big)} .
+\end{equation}
+When $G_{00}$ depends on $x^\alpha$ this factor depends on the fields that remain and cannot be
+dropped. An infinite product over worldsheet points has no meaning without regularization.
+Buscher's result is that, with a regularization that respects conformal invariance, the
+product equals the exponential of a local term of exactly the form of the dilaton coupling in
+\eqref{eq:buscher:sigma}, and the net effect is\index{dilaton!shift under T-duality}
+\begin{equation}\label{eq:buscher:dilaton}
+ \tilde\Phi=\Phi-\frac12\log G_{00}
+\end{equation}
+\TL\ \source{AAL §2.1, eqs.~(2.1.6)--(2.1.7), ll.~294--316}. We give three arguments for
+\eqref{eq:buscher:dilaton}, in increasing order of rigour.
+
+\paragraph{(i) The low-energy observer.} For a circle of radius $R$ the effective action in
+the non-compact dimensions is multiplied by $2\pi R\,\ee^{-2\Phi}=2\pi R/g_s^2$: the
+circumference comes from the integral over the circle and $\ee^{-2\Phi}$ multiplies the
+string-frame action of \cref{ch:backgrounds}. An observer who cannot distinguish $R$ from
+$\tilde R=\ap/R$ must find the same lower-dimensional Newton constant in both descriptions,
+$R/g_s^2=\tilde R/\tilde g_s^2$, hence
+\begin{equation}\label{eq:buscher:gs}
+ \tilde g_s=g_s\,\sqrt{\tilde R/R}=g_s\,\frac{\sqrt{\ap}}{R}
+\end{equation}
+\source{Tong §8.3, ll.~11691--11714}. With $g_s=\ee^{\Phi}$ and $G_{00}=R^2/\ap$ this is
+$\tilde\Phi=\Phi-\frac12\log(R^2/\ap)$, i.e.\ \eqref{eq:buscher:dilaton}.
+
+\paragraph{(ii) Counting on a lattice.} The next argument is a heuristic of our own, not taken
+from the sources, and is valid for constant $G_{00}$. It shows where the Euler number comes
+from. Replace the worldsheet by a cell decomposition with $N_0$ vertices, $N_1$ links and
+$N_2$ faces, so that $N_0-N_1+N_2=\chi=2-2g$. The field $\theta$ lives on vertices, the
+one-form $V$ on links, and the multiplier $\tilde\theta$, which multiplies the curl of $V$, on
+faces. The reparametrization-invariant measure for $\theta$ is
+$\prod_{\rm vertices}\sqrt{G_{00}}\,\dd\theta$, and for the dual field it is
+$\prod_{\rm faces}\sqrt{\tilde G_{00}}\,\dd\tilde\theta
+=\prod_{\rm faces}G_{00}^{-1/2}\,\dd\tilde\theta$. The Gaussian integral over $V$ gives
+$G_{00}^{-1/2}$ per link. Starting from the original model with its invariant measure and
+passing through the master action, the partition functions are related by
+\[
+ Z_{\rm orig}=G_{00}^{N_0/2}\cdot G_{00}^{-N_1/2}\cdot G_{00}^{N_2/2}\;Z_{\rm dual}
+ =G_{00}^{\chi/2}\,Z_{\rm dual},
+\]
+where the last factor converts $\prod\dd\tilde\theta$ into the invariant dual measure. For
+constant $\Phi$ the dilaton term in \eqref{eq:buscher:sigma} equals $\Phi\chi$, since
+$\frac{1}{4\pi}\int\sqrt h R^{(2)}=\chi$, so each model carries a weight $\ee^{-\Phi\chi}$.
+Equality of $\ee^{-\Phi\chi}Z_{\rm orig}$ and $\ee^{-\tilde\Phi\chi}Z_{\rm dual}$ requires
+$\ee^{-\tilde\Phi\chi}=\ee^{-\Phi\chi}G_{00}^{\chi/2}$, which is \eqref{eq:buscher:dilaton}.
+The local factors cancel between vertices, links and faces; only the topological remainder
+survives, and a term proportional to $\chi$ is a dilaton.
+
+\paragraph{(iii) The regularized determinant.} On the sphere, and in the gauged formulation,
+one can write $A=\partial\alpha$, $\bar A=\bar\partial\beta$ in complex coordinates. The change of variables from
+$(A,\bar A)$ to $(\alpha,\beta)$ has Jacobian $\det\Delta$, with
+$\Delta=-\frac{1}{\sqrt h}\partial_a\sqrt h\,h^{ab}\partial_b$ the scalar Laplacian, and the
+Gaussian integral over $\alpha,\beta$ produces $(\det\Delta_{G_{00}})^{-1}$ with
+$\Delta_{G_{00}}=-\frac{1}{\sqrt h}\partial_a\sqrt h\,h^{ab}G_{00}\partial_b$. The measure
+factor is thus the ratio $\det\Delta/\det\Delta_{G_{00}}$
+\source{AAL §4, eqs.~(4.0.6)--(4.0.9), ll.~1013--1040}. Writing $G_{00}=1+\sigma$ and using
+the heat-kernel expansion to first order in $\sigma$, Alvarez, Alvarez-Gaum\'e and Lozano
+find
+\begin{equation}\label{eq:buscher:heatkernel}
+ \frac{\det\Delta_{G_{00}}}{\det\Delta}
+  =\exp\Big(-\frac{1}{8\pi}\int\dd^2\sigma\sqrt h\,R^{(2)}\log G_{00}\Big)
+\end{equation}
+\TL\ \source{AAL §4, eqs.~(4.0.10)--(4.0.16), ll.~1048--1111}. The inverse of
+\eqref{eq:buscher:heatkernel} multiplies $\ee^{-\tilde S}$. Compared with the dilaton term
+$\exp\big(-\frac{1}{4\pi}\int\sqrt hR^{(2)}\Phi\big)$ it amounts to replacing $\Phi$ by
+$\Phi-\frac12\log G_{00}$. The shift is needed for consistency and cannot be chosen
+otherwise: without it the dual model is in general not conformally invariant, that is, its
+beta functions (\cref{ch:backgrounds}) do not vanish even if those of the original model do
+\source{AAL §4, ll.~945--953}. Buscher showed conformal invariance of the dual model with the
+shift to first order in $\ap$; the gauging argument of Ro\v{c}ek and Verlinde extends the
+equivalence to all orders \source{AAL §2.1, ll.~305--307 and 371--376}.
+
+\begin{proposition}[An invariant measure]\label{prop:buscher:measure}
+Under \eqref{eq:buscher:rules} and \eqref{eq:buscher:dilaton},
+$\det\tilde G=\det G/G_{00}^{\,2}$ and therefore
+\begin{equation}\label{eq:buscher:measure}
+ \sqrt{\det\tilde G}\;\ee^{-2\tilde\Phi}=\sqrt{\det G}\;\ee^{-2\Phi}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Write $G$ in Kaluza--Klein form. With $a_\alpha=G_{0\alpha}/G_{00}$ one has
+$G_{ij}\dd X^i\dd X^j=G_{00}(\dd\theta+a_\alpha\dd x^\alpha)^2
++g_{\alpha\beta}\dd x^\alpha\dd x^\beta$, where
+$g_{\alpha\beta}=G_{\alpha\beta}-G_{0\alpha}G_{0\beta}/G_{00}$, and
+$\det G=G_{00}\det g$ because the change of basis
+$\dd\theta\to\dd\theta+a_\alpha\dd x^\alpha$ has unit determinant. For the dual metric
+the same decomposition gives $\tilde g_{\alpha\beta}=\tilde G_{\alpha\beta}
+-\tilde G_{0\alpha}\tilde G_{0\beta}/\tilde G_{00}
+=\tilde G_{\alpha\beta}-B_{0\alpha}B_{0\beta}/G_{00}=g_{\alpha\beta}$. Hence
+$\det\tilde G=\tilde G_{00}\det g=\det G/G_{00}^2$, and
+$\sqrt{\det\tilde G}\,\ee^{-2\tilde\Phi}=(\sqrt{\det G}/G_{00})\,\ee^{-2\Phi}G_{00}$.
+\end{proof}
+The proof shows more than was claimed: the metric $g_{\alpha\beta}$ seen by a
+lower-dimensional observer is duality invariant. The combination in
+\eqref{eq:buscher:measure} is the measure of the string-frame effective action; in double
+field theory it is written $\ee^{-2d}$ and $d$ is called the \emph{duality-invariant
+dilaton}\index{dilaton!duality-invariant} (\cref{ch:dftaction}). For one circle,
+$\sqrt{\det G}=R/\ell_s=\ee^{x}$ with $x=\log(R/\ell_s)$, so that
+\begin{equation}\label{eq:buscher:twod}
+ 2d=2\Phi-x,\qquad x\mapsto-x,\qquad \Phi\mapsto\Phi-x .
+\end{equation}
+These three linear expressions are what the Lean file of \cref{sec:buscher:lean} encodes.
+
+%=====================================================================================
+\section{Global issues}\label{sec:buscher:global}
+
+\subsection{The period of the Lagrange multiplier}
+
+On a worldsheet of genus $g\ge1$ the constraint $\varepsilon^{ab}\partial_aV_b=0$, that is
+$\dd V=0$, does not imply $V=\dd\theta$ for a single-valued function $\theta$. A closed
+one-form can have non-zero \emph{holonomies}\index{holonomy}
+$\nu_\gamma=\oint_\gamma V$ around the non-contractible cycles $\gamma$. For the original
+model we need exactly the closed forms $V=\dd\theta$ with $\theta$ a map to the circle
+\eqref{eq:buscher:period}; these have $\nu_\gamma\in2\pi\ell_s\Z$, the integer being the
+number of times the worldsheet cycle winds around the target circle. Holonomies that are not
+of this form would describe configurations that do not exist in the original model
+(\cref{fig:buscher:torus}).
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+ \draw[thick] (0,0) rectangle (4,2.4);
+ \draw[->,thick,blue!60!black] (0,0) -- (2.1,0);
+ \draw[->,thick,blue!60!black] (0,2.4) -- (2.1,2.4);
+ \draw[->,thick,red!60!black] (0,0) -- (0,1.3);
+ \draw[->,thick,red!60!black] (4,0) -- (4,1.3);
+ \node[below] at (2,0) {$a$};
+ \node[left] at (0,1.2) {$b$};
+ \node[font=\small,align=center] at (2,1.2) {$\dd V=0$\\[1mm]
+   $\oint_aV=\nu_a,\ \oint_bV=\nu_b$};
+ \node[font=\small,align=left,anchor=west] at (4.8,1.75)
+   {$\oint_a\dd\tilde\theta=2\pi\tilde L\,m_a,\quad
+     \oint_b\dd\tilde\theta=2\pi\tilde L\,m_b$};
+ \node[font=\small,align=left,anchor=west] at (4.8,0.75)
+   {$\displaystyle\sum_{m_a,m_b\in\Z}\Rightarrow\ \nu_a,\nu_b\in
+     \frac{2\pi\ap}{\tilde L}\,\Z$};
+\end{tikzpicture}
+\caption{A torus worldsheet, drawn as a rectangle with opposite sides identified, and its two
+cycles $a$ and $b$. The sum over the windings of the multiplier $\tilde\theta$ restricts the
+holonomies of the flat gauge field $V$ to a lattice.}
+\label{fig:buscher:torus}
+\end{figure}
+
+The multiplier enforces this if, and only if, it is itself periodic with the right period.
+Let $\tilde\theta\sim\tilde\theta+2\pi\tilde L$. On the torus $\dd\tilde\theta$ is the sum
+of an exact form and a harmonic form with periods $\oint_a\dd\tilde\theta=2\pi\tilde Lm_a$,
+$\oint_b\dd\tilde\theta=2\pi\tilde Lm_b$, and the path integral over $\tilde\theta$ includes a
+sum over the integers $m_a,m_b$. The multiplier term is defined by its integrated form
+\eqref{eq:buscher:byparts}, $\frac{\ii}{2\pi\ap}\int V\wedge\dd\tilde\theta$. The exact
+part of $\dd\tilde\theta$ imposes $\dd V=0$ as before. For two closed one-forms on the torus,
+Riemann's bilinear identity gives
+$\int V\wedge\dd\tilde\theta=\oint_aV\oint_b\dd\tilde\theta-\oint_bV\oint_a\dd\tilde\theta$,
+so the harmonic part contributes
+\begin{equation}\label{eq:buscher:holonomy}
+ \sum_{m_a,m_b\in\Z}\exp\Big[-\frac{\ii\tilde L}{\ap}\big(\nu_a\,m_b-\nu_b\,m_a\big)\Big]
+ \;\propto\;\sum_{k_a,k_b\in\Z}\delta\Big(\nu_a-\frac{2\pi\ap}{\tilde L}k_a\Big)\,
+   \delta\Big(\nu_b-\frac{2\pi\ap}{\tilde L}k_b\Big),
+\end{equation}
+by the Poisson formula $\sum_m\ee^{-\ii my}=2\pi\sum_k\delta(y-2\pi k)$. The holonomies are
+forced into $2\pi(\ap/\tilde L)\Z$. If $\theta$ has period $2\pi L$ we need them in
+$2\pi L\,\Z$. The two periods are therefore tied together:\index{T-duality!global conditions}
+\begin{equation}\label{eq:buscher:LL}
+ L\,\tilde L=\ap .
+\end{equation}
+This is the content of the statements ``the holonomies are gauge trivial if $\theta$ has
+periodicity $2\pi$'' \source{Tong §8.3.1, ll.~11759--11769} and ``this fixes the periodicity of
+$\tilde\theta$ to be $2\pi$'' \source{GPR §4.1, ll.~6077--6126}, both in normalizations in which
+$L=\tilde L$; the same analysis with Riemann's bilinear identity is in
+\source{AAL §2.1, ll.~455--558}. With our choice $L=\ell_s$ one gets $\tilde L=\ell_s$, as
+assumed in \cref{sec:buscher:circle}. Abelian isometries need only the torus analysis; higher
+genus adds more pairs of cycles, each treated in the same way.
+
+\begin{pitfallbox}[Where did the radius go?]
+The rule $\tilde G_{00}=1/G_{00}$ is a statement about components in coordinates with
+$L\tilde L=\ap$. If you prefer $X\sim X+2\pi R$ with $G_{XX}=1$, then $L=R$, the dual
+coordinate has period $2\pi\ap/R$ and $\tilde G_{XX}=1$: the dual radius $\ap/R$ sits in the
+period, not in the metric. For the dilaton the formula $\tilde\Phi=\Phi-\frac12\log G_{00}$ is
+correct as written only when $L=\tilde L=\ell_s$; for general $L$ it reads
+$\tilde\Phi=\Phi-\frac12\log(L^2G_{00}/\ap)$, as argument~(i) of
+\cref{sec:buscher:dilaton} shows when the circumference is written as $2\pi L\sqrt{G_{00}}$.
+A sign of trouble is a formula such as $\log G_{00}$ with a dimensionful $G_{00}$.
+\end{pitfallbox}
+
+For a non-compact isometry (a line instead of a circle) the periods of $\dd\tilde\theta$ are
+arbitrary real numbers instead of multiples of $2\pi\tilde L$ \source{AAL §2.1,
+ll.~509--510}. This is the limit $L\to\infty$, $\tilde L\to0$ of \eqref{eq:buscher:LL}. The sum
+in \eqref{eq:buscher:holonomy} becomes an integral, which sets $\nu_a=\nu_b=0$: a field
+$\theta$ valued in a line has no winding sectors, and the flat gauge field is pure gauge.
+
+\subsection{Fixed points of the isometry}\label{sec:buscher:fixed}
+
+The rules require $G_{00}\neq0$. At a fixed point of the isometry the Killing vector vanishes,
+$G_{00}=k^ik_i=0$, and the stationary point \eqref{eq:buscher:Vsol} is singular
+\source{AAL §2.1, ll.~331--332}. The simplest example is the plane in polar coordinates,
+$\dd s^2=\dd r^2+r^2\dd\vartheta^2$, with the rotation $\vartheta\to\vartheta+\epsilon$ and
+constant dilaton $\Phi_0$. In our conventions $\theta=\ell_s\vartheta$ and $G_{00}=r^2/\ap$,
+and \cref{thm:buscher:rules} gives
+\begin{equation}\label{eq:buscher:plane}
+ \dd\tilde s^2=\dd r^2+\frac{\ap}{r^2}\,\dd\tilde\theta^2,\qquad
+ \tilde\Phi=\Phi_0-\log\frac{r}{\ell_s}.
+\end{equation}
+A metric $\dd r^2+f(r)^2\dd\tilde\theta^2$ has scalar curvature $-2f''/f$; with
+$f=\ell_s/r$ this is $-4/r^2$. The flat plane is mapped to a space whose curvature and
+string coupling $\ee^{\tilde\Phi}=g_s\ell_s/r$ both diverge at $r=0$. Nothing is wrong with
+the string on the plane. The dual sigma-model description breaks down where the orbit
+of the isometry shrinks to zero size. A common interpretation (standard; not checked against
+a source in this book's library) is that strings wound around the small orbit are light
+there, and a description in terms of $\tilde G,\tilde B,\tilde\Phi$ alone does not contain
+them. In such cases it is safer to work with the master action, which is regular
+\source{AAL §2.1, ll.~331--332 and 574--576}.
+
+\subsection{What the local derivation does not tell you}
+Alvarez, Alvarez-Gaum\'e and Lozano list further limitations of the derivation in adapted
+coordinates \source{AAL §2.1, ll.~319--334}. The choice of coordinates hides general covariance
+and with it the global topology of the dual manifold: locally the dual is
+$(M/S^1)\times S^1$, but whether the product is twisted is not visible; their example is the
+round $S^3$, whose dual with respect to a fixed-point-free $U(1)$ is $S^2\times S^1$
+\source{AAL §2.1, ll.~559--573}. Isometries that do not commute with the one being dualized
+are in general not symmetries of the dual sigma model. The covariant formulation in terms of
+the Killing vector $k$ replaces $G_{00}\to k^2$, $G_{0\alpha}\to k_\alpha$,
+$B_{0\alpha}\to v_\alpha$, where $\iota_kH=-\dd v$ \source{AAL §2.1, eq.~(2.1.23),
+ll.~578--604}.
+
+%=====================================================================================
+\section{Worked examples}\label{sec:buscher:examples}
+
+\begin{example}[The circle, with numbers]\label{ex:buscher:circle}
+Take $R=2\ell_s$ and $g_s=0.1$. Then $G_{00}=4$, $\tilde G_{00}=\frac14$, so
+$\tilde R=\ell_s/2=\ap/R$. The dilaton shifts by $-\frac12\log4=-\log2$, so
+$\tilde g_s=g_s/2=0.05$, in agreement with \eqref{eq:buscher:gs}. The invariant
+\eqref{eq:buscher:measure} is $\sqrt{G_{00}}/g_s^2=2/0.01=200$ before and
+$\frac12/0.0025=200$ after. In the variables of \eqref{eq:buscher:twod}, $x=\log2$ goes to
+$-\log2$ and $2d=2\log0.1-\log2=\log0.005$ is unchanged. At the self-dual radius $R=\ell_s$
+one has $G_{00}=1$, $x=0$, and neither the metric nor the dilaton changes.
+\end{example}
+
+\begin{example}[A tilted torus with $B$-field]\label{ex:buscher:numbers}
+Let $d=2$ with constant background
+\[
+ G=\begin{pmatrix}2&1\\1&3\end{pmatrix},\qquad
+ B=\begin{pmatrix}0&\frac32\\-\frac32&0\end{pmatrix},\qquad\det G=5 .
+\]
+Dualizing along $X^0$: $\tilde G_{00}=\frac12$, $\tilde G_{01}=B_{01}/G_{00}=\frac34$,
+$\tilde B_{01}=G_{01}/G_{00}=\frac12$, and
+$\tilde G_{11}=3-(1\cdot1-\frac32\cdot\frac32)/2=3+\frac58=\frac{29}{8}$. There is no
+$\tilde B_{\alpha\beta}$ with $\alpha,\beta\ge1$ in two dimensions. Thus
+\[
+ \tilde G=\begin{pmatrix}\frac12&\frac34\\[2pt]\frac34&\frac{29}{8}\end{pmatrix},\qquad
+ \tilde B=\begin{pmatrix}0&\frac12\\-\frac12&0\end{pmatrix},\qquad
+ \det\tilde G=\tfrac{29}{16}-\tfrac{9}{16}=\tfrac54=\frac{\det G}{G_{00}^2},
+\]
+as \cref{prop:buscher:measure} requires, and $\tilde\Phi=\Phi-\frac12\log2$. Dualizing
+again: $1/\tilde G_{00}=2$, $\tilde B_{01}/\tilde G_{00}=1$,
+$\tilde G_{01}/\tilde G_{00}=\frac32$ and
+$\frac{29}{8}-(\frac{9}{16}-\frac14)\cdot2=\frac{29}{8}-\frac58=3$: the original background
+returns.
+\end{example}
+
+\begin{example}[$B$-field becomes tilt]\label{ex:buscher:tilt}
+Let $G=\diag(G_{00},G_{11})$ be a rectangular two-torus with $B_{01}=b$. The rules give
+\begin{equation}\label{eq:buscher:tilt}
+ \tilde G=\begin{pmatrix}\dfrac{1}{G_{00}}&\dfrac{b}{G_{00}}\\[3mm]
+   \dfrac{b}{G_{00}}&G_{11}+\dfrac{b^2}{G_{00}}\end{pmatrix},\qquad\tilde B=0,
+ \qquad\text{i.e.}\qquad
+ \dd\tilde s^2=\frac{1}{G_{00}}\big(\dd\tilde\theta+b\,\dd x^1\big)^2+G_{11}(\dd x^1)^2 .
+\end{equation}
+The dual torus carries no $B$-field, but it is no longer rectangular: the $B$-field has turned
+into the angle between the two cycles. This is the simplest instance of the exchange of the
+K\"ahler modulus $\rho$ (which contains $B$) and the complex-structure modulus $\tau$ (which
+contains the angle) studied in \cref{ch:torus2}. The shift $b\to b+1$, which is a symmetry
+of the original model because it changes the action by $2\pi\ii$ times an integer, becomes
+the geometric transformation $\tilde\theta\to\tilde\theta-x^1$ of the dual torus.
+\end{example}
+
+%=====================================================================================
+\section{Preview: one matrix instead of five rules}\label{sec:buscher:odd}
+
+The rules \eqref{eq:buscher:rules} are non-linear in $(G,B)$. They become linear when $G$ and
+$B$ are packaged into the \emph{generalized metric}\index{generalized metric} of
+\cref{ch:genmetric}, the symmetric $2d\times2d$ matrix
+\begin{equation}\label{eq:buscher:genmetric}
+ \HH(G,B)=\begin{pmatrix}G-BG^{-1}B&BG^{-1}\\-G^{-1}B&G^{-1}\end{pmatrix}.
+\end{equation}
+Let $e=\diag(1,0,\dots,0)$ be the projector on the dualized direction and define
+\begin{equation}\label{eq:buscher:Ttheta}
+ T_\theta=\begin{pmatrix}1-e&-e\\-e&1-e\end{pmatrix},\qquad
+ T_\theta^{\mathsf T}\,\eta\,T_\theta=\eta,\qquad T_\theta^2=1,\qquad
+ \eta=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\end{equation}
+
+\begin{proposition}\label{prop:buscher:conjugation}
+With $(\tilde G,\tilde B)$ given by \eqref{eq:buscher:rules},
+\begin{equation}\label{eq:buscher:conjugation}
+ \HH(\tilde G,\tilde B)=T_\theta^{\mathsf T}\;\HH(G,B)\;T_\theta .
+\end{equation}
+\end{proposition}
+We have verified \eqref{eq:buscher:conjugation} for $d=2$ and $d=3$ with fully symbolic $G$
+and $B$ using sympy; this is a symbolic check, not a Lean theorem. The proof for all $d$ is a
+block-matrix computation (\cref{exr:buscher:conj}); the general $\Odd{d}$ action is the
+subject of \cref{ch:odd}. For $d=1$ it is immediate:
+$\HH=\diag(G_{00},1/G_{00})$, $T_\theta=-\eta$, and conjugation swaps the two entries. The
+matrix $T_\theta$ has integer entries and preserves $\eta$, so it belongs to $\Odd{d}$. It
+is, up to signs, the \emph{factorized duality}\index{factorized duality} $D_0$ of Giveon,
+Porrati and Rabinovici, whose off-diagonal blocks are $+e$ \source{GPR §2.4, eq.~(2.4.29),
+ll.~1397--1421}. The two matrices are related by $B\to-B$, the orientation convention of the
+pitfall box in \cref{sec:buscher:rules}: with $\HH(G,-B)$ on both sides,
+\eqref{eq:buscher:conjugation} holds with $+e$ (also checked symbolically). GPR state that
+the sigma-model duality acts on the background ``exactly as in the flat case''
+\source{GPR §4.1, ll.~6025--6031}. In the same way \eqref{eq:buscher:Erules} is the
+fractional-linear map $\tilde E=\big((1-e)E-e\big)\big({-e}E+(1-e)\big)^{-1}$.
+
+Three consequences follow. Dualities along different circles are conjugations by
+commuting matrices; dualizing all $d$ directions with $B=0$ gives
+$\eta\,\HH(G,0)\,\eta=\HH(G^{-1},0)$, the matrix version of $R\to\ap/R$; and the
+quantity \eqref{eq:buscher:measure} is the only place where the dilaton enters, which is
+why double field theory uses $(\HH,d)$ as its field variables (\cref{ch:dftaction}).
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:buscher:lean}
+
+The file \lean{DoubleFieldTheory/TDualityBuscher.lean} belongs to one of the older libraries
+of the project. It contains no sigma model, no path integral and no metric with more than one
+component. It models the one-circle case with integers and proves arithmetic identities. We
+quote every theorem of the file and say what each one states.
+
+\subsection{The matrix part}
+The imported module \lean{DoubleFieldTheory.GeneralizedGeometry} defines a structure
+\lean{Mat2} of $2\times2$ integer matrices with fields \lean{a b c d}, the product
+\lean{MatMul}, the transpose \lean{MatTranspose}, the matrix
+\lean{InversionGen}${}=\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ and the
+diagonal matrix \lean{GenMetric g ginv}${}=\diag(g,g_{\rm inv})$ with two \emph{independent}
+integer arguments.
+
+\begin{leanbox}[Congruence action and the self-dual point]
+\begin{leancode}
+def CongruenceAction (M H : Mat2) : Mat2 :=
+  MatMul (MatTranspose M) (MatMul H M)
+
+theorem t_duality_congruence (H : Mat2) (hH : H = GenMetric 1 1) :
+    CongruenceAction InversionGen H = GenMetric 1 1 := by ...
+
+theorem inversion_generator_properties :
+    MatMul InversionGen InversionGen = Identity2 ∧ Det2 InversionGen = -1 := by
+  decide
+\end{leancode}
+\textbf{Reading.} \lean{CongruenceAction} is $M^{\mathsf T}HM$, the $d=1$ form of
+\eqref{eq:buscher:conjugation}. The first theorem says: if $H$ is the $2\times2$ identity
+matrix then $\sigma^{\mathsf T}H\sigma$ is the identity matrix, where
+$\sigma=\eta$ for $d=1$. It concerns one fixed matrix, the generalized metric at the self-dual
+radius $G_{00}=1$; it does not state $\diag(g,g^{-1})\mapsto\diag(g^{-1},g)$ for other radii.
+The second theorem says $\sigma^2=1$ and $\det\sigma=-1$.
+\textbf{Proof idea.} After substituting the hypothesis, both sides of the first statement
+reduce by computation to the same structure and \lean{rfl} closes the goal; the second is a
+closed statement about integers settled by \lean{decide}. \TA
+\end{leanbox}
+
+\subsection{The logarithmic radius and the dilaton}
+The remaining declarations use an integer $x$ in the role of $\log(R/\ell_s)$ and an integer
+\lean{phi} in the role of $\Phi$, following \eqref{eq:buscher:twod}.
+
+\begin{leanbox}[Four integer identities]
+\begin{leancode}
+def BuscherLogMap (x : Int) : Int := -x
+def BuscherDilatonMap (phi x : Int) : Int := phi - x
+def TwoDilaton (phi x : Int) : Int := 2 * phi - x
+
+theorem buscher_log_involution (x : Int) :
+    BuscherLogMap (BuscherLogMap x) = x := by ...
+
+theorem buscher_dilaton_involution (phi x : Int) :
+    BuscherDilatonMap (BuscherDilatonMap phi x) (BuscherLogMap x) = phi :=
+  by ...
+
+theorem buscher_dilaton_measure_invariance (phi x : Int) :
+    TwoDilaton (phi - x) (-x) = TwoDilaton phi x := by ...
+
+theorem self_dual_radius_rigidity (x : Int) (hx : BuscherLogMap x = x) :
+    x = 0 := by ...
+\end{leancode}
+\textbf{Reading.} For all integers: $-(-x)=x$; $(\varphi-x)-(-x)=\varphi$;
+$2(\varphi-x)-(-x)=2\varphi-x$; and $-x=x$ implies $x=0$. These are the \emph{arithmetic
+shadows} of four statements of this chapter: the map $R\to\ap/R$ is an involution; the dilaton
+shift \eqref{eq:buscher:dilaton} is undone by a second dualization (because the second shift is
+computed with the dual radius); the combination $2d$ of \eqref{eq:buscher:twod} is invariant;
+and the self-dual radius is the only fixed point.
+\textbf{Proof idea.} Each proof unfolds the definitions with \lean{dsimp} and calls
+\lean{omega}, the decision procedure for linear integer arithmetic. \TA\ for the integer
+identities.
+\end{leanbox}
+
+\paragraph{Honest scope.} An integer cannot represent $\log(R/\ell_s)$ for a general radius,
+so these theorems are not statements about the real numbers $x$ and $\Phi$. The four
+identities are linear and hold verbatim over $\R$ (a one-line \lean{ring} or \lean{linarith}
+proof), but that transfer is not in the file. The documentation strings in the file describe
+the physics in stronger terms than the statements justify; when the two differ, read the
+statement. The identification of \lean{x} with a logarithmic radius and of \lean{phi} with
+the dilaton is an interpretation and is never \TA. None of the following is formalized in
+this file, nor, as far as a search of the catalogue of compiled declarations shows, elsewhere
+in the project: the master action, the Gaussian integration, the rules
+\eqref{eq:buscher:rules} for $d>1$, the determinant \eqref{eq:buscher:heatkernel}, and the
+periodicity argument \eqref{eq:buscher:LL}.
+
+\paragraph{What is proved elsewhere.} The newer library \lean{DualScaleStream2} works with
+Mathlib matrices. Its file \lean{TDuality/Factorized.lean} defines the factorized duality for
+any $d$, with GPR's signs, and proves that it is an involution and an element of $\Odd{d}$.
+Its file \lean{DFT/GeneralizedMetric.lean} proves that the full duality inverts the metric at
+$B=0$:
+\begin{leancode}
+def factorized (k : Fin d) : Matrix (Charge d) (Charge d) ℤ :=
+  fromBlocks (1 - proj k) (proj k) (proj k) (1 - proj k)
+
+theorem factorized_mul_self (k : Fin d) :
+    factorized k * factorized k = 1 := by ...
+theorem factorized_isODD (k : Fin d) : IsODD (factorized k) := by ...
+
+theorem tduality_inverts_metric (G : Matrix (Fin d) (Fin d) ℝ)
+    (hG : IsUnit G.det) :
+    etaR d * genMetric G 0 * etaR d = genMetric G⁻¹ 0 := by ...
+\end{leancode}
+These are statements about real and integer matrices for all $d$; they are discussed in
+\cref{ch:odd,ch:genmetric}. A faithful formalization of \cref{thm:buscher:rules} as an
+algebraic statement would define the map $(G,B)\mapsto(\tilde G,\tilde B)$ on real matrices
+with $G_{00}\neq0$ and prove \cref{prop:buscher:conjugation} and the involution property.
+This is within reach of Mathlib's block-matrix and Schur-complement lemmas and is a natural
+project for a reader (see also \cref{ch:open}). A formalization of the path-integral derivation is not, since Mathlib has
+no functional integral.
+
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.43\textwidth}c
+  >{\raggedright\arraybackslash}p{0.45\textwidth}@{}}
+\toprule
+Claim & Tier & Evidence\\
+\midrule
+$\sigma^{\mathsf T}\mathbf 1\sigma=\mathbf 1$, $\sigma^2=1$, $\det\sigma=-1$ (integer
+ $2\times2$) & \TA & \lean{t\_duality\_congruence}, \lean{inversion\_generator\_properties}\\[2pt]
+$-(-x)=x$; $-x=x\Rightarrow x=0$ over $\Z$ & \TA & \lean{buscher\_log\_involution},
+ \lean{self\_dual\_radius\_rigidity}\\
+$(\varphi-x)-(-x)=\varphi$; $2(\varphi-x)+x=2\varphi-x$ over $\Z$ & \TA &
+ \lean{buscher\_dilaton\_involution}, \lean{buscher\_dilaton\_measure\_invariance}\\
+$D_k^2=1$, $D_k\in\Odd{d}$; $\eta\HH(G,0)\eta=\HH(G^{-1},0)$ & \TA &
+ \lean{factorized\_mul\_self}, \lean{factorized\_isODD},
+ \lean{tduality\_inverts\_metric}\\
+Buscher rules \eqref{eq:buscher:rules} from the master action & \TL & AAL §2.1; GPR §4.1;
+ derived on the page\\
+Dilaton shift \eqref{eq:buscher:dilaton} from the regularized determinant & \TL & AAL §4\\
+Equivalence on all genera given $L\tilde L=\ap$ & \TL & AAL §2.1; GPR §4.1\\
+$\HH(\tilde G,\tilde B)=T_\theta^{\mathsf T}\HH T_\theta$ for $d=2,3$ & --- & symbolic check
+ (sympy)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%=====================================================================================
+\begin{summarybox}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item If $G$, $B$, $\Phi$ do not depend on a coordinate $\theta$, the sigma model can be
+ rewritten with an auxiliary vector $V_a$ in place of $\partial_a\theta$ and a Lagrange
+ multiplier $\tilde\theta$ imposing $\varepsilon^{ab}\partial_aV_b=0$.
+\item Integrating out $\tilde\theta$ returns the original model. Integrating out $V_a$, a
+ Gaussian integral, gives a sigma model for $(\tilde\theta,x^\alpha)$ with the Buscher
+ background \eqref{eq:buscher:rules}: $\tilde G_{00}=1/G_{00}$, and the mixed components of
+ $G$ and $B$ are exchanged.
+\item The determinant of the Gaussian integral shifts the dilaton,
+ $\tilde\Phi=\Phi-\frac12\log G_{00}$; then $\sqrt{\det G}\,\ee^{-2\Phi}$ is invariant.
+\item On worldsheets of higher genus the equivalence requires the periods of $\theta$ and
+ $\tilde\theta$ to satisfy $L\tilde L=\ap$. The rules fail where the Killing vector
+ vanishes.
+\item In terms of the generalized metric the rules are one conjugation by an element of
+ $\Odd{d}$.
+\item In Lean, the file for this chapter proves integer identities that mirror the one-circle
+ case ($x\to-x$, $\Phi\to\Phi-x$, $2d$ invariant, unique fixed point $x=0$). The rules
+ themselves are Tier~L.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{exr:buscher:gauss}
+Evaluate the ordinary integral $\int\dd^2V\exp\big(-\frac{1}{4\pi\ap}(gV\cdot V+2V\cdot j)\big)$
+for a constant $g>0$ and a complex vector $j_a$. Identify the stationary point, the exponent
+and the prefactor, and explain which of the three becomes the dilaton shift.
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{exr:buscher:numbers}
+Dualize the background of \cref{ex:buscher:numbers} along $X^1$ instead of $X^0$ (relabel the
+coordinates, apply \eqref{eq:buscher:rules}, relabel back). Check
+$\det\tilde G=\det G/G_{11}^2$.
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{exr:buscher:Eform}
+Derive \eqref{eq:buscher:Erules} from \eqref{eq:buscher:rules}, and conversely.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:buscher:complex}
+Repeat the derivation of \cref{sec:buscher:rules} in complex worldsheet coordinates, starting
+from GPR's action $\frac{1}{2\pi}\int\dd^2z\,E_{ij}\partial X^i\bar\partial X^j$ with gauge
+fields $A,\bar A$ and multiplier term $\tilde\theta(\partial\bar A-\bar\partial A)$
+\source{GPR §4.1, ll.~5976--6000}. Show that the integration over $A,\bar A$ leads directly
+to \eqref{eq:buscher:Erules}, up to the sign conventions discussed in the pitfall box.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:buscher:gprdilaton}
+GPR write the dilaton coupling as $-\frac{1}{8\pi}\int\dd^2z\,\phi R^{(2)}$ and the shift as
+$\phi'=\phi+\log G_{00}$ \source{GPR §4.1, ll.~5947--5953 and 6067--6071}. Find the relation
+between their $\phi$ and the $\Phi$ of this chapter that makes the two statements agree.
+(Hint: compare the coefficient of the curvature term and apply both shifts to the circle.)
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:buscher:hopf}
+The round three-sphere of radius $r_0$ can be written as
+$\dd s^2=\frac{r_0^2}{4}\big[\dd\vartheta^2+\sin^2\!\vartheta\,\dd\phi^2
++(\dd\psi+\cos\vartheta\,\dd\phi)^2\big]$, with $\psi\sim\psi+4\pi$. Set $B=0$ and dualize
+along $\psi$ (first rescale $\psi$ so that its period is $2\pi\ell_s$). Show that the dual
+metric is the product of a round $S^2$ and a circle, with
+$\tilde B\propto\cos\vartheta\,\dd\tilde\theta\wedge\dd\phi$, and that the dilaton is
+constant. Compare with \source{AAL §2.1, ll.~570--573}.
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{exr:buscher:leangeneral}
+State and prove in Lean the $d=1$ Buscher rule that is missing from the file:
+\begin{leancode}
+theorem buscher_circle_shadow (g ginv : Int) :
+    CongruenceAction InversionGen (GenMetric g ginv) = GenMetric ginv g
+\end{leancode}
+(Hint: \lean{simp [CongruenceAction, MatMul, MatTranspose, InversionGen, GenMetric]}.) Why
+does this statement not need the hypothesis $g\cdot g_{\rm inv}=1$?
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{exr:buscher:leanreal}
+Using Mathlib, restate the last two theorems of the second box of
+\cref{sec:buscher:lean} (the invariance of \lean{TwoDilaton} and the uniqueness of the fixed
+point) for real \lean{x} and \lean{phi}, and prove them. Which tactic replaces \lean{omega}, and why
+does \lean{omega} not apply?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]\label{exr:buscher:conj}
+Prove \cref{prop:buscher:conjugation} for all $d$. (Hint: write
+$\HH=\left(\begin{smallmatrix}1&B\\0&1\end{smallmatrix}\right)
+\left(\begin{smallmatrix}G&0\\0&G^{-1}\end{smallmatrix}\right)
+\left(\begin{smallmatrix}1&0\\-B&1\end{smallmatrix}\right)$, and use the Kaluza--Klein
+decomposition of the proof of \cref{prop:buscher:measure} to reduce the statement to $d=1$
+blocks.)
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item The path-integral argument for one circle, including the remark on holonomies:
+ \source{Tong §8.3.1, ll.~11716--11803}; the dilaton from the effective action:
+ \source{Tong §8.3, ll.~11691--11714}.
+\item Buscher's formulation, the gauging of Ro\v{c}ek and Verlinde, the covariant form of the
+ rules and the global analysis: \source{AAL §2.1, ll.~217--604}. The dilaton and the
+ regularized determinant: \source{AAL §4, ll.~943--1111}.
+\item Factorized duality in sigma models in complex coordinates and the periodicity of the
+ multiplier: \source{GPR §4.1, ll.~5904--6127}; the matrix $D_i$ in the flat case:
+ \source{GPR §2.4, ll.~1397--1424}.
+\item Buscher's original papers are cited in AAL as reference [16] and in GPR as references
+ [33]--[36]; they are not part of this book's library and have not been checked directly.
+\end{itemize}

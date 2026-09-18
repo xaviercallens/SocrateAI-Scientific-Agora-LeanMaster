@@ -1,0 +1,996 @@
+\chapter{Kummer Surfaces and the Orbifold \texorpdfstring{$T^4/\Z_2$}{T4/Z2}}\label{ch:kummer}
+
+The K3 surfaces of \cref{ch:k3} were defined by equations, and their lattice
+$3U\oplus2E_8(-1)$ was obtained in \cref{ch:k3lattice} from general theorems. Neither
+description lets one \emph{see} the $22$ two-cycles, and neither is a space on which a string
+can be quantized exactly. This chapter studies the one K3 surface for which both are possible.
+Take a four-torus, identify $x$ with $-x$, and repair the $16$ singular points that result. The
+outcome is a K3 surface, the \emph{Kummer surface}\index{Kummer surface}, and every number
+attached to K3 can be counted on it by hand: $22=6+16$, $24=8+16$, $20=4+16$,
+$(3,19)=(3,3)+(0,16)$, and, for the string, $80=16+64$. The questions we answer are these. Why
+are there exactly $16$ singular points and what do they look like? What does ``blowing up''
+do, in coordinates, and why does the new sphere have self-intersection $-2$? Why do the $6+16$
+obvious classes \emph{not} generate $H^2(X,\Z)$, and what is the rank-$16$ \emph{Kummer
+lattice} that they span after saturation? Finally, how does the string know about the $16$
+spheres when they have zero size? The answer to the last question, twisted sectors, is the
+reason why string theory on an orbifold is consistent although the space is singular. The
+torus side of the story uses \cref{ch:narain}; the lattice vocabulary (discriminant, index,
+$U$, even lattices) is that of \cref{ch:lattices}.
+
+%=====================================================================================
+\section{The orbifold \texorpdfstring{$T^4/\Z_2$}{T4/Z2}}\label{sec:kummer:orbifold}
+
+\subsection{Sixteen fixed points}
+
+Let $\Lambda\subset\R^4$ be a lattice of rank four and $A=\R^4/\Lambda$ the four-torus. The map
+$\iota\colon x\mapsto -x$ preserves $\Lambda$ and therefore acts on $A$; since
+$\iota^2=1$ it generates a group $\Z_2$. We write $S_0=A/\iota$ for the quotient, in which the
+points $x$ and $-x$ are identified, and follow the notation of \source{Asp §2.6,
+ll.~1064--1072}. A point of $A$ is fixed by $\iota$ when $x\equiv-x$ modulo $\Lambda$, that is
+when $2x\in\Lambda$:
+\begin{equation}\label{eq:kummer:fixed}
+  \mathrm{Fix}(\iota)=\tfrac12\Lambda/\Lambda\;\cong\;(\Z/2\Z)^4 ,\qquad
+  |\mathrm{Fix}(\iota)|=2^4=16 .
+\end{equation}
+If $\lambda_1,\dots,\lambda_4$ is a basis of $\Lambda$, the fixed points are
+$p_\epsilon=\frac12(\epsilon_1\lambda_1+\dots+\epsilon_4\lambda_4)$ with
+$\epsilon=(\epsilon_1,\dots,\epsilon_4)\in\mathbb{F}_2^4$, where $\mathbb{F}_2=\{0,1\}$ is the
+field with two elements. These are the points of order two of the group $A$
+\source{Huy ch.~1, Example~1.3(iii), ll.~218--222}. The labelling by the vector space
+$\mathbb{F}_2^4$\index{two-torsion points} looks like bookkeeping now; in
+\cref{sec:kummer:lattice} the affine geometry of $\mathbb{F}_2^4$ will decide which
+combinations of cycles are integral.
+
+\begin{example}[The square torus]\label{ex:kummer:square}
+Take $A=\C^2/(\Z+\ii\Z)^2$ with coordinates $(z_1,z_2)$, as in \source{Asp eq.~(49),
+ll.~1066--1072}. In each factor the fixed points of $z\mapsto-z$ are
+$0,\ \frac12,\ \frac{\ii}2,\ \frac12+\frac{\ii}2$, so the $16$ fixed points are the pairs
+$(z_1,z_2)$ with both entries in this list. One factor alone gives the ``pillow''
+$T^2/\Z_2$ of \cref{fig:kummer:pillow}: fold the fundamental square along its middle line and
+sew the edges; the result is a sphere with four corners.
+\end{example}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=0.82]
+  % pillow: fundamental domain
+  \fill[blue!8] (0,0) rectangle (1.5,3);
+  \draw[thick] (0,0) rectangle (3,3);
+  \draw[dashed] (1.5,0)--(1.5,3);
+  \foreach \p in {(0,0),(1.5,0),(0,1.5),(1.5,1.5)} \fill[tierC] \p circle (2.2pt);
+  \foreach \p in {(3,0),(0,3),(3,3),(1.5,3),(3,1.5)} \draw[tierC] \p circle (2.2pt);
+  \node[below] at (0,0) {\small $0$};
+  \node[below] at (1.5,0) {\small $\frac12$};
+  \node[left] at (0,1.5) {\small $\frac{\ii}2$};
+  \node[below] at (3,0) {\small $1$};
+  \node[left] at (0,3) {\small $\ii$};
+  \node at (1.5,-0.95) {\small (a) $T^2/\Z_2$};
+  % 4x4 grid = F_2^4
+  \begin{scope}[xshift=5.2cm]
+    \fill[green!12,rounded corners=3pt] (-0.3,-0.3) rectangle (1.3,3.3);
+    \draw[tierA,thick,rounded corners=3pt] (-0.22,-0.22) rectangle (3.22,0.22);
+    \foreach \x in {0,1,2,3} \foreach \y in {0,1,2,3} \fill (\x,\y) circle (2pt);
+    \node[below] at (0,-0.3) {\scriptsize $00$};
+    \node[below] at (1,-0.3) {\scriptsize $01$};
+    \node[below] at (2,-0.3) {\scriptsize $10$};
+    \node[below] at (3,-0.3) {\scriptsize $11$};
+    \node[left] at (-0.3,0) {\scriptsize $00$};
+    \node[left] at (-0.3,1) {\scriptsize $01$};
+    \node[left] at (-0.3,2) {\scriptsize $10$};
+    \node[left] at (-0.3,3) {\scriptsize $11$};
+    \node at (1.5,-0.95) {\small (b) $\mathbb{F}_2^4$: $(\epsilon_1\epsilon_2\,|\,\epsilon_3\epsilon_4)$};
+  \end{scope}
+\end{tikzpicture}
+\caption{(a) A fundamental domain of $z\mapsto-z$ on the square torus is the shaded half; the
+four filled dots are the fixed points (open dots are their translates). (b) The $16$ fixed
+points of $T^4/\Z_2$ as the points of $\mathbb{F}_2^4$; horizontal position is
+$(\epsilon_1\epsilon_2)$, vertical position is $(\epsilon_3\epsilon_4)$. The framed row is an
+affine plane (four points: the fixed points on one invariant two-torus); the shaded block
+$\epsilon_1=0$ is an affine hyperplane (eight points).}\label{fig:kummer:pillow}
+\end{figure}
+
+\subsection{What the quotient looks like near a fixed point}
+
+Away from the $16$ points the action of $\Z_2$ is free and $S_0$ is a smooth flat manifold.
+Near a fixed point $p$ put $y=x-p$; then $\iota$ acts as $y\mapsto-y$, and a neighbourhood of
+the image of $p$ in $S_0$ is a neighbourhood of the origin in
+\begin{equation}\label{eq:kummer:local}
+  \R^4/\{\pm1\}=\C^2/\Z_2,\qquad (\xi,\eta)\sim(-\xi,-\eta).
+\end{equation}
+This is a cone: the sphere $|y|=r$ is mapped to $S^3/\{\pm1\}=\mathbb{RP}^3$, so
+$\C^2/\Z_2$ is the cone over $\mathbb{RP}^3$ with its vertex at the fixed point. It is not a
+manifold there, because a small punctured neighbourhood of a point in a four-manifold is
+simply connected, while $\pi_1(\mathbb{RP}^3)=\Z_2$. The space $S_0$ is an
+\emph{orbifold}\index{orbifold}: it is covered by patches of the form $\R^n/G_i$ with $G_i$
+finite \source{Asp §2.6, ll.~1042--1049}. Such a singular point, locally $\C^2/\Z_2$, is
+called an $A_1$ singularity\index{A1 singularity@$A_1$ singularity} or ordinary double point;
+the name will be justified in \cref{sec:kummer:local}.
+
+\subsection{Why \texorpdfstring{$S_0$}{S0} deserves to be called a K3 surface}
+
+A K3 surface was defined in \cref{ch:k3} by a trivial canonical bundle and the absence of
+holomorphic one-forms, and was shown to be simply connected. We check the three properties
+for $S_0$. Choose a complex structure on $\R^4$ with coordinates $(z_1,z_2)$, so that $A$ is
+a complex torus.
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item The holomorphic two-form $\dd z_1\wedge\dd z_2$ is invariant, since both factors change
+sign. It descends to $S_0$ and has no zeros. The Kähler form
+$\frac{\ii}2(\dd z_1\wedge\dd\bar z_1+\dd z_2\wedge\dd\bar z_2)$ is invariant for the same
+reason \source{Asp ll.~1073--1077}.
+\item The one-forms $\dd z_1,\dd z_2$ are odd and do not descend: $S_0$ has no holomorphic
+one-forms, although $A$ has two.
+\item $S_0$ is simply connected \source{Asp ll.~1074--1076}. Indeed, let $\gamma$ be the
+closed loop $s\mapsto s\lambda_1$, $s\in[0,1]$, which generates one factor of
+$\pi_1(A)=\Z^4$. Its second half, from the fixed point $\frac12\lambda_1$ to
+$\lambda_1\equiv0$, is the image under $\iota$ of the first half run backwards. In $S_0$ the
+loop is therefore of the form $\delta\cdot\delta^{-1}$ and can be contracted. The new closed
+loops of $S_0$, images of paths from $y$ to $-y$, are of the same form once the path is slid
+through a fixed point.
+\end{enumerate}
+
+\begin{physicsbox}[Holonomy $\Z_2\subset SU(2)$: a flat space that breaks half the supersymmetry]
+The torus is flat, so parallel transport around a contractible loop is trivial. In $S_0$ there
+are new closed loops: the image of a path in $A$ from $y$ to $-y$. A vector transported along
+it comes back multiplied by $-1$, because the identification $y\sim-y$ acts on tangent
+vectors too. The holonomy group of $S_0$ is thus $\Z_2=\{\pm\mathbf 1_2\}$, and
+$-\mathbf 1_2=\diag(-1,-1)$ has determinant $+1$: it lies in $SU(2)$
+\source{Asp ll.~1331--1335}. A spinor on a four-dimensional space transforms under
+$SU(2)_+\times SU(2)_-$; if the holonomy lies in one factor, the spinors of the other
+chirality are untouched (\cref{ch:k3}). Hence $S_0$ preserves exactly the same half of the
+supersymmetry as a smooth K3 surface with its full $SU(2)$ holonomy, while being flat
+everywhere except at $16$ points. All the curvature of K3, in particular the whole of
+$\chi=24$, has been pushed into these points.
+\end{physicsbox}
+
+\begin{pitfallbox}[$T^2/\Z_2$ is not a ``two-dimensional K3'']
+For one complex dimension, $z\mapsto-z$ has determinant $-1$ on $\dd z$: the holomorphic
+one-form is projected out, and the holonomy $-1\in U(1)$ is not in $SU(1)=\{1\}$. The pillow
+of \cref{fig:kummer:pillow}(a) is a sphere with four conical points of deficit angle $\pi$;
+the total deficit $4\pi=2\pi\chi(S^2)$ is the Gauss--Bonnet theorem. It is positively
+curved and preserves no supersymmetry by itself. The rule is that
+$\C^n/G$ is a local model of a Calabi--Yau orbifold only when $G\subset SU(n)$; for $n=2$
+this is what makes $\dd z_1\wedge\dd z_2$ invariant \source{Asp ll.~1331--1333}.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{The local model: resolving \texorpdfstring{$\C^2/\Z_2$}{C2/Z2}}\label{sec:kummer:local}
+
+\subsection{The singularity as a quadric cone}
+
+Functions on $\C^2/\Z_2$ are functions of $(\xi,\eta)$ that are even under
+$(\xi,\eta)\mapsto(-\xi,-\eta)$. Every even polynomial is a polynomial in the three quadratic
+monomials
+\begin{equation}\label{eq:kummer:invariants}
+  x_0=\xi^2,\qquad x_1=\eta^2,\qquad x_2=\xi\eta,\qquad\text{which satisfy}\qquad
+  f:=x_0x_1-x_2^2=0 .
+\end{equation}
+Conversely a point of the surface $\{f=0\}\subset\C^3$ determines $(\xi,\eta)$ up to the
+common sign, so $\C^2/\Z_2$ \emph{is} the hypersurface $f=0$ \source{Asp eq.~(50),
+ll.~1082--1091}. The gradient $(\partial_0f,\partial_1f,\partial_2f)=(x_1,x_0,-2x_2)$ vanishes
+only at the origin, which is the single singular point. With $x_0=u+\ii v$, $x_1=u-\ii v$,
+$x_2=\ii w$ the equation becomes $u^2+v^2+w^2=0$, the case $n=2$ of the $A_{n-1}$ singularity $x^2+y^2+z^n=0$ in the $A$--$D$--$E$ list\index{ADE singularities@$A$--$D$--$E$ singularities} of
+surface singularities \source{Asp ll.~1226--1230 and eq.~(58), ll.~1523--1527}.
+
+\subsection{Blowing up in coordinates}\index{blow-up}
+
+The idea of a blow-up is to remember not only \emph{that} a path reaches the singular point
+but \emph{from which direction}. In $\C^3$ a direction is a point $[s_0:s_1:s_2]\in
+\mathbb{P}^2$, and the blow-up of $\C^3$ at the origin is the set of pairs (point, line
+through the origin containing it), $\{x_is_j=x_js_i\}\subset\C^3\times\mathbb{P}^2$
+\source{Asp eq.~(51), ll.~1094--1106}. A path in the cone $f=0$ approaching the origin along
+$(x_0t,x_1t,x_2t)$ lands on a direction with $s_0s_1-s_2^2=0$. The closure of the cone minus
+its vertex inside the blow-up, its \emph{proper transform} $\widetilde{\C^2/\Z_2}$, therefore
+replaces the vertex by the conic
+\begin{equation}\label{eq:kummer:E}
+  E=\{s_0s_1=s_2^2\}\subset\mathbb{P}^2,\qquad
+  [\xi:\eta]\longmapsto[\xi^2:\eta^2:\xi\eta],
+\end{equation}
+which the displayed parametrization identifies with $\mathbb{P}^1$
+\source{Asp ll.~1123--1131}. In words: $E$ is the set of complex lines $\ell\subset\C^2$
+through the origin (the points $\pm(\xi,\eta)$ lie on the same line), and the resolved space
+is
+\begin{equation}\label{eq:kummer:total}
+  \widetilde{\C^2/\Z_2}=\{(\ell,q)\;:\;\ell\in\mathbb{P}^1,\ q\in\ell/\{\pm1\}\} .
+\end{equation}
+It is fibred over $E=\mathbb{P}^1$ with fibre $\ell/\{\pm1\}\cong\C$ (the quotient of a
+complex line by $\pm1$ is again a complex line, with coordinate the square). We now make this
+explicit. Cover $\mathbb{P}^1$ by the charts $\xi\neq0$ and $\eta\neq0$ and use
+\begin{equation}\label{eq:kummer:charts}
+  \text{chart 1:}\quad t=\frac{\eta}{\xi}=\frac{x_2}{x_0},\quad a=\xi^2=x_0;
+  \qquad\qquad
+  \text{chart 2:}\quad t'=\frac{\xi}{\eta}=\frac{x_2}{x_1},\quad a'=\eta^2=x_1 .
+\end{equation}
+In chart 1 the cone is parametrized by $(x_0,x_1,x_2)=(a,\,at^2,\,at)$, which indeed solves
+$x_0x_1=x_2^2$, and $(a,t)\in\C^2$ are unconstrained coordinates: the space is smooth. The
+exceptional curve is $E=\{a=0\}$, with $t$ as its coordinate. On the overlap
+\begin{equation}\label{eq:kummer:transition}
+  t'=\frac1t,\qquad a'=t^2\,a .
+\end{equation}
+Compare with the tautological line bundle $\mathcal{O}(-1)$ over $\mathbb{P}^1$, whose fibre
+over $\ell$ is the line $\ell$ itself: its fibre coordinates are $\xi$ and $\eta=t\,\xi$, so
+the transition function is $t$. The transition function of our bundle is $t^2$, hence
+\begin{equation}\label{eq:kummer:Ominus2}
+  \widetilde{\C^2/\Z_2}\;=\;\text{total space of }\mathcal{O}_{\mathbb{P}^1}(-2),
+\end{equation}
+with $E$ as the zero section \source{Asp ll.~1134--1137}.
+
+\begin{proposition}[The exceptional curve is a $(-2)$-curve]\label{prop:kummer:minus2}
+$E\cdot E=-2$.\index{(-2)-curve@$(-2)$-curve}
+\end{proposition}
+\begin{proof}[Two derivations]
+(i) The self-intersection of a curve is the degree of its normal bundle, computed as the
+number of zeros minus the number of poles of any meromorphic section \source{Asp
+ll.~1139--1173}. Take the section $a=1$ in chart 1. In chart 2 it reads
+$a'=t^2=1/t'^2$: no zeros and a double pole at $t'=0$. The degree is $0-2=-2$.
+(ii) For a smooth curve $C$ of genus $g$ in a surface with trivial canonical bundle, the
+adjunction formula gives $C\cdot C=2g-2$ \source{Asp eq.~(53), ll.~1178--1182}. For
+$g=0$ this is $-2$. Route (ii) assumes the canonical bundle of the resolved space to be
+trivial; this is \cref{prop:kummer:crepant}.
+\end{proof}
+
+A negative self-intersection means that $E$ is rigid: it cannot be moved to a nearby
+holomorphic curve, since two distinct holomorphic curves intersect non-negatively
+\source{Asp ll.~1173--1177}.
+
+\begin{proposition}[The resolution is crepant]\label{prop:kummer:crepant}
+The two-form $\dd\xi\wedge\dd\eta$ on $\C^2/\Z_2$ extends to a holomorphic two-form without
+zeros on $\widetilde{\C^2/\Z_2}$. Explicitly
+$\dd\xi\wedge\dd\eta=\tfrac12\,\dd a\wedge\dd t=-\tfrac12\,\dd a'\wedge\dd t'$.
+\index{crepant resolution}
+\end{proposition}
+\begin{proof}
+In chart 1, $\xi=a^{1/2}$ and $\eta=t\,a^{1/2}$, so
+$\dd\xi=\frac12a^{-1/2}\dd a$ and $\dd\eta=a^{1/2}\dd t+\frac12ta^{-1/2}\dd a$. The wedge
+product is $\frac12a^{-1/2}a^{1/2}\,\dd a\wedge\dd t=\frac12\dd a\wedge\dd t$: the square roots
+cancel, and nothing special happens at $a=0$. From \eqref{eq:kummer:transition},
+$\dd a'\wedge\dd t'=(t^2\dd a+2ta\,\dd t)\wedge(-t^{-2}\dd t)=-\dd a\wedge\dd t$. (Both Jacobians
+were confirmed by a symbolic check.)
+\end{proof}
+
+\begin{pitfallbox}[Blowing up a smooth point is different]
+If one blows up the origin of $\C^2$ itself, without the quotient, the coordinates are
+$(\xi,t)$ with $\eta=t\xi$, the exceptional curve has normal bundle $\mathcal{O}(-1)$ and
+self-intersection $-1$, and $\dd\xi\wedge\dd\eta=\xi\,\dd\xi\wedge\dd t$ \emph{vanishes} along
+$E=\{\xi=0\}$. The canonical bundle changes, $\omega_{\tilde A}\cong\mathcal{O}(\sum E_i)$ for
+the blow-up $\tilde A$ of the torus in $16$ points \source{Huy ch.~1, ll.~244--246}. Blowing
+up a smooth point of a K3 surface destroys the K3 property; blowing up an $A_1$ point
+preserves it.
+\end{pitfallbox}
+
+\subsection{The global construction, in two orders}
+
+Performing the local surgery at all $16$ points of $S_0$ gives a smooth compact complex
+surface $X=\operatorname{Km}(A)$ with a nowhere vanishing holomorphic two-form
+(\cref{prop:kummer:crepant} glued to $\dd z_1\wedge\dd z_2$), with no holomorphic one-forms
+and simply connected: a K3 surface \TL{} \source{Asp ll.~1188--1194; Huy ch.~1,
+Example~1.3(iii), ll.~218--250}. One can also resolve in the opposite order
+\source{Huy ll.~225--240 and §3.2.5, ll.~2015--2031}: first blow up the $16$ fixed points of
+the smooth torus, obtaining $\sigma\colon\tilde A\to A$ with sixteen $(-1)$-curves $E_i$; the
+involution lifts to $\tilde\iota$ on $\tilde A$, acting in the coordinates of the pitfall box
+as $(\xi,t)\mapsto(-\xi,t)$; its fixed locus is the union of the curves $E_i=\{\xi=0\}$, and
+the quotient has the smooth coordinates $(a,t)=(\xi^2,t)$ of \eqref{eq:kummer:charts}:
+\begin{equation}\label{eq:kummer:square}
+\begin{tikzcd}[column sep=large]
+  \tilde A \arrow[r,"\sigma"] \arrow[d,"\pi"'] & A \arrow[d] \\
+  X \arrow[r] & A/\iota=S_0
+\end{tikzcd}
+\qquad\qquad
+\begin{aligned}
+  &\pi\colon\tilde A\to X \text{ is a double cover branched along } \textstyle\bigcup E_i,\\
+  &\bar E_i:=\pi(E_i)\subset X,\qquad \pi^*\mathcal{O}(\bar E_i)\cong\mathcal{O}(2E_i).
+\end{aligned}
+\end{equation}
+The second order is the one used for computations in cohomology, because everything is
+pulled back from or pushed forward to the smooth surface $\tilde A$.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=0.72]
+  % singular cone
+  \draw[thick] (-1.5,2)--(0,0)--(1.5,2);
+  \draw[thick] (-1.5,-2)--(0,0)--(1.5,-2);
+  \draw (0,2) ellipse (1.5 and 0.3);
+  \draw (1.5,-2) arc (0:-180:1.5 and 0.3);
+  \draw[dashed] (1.5,-2) arc (0:180:1.5 and 0.3);
+  \fill[tierC] (0,0) circle (2.5pt);
+  \node[right] at (0.25,0) {\small $A_1$ point};
+  \node at (0,-2.9) {\small $\C^2/\Z_2$: \ $x_0x_1=x_2^2$};
+  % arrow
+  \draw[-{Stealth},thick] (5.0,0)--(2.9,0) node[midway,above] {\small blow down};
+  \node at (3.95,-0.4) {\small $J\cdot E\to0$};
+  % resolved
+  \begin{scope}[xshift=7.5cm]
+    \draw[thick] (-1.5,2) .. controls (-0.5,0.7) and (-0.5,-0.7) .. (-1.5,-2);
+    \draw[thick] (1.5,2) .. controls (0.5,0.7) and (0.5,-0.7) .. (1.5,-2);
+    \draw (0,2) ellipse (1.5 and 0.3);
+    \draw (1.5,-2) arc (0:-180:1.5 and 0.3);
+    \draw[dashed] (1.5,-2) arc (0:180:1.5 and 0.3);
+    \draw[tierA,very thick] (0.75,0) arc (0:-180:0.75 and 0.18);
+    \draw[tierA,very thick,dashed] (0.75,0) arc (0:180:0.75 and 0.18);
+    \node[right] at (0.85,0) {\small $E\cong\mathbb{P}^1$,\ $E^2=-2$};
+    \node at (0,-2.9) {\small total space of $\mathcal{O}_{\mathbb{P}^1}(-2)$};
+  \end{scope}
+\end{tikzpicture}
+\caption{The $A_1$ singularity and its resolution (real two-dimensional cartoon of a complex
+surface). The vertex of the cone is replaced by a sphere $E$ whose area is $J\cdot E$, the
+integral of the Kähler form. Letting $J\cdot E\to0$ with the complex structure fixed recovers
+the orbifold.}\label{fig:kummer:cone}
+\end{figure}
+
+\begin{physicsbox}[The size of $E$ is a modulus]
+Nothing in the algebraic construction fixes the \emph{size} of the new sphere. With a Kähler
+form $J$ on $X$ the area of $\bar E_i$ is $J\cdot\bar E_i=\int_{\bar E_i}J$. Keeping the
+complex structure fixed, one may move $J$ until it becomes orthogonal to $\bar E_i$; the
+sphere then has zero area and the surface is the orbifold again \source{Asp
+ll.~1195--1202}. The orbifold $S_0$ is thus not a different space from the Kummer surface
+but a boundary point of its family of metrics: in the language of \cref{ch:k3lattice}, a
+Ricci-flat metric is a positive three-plane $\Sigma\subset H^2(X,\R)$, and the metric is an
+orbifold metric exactly when $\Sigma$ is orthogonal to a root, a class $\alpha$ with
+$\alpha^2=-2$ \TL{} \source{Asp Theorem~4, ll.~1208--1216}. At $S_0$ the plane $\Sigma$ is
+orthogonal to all sixteen $\bar E_i$ at once. Near each resolved point the Ricci-flat metric
+is approximated by an explicitly known asymptotically flat metric on
+$\mathcal{O}_{\mathbb{P}^1}(-2)$ \source{Asp ll.~1503--1507}. Because $\Sigma$ is spanned by
+$J$ and the real and imaginary parts of the holomorphic two-form $\Omega$, one can also make
+$\bar E_i$ disappear by rotating $\Omega$ instead of $J$: the singularity is then
+\emph{deformed}, $x_0x_1-x_2^2=\varepsilon$, rather than blown up, and for K3 the two
+procedures are related by a rotation of $\Sigma$ \source{Asp ll.~1513--1530}. Each
+$A_1$ point therefore carries three real metric parameters, the components of $\Sigma$ along
+$\bar E_i$.
+\end{physicsbox}
+
+%=====================================================================================
+\section{Counting: \texorpdfstring{$b_2=6+16$ and $\chi=24$}{b2 = 6+16 and chi = 24}}
+\label{sec:kummer:count}
+
+\subsection{The cohomology of the orbifold}
+
+With rational coefficients the cohomology of a quotient by a finite group is the invariant
+part of the cohomology of the covering space (average a closed form over the group). For the
+torus, $H^k(A,\Q)=\Lambda^kH^1(A,\Q)$ is spanned by the products
+$\dd x^{m_1}\wedge\dots\wedge\dd x^{m_k}$, and $\iota^*\dd x^m=-\dd x^m$. Therefore
+$\iota^*=(-1)^k$ on $H^k$ \source{Huy §3.2.5, ll.~2037--2038}, and
+\begin{equation}\label{eq:kummer:bettiS0}
+  b_k(S_0)=\tbinom4k\ \text{for $k$ even},\quad 0\ \text{for $k$ odd}:
+  \qquad (b_0,\dots,b_4)=(1,0,6,0,1),\qquad \chi(S_0)=8 .
+\end{equation}
+The six surviving two-forms $\dd x^m\wedge\dd x^n$ are dual to the six coordinate two-tori
+$T_{mn}\subset A$. The Hodge decomposition of the invariant forms is just as simple. On the
+torus $h^{p,q}(A)=\binom2p\binom2q$, spanned by
+$\dd z_I\wedge\dd\bar z_J$, and the form has sign $(-1)^{p+q}$ under $\iota$:
+\begin{equation}\label{eq:kummer:hodgeS0}
+  h^{2,0}=h^{0,2}=1\ (\dd z_1\wedge\dd z_2\text{ and its conjugate}),\qquad
+  h^{1,1}=4\ (\dd z_i\wedge\dd\bar z_j),\qquad h^{1,0}=h^{0,1}=0 .
+\end{equation}
+
+\subsection{Adding the sixteen spheres}
+
+Let $N_i$ be a small conical neighbourhood of the $i$-th singular point and $\tilde N_i$ the
+neighbourhood of $\bar E_i$ that replaces it. $N_i$ is contractible; $\tilde N_i$ is a disc
+bundle over $S^2$ and contracts onto $\bar E_i$. Their common boundary is $\mathbb{RP}^3$,
+which has the rational cohomology of $S^3$. Writing $X=(X\setminus\bigcup\tilde
+N_i)\cup\bigcup\tilde N_i$, the Mayer--Vietoris sequence shows that each replacement adds
+exactly one class to $H^2(\,\cdot\,,\Q)$, the class of $\bar E_i$, and changes nothing in
+degrees $1$ and $3$. Hence
+\begin{equation}\label{eq:kummer:b2}
+  b_2(X)=6+16=22,\qquad b_1(X)=b_3(X)=0,\qquad \chi(X)=1+22+1=24 .
+\end{equation}
+Since the curves $\bar E_i$ are holomorphic, their classes are of type $(1,1)$, and
+\eqref{eq:kummer:hodgeS0} becomes $h^{1,1}(X)=4+16=20$, $h^{2,0}(X)=1$: the Hodge diamond of
+\cref{ch:k3}. The same grouping, $16$ classes from the singular points, the $(2,0)$ and
+$(0,2)$ forms and $4$ more $(1,1)$ forms from the torus, is the one used in the physics
+literature \source{DRS §2, ll.~513--519}. For the signature, the wedge product on the
+invariant classes $\Lambda^2\R^4$ has signature $(3,3)$ (self-dual and anti-self-dual forms),
+and the sixteen classes $\bar E_i$ are mutually orthogonal with square $-2$:
+\begin{equation}\label{eq:kummer:signature}
+  (3,3)+(0,16)=(3,19),
+\end{equation}
+in agreement with the signature found from the Hirzebruch theorem in \cref{ch:k3}.
+
+\begin{example}[The number $24$ in three ways]\label{ex:kummer:24}
+\emph{(a) Betti numbers:} \eqref{eq:kummer:b2}. \ \emph{(b) Cut and paste:} the Euler
+characteristic is additive under decompositions and multiplicative under unbranched
+covers. Remove the $16$ fixed points from $A$: $\chi=0-16$. The quotient of the rest is free:
+$\chi=-8$. Glue in $16$ spheres: $\chi(X)=-8+16\cdot2=24$. Gluing in $16$ points instead gives
+$\chi(S_0)=-8+16=8$, as in \eqref{eq:kummer:bettiS0}.
+\ \emph{(c) Elliptic fibration:} let $A=E_1\times E_2$ be a product of elliptic curves. The
+projection to $E_1/\pm\cong\mathbb{P}^1$ makes $X$ an elliptic surface whose smooth fibres
+are copies of $E_2$ ($\chi=0$). Over each of the four branch points the fibre of
+$S_0$ is $E_2/\pm\cong\mathbb{P}^1$ and passes through four singular points; in $X$ it becomes
+a configuration of five spheres, the central one meeting the four $\bar E_i$ once each: a
+fibre of Kodaira type $I_0^*$\index{elliptic fibration!$I_0^*$ fibre} \source{Huy ch.~11, Example~1.11(i), ll.~9500--9507}. Five
+spheres glued at four points have $\chi=5\cdot2-4=6$, and $\chi(X)=4\cdot6=24$; equivalently,
+the discriminant of an elliptic K3 surface has degree $24$ and vanishes to order $6$ at an
+$I_0^*$ fibre \source{Huy §11.2.4, ll.~9725--9735}.
+All three counts agree with $c_2(X)=24$ from Noether's formula in
+\cref{ch:k3}.
+\end{example}
+
+%=====================================================================================
+\section{The intersection form and the Kummer lattice}\label{sec:kummer:lattice}
+
+The count $22=6+16$ is a statement about vector spaces. The integral statement is subtler
+and is the mathematical core of this chapter: the $6+16$ obvious classes span a sublattice of
+index $2^{11}$ in $H^2(X,\Z)$.
+
+\subsection{The torus classes are rescaled by two}
+
+Let $\alpha,\alpha'\in H^2(\tilde A,\Z)$ be $\tilde\iota$-invariant classes and
+$\pi_*\alpha,\pi_*\alpha'$ their push-forwards to $X$. Since $\pi$ has degree two and
+$\alpha$ is invariant, $\pi^*\pi_*\alpha=2\alpha$. On the other hand
+$(\pi^*\beta\cdot\pi^*\beta')_{\tilde A}=2\,(\beta\cdot\beta')_X$ for all classes on $X$,
+again because $\pi$ has degree two. Combining the two, $4(\alpha\cdot\alpha')_{\tilde
+A}=2(\pi_*\alpha\cdot\pi_*\alpha')_X$, that is
+\begin{equation}\label{eq:kummer:factor2}
+  (\pi_*\alpha\cdot\pi_*\alpha')_X=2\,(\alpha\cdot\alpha')_{\tilde A}
+  \qquad\text{\source{Huy eq.~(2.5), ll.~2037--2044}} .
+\end{equation}
+Two consequences follow. First, $\pi_*[E_i]=[\bar E_i]$ and $E_i^2=-1$ give
+$\bar E_i^2=-2$: a third derivation of \cref{prop:kummer:minus2}. Second, $H^2(A,\Z)$ with
+the basis $\dd x^m\wedge\dd x^n$ is $U^{\oplus3}$, the three hyperbolic pairs being
+$(T_{12},T_{34})$, $(T_{13},T_{42})$, $(T_{14},T_{23})$ with $T_{12}\cdot T_{34}=1$ and so
+on. Its image in $H^2(X,\Z)$ carries twice this form:
+\begin{equation}\label{eq:kummer:U2}
+  \pi_*H^2(A,\Z)\;\cong\;U(2)^{\oplus3},\qquad
+  \operatorname{disc}U(2)^{\oplus3}=\det\begin{pmatrix}0&2\\2&0\end{pmatrix}^3=-2^6 .
+\end{equation}
+The factor two has a transparent meaning. A two-torus $T_{12}$ in generic position and its
+mirror image $\iota(T_{12})$ are different in $A$ and become one torus in $X$. The images of
+$T_{12}$ and $T_{34}$ meet where $(T_{12}\cup\iota T_{12})\cap(T_{34}\cup\iota T_{34})$, four
+points of $A$, is mapped to: two points of $X$.
+
+\subsection{Half-integral classes from invariant tori}
+
+\begin{lemma}\label{lem:kummer:C}
+Let $T\subset A$ be a two-torus through a fixed point, invariant under $\iota$, for instance
+$T_{12}$ placed at $(x^3,x^4)=(0,0)$. It contains four fixed points, forming an affine plane
+$P\subset\mathbb{F}_2^4$. The proper transform in $X$ of the image of $T$ is a sphere $C$
+with
+\begin{equation}\label{eq:kummer:C}
+  [C]=\tfrac12\Bigl(\pi_*[T]-\sum_{i\in P}[\bar E_i]\Bigr)\in H^2(X,\Z),\qquad
+  C^2=-2,\qquad C\cdot\bar E_i=1\ \ (i\in P).
+\end{equation}
+\end{lemma}
+\begin{proof}
+The statement is topological, so we may choose the complex structure on $A$ for which $T$ is
+a holomorphic curve ($z_1=x^1+\ii x^2$ for $T_{12}$). $T/\iota$ is the pillow of \cref{fig:kummer:pillow}(a), a sphere through four singular
+points. In $\tilde A$ the proper transform $\tilde T$ of $T$ has class
+$\sigma^*[T]-\sum_{i\in P}[E_i]$, since $T$ passes once through each blown-up point. The map
+$\tilde T\to C$ is two-to-one, so $\pi_*[\tilde T]=2[C]$; this is the first formula. Then, by
+$\pi_*[T]^2=2\,T^2=0$ and the orthogonality of $\pi_*[T]$ to the $\bar E_i$,
+$C^2=\frac14\bigl(0+4\cdot(-2)\bigr)=-2$ and
+$C\cdot\bar E_i=\frac12\cdot(-1)\cdot(-2)=1$. The value $C^2=-2$ is what \emph{every} smooth
+sphere in a K3 surface must have, which checks the formula.
+\end{proof}
+
+So $\frac12\bigl(\pi_*[T]-\sum_P\bar E_i\bigr)$ is an integral class although neither half is:
+the sublattice $\pi_*H^2(A,\Z)\oplus\bigoplus\Z\bar E_i$ is not all of $H^2(X,\Z)$. The class
+$F=2C+\sum_{i\in P}\bar E_i=\pi_*[T]$ is the $I_0^*$ fibre of \cref{ex:kummer:24}(c); its five
+components form the affine Dynkin diagram $\tilde D_4$ of \cref{fig:kummer:D4}, and
+$F^2=0$ as it must be for a fibre.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=0.8,every node/.style={font=\small}]
+  \node[circle,draw,thick,inner sep=2pt] (c) at (0,0) {$2$};
+  \foreach \ang/\lab in {45/{\bar E_{00}},135/{\bar E_{01}},225/{\bar E_{10}},315/{\bar E_{11}}}
+    {\node[circle,draw,thick,inner sep=2pt] (e\ang) at (\ang:1.5) {$1$};
+     \draw[thick] (c)--(e\ang);
+     \node at (\ang:2.25) {$\lab$};}
+  \node at (0,-0.55) {$C$};
+  \begin{scope}[xshift=6.6cm]
+   \draw[thick] (-2,0)--(2,0); \node[right] at (2,0) {$C$};
+   \foreach \x/\lab in {-1.5/{00},-0.5/{01},0.5/{10},1.5/{11}}
+     {\draw[thick,tierA] (\x,-1)--(\x,1); \node[above] at (\x,1) {$\bar E_{\lab}$};}
+  \end{scope}
+\end{tikzpicture}
+\caption{The image of an invariant two-torus. Left: dual graph $\tilde D_4$; nodes are
+$(-2)$-spheres, edges are transverse intersection points, the numbers are the multiplicities
+in the fibre class $F=2C+\sum\bar E_i$. Right: the curves themselves. The labels are the
+$(\epsilon_1\epsilon_2)$ of \cref{fig:kummer:pillow}(b).}\label{fig:kummer:D4}
+\end{figure}
+
+\subsection{From planes to hyperplanes: the Kummer lattice}
+
+Take two \emph{parallel} invariant tori $T,T'$ (the same $T_{12}$ placed at two different
+fixed values of $(x^3,x^4)$), with planes $P,P'$. They are homologous, so subtracting the
+two classes \eqref{eq:kummer:C} eliminates the torus part:
+\begin{equation}\label{eq:kummer:halfW}
+  [C']-[C]=\tfrac12\sum_{i\in P}\bar E_i-\tfrac12\sum_{i\in P'}\bar E_i
+  \;\equiv\;\tfrac12\sum_{i\in W}\bar E_i\pmod{\textstyle\bigoplus\Z\bar E_i},
+  \qquad W=P\cup P' .
+\end{equation}
+The union of two parallel affine planes in $\mathbb{F}_2^4$ is an affine hyperplane, a set of
+$8$ points defined by one equation $a\cdot\epsilon=c$ (in \cref{fig:kummer:pillow}(b): two
+rows). Every affine hyperplane arises in this way: choose a basis of $\Lambda$ adapted to
+$W$ and take two parallel invariant tori spanned by two of the basis vectors.
+Hence, for each of the $30$ affine hyperplanes $W\subset\mathbb{F}_2^4$, the class
+$\frac12\sum_{i\in W}\bar E_i$ lies in $H^2(X,\Z)$; adding two complementary hyperplanes, so
+does $\frac12\sum_{\text{all }16}\bar E_i$, in agreement with the square root $L$ of
+$\mathcal{O}(\sum\bar E_i)$ that defines the double cover $\pi$ \source{Huy ch.~1,
+ll.~249--251}.
+
+\begin{definition}[Kummer lattice]\label{def:kummer:K}\index{Kummer lattice}
+The Kummer lattice $K$ is the saturation of $\bigoplus_i\Z\bar E_i$ in $H^2(X,\Z)$, i.e.\ the
+smallest primitive sublattice containing all $\bar E_i$, equivalently
+$K=(\bigoplus\Z\bar E_i)^{\perp\perp}$ \source{Huy Def.~14.3.13, ll.~13469--13476}.
+(A sublattice $M\subseteq\Lambda$ is \emph{primitive}\index{primitive sublattice} if
+$\Lambda/M$ has no torsion: $nv\in M$ with $v\in\Lambda$ implies $v\in M$.)
+\end{definition}
+
+\begin{theorem}[Structure of the Kummer lattice; \TL]\label{thm:kummer:K}
+$K$ is generated by the $\bar E_i$ together with the $\frac12\sum_{i\in W}\bar E_i$, $W$ an
+affine hyperplane of $\mathbb{F}_2^4$ \source{Huy §14.3.3, ll.~13482--13487}. Moreover
+\source{Huy Prop.~14.3.14, ll.~13497--13503}:
+\begin{enumerate}[label=(\roman*),itemsep=1pt]
+\item $K^\perp=\pi_*H^2(A,\Z)\cong U(2)^{\oplus3}$;
+\item the index of $\bigoplus\Z\bar E_i\cong\langle-2\rangle^{\oplus16}$ in $K$ is $2^5$;
+\item $K$ is even, negative definite, of rank $16$ and $\operatorname{disc}K=2^6$;
+\item the discriminant group is $A_K\cong(\Z/2\Z)^6$.
+\end{enumerate}
+$K$ does not depend on the torus $A$, and its roots (vectors of square $-2$) are exactly the
+$\pm\bar E_i$ \source{Huy ll.~13494--13496}.
+\end{theorem}
+
+We have shown on the page that the listed generators \emph{are} integral; that there are no
+further integral classes in $K\otimes\Q$ is the part we take from the literature. Granting
+it, the numbers (ii)--(iii) can be checked by hand, which is a useful exercise in the lattice
+techniques of \cref{ch:lattices}.
+
+\begin{example}[The index $2^5$ and the discriminant $2^6$]\label{ex:kummer:index}
+A vector of $K$ is $x=\frac12\sum_in_i\bar E_i$ with $n_i\in\Z$, and the condition is on the
+parities: $(n_i\bmod2)\in\mathcal{C}$, where $\mathcal{C}\subseteq\mathbb{F}_2^{16}$ is the
+linear span of the indicator functions of the hyperplanes. The indicator function of
+$\{a\cdot\epsilon=c\}$ is the affine function $\epsilon\mapsto a\cdot\epsilon+c+1$ on
+$\mathbb{F}_2^4$. The span is the space of all affine functions
+$c_0+c_1\epsilon_1+\dots+c_4\epsilon_4$, of dimension $5$: $|\mathcal{C}|=2^5=32$ words,
+namely $0$, the all-ones word, and the $30$ hyperplanes (weight $8$). The index of
+$\bigoplus\Z\bar E_i$ in $K$ is $|\mathcal{C}|=2^5$. The index formula of \cref{ch:lattices},
+$\operatorname{disc}(\text{sublattice})=\operatorname{disc}(\text{lattice})\cdot
+\text{index}^2$, gives
+\[
+  \operatorname{disc}K=\frac{\operatorname{disc}\langle-2\rangle^{\oplus16}}{(2^5)^2}
+  =\frac{2^{16}}{2^{10}}=2^6 .
+\]
+\emph{Integrality:} two hyperplanes meet in $0$, $4$ or $8$ points, so
+$\frac12\sum_W\bar E_i\cdot\frac12\sum_{W'}\bar E_i=-\frac12|W\cap W'|\in\{0,-2,-4\}$.
+\emph{Evenness:} $(\frac12\sum_W\bar E_i)^2=\frac14\cdot8\cdot(-2)=-4$. \emph{Roots:} a vector
+with some half-integral $n_i/2$ has at least $8$ of them, hence square $\le-4$; the vectors
+of square $-2$ are the $\pm\bar E_i$ only. \emph{Global check:} $H^2(X,\Z)$ is unimodular
+and $K$, $K^\perp$ are primitive, so $|\operatorname{disc}K|=|\operatorname{disc}K^\perp|$
+\source{Huy ll.~13512--13515}: indeed $2^6=|-2^6|$ by \eqref{eq:kummer:U2}. The index of
+$K^\perp\oplus K$ in $H^2(X,\Z)$ is $\sqrt{2^6\cdot2^6}=2^6$, and that of the naive lattice
+$U(2)^{\oplus3}\oplus\langle-2\rangle^{\oplus16}$ is $2^6\cdot2^5=2^{11}
+=\sqrt{2^6\cdot2^{16}}$. (An explicit basis of $K$ was built and its Gram determinant $2^6$,
+integrality and evenness were confirmed by a symbolic check; the code $\mathcal{C}$ was
+enumerated by machine: $32$ words of weights $0,8,16$.) The remaining factor $2^6$ is made of
+``mixed'' classes such as \eqref{eq:kummer:C}, which glue $K^\perp$ to $K$.
+\end{example}
+
+\begin{pitfallbox}[$22=6+16$ is not a lattice decomposition]
+It is tempting to write $H^2(\operatorname{Km}(A),\Z)=U^{\oplus3}\oplus
+\langle-2\rangle^{\oplus16}$. The right-hand side has discriminant $-2^{16}$ and is not
+unimodular; with $U(2)$ in place of $U$ it is $-2^{22}$. The true lattice
+$3U\oplus2E_8(-1)$ contains $U(2)^{\oplus3}\oplus\langle-2\rangle^{\oplus16}$ with index
+$2^{11}$. In particular $\sum_i\bar E_i^2=-32$ is the trace of a Gram matrix of a sublattice in
+one basis, not an invariant of $H^2(X,\Z)$.
+\end{pitfallbox}
+
+\subsection{Which K3 surfaces are Kummer?}
+
+The Picard lattice of $X=\operatorname{Km}(A)$ contains the $\bar E_i$ and the images of the
+algebraic classes of $A$, and the transcendental lattices are related by the rescaling
+\eqref{eq:kummer:factor2}:
+\begin{equation}\label{eq:kummer:rho}
+  \rho(X)=\rho(A)+16,\index{Picard number!of a Kummer surface}\qquad T(X)\cong T(A)(2),\qquad 16\le\rho(X)\le20\ \ (\text{over }\C)
+\end{equation}
+\source{Huy §3.2.5, ll.~2084--2095; Asp ll.~1192--1194}. A Kummer surface need not be
+algebraic, because a complex torus need not be \source{Asp ll.~1193--1194}; for a generic
+torus $\rho(A)=0$ (standard). At the other extreme, the square torus of \cref{ex:kummer:square} is
+$E_{\ii}\times E_{\ii}$ with $E_{\ii}$ the elliptic curve with complex multiplication by
+$\ii$; it has $\rho(A)=4$ (the classes of the two factors, the diagonal and the graph of
+multiplication by $\ii$; a standard fact, not checked against this book's library) and its
+Kummer surface has the maximal Picard number $20$.
+
+\begin{theorem}[Nikulin; \TL]\label{thm:kummer:nikulin}\index{Nikulin's theorem}
+For a complex K3 surface $X$ the following are equivalent: (i) $X$ is a Kummer surface;
+(ii) there is a primitive embedding $K\hookrightarrow NS(X)$. Both imply (iii): there is a
+primitive embedding $T(X)\hookrightarrow U(2)^{\oplus3}$; and (iii) implies (i) if $X$ is
+projective \source{Huy Thm.~14.3.17, ll.~13545--13552}. Moreover $X$ is Kummer if and only
+if it contains $16$ disjoint smooth rational curves \source{Huy Rem.~14.3.19,
+ll.~13595--13597}.
+\end{theorem}
+
+The proof combines the global Torelli theorem of \cref{ch:k3lattice} with the surjectivity
+of the period map for tori, applied to $K^\perp\cong U(2)^{\oplus3}$
+\source{Huy ll.~13578--13586}. As an application, the Fermat quartic
+$x_0^4+x_1^4+x_2^4+x_3^4=0$ of \cref{ch:k3} has $T(X)\cong\Z(8)\oplus\Z(8)$, which embeds in
+$U(2)^{\oplus3}$; hence it is a Kummer surface, although no torus is visible in its equation
+\source{Huy Example~14.3.18, ll.~13588--13593}.
+
+\begin{historybox}
+The term ``orbifold'' is due to W.~Thurston; the objects first appeared in the mathematical
+literature as ``V-manifolds'' \source{Asp ll.~1036--1039}. \Cref{thm:kummer:nikulin} was
+first stated by Nikulin \source{Huy l.~13544}, and the global Torelli theorem was first
+proved for Kummer surfaces \source{Huy ll.~13579--13581}.
+\end{historybox}
+
+%=====================================================================================
+\section{Strings on the orbifold: twisted sectors}\label{sec:kummer:strings}
+
+A point particle on $S_0$ sees a singular space: its wave equation needs boundary conditions
+at the $16$ cone points that the geometry does not supply. The string does better. String
+theory on $A/\iota$ is a perfectly regular conformal field theory, built from the free theory
+on the torus by a three-step prescription \source{GPR §3.1, ll.~4118--4148}:
+\index{orbifold!string theory on}
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item define the action of the group on all worldsheet fields, here $g\colon X^m\mapsto-X^m$
+and, by worldsheet supersymmetry, $\psi^m\mapsto-\psi^m$ for the four torus directions
+$m=1,\dots,4$;
+\item keep only the invariant states, with the projector $P=\frac12(1+g)$;
+\item add the strings that close only up to the group action, the \emph{twisted
+sector}\index{twisted sector},
+\begin{equation}\label{eq:kummer:twistedbc}
+  X^m(\sigma+2\pi,\tau)=-X^m(\sigma,\tau),
+\end{equation}
+and project these onto invariant states as well.
+\end{enumerate}
+Step 3 has no analogue for particles. A string obeying \eqref{eq:kummer:twistedbc} is an open
+curve on the torus whose end-points are exchanged by $\iota$, hence a \emph{closed} curve on
+$S_0$; leaving it out would be as arbitrary as leaving out winding strings on a circle
+(\cref{ch:circle}).
+
+\subsection{The untwisted sector:\index{untwisted sector} \texorpdfstring{$16$}{16} moduli and no gauge fields}
+
+The untwisted states are the states of the torus compactification of \cref{ch:narain} that
+are even under $g$. A state with momentum and winding $(n_m,w^m)$ is sent to
+$(-n_m,-w^m)$, so only the combinations $\ket{n,w}+\ket{-n,-w}$ (times an even oscillator
+polynomial) and $\ket{n,w}-\ket{-n,-w}$ (times an odd one) survive. For the massless
+NS--NS fields the rule is: count internal indices.
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item The scalars $G_{mn}$ and $B_{mn}$, with vertex operators
+$\partial X^m\bar\partial X^n$, have two internal indices and are even. All
+$10+6=16$ of them survive. They parametrize the Narain moduli space
+$O(4,4)/(O(4)\times O(4))$ of the torus, of dimension $4\cdot4=16$.
+\item The $4+4$ Kaluza--Klein and winding gauge fields $G_{\mu m}$, $B_{\mu m}$ have one
+internal index and are odd. They are projected out. This is the string's way of saying
+$b_1(X)=0$: a K3 surface has no continuous isometries and no one-cycles for $B$ to wrap.
+\end{itemize}
+The T-duality group $\Odd{4}$ of the torus (\cref{ch:odd}) commutes with $g=-\mathbf 1$ and
+acts on the untwisted sector; it will reappear as a subgroup of the duality group
+$O(\Gamma_{4,20})$ of strings on K3 in \cref{ch:stringsk3}.
+
+\subsection{The twisted sector: \texorpdfstring{$16\times4$}{16 x 4} moduli}
+
+The boundary condition \eqref{eq:kummer:twistedbc} has three consequences.
+
+\emph{(i) Localization.} Writing $X^m=x^m+\text{oscillators}$, the constant part must
+satisfy $x\equiv-x$ modulo $\Lambda$: the centre of mass sits at one of the $16$ fixed points
+\eqref{eq:kummer:fixed}. There is one copy of the twisted Hilbert space for each fixed point
+\source{GPR ll.~4362--4369}, and a twisted string cannot carry momentum or winding on the
+torus \source{GPR ll.~4379--4380}. Twisted strings are stuck at the singularities; they are
+the degrees of freedom of the sixteen spheres of zero size.
+
+\emph{(ii) Moding.} An antiperiodic field has half-integer modes,
+$X^m\sim\sum_{r\in\Z+1/2}\alpha^m_r\,\ee^{-\ii r(\tau-\sigma)}/r+\dots$\,. By worldsheet
+supersymmetry $\psi^m$ picks up the same extra sign: in the twisted NS sector the four
+$\psi^m$ are \emph{integer} moded, in the twisted R sector half-integer moded.
+
+\emph{(iii) Zero-point energy.}\index{zero-point energy} Use the mnemonic of \source{Pol ll.~165--196}: a periodic
+boson contributes $-\frac1{24}$, an antiperiodic boson $+\frac1{48}$, and fermions
+contribute with the opposite sign. In light-cone gauge there are $8$ transverse directions,
+$4$ along the uncompactified space and $4$ along the torus. For one side (left- or
+right-moving) of the NS sector
+\begin{equation}\label{eq:kummer:E0}
+  E_0^{\text{untw}}=8\Bigl(-\tfrac1{24}-\tfrac1{48}\Bigr)=-\tfrac12,\qquad
+  E_0^{\text{tw}}=4\Bigl(-\tfrac1{24}-\tfrac1{48}\Bigr)+4\Bigl(\tfrac1{48}+\tfrac1{24}\Bigr)
+  =-\tfrac14+\tfrac14=0 .
+\end{equation}
+This is the same arithmetic as for an open string with $\nu$ mixed Neumann--Dirichlet
+directions in \cref{ch:dbranes}, $E_0=-\frac12+\frac\nu8$ \source{Pol eq.~(98),
+ll.~2160--2180}, at $\nu=4$. In the untwisted sector the ground state is tachyonic and is
+removed by the GSO projection, and the massless states need one oscillator $\psi_{-1/2}$. In
+the twisted sector the \emph{ground state itself} is massless. It is degenerate, because the
+four integer-moded $\psi^m$ have zero modes $\psi^m_0$ obeying a Clifford algebra: $2^{4/2}=4$
+states, a spinor of the internal $SO(4)$, of which the GSO projection keeps one chirality,
+$2$ states. Combining left- and right-movers,
+\begin{equation}\label{eq:kummer:4scalars}
+  2\times2=4\ \text{massless NS--NS scalars at each fixed point}\;=\;\mathbf 3\oplus\mathbf 1 .
+\end{equation}
+(The zero-point energies are from the cited source. The counting of the GSO-projected
+zero-mode states and their survival under $P$ is the standard result for this orbifold; it
+is not checked against a source in this book's library.) The decomposition
+$\mathbf3\oplus\mathbf1$ refers to the $SU(2)$ rotating the three-plane $\Sigma$. The triplet
+is the three metric parameters of the physics box in \cref{sec:kummer:local}: giving it an
+expectation value blows up or deforms the $A_1$ point. The singlet is the flux of the
+$B$-field through the sphere, $\int_{\bar E_i}B$.
+
+\begin{example}[$80=16+64$, and two refinements]\label{ex:kummer:80}
+The untwisted sector has $16$ moduli and the twisted sectors $16\times4=64$, together
+\[
+  16+64=80=4\cdot20=\dim\frac{O(4,20)}{O(4)\times O(20)} ,
+\]
+the dimension of the moduli space of conformal field theories on K3
+\source{Asp ll.~1670 and 1948}. The count can be split according to geometric origin
+\source{Asp ll.~1650--1670}:
+\[
+ \underbrace{10}_{\text{flat metrics on }T^4}+\underbrace{16\times3}_{\text{triplets}}=58
+ \ \ \text{(Einstein metrics on K3)},\qquad
+ \underbrace{6}_{B_{mn}}+\underbrace{16\times1}_{\text{singlets}}=22=b_2\ \ \text{($B$-field)}.
+\]
+The number $58$ is $3\cdot19+1$, the dimension of the space of positive three-planes in
+$\R^{3,19}$ plus the volume (\cref{ch:k3lattice}); the number $22=6+16$ is
+\eqref{eq:kummer:b2} once more. The massless spectrum of the singular orbifold thus knows the
+Betti number of the smooth K3 surface. In M-theory language the $16$ twisted two-forms
+come with $16$ of the $22$ gauge fields obtained by reducing the three-form on $H^2(X)$
+\source{DRS ll.~511--519}.
+\end{example}
+
+\begin{pitfallbox}[The solvable orbifold is not the point of enhanced gauge symmetry]\index{enhanced gauge symmetry}\index{B-field@$B$-field!at orbifold points}
+When all sixteen spheres shrink, M-theory on $T^4/\Z_2$ has the non-abelian gauge group
+$SU(2)^{16}\times U(1)^6$, one $SU(2)$ per $A_1$ point \source{DRS ll.~515--519}, and for the
+type IIA string an $A$--$D$--$E$ singularity likewise gives the corresponding gauge group
+\source{Asp Prop.~2, ll.~2517--2529}. In the perturbative type IIA string, however, no new
+massless vectors can appear \source{Asp ll.~2441--2443}, and the orbifold conformal field
+theory is perfectly regular. There is no contradiction: a vanishing sphere is necessary but
+not sufficient. The gauge symmetry is enhanced when, in addition, $B=0$ along the class of
+the sphere, whereas the conformal field theory orbifold has $B=\frac12$ there. The
+free-field orbifold and the point with gauge group $SU(2)^{16}$ are different points of the
+$80$-dimensional moduli space, with the same singular metric \TL{}
+\source{Asp ll.~2530--2547}. The singlet in \eqref{eq:kummer:4scalars} is the modulus that
+interpolates between them.
+\end{pitfallbox}
+
+A classical observer sees sixteen cone points of infinite curvature. The string sees, at
+each of them, four massless scalars whose expectation values are the size, the shape and the
+$B$-flux of a sphere that is not yet there. Turning them on moves the theory into the smooth
+Kummer surfaces, which are dense in the moduli space of K3 surfaces
+\source{Huy ll.~6200--6202}: the solvable model is a point \emph{of} the K3 moduli space, not
+a caricature of it (compare \cref{ch:dualscale} for the theme that at sizes of order
+$\sqrt{\ap}$ ``singular'' and ``smooth'' are not geometric notions).
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:kummer:lean}
+
+Three files of the repository contain declarations about the Kummer construction:
+\begin{center}\small
+\begin{tabular}{@{}ll@{}}
+\lean{KummerBlowup.lean} & in \lean{StringTheoryFormalization/StringDynamics/}\\
+\lean{KummerTadpole.lean} & in \lean{DualScaleM24Formalization/Moonshine/}\\
+\lean{Problem9\_KummerModularity.lean} & in \lean{Lean5Corpus/Problems/}
+\end{tabular}
+\end{center}
+All of them belong to the older part of the corpus that records \emph{arithmetic shadows}:
+integers and one literal matrix.
+None of them defines a torus, an involution, a blow-up, a cohomology group or a lattice
+embedding, so nothing in the preceding sections is Tier~A as a statement about surfaces.
+What is kernel-checked is the arithmetic that those sections reduce to. The theorems below depend
+only on the standard axioms \lean{propext}, \lean{Classical.choice} and \lean{Quot.sound}.
+
+\begin{leanbox}[The $16\times16$ Gram matrix (\lean{KummerBlowup.lean}, namespace
+\lean{StringTheory.StringDynamics})]
+\begin{leancode}
+def kummerExceptionalDivisors : Fin 16 → String :=
+  fun i => s!"E_{i.val}"
+
+def kummerIntersectionForm (i j : Fin 16) : ℤ :=
+  if i = j then -2 else 0
+
+theorem kummer_lattice_contribution :
+    (∑ i : Fin 16, kummerIntersectionForm i i) = -32 := by ...
+
+theorem exceptional_self_intersection (i : Fin 16) :
+    kummerIntersectionForm i i = -2 := by ...
+\end{leancode}
+\textbf{Reading.} \lean{kummerIntersectionForm} is the matrix $-2\cdot\mathbf 1_{16}$, the
+Gram matrix of $\langle-2\rangle^{\oplus16}$ in the basis $\bar E_i$. The first definition
+only produces the names \lean{"E\_0"},\dots,\lean{"E\_15"}. The theorem
+\lean{exceptional\_self\_intersection} says that every diagonal entry of this matrix is $-2$;
+\lean{kummer\_lattice\_contribution} says that its trace is $-32$. They are statements about
+a matrix that was \emph{defined} to have these entries. The mathematical content of
+\cref{prop:kummer:minus2}, that the curve produced by the blow-up has normal bundle
+$\mathcal{O}(-2)$, is an input, not an output. Note also that the matrix describes
+$\bigoplus\Z\bar E_i$, not the Kummer lattice $K$ of \cref{def:kummer:K}, which is larger by
+index $2^5$; and by the pitfall box of \cref{sec:kummer:lattice} the number $-32$ is a trace in
+one basis, not a lattice invariant. The companion \lean{kummer\_sublattice\_rank} in
+\lean{MukaiLattice.lean} states that the index type \lean{Fin 16} has $16$ elements.
+
+\textbf{Proof idea.} \lean{simp} unfolds the definition; on the diagonal the condition
+\lean{i = i} is true and the entry is $-2$. For the trace, \lean{Finset.sum\_const} turns the
+sum of a constant over \lean{Fin 16} into $16\cdot(-2)$.
+\end{leanbox}
+
+\begin{leanbox}[Counterparts in the other libraries]
+\begin{leancode}
+-- DualScaleM24Formalization/Moonshine/KummerTadpole.lean
+--   (namespace SocrateAI.Moonshine)
+def num_kummer_singularities : Nat := 16
+def exceptional_self_intersection : Int := -2
+theorem k3_euler_eq_24 : k3_euler = 24 := by rfl
+theorem kummer_exceptional_intersection (i j : Fin 16) :
+    (if i = j then exceptional_self_intersection else 0) =
+    (if i = j then -2 else 0) := by rfl
+theorem picard_rank_kummer_maximal : k3_b2 - transcendental_rank = 20 := by rfl
+theorem hodge_h11_eq_20 : k3_b2 - 2 * hodge_h20 = 20 := by rfl
+
+-- Lean5Corpus/Problems/Problem9_KummerModularity.lean
+theorem k3_euler_characteristic_identity :
+    k3_betti_0 + k3_betti_2 + k3_betti_4 = k3_euler_char := by rfl
+theorem kummer_cycle_balance :
+    kummer_exceptional_divisors + kummer_torus_cycles = 20 := by rfl
+theorem singular_k3_picard_number_equals_twenty :
+    picard_number singular_kummer_shioda_tate = 20 := by rfl
+
+-- StringTheoryFoundation/ModularForms/FermatModularBridge.lean
+theorem kummer_fixed_points_dim4 :
+    (2 : Nat) ^ 4 = kummer_fixed_points_count := by rfl
+\end{leancode}
+\textbf{Reading.} Here \lean{k3\_euler} is defined as $1-0+22-0+1$ from the constants
+\lean{k3\_b0},\dots,\lean{k3\_b4}, so \lean{k3\_euler\_eq\_24} is the last equality of
+\eqref{eq:kummer:b2}; \lean{k3\_euler\_characteristic\_identity} is the same sum $1+22+1=24$
+with natural numbers. \lean{kummer\_cycle\_balance} is $16+4=20$, the count
+$h^{1,1}=4+16$ below \eqref{eq:kummer:b2}; \lean{hodge\_h11\_eq\_20} is $22-2\cdot1=20$;
+\lean{kummer\_fixed\_points\_dim4} is $2^4=16$, the cardinality in \eqref{eq:kummer:fixed}.
+\lean{kummer\_exceptional\_intersection} compares two \lean{if}-expressions that become
+identical once the constant $-2$ is unfolded. \lean{HodgeNumbers.lean} has one more
+statement of $20=16+4$, \lean{hodge11\_from\_kummer}. The second half of \lean{KummerTadpole.lean}
+(\lean{rr\_tadpole\_cancellation}: $16\cdot4+4\cdot(-16)=0$) concerns seven-brane charges and
+is discussed in \cref{ch:tadpole}.
+
+\textbf{Two names that claim more than the statement.}
+\lean{picard\_rank\_kummer\_maximal} is $22-2=20$. By \eqref{eq:kummer:rho} the Picard number
+of a Kummer surface is $16+\rho(A)$ and takes every value from $16$ to $20$; the value $20$
+belongs to special tori such as that of \cref{ex:kummer:square}, not to Kummer surfaces in
+general. In \lean{singular\_kummer\_shioda\_tate} the Shioda--Tate formula\index{Shioda--Tate formula}
+$\rho=2+\rk MW+\sum_v(m_v-1)$ is instantiated with the triple $(2,0,18)$. For the natural
+fibration of $\operatorname{Km}(E_1\times E_2)$ of \cref{ex:kummer:24}(c) the four $I_0^*$
+fibres contribute $4\cdot4=16$, so that $\rho=18+\rk MW$ \source{Huy Example~11.3.5,
+ll.~9881--9885}, and $\rho=20$ is reached with the triple $(2,2,16)$. Lean checks that
+$2+0+18=20$; it does not know which fibration, if any, has these data.
+
+\textbf{Proof idea.} All of these are closed by \lean{rfl} (or \lean{decide}): both sides
+reduce to the same numeral by evaluation.
+\end{leanbox}
+
+\begin{center}\small
+\begin{tabular}{@{}p{0.47\textwidth}p{0.06\textwidth}p{0.41\textwidth}@{}}
+\toprule
+Claim & Tier & Where \\
+\midrule
+$2^4=16$; trace of $-2\cdot\mathbf1_{16}$ is $-32$; $1+22+1=24$; $16+4=20$; $22-2=20$
+ & \TA & declarations quoted above\\
+These integers are the fixed-point number, $\sum\bar E_i^2$, $\chi$, $h^{1,1}$ and
+$\rho_{\max}$ of a Kummer surface & \TL & identification; never Tier A\\
+$\operatorname{Km}(A)$ is a K3 surface; $\bar E_i^2=-2$; $b_2=6+16$; Nikulin's criterion
+ & \TL & Asp §2.6; Huy ch.~1, §3.2.5, Thm.~14.3.17 \\
+$K$ has index $2^5$ over $\bigoplus\Z\bar E_i$, $\operatorname{disc}K=2^6$,
+ $K^\perp\cong U(2)^{\oplus3}$ & \TL & Huy Prop.~14.3.14; numbers re-derived in
+ \cref{ex:kummer:index} (symbolic check)\\
+Twisted sectors: $E_0=0$, $4$ scalars per fixed point, $16+64=80$ & \TL &
+ Pol eq.~(98); GPR §3.1; Asp l.~1670; GSO count standard, unsourced here\\
+$B=\frac12$ at the conformal field theory orbifold & \TL & Asp ll.~2530--2547\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{What a faithful formalization would need.} The lattice part of this chapter is
+within reach of the Gram-matrix approach of \cref{ch:lattices}: take the rational basis
+matrix $P$ of \cref{ex:kummer:index} (eleven $\bar E_i$ and five half-sums) and let the kernel
+check that $P^{\mathsf T}(-2\cdot\mathbf 1)P$ has integer entries, even diagonal and
+determinant $2^6$; adding $U(2)^{\oplus3}$ and six glue vectors of the type
+\eqref{eq:kummer:C}, one could check unimodularity of the full rank-$22$ Gram matrix. The
+geometric part (that the blow-up of $A/\iota$ is a K3 surface) needs complex surfaces,
+blow-ups and sheaf cohomology, which the libraries used in this book do not provide; see
+\cref{ch:open}.
+
+%=====================================================================================
+\begin{summarybox}
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item $x\mapsto-x$ on $T^4=\R^4/\Lambda$ has the $2^4=16$ fixed points
+$\frac12\Lambda/\Lambda\cong\mathbb{F}_2^4$. The quotient is flat with holonomy
+$\Z_2\subset SU(2)$, simply connected, with an invariant $\dd z_1\wedge\dd z_2$: a K3 orbifold.
+\item Locally $\C^2/\Z_2=\{x_0x_1=x_2^2\}$. Its blow-up is the total space of
+$\mathcal{O}_{\mathbb{P}^1}(-2)$, with coordinates $(a,t)$, $a'=t^2a$; the exceptional sphere
+has $E^2=-2$ and $\dd\xi\wedge\dd\eta=\frac12\dd a\wedge\dd t$ has no zeros. The area
+$J\cdot E$ is a modulus, and $J\cdot E\to0$ returns the orbifold.
+\item $b_2=6+16=22$, $h^{1,1}=4+16=20$, signature $(3,3)+(0,16)=(3,19)$, and $\chi=24$ in three
+ways: $1+22+1$; $\frac{0-16}2+32$; $4\times\chi(I_0^*)=4\times6$.
+\item Integrally, $\pi_*H^2(A,\Z)\cong U(2)^{\oplus3}$ and the $\bar E_i$ span
+$\langle-2\rangle^{\oplus16}$, but $H^2(X,\Z)$ is larger by index $2^{11}$. The Kummer lattice
+$K\supset\bigoplus\Z\bar E_i$ (index $2^5$, discriminant $2^6$) is generated by half-sums over
+affine hyperplanes of $\mathbb{F}_2^4$, which come from pairs of parallel invariant tori. A K3
+surface is Kummer iff $K$ embeds primitively in $NS(X)$ (Nikulin).
+\item The string on $T^4/\Z_2$ has $16$ untwisted moduli and, in each of $16$ twisted sectors
+with zero-point energy $0$, four massless scalars $\mathbf3\oplus\mathbf1$ (blow-up and
+$B$-flux): $16+64=80=\dim O(4,20)/(O(4)\times O(20))$. The solvable orbifold has
+$B=\frac12$ through each vanishing sphere and no enhanced gauge symmetry.
+\item Lean checks the arithmetic ($2^4=16$, trace $-32$, $1+22+1=24$, $16+4=20$); the
+geometry and the Kummer lattice are Tier~L.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$ Fixed points in other dimensions]\label{exr:kummer:fixed}
+Show that $x\mapsto-x$ on $T^d$ has $2^d$ fixed points. For $d=2$ verify the Gauss--Bonnet
+theorem for the pillow. For $d=4$ explain why $\chi(T^4/\Z_2)=8$ is not $\frac12\chi(T^4)$.
+\end{exercise}
+
+\begin{exercise}[$\star$ The quadric cone]\label{exr:kummer:cone}
+(a) Show that every polynomial in $(\xi,\eta)$ that is even under
+$(\xi,\eta)\mapsto(-\xi,-\eta)$ is a polynomial in $x_0,x_1,x_2$ of
+\eqref{eq:kummer:invariants}. (b) Show that $f=x_0x_1-x_2^2$ is singular only at the origin.
+(c) Find the linear change of variables that brings $f$ to $u^2+v^2+w^2$, and show that the
+deformed surface $u^2+v^2+w^2=\varepsilon$, $\varepsilon>0$, contains the real two-sphere of
+radius $\sqrt\varepsilon$, which shrinks to the singular point as $\varepsilon\to0$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ The $I_0^*$ fibre]\label{exr:kummer:I0}
+With $F=2C+\sum_{i\in P}\bar E_i$ as in \cref{lem:kummer:C}, verify $F^2=0$,
+$F\cdot C=0$ and $F\cdot\bar E_i=0$ from the intersection numbers \eqref{eq:kummer:C}. Write
+the $5\times5$ Gram matrix of $(C,\bar E_i)$ and show that it is negative semi-definite
+with kernel spanned by $F$. Deduce the contribution $4$ of each fibre to the Shioda--Tate
+formula.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Discriminants and indices]\label{exr:kummer:disc}
+Compute the discriminants of $U^{\oplus3}\oplus\langle-2\rangle^{\oplus16}$,
+$U(2)^{\oplus3}\oplus\langle-2\rangle^{\oplus16}$ and $U(2)^{\oplus3}\oplus K$. Using the
+index formula of \cref{ch:lattices}, find the index of the latter two in the unimodular lattice
+$H^2(X,\Z)$ and check $2^{11}=2^5\cdot2^6$. Why can the first lattice not be a finite-index
+sublattice of $H^2(X,\Z)$ in which the $\bar E_i$ are the exceptional curves?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$ Planes are not enough]\label{exr:kummer:planes}
+Let $P\subset\mathbb{F}_2^4$ be an affine plane (four points). (a) Show that
+$v=\frac12\sum_{i\in P}\bar E_i$ has even square and integral pairing with every element of
+$K$, so that integrality alone does not exclude $v$ from $H^2(X,\Z)$. (b) Show that
+nevertheless $v\notin H^2(X,\Z)$ when $P$ is the plane of an invariant torus $T$: otherwise
+\cref{lem:kummer:C} would give $\frac12\pi_*[T]\in H^2(X,\Z)$, contradicting the primitivity
+of $\pi_*H^2(A,\Z)$ stated in \cref{thm:kummer:K}(i). (c) Conclude that $v\in K^*\setminus K$
+and find its order in $A_K$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Zero-point energies]\label{exr:kummer:E0}
+Generalize \eqref{eq:kummer:E0} to a $\Z_2$ reflection of $\nu$ of the eight transverse
+directions and recover $E_0=-\frac12+\frac\nu8$. For which $\nu$ is the twisted NS ground
+state massless? Show that the twisted R sector has $E_0=0$ for every $\nu$.
+\end{exercise}
+
+\begin{exercise}[$\star$ Lean: the off-diagonal entries]\label{exr:kummer:leanoff}
+State and prove in Lean that distinct exceptional curves are disjoint in the toy Gram matrix:
+\begin{leancode}
+theorem exceptional_disjoint (i j : Fin 16) (h : i ≠ j) :
+    kummerIntersectionForm i j = 0 := by
+  sorry  -- hint: simp [kummerIntersectionForm, h]
+\end{leancode}
+Then state and prove that the matrix is symmetric. (Hint: \lean{eq\_comm} inside the
+\lean{if}.)
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$ Lean: the code behind the Kummer lattice]
+\label{exr:kummer:leancode}
+Model $\mathbb{F}_2^4$ as \lean{Fin 4 → Bool} and an affine function by its five
+coefficients. Prove by \lean{decide} that every non-constant affine function takes the value
+\lean{true} exactly $8$ times, and that two of them which are neither equal nor
+complementary are both \lean{true} on exactly $4$ points. Relate this to
+\cref{ex:kummer:index}.
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item \source{Asp §2.6, ll.~1031--1230 and 1503--1530}: orbifolds, the blow-up of
+$\C^2/\Z_2$ as used here, $(-2)$-curves, Theorem~4, resolution versus deformation;
+\source{Asp §4.3, ll.~2440--2480 and 2500--2547}: enhanced gauge symmetry and the $B$-field
+at orbifold points (\cref{ch:stringsk3}).
+\item \source{Huy ch.~1, ll.~218--257}: the algebraic construction and
+$\omega_X\cong\mathcal{O}_X$; \source{Huy §3.2.5, ll.~2015--2096}: cohomology, the factor $2$,
+$\rho(X)=\rho(A)+16$; \source{Huy §14.3.3, ll.~13460--13600}: the Kummer lattice and Nikulin's
+theorem; \source{Huy ch.~11, ll.~9500--9507, 9725--9735, 9881--9885}: the $I_0^*$ fibration.
+\item \source{GPR §3.1, ll.~4118--4148, 4320--4332, 4362--4380}: the orbifold prescription and
+twisted sectors (for a $\Z_3$ heterotic orbifold); \source{Pol ll.~165--196 and eq.~(98),
+ll.~2160--2180}: zero-point energies.
+\item \source{DRS §2, ll.~511--541}: $T^4/\Z_2$ in M-theory, the grouping $16+4+2$ of the
+two-forms, and the type IIB orientifold used in \cref{ch:tadpole}.
+\end{itemize}

@@ -1,0 +1,951 @@
+\chapter{Strings on K3: Moduli Space and Dualities}\label{ch:stringsk3}
+
+Two strands of this book meet in this chapter. In Parts~II and~III we studied strings on
+tori: the momentum and winding numbers form an even self-dual lattice $\Gamma^{d,d}$, the
+background fields $G$ and $B$ select a positive-definite $d$-plane in $\R^{d,d}$, and the
+duality group $\Odd{d}$ is the isometry group of the lattice (\cref{ch:narain,ch:odd}). In
+Part~IV we studied a purely geometric object, the K3 surface, and found that its cohomology
+carries the even unimodular lattice $\Gamma^{3,19}=3U\oplus2E_8(-1)$ and, after adding
+$H^0\oplus H^4$, the Mukai lattice $\Gamma^{4,20}$ (\cref{ch:k3lattice,ch:mukai}). The
+question of this chapter is: \emph{what happens when a string propagates on a K3 surface?}
+
+The answer has the same shape as for a torus. The string sees, besides the Ricci-flat
+metric, a $B$-field; together they are $80$ real parameters, and they assemble into the
+choice of a positive-definite \emph{four}-plane $\Pi\subset\R^{4,20}$. The moduli space is
+\begin{equation}\label{eq:stringsk3:main}
+  \mathcal M_\sigma \;=\; O(\Gamma^{4,20})\,\backslash\, O(4,20)\,/\,\big(O(4)\times O(20)\big),
+\end{equation}
+which is literally a Narain moduli space --- the one of the \emph{heterotic} string on a
+four-torus. This coincidence is the first evidence for a non-perturbative duality between
+two very different string theories, type~IIA on K3 and heterotic on $T^4$, and it predicts
+that a type~IIA string acquires non-abelian gauge symmetry when a two-sphere inside the K3
+surface shrinks to zero size. A student should care for two reasons: this is the simplest
+example in which a curved compactification is controlled exactly by a lattice, and it is
+the six-dimensional parent of the $\KT$ compactification that the rest of the book is about
+(\cref{ch:k3t2}).
+
+Almost everything in this chapter is Tier~\TL: it is taken from Aspinwall's lectures, with
+the derivations filled in. The machine-checked content is small and precisely delimited:
+signatures, ranks and parity of the lattices involved (\cref{sec:stringsk3:lean}). Our
+source makes its own assumptions explicit, and we repeat them where they enter.
+
+\section{The sigma model with K3 target}\label{sec:stringsk3:sigma}
+
+\subsection{Action and conformal invariance}
+Let $X$ be the target manifold and $x:\Sigma_{\rm ws}\to X$ the embedding of the worldsheet
+$\Sigma_{\rm ws}$ (a Riemann surface; we write $\Sigma_{\rm ws}$ because $\Sigma$ will
+denote a three-plane below). In conformal gauge the bosonic part of the action is, in
+Aspinwall's normalization,
+\begin{equation}\label{eq:stringsk3:action}
+  S=\frac{\ii}{8\pi\ap}\int_{\Sigma_{\rm ws}}\big(g_{ij}-B_{ij}\big)\,
+     \partial x^i\,\bar\partial x^j\,\dd^2z\;-\;\frac{1}{2\pi}\int_{\Sigma_{\rm ws}}\Phi\,R^{(2)}\,\dd^2z+\dots
+\end{equation}
+\source{Asp §3.1, eq.~(60), ll.~1559--1576}. Here $g_{ij}$ is a Riemannian metric on $X$,
+$B_{ij}$ the components of a real two-form $B$, $\Phi$ the dilaton and $R^{(2)}$ the scalar
+curvature of the worldsheet; the dots are fermionic terms. This is the same sigma model as
+in \cref{ch:backgrounds}, written in complex worldsheet coordinates; the overall numerical
+factors differ from Tong's normalization and play no role below, so we do not convert them
+(the coefficient of the dilaton term is garbled in our copy of the source; only its
+structure, $\Phi$ times the Euler density, is used).
+
+For the two-dimensional theory to define a string background it must be conformally
+invariant. As in \cref{ch:backgrounds}, this is a condition order by order in $\ap/R^2$, where
+$R$ is a typical radius of $X$. The simplest solution at leading order is: $\Phi$ constant,
+$\dd B=0$, and $g_{ij}$ \emph{Ricci-flat} \source{Asp §3.1, ll.~1583--1592}. The two
+compact four-dimensional examples used in this book are the flat torus $T^4$ and the K3
+surface with its Yau metric (\cref{ch:k3}).
+
+\subsection{Worldsheet supersymmetry and hyperk\"ahler geometry}
+Add the worldsheet fermions $\psi^i$, which transform as sections of the (pulled-back)
+cotangent bundle of $X$. A supersymmetry variation has the form
+$\delta_\epsilon x^i=\bar\epsilon\,l^i{}_j\psi^j$. With one supersymmetry, $l$ can be set to
+the identity. A second supersymmetry requires a second tensor $l$, which turns out to be an
+almost complex structure making $X$ K\"ahler; $N=4$ requires three complex structures, that is,
+a hyperk\"ahler manifold, and conversely \source{Asp §3.1, ll.~1601--1611}. A K3 surface with
+a Ricci-flat metric has holonomy $SU(2)\cong Sp(1)$ and carries a two-sphere of complex
+structures $aI+bJ+cK$, $a^2+b^2+c^2=1$ (\cref{ch:k3}). Because a conformal field theory splits
+into left- and right-movers, each sector carries its own $N=4$ algebra: \emph{the sigma model
+on a K3 surface is an $N=(4,4)$ superconformal field theory.}
+\index{N=(4,4) superconformal field theory@$N=(4,4)$ superconformal field theory}
+This has a consequence that distinguishes K3 from Calabi--Yau threefolds: for $N=4$ sigma
+models there are no perturbative corrections to the Ricci-flat metric beyond leading order,
+and there are arguments that this persists non-perturbatively, so the Ricci-flat metric is an
+exact solution \source{Asp §3.1, ll.~1618--1625} \TL. The central charge is $c=6$ on each side
+(four bosons and four fermions, $4+4\cdot\tfrac12$; \cref{ch:cft}), and the $N=4$ algebra
+contains an affine $\mathfrak{su}(2)$. We will meet its characters again in
+\cref{ch:ellgenus}.
+
+\begin{physicsbox}[Physical picture: why the torus analogy is not an accident]
+For a torus the metric is flat and the zero modes of the string are labelled by a lattice.
+For K3 the metric is curved and unknown in closed form,
+yet $N=(4,4)$ supersymmetry is strong enough to protect the theory from corrections. The
+price is that we cannot solve the model at a generic point; what we \emph{can} determine is
+the space of all such models. The logic is that of \cref{ch:k3lattice}: there, Yau's theorem
+allowed us to replace ``a Ricci-flat metric'' by ``a positive three-plane in $\R^{3,19}$''
+without ever writing the metric down. Here the same trick is played one dimension higher.
+\end{physicsbox}
+
+\section{Counting moduli: \texorpdfstring{$58+22=80$}{58+22=80}}\label{sec:stringsk3:count}
+
+\subsection{Three sets of parameters}
+The action \eqref{eq:stringsk3:action} contains three kinds of data. We ask, for each, how
+many deformations change the conformal field theory.
+
+\paragraph{The metric.} It must be Ricci-flat. The moduli space of Einstein metrics on a K3
+surface (orbifold points included) is
+\begin{equation}\label{eq:stringsk3:einstein}
+  \mathcal M_E\cong O(\Gamma^{3,19})\backslash O(3,19)/\big(O(3)\times O(19)\big)\times\R_+ ,
+\end{equation}
+the Grassmannian of positive three-planes $\Sigma\subset\R^{3,19}=H^2(X,\R)$, modulo lattice
+isometries, times the volume \source{Asp §2.4, Theorem~3, eqs.~(39)--(40), ll.~875--893}
+(\cref{ch:k3lattice}). The plane $\Sigma$ is spanned by the real and imaginary parts of the
+holomorphic two-form and by the K\"ahler form $J$. The dimension of $\mathcal M_E$ is
+$3\times19+1=58$.
+Assuming every inequivalent Ricci-flat metric gives an inequivalent conformal field theory,
+the metric contributes $58$ parameters \source{Asp §3.2, ll.~1639--1642}.
+
+\paragraph{The $B$-field.} It enters through $\int_{x(\Sigma_{\rm ws})}B$, the integral of $B$
+over the image of the worldsheet, a closed two-cycle. By Stokes' theorem an exact piece
+$B=\dd\Lambda$ integrates to zero, so only the cohomology class $[B]\in H^2(X,\R)$ matters.
+Since $b_2(K3)=22$, the $B$-field contributes $22$ parameters
+\source{Asp §3.2, ll.~1643--1654}.\index{B-field@$B$-field!on K3}
+
+\paragraph{The dilaton.} For constant $\Phi$ the last term of \eqref{eq:stringsk3:action} is
+topological: by Gauss--Bonnet it contributes $2\Phi(g-1)=-\Phi\,\chi(\Sigma_{\rm ws})$ on a
+worldsheet of genus $g$. A genus-$g$ amplitude is therefore weighted by $\lambda^{2g-2}$ with
+the string coupling $\lambda=\ee^{\Phi}$, and nothing changes in the conformal field theory on
+a fixed worldsheet \source{Asp §3.2, ll.~1655--1667}. It is
+\emph{not} a modulus of the conformal field theory. It returns in
+\cref{sec:stringsk3:duality} as a modulus of the string theory.
+
+\begin{equation}\label{eq:stringsk3:80}
+  \dim_\R\mathcal M_\sigma \;=\; 58+22 \;=\; 80 \;=\; 4\times20 .
+\end{equation}
+\source{Asp §3.2, l.~1670}. The factorization $80=4\cdot20$ is the first hint of the answer.
+
+\subsection{The local form of the moduli space}
+To find the space itself, Aspinwall uses a holonomy argument, which we retrace.
+
+\emph{Step 1.} The symmetric space $O(3,19)/(O(3)\times O(19))$ in
+\eqref{eq:stringsk3:einstein} has holonomy algebra $\mathfrak{so}(3)\oplus\mathfrak{so}(19)$. The
+$\mathfrak{so}(3)\cong\mathfrak{su}(2)$ rotates the three-plane $\Sigma$ into itself, i.e.\ it
+rotates the sphere of complex structures.
+
+\emph{Step 2.} In a conformal field theory left- and right-movers are independent, so each
+side has its own $\mathfrak{su}(2)$; indeed each $N=4$ algebra contains an affine
+$\mathfrak{su}(2)$. Therefore the $\mathfrak{so}(3)$ is promoted to
+$\mathfrak{su}(2)\oplus\mathfrak{su}(2)\cong\mathfrak{so}(4)$, which acts on the marginal
+operators, the tangent vectors of the moduli space
+\source{Asp §3.2, ll.~1674--1690}.
+
+\emph{Step 3.} We need an $80$-dimensional Riemannian manifold whose holonomy contains
+$SO(4)$ acting non-trivially on every tangent direction, and which is non-compact (a K3
+surface can be made arbitrarily large). The classification of holonomy groups by Berger and
+Simons then leaves one possibility \source{Asp §3.2, Theorem~5, ll.~1691--1713}:
+
+\begin{theorem}[Local form; Aspinwall's Theorem~5, \TL]\label{thm:stringsk3:local}
+Assuming that the deformations of $g$ and $B$ counted above are effective, every smooth
+neighbourhood in the moduli space of $N=(4,4)$ sigma models with K3 target is isomorphic to an
+open subset of
+\begin{equation}\label{eq:stringsk3:teich}
+  \mathcal T_\sigma=\frac{O(4,20)}{O(4)\times O(20)} .
+\end{equation}
+\end{theorem}
+
+The dimension can be checked directly. The group $O(p,q)$ has the same dimension as
+$O(p+q)$, namely $\tfrac12(p+q)(p+q-1)$, so
+\begin{equation}\label{eq:stringsk3:dimpq}
+  \dim\frac{O(p,q)}{O(p)\times O(q)}
+  =\frac{(p+q)(p+q-1)}2-\frac{p(p-1)}2-\frac{q(q-1)}2=pq ,
+\end{equation}
+and for $(p,q)=(4,20)$ this is $276-6-190=80$. A more geometric way to see $pq$: the coset is
+the Grassmannian of positive-definite $p$-planes $\Pi\subset\R^{p,q}$; a nearby plane is the
+graph of a linear map $\Pi\to\Pi^\perp$, and such maps form a vector space of dimension $pq$.
+This is exactly how $G+B$ appeared as a map in \cref{ch:narain}.\index{Grassmannian}
+
+\begin{pitfallbox}[Common pitfall: $80$ is not ``$58$ plus $22$ Ramond--Ramond fields'']
+The $22$ extra moduli are periods of the Neveu--Schwarz $B$-field, present in every closed
+string theory. They are not Ramond--Ramond fields: type~IIA has R--R potentials of odd degree
+only (a one-form and a three-form), a K3 surface has no odd cycles, and so the R--R sector
+contributes \emph{no} scalars on K3 \source{Asp §4.2, ll.~2348--2353}. Nor is the dilaton among
+the $80$: it is an $81$st modulus, see \eqref{eq:stringsk3:MIIA}. We stress this because the
+informal comment attached to the Lean declaration \lean{witten\_moduli\_dim\_is\_80}
+(\cref{sec:stringsk3:lean}) gets precisely this point wrong; the theorem itself, $4\times20=80$,
+is unaffected.
+\end{pitfallbox}
+
+\section{Geometry of the four-plane}\label{sec:stringsk3:fourplane}
+
+A point of $\mathcal T_\sigma$ is a positive-definite four-plane $\Pi\subset\R^{4,20}$. How does
+one read off a metric, a $B$-field and a volume from $\Pi$? The answer requires a choice, and
+the choice is the origin of the stringy dualities.
+
+\subsection{Choosing a null vector}
+Let $\Gamma^{4,20}\subset\R^{4,20}$ be the even unimodular lattice of signature $(4,20)$; by the
+classification of \cref{ch:lattices} it is unique, $\Gamma^{4,20}\cong4U\oplus2E_8(-1)
+\cong\Gamma^{3,19}\oplus U$. Fix a primitive vector $w\in\Gamma^{4,20}$ with $w\cdot w=0$, and a
+second null vector $w^*$ with $w\cdot w^*=1$. Then $w$ and $w^*$ span a copy of $U$ and
+\begin{equation}\label{eq:stringsk3:wperp}
+  \frac{w^\perp}{w}\cap\Gamma^{4,20}\;\cong\;\Gamma^{3,19},\qquad
+  \R^{4,20}=\R w\oplus\R w^*\oplus\R^{3,19}
+\end{equation}
+\source{Asp §3.3, eq.~(65), ll.~1741--1753}. Here $w^\perp$ is the $23$-dimensional space of
+vectors orthogonal to $w$; it contains $w$ itself because $w$ is null, and dividing by $w$
+leaves $22$ dimensions. In the language of \cref{ch:mukai}, $\R^{3,19}=H^2(X,\R)$, $w$ generates
+$H^4(X,\Z)$ and $w^*$ generates $H^0(X,\Z)$ (up to the sign convention for the Mukai pairing
+discussed there).
+
+\subsection{From \texorpdfstring{$\Pi$}{Pi} to \texorpdfstring{$(\Sigma,B,V)$}{(Sigma,B,V)}
+and back}
+Given $\Pi$, set $\Sigma'=\Pi\cap w^\perp$. Since $\Pi$ is four-dimensional and $w^\perp$ has
+codimension one, $\Sigma'$ is a three-plane (it cannot be all of $\Pi$: otherwise $w$ would be
+orthogonal to a maximal positive-definite subspace, hence lie in the negative-definite
+$\Pi^\perp$, contradicting $w^2=0$, $w\neq0$). Project $\Sigma'$ to $w^\perp/w=\R^{3,19}$ to
+obtain a positive three-plane $\Sigma$: this is the Einstein metric of fixed volume. Let
+$B'\in\Pi$ be the vector orthogonal to $\Sigma'$ with $B'\cdot w=1$, and decompose it as
+\begin{equation}\label{eq:stringsk3:Bprime}
+  B'=\alpha\,w+w^*+B,\qquad \alpha\in\R,\quad B\in\R^{3,19}=H^2(X,\R)
+\end{equation}
+\source{Asp §3.3, eq.~(66), ll.~1755--1768}. The component $B$ is the $B$-field. Let us make
+the inverse map explicit, which the source leaves to the reader.
+
+\begin{proposition}[The four-plane in coordinates]\label{thm:stringsk3:plane}
+Let $\sigma_1,\sigma_2,\sigma_3$ be an orthonormal basis of a positive three-plane
+$\Sigma\subset\R^{3,19}$, let $B\in\R^{3,19}$ and $\alpha\in\R$ with $2\alpha+B\cdot B>0$. Then
+\begin{equation}\label{eq:stringsk3:basis}
+  \xi_i=\sigma_i-(\sigma_i\cdot B)\,w\quad(i=1,2,3),\qquad \xi_4=B'=\alpha w+w^*+B
+\end{equation}
+are mutually orthogonal, with $\xi_i\cdot\xi_j=\delta_{ij}$ and
+\begin{equation}\label{eq:stringsk3:volume}
+  B'\cdot B'=2\alpha+B\cdot B .
+\end{equation}
+They span a positive-definite four-plane $\Pi$ with $\Pi\cap w^\perp=\mathrm{span}(\xi_1,
+\xi_2,\xi_3)$.
+\end{proposition}
+\begin{proof}
+Use $w^2=(w^*)^2=0$, $w\cdot w^*=1$ and $w\cdot\sigma=w^*\cdot\sigma=0$ for
+$\sigma\in\R^{3,19}$. Then $\xi_i\cdot\xi_j=\sigma_i\cdot\sigma_j=\delta_{ij}$, because every
+term containing $w$ pairs to zero. Next
+$\xi_i\cdot B'=\sigma_i\cdot B-(\sigma_i\cdot B)\,(w\cdot w^*)=0$: the correction
+$-(\sigma_i\cdot B)w$ is exactly what is needed to make $\xi_i$ orthogonal to $B'$. Finally
+$B'\cdot B'=2\alpha\,(w\cdot w^*)+B\cdot B$. Since $\xi_i\cdot w=0$ and $B'\cdot w=1$, the
+intersection with $w^\perp$ is spanned by the $\xi_i$.
+\end{proof}
+
+Aspinwall identifies the norm \eqref{eq:stringsk3:volume} with the volume of the K3 surface,
+\begin{equation}\label{eq:stringsk3:vol}
+  V=\mathrm{Vol}(X)=\int_XJ\wedge J=2\alpha+B\cdot B
+\end{equation}
+(in units of $\ap{}^2$), by matching the natural metrics on both sides of
+\eqref{eq:stringsk3:decomp} below \source{Asp §3.3, eq.~(68), ll.~1786--1797 and footnote~9}
+\TL. \Cref{thm:stringsk3:plane} makes this plausible: the condition that $\Pi$ be
+positive-definite is precisely $V>0$. Counting parameters, $\Sigma$ has $3\times19=57$, $B$
+has $22$ and $V$ has one:
+\begin{equation}\label{eq:stringsk3:decomp}
+  \frac{O(4,20)}{O(4)\times O(20)}\;\cong\;\frac{O(3,19)}{O(3)\times O(19)}\times\R^{22}\times\R_+ ,
+  \qquad 80=57+22+1
+\end{equation}
+\source{Asp §3.3, eq.~(67), ll.~1770--1784}.\index{moduli space!of K3 sigma models}
+
+\subsection{The discrete identifications}\label{sec:stringsk3:discrete}
+Which isometries $g$ of the lattice are dualities, in the sense that $\Pi$ and $g\Pi$ define
+the same theory? Those visible in the action \eqref{eq:stringsk3:action} fix $w$:
+\begin{itemize}[leftmargin=*]
+\item Diffeomorphisms of $X$ act on $H^2(X,\Z)$ by $O^+(\Gamma^{3,19})$ (\cref{ch:k3lattice});
+  worldsheet complex conjugation, which reverses the sign of $B$, supplies the remaining
+  element of $O(\Gamma^{3,19})$ \source{Asp §3.3, ll.~1802--1804 and 1823--1825}.
+\item Integral shifts $B\mapsto B+e$, $e\in H^2(X,\Z)$: the action changes by
+  $2\pi\ii\times$integer, so the path integral is unchanged
+  \source{Asp §3.3, ll.~1804--1810}.\index{B-field@$B$-field!integral shift}
+\end{itemize}
+It is instructive to see that the $B$-shift really is an isometry of $\Gamma^{4,20}$.
+
+\begin{proposition}[The $B$-shift as a lattice isometry]\label{thm:stringsk3:bshift}
+For $e\in\Gamma^{3,19}$ define a linear map $T_e$ of $\R^{4,20}$ by
+\begin{equation}\label{eq:stringsk3:Te}
+  T_e(w)=w,\qquad T_e(x)=x-(x\cdot e)\,w\ \ (x\in\R^{3,19}),\qquad
+  T_e(w^*)=w^*+e-\tfrac12(e\cdot e)\,w .
+\end{equation}
+Then $T_e$ preserves the inner product, maps $\Gamma^{4,20}$ to itself, and sends the plane
+with data $(\Sigma,B,\alpha)$ to the plane with data
+$\big(\Sigma,\;B+e,\;\alpha-B\cdot e-\tfrac12e\cdot e\big)$. In particular the volume
+\eqref{eq:stringsk3:vol} is unchanged.
+\end{proposition}
+\begin{proof}
+Isometry: $T_e(x)\cdot T_e(y)=x\cdot y$ since $w$ is null and orthogonal to $\R^{3,19}$;
+$T_e(w^*)\cdot T_e(w)=1$; $T_e(w^*)\cdot T_e(x)=e\cdot x-(x\cdot e)=0$; and
+$T_e(w^*)^2=e\cdot e-2\cdot\tfrac12e\cdot e=0$. Integrality: the only non-obvious coefficient
+is $\tfrac12e\cdot e$, which is an integer \emph{because $\Gamma^{3,19}$ is even}. Action on
+the plane: $T_e(B')=\alpha w+w^*+e-\tfrac12(e\cdot e)w+B-(B\cdot e)w$, which is of the form
+\eqref{eq:stringsk3:Bprime} with the stated $B$ and $\alpha$; and
+$T_e(\xi_i)=\sigma_i-(\sigma_i\cdot(B+e))w$. Finally
+$2\alpha'+(B+e)^2=2\alpha-2B\cdot e-e^2+B^2+2B\cdot e+e^2=2\alpha+B^2$.
+\end{proof}
+
+The evenness of the lattice is therefore not a technicality: it is what makes the integral
+$B$-shift a symmetry, exactly as for the torus, where $B_{ij}\mapsto B_{ij}+N_{ij}$ with $N$
+integer antisymmetric lies in $\Odd{d}$ (\cref{ch:odd}). The maps $T_e$ together with
+$O(\Gamma^{3,19})$ form the ``space group'' $O(\Gamma^{3,19})\ltimes\Gamma^{3,19}$
+\source{Asp §3.3, eq.~(69), ll.~1826--1830}. These all fix $w$. One more element, moving $w$, is
+supplied by mirror symmetry: for an algebraic K3 surface with transcendental lattice $\Lambda$
+and ``quantum Picard lattice'' $\Upsilon=\mathrm{Pic}(X)\oplus U=\Lambda^\perp$, split $\Pi$ into
+the two-planes $\Omega=\Pi\cap(\Lambda\otimes\R)$ (complex structure) and
+$\mho=\Pi\cap(\Upsilon\otimes\R)$ (K\"ahler form and $B$-field); the mirror map exchanges
+$(\Lambda,\Omega)\leftrightarrow(\Upsilon,\mho)$; in a Greene--Plesser example with $\Lambda\cong\Upsilon\cong\Gamma^{2,10}$ it is
+realized by an element of $O(\Gamma^{4,20})$ exchanging two orthogonal $\Gamma^{2,10}$
+sublattices, and this element together with the space group generates all of
+$O(\Gamma^{4,20})$ \source{Asp §3.4, eqs.~(70)--(75), ll.~1860--1943}.
+\index{mirror symmetry!for K3 surfaces}
+
+\begin{theorem}[Global form; Aspinwall's Theorem~6, \TL]\label{thm:stringsk3:global}
+Given \cref{thm:stringsk3:local}, completeness, and the assumption that the moduli space is
+Hausdorff, the moduli space of conformally invariant sigma models on a K3 surface is
+$\mathcal M_\sigma=O(\Gamma^{4,20})\backslash O(4,20)/(O(4)\times O(20))$
+\source{Asp §3.4, Theorem~6, eq.~(76), ll.~1944--1950}.
+\end{theorem}
+
+The lattice $\Gamma^{4,20}$ is the total integral cohomology $H^*(X,\Z)$ with the pairing that
+is non-zero only between degrees adding up to four --- the Mukai lattice of \cref{ch:mukai}
+\source{Asp §3.4, ll.~1951--1957}. A point of $\mathcal M_\sigma$ fixes the conformal field
+theory; only after choosing which null direction is called $H^0$ (equivalently $w=H^4$) can one
+speak of ``the'' K3 geometry, and different choices can give very different-looking K3
+surfaces with the same conformal field theory. Aspinwall calls this ``a kind of T-duality''
+\source{Asp §3.4, ll.~1958--1963}.\index{T-duality!for K3 sigma models}
+
+\section{The same coset from a torus: Narain revisited}\label{sec:stringsk3:narain}
+
+The space \eqref{eq:stringsk3:main} has the form of a Narain moduli space. To exploit this we
+need the torus story in the ``plane in a lattice'' language, allowing for different numbers
+$n_L$, $n_R$ of left- and right-moving compact bosons.
+
+\subsection{Planes and momenta}
+Let $\Gamma^{n_L,n_R}\subset\R^{n_L,n_R}$ be an even self-dual lattice (which forces
+$n_L-n_R\in8\Z$) and $\Pi$ a positive-definite $n_L$-plane. Every vector decomposes as
+$p=p_L+p_R$ with $p_L\in\Pi$, $p_R\in\Pi^\perp$, so $p_L\cdot p_L\ge0$ and $p_R\cdot p_R\le0$.
+The lattice points are the winding and momentum states, with left and right conformal weights
+\begin{equation}\label{eq:stringsk3:weights}
+  h=\tfrac12\,p_L\cdot p_L,\qquad \bar h=-\tfrac12\,p_R\cdot p_R ,
+\end{equation}
+and the moduli space of such theories is
+$O(\Gamma^{n_L,n_R})\backslash O(n_L,n_R)/(O(n_L)\times O(n_R))$: the position of $\Pi$ fixes
+the split of every charge into $p_L$ and $p_R$, and the lattice isometries merely relabel the
+states \source{Asp §3.5, eqs.~(77)--(78), ll.~1981--2001}. This is \cref{ch:narain} in
+coordinate-free form. Note the convention: with Aspinwall we take the form positive on
+left-movers, and we write $|p_R|^2=-p_R\cdot p_R\ge0$. The identity
+$p\cdot p=p_L^2-|p_R|^2$ is the level-matching combination $2\,n\cdot m$ of
+\cref{ch:narain}.\index{Narain lattice!of signature $(4,20)$}
+
+To recover $G$, $B$ and Wilson lines, choose a null $n_L$-plane $W$ spanned by lattice
+vectors, its dual null plane $W^*$, and the remaining negative-definite space
+$V\cong\R^{n_R-n_L}$, so $\R^{n_L,n_R}=W\oplus W^*\oplus V$. Then
+\begin{equation}\label{eq:stringsk3:graph}
+  \Pi=\{\,x+\psi(x)+A(x)\;:\;x\in W\,\},\qquad \psi:W\to W^*,\quad A:W\to V,
+\end{equation}
+and $\psi$, viewed as a bilinear form on $W$, splits into its symmetric part $G$ and
+antisymmetric part $B$. The torus is $W/(\Gamma\cap W)$ with metric $G$; $A$ are the Wilson
+lines of the gauge group $U(1)^{n_R-n_L}=V/(\Gamma\cap V)$
+\source{Asp §3.5, eqs.~(79)--(84), ll.~2003--2037}. The parameter count is
+$\dim\mathrm{Hom}(W,W^*\oplus V)=n_L\cdot n_R$, as it must be by \eqref{eq:stringsk3:dimpq}.
+
+\subsection{Worked example: the circle as a line in \texorpdfstring{$\Gamma^{1,1}$}{Gamma(1,1)}}
+\label{sec:stringsk3:circle}
+Take $n_L=n_R=1$, $\Gamma^{1,1}=U$ with basis $e,e^*$, $e^2=(e^*)^2=0$, $e\cdot e^*=1$. A
+positive line is $\Pi=\R\,(e+t\,e^*)$ with $t>0$, since $(e+te^*)^2=2t$. The unit vector along
+$\Pi$ is $u=(e+te^*)/\sqrt{2t}$ and the unit (norm $-1$) vector along $\Pi^\perp$ is
+$u_\perp=(e-te^*)/\sqrt{2t}$. For the state $p=n\,e+m\,e^*$:
+\begin{equation}\label{eq:stringsk3:circlepLpR}
+  p_L^2=(p\cdot u)^2=\frac{(nt+m)^2}{2t}=\tfrac12n^2t+nm+\frac{m^2}{2t},\qquad
+  p_R\cdot p_R=-(p\cdot u_\perp)^2=-\frac{(nt-m)^2}{2t},
+\end{equation}
+which reproduces \source{Asp §3.5, eq.~(88), ll.~2160--2165} with $t=\tan\theta$. Compare
+with the book's convention (\cref{ch:circle}): the dimensionless left momentum is
+$\sqrt{\ap/2}\,(n_{\rm mom}/R+w_{\rm wind}R/\ap)$, whose square is
+$(n_{\rm mom}+w_{\rm wind}\,t)^2/(2t)$ with
+\begin{equation}
+  t=R^2/\ap .
+\end{equation}
+So Aspinwall's $m$ is our momentum number, his $n$ is our winding number, and the lattice
+isometry $e\leftrightarrow e^*$ maps $t\mapsto1/t$, i.e.\ $R\mapsto\ap/R$: T-duality
+(\cref{ch:tduality}). \emph{Numbers}: for $R=2\sqrt{\ap}$, $t=4$, the state $(n,m)=(1,-1)$ has
+$p_L^2=9/8$, $|p_R|^2=25/8$ and $p^2=p_L^2-|p_R|^2=-2=2nm$. At the self-dual radius $t=1$ the
+same state has $p_L=0$ and $|p_R|^2=2$: a \emph{root} of norm $-2$ has become orthogonal to
+$\Pi$. This is the mechanism of \cref{sec:stringsk3:enhanced} in its smallest example
+(\cref{fig:stringsk3:circle}).
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.78]
+  \draw[->] (-0.3,0)--(4.3,0) node[right]{$e$ (winding)};
+  \draw[->] (0,-2.2)--(0,3.3) node[above]{$e^*$ (momentum)};
+  \foreach \x in {0,1,2,3,4} \foreach \y in {-2,-1,0,1,2,3} \fill[black!45] (\x,\y) circle (1.1pt);
+  \draw[very thick,blue!60!black] (0,0)--(3.3,3.3) node[right]{$\Pi$ at $t=1$};
+  \draw[thick,blue!60!black,dashed] (0,0)--(4.2,1.4) node[right]{$\Pi$ at $t=\tfrac13$};
+  \draw[very thick,red!70!black] (0,0)--(2.1,-2.1) node[right]{$\Pi^\perp$ at $t=1$};
+  \draw[->,very thick,red!70!black] (0,0)--(1,-1);
+  \node[red!70!black,below left] at (1,-1) {$\alpha=e-e^*$};
+\end{tikzpicture}
+\caption{The Narain lattice $\Gamma^{1,1}$ of a circle. The modulus $t=R^2/\ap$ is the slope
+of the positive line $\Pi$. At $t=1$ the root $\alpha=e-e^*$, $\alpha^2=-2$, lies in $\Pi^\perp$:
+it has $p_L=0$, $|p_R|^2=2$, and gives a massless charged vector. Orthogonality is with respect
+to the hyperbolic form, for which the axes $e,e^*$ are null.}
+\label{fig:stringsk3:circle}
+\end{figure}
+
+\subsection{The heterotic string on \texorpdfstring{$T^4$}{T4}}
+The heterotic string (\cref{ch:ghosts}) is a superstring on one side and a bosonic string on
+the other; the bosonic side has $26-10=16$ extra compact bosons. Following Aspinwall we let the
+\emph{left}-movers be the supersymmetric side --- the opposite of the usual convention, forced
+by the comparison with K3 \source{Asp §3.5, footnote~11, ll.~2007--2011}. On $T^4$ we then have
+$n_L=4$, $n_R=4+16=20$, and the moduli space is \eqref{eq:stringsk3:main} on the nose. In
+coordinates \eqref{eq:stringsk3:graph}:
+\begin{equation}\label{eq:stringsk3:hetcount}
+  \underbrace{\tfrac12\cdot4\cdot5}_{G:\ 10}+\underbrace{\tfrac12\cdot4\cdot3}_{B:\ 6}
+  +\underbrace{4\times16}_{\text{Wilson lines }A:\ 64}=80 .
+\end{equation}
+The same $80$ that was $58+22$ on the K3 side is $10+6+64$ here: the two descriptions
+cut the same space into entirely different pieces.\index{heterotic string!on $T^4$}
+
+\section{Type IIA on K3 and the duality with the heterotic string}\label{sec:stringsk3:duality}
+
+\subsection{Supersymmetry in six dimensions}
+We now pass from the worldsheet to spacetime: type~IIA string theory on
+$\R^{1,5}\times X$. How much supersymmetry survives? Under
+$\mathfrak{so}(1,9)\supset\mathfrak{so}(1,5)\oplus\mathfrak{so}(4)$ and
+$\mathfrak{so}(4)\cong\mathfrak{su}(2)\oplus\mathfrak{su}(2)$ the ten-dimensional spinor
+decomposes as
+\begin{equation}\label{eq:stringsk3:spinor}
+  \mathbf{16}\to(\mathbf4,\mathbf2,\mathbf1)\oplus(\mathbf4',\mathbf1,\mathbf2).
+\end{equation}
+The holonomy $SU(2)$ of K3 is one of the two $\mathfrak{su}(2)$ factors, say the second. A
+supercharge survives if it is invariant under holonomy (it must be covariantly constant), so
+only $(\mathbf4,\mathbf2,\mathbf1)$ survives: $8$ of the $16$ real components, one minimal
+spinor in six dimensions. \emph{K3 preserves half of the supersymmetry that a torus would}
+\source{Asp §4.1, eq.~(89), ll.~2268--2289}. Type~IIA has two ten-dimensional supercharges of
+opposite chirality, $32$ real components; on K3 we keep $16$, and the opposite chiralities
+give $N=(1,1)$ in six dimensions \source{Asp §4.2, ll.~2333--2336}. The heterotic string has $N=(1,0)$ in ten dimensions:
+$16$ supercharges, all preserved by the flat $T^4$, again $N=(1,1)$ in six dimensions \source{Asp §4.2, ll.~2374--2376}.\index{supersymmetry!in six dimensions}
+
+\subsection{The moduli space of the string theory}
+The holonomy of the moduli space of an $N=(1,1)$ theory in six dimensions is
+$\mathfrak{sp}(1)\oplus\mathfrak{sp}(1)\cong\mathfrak{so}(4)$. Scalars sit in two kinds of
+multiplets: the gravity multiplet contains one real scalar, the dilaton; each matter (vector)
+multiplet contains four scalars in the $\mathbf4$ of $\mathfrak{so}(4)$. Hence the
+Teichm\"uller space is $O(4,m)/(O(4)\times O(m))\times\R$ with $m$ the number of matter
+multiplets \source{Asp §4.2, eq.~(91), ll.~2337--2346}. Since the R--R fields give no scalars
+(pitfall box above), comparison with \cref{thm:stringsk3:global} gives $m=20$ and
+\begin{equation}\label{eq:stringsk3:MIIA}
+  \mathcal M_{\rm IIA}\cong\mathcal M_\sigma\times\R ,\qquad \dim=80+1=81,
+\end{equation}
+the conformal field theories sitting at the boundary $\Phi\to-\infty$ of weak coupling
+\source{Asp §4.2, eq.~(92), ll.~2354--2362}. The form $O(4,m)$ is obtained here from spacetime supersymmetry alone, independently of
+\cref{sec:stringsk3:count}; only $m=20$ is borrowed. Now $4$ is the number of scalars in a
+multiplet and $20$ the number of multiplets.
+
+The gauge fields come from the R--R sector: the one-form gives one $U(1)$; the three-form
+$C_3$ reduced on the $22$ two-cycles gives $22$; and the six-dimensional dual of $C_3$
+($\dd C_3^*=*\dd C_3$, a one-form in six dimensions) gives one more:
+\begin{equation}\label{eq:stringsk3:24}
+  1+22+1=24=b_0+b_2+b_4=\rk H^*(X,\Z)=\rk\Gamma^{4,20}
+\end{equation}
+\source{Asp §4.3, eq.~(94), ll.~2434--2440}. In the standard multiplet structure $4$ of the $24$ vectors belong to the gravity
+multiplet and $20$ to the matter multiplets (standard; not checked against a source in this
+book's library). For the heterotic string on $T^4$ the generic
+gauge group is also $U(1)^{24}$: $16$ from the extra right-moving bosons, $4$ Kaluza--Klein
+vectors from the metric, $4$ from the $B$-field ($b_1(T^4)=4$)
+\source{Asp §4.3, ll.~2444--2449}. The charge lattice is $\Gamma^{4,20}$ in both cases: the
+Narain lattice on one side, $H^*(X,\Z)$ on the other (\cref{ch:mukai}).
+
+\subsection{The duality statement}
+\begin{conjecture}[String--string duality; Aspinwall's Proposition~1, \TL]
+\label{conj:stringsk3:duality}
+The type~IIA string compactified on a K3 surface is equivalent to the heterotic string
+compactified on $T^4$. The moduli spaces $\mathcal M_\sigma\times\R$ are identified in the
+obvious way on $\mathcal M_\sigma$, while strong coupling of one theory is mapped to weak
+coupling of the other:
+\begin{equation}\label{eq:stringsk3:dilaton}
+  \Phi_{\rm Het}=-\Phi_{\rm IIA},\qquad g_{6,\rm Het}=\ee^{2\Phi_{\rm Het}}\,g_{6,\rm IIA},
+\end{equation}
+where $g_6$ is the six-dimensional spacetime metric and $\Phi$ the dilaton
+\source{Asp §4.2, Proposition~1 and eq.~(93), ll.~2377--2403}.
+\end{conjecture}\index{string--string duality}\index{heterotic/type IIA duality}
+
+We call it a conjecture because our source is explicit that it cannot be proved with the
+present definition of string theory; it is supported by the agreement of the moduli spaces,
+of the six-dimensional effective actions, and of the soliton spectra, and ``nothing has been
+discovered \dots to disprove'' it \source{Asp §4.2, ll.~2391--2413}. It is a statement in the
+literature (Tier~\TL\ as a \emph{conjecture with strong evidence}), not a theorem. Notice what
+is \emph{not} claimed: the two worldsheet theories are not equivalent conformal field theories.
+The $80$-dimensional spaces agree, but the map must reverse the sign of the dilaton, so that
+the perturbative expansion of one side is invisible in the other
+\source{Asp §4.2, ll.~2377--2388}.
+
+The rescaling in \eqref{eq:stringsk3:dilaton} has a simple consequence. A tension is a mass
+per length, i.e.\ it scales as (length)$^{-2}$. If $g_{\rm Het}=\ee^{2\Phi_{\rm Het}}g_{\rm IIA}$,
+lengths measured in the heterotic metric are $\ee^{\Phi_{\rm Het}}$ times IIA lengths, so an
+object of tension $T$ in IIA units has tension
+\begin{equation}\label{eq:stringsk3:tension}
+  T^{(\rm Het\ units)}=\ee^{-2\Phi_{\rm Het}}\,T=\frac{T}{\lambda_{\rm Het}^2} .
+\end{equation}
+The fundamental IIA string, $T=1/(2\pi\ap)$, is therefore a heavy object of tension
+$\propto1/\lambda_{\rm Het}^2$ in the weakly coupled heterotic theory --- the characteristic
+coupling dependence of a soliton --- and vice versa. Each string is a soliton of the other;
+see the references in \source{Asp §4.2, ll.~2404--2409}.
+
+\begin{historybox}
+The local form of the moduli space of $N=(4,4)$ theories is due to Seiberg (1988); the global
+form with the lattice $\Gamma^{4,20}$ was obtained by Aspinwall and Morrison. The toroidal
+moduli space is due to Narain (1986) and to Narain and collaborators (1987). The duality
+between type~IIA on K3 and the heterotic string on $T^4$ was suggested by Hull and Townsend
+and by Witten (1995), and the appearance of enhanced gauge symmetry at orbifold points of K3
+was first shown by Witten in the same paper \source{Asp, reference list [50], [52], [61], [62],
+[70], [71], ll.~5355--5398; §3.2, ll.~1671--1673; §3.3, ll.~1731--1732; §4.3, l.~2524}.
+\end{historybox}
+
+\section{Enhanced gauge symmetry}\label{sec:stringsk3:enhanced}
+
+\subsection{Heterotic side: roots orthogonal to \texorpdfstring{$\Pi$}{Pi}}
+At special points of a Narain moduli space extra massless vectors appear
+(\cref{ch:tduality}: $SU(2)\times SU(2)$ at the self-dual radius). In the heterotic string a
+spacetime vector is created by a vertex operator whose supersymmetric (left) side carries the
+vector index, $\partial X^\mu$ or its superpartner, and whose bosonic (right) side is any
+operator of weight $\bar h=1$. Taking the right-moving operator to be a pure exponential of
+charge $p$, \eqref{eq:stringsk3:weights} requires $-\tfrac12p_R\cdot p_R=1$, and masslessness
+requires that no weight comes from the left momentum, $p_L=0$. Hence
+\begin{equation}\label{eq:stringsk3:roots}
+  \mathcal A=\big\{\alpha\in\Gamma^{4,20}\cap\Pi^\perp\;:\;\alpha\cdot\alpha=-2\big\}
+\end{equation}
+is the set of extra massless vectors \source{Asp §4.3, eq.~(95), ll.~2465--2489}. Their charges
+under $U(1)^{24}$ are the coordinates of $\alpha$, so $\mathcal A$ is the root system of the
+non-abelian part of the gauge group, with Cartan subalgebra inside $\mathfrak u(1)^{24}$. Three
+consequences follow at once: the rank stays $24$; all roots have the same length, so the group
+is simply laced, of type $A$--$D$--$E$; and since $\Pi^\perp$ is negative-definite of dimension
+$20$, the non-abelian part has rank at most $20$.
+\index{enhanced gauge symmetry}\index{ADE classification}
+
+Why only norm $-2$ and not $+2$? On the supersymmetric side the GSO projection prevents new
+left-moving states from becoming massless \source{Asp §4.3, ll.~2456--2461}. In the bosonic
+string on a circle both $\alpha=e-e^*$ (norm $-2$, $p_L=0$) and $\beta=e+e^*$ (norm $+2$,
+$p_R=0$) give massless vectors at $t=1$, hence $SU(2)\times SU(2)$; the heterotic string keeps
+only the first.
+
+\paragraph{Mass of the $W$-bosons near the special point.} Level matching fixes the mass of
+these states away from the enhanced point. We use the standard heterotic mass-shell
+conditions, $\tfrac{\ap}4M^2=\tfrac12p_L^2+N_L-\tfrac12=\tfrac12|p_R|^2+N_R-1$, with the
+normal-ordering constants $-\tfrac12$ (NS sector) and $-1$ (bosonic) of
+\cref{ch:quantum,ch:ghosts} (standard; not checked against a source in this book's library).
+For a vector, $N_L=\tfrac12$ and $N_R=0$. Both expressions agree precisely when
+$p_L^2-|p_R|^2=-2$, i.e.\ $\alpha^2=-2$, and then
+\begin{equation}\label{eq:stringsk3:Wmass}
+  M^2=\frac{2}{\ap}\,p_L(\alpha)^2 ,
+\end{equation}
+where $p_L(\alpha)$ is the orthogonal projection of $\alpha$ to $\Pi$. The mass is the
+``distance'' of the root from $\Pi^\perp$: the Higgs mechanism, drawn in a lattice.
+
+\begin{example}[$E_8\times E_8$ without Wilson lines]\label{ex:stringsk3:e8e8}
+Split $\Gamma^{4,20}\cong\Gamma^{4,4}\oplus E_8(-1)\oplus E_8(-1)$ and take
+$\Pi\subset\Gamma^{4,4}\otimes\R$, i.e.\ $A=0$ in \eqref{eq:stringsk3:graph}. Every vector of
+$E_8(-1)\oplus E_8(-1)$ is orthogonal to $\Pi$, in particular all $240+240$ roots of norm $-2$.
+The gauge group contains $E_8\times E_8$, of dimension $248+248$, and the generic
+$\Gamma^{4,4}$ part adds $U(1)^8$: total rank $8+8+8=24$. The largest possible enhancement has
+non-abelian rank $20$, for instance $E_8\times E_8\times SU(2)^4\times U(1)^4$
+\source{Asp §4.3, ll.~2490--2499 and 2551--2554}.
+\end{example}
+
+\subsection{Type IIA side: shrinking two-spheres}
+In type~IIA perturbation theory the gauge fields are R--R fields, under which no perturbative
+string state is charged; the conformal field theory can only ever see $U(1)^{24}$
+\source{Asp §4.3, ll.~2440--2443}. If \cref{conj:stringsk3:duality} holds, the non-abelian gauge
+symmetry must nevertheless be there. Where?
+
+Choose $w$ as in \cref{sec:stringsk3:fourplane}; from now on $\alpha$ denotes a root, and the
+coefficient called $\alpha$ in \eqref{eq:stringsk3:Bprime} is written $\alpha_{\rm vol}$. Suppose
+all roots $\alpha\in\mathcal A$ lie
+in $w^\perp/w=H^2(X,\Z)$. Use the basis \eqref{eq:stringsk3:basis} of $\Pi$. Since
+$\alpha\cdot w=\alpha\cdot w^*=0$,
+\begin{equation}\label{eq:stringsk3:conditions}
+  \alpha\cdot\xi_i=\alpha\cdot\sigma_i,\qquad \alpha\cdot B'=\alpha\cdot B ,
+\end{equation}
+so $\alpha\perp\Pi$ is equivalent to \emph{two} conditions:
+\begin{enumerate}[leftmargin=*]
+\item $\alpha\perp\Sigma$. A class with $\alpha^2=-2$ orthogonal to the holomorphic two-form
+ lies in the Picard lattice and $\pm\alpha$ is the class of a rational curve $C\cong S^2$; if
+ moreover $J\cdot\alpha=0$ this curve has zero area, and $X$ has an orbifold singularity there
+ \source{Asp §2.6, Theorem~4, ll.~1196--1211} (\cref{ch:kummer}). The roots orthogonal to
+ $\Sigma$ form the root system of the $A$--$D$--$E$ singularity: $\C^2/\Z_n$ corresponds to
+ $A_{n-1}$, i.e.\ $SU(n)$.
+\item $\alpha\cdot B=0$: the $B$-field has no component along the vanishing cycle.
+\end{enumerate}
+
+\begin{proposition}[Aspinwall's Proposition~2 (Witten), \TL, conditional on
+\cref{conj:stringsk3:duality}]\label{thm:stringsk3:ADE}
+A type~IIA string on a K3 surface with an orbifold singularity of type $A$--$D$--$E$, with
+vanishing $B$-field through the collapsed cycles, has non-abelian gauge symmetry with the
+simply-laced Lie algebra of the same $A$--$D$--$E$ type
+\source{Asp §4.3, Proposition~2, ll.~2523--2534}.
+\end{proposition}
+
+The volume $V$ does not enter \eqref{eq:stringsk3:conditions}: the enhancement happens for a
+K3 of any size. The physical mechanism, outside perturbation theory, is that R--R charged
+solitons --- D2-branes in the language of \cref{ch:dbranes} --- wrap the two-sphere; their mass
+is proportional to its area and they become massless when it shrinks
+\source{Asp §4.3, ll.~2555--2563}. They are the $W$-bosons.
+\index{D-brane!wrapped on a vanishing cycle}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  % IIA side
+  \node[draw,rounded corners,align=center,inner sep=5pt] (A) at (0,0)
+     {type IIA on K3\\[2pt]\small $58$ metric $+\,22$ $B$-field\\\small gauge fields: R--R, $1+22+1$};
+  \node[draw,rounded corners,align=center,inner sep=5pt] (H) at (8.4,0)
+     {heterotic on $T^4$\\[2pt]\small $10\ (G)+6\ (B)+64$ (Wilson)\\\small gauge fields: $16+4+4$};
+  \node[draw,rounded corners,align=center,inner sep=5pt,fill=yellow!10] (M) at (4.2,-2.3)
+     {$O(\Gamma^{4,20})\backslash O(4,20)/(O(4)\times O(20))\;\times\;\R_{\Phi}$\\[2pt]
+      \small charge lattice $\Gamma^{4,20}$, generic gauge group $U(1)^{24}$};
+  \draw[<->,thick] (A)--(H) node[midway,above]{\small $\Phi_{\rm Het}=-\Phi_{\rm IIA}$};
+  \draw[->] (A)--(M); \draw[->] (H)--(M);
+  \node[align=center,font=\small] at (0,-3.8) {$S^2$ shrinks, $B\!\cdot\!\alpha=0$:\\wrapped brane massless};
+  \node[align=center,font=\small] at (8.4,-3.8) {root $\alpha\perp\Pi$, $\alpha^2=-2$:\\winding state massless};
+  \draw[<->,dashed] (2.3,-3.8)--(6.0,-3.8) node[midway,above]{\small same point of $\mathcal M_\sigma$};
+\end{tikzpicture}
+\caption{The two descriptions of the six-dimensional $N=(1,1)$ theory. The $80$ moduli are
+counted differently on the two sides; the enhanced gauge symmetry is perturbative on the
+heterotic side and non-perturbative on the type~IIA side.}
+\label{fig:stringsk3:duality}
+\end{figure}
+
+\subsection{Worked example: an \texorpdfstring{$A_1$}{A1} singularity and the role of
+\texorpdfstring{$B$}{B}}\label{sec:stringsk3:A1}
+Let $\alpha\in H^2(X,\Z)$ be the class of a rational curve, $\alpha^2=-2$. The basis
+\eqref{eq:stringsk3:basis} is orthogonal with $\xi_i^2=1$ and $\xi_4^2=V$, so by
+\eqref{eq:stringsk3:conditions} the projection of $\alpha$ to $\Pi$ has length
+\begin{equation}\label{eq:stringsk3:pLalpha}
+  p_L(\alpha)^2=\sum_{i=1}^3(\alpha\cdot\sigma_i)^2+\frac{(\alpha\cdot B)^2}{V},
+  \qquad V=2\alpha_{\rm vol}+B\cdot B .
+\end{equation}
+The first term is the squared
+``size'' of the curve measured by the three normalized hyperk\"ahler forms; the second is the
+$B$-field flux through it.
+
+\emph{(a) Small smooth sphere.} Take $(\alpha\cdot\sigma_i)=(0.06,\,0,\,0.08)$ and
+$\alpha\cdot B=0$. Then $p_L^2=0.0036+0.0064=0.01$ and by \eqref{eq:stringsk3:Wmass}
+$M^2=0.02/\ap$, $M\approx0.14/\sqrt{\ap}$: a light charged vector pair $\pm\alpha$. At
+$\alpha\cdot\sigma_i=0$ the pair is massless and, with the $U(1)$ under which it is charged,
+fills out $SU(2)$; the gauge group is $SU(2)\times U(1)^{23}$, of dimension $3+23=26$.
+
+\emph{(b) The orbifold conformal field theory.} An orbifold such as $T^4/\Z_2$
+(\cref{ch:kummer}) is a perfectly regular conformal field theory, although its $16$ two-spheres
+have zero size. There is no contradiction: the orbifold conformal field theory has
+$B$-field flux $\tfrac12$ through each collapsed sphere
+\source{Asp §4.3, ll.~2535--2547}, that is $\alpha\cdot B=\tfrac12$ in our notation. Then
+\eqref{eq:stringsk3:pLalpha} gives $p_L^2=1/(4V)$ and
+\begin{equation}
+  M^2=\frac{1}{2V\ap}\neq0 .
+\end{equation}
+For $V=100$ (a large K3 in units of $\ap{}^2$) this is $M\approx0.07/\sqrt{\ap}$: light, but not
+massless. The singular conformal field theory sits at $\alpha\cdot B=0$, half a period away.
+Because $B\sim B+e$, the flux $\alpha\cdot B$ is periodic with period one, and $\tfrac12$ is the
+point farthest from the enhancement locus.
+\index{orbifold!B-field at the orbifold point@$B$-field at the orbifold point}
+
+\emph{(c) A stringy enhancement at small volume.} Roots need not lie in $H^2$. Take
+$\alpha=w^*-w$: $\alpha^2=-2\,w\cdot w^*=-2$. Now $\alpha\cdot\xi_i=-(w^*-w)\cdot w\,
+(\sigma_i\cdot B)=-\sigma_i\cdot B$ and $\alpha\cdot B'=\alpha_{\rm vol}-1$. So $\alpha\perp\Pi$
+requires $B\perp\Sigma$ and $\alpha_{\rm vol}=1$; with $B=0$ this is $V=2$. A \emph{smooth} K3
+surface of volume of order one in string units has enhanced $SU(2)$ symmetry, whatever its
+shape. This is the K3 counterpart of the self-dual radius of \cref{sec:stringsk3:circle}, where
+the root $e-e^*$ also pairs winding with momentum; Aspinwall states the general conclusion,
+that if the roots are not all orthogonal to $w$ the surface may be smooth but its volume is
+of order one \source{Asp §4.3, ll.~2541--2550}. (The specific value $V=2$ depends on the
+normalization \eqref{eq:stringsk3:vol}; the computation here is ours.)
+
+\begin{pitfallbox}[Common pitfall: ``singular K3 $\Rightarrow$ non-abelian gauge symmetry'']
+An orbifold singularity is necessary (for roots in $H^2$) but not sufficient: the $B$-field
+through the vanishing cycle must also vanish. Conversely a smooth, small K3 can have enhanced
+symmetry, example (c). The locus of enhanced symmetry has real codimension \emph{four} in
+$\mathcal M_\sigma$ --- three conditions on the metric and one on $B$, matching the four scalars
+of the vector multiplet that becomes part of the non-abelian theory.
+\end{pitfallbox}
+
+\begin{remark}[Type IIB on K3]\label{rem:stringsk3:IIB}
+For type~IIB the six-dimensional theory is chiral, $N=(2,0)$, the holonomy is
+$\mathfrak{sp}(2)\cong\mathfrak{so}(5)$, and the R--R potentials of even degree \emph{do}
+give scalars: $b_0+b_2+b_4=24$. With the dilaton the count is $58+22+1+1+22+1=105=5\times21$
+and the moduli space is $O(\Gamma^{5,21})\backslash O(5,21)/(O(5)\times O(21))$, in which the
+dilaton is no longer a separate factor \source{Asp §4.4, eq.~(97) and table, ll.~2573--2621}.
+The pattern $(3,19)\to(4,20)\to(5,21)$ continues on $\KT$ with the lattice of signature
+$(6,22)$ (\cref{ch:k3t2}).
+\end{remark}
+
+\section{What the machine has checked}\label{sec:stringsk3:lean}
+
+No part of this chapter's physics --- sigma models, moduli spaces as quotients, string
+duality --- is formalized. What is formalized are the lattice-theoretic facts on which the
+argument rests, in the library \lean{DualScaleStream2.Lattice}, and a handful of numerical
+identities in the older library \lean{StringTheoryFoundation}. We list them with their exact
+scope.
+
+\subsection{Signatures and ranks}
+The file \lean{DualScaleStream2/Lattice/K3T2Signature.lean} defines a signature as a pair of
+natural numbers with componentwise addition, takes $\sgn U=(1,1)$ and
+$\sgn E_8(-1)=(0,8)$ as \emph{inputs}, and computes.
+
+\begin{leanbox}[In Lean: $(3,19)+(1,1)=(4,20)$ and the mod-8 condition]
+\begin{leancode}
+def sigK3 : Signature := sigE8Neg + sigE8Neg + sigU + sigU + sigU
+def sigMukai : Signature := sigK3 + sigU
+
+theorem sigMukai_eq : sigMukai = ⟨4, 20⟩ := by ...
+
+theorem index_mod_eight :
+    sigK3.index % 8 = 0 ∧ sigMukai.index % 8 = 0 ∧
+    sigK3T2.index % 8 = 0 := by ...
+\end{leancode}
+\textbf{Reading.} Adding the pairs $(0,8)+(0,8)+3\cdot(1,1)+(1,1)$ gives $(4,20)$, and
+$4-20=-16$ is divisible by $8$ (as are $3-19$ and $6-22$). \textbf{Proof idea.} Both sides
+reduce to the same numerals by unfolding definitions (\lean{rfl}). \textbf{Scope.} This is
+bookkeeping on pairs of numbers. That $U$ and $E_8(-1)$ \emph{have} these signatures, that
+$H^*(K3,\Z)$ \emph{is} $4U\oplus2E_8(-1)$, and the theorem that even unimodular lattices exist
+only for $n_+-n_-\equiv0\pmod 8$ --- which is what forces $n_L-n_R\in8\Z$ in
+\cref{sec:stringsk3:narain} --- are \TL\ inputs. The companion theorems \lean{sigK3\_eq},
+\lean{rank\_K3} ($22$) and \lean{sigK3\_matches\_hodge} were discussed in \cref{ch:k3lattice}.
+\end{leanbox}
+
+\subsection{Evenness of the Mukai lattice and the \texorpdfstring{$B$}{B}-shift}
+In \cref{thm:stringsk3:bshift} integrality of $T_e$ rested on $e\cdot e\in2\Z$. The statement
+that adjoining $H^0\oplus H^4$ preserves evenness is kernel-checked for an arbitrary even Gram
+matrix (\cref{ch:mukai}):
+
+\begin{leanbox}[In Lean: the extended lattice is even if $H^2$ is]
+\begin{leancode}
+def mukaiPair {n : ℕ} (L : Gram n) (v w : MukaiVec n) : ℤ :=
+  v.c ⬝ᵥ (L *ᵥ w.c) - v.r * w.s - v.s * w.r
+
+theorem mukaiPair_even {n : ℕ} (L : Gram n) (hL : Lᵀ = L) (heven : IsEvenDiag L)
+    (v : MukaiVec n) : Even (mukaiPair L v v) := by ...
+
+theorem hyperbolicUNeg_unimodular : IsUnimodular hyperbolicUNeg := ...
+\end{leancode}
+\textbf{Reading.} For a symmetric integer matrix $L$ with even diagonal and any integer
+vector $v=(r,c,s)$, the number $c^{\mathsf T}Lc-2rs$ is even; and the $2\times2$ Gram matrix
+$\left(\begin{smallmatrix}0&-1\\-1&0\end{smallmatrix}\right)$ of $H^0\oplus H^4$ has determinant
+$\pm1$. \textbf{Proof idea.} $c^{\mathsf T}Lc=\sum_iL_{ii}c_i^2+2\sum_{i<j}L_{ij}c_ic_j$ is even
+by the general lemma \lean{even\_quadratic\_form\_of\_even\_diag}, and $2rs$ is even.
+\textbf{Scope.} Note the sign: the Mukai pairing uses $U(-1)$ on $H^0\oplus H^4$, Aspinwall's
+$w,w^*$ span $U$. Since $U(-1)\cong U$ (send $w^*\mapsto-w^*$) this is a convention, not a
+discrepancy, but the isomorphism is not a Lean theorem. The map $T_e$ of
+\eqref{eq:stringsk3:Te} itself is \emph{not} formalized; see \cref{exo:stringsk3:leanTe}.
+\end{leanbox}
+
+\subsection{Roots and reflections}
+The enhanced gauge symmetry of \cref{sec:stringsk3:enhanced} is governed by vectors of norm
+$-2$. For each such vector the reflection $s_\alpha(x)=x+(x\cdot\alpha)\alpha$ is an isometry of
+the lattice; these reflections generate the Weyl group of the enhanced gauge algebra, and on
+the K3 side they are the Picard--Lefschetz monodromies around the singular surface
+(\cref{ch:k3lattice}). The algebraic core is Tier~\TA:
+
+\begin{leanbox}[In Lean: reflections in $(-2)$-vectors are integral isometries]
+\begin{leancode}
+def reflection (L : Gram n) (v : Fin n → ℤ) : Gram n :=
+  1 + vecMulVec v v * L
+
+theorem reflection_isometry (L : Gram n) (hL : Lᵀ = L) (v : Fin n → ℤ)
+    (hv : latticeNorm L v = -2) :
+    (reflection L v)ᵀ * L * reflection L v = L := by ...
+
+theorem e8Neg_simpleRoot_norm (i : Fin 8) :
+    latticeNorm e8Neg (Pi.single i 1) = -2 := by ...
+\end{leancode}
+\textbf{Reading.} For any symmetric integer Gram matrix $L$ and any integer vector $v$ with
+$v^{\mathsf T}Lv=-2$, the integer matrix $S=1+vv^{\mathsf T}L$ satisfies $S^{\mathsf T}LS=L$.
+The eight basis vectors of $E_8(-1)$ have norm $-2$. \textbf{Proof idea.} Expand
+$S^{\mathsf T}LS=L+2Lvv^{\mathsf T}L+(v^{\mathsf T}Lv)\,Lvv^{\mathsf T}L$ and insert $-2$.
+\textbf{Scope.} This is the statement used in \cref{ex:stringsk3:e8e8} only for the eight simple
+roots of one $E_8(-1)$; the count of $240$ roots, and the identification of $\mathcal A$ with a
+gauge algebra, are \TL. (Declarations in
+\lean{DualScaleStream2/Lattice/Reflection.lean}.)
+\end{leanbox}
+
+\subsection{Arithmetic shadows of the duality}
+The older file \lean{StringTheoryFoundation/StringTheory/WittenDuality.lean} is named after the
+duality but contains no string theory. Its four theorems are:
+
+\begin{leanbox}[In Lean: four numerical identities --- read the statements, not the names]
+\begin{leancode}
+def wittenModuliDimension (p q : Nat) : Nat := p * q
+theorem witten_moduli_dim_is_80 :
+    wittenModuliDimension 4 20 = 80 := by decide
+
+theorem witten_duality_rank_match :
+    defaultDualityLattice.b2_K3 + 2
+      = defaultDualityLattice.t4_momentum + defaultDualityLattice.t4_gauge := by
+  decide
+
+theorem witten_6d_supercharges :
+    defaultSixDSusy.numSupercharges = 16 := by decide
+
+def exhibitsGaugeEnhancement (c : TwoCycle) : Prop :=
+  c.intersectionSelf = -2 ∧ c.area = 0
+theorem witten_gauge_enhancement_at_singularity :
+    exhibitsGaugeEnhancement ⟨-2, 0⟩ := by ...
+\end{leancode}
+\textbf{Reading.} (i) $4\cdot20=80$. (ii) For a record with default fields $22$, $4$, $20$:
+$22+2=4+20$. (iii) A record field defined as $32/2$ equals $16$. (iv) The pair $(-2,0)$
+satisfies the predicate ``first component is $-2$ and second component is $0$''.
+\textbf{Scope.} These are arithmetic shadows of \eqref{eq:stringsk3:dimpq},
+\eqref{eq:stringsk3:24} and of \cref{sec:stringsk3:enhanced}. In (iv) the word ``gauge
+enhancement'' is the \emph{name} of a predicate on two numbers; nothing about gauge fields is
+proved, and the $B$-field condition of \cref{thm:stringsk3:ADE} is absent from the predicate.
+The informal comments in that file also describe the $22$ extra moduli as Ramond--Ramond
+periods and include the dilaton in the $80$, which contradicts our source (pitfall box in
+\cref{sec:stringsk3:count}); comments are not checked by the kernel. A faithful formalization
+would need at least the Grassmannian of positive four-planes in a real quadratic space of
+signature $(4,20)$ with $O(4U\oplus2E_8(-1))$ acting on it;
+\cref{thm:stringsk3:plane,thm:stringsk3:bshift} are elementary linear algebra and realistic
+first targets (\cref{ch:open}).
+\end{leanbox}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}p{0.45\textwidth}p{0.34\textwidth}l@{}}
+\toprule
+Claim & Where & Tier\\
+\midrule
+$(3,19)+(1,1)=(4,20)$; index $\equiv0 \pmod 8$ at $(3,19),(4,20),(6,22)$ &
+  \lean{sigMukai\_eq}, \lean{index\_mod\_eight} & \TA\\
+$H^2$ even $\Rightarrow$ $H^0\oplus H^2\oplus H^4$ even; $U(-1)$ unimodular &
+  \lean{mukaiPair\_even}, \lean{hyperbolicUNeg\_unimodular} & \TA\\
+Reflection in a $(-2)$-vector is an integral isometry; simple roots of $E_8(-1)$ have norm $-2$ &
+  \lean{reflection\_isometry}, \lean{e8Neg\_simpleRoot\_norm} & \TA\\
+$4\cdot20=80$; $22+2=4+20$; $32/2=16$ &
+  \lean{witten\_moduli\_dim\_is\_80}, \lean{witten\_duality\_rank\_match},
+  \lean{witten\_6d\_supercharges} & \TA\ (shadow)\\
+\Cref{thm:stringsk3:plane,thm:stringsk3:bshift}; formulas \eqref{eq:stringsk3:Wmass},
+  \eqref{eq:stringsk3:pLalpha}; example (c) & derived here; sympy check & ---\\
+K3 sigma model is $N=(4,4)$, metric exact & Asp §3.1 & \TL\\
+$\mathcal M_\sigma=O(\Gamma^{4,20})\backslash O(4,20)/(O(4)\times O(20))$ (under stated
+  assumptions) & Asp §3.2--3.4, Thms.~5, 6 & \TL\\
+$V=2\alpha+B^2$ & Asp §3.3, eq.~(68) & \TL\\
+IIA on K3 $\leftrightarrow$ heterotic on $T^4$, $\Phi\mapsto-\Phi$ & Asp §4.2, Prop.~1 &
+  \TL\ (conjecture)\\
+$A$--$D$--$E$ enhanced gauge symmetry at orbifold points with $B\cdot\alpha=0$ & Asp §4.3,
+  Prop.~2 & \TL\ (conditional)\\
+Identification of any Lean object above with a physical system & --- & never \TA\\
+\bottomrule
+\end{tabular}
+\caption{Tier table for this chapter. The \TA\ entries depend only on the axioms
+\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}. Rows marked ``derived here'' are
+ordinary pen-and-paper mathematics of this chapter, checked symbolically but not
+formalized.}
+\label{tab:stringsk3:tiers}
+\end{table}
+
+\begin{summarybox}
+\begin{itemize}[leftmargin=*]
+\item A string on a K3 surface is described by an $N=(4,4)$ superconformal sigma model; the
+  Ricci-flat metric is an exact solution. Its parameters are the metric ($58$) and the class
+  of the $B$-field ($22$): $80=4\times20$ in all. The dilaton is not among them.
+\item Locally the moduli space is the Grassmannian $O(4,20)/(O(4)\times O(20))$ of positive
+  four-planes $\Pi\subset\R^{4,20}$; globally one divides by $O(\Gamma^{4,20})$, the isometry
+  group of the Mukai lattice $H^*(X,\Z)$ (under completeness and Hausdorff assumptions).
+\item After choosing a null vector $w$, $\Pi$ is spanned by $\sigma_i-(\sigma_i\cdot B)w$ and
+  $B'=\alpha w+w^*+B$, with $B'\cdot B'=2\alpha+B^2=V$. Integral $B$-shifts are lattice isometries
+  because the lattice is even. Changing $w$ is a T-duality-like relabelling.
+\item The same coset is the Narain moduli space of the heterotic string on $T^4$
+  ($10+6+64=80$); both theories have $N=(1,1)$ supersymmetry in six dimensions and generic
+  gauge group $U(1)^{24}$. This supports the conjectural duality IIA/K3 $=$ Het/$T^4$ with
+  $\Phi\mapsto-\Phi$.
+\item Extra massless vectors are roots $\alpha\in\Gamma^{4,20}\cap\Pi^\perp$, $\alpha^2=-2$;
+  the gauge group is simply laced of rank $24$. On the K3 side this means an $A$--$D$--$E$
+  orbifold singularity \emph{and} vanishing $B$-flux through the collapsed spheres; the
+  orbifold conformal field theory has flux $\tfrac12$ and is regular.
+\item Machine-checked: signature and parity bookkeeping, reflections in $(-2)$-vectors,
+  numerical identities. Not machine-checked: anything about sigma models, moduli spaces, duality.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{exo:stringsk3:dims}
+Verify \eqref{eq:stringsk3:dimpq} and evaluate it for $(3,19)$, $(4,20)$, $(5,21)$ and $(6,22)$.
+Match the first three numbers with a count of physical fields
+(\eqref{eq:stringsk3:einstein} without the volume, \eqref{eq:stringsk3:80},
+\cref{rem:stringsk3:IIB}).
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{exo:stringsk3:circle}
+For the circle of \cref{sec:stringsk3:circle} with $t=R^2/\ap=9$, compute $p_L^2$ and $|p_R|^2$
+for $(n,m)=(1,-1)$, $(1,1)$ and $(0,1)$, and check $p_L^2-|p_R|^2=2nm$ in each case. Which of the
+three states is a root? Find all $t$ at which some root of $\Gamma^{1,1}$ is orthogonal to $\Pi$.
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{exo:stringsk3:gauge}
+List the $24$ abelian gauge fields of type~IIA on K3 and of the heterotic string on $T^4$ by
+their ten-dimensional origin. Which Lean theorem of \cref{sec:stringsk3:lean} records the
+equality of the two counts, and what exactly does it state?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exo:stringsk3:group}
+Show that the maps $T_e$ of \cref{thm:stringsk3:bshift} satisfy $T_e\circ T_f=T_{e+f}$, and that
+for $g\in O(\Gamma^{3,19})$ (extended by the identity on $w,w^*$) one has
+$g\,T_e\,g^{-1}=T_{g(e)}$. Conclude that the $T_e$ and $O(\Gamma^{3,19})$ generate the semidirect
+product $O(\Gamma^{3,19})\ltimes\Gamma^{3,19}$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exo:stringsk3:A2}
+Let $\alpha_1,\alpha_2\in H^2(X,\Z)$ with $\alpha_1^2=\alpha_2^2=-2$, $\alpha_1\cdot\alpha_2=1$, both
+orthogonal to $\Pi$. Show that $\mathcal A$ contains exactly the six vectors
+$\pm\alpha_1,\pm\alpha_2,\pm(\alpha_1+\alpha_2)$ among integer combinations of $\alpha_1,\alpha_2$,
+identify the gauge group, give its dimension, and name the orbifold singularity of $X$
+\source{Asp §2.6, ll.~1227--1240}.
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{exo:stringsk3:leansig}
+In the style of \lean{sigMukai\_eq}, define \lean{sigIIB : Signature := sigMukai + sigU} and
+prove \lean{sigIIB = ⟨5, 21⟩}, \lean{sigIIB.rank = 26} and \lean{sigIIB.index \% 8 = 0}. State in
+one sentence what these theorems do and do not say about type~IIB string theory.
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{exo:stringsk3:leanroot}
+Using \lean{mukaiPair} with an arbitrary \lean{L : Gram n}, prove that the vector
+$(r,c,s)=(1,0,1)$ has self-pairing $-2$ (this is \lean{structureSheaf\_mukai\_sq}) and that
+$(1,0,-1)$ has self-pairing $+2$. Relate the two vectors to the roots $w^*\mp w$ of example (c)
+in \cref{sec:stringsk3:A1}, taking the sign convention $U(-1)$ versus $U$ into account.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]\label{exo:stringsk3:leanTe}
+Formalize \cref{thm:stringsk3:bshift} for a general symmetric even Gram matrix
+\lean{L : Gram n}: write the $(n+2)\times(n+2)$ block Gram matrix of $U\oplus L$, the integer
+matrix of $T_e$ (you will need \lean{(e ⬝ᵥ (L *ᵥ e)) / 2} and the hypothesis
+\lean{IsEvenDiag L}), and prove $T_e^{\mathsf T}\,(U\oplus L)\,T_e=U\oplus L$. Which lemma of
+\cref{sec:stringsk3:lean} supplies the divisibility by two?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]\label{exo:stringsk3:het}
+Work out \eqref{eq:stringsk3:graph} for the heterotic string on a circle with one Wilson line
+component switched on: $\Gamma^{1,17}=U\oplus E_8(-1)\oplus E_8(-1)$, $\Pi=\R\,(e+t\,e^*+a)$
+with $a\in E_8(-1)\otimes\R$ in the first factor. Show that $\Pi$ is positive iff
+$2t+a\cdot a>0$, and that a root $\beta$ of $E_8(-1)$ remains orthogonal to $\Pi$ iff
+$\beta\cdot a=0$. For $a$ proportional to a fundamental coweight, which subgroup of $E_8$
+survives? (Compare $2t+a\cdot a$ with \eqref{eq:stringsk3:volume}: the Wilson line plays the role
+of the $B$-field.)
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*]
+\item The sigma model, the count $58+22$, and Theorem~5: \source{Asp §3.1--3.2, ll.~1559--1725}.
+  The null vector $w$, the decomposition into metric, $B$-field and volume, and the space
+  group: \source{Asp §3.3, ll.~1727--1832}. Mirror symmetry for K3 and Theorem~6:
+  \source{Asp §3.4, ll.~1836--1963}.
+\item Narain moduli spaces as Grassmannians, including the heterotic case and the circle:
+  \source{Asp §3.5, ll.~1967--2170}; compare \cref{ch:narain,ch:odd}.
+\item Supersymmetry counting, the IIA moduli space and the duality conjecture:
+  \source{Asp §4.1--4.2, ll.~2189--2413}. Enhanced gauge symmetry: \source{Asp §4.3,
+  ll.~2428--2566}. Type~IIB and $O(5,21)$: \source{Asp §4.4, ll.~2571--2640}.
+\item $A$--$D$--$E$ singularities and $(-2)$-curves: \source{Asp §2.6, ll.~1172--1224};
+  \cref{ch:kummer}. The Mukai lattice as $H^*(X,\Z)$ and its isometries from derived equivalences:
+  \cref{ch:mukai}. What becomes of $\Gamma^{4,20}$ on $\KT$: \cref{ch:k3t2}. Symmetries of K3
+  sigma models acting on $\Gamma^{4,20}$ and their relation to $\Mtf$: \cref{ch:moonshine}.
+\end{itemize}

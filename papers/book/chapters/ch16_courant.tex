@@ -1,0 +1,935 @@
+\chapter{Generalized Geometry: Courant and Dorfman Brackets}\label{ch:courant}
+
+The massless fields of the closed string are a metric $g_{ij}$, a two-form $b_{ij}$ and a dilaton
+(\cref{ch:backgrounds}). The metric comes with a gauge symmetry, diffeomorphisms, whose parameter
+is a vector field. The two-form comes with a second gauge symmetry, $b\mapsto b+\dd\tilde\lambda$,
+whose parameter is a one-form. In \cref{ch:genmetric} the two fields were packaged into one
+object, the generalized metric $\HH$. This chapter answers the obvious next question: \emph{can
+the two gauge symmetries be packaged as well, and what algebra do they then form?}
+
+The answer is yes, and it is instructive in an unexpected way. The combined parameter is a
+\emph{generalized vector} $V=v+\xi$, a vector field plus a one-form. The combined transformation
+is a \emph{generalized Lie derivative}. Acting on another generalized vector it defines a product,
+the \emph{Dorfman bracket}, and the antisymmetric part of that product is the \emph{Courant
+bracket}. Neither of the two is a Lie bracket: the first is not antisymmetric, the second violates
+the Jacobi identity. A student who has learned that ``symmetries form Lie algebras'' should see at
+least once, in full detail, how a perfectly consistent gauge symmetry escapes that slogan, and why
+nothing goes wrong. In double field theory the same brackets reappear in $O(D,D)$ covariant form
+as the D- and C-brackets, and there the closure of the gauge algebra is no longer automatic: it
+holds if the strong constraint of \cref{ch:doubled} is imposed. At the end we read, line by line,
+what the two Lean modules attached to this chapter actually prove; they are integer toy models,
+and part of the exercise is to say precisely which features of the brackets they capture and which
+they do not.
+
+Conventions. $D$ is the number of spacetime dimensions and $i,j,k=1,\dots,D$. We order doubled
+objects as in \cref{ch:doubled}, vector (momentum) entry first:
+$X^M=(x^i,\tilde x_i)$, $\partial_M=(\partial_i,\tilde\partial^i)$, $M=1,\dots,2D$. The review of
+Aldazabal, Marqu\'es and N\'u\~nez and the papers of Hohm, Hull and Zwiebach put the tilde entry
+first \source{AMN §3.4, eq.~(3.33), ll.~1096--1099; HHZ §1, footnote, ll.~313--315}; since every
+formula below is written with $\eta$-contracted indices, the ordering does not affect them.
+
+%==================================================================================================
+\section{Two gauge symmetries and their algebra}\label{sec:courant:two}
+
+\subsection{Diffeomorphisms and \texorpdfstring{$b$}{b}-field gauge transformations}
+
+An infinitesimal diffeomorphism with parameter a vector field $\lambda=\lambda^i\partial_i$ acts
+on every tensor by the Lie derivative\index{Lie derivative} $L_\lambda$. On a scalar $\phi$, a
+vector $V$ and a one-form $\omega$,
+\begin{equation}\label{eq:courant:lie}
+L_\lambda\phi=\lambda^j\partial_j\phi,\qquad
+(L_\lambda V)^i=\lambda^j\partial_jV^i-V^j\partial_j\lambda^i=[\lambda,V]^i,\qquad
+(L_\lambda\omega)_i=\lambda^j\partial_j\omega_i+\partial_i\lambda^j\,\omega_j ,
+\end{equation}
+\source{AMN §3.1, eqs.~(3.14)--(3.15), ll.~840--846}. The middle expression is the Lie
+bracket\index{Lie bracket} of vector fields. It is antisymmetric and satisfies the Jacobi identity
+$[[\lambda_1,\lambda_2],\lambda_3]+\text{cyclic}=0$; consequently
+$[L_{\lambda_1},L_{\lambda_2}]=L_{[\lambda_1,\lambda_2]}$ and diffeomorphisms close into a Lie
+algebra. The second symmetry acts only on the two-form:
+\begin{equation}\label{eq:courant:bgauge}
+\delta_{\tilde\lambda}b_{ij}=\partial_i\tilde\lambda_j-\partial_j\tilde\lambda_i
+=(\dd\tilde\lambda)_{ij},\qquad \delta_{\tilde\lambda}g_{ij}=0 ,
+\end{equation}
+with $\tilde\lambda=\tilde\lambda_i\,\dd x^i$ a one-form \source{AMN §3.1, eq.~(3.16),
+ll.~855--859}. The field strength $H=\dd b$ is invariant because $\dd^2=0$. For the same reason
+the parameter has its own redundancy: $\tilde\lambda=\dd\chi$ does nothing at all. This
+``gauge symmetry of the gauge symmetry'' will be responsible for most of the unusual features
+below.
+
+We shall use three operations on differential forms: the exterior derivative $\dd$, the
+contraction $\iota_v$ with a vector field, $(\iota_v\omega)=v^i\omega_i$ on a one-form and
+$(\iota_vB)_j=v^iB_{ij}$ on a two-form, and the Lie derivative. They obey
+\begin{equation}\label{eq:courant:cartan}
+L_v=\dd\,\iota_v+\iota_v\,\dd,\qquad [L_v,\dd]=0,\qquad
+[L_v,\iota_u]=\iota_{[v,u]},\qquad [L_v,L_u]=L_{[v,u]} .
+\end{equation}
+The first identity is Cartan's formula\index{Cartan formula}; the student should check it on a
+one-form using \eqref{eq:courant:lie}: $(\iota_v\dd\omega)_i=v^j(\partial_j\omega_i-
+\partial_i\omega_j)$ and $(\dd\iota_v\omega)_i=\partial_i(v^j\omega_j)$ add up to the last
+expression in \eqref{eq:courant:lie}. (These identities are standard; they are not taken from a
+source in this book's library.)
+
+\subsection{The algebra of the combined transformations}
+
+Let $\delta_{(\lambda,\tilde\lambda)}b=L_\lambda b+\dd\tilde\lambda$ be the combined variation.
+Apply two of them in succession. A variation acts on the field only, not on the parameters, so
+\[
+\delta_1\delta_2 b=\delta_1\bigl(L_{\lambda_2}b+\dd\tilde\lambda_2\bigr)
+=L_{\lambda_2}\bigl(L_{\lambda_1}b+\dd\tilde\lambda_1\bigr) ,
+\]
+and therefore, using $[L_{\lambda_2},L_{\lambda_1}]=L_{[\lambda_2,\lambda_1]}$ and
+$L\,\dd=\dd L$,
+\begin{equation}\label{eq:courant:semidirect}
+[\delta_1,\delta_2]\,b=L_{[\lambda_2,\lambda_1]}b
++\dd\bigl(L_{\lambda_2}\tilde\lambda_1-L_{\lambda_1}\tilde\lambda_2\bigr).
+\end{equation}
+The commutator is again a combined transformation, with parameters
+$\lambda_{12}=[\lambda_2,\lambda_1]$ and
+$\tilde\lambda_{12}=L_{\lambda_2}\tilde\lambda_1-L_{\lambda_1}\tilde\lambda_2$: diffeomorphisms
+act on the one-form parameters, and one-form transformations commute among themselves. But
+$\tilde\lambda_{12}$ is \emph{not unique}. Because only $\dd\tilde\lambda_{12}$ enters, we may add
+any exact form to it; for instance
+\begin{equation}\label{eq:courant:ambiguity}
+\tilde\lambda_{12}'=L_{\lambda_2}\tilde\lambda_1-L_{\lambda_1}\tilde\lambda_2
+-\kappa\,\dd\bigl(\iota_{\lambda_2}\tilde\lambda_1-\iota_{\lambda_1}\tilde\lambda_2\bigr)
+\end{equation}
+is equally good for every real number $\kappa$. The bracket on pairs $(\lambda,\tilde\lambda)$ is
+thus determined by the physics only up to exact one-forms. The choice $\kappa=\tfrac12$ will turn
+out to be the Courant bracket, singled out by a symmetry that is invisible here: it treats $v$ and
+$\xi$ on the same footing under $O(D,D)$.
+
+\begin{physicsbox}[Physical picture: a symmetry with a redundant parameter]
+Electromagnetism has a gauge parameter $\chi$ that is a function, and nothing acts trivially
+except constants. The Kalb--Ramond field $b$ is one step higher: its parameter is a one-form, and
+a whole function's worth of parameters, $\tilde\lambda=\dd\chi$, acts trivially. Whenever this
+happens, ``the'' algebra of gauge parameters is ambiguous, and one should expect identities
+such as antisymmetry or Jacobi to hold only \emph{up to trivial parameters}. The transformations
+of the fields themselves still compose perfectly well: \eqref{eq:courant:semidirect} is an honest
+identity between operators acting on $b$.
+\end{physicsbox}
+
+%==================================================================================================
+\section{Generalized vectors and the natural pairing}\label{sec:courant:pairing}
+
+\begin{definition}[Generalized tangent bundle]\label{def:courant:genvec}
+\index{generalized tangent bundle}\index{generalized vector}%
+Let $M$ be a $D$-dimensional manifold with tangent bundle $T$ and cotangent bundle $T^*$. A
+\emph{generalized vector} is a section $V=v+\xi$ of $E=T\oplus T^*$, the formal sum of a vector
+field $v$ and a one-form $\xi$. In components $V^M=(v^i,\xi_i)$. The \emph{natural pairing} of
+$X=v+\xi$ and $Y=u+\zeta$ is
+\begin{equation}\label{eq:courant:pairing}
+\langle X,Y\rangle=\iota_v\zeta+\iota_u\xi=v^i\zeta_i+u^i\xi_i=X^M\eta_{MN}Y^N,\qquad
+\eta=\begin{pmatrix}0&\mathbf 1_D\\ \mathbf 1_D&0\end{pmatrix}.
+\end{equation}
+\end{definition}
+This is the convention of Hohm, Hull and Zwiebach, without a factor $\tfrac12$ \source{HHZ §1,
+ll.~306--322}; part of the mathematical literature includes the $\tfrac12$. The pairing needs no
+metric on $M$: a one-form eats a vector, and that is all that is used. It is symmetric and
+indefinite. Indeed $\langle X,X\rangle=2\,\iota_v\xi$, so every pure vector and every pure
+one-form is null, while $v\pm\xi$ with $\xi_i=v^i$ have norm $\pm2|v|^2$. Diagonalizing $\eta$
+gives $D$ eigenvalues $+1$ and $D$ eigenvalues $-1$: the signature is $(D,D)$, and the group of
+fibrewise linear maps preserving the pairing is $\OddR{D}$, the group of \cref{ch:odd} now acting
+on $E$ rather than on the charge lattice. The index $M$ is raised and lowered with $\eta$:
+$V_M=\eta_{MN}V^N=(\xi_i,v^i)$, $\partial^M=\eta^{MN}\partial_N=(\tilde\partial^i,\partial_i)$.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.0,>=Stealth]
+  \begin{scope}
+  \clip (-2.45,-2.15) rectangle (2.45,2.15);
+  \foreach \c in {0.8,2.0}{
+    \draw[tierA,domain=0.3:2.45,samples=50,smooth] plot (\x,{\c/\x});
+    \draw[tierA,domain=0.3:2.45,samples=50,smooth] plot (-\x,{-\c/\x});
+    \draw[tierC,dashed,domain=0.3:2.45,samples=50,smooth] plot (\x,{-\c/\x});
+    \draw[tierC,dashed,domain=0.3:2.45,samples=50,smooth] plot (-\x,{\c/\x});}
+  \end{scope}
+  \draw[very thick,tierL] (-2.45,0)--(2.45,0);
+  \draw[very thick,tierL] (0,-2.15)--(0,2.15);
+  \draw[->] (2.45,0)--(3.0,0) node[below] {$v$};
+  \draw[->] (0,2.15)--(0,2.7) node[left] {$\xi$};
+  \node[tierA] at (3.5,1.6) {\small$\langle X,X\rangle>0$};
+  \node[tierC] at (3.5,-1.6) {\small$\langle X,X\rangle<0$};
+  \node[tierL,above] at (2.75,0.02) {\small$T$};
+  \node[tierL,right] at (0.02,2.45) {\small$T^*$};
+  \draw[->,thick] (0,0)--(1.0,0.35) node[right=-1pt] {\small$X$};
+\end{tikzpicture}
+\caption{The fibre of $T\oplus T^*$ for $D=1$. The quadratic form is $\langle X,X\rangle=2v\xi$;
+its level sets are hyperbolas and its null cone consists of the two axes, which are the fibres of
+$T$ and of $T^*$. Both are maximal isotropic subspaces, the linear-algebra counterpart of the
+``sections'' of \cref{ch:doubled}.}\label{fig:courant:plane}
+\end{figure}
+
+\paragraph{Three kinds of $O(D,D)$ transformations.} Write an element of $\OddR{D}$ in $D\times D$
+blocks acting on the column $(v,\xi)^{\mathsf T}$. Three families of elements will be used (cf.\ \cref{ch:odd}); a fourth, discrete element is the matrix
+$\eta$ itself, which exchanges $v$ and $\xi$:
+\begin{equation}\label{eq:courant:generators}
+h_A=\begin{pmatrix}A&0\\0&(A^{\mathsf T})^{-1}\end{pmatrix},\qquad
+\ee^{B}=\begin{pmatrix}\mathbf 1&0\\ B&\mathbf 1\end{pmatrix},\qquad
+\ee^{\beta}=\begin{pmatrix}\mathbf 1&\beta\\ 0&\mathbf 1\end{pmatrix},\qquad
+B^{\mathsf T}=-B,\ \ \beta^{\mathsf T}=-\beta .
+\end{equation}
+The \emph{$B$-transform}\index{B-transform@$B$-transform} maps $v+\xi\mapsto v+\xi+Bv$, where
+$(Bv)_i=B_{ij}v^j$. In the language of forms this is $\xi\mapsto\xi-\iota_vB$ with our convention
+$(\iota_vB)_j=v^iB_{ij}$; since $-B$ is as good a two-form as $B$, nothing depends on this sign.
+It shears $T$ into the graph of $B$ and leaves $T^*$ pointwise fixed. Let us verify that it
+preserves the pairing, and see where antisymmetry is used:
+\[
+\langle \ee^BX,\ee^BY\rangle=v^i(\zeta_i+B_{ij}u^j)+u^i(\xi_i+B_{ij}v^j)
+=\langle X,Y\rangle+v^iu^j(B_{ij}+B_{ji})=\langle X,Y\rangle .
+\]
+In matrix form $(\ee^B)^{\mathsf T}\eta\,\ee^B=\eta+\diag(B+B^{\mathsf T},0)$, which equals $\eta$
+exactly when $B$ is antisymmetric.
+
+\begin{pitfallbox}[Common pitfall: there is no $B$-shear in one dimension]
+For $D=1$ an antisymmetric $1\times1$ matrix is zero, so $O(1,1)$ contains no non-trivial
+$B$-transform. A $2\times 2$ matrix $\bigl(\begin{smallmatrix}1&0\\ b&1\end{smallmatrix}\bigr)$ with
+a number $b\neq0$ in the corner is \emph{not} in $O(1,1)$:
+$(\ee^B)^{\mathsf T}\eta\,\ee^B=\bigl(\begin{smallmatrix}2b&1\\1&0\end{smallmatrix}\bigr)$. The
+off-diagonal entries agree with $\eta$; the upper-left entry does not. We return to this in
+\cref{sec:courant:lean}, because the Lean module contains exactly this matrix.
+\end{pitfallbox}
+
+%==================================================================================================
+\section{The generalized Lie derivative}\label{sec:courant:genlie}
+
+\subsection{Definition and first properties}
+
+We now work on the doubled space of \cref{ch:doubled}, where fields may depend on $x^i$ and on
+$\tilde x_i$, and specialize later. The gauge parameter is a generalized vector
+$\xi^M=(\lambda^i,\tilde\lambda_i)$.
+
+\begin{definition}[Generalized Lie derivative]\label{def:courant:genlie}
+\index{generalized Lie derivative}%
+On a generalized scalar $S$, a generalized vector $V^M$ of weight zero and a tensor $A_{MN}$,
+\begin{align}
+\mathcal L_\xi S&=\xi^P\partial_PS, \label{eq:courant:genlie-scalar}\\
+\mathcal L_\xi V^M&=\xi^P\partial_PV^M+\bigl(\partial^M\xi_P-\partial_P\xi^M\bigr)V^P,
+\label{eq:courant:genlie}\\
+\mathcal L_\xi A_{MN}&=\xi^P\partial_PA_{MN}
++\bigl(\partial_M\xi^P-\partial^P\xi_M\bigr)A_{PN}+\bigl(\partial_N\xi^P-\partial^P\xi_N\bigr)A_{MP},
+\label{eq:courant:genlie-tensor}
+\end{align}
+and similarly for more indices: each index contributes two terms. A \emph{density} of weight
+$\omega$ receives in addition the term $\omega\,\partial_P\xi^P$ times itself; the dilaton
+combination $\ee^{-2d}$ has $\omega=1$, so that $\mathcal L_\xi\ee^{-2d}=\partial_M(\xi^M\ee^{-2d})$
+is a total derivative and $\ee^{-2d}$ can serve as integration measure (\cref{ch:dftaction}).
+\end{definition}
+\noindent\source{HHZ §3.2, eqs.~(3.11), (3.20)--(3.22), ll.~781--878; AMN §3.4, eqs.~(3.34),
+(3.39), ll.~1101--1140}. Compare \eqref{eq:courant:genlie} with the ordinary Lie derivative
+\eqref{eq:courant:lie} in $2D$ dimensions, $\xi^P\partial_PV^M-\partial_P\xi^M\,V^P$. The new term
+$\partial^M\xi_P\,V^P$ involves $\eta$ twice, once to raise the derivative index and once to lower
+the parameter index. Three consequences follow in one line each.
+
+\emph{(a) The pairing is invariant.} Apply \eqref{eq:courant:genlie-tensor} to the constant
+tensor $\eta_{MN}$. The transport term vanishes, and
+\[
+\mathcal L_\xi\eta_{MN}=(\partial_M\xi^P-\partial^P\xi_M)\eta_{PN}+(\partial_N\xi^P-\partial^P\xi_N)\eta_{MP}
+=\partial_M\xi_N-\partial_N\xi_M+\partial_N\xi_M-\partial_M\xi_N=0 .
+\]
+An ordinary Lie derivative of a constant tensor does not vanish for an arbitrary vector field;
+here the extra term is designed to cancel it \source{HHZ §3.2, eqs.~(3.16)--(3.17),
+ll.~822--834; AMN §3.4, eq.~(3.38), ll.~1126--1129}. Since also $\mathcal L_\xi$ obeys the
+Leibniz rule on products, the condition $\HH\eta\HH=\eta^{-1}$ that makes $\HH$ an $O(D,D)$ matrix
+(\cref{ch:genmetric}) is preserved by gauge transformations $\delta_\xi\HH=\mathcal L_\xi\HH$
+\source{HHZ §3.2, eqs.~(3.18)--(3.19), ll.~838--850}.
+
+\emph{(b) The antisymmetric combination is an infinitesimal $O(D,D)$ rotation.} Write
+\eqref{eq:courant:genlie} as $\mathcal L_\xi V^M=\xi^P\partial_PV^M+K^M{}_P\,V^P$ with
+$K_{MP}=\partial_M\xi_P-\partial_P\xi_M$. Because $K_{MP}=-K_{PM}$, the matrix $K^M{}_P$ lies in
+the Lie algebra $\mathfrak{so}(D,D)$. A generalized diffeomorphism transports a generalized vector
+along $\xi$ and rotates it, point by point, by an element of the duality Lie algebra.
+
+\emph{(c) Trivial parameters.}\index{trivial gauge parameter} If $\xi^M=\partial^M\chi$ then
+$K_{MP}=\partial_M\partial_P\chi-\partial_P\partial_M\chi=0$ and the transport term is
+$\partial^P\chi\,\partial_P(\cdots)$, which vanishes by the strong constraint. Hence
+$\mathcal L_{\xi+\partial\chi}=\mathcal L_\xi$ on all fields \source{HHZ §3.2, eq.~(3.15),
+ll.~815--818}. This is the doubled form of ``$\tilde\lambda=\dd\chi$ does nothing''.
+
+\subsection{Reduction to the supergravity frame}
+
+Impose the strong constraint in the supergravity frame, $\tilde\partial^i=0$ on everything. Then
+$\partial^M=(\tilde\partial^i,\partial_i)=(0,\partial_i)$: a raised derivative index has only a
+lower, form-type component. Take $\xi=\lambda+\tilde\lambda$ and $V=u+\zeta$ in
+\eqref{eq:courant:genlie}.
+
+For the vector component $M={}^i$ the term $\partial^M\xi_P$ is $\tilde\partial^i\xi_P=0$, and
+$\xi^P\partial_P=\lambda^j\partial_j$, so
+\[
+(\mathcal L_\xi V)^i=\lambda^j\partial_ju^i-\partial_j\lambda^i\,u^j=[\lambda,u]^i .
+\]
+For the form component $M={}_i$ we need $\xi_PV^P=\tilde\lambda_ju^j+\lambda^j\zeta_j$ with the
+derivative acting on $\xi$ only, and $\partial_P\xi_i\,V^P=\partial_j\tilde\lambda_i\,u^j$:
+\begin{align*}
+(\mathcal L_\xi V)_i&=\lambda^j\partial_j\zeta_i+\partial_i\tilde\lambda_j\,u^j
++\partial_i\lambda^j\,\zeta_j-\partial_j\tilde\lambda_i\,u^j\\
+&=(L_\lambda\zeta)_i-u^j\bigl(\partial_j\tilde\lambda_i-\partial_i\tilde\lambda_j\bigr)
+=(L_\lambda\zeta)_i-(\iota_u\dd\tilde\lambda)_i .
+\end{align*}
+Altogether
+\begin{equation}\label{eq:courant:dorfman}
+\boxed{\;\mathcal L_{\lambda+\tilde\lambda}(u+\zeta)=[\lambda,u]+L_\lambda\zeta-\iota_u\dd\tilde\lambda\;}
+\qquad(\tilde\partial^i=0).
+\end{equation}
+Read the right-hand side physically. The first two terms are an ordinary diffeomorphism acting on
+the vector and on the one-form. The third is an infinitesimal $B$-transform
+\eqref{eq:courant:generators} with the \emph{exact} two-form $\dd\tilde\lambda$: precisely the
+two-form that \eqref{eq:courant:bgauge} adds to $b$. So the generalized Lie derivative knows both
+symmetries, and it knows that $\tilde\lambda$ enters only through $\dd\tilde\lambda$. Acting on the
+generalized metric parameterized by $(g,b)$ it gives, in the supergravity frame,
+\begin{equation}\label{eq:courant:deltagb}
+\mathcal L_\xi g_{ij}=L_\lambda g_{ij},\qquad
+\mathcal L_\xi b_{ij}=L_\lambda b_{ij}+\partial_i\tilde\lambda_j-\partial_j\tilde\lambda_i ,
+\end{equation}
+\source{AMN §3.4, eqs.~(3.35)--(3.37), ll.~1101--1123} \TL. (AMN write the last term as
+$2\partial_{[i}\tilde\lambda_{j]}$ with unit-weight antisymmetrization.) Without the restriction
+$\tilde\partial^i=0$ the transformations of $g$ and $b$ are non-linear in the fields and mix
+$\partial$ with $\tilde\partial$; remarkably they are still \emph{linear} in $\HH$
+\source{HHZ §3.1, eqs.~(3.1)--(3.10), ll.~680--776}.
+
+%==================================================================================================
+\section{The Dorfman bracket}\label{sec:courant:dorfman}
+
+For ordinary vector fields the Lie bracket \emph{is} the Lie derivative, $[X,Y]=L_XY$. Hohm, Hull
+and Zwiebach copy this \source{HHZ §3.3, eq.~(3.29), ll.~946--953}:
+
+\begin{definition}[D-bracket, Dorfman bracket]\label{def:courant:dorfman}
+\index{D-bracket}\index{Dorfman bracket}%
+The \emph{D-bracket} of two generalized vectors on the doubled space is
+$[A,B]_D=\mathcal L_AB$. When nothing depends on $\tilde x$ it becomes, by
+\eqref{eq:courant:dorfman}, the \emph{Dorfman bracket} on $T\oplus T^*$, usually written as a
+product:
+\begin{equation}\label{eq:courant:dorfman-def}
+X\circ Y=(v+\xi)\circ(u+\zeta)=[v,u]+L_v\zeta-\iota_u\dd\xi .
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Properties of the Dorfman bracket]\label{prop:courant:dorfman}
+For generalized vectors $X=v+\xi$, $Y=u+\zeta$, $Z$ on $M$ and a function $\phi$:
+\begin{enumerate}[label=(\roman*),nosep]
+\item $X\circ Y+Y\circ X=\dd\langle X,Y\rangle$;
+\item $\dd\phi\circ Y=0$ and $X\circ\dd\phi=\dd(L_v\phi)=\dd\langle X,\dd\phi\rangle$;
+\item (Leibniz identity) $X\circ(Y\circ Z)=(X\circ Y)\circ Z+Y\circ(X\circ Z)$;
+\item $L_v\langle Y,Z\rangle=\langle X\circ Y,Z\rangle+\langle Y,X\circ Z\rangle$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(i) The vector parts cancel, $[v,u]+[u,v]=0$. The form part is
+$L_v\zeta-\iota_v\dd\zeta+L_u\xi-\iota_u\dd\xi=\dd\iota_v\zeta+\dd\iota_u\xi$ by Cartan's formula
+\eqref{eq:courant:cartan}.
+(ii) With $X=\dd\phi$ there is no vector part and $\iota_u\dd\dd\phi=0$. With $Y=\dd\phi$,
+$X\circ\dd\phi=L_v\dd\phi=\dd L_v\phi$.
+(iii) Let $Z=w+\rho$. The vector parts give the Jacobi identity of the Lie bracket in the form
+$[v,[u,w]]=[[v,u],w]+[u,[v,w]]$. The form parts are
+\begin{align*}
+X\circ(Y\circ Z):&\quad L_v\bigl(L_u\rho-\iota_w\dd\zeta\bigr)-\iota_{[u,w]}\dd\xi,\\
+(X\circ Y)\circ Z:&\quad L_{[v,u]}\rho-\iota_w\dd\bigl(L_v\zeta-\iota_u\dd\xi\bigr),\\
+Y\circ(X\circ Z):&\quad L_u\bigl(L_v\rho-\iota_w\dd\xi\bigr)-\iota_{[v,w]}\dd\zeta .
+\end{align*}
+Subtract the last two lines from the first and collect by the form involved. The $\rho$ terms are
+$([L_v,L_u]-L_{[v,u]})\rho=0$. The $\zeta$ terms are
+$-L_v\iota_w\dd\zeta+\iota_wL_v\dd\zeta+\iota_{[v,w]}\dd\zeta
+=(-[L_v,\iota_w]+\iota_{[v,w]})\dd\zeta=0$, where $\dd L_v=L_v\dd$ was used. For the $\xi$ terms
+note $\dd\iota_u\dd\xi=L_u\dd\xi$ (Cartan's formula and $\dd^2=0$), so they are
+$-\iota_{[u,w]}\dd\xi-\iota_wL_u\dd\xi+L_u\iota_w\dd\xi=([L_u,\iota_w]-\iota_{[u,w]})\dd\xi=0$.
+(iv) This is $\mathcal L_X\eta=0$ together with the Leibniz rule for $\mathcal L_X$ acting on the
+scalar $\eta_{MN}Y^MZ^N$.
+\end{proof}
+
+Property (iii) is what Hohm, Hull and Zwiebach call a ``Jacobi-like identity''
+\source{HHZ §3.3, eqs.~(3.31)--(3.32), ll.~977--1003}. It says that $X\circ{}$ is a derivation of
+the product $\circ$, or equivalently
+\begin{equation}\label{eq:courant:closureD}
+[\mathcal L_X,\mathcal L_Y]\,Z=\mathcal L_{X\circ Y}Z ,
+\end{equation}
+which is the closure of the gauge algebra. For an antisymmetric bracket the Leibniz identity
+\emph{is} the Jacobi identity; the Dorfman bracket satisfies it without being antisymmetric. An
+algebra with such a product is called a \emph{Leibniz algebra}\index{Leibniz algebra}. Property
+(i) measures the failure of antisymmetry, and (ii) shows that this failure is harmless: the
+symmetric part is an exact one-form, and exact one-forms generate no transformation.
+
+%==================================================================================================
+\section{The Courant bracket and its Jacobiator}\label{sec:courant:courant}
+
+\begin{definition}[C-bracket, Courant bracket]\label{def:courant:courant}
+\index{C-bracket}\index{Courant bracket}%
+The \emph{C-bracket} is the antisymmetric part of the D-bracket,
+\begin{equation}\label{eq:courant:cbracket}
+\begin{aligned}
+{}[\xi_1,\xi_2]_C^M&=\tfrac12\bigl(\mathcal L_{\xi_1}\xi_2-\mathcal L_{\xi_2}\xi_1\bigr)^M\\
+&=\xi_1^N\partial_N\xi_2^M-\xi_2^N\partial_N\xi_1^M
+-\tfrac12\bigl(\xi_1^P\partial^M\xi_{2P}-\xi_2^P\partial^M\xi_{1P}\bigr),
+\end{aligned}
+\end{equation}
+\source{HHZ §1, eq.~(1.19), ll.~383--400; AMN §3.5, eq.~(3.47), ll.~1206--1212}. When nothing
+depends on $\tilde x$ it becomes the \emph{Courant bracket} on $T\oplus T^*$,
+\begin{equation}\label{eq:courant:courant}
+[X,Y]_C=[v,u]+L_v\zeta-L_u\xi-\tfrac12\,\dd\bigl(\iota_v\zeta-\iota_u\xi\bigr).
+\end{equation}
+\end{definition}
+The first two terms on the right of \eqref{eq:courant:cbracket} are the Lie bracket in $2D$
+dimensions; the last is the $\eta$-dependent correction. To get \eqref{eq:courant:courant} from
+\eqref{eq:courant:dorfman-def}, antisymmetrize and use Cartan's formula in the form
+$\iota_u\dd\xi=L_u\xi-\dd\iota_u\xi$:
+\[
+\tfrac12(X\circ Y-Y\circ X)=[v,u]+\tfrac12\bigl(L_v\zeta-\iota_u\dd\xi\bigr)
+-\tfrac12\bigl(L_u\xi-\iota_v\dd\zeta\bigr)
+=[v,u]+L_v\zeta-L_u\xi+\tfrac12\dd\iota_u\xi-\tfrac12\dd\iota_v\zeta ,
+\]
+which is \eqref{eq:courant:courant}. Comparing with
+\eqref{eq:courant:ambiguity}, the Courant bracket is the choice $\kappa=\tfrac12$ (with the
+opposite overall sign, because composing field variations reverses the order, as in
+\eqref{eq:courant:semidirect}). By \cref{prop:courant:dorfman}(i) the two brackets differ by an
+exact form,
+\begin{equation}\label{eq:courant:DminusC}
+X\circ Y=[X,Y]_C+\tfrac12\,\dd\langle X,Y\rangle,\qquad
+[A,B]_D^M=[A,B]_C^M+\tfrac12\,\partial^M\bigl(B^NA_N\bigr),
+\end{equation}
+the second form being the doubled statement \source{HHZ §3.3, eq.~(3.30), ll.~955--962}. It was
+shown by Hull and Zwiebach, in a paper not in this book's library, that the C-bracket reduces to
+the Courant bracket on any maximal isotropic section, not only on $\tilde\partial=0$; we quote the
+statement from \source{HHZ §3.3, ll.~963--976} \TL.
+
+\subsection{Failure of the Jacobi identity}
+
+\begin{theorem}[Jacobiator of the Courant bracket]\label{thm:courant:jacobiator}
+\index{Jacobiator}\index{Nijenhuis operator}%
+For generalized vectors $X,Y,Z$ on $M$ define the Jacobiator
+$\mathrm{Jac}(X,Y,Z)=[[X,Y]_C,Z]_C+[[Y,Z]_C,X]_C+[[Z,X]_C,Y]_C$ and the function
+\begin{equation}\label{eq:courant:nij}
+\mathrm{Nij}(X,Y,Z)=\tfrac16\Bigl(\langle[X,Y]_C,Z\rangle+\langle[Y,Z]_C,X\rangle
++\langle[Z,X]_C,Y\rangle\Bigr).
+\end{equation}
+Then $\mathrm{Jac}(X,Y,Z)=\dd\,\mathrm{Nij}(X,Y,Z)$. In particular the vector part of the
+Jacobiator vanishes and its one-form part is exact.
+\end{theorem}
+\begin{proof}
+Abbreviate $[\,\cdot,\cdot\,]=[\,\cdot,\cdot\,]_C$ and let $\sum$ denote the sum over the three
+cyclic permutations of $(X,Y,Z)$. By \eqref{eq:courant:DminusC} and
+\cref{prop:courant:dorfman}(ii),
+\[
+[[X,Y],Z]=[X,Y]\circ Z-\tfrac12\dd\langle[X,Y],Z\rangle
+=(X\circ Y)\circ Z-\tfrac12\underbrace{\dd\langle X,Y\rangle\circ Z}_{=0}
+-\tfrac12\dd\langle[X,Y],Z\rangle .
+\]
+Summing, $\mathrm{Jac}=S-3\,\dd\mathrm{Nij}$ with $S=\sum(X\circ Y)\circ Z=\sum[X,Y]\circ Z$.
+Now use the Leibniz identity, $(X\circ Y)\circ Z=X\circ(Y\circ Z)-Y\circ(X\circ Z)$. Under the
+cyclic relabelling $(X,Y,Z)\to(Z,X,Y)$ the second term becomes $X\circ(Z\circ Y)$, so
+\[
+S=\sum X\circ\bigl(Y\circ Z-Z\circ Y\bigr)=2\sum X\circ[Y,Z]=:2T .
+\]
+On the other hand $S=\sum[Y,Z]\circ X$ after relabelling, so by
+\cref{prop:courant:dorfman}(i)
+$S+T=\sum\bigl([Y,Z]\circ X+X\circ[Y,Z]\bigr)=\sum\dd\langle[Y,Z],X\rangle=6\,\dd\mathrm{Nij}$.
+The two relations give $T=2\,\dd\mathrm{Nij}$, $S=4\,\dd\mathrm{Nij}$ and
+$\mathrm{Jac}=(4-3)\,\dd\mathrm{Nij}$.
+\end{proof}
+
+The doubled version reads $J(\xi_1,\xi_2,\xi_3)^M=\tfrac16\,\partial^M\bigl(
+\langle[\xi_1,\xi_2]_C,\xi_3\rangle+\text{cyclic}\bigr)$ when the strong constraint holds; AMN
+write it as one third of the symmetrized D-bracket, which is the same thing because the
+symmetrized D-bracket is $\tfrac12\partial^M\langle\cdot,\cdot\rangle$ \source{AMN §3.5,
+eqs.~(3.49)--(3.51), ll.~1228--1248}. The Jacobiator is a trivial parameter in the sense of
+\cref{sec:courant:genlie}(c): $\mathcal L_{\mathrm{Jac}}=0$. This is the resolution of the apparent
+paradox. Operators always satisfy the Jacobi identity,
+$[[\mathcal L_1,\mathcal L_2],\mathcal L_3]+\text{cyclic}=0$; with closure in the form
+$[\mathcal L_1,\mathcal L_2]=\mathcal L_{[1,2]_C}$ (which follows from \eqref{eq:courant:closureD}
+because the symmetric part acts trivially) this implies $\mathcal L_{\mathrm{Jac}(\xi_1,\xi_2,\xi_3)}=0$, which does
+\emph{not} force $\mathrm{Jac}=0$ when the map $\xi\mapsto\mathcal L_\xi$ has a kernel.
+
+\begin{historybox}[Where the brackets come from]
+In the mathematical literature the pairing, the generalized metric and the Courant bracket are
+the basic structures of generalized geometry, in which coordinates are not doubled but $T$ and
+$T^*$ are combined into $E=T\oplus T^*$ \source{HHZ §1, ll.~310--322}. The C-bracket was introduced
+by Siegel and was recognized by Hull and Zwiebach as the $O(D,D)$ covariant extension of the
+Courant bracket to doubled fields \source{HHZ §1, ll.~399--401}. Independently of this, the cubic
+double field theory derived from closed string field theory already showed a bracket of gauge
+parameters that fails the Jacobi identity; Hull and Zwiebach attribute this to the homotopy Lie
+algebra structure of closed string field theory \source{HZ §1, ll.~400--406; §3.1,
+eqs.~(3.7)--(3.9), ll.~1713--1763}.
+\end{historybox}
+
+\subsection{A worked example with numbers}\label{sec:courant:example}
+
+\begin{example}[A non-zero Jacobiator on the plane]\label{ex:courant:jac}
+On $M=\R^2$ with coordinates $(x^1,x^2)$ take
+\[
+X=\partial_1,\qquad Y=\tfrac12(x^1)^2\,\dd x^2,\qquad Z=\partial_2 .
+\]
+For a vector $v$ and a one-form $\zeta$, \eqref{eq:courant:courant} gives
+$[v,\zeta]_C=L_v\zeta-\tfrac12\dd\iota_v\zeta$ and $[\zeta,v]_C=-[v,\zeta]_C$.
+
+\emph{First brackets.} $L_{\partial_1}Y=x^1\dd x^2$ and $\iota_{\partial_1}Y=0$, so
+$[X,Y]_C=x^1\,\dd x^2$. Next $L_{\partial_2}Y=0$ and $\iota_{\partial_2}Y=\tfrac12(x^1)^2$, so
+$[Y,Z]_C=-\bigl(0-\tfrac12\dd\tfrac12(x^1)^2\bigr)=\tfrac12x^1\,\dd x^1$. Finally
+$[Z,X]_C=[\partial_2,\partial_1]=0$.
+
+\emph{Second brackets.} $[[X,Y]_C,Z]_C=-\bigl(L_{\partial_2}(x^1\dd x^2)-\tfrac12\dd(x^1)\bigr)
+=\tfrac12\dd x^1$, and
+$[[Y,Z]_C,X]_C=-\bigl(L_{\partial_1}(\tfrac12x^1\dd x^1)-\tfrac12\dd(\tfrac12x^1)\bigr)
+=-\tfrac12\dd x^1+\tfrac14\dd x^1=-\tfrac14\dd x^1$. Hence
+\[
+\mathrm{Jac}(X,Y,Z)=\tfrac12\dd x^1-\tfrac14\dd x^1+0=\tfrac14\,\dd x^1\neq0 .
+\]
+
+\emph{Check against \cref{thm:courant:jacobiator}.} The three pairings are
+\[
+\langle[X,Y]_C,Z\rangle=\iota_{\partial_2}(x^1\dd x^2)=x^1,\qquad
+\langle[Y,Z]_C,X\rangle=\tfrac12x^1,\qquad \langle[Z,X]_C,Y\rangle=0,
+\]
+so $\mathrm{Nij}=\tfrac16\cdot\tfrac32x^1=\tfrac14x^1$ and
+$\dd\mathrm{Nij}=\tfrac14\dd x^1$, in agreement. At the point $x^1=2$ one has
+$\mathrm{Nij}=\tfrac12$. The Dorfman products of the same three objects are
+$X\circ Y=x^1\dd x^2$, $Y\circ X=-x^1\dd x^2$, $Y\circ Z=x^1\dd x^1$, $Z\circ Y=0$: the pair
+$(Y,Z)$ shows the failure of antisymmetry, $Y\circ Z+Z\circ Y=\dd\bigl(\tfrac12(x^1)^2\bigr)
+=\dd\langle Y,Z\rangle$, as \cref{prop:courant:dorfman}(i) requires.
+(All values in this example were confirmed by a symbolic check in sympy.)
+\end{example}
+
+%==================================================================================================
+\section{Closure on the doubled space needs the strong constraint}\label{sec:courant:closure}
+
+On $T\oplus T^*$ closure, \eqref{eq:courant:closureD}, was a consequence of Cartan calculus. On the
+doubled space it is not automatic. A direct computation with
+\eqref{eq:courant:genlie} and \eqref{eq:courant:cbracket} gives, for arbitrary dependence on
+$(x,\tilde x)$,
+\begin{equation}\label{eq:courant:closure}
+\bigl([\mathcal L_{\xi_1},\mathcal L_{\xi_2}]-\mathcal L_{[\xi_1,\xi_2]_C}\bigr)V^M=F^M,
+\end{equation}
+\begin{equation}\label{eq:courant:F}
+F^M=\tfrac12\bigl(\xi_1^N\partial^Q\xi_{2N}-\xi_2^N\partial^Q\xi_{1N}\bigr)\partial_QV^M
+-\bigl(\partial^Q\xi_1^M\,\partial_Q\xi_{2P}-\partial^Q\xi_2^M\,\partial_Q\xi_{1P}\bigr)V^P .
+\end{equation}
+Every term of $F^M$ contains a contraction $\partial^QA\,\partial_QB=\eta^{MN}\partial_MA\,
+\partial_NB$ of derivatives of two \emph{different} objects. This is exactly the expression that
+the strong constraint sets to zero (\cref{ch:doubled}); the weak constraint
+$\partial^Q\partial_QA=0$ on each object separately is of no help. Hence:
+
+\begin{proposition}[Closure]\label{prop:courant:closure}
+If all fields and gauge parameters satisfy the strong constraint, then
+$[\mathcal L_{\xi_1},\mathcal L_{\xi_2}]=\mathcal L_{[\xi_1,\xi_2]_C}$ on every generalized tensor.
+\TL
+\end{proposition}
+\noindent\source{HHZ §3.2, eqs.~(3.23)--(3.28), ll.~883--942; AMN §3.5, eqs.~(3.44)--(3.48),
+ll.~1174--1226}. The extension from vectors to arbitrary tensors uses only the Leibniz rule and
+$\mathcal L_\xi\eta=0$. Because $\mathcal L_{\partial\chi}=0$, one may equally write
+$\mathcal L_{[\xi_1,\xi_2]_D}$ on the right. We checked \eqref{eq:courant:closure}--\eqref{eq:courant:F}
+symbolically for $D=1$ and $D=2$ with arbitrary functions as components (a symbolic check, not
+Tier~A).
+
+\begin{remark}[A sign in the sources]\label{rem:courant:sign}
+In the extracted text of HHZ the closure relation is printed with a minus sign,
+$[\hat{\mathcal L}_{\xi_1},\hat{\mathcal L}_{\xi_2}]=-\hat{\mathcal L}_{[\xi_1,\xi_2]_C}$, together
+with $[\delta_{\xi_1},\delta_{\xi_2}]=\delta_{\xi_{12}}$, $\xi_{12}=-[\xi_1,\xi_2]_C$, and the
+violation term (3.24) has the opposite overall sign to \eqref{eq:courant:F}
+\source{HHZ §3.2, ll.~883--942}. AMN print the plus sign, eq.~(3.48). With the definitions
+\eqref{eq:courant:genlie}, \eqref{eq:courant:cbracket} and composition of \emph{operators}, the
+symbolic check fixes the plus sign. Composition of \emph{field variations} reverses the order, as
+we saw in \eqref{eq:courant:semidirect}; reading the HHZ commutator in that order accounts for both
+signs at once. The structure of the result is the same in both sources.
+\end{remark}
+
+\begin{example}[Closure fails without the strong constraint]\label{ex:courant:fail}
+Take $D=1$, coordinates $(x,\tilde x)$, and components ordered as $(v,\xi)$:
+\[
+\xi_1=(0,\,x),\qquad \xi_2=(\tilde x,\,0),\qquad V=(1,0).
+\]
+Each component is annihilated by $\partial^Q\partial_Q=2\partial_x\tilde\partial$, so the weak
+constraint holds. The strong constraint fails for the pair: contracting the derivatives of the component $x$
+of $\xi_1$ with those of the component $\tilde x$ of $\xi_2$ gives
+$\partial^Q(x)\,\partial_Q(\tilde x)=\partial_x(x)\,\tilde\partial(\tilde x)=1$. With
+$\xi_{1M}=(x,0)$ and $\xi_{2M}=(0,\tilde x)$ we evaluate \eqref{eq:courant:F}. The first term
+of \eqref{eq:courant:F} contains $\partial_QV^M$ and vanishes because $V$ is constant. In the
+second term only $P=1$ contributes ($V^P=\delta^P_1$):
+$\partial^Q\xi_1^M\,\partial_Q\xi_{21}=0$ because $\xi_{21}=0$, while
+$\partial^Q\xi_2^M\,\partial_Q\xi_{11}$ is non-zero only for $M=1$, where it equals
+$\tilde\partial\tilde x\cdot\partial_xx=1$. Hence
+\[
+F^M=-(0-1)\,\delta^M_1=(1,0)\neq0 .
+\]
+A direct evaluation confirms it: $\mathcal L_{\xi_1}\xi_2=(x,0)$,
+$\mathcal L_{\xi_2}\xi_1=(0,\tilde x)$, $[\xi_1,\xi_2]_C=\tfrac12(x,-\tilde x)$, and the two sides
+of the would-be closure relation differ by the constant generalized vector $(1,0)$. The
+commutator of two gauge transformations is then \emph{not} a gauge transformation, and an action
+invariant under each $\mathcal L_\xi$ would have no reason to exist.
+\end{example}
+
+\begin{physicsbox}[Physical picture: why closure is non-negotiable]
+A gauge symmetry removes unphysical polarizations. If $\delta_1$ and $\delta_2$ are symmetries of
+an action, so is $[\delta_1,\delta_2]$; if that commutator is not of the form $\delta_{12}$, the
+theory has more invariances than parameters, or the ``symmetries'' are not symmetries of any
+action. Supergravity is safe, because diffeomorphisms and two-form gauge transformations do form
+a group. Double field theory inherits this safety on every section, and the strong constraint is
+the $O(D,D)$ invariant way of saying ``on some section''. AMN stress that the closure condition
+itself, $F^M=0$, is weaker than the strong constraint and leaves room for configurations that violate the
+strong constraint, which they use later in dimensional reductions of double field theory
+\source{AMN §3.3, ll.~1070--1082; §3.5, ll.~1250--1262} \TL.
+\end{physicsbox}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=Stealth,node distance=9mm and 2mm,
+  bx/.style={draw,rounded corners=2pt,align=center,font=\footnotesize,inner sep=3pt}]
+  \node[bx] (L) {generalized Lie derivative\\ $\mathcal L_\xi V$ on doubled space};
+  \node[bx,below left=of L] (D) {D-bracket $[A,B]_D=\mathcal L_AB$\\ Leibniz identity, not skew};
+  \node[bx,below right=of L] (C) {C-bracket $\tfrac12([A,B]_D-[B,A]_D)$\\ skew, Jacobi fails};
+  \node[bx,below=of D] (Do) {Dorfman $X\circ Y$\\ on $T\oplus T^*$};
+  \node[bx,below=of C] (Co) {Courant $[X,Y]_C$\\ on $T\oplus T^*$};
+  \draw[->] (L)--(D); \draw[->] (D)--node[above,font=\scriptsize]{antisymmetrize}(C);
+  \draw[->] (D)--node[left,font=\scriptsize]{$\tilde\partial=0$}(Do);
+  \draw[->] (C)--node[right,font=\scriptsize]{$\tilde\partial=0$}(Co);
+  \draw[->] (Do)--node[below,font=\scriptsize]{$-\tfrac12\dd\langle X,Y\rangle$}(Co);
+\end{tikzpicture}
+\caption{The four brackets of this chapter. Vertical arrows impose the strong constraint in the
+supergravity frame; horizontal arrows remove the symmetric part, which is a trivial gauge
+parameter.}\label{fig:courant:brackets}
+\end{figure}
+
+\subsection{\texorpdfstring{$B$}{B}-transforms as symmetries of the bracket}
+
+Which fibrewise $O(D,D)$ rotations of \eqref{eq:courant:generators} are compatible with the
+bracket? Take a two-form $B(x)$, not necessarily closed, acting by
+$\ee^B(v+\xi)=v+\xi+\iota_vB$ with $(\iota_vB)_j=v^iB_{ij}$ (the matrix of
+\eqref{eq:courant:generators} with lower-left block $B^{\mathsf T}$). Then
+\begin{equation}\label{eq:courant:Btwist}
+\ee^BX\circ\ee^BY=\ee^B(X\circ Y)+\iota_u\iota_v\,\dd B,\qquad
+(\iota_u\iota_v\dd B)_k=v^iu^j(\dd B)_{ijk} .
+\end{equation}
+The proof is a short application of \eqref{eq:courant:cartan}: the new terms on the left are
+$L_v\iota_uB-\iota_u\dd\iota_vB$, the new term on the right is $\iota_{[v,u]}B$, and
+$L_v\iota_u-\iota_{[v,u]}=\iota_uL_v=\iota_u(\dd\iota_v+\iota_v\dd)$. (Standard; confirmed by a
+symbolic check for $D=3$, not taken from a source in this book's library.) Thus a \emph{closed}
+$B$ is a symmetry of the Dorfman bracket, hence of the Courant bracket. Diffeomorphisms and closed $B$-transforms are exactly the symmetries we started from in
+\cref{sec:courant:two}, since an exact $B=\dd\tilde\lambda$ is closed: the bracket is an algebraic
+structure on $T\oplus T^*$ whose automorphisms contain the gauge group of the $(g,b)$ system.
+(That there are no further automorphisms preserving the pairing is a standard result of
+generalized geometry; it is not checked against a source in this book's library.) If $\dd B=H\neq0$, \eqref{eq:courant:Btwist} defines the \emph{$H$-twisted} bracket
+$X\circ_HY=X\circ Y+\iota_u\iota_vH$, appropriate when $b$ is defined only patchwise and $H$ is a
+non-trivial flux (\cref{ch:tadpole} meets such fluxes in a different setting).
+
+%==================================================================================================
+\section{What the machine has checked}\label{sec:courant:lean}
+
+Two modules of the older \lean{DoubleFieldTheory} library belong to this chapter:
+\begin{center}
+\lean{DoubleFieldTheory/GeneralizedGeometry.lean},\qquad
+\lean{DoubleFieldTheory/CourantAlgebroid.lean}.
+\end{center}
+Both model a generalized vector by a \emph{pair of integers}. There are no manifolds, no
+functions and no derivatives in these files; in the terminology of this book they are
+\emph{arithmetic shadows}. All theorems quoted below are proved by unfolding definitions, an occasional
+rewrite with commutativity, and \lean{omega} or \lean{rfl}; the three we inspected with \lean{\#print axioms} depend on \lean{propext} and
+\lean{Quot.sound} only.
+
+\subsection{The pairing and \texorpdfstring{$\eta$}{eta}}
+
+\begin{leanbox}[In Lean: generalized vectors and the natural pairing]
+\begin{leancode}
+structure GenVector where
+  v : Int
+  xi : Int
+deriving Repr, DecidableEq
+
+def CourantPairing (X Y : GenVector) : Int :=
+  X.xi * Y.v + Y.xi * X.v
+
+theorem courant_pairing_symm (X Y : GenVector) :
+    CourantPairing X Y = CourantPairing Y X := by ...
+
+def ODD_Eta : Mat2 := { a := 0, b := 1, c := 1, d := 0 }
+
+theorem odd_metric_eval (X Y : GenVector) :
+    BilinearForm ODD_Eta X Y = CourantPairing X Y := by ...
+\end{leancode}
+\textbf{Reading.} For $D=1$ and integer components, \eqref{eq:courant:pairing} is symmetric, and it
+equals $X^{\mathsf T}\eta Y$ with $\eta$ the $2\times2$ matrix of \eqref{eq:courant:pairing}.
+\lean{Mat2} is a structure with four integer entries and \lean{BilinearForm} spells out
+$X^{\mathsf T}MY$. \textbf{Proof idea.} Unfold the definitions; what remains is commutativity of
+integer multiplication, which \lean{omega} handles after one explicit \lean{Int.mul\_comm}. This is
+a faithful formalization of the pointwise, $D=1$ linear algebra of
+\cref{def:courant:genvec}. \TA
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the $O(1,1)$ condition, inversion and the ``$B$-twist'']
+\begin{leancode}
+def IsODD (M : Mat2) : Prop :=
+  MatMul (MatTranspose M) (MatMul ODD_Eta M) = ODD_Eta
+
+theorem odd_inversion_generator : IsODD InversionGen := by
+  rfl
+
+def BTwist (b : Int) : Mat2 :=
+  { a := 1, b := 0, c := b, d := 1 }
+
+theorem btwist_preserves_eta (b : Int) :
+    (MatMul (MatTranspose (BTwist b)) (MatMul ODD_Eta (BTwist b))).b
+      = ODD_Eta.b ∧
+    (MatMul (MatTranspose (BTwist b)) (MatMul ODD_Eta (BTwist b))).c
+      = ODD_Eta.c := by ...
+\end{leancode}
+\textbf{Reading.} \lean{IsODD} is $M^{\mathsf T}\eta M=\eta$ for integer $2\times2$ matrices.
+\lean{InversionGen} is the matrix $\eta$ itself, which exchanges $v$ and $\xi$ (the T-duality of
+\cref{ch:tduality}), and it satisfies the condition. For \lean{BTwist} the theorem asserts
+\emph{only the two off-diagonal entries} of $M^{\mathsf T}\eta M$. That is all that is true: by the
+pitfall box in \cref{sec:courant:pairing} the upper-left entry is $2b$, so \lean{IsODD (BTwist b)}
+holds only for $b=0$. The theorem is correct as stated, but it must not be read as ``the $B$-shift
+is an $O(D,D)$ element'': for that one needs $D\ge2$ and an antisymmetric block, as in
+\eqref{eq:courant:generators}. \TA\ for the literal statement. The same file also contains a
+diagonal generalized metric, an ``energy'' $|v|+|\xi|$ and an arithmetic identity standing in
+for chiral projectors; the generalized metric proper is treated, over $\R$ and with matrices, by
+the newer module described in \cref{ch:genmetric}.
+\end{leanbox}
+
+\subsection{The bracket models}
+
+\begin{leanbox}[In Lean: \texttt{CourantSection}, \texttt{CBracket} and its antisymmetry]
+\begin{leancode}
+structure CourantSection where
+  v : Int
+  alpha : Int
+deriving Repr, DecidableEq
+
+def CBracket (X Y : CourantSection) : CourantSection :=
+  { v := X.v * Y.v - Y.v * X.v,
+    alpha := X.v * Y.alpha - Y.v * X.alpha }
+
+theorem cbracket_antisymm (X Y : CourantSection) :
+    (CBracket X Y).alpha = - ((CBracket Y X).alpha) := by ...
+
+theorem cbracket_v_zero (X Y : CourantSection) :
+    (CBracket X Y).v = 0 := by ...
+
+theorem jacobiator_vector_vanishes (X Y Z : CourantSection) :
+    JacVector X Y Z = 0 := by ...
+\end{leancode}
+\textbf{Reading.} A section is a pair of integers $(v,a)$. The ``Lie bracket'' slot is
+$vu-uv$, which is zero for integers, and the form slot is $vb-ua$. The first theorem says the form
+slot is antisymmetric; the second that the vector slot is always $0$; the third that the sum of
+the vector slots of the three double brackets is $0$, which follows at once from the second.
+\textbf{Proof idea.} Unfold, rewrite with commutativity, \lean{omega}. \TA
+\end{leanbox}
+
+Is there a geometric situation that this integer model describes exactly? Yes, a small one.
+On the real line take the two-parameter family
+\[
+X_{(v,a)}=v\,\partial_x+a\,\ee^{2x}\dd x,\qquad v,a\in\Z .
+\]
+For $D=1$ the form part of \eqref{eq:courant:courant} is
+$(v\beta)'-(u\alpha)'-\tfrac12(v\beta-u\alpha)'=\tfrac12(v\beta-u\alpha)'$ for constant $v,u$; with
+$\alpha=a\ee^{2x}$, $\beta=b\ee^{2x}$ this is $(vb-ua)\ee^{2x}$, and the vector part $[v\partial_x,
+u\partial_x]$ vanishes. So
+$[X_{(v,a)},X_{(u,b)}]_C=X_{(0,\,vb-ua)}$, which is \lean{CBracket}. On this family the Courant
+bracket is a Lie bracket, because $\mathrm{Nij}$ vanishes identically
+(\cref{exr:courant:family}), so the model cannot exhibit \cref{thm:courant:jacobiator}: in Lean the
+vector part of the Jacobiator vanishes because \emph{every} vector part vanishes, not because of
+the mechanism in our proof. The identification of \lean{CBracket} with this family is our reading,
+not something the Lean file states.
+
+\begin{leanbox}[In Lean: the integer ``Dorfman bracket'']
+\begin{leancode}
+def DorfmanBracket (X Y : CourantSection) : CourantSection :=
+  { v := X.v * Y.v - Y.v * X.v,
+    alpha := 2 * (X.v * Y.alpha) - (Y.v * X.alpha) }
+
+theorem dorfman_cbracket_diff (X Y : CourantSection) :
+    (DorfmanBracket X Y).alpha - (CBracket X Y).alpha
+      = X.v * Y.alpha := by ...
+
+theorem dorfman_symmetric_exact (X Y : CourantSection) :
+    (DorfmanBracket X Y).alpha + (DorfmanBracket Y X).alpha =
+    (X.v * Y.alpha + Y.v * X.alpha) := by ...
+\end{leancode}
+\textbf{Reading.} Two ring identities: $(2vb-ua)-(vb-ua)=vb$ and $(2vb-ua)+(2ua-vb)=vb+ua$. The
+right-hand side of the second has the form of the pairing \eqref{eq:courant:pairing}, so it is
+the integer shadow of
+\cref{prop:courant:dorfman}(i) with $\dd$ replaced by the identity. \TA\ as arithmetic.
+\textbf{What it is not.} In the geometric theory \eqref{eq:courant:DminusC} forces the
+difference $X\circ Y-[X,Y]_C$ to be \emph{half} the symmetric part, i.e.\ symmetric in $X,Y$; here
+it is $vb$, which is not symmetric. Equivalently, the antisymmetric part of this
+\lean{DorfmanBracket} is $3(vb-ua)$, three times \lean{CBracket} rather than twice. So the pair
+(\lean{DorfmanBracket}, \lean{CBracket}) does not satisfy \cref{def:courant:courant}. On the family
+$X_{(v,a)}$ above, the true Dorfman product is $X_{(v,a)}\circ X_{(u,b)}=X_{(0,\,2vb)}$, because
+$\dd\alpha=0$ on a line; the model with \lean{alpha := 2 * (X.v * Y.alpha)} would satisfy both
+relations (\cref{exr:courant:leanfix}).
+\end{leanbox}
+
+\begin{leanbox}[In Lean: section condition and ``closure'']
+\begin{leancode}
+structure FieldDeriv where
+  dx : Int
+  dtx : Int
+deriving Repr, DecidableEq
+
+def SectionContract (Phi Psi : FieldDeriv) : Int :=
+  Phi.dx * Psi.dtx + Phi.dtx * Psi.dx
+
+theorem strong_section_condition (Phi Psi : FieldDeriv)
+    (hPhi : Phi.dtx = 0) (hPsi : Psi.dtx = 0) :
+    SectionContract Phi Psi = 0 := by ...
+
+def LieCommutator (Lx Ly : Int → Int) (f : Int) : Int :=
+  Lx (Ly f) - Ly (Lx f)
+
+theorem gen_lie_closure (a b : Int) (f : Int) :
+    LieCommutator (fun x => a * x) (fun x => b * x) f = 0 := by ...
+\end{leancode}
+\textbf{Reading.} \lean{FieldDeriv} records two integers, standing for the values of
+$\partial_x\Phi$ and $\tilde\partial\Phi$ at a point for $D=1$. The first theorem says: if both
+tilde-derivatives are $0$ then $\partial_x\Phi\,\tilde\partial\Psi+\tilde\partial\Phi\,
+\partial_x\Psi=0$. This is the easy direction ``supergravity frame $\Rightarrow$ strong
+constraint'', pointwise; the converse classification of solutions is the subject of
+\cref{ch:doubled} and its own Lean module. The second theorem says that multiplication by $a$ and
+multiplication by $b$ commute on $\Z$. Despite its name it contains no generalized Lie
+derivative and no bracket; it is not a formalization of \cref{prop:courant:closure}. \TA\ for the
+literal statements.
+\end{leanbox}
+
+\begin{center}
+\begin{tabular}{@{}p{0.50\textwidth}p{0.36\textwidth}c@{}}
+\toprule
+Claim & Where & Tier\\
+\midrule
+Pairing symmetric, equals $X^{\mathsf T}\eta Y$ ($D=1$, $\Z$) & \lean{courant\_pairing\_symm},
+\lean{odd\_metric\_eval} & \TA\\
+$\eta\in O(1,1;\Z)$ & \lean{odd\_inversion\_generator} & \TA\\
+Off-diagonal entries of $(\ee^B)^{\mathsf T}\eta\,\ee^B$ & \lean{btwist\_preserves\_eta} & \TA\\
+Integer toy bracket: skew form slot, zero vector slot & \lean{cbracket\_antisymm},
+\lean{cbracket\_v\_zero}, \lean{jacobiator\_vector\_vanishes} & \TA\\
+$\tilde\partial=0\Rightarrow$ contraction vanishes ($D=1$, pointwise) &
+\lean{strong\_section\_condition} & \TA\\
+$\mathcal L_\xi\eta=0$; reduction \eqref{eq:courant:dorfman}, \eqref{eq:courant:deltagb} &
+HHZ §3.2, AMN §3.4 & \TL\\
+Leibniz identity; $\mathrm{Jac}=\dd\mathrm{Nij}$ & proved above; HHZ §3.3, AMN §3.5 & \TL\\
+Closure under the strong constraint & HHZ §3.2, AMN §3.5 & \TL\\
+Formula \eqref{eq:courant:F}, identity \eqref{eq:courant:Btwist} & symbolic check (sympy) & ---\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{What a faithful formalization would need.} The brackets are first-order bidifferential
+operators. A Lean statement of \cref{prop:courant:dorfman} needs either (a) smooth vector fields and
+differential forms on a manifold with $\dd$, $\iota$, $L$ and the identities
+\eqref{eq:courant:cartan}, or (b) an algebraic substitute: a commutative ring $R$ with commuting
+derivations $\partial_1,\dots,\partial_D$ (polynomials suffice for \cref{ex:courant:jac}),
+generalized vectors as elements of $R^{2D}$, and \eqref{eq:courant:genlie} as a definition. Route
+(b) is within reach of \lean{ring}-style automation; \cref{thm:courant:jacobiator} then becomes a
+finite polynomial identity in the components and their first and second derivatives. Neither
+route is carried out in the present library \TC\ (a proposal, recorded again in \cref{ch:open}).
+
+%==================================================================================================
+\begin{summarybox}
+\begin{itemize}[nosep,leftmargin=*]
+\item A generalized vector $V=v+\xi$ is a section of $T\oplus T^*$. The natural pairing
+$\langle X,Y\rangle=\iota_v\zeta+\iota_u\xi$ has signature $(D,D)$ and structure group $O(D,D)$.
+\item The generalized Lie derivative \eqref{eq:courant:genlie} is transport plus an
+$\mathfrak{so}(D,D)$ rotation. It preserves $\eta$, and for $\tilde\partial=0$ it unifies
+diffeomorphisms with $b\mapsto b+\dd\tilde\lambda$.
+\item The D-bracket (Dorfman bracket) $\mathcal L_XY$ obeys the Leibniz identity but is not skew;
+its symmetric part is $\dd\langle X,Y\rangle$.
+\item The C-bracket (Courant bracket) is its skew part. Its Jacobiator is
+$\dd\,\mathrm{Nij}$, a trivial gauge parameter, so the gauge \emph{transformations} still compose
+consistently.
+\item On the doubled space, closure $[\mathcal L_1,\mathcal L_2]=\mathcal L_{[1,2]_C}$ fails by
+terms $\partial^QA\,\partial_QB$ and holds under the strong constraint.
+\item Closed $B$-transforms and diffeomorphisms are the symmetries of the bracket; a non-closed $B$
+twists the bracket by $H=\dd B$.
+\item Lean: the $D=1$ integer pairing and $\eta$ are formalized faithfully. The bracket theorems
+are arithmetic statements about pairs of integers; they capture skewness of one slot and nothing
+of the differential structure. The integer \lean{DorfmanBracket} is not the symmetrization
+partner of \lean{CBracket}.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{exr:courant:sig}
+Diagonalize $\eta$ for $D=1$ and exhibit two generalized vectors of norm $\langle X,X\rangle=+2$
+and $-2$. For general $D$, show that $T$ and $T^*$ are maximal isotropic, and that the graph
+$\{v+Bv\}$ of a two-form $B$ is isotropic if and only if $B$ is antisymmetric.
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Verify Cartan's formula $L_v=\dd\iota_v+\iota_v\dd$ on a one-form in components, and deduce
+$\dd\iota_u\dd\xi=L_u\dd\xi$, the step used in the proof of \cref{prop:courant:dorfman}(iii).
+\end{exercise}
+
+\begin{exercise}[$\star$]
+Starting from \eqref{eq:courant:dorfman-def}, show that the Dorfman bracket differs from \eqref{eq:courant:ambiguity} in that the exact term
+is added with coefficient $1$ for one of the two parameters and $0$ for the other. Which is
+which, and why is this asymmetric choice the one that makes \eqref{eq:courant:closureD} hold
+exactly rather than up to trivial parameters?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Derive the second form of \eqref{eq:courant:DminusC} directly from \eqref{eq:courant:genlie} and
+\eqref{eq:courant:cbracket}, without setting $\tilde\partial=0$. Conclude that
+$[A,B]_D+[B,A]_D=\partial^M(A^NB_N)$ holds with no constraint at all.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:courant:family}
+For the family $X_{(v,a)}=v\partial_x+a\ee^{2x}\dd x$ on the line, compute $\mathrm{Nij}$ of
+three members $X_{(v,a)}$, $X_{(u,b)}$, $X_{(w,c)}$ from \eqref{eq:courant:nij} and show that it
+vanishes identically. Then replace $\ee^{2x}$ by $\ee^{kx}$: for which $k$ does the family close
+under the Courant bracket, and what replaces $vb-ua$?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]
+Repeat \cref{ex:courant:fail} with $\xi_2=(x,0)$ in place of $(\tilde x,0)$. Show that the strong
+constraint now holds for all pairs among $\xi_1,\xi_2,V$ and that $F^M=0$. Then apply the
+exchange $v\leftrightarrow\xi$ (the matrix $\eta$) to all three objects and to the coordinates, and
+check that closure still holds: the constraint and the bracket are $O(D,D)$ covariant.
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{exr:courant:leanfix}
+(a) State and prove in Lean that the antisymmetric part of the library's integer Dorfman bracket
+is three times the C-bracket:
+\begin{leancode}
+theorem dorfman_antisymm_three (X Y : CourantSection) :
+    (DorfmanBracket X Y).alpha - (DorfmanBracket Y X).alpha
+      = 3 * (CBracket X Y).alpha := by
+  sorry
+\end{leancode}
+(b) Define \lean{DorfmanExp X Y} with form slot \lean{2 * (X.v * Y.alpha)} and vector slot $0$, and
+prove that its antisymmetric part is \lean{2 * (CBracket X Y).alpha} and its symmetric part is
+twice the pairing $vb+ua$. Hint: \lean{dsimp} with the definitions, then \lean{omega}. (We have
+checked that both statements compile against the library.)
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]
+Prove $\neg\,$\lean{IsODD (BTwist 1)} and \lean{IsODD (BTwist 0)}. Hint: \lean{unfold IsODD} and
+\lean{decide} for the first, \lean{rfl} for the second. Then prove that the upper-left entry of
+$(\ee^B)^{\mathsf T}\eta\,\ee^B$ is \lean{2 * b} for all \lean{b : Int}.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]
+Prove \eqref{eq:courant:Btwist} in full, and use it with \cref{prop:courant:dorfman} to show that the
+$H$-twisted Dorfman bracket $X\circ_HY=X\circ Y+\iota_u\iota_vH$ satisfies the Leibniz identity if
+and only if $\dd H=0$. This is the Bianchi identity of the three-form flux, recovered from the
+consistency of a bracket.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]
+Carry out route (b) of \cref{sec:courant:lean} in the smallest case. Over polynomials in one
+variable, define generalized vectors as pairs of polynomials, the Dorfman product by
+$(v,\alpha)\circ(u,\beta)=(vu'-uv',\,(v\beta)'\,)$ (why is the $\iota_u\dd\alpha$ term absent for
+$D=1$?), and prove the Leibniz identity. Which Mathlib structure provides the derivative and its
+product rule?
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[nosep,leftmargin=*]
+\item Generalized Lie derivative, $\mathcal L_\xi\eta=0$, closure and the violation term:
+\source{HHZ §3.1--3.2, ll.~670--942}. D-bracket, its symmetric part and Jacobi-like identity,
+relation to the Dorfman bracket: \source{HHZ §3.3, ll.~946--1003}.
+\item A pedagogical account with weights, the tensor $Y^{MN}{}_{PQ}=\eta^{MN}\eta_{PQ}$, the
+closure constraint and the Jacobiator: \source{AMN §3.4--3.5, ll.~1087--1262}; the supergravity
+symmetries being unified: \source{AMN §3.1, ll.~840--862}.
+\item The string field theory origin of a gauge algebra that fails the Jacobi identity:
+\source{HZ §3.1, ll.~1705--1763}.
+\item The mathematical literature on Courant algebroids and generalized complex geometry
+(Hitchin; Gualtieri; Courant; Roytenberg) is cited by \source{HHZ refs.~[15]--[17],
+ll.~2505--2522; AMN ref.~[84], ll.~5803--5804} but is not in this book's library; statements attributed to it above are derived
+on the page.
+\item Next: the gauge-invariant action built from $\HH$ and $d$, \cref{ch:dftaction}.
+\end{itemize}

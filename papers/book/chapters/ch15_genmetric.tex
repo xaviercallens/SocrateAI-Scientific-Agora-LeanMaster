@@ -1,0 +1,1180 @@
+\chapter{The Generalized Metric}\label{ch:genmetric}
+
+A closed string on a torus $T^d$ sees a metric $G$ and a two-form $B$, and the duality group
+of \cref{ch:odd} acts on the pair $(G,B)$ by a complicated non-linear rule, of which the
+Buscher rules of \cref{ch:buscher} are a sample. This chapter answers a practical question:
+\emph{is there a single object, built from $G$ and $B$, on which every duality acts
+linearly?} There is. It is the $2d\times 2d$ matrix
+\[
+ \HH(G,B)=\begin{pmatrix}G-BG^{-1}B&BG^{-1}\\-G^{-1}B&G^{-1}\end{pmatrix},
+\]
+the \emph{generalized metric}. It met us briefly in \cref{ch:narain} as the matrix of the
+zero-mode Hamiltonian. Here we take it apart. We derive it again, by a route that produces a
+factorized form from which every property can be read off; we prove by hand that $\HH$ is
+symmetric, positive definite and an element of $\OddR{d}$; we show how a $B$-shift, a change
+of lattice basis, and the inversion dualities act on it; we prove that the linear action on
+$\HH$ is the fractional linear action $E\mapsto(aE+b)(cE+d)^{-1}$ on the background matrix
+$E=G+B$; and we work one example with numbers from beginning to end. A student should care
+because the rest of Part~III is written in this language: double field theory
+(\cref{ch:doubled,ch:courant,ch:dftaction}) is what one obtains by letting $\HH$ depend on the
+doubled coordinates and asking for an action principle. Every algebraic identity proved in
+this chapter has a kernel-checked counterpart in Lean, valid for every $d$ over the real
+numbers, and \cref{sec:genmetric:lean} states exactly what those theorems say.
+
+%=====================================================================================
+\section{From the zero-mode Hamiltonian to \texorpdfstring{$\HH$}{H}}
+\label{sec:genmetric:construction}
+
+\subsection{Setting and conventions}
+
+We use the conventions of \cref{ch:narain}. The torus coordinates $X^i$, $i=1,\dots,d$, are
+dimensionless with period $2\pi$; the constant background consists of a symmetric positive
+definite matrix $G_{ij}$, measured in units of $\ap$ (for a circle of radius $R$,
+$G_{11}=R^2/\ap$), and an antisymmetric matrix $B_{ij}$; the worldsheet action is
+\begin{equation}\label{eq:genmetric:action}
+ S=\frac1{4\pi}\int\!\dd\tau\int_0^{2\pi}\!\!\dd\sigma\,
+ \Big(G_{ij}\big(\dot X^i\dot X^j-X'^iX'^j\big)+2B_{ij}\dot X^iX'^j\Big),
+\end{equation}
+which is the conformal-gauge form of \source{GPR §2.4, eq.~(2.4.1), ll.~1031--1053} for a
+flat worldsheet; the overall sign of the $B$-term is a convention, and we fix it so that the
+canonical momentum \eqref{eq:genmetric:P} below agrees with GPR. The combination
+\begin{equation}\label{eq:genmetric:E}
+ E=G+B,\qquad G=\tfrac12\big(E+E^{\mathsf T}\big),\quad B=\tfrac12\big(E-E^{\mathsf T}\big),
+\end{equation}
+is the \emph{background matrix}\index{background matrix} \source{GPR §2.4, eq.~(2.4.5),
+ll.~1090--1097}: a general real $d\times d$ matrix whose symmetric part is positive definite,
+hence $d^2$ real parameters.
+
+\subsection{The zero modes as a particle in a magnetic field}
+
+The full canonical analysis was carried out in \cref{ch:narain}. For the present purpose it
+is enough, and more transparent, to keep only the zero modes. Insert
+$X^i(\tau,\sigma)=x^i(\tau)+m^i\sigma$ into \eqref{eq:genmetric:action}, where the integers
+$m^i$ are the winding numbers\index{winding number}. The $\sigma$-integral gives a factor
+$2\pi$, and we are left with the Lagrangian of a particle on the torus,
+\begin{equation}\label{eq:genmetric:L0}
+ L_0=\tfrac12\,\dot x^{\mathsf T}G\,\dot x-\tfrac12\,m^{\mathsf T}Gm+\dot x^{\mathsf T}Bm .
+\end{equation}
+The first term is kinetic energy. The second comes from the stretching: a string wound
+$m$ times has length $2\pi\sqrt{\ap\,m^{\mathsf T}Gm}$ and rest mass tension times length,
+$\sqrt{m^{\mathsf T}Gm/\ap}$, and $H_0$ measures the mass \emph{squared} in units of
+$1/\ap$ (see \eqref{eq:genmetric:mass}). The third term has the form $\dot x\cdot A$ with a
+constant ``vector potential'' $A_i=B_{ij}m^j$: a winding string feels $B$ the way a charge
+on a ring feels an enclosed flux. The canonical momentum is
+\begin{equation}\label{eq:genmetric:P}
+ p=\frac{\partial L_0}{\partial\dot x}=G\dot x+Bm
+ \qquad\Longleftrightarrow\qquad \dot x=G^{-1}\big(p-Bm\big),
+\end{equation}
+which is the zero mode of \source{GPR §2.4, eq.~(2.4.7), ll.~1105--1110}. Because $p_i$
+generates translations of a coordinate of period $2\pi$, single-valuedness of the wave
+function $\ee^{\ii p_ix^i}$ forces $p_i=n_i\in\Z$ \source{GPR §2.4, eq.~(2.4.8),
+ll.~1110--1115}. It is the canonical momentum that is quantized, not the velocity. The
+Hamiltonian is the Legendre transform,
+$H_0=p^{\mathsf T}\dot x-L_0=\tfrac12\dot x^{\mathsf T}G\dot x+\tfrac12m^{\mathsf T}Gm$; the
+$B$-term cancels, because a term linear in velocities carries no energy. Expressed through
+the momentum with \eqref{eq:genmetric:P},
+\begin{equation}\label{eq:genmetric:H0square}
+ \boxed{\;H_0=\tfrac12\,(n-Bm)^{\mathsf T}G^{-1}(n-Bm)+\tfrac12\,m^{\mathsf T}Gm\;}
+\end{equation}
+This is the most useful form of the zero-mode energy, and we shall refer to it as the
+\emph{completed square}\index{completed square}. It shows at a glance that $H_0\ge0$, that $B$ enters only through
+the shifted momentum $n-Bm$, and that for $B=0$ momentum and winding decouple.
+
+Expanding the square, and using $B^{\mathsf T}=-B$ in the form
+$(Bm)^{\mathsf T}G^{-1}(Bm)=-m^{\mathsf T}BG^{-1}Bm$ and
+$-n^{\mathsf T}G^{-1}Bm=+m^{\mathsf T}BG^{-1}n$ (a number equals its transpose), we recover
+\begin{equation}\label{eq:genmetric:H0}
+ H_0=\tfrac12\Big[n^{\mathsf T}G^{-1}n+m^{\mathsf T}\big(G-BG^{-1}B\big)m
+ +2\,m^{\mathsf T}BG^{-1}n\Big]
+\end{equation}
+\source{GPR §2.4, eq.~(2.4.11), ll.~1183--1191}.
+
+\begin{definition}[Generalized metric]\label{def:genmetric:H}
+Let $G$ be an invertible real $d\times d$ matrix and $B$ a real $d\times d$ matrix. The
+\emph{generalized metric}\index{generalized metric} is the real $2d\times2d$ block matrix
+\begin{equation}\label{eq:genmetric:H}
+ \HH(G,B)=\begin{pmatrix}G-BG^{-1}B&BG^{-1}\\[2pt]-G^{-1}B&G^{-1}\end{pmatrix}.
+\end{equation}
+A \emph{background} is a pair $(G,B)$ with $G$ symmetric positive definite and $B$
+antisymmetric. With the \emph{doubled charge vector}\index{doubled charge vector}
+$Z=(m,n)\in\Z^{2d}$, windings first, \eqref{eq:genmetric:H0} reads
+$H_0=\tfrac12Z^{\mathsf T}\HH(G,B)Z$.
+\end{definition}
+\noindent This is the matrix $M(E)$ of \source{GPR §2.4, eqs.~(2.4.17)--(2.4.18),
+ll.~1267--1290}, the matrix $\HH(E)$ of \source{HZ §2.2, eq.~(2.17), ll.~655--665}, where it
+appears as the Hamiltonian density in the variables $(X',2\pi P)$, and the matrix called
+$\HH^{MN}$ in \source{HHZ §2, eq.~(2.7), ll.~452--457}. The definition deliberately asks
+nothing of $B$ and only invertibility of $G$: this is how the Lean definition
+\lean{genMetric} is set up, and we shall keep track of which property needs which
+hypothesis.
+
+\subsection{The factorized form}
+
+The completed square \eqref{eq:genmetric:H0square} is a matrix identity in disguise. The
+map $(m,n)\mapsto(m,\,n-Bm)$ is linear, with matrix $\left(\begin{smallmatrix}\mathbf 1&0\\
+-B&\mathbf 1\end{smallmatrix}\right)$, and the quadratic form
+$m^{\mathsf T}Gm+n^{\mathsf T}G^{-1}n$ has matrix $\diag(G,G^{-1})$. So:
+
+\begin{proposition}[Factorization]\label{prop:genmetric:factor}\index{generalized metric!factorization}
+For every invertible $G$ and every $B$,
+\begin{equation}\label{eq:genmetric:factor}
+ \HH(G,B)=
+ \underbrace{\begin{pmatrix}\mathbf 1&B\\0&\mathbf 1\end{pmatrix}}_{U_B}
+ \begin{pmatrix}G&0\\0&G^{-1}\end{pmatrix}
+ \underbrace{\begin{pmatrix}\mathbf 1&0\\-B&\mathbf 1\end{pmatrix}}_{L_B}.
+\end{equation}
+If $B$ is antisymmetric, then $L_B=U_B^{\mathsf T}$ and
+$\HH(G,B)=U_B\,\HH(G,0)\,U_B^{\mathsf T}$.
+\end{proposition}
+\begin{proof}
+Multiply from the right:
+$\diag(G,G^{-1})\,L_B=\left(\begin{smallmatrix}G&0\\-G^{-1}B&G^{-1}\end{smallmatrix}\right)$.
+Then
+\[
+ U_B\begin{pmatrix}G&0\\-G^{-1}B&G^{-1}\end{pmatrix}
+ =\begin{pmatrix}G+B(-G^{-1}B)&BG^{-1}\\-G^{-1}B&G^{-1}\end{pmatrix}=\HH(G,B).
+\]
+No property of $B$ was used. Finally
+$U_B^{\mathsf T}=\left(\begin{smallmatrix}\mathbf 1&0\\B^{\mathsf T}&\mathbf 1
+\end{smallmatrix}\right)$, which equals $L_B$ exactly when $B^{\mathsf T}=-B$.
+\end{proof}
+\noindent The three-factor form is \source{HHZ §2, eq.~(2.10), ll.~474--487}. It says that
+every background is obtained from a background without $B$-field by ``switching on'' $B$
+with the unipotent matrix $U_B$. We symbolically checked \eqref{eq:genmetric:factor} with
+sympy for $d=2$ and a generic (not antisymmetric) $B$.
+
+\begin{pitfallbox}[Common pitfall: four conventions for one matrix]
+Two independent choices produce four versions of \eqref{eq:genmetric:H} in the literature.
+(i) \emph{Order of the doubled vector.} We, GPR and HZ list windings first, $Z=(m,n)$,
+equivalently $(X',2\pi P)$, so that $G$ sits in the upper left block. HHZ and AMN order the
+doubled coordinates as $X^M=(\tilde x_i,x^i)$ and the momenta as
+$P^M=(\tilde p^i,p_i)$ and write the metric with lower indices,
+\[
+ \HH_{MN}=\begin{pmatrix}g^{ij}&-g^{ik}b_{kj}\\ b_{ik}g^{kj}&g_{ij}-b_{ik}g^{kl}b_{lj}
+ \end{pmatrix}
+\]
+\source{HHZ §1, eq.~(1.9), ll.~256--262 and footnote 3, ll.~314--316; AMN §3.1, eq.~(3.8),
+ll.~640--651}. This is $\eta\,\HH(G,B)\,\eta$ in our notation: rows and columns are
+swapped in blocks. By \cref{thm:genmetric:odd} below it is also $\HH(G,B)^{-1}$, which is
+why HHZ call \eqref{eq:genmetric:H} the metric ``with upper indices'' $\HH^{MN}$ and
+\eqref{eq:genmetric:H}'s inverse the generalized metric proper
+\source{HHZ §2, eqs.~(2.22)--(2.25), ll.~620--660}. (ii) \emph{Sign of $B$.} Reversing the
+orientation of the worldsheet, $\sigma\to-\sigma$, sends $B\to-B$ \source{GPR §2.4,
+ll.~1423--1425} and reverses the sign of both off-diagonal blocks. Before comparing a formula with
+another text or with a Lean file, find the order of the charge vector and the block that
+contains $G^{-1}$. The Lean module described in \cref{sec:genmetric:lean} uses
+\eqref{eq:genmetric:H} verbatim, with the winding block first.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{The algebraic properties of \texorpdfstring{$\HH$}{H}}\label{sec:genmetric:properties}
+
+Throughout, $\eta=\left(\begin{smallmatrix}0&\mathbf 1\\\mathbf 1&0\end{smallmatrix}\right)$
+is the $O(d,d)$ form of \cref{ch:narain,ch:odd}, $\eta^2=\mathbf 1$, and $\OddR{d}$ is the
+group of real matrices $g$ with $g^{\mathsf T}\eta g=\eta$. On charge vectors
+$\tfrac12Z^{\mathsf T}\eta Z=m\cdot n$, the quantity fixed by level matching.
+
+\subsection{Symmetry}
+
+\begin{proposition}\label{prop:genmetric:symm}
+If $G$ is symmetric and invertible and $B$ is antisymmetric, then
+$\HH(G,B)^{\mathsf T}=\HH(G,B)$.
+\end{proposition}
+\begin{proof}
+The transpose of a block matrix transposes each block and exchanges the off-diagonal
+ones. First $(G^{-1})^{\mathsf T}=(G^{\mathsf T})^{-1}=G^{-1}$. Then, block by block,
+\begin{align*}
+ \big(G-BG^{-1}B\big)^{\mathsf T}&=G^{\mathsf T}-B^{\mathsf T}(G^{-1})^{\mathsf T}B^{\mathsf T}
+ =G-(-B)G^{-1}(-B)=G-BG^{-1}B,\\
+ \big(-G^{-1}B\big)^{\mathsf T}&=-B^{\mathsf T}(G^{-1})^{\mathsf T}=BG^{-1},\qquad
+ \big(BG^{-1}\big)^{\mathsf T}=G^{-1}B^{\mathsf T}=-G^{-1}B,
+\end{align*}
+and the lower right block is $G^{-1}$, already shown symmetric.
+\end{proof}
+\noindent Both hypotheses are needed: for a generic $B$ the two off-diagonal blocks are
+not transposes of each other (we confirmed with sympy that the identity fails for generic
+$B$ at $d=2$). Physically, symmetry costs nothing, since only the symmetric part of a
+matrix contributes to a quadratic form $Z^{\mathsf T}\HH Z$; the content of the proposition
+is that the particular representative \eqref{eq:genmetric:H} is already symmetric.
+
+\subsection{\texorpdfstring{$\HH$}{H} is an element of \texorpdfstring{$O(d,d;\R)$}{O(d,d;R)}}
+
+\begin{theorem}[The $O(d,d)$ constraint \TA]\label{thm:genmetric:odd}\index{generalized metric!O(d,d) constraint@$O(d,d)$ constraint}\index{O(d,d;R)@$O(d,d;\R)$}
+For every invertible $G$ and \emph{every} $B$,
+\begin{equation}\label{eq:genmetric:constraint}
+ \HH\,\eta\,\HH=\eta,\qquad\text{equivalently}\qquad(\eta\HH)^2=\mathbf 1,
+ \qquad\text{equivalently}\qquad \HH^{-1}=\eta\,\HH\,\eta .
+\end{equation}
+If moreover $\HH$ is symmetric (\cref{prop:genmetric:symm}), then
+$\HH^{\mathsf T}\eta\HH=\eta$, that is, $\HH\in\OddR{d}$.
+\end{theorem}
+\noindent The literature states this for backgrounds: ``the matrix $\HH(E)$ satisfies the
+constraint $\HH^{-1}=\eta\HH\eta$'' \source{HZ §2.2, l.~665}; $\HH\eta\HH=\eta^{-1}$
+\source{HHZ §2, eqs.~(2.8)--(2.9), ll.~458--466}; ``this is an $O(D,D)$ element''
+\source{AMN §3.3, eq.~(3.23), ll.~944--950}. That antisymmetry of $B$ is not needed is an
+observation made while formalizing; it is the statement \lean{etaR\_genMetric\_sq}. We give
+two proofs, since each teaches something.
+
+\begin{proof}[First proof: from the factorization]
+The three equivalent forms follow from one another by multiplying with
+$\eta=\eta^{-1}$. We prove the first. Two one-line computations, valid for any $B$ and any
+invertible $G$:
+\begin{align}
+ L_B\,\eta\,U_B&=\begin{pmatrix}0&\mathbf 1\\\mathbf 1&-B\end{pmatrix}
+ \begin{pmatrix}\mathbf 1&B\\0&\mathbf 1\end{pmatrix}
+ =\begin{pmatrix}0&\mathbf 1\\\mathbf 1&B-B\end{pmatrix}=\eta,
+ &U_B\,\eta\,L_B&=\eta,\label{eq:genmetric:LetaU}\\
+ \begin{pmatrix}G&0\\0&G^{-1}\end{pmatrix}\eta
+ \begin{pmatrix}G&0\\0&G^{-1}\end{pmatrix}
+ &=\begin{pmatrix}0&GG^{-1}\\G^{-1}G&0\end{pmatrix}=\eta .\label{eq:genmetric:DetaD}
+\end{align}
+(The second identity in \eqref{eq:genmetric:LetaU} is checked in the same way:
+$U_B\eta=\left(\begin{smallmatrix}B&\mathbf 1\\\mathbf 1&0\end{smallmatrix}\right)$, and
+multiplying by $L_B$ replaces the upper left block by $B-B=0$.) With
+$D=\diag(G,G^{-1})$ and \eqref{eq:genmetric:factor},
+\[
+ \HH\eta\HH=U_BD\,(L_B\eta U_B)\,DL_B=U_B\,(D\eta D)\,L_B=U_B\,\eta\,L_B=\eta .
+\]
+For the last claim, $\HH^{\mathsf T}\eta\HH=\HH\eta\HH=\eta$ when $\HH^{\mathsf T}=\HH$.
+\end{proof}
+
+\begin{proof}[Second proof: four blocks]
+This is the computation the Lean proof performs, and a useful exercise in handling
+non-commuting blocks. First
+\[
+ \eta\HH=\begin{pmatrix}-G^{-1}B&G^{-1}\\G-BG^{-1}B&BG^{-1}\end{pmatrix}
+ \equiv\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix},
+\]
+since multiplying by $\eta$ from the left exchanges the two block rows. The square of a
+block matrix is $\left(\begin{smallmatrix}\alpha^2+\beta\gamma&\alpha\beta+\beta\delta\\
+\gamma\alpha+\delta\gamma&\gamma\beta+\delta^2\end{smallmatrix}\right)$, and
+\begin{align*}
+ \alpha^2+\beta\gamma&=G^{-1}BG^{-1}B+G^{-1}\big(G-BG^{-1}B\big)=\mathbf 1,\\
+ \alpha\beta+\beta\delta&=-G^{-1}BG^{-1}+G^{-1}BG^{-1}=0,\\
+ \gamma\alpha+\delta\gamma&=-\big(G-BG^{-1}B\big)G^{-1}B+BG^{-1}\big(G-BG^{-1}B\big)\\
+ &=-B+BG^{-1}BG^{-1}B+B-BG^{-1}BG^{-1}B=0,\\
+ \gamma\beta+\delta^2&=\big(G-BG^{-1}B\big)G^{-1}+BG^{-1}BG^{-1}=\mathbf 1 .
+\end{align*}
+The only facts used are $G^{-1}G=GG^{-1}=\mathbf 1$ and associativity.
+\end{proof}
+
+\begin{corollary}\label{cor:genmetric:spectrum}
+Let $(G,B)$ be a background. Then {\rm(i)} $\det\HH=1$; {\rm(ii)} if $\lambda$ is an
+eigenvalue of $\HH$ then so is $1/\lambda$, with the same multiplicity;
+{\rm(iii)} $\Tr\HH=\Tr G+\Tr G^{-1}+\Tr\big(B^{\mathsf T}G^{-1}B\big)\ge 2d$, with equality
+if and only if $G=\mathbf 1$ and $B=0$.
+\end{corollary}
+\begin{proof}
+(i) From \eqref{eq:genmetric:factor}: $\det U_B=\det L_B=1$ and
+$\det\diag(G,G^{-1})=\det G\,\det G^{-1}=1$. (ii) $\HH^{-1}=\eta\HH\eta=\eta\HH\eta^{-1}$ is
+similar to $\HH$, so $\HH$ and $\HH^{-1}$ have the same characteristic polynomial.
+(iii) The trace of \eqref{eq:genmetric:H} is
+$\Tr G-\Tr(BG^{-1}B)+\Tr G^{-1}$ and $-B=B^{\mathsf T}$. If $g_1,\dots,g_d>0$ are the
+eigenvalues of $G$, then $\Tr G+\Tr G^{-1}=\sum_a(g_a+1/g_a)\ge2d$ because
+$x+1/x-2=(\sqrt x-1/\sqrt x)^2\ge0$, with equality only for all $g_a=1$; and
+$\Tr(B^{\mathsf T}G^{-1}B)=\sum_j(Be_j)^{\mathsf T}G^{-1}(Be_j)\ge0$ since $G^{-1}$ is
+positive definite, with equality only if every column $Be_j$ vanishes.
+\end{proof}
+\noindent Part (iii) with $B=0$ is the trace form of the dual-scale inequality\index{dual-scale inequality}
+$R+\ap/R\ge2\sqrt{\ap}$ of \cref{ch:dualscale}; in Lean it is \lean{dualScale\_ge} \TA. The
+extension to $B\ne0$ just given is proved on this page and is not formalized.
+
+\subsection{Positive definiteness}
+
+\begin{proposition}\label{prop:genmetric:posdef}\index{generalized metric!positive definiteness}
+For a background $(G,B)$ the matrix $\HH(G,B)$ is positive definite: for every real
+$Z=(m,n)\neq0$,
+\begin{equation}\label{eq:genmetric:square}
+ Z^{\mathsf T}\HH(G,B)\,Z=m^{\mathsf T}Gm+(n-Bm)^{\mathsf T}G^{-1}(n-Bm)>0 .
+\end{equation}
+\end{proposition}
+\begin{proof}
+By \cref{prop:genmetric:factor}, $Z^{\mathsf T}\HH Z=(L_BZ)^{\mathsf T}\diag(G,G^{-1})(L_BZ)$
+with $L_BZ=(m,n-Bm)$; this is \eqref{eq:genmetric:square}, the completed square
+\eqref{eq:genmetric:H0square} read backwards. Both terms are non-negative since $G$ and
+$G^{-1}$ are positive definite. If the sum vanishes then $m=0$, and then $n-Bm=n=0$.
+\end{proof}
+\noindent ``The metric $\HH_{MN}$ \dots\ is positive definite if $g_{ij}$ is''
+\source{HHZ §1, ll.~284--285}. The doubled space thus carries two different metrics: the
+constant $\eta$ of signature $(d,d)$, which knows nothing about the background and measures
+the level-matching quantity $m\cdot n$, and the positive definite $\HH$, which contains
+the background and measures the energy. The constraint \eqref{eq:genmetric:constraint}
+ties them together.
+
+\begin{pitfallbox}[Common pitfall: ``$\HH$ is orthogonal, so it cannot be positive definite'']
+In the compact group $O(2d)$ the only symmetric positive definite element is the identity.
+$\OddR{d}$ is not compact, and it contains a $d^2$-dimensional family of symmetric positive
+definite elements, namely the matrices $\HH(G,B)$. For $d=1$ they are
+$\diag(R^2/\ap,\ap/R^2)$: a \emph{boost} in the light-cone directions of $\eta$, with
+rapidity $\log(R^2/\ap)$. Note also that \lean{genMetric\_symm} and
+\lean{etaR\_genMetric\_sq} do not include positivity; in the Lean development positive
+definiteness of $G$ enters only in \lean{dualScale\_ge}.
+\end{pitfallbox}
+
+\subsection{The involution \texorpdfstring{$\HH\eta$}{H eta} and the left--right split}
+
+By \eqref{eq:genmetric:constraint} the matrix
+\begin{equation}\label{eq:genmetric:S}
+ \mathcal S=\HH\,\eta,\qquad \mathcal S^2=\HH\eta\HH\eta=\eta\,\eta=\mathbf 1,
+\end{equation}
+is an involution\index{involution $\mathcal S=\HH\eta$} \source{HHZ §1, eqs.~(1.12)--(1.14), ll.~296--308; §2, eq.~(2.6)}. An
+involution is determined by its two eigenspaces, so the background must be encoded in them.
+
+\begin{lemma}[Eigenspaces]\label{lem:genmetric:eigen}
+Let $(G,B)$ be a background and $E=G+B$. The eigenspaces of $\mathcal S=\HH\eta$ are
+\begin{equation}\label{eq:genmetric:eigen}
+ V_+=\Big\{\tbinom{E\,u}{u}:u\in\R^d\Big\}\ (\text{eigenvalue }+1),\qquad
+ V_-=\Big\{\tbinom{-E^{\mathsf T}u}{u}:u\in\R^d\Big\}\ (\text{eigenvalue }-1).
+\end{equation}
+The form $\eta$ is positive definite on $V_+$, negative definite on $V_-$, and
+$V_-$ is the $\eta$-orthogonal complement of $V_+$.
+\end{lemma}
+\begin{proof}
+$\mathcal S\binom{Eu}{u}=\HH\binom{u}{Eu}$. The upper block is
+$(G-BG^{-1}B)u+BG^{-1}(G+B)u=Gu+Bu=Eu$ and the lower block is
+$-G^{-1}Bu+G^{-1}(G+B)u=u$. For $V_-$, with $E^{\mathsf T}=G-B$:
+$\HH\binom{u}{-E^{\mathsf T}u}$ has upper block
+$(G-BG^{-1}B)u-BG^{-1}(G-B)u=(G-B)u=E^{\mathsf T}u$ and lower block
+$-G^{-1}Bu-G^{-1}(G-B)u=-u$, which is $-\binom{-E^{\mathsf T}u}{u}$. Both spaces have
+dimension $d$, and they meet only in $0$ (different eigenvalues), so they fill
+$\R^{2d}$. For $v=\binom{Eu}{u}$ we find $v^{\mathsf T}\eta v=2u^{\mathsf T}Eu=2u^{\mathsf T}Gu>0$
+because the antisymmetric part drops out of a quadratic form; similarly
+$v^{\mathsf T}\eta v=-2u^{\mathsf T}Gu<0$ on $V_-$. Orthogonality:
+$\binom{Eu}{u}^{\mathsf T}\eta\binom{-E^{\mathsf T}u'}{u'}=u^{\mathsf T}E^{\mathsf T}u'
+-u^{\mathsf T}E^{\mathsf T}u'=0$.
+\end{proof}
+\noindent In \cref{ch:narain} the left- and right-moving momenta were found to be
+proportional to $n+E^{\mathsf T}m$ and $n-Em$ \source{GPR §2.4, eq.~(2.4.12),
+ll.~1193--1198}. A charge vector $Z=(m,n)$ has $\eta Z=(n,m)\in V_-$ exactly when
+$n=-E^{\mathsf T}m$, that is, when its left-moving momentum vanishes; likewise
+$\eta Z\in V_+$ means $p_R=0$. (That $\eta Z$ appears, and not $Z$, is index bookkeeping: $\mathcal S=\HH\eta$ first
+lowers the index of its argument with $\eta$. The matrix $\eta\HH$ used in \cref{ch:odd}
+has the eigenspaces $\eta V_\pm$.) \emph{Choosing a background is choosing how to split the
+doubled space into left-movers and right-movers}, and $\HH$ is the bookkeeping device for
+that split: $\HH=\mathcal S\eta$, where $\mathcal S$ is $+1$ on $V_+$ and $-1$ on $V_-$.
+
+%=====================================================================================
+\section{The mass form and its covariance}\label{sec:genmetric:massform}
+
+\subsection{The spectrum in terms of \texorpdfstring{$\HH$}{H}}
+
+Restoring the oscillators and the non-compact momenta (\cref{ch:narain}), the mass of a
+closed-string state in the uncompactified dimensions is
+\begin{equation}\label{eq:genmetric:mass}
+ M^2=\frac1\ap\,Z^{\mathsf T}\HH(G,B)\,Z+\frac2\ap\big(N+\tilde N-2\big),\qquad
+ N-\tilde N=\tfrac12Z^{\mathsf T}\eta Z=m\cdot n,
+\end{equation}
+where $N,\tilde N$ are the oscillator levels\index{level matching}. The zero-mode part is
+\source{GPR §2.4, eq.~(2.4.18), ll.~1278--1290}. AMN write the same structure,
+$M^2=(N+\tilde N-2)+P^{\mathsf T}\HH P$ with $N-\tilde N=\frac12P^{\mathsf T}\eta P$, in a
+review-level normalization that absorbs our relative factor $2$ and with the momentum
+block first \source{AMN §3.1, eqs.~(3.6)--(3.9), ll.~620--656}; we keep the convention of
+\cref{ch:narain} and check it against the circle below. All dependence on the background
+sits in the quadratic form
+\begin{equation}\label{eq:genmetric:massform}
+ \mu_{\HH}(Z)=Z^{\mathsf T}\HH\,Z ,
+\end{equation}
+which we call the \emph{mass form}\index{mass form}; this is the Lean definition
+\lean{massForm}. The two metrics of the doubled space have now each found their job:
+$\HH$ gives the mass, $\eta$ gives the level-matching constraint.
+
+As a check on normalizations take $d=1$, $G=R^2/\ap$, $B=0$, and $Z=(w,n)$. Then
+$\HH=\diag(R^2/\ap,\ap/R^2)$ and
+\begin{equation}\label{eq:genmetric:circle}
+ \frac1\ap\,\mu_{\HH}(Z)=\frac1\ap\Big(\frac{R^2}{\ap}w^2+\frac{\ap}{R^2}n^2\Big)
+ =\frac{n^2}{R^2}+\frac{w^2R^2}{\ap^2},
+\end{equation}
+the circle formula of \cref{ch:circle}. In terms of the left- and right-moving momenta
+$p_{L,R}=n/R\pm wR/\ap$ of \cref{ch:tduality} this is $\tfrac12(p_L^2+p_R^2)$, because the
+cross terms $\pm2nw/\ap$ cancel in the sum. \Cref{fig:genmetric:ellipse} shows the level
+sets of $\mu_\HH$.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=0.72,>=Stealth]
+ \begin{scope}
+  \draw[->,black!60] (-3.4,0)--(3.6,0) node[right]{\small$w$};
+  \draw[->,black!60] (0,-3.4)--(0,3.6) node[above]{\small$n$};
+  \foreach \a in {-3,...,3}{\foreach \b in {-3,...,3}{\fill[black!55] (\a,\b) circle (1.3pt);}}
+  \draw[blue!60!black,thick] (0,0) ellipse [x radius=1.4142, y radius=2.8284];
+  \draw[blue!60!black,thick,dashed] (0,0) ellipse [x radius=0.7071, y radius=1.4142];
+  \fill[red!70!black] (1,2) circle (2.4pt) (-1,2) circle (2.4pt) (1,-2) circle (2.4pt)
+   (-1,-2) circle (2.4pt);
+  \draw[black!35,dotted] (-3.2,-3.2)--(3.2,3.2);
+  \node at (0,-4.1) {\small(a) $R^2/\ap=2$:\quad $2w^2+\tfrac12n^2=c$};
+ \end{scope}
+ \begin{scope}[xshift=9.2cm]
+  \draw[->,black!60] (-3.4,0)--(3.6,0) node[right]{\small$w$};
+  \draw[->,black!60] (0,-3.4)--(0,3.6) node[above]{\small$n$};
+  \foreach \a in {-3,...,3}{\foreach \b in {-3,...,3}{\fill[black!55] (\a,\b) circle (1.3pt);}}
+  \draw[blue!60!black,thick] (0,0) ellipse [x radius=2.8284, y radius=1.4142];
+  \draw[blue!60!black,thick,dashed] (0,0) ellipse [x radius=1.4142, y radius=0.7071];
+  \fill[red!70!black] (2,1) circle (2.4pt) (-2,1) circle (2.4pt) (2,-1) circle (2.4pt)
+   (-2,-1) circle (2.4pt);
+  \draw[black!35,dotted] (-3.2,-3.2)--(3.2,3.2);
+  \node at (0,-4.1) {\small(b) $R^2/\ap=\tfrac12$:\quad $\tfrac12w^2+2n^2=c$};
+ \end{scope}
+ \draw[<->,thick] (4.1,0.8)--(5.2,0.8) node[midway,above]{\small$\eta$};
+\end{tikzpicture}
+\caption{Level sets $\mu_\HH(Z)=c$ of the mass form for $d=1$ (solid: $c=4$, dashed: $c=1$)
+in the plane of winding $w$ and momentum $n$. The lattice $\Z^2$ of charges is the same in
+both panels; only the ellipse depends on the background. The full duality $\eta$ reflects
+the plane in the dotted diagonal; it maps the lattice to itself and the ellipses of
+$R^2/\ap=2$ to those of $R^2/\ap=\frac12$. The four marked states with $\mu=4$ in (a) are
+mapped to the four marked states with $\mu=4$ in (b). Area is preserved because
+$\det\HH=1$.}
+\label{fig:genmetric:ellipse}
+\end{figure}
+
+\subsection{Covariance}
+
+\begin{proposition}[Covariance of the mass form \TA]\label{prop:genmetric:cov}
+For all real $2d\times2d$ matrices $g$, $\HH$ and all $Z\in\R^{2d}$,
+\begin{equation}\label{eq:genmetric:cov}
+ \mu_{\,g^{\mathsf T}\HH g}(Z)=\mu_{\HH}(gZ).
+\end{equation}
+\end{proposition}
+\begin{proof}
+$Z^{\mathsf T}(g^{\mathsf T}\HH g)Z=(gZ)^{\mathsf T}\HH(gZ)$, since
+$(gZ)^{\mathsf T}=Z^{\mathsf T}g^{\mathsf T}$.
+\end{proof}
+\noindent This is \lean{massForm\_covariant}. No hypothesis on $g$ is needed, and none
+appears in the Lean statement. The group enters when we ask for more: if
+$g\in\Odd{d}$ then $Z\mapsto gZ$ is a bijection of the charge lattice that preserves
+$Z^{\mathsf T}\eta Z$, hence level matching, and the complete spectra
+\eqref{eq:genmetric:mass} of the backgrounds $\HH$ and $g^{\mathsf T}\HH g$ coincide state by
+state. That argument is the subject of \cref{ch:odd}; what remains for this chapter is to
+show that the transformed matrix is again the generalized metric of a background and to
+identify that background.
+
+\begin{pitfallbox}[Common pitfall: $g^{\mathsf T}\HH g$ versus $g\HH g^{\mathsf T}$]
+\Cref{ch:odd} and \lean{massForm\_covariant} transform the background by
+$\HH\mapsto g^{\mathsf T}\HH g$ and the charges by $Z\mapsto gZ$. GPR, HHZ and the Lean file
+\texttt{BShift.lean} use $\HH\mapsto g\HH g^{\mathsf T}$
+\source{GPR §2.4, eq.~(2.4.19), ll.~1290--1293; HHZ §2, eq.~(2.16), ll.~557--561}; the
+charges must then transform with the inverse transpose,
+\[
+ \mu_{\,g\HH g^{\mathsf T}}(Z')=\mu_\HH(Z)\qquad\text{for}\qquad
+ Z'=(g^{\mathsf T})^{-1}Z=\eta\,g\,\eta\,Z,
+\]
+where the last form holds for $g\in\OddR{d}$. The two conventions are exchanged by
+$g\leftrightarrow g^{\mathsf T}$, and the transpose of a group element is a group element
+\source{GPR §2.4, ll.~1243--1248}, so the set of dual backgrounds is the same. In the
+remainder of this chapter we use $\HH\mapsto g\HH g^{\mathsf T}$, because in this convention
+the matrix that shifts $B$ is upper triangular like $U_B$, and the action on $E$ takes its
+customary form.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{How dualities act on \texorpdfstring{$\HH$}{H}}\label{sec:genmetric:dualities}
+
+We now conjugate $\HH(G,B)$ with the elements of $\OddR{d}$ described in \cref{ch:odd} and
+read off the new background. The factorization \eqref{eq:genmetric:factor} reduces each
+computation to the multiplication of triangular or diagonal block matrices.
+
+\subsection{The \texorpdfstring{$B$}{B}-shift acts by conjugation}
+
+\begin{theorem}[$B$-shift \TA]\label{thm:genmetric:bshift}\index{B-shift@$B$-shift}
+Let $G$ be invertible, $B$ arbitrary and $\Theta$ antisymmetric. With
+$g_\Theta=\left(\begin{smallmatrix}\mathbf 1&\Theta\\0&\mathbf 1\end{smallmatrix}\right)$,
+\begin{equation}\label{eq:genmetric:bshift}
+ g_\Theta\,\HH(G,B)\,g_\Theta^{\mathsf T}=\HH(G,B+\Theta).
+\end{equation}
+\end{theorem}
+\begin{proof}
+Matrices of the form $U_X$ multiply by adding their arguments:
+$g_\Theta U_B=U_\Theta U_B=U_{B+\Theta}$. On the other side,
+\[
+ L_B\,g_\Theta^{\mathsf T}
+ =\begin{pmatrix}\mathbf 1&0\\-B&\mathbf 1\end{pmatrix}
+ \begin{pmatrix}\mathbf 1&0\\\Theta^{\mathsf T}&\mathbf 1\end{pmatrix}
+ =\begin{pmatrix}\mathbf 1&0\\-B+\Theta^{\mathsf T}&\mathbf 1\end{pmatrix}
+ =L_{B+\Theta}\quad\text{because }\Theta^{\mathsf T}=-\Theta .
+\]
+Hence $g_\Theta\HH(G,B)g_\Theta^{\mathsf T}=U_{B+\Theta}\diag(G,G^{-1})L_{B+\Theta}
+=\HH(G,B+\Theta)$ by \cref{prop:genmetric:factor}.
+\end{proof}
+\noindent The proof shows where the hypothesis is used: only antisymmetry of $\Theta$
+matters. The Lean theorem \lean{genMetric\_bshift}, to which the badge \TA\ refers, is
+stated for a background ($G$ symmetric with invertible determinant, $B$ antisymmetric);
+the slightly more general statement above is proved on this page only. For a symmetric $\Theta\ne0$ the identity fails (sympy, $d=2$), and so do the
+three other candidates $g^{\mathsf T}\HH g$ with $\pm\Theta$ and $g\HH g^{\mathsf T}$ with
+$-\Theta$; the convention is forced. The matrix $g_\Theta$ belongs to $\OddR{d}$ (the
+condition $g^{\mathsf T}\eta g=\eta$ reduces to $\Theta+\Theta^{\mathsf T}=0$; in Lean,
+\lean{thetaShiftR\_preserves\_eta}), and by the preceding pitfall box the charges
+transform as
+\begin{equation}\label{eq:genmetric:bshiftZ}
+ Z'=(g_\Theta^{\mathsf T})^{-1}Z=\begin{pmatrix}\mathbf 1&0\\\Theta&\mathbf 1\end{pmatrix}
+ \binom mn=\binom{m}{n+\Theta m},
+ \qquad n'-(B+\Theta)m=n-Bm .
+\end{equation}
+The shifted momentum $n-Bm$ of the completed square is unchanged, and so is the energy.
+
+\begin{physicsbox}[Physical picture: when is a $B$-shift a symmetry?]
+\Cref{eq:genmetric:bshift} holds for every real antisymmetric $\Theta$: it is a statement
+about how $\OddR{d}$ moves through the space of backgrounds, and a generic real shift
+produces a \emph{different} theory with a different spectrum. The shift is a symmetry only
+if \eqref{eq:genmetric:bshiftZ} maps the charge lattice to itself, which requires
+$\Theta m\in\Z^d$ for all integer $m$, that is, integer entries. Then $g_\Theta\in\Odd{d}$.
+The worldsheet reason is that the constant $B$-term is a total derivative, and an integer
+shift changes the action by a multiple of $2\pi$ \source{GPR §2.4, eq.~(2.4.25) and
+following, ll.~1351--1371}. So $B_{ij}$ is a periodic variable, an angle, exactly like the
+flux through a ring in the Aharonov--Bohm effect. That the $B$-shift is a symmetry of the
+path integral is \TL; what is \TA\ is the matrix identity \eqref{eq:genmetric:bshift}.
+\end{physicsbox}
+
+\subsection{Change of lattice basis}
+
+For $A\in GL(d,\R)$ put $g_A=\diag\big(A,(A^{\mathsf T})^{-1}\big)$
+\source{GPR §2.4, eq.~(2.4.26), ll.~1373--1381}. It preserves $\eta$, because
+$A^{\mathsf T}(A^{\mathsf T})^{-1}=\mathbf 1$. One checks
+$g_AU_B=\left(\begin{smallmatrix}A&AB\\0&A^{-\mathsf T}\end{smallmatrix}\right)
+=U_{ABA^{\mathsf T}}\,g_A$, and transposing (for antisymmetric $B$),
+$L_Bg_A^{\mathsf T}=g_A^{\mathsf T}L_{ABA^{\mathsf T}}$. Therefore
+\begin{equation}\label{eq:genmetric:basis}
+ g_A\,\HH(G,B)\,g_A^{\mathsf T}
+ =U_{ABA^{\mathsf T}}\;g_A\begin{pmatrix}G&0\\0&G^{-1}\end{pmatrix}g_A^{\mathsf T}\;
+ L_{ABA^{\mathsf T}}
+ =\HH\big(AGA^{\mathsf T},\,ABA^{\mathsf T}\big),
+\end{equation}
+since $g_A\diag(G,G^{-1})g_A^{\mathsf T}=\diag\big(AGA^{\mathsf T},(AGA^{\mathsf T})^{-1}\big)$.
+Both $G$ and $B$ transform as tensors, $E'=AEA^{\mathsf T}$. For $A\in GL(d,\Z)$ this is a
+relabelling of the cycles of the same torus. This identity has no Lean counterpart in the
+modules described in this chapter (\cref{ex:genmetric:leanbasis}).
+
+\subsection{Inversion: T-duality proper}
+
+\begin{theorem}[Full duality at $B=0$ \TA]\label{thm:genmetric:inversion}\index{T-duality!as metric inversion}
+For every invertible $G$,
+\begin{equation}\label{eq:genmetric:inversion}
+ \eta\,\HH(G,0)\,\eta=\HH(G^{-1},0).
+\end{equation}
+\end{theorem}
+\begin{proof}
+$\HH(G,0)=\diag(G,G^{-1})$. Left multiplication by $\eta$ exchanges the block rows, right
+multiplication the block columns, so $\eta\,\diag(G,G^{-1})\,\eta=\diag(G^{-1},G)$, and this
+is $\HH(G^{-1},0)$ because $(G^{-1})^{-1}=G$.
+\end{proof}
+\noindent For the circle this is $R^2/\ap\to\ap/R^2$, that is $R\to\ap/R$, together with
+$Z=(w,n)\mapsto\eta Z=(n,w)$: the T-duality of \cref{ch:tduality}. For a rectangular torus
+$G=\diag(R_1^2,\dots,R_d^2)/\ap$ all radii are inverted at once. AMN call $\eta$ the
+``inversion metric'' for this reason \source{AMN §3.1, ll.~763--767}. One can also invert a
+single radius. The \emph{factorized duality}\index{factorized duality}
+\begin{equation}\label{eq:genmetric:Dk}
+ D_k=\begin{pmatrix}\mathbf 1-e_k&e_k\\e_k&\mathbf 1-e_k\end{pmatrix},
+ \qquad (e_k)_{ij}=\delta_{ik}\delta_{jk},
+\end{equation}
+\source{GPR §2.4, eq.~(2.4.29), ll.~1399--1421} exchanges $m^k\leftrightarrow n_k$ and
+leaves the other charges alone. For diagonal $G$ and $B=0$ the matrix $\HH$ is diagonal,
+and conjugation by the permutation matrix $D_k$ exchanges its $k$-th and $(d+k)$-th
+diagonal entries: $R_k^2/\ap\leftrightarrow\ap/R_k^2$, the other radii unchanged. Since
+$D_k^2=\mathbf 1$, $D_k=D_k^{\mathsf T}$ and $D_1D_2\cdots D_d=\eta$, the full duality is
+the product of the $d$ factorized ones.
+
+With $B\ne0$, or $G$ not diagonal, $\eta\HH(G,B)\eta$ and $D_k\HH(G,B)D_k$ are still
+generalized metrics, but reading off the new $G$ and $B$ block by block becomes awkward.
+The background matrix $E$ does it in one line.
+
+%=====================================================================================
+\section{The background matrix and fractional linear transformations}
+\label{sec:genmetric:fractional}
+
+\begin{theorem}[Action on $E$ \TL]\label{thm:genmetric:fractional}\index{fractional linear transformation}
+Let $(G,B)$ be a background, $E=G+B$, and
+$g=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)\in\OddR{d}$. Then $cE+d$ is
+invertible, the symmetric part $G'$ of
+\begin{equation}\label{eq:genmetric:fractional}
+ E'=g(E):=(aE+b)(cE+d)^{-1}
+\end{equation}
+is positive definite, and with $B'$ the antisymmetric part of $E'$,
+\begin{equation}\label{eq:genmetric:gHg}
+ g\,\HH(G,B)\,g^{\mathsf T}=\HH(G',B').
+\end{equation}
+\end{theorem}
+\noindent This is \source{GPR §2.4, eqs.~(2.4.19)--(2.4.24), ll.~1290--1334} and
+\source{HHZ §1, eq.~(1.3), ll.~143--149; §2, eqs.~(2.11)--(2.16), ll.~495--561}. Those
+texts argue through a vielbein (see \cref{sec:genmetric:coset}); we give a proof through
+the involution $\mathcal S$ of \eqref{eq:genmetric:S}, which needs no choice of frame.
+\begin{proof}
+\emph{Step 1: $\mathcal S$ transforms by conjugation.} From $g^{\mathsf T}\eta g=\eta$ we
+get $g^{\mathsf T}\eta=\eta g^{-1}$. Put $\HH'=g\HH g^{\mathsf T}$ and
+$\mathcal S'=\HH'\eta$. Then
+$\mathcal S'=g\HH g^{\mathsf T}\eta=g\,\HH\eta\,g^{-1}=g\,\mathcal S\,g^{-1}$. Hence
+$\mathcal S'$ is an involution with eigenspaces $V'_\pm=gV_\pm$.
+
+\emph{Step 2: $gV_+$ is a graph.} By \cref{lem:genmetric:eigen},
+\begin{equation}\label{eq:genmetric:homog}
+ g\binom{Eu}{u}=\binom{(aE+b)\,u}{(cE+d)\,u}.
+\end{equation}
+Suppose $(cE+d)u=0$. Then $v'=g\binom{Eu}{u}$ has vanishing lower block, so
+$v'^{\mathsf T}\eta v'=0$. But $g$ preserves $\eta$, so
+$v'^{\mathsf T}\eta v'=\binom{Eu}{u}^{\mathsf T}\eta\binom{Eu}{u}=2u^{\mathsf T}Gu$, which
+vanishes only for $u=0$. Thus $cE+d$ is invertible. Writing $u'=(cE+d)u$,
+\eqref{eq:genmetric:homog} becomes $\binom{E'u'}{u'}$ with $E'$ as in
+\eqref{eq:genmetric:fractional}: $V'_+=\{\binom{E'u'}{u'}\}$. The same computation gives
+$2u'^{\mathsf T}G'u'=v'^{\mathsf T}\eta v'=2u^{\mathsf T}Gu>0$ for $u'\ne0$, so $G'$ is positive
+definite and $(G',B')$ is a background.
+
+\emph{Step 3: the two involutions agree.} Let $\mathcal S''=\HH(G',B')\eta$. By
+\cref{lem:genmetric:eigen} its $+1$ eigenspace is $\{\binom{E'u'}{u'}\}=V'_+$, and its
+$-1$ eigenspace is the $\eta$-orthogonal complement of $V'_+$. The $-1$ eigenspace of
+$\mathcal S'$ is $gV_-=g(V_+^{\perp})=(gV_+)^\perp=V'^{\perp}_+$, because $g$ preserves
+$\eta$. Two involutions with the same eigenspaces are equal, so
+$\HH'=\mathcal S'\eta=\mathcal S''\eta=\HH(G',B')$.
+\end{proof}
+\noindent Since the proof realizes $g(E)$ through the linear action of $g$ on subspaces,
+the group law $g_1(g_2(E))=(g_1g_2)(E)$ is automatic. As a symbolic check we verified
+\eqref{eq:genmetric:gHg} with sympy for $d=2$, symbolic $G$ and $B$, and $g$ a product of
+seven generators. The theorem is Tier~L: the Lean modules of this chapter prove the special
+cases $g=g_\Theta$ and $g=\eta$ at $B=0$, not the general statement.
+
+\begin{physicsbox}[Physical picture: homogeneous coordinates]
+The modular group acts on the upper half plane by $\tau\mapsto(a\tau+b)/(c\tau+d)$ because
+it acts \emph{linearly} on the column $\binom\tau1$, and columns that differ by a factor
+describe the same point. \Cref{eq:genmetric:homog} is the same mechanism with matrices:
+the $2d\times d$ matrix $\binom E{\mathbf 1}$ spans the subspace $V_+$, the group acts
+linearly on it, and right multiplication by $(cE+d)^{-1}$ restores the normalization of the
+lower block. The condition that replaces $\operatorname{Im}\tau>0$ is positivity of the
+symmetric part of $E$. For $d=2$ this analogy becomes an identity: $O(2,2)$ contains two
+commuting copies of $SL(2)$ acting on the complex structure $\tau$ and on
+$\rho=B_{12}+\ii\sqrt{\det G}$ (\cref{ch:torus2}).
+\end{physicsbox}
+
+\paragraph{The three families again.} With \eqref{eq:genmetric:fractional} the results of
+\cref{sec:genmetric:dualities} take one line each:
+\begin{equation}\label{eq:genmetric:threefam}
+\begin{aligned}
+ g_\Theta:&\quad E'=(E+\Theta)\,\mathbf 1^{-1}=E+\Theta, &&G'=G,\ B'=B+\Theta;\\
+ g_A:&\quad E'=AE\,\big((A^{\mathsf T})^{-1}\big)^{-1}=AEA^{\mathsf T};\\
+ \eta:&\quad E'=(0\cdot E+\mathbf 1)(\mathbf 1\cdot E+0)^{-1}=E^{-1}.
+\end{aligned}
+\end{equation}
+The last line is the general form of \cref{thm:genmetric:inversion}. To split $E^{-1}$ into
+its parts, write $E^{-1}\pm E^{-\mathsf T}=E^{-1}\big(E^{\mathsf T}\pm E\big)E^{-\mathsf T}$:
+\begin{equation}\label{eq:genmetric:Einv}
+ G'=E^{-1}G\,E^{-\mathsf T}=\big(G-BG^{-1}B\big)^{-1},\qquad
+ B'=-E^{-1}B\,E^{-\mathsf T},
+\end{equation}
+where the second form of $G'$ uses $E^{\mathsf T}G^{-1}E=(G-B)G^{-1}(G+B)=G-BG^{-1}B$. So
+the upper left block of $\HH$ has a meaning: \emph{it is the inverse of the T-dual metric.}
+With $B\neq0$ the dual metric is not $G^{-1}$: for an invertible $B$ much larger than
+$G$ it is approximately $-B^{-1}GB^{-1}=(B^{-1})^{\mathsf T}G\,B^{-1}$, which tends to zero
+as $B$ grows, whatever the size of $G$.
+
+For the factorized duality \eqref{eq:genmetric:Dk},
+$E'=\big((\mathbf 1-e_k)E+e_k\big)\big(e_kE+\mathbf 1-e_k\big)^{-1}$. For $d=2$, $k=1$ the
+matrix to invert is $\left(\begin{smallmatrix}E_{11}&E_{12}\\0&1\end{smallmatrix}\right)$,
+and one finds
+\begin{equation}\label{eq:genmetric:buscher}
+ E'=\frac1{E_{11}}\begin{pmatrix}1&-E_{12}\\[2pt]E_{21}&E_{11}E_{22}-E_{21}E_{12}\end{pmatrix},
+\end{equation}
+which, separated into symmetric and antisymmetric parts, are the Buscher rules\index{Buscher rules} of
+\cref{ch:buscher}: $G'_{11}=1/G_{11}$, $G'_{12}=-B_{12}/G_{11}$, $B'_{12}=-G_{12}/G_{11}$,
+$G'_{22}=G_{22}-(G_{12}^2-B_{12}^2)/G_{11}$. Metric and $B$-field components with one leg
+along the dualized circle are exchanged. The signs of the mixed components are opposite to
+those written in \cref{ch:buscher}; the two forms differ by the reflection
+$A=\diag(-1,1)$ of the dual coordinate, a basis change \eqref{eq:genmetric:basis}, and
+describe the same physics. We checked \eqref{eq:genmetric:buscher} against
+$D_1\HH D_1$ with sympy.
+
+\subsection{Vielbeins and the coset}\label{sec:genmetric:coset}
+
+Choose a frame $e$ with $G=e\,e^{\mathsf T}$ (for instance the Cholesky factor). Then
+$\diag(G,G^{-1})=\diag(e,e^{-\mathsf T})\diag(e,e^{-\mathsf T})^{\mathsf T}$ and
+\cref{prop:genmetric:factor} becomes
+\begin{equation}\label{eq:genmetric:vielbein}
+ \HH(G,B)=g_E\,g_E^{\mathsf T},\qquad
+ g_E=U_B\begin{pmatrix}e&0\\0&e^{-\mathsf T}\end{pmatrix}
+ =\begin{pmatrix}e&B\,e^{-\mathsf T}\\0&e^{-\mathsf T}\end{pmatrix}\in\OddR{d},
+\end{equation}
+\source{GPR §2.4, eqs.~(2.4.20)--(2.4.23), ll.~1294--1325; HHZ §2, eqs.~(2.11)--(2.15),
+ll.~495--534}. The matrix $g_E$ maps the reference background $E=\mathbf 1$ to $E$:
+$g_E(\mathbf 1)=(e+Be^{-\mathsf T})e^{\mathsf T}=G+B$. It is a generalized
+vielbein\index{generalized vielbein}: $\HH=g_E\,\mathbf 1\,g_E^{\mathsf T}$ is to $g_E$ what
+$G=e\,\mathbf 1\,e^{\mathsf T}$ is to $e$. The frame is not unique; $g_E\to g_Ek$ with
+$k\,k^{\mathsf T}=\mathbf 1$ and $k\in\OddR{d}$ gives the same $\HH$. Such $k$ form the
+maximal compact subgroup $O(d)\times O(d)$\index{coset $O(d,d)/O(d)\times O(d)$}, the independent rotations of $p_L$ and $p_R$,
+and we recover the statement of \cref{ch:narain} that $\HH$ parametrizes the coset
+$\OddR{d}/\big(O(d)\times O(d)\big)$ of dimension $d(2d-1)-d(d-1)=d^2$
+\source{GPR §2.4, ll.~1259--1266; AMN §3.6, ll.~1306--1312; HHZ §2, ll.~563--570}.
+
+%=====================================================================================
+\section{Worked example: a slanted two-torus with a \texorpdfstring{$B$}{B}-field}
+\label{sec:genmetric:example}
+
+Take $d=2$,
+\[
+ G=\begin{pmatrix}2&1\\1&1\end{pmatrix},\qquad
+ B=b\,\varepsilon,\quad\varepsilon=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\quad b=\tfrac12,
+ \qquad E=\begin{pmatrix}2&\frac32\\[1pt]\frac12&1\end{pmatrix}.
+\]
+In string units the two cycles have lengths $2\pi\sqrt2$ and $2\pi$ and meet at
+$45^\circ$, since $\cos\theta=G_{12}/\sqrt{G_{11}G_{22}}=1/\sqrt2$; $\det G=1$, so the area
+is that of the self-dual square torus.
+
+\emph{Step 1: the blocks.} $G^{-1}=\left(\begin{smallmatrix}1&-1\\-1&2\end{smallmatrix}
+\right)$ and
+$BG^{-1}=\tfrac12\varepsilon G^{-1}=\left(\begin{smallmatrix}-1/2&1\\-1/2&1/2
+\end{smallmatrix}\right)$. For any symmetric $2\times2$ matrix,
+$\varepsilon G^{-1}\varepsilon=-G/\det G$, so
+\begin{equation}\label{eq:genmetric:d2block}
+ G-BG^{-1}B=\Big(1+\frac{b^2}{\det G}\Big)G=\frac{|\rho|^2}{\rho_2^2}\,G,
+ \qquad\rho=b+\ii\sqrt{\det G}=\tfrac12+\ii ,
+\end{equation}
+here $\frac54G$. Therefore
+\begin{equation}\label{eq:genmetric:Hnum}
+ \HH=\begin{pmatrix}
+ \frac52&\frac54&-\frac12&1\\[1pt]
+ \frac54&\frac54&-\frac12&\frac12\\[1pt]
+ -\frac12&-\frac12&1&-1\\[1pt]
+ 1&\frac12&-1&2\end{pmatrix}.
+\end{equation}
+
+\emph{Step 2: checks.} The matrix is symmetric (\cref{prop:genmetric:symm}). Its trace is
+$\frac{27}4$, in agreement with \cref{cor:genmetric:spectrum}(iii):
+$\Tr G+\Tr G^{-1}+b^2\Tr G/\det G=3+3+\frac34$, and $\frac{27}4\ge4$. Its characteristic
+polynomial is
+\[
+ \lambda^4-\tfrac{27}4\lambda^3+\tfrac{193}{16}\lambda^2-\tfrac{27}4\lambda+1,
+\]
+which is palindromic, as (i) and (ii) of the corollary demand: the constant term is
+$\det\HH=1$ and the roots come in pairs,
+$\lambda\approx0.2329,\ 4.2946$ and $\lambda\approx0.6266,\ 1.5960$, with
+$0.2329\times4.2946\approx0.6266\times1.5960\approx1.000$.
+
+\emph{Step 3: some masses.} Write $Z=(m^1,m^2;n_1,n_2)$. The diagonal entries of
+\eqref{eq:genmetric:Hnum} are the values of $\mu_\HH$ on the four unit charges: a string
+wound once around the first cycle has $\mu=\frac52$, not $G_{11}=2$; the $B$-field has made
+it heavier by the factor $|\rho|^2/\rho_2^2$. For $Z=(1,0;0,1)$ the completed square
+\eqref{eq:genmetric:square} is quickest: $n-Bm=(0,1)-\tfrac12(0,-1)=(0,\tfrac32)$, so
+\[
+ \mu_\HH(Z)=m^{\mathsf T}Gm+(n-Bm)^{\mathsf T}G^{-1}(n-Bm)=2+\tfrac94\cdot2=\tfrac{13}2,
+\]
+which agrees with $\HH_{11}+2\HH_{14}+\HH_{44}=\frac52+2+2$. Here $m\cdot n=0$, so
+$N=\tilde N$, and the lightest such state, $N=\tilde N=1$, has $\ap M^2=\frac{13}2$ by
+\eqref{eq:genmetric:mass}. For $Z=(1,0;1,0)$ we get $\mu=\frac52-1+1=\frac52$ and
+$m\cdot n=1$, so $N=\tilde N+1$; with $N=1$, $\tilde N=0$ the mass is
+$\ap M^2=\frac52+2(1-2)=\frac12$.
+
+\emph{Step 4: an integer $B$-shift.} Take $\Theta=-\varepsilon$, so $b\to-\frac12$. By
+\eqref{eq:genmetric:bshiftZ} the state $Z=(1,0;0,1)$ is mapped to
+$Z'=(m,n+\Theta m)=(1,0;0,2)$, and indeed in the new background
+$n'-B'm=(0,2)+\tfrac12(0,-1)=(0,\tfrac32)$ as before: $\mu=\frac{13}2$ again. The
+backgrounds $b=\frac12$ and $b=-\frac12$ have the same spectrum although no state keeps its
+label.
+
+\emph{Step 5: inversion.} With $\det E=\frac54$,
+\[
+ E^{-1}=\frac45\begin{pmatrix}1&-\frac32\\[1pt]-\frac12&2\end{pmatrix},\qquad
+ G'=\frac45\begin{pmatrix}1&-1\\-1&2\end{pmatrix}=\frac{G^{-1}}{|\rho|^2},\qquad
+ b'=-\frac25=-\frac{b}{|\rho|^2}.
+\]
+One checks $G'=(G-BG^{-1}B)^{-1}=(\frac54G)^{-1}$, as \eqref{eq:genmetric:Einv} predicts. In
+terms of $\rho'=b'+\ii\sqrt{\det G'}=-\frac25+\frac45\ii$ this is $\rho'=-1/\rho$: the full
+duality acts on $\rho$ as the modular inversion (\cref{ch:torus2}). The dual torus has area
+$\frac45$ of the self-dual one, and the state $Z=(1,0;0,1)$ reappears as
+$\eta Z=(0,1;1,0)$ with the same $\mu=\frac{13}2$.
+
+%=====================================================================================
+\section{From moduli to fields}\label{sec:genmetric:fields}
+
+So far $G$ and $B$ were constants, and $\HH$ was one point in the moduli space of the torus.
+Double field theory\index{double field theory} takes the step suggested by the notation: it lets the generalized
+metric depend on the doubled coordinates of \cref{ch:doubled}, $\HH=\HH(x,\tilde x)$, with
+the same algebraic form as \eqref{eq:genmetric:H} at each point,
+``the same form \dots\ but here the fields are non-constant''
+\source{AMN §3.3, eqs.~(3.22)--(3.26), ll.~929--985}. Three features of the constant case
+survive and organize the field theory \source{HHZ §1, ll.~250--291}:
+\begin{itemize}[nosep]
+\item $\HH$ is a symmetric $O(D,D)$ tensor with
+ $\HH^{-1}=\eta\HH\eta$; indices are raised and lowered with the constant $\eta$, never
+ with $\HH$;
+\item a global $h\in O(D,D)$ acts linearly, $\HH'(X')=h\,\HH(X)\,h^{\mathsf T}$ with
+ $X'=hX$, while on $E=g+b$ the same transformation is the non-linear
+ \eqref{eq:genmetric:fractional} \source{HHZ §2, eq.~(2.16), ll.~557--561};
+\item the dilaton joins in the $O(D,D)$ scalar $\ee^{-2d}=\sqrt{g}\,\ee^{-2\phi}$
+ \source{AMN §3.3, eq.~(3.24), ll.~959--965}.
+\end{itemize}
+The gain is practical. Gauge transformations that are non-linear in $E$ become linear in
+$\HH$, and the action of \cref{ch:dftaction} and the proof of its gauge invariance simplify
+considerably \source{HHZ §6, ll.~2412--2418}. The price is the constraint
+\eqref{eq:genmetric:constraint}: the $2D(2D+1)/2$ components of a symmetric matrix are not
+independent fields, only $D^2$ of them are, and variations of $\HH$ must respect
+$\HH\eta\HH=\eta$. None of this field-theoretic structure is formalized in the
+Lean modules of this chapter, which treat a single constant background.
+
+\begin{historybox}[Historical note: whose ``generalized metric''?]
+HHZ recall that the matrix \eqref{eq:genmetric:H} ``appeared in the early T-duality
+literature'', where it ``defines the first-quantized Hamiltonian for closed strings in a
+toroidal background'' \source{HHZ §1, ll.~279--283}. In generalized geometry
+(\cref{ch:courant}) the coordinates are not doubled, $\HH$ is a metric on the bundle
+$T\oplus T^*$, and Gualtieri gave the name generalized metric to the involution
+$\mathcal S$; it was later proposed for $\HH$ instead. On the doubled space, HHZ remark,
+the name ``is a misnomer'': $\HH$ ``is better regarded as a conventional metric on the
+doubled space'' obeying a constraint \source{HHZ §1, ll.~310--333}.
+\end{historybox}
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:genmetric:lean}
+
+The results of \cref{sec:genmetric:properties,sec:genmetric:massform,sec:genmetric:dualities}
+have been formalized. The library is \texttt{DualScaleStream2}, and the two short modules
+are
+\begin{center}
+\texttt{DFT/GeneralizedMetric.lean}\qquad and\qquad\texttt{DFT/BShift.lean},
+\end{center}
+both in the namespace \lean{DualScaleStream2.DFT}. Everything is stated over $\R$, for an arbitrary natural number
+$d$, with Mathlib's matrices. We go through every theorem of the two files. A third, older
+file of a different library formalizes only the integer matrix $\eta$ and is described at
+the end. All theorems quoted here depend only on the axioms \lean{propext},
+\lean{Classical.choice} and \lean{Quot.sound}. We confirmed this with the command
+\texttt{\#print axioms} for three of them: \lean{etaR\_genMetric\_sq},
+\lean{genMetric\_bshift} and \lean{massForm\_circle}.
+
+\subsection{Definitions}
+
+\index{Lean!genMetric@\texttt{genMetric}}\index{Lean!massForm@\texttt{massForm}}\begin{leanbox}[In Lean: $\eta$ and $\HH$ over $\R$]
+\begin{leancode}
+abbrev Charge (d : ℕ) := Fin d ⊕ Fin d          -- in TDuality/ODD.lean
+
+noncomputable def etaR (d : ℕ) : Matrix (Charge d) (Charge d) ℝ :=
+  fromBlocks 0 1 1 0
+
+noncomputable def genMetric (G B : Matrix (Fin d) (Fin d) ℝ) :
+    Matrix (Charge d) (Charge d) ℝ :=
+  fromBlocks (G - B * G⁻¹ * B) (B * G⁻¹) (-(G⁻¹ * B)) G⁻¹
+
+theorem etaR_mul_self : etaR d * etaR d = 1 := by ...
+\end{leancode}
+\textbf{Reading.} Rows and columns of a doubled matrix are indexed by the disjoint union
+\lean{Fin d ⊕ Fin d}, not by \lean{Fin (2*d)}. This is what makes block matrices painless:
+\lean{fromBlocks A B C D} is literally the matrix
+$\left(\begin{smallmatrix}A&B\\C&D\end{smallmatrix}\right)$, and no index arithmetic is
+ever needed. \lean{genMetric} is \eqref{eq:genmetric:H} character by character. It is
+defined for \emph{all} real matrices $G$, $B$: no symmetry, no positivity, not even
+invertibility is built in. \lean{etaR\_mul\_self} says $\eta^2=\mathbf 1$.
+\end{leanbox}
+
+\begin{pitfallbox}[Common pitfall: the inverse of a non-invertible matrix]
+In Mathlib \lean{G⁻¹} is a total function: it is the adjugate divided by the determinant
+when $\det G$ is a unit, and a junk value (the zero matrix, over a field) otherwise. So
+\lean{genMetric G B} always ``exists'', but $G^{-1}G=\mathbf 1$ may be used only under the
+hypothesis \lean{hG : IsUnit G.det}, which over $\R$ means $\det G\ne0$. Every theorem below
+that needs the inverse carries this hypothesis explicitly. The two facts used are the
+Mathlib lemmas \lean{Matrix.nonsing\_inv\_mul} and \lean{Matrix.mul\_nonsing\_inv}.
+\end{pitfallbox}
+
+\subsection{The theorems of \texttt{GeneralizedMetric.lean}}
+
+\begin{leanbox}[In Lean: the constraint and the symmetry]
+\begin{leancode}
+theorem etaR_genMetric_sq (G B : Matrix (Fin d) (Fin d) ℝ)
+    (hG : IsUnit G.det) :
+    (etaR d * genMetric G B) * (etaR d * genMetric G B) = 1 := by ...
+
+theorem genMetric_symm (G B : Matrix (Fin d) (Fin d) ℝ) (hG : IsUnit G.det)
+    (hGs : Gᵀ = G) (hB : Bᵀ = -B) :
+    (genMetric G B)ᵀ = genMetric G B := by ...
+\end{leancode}
+\textbf{Reading.} The first is $(\eta\HH)^2=\mathbf 1$, \cref{thm:genmetric:odd}, for every
+$G$ with invertible determinant and every $B$; there is no hypothesis on $B$. It is
+equivalent to $\HH^{-1}=\eta\HH\eta$ and to $\HH\eta\HH=\eta$, but those two forms are not
+stated in the file (\cref{ex:genmetric:leanHetaH}). The second is
+\cref{prop:genmetric:symm}. Together they give $\HH^{\mathsf T}\eta\HH=\eta$, membership
+in $\OddR{d}$; this combination is also not stated as a theorem.
+\textbf{Proof idea.} The second proof of \cref{thm:genmetric:odd}: compute $\eta\HH$ with
+\lean{Matrix.fromBlocks\_multiply}, square it with the same lemma, rewrite $1$ as
+\lean{fromBlocks 1 0 0 1}, and split the equation into four block equations with
+\lean{Matrix.fromBlocks\_inj}. Each block is closed by \lean{simp only} with
+distributivity, associativity and the two inverse lemmas, followed by \lean{abel}. For the
+symmetry, \lean{Matrix.fromBlocks\_transpose} and \lean{Matrix.transpose\_nonsing\_inv} do
+the work. Positive definiteness (\cref{prop:genmetric:posdef}) is not formalized.
+\end{leanbox}
+
+\noindent A remark on tactics. Matrices do not commute, so the tactic \lean{ring} does not
+apply. \lean{abel} normalizes in the additive group only, which suffices once
+\lean{simp only} has expanded all products and cancelled $G^{-1}G$. This division of
+labour is the pattern of every proof in the two files.
+
+\begin{leanbox}[In Lean: T-duality is metric inversion]
+\begin{leancode}
+theorem tduality_inverts_metric (G : Matrix (Fin d) (Fin d) ℝ)
+    (hG : IsUnit G.det) :
+    etaR d * genMetric G 0 * etaR d = genMetric G⁻¹ 0 := by ...
+\end{leancode}
+\textbf{Reading.} \Cref{thm:genmetric:inversion}: $\eta\HH(G,0)\eta=\HH(G^{-1},0)$, for the
+full duality $\eta$ and vanishing $B$ only. Neither a factorized duality $D_k$ nor the
+inversion $E\mapsto E^{-1}$ with $B\ne0$ is covered.
+\textbf{Proof idea.} Rewrite both sides as block-diagonal matrices (this needs
+$(G^{-1})^{-1}=G$, Mathlib's \lean{Matrix.nonsing\_inv\_nonsing\_inv}, hence \lean{hG});
+two applications of \lean{Matrix.fromBlocks\_multiply} swap the diagonal blocks.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the mass form, covariance, and the bridge to the circle]
+\begin{leancode}
+noncomputable def massForm (H : Matrix (Charge d) (Charge d) ℝ)
+    (Z : Charge d → ℝ) : ℝ :=
+  Z ⬝ᵥ (H *ᵥ Z)
+
+theorem massForm_covariant (g H : Matrix (Charge d) (Charge d) ℝ)
+    (Z : Charge d → ℝ) :
+    massForm (gᵀ * H * g) Z = massForm H (g *ᵥ Z) := by ...
+
+theorem massForm_circle (n w R : ℚ) (hR : R ≠ 0) :
+    massForm (genMetric (d := 1) (!![((R : ℝ) ^ 2)]) 0)
+        (Sum.elim ![(w : ℝ)] ![(n : ℝ)]) =
+      ((StringTheory.UseCases.TDuality.momentumMassSq n w R : ℚ) : ℝ) / 2
+    := by ...
+\end{leancode}
+\textbf{Reading.} \lean{massForm H Z} is $Z^{\mathsf T}\HH Z$ for a real vector $Z$ and
+\emph{any} real matrix. \lean{massForm\_covariant} is \cref{prop:genmetric:cov}, with no
+hypothesis on $g$: it is not a statement about $\OddR{d}$. \lean{massForm\_circle} is
+\eqref{eq:genmetric:circle} in units $\ap=1$: for rational $n,w,R$ with $R\ne0$, the mass
+form of the $1\times1$ background $G=(R^2)$, $B=0$ on the vector with first (winding)
+component $w$ and second (momentum) component $n$ equals one half of
+\lean{momentumMassSq n w R}, which an older library defines as $p_L^2+p_R^2$ with
+$p_{L,R}=n/R\pm wR$ (\lean{leftMomentum}, \lean{rightMomentum}; \cref{ch:tduality}). The
+theorem ties two independently written developments together and fixes the convention
+$Z=(w,n)$ of \lean{genMetric}. The charges are rational here because the older library
+works over $\mathbb Q$; that they are integers in physics is not part of the statement.
+\textbf{Proof idea.} Covariance is $(gZ)\cdot\HH(gZ)=Z\cdot g^{\mathsf T}\HH gZ$ via
+\lean{Matrix.dotProduct\_transpose\_mulVec}. For the circle, the inverse of a $1\times1$
+matrix is computed from the adjugate, the block form is expanded, and the remaining
+identity $R^2w^2+n^2/R^2=\frac12\big[(n/R+wR)^2+(n/R-wR)^2\big]$ is closed by
+\lean{field\_simp} and \lean{ring} (real numbers do commute).
+\end{leanbox}
+
+\subsection{The theorems of \texttt{BShift.lean}}
+
+\begin{leanbox}[In Lean: the $B$-shift]
+\begin{leancode}
+noncomputable def thetaShiftR (Θ : Matrix (Fin d) (Fin d) ℝ) :
+    Matrix (Charge d) (Charge d) ℝ :=
+  fromBlocks 1 Θ 0 1
+
+theorem genMetric_bshift (G B Θ : Matrix (Fin d) (Fin d) ℝ)
+    (hG : IsUnit G.det) (hGs : Gᵀ = G) (hB : Bᵀ = -B) (hΘ : Θᵀ = -Θ) :
+    thetaShiftR Θ * genMetric G B * (thetaShiftR Θ)ᵀ
+      = genMetric G (B + Θ) := by ...
+
+theorem thetaShiftR_preserves_eta (Θ : Matrix (Fin d) (Fin d) ℝ)
+    (hΘ : Θᵀ = -Θ) :
+    (thetaShiftR Θ)ᵀ * etaR d * thetaShiftR Θ = etaR d := by ...
+
+theorem genMetric_bshift_cancel (G B Θ : Matrix (Fin d) (Fin d) ℝ) :
+    genMetric G (B + Θ + -Θ) = genMetric G B := by ...
+\end{leancode}
+\textbf{Reading.} \lean{genMetric\_bshift} is \cref{thm:genmetric:bshift} for a background:
+$g_\Theta\HH(G,B)g_\Theta^{\mathsf T}=\HH(G,B+\Theta)$ for every \emph{real} antisymmetric
+$\Theta$. Integrality plays no role and is not mentioned; the statement is about the
+continuous group. Of the four hypotheses, the proof script uses only \lean{hΘ}, in
+agreement with our proof by hand; the other three record the intended physical setting.
+\lean{thetaShiftR\_preserves\_eta} is $g_\Theta\in\OddR{d}$, one direction only (if
+$\Theta$ is antisymmetric then $\eta$ is preserved). \lean{genMetric\_bshift\_cancel} says
+that $\HH(G,B+\Theta-\Theta)=\HH(G,B)$; it holds because $B+\Theta+(-\Theta)=B$ as
+matrices, needs no hypothesis, and has no physical content beyond that.
+\textbf{Proof idea.} Unfold, transpose and multiply the blocks
+(\lean{Matrix.fromBlocks\_transpose}, \lean{Matrix.fromBlocks\_multiply} twice), substitute
+$\Theta^{\mathsf T}=-\Theta$, split into four blocks; the upper left block,
+$G-BG^{-1}B-\Theta G^{-1}B-(B+\Theta)G^{-1}\Theta=G-(B+\Theta)G^{-1}(B+\Theta)$, needs
+\lean{abel}, the other three are closed by \lean{simp only}. The module comment records
+that the convention $g\HH g^{\mathsf T}$ with $+\Theta$ in the upper right block was
+selected by a sympy experiment before the formal proof was attempted, the three other
+candidates being false.
+\end{leanbox}
+
+\subsection{An older formalization of \texorpdfstring{$\eta$}{eta}}
+
+An older library, \texttt{StringTheoryFormalization}, contains a module
+\texttt{ODDMetric.lean} (in its directory \texttt{StringDynamics}), which predates the two
+files above:
+\begin{leanbox}[In Lean: $\eta$ as an integer matrix on \texttt{Fin (2 * D)}]
+\begin{leancode}
+def oddMetric : Matrix (Fin (2 * D)) (Fin (2 * D)) ℤ :=
+  Matrix.of (fun i j =>
+    if i.val < D ∧ j.val = i.val + D then 1
+    else if j.val < D ∧ i.val = j.val + D then 1
+    else 0)
+
+theorem odd_metric_symm : (oddMetric D)ᵀ = oddMetric D := by ...
+
+theorem odd_metric_d1 : oddMetric 1 = !![0, 1; 1, 0] := by ...
+\end{leancode}
+\textbf{Reading.} \lean{oddMetric D} is the integer $2D\times2D$ matrix with entries $1$ at
+the positions $(i,i+D)$ and $(i+D,i)$, that is, $\eta$ written without block structure.
+The two theorems say that it is symmetric for every $D$ and that for $D=1$ it is the
+matrix $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$. Nothing about the
+generalized metric, the signature of $\eta$ or a group action is proved in this file,
+although its header comment announces the duality group. \textbf{Proof idea.} Entrywise: after \lean{simp} the symmetry is a
+statement about natural numbers closed by \lean{omega}; the case $D=1$ is a check of four
+entries by \lean{fin\_cases}. Comparing the two encodings of $\eta$ is instructive: with
+\lean{Fin (2 * D)} even symmetry requires index arithmetic, while with
+\lean{Fin d ⊕ Fin d} and \lean{fromBlocks} it is one \lean{simp}
+(\cref{ex:genmetric:leaneta}).
+\end{leanbox}
+
+\subsection{Tier table}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.50\textwidth}p{0.36\textwidth}c@{}}
+\toprule
+Statement & Where & Tier\\
+\midrule
+$\eta^2=\mathbf 1$ over $\R$ & \lean{etaR\_mul\_self} & \TA\\
+$(\eta\HH)^2=\mathbf 1$, $G$ invertible, any $B$ & \lean{etaR\_genMetric\_sq} & \TA\\
+$\HH^{\mathsf T}=\HH$ for a background & \lean{genMetric\_symm} & \TA\\
+$\eta\HH(G,0)\eta=\HH(G^{-1},0)$ & \lean{tduality\_inverts\_metric} & \TA\\
+$\mu_{g^{\mathsf T}\HH g}(Z)=\mu_\HH(gZ)$ & \lean{massForm\_covariant} & \TA\\
+$d=1$ mass form $=\frac12(p_L^2+p_R^2)$ over $\mathbb Q$ & \lean{massForm\_circle} & \TA\\
+$g_\Theta\HH(G,B)g_\Theta^{\mathsf T}=\HH(G,B+\Theta)$ & \lean{genMetric\_bshift} & \TA\\
+$g_\Theta^{\mathsf T}\eta\,g_\Theta=\eta$ over $\R$ & \lean{thetaShiftR\_preserves\_eta} & \TA\\
+integer $\eta$ symmetric; explicit for $D=1$ & \lean{odd\_metric\_symm}, \lean{odd\_metric\_d1}
+ & \TA\\
+$\Tr\HH(G,0)\ge2d$ for positive definite $G$ & \lean{dualScale\_ge} (\cref{ch:dualscale}) & \TA\\
+\midrule
+Factorization, $\det\HH=1$, positivity, eigenspaces & this chapter, by hand & ---\\
+$g\HH(E)g^{\mathsf T}=\HH(g(E))$ for all $g\in\OddR{d}$ & GPR (2.4.24), HHZ (2.16) & \TL\\
+$\HH$ parametrizes $\OddR{d}/O(d)\times O(d)$ & GPR §2.4, AMN §3.6 & \TL\\
+\lean{massForm} is the closed-string mass; integer $\Theta$-shift and $\eta$ are exact
+ symmetries of the string & GPR §2.4 & \TL\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent The rows marked ``---'' are proved on the page and not in Lean; they are
+elementary, and formalizing them is a reasonable first project
+(\cref{ex:genmetric:leanbasis}). The last row is the identification of a Lean object with
+a physical system and would not become Tier~A even if every matrix identity were formalized:
+a faithful formalization would need the worldsheet theory, its Hilbert space and its
+Hamiltonian, none of which exists in these libraries.
+
+\begin{summarybox}
+\begin{itemize}[nosep,leftmargin=*]
+\item The zero-mode energy of a closed string on $T^d$ is the completed square
+ $\frac12m^{\mathsf T}Gm+\frac12(n-Bm)^{\mathsf T}G^{-1}(n-Bm)$. Its matrix in the basis
+ $Z=(m,n)$ is the generalized metric $\HH(G,B)$, and the completed square is the
+ factorization $\HH=U_B\,\diag(G,G^{-1})\,U_B^{\mathsf T}$.
+\item $\HH$ is symmetric, positive definite, has $\det\HH=1$ and satisfies
+ $\HH\eta\HH=\eta$: it is a symmetric element of $\OddR{d}$. The constraint alone needs
+ neither symmetry of $G$ nor antisymmetry of $B$.
+\item $\mathcal S=\HH\eta$ is an involution whose eigenspaces, the graphs of $E$ and
+ $-E^{\mathsf T}$, are the purely left- and right-moving directions.
+\item Dualities act linearly, $\HH\mapsto g\HH g^{\mathsf T}$, and on $E=G+B$ by
+ $E\mapsto(aE+b)(cE+d)^{-1}$. Special cases: $B\to B+\Theta$; $E\to AEA^{\mathsf T}$;
+ $E\to E^{-1}$, which at $B=0$ is $G\to G^{-1}$; Buscher's rules for $D_k$.
+ The upper left block $G-BG^{-1}B$ of $\HH$ is the inverse of the T-dual metric.
+\item The mass is $\ap M^2=Z^{\mathsf T}\HH Z+2(N+\tilde N-2)$ with $N-\tilde N=m\cdot n$;
+ $\HH$ measures energy, $\eta$ measures level matching.
+\item Lean (Tier~A, all $d$, over $\R$): the constraint, the symmetry, inversion at $B=0$,
+ the $B$-shift by conjugation, covariance of the mass form, and the agreement with the
+ circle formula. The general fractional linear action, positivity and the coset structure
+ are Tier~L or proved by hand only.
+\end{itemize}
+\end{summarybox}
+
+%=====================================================================================
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{ex:genmetric:circle}
+For $d=1$ write $r=R^2/\ap$. (a) Write $\HH$, verify \eqref{eq:genmetric:constraint}
+directly, and find the eigenvalues and eigenvectors of $\mathcal S=\HH\eta$; compare with
+\cref{lem:genmetric:eigen}. (b) Show that $\Tr\HH\ge2$ with equality exactly at the self-dual
+radius. (c) Why is there no $B$-field for $d=1$?
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{ex:genmetric:inverse}
+Show that $U_BU_{B'}=U_{B+B'}$ and $U_B^{-1}=U_{-B}$. Use \eqref{eq:genmetric:factor} to write
+$\HH(G,B)^{-1}$ as a product of three matrices and verify, without expanding into blocks,
+that it equals $\eta\,\HH(G,B)\,\eta$. (Hint: $\eta U_B\eta=L_{-B}$.)
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{ex:genmetric:projectors}
+Let $(G,B)$ be a background. Show that $\frac12(\HH+\eta)$ and $\frac12(\HH-\eta)$ are
+positive semidefinite of rank $d$, and that their kernels are $\eta V_-$ and $\eta V_+$
+respectively. Conclude that $\mu_\HH(Z)\ge|Z^{\mathsf T}\eta Z|=2|m\cdot n|$ for every
+charge, and interpret the inequality in terms of $p_L^2$ and $p_R^2$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{ex:genmetric:taurho}
+For $d=2$ prove $\varepsilon G^{-1}\varepsilon=-G/\det G$ for symmetric $G$ and derive
+\eqref{eq:genmetric:d2block}. With the parametrization
+$G=\frac{\rho_2}{\tau_2}\left(\begin{smallmatrix}1&\tau_1\\\tau_1&|\tau|^2\end{smallmatrix}
+\right)$, $B=\rho_1\varepsilon$, show that
+\[
+ \Tr\HH=\frac{(1+|\tau|^2)(1+|\rho|^2)}{\tau_2\,\rho_2},
+\]
+and find the backgrounds with $\Tr\HH=4$. The formula is symmetric under
+$\tau\leftrightarrow\rho$; which duality of \cref{ch:torus2} does this reflect?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{ex:genmetric:buscher}
+For the background of \cref{sec:genmetric:example} compute the factorized dual $E'=D_1(E)$
+from \eqref{eq:genmetric:buscher}. (Answer: $G'=\left(\begin{smallmatrix}1/2&-1/4\\-1/4&5/8
+\end{smallmatrix}\right)$, $b'=-\frac12$.) Find the image of the state $Z=(1,0;0,1)$ and
+check that its mass form is again $\frac{13}2$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{ex:genmetric:stabilizer}
+Show that for $r,s\in O(d)$ the matrix
+$k=\frac12\left(\begin{smallmatrix}r+s&r-s\\r-s&r+s\end{smallmatrix}\right)$ satisfies
+$k^{\mathsf T}\eta k=\eta$ and $k\,k^{\mathsf T}=\mathbf 1$, and that every element of
+$\OddR{d}$ with $kk^{\mathsf T}=\mathbf 1$ is of this form. (Hint: such a $k$ commutes with
+$\eta$; diagonalize $\eta$.) Which background does this subgroup leave fixed under
+$\HH\mapsto k\HH k^{\mathsf T}$, and what is $k(\mathbf 1)$ in \eqref{eq:genmetric:fractional}?
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{ex:genmetric:leaneta}
+Create a new file that imports \lean{DualScaleStream2.DFT.BShift}. State and
+prove that the matrix \lean{etaR d} is symmetric. Three tactics suffice: unfold the
+definition, rewrite with the lemma \lean{Matrix.fromBlocks\_transpose}, and call
+\lean{simp}. Compare the length of your proof with
+that of \lean{odd\_metric\_symm}, and explain the difference.
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{ex:genmetric:leanHetaH}
+State and prove in Lean the form $\HH\eta\HH=\eta$ of the constraint:
+\lean{genMetric G B * etaR d * genMetric G B = etaR d} under \lean{hG : IsUnit G.det}.
+Hint: multiply the theorem \lean{etaR\_genMetric\_sq} from the left by $\eta$. Apart
+from it you need only the lemmas \lean{mul\_assoc}, \lean{etaR\_mul\_self},
+\lean{one\_mul} and \lean{mul\_one}.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]\label{ex:genmetric:leanbasis}
+Formalize \eqref{eq:genmetric:basis}: for $A$ with invertible determinant, symmetric
+invertible $G$ and any $B$,
+$g_A\,\HH(G,B)\,g_A^{\mathsf T}=\HH(AGA^{\mathsf T},ABA^{\mathsf T})$ with
+$g_A=$ \lean{fromBlocks A 0 0 (A⁻¹)ᵀ}. Begin with the lemma
+$(AGA^{\mathsf T})^{-1}=(A^{-1})^{\mathsf T}G^{-1}A^{-1}$; then follow the pattern of
+\lean{genMetric\_bshift}. Which of the hypotheses did you really need?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]\label{ex:genmetric:char}
+Prove the converse of \cref{sec:genmetric:properties}: a real symmetric positive definite
+$2d\times2d$ matrix $\HH$ with $\HH\eta\HH=\eta$ is $\HH(G,B)$ for a unique background.
+(Hint: the lower right block $S$ is positive definite; set $G=S^{-1}$, read $B$ off the
+upper right block, and use two of the block equations of the constraint.) Deduce
+\eqref{eq:genmetric:gHg} without using eigenspaces, and compare with the argument of
+\cref{ch:odd}.
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+
+\begin{itemize}[nosep,leftmargin=*]
+\item The generalized metric as the matrix of the toroidal Hamiltonian, the embedding
+ $E\mapsto g_E$, the fractional linear action and the three families of generators:
+ \source{GPR §2.4, ll.~1031--1425}; transformation of the oscillators,
+ \source{GPR §2.4, ll.~1489--1520}.
+\item The Hamiltonian density in the doubled variables $(X',2\pi P)$ and the constraint
+ $\HH^{-1}=\eta\HH\eta$: \source{HZ §2.2, eqs.~(2.14)--(2.18), ll.~600--680}.
+\item $\HH$ as an $O(D,D)$ tensor field, the involution $S$, the three-factor form, the
+ vielbein construction and index conventions: \source{HHZ §1, ll.~250--333; §2,
+ ll.~403--660}.
+\item A review-level summary of the mass formula, the inversion metric and the
+ generalized fields of DFT: \source{AMN §3.1, ll.~596--665 and 745--770; §3.3,
+ ll.~919--1000; §3.6, ll.~1260--1312}.
+\item Lean sources: the three modules named in \cref{sec:genmetric:lean}. The trace
+ bound of \cref{ch:dualscale} is proved in the file \texttt{DualScale/TraceBound.lean} of
+ \texttt{DualScaleStream2}.
+\end{itemize}

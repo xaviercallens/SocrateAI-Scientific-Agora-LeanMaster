@@ -1,0 +1,1097 @@
+\chapter{Strings in Background Fields and the Low-Energy Effective Action}\label{ch:backgrounds}
+
+So far the string has moved in flat, empty spacetime. Yet \cref{ch:quantum} found that the
+closed string itself contains a massless symmetric tensor, an antisymmetric tensor and a
+scalar: the graviton $G_{\mu\nu}$, the Kalb--Ramond field $B_{\mu\nu}$ and the dilaton
+$\Phi$. This chapter answers the question: \emph{what happens to a string that moves through a
+spacetime in which these three fields are switched on, and which such spacetimes are
+allowed?} The worldsheet theory
+becomes an interacting two-dimensional field theory whose coupling constants are the
+spacetime fields themselves. The Weyl symmetry, which \cref{ch:ghosts} showed to be
+indispensable, survives quantization only if these couplings do not run. The conditions for
+that, the vanishing of three beta functions, are Einstein's equations coupled to $B$ and
+$\Phi$, and they follow from a spacetime action, the low-energy effective action. A
+student should care for three reasons. First, this is how general relativity comes out of
+string theory, rather than being put in. Second, the string coupling $g_s$ is revealed to be
+the value of a field, $g_s=\ee^{\Phi_0}$. Third, and most important for this book, the field
+$B$ has a gauge symmetry that makes it invisible locally when it is constant, while its
+integral over a two-cycle of a torus remains physical. That observation, and the
+Hamiltonian that goes with it, is the seed of the generalized metric of \cref{ch:genmetric}
+and of the duality group of \cref{ch:odd}.
+
+Conventions are those of the book: $\ell_s=\sqrt{\ap}$, and the spacetime signature is
+mostly plus. As in \cref{ch:cft,ch:ghosts} the worldsheet is Euclidean, with metric
+$g_{\alpha\beta}$ and coordinates $\sigma^\alpha$, $\alpha=1,2$; this is why a factor $\ii$
+accompanies the $B$-field coupling below. The spacetime dimension is $D$. We follow
+\source{Tong §7, ll.~9085--10380} throughout.
+
+\section{From gravitons to a curved background}\label{sec:backgrounds:sigma}
+
+\subsection{The non-linear sigma model}
+
+The Polyakov action of \cref{ch:classical} contains the flat metric of spacetime through the
+contraction $\partial_\alpha X^\mu\partial_\beta X^\nu\,\eta_{\mu\nu}$. The obvious way to
+describe a string in a curved spacetime is to replace the constant matrix by a function of
+the position of the string:
+\begin{equation}\label{eq:backgrounds:sigma}
+  S=\frac{1}{4\pi\ap}\int\dd^2\sigma\,\sqrt g\;g^{\alpha\beta}\,
+  \partial_\alpha X^\mu\,\partial_\beta X^\nu\,G_{\mu\nu}(X).
+  \qquad\text{\source{Tong (7.1), ll.~9088--9097}}
+\end{equation}
+Here $X^\mu(\sigma)$, $\mu=0,\dots,D-1$, are the embedding coordinates, $g_{\alpha\beta}$ is
+the worldsheet metric, $g=\det g_{\alpha\beta}$, and $G_{\mu\nu}(X)$ is the spacetime metric
+evaluated at the point $X(\sigma)$. (In this chapter $G_{\mu\nu}$ always denotes the metric,
+never the Einstein tensor.) A two-dimensional field theory whose fields are coordinates on a
+curved manifold, the \emph{target space}, is called a \emph{non-linear sigma
+model}\index{non-linear sigma model}\index{target space}. The action
+\eqref{eq:backgrounds:sigma} is still invariant under reparametrizations of the worldsheet,
+because every index $\alpha$ is contracted, and under Weyl rescalings
+$g_{\alpha\beta}\to\ee^{2\omega(\sigma)}g_{\alpha\beta}$, because in two dimensions
+$\sqrt g\to\ee^{2\omega}\sqrt g$ and $g^{\alpha\beta}\to\ee^{-2\omega}g^{\alpha\beta}$. It is
+also invariant under changes of coordinates in the target space, $X^\mu\to X'^\mu(X)$,
+provided $G_{\mu\nu}$ transforms as a tensor: a change of spacetime coordinates is a
+\emph{field redefinition} of the two-dimensional theory.
+
+\subsection{Why the background is made of gravitons}
+
+There is something to justify. The string already contains a graviton. A classical
+gravitational field should therefore be a state of many such gravitons, in the way a
+classical radio wave is a coherent state of photons; one is not free to postulate a second,
+independent metric. To see that \eqref{eq:backgrounds:sigma} passes this test, write the
+metric as flat space plus a fluctuation, $G_{\mu\nu}(X)=\delta_{\mu\nu}+h_{\mu\nu}(X)$
+(Euclidean target space, for the path integral). The action splits as
+$S=S_{\mathrm{Poly}}+V$ with
+\begin{equation}\label{eq:backgrounds:V}
+  V=\frac{1}{4\pi\ap}\int\dd^2\sigma\,\sqrt g\;g^{\alpha\beta}\,
+  \partial_\alpha X^\mu\partial_\beta X^\nu\,h_{\mu\nu}(X),
+  \qquad\text{\source{Tong (7.2), ll.~9126--9136}}
+\end{equation}
+and the partition function becomes
+\begin{equation}\label{eq:backgrounds:coherent}
+  Z=\int\mathcal DX\,\mathcal Dg\;\ee^{-S_{\mathrm{Poly}}-V}
+   =\int\mathcal DX\,\mathcal Dg\;\ee^{-S_{\mathrm{Poly}}}
+   \Bigl(1-V+\tfrac12V^2-\cdots\Bigr).
+\end{equation}
+For a plane wave, $h_{\mu\nu}(X)=\zeta_{\mu\nu}\,\ee^{\ii p\cdot X}$ with $\zeta_{\mu\nu}$
+symmetric and traceless, $V$ is exactly the integrated vertex operator of the graviton state
+met in \cref{ch:ghosts}: an operator that, inserted once in the path integral, creates or
+absorbs one graviton of momentum $p$ and polarization $\zeta$. The term $V^n/n!$ inserts $n$
+of them. The exponential $\ee^{-V}$ is therefore a coherent superposition of states with any
+number of gravitons, and a general $h_{\mu\nu}(X)$ is a superposition of plane waves.
+\source{Tong §7, ll.~9098--9150}
+
+\begin{physicsbox}[Physical picture: a laser beam of gravitons]
+A laser beam is a classical electromagnetic wave, and at the same time it is a coherent
+state $\exp(\alpha a^\dagger)\ket0$ of photons. In the same way the curved metric in
+\eqref{eq:backgrounds:sigma} is a coherent state of the closed string's own massless
+spin-two excitation. Nothing new has been added to the theory: a string in a curved
+background moves through a condensate of other strings, each in its graviton state. The
+same is true of the backgrounds $B_{\mu\nu}$ and $\Phi$.
+\end{physicsbox}
+
+\section{The \texorpdfstring{$\ap$}{alpha'} expansion}\label{sec:backgrounds:alpha}
+
+In conformal gauge, $g_{\alpha\beta}=\delta_{\alpha\beta}$, the flat-space action is free.
+The action \eqref{eq:backgrounds:sigma} is not:
+\begin{equation}\label{eq:backgrounds:gauge}
+  S=\frac{1}{4\pi\ap}\int\dd^2\sigma\;G_{\mu\nu}(X)\,\partial_\alpha X^\mu\partial^\alpha X^\nu .
+  \qquad\text{\source{Tong (7.3), ll.~9152--9160}}
+\end{equation}
+To exhibit the interactions, expand around a string that sits at a point $\bar x^\mu$ and
+fluctuates a little,
+\begin{equation}\label{eq:backgrounds:Y}
+  X^\mu(\sigma)=\bar x^\mu+\sqrt{\ap}\,Y^\mu(\sigma).
+\end{equation}
+The factor $\sqrt{\ap}$ makes $Y^\mu$ dimensionless, so that ``$Y$ is small'' is a meaningful
+statement. Taylor-expanding the metric gives
+\begin{equation}\label{eq:backgrounds:taylor}
+  \frac{1}{\ap}\,G_{\mu\nu}(X)\,\partial X^\mu\partial X^\nu
+  =\Bigl[G_{\mu\nu}(\bar x)+\sqrt{\ap}\,G_{\mu\nu,\omega}(\bar x)\,Y^\omega
+  +\frac{\ap}{2}\,G_{\mu\nu,\omega\rho}(\bar x)\,Y^\omega Y^\rho+\cdots\Bigr]
+  \partial Y^\mu\partial Y^\nu ,
+\end{equation}
+where a comma denotes a partial derivative with respect to $X$. The first term is the free
+kinetic term. Every further Taylor coefficient is the coupling constant of an interaction
+vertex with two derivatives: the cubic vertex has strength
+$\sqrt{\ap}\,\partial G$, the quartic one $\ap\,\partial^2G$, and so on. \emph{The
+sigma model has infinitely many coupling constants, packaged into the function
+$G_{\mu\nu}(X)$.} If the metric varies on a length scale $r_c$, the radius of curvature, then
+$\partial G\sim1/r_c$ and the dimensionless coupling is
+\begin{equation}\label{eq:backgrounds:coupling}
+  \frac{\sqrt{\ap}}{r_c}=\frac{\ell_s}{r_c}.
+  \qquad\text{\source{Tong (7.4), ll.~9163--9205}}
+\end{equation}
+\index{alpha-prime expansion@$\ap$ expansion}%
+Perturbation theory on the worldsheet is an expansion in powers of $\ell_s/r_c$. It is
+reliable when spacetime is nearly flat on the scale of the string. Since the curvature is
+built from two derivatives of the metric, each additional worldsheet loop costs a factor
+$\ap/r_c^2$.
+
+\begin{pitfallbox}[Common pitfall: two expansions, two meanings of ``loop'']
+String theory has two unrelated perturbation expansions. The \emph{$\ap$ expansion} counts
+loops of the two-dimensional field theory on a worldsheet of \emph{fixed} topology; its
+parameter is $\ap/r_c^2$ and it measures how far the string is from being a point. The
+\emph{$g_s$ expansion} counts handles of the worldsheet, which are loops in
+\emph{spacetime}; its parameter is $g_s^2$ (see \cref{sec:backgrounds:dilaton}). A
+``one-loop beta function'' in this chapter is one loop on the worldsheet, computed on a
+sphere, and is a tree-level statement in spacetime. When $r_c\sim\ell_s$ the first expansion fails, but the worldsheet path integral still
+defines the problem; when $g_s\sim1$ the second fails, and perturbation theory offers no
+definition at all. \source{Tong §7.1, ll.~9206--9220}
+\end{pitfallbox}
+
+\section{Weyl invariance at one loop gives Einstein's equations}\label{sec:backgrounds:einstein}
+
+\subsection{Why the couplings must not run}
+
+Classically \eqref{eq:backgrounds:gauge} is conformally invariant for \emph{any} metric
+$G_{\mu\nu}$. Quantum mechanically, an interacting field theory needs an ultraviolet cut-off,
+and after renormalization its couplings generally depend on the energy scale $\mu$ at which
+they are measured. A theory with a preferred scale is not conformally invariant. In most of
+physics that is a fact of life: the classical scale invariance of Yang--Mills theory is
+broken in exactly this way. For the string it would be fatal, because on the worldsheet
+conformal symmetry is what remains of the gauge symmetries of \cref{ch:ghosts}, and an
+anomalous gauge symmetry makes the theory inconsistent. The scale dependence of a coupling
+is measured by its beta function\index{beta function}. Here there is one for each coupling,
+that is, a beta \emph{functional} of the metric, schematically
+\begin{equation}\label{eq:backgrounds:betadef}
+  \beta_{\mu\nu}(G)\sim\mu\,\frac{\partial G_{\mu\nu}(X;\mu)}{\partial\mu},
+  \qquad\text{and consistency requires}\qquad \beta_{\mu\nu}(G)=0.
+\end{equation}
+\source{Tong §7.1.1, ll.~9222--9241}
+
+\subsection{The one-loop computation}
+
+The computation is short once coordinates are chosen well. Around any point $\bar x$ one can
+choose \emph{Riemann normal coordinates}\index{Riemann normal coordinates}, in which the
+metric at $\bar x$ is $\delta_{\mu\nu}$, its first derivatives vanish, and its second
+derivatives are given by the Riemann tensor:
+\begin{equation}\label{eq:backgrounds:rnc}
+  G_{\mu\nu}(X)=\delta_{\mu\nu}-\frac{\ap}{3}\,R_{\mu\lambda\nu\kappa}(\bar x)\,
+  Y^\lambda Y^\kappa+O(Y^3).
+  \qquad\text{\source{Tong §7.1.1, ll.~9246--9252}}
+\end{equation}
+The cubic vertex of \eqref{eq:backgrounds:taylor} is gone, and to quartic order
+\begin{equation}\label{eq:backgrounds:quartic}
+  S=\frac{1}{4\pi}\int\dd^2\sigma\,\Bigl[\partial Y^\mu\partial Y^\nu\,\delta_{\mu\nu}
+  -\frac{\ap}{3}\,R_{\mu\lambda\nu\kappa}\,Y^\lambda Y^\kappa\,
+  \partial Y^\mu\partial Y^\nu\Bigr].
+\end{equation}
+This is a theory of $D$ free massless scalars with a quartic, two-derivative interaction
+whose strength is the curvature of spacetime. The one-loop divergence comes from closing two
+of the four legs of the vertex, $Y^\lambda$ and $Y^\kappa$, into a loop. In position space
+that means replacing $Y^\lambda(\sigma)Y^\kappa(\sigma)$ by its expectation value. The
+propagator of \cref{ch:cft},
+\begin{equation}\label{eq:backgrounds:prop}
+  \vev{Y^\lambda(\sigma)\,Y^\kappa(\sigma')}=-\tfrac12\,\delta^{\lambda\kappa}\,
+  \ln|\sigma-\sigma'|^2 ,
+\end{equation}
+diverges as $\sigma'\to\sigma$. In dimensional regularization, with worldsheet dimension
+$d=2+\epsilon$, the coincident limit is
+\begin{equation}\label{eq:backgrounds:pole}
+  \vev{Y^\lambda(\sigma)\,Y^\kappa(\sigma)}
+  =2\pi\,\delta^{\lambda\kappa}\int\frac{\dd^{2+\epsilon}k}{(2\pi)^{2+\epsilon}}\,
+  \frac{1}{k^2}\;\longrightarrow\;\frac{\delta^{\lambda\kappa}}{\epsilon}.
+  \qquad\text{\source{Tong §7.1.1, ll.~9274--9296}}
+\end{equation}
+Contracting $\delta^{\lambda\kappa}$ with the Riemann tensor in the vertex produces the Ricci
+tensor, $R_{\mu\lambda\nu\kappa}\,\delta^{\lambda\kappa}=R_{\mu\nu}$. The divergent part of
+the quartic term is therefore a term \emph{of the same form as the kinetic term}, namely
+$\epsilon^{-1}R_{\mu\nu}\,\partial Y^\mu\partial Y^\nu$ with a numerical coefficient. A
+divergence of the form of a term already present in the action is removed by renormalizing
+the corresponding coupling, here the metric. Part of the divergence is absorbed in a
+rescaling of the field, $Y^\mu\to Y^\mu+(\ap/6\epsilon)R^\mu{}_\nu Y^\nu$; the rest requires
+\begin{equation}\label{eq:backgrounds:renorm}
+  G_{\mu\nu}\;\longrightarrow\;G_{\mu\nu}+\frac{\ap}{\epsilon}\,R_{\mu\nu}.
+  \qquad\text{\source{Tong (7.5), ll.~9297--9312}}
+\end{equation}
+A pole $1/\epsilon$ in dimensional regularization corresponds to a logarithm of the cut-off,
+hence of the scale $\mu$, and the coefficient of the pole is the beta function:
+
+\begin{proposition}[One-loop metric beta function \TL]\label{prop:backgrounds:ricci}
+To first order in $\ap$ the sigma model \eqref{eq:backgrounds:sigma} has
+\begin{equation}\label{eq:backgrounds:ricci}
+  \beta_{\mu\nu}(G)=\ap\,R_{\mu\nu},
+\end{equation}
+so that it is conformally invariant at this order if and only if the target space is Ricci
+flat, $R_{\mu\nu}=0$. \source{Tong (7.6), ll.~9313--9323}
+\end{proposition}
+
+The vacuum Einstein equations have appeared as the condition for a two-dimensional quantum
+field theory to have no scale. They were not assumed at any point.
+
+\subsection{The same result from the Weyl anomaly}
+
+\Cref{ch:cft,ch:ghosts} diagnosed the breakdown of Weyl invariance by the trace of the
+stress tensor, $T^\alpha{}_\alpha\neq0$. It is instructive to see \eqref{eq:backgrounds:ricci}
+in that language. Take the worldsheet metric $g_{\alpha\beta}=\ee^{2\phi}\delta_{\alpha\beta}$.
+In exactly two dimensions $\phi$ drops out of \eqref{eq:backgrounds:sigma}. In
+$d=2+\epsilon$ dimensions it does not: $\sqrt g=\ee^{(2+\epsilon)\phi}$ while
+$g^{\alpha\beta}=\ee^{-2\phi}\delta^{\alpha\beta}$, leaving a factor
+$\ee^{\epsilon\phi}\approx1+\epsilon\phi$. Inserting the renormalized metric
+\eqref{eq:backgrounds:renorm}, the product $\epsilon\phi\times(\ap/\epsilon)R_{\mu\nu}$ is
+finite and survives the limit $\epsilon\to0$:
+\begin{equation}\label{eq:backgrounds:weyl}
+  S=\frac{1}{4\pi\ap}\int\dd^2\sigma\;\partial_\alpha X^\mu\partial^\alpha X^\nu\,
+  \bigl[G_{\mu\nu}(X)+\ap\,\phi\,R_{\mu\nu}(X)\bigr].
+  \qquad\text{\source{Tong §7.1.1, ll.~9328--9357}}
+\end{equation}
+The action now depends on the conformal factor, which is the statement that Weyl invariance
+is broken. With $T^\alpha{}_\alpha=-2\pi\,\partial S/\partial\phi$ in conformal gauge,
+\begin{equation}\label{eq:backgrounds:trace}
+  T^\alpha{}_\alpha=-\frac12\,R_{\mu\nu}\,\partial X^\mu\partial X^\nu
+  \equiv-\frac{1}{2\ap}\,\beta_{\mu\nu}\,\partial X^\mu\partial X^\nu ,
+\end{equation}
+and the second equality, which \emph{defines} $\beta_{\mu\nu}$ as the coefficient of
+$\partial X\partial X$ in the trace, again gives $\beta_{\mu\nu}=\ap R_{\mu\nu}$.
+\source{Tong §7.1.1, ll.~9358--9378} The mechanism is typical of anomalies: a symmetry that
+holds only in $d=2$, a regulator that works only away from $d=2$, and a finite remainder
+$\epsilon\times1/\epsilon$.
+
+\subsection{Worked example: Ricci flow of a sphere}
+
+When the beta function does not vanish it still has a meaning: it tells how the target-space
+metric changes with the scale,
+\begin{equation}\label{eq:backgrounds:flow}
+  \mu\,\frac{\partial G_{\mu\nu}}{\partial\mu}=\ap\,R_{\mu\nu},
+  \qquad\text{\source{Tong (7.7), ll.~9380--9398}}
+\end{equation}
+an equation known as \emph{Ricci flow}\index{Ricci flow}.
+
+\begin{example}[The two-sphere shrinks in the infrared]\label{ex:backgrounds:s2}
+Let the target space be a round two-sphere of radius $r$,
+$G_{\mu\nu}=r^2\hat g_{\mu\nu}$ with $\hat g$ the metric of the unit sphere. A direct
+computation (the Ricci scalar of this metric is $2/r^2$, and in two dimensions
+$R_{\mu\nu}=\tfrac12R\,G_{\mu\nu}$) gives $R_{\mu\nu}=\hat g_{\mu\nu}$, independent of $r$.
+Because the sphere is a symmetric space, the flow can only change its radius, and
+\eqref{eq:backgrounds:flow} reduces to one ordinary differential equation,
+\begin{equation}\label{eq:backgrounds:s2}
+  \mu\,\frac{\dd r^2}{\dd\mu}=\ap
+  \qquad\Longrightarrow\qquad
+  r^2(\mu)=r_0^2+\ap\ln\frac{\mu}{\mu_0}.
+\end{equation}
+(The source displays the right-hand side as $\ap/2\pi$ \source{Tong §7.1.2, ll.~9399--9409};
+we quote what \eqref{eq:backgrounds:flow} gives literally. The sign, and the conclusions
+below, do not depend on the constant.) The radius grows towards the ultraviolet and shrinks
+towards the infrared. Since the coupling is $\ell_s/r$, the model is weakly coupled at high
+energy, \emph{asymptotically free}, and strongly coupled at low energy. For numbers, start
+with $r_0^2=10\,\ap$ at the scale $\mu_0$, where the loop parameter is $\ap/r_0^2=0.1$. The
+one-loop formula predicts $r^2=\ap$, coupling of order one, at
+$\ln(\mu/\mu_0)=-9$, that is at $\mu=\ee^{-9}\mu_0\approx1.2\times10^{-4}\,\mu_0$. Below
+that scale the one-loop result cannot be trusted; the model develops a mass gap there
+\source{Tong §7.1.2, ll.~9399--9415}. A sphere alone is not a consistent string background:
+it is not Ricci flat. \Cref{exr:backgrounds:s3} shows how $H$-flux rescues a three-sphere.
+\end{example}
+
+\begin{historybox}
+According to Tong, the relation between the sigma-model beta function and Einstein's
+equations was first shown by Friedan in his 1980 PhD thesis, and the beta functions of
+\cref{sec:backgrounds:beta} are derived in Callan, Friedan, Martinec and Perry, ``Strings in
+Background Fields'' (1985) \source{Tong §7.2.3, footnote,
+ll.~9633--9639}. Ricci flow, in a version generalized by a scalar that string theorists
+recognize as the dilaton, was used by Perelman in the proof of the Poincar\'e conjecture
+\source{Tong §7.1.2, ll.~9416--9418}.
+\end{historybox}
+
+\section{The Kalb--Ramond field: the string as a charged object}\label{sec:backgrounds:B}
+
+\subsection{The coupling}
+
+The vertex operator of the antisymmetric massless state has the same form as that of the
+graviton, with an antisymmetric polarization. Exponentiating it, in the same way as
+\eqref{eq:backgrounds:coherent}, adds a second term to the action:
+\begin{equation}\label{eq:backgrounds:GB}
+  S=\frac{1}{4\pi\ap}\int\dd^2\sigma\,\sqrt g\,\Bigl[G_{\mu\nu}(X)\,
+  \partial_\alpha X^\mu\partial_\beta X^\nu\,g^{\alpha\beta}
+  +\ii\,B_{\mu\nu}(X)\,\partial_\alpha X^\mu\partial_\beta X^\nu\,\epsilon^{\alpha\beta}\Bigr],
+\end{equation}
+where $\epsilon^{\alpha\beta}$ is the antisymmetric tensor with $\sqrt g\,\epsilon^{12}=+1$
+\source{Tong (7.8), ll.~9451--9466}.
+The factor $\ii$ appears because the worldsheet is Euclidean and the term contains exactly
+one ``time'' derivative. The new term does not contain the worldsheet metric at all (the
+$\sqrt g$ cancels against the one in $\epsilon^{\alpha\beta}$), so it is trivially Weyl
+invariant. The field $B_{\mu\nu}=-B_{\nu\mu}$ is the \emph{Kalb--Ramond field}%
+\index{Kalb--Ramond field}\index{B-field@$B$-field}, or simply the $B$-field.
+
+To understand it, recall how a point particle of unit charge couples to the electromagnetic
+potential $A_\mu$: through $\int\dd\tau\,A_\mu(X)\,\dot X^\mu$
+\source{Tong (7.9), ll.~9477--9489}. Geometrically this is the integral along the worldline
+of the one-form $A=A_\mu\,\dd X^\mu$: a one-form is what can be integrated over a
+one-dimensional object. The worldsheet is two-dimensional, so the natural object to integrate
+over it is a two-form, $B=\tfrac12B_{\mu\nu}\,\dd X^\mu\wedge\dd X^\nu$. Its pull-back to the
+worldsheet is
+\[
+  X^*B=\tfrac12B_{\mu\nu}\bigl(\partial_1X^\mu\partial_2X^\nu-\partial_2X^\mu\partial_1X^\nu\bigr)
+  \dd\sigma^1\wedge\dd\sigma^2
+  =\tfrac12B_{\mu\nu}\,\partial_\alpha X^\mu\partial_\beta X^\nu\,\epsilon^{\alpha\beta}\sqrt g\;
+  \dd^2\sigma ,
+\]
+so the second term of \eqref{eq:backgrounds:GB} is simply
+\begin{equation}\label{eq:backgrounds:pullback}
+  S_B=\frac{\ii}{2\pi\ap}\int_\Sigma X^*B .
+\end{equation}
+\emph{The string is charged under $B$ in the same sense in which a particle is charged under
+$A$}, with charge density equal to the string tension $1/2\pi\ap$.
+\source{Tong §7.2.1, ll.~9490--9504}
+
+\subsection{Gauge symmetry and the field strength \texorpdfstring{$H$}{H}}
+
+The coupling $\int A$ is unchanged by $A_\mu\to A_\mu+\partial_\mu\alpha$ up to endpoint terms,
+because the integrand changes by a total derivative. The analogue for the two-form
+is\index{gauge transformation!of the B-field@of the $B$-field}
+\begin{equation}\label{eq:backgrounds:gaugeB}
+  B_{\mu\nu}\;\longrightarrow\;B_{\mu\nu}+\partial_\mu C_\nu-\partial_\nu C_\mu,
+  \qquad\text{i.e.}\quad B\to B+\dd C,
+  \qquad\text{\source{Tong (7.11), ll.~9505--9511}}
+\end{equation}
+with $C=C_\mu\dd X^\mu$ an arbitrary one-form. Since pull-back commutes with the exterior
+derivative, $S_B$ changes by $\frac{\ii}{2\pi\ap}\int_\Sigma\dd(X^*C)$, which vanishes by
+Stokes' theorem on a closed worldsheet. (For an open string a boundary term remains; it is
+cancelled by a shift of the gauge field that lives on the D-brane on which the string ends,
+see \cref{ch:dbranes} and \source{Tong §7.6.1, ll.~10880--10905}.) The gauge-invariant field
+strength is the three-form $H=\dd B$\index{H-flux@$H$-flux},
+\begin{equation}\label{eq:backgrounds:H}
+  H_{\mu\nu\rho}=\partial_\mu B_{\nu\rho}+\partial_\nu B_{\rho\mu}+\partial_\rho B_{\mu\nu},
+  \qquad\text{\source{Tong §7.2.1, ll.~9512--9518}}
+\end{equation}
+the analogue of $F=\dd A$. It is sometimes called torsion, because it enters the sigma model
+as an antisymmetric part of the connection.
+
+\subsection{Only \texorpdfstring{$H$}{H} appears in the equation of motion}
+
+The claim that $H$ is ``what the string feels locally'' can be made precise by varying $S_B$.
+Take conformal gauge and $X^\lambda\to X^\lambda+\delta X^\lambda$:
+\[
+  \delta S_B=\frac{\ii}{4\pi\ap}\int\dd^2\sigma\,\epsilon^{\alpha\beta}\Bigl[
+  \partial_\lambda B_{\mu\nu}\,\delta X^\lambda\,\partial_\alpha X^\mu\partial_\beta X^\nu
+  +2B_{\mu\nu}\,\partial_\alpha\delta X^\mu\,\partial_\beta X^\nu\Bigr].
+\]
+Integrate the second term by parts. The derivative $\partial_\alpha$ falls either on
+$\partial_\beta X^\nu$, which gives zero because
+$\epsilon^{\alpha\beta}\partial_\alpha\partial_\beta=0$, or on $B_{\mu\nu}(X)$, which gives
+$-2\,\delta X^\mu\,\partial_\lambda B_{\mu\nu}\,\partial_\alpha X^\lambda\partial_\beta X^\nu$.
+After renaming indices, the bracket multiplies
+$\delta X^\lambda\,\epsilon^{\alpha\beta}\partial_\alpha X^\mu\partial_\beta X^\nu$, which is
+antisymmetric in $\mu\nu$, by $\partial_\lambda B_{\mu\nu}-2\partial_\mu B_{\lambda\nu}$.
+Antisymmetrizing the last term in $\mu\nu$ turns it into
+$\partial_\mu B_{\nu\lambda}+\partial_\nu B_{\lambda\mu}$, and the three terms assemble into
+\eqref{eq:backgrounds:H}:
+\begin{equation}\label{eq:backgrounds:deltaSB}
+  \delta S_B=\frac{\ii}{4\pi\ap}\int\dd^2\sigma\;H_{\lambda\mu\nu}(X)\,\delta X^\lambda\,
+  \epsilon^{\alpha\beta}\,\partial_\alpha X^\mu\partial_\beta X^\nu .
+\end{equation}
+For a flat metric the variation of the first term of \eqref{eq:backgrounds:GB} is
+$-\frac{1}{2\pi\ap}\int\delta X^\lambda\,\partial^\alpha\partial_\alpha X_\lambda$, so the
+equation of motion is
+\begin{equation}\label{eq:backgrounds:lorentz}
+  \partial^\alpha\partial_\alpha X_\lambda
+  =\frac{\ii}{2}\,H_{\lambda\mu\nu}\,\epsilon^{\alpha\beta}\,
+  \partial_\alpha X^\mu\partial_\beta X^\nu .
+\end{equation}
+This is the string's Lorentz force law. Just as $m\ddot x_\lambda=F_{\lambda\mu}\dot x^\mu$
+contains $F$ and not $A$, the string's equation of motion contains $H$ and not $B$. A
+constant $B$-field has $H=0$ and exerts no force. \Cref{sec:backgrounds:torus} shows that it
+is nevertheless physical when the target space has non-contractible two-cycles, exactly as a
+constant $A$ along a circle is physical (the Aharonov--Bohm effect) although $F=0$. The
+derivation is ours; we confirmed \eqref{eq:backgrounds:deltaSB} by a symbolic check of the
+Euler--Lagrange expression for a polynomial $B$-field in three target dimensions.
+
+\section{The dilaton and the string coupling}\label{sec:backgrounds:dilaton}
+
+The third massless field is the scalar $\Phi(X)$, the \emph{dilaton}\index{dilaton}. Its
+coupling to the worldsheet cannot be guessed from a vertex operator as easily, because the
+naive operator is not primary \source{Tong §7.2.2, ll.~9519--9524}. The result is
+\begin{equation}\label{eq:backgrounds:full}
+  S=\frac{1}{4\pi\ap}\int\dd^2\sigma\,\sqrt g\,\Bigl[G_{\mu\nu}
+  \partial_\alpha X^\mu\partial_\beta X^\nu g^{\alpha\beta}
+  +\ii B_{\mu\nu}\partial_\alpha X^\mu\partial_\beta X^\nu\epsilon^{\alpha\beta}
+  +\ap\,\Phi(X)\,R^{(2)}\Bigr],
+\end{equation}
+where $R^{(2)}$ is the Ricci scalar of the \emph{worldsheet} metric
+\source{Tong (7.12), ll.~9525--9538}. Two features are
+unusual. The dilaton term vanishes on a flat worldsheet, which is why it was invisible in
+conformal gauge on the plane. And it is \emph{not} Weyl invariant: under
+$g\to\ee^{2\omega}g$ one has $\sqrt g\,R^{(2)}\to\sqrt g\,(R^{(2)}-2\nabla^2\omega)$, and
+$\int\sqrt g\,\Phi(X)\nabla^2\omega$ does not vanish unless $\Phi$ is constant. We return to
+this in \cref{sec:backgrounds:beta}; first, the constant case.
+
+\subsection{A constant dilaton counts handles}
+
+For $\Phi(X)=\lambda$, a constant, the last term of \eqref{eq:backgrounds:full} is
+\begin{equation}\label{eq:backgrounds:euler}
+  S_{\mathrm{dilaton}}=\lambda\cdot\frac{1}{4\pi}\int\dd^2\sigma\,\sqrt g\,R^{(2)}=\lambda\,\chi,
+  \qquad \chi=2-2h,
+\end{equation}
+where $\chi$ is the Euler number of the worldsheet and $h$ its number of handles; by the
+Gauss--Bonnet theorem $\chi$ depends only on the topology.
+\source{Tong (6.4)--(6.5), ll.~7355--7386; §7.2.2, ll.~9552--9560}
+\index{Euler number!of the worldsheet}
+A worldsheet with $h$ handles is therefore weighted in the path integral by
+\begin{equation}\label{eq:backgrounds:genus}
+  \ee^{-\lambda\chi}=\bigl(\ee^{\lambda}\bigr)^{2h-2}=g_s^{\,2h-2},\qquad g_s=\ee^{\lambda}.
+\end{equation}
+Adding a handle, which in spacetime means adding a closed-string loop, costs $g_s^2$:
+$g_s$ is the \emph{string coupling constant}\index{string coupling}
+(\cref{fig:backgrounds:genus}). The sphere is weighted by $g_s^{-2}$, the torus by $g_s^0$.
+\source{Tong §6.1.1, ll.~7389--7405}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=0.8,>=Stealth]
+  % sphere
+  \draw[thick] (0,0) circle (0.9);
+  \draw (-0.9,0) arc (180:360:0.9 and 0.25);
+  \draw[dashed] (0.9,0) arc (0:180:0.9 and 0.25);
+  \node at (0,-1.45) {$\chi=2:\ g_s^{-2}$};
+  \node at (1.75,0) {$+$};
+  % torus
+  \begin{scope}[shift={(3.9,0)}]
+    \draw[thick] (0,0) ellipse (1.5 and 0.85);
+    \draw[thick] (-0.6,0.08) arc (200:340:0.64 and 0.35);
+    \draw[thick] (0.45,-0.03) arc (30:150:0.52 and 0.25);
+    \node at (0,-1.45) {$\chi=0:\ g_s^{0}$};
+  \end{scope}
+  \node at (6.15,0) {$+$};
+  % genus two
+  \begin{scope}[shift={(9.1,0)}]
+    \draw[thick] (0,0) ellipse (2.3 and 0.9);
+    \draw[thick] (-1.55,0.08) arc (200:340:0.6 and 0.33);
+    \draw[thick] (-0.56,-0.02) arc (30:150:0.49 and 0.24);
+    \draw[thick] (0.42,0.08) arc (200:340:0.6 and 0.33);
+    \draw[thick] (1.41,-0.02) arc (30:150:0.49 and 0.24);
+    \node at (0,-1.45) {$\chi=-2:\ g_s^{2}$};
+  \end{scope}
+  \node at (12.2,0) {$+\ \cdots$};
+\end{tikzpicture}
+\caption{The sum over worldsheet topologies. A constant dilaton $\Phi=\lambda$ contributes
+$\ee^{-\lambda\chi}$ to the weight of each surface, so every handle costs a factor
+$g_s^2=\ee^{2\lambda}$.}
+\label{fig:backgrounds:genus}
+\end{figure}
+
+If the dilaton varies, the role of $\lambda$ is played by its asymptotic value,
+\begin{equation}\label{eq:backgrounds:gs}
+  \Phi_0=\lim_{X\to\infty}\Phi(X),\qquad g_s=\ee^{\Phi_0}.
+  \qquad\text{\source{Tong (7.13)--(7.14), ll.~9561--9571}}
+\end{equation}
+
+\begin{physicsbox}[Physical picture: a coupling constant that is a field]
+In quantum electrodynamics the coupling $e$ is a number that one measures and cannot explain.
+In string theory the corresponding number is the expectation value of a dynamical field. It
+can differ from place to place, and in principle it is determined by the equations of
+motion, like the metric. The price is a stronger condition for perturbation theory: not only
+$g_s\ll1$ asymptotically, but $\ee^{\Phi(X)}\ll1$ wherever the string goes
+\source{Tong §7.2.2, ll.~9572--9582}.
+\end{physicsbox}
+
+\section{The three beta functions}\label{sec:backgrounds:beta}
+
+The dilaton term in \eqref{eq:backgrounds:full} breaks Weyl invariance already classically.
+Why is that acceptable? The key is the explicit factor of $\ap$ in front of it, present on
+dimensional grounds: $\Phi$ and $\sqrt g\,R^{(2)}\dd^2\sigma$ are dimensionless, while the other
+two terms carry two derivatives of $X$, of dimension length$^2$, to be compensated by
+$1/\ap$. But $\ap$ is also the loop-counting parameter of the sigma model
+(\cref{sec:backgrounds:alpha}). The \emph{classical} Weyl variation of the dilaton term is
+therefore of the same order, $\ap^1$, as the \emph{one-loop} Weyl anomaly
+\eqref{eq:backgrounds:weyl} of the $G$ and $B$ terms, and the two can cancel.
+\source{Tong §7.2.3, ll.~9583--9596} This is what happens. The form of the
+classical contribution can be read off from the Weyl variation quoted below
+\eqref{eq:backgrounds:full}: integrating by parts moves $\nabla^2$ onto $\Phi(X(\sigma))$,
+and the chain rule produces
+$\partial_\mu\partial_\nu\Phi\,\partial_\alpha X^\mu\partial^\alpha X^\nu$, which has the
+structure of $\beta_{\mu\nu}(G)$ in \eqref{eq:backgrounds:trace}. Fixing its coefficient
+requires the careful treatment cited in the historical note; we quote the result.
+
+With three background fields the trace of the stress tensor has three structures,
+\begin{equation}\label{eq:backgrounds:threetrace}
+  \vev{T^\alpha{}_\alpha}=-\frac{1}{2\ap}\,\beta_{\mu\nu}(G)\,g^{\alpha\beta}
+  \partial_\alpha X^\mu\partial_\beta X^\nu
+  -\frac{\ii}{2\ap}\,\beta_{\mu\nu}(B)\,\epsilon^{\alpha\beta}
+  \partial_\alpha X^\mu\partial_\beta X^\nu-\frac12\,\beta(\Phi)\,R^{(2)},
+\end{equation}
+\source{Tong (7.15), ll.~9597--9609} and the one-loop results are\index{beta function!of the
+sigma model}
+\begin{align}
+  \beta_{\mu\nu}(G)&=\ap R_{\mu\nu}+2\ap\nabla_\mu\nabla_\nu\Phi
+     -\frac{\ap}{4}H_{\mu\lambda\kappa}H_\nu{}^{\lambda\kappa},\label{eq:backgrounds:betaG}\\
+  \beta_{\mu\nu}(B)&=-\frac{\ap}{2}\nabla^\lambda H_{\lambda\mu\nu}
+     +\ap\,\nabla^\lambda\Phi\,H_{\lambda\mu\nu},\label{eq:backgrounds:betaB}\\
+  \beta(\Phi)&=-\frac{\ap}{2}\nabla^2\Phi+\ap\,\nabla_\mu\Phi\nabla^\mu\Phi
+     -\frac{\ap}{24}H_{\mu\nu\lambda}H^{\mu\nu\lambda}.\label{eq:backgrounds:betaPhi}
+\end{align}
+\source{Tong §7.2.3, ll.~9610--9628} Here $\nabla_\mu$ is the covariant derivative of the
+spacetime metric $G_{\mu\nu}$, which also raises indices. A consistent background of the
+bosonic string at this order must satisfy \TL
+\begin{equation}\label{eq:backgrounds:allzero}
+  \beta_{\mu\nu}(G)=\beta_{\mu\nu}(B)=\beta(\Phi)=0 .
+\end{equation}
+
+Each equation is recognizable before they are combined.
+It helps to recognize each equation before combining them.
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item $\beta(G)=0$ is Einstein's equation with sources. For $\Phi$ constant it reads
+  $R_{\mu\nu}=\tfrac14H_{\mu\lambda\kappa}H_\nu{}^{\lambda\kappa}$: the energy of the
+  $H$-field curves spacetime, as the energy of $F_{\mu\nu}$ does in Einstein--Maxwell theory.
+\item $\beta(B)=0$ can be written
+  $\nabla^\lambda\bigl(\ee^{-2\Phi}H_{\lambda\mu\nu}\bigr)=0$, since
+  $\nabla^\lambda(\ee^{-2\Phi}H_{\lambda\mu\nu})=\ee^{-2\Phi}(\nabla^\lambda H_{\lambda\mu\nu}
+  -2\nabla^\lambda\Phi H_{\lambda\mu\nu})=-\tfrac{2}{\ap}\ee^{-2\Phi}\beta_{\mu\nu}(B)$. This is
+  the analogue of Maxwell's equation $\nabla^\lambda F_{\lambda\mu}=0$, with a
+  position-dependent coupling $\ee^{-2\Phi}$.
+\item $\beta(\Phi)=0$ is a wave equation for the dilaton, sourced by $H^2$. In
+  \cref{sec:backgrounds:critical} we will see that for $D\neq26$ it acquires a constant term,
+  which is the central-charge condition of \cref{ch:ghosts}.
+\end{itemize}
+All terms are of order $\ap$: they are the leading terms of an expansion in $\ap/r_c^2$. At
+the next order Einstein's equations are corrected; for $H=0$ and constant $\Phi$ the two-loop
+result is $\beta_{\mu\nu}=\ap R_{\mu\nu}+\tfrac12\ap^2R_{\mu\lambda\rho\sigma}
+R_\nu{}^{\lambda\rho\sigma}+\cdots$ \source{Tong §7.3.2, ll.~9793--9812}. Such terms are
+negligible when $r_c\gg\ell_s$ and are the first sign that the string is not a point.
+
+\section{The low-energy effective action}\label{sec:backgrounds:action}
+
+\subsection{An action whose equations of motion are the beta functions}
+
+We now change the point of view. The conditions \eqref{eq:backgrounds:allzero} are
+differential equations for fields on spacetime. Do they follow from an action principle in
+$D=26$ dimensions? They do \TL:
+\begin{equation}\label{eq:backgrounds:Seff}
+  S=\frac{1}{2\kappa_0^2}\int\dd^{26}X\,\sqrt{-G}\;\ee^{-2\Phi}
+  \Bigl(R-\frac{1}{12}H_{\mu\nu\lambda}H^{\mu\nu\lambda}
+  +4\,\partial_\mu\Phi\,\partial^\mu\Phi\Bigr),
+  \qquad\text{\source{Tong (7.16), ll.~9640--9657}}
+\end{equation}
+written in Lorentzian signature, with $G=\det G_{\mu\nu}$ and $R$ the spacetime Ricci scalar.
+This is the \emph{low-energy effective action}\index{low-energy effective action} of the
+bosonic string, in the \emph{string frame}. The constant $\kappa_0$ is not fixed by the
+equations of motion. Its dimension is: the action is dimensionless, $R$ has dimension
+length$^{-2}$ and the measure length$^{26}$, so $\kappa_0^2\sim\ell_s^{24}$.
+The variation of \eqref{eq:backgrounds:Seff} is
+\begin{equation}\label{eq:backgrounds:variation}
+\begin{aligned}
+  \delta S=\frac{1}{2\kappa_0^2\ap}\int\dd^{26}X\sqrt{-G}\,\ee^{-2\Phi}\Bigl[&
+  \delta G_{\mu\nu}\beta^{\mu\nu}(G)-\delta B_{\mu\nu}\beta^{\mu\nu}(B)\\
+  &-\bigl(2\,\delta\Phi+\tfrac12G^{\mu\nu}\delta G_{\mu\nu}\bigr)
+  \bigl(\beta^\lambda{}_\lambda(G)-4\beta(\Phi)\bigr)\Bigr],
+\end{aligned}
+\end{equation}
+\source{Tong §7.3, ll.~9658--9668} so the equations of motion are equivalent to
+\eqref{eq:backgrounds:allzero}.
+
+It is a good exercise in reading such a formula to verify the simplest part of it, the
+dilaton variation. Only $\delta\Phi$ is switched on. From \eqref{eq:backgrounds:Seff},
+writing $\mathcal L=R-\tfrac1{12}H^2+4(\partial\Phi)^2$,
+\begin{align*}
+  \delta S&=\frac{1}{2\kappa_0^2}\int\sqrt{-G}\,\ee^{-2\Phi}\Bigl[-2\,\mathcal L\,\delta\Phi
+  +8\,\partial_\mu\Phi\,\partial^\mu\delta\Phi\Bigr]\\
+  &=\frac{1}{2\kappa_0^2}\int\sqrt{-G}\,\ee^{-2\Phi}\,\delta\Phi\,\Bigl[-2\mathcal L
+  -8\nabla^2\Phi+16(\partial\Phi)^2\Bigr],
+\end{align*}
+where the last step integrates by parts and uses
+$\nabla_\mu(\ee^{-2\Phi}\nabla^\mu\Phi)=\ee^{-2\Phi}(\nabla^2\Phi-2(\partial\Phi)^2)$. The
+bracket equals $-2\bigl[R-\tfrac1{12}H^2+4\nabla^2\Phi-4(\partial\Phi)^2\bigr]$. On the other
+side, from \eqref{eq:backgrounds:betaG} and \eqref{eq:backgrounds:betaPhi},
+\begin{align*}
+  \beta^\lambda{}_\lambda(G)-4\beta(\Phi)
+  &=\ap\bigl[R+2\nabla^2\Phi-\tfrac14H^2\bigr]
+   -4\ap\bigl[-\tfrac12\nabla^2\Phi+(\partial\Phi)^2-\tfrac1{24}H^2\bigr]\\
+  &=\ap\bigl[R+4\nabla^2\Phi-4(\partial\Phi)^2-\tfrac1{12}H^2\bigr],
+\end{align*}
+using $-\tfrac14+\tfrac16=-\tfrac1{12}$. The two agree, including the factor $-2/\ap$
+predicted by \eqref{eq:backgrounds:variation}. Likewise the $B$ equation of motion of
+\eqref{eq:backgrounds:Seff} is $\nabla^\lambda(\ee^{-2\Phi}H_{\lambda\mu\nu})=0$, which we
+showed above to be $\beta(B)=0$. The metric variation is longer and is left to the references. One caveat: the bosonic
+string also has a tachyon, ignored here; the results are of interest because they carry over
+to the superstring, where it is absent \source{Tong §7.4.5, ll.~10443--10452}.
+
+Something remarkable has happened. The starting point was one string in flat space;
+consistency of its motion in a condensate of its own gravitons now dictates how spacetime
+must curve. The same action is reached by another road: compute graviton scattering
+amplitudes from the string path integral and ask which field theory reproduces them at
+energies far below $1/\ell_s$ \source{Tong §7.3, ll.~9669--9688}.
+
+\subsection{String frame and Einstein frame}
+
+The action \eqref{eq:backgrounds:Seff} differs from the Einstein--Hilbert action by the
+overall factor $\ee^{-2\Phi}$. Its origin is clear from \eqref{eq:backgrounds:genus}: the
+action was derived on the sphere, which carries the weight $g_s^{-2}$; with a varying
+dilaton this becomes $\ee^{-2\Phi(X)}$. The dilaton kinetic term also appears to have the
+wrong sign, but with a field-dependent factor in front of $R$ the kinetic terms of $G$ and
+$\Phi$ are mixed and no conclusion can be drawn before they are disentangled.
+\source{Tong §7.3.1, ll.~9690--9701}
+
+To disentangle them, split the dilaton into its constant and varying parts,
+$\tilde\Phi=\Phi-\Phi_0$, and define a new metric in $D$ dimensions by a Weyl rescaling
+\emph{of spacetime},
+\begin{equation}\label{eq:backgrounds:einsteinmetric}
+  \tilde G_{\mu\nu}(X)=\ee^{2\omega}G_{\mu\nu}(X),\qquad
+  \omega=-\frac{2\tilde\Phi}{D-2}.
+  \qquad\text{\source{Tong (7.17)--(7.18), ll.~9702--9715}}
+\end{equation}
+This is a relabelling of the fields, not a symmetry. We need the behaviour of each ingredient
+of \eqref{eq:backgrounds:Seff}. The Ricci scalars of two conformally related metrics obey
+\begin{equation}\label{eq:backgrounds:conformalR}
+  \tilde R=\ee^{-2\omega}\bigl[R-2(D-1)\nabla^2\omega-(D-2)(D-1)\,
+  \partial_\mu\omega\,\partial^\mu\omega\bigr]
+  \qquad\text{\source{Tong §7.3.1, ll.~9722--9726}}
+\end{equation}
+(we confirmed this identity by a symbolic check for conformally flat $G$ in $D=2,3,4$).
+Exchanging the roles of the two metrics, i.e.\ $\omega\to-\omega$, gives
+$R=\ee^{2\omega}[\tilde R+2(D-1)\tilde\nabla^2\omega-(D-2)(D-1)(\tilde\partial\omega)^2]$,
+where a tilde means that indices are contracted with $\tilde G$. Furthermore
+$\sqrt{-G}=\ee^{-D\omega}\sqrt{-\tilde G}$; every inverse metric contributes
+$G^{\mu\nu}=\ee^{2\omega}\tilde G^{\mu\nu}$; and, by the choice of $\omega$,
+$\ee^{-2\tilde\Phi}=\ee^{(D-2)\omega}$. The prefactor of the curvature term is then
+\[
+  \sqrt{-G}\,\ee^{-2\tilde\Phi}\,\ee^{2\omega}
+  =\sqrt{-\tilde G}\;\ee^{(-D+(D-2)+2)\omega}=\sqrt{-\tilde G},
+\]
+which is the purpose of \eqref{eq:backgrounds:einsteinmetric}: the factor in front of
+$\tilde R$ is now constant. The term $\tilde\nabla^2\omega$ is a total derivative and drops
+out. The $(\partial\omega)^2$ terms are
+$-(D-2)(D-1)(\tilde\partial\omega)^2$ from the curvature and, from the dilaton kinetic term,
+$4(\partial\Phi)^2=4\,\ee^{2\omega}(\tilde\partial\tilde\Phi)^2
+=\ee^{2\omega}(D-2)^2(\tilde\partial\omega)^2$. Their sum is
+\[
+  \bigl[(D-2)^2-(D-2)(D-1)\bigr](\tilde\partial\omega)^2=-(D-2)(\tilde\partial\omega)^2
+  =-\frac{4}{D-2}\,(\tilde\partial\tilde\Phi)^2 .
+\]
+Finally $H^2$ contains three inverse metrics, so it acquires
+$\ee^{(-D+(D-2)+6)\omega}=\ee^{4\omega}=\ee^{-8\tilde\Phi/(D-2)}$. For $D=26$ the numbers are
+$4/(D-2)=\tfrac16$ and $8/(D-2)=\tfrac13$, and the action becomes
+\begin{equation}\label{eq:backgrounds:einstein}
+  S=\frac{1}{2\kappa^2}\int\dd^{26}X\,\sqrt{-\tilde G}\,\Bigl(\tilde R
+  -\frac{1}{12}\,\ee^{-\tilde\Phi/3}H_{\mu\nu\lambda}H^{\mu\nu\lambda}
+  -\frac16\,\partial_\mu\tilde\Phi\,\partial^\mu\tilde\Phi\Bigr),
+  \qquad\text{\source{Tong (7.19), ll.~9727--9744}}
+\end{equation}
+with
+\begin{equation}\label{eq:backgrounds:kappa}
+  \kappa^2=\kappa_0^2\,\ee^{2\Phi_0}\sim\ell_s^{24}g_s^2 .
+  \qquad\text{\source{Tong (7.20), ll.~9756--9760}}
+\end{equation}
+This is the \emph{Einstein frame}\index{Einstein frame}\index{string frame}. The gravitational
+term has the standard form with $8\pi G_N=\kappa^2$, and the dilaton is an ordinary scalar
+with a kinetic term of the correct sign: the apparent wrong sign in the string frame was an
+artefact of the mixing. There is no potential for $\tilde\Phi$, so in the bosonic string
+nothing fixes $g_s$ \source{Tong §7.3.1, ll.~9745--9752}.
+
+\begin{pitfallbox}[Common pitfall: which metric measures lengths?]
+$G_{\mu\nu}$ is the metric that the string feels: it is the one in
+\eqref{eq:backgrounds:sigma}, and lengths compared with $\ell_s$ (the radius $R$ of a circle
+in \cref{ch:circle}, the statement $R\to\ap/R$ in \cref{ch:tduality}) are string-frame
+lengths. $\tilde G_{\mu\nu}$ is the metric in which Newton's constant is constant. The choice exists because there is a massless scalar that can be absorbed in
+the ruler. A massless dilaton would also mediate a long-range force that violates the
+equivalence principle, which is one reason why any realistic model must give $\Phi$ a mass
+\source{Tong §7.3.1, ll.~9773--9791}; this is part of the moduli problem of
+\cref{ch:stabilization}.
+\end{pitfallbox}
+
+\begin{example}[String length versus Planck length]\label{ex:backgrounds:planck}
+Define the Planck length in $D$ dimensions by $8\pi G_N=\kappa^2=\ell_p^{D-2}$. The
+dimensional analysis that gave \eqref{eq:backgrounds:kappa} gives
+$\kappa^2\sim\ell_s^{D-2}g_s^2$ in any $D$, hence
+\[
+  \frac{\ell_p}{\ell_s}\sim g_s^{2/(D-2)} .
+\]
+For the bosonic string, $D=26$, the exponent is $\tfrac1{12}$: a coupling $g_s=0.1$ gives
+$\ell_p/\ell_s\approx0.83$. For a superstring, $D=10$, the exponent is $\tfrac14$ and
+$g_s=0.1$ gives $\ell_p/\ell_s\approx0.56$. In both cases weak coupling means
+$\ell_p<\ell_s$: the string scale is reached \emph{before} the Planck scale as one goes to
+short distances \source{Tong §7.3.1, ll.~9761--9772}. (Compactification on a space $X$ divides $\kappa^2$ by $\mathrm{Vol}(X)$
+\source{Tong §7.4.1, ll.~10007--10020}.)
+\end{example}
+
+\paragraph{What carries over to the superstring.}
+Each of the superstring theories listed in \cref{ch:ghosts} contains the same three massless
+fields. The part of its ten-dimensional effective action that involves only them has the
+form \eqref{eq:backgrounds:Seff} with $\dd^{26}X\to\dd^{10}X$, where for the heterotic
+theories $H$ contains an additional Chern--Simons term; the remaining bosonic fields
+(Ramond--Ramond forms, or the heterotic gauge field) enter through a second piece $S_2$
+\source{Tong §7.3.3, ll.~9825--9935}. \TL{} The sector $(G,B,\Phi)$ is called the
+\emph{NS--NS sector}\index{NS--NS sector}. It is the sector on which T-duality acts
+geometrically, and it is the field content of double field theory: \cref{ch:dftaction}
+rewrites \eqref{eq:backgrounds:Seff} so that $G$ and $B$ enter only through the generalized
+metric and $\sqrt{-G}\,\ee^{-2\Phi}$ is a single field, $\ee^{-2d}$. The Ramond--Ramond
+fluxes return in \cref{ch:tadpole,ch:stabilization}.
+
+\section{The critical dimension revisited: the linear dilaton}\label{sec:backgrounds:critical}
+
+The function $\beta(\Phi)$ multiplies $R^{(2)}$ in \eqref{eq:backgrounds:threetrace}, exactly
+like the central charge in the Weyl anomaly $T^\alpha{}_\alpha=-\tfrac{c}{12}R^{(2)}$ of
+\cref{ch:cft,ch:ghosts}. The two are the same object:
+$\beta(\Phi)$ is the total central charge seen as a function of the background, and the
+constant part that we have so far set to zero by taking $D=26$ is its leading term. For
+general $D$,
+\begin{equation}\label{eq:backgrounds:noncritical}
+  \beta(\Phi)=\frac{D-26}{6}-\frac{\ap}{2}\nabla^2\Phi+\ap\nabla_\mu\Phi\nabla^\mu\Phi
+  -\frac{\ap}{24}H_{\mu\nu\lambda}H^{\mu\nu\lambda}=0,
+  \qquad\text{\source{Tong (7.28), ll.~10289--10302}}
+\end{equation}
+and the string-frame action acquires the term $-2(D-26)/3\ap$ inside the bracket of
+\eqref{eq:backgrounds:Seff}, a potential for the dilaton. The constant is of order
+$\ap^0$ while the other terms are of order $\ap^1$: a tree-level term is being balanced
+against one-loop terms, and in general one should then not trust the truncation of the
+expansion. \source{Tong §7.4.4, ll.~10303--10336}
+
+\begin{example}[The linear dilaton]\label{ex:backgrounds:lineardilaton}
+There is one solution of \eqref{eq:backgrounds:noncritical} that can be trusted. Take flat
+space, $H=0$, and a dilaton linear in one coordinate, $\Phi=V_\mu X^\mu$. Then
+$\nabla_\mu\nabla_\nu\Phi=0$, so $\beta(G)=\beta(B)=0$, and
+\eqref{eq:backgrounds:noncritical} becomes the algebraic condition
+\begin{equation}\label{eq:backgrounds:lineardilaton}
+  V_\mu V^\mu=\frac{26-D}{6\ap}.
+\end{equation}
+With the mostly-plus signature $V$ is spacelike for $D<26$ and timelike for $D>26$:
+$\Phi=\sqrt{(26-D)/6\ap}\;X^1$ or $\Phi=\sqrt{(D-26)/6\ap}\;X^0$.
+\source{Tong §7.4.4, ll.~10337--10365} For numbers: in $D=25$ the dilaton grows by one unit,
+and $g_s^{\mathrm{eff}}=\ee^{\Phi}$ by a factor $\ee$, over the distance
+$\sqrt{6}\,\ell_s\approx2.4\,\ell_s$; in $D=2$ one finds $V^2=4/\ap$ and the same happens over
+$\ell_s/2$. The background can be trusted because the sigma model is still free, with a modified
+stress tensor of central charge $c=D+6\ap V^2=26$ \source{Tong §7.4.4, ll.~10361--10441}. The lesson is that ``$D=26$''
+really means ``total central charge $26$'' (\cref{ch:ghosts}), and that the price of
+$D\neq26$ is a coupling that becomes strong somewhere in spacetime.
+\end{example}
+
+\section{Constant backgrounds on a torus: what survives of \texorpdfstring{$B$}{B}}
+\label{sec:backgrounds:torus}
+
+Part~II studies the simplest solutions of
+\eqref{eq:backgrounds:allzero}: a flat torus $T^d$ with constant metric $G_{ij}$, constant
+$B_{ij}$ and constant dilaton, $i,j=1,\dots,d$. All three beta functions vanish trivially:
+$R_{\mu\nu}=0$, $H=\dd B=0$, $\partial\Phi=0$. The constant $G_{ij}$ obviously matters, since it
+fixes the sizes and angles of the torus. Does a constant $B_{ij}$ matter? Locally it is pure
+gauge: $B=\dd C$ with $C_\nu=\tfrac12B_{\mu\nu}X^\mu$. In infinite flat space it could
+therefore be removed. On a torus it cannot, for two related reasons.
+
+\subsection{Periods of \texorpdfstring{$B$}{B}}
+
+The one-form $C_\nu=\tfrac12B_{\mu\nu}X^\mu$ is not periodic, so it is not a legitimate gauge
+parameter on the torus, in the same way that a constant $A_\theta$ on a circle cannot be
+gauged away by a single-valued function. What cannot be gauged away is the integral of $B$
+over a two-cycle. Take $T^2$ with coordinates $X^1\sim X^1+2\pi R_1$,
+$X^2\sim X^2+2\pi R_2$, and a worldsheet that is itself a torus, $\sigma^{1,2}\in[0,2\pi)$,
+wrapped on the target by the linear map
+\[
+  X^1=R_1\,(a\,\sigma^1+b\,\sigma^2),\qquad X^2=R_2\,(c\,\sigma^1+e\,\sigma^2),
+  \qquad a,b,c,e\in\Z .
+\]
+The integers are winding numbers, as in \cref{ch:circle}, now around both cycles of the
+worldsheet (\cref{fig:backgrounds:wrap}). From \eqref{eq:backgrounds:pullback},
+\begin{equation}\label{eq:backgrounds:period}
+  S_B=\frac{\ii}{2\pi\ap}\,B_{12}R_1R_2\,(ae-bc)\,(2\pi)^2
+  =2\pi\ii\;b_{12}\,N,\qquad
+  b_{12}=\frac{B_{12}R_1R_2}{\ap}=\frac{1}{4\pi^2\ap}\int_{T^2}B,
+\end{equation}
+with $N=ae-bc$.
+The integer $N$ is the (signed) number of times the worldsheet covers the target torus. The path
+integral weight $\ee^{-S_B}=\ee^{-2\pi\ii\,b_{12}N}$ depends on $b_{12}$: a constant $B$-field
+is observable, although it exerts no force. It is unchanged when $b_{12}\to b_{12}+1$. In the
+source's words, $B$ plays the role of a theta parameter: the constant $B$-term is a total
+derivative and gives only topological contributions, and an integer shift changes the action
+by an integer multiple of $2\pi\ii$ \source{GPR §2.4, ll.~1351--1371}. \TL{} So the
+dimensionless periods $b_{ij}$ are \emph{angles}\index{B-field@$B$-field!period on a torus}:
+\begin{equation}\label{eq:backgrounds:shift}
+  b_{ij}\sim b_{ij}+\Theta_{ij},\qquad\Theta_{ij}=-\Theta_{ji}\in\Z .
+\end{equation}
+These integer shifts are the first elements of the duality group $\Odd{d}$ that we meet; they
+are taken up in \cref{ch:narain,ch:odd}. The normalization in \eqref{eq:backgrounds:period}
+was derived here from Tong's action; GPR use coordinates of period $2\pi$ and a dimensionless
+$B$, in which the shift is by integers, as in \eqref{eq:backgrounds:shift}.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.85]
+  % worldsheet torus as a square
+  \draw[thick] (0,0) rectangle (2.4,2.4);
+  \draw[->] (0,-0.35) -- (2.4,-0.35) node[midway,below] {$\sigma^1$};
+  \draw[->] (-0.35,0) -- (-0.35,2.4) node[midway,left] {$\sigma^2$};
+  \node at (1.2,1.2) {$\Sigma$};
+  \draw[->,thick] (3.0,1.2) -- (4.6,1.2) node[midway,above] {$X$};
+  % target torus lattice
+  \begin{scope}[shift={(5.4,0)}]
+    \foreach \x in {0,1.2,2.4,3.6} \draw[gray!60] (\x,0) -- (\x,2.4);
+    \foreach \y in {0,1.2,2.4} \draw[gray!60] (0,\y) -- (3.6,\y);
+    \fill[blue!12] (0,0) -- (2.4,0) -- (3.6,1.2) -- (1.2,1.2) -- cycle;
+    \draw[thick,blue!60!black] (0,0) -- (2.4,0) -- (3.6,1.2) -- (1.2,1.2) -- cycle;
+    \draw[thick] (0,0) rectangle (1.2,1.2);
+    \node at (0.6,-0.3) {\small $2\pi R_1$};
+    \node[rotate=90] at (-0.3,0.6) {\small $2\pi R_2$};
+    \node[anchor=west] at (4.0,1.2) {$\displaystyle\int_\Sigma X^*B=N\!\int_{T^2}\!B$};
+  \end{scope}
+\end{tikzpicture}
+\caption{A toroidal worldsheet wrapped on a target two-torus, drawn in the covering plane
+(grid: copies of the unit cell). The image of the worldsheet for $(a,b,c,e)=(2,1,0,1)$ is the
+shaded parallelogram; its area is $N=ae-bc=2$ unit cells, so
+$\ee^{-S_B}=\ee^{-4\pi\ii\,b_{12}}$.}
+\label{fig:backgrounds:wrap}
+\end{figure}
+
+\subsection{\texorpdfstring{$B$}{B} shifts the momentum: the Hamiltonian of a wound string}
+
+The second way to see the effect of a constant $B$ is canonical, and it leads directly to
+the central object of Part~III. Pass to a Lorentzian worldsheet with coordinates
+$(\tau,\sigma)$, $\dot X=\partial_\tau X$, $X'=\partial_\sigma X$. For constant $G_{ij}$ and
+$B_{ij}$ the Lagrangian density of \eqref{eq:backgrounds:GB} is
+\[
+  \mathcal L=\frac{1}{4\pi\ap}\Bigl[G_{ij}\bigl(\dot X^i\dot X^j-X'^iX'^j\bigr)
+  +2B_{ij}\dot X^iX'^j\Bigr],
+\]
+where the overall sign of the $B$ term depends on the orientation convention for
+$\epsilon^{\alpha\beta}$ and can be absorbed in $B\to-B$. The term
+$2B_{ij}\dot X^iX'^j$ is a total derivative when $B$ is constant, so it does not change the
+equations of motion, but it changes the canonical momentum:
+\begin{equation}\label{eq:backgrounds:momentum}
+  2\pi\ap\,P_i=2\pi\ap\frac{\partial\mathcal L}{\partial\dot X^i}=G_{ij}\dot X^j+B_{ij}X'^j .
+\end{equation}
+This is the string analogue of $p=m\dot x+qA$, and it agrees with
+\source{GPR (2.4.7), ll.~1104--1106} in units $\ap=1$. For a string that winds the torus,
+$X'^j\neq0$ on average, and the quantized momentum $\oint P_i$ is no longer the kinetic
+momentum: \emph{a constant $B$-field shifts the momentum of wound strings}, in proportion to
+their winding. This is how $B$ enters the spectrum in \cref{ch:narain}.
+
+The Hamiltonian density is $\mathcal H=P_i\dot X^i-\mathcal L$. The $B$ term is linear in
+velocities and cancels, leaving
+$\mathcal H=\frac{1}{4\pi\ap}\,G_{ij}(\dot X^i\dot X^j+X'^iX'^j)$; but $\mathcal H$ must be
+expressed through $P$, not $\dot X$. Writing $\Pi_i=2\pi\ap P_i$ and solving
+\eqref{eq:backgrounds:momentum}, $\dot X=G^{-1}(\Pi-BX')$. Then, using $B^{\mathsf T}=-B$,
+\begin{align*}
+  \dot X^{\mathsf T}G\dot X&=(\Pi-BX')^{\mathsf T}G^{-1}(\Pi-BX')\\
+  &=\Pi^{\mathsf T}G^{-1}\Pi+X'^{\mathsf T}BG^{-1}\Pi-\Pi^{\mathsf T}G^{-1}BX'
+    -X'^{\mathsf T}BG^{-1}BX',
+\end{align*}
+and therefore
+\begin{equation}\label{eq:backgrounds:genmetric}
+  \mathcal H=\frac{1}{4\pi\ap}
+  \begin{pmatrix}X'\\ \Pi\end{pmatrix}^{\!\mathsf T}
+  \begin{pmatrix}G-BG^{-1}B & BG^{-1}\\ -G^{-1}B & G^{-1}\end{pmatrix}
+  \begin{pmatrix}X'\\ \Pi\end{pmatrix}.
+\end{equation}
+The $2d\times2d$ matrix is the \emph{generalized metric}\index{generalized metric}
+$\HH(G,B)$, in exactly the block form fixed in this book's conventions and used by GPR for
+the zero-mode spectrum \source{GPR (2.4.9), ll.~1113--1121; (2.4.17)--(2.4.18),
+ll.~1262--1275}. We confirmed \eqref{eq:backgrounds:genmetric}, and the identity
+$\HH\eta\HH=\eta$ with $\eta=\bigl(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\bigr)$, by a
+symbolic check for $d=2$. The energy of a string on a torus depends on $G$ and $B$ only
+through $\HH$, and it treats the winding density $X'$ and the momentum density $\Pi$ on the
+same footing. \Cref{ch:genmetric} takes this matrix as its starting point, and
+\cref{ch:dualscale} builds this programme's dual-scale principle on it.
+
+\section{What the machine has checked}\label{sec:backgrounds:lean}
+
+Nothing in this chapter has been formalized in the strict sense. The statements above
+involve a two-dimensional quantum field theory, its renormalization, and Riemannian geometry
+of the target space. Mathlib has smooth manifolds, but at the time of writing, to our
+knowledge, no Levi-Civita connection or Ricci tensor in a form that would allow
+\cref{prop:backgrounds:ricci} even to be \emph{stated}, and no rigorous definition of the
+sigma-model path integral exists on paper. All results of
+\cref{sec:backgrounds:einstein,sec:backgrounds:beta,sec:backgrounds:action} are therefore
+Tier~L.
+
+The library does contain one older module whose subject is the effective action
+\eqref{eq:backgrounds:Seff}, as the target of the reduction of double field theory, the file
+\lean{ActionCurvature.lean} of the library \lean{DoubleFieldTheory}. We mention it as a
+pointer forward to
+\cref{ch:dftaction}, and because it is a clear example of what the book calls an
+\emph{arithmetic shadow}. It models $\sqrt{-G}$, $\ee^{-2\Phi}$, $R$, $(\nabla\Phi)^2$ and
+$H^2$ by \emph{integers}.
+
+\begin{leanbox}[In Lean: \texttt{DoubleFieldTheory/ActionCurvature.lean}]
+Two definitions and the three theorems closest to this chapter, in the namespace
+\lean{DoubleFieldTheory.ActionCurvature}:
+\begin{leancode}
+def DFTRicciComponents (R_geom kin_phi H_sq : Int) : Int :=
+  R_geom + 4 * kin_phi - H_sq
+
+theorem dft_ricci_expansion (R_geom kin_phi H_sq : Int) :
+    DFTRicciComponents R_geom kin_phi H_sq + H_sq
+      = R_geom + 4 * kin_phi := by ...
+
+theorem dft_ricci_physical_reduction (R_geom : Int) :
+    DFTRicciComponents R_geom 0 0 = R_geom := by ...
+
+def ContractedEinstein (D R : Int) : Int :=
+  (D - 2) * R
+
+theorem contracted_einstein_dim2 (R : Int) :
+    ContractedEinstein 2 R = 0 := by ...
+\end{leancode}
+\textbf{Plain reading.} For all integers $r$, $k$, $h$ one has $(r+4k-h)+h=r+4k$, then
+$r+4\cdot0-0=r$, and finally $(2-2)\cdot r=0$. The file also proves that the two integer products \lean{DilatonMeasure}
+and \lean{ActionLagrangian} are commutative (\lean{dilaton\_measure\_symm},
+\lean{dft\_action\_nsns\_equivalence}) and that $t+\delta=t$ when $\delta=0$
+(\lean{connection\_trace\_conservation}).
+
+\textbf{Proof idea.} Unfold the definition with \lean{dsimp}; the linear-arithmetic decision
+procedure \lean{omega} closes the goal, or \lean{Int.mul\_comm} is rewritten once.
+
+\textbf{What this is a shadow of.} \lean{DFTRicciComponents} mirrors the \emph{shape} of the
+bracket in \eqref{eq:backgrounds:Seff}: the coefficient $4$ of the dilaton kinetic term and
+the minus sign of $H^2$ are there; the coefficient $\tfrac1{12}$ is absorbed in the integer
+\lean{H\_sq}. The theorem \lean{dft\_ricci\_physical\_reduction} is the arithmetic shadow of
+the remark that for $\Phi$ constant and $H=0$ the Lagrangian of \eqref{eq:backgrounds:Seff}
+is the Einstein--Hilbert one. The theorem \lean{contracted\_einstein\_dim2} is the shadow of a
+fact used silently in \cref{sec:backgrounds:dilaton}: in two dimensions
+$R_{\alpha\beta}=\tfrac12g_{\alpha\beta}R^{(2)}$, the Einstein tensor vanishes, and
+$\int\sqrt g\,R^{(2)}$ has no dynamics. (The trace of the Einstein tensor in dimension $D$ is
+$-\tfrac12(D-2)R$; the Lean definition is the integer $(D-2)R$, proportional to it.) None of
+the theorems involves a metric, a derivative or an integral, and none asserts that the
+double-field-theory action reduces to \eqref{eq:backgrounds:Seff}. The docstrings of the
+file describe that reduction in words; docstrings are not checked by the kernel.
+\end{leanbox}
+
+We ran \lean{\#print axioms} on a scratch copy of the file: the six theorems depend only on
+\lean{propext} and, for those closed by \lean{omega}, \lean{Quot.sound}; both belong to the
+three standard axioms of Lean.
+
+\begin{remark}[What a faithful formalization would need]\label{rem:backgrounds:faithful}
+Two targets are within reach of present tools. (i) The algebra of
+\cref{sec:backgrounds:torus}: for real matrices $G$ (invertible, symmetric) and $B$
+(antisymmetric), the identity behind \eqref{eq:backgrounds:genmetric} and
+$\HH\eta\HH=\eta$. The newer library \lean{DualScaleStream2} proves statements of this kind
+about $\HH(G,B)$, namely \lean{etaR\_genMetric\_sq} and \lean{genMetric\_symm}
+(\cref{ch:genmetric}). (ii) Once \eqref{eq:backgrounds:conformalR} is granted, the
+Einstein-frame computation reduces to the identity $(D-2)^2-(D-2)(D-1)=-(D-2)$, which a
+student can prove in Lean in one line (\cref{exr:backgrounds:leanframe}). The beta functions
+are out of reach until Riemannian curvature is available in Mathlib, and their derivation
+from a path integral is out of reach for deeper reasons. \Cref{ch:open} returns to this.
+\end{remark}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}\small
+\begin{tabular}{@{}p{78mm}cp{58mm}@{}}
+\toprule
+statement & tier & evidence\\
+\midrule
+$(r+4k-h)+h=r+4k$, $\;r+4\cdot0-0=r$, $\;(2-2)r=0$ over $\Z$ & \TA &
+  \lean{dft\_ricci\_expansion}, \newline\lean{dft\_ricci\_physical\_reduction},
+  \newline\lean{contracted\_einstein\_dim2}\\
+$\beta_{\mu\nu}(G)=\ap R_{\mu\nu}$ at one loop; the beta functions
+\eqref{eq:backgrounds:betaG}--\eqref{eq:backgrounds:betaPhi}; the action
+\eqref{eq:backgrounds:Seff} & \TL & Tong §7.1, §7.2.3, §7.3\\
+Dilaton equation of \eqref{eq:backgrounds:Seff} $\Leftrightarrow$
+$\beta^\lambda{}_\lambda-4\beta(\Phi)=0$; Einstein frame \eqref{eq:backgrounds:einstein};
+identity \eqref{eq:backgrounds:conformalR} & \TL & Tong §7.3, §7.3.1; derivations here;
+symbolic check\\
+$g_s=\ee^{\Phi_0}$; weight $g_s^{2h-2}$ & \TL & Tong §6.1.1, §7.2.2\\
+String equation of motion \eqref{eq:backgrounds:lorentz} contains only $H$ & \TL &
+  derived here; symbolic check\\
+$b_{ij}\sim b_{ij}+\Theta_{ij}$, $\Theta\in\Z$ & \TL & GPR §2.4; derivation here\\
+Hamiltonian \eqref{eq:backgrounds:genmetric} $=$ generalized metric & \TL & GPR (2.4.9),
+  (2.4.17); symbolic check\\
+Identification of the integers in the Lean file with curvatures and measures & --- &
+  a modelling statement, never Tier A\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\begin{summarybox}
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item A string in a background is a two-dimensional sigma model
+  \eqref{eq:backgrounds:full}; the background fields $G_{\mu\nu}$, $B_{\mu\nu}$, $\Phi$ are its
+  coupling functions and are coherent states of the string's own massless modes.
+\item Worldsheet perturbation theory is an expansion in $\ap/r_c^2$, distinct from the one in
+  $g_s$. Weyl invariance requires the beta functions to vanish. At one loop
+  $\beta_{\mu\nu}(G)=\ap R_{\mu\nu}+\cdots$: Einstein's equations are a consistency condition.
+\item The string is charged under the two-form $B$. The gauge symmetry $B\to B+\dd C$ makes
+  only $H=\dd B$ visible in the equation of motion.
+\item The dilaton couples to the worldsheet curvature. Its constant part counts handles,
+  $g_s=\ee^{\Phi_0}$, and its classical Weyl variation cancels against one-loop effects.
+\item The beta-function equations follow from the string-frame action
+  \eqref{eq:backgrounds:Seff}; a Weyl rescaling of spacetime brings it to the Einstein frame
+  \eqref{eq:backgrounds:einstein}, with $\kappa^2\sim\ell_s^{24}g_s^2$.
+\item On a torus a constant $B$ is locally pure gauge but its periods are angles,
+  $b_{ij}\sim b_{ij}+1$. It shifts the canonical momentum of wound strings, and the
+  Hamiltonian depends on $(G,B)$ through the generalized metric $\HH(G,B)$.
+\item In Lean, only integer identities mirroring the shape of the effective Lagrangian are
+  checked (Tier~A as arithmetic); every physical statement of the chapter is Tier~L.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{exr:backgrounds:gauge}
+(a) Verify directly from \eqref{eq:backgrounds:H} that $H$ is invariant under
+\eqref{eq:backgrounds:gaugeB}. (b) Show that a constant $B_{\mu\nu}$ on $\R^D$ equals
+$\partial_\mu C_\nu-\partial_\nu C_\mu$ for $C_\nu=\tfrac12B_{\mu\nu}X^\mu$ (mind the sign).
+(c) Explain why this $C$ is not an admissible gauge parameter on a torus, and compare with a
+constant gauge potential $A_\theta$ on a circle.
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{exr:backgrounds:genus}
+A closed-string amplitude with $h$ handles is weighted by $g_s^{2h-2}$. The Euler
+number of a surface with $h$ handles and $b$ boundaries is $\chi=2-2h-b$
+\source{Tong §6.3, ll.~8129--8130}. Which power of $g_s$ weights the disk, and why does this
+suggest that the tension of a D-brane scales as $1/g_s$ (\cref{ch:dbranes})?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:backgrounds:frame}
+Repeat the derivation of the Einstein frame for general $D$ and show that
+\[
+  S=\frac{1}{2\kappa^2}\int\dd^DX\sqrt{-\tilde G}\Bigl(\tilde R
+  -\frac1{12}\ee^{-8\tilde\Phi/(D-2)}H^2-\frac{4}{D-2}(\tilde\partial\tilde\Phi)^2\Bigr).
+\]
+Evaluate the two coefficients for $D=10$. Why does the construction fail for $D=2$?
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{exr:backgrounds:leanframe}
+State and prove in Lean 4 with Mathlib the identity used in the Einstein-frame computation:
+for every rational (or real) $D$, $(D-2)^2-(D-2)(D-1)=-(D-2)$. Then state and prove: if
+$D\neq2$ then $-(D-2)\cdot\bigl(2/(D-2)\bigr)^2=-4/(D-2)$. Which tactic closes the first
+goal, and what extra step does the second need? Say precisely what your theorems do
+\emph{not} prove about the effective action.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:backgrounds:hamiltonian}
+For $d=1$ there is no $B$-field and $G_{11}=R^2/\ap$ in coordinates of period
+$2\pi\sqrt{\ap}$. Write \eqref{eq:backgrounds:genmetric} in this case and show that the
+exchange $X'\leftrightarrow\Pi$ together with $G_{11}\to1/G_{11}$ leaves $\mathcal H$
+invariant. Which transformation of $R$ is this (\cref{ch:tduality})? For $d=2$, verify by hand
+that $\det\HH(G,B)=1$.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]\label{exr:backgrounds:s3}
+\emph{A three-sphere supported by $H$-flux.} Let the target space contain a round $S^3$ of
+radius $r$ with $H=h\,\varepsilon$, where $\varepsilon$ is the volume form of the sphere, and
+constant dilaton. (a) Using $R_{\mu\nu}=(2/r^2)G_{\mu\nu}$ on $S^3$ and
+$\varepsilon_{\mu\lambda\kappa}\varepsilon_\nu{}^{\lambda\kappa}=2G_{\mu\nu}$, show that
+$\beta(G)=\beta(B)=0$ if and only if $h=2/r$. (b) Show that then
+$-\tfrac{\ap}{24}H^2=-\ap/r^2$, so that by \eqref{eq:backgrounds:noncritical} the sphere
+contributes $3-6\ap/r^2$ instead of $3$ to the central-charge budget. (c) Assume the flux is
+quantized as $\frac{1}{4\pi^2\ap}\int_{S^3}H=k\in\Z$ (standard, not checked against a source in this book's library). With $\mathrm{Vol}(S^3)=2\pi^2r^3$ show that $r^2=k\,\ap$ and that the central
+charge is $3-6/k$. Compare with the first two terms of the expansion in $1/k$ of $3k/(k+2)$,
+the exact central charge of the $SU(2)$ Wess--Zumino--Witten model at level $k$ (standard,
+not in this book's library). For which $k$ is the one-loop result reliable?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]\label{exr:backgrounds:cosmo}
+Consider \eqref{eq:backgrounds:Seff} in $D$ dimensions with $H=0$ on the ansatz
+$\dd s^2=-\dd t^2+\sum_ia_i(t)^2(\dd x^i)^2$, $\Phi=\Phi(t)$, and define the shifted dilaton
+$\ee^{-2d}=\sqrt{-G}\,\ee^{-2\Phi}$, i.e.\ $d=\Phi-\tfrac12\sum_i\ln a_i$. (a) Show that, up
+to a total derivative, $\sqrt{-G}\,\ee^{-2\Phi}(R+4\partial_\mu\Phi\partial^\mu\Phi)$ equals
+$\ee^{-2d}\bigl[\sum_i(\dot a_i/a_i)^2-4\dot d^{\,2}\bigr]$ (we confirmed this by a symbolic
+check for three spatial dimensions). (b) Conclude that the action is
+invariant under $a_i\to1/a_i$ for any single $i$ with $d$ fixed. This \emph{scale-factor
+duality} is the cosmological form of T-duality; it is used in \cref{ch:cosmology}. (c) Which
+combination of $G$ and $\Phi$ is \emph{not} invariant? Relate your answer to the role of
+$\ee^{-2d}$ in \cref{ch:dftaction}.
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item \source{Tong §7.1, ll.~9151--9418}: the sigma model, the $\ap$ expansion, the one-loop
+  beta function in the counterterm and the Weyl-anomaly language, and Ricci flow.
+  \source{Tong §7.2, ll.~9419--9628}: the couplings to $B$ and $\Phi$, the string coupling and
+  the three beta functions; the original references in its footnote are not in this
+  book's library.
+\item \source{Tong §7.3, ll.~9629--9941}: the effective action, the two frames, $\ap$ and
+  $g_s$ corrections, the superstring actions. \source{Tong §7.4, ll.~9942--10380}: simple
+  solutions, among them compactifications and the linear dilaton.
+\item \source{GPR §2.4, ll.~1053--1121 and 1345--1371}: the toroidal sigma model with constant
+  $G$ and $B$ and the integer shifts of $B$ (\cref{ch:narain,ch:odd}).
+  \source{Tong §7.6.1, ll.~10844--10905}: how the gauge symmetry of $B$ is completed on open
+  strings by the gauge field on a D-brane (\cref{ch:dbranes}).
+\end{itemize}

@@ -6,147 +6,148 @@
 \quad\texttt{\footnotesize thetaShiftR\_preserves\_eta} & {\footnotesize Real -shift g\_ = [[I, ],[0, I]]. -/ noncomputable def thetaShiftR ( : Matrix (Fin d) (Fin d) ) : Matrix (Charge d) (Charge d)  := fromBlocks 1  0 1 /-} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.DFT.GeneralizedMetric}} \\
 \quad\texttt{\footnotesize etaR\_genMetric\_sq} & {\footnotesize Real O(d,d) form  = [[0, I],[I, 0]]. -/ noncomputable def etaR (d : ) : Matrix (Charge d) (Charge d)  := fromBlocks 0 1 1 0 /-- HullZwiebach generaliz} \\
-\quad\texttt{\footnotesize etaR\_mul\_self} & {\footnotesize } \\
-\quad\texttt{\footnotesize genMetric\_symm} & {\footnotesize } \\
+\quad\texttt{\footnotesize etaR\_mul\_self} & {\footnotesize Real O(d,d) form  = [[0, I],[I, 0]]. -/ noncomputable def etaR (d : ) : Matrix (Charge d) (Charge d)  := fromBlocks 0 1 1 0 /-- HullZwiebach generaliz} \\
+\quad\texttt{\footnotesize genMetric\_symm} & {\footnotesize Real O(d,d) form  = [[0, I],[I, 0]]. -/ noncomputable def etaR (d : ) : Matrix (Charge d) (Charge d)  := fromBlocks 0 1 1 0 /-- HullZwiebach generaliz} \\
 \quad\texttt{\footnotesize massForm\_circle} & {\footnotesize Real O(d,d) form  = [[0, I],[I, 0]]. -/ noncomputable def etaR (d : ) : Matrix (Charge d) (Charge d)  := fromBlocks 0 1 1 0 /-- HullZwiebach generaliz} \\
 \quad\texttt{\footnotesize massForm\_covariant} & {\footnotesize Real O(d,d) form  = [[0, I],[I, 0]]. -/ noncomputable def etaR (d : ) : Matrix (Charge d) (Charge d)  := fromBlocks 0 1 1 0 /-- HullZwiebach generaliz} \\
 \quad\texttt{\footnotesize tduality\_inverts\_metric} & {\footnotesize Real O(d,d) form  = [[0, I],[I, 0]]. -/ noncomputable def etaR (d : ) : Matrix (Charge d) (Charge d)  := fromBlocks 0 1 1 0 /-- HullZwiebach generaliz} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.DFT.SectionCondition}} \\
-\quad\texttt{\footnotesize etaPair\_self} & {\footnotesize } \\
+\quad\texttt{\footnotesize etaPair\_self} & {\footnotesize The -pairing Z  Z' = Z  Z'. -/ def etaPair (Z Z' : Charge d  ) :  := Z  (eta d  Z') /-- A set of charges is a section if it is totally -null. -/ def I} \\
 \quad\texttt{\footnotesize eta\_momentum\_to\_winding} & {\footnotesize The -pairing Z  Z' = Z  Z'. -/ def etaPair (Z Z' : Charge d  ) :  := Z  (eta d  Z') /-- A set of charges is a section if it is totally -null. -/ def I} \\
 \quad\texttt{\footnotesize isSection\_image} & {\footnotesize The -pairing Z  Z' = Z  Z'. -/ def etaPair (Z Z' : Charge d  ) :  := Z  (eta d  Z') /-- A set of charges is a section if it is totally -null. -/ def I} \\
 \quad\texttt{\footnotesize levelMatching\_iff} & {\footnotesize The -pairing Z  Z' = Z  Z'. -/ def etaPair (Z Z' : Charge d  ) :  := Z  (eta d  Z') /-- A set of charges is a section if it is totally -null. -/ def I} \\
-\quad\texttt{\footnotesize momentumFrame\_isSection} & {\footnotesize } \\
-\quad\texttt{\footnotesize windingFrame\_isSection} & {\footnotesize } \\
+\quad\texttt{\footnotesize momentumFrame\_isSection} & {\footnotesize The -pairing Z  Z' = Z  Z'. -/ def etaPair (Z Z' : Charge d  ) :  := Z  (eta d  Z') /-- A set of charges is a section if it is totally -null. -/ def I} \\
+\quad\texttt{\footnotesize windingFrame\_isSection} & {\footnotesize The -pairing Z  Z' = Z  Z'. -/ def etaPair (Z Z' : Charge d  ) :  := Z  (eta d  Z') /-- A set of charges is a section if it is totally -null. -/ def I} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.DualScale.TraceBound}} \\
-\quad\texttt{\footnotesize circle\_effective\_scale\_ge\_two} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace theorem dualScale\_eq (G : Matrix} \\
-\quad\texttt{\footnotesize dualScale\_circle} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace theorem dualScale\_eq (G : Matrix} \\
-\quad\texttt{\footnotesize dualScale\_eq} & {\footnotesize } \\
-\quad\texttt{\footnotesize dualScale\_ge} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace theorem dualScale\_eq (G : Matrix} \\
-\quad\texttt{\footnotesize dualScale\_inv} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace theorem dualScale\_eq (G : Matrix} \\
-\quad\texttt{\footnotesize dualScale\_one} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace theorem dualScale\_eq (G : Matrix} \\
+\quad\texttt{\footnotesize circle\_effective\_scale\_ge\_two} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace /-- Unwinding the block-diagonal} \\
+\quad\texttt{\footnotesize dualScale\_circle} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace /-- Unwinding the block-diagonal} \\
+\quad\texttt{\footnotesize dualScale\_eq} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace /-- Unwinding the block-diagonal} \\
+\quad\texttt{\footnotesize dualScale\_ge} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace /-- Unwinding the block-diagonal} \\
+\quad\texttt{\footnotesize dualScale\_inv} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace /-- Unwinding the block-diagonal} \\
+\quad\texttt{\footnotesize dualScale\_one} & {\footnotesize Dual scale (G) = tr H(G, 0). -/ noncomputable def dualScale (G : Matrix (Fin d) (Fin d) ) :  := (genMetric G 0).trace /-- Unwinding the block-diagonal} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.Flux.Integrality}} \\
 \quad\texttt{\footnotesize flux\_half\_selfIntersection\_integral} & {\footnotesize Kronecker product of two integer forms, on Fin n  Fin m. -/ def kronForm (L : Gram n) (L : Gram m) : Matrix (Fin n  Fin m) (Fin n  Fin m)  := kronecke} \\
 \quad\texttt{\footnotesize kronForm\_even} & {\footnotesize Kronecker product of two integer forms, on Fin n  Fin m. -/ def kronForm (L : Gram n) (L : Gram m) : Matrix (Fin n  Fin m) (Fin n  Fin m)  := kronecke} \\
-\quad\texttt{\footnotesize kronForm\_evenDiag} & {\footnotesize } \\
-\quad\texttt{\footnotesize kronForm\_symm} & {\footnotesize } \\
+\quad\texttt{\footnotesize kronForm\_evenDiag} & {\footnotesize Kronecker product of two integer forms, on Fin n  Fin m. -/ def kronForm (L : Gram n) (L : Gram m) : Matrix (Fin n  Fin m) (Fin n  Fin m)  := kronecke} \\
+\quad\texttt{\footnotesize kronForm\_symm} & {\footnotesize Kronecker product of two integer forms, on Fin n  Fin m. -/ def kronForm (L : Gram n) (L : Gram m) : Matrix (Fin n  Fin m) (Fin n  Fin m)  := kronecke} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.Flux.Tadpole}} \\
 \quad\texttt{\footnotesize euler\_K3} & {\footnotesize Hodge numbers h\^{}(p,q) of a complex torus T (all equal to 1). -/ def t2HodgeNumber : Fin 2  Fin 2   := fun \_ \_ => 1 /-- Euler characteristic from Hodge} \\
-\quad\texttt{\footnotesize euler\_T2} & {\footnotesize } \\
+\quad\texttt{\footnotesize euler\_T2} & {\footnotesize Hodge numbers h\^{}(p,q) of a complex torus T (all equal to 1). -/ def t2HodgeNumber : Fin 2  Fin 2   := fun \_ \_ => 1 /-- Euler characteristic from Hodge} \\
 \quad\texttt{\footnotesize k3k3\_anomaly} & {\footnotesize Hodge numbers h\^{}(p,q) of a complex torus T (all equal to 1). -/ def t2HodgeNumber : Fin 2  Fin 2   := fun \_ \_ => 1 /-- Euler characteristic from Hodge} \\
 \quad\texttt{\footnotesize k3t2\_euler\_zero} & {\footnotesize Hodge numbers h\^{}(p,q) of a complex torus T (all equal to 1). -/ def t2HodgeNumber : Fin 2  Fin 2   := fun \_ \_ => 1 /-- Euler characteristic from Hodge} \\
 \quad\texttt{\footnotesize tadpole\_budget} & {\footnotesize Hodge numbers h\^{}(p,q) of a complex torus T (all equal to 1). -/ def t2HodgeNumber : Fin 2  Fin 2   := fun \_ \_ => 1 /-- Euler characteristic from Hodge} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.Basic}} \\
-\quad\texttt{\footnotesize even\_quadratic\_form\_of\_even\_diag} & {\footnotesize An integral lattice of rank n, presented by its Gram matrix in a chosen basis. -/ abbrev Gram (n : ) := Matrix (Fin n) (Fin n)  /-- Even diagonal. For} \\
-\quad\texttt{\footnotesize isUnimodular\_of\_mul\_eq\_one} & {\footnotesize An integral lattice of rank n, presented by its Gram matrix in a chosen basis. -/ abbrev Gram (n : ) := Matrix (Fin n) (Fin n)  /-- Even diagonal. For} \\
+\quad\texttt{\footnotesize even\_quadratic\_form\_of\_even\_diag} & {\footnotesize An integral lattice of rank n, presented by its Gram matrix in a chosen basis: G i j is the bilinear-form pairing of basis vector i with basis vector } \\
+\quad\texttt{\footnotesize isUnimodular\_of\_mul\_eq\_one} & {\footnotesize An integral lattice of rank n, presented by its Gram matrix in a chosen basis: G i j is the bilinear-form pairing of basis vector i with basis vector } \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.E8}} \\
-\quad\texttt{\footnotesize cartanE8Inv\_mul} & {\footnotesize } \\
-\quad\texttt{\footnotesize cartanE8\_evenDiag} & {\footnotesize } \\
-\quad\texttt{\footnotesize cartanE8\_symm} & {\footnotesize } \\
-\quad\texttt{\footnotesize cartanE8\_unimodular} & {\footnotesize Cartan matrix of E8 (positive definite form). -/ def cartanE8 : Gram 8 := !![ 2, -1, 0, 0, 0, 0, 0, 0; -1, 2, -1, 0, 0, 0, 0, 0; 0, -1, 2, -1, 0, 0, 0} \\
-\quad\texttt{\footnotesize e8Neg\_evenDiag} & {\footnotesize } \\
-\quad\texttt{\footnotesize e8Neg\_symm} & {\footnotesize } \\
-\quad\texttt{\footnotesize e8Neg\_unimodular} & {\footnotesize } \\
+\quad\texttt{\footnotesize cartanE8Inv\_mul} & {\footnotesize The Cartan matrix of the root system E8, in the Dynkin labelling fixed in the module docstring: 2 on the diagonal (each simple root has norm 2 before } \\
+\quad\texttt{\footnotesize cartanE8\_evenDiag} & {\footnotesize The Cartan matrix of the root system E8, in the Dynkin labelling fixed in the module docstring: 2 on the diagonal (each simple root has norm 2 before } \\
+\quad\texttt{\footnotesize cartanE8\_symm} & {\footnotesize The Cartan matrix of the root system E8, in the Dynkin labelling fixed in the module docstring: 2 on the diagonal (each simple root has norm 2 before } \\
+\quad\texttt{\footnotesize cartanE8\_unimodular} & {\footnotesize The Cartan matrix of the root system E8, in the Dynkin labelling fixed in the module docstring: 2 on the diagonal (each simple root has norm 2 before } \\
+\quad\texttt{\footnotesize e8Neg\_evenDiag} & {\footnotesize The Cartan matrix of the root system E8, in the Dynkin labelling fixed in the module docstring: 2 on the diagonal (each simple root has norm 2 before } \\
+\quad\texttt{\footnotesize e8Neg\_symm} & {\footnotesize The Cartan matrix of the root system E8, in the Dynkin labelling fixed in the module docstring: 2 on the diagonal (each simple root has norm 2 before } \\
+\quad\texttt{\footnotesize e8Neg\_unimodular} & {\footnotesize The Cartan matrix of the root system E8, in the Dynkin labelling fixed in the module docstring: 2 on the diagonal (each simple root has norm 2 before } \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.E8PosDef}} \\
-\quad\texttt{\footnotesize cartanE8\_det} & {\footnotesize Unit lower-triangular factor. -/ noncomputable def e8L : Matrix (Fin 8) (Fin 8)  := !![1, 0, 0, 0, 0, 0, 0, 0; -1/2, 1, 0, 0, 0, 0, 0, 0; 0, -2/3, 1, } \\
-\quad\texttt{\footnotesize cartanE8\_posDef} & {\footnotesize Unit lower-triangular factor. -/ noncomputable def e8L : Matrix (Fin 8) (Fin 8)  := !![1, 0, 0, 0, 0, 0, 0, 0; -1/2, 1, 0, 0, 0, 0, 0, 0; 0, -2/3, 1, } \\
-\quad\texttt{\footnotesize e8\_LDL} & {\footnotesize Unit lower-triangular factor. -/ noncomputable def e8L : Matrix (Fin 8) (Fin 8)  := !![1, 0, 0, 0, 0, 0, 0, 0; -1/2, 1, 0, 0, 0, 0, 0, 0; 0, -2/3, 1, } \\
+\quad\texttt{\footnotesize cartanE8\_det} & {\footnotesize Unit lower-triangular LDL factor of cartanE8 (Gaussian elimination with no pivoting needed, since all pivots turn out positive). Produced outside Lean} \\
+\quad\texttt{\footnotesize cartanE8\_posDef} & {\footnotesize Unit lower-triangular LDL factor of cartanE8 (Gaussian elimination with no pivoting needed, since all pivots turn out positive). Produced outside Lean} \\
+\quad\texttt{\footnotesize e8\_LDL} & {\footnotesize Unit lower-triangular LDL factor of cartanE8 (Gaussian elimination with no pivoting needed, since all pivots turn out positive). Produced outside Lean} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.Hyperbolic}} \\
-\quad\texttt{\footnotesize hyperbolicU\_congruence} & {\footnotesize Hyperbolic plane U. -/ def hyperbolicU : Gram 2 := !![0, 1; 1, 0] theorem hyperbolicU\_symm : hyperbolicU = hyperbolicU := by ext i j fin\_cases i <;> f} \\
-\quad\texttt{\footnotesize hyperbolicU\_eq\_narain\_gram} & {\footnotesize Hyperbolic plane U. -/ def hyperbolicU : Gram 2 := !![0, 1; 1, 0] theorem hyperbolicU\_symm : hyperbolicU = hyperbolicU := by ext i j fin\_cases i <;> f} \\
-\quad\texttt{\footnotesize hyperbolicU\_evenDiag} & {\footnotesize } \\
-\quad\texttt{\footnotesize hyperbolicU\_mul\_self} & {\footnotesize Hyperbolic plane U. -/ def hyperbolicU : Gram 2 := !![0, 1; 1, 0] theorem hyperbolicU\_symm : hyperbolicU = hyperbolicU := by ext i j fin\_cases i <;> f} \\
-\quad\texttt{\footnotesize hyperbolicU\_symm} & {\footnotesize } \\
-\quad\texttt{\footnotesize hyperbolicU\_unimodular} & {\footnotesize } \\
+\quad\texttt{\footnotesize hyperbolicU\_congruence} & {\footnotesize The hyperbolic plane U, as a Gram matrix: !![0,1;1,0]. In string-theory terms this is the momentum/winding pairing (n,w)(n',w') = n w' + n' w of one c} \\
+\quad\texttt{\footnotesize hyperbolicU\_eq\_narain\_gram} & {\footnotesize The hyperbolic plane U, as a Gram matrix: !![0,1;1,0]. In string-theory terms this is the momentum/winding pairing (n,w)(n',w') = n w' + n' w of one c} \\
+\quad\texttt{\footnotesize hyperbolicU\_evenDiag} & {\footnotesize The hyperbolic plane U, as a Gram matrix: !![0,1;1,0]. In string-theory terms this is the momentum/winding pairing (n,w)(n',w') = n w' + n' w of one c} \\
+\quad\texttt{\footnotesize hyperbolicU\_mul\_self} & {\footnotesize The hyperbolic plane U, as a Gram matrix: !![0,1;1,0]. In string-theory terms this is the momentum/winding pairing (n,w)(n',w') = n w' + n' w of one c} \\
+\quad\texttt{\footnotesize hyperbolicU\_symm} & {\footnotesize The hyperbolic plane U, as a Gram matrix: !![0,1;1,0]. In string-theory terms this is the momentum/winding pairing (n,w)(n',w') = n w' + n' w of one c} \\
+\quad\texttt{\footnotesize hyperbolicU\_unimodular} & {\footnotesize The hyperbolic plane U, as a Gram matrix: !![0,1;1,0]. In string-theory terms this is the momentum/winding pairing (n,w)(n',w') = n w' + n' w of one c} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.K3T2Signature}} \\
-\quad\texttt{\footnotesize index\_mod\_eight} & {\footnotesize Signature (b, b) of a non-degenerate real quadratic form. -/ structure Signature where pos :  neg :  deriving DecidableEq, Repr namespace Signature in} \\
-\quad\texttt{\footnotesize rank\_K3} & {\footnotesize } \\
-\quad\texttt{\footnotesize rank\_K3T2} & {\footnotesize } \\
-\quad\texttt{\footnotesize sigK3T2\_eq} & {\footnotesize } \\
-\quad\texttt{\footnotesize sigK3\_eq} & {\footnotesize } \\
-\quad\texttt{\footnotesize sigK3\_matches\_hodge} & {\footnotesize Signature (b, b) of a non-degenerate real quadratic form. -/ structure Signature where pos :  neg :  deriving DecidableEq, Repr namespace Signature in} \\
-\quad\texttt{\footnotesize sigMukai\_eq} & {\footnotesize } \\
+\quad\texttt{\footnotesize index\_mod\_eight} & {\footnotesize Signature (b, b) of a non-degenerate real quadratic form: pos real dimensions where the form is positive, neg where it is negative (b  b is the physic} \\
+\quad\texttt{\footnotesize rank\_K3} & {\footnotesize Signature (b, b) of a non-degenerate real quadratic form: pos real dimensions where the form is positive, neg where it is negative (b  b is the physic} \\
+\quad\texttt{\footnotesize rank\_K3T2} & {\footnotesize Signature (b, b) of a non-degenerate real quadratic form: pos real dimensions where the form is positive, neg where it is negative (b  b is the physic} \\
+\quad\texttt{\footnotesize sigK3T2\_eq} & {\footnotesize Signature (b, b) of a non-degenerate real quadratic form: pos real dimensions where the form is positive, neg where it is negative (b  b is the physic} \\
+\quad\texttt{\footnotesize sigK3\_eq} & {\footnotesize Signature (b, b) of a non-degenerate real quadratic form: pos real dimensions where the form is positive, neg where it is negative (b  b is the physic} \\
+\quad\texttt{\footnotesize sigK3\_matches\_hodge} & {\footnotesize Signature (b, b) of a non-degenerate real quadratic form: pos real dimensions where the form is positive, neg where it is negative (b  b is the physic} \\
+\quad\texttt{\footnotesize sigMukai\_eq} & {\footnotesize Signature (b, b) of a non-degenerate real quadratic form: pos real dimensions where the form is positive, neg where it is negative (b  b is the physic} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.Mukai}} \\
-\quad\texttt{\footnotesize hyperbolicUNeg\_mul\_self} & {\footnotesize } \\
-\quad\texttt{\footnotesize hyperbolicUNeg\_unimodular} & {\footnotesize } \\
-\quad\texttt{\footnotesize mukaiPair\_even} & {\footnotesize A Mukai vector (r, c, s)  H  H  H. -/ structure MukaiVec (n : ) where (r : ) (c : Fin n  ) (s : ) /-- Huybrechts Def. 1.4. -/ def mukaiPair (n : ) (L } \\
-\quad\texttt{\footnotesize mukaiPair\_self} & {\footnotesize } \\
-\quad\texttt{\footnotesize mukaiPair\_symm} & {\footnotesize } \\
-\quad\texttt{\footnotesize structureSheaf\_mukai\_sq} & {\footnotesize A Mukai vector (r, c, s)  H  H  H. -/ structure MukaiVec (n : ) where (r : ) (c : Fin n  ) (s : ) /-- Huybrechts Def. 1.4. -/ def mukaiPair (n : ) (L } \\
+\quad\texttt{\footnotesize hyperbolicUNeg\_mul\_self} & {\footnotesize A Mukai vector (r, c, s)  H  H  H (Huybrechts Def. 1.2): r the rank, c the first Chern class (an H vector in the ambient rank-n lattice), s the "reduc} \\
+\quad\texttt{\footnotesize hyperbolicUNeg\_unimodular} & {\footnotesize A Mukai vector (r, c, s)  H  H  H (Huybrechts Def. 1.2): r the rank, c the first Chern class (an H vector in the ambient rank-n lattice), s the "reduc} \\
+\quad\texttt{\footnotesize mukaiPair\_even} & {\footnotesize A Mukai vector (r, c, s)  H  H  H (Huybrechts Def. 1.2): r the rank, c the first Chern class (an H vector in the ambient rank-n lattice), s the "reduc} \\
+\quad\texttt{\footnotesize mukaiPair\_self} & {\footnotesize A Mukai vector (r, c, s)  H  H  H (Huybrechts Def. 1.2): r the rank, c the first Chern class (an H vector in the ambient rank-n lattice), s the "reduc} \\
+\quad\texttt{\footnotesize mukaiPair\_symm} & {\footnotesize A Mukai vector (r, c, s)  H  H  H (Huybrechts Def. 1.2): r the rank, c the first Chern class (an H vector in the ambient rank-n lattice), s the "reduc} \\
+\quad\texttt{\footnotesize structureSheaf\_mukai\_sq} & {\footnotesize A Mukai vector (r, c, s)  H  H  H (Huybrechts Def. 1.2): r the rank, c the first Chern class (an H vector in the ambient rank-n lattice), s the "reduc} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.Lattice.Reflection}} \\
-\quad\texttt{\footnotesize e8Neg\_simpleRoot\_norm} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). -/ def reflection (L : Gram n) (v : Fin n  ) : Gram n := 1 + vecMulVec v } \\
-\quad\texttt{\footnotesize e8Neg\_weyl\_isometry} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). -/ def reflection (L : Gram n) (v : Fin n  ) : Gram n := 1 + vecMulVec v } \\
-\quad\texttt{\footnotesize reflection\_involution} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). -/ def reflection (L : Gram n) (v : Fin n  ) : Gram n := 1 + vecMulVec v } \\
-\quad\texttt{\footnotesize reflection\_isometry} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). -/ def reflection (L : Gram n) (v : Fin n  ) : Gram n := 1 + vecMulVec v } \\
-\quad\texttt{\footnotesize vecMulVec\_mul\_self} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). -/ def reflection (L : Gram n) (v : Fin n  ) : Gram n := 1 + vecMulVec v } \\
+\quad\texttt{\footnotesize e8Neg\_simpleRoot\_norm} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). This is the candidate for the reflection s : x  x  2(x)/()   of Huybrecht} \\
+\quad\texttt{\footnotesize e8Neg\_weyl\_isometry} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). This is the candidate for the reflection s : x  x  2(x)/()   of Huybrecht} \\
+\quad\texttt{\footnotesize reflection\_involution} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). This is the candidate for the reflection s : x  x  2(x)/()   of Huybrecht} \\
+\quad\texttt{\footnotesize reflection\_isometry} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). This is the candidate for the reflection s : x  x  2(x)/()   of Huybrecht} \\
+\quad\texttt{\footnotesize vecMulVec\_mul\_self} & {\footnotesize Reflection matrix s\_v = 1 + v v L (so s\_v x = x + x, v v with x, v = v L x). This is the candidate for the reflection s : x  x  2(x)/()   of Huybrecht} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.Moonshine.EOT}} \\
 \quad\texttt{\footnotesize A6\_decomposition} & {\footnotesize EOT eq. (1.12): A, , A. -/ def eotA : Fin 9   := ![45, 231, 770, 2277, 5796, 13915, 30843, 65550, 132825] /-- A  A are each the dimension of an irredu} \\
 \quad\texttt{\footnotesize A6\_not\_irrep} & {\footnotesize EOT eq. (1.12): A, , A. -/ def eotA : Fin 9   := ![45, 231, 770, 2277, 5796, 13915, 30843, 65550, 132825] /-- A  A are each the dimension of an irredu} \\
 \quad\texttt{\footnotesize A7\_decomposition} & {\footnotesize EOT eq. (1.12): A, , A. -/ def eotA : Fin 9   := ![45, 231, 770, 2277, 5796, 13915, 30843, 65550, 132825] /-- A  A are each the dimension of an irredu} \\
 \quad\texttt{\footnotesize first\_five\_are\_irreps} & {\footnotesize EOT eq. (1.12): A, , A. -/ def eotA : Fin 9   := ![45, 231, 770, 2277, 5796, 13915, 30843, 65550, 132825] /-- A  A are each the dimension of an irredu} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.TDuality.Factorized}} \\
-\quad\texttt{\footnotesize chargeNorm\_even} & {\footnotesize e\_k: the matrix unit at (k,k). -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d)  := single k k 1 /-- Factorized duality D\_k (GPR eq. (2.4.29)). -/ def} \\
-\quad\texttt{\footnotesize chargeNorm\_invariant} & {\footnotesize e\_k: the matrix unit at (k,k). -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d)  := single k k 1 /-- Factorized duality D\_k (GPR eq. (2.4.29)). -/ def} \\
-\quad\texttt{\footnotesize chargeNorm\_sumElim} & {\footnotesize } \\
-\quad\texttt{\footnotesize factorized\_comm} & {\footnotesize } \\
-\quad\texttt{\footnotesize factorized\_isODD} & {\footnotesize } \\
-\quad\texttt{\footnotesize factorized\_mul\_self} & {\footnotesize } \\
-\quad\texttt{\footnotesize factorized\_two} & {\footnotesize e\_k: the matrix unit at (k,k). -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d)  := single k k 1 /-- Factorized duality D\_k (GPR eq. (2.4.29)). -/ def} \\
-\quad\texttt{\footnotesize proj\_comm} & {\footnotesize e\_k: the matrix unit at (k,k). -/ def proj (k : Fin d) : Matrix (Fin d) (Fin d)  := single k k 1 /-- Factorized duality D\_k (GPR eq. (2.4.29)). -/ def} \\
-\quad\texttt{\footnotesize proj\_mul\_self} & {\footnotesize } \\
-\quad\texttt{\footnotesize proj\_transpose} & {\footnotesize } \\
+\quad\texttt{\footnotesize chargeNorm\_even} & {\footnotesize e\_k: the matrix unit at (k,k), i.e. the diagonal projector onto the k-th coordinate. Used to isolate "act on direction k only" in factorized below. -/} \\
+\quad\texttt{\footnotesize chargeNorm\_invariant} & {\footnotesize e\_k: the matrix unit at (k,k), i.e. the diagonal projector onto the k-th coordinate. Used to isolate "act on direction k only" in factorized below. -/} \\
+\quad\texttt{\footnotesize chargeNorm\_sumElim} & {\footnotesize e\_k: the matrix unit at (k,k), i.e. the diagonal projector onto the k-th coordinate. Used to isolate "act on direction k only" in factorized below. -/} \\
+\quad\texttt{\footnotesize factorized\_comm} & {\footnotesize e\_k: the matrix unit at (k,k), i.e. the diagonal projector onto the k-th coordinate. Used to isolate "act on direction k only" in factorized below. -/} \\
+\quad\texttt{\footnotesize factorized\_isODD} & {\footnotesize e\_k: the matrix unit at (k,k), i.e. the diagonal projector onto the k-th coordinate. Used to isolate "act on direction k only" in factorized below. -/} \\
+\quad\texttt{\footnotesize factorized\_mul\_self} & {\footnotesize e\_k: the matrix unit at (k,k), i.e. the diagonal projector onto the k-th coordinate. Used to isolate "act on direction k only" in factorized below. -/} \\
+\quad\texttt{\footnotesize factorized\_two} & {\footnotesize e\_k: the matrix unit at (k,k), i.e. the diagonal projector onto the k-th coordinate. Used to isolate "act on direction k only" in factorized below. -/} \\
+\quad\texttt{\footnotesize proj\_comm} & {\footnotesize e\_k: the matrix unit at (k,k), i.e. the diagonal projector onto the k-th coordinate. Used to isolate "act on direction k only" in factorized below. -/} \\
+\quad\texttt{\footnotesize proj\_mul\_self} & {\footnotesize e\_k: the matrix unit at (k,k), i.e. the diagonal projector onto the k-th coordinate. Used to isolate "act on direction k only" in factorized below. -/} \\
+\quad\texttt{\footnotesize proj\_transpose} & {\footnotesize e\_k: the matrix unit at (k,k), i.e. the diagonal projector onto the k-th coordinate. Used to isolate "act on direction k only" in factorized below. -/} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.TDuality.Mirror}} \\
-\quad\texttt{\footnotesize mirrorTheta\_antisymm} & {\footnotesize } \\
-\quad\texttt{\footnotesize mirror\_conjugates\_tauShift} & {\footnotesize T = [[1,1],[0,1]]. -/ def tauShift : Matrix (Fin 2) (Fin 2)  := !![1, 1; 0, 1] /-- (T) = [[1,0],[-1,1]]. -/ def tauShiftDual : Matrix (Fin 2) (Fin 2) } \\
-\quad\texttt{\footnotesize tauShift\_dual\_spec} & {\footnotesize } \\
-\quad\texttt{\footnotesize tauShift\_isODD} & {\footnotesize T = [[1,1],[0,1]]. -/ def tauShift : Matrix (Fin 2) (Fin 2)  := !![1, 1; 0, 1] /-- (T) = [[1,0],[-1,1]]. -/ def tauShiftDual : Matrix (Fin 2) (Fin 2) } \\
+\quad\texttt{\footnotesize mirrorTheta\_antisymm} & {\footnotesize T = [[1,1],[0,1]]: the standard SL(2,) generator implementing    + 1 (a unimodular change of basis of the T lattice; A = T in ODD.basisChange). -/ def} \\
+\quad\texttt{\footnotesize mirror\_conjugates\_tauShift} & {\footnotesize T = [[1,1],[0,1]]: the standard SL(2,) generator implementing    + 1 (a unimodular change of basis of the T lattice; A = T in ODD.basisChange). -/ def} \\
+\quad\texttt{\footnotesize tauShift\_dual\_spec} & {\footnotesize T = [[1,1],[0,1]]: the standard SL(2,) generator implementing    + 1 (a unimodular change of basis of the T lattice; A = T in ODD.basisChange). -/ def} \\
+\quad\texttt{\footnotesize tauShift\_isODD} & {\footnotesize T = [[1,1],[0,1]]: the standard SL(2,) generator implementing    + 1 (a unimodular change of basis of the T lattice; A = T in ODD.basisChange). -/ def} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.TDuality.ODD}} \\
-\quad\texttt{\footnotesize basisChange\_isODD} & {\footnotesize } \\
-\quad\texttt{\footnotesize eta\_isODD} & {\footnotesize Charge-lattice index set: d momenta  d windings. -/ abbrev Charge (d : ) := Fin d  Fin d /-- The O(d,d)-invariant form  = [[0, I],[I, 0]]. -/ def eta } \\
-\quad\texttt{\footnotesize eta\_mul\_self} & {\footnotesize Charge-lattice index set: d momenta  d windings. -/ abbrev Charge (d : ) := Fin d  Fin d /-- The O(d,d)-invariant form  = [[0, I],[I, 0]]. -/ def eta } \\
-\quad\texttt{\footnotesize eta\_one\_reindex} & {\footnotesize Charge-lattice index set: d momenta  d windings. -/ abbrev Charge (d : ) := Fin d  Fin d /-- The O(d,d)-invariant form  = [[0, I],[I, 0]]. -/ def eta } \\
-\quad\texttt{\footnotesize isODD\_mul} & {\footnotesize Charge-lattice index set: d momenta  d windings. -/ abbrev Charge (d : ) := Fin d  Fin d /-- The O(d,d)-invariant form  = [[0, I],[I, 0]]. -/ def eta } \\
-\quad\texttt{\footnotesize thetaShift\_isODD} & {\footnotesize } \\
+\quad\texttt{\footnotesize basisChange\_isODD} & {\footnotesize Charge-lattice index set: d momenta  d windings. As a Lean type this is Fin d  Fin d; physically it indexes the 2d integers (n\_1,,n\_d,w\_1,,w\_d) labell} \\
+\quad\texttt{\footnotesize eta\_isODD} & {\footnotesize Charge-lattice index set: d momenta  d windings. As a Lean type this is Fin d  Fin d; physically it indexes the 2d integers (n\_1,,n\_d,w\_1,,w\_d) labell} \\
+\quad\texttt{\footnotesize eta\_mul\_self} & {\footnotesize Charge-lattice index set: d momenta  d windings. As a Lean type this is Fin d  Fin d; physically it indexes the 2d integers (n\_1,,n\_d,w\_1,,w\_d) labell} \\
+\quad\texttt{\footnotesize eta\_one\_reindex} & {\footnotesize Charge-lattice index set: d momenta  d windings. As a Lean type this is Fin d  Fin d; physically it indexes the 2d integers (n\_1,,n\_d,w\_1,,w\_d) labell} \\
+\quad\texttt{\footnotesize isODD\_mul} & {\footnotesize Charge-lattice index set: d momenta  d windings. As a Lean type this is Fin d  Fin d; physically it indexes the 2d integers (n\_1,,n\_d,w\_1,,w\_d) labell} \\
+\quad\texttt{\footnotesize thetaShift\_isODD} & {\footnotesize Charge-lattice index set: d momenta  d windings. As a Lean type this is Fin d  Fin d; physically it indexes the 2d integers (n\_1,,n\_d,w\_1,,w\_d) labell} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.TDuality.SL2Product}} \\
-\quad\texttt{\footnotesize basisChange\_comm\_thetaShift} & {\footnotesize J = [[0,1],[-1,0]]. -/ def jMat : Matrix (Fin 2) (Fin 2)  := !![0, 1; -1, 0] theorem mul\_jMat\_mul\_transpose (A : Matrix (Fin 2) (Fin 2) ) : A jMat A =} \\
-\quad\texttt{\footnotesize basisChange\_mul} & {\footnotesize } \\
-\quad\texttt{\footnotesize mul\_jMat\_mul\_transpose} & {\footnotesize } \\
-\quad\texttt{\footnotesize thetaShift\_mul} & {\footnotesize } \\
+\quad\texttt{\footnotesize basisChange\_comm\_thetaShift} & {\footnotesize J = [[0,1],[-1,0]]: the antisymmetric generator along which the -translations thetaShift (t  jMat) (t  ) run,    + t. -/ def jMat : Matrix (Fin 2) (Fi} \\
+\quad\texttt{\footnotesize basisChange\_mul} & {\footnotesize J = [[0,1],[-1,0]]: the antisymmetric generator along which the -translations thetaShift (t  jMat) (t  ) run,    + t. -/ def jMat : Matrix (Fin 2) (Fi} \\
+\quad\texttt{\footnotesize mul\_jMat\_mul\_transpose} & {\footnotesize J = [[0,1],[-1,0]]: the antisymmetric generator along which the -translations thetaShift (t  jMat) (t  ) run,    + t. -/ def jMat : Matrix (Fin 2) (Fi} \\
+\quad\texttt{\footnotesize thetaShift\_mul} & {\footnotesize J = [[0,1],[-1,0]]: the antisymmetric generator along which the -translations thetaShift (t  jMat) (t  ) run,    + t. -/ def jMat : Matrix (Fin 2) (Fi} \\
 \multicolumn{2}{l}{\textsf{\small DualScaleStream2.TDuality.Spectrum}} \\
-\quad\texttt{\footnotesize eta\_transpose} & {\footnotesize Helper:  is symmetric.} \\
-\quad\texttt{\footnotesize isODD\_inv\_isODD} & {\footnotesize } \\
-\quad\texttt{\footnotesize isODD\_left\_inv} & {\footnotesize } \\
-\quad\texttt{\footnotesize isODD\_right\_inv} & {\footnotesize } \\
-\quad\texttt{\footnotesize spectrum\_equivalence} & {\footnotesize Helper:  is symmetric. -/ theorem eta\_transpose : (eta d) = eta d := by unfold eta rw [fromBlocks\_transpose] simp theorem isODD\_inv\_isODD (g : Matrix } \\
+\quad\texttt{\footnotesize eta\_transpose} & {\footnotesize  g  is a left inverse of g for any g  O(d,d;): ( g ) g = 1. Proof idea: regroup as  (g  g) =   using hg : g  g = , which collapses to 1 by eta\_mul\_sel} \\
+\quad\texttt{\footnotesize isODD\_inv\_isODD} & {\footnotesize  g  is a left inverse of g for any g  O(d,d;): ( g ) g = 1. Proof idea: regroup as  (g  g) =   using hg : g  g = , which collapses to 1 by eta\_mul\_sel} \\
+\quad\texttt{\footnotesize isODD\_left\_inv} & {\footnotesize  g  is a left inverse of g for any g  O(d,d;): ( g ) g = 1. Proof idea: regroup as  (g  g) =   using hg : g  g = , which collapses to 1 by eta\_mul\_sel} \\
+\quad\texttt{\footnotesize isODD\_right\_inv} & {\footnotesize  g  is a left inverse of g for any g  O(d,d;): ( g ) g = 1. Proof idea: regroup as  (g  g) =   using hg : g  g = , which collapses to 1 by eta\_mul\_sel} \\
+\quad\texttt{\footnotesize spectrum\_equivalence} & {\footnotesize  g  is a left inverse of g for any g  O(d,d;): ( g ) g = 1. Proof idea: regroup as  (g  g) =   using hg : g  g = , which collapses to 1 by eta\_mul\_sel} \\
 \end{longtable}
-\section*{\texttt{StringTheoryFormalization} (89 theorems)}
+\section*{\texttt{StringTheoryFormalization} (91 theorems)}
 \begin{longtable}{p{0.40\textwidth}p{0.55\textwidth}}\toprule Theorem & First line of its docstring \\ \midrule\endhead\bottomrule\endfoot
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.CentralCharge}} \\
 \quad\texttt{\footnotesize central\_charge\_from\_worldsheet\_action} & {\footnotesize The Virasoro central charge contribution from a single free boson. -/ def centralChargeBoson :  := 1 /-- The Virasoro central charge from a single fre} \\
 \quad\texttt{\footnotesize central\_charge\_k3\_eq\_six} & {\footnotesize The Virasoro central charge contribution from a single free boson. -/ def centralChargeBoson :  := 1 /-- The Virasoro central charge from a single fre} \\
+\quad\texttt{\footnotesize here} & {\footnotesize } \\
 \quad\texttt{\footnotesize virasoro\_algebra\_commutator} & {\footnotesize The Virasoro central charge contribution from a single free boson. -/ def centralChargeBoson :  := 1 /-- The Virasoro central charge from a single fre} \\
 \quad\texttt{\footnotesize virasoro\_ope\_central\_term} & {\footnotesize The Virasoro central charge contribution from a single free boson. -/ def centralChargeBoson :  := 1 /-- The Virasoro central charge from a single fre} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.ChiralPrimaries}} \\
-\quad\texttt{\footnotesize chiral\_primary\_ring\_associativity} & {\footnotesize N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h  0. -/ confWeight :  /-- U(1)\_R charge q   (after sp} \\
-\quad\texttt{\footnotesize chiral\_primary\_saturates\_bps} & {\footnotesize N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h  0. -/ confWeight :  /-- U(1)\_R charge q   (after sp} \\
-\quad\texttt{\footnotesize k3\_chiral\_primary\_total} & {\footnotesize N=2 superconformal algebra charges for a state. -/ structure N2State where /-- Conformal weight h  0. -/ confWeight :  /-- U(1)\_R charge q   (after sp} \\
+\quad\texttt{\footnotesize chiral\_primary\_ring\_associativity} & {\footnotesize A pair of N=2 superconformal quantum numbers (h, q) for a state: a conformal weight and a U(1)\_R charge. Physically h  0 in any unitary representation} \\
+\quad\texttt{\footnotesize chiral\_primary\_saturates\_bps} & {\footnotesize A pair of N=2 superconformal quantum numbers (h, q) for a state: a conformal weight and a U(1)\_R charge. Physically h  0 in any unitary representation} \\
+\quad\texttt{\footnotesize k3\_chiral\_primary\_total} & {\footnotesize A pair of N=2 superconformal quantum numbers (h, q) for a state: a conformal weight and a U(1)\_R charge. Physically h  0 in any unitary representation} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.FTermPotential}} \\
 \quad\texttt{\footnotesize flux\_tadpole\_quantization\_exact} & {\footnotesize The complex dilaton-axion field  = C + i e\^{}(-). -/ structure DilatonAxion where  :  im\_pos : 0 < .im /-- The Khler potential for the dilaton modulus. } \\
 \quad\texttt{\footnotesize fterm\_potential\_minimum\_susy} & {\footnotesize The complex dilaton-axion field  = C + i e\^{}(-). -/ structure DilatonAxion where  :  im\_pos : 0 < .im /-- The Khler potential for the dilaton modulus. } \\
 \quad\texttt{\footnotesize fterm\_potential\_nonneg} & {\footnotesize The complex dilaton-axion field  = C + i e\^{}(-). -/ structure DilatonAxion where  :  im\_pos : 0 < .im /-- The Khler potential for the dilaton modulus. } \\
 \quad\texttt{\footnotesize no\_scale\_identity} & {\footnotesize The complex dilaton-axion field  = C + i e\^{}(-). -/ structure DilatonAxion where  :  im\_pos : 0 < .im /-- The Khler potential for the dilaton modulus. } \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.HodgeNumbers}} \\
-\quad\texttt{\footnotesize hodge11\_from\_kummer} & {\footnotesize The Hodge numbers of K3 as a function (p,q)  . -/ def k3HodgeNumber : Fin 3  Fin 3   | 0, \_, 0, \_ => 1 -- h\^{}(0,0) = 1 | 0, \_, 1, \_ => 0 -- h\^{}(0,1) = 0} \\
-\quad\texttt{\footnotesize k3\_b2} & {\footnotesize The Hodge numbers of K3 as a function (p,q)  . -/ def k3HodgeNumber : Fin 3  Fin 3   | 0, \_, 0, \_ => 1 -- h\^{}(0,0) = 1 | 0, \_, 1, \_ => 0 -- h\^{}(0,1) = 0} \\
-\quad\texttt{\footnotesize k3\_euler\_characteristic} & {\footnotesize The Hodge numbers of K3 as a function (p,q)  . -/ def k3HodgeNumber : Fin 3  Fin 3   | 0, \_, 0, \_ => 1 -- h\^{}(0,0) = 1 | 0, \_, 1, \_ => 0 -- h\^{}(0,1) = 0} \\
-\quad\texttt{\footnotesize k3\_hodge\_symmetry} & {\footnotesize The Hodge numbers of K3 as a function (p,q)  . -/ def k3HodgeNumber : Fin 3  Fin 3   | 0, \_, 0, \_ => 1 -- h\^{}(0,0) = 1 | 0, \_, 1, \_ => 0 -- h\^{}(0,1) = 0} \\
-\quad\texttt{\footnotesize k3\_serre\_duality} & {\footnotesize The Hodge numbers of K3 as a function (p,q)  . -/ def k3HodgeNumber : Fin 3  Fin 3   | 0, \_, 0, \_ => 1 -- h\^{}(0,0) = 1 | 0, \_, 1, \_ => 0 -- h\^{}(0,1) = 0} \\
+\quad\texttt{\footnotesize hodge11\_from\_kummer} & {\footnotesize The Hodge numbers of K3, h\^{}(p,q) = dim H\^{}q(K3,\^{}p), as a hand-written lookup table Fin 3  Fin 3   matching the standard diamond (see the module docstri} \\
+\quad\texttt{\footnotesize k3\_b2} & {\footnotesize The Hodge numbers of K3, h\^{}(p,q) = dim H\^{}q(K3,\^{}p), as a hand-written lookup table Fin 3  Fin 3   matching the standard diamond (see the module docstri} \\
+\quad\texttt{\footnotesize k3\_euler\_characteristic} & {\footnotesize The Hodge numbers of K3, h\^{}(p,q) = dim H\^{}q(K3,\^{}p), as a hand-written lookup table Fin 3  Fin 3   matching the standard diamond (see the module docstri} \\
+\quad\texttt{\footnotesize k3\_hodge\_symmetry} & {\footnotesize The Hodge numbers of K3, h\^{}(p,q) = dim H\^{}q(K3,\^{}p), as a hand-written lookup table Fin 3  Fin 3   matching the standard diamond (see the module docstri} \\
+\quad\texttt{\footnotesize k3\_serre\_duality} & {\footnotesize The Hodge numbers of K3, h\^{}(p,q) = dim H\^{}q(K3,\^{}p), as a hand-written lookup table Fin 3  Fin 3   matching the standard diamond (see the module docstri} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.ModuliGeodesics}} \\
-\quad\texttt{\footnotesize geodesic\_equation\_kummer\_locus} & {\footnotesize A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). -/ structure K3ModuliPoint where /} \\
-\quad\texttt{\footnotesize poincare\_geodesic\_atlas\_curvature} & {\footnotesize A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). -/ structure K3ModuliPoint where /} \\
-\quad\texttt{\footnotesize poincare\_geodesic\_kinetic\_energy\_nonneg} & {\footnotesize A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). -/ structure K3ModuliPoint where /} \\
-\quad\texttt{\footnotesize wp\_geodesic\_completeness} & {\footnotesize A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). -/ structure K3ModuliPoint where /} \\
-\quad\texttt{\footnotesize wp\_metric\_positive\_diagonal} & {\footnotesize A point in the K3 moduli space: a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). -/ structure K3ModuliPoint where /} \\
+\quad\texttt{\footnotesize geodesic\_equation\_kummer\_locus} & {\footnotesize A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). periodPoint is stored } \\
+\quad\texttt{\footnotesize poincare\_geodesic\_atlas\_curvature} & {\footnotesize A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). periodPoint is stored } \\
+\quad\texttt{\footnotesize poincare\_geodesic\_kinetic\_energy\_nonneg} & {\footnotesize A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). periodPoint is stored } \\
+\quad\texttt{\footnotesize wp\_geodesic\_completeness} & {\footnotesize A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). periodPoint is stored } \\
+\quad\texttt{\footnotesize wp\_metric\_positive\_diagonal} & {\footnotesize A point in the K3 moduli space, intended as a complex structure on K3 encoded by its period point in the Mukai lattice \^{}(4,20). periodPoint is stored } \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.Frontier.SL2CSymmetry}} \\
 \quad\texttt{\footnotesize mobius\_compose} & {\footnotesize A Mbius (SL(2,)) transformation z  (az+b)/(cz+d). -/ structure MobiusTransform where (a b c d : ) det\_one : a d - b c = 1 /-- Action of a Mbius transf} \\
 \quad\texttt{\footnotesize mobius\_id\_act} & {\footnotesize A Mbius (SL(2,)) transformation z  (az+b)/(cz+d). -/ structure MobiusTransform where (a b c d : ) det\_one : a d - b c = 1 /-- Action of a Mbius transf} \\
@@ -169,28 +170,29 @@
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.AutoEvolve}} \\
 \quad\texttt{\footnotesize potential\_decreases\_along\_flow} & {\footnotesize A scalar field EFT flow equation: d/dt = -\_ V(). -/ structure EFTFlowEq where /-- The effective potential V :   . -/ potential :    potential\_smooth :} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.BPSMultiplicities}} \\
-\quad\texttt{\footnotesize bps\_ratio\_pos} & {\footnotesize The BPS index ratio \_BPS = 77/60, arising from the ratio of the K3 Euler characteristic (K3) = 24 to the index density. -/ def bpsRatio :  := 77 / 60 } \\
-\quad\texttt{\footnotesize bps\_ratio\_reduced} & {\footnotesize The BPS index ratio \_BPS = 77/60, arising from the ratio of the K3 Euler characteristic (K3) = 24 to the index density. -/ def bpsRatio :  := 77 / 60 } \\
+\quad\texttt{\footnotesize bps\_ratio\_pos} & {\footnotesize The literal 77/60, called the "BPS index ratio" by this project. This is a Tier C naming choice, not a definition derived from BPS-state counting in t} \\
+\quad\texttt{\footnotesize bps\_ratio\_reduced} & {\footnotesize The literal 77/60, called the "BPS index ratio" by this project. This is a Tier C naming choice, not a definition derived from BPS-state counting in t} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.FourierMukai}} \\
-\quad\texttt{\footnotesize fm\_isEquivalence\_of\_mk} & {\footnotesize Placeholder type for a triangulated category (D\^{}b of coherent sheaves). -/ structure DerivedCategory (X : Type) where name : String /-- The Fourier-Mu} \\
-\quad\texttt{\footnotesize fm\_squared\_is\_shift} & {\footnotesize Placeholder type for a triangulated category (D\^{}b of coherent sheaves). -/ structure DerivedCategory (X : Type) where name : String /-- The Fourier-Mu} \\
+\quad\texttt{\footnotesize fm\_isEquivalence\_of\_mk} & {\footnotesize A one-field wrapper holding a String tag for a "derived category of X"  not a category: it carries no objects beyond the wrapper itself, no morphisms,} \\
+\quad\texttt{\footnotesize fm\_squared\_is\_shift} & {\footnotesize A one-field wrapper holding a String tag for a "derived category of X"  not a category: it carries no objects beyond the wrapper itself, no morphisms,} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.InvariantLocks}} \\
 \quad\texttt{\footnotesize modulus\_upper\_half} & {\footnotesize The complex structure modulus  of the worldsheet torus, constrained to the upper half-plane . -/ structure WorldsheetModulus where  :  im\_pos : 0 < .i} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.KummerBlowup}} \\
-\quad\texttt{\footnotesize exceptional\_self\_intersection} & {\footnotesize The 16 exceptional divisors from the Kummer blowup of T/. -/ def kummerExceptionalDivisors : Fin 16  String := fun i => s!"E\_(i.val)" /-- Intersection} \\
-\quad\texttt{\footnotesize kummer\_lattice\_contribution} & {\footnotesize The 16 exceptional divisors from the Kummer blowup of T/. -/ def kummerExceptionalDivisors : Fin 16  String := fun i => s!"E\_(i.val)" /-- Intersection} \\
+\quad\texttt{\footnotesize exceptional\_self\_intersection} & {\footnotesize Names the 16 indices 0,,15 as the strings "E\_0",,"E\_15", standing for the 16 exceptional (-2)-curves produced by resolving the 16 A singularities of T} \\
+\quad\texttt{\footnotesize kummer\_lattice\_contribution} & {\footnotesize Names the 16 indices 0,,15 as the strings "E\_0",,"E\_15", standing for the 16 exceptional (-2)-curves produced by resolving the 16 A singularities of T} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.MathieuM24}} \\
 \quad\texttt{\footnotesize M24RepDim\_sum\_sq} & {\footnotesize Dimension of the j-th irreducible representation of M, all 26, in the order of EguchiOoguriTachikawa, arXiv:1004.0956, eq. (A.3) (papers/foundations/e} \\
 \quad\texttt{\footnotesize M24\_first\_coefficient} & {\footnotesize Dimension of the j-th irreducible representation of M, all 26, in the order of EguchiOoguriTachikawa, arXiv:1004.0956, eq. (A.3) (papers/foundations/e} \\
 \quad\texttt{\footnotesize M24\_order} & {\footnotesize Dimension of the j-th irreducible representation of M, all 26, in the order of EguchiOoguriTachikawa, arXiv:1004.0956, eq. (A.3) (papers/foundations/e} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.MukaiLattice}} \\
-\quad\texttt{\footnotesize kummer\_sublattice\_rank} & {\footnotesize Signature (4,20) lattice for K3 cohomology. Rank = 24, signature = (4,20), discriminant = 1 (unimodular). -/ structure MukaiLattice where /-- Basis ve} \\
-\quad\texttt{\footnotesize mukai\_rank} & {\footnotesize Signature (4,20) lattice for K3 cohomology. Rank = 24, signature = (4,20), discriminant = 1 (unimodular). -/ structure MukaiLattice where /-- Basis ve} \\
+\quad\texttt{\footnotesize kummer\_sublattice\_rank} & {\footnotesize A record of four bookkeeping numbers describing a lattice's numerical invariants  not a lattice (no group, no bilinear form is carried). Defaults (24,} \\
+\quad\texttt{\footnotesize mukai\_rank} & {\footnotesize A record of four bookkeeping numbers describing a lattice's numerical invariants  not a lattice (no group, no bilinear form is carried). Defaults (24,} \\
+\quad\texttt{\footnotesize proves.} & {\footnotesize } \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.MukhanovSasaki}} \\
-\quad\texttt{\footnotesize ms\_superhorizon\_freezing} & {\footnotesize Mukhanov-Sasaki variable v\_k in Fourier space. Satisfies: v\_k'' + (k - z''/z) v\_k = 0 where z = a ' / H (slow-roll pump field). -/ structure MSSolutio} \\
+\quad\texttt{\footnotesize ms\_superhorizon\_freezing} & {\footnotesize A comoving wavenumber k > 0 together with an arbitrary complex-valued function v :    of conformal time , tagged with an unused wronskian\_normalized f} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.ODDMetric}} \\
-\quad\texttt{\footnotesize odd\_metric\_d1} & {\footnotesize The O(D,D) invariant metric \_(MN) = [[0, 1\_D],[1\_D, 0]]. This is the split-signature metric on \^{}(2D). -/ def oddMetric : Matrix (Fin (2 D)) (Fin (2 D)} \\
-\quad\texttt{\footnotesize odd\_metric\_symm} & {\footnotesize The O(D,D) invariant metric \_(MN) = [[0, 1\_D],[1\_D, 0]]. This is the split-signature metric on \^{}(2D). -/ def oddMetric : Matrix (Fin (2 D)) (Fin (2 D)} \\
+\quad\texttt{\footnotesize odd\_metric\_d1} & {\footnotesize The 2D2D integer block matrix  = [[0, 1\_D],[1\_D, 0]]: entry 1 at (i, i+D) and (i+D, i) for i < D, 0 everywhere else. This is the O(D,D)-invariant metr} \\
+\quad\texttt{\footnotesize odd\_metric\_symm} & {\footnotesize The 2D2D integer block matrix  = [[0, 1\_D],[1\_D, 0]]: entry 1 at (i, i+D) and (i+D, i) for i < D, 0 everywhere else. This is the O(D,D)-invariant metr} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.PicardSpectral}} \\
 \quad\texttt{\footnotesize picard\_convergence} & {\footnotesize The Picard iteration for the worldsheet OPE algebra converges when the spectral radius  < 1 after rescaling by 1/18. -/ def picardSpectralRadius :  :=} \\
 \quad\texttt{\footnotesize picard\_spectral\_contraction} & {\footnotesize The Picard iteration for the worldsheet OPE algebra converges when the spectral radius  < 1 after rescaling by 1/18. -/ def picardSpectralRadius :  :=} \\
@@ -199,15 +201,15 @@
 \quad\texttt{\footnotesize bdf2\_order\_bound} & {\footnotesize A stiff ODE system y' = f(t,y) with stiffness ratio \_max/\_min  1. -/ structure StiffODESystem where /-- Spatial dimension of the phase space. -/ dim :} \\
 \quad\texttt{\footnotesize implicit\_euler\_denominator\_lower\_bound} & {\footnotesize A stiff ODE system y' = f(t,y) with stiffness ratio \_max/\_min  1. -/ structure StiffODESystem where /-- Spatial dimension of the phase space. -/ dim :} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.SwamplandSafe}} \\
-\quad\texttt{\footnotesize de\_sitter\_conjecture} & {\footnotesize The Swampland Distance Conjecture (SDC): Along any geodesic in moduli space of length   O(1) in Planck units, an infinite tower of states becomes ligh} \\
-\quad\texttt{\footnotesize sdc\_tower\_mass\_pos} & {\footnotesize The Swampland Distance Conjecture (SDC): Along any geodesic in moduli space of length   O(1) in Planck units, an infinite tower of states becomes ligh} \\
-\quad\texttt{\footnotesize sdc\_tower\_suppression} & {\footnotesize The Swampland Distance Conjecture (SDC): Along any geodesic in moduli space of length   O(1) in Planck units, an infinite tower of states becomes ligh} \\
+\quad\texttt{\footnotesize de\_sitter\_conjecture} & {\footnotesize A pair of positive reals (, m) with their positivity proofs, parametrizing the one-exponential family towerMass below. Physically  is the SDC decay ra} \\
+\quad\texttt{\footnotesize sdc\_tower\_mass\_pos} & {\footnotesize A pair of positive reals (, m) with their positivity proofs, parametrizing the one-exponential family towerMass below. Physically  is the SDC decay ra} \\
+\quad\texttt{\footnotesize sdc\_tower\_suppression} & {\footnotesize A pair of positive reals (, m) with their positivity proofs, parametrizing the one-exponential family towerMass below. Physically  is the SDC decay ra} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.TDAMapper}} \\
 \quad\texttt{\footnotesize mapper\_nerve\_theorem} & {\footnotesize A cover of a topological space by open sets. -/ structure OpenCover (X : Type) [TopologicalSpace X] where index : Type sets : index  Set X isOpen :  i} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.TDualityGysin}} \\
-\quad\texttt{\footnotesize tduality\_involution} & {\footnotesize T-duality radius inversion: R  '/R. -/ noncomputable def tDualityRadius (R ' : ) (hR : 0 < R) (h : 0 < ') :  := ' / R /-- T-duality swaps winding and } \\
+\quad\texttt{\footnotesize tduality\_involution} & {\footnotesize Computes '/R, the T-dual radius under R  '/R (papers/foundations/tong\_string\_theory\_0908\_0333.txt, ll. 1137111460, and BOOK\_BIBLE.md 5). The hypothese} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.TadpoleConstraint}} \\
-\quad\texttt{\footnotesize tadpole\_cancellation} & {\footnotesize A D3-brane charge contribution at a stack location. -/ structure BraneStack where /-- Number of D3 branes (positive = brane, negative = anti-brane). -} \\
+\quad\texttt{\footnotesize tadpole\_cancellation} & {\footnotesize A single stack's contribution to the D3-brane tadpole: an integer charge (positive for branes, negative for anti-branes) and an integer euler, the Eul} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.StringDynamics.VertexOperators}} \\
 \quad\texttt{\footnotesize ope\_vacuum\_left} & {\footnotesize Worldsheet mode index. -/ abbrev ModeIndex :=  /-- A bosonic oscillator mode a\_n acting on a Fock space. We model the Fock space as formal power serie} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.UseCases.CriticalDimension}} \\
@@ -218,20 +220,20 @@
 \quad\texttt{\footnotesize bosonic\_string\_critical\_dimension} & {\footnotesize Central charge of an anticommuting first-order (b,c) system of weight (, 1-). -/ def fermionicGhostCharge (lam : ) :  := 1 - 3 (2 lam - 1) \^{} 2 /-- Cen} \\
 \quad\texttt{\footnotesize superstring\_critical\_dimension} & {\footnotesize Central charge of an anticommuting first-order (b,c) system of weight (, 1-). -/ def fermionicGhostCharge (lam : ) :  := 1 - 3 (2 lam - 1) \^{} 2 /-- Cen} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.UseCases.K3SignatureTheorem}} \\
-\quad\texttt{\footnotesize bMinus\_eq\_nineteen} & {\footnotesize } \\
-\quad\texttt{\footnotesize bPlus\_eq\_three} & {\footnotesize } \\
+\quad\texttt{\footnotesize bMinus\_eq\_nineteen} & {\footnotesize The positive-definite part of the intersection form: 2h\^{}(2,0) + 1. -/ def bPlus :  := 2 k3HodgeNumber 2, by norm\_num 0, by norm\_num + 1 /-- The negati} \\
+\quad\texttt{\footnotesize bPlus\_eq\_three} & {\footnotesize The positive-definite part of the intersection form: 2h\^{}(2,0) + 1. -/ def bPlus :  := 2 k3HodgeNumber 2, by norm\_num 0, by norm\_num + 1 /-- The negati} \\
 \quad\texttt{\footnotesize betti\_decomposition\_matches\_b2} & {\footnotesize The positive-definite part of the intersection form: 2h\^{}(2,0) + 1. -/ def bPlus :  := 2 k3HodgeNumber 2, by norm\_num 0, by norm\_num + 1 /-- The negati} \\
-\quad\texttt{\footnotesize betti\_sum\_eq\_b2} & {\footnotesize } \\
+\quad\texttt{\footnotesize betti\_sum\_eq\_b2} & {\footnotesize The positive-definite part of the intersection form: 2h\^{}(2,0) + 1. -/ def bPlus :  := 2 k3HodgeNumber 2, by norm\_num 0, by norm\_num + 1 /-- The negati} \\
 \quad\texttt{\footnotesize k3\_signature\_eq\_neg\_sixteen} & {\footnotesize The positive-definite part of the intersection form: 2h\^{}(2,0) + 1. -/ def bPlus :  := 2 k3HodgeNumber 2, by norm\_num 0, by norm\_num + 1 /-- The negati} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.UseCases.MathieuTower}} \\
-\quad\texttt{\footnotesize M21\_order\_factorization} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
-\quad\texttt{\footnotesize M22\_stabilizer\_index} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
-\quad\texttt{\footnotesize M23\_stabilizer\_index} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
-\quad\texttt{\footnotesize M24\_stabilizer\_index} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
-\quad\texttt{\footnotesize mathieu\_tower\_consistent} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
-\quad\texttt{\footnotesize mathieu\_tower\_matches\_certified\_order} & {\footnotesize Order of M (ATLAS). -/ def orderM23 :  := 10200960 /-- Order of M (ATLAS). -/ def orderM22 :  := 443520 /-- Order of M  PSL(3,4) (ATLAS). -/ def order} \\
+\quad\texttt{\footnotesize M21\_order\_factorization} & {\footnotesize Order of M (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 :  := 10200960 /-- Order of M (standard ATLAS value; not r} \\
+\quad\texttt{\footnotesize M22\_stabilizer\_index} & {\footnotesize Order of M (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 :  := 10200960 /-- Order of M (standard ATLAS value; not r} \\
+\quad\texttt{\footnotesize M23\_stabilizer\_index} & {\footnotesize Order of M (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 :  := 10200960 /-- Order of M (standard ATLAS value; not r} \\
+\quad\texttt{\footnotesize M24\_stabilizer\_index} & {\footnotesize Order of M (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 :  := 10200960 /-- Order of M (standard ATLAS value; not r} \\
+\quad\texttt{\footnotesize mathieu\_tower\_consistent} & {\footnotesize Order of M (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 :  := 10200960 /-- Order of M (standard ATLAS value; not r} \\
+\quad\texttt{\footnotesize mathieu\_tower\_matches\_certified\_order} & {\footnotesize Order of M (standard ATLAS value; not re-derived from a group action here). -/ def orderM23 :  := 10200960 /-- Order of M (standard ATLAS value; not r} \\
 \multicolumn{2}{l}{\textsf{\small StringTheoryFormalization.UseCases.NarainLattice}} \\
-\quad\texttt{\footnotesize B\_is\_polarization\_of\_Q} & {\footnotesize } \\
+\quad\texttt{\footnotesize B\_is\_polarization\_of\_Q} & {\footnotesize Left-moving momentum (see also UseCases.TDuality.leftMomentum, restated self-contained here so this file's Narain-specific claims don't accidentally d} \\
 \quad\texttt{\footnotesize gram\_eq\_hyperbolic} & {\footnotesize Left-moving momentum (see also UseCases.TDuality.leftMomentum, restated self-contained here so this file's Narain-specific claims don't accidentally d} \\
 \quad\texttt{\footnotesize narain\_form\_even} & {\footnotesize Left-moving momentum (see also UseCases.TDuality.leftMomentum, restated self-contained here so this file's Narain-specific claims don't accidentally d} \\
 \quad\texttt{\footnotesize narain\_gram\_unimodular} & {\footnotesize Left-moving momentum (see also UseCases.TDuality.leftMomentum, restated self-contained here so this file's Narain-specific claims don't accidentally d} \\

@@ -1,0 +1,836 @@
+\chapter{The Mathieu Group \texorpdfstring{$M_{24}$}{M24}}
+\label{ch:m24}
+
+The elliptic genus of a K3 surface, computed in \cref{ch:ellgenus}, is a modular object built
+from the geometry of a four-manifold and the representation theory of the $N=4$
+superconformal algebra. Its expansion coefficients are integers, and the first of them are
+$90,\,462,\,1440,\,4554,\,11592,\dots$ Eguchi, Ooguri and Tachikawa noticed that these are twice
+$45,\,231,\,770,\,2277,\,5796$, and that every one of the latter is the dimension of an
+irreducible representation of a finite group of order $244\,823\,040$, the largest Mathieu
+group $\Mtf$ \source{EOT §1, ll.~197--203, 228--239}. \Cref{ch:moonshine} is about that
+observation. Before we can discuss it we must know the group: where it comes from, how big it
+is, what its subgroups and representations look like, and what precisely the numbers
+$45, 231, 770, \dots$ are. The question of this chapter is therefore: \emph{what is $\Mtf$,
+and which of the finite, explicit facts about it has this project handed to Lean?}
+
+A student should care for two reasons. First, $\Mtf$ is not an exotic object bolted onto
+string theory from outside: it is the symmetry group of a $24$-dimensional even self-dual
+lattice, and \cref{ch:lattices,ch:k3lattice,ch:mukai} have already shown that the
+cohomology of K3 is a $24$-dimensional even self-dual lattice. Mukai's theorem, quoted in
+\cref{sec:m24:k3}, makes the link precise: every finite group of symplectic automorphisms of
+a K3 surface is a subgroup of $\Mtf$. Secondly, this chapter is a case study in how a table
+of numbers is handed to a proof assistant \emph{and then checked}. The project's table of
+representation dimensions of $\Mtf$ was wrong for months, and a one-line theorem, Burnside's
+$\sum\dim^2=|G|$, exposed it (\cref{sec:m24:story}). That story is worth more than the table.
+
+\emph{Conventions.} Groups act on the left; $|G|$ is the order of $G$; $\mathbb F_2=\{0,1\}$
+is the field with two elements; the \emph{weight} $\mathrm{wt}(c)$ of a vector
+$c\in\mathbb F_2^n$ is the number of its nonzero coordinates. The root lattice $A_1$ is the
+rank-one lattice whose generator has $x^2=2$, so $A_1\cong\sqrt2\,\Z\subset\R$ with the
+Euclidean form, and its dual $A_1^*=\tfrac1{\sqrt2}\Z$ has generator of norm $\tfrac12$
+\source{EOT App.~B, ll.~959--965}. Dimensions of representations are over $\C$.
+
+%=====================================================================================
+\section{Finite simple groups in one page}\label{sec:m24:simple}
+
+A group $G$ is \emph{simple}\index{simple group} if it has no normal subgroups other than
+$\{e\}$ and $G$. Simple groups are to finite groups what primes are to integers: every finite
+group has a composition series whose successive quotients are simple, and these quotients are
+determined by the group (Jordan--H\"older). The classification of finite simple groups
+(standard; not checked against a source in this book's library) says that a finite simple
+group is cyclic of prime order, alternating $A_n$ with $n\ge5$, a group of Lie type over a
+finite field such as $PSL(n,q)$, or one of $26$ \emph{sporadic}\index{sporadic group} groups
+that belong to no infinite family. The five Mathieu groups $M_{11}, M_{12}, M_{22}, M_{23},
+M_{24}$ are the smallest and oldest sporadic groups; the largest sporadic group is the
+Monster, whose representation dimensions $1,\,196883,\dots$ appear in the coefficients of the
+modular function $J(q)=q^{-1}+196884\,q+\dots$ (monstrous moonshine, \source{EOT §1,
+ll.~244--256}).
+
+Everything in this chapter concerns $\Mtf$\index{M24@$M_{24}$}, and the first fact to record is its order
+\source{EOT App.~A, ll.~331--334}:
+\begin{equation}\label{eq:m24:order}
+ |\Mtf| \;=\; 2^{10}\cdot3^3\cdot5\cdot7\cdot11\cdot23 \;=\; 244\,823\,040 .
+\end{equation}
+The right-hand side is a number one can check by hand ($2^{10}=1024$, $1024\cdot27=27648$,
+$27648\cdot35=967680$, $967680\cdot11=10\,644\,480$, $10\,644\,480\cdot23=244\,823\,040$), and
+it is the first of the arithmetic facts that the project has kernel-checked
+(\lean{M24\_order}, \cref{sec:m24:lean}). The prime factorization already constrains the
+group a great deal: by Lagrange's theorem\index{Lagrange's theorem} the order of every
+subgroup and of every element divides $|\Mtf|$, so no element has order $13$, $25$ or $49$
+(whereas orders $9$ and $16$ are allowed by Lagrange, though we shall see in
+\cref{sec:m24:chars} that they do not occur), and by Sylow's theorem a subgroup of order
+$23$ exists (and is cyclic, since $23$ is prime).
+Note that $23^2\nmid|\Mtf|$, and that the primes $2,3,5,7,11,23$ are exactly the primes EOT
+observe to recur in the factorizations of the moonshine coefficients $A_n$ \source{EOT §1,
+footnote~2, ll.~260--262}.
+
+\begin{pitfallbox}[An order is not a group]
+Knowing $|G|$ does not determine $G$: there are many groups of order $244\,823\,040$ (the
+cyclic group is one of them). Every Lean theorem quoted in this chapter that mentions
+$244\,823\,040$ is a statement about that \emph{numeral}. That the numeral is the order of a
+simple group called $\Mtf$ is Tier~L, quoted from EOT, and nothing about a group is
+constructed in the project's libraries. Read the statements, not the names.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{Binary codes and the extended Golay code}\label{sec:m24:golay}
+
+Of the many equivalent definitions of $\Mtf$, EOT choose the one closest to string theory:
+$\Mtf$ is the symmetry group of a particular even self-dual lattice of rank $24$ built on
+$A_1^{24}$, and that lattice is encoded by a binary code \source{EOT App.~B, ll.~959--982}.
+We reconstruct their argument in full, because every step is a two-line computation and
+because the same construction with $n=8$ produces $E_8$, which the student already knows.
+
+\begin{definition}[Binary linear code]\label{def:m24:code}
+A \emph{binary linear code}\index{binary code} of length $n$ and dimension $k$ is a
+$k$-dimensional $\mathbb F_2$-subspace $C\subseteq\mathbb F_2^n$. Its \emph{minimum
+distance}\index{minimum distance} $d$ is the smallest weight of a nonzero codeword, and one
+writes $C$ as an $[n,k,d]$ code. The \emph{dual code} is
+$C^\perp=\{x\in\mathbb F_2^n:\ x\cdot c=0\ \text{for all }c\in C\}$ with the dot product
+$x\cdot c=\sum_ix_ic_i\bmod2$; $C$ is \emph{self-dual} if $C=C^\perp$ and \emph{doubly even}
+if every codeword has weight divisible by $4$.
+\end{definition}
+
+Since $\dim C+\dim C^\perp=n$, a self-dual code has $k=n/2$ and $n$ is even. A code with
+$2^k$ words can correct any $t=\lfloor(d-1)/2\rfloor$ errors: two balls of radius $t$ around
+distinct codewords are disjoint because the codewords differ in at least $d\ge2t+1$ places.
+
+\subsection*{From a code to a lattice}
+Consider the lattice $A_1^n=(\sqrt2\,\Z)^n\subset\R^n$ with the Euclidean form. It is even
+(every vector has $x^2=2\sum m_i^2$) but far from unimodular: its Gram matrix is $2\cdot\mathbf1_n$,
+of determinant $2^n$, and its dual is $(A_1^*)^n=(\tfrac1{\sqrt2}\Z)^n$. Any lattice $N$ with
+\begin{equation}\label{eq:m24:sandwich}
+ A_1^n\ \subset\ N\ \subset\ (A_1^*)^n
+\end{equation}
+is determined by the subgroup $C:=N/A_1^n$ of $(A_1^*)^n/A_1^n\cong(\Z/2)^n=\mathbb F_2^n$,
+i.e.\ by a binary code \source{EOT App.~B, ll.~966--970}. Concretely, every
+$x\in(A_1^*)^n$ can be written uniquely as
+\begin{equation}\label{eq:m24:xcm}
+ x=\tfrac1{\sqrt2}\,(c+2m),\qquad c\in\{0,1\}^n,\ m\in\Z^n ,
+\end{equation}
+and $x\in N$ iff $c\bmod2\in C$. Now compute the three lattice properties in terms of $C$.
+
+\emph{Integrality.} For $x=\tfrac1{\sqrt2}(c+2m)$ and $y=\tfrac1{\sqrt2}(c'+2m')$,
+\begin{equation}\label{eq:m24:pairing}
+ x\cdot y=\tfrac12\sum_i(c_i+2m_i)(c'_i+2m'_i)=\tfrac12\,(c\cdot c')_{\Z}+\text{(integer)},
+\end{equation}
+where $(c\cdot c')_\Z=\sum_ic_ic'_i$ is the integer dot product. So $N$ is integral iff
+$c\cdot c'\equiv0\pmod2$ for all $c,c'\in C$, i.e.\ iff $C\subseteq C^\perp$.
+
+\emph{Evenness.} Setting $y=x$,
+\begin{equation}\label{eq:m24:norm}
+ x^2=\tfrac12\sum_i(c_i+2m_i)^2=\tfrac12\,\mathrm{wt}(c)+2\sum_i(c_im_i+m_i^2),
+\end{equation}
+using $c_i^2=c_i$. Hence $x^2\in2\Z$ for all $x\in N$ iff $\mathrm{wt}(c)\equiv0\pmod4$ for
+all $c\in C$: \emph{$N$ is even iff $C$ is doubly even} \source{EOT App.~B, ll.~972--973}.
+
+\emph{Unimodularity.} The index $[N:A_1^n]=|C|=2^k$, and for any finite-index overlattice
+$\operatorname{disc}N=\operatorname{disc}(A_1^n)/[N:A_1^n]^2=2^n/2^{2k}$ (\cref{ch:lattices}).
+So $N$ is unimodular iff $k=n/2$; together with integrality this says $C=C^\perp$:
+\emph{$N$ is self-dual iff $C$ is self-dual} \source{EOT App.~B, ll.~971--972}.
+
+\emph{Roots.} A vector of $N$ with $x^2=2$ must, by \eqref{eq:m24:norm}, have
+$\mathrm{wt}(c)\in\{0,4\}$: if $c=0$ then $\sum m_i^2=1$ and $x=\pm\sqrt2\,e_i$ is one of the
+$2n$ roots of $A_1^n$; if $\mathrm{wt}(c)=4$ then $\sum_i(c_im_i+m_i^2)=0$ forces $m_i=0$ off
+the support of $c$ and $m_i\in\{0,-1\}$ on it, giving $2^4=16$ vectors
+$\tfrac1{\sqrt2}(\pm1,\pm1,\pm1,\pm1,0,\dots)$ for each weight-$4$ word. Weight $\ge8$ gives
+$x^2\ge4$. Therefore
+\begin{equation}\label{eq:m24:roots}
+ \#\{x\in N:\ x^2=2\}\;=\;2n+16\,N_4(C),\qquad N_4(C):=\#\{c\in C:\ \mathrm{wt}(c)=4\}.
+\end{equation}
+
+\begin{example}[The Hamming code and $E_8$]\label{exa:m24:hamming}\index{Hamming code}\index{Construction A}
+Take $n=8$ and let $C_8\subset\mathbb F_2^8$ be spanned by the rows of
+\[
+ G_8=\begin{pmatrix}1&1&1&1&0&0&0&0\\0&0&1&1&1&1&0&0\\0&0&0&0&1&1&1&1\\0&1&0&1&0&1&0&1\end{pmatrix}.
+\]
+The rows are pairwise orthogonal (each pair overlaps in $0$ or $2$ positions) and have weight
+$4$, so $C_8\subseteq C_8^\perp$, and since $\dim C_8=4=8/2$ it is self-dual. Listing the
+$16$ codewords gives the weight distribution $1$ word of weight $0$, $14$ of weight $4$, $1$
+of weight $8$ (a symbolic check; the reader should do it by hand once). So $C_8$ is a doubly
+even self-dual $[8,4,4]$ code (the extended Hamming code), and by
+\eqref{eq:m24:roots} the lattice $N_8$ is even, unimodular, of rank $8$, with
+\[
+ 2\cdot8+16\cdot14=16+224=240
+\]
+roots. By the classification of \cref{ch:lattices}, $N_8\cong E_8$, and $240$ is indeed the
+number of roots of $E_8$ found there. This is a satisfying check that the bookkeeping
+\eqref{eq:m24:norm}--\eqref{eq:m24:roots} is right.
+\end{example}
+
+\subsection*{The Golay code}
+Now take $n=24$. EOT ask for an even self-dual $N$ in \eqref{eq:m24:sandwich} \emph{whose only
+roots are the $48$ roots of $A_1^{24}$}, i.e.\ $N_4(C)=0$ \source{EOT App.~B, ll.~973--977}.
+By the three computations above, $C$ must be a doubly even self-dual $[24,12,d]$ code with
+$d\ge8$. Such a code exists and is unique up to permutation of coordinates
+\source{EOT App.~B, ll.~977--978}; this uniqueness is a theorem of coding theory that we take
+from EOT as Tier~L. It is the \emph{extended binary Golay code}\index{Golay code}
+$\mathcal G_{24}$, a $[24,12,8]$ code.
+
+\begin{definition}[$\Mtf$]\label{def:m24:M24}
+$\Mtf$ is the subgroup of the symmetric group $S_{24}$, acting on $\mathbb F_2^{24}$ by
+permuting coordinates, that maps $\mathcal G_{24}$ to itself: $\Mtf=\operatorname{Aut}(\mathcal
+G_{24})$ \source{EOT App.~B, ll.~978--979}.
+\end{definition}
+
+Two remarks make this concrete. First, the weight distribution of $\mathcal G_{24}$ is
+\begin{equation}\label{eq:m24:weights}
+\begin{aligned}
+ &\text{weight}&&0&&8&&12&&16&&24\\
+ &\text{number of words}&&1&&759&&2576&&759&&1
+\end{aligned}
+\qquad\qquad 1+759+2576+759+1=4096=2^{12}.
+\end{equation}
+This is a symbolic check: the author built the code as the extended quadratic-residue code
+of length $23$ (the cyclic code spanned by the shifts of the indicator vector of the
+nonzero squares modulo $23$, extended by a parity bit), verified $\dim=12$, and counted
+weights with a short script. The interpretation of $759$ as the number of \emph{octads} and
+the fact that any $5$ of the $24$ points lie in exactly one octad, $759=\binom{24}5/\binom85$,
+are standard (Steiner system\index{Steiner system} $S(5,8,24)$) and not checked against a
+source in this book's library. Secondly, the Golay code corrects $t=\lfloor(8-1)/2\rfloor=3$ errors, and its
+codewords number $2^{12}=4096$; these two numerals are the whole content of the project's
+``Golay'' theorems (\cref{sec:m24:lean}).
+
+\begin{physicsbox}[Why a string theorist likes this definition]
+The lattice $N=N_{24}$ built from $\mathcal G_{24}$ is even, self-dual and positive
+definite of rank $24$, so it is one of the $24$ Niemeier lattices\index{Niemeier lattice} of
+\cref{ch:lattices};
+it defines a chiral conformal field theory with $c=24$ whose current algebra is
+$A_1^{24}$ (the $48$ roots are the $48$ charged currents). $\Mtf$ permutes the $24$ copies
+of $A_1$ and preserves the lattice, so it is a discrete symmetry of that chiral CFT
+\source{EOT App.~B, ll.~979--982}. The K3 cohomology lattice $H^*(K3,\Z)$ is also even
+and self-dual of rank $24$, but of signature $(4,20)$ (\cref{ch:mukai}); EOT locate the
+whole K3--$\Mtf$ connection in this coincidence of rank and type \source{EOT App.~B,
+ll.~984--990}.
+\end{physicsbox}
+
+\begin{figure}[t]\centering
+\begin{tikzpicture}[>=Latex,node distance=9mm]
+\node (A) {$A_1^{24}=(\sqrt2\,\Z)^{24}$};
+\node (N) [right=22mm of A] {$N$};
+\node (D) [right=22mm of N] {$(A_1^*)^{24}=(\tfrac1{\sqrt2}\Z)^{24}$};
+\draw[->] (A) -- node[above]{\small index $2^{12}$} (N);
+\draw[->] (N) -- node[above]{\small index $2^{12}$} (D);
+\node (F) [below=9mm of N] {$\mathcal G_{24}=N/A_1^{24}\ \subset\ \mathbb F_2^{24}=(A_1^*)^{24}/A_1^{24}$};
+\draw[->,dashed] (N) -- (F);
+\node (M) [below=8mm of F] {$\Mtf=\operatorname{Aut}(\mathcal G_{24})\subset S_{24}$ permutes the $24$ coordinates};
+\end{tikzpicture}
+\caption{The lattice sandwich \eqref{eq:m24:sandwich}. $N$ is even iff the code is doubly
+even, self-dual iff the code is self-dual, and has no roots beyond those of $A_1^{24}$ iff
+the code has no words of weight $4$. The total index $[(A_1^*)^{24}:A_1^{24}]=2^{24}$ splits
+as $2^{12}\cdot2^{12}$ exactly when $N$ is unimodular.}
+\label{fig:m24:sandwich}
+\end{figure}
+
+%=====================================================================================
+\section{Transitivity and the stabilizer tower}\label{sec:m24:tower}
+
+\begin{definition}[$k$-transitive action]\label{def:m24:transitive}
+A group $G$ acting on a finite set $\Omega$ is \emph{$k$-transitive}\index{transitive
+action} if for any two ordered $k$-tuples of distinct points $(a_1,\dots,a_k)$,
+$(b_1,\dots,b_k)$ there is $g\in G$ with $g a_i=b_i$ for all $i$. The \emph{stabilizer} of a
+point $a$ is $G_a=\{g:\ ga=a\}$, and the orbit--stabilizer theorem\index{orbit--stabilizer
+theorem} gives $|G|=|G\cdot a|\cdot|G_a|$.
+\end{definition}
+
+If $G$ is transitive on $\Omega$ with $|\Omega|=n$, then $|G|=n\,|G_a|$, and $G$ is
+$k$-transitive iff $G_a$ is $(k-1)$-transitive on $\Omega\setminus\{a\}$. Iterating,
+a $k$-transitive group of degree $n$ satisfies
+\begin{equation}\label{eq:m24:ktrans}
+ |G|=n(n-1)\cdots(n-k+1)\cdot|G_{a_1\dots a_k}| ,
+\end{equation}
+where $G_{a_1\dots a_k}$ is the pointwise stabilizer of $k$ points. The Mathieu group $\Mtf$
+acts on the $24$ coordinates of the Golay code, and this action is $5$-transitive (standard;
+the project's \lean{MathieuTower.lean} docstring states it, but it is not checked against a
+source in this book's library, and it is not formalized). Successively fixing points defines
+the \emph{stabilizer tower}\index{Mathieu tower}
+\begin{equation}\label{eq:m24:tower}
+ \Mtf\ \supset\ M_{23}\ \supset\ M_{22}\ \supset\ M_{21}\cong PSL(3,4),
+\end{equation}
+where $M_{23}$ is the stabilizer of one point, $M_{22}$ of two, $M_{21}$ of three. Each step
+is an instance of \eqref{eq:m24:ktrans}: since $\Mtf$ is transitive on $24$ points,
+$M_{23}$ on the remaining $23$, and $M_{22}$ on the remaining $22$,
+\begin{equation}\label{eq:m24:indices}
+ |\Mtf|=24\,|M_{23}|,\qquad |M_{23}|=23\,|M_{22}|,\qquad |M_{22}|=22\,|M_{21}| .
+\end{equation}
+Starting from \eqref{eq:m24:order} and dividing,
+\begin{align}
+ |M_{23}|&=244\,823\,040/24=10\,200\,960=2^7\cdot3^2\cdot5\cdot7\cdot11\cdot23,\label{eq:m24:M23}\\
+ |M_{22}|&=10\,200\,960/23=443\,520=2^7\cdot3^2\cdot5\cdot7\cdot11,\label{eq:m24:M22}\\
+ |M_{21}|&=443\,520/22=20\,160=2^6\cdot3^2\cdot5\cdot7.\label{eq:m24:M21}
+\end{align}
+The last number is recognizable. The group $GL(3,q)$ of invertible $3\times3$ matrices over
+the field with $q$ elements has order $(q^3-1)(q^3-q)(q^3-q^2)$ (choose the three columns
+to be linearly independent: $q^3-1$ choices for the first, $q^3-q$ for the second, $q^3-q^2$
+for the third); dividing by the $q-1$ nonzero determinants gives $|SL(3,q)|$, and by the
+$\gcd(3,q-1)$ scalar matrices of determinant $1$ gives $|PSL(3,q)|$. For $q=4$:
+\begin{equation}\label{eq:m24:psl34}
+ |PSL(3,4)|=\frac{(64-1)(64-4)(64-16)}{(4-1)\cdot\gcd(3,3)}=\frac{63\cdot60\cdot48}{3\cdot3}
+ =\frac{181\,440}{9}=20\,160,
+\end{equation}
+in agreement with \eqref{eq:m24:M21}. That $M_{21}$ is in fact isomorphic to $PSL(3,4)$ is
+Tier~L (standard; stated in the project's docstring, not in this book's library); that the
+\emph{orders} agree is arithmetic, and it is what the project proves.
+
+Going two steps further down the tower, $5$-transitivity and \eqref{eq:m24:ktrans} give
+\begin{equation}\label{eq:m24:fivetrans}
+ 24\cdot23\cdot22\cdot21\cdot20=5\,100\,480,\qquad
+ \frac{|\Mtf|}{5\,100\,480}=48 ,
+\end{equation}
+so the pointwise stabilizer of five points has order $48$ (and $\Mtf$ is not \emph{sharply}
+$5$-transitive: the map from $\Mtf$ to ordered $5$-tuples is $48$-to-one). Read the other
+way, \eqref{eq:m24:fivetrans} is a divisibility test: any $5$-transitive group of degree $24$
+has order divisible by $5\,100\,480=2^7\cdot3^2\cdot5\cdot7\cdot11\cdot23$, and
+\eqref{eq:m24:order} passes.
+
+\begin{figure}[t]\centering
+\begin{tikzpicture}[>=Latex,every node/.style={font=\small}]
+\node[draw,rounded corners,minimum width=34mm] (m24) at (0,0) {$\Mtf$, order $244\,823\,040$};
+\node[draw,rounded corners,minimum width=34mm] (m23) at (0,-1.3) {$M_{23}$, order $10\,200\,960$};
+\node[draw,rounded corners,minimum width=34mm] (m22) at (0,-2.6) {$M_{22}$, order $443\,520$};
+\node[draw,rounded corners,minimum width=34mm] (m21) at (0,-3.9) {$M_{21}\cong PSL(3,4)$, order $20\,160$};
+\draw[->] (m24) -- node[right]{fix $1$ point, index $24$} (m23);
+\draw[->] (m23) -- node[right]{fix a $2$nd point, index $23$} (m22);
+\draw[->] (m22) -- node[right]{fix a $3$rd point, index $22$} (m21);
+\node[left=6mm of m24,align=right] {$5$-transitive\\on $24$ points};
+\node[left=6mm of m23,align=right] {$4$-transitive\\on $23$ points};
+\node[left=6mm of m22,align=right] {$3$-transitive\\on $22$ points};
+\node[left=6mm of m21,align=right] {$2$-transitive\\on $21$ points};
+\end{tikzpicture}
+\caption{The point-stabilizer tower \eqref{eq:m24:tower}. Each arrow divides the order by the
+number of points the group above it acts on transitively; the product
+$24\cdot23\cdot22\cdot20\,160$ returns $|\Mtf|$ (\lean{mathieu\_tower\_consistent}).}
+\label{fig:m24:tower}
+\end{figure}
+
+\begin{pitfallbox}[Index relations do not prove existence]
+Equations \eqref{eq:m24:indices} are consequences of transitivity, not evidence for it.
+Four numerals $a=24b$, $b=23c$, $c=22d$ are consistent with infinitely many groups (and with
+none). The Lean theorems \lean{M24\_stabilizer\_index}, \lean{M23\_stabilizer\_index},
+\lean{M22\_stabilizer\_index} of \cref{sec:m24:lean} verify exactly these numeral equations
+for the ATLAS values of $|M_{23}|,|M_{22}|,|M_{21}|$; they say nothing about groups acting on
+sets. The ATLAS values themselves are Tier~L and are not in this book's library of sources.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{Conjugacy classes and irreducible representations}\label{sec:m24:chars}
+
+\subsection*{Classes}
+Two elements $g,h$ of a group are \emph{conjugate} if $h=xgx^{-1}$ for some $x$; conjugacy
+classes\index{conjugacy class} partition the group, and a class function (such as the
+character of a representation) is constant on each. $\Mtf$ has $26$ conjugacy classes
+\source{EOT App.~A, l.~336}, named in the ATLAS convention by the order of their elements
+and a letter \source{GHV Table~1, ll.~1916--1922, 1928--1930}:
+\begin{equation}\label{eq:m24:classes}
+\begin{aligned}
+ &1A,\ 2A,\ 2B,\ 3A,\ 3B,\ 4A,\ 4B,\ 4C,\ 5A,\ 6A,\ 6B,\ 7A,\ 7B,\ 8A,\ 10A,\ 11A,\\
+ &12A,\ 12B,\ 14A,\ 14B,\ 15A,\ 15B,\ 21A,\ 21B,\ 23A,\ 23B .
+\end{aligned}
+\end{equation}
+The element orders that occur are thus $1,2,3,4,5,6,7,8,10,11,12,14,15,21,23$, every one a
+divisor of \eqref{eq:m24:order} as Lagrange requires (symbolic check). Two features will
+matter in \cref{ch:moonshine}. First, if $\gcd(a,o(g))=1$ then $g^a$ lies in the same class
+as $g$ \source{GHV §3.1, ll.~694--697}: the character table\index{character table} of
+$\Mtf$ is ``almost rational'',
+its only irrational entries being of the form $e_p^\pm=(-1\pm\sqrt{-p})/2$ \source{EOT
+App.~A, eq.~(A.2), ll.~339--343}, which is why the classes come in lettered pairs such as
+$7A/7B$ or $23A/23B$. Secondly, the classes $1A,2A,3A,4B,5A,6A$ contain elements of $M_{23}$
+(they fix a point), whereas $2B,3B,4A,4C$ do not; the latter are exactly the classes on
+which the permutation character $\mathrm{Tr}_{23\oplus1}(g)$ vanishes \source{GHV §3.1,
+ll.~808--813}. The number of fixed points of $g$ on the $24$ coordinates is the character of
+the $24$-dimensional permutation representation, which splits as $\mathbf{24}=\mathbf1\oplus\mathbf{23}$
+\source{GHV §3, l.~555}.
+
+\subsection*{Irreducible representations and their dimensions}
+A finite group has as many irreducible complex representations as conjugacy classes, so
+$\Mtf$ has $26$ of them \source{EOT App.~A, l.~336}. Their dimensions, in increasing order,
+are \source{EOT App.~A, eq.~(A.3), ll.~345--351}
+\begin{equation}\label{eq:m24:dims}
+\begin{aligned}
+ &1,\ 23,\ 45,\ 45,\ 231,\ 231,\ 252,\ 253,\ 483,\ 770,\ 770,\ 990,\ 990,\ 1035,\ 1035,\ 1035,\\
+ &1265,\ 1771,\ 2024,\ 2277,\ 3312,\ 3520,\ 5313,\ 5796,\ 5544,\ 10395 .
+\end{aligned}
+\end{equation}
+(EOT list $5796$ before $5544$; we keep their order because the project's Lean table does.)
+The representations of dimensions $45,231,770,990,1035$ come in complex-conjugate pairs,
+and there is a third, real, representation of dimension $1035$ \source{EOT App.~A,
+eq.~(A.4), ll.~353--358}; so $10$ of the $26$ representations are complex and $16$ are real.
+The repeated entries in \eqref{eq:m24:dims} are therefore not typographical: $45$ and $\overline{45}$
+are different representations of the same dimension, and a table that lists $45$ once is
+\emph{wrong}. This is precisely the kind of error that \cref{sec:m24:story} is about.
+
+Several of these numbers have a direct meaning on the $24$ points, which is a useful way to
+remember them (the interpretations are standard and not checked against a source in this
+book's library; the arithmetic is a symbolic check): $23$ is the nontrivial part of the
+permutation representation; $\binom{24}2=276=1+23+252$ is the dimension of $\Lambda^2$ of
+the permutation representation; $253=759\cdot8/24$ is the number of octads through a
+point; $2024=\binom{24}3$; and $1771=\binom{24}4/6$.
+
+\subsection*{Burnside's sum of squares}
+\begin{proposition}[Burnside]\label{prop:m24:burnside}\index{Burnside's sum of squares}
+For a finite group $G$ with irreducible complex representations $V_1,\dots,V_r$,
+\begin{equation}\label{eq:m24:burnside}
+ \sum_{i=1}^r(\dim V_i)^2=|G| .
+\end{equation}
+\end{proposition}
+\begin{proof}[Derivation]
+Let $G$ act on the vector space $\C[G]$ of formal combinations of group elements by left
+multiplication (the \emph{regular representation}\index{regular representation}). Its
+character is $\chi_{\mathrm{reg}}(e)=|G|$ and $\chi_{\mathrm{reg}}(g)=0$ for $g\ne e$, because
+$g\ne e$ fixes no basis vector. The multiplicity of $V_i$ in $\C[G]$ is the inner product
+$\langle\chi_{\mathrm{reg}},\chi_i\rangle=\frac1{|G|}\sum_g\chi_{\mathrm{reg}}(g)\overline{\chi_i(g)}
+=\frac1{|G|}\cdot|G|\cdot\dim V_i=\dim V_i$. Comparing dimensions of $\C[G]=\bigoplus_iV_i^{\oplus\dim V_i}$
+gives \eqref{eq:m24:burnside}. (Standard; uses orthogonality of characters, which is not
+proved in this book.)
+\end{proof}
+
+\begin{example}[Burnside for $\Mtf$, with numbers]\label{exa:m24:burnside}
+Squaring and adding the $26$ entries of \eqref{eq:m24:dims} in blocks:
+\begin{align*}
+ 1^2+23^2&=530,\\
+ 2\cdot45^2+2\cdot231^2&=4\,050+106\,722=110\,772,\\
+ 252^2+253^2+483^2&=63\,504+64\,009+233\,289=360\,802,\\
+ 2\cdot770^2+2\cdot990^2+3\cdot1035^2&=1\,185\,800+1\,960\,200+3\,213\,675=6\,359\,675,\\
+ 1265^2+1771^2+2024^2+2277^2&=1\,600\,225+3\,136\,441+4\,096\,576+5\,184\,729=14\,017\,971,\\
+ 3312^2+3520^2+5313^2&=10\,969\,344+12\,390\,400+28\,227\,969=51\,587\,713,\\
+ 5796^2+5544^2+10395^2&=33\,593\,616+30\,735\,936+108\,056\,025=172\,385\,577 .
+\end{align*}
+The total is $530+110\,772+360\,802+6\,359\,675+14\,017\,971+51\,587\,713+172\,385\,577
+=244\,823\,040=|\Mtf|$, as \eqref{eq:m24:burnside} demands. This is the computation that Lean
+performs in \lean{M24RepDim\_sum\_sq} (\cref{sec:m24:lean}). A second, independent sanity
+check is that every entry of \eqref{eq:m24:dims} divides $|\Mtf|$, as the degree of an
+irreducible representation must (Frobenius; standard, not in this book's library); a
+symbolic check confirms it for all $26$.
+\end{example}
+
+\begin{pitfallbox}[What Burnside's check does and does not prove]
+Passing \eqref{eq:m24:burnside} is strong evidence that a transcribed table is correct,
+because a single wrong, duplicated or missing entry changes the sum by a large amount that
+is unlikely to be compensated. It is \emph{not} a proof that the $26$ numbers are the
+degrees of $\Mtf$: infinitely many other $26$-tuples of positive integers have the same sum
+of squares. And the check is only as good as the value of $|G|$ it is compared with, which
+must come from an independent source (here \eqref{eq:m24:order}, EOT eq.~(A.1)).
+\end{pitfallbox}
+
+\subsection*{The moonshine numbers, briefly}
+EOT's coefficients $A_n$ of \cref{ch:ellgenus} are $45, 231, 770, 2277, 5796, 13915, 30843,
+\dots$ \source{EOT eq.~(1.12), ll.~197--203}; the first five are single entries of
+\eqref{eq:m24:dims}, and the next two decompose as $A_6=3520+10395$ and
+$A_7=10395+5796+5544+5313+2024+1771$ \source{EOT eqs.~(1.14)--(1.15), ll.~228--239}. GHV
+absorb a factor $2$ and write $90=45+\overline{45}$, $462=231+\overline{231}$,
+$1440=770+\overline{770}$, $4554=2\cdot2277$, $11592=2\cdot5796$, $27830=2\cdot3520+2\cdot10395$,
+$61686=2(1771+2024+5313+5796+5544+10395)$ \source{GHV eqs.~(3.3)--(3.4), ll.~555--575}, so
+that each $2A_n$ is the dimension of a \emph{real} representation. \Cref{ch:moonshine} takes
+the story from here; for now note only that the decompositions for $n\ge6$ are not unique
+\source{EOT §1, ll.~237--239}, which is why a stronger test (the twining genera of GHV) was
+needed.
+
+%=====================================================================================
+\section{\texorpdfstring{$\Mtf$}{M24} and the geometry of K3}\label{sec:m24:k3}
+
+Let $S$ be a K3 surface and $G$ a finite group of automorphisms of $S$ that preserve the
+holomorphic two-form (\emph{symplectic} automorphisms, \cref{ch:k3}). Write
+$\Lambda=H^*(S,\Z)$ for the Mukai lattice of \cref{ch:mukai}, even, self-dual, of signature
+$(4,20)$; let $\Lambda^G$ be the sublattice fixed by $G$ and $\Lambda_G$ its orthogonal
+complement. EOT summarize Mukai's argument as follows \source{EOT App.~B, ll.~984--1001}.
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item $\Lambda_G$ lies in the primitive part of $H^{1,1}$ and is negative definite.
+\item By Nikulin's embedding results, $\Lambda_G$ embeds in the Niemeier lattice
+ $N=N_{24}$ of \cref{sec:m24:golay}, hence $G$ acts on $N$ and $G\subseteq\Mtf$.
+\item $G$ fixes $H^0$, $H^4$, $H^{2,0}$, $H^{0,2}$ and the K\"ahler class, so
+ $\rk\Lambda^G\ge5$ and $\rk\Lambda_G\le19$. Transported to the action on $24$ points, $G$
+ has at least $5$ orbits.
+\item Conversely, a subgroup of $\Mtf$ with at least $5$ orbits on the $24$ points acts on
+ $H^{1,1}$ of some K3 surface, by the global Torelli theorem (\cref{ch:k3lattice}).
+\end{enumerate}
+This is Mukai's theorem\index{Mukai's theorem} (Tier~L: \source{EOT App.~B, ll.~955--958,
+1054--1057} cite Mukai 1988 and Kondo 1998; the proofs are not in this book's library).
+In particular $G$ is never all of $\Mtf$, which acts transitively (one orbit). EOT's example
+is the Fermat quartic $X^4+Y^4+Z^4+W^4=0$ in $\mathbb{CP}^3$, whose symplectic symmetry group
+$(\Z_4)^2\rtimes S_4$ has order $16\cdot24=384=2^7\cdot3$ and decomposes the $24$ points into
+five orbits of lengths $1,1,2,4,16$ \source{EOT App.~B, ll.~1003--1006}; note $1+1+2+4+16=24$
+and $384\mid|\Mtf|$.
+
+\begin{physicsbox}[Geometric symmetry versus moonshine symmetry]
+Mukai's theorem gives a \emph{different} subgroup of $\Mtf$ at each special point of the K3
+moduli space, never the whole group. The moonshine observation of \cref{ch:moonshine}
+concerns the elliptic genus, which is constant over the moduli space; EOT ask whether the
+various geometric subgroups are ``enhanced to $\Mtf$ over the whole of moduli space'' at the
+level of the elliptic genus \source{EOT §1, ll.~268--275}. In this book that enhancement is
+a Tier~L statement of the moonshine literature where cited, and Tier~C where this
+programme extends it.
+\end{physicsbox}
+
+%=====================================================================================
+\section{How a wrong table was caught}\label{sec:m24:story}
+
+The project's table of $\Mtf$ representation dimensions, \lean{M24RepDim}, was entered by
+hand from EOT eq.~(A.3) and was ``verified'' for months, in the sense that the library
+compiled and its one theorem about the table, a lookup of the second entry ($23$), passed.
+The table was nevertheless wrong: it listed $10395$ and $483$ twice and omitted the second
+$990$ and the third $1035$ \source{MathieuM24.lean, ll.~65--67; LL.md §S2.6, ll.~63--67}.
+Such a table has the right length ($26$), the right first entries, and the right multiset
+of \emph{distinct} values; a lookup theorem cannot see the difference. Burnside's identity
+can. With the two wrong substitutions the sum of squares changes by
+\begin{equation}\label{eq:m24:wrongsum}
+ 10395^2+483^2-990^2-1035^2=108\,056\,025+233\,289-980\,100-1\,071\,225=106\,237\,989,
+\end{equation}
+so the wrong table sums to $244\,823\,040+106\,237\,989=351\,061\,029\ne|\Mtf|$, and the
+theorem \lean{M24RepDim\_sum\_sq} of \cref{sec:m24:lean} fails to compile against it. Once
+the table was corrected on 2026-09-16, the theorem closed by unfolding the $26$-term sum
+and normalizing numerals \source{MathieuM24.lean, ll.~39--45, 117--121}.
+
+\begin{historybox}[The lesson, as the project recorded it]
+``Guard every data table with a theorem that would break if the table were wrong.
+Stream~1's \lean{M24RepDim} table had been `verified' for months and was wrong (two entries
+duplicated, two missing), because its only theorem checked a single entry. Burnside's
+$\sum\dim^2=|G|$ caught it in one line. For every hand-entered table, add the cheapest
+global consistency theorem available (sum of squares, total count, known product,
+symmetry).'' \source{LL.md §S2.6, ll.~63--67}
+\end{historybox}
+
+The general point is worth restating for a student of formal methods. A proof assistant
+checks that a proof proves its statement; it does not check that the statement is the one
+you meant, nor that the data in a definition were copied correctly. Global invariants that
+the data must satisfy, sums, counts, factorizations, symmetries, are cheap to state, cheap to
+prove by \lean{norm\_num} or \lean{decide}, and catch exactly the errors a lookup cannot.
+Notice also the second consistency theorem in \lean{MathieuTower.lean}: the tower product
+$24\cdot23\cdot22\cdot20160$ is compared not with a fresh literal but with the
+\emph{already-certified} factorization \lean{M24\_order}, so that the two files cannot drift
+apart silently \source{MathieuTower.lean, ll.~97--110}.
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:m24:lean}
+
+\begin{sloppypar}
+Five files touch $\Mtf$ or the Golay code. Two of them are worth reading:
+\lean{MathieuM24.lean} and \lean{MathieuTower.lean}, both in the library
+\lean{StringTheoryFormalization}. Three others, in the Mathlib-free libraries
+\lean{Lean5Corpus} and \lean{StringTheoryFoundation}, are arithmetic shadows whose
+docstrings promise much more than their statements deliver, and we describe them for that
+reason. According to the
+project's axiom audit \source{docs/VERIFIED\_FOUNDATION.md, ll.~7--16}, every theorem
+below depends only on the axioms \lean{propext}, \lean{Classical.choice} and
+\lean{Quot.sound}. \emph{No group, group action, code or representation is constructed in any of
+these files}: they contain natural-number tables and equalities between numerals
+\source{MathieuM24.lean, ll.~21--24, 110--114; MathieuTower.lean, ll.~43--46}.
+\end{sloppypar}
+
+\begin{leanbox}[The dimension table, the order and Burnside (\lean{MathieuM24.lean})]
+\begin{leancode}
+def M24RepDim : Fin 26 → ℕ
+  | ⟨0, _⟩ => 1      | ⟨1, _⟩ => 23     | ⟨2, _⟩ => 45     | ⟨3, _⟩ => 45
+  | ⟨4, _⟩ => 231    | ⟨5, _⟩ => 231    | ⟨6, _⟩ => 252    | ⟨7, _⟩ => 253
+  | ⟨8, _⟩ => 483    | ⟨9, _⟩ => 770    | ⟨10, _⟩ => 770   | ⟨11, _⟩ => 990
+  | ⟨12, _⟩ => 990   | ⟨13, _⟩ => 1035  | ⟨14, _⟩ => 1035  | ⟨15, _⟩ => 1035
+  | ⟨16, _⟩ => 1265  | ⟨17, _⟩ => 1771  | ⟨18, _⟩ => 2024  | ⟨19, _⟩ => 2277
+  | ⟨20, _⟩ => 3312  | ⟨21, _⟩ => 3520  | ⟨22, _⟩ => 5313  | ⟨23, _⟩ => 5796
+  | ⟨24, _⟩ => 5544  | ⟨25, _⟩ => 10395
+  | ⟨n + 26, h⟩ => absurd h (by omega)
+
+theorem M24_first_coefficient :
+    M24RepDim ⟨1, by norm_num⟩ = 23 := by rfl
+
+theorem M24_order : (244823040 : ℕ) = 2^10 * 3^3 * 5 * 7 * 11 * 23 := by norm_num
+
+theorem M24RepDim_sum_sq : (∑ i : Fin 26, M24RepDim i ^ 2) = 244823040 := by
+  simp [Fin.sum_univ_succ, M24RepDim]
+\end{leancode}
+(The $26$ cases of \lean{M24RepDim} are written one per line in the source; they are
+re-wrapped here.) \emph{Reading.} \lean{M24RepDim} is a function from the $26$-element type
+\lean{Fin 26} to $\N$, a literal transcription of \eqref{eq:m24:dims} in EOT's order. The
+final case is unreachable (\lean{n + 26 < 26} is refuted by \lean{omega}), so a missing entry
+would be a compile error rather than a silent default \source{MathieuM24.lean, ll.~95--98}.
+\lean{M24\_order} is the numeral identity \eqref{eq:m24:order}; \lean{M24RepDim\_sum\_sq} is
+the computation of \cref{exa:m24:burnside}; \lean{M24\_first\_coefficient} is a single lookup
+kept as a regression guard. \emph{Proof idea.} \lean{norm\_num} evaluates both sides of
+\lean{M24\_order} to the same numeral. For the sum, \lean{Fin.sum\_univ\_succ} peels the
+sum over \lean{Fin 26} into $26$ explicit terms, each \lean{M24RepDim} application reduces
+to its literal, and \lean{simp}'s arithmetic normalizes the result. \emph{Scope.} Burnside's
+theorem itself (\cref{prop:m24:burnside}) is not formalized; that $244\,823\,040$ is the
+order of a group is not formalized; the identification of the table with $\Mtf$ is Tier~L.
+\end{leanbox}
+
+\begin{leanbox}[The stabilizer tower (\lean{MathieuTower.lean})]
+\begin{leancode}
+def orderM23 : ℕ := 10200960
+def orderM22 : ℕ := 443520
+def orderM21 : ℕ := 20160
+
+theorem M24_stabilizer_index : 244823040 = 24 * orderM23 := by ...
+theorem M23_stabilizer_index : orderM23 = 23 * orderM22 := by ...
+theorem M22_stabilizer_index : orderM22 = 22 * orderM21 := by ...
+theorem M21_order_factorization : orderM21 = 2 ^ 6 * 3 ^ 2 * 5 * 7 := by ...
+
+theorem mathieu_tower_consistent :
+    24 * (23 * (22 * orderM21)) = 244823040 := by
+  rw [← M22_stabilizer_index, ← M23_stabilizer_index, ← M24_stabilizer_index]
+
+theorem mathieu_tower_matches_certified_order :
+    24 * (23 * (22 * orderM21)) = 2 ^ 10 * 3 ^ 3 * 5 * 7 * 11 * 23 := by
+  rw [mathieu_tower_consistent, M24_order]
+\end{leancode}
+\emph{Reading.} The three orders \eqref{eq:m24:M23}--\eqref{eq:m24:M21} are hard-coded
+constants, and the theorems are exactly the index relations \eqref{eq:m24:indices}, the
+factorization \eqref{eq:m24:M21}, and their composition. \emph{Proof idea.} Each index
+relation is \lean{unfold} followed by \lean{norm\_num}. The two composition theorems are
+pure rewriting: \lean{mathieu\_tower\_consistent} substitutes the three index equations from
+the inside out until both sides are the same numeral, and the last theorem chains it with
+the imported \lean{M24\_order} \source{MathieuTower.lean, ll.~48--53}. \emph{Scope.} As the
+docstring itself says, this ``is \emph{not} a formalization of the Mathieu group, its
+Golay-code action, transitivity, or the orbit--stabilizer theorem itself''
+\source{MathieuTower.lean, ll.~43--46}. The ATLAS orders are Tier~L and are not in this
+book's library of sources.
+\end{leanbox}
+
+\begin{leanbox}[Golay-code numerals (\lean{Problem8\_GolayHolography.lean},
+\lean{TensorNetworkBridge.lean})]
+\begin{leancode}
+def golay_length : Nat := 24
+def golay_dimension : Nat := 12
+def golay_distance : Nat := 8
+def golay_codeword_count : Nat := 2 ^ 12
+def error_correction_radius (d : Nat) : Nat := (d - 1) / 2
+
+theorem golay_codeword_count_eval : golay_codeword_count = 4096 := by rfl
+theorem golay_error_radius_equals_three :
+    error_correction_radius golay_distance = 3 := by rfl
+theorem golay_self_dual_dimension :
+    golay_length - golay_dimension = golay_dimension := by rfl
+theorem nonzero_codeword_weight_positive (w : Nat)
+    (h : is_valid_nonzero_codeword_weight w) : w > 0 := by ...
+\end{leancode}
+and, in the second file,
+\begin{leancode}
+structure GolayCodeParameters where
+  length : Nat := 24
+  dimension : Nat := 12
+  distance : Nat := 8
+
+theorem golay_length_matches_k3_euler :
+    (defaultGolay.length : Int) = eulerChar4D bettiK3 := by decide
+theorem golay_code_rate_is_half :
+    defaultGolay.dimension * 2 = defaultGolay.length := by rfl
+\end{leancode}
+\emph{Reading.} These files define the three parameters $[24,12,8]$ as natural numbers and
+prove $2^{12}=4096$, $\lfloor(8-1)/2\rfloor=3$, $24-12=12$, and $12\cdot2=24$. The one
+statement with any cross-file content is \lean{golay\_length\_matches\_k3\_euler}: the
+literal $24$ equals the Euler characteristic computed from the K3 Betti numbers
+\lean{bettiK3} $=(1,0,22,0,1)$ by \lean{eulerChar4D} in the project's \lean{Topology}
+module, which \lean{euler\_char\_K3} evaluates to $24$. \lean{nonzero\_codeword\_weight\_positive}
+says that a natural number $w\ge8$ is $>0$. \emph{Scope.} No code, no codeword, no
+Hamming weight and no automorphism appears in either file; the predicate
+\lean{is\_valid\_nonzero\_codeword\_weight w} is literally \lean{w ≥ 8}. The docstring of
+\lean{Problem8} asserts that these theorems ``prove that any bulk local operator on
+$K3\times T^2$ can be perfectly reconstructed'' after erasure of three boundary regions; they
+prove nothing of the sort, and the holographic reading is Tier~C at best. The second file
+carries a scope note added after review saying the same of its tensor-network narrative
+\source{TensorNetworkBridge.lean, ll.~39--46}.
+\end{leanbox}
+
+\begin{leanbox}[Numerology about $|\Mtf|$ (\lean{Problem2\_MathieuFrobeniusRigidity.lean})]
+\begin{leancode}
+def bps_conductor : Nat := 27720
+def order_M24 : Nat := 244823040
+
+theorem bps_conductor_prime_factorization :
+    (2 ^ 3) * (3 ^ 2) * 5 * 7 * 11 = bps_conductor := by rfl
+theorem m24_conductor_quotient :
+    order_M24 / bps_conductor = 8832 ∧ order_M24 % bps_conductor = 0 := by decide
+theorem hasse_trace_integer_bound (a : Int) (h : a * a ≤ 52) :
+    a * a ≤ 52 := h
+\end{leancode}
+\emph{Reading.} $27720=2^3\cdot3^2\cdot5\cdot7\cdot11$ and $244\,823\,040=27720\cdot8832$
+(with $8832=2^7\cdot3\cdot23$; symbolic check). Both are true numeral facts. The number
+$27720$ is this programme's ``BPS character lock'' ($=462\cdot60=4\cdot90\cdot77$), a
+Tier~C numerological proposal with no source in this book's library; the divisibility by
+$|\Mtf|$ is arithmetic and is also re-proved in
+\lean{DualScaleValidation.UseCase2.m24\_order\_divisible\_by\_bps\_lock}. The theorem
+\lean{hasse\_trace\_integer\_bound} deserves a moment's attention: its conclusion is its
+hypothesis, and the proof is the hypothesis itself. It proves nothing, and the ``Hasse--Weil
+bound'' of the docstring is not formalized. A reader auditing a library should look for
+exactly this pattern.
+\end{leanbox}
+
+\begin{sloppypar}
+Finally, the dimension table is a \emph{hub}. Four theorems of the moonshine module
+\lean{DualScaleStream2.Moonshine} (\lean{first\_five\_are\_irreps},
+\lean{A6\_decomposition}, \lean{A7\_decomposition}, \lean{A6\_not\_irrep}) import
+\lean{M24RepDim} by name and verify EOT's decompositions of $A_1,\dots,A_7$ against it
+\source{MathieuM24.lean, ll.~47--52}. They belong to \cref{ch:moonshine}. Here we only
+note that they inherit the correctness of the table: had \lean{M24RepDim} still contained
+a second $483$ in place of the second $990$, \lean{first\_five\_are\_irreps} would still
+have compiled (its five witnesses are at indices $2,4,9,19,23$), which is another
+illustration that lookups do not guard tables.
+\end{sloppypar}
+
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.43\textwidth}c
+  >{\raggedright\arraybackslash}p{0.45\textwidth}@{}}
+\toprule
+Claim & Tier & Evidence\\
+\midrule
+$244\,823\,040=2^{10}\cdot3^3\cdot5\cdot7\cdot11\cdot23$ & \TA & \lean{M24\_order}\\[2pt]
+The $26$ entries of \eqref{eq:m24:dims} satisfy $\sum\dim^2=244\,823\,040$; entry $1$ is
+ $23$ & \TA & \lean{M24RepDim\_sum\_sq}, \lean{M24\_first\_coefficient}\\[2pt]
+Index relations \eqref{eq:m24:indices} for the ATLAS numerals; $20160=2^6\cdot3^2\cdot5\cdot7$;
+ $24\cdot23\cdot22\cdot20160=|\Mtf|$ and equals the certified factorization & \TA &
+ \lean{M24\_stabilizer\_index}, \lean{M23\_stabilizer\_index}, \lean{M22\_stabilizer\_index},
+ \lean{M21\_order\_factorization}, \lean{mathieu\_tower\_consistent},
+ \lean{mathieu\_tower\_matches\_certified\_order}\\[2pt]
+$2^{12}=4096$; $\lfloor7/2\rfloor=3$; $24-12=12$; $12\cdot2=24$; $24=\chi(K3)$ from Betti
+ numbers & \TA & \lean{golay\_codeword\_count\_eval}, \lean{golay\_error\_radius\_equals\_three},
+ \lean{golay\_self\_dual\_dimension}, \lean{golay\_code\_rate\_is\_half},
+ \lean{golay\_length\_matches\_k3\_euler}\\[2pt]
+$27720=2^3\cdot3^2\cdot5\cdot7\cdot11$ divides $244\,823\,040$ with quotient $8832$ & \TA &
+ \lean{bps\_conductor\_prime\_factorization}, \lean{m24\_conductor\_quotient}\\[2pt]
+Lattice-from-code dictionary \eqref{eq:m24:pairing}--\eqref{eq:m24:roots}; $|PSL(3,4)|$;
+ Burnside's identity; $5$-transitivity count \eqref{eq:m24:fivetrans} & --- & derived on the
+ page\\[2pt]
+Weight distribution \eqref{eq:m24:weights}; $[8,4,4]$ code has $14$ words of weight $4$;
+ all degrees divide $|\Mtf|$ & --- & symbolic checks (scripts)\\[2pt]
+$244\,823\,040$ is the order of $\Mtf$; $26$ classes and irreps; the dimensions
+ \eqref{eq:m24:dims} and the conjugate pairs; uniqueness of $\mathcal G_{24}$;
+ $\Mtf=\operatorname{Aut}(\mathcal G_{24})$ & \TL & EOT App.~A, ll.~331--358; App.~B,
+ ll.~959--979\\[2pt]
+The $26$ class names; power-map and $M_{23}$ facts & \TL & GHV ll.~694--697, 808--813,
+ 1916--1930\\[2pt]
+$5$-transitivity; ATLAS orders of $M_{23},M_{22},M_{21}$; $M_{21}\cong PSL(3,4)$; Steiner
+ system; degrees divide the order & \TL & standard; not in this book's library\\[2pt]
+Mukai's theorem; Fermat quartic with $384$ symmetries and orbits $1,1,2,4,16$ & \TL &
+ EOT App.~B, ll.~984--1006\\[2pt]
+Golay code as holographic error-correcting code on $\KT$; $27720$ as a ``BPS lock'' &
+ \TC & docstrings of \lean{Problem8}, \lean{Problem2}; not supported by any theorem\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%=====================================================================================
+\begin{summarybox}
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item $\Mtf$ is the automorphism group of the extended binary Golay code $\mathcal G_{24}$,
+ the unique doubly even self-dual $[24,12,8]$ code; equivalently, the permutation
+ symmetries of the Niemeier lattice $A_1^{24}\subset N\subset(A_1^*)^{24}$. The dictionary
+ code $\leftrightarrow$ lattice is: doubly even $\leftrightarrow$ even, self-dual
+ $\leftrightarrow$ unimodular, no weight-$4$ words $\leftrightarrow$ no extra roots. With
+ $n=8$ the same recipe gives $E_8$ with $16+14\cdot16=240$ roots.
+\item $|\Mtf|=2^{10}\cdot3^3\cdot5\cdot7\cdot11\cdot23=244\,823\,040$. The action on $24$
+ points is $5$-transitive, and fixing points gives $M_{23}$ ($10\,200\,960$), $M_{22}$
+ ($443\,520$), $M_{21}\cong PSL(3,4)$ ($20\,160$), with indices $24,23,22$; five points have
+ a stabilizer of order $48$.
+\item There are $26$ conjugacy classes and $26$ irreducible representations, of dimensions
+ \eqref{eq:m24:dims}, five complex-conjugate pairs among them. Burnside's
+ $\sum\dim^2=|G|$ holds, and it caught a wrong table in this project.
+\item Mukai: finite symplectic automorphism groups of K3 surfaces are the subgroups of
+ $\Mtf$ with at least five orbits on $24$ points; never $\Mtf$ itself.
+\item Lean has checked the arithmetic: the order factorization, the Burnside sum for the
+ transcribed table, the tower indices, and the Golay numerals. No group, code or
+ representation is constructed; the identification with $\Mtf$ is Tier~L.
+\end{itemize}
+\end{summarybox}
+
+%=====================================================================================
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$ Lagrange at work]\label{ex:m24:lagrange}
+Using only \eqref{eq:m24:order}, decide which of the following can be the order of an
+element of $\Mtf$: $9$, $13$, $16$, $22$, $25$, $33$, $46$, $69$. Then compare with the list
+of element orders read off \eqref{eq:m24:classes}: which orders are permitted by Lagrange
+but do not occur? (This shows that Lagrange gives necessary conditions only.)
+\end{exercise}
+
+\begin{exercise}[$\star$ The Hamming code by hand]\label{ex:m24:hamming}
+List all $16$ codewords of the code $C_8$ of \cref{exa:m24:hamming} and verify the weight
+distribution $1,14,1$. Check that the complement $c\mapsto c+(1,\dots,1)$ maps weight-$4$
+words to weight-$4$ words, and use this to explain why the distribution is symmetric.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Construction A in general]\label{ex:m24:constrA}
+Let $C\subseteq\mathbb F_2^n$ be any binary code and $N_C$ the lattice \eqref{eq:m24:sandwich}.
+(a) Show that $\operatorname{disc}N_C=2^{\,n-2\dim C}$. (b) Show that $N_C$ is integral
+iff $C\subseteq C^\perp$, and even iff $C$ is doubly even. (c) Show that the minimum norm
+of a nonzero vector of $N_C$ is $\min(2,\,d/2)$ where $d$ is the minimum distance, and
+conclude that for $\mathcal G_{24}$ the minimum norm is $2$ but no root comes from a
+nonzero codeword.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Burnside for a small group]\label{ex:m24:S4}
+The symmetric group $S_4$ has five conjugacy classes (cycle types $1^4$, $2\,1^2$, $2^2$,
+$3\,1$, $4$) and irreducible representations of dimensions $1,1,2,3,3$. Verify
+\eqref{eq:m24:burnside}. Then show that no list of five positive integers other than a
+permutation of $1,1,2,3,3$ has sum of squares $24$ \emph{and} contains $1$ twice (the
+trivial and sign representations); this is a toy version of the ``strong evidence, not
+proof'' remark of \cref{sec:m24:chars}.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Five points]\label{ex:m24:fivepoints}
+(a) Verify \eqref{eq:m24:fivetrans}. (b) A group acting $k$-transitively on $n$ points is
+\emph{sharply} $k$-transitive if the pointwise stabilizer of $k$ points is trivial. Show that
+$\Mtf$ is not sharply $5$-transitive but that, if it were sharply $t$-transitive for some
+$t$, its order would be $24\cdot23\cdots(25-t)$; check that no $t$ works. (c) $M_{12}$, of
+order $95\,040$ (standard value; not in this book's library), is sharply $5$-transitive on
+$12$ points: verify $12\cdot11\cdot10\cdot9\cdot8=95\,040$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Orbits of the Fermat quartic group]\label{ex:m24:fermat}
+The group $(\Z_4)^2\rtimes S_4$ of \cref{sec:m24:k3} has order $384$ and orbits of lengths
+$1,1,2,4,16$ on the $24$ points. For each orbit, use orbit--stabilizer to compute the order
+of the stabilizer of a point in it, and check that all five are divisors of $384$. Which
+orbit has the smallest stabilizer, and what does Mukai's ``at least five orbits'' condition
+say about $\rk\Lambda^G$ here?
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Lean: guard the tower table]\label{ex:m24:leantower}
+In the style of \lean{M21\_order\_factorization}, state and prove in Lean the factorizations
+$\lean{orderM23} = 2^7\cdot3^2\cdot5\cdot7\cdot11\cdot23$ and
+$\lean{orderM22}=2^7\cdot3^2\cdot5\cdot7\cdot11$ from \eqref{eq:m24:M23}--\eqref{eq:m24:M22}
+(\lean{unfold} then \lean{norm\_num}). Explain why these two theorems would have caught a
+mistyped \lean{orderM22} that the three index theorems alone might not (hint: the index
+theorems constrain the three constants only up to a common factor if all three are
+mistyped consistently).
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$ Lean: degrees divide the order]\label{ex:m24:leandiv}
+State the theorem \lean{∀ i : Fin 26, 244823040 \% M24RepDim i = 0} and prove it by
+\lean{decide} or by \lean{fin\_cases i <;> norm\_num [M24RepDim]}. Then explain in words why
+this theorem, like \lean{M24RepDim\_sum\_sq}, is a statement about $26$ numerals and not
+about representations of $\Mtf$, and why it is nevertheless a useful guard (which
+transcription errors would it catch that the Burnside sum might not, and vice versa?).
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$ The wrong table, quantitatively]\label{ex:m24:wrongtable}
+(a) Verify \eqref{eq:m24:wrongsum}. (b) Suppose a single entry $d$ of \eqref{eq:m24:dims}
+is replaced by another entry $d'$ of the same table (a duplication error). Show that the
+Burnside sum is unchanged iff $d'=d$, so \emph{every} single duplication is caught. (c) Find
+the smallest change to the table that Burnside would \emph{not} catch: two entries
+$d_1,d_2$ replaced by $d_1',d_2'$ with $d_1^2+d_2^2=d_1'^2+d_2'^2$, all four being
+positive integers dividing $|\Mtf|$ (a script is acceptable; you may find none, in which
+case say what you searched).
+\end{exercise}
+
+%=====================================================================================
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item \source{EOT App.~A, ll.~329--358} is the source of the order, the count of classes and
+ representations, the dimension list (A.3) and the conjugate pairs (A.4); the full character
+ table follows at ll.~360--925 but is garbled by text extraction and was not used in this
+ chapter. \source{EOT App.~B, ll.~955--1007} contains the Golay-code definition of $\Mtf$
+ via $A_1^{24}$ and the summary of Mukai's theorem, with references to Mukai 1988 and
+ Kondo 1998 at ll.~1054--1057.
+\item \source{GHV §3, ll.~500--575} restates the decompositions with the factor $2$
+ absorbed; \source{GHV Table~1, ll.~1916--1930} gives the class names and the power maps
+ used in \cref{sec:m24:chars}; \source{GHV §3.1, ll.~808--813} identifies which classes meet
+ $M_{23}$.
+\item Lean sources: \lean{MathieuM24.lean} (directory \lean{StringDynamics/}) and
+ \lean{MathieuTower.lean} (directory \lean{UseCases/}), both in the library
+ \lean{StringTheoryFormalization}. The scope discussion at ll.~8--57 of the first file is a
+ model of how a docstring should say what is and is not proved. \source{LL.md §S2.6,
+ ll.~63--67} records the lesson of \cref{sec:m24:story}.
+\item The classification of finite simple groups, the ATLAS of finite groups, the Steiner
+ system $S(5,8,24)$ and the uniqueness of the Golay code are standard material of finite
+ group theory and coding theory; none of it is in this book's library, and a student who
+ wants the proofs should consult a group-theory text.
+\end{itemize}

@@ -1,0 +1,1028 @@
+\chapter{Compactification on a Circle: Momentum and Winding}\label{ch:circle}
+
+Suppose one of the 25 spatial directions of the bosonic string is not a line but a circle of
+radius $R$. What does an observer in the remaining 25 dimensions see? For a point particle the
+answer has been known since Kaluza and Klein: a tower of particles with masses $|n|/R$,
+$n\in\Z$, charged under a gauge field that descends from the higher-dimensional metric. This
+chapter derives that answer and then asks the same question of a string. The string gives a
+second tower, with masses $|w|R/\ap$, $w\in\Z$, coming from strings that wrap the circle. No
+point particle can do that. The result is the mass formula
+\begin{equation}\label{eq:circle:preview}
+ M^2=\frac{n^2}{R^2}+\frac{w^2R^2}{\ap^2}+\frac{2}{\ap}\big(N+\tilde N-2\big),\qquad
+ N-\tilde N=nw ,
+\end{equation}
+which we derive step by step from the mode expansion of \cref{ch:classical} and the constraints
+of \cref{ch:quantum}. A student should care because the rest of Part~II and all of Part~III
+start from this formula. T-duality (\cref{ch:tduality}) is the observation that
+\eqref{eq:circle:preview} does not change under $R\to\ap/R$, $n\leftrightarrow w$. The Narain
+lattice (\cref{ch:narain}) is the set of pairs $(p_L,p_R)$ introduced below. The doubled
+coordinates of double field theory (\cref{ch:doubled}) are the variables conjugate to $n$ and
+$w$. The ``dual-scale'' principle of \cref{ch:dualscale} is a statement about the first two
+terms of \eqref{eq:circle:preview}. The chapter closes with the Lean declarations that encode
+the momentum part of \eqref{eq:circle:preview}, and with one theorem, \lean{massForm\_circle},
+which proves that two independently written libraries compute the same number.
+
+Conventions are those of the book: $\hbar=c=1$, mostly-plus signature, $\ap$ of dimension
+length$^2$, string length $\ell_s=\sqrt{\ap}$, tension $T=1/(2\pi\ap)$, closed strings with
+$\sigma\sim\sigma+2\pi$ and $\sigma^\pm=\tau\pm\sigma$. The compact coordinate is $X^{25}$,
+written $X$ when no confusion can arise; the non-compact coordinates are $X^\mu$ with
+$\mu=0,\dots,24$. The integer $n$ is the momentum number and $w$ the winding number. Tong
+writes $m$ for our $w$; Giveon, Porrati and Rabinovici write $m$ as well and use dimensionless
+momenta, as explained in \cref{rem:circle:gpr}.
+
+%=====================================================================================
+\section{Kaluza--Klein reduction of a field}\label{sec:circle:kk}
+
+\subsection{A scalar field on \texorpdfstring{$\R^{1,D-2}\times S^1$}{R x S1}}
+
+Before the string, take the simplest object that can live on a spacetime with one circular
+direction: a free massless real scalar field $\Phi(x^\mu,y)$ in $D$ dimensions, where
+$x^\mu$ are coordinates on $\R^{1,D-2}$ and $y\sim y+2\pi R$ is the coordinate on the circle.
+Its action is
+\begin{equation}\label{eq:circle:scalaraction}
+ S=-\frac12\int\dd^{D-1}x\int_0^{2\pi R}\dd y\,
+   \Big(\partial_\mu\Phi\,\partial^\mu\Phi+(\partial_y\Phi)^2\Big).
+\end{equation}
+The field must be single valued on the circle, $\Phi(x,y+2\pi R)=\Phi(x,y)$, so it has a
+Fourier series\index{Kaluza--Klein reduction}
+\begin{equation}\label{eq:circle:fourier}
+ \Phi(x,y)=\sum_{n\in\Z}\Phi_n(x)\,\ee^{\ii ny/R},\qquad \Phi_{-n}=\Phi_n^{*},
+\end{equation}
+where the second condition makes $\Phi$ real \source{Tong §8.1.1, ll.~11283--11310}. Insert
+\eqref{eq:circle:fourier} into \eqref{eq:circle:scalaraction}. The $y$-integral of a product of
+two exponentials is
+\[
+ \int_0^{2\pi R}\dd y\;\ee^{\ii(n+m)y/R}=2\pi R\,\delta_{n+m,0},
+\]
+so only pairs $(n,-n)$ survive. For the $y$-derivative term,
+$\partial_y\Phi=\sum_n(\ii n/R)\Phi_n\ee^{\ii ny/R}$, and the pair $(n,m=-n)$ contributes
+$(\ii n/R)(-\ii n/R)\Phi_n\Phi_{-n}=(n^2/R^2)|\Phi_n|^2$. The result is
+\begin{equation}\label{eq:circle:kkaction}
+ S=-\frac{2\pi R}{2}\sum_{n\in\Z}\int\dd^{D-1}x\,
+   \Big(\partial_\mu\Phi_n\,\partial^\mu\Phi_{-n}+\frac{n^2}{R^2}\,|\Phi_n|^2\Big).
+\end{equation}
+This is the action of infinitely many fields in $D-1$ dimensions. The field $\Phi_0$ is real
+and massless. For each $n\ge1$ the pair $\Phi_{\pm n}$ is one complex field whose mass can be
+read off from the term without derivatives:
+\begin{equation}\label{eq:circle:kkmass}
+ M_n^2=\frac{n^2}{R^2}
+\end{equation}
+\TL\ \source{Tong §8.1.1, eq.~(8.3), ll.~11311--11335}\index{Kaluza--Klein tower}.
+
+There is a one-line way to remember \eqref{eq:circle:kkmass}. A massless particle in $D$
+dimensions has $p_Mp^M=0$. Split the momentum as $p_M=(p_\mu,p_y)$. An observer who cannot
+resolve the circle measures the $(D-1)$-dimensional mass $M^2=-p_\mu p^\mu=p_y^2$. The
+wavefunction $\ee^{\ii p_yy}$ is single valued only if $p_y=n/R$. Momentum along a hidden
+direction looks like mass.
+
+\begin{physicsbox}[Physical picture: why a small circle is invisible]
+The modes with $n\neq0$ cost an energy of at least $1/R$. An experiment with energy
+$E\ll1/R$ cannot produce them, and sees only $\Phi_0(x)$: a field that does not depend on
+$y$ at all. In this sense the extra dimension disappears at low energy; equivalently, a
+probe of wavelength $\lambda\gg R$ cannot resolve the circle. In ordinary units the first
+Kaluza--Klein mass is $M_1c^2=\hbar c/R$ with $\hbar c\simeq197.3\ \mathrm{MeV\,fm}$. A circle
+of radius $R=10^{-19}\,\mathrm{m}=10^{-4}\,\mathrm{fm}$ would give
+$M_1c^2\simeq1.97\ \mathrm{TeV}$, and a smaller circle gives a heavier tower. For a field this
+is the whole story: the smaller the circle, the better it hides. For a string it is half of
+the story, as \cref{sec:circle:winding} shows.
+\end{physicsbox}
+
+\subsection{The Kaluza--Klein gauge field and the charge of the tower}\label{sec:circle:kkgauge}
+
+A field theory that contains gravity has more than scalars. The $D$-dimensional metric
+$G_{MN}$ splits, from the $(D-1)$-dimensional point of view, into a metric
+$\tilde G_{\mu\nu}$, a vector $A_\mu$ and a scalar $\sigma$, packaged as
+\begin{equation}\label{eq:circle:kkansatz}
+ \dd s^2=\tilde G_{\mu\nu}\,\dd x^\mu\dd x^\nu+\ee^{2\sigma}\big(\dd y+A_\mu\,\dd x^\mu\big)^2
+\end{equation}
+\source{Tong §8.1, eq.~(8.2), ll.~11198--11212}. All three are taken independent of $y$ when we
+work at energies far below $1/R$. Each has a clear meaning.
+\begin{itemize}[leftmargin=*]
+\item $\ee^{\sigma}$ rescales the length of the circle: its proper circumference is
+$2\pi R\,\ee^{\sigma}$. A constant shift of $\sigma$ is a change of $R$. Nothing in the
+reduced action fixes the value of $\sigma$; there is no potential for it. A massless scalar of
+this kind is called a \emph{modulus}\index{modulus (massless scalar)}
+\source{Tong §8.1, ll.~11257--11271}. In the language of the worldsheet, $R$ labels a family of
+conformal field theories connected by an exactly marginal deformation
+\source{GPR §2.1, ll.~458--575}.
+\item $A_\mu$ is a gauge field. A coordinate change $y\to y+\Lambda(x)$ that depends on the
+position in the non-compact directions is a diffeomorphism of the $D$-dimensional space. It
+leaves \eqref{eq:circle:kkansatz} of the same form, because
+$\dd y+A_\mu\dd x^\mu\to\dd y+(A_\mu+\partial_\mu\Lambda)\dd x^\mu$: the shift of $y$ can be
+absorbed by $A_\mu\to A_\mu-\partial_\mu\Lambda$. A position-dependent rotation of the circle
+is a $U(1)$ gauge transformation\index{Kaluza--Klein gauge field}. (Tong's sign of $\Lambda$
+is the opposite one; nothing depends on it.) Inserting the ansatz in the Einstein--Hilbert
+action gives gravity in $D-1$ dimensions coupled to a Maxwell field
+$F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$ and to $\sigma$ \TL\
+\source{Tong §8.1, ll.~11212--11256}. We do not repeat that computation; the statement we need
+is only which fields appear.
+\end{itemize}
+The Fourier modes of \eqref{eq:circle:fourier} are \emph{charged} under this $U(1)$. Under
+$y\to y+\Lambda(x)$ the mode $\Phi_n$ picks up a phase,
+\begin{equation}\label{eq:circle:kkcharge}
+ \Phi_n(x)\;\to\;\ee^{\ii n\Lambda(x)/R}\,\Phi_n(x),
+\end{equation}
+which is the transformation law of a field of charge $n/R$. Rescaling the gauge field to
+$A'_\mu=A_\mu/R$ makes the charges integers \source{Tong §8.1.1, ll.~11336--11349}. The reason
+is simple: the gauge symmetry is translation along the circle, and the conserved charge of a
+translation is momentum. \emph{Kaluza--Klein charge is momentum in the hidden direction.}
+
+The closed bosonic string has two more massless fields, the two-form $B_{MN}$ and the dilaton
+$\Phi$ (\cref{ch:quantum,ch:backgrounds}). The dilaton reduces to a scalar. The two-form
+reduces to a two-form $B_{\mu\nu}$ and a second vector,
+\begin{equation}\label{eq:circle:Atilde}
+ \tilde A_\mu=B_{\mu\,25}.
+\end{equation}
+So the low-energy theory in 25 dimensions contains a metric, a two-form, \emph{two} $U(1)$
+gauge fields $A_\mu$ and $\tilde A_\mu$, and two massless scalars $\Phi$ and $\sigma$
+\source{Tong §8.1, ll.~11272--11283}. We have just seen which states carry the charge of
+$A_\mu$. No mode of any field in the low-energy action is charged under $\tilde A_\mu$. The
+string will supply the missing charged states.
+
+%=====================================================================================
+\section{The string on a circle: two integers}\label{sec:circle:winding}
+
+Now let a closed string move on $\R^{1,24}\times S^1$ with
+\begin{equation}\label{eq:circle:ident}
+ X^{25}\sim X^{25}+2\pi R .
+\end{equation}
+The identification changes the string in two ways \source{Tong §8.2, ll.~11351--11372}.
+
+\subsection{Momentum is quantized}
+
+The centre of mass of the string behaves like a particle. Its wavefunction contains the
+factor $\ee^{\ii p\,x}$, where $x$ is the centre-of-mass position on the circle and $p$ the
+total momentum $p^{25}$. The points $x$ and $x+2\pi R$ are the same point, so the wavefunction
+must agree there: $\ee^{2\pi\ii pR}=1$, that is
+\begin{equation}\label{eq:circle:momentum}
+ p=\frac nR,\qquad n\in\Z .
+\end{equation}
+\index{momentum quantization}This is the same integer as in \eqref{eq:circle:kkmass}. Nothing
+here is special to strings.
+
+\subsection{Winding is possible}
+
+The second change is special to strings. A closed string is a map from the circle
+$\sigma\in[0,2\pi)$ into spacetime, and so far we required
+$X^M(\tau,\sigma+2\pi)=X^M(\tau,\sigma)$. With the identification \eqref{eq:circle:ident} this
+is too strong for $M=25$. The string is closed if the two ends of the $\sigma$-interval are at
+the same \emph{point of the circle}, and the coordinate values of one point differ by multiples
+of $2\pi R$:
+\begin{equation}\label{eq:circle:windingbc}
+ X^{25}(\tau,\sigma+2\pi)=X^{25}(\tau,\sigma)+2\pi R\,w,\qquad w\in\Z .
+\end{equation}
+The integer $w$ is the \emph{winding number}\index{winding number}: the number of times the
+string wraps the circle, counted with orientation (\cref{fig:circle:cylinder}). Three facts
+about $w$ are worth stating before any computation.
+\begin{enumerate}[leftmargin=*]
+\item $w$ is topological. A closed curve on a circle cannot be unwound by a continuous
+deformation; in mathematical terms $w$ labels the class of the map in
+$\pi_1(S^1)=\Z$. It cannot change as the free string evolves in time, because
+$X(\tau,\sigma+2\pi)-X(\tau,\sigma)$ is continuous in $\tau$ and takes values in the discrete
+set $2\pi R\,\Z$.
+\item In interactions, winding is conserved additively: a string with $w=1$ and a string with
+$w=-1$ can join into an unwound string. It is a charge, and
+\cref{sec:circle:gauge} identifies the gauge field that couples to it.
+\item A wound string cannot shrink to a point. Its length is at least $2\pi R|w|$, so its
+energy is at least length times tension,
+\begin{equation}\label{eq:circle:windingenergy}
+ M_{\text{winding}}=2\pi R|w|\cdot T=2\pi R|w|\cdot\frac{1}{2\pi\ap}=\frac{|w|R}{\ap}.
+\end{equation}
+This estimate is classical. The quantum mass formula below contains exactly this term.
+\end{enumerate}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=1.0,>=Stealth]
+ % cylinder: axis horizontal = non-compact direction, around = compact direction
+ \draw (0,1) -- (9,1);
+ \draw (0,-1) -- (9,-1);
+ \draw (0,0) ellipse (0.35 and 1);
+ \draw (9,-1) arc (-90:90:0.35 and 1);
+ \draw[dashed] (9,1) arc (90:270:0.35 and 1);
+ % w = 0 string: small loop on the front face
+ \draw[very thick,blue!60!black] (2.0,0.05) ellipse (0.55 and 0.4);
+ \node[blue!60!black] at (2.0,-1.45) {$w=0$};
+ % w = 1 string: goes once around, slightly wiggly
+ \draw[very thick,red!70!black]
+   (5.0,-1) .. controls (5.55,-0.6) and (5.15,-0.1) .. (5.45,0.3)
+            .. controls (5.6,0.6) and (5.2,0.8) .. (5.1,1);
+ \draw[very thick,red!70!black,dashed]
+   (5.1,1) .. controls (4.75,0.5) and (4.85,-0.5) .. (5.0,-1);
+ \node[red!70!black] at (5.1,-1.45) {$w=1$};
+ % w = 2 string
+ \draw[very thick,green!40!black]
+   (7.2,-1) .. controls (7.7,-0.5) and (7.5,0.5) .. (7.45,1);
+ \draw[very thick,green!40!black,dashed]
+   (7.45,1) .. controls (7.2,0.4) and (7.35,-0.5) .. (7.6,-1);
+ \draw[very thick,green!40!black]
+   (7.6,-1) .. controls (8.1,-0.5) and (7.9,0.5) .. (7.8,1);
+ \draw[very thick,green!40!black,dashed]
+   (7.8,1) .. controls (7.45,0.4) and (7.3,-0.5) .. (7.2,-1);
+ \node[green!40!black] at (7.55,-1.45) {$w=2$};
+ % labels
+ \draw[->] (0.2,-1.9) -- (1.8,-1.9) node[right] {$X^\mu$};
+ \draw[->] (-0.75,-0.6) arc (220:140:0.9);
+ \node[left] at (-0.95,0) {$X^{25}$};
+ \draw[<->] (9.75,-1) -- (9.75,1);
+ \node[right] at (9.8,0) {$2R$};
+\end{tikzpicture}
+\caption{Closed strings on $\R\times S^1$, drawn as a cylinder; only one non-compact
+direction is shown. The string with $w=0$ can shrink to a point. The strings with $w=1$ and
+$w=2$ cannot: they wrap the circle, and their length is at least $2\pi R|w|$. Dashed parts of
+the curves lie on the far side of the cylinder.}
+\label{fig:circle:cylinder}
+\end{figure}
+
+\begin{pitfallbox}[Common pitfall: ``winding is just momentum in disguise'']
+Momentum $n$ and winding $w$ are independent integers with different origins. The integer
+$n$ exists because the \emph{wavefunction} must be single valued; it is a quantum effect, and
+a particle has it too. The integer $w$ exists because the \emph{classical configuration}
+$X(\sigma)$ need only be single valued up to the identification; it is present before
+quantization, and a particle does not have it. The two look alike in the final formulas, and
+that is a result (\cref{ch:tduality}), not an assumption.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{Zero modes: \texorpdfstring{$p_L$}{pL} and \texorpdfstring{$p_R$}{pR}}
+\label{sec:circle:zeromodes}
+
+\subsection{The mode expansion with winding}
+
+In conformal gauge every $X^M$ obeys the wave equation
+$\partial_+\partial_-X^M=0$, and the general solution is a left-mover plus a right-mover,
+$X=X_L(\sigma^+)+X_R(\sigma^-)$ (\cref{sec:classical:modes}). The identification
+\eqref{eq:circle:ident} does not change the local physics, so the wave equation, the
+oscillators and their commutators are exactly as before. Only the part of $X^{25}$ that is
+linear in $\tau$ and $\sigma$ changes. Write the most general linear piece as
+\[
+ X^{25}(\tau,\sigma)=x+a\,\tau+b\,\sigma+\text{oscillators} .
+\]
+The oscillator terms $\ee^{-\ii k\sigma^\pm}$ are periodic in $\sigma$, so
+$X(\tau,\sigma+2\pi)-X(\tau,\sigma)=2\pi b$, and \eqref{eq:circle:windingbc} fixes $b=wR$. For
+$a$, recall that the momentum density is $\Pi=\dot X/(2\pi\ap)$ (\cref{eq:classical:momentum}), so the
+total momentum is
+\[
+ p=\int_0^{2\pi}\dd\sigma\,\frac{\dot X^{25}}{2\pi\ap}=\frac{a}{\ap}
+ \qquad\Longrightarrow\qquad a=\ap p=\frac{\ap n}{R},
+\]
+where the oscillators drop out of the integral and \eqref{eq:circle:momentum} was used in the
+last step. Therefore
+\begin{equation}\label{eq:circle:zeromode}
+ X^{25}(\tau,\sigma)=x+\frac{\ap n}{R}\,\tau+wR\,\sigma+\text{oscillators}
+\end{equation}
+\source{Tong §8.2, ll.~11373--11380}\index{zero modes}. Now split the linear part into
+functions of $\sigma^\pm=\tau\pm\sigma$. Using $\tau=\frac12(\sigma^++\sigma^-)$ and
+$\sigma=\frac12(\sigma^+-\sigma^-)$,
+\[
+ \frac{\ap n}{R}\tau+wR\,\sigma
+ =\frac12\Big(\frac{\ap n}{R}+wR\Big)\sigma^+
+ +\frac12\Big(\frac{\ap n}{R}-wR\Big)\sigma^- .
+\]
+Comparing with the non-compact expansion \cref{eq:classical:modeexp}, where the coefficient of
+$\sigma^\pm$ is $\frac12\ap p$, we see that the left- and right-movers now carry
+\emph{different} momenta:
+\begin{equation}\label{eq:circle:pLpR}
+ \boxed{\;p_L=\frac nR+\frac{wR}{\ap},\qquad p_R=\frac nR-\frac{wR}{\ap}\;}
+\end{equation}
+\index{left- and right-moving momenta}and the expansion of the compact coordinate is
+\begin{align}
+ X_L^{25}(\sigma^+)&=\tfrac12x+\tfrac12\ap\,p_L\,\sigma^+
+   +\ii\sqrt{\frac\ap2}\sum_{k\neq0}\frac1k\,\tilde\alpha_k^{25}\,\ee^{-\ii k\sigma^+},\nonumber\\
+ X_R^{25}(\sigma^-)&=\tfrac12x+\tfrac12\ap\,p_R\,\sigma^-
+   +\ii\sqrt{\frac\ap2}\sum_{k\neq0}\frac1k\,\alpha_k^{25}\,\ee^{-\ii k\sigma^-}
+   \label{eq:circle:modeexp}
+\end{align}
+\TL\ \source{Tong §8.2, eq.~(8.4), ll.~11381--11420}. We write $k$ for the mode number,
+because $n$ is now the momentum integer. The expansions of $X^\mu$, $\mu=0,\dots,24$, are
+unchanged. Two checks of \eqref{eq:circle:pLpR}:
+\begin{itemize}[leftmargin=*]
+\item \emph{Dimensions.} $n/R$ is an inverse length. $wR/\ap$ is length over length$^2$, also
+an inverse length.
+\item \emph{Decompactification.} For $w=0$ one has $p_L=p_R=p$ and
+\eqref{eq:circle:modeexp} is \cref{eq:classical:modeexp}. A string that does not wind does not
+know, classically, that the direction is compact.
+\end{itemize}
+The inverse relations are
+\begin{equation}\label{eq:circle:inverse}
+ \frac nR=\frac12(p_L+p_R),\qquad \frac{wR}{\ap}=\frac12(p_L-p_R).
+\end{equation}
+The sum of the two chiral momenta is the ordinary momentum. The difference is the winding.
+In the language of \cref{ch:classical} the zero-mode oscillators are
+\begin{equation}\label{eq:circle:alpha0}
+ \tilde\alpha_0^{25}=\sqrt{\frac\ap2}\,p_L,\qquad \alpha_0^{25}=\sqrt{\frac\ap2}\,p_R ,
+\end{equation}
+while in the non-compact directions
+$\alpha_0^\mu=\tilde\alpha_0^\mu=\sqrt{\ap/2}\,p^\mu$ as before
+(\cref{rem:classical:circle} anticipated this).
+
+\begin{remark}[A first look at the dual coordinate]\label{rem:circle:dualcoord}
+The splitting into $X_L$ and $X_R$ suggests a second combination,
+$\tilde X\equiv X_L-X_R$\index{dual coordinate}. Its zero-mode part follows from
+\eqref{eq:circle:modeexp} and \eqref{eq:circle:pLpR}:
+\[
+ \tilde X^{25}=\tfrac12\ap(p_L-p_R)\,\tau+\tfrac12\ap(p_L+p_R)\,\sigma+\dots
+ =wR\,\tau+\frac{\ap n}{R}\,\sigma+\dots
+\]
+Compare with \eqref{eq:circle:zeromode}: in $\tilde X$ the winding $w$ plays the role of
+momentum and $n$ the role of winding, and $\tilde X$ is periodic with period
+$2\pi\ap/R$ when $X$ has period $2\pi R$. This is derived here only as algebra; its meaning is
+the subject of \cref{ch:tduality,ch:doubled}.
+\end{remark}
+
+\begin{remark}[Other normalizations]\label{rem:circle:gpr}
+Giveon, Porrati and Rabinovici use dimensionless momenta
+\[
+ p_{L,R}^{\text{GPR}}=\frac{1}{\sqrt2}\Big(\frac{\sqrt\ap}{R}\,n\pm\frac{R}{\sqrt\ap}\,w\Big)
+ =\sqrt{\frac\ap2}\;p_{L,R}
+\]
+\source{GPR §2.2, eq.~(2.2.5), ll.~576--650}. Their $p_{L,R}$ are our zero-mode oscillators
+\eqref{eq:circle:alpha0}. With this normalization $L_0$ contains $\frac12p^2$ with no factor
+of $\ap$. The Lean file of \cref{sec:circle:lean} sets $\ap=1$ and uses
+\eqref{eq:circle:pLpR}. When comparing formulas between sources, first check which of the
+two normalizations is in use; a stray factor of $2$ in a mass formula nearly always comes
+from here.
+\end{remark}
+
+\begin{physicsbox}[Physical picture: a two-component charge]
+A state of the string on a circle carries a pair of integers $(n,w)$. The pair
+$(p_L,p_R)$ is the same information in a basis that depends on $R$. As $R$ varies, the
+integers stay fixed and the point $(p_L,p_R)$ moves in the plane. One combination does not
+move at all:
+\begin{equation}\label{eq:circle:norm}
+ \frac\ap4\big(p_L^2-p_R^2\big)=\frac\ap4\cdot4\,\frac nR\,\frac{wR}{\ap}=nw .
+\end{equation}
+This indefinite quadratic form on the charges is the first appearance of the $O(1,1)$
+structure that \cref{ch:narain,ch:odd} generalize to $O(d,d)$. The positive-definite
+combination $\frac12(p_L^2+p_R^2)$ does depend on $R$, and it is what enters the mass.
+\end{physicsbox}
+
+%=====================================================================================
+\section{The mass formula and level matching}\label{sec:circle:mass}
+
+\subsection{Derivation}
+
+The physical-state conditions are the same as in \cref{ch:quantum}, because they come from the
+worldsheet gauge symmetry and not from the shape of spacetime:
+\begin{equation}\label{eq:circle:constraints}
+ (L_0-1)\ket{\text{phys}}=0,\qquad(\tilde L_0-1)\ket{\text{phys}}=0 ,
+\end{equation}
+with the normal-ordering constant $a=1$ of the critical dimension $D=26$, and
+\begin{equation}\label{eq:circle:L0}
+ L_0=\frac12\alpha_0\cdot\alpha_0+N,\qquad
+ \tilde L_0=\frac12\tilde\alpha_0\cdot\tilde\alpha_0+\tilde N ,
+\end{equation}
+where $N$ and $\tilde N$ are the right- and left-moving levels of \cref{eq:quantum:N}. The
+dot product runs over all 26 directions. The only new ingredient is that the 25th component
+of $\alpha_0$ differs from that of $\tilde\alpha_0$. Using \eqref{eq:circle:alpha0},
+\begin{align}
+ \frac12\alpha_0\cdot\alpha_0
+ &=\frac12\cdot\frac\ap2\Big(p_\mu p^\mu+p_R^2\Big)=\frac\ap4\big(-M^2+p_R^2\big),\nonumber\\
+ \frac12\tilde\alpha_0\cdot\tilde\alpha_0
+ &=\frac\ap4\big(-M^2+p_L^2\big).\label{eq:circle:alpha0sq}
+\end{align}
+Here the mass is \emph{defined} as the 25-dimensional observer defines it,
+\begin{equation}\label{eq:circle:massdef}
+ M^2\equiv-\sum_{\mu=0}^{24}p_\mu p^\mu ,
+\end{equation}
+with the sum over non-compact directions only: momentum along the circle is counted as mass,
+as in \cref{sec:circle:kk}. Inserting \eqref{eq:circle:alpha0sq} in
+\eqref{eq:circle:constraints} gives two expressions for the same $M^2$:
+\begin{equation}\label{eq:circle:twomass}
+ M^2=p_R^2+\frac4\ap(N-1),\qquad M^2=p_L^2+\frac4\ap(\tilde N-1)
+\end{equation}
+\TL\ \source{Tong §8.2, ll.~11421--11455}. (In lightcone gauge one chooses the lightcone
+directions inside $\R^{1,24}$; then $N,\tilde N$ count the 24 transverse oscillators, of
+which one is $\alpha^{25}_{-k}$, and the same two equations follow.) For $p_L=p_R=0$ these
+reduce to \cref{eq:quantum:massfinal}.
+
+\emph{Subtract} the two equations in \eqref{eq:circle:twomass}:
+$0=p_L^2-p_R^2+\frac4\ap(\tilde N-N)$. With \eqref{eq:circle:norm},
+$p_L^2-p_R^2=4nw/\ap$, so
+\begin{equation}\label{eq:circle:levelmatching}
+ \boxed{\;N-\tilde N=nw\;}
+\end{equation}
+\index{level matching}\TL\ \source{Tong §8.2, eq.~(8.5), ll.~11456--11464}. \emph{Add} the two
+equations and divide by two. From \eqref{eq:circle:pLpR},
+\[
+ \frac12\big(p_L^2+p_R^2\big)
+ =\frac12\Big[\Big(\frac nR+\frac{wR}\ap\Big)^2+\Big(\frac nR-\frac{wR}\ap\Big)^2\Big]
+ =\frac{n^2}{R^2}+\frac{w^2R^2}{\ap^2},
+\]
+because the cross terms $\pm2nw/\ap$ cancel. Hence
+\begin{equation}\label{eq:circle:massformula}
+ \boxed{\;M^2=\frac{n^2}{R^2}+\frac{w^2R^2}{\ap^2}+\frac2\ap\big(N+\tilde N-2\big)\;}
+\end{equation}
+\index{mass formula!on a circle}\TL\ \source{Tong §8.2, eq.~(8.6), ll.~11465--11490}. This is
+the formula announced in \eqref{eq:circle:preview}, in the book's conventions. The algebra from
+\eqref{eq:circle:twomass} to \eqref{eq:circle:levelmatching} and
+\eqref{eq:circle:massformula} was also confirmed by a symbolic check (sympy).
+
+\subsection{Reading the three terms}
+
+\begin{itemize}[leftmargin=*]
+\item $n^2/R^2$ is the Kaluza--Klein term \eqref{eq:circle:kkmass}. It is large for a small
+circle.
+\item $w^2R^2/\ap^2$ is the square of the classical energy \eqref{eq:circle:windingenergy} of
+a string stretched $|w|$ times around the circle. It is large for a \emph{large} circle. The
+two terms respond to $R$ in opposite ways, and their sum cannot be made small by any choice
+of $R$ once both $n$ and $w$ are non-zero: by the inequality of arithmetic and geometric
+means,
+\begin{equation}\label{eq:circle:amgm}
+ \frac{n^2}{R^2}+\frac{w^2R^2}{\ap^2}\;\ge\;\frac{2|nw|}{\ap},
+ \qquad\text{with equality iff }R^2=\ap\,|n/w| .
+\end{equation}
+\item $\frac2\ap(N+\tilde N-2)$ is the oscillator energy with the zero-point constant $-2$,
+exactly as in flat space.
+\end{itemize}
+The three terms are not independent, because \eqref{eq:circle:levelmatching} ties the levels
+to the charges. Eliminating $\tilde N=N-nw$,
+\begin{equation}\label{eq:circle:massalt}
+ \ap M^2=\Big(\frac{n\sqrt\ap}{R}-\frac{wR}{\sqrt\ap}\Big)^2+4(N-1)
+        =\Big(\frac{n\sqrt\ap}{R}+\frac{wR}{\sqrt\ap}\Big)^2+4(\tilde N-1),
+\end{equation}
+which is \eqref{eq:circle:twomass} again and is the quickest form for computing a table.
+
+\subsection{Why level matching changes}\label{sec:circle:whylm}
+
+In flat space level matching $N=\tilde N$ expresses the fact that no point on a closed string
+is special: the operator $L_0-\tilde L_0$ generates rigid shifts
+$\sigma\to\sigma+\epsilon$, and physical states must be invariant
+(\cref{sec:quantum:levelmatching}). The same is true on the circle, but the generator has a new
+piece. From \eqref{eq:circle:L0} and \eqref{eq:circle:alpha0sq},
+\begin{equation}\label{eq:circle:rotation}
+ L_0-\tilde L_0=N-\tilde N+\frac\ap4\big(p_R^2-p_L^2\big)=N-\tilde N-nw .
+\end{equation}
+The term $-nw$ has a direct meaning. For a wound string, shifting $\sigma$ by $\epsilon$ moves
+every point of the string along the circle by $wR\,\epsilon$, because of the term
+$wR\,\sigma$ in \eqref{eq:circle:zeromode}. A translation in spacetime by a distance $\delta$
+acts on a state of momentum $p=n/R$ as the phase $\ee^{\ii p\delta}=\ee^{\ii nw\epsilon}$. So
+part of the $\sigma$-shift is a spacetime translation, and the phase it produces must be
+compensated by the oscillators. The condition $N-\tilde N=nw$ says that the total phase
+vanishes.
+
+\begin{pitfallbox}[Common pitfall: imposing $N=\tilde N$ on a circle]
+On a circle $N=\tilde N$ is required only when $nw=0$. States with both momentum and winding
+\emph{must} have unequal levels. For instance $(n,w)=(1,1)$ with $N=\tilde N=0$ is not a
+physical state, and its ``mass'' $\ap M^2=\ap/R^2+R^2/\ap-4$ appears nowhere in the spectrum.
+The lightest state with $(n,w)=(1,1)$ has $N=1$, $\tilde N=0$.
+\end{pitfallbox}
+
+%=====================================================================================
+\section{The lightest states as a function of the radius}\label{sec:circle:spectrum}
+
+It is convenient to measure the radius in string units,
+\begin{equation}\label{eq:circle:r}
+ r\equiv\frac{R}{\sqrt\ap},\qquad
+ \ap M^2=\frac{n^2}{r^2}+w^2r^2+2\big(N+\tilde N-2\big),\qquad N-\tilde N=nw .
+\end{equation}
+\Cref{tab:circle:states} lists the lightest states. Each line stands for the states with the
+given $(n,w)$ and their images under $(n,w)\to(-n,-w)$, which have the same mass.
+\Cref{fig:circle:spectrum} plots the same functions.
+
+\begin{table}[t]
+\centering\setlength{\extrarowheight}{2.5pt}
+\caption{The lightest closed-string states on a circle, with $r=R/\sqrt\ap$. The last three
+columns evaluate $\ap M^2$ at $r=\frac12,1,2$. All entries follow from
+\eqref{eq:circle:r}; they were recomputed with exact rational arithmetic (symbolic check).}
+\label{tab:circle:states}
+\smallskip
+\begin{tabular}{@{}cccclccc@{}}
+\toprule
+$n$ & $w$ & $N$ & $\tilde N$ & $\ap M^2$ & $r=\frac12$ & $r=1$ & $r=2$\\
+\midrule
+$0$ & $0$ & $0$ & $0$ & $-4$ & $-4$ & $-4$ & $-4$\\
+$\pm1$ & $0$ & $0$ & $0$ & $r^{-2}-4$ & $0$ & $-3$ & $-\frac{15}{4}$\\
+$0$ & $\pm1$ & $0$ & $0$ & $r^{2}-4$ & $-\frac{15}{4}$ & $-3$ & $0$\\
+$\pm2$ & $0$ & $0$ & $0$ & $4r^{-2}-4$ & $12$ & $0$ & $-3$\\
+$0$ & $\pm2$ & $0$ & $0$ & $4r^{2}-4$ & $-3$ & $0$ & $12$\\
+$0$ & $0$ & $1$ & $1$ & $0$ & $0$ & $0$ & $0$\\
+$\pm1$ & $\pm1$ & $1$ & $0$ & $(r-r^{-1})^2$ & $\frac94$ & $0$ & $\frac94$\\
+$\pm1$ & $\mp1$ & $0$ & $1$ & $(r-r^{-1})^2$ & $\frac94$ & $0$ & $\frac94$\\
+$\pm1$ & $0$ & $1$ & $1$ & $r^{-2}$ & $4$ & $1$ & $\frac14$\\
+$0$ & $\pm1$ & $1$ & $1$ & $r^{2}$ & $\frac14$ & $1$ & $4$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=3.4cm,y=0.42cm,>=Stealth]
+ \draw[->] (0.3,-4.8) -- (2.85,-4.8);
+ \node at (1.5,-6.7) {$r=R/\sqrt\ap$};
+ \draw[->] (0.3,-4.8) -- (0.3,6.8) node[above] {$\ap M^2$};
+ \foreach \x in {0.5,1,1.5,2,2.5}
+   \draw (\x,-4.65) -- (\x,-4.95) node[below] {\scriptsize$\x$};
+ \foreach \y in {-4,-2,0,2,4,6} \draw (0.32,\y) -- (0.28,\y) node[left] {\scriptsize$\y$};
+ \draw[dotted] (1,-4.8) -- (1,6.5);
+ \begin{scope}
+ \clip (0.3,-4.8) rectangle (2.7,6.5);
+ % tachyon
+ \draw[thick] (0.3,-4) -- (2.7,-4);
+ % massless level
+ \draw[very thick] (0.3,0) -- (2.7,0);
+ % momentum modes of the tachyon
+ \draw[blue!70!black,thick,domain=0.3:2.7,samples=60] plot (\x,{1/(\x*\x)-4});
+ \draw[blue!70!black,thick,dashed,domain=0.3:2.7,samples=60] plot (\x,{4/(\x*\x)-4});
+ % winding modes of the tachyon
+ \draw[red!70!black,thick,domain=0.3:2.7,samples=60] plot (\x,{\x*\x-4});
+ \draw[red!70!black,thick,dashed,domain=0.3:2.7,samples=60] plot (\x,{4*\x*\x-4});
+ % (1,1) vectors
+ \draw[green!40!black,very thick,domain=0.3:2.7,samples=80] plot (\x,{(\x-1/\x)*(\x-1/\x)});
+ \end{scope}
+ \node[right] at (2.72,-4) {\scriptsize$(0,0)$, $N=\tilde N=0$};
+ \node[blue!70!black,right] at (2.72,-3.1) {\scriptsize$(\pm1,0)$};
+ \node[blue!70!black,right] at (2.2,-2.45) {\scriptsize$(\pm2,0)$};
+ \node[red!70!black,anchor=north west] at (2.3,1.2) {\scriptsize$(0,\pm1)$};
+ \node[red!70!black,right] at (1.6,5.9) {\scriptsize$(0,\pm2)$};
+ \node[green!40!black,left] at (2.62,5.6) {\scriptsize$(\pm1,\pm1)$};
+ \node[right] at (2.72,0) {\scriptsize$(0,0)$, $N=\tilde N=1$};
+\end{tikzpicture}
+\caption{$\ap M^2$ for the states of \cref{tab:circle:states} with $N+\tilde N\le1$, labelled
+by $(n,w)$. Momentum modes (blue) become light at large $r$, winding modes (red) at small $r$.
+The curve $(r-1/r)^2$ (green) belongs to the vector states with $|n|=|w|=1$; it touches
+zero only at $r=1$, where the curves $(\pm2,0)$ and $(0,\pm2)$ also cross zero. The picture is
+symmetric under $r\to1/r$ with blue and red exchanged; \cref{ch:tduality} explains why.}
+\label{fig:circle:spectrum}
+\end{figure}
+
+Several features of the table deserve comment.
+
+\emph{The tachyon and its tower.}\index{tachyon!on a circle} The state with all quantum numbers zero is the tachyon of
+\cref{ch:quantum}, $\ap M^2=-4$. Its momentum modes $(n,0)$ have $\ap M^2=n^2/r^2-4$: they are
+the 26-dimensional tachyon moving along the circle, and they are tachyonic in 25 dimensions as
+long as $|n|<2r$. Its winding modes $(0,w)$ have $\ap M^2=w^2r^2-4$ and are tachyonic for
+$|w|<2/r$. The bosonic string has this instability at every radius; it is a property of the
+bosonic vacuum and is absent in the superstring (\cref{ch:ghosts}). We keep these states in
+the table because they are useful labels of the towers, not because they are physical
+particles.
+
+\emph{The massless level.} The states with $n=w=0$ and $N=\tilde N=1$ are massless for every
+$R$. They are the subject of \cref{sec:circle:gauge}.
+
+\emph{Two limits.} As $r\to\infty$ the momentum states $(n,0)$ at fixed level become
+degenerate and dense: $n/R$ turns into the continuous momentum of a non-compact direction, as
+it must. The winding states become infinitely heavy and leave the spectrum. As $r\to0$ the
+roles are reversed: momentum states decouple, which is the field-theory expectation, but the
+\emph{winding} states become dense. A continuum of states is the signature of a non-compact
+dimension. So the spectrum of a string on a very small circle looks like that of a string on
+a very large one. This observation, made precise, is T-duality\index{T-duality} (\cref{ch:tduality}).
+
+\emph{The special radius.} At $r=1$ the table contains extra massless states. Setting
+$M^2=0$ in \eqref{eq:circle:r} at $r=1$ and solving with level matching gives, besides the
+massless level itself, exactly the following \source{Tong §8.2.3, ll.~11561--11612}:
+\begin{itemize}[leftmargin=*]
+\item $N=\tilde N=0$: $n^2+w^2=4$ with $nw=0$, that is $(n,w)=(\pm2,0)$ or $(0,\pm2)$. Four
+scalars.
+\item $N+\tilde N=1$: $n^2+w^2=2$ with $nw=N-\tilde N=\pm1$. For $nw=+1$,
+$(n,w)=\pm(1,1)$ with $N=1$, $\tilde N=0$: the states
+$\alpha_{-1}^\mu\ket{0;p;n,w}$. For $nw=-1$, $(n,w)=\pm(1,-1)$ with $N=0$, $\tilde N=1$:
+the states $\tilde\alpha_{-1}^\mu\ket{0;p;n,w}$. Four vectors. (Tong's text prints
+``$N=1$, $\tilde N=0$'' for both pairs; level matching \eqref{eq:circle:levelmatching} and the
+oscillator $\tilde\alpha_{-1}$ that Tong writes for the second pair fix the assignment given
+here.)
+\end{itemize}
+Massless charged vectors signal a non-abelian gauge symmetry. The gauge group is enhanced
+from $U(1)\times U(1)$ to $SU(2)\times SU(2)$\index{enhanced gauge symmetry} \TL. We return to
+this point in \cref{ch:tduality}, where $r=1$ is identified as the self-dual radius\index{self-dual radius}.
+
+\begin{example}[Worked example: the spectrum at $R=2\sqrt\ap$]\label{ex:circle:numbers}
+Take $r=2$. We list all states with $\ap M^2\le1$, using \eqref{eq:circle:massalt}.
+
+\emph{Level $N=\tilde N=0$}, so $nw=0$. Momentum modes have
+$\ap M^2=n^2/4-4$:
+\[
+ \ap M^2=-4,\;-\tfrac{15}{4},\;-3,\;-\tfrac74,\;0,\;\tfrac94,\;\dots
+ \qquad\text{for}\qquad |n|=0,1,2,3,4,5,\dots
+\]
+The modes with $|n|\le3$ are tachyonic, the modes $n=\pm4$ are massless, and $|n|\ge5$ is above our cut.
+Winding modes: $\ap M^2=4w^2-4$, giving $0$ for $|w|=1$ and $12$ for $|w|=2$.
+
+\emph{Level $N=\tilde N=1$}, again $nw=0$: $\ap M^2=n^2/4$ or $4w^2$. This gives $0$ for
+$n=w=0$, $\frac14$ for $n=\pm1$ and $1$ for $n=\pm2$. The winding states start at $4$.
+
+\emph{Levels $(N,\tilde N)=(1,0)$ or $(0,1)$}, so $nw=\pm1$ and $|n|=|w|=1$:
+$\ap M^2=(2-\frac12)^2=\frac94$. Too heavy. One may also try $(N,\tilde N)=(2,0)$ with
+$nw=2$: the choice $(n,w)=(2,1)$ gives $\ap M^2=(1-2)^2+4=5$ and $(1,2)$ gives
+$(\frac12-4)^2+4=\frac{65}{4}$.
+
+The massless states at $r=2$ are therefore: the level $N=\tilde N=1$, $n=w=0$; two scalars
+with $(n,w)=(\pm4,0)$; and two scalars with $(n,w)=(0,\pm1)$. The last four are an instance of
+the accidental massless scalars that occur at $R^2=n^2\ap/4$ and $R^2=4\ap/w^2$
+\source{Tong §8.2.3, ll.~11561--11586}. In physical units, if $\sqrt\ap=10^{-34}\,$m, the
+first massive Kaluza--Klein state of the graviton multiplet, $\ap M^2=\frac14$, has
+$M=1/(2\sqrt\ap)$, which is $\hbar c/(2\times10^{-34}\,\mathrm m)\simeq9.9\times10^{17}$~GeV.
+
+Repeat the exercise at $r=\frac12$ and the same list of masses appears, with the roles of $n$
+and $w$ exchanged: the columns $r=\frac12$ and $r=2$ of \cref{tab:circle:states} are
+permutations of each other.
+\end{example}
+
+%=====================================================================================
+\section{The \texorpdfstring{$U(1)\times U(1)$}{U(1) x U(1)} gauge symmetry}
+\label{sec:circle:gauge}
+
+\subsection{Massless states at a generic radius}
+
+At a generic radius the only massless states are those with $n=w=0$ and $N=\tilde N=1$,
+\[
+ \alpha^{M}_{-1}\tilde\alpha^{N}_{-1}\ket{0;p},\qquad M,N\in\{\mu,25\}.
+\]
+In 26 non-compact dimensions these were the graviton, the $B$-field and the dilaton. A
+25-dimensional observer sorts them by how many indices point along the circle
+\source{Tong §8.2.1, ll.~11491--11526}:
+\begin{itemize}[leftmargin=*]
+\item $\alpha^\mu_{-1}\tilde\alpha^\nu_{-1}\ket{0;p}$: a symmetric traceless tensor, an
+antisymmetric tensor and a trace. These are the 25-dimensional metric $G_{\mu\nu}$, two-form
+$B_{\mu\nu}$ and dilaton $\Phi$.
+\item $\alpha^\mu_{-1}\tilde\alpha^{25}_{-1}\ket{0;p}$ and
+$\alpha^{25}_{-1}\tilde\alpha^{\mu}_{-1}\ket{0;p}$: two vectors. The symmetric combination
+comes from $G_{\mu\,25}$ and is the Kaluza--Klein gauge field $A_\mu$ of
+\eqref{eq:circle:kkansatz}. The antisymmetric combination comes from $B_{\mu\,25}$ and is
+$\tilde A_\mu$ of \eqref{eq:circle:Atilde}.
+\item $\alpha^{25}_{-1}\tilde\alpha^{25}_{-1}\ket{0;p}$: one scalar, the fluctuation of
+$G_{25\,25}$, that is the radius modulus $\sigma$.
+\end{itemize}
+A count of states confirms that nothing is lost. In lightcone gauge the 26-dimensional massless
+level has $24\times24=576$ states. In 25 dimensions the transverse index takes $23$ values plus
+the circle direction, and
+\[
+ \underbrace{23\times23}_{G_{\mu\nu},\,B_{\mu\nu},\,\Phi}
+ +\underbrace{23+23}_{A_\mu,\;\tilde A_\mu}+\underbrace{1}_{\sigma}=529+46+1=576 .
+\]
+The string reproduces the massless content of the Kaluza--Klein reduction of
+\cref{sec:circle:kkgauge}. The existence of the massless scalar $\sigma$ is the string's way
+of saying that $R$ is a free parameter\index{moduli space!of the circle}. Its vertex operator is built from
+$\partial X^{25}\bar\partial X^{25}$ (\cref{ch:cft}); adding it to the worldsheet action changes
+the coefficient of the kinetic term of $X^{25}$, which is a change of $R$. In the terminology
+of \source{GPR §2.1, ll.~458--575} it is a truly marginal operator, and $R$ is a coordinate on
+the moduli space of the conformal field theory.
+
+\subsection{Charges: momentum and winding}
+
+Which states are charged under the two gauge fields? Tong computes the three-point
+amplitude of one photon and two tachyon modes with charges $(n,w)$ and $(-n,-w)$, and finds
+it proportional to $p_L\pm p_R$, with the upper sign for $A_\mu$ and the lower sign for
+$\tilde A_\mu$ \TL\ \source{Tong §8.2.2, ll.~11527--11560}. By \eqref{eq:circle:inverse},
+\begin{equation}\label{eq:circle:charges}
+ \text{charge under }A_\mu\ \propto\ p_L+p_R=\frac{2n}{R},\qquad
+ \text{charge under }\tilde A_\mu\ \propto\ p_L-p_R=\frac{2wR}{\ap}.
+\end{equation}
+\index{U(1) x U(1) gauge symmetry@$U(1)\times U(1)$ gauge symmetry}The first statement is
+\eqref{eq:circle:kkcharge} again. The second can be understood without any amplitude, from
+the coupling of the string to a background $B$-field\index{B-field@$B$-field!winding charge} (\cref{ch:backgrounds}). In Lorentzian
+conformal gauge that coupling is
+\begin{equation}\label{eq:circle:Bcoupling}
+ S_B=-\frac{1}{4\pi\ap}\int\dd\tau\,\dd\sigma\;\epsilon^{\alpha\beta}
+     B_{MN}(X)\,\partial_\alpha X^M\partial_\beta X^N
+    =-\frac{1}{2\pi\ap}\int\dd\tau\,\dd\sigma\;B_{MN}\,\dot X^MX'^N ,
+\end{equation}
+with $\epsilon^{\tau\sigma}=+1$; the overall sign is a convention for $B$
+\source{Tong §7.2.1, eq.~(7.8), ll.~9425--9500}. Consider a string that winds the circle $w$
+times and is otherwise point-like: $X^\mu=X^\mu(\tau)$ and $X'^{25}=wR$. Only the components
+$B_{\mu\,25}=-B_{25\,\mu}$ contribute, and $X'^\mu=0$ removes the term with $N=\mu$, so
+\begin{equation}\label{eq:circle:windingcharge}
+ S_B=-\frac{1}{2\pi\ap}\int\dd\tau\;B_{\mu\,25}\,\dot X^\mu\int_0^{2\pi}\dd\sigma\,X'^{25}
+    =-\frac{wR}{\ap}\int\dd\tau\;\tilde A_\mu\,\dot X^\mu .
+\end{equation}
+This is the worldline action of a point particle of charge $wR/\ap$ (up to the sign
+convention) in the gauge field $\tilde A_\mu$, compare Tong's eq.~(7.9). The gauge
+transformation of $\tilde A_\mu$ descends from the gauge symmetry
+$B\to B+\dd\lambda$ of the two-form with $\lambda=\lambda_{25}(x)\,\dd y$.
+
+\begin{physicsbox}[Physical picture: two gauge fields, two charges]
+The metric gauges translations along the circle, and the conserved charge of translations is
+momentum $n$. The two-form couples to the string the way a Maxwell potential couples to a
+charged particle, and when the string is wrapped on the circle it \emph{is} a charged
+particle in 25 dimensions, with charge $w$. A point-particle theory has $A_\mu$ but no
+states charged under $\tilde A_\mu$. String theory fills both charge lattices. The integer
+vector $(n,w)\in\Z^2$ is the charge vector of $U(1)\times U(1)$; in the chiral basis
+$U(1)_L\times U(1)_R$ the charges are $(p_L,p_R)$.
+\end{physicsbox}
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:circle:lean}
+
+Three Lean files touch the content of this chapter. They belong to three different layers of
+the library (\cref{ch:architecture}), and they illustrate three different levels of
+faithfulness to the physics. None of them contains a string, a Hilbert space or a Virasoro
+operator. What they contain is the algebra of the zero-mode part of
+\eqref{eq:circle:massformula}.
+
+\subsection{Stream 1: the momenta as rational functions}
+
+The file \path{StringTheoryFormalization/UseCases/TDualityMassSpectrum.lean}, namespace
+\lean{StringTheory.UseCases.TDuality}, begins with three definitions.
+
+\begin{leanbox}[In Lean: $p_L$, $p_R$ and the momentum part of the mass]
+\begin{leancode}
+def leftMomentum (n w R : ℚ) : ℚ := n / R + w * R
+
+def rightMomentum (n w R : ℚ) : ℚ := n / R - w * R
+
+def momentumMassSq (n w R : ℚ) : ℚ :=
+  (leftMomentum n w R) ^ 2 + (rightMomentum n w R) ^ 2
+\end{leancode}
+\textbf{Reading.} These are \eqref{eq:circle:pLpR} in units $\ap=1$, as functions
+$\Q^3\to\Q$. Three things differ from the physics. (i) The radius is a rational number, not a
+positive real, and may be negative. (ii) $n$ and $w$ are rationals, not integers; integrality
+plays no role in the theorems below. (iii) \lean{momentumMassSq} is $p_L^2+p_R^2$, which by
+the computation above \eqref{eq:circle:massformula} equals
+\[
+ p_L^2+p_R^2=2\Big(\frac{n^2}{R^2}+w^2R^2\Big),
+\]
+\emph{twice} the momentum--winding part of $\ap M^2$. The oscillator term
+$\frac2\ap(N+\tilde N-2)$ and the level-matching condition are not modelled. The file's header
+comment quotes the oscillator term of \eqref{eq:circle:twomass} with the coefficient $2/\ap$
+where Tong's equation has $4/\ap$. Comments are not checked by Lean, and no declaration in
+the file involves that term, so no theorem is affected; a reader comparing the file with this
+chapter should use \eqref{eq:circle:twomass}.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: how the momenta respond to $R\to1/R$, $n\leftrightarrow w$]
+\begin{leancode}
+theorem tduality_fixes_left_momentum (n w R : ℚ) (hR : R ≠ 0) :
+    leftMomentum w n (1 / R) = leftMomentum n w R := by ...
+
+theorem tduality_flips_right_momentum (n w R : ℚ) (hR : R ≠ 0) :
+    rightMomentum w n (1 / R) = - rightMomentum n w R := by ...
+
+theorem tduality_invariant_mass_squared (n w R : ℚ) (hR : R ≠ 0) :
+    momentumMassSq w n (1 / R) = momentumMassSq n w R := by ...
+\end{leancode}
+\textbf{Reading.} For all rationals $n,w$ and all rational $R\neq0$: exchanging the first two
+arguments and replacing $R$ by $1/R$ leaves $n/R+wR$ unchanged, changes the sign of
+$n/R-wR$, and therefore leaves the sum of squares unchanged. These are identities between
+rational functions. They are the algebraic core of T-duality and are discussed in
+\cref{ch:tduality}; we quote them here because they are statements about the objects defined
+in this chapter. They say nothing about the oscillators, about level matching (which is
+invariant for the separate reason that $nw=wn$), or about interactions.
+\textbf{Proof idea.} Unfold the definitions, clear denominators with \lean{field\_simp} using
+$R\neq0$, and let \lean{ring} verify the polynomial identity. The third theorem rewrites with
+the first two and uses $(-x)^2=x^2$.
+\end{leanbox}
+
+A companion file in the same directory, \path{NarainLattice.lean}, restates the same two
+momenta under the names \lean{pL} and \lean{pR} (its namespace is that of Stream~1 with
+\lean{NarainLattice} in place of \lean{TDuality}). It proves the Lean form of
+\eqref{eq:circle:norm}:
+\begin{leancode}
+def narainNorm (n w R : ℚ) : ℚ := (pL n w R ^ 2 - pR n w R ^ 2) / 2
+
+theorem narain_norm_R_independent (n w R : ℚ) (hR : R ≠ 0) :
+    narainNorm n w R = 2 * n * w := by ...
+\end{leancode}
+In units $\ap=1$ this is $\frac12(p_L^2-p_R^2)=2nw$: the indefinite form does not depend on
+$R$. It is the identity behind level matching, although the file does not mention levels.
+\Cref{ch:narain} takes it up.
+
+\subsection{Stream 2: the circle as the \texorpdfstring{$d=1$}{d=1} generalized metric}
+
+The newer library \lean{DualScaleStream2} works with real matrices of arbitrary size $d$ and
+with the generalized metric\index{generalized metric!circle} $\HH(G,B)$ of \cref{ch:genmetric}. For $d=1$ and $B=0$ the
+metric on the circle is the $1\times1$ matrix $G=(R^2)$ in units $\ap=1$, and
+\[
+ \HH=\begin{pmatrix}R^2&0\\0&R^{-2}\end{pmatrix},\qquad
+ Z=\begin{pmatrix}w\\n\end{pmatrix},\qquad
+ Z^{\mathsf T}\HH Z=R^2w^2+\frac{n^2}{R^2}.
+\]
+The order $Z=(w,n)$, winding first, is the convention of this module; it follows
+Hull and Zwiebach, as the file header records. The last expression is the momentum--winding
+part of \eqref{eq:circle:r}. The theorem \lean{massForm\_circle} in
+\path{DualScaleStream2/DFT/GeneralizedMetric.lean} states this, not for a formula written afresh,
+but for the \emph{Stream~1 definition itself}.
+
+\begin{leanbox}[In Lean: the bridge between the two libraries]
+\begin{leancode}
+noncomputable def massForm (H : Matrix (Charge d) (Charge d) ℝ)
+    (Z : Charge d → ℝ) : ℝ :=
+  Z ⬝ᵥ (H *ᵥ Z)
+
+theorem massForm_circle (n w R : ℚ) (hR : R ≠ 0) :
+    massForm (genMetric (d := 1) (!![((R : ℝ) ^ 2)]) 0)
+        (Sum.elim ![(w : ℝ)] ![(n : ℝ)]) =
+      ((StringTheory.UseCases.TDuality.momentumMassSq n w R : ℚ) : ℝ) / 2 := by ...
+\end{leancode}
+\textbf{Reading.} \lean{Charge 1} is the index type \lean{Fin 1 ⊕ Fin 1} of a doubled charge
+vector; \lean{Sum.elim ![w] ![n]} is the vector whose first block is $w$ and whose second
+block is $n$. For rational $n,w$ and rational $R\neq0$, all cast to real numbers, the quadratic
+form $Z^{\mathsf T}\HH(R^2,0)Z$ equals one half of the rational number
+\lean{momentumMassSq n w R}, cast to $\R$. The factor $\frac12$ is the factor $2$ noted in the
+previous box. \textbf{Why it matters.} The two libraries were written independently, with
+different number systems ($\Q$ and $\R$) and different data structures (three scalars; a
+block matrix acting on a sum type). A reader might worry that they formalize two different
+things under the same name. This theorem removes the worry for the circle: the kernel has
+checked that they define the same function of $(n,w,R)$. It does not show that either of them
+is the mass of a string; that identification is the content of
+\cref{sec:circle:zeromodes,sec:circle:mass} and is Tier~L.
+\textbf{Proof idea.} Compute the $1\times1$ inverse $(R^2)^{-1}$ from the adjugate formula; at
+$B=0$ the generalized metric is block diagonal, so the quadratic form splits into a winding
+term and a momentum term; then unfold the Stream~1 definitions, push the casts through with
+\lean{push\_cast}, and finish with \lean{field\_simp} and \lean{ring}.
+\end{leanbox}
+
+\subsection{The foundation layer: an arithmetic shadow}
+
+The third file, \path{StringTheoryFoundation/Duality/T_Duality.lean}, has no imports beyond
+core Lean. Its namespace is \lean{StringTheory.Foundation.Duality.T\_Duality}.
+
+\begin{leanbox}[In Lean: a state is a pair of integers]
+\begin{leancode}
+structure CircleState where
+  n : Int
+  w : Int
+  deriving Repr, DecidableEq
+
+def tDualState (s : CircleState) : CircleState :=
+  { n := s.w, w := s.n }
+
+theorem t_duality_involution (s : CircleState) :
+    tDualState (tDualState s) = s := by ...
+
+def selfDualMassFactor (n w : Int) : Int :=
+  n * n + w * w
+
+theorem self_dual_mass_symmetry (n w : Int) :
+    selfDualMassFactor n w = selfDualMassFactor w n := by ...
+
+theorem t_duality_spectrum_invariance (n w : Int) :
+    n * n + w * w = w * w + n * n := by ...
+\end{leancode}
+\textbf{Reading.} A \lean{CircleState} records the charge vector $(n,w)\in\Z^2$ of
+\cref{sec:circle:gauge} and nothing else: no level, no momentum $p^\mu$, no radius. The first
+theorem says that swapping the two components twice is the identity. The other two say that
+$n^2+w^2$ is symmetric in $n$ and $w$; the last is commutativity of integer addition. The name
+\lean{selfDualMassFactor} refers to the fact that at $r=1$ the momentum--winding part of
+\eqref{eq:circle:r} is $n^2+w^2$. These statements are \emph{arithmetic shadows}\index{arithmetic shadow} of the
+physics: true, kernel-checked, and much weaker than their names suggest. There is no radius
+in the file, so ``spectrum invariance'' here cannot refer to $R\to\ap/R$.
+\textbf{Proof idea.} Definitional unfolding; the integer identities are closed by
+\lean{omega}.
+\end{leanbox}
+
+\subsection{Tier table and what a faithful formalization would need}
+
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.50\textwidth}p{0.05\textwidth}
+  >{\raggedright\arraybackslash}p{0.38\textwidth}@{}}
+\toprule
+Statement & Tier & Where\\
+\midrule
+KK tower $M_n^2=n^2/R^2$; fields $G,B,\Phi,A,\tilde A,\sigma$ in 25 dimensions & \TL &
+ Tong §8.1\\
+Mode expansion with winding; $p_{L,R}=n/R\pm wR/\ap$ & \TL & Tong §8.2\\
+$M^2=p_R^2+\frac4\ap(N-1)=p_L^2+\frac4\ap(\tilde N-1)$, hence
+ \eqref{eq:circle:levelmatching}, \eqref{eq:circle:massformula} & \TL & Tong §8.2\\
+Charges $p_L\pm p_R$ under $A_\mu,\tilde A_\mu$ & \TL & Tong §8.2.2\\
+$n/R+wR$ fixed, $n/R-wR$ negated, sum of squares invariant under
+ $(n,w,R)\to(w,n,1/R)$, over $\Q$ & \TA & \lean{tduality\_*} (three theorems)\\
+$\frac12(p_L^2-p_R^2)=2nw$ for all $R\neq0$, over $\Q$, $\ap=1$ & \TA &
+ \lean{narain\_norm\_R\_independent}\\
+$Z^{\mathsf T}\HH(R^2,0)Z=\frac12\,$\lean{momentumMassSq} & \TA & \lean{massForm\_circle}\\
+$(n,w)\mapsto(w,n)$ is an involution; $n^2+w^2$ symmetric, over $\Z$ & \TA &
+ \lean{t\_duality\_involution}, \lean{self\_dual\_mass\_symmetry}\\
+Table~\ref{tab:circle:states}, \cref{ex:circle:numbers}, inequality \eqref{eq:circle:amgm} &
+ --- & symbolic check, not Tier~A\\
+``\lean{momentumMassSq} is the mass of a string state'' & \TL & identification, never
+ Tier~A\\
+\bottomrule
+\end{tabular}
+\end{center}
+The Tier~A theorems in this table depend only on the three standard axioms of Lean's
+classical mathematics, namely \lean{propext}, \lean{Classical.choice} and
+\lean{Quot.sound}; this was confirmed with \lean{\#print axioms} for \lean{massForm\_circle}
+and \lean{tduality\_invariant\_mass\_squared}.
+
+A formalization of \eqref{eq:circle:massformula} that deserved the name would need, at the
+least: (a) a Fock space for the oscillators $\alpha_k,\tilde\alpha_k$ with the level operators
+$N,\tilde N$; (b) a zero-mode sector labelled by $(n,w)\in\Z^2$ and $p^\mu$, with the
+operators $L_0,\tilde L_0$ of \eqref{eq:circle:L0} acting on the tensor product; (c) the
+physical-state conditions \eqref{eq:circle:constraints} as hypotheses, and
+\eqref{eq:circle:levelmatching}, \eqref{eq:circle:massformula} as theorems about
+eigenvalues; (d) a real radius $R>0$ and an explicit $\ap$. Step (c) is, once (a) and (b)
+exist, precisely the algebra of \cref{sec:circle:mass}. Steps (a) and (b) are the real work and
+are not in the library today (\cref{ch:open}).
+
+%=====================================================================================
+\begin{summarybox}
+\begin{itemize}[leftmargin=*]
+\item A field on $\R^{1,D-2}\times S^1$ is a tower of fields with masses $|n|/R$. The metric
+component $G_{\mu\,25}$ is a $U(1)$ gauge field $A_\mu$, and the mode $n$ has charge $n$. The
+radius is a modulus: a massless scalar without potential.
+\item A closed string on a circle carries two integers. Momentum $n$ comes from
+single-valuedness of the wavefunction; winding $w$ from the boundary condition
+$X(\sigma+2\pi)=X(\sigma)+2\pi Rw$. Winding is topological, conserved, and costs energy
+$|w|R/\ap$.
+\item The left- and right-movers carry $p_{L,R}=n/R\pm wR/\ap$. The combination
+$\frac\ap4(p_L^2-p_R^2)=nw$ is independent of $R$.
+\item $M^2=n^2/R^2+w^2R^2/\ap^2+\frac2\ap(N+\tilde N-2)$ with $N-\tilde N=nw$, where $M$ is
+the mass seen in 25 dimensions.
+\item At generic $R$ the massless states are $G_{\mu\nu},B_{\mu\nu},\Phi$, two gauge fields
+$A_\mu,\tilde A_\mu$ and the modulus $\sigma$. Momentum is the charge of $A_\mu$; winding is
+the charge of $\tilde A_\mu=B_{\mu\,25}$. At $R=\sqrt\ap$ further states become massless.
+\item In Lean: the rational functions $n/R\pm wR$ and their behaviour under
+$(n,w,R)\to(w,n,1/R)$ \TA; the identity of the Stream~1 and Stream~2 circle mass forms,
+\lean{massForm\_circle} \TA. The oscillators, level matching and the identification with a
+string are not formalized.
+\end{itemize}
+\end{summarybox}
+
+%=====================================================================================
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$ Massive field on a circle]
+Repeat the reduction of \cref{sec:circle:kk} for a scalar of mass $m$ in $D$ dimensions,
+adding $-\frac12m^2\Phi^2$ to \eqref{eq:circle:scalaraction}. Show that
+$M_n^2=m^2+n^2/R^2$. For which $m^2<0$ and $R$ are all modes with $n\neq0$ non-tachyonic?
+Compare with the momentum modes of the string tachyon in \cref{tab:circle:states}.
+\end{exercise}
+
+\begin{exercise}[$\star$ The two quadratic forms]
+From \eqref{eq:circle:pLpR} verify $\frac\ap4(p_L^2-p_R^2)=nw$ and
+$\frac12(p_L^2+p_R^2)=n^2/R^2+w^2R^2/\ap^2$. Express both in terms of the dimensionless
+momenta of \cref{rem:circle:gpr}.
+\end{exercise}
+
+\begin{exercise}[$\star$ Accidental massless scalars]
+Show that a state with $N=\tilde N=0$ is massless exactly when $r=|n|/2$ with $w=0$, or
+$r=2/|w|$ with $n=0$. List the radii in the interval $\frac12\le r\le2$ at which this
+happens, and the states involved.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Twisted boundary conditions]
+A complex scalar may obey $\Phi(x,y+2\pi R)=\ee^{2\pi\ii\theta}\Phi(x,y)$ with a fixed
+$\theta\in[0,1)$. Find the Kaluza--Klein masses. For $\theta=\frac12$ show that there is no
+massless mode and that the lightest mode has $M=1/(2R)$. Explain why a \emph{real} scalar
+allows only $\theta\in\{0,\frac12\}$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ States with both charges are never tachyonic]
+Fix $(n,w,N,\tilde N)$ with $nw\neq0$ and regard \eqref{eq:circle:massformula} as a function
+of $R$. Show that it is minimized at $R^2=\ap|n/w|$, and use level matching to show that the
+minimum is $\ap M^2_{\min}=4\big(\max(N,\tilde N)-1\big)\ge0$. Which states reach
+$M^2=0$, and at which radius for given $(n,w)$?
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Counting tachyons]
+Show that the number of tachyonic states at radius $r$ is
+$\#\{n\in\Z:|n|<2r\}+\#\{w\in\Z:|w|<2/r\}-1$. Evaluate it at $r=2$ and compare with
+\cref{ex:circle:numbers}. At which $r$ is the number smallest, and what is it there?
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Lean: the factor of two]
+State and prove in Lean, in the namespace of \lean{momentumMassSq}:
+\begin{leancode}
+theorem momentumMassSq_eq (n w R : ℚ) (hR : R ≠ 0) :
+    momentumMassSq n w R = 2 * (n ^ 2 / R ^ 2 + w ^ 2 * R ^ 2)
+\end{leancode}
+Hint: \lean{unfold}, then \lean{field\_simp}, then \lean{ring}. Then prove the bound
+$4nw\le{}$\lean{momentumMassSq n w R}, the Lean form of \eqref{eq:circle:amgm}. Hint: first
+establish $p_L^2-p_R^2=4nw$ as a \lean{have}, then call \lean{nlinarith} with the hint
+\lean{sq\_nonneg (n / R - w * R)}.
+\end{exercise}
+
+\begin{exercise}[$\star\star$ Lean: level matching as a predicate]
+In the setting of \path{T_Duality.lean} define
+\begin{leancode}
+def levelMatched (s : CircleState) (N Nt : Int) : Prop := N - Nt = s.n * s.w
+\end{leancode}
+and prove that \lean{levelMatched (tDualState s) N Nt ↔ levelMatched s N Nt}. Which lemma
+about integers does the proof use? State in one sentence what this theorem does and does not
+say about the string spectrum.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$ The circle from the general theory]
+The file \path{GeneralizedMetric.lean} proves, for every $d$, the two theorems
+\lean{massForm\_covariant} and \lean{tduality\_inverts\_metric}:
+\[
+ Z^{\mathsf T}(g^{\mathsf T}\HH g)Z=(gZ)^{\mathsf T}\HH(gZ),\qquad
+ \eta\,\HH(G,0)\,\eta=\HH(G^{-1},0).
+\]
+Using only these two
+statements and $\eta^{\mathsf T}=\eta$, derive on paper the invariance of
+$R^2w^2+n^2/R^2$ under $R\to1/R$, $n\leftrightarrow w$. Then write the corresponding Lean
+statement for $d=1$ and outline how \lean{massForm\_circle} would let you transport
+\lean{tduality\_invariant\_mass\_squared} from $\Q$ to the matrix setting.
+\end{exercise}
+
+%=====================================================================================
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+
+\begin{itemize}[leftmargin=*]
+\item Tong, \emph{String Theory}, §8.1--8.2: the text this chapter follows most closely
+\source{Tong §8.1--8.2.3, ll.~11183--11625}. The coupling of the string to $B_{\mu\nu}$ used
+in \cref{sec:circle:gauge} is in \source{Tong §7.2.1, ll.~9425--9500}.
+\item Giveon, Porrati and Rabinovici, \emph{Target space duality in string theory}: the
+circle in canonical language, with dimensionless $p_{L,R}$, the conjugate momentum and the
+Hamiltonian $H=L_0+\tilde L_0$ \source{GPR §2.2, ll.~576--760}; moduli as couplings of truly
+marginal operators \source{GPR §2.1, ll.~458--575}.
+\item Alvarez, Alvarez-Gaum\'e and Lozano, \emph{An introduction to T-duality in string
+theory}: the introduction places the circle among the dualities of statistical mechanics and
+field theory, and states that the equivalence $R\to\ap/R$ of the interacting theory requires
+a shift of the dilaton \source{AAL §1, ll.~95--117}. This is the starting point of
+\cref{ch:tduality,ch:buscher}.
+\end{itemize}
+

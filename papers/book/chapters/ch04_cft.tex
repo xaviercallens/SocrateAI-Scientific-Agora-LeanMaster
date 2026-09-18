@@ -1,0 +1,1195 @@
+\chapter{Conformal Field Theory for String Theorists}\label{ch:cft}
+
+After gauge fixing, the worldsheet theory of a string is a two-dimensional field theory with
+no intrinsic length scale: a \emph{conformal field theory} (CFT). This chapter answers the
+question: what can be said about such a theory using symmetry alone, and how much of the
+string spectrum of \cref{ch:quantum} is already fixed by that symmetry? The answer is
+surprisingly much. The symmetry group is infinite dimensional; it organizes all local
+operators by two numbers, the weights $(h,\tilde h)$; it has a quantum anomaly measured by
+one number, the central charge $c$; and it identifies states on a closed string with local
+operators at a point. A student should care for three reasons. First, the consistency
+condition $D=26$ of the bosonic string is the statement $c=26$ (\cref{ch:ghosts}). Second, the
+vertex operators $\ee^{\ii kX}$ studied here become, on a circle, the momentum and winding
+operators of \cref{ch:circle}, and their weights are the two halves of the mass formula on which
+T-duality acts. Third, the K3 sigma model of the second half of the book is known almost entirely
+through its conformal data ($c=6$, weights, characters). The chapter follows
+\source{Tong §4, ll.~3553--6190} and uses its conventions (Euclidean worldsheet, $\ap$ of
+dimension length$^2$).
+
+%=====================================================================================
+\section{Conformal transformations in two dimensions}\label{sec:cft:conformal}
+
+\subsection{Definition and the role of the metric}
+
+Let $\sigma^\alpha$, $\alpha=1,2$, be coordinates on the worldsheet and $g_{\alpha\beta}$ its
+metric. A \emph{conformal transformation}\index{conformal transformation} is a change of
+coordinates $\sigma^\alpha\to\tilde\sigma^\alpha(\sigma)$ under which the metric changes only
+by a position-dependent positive factor,
+\begin{equation}\label{eq:cft:confdef}
+  g_{\alpha\beta}(\sigma)\;\longrightarrow\;\Omega^2(\sigma)\,g_{\alpha\beta}(\sigma)
+\end{equation}
+\source{Tong §4, ll.~3560--3566}. Such a map preserves the angle between two curves at each
+point, because an angle is a ratio of inner products and the factor $\Omega^2$ cancels; it
+does not preserve lengths. A \emph{conformal field theory}\index{conformal field theory} is
+a field theory invariant under all maps of the form \eqref{eq:cft:confdef}.
+
+The interpretation of \eqref{eq:cft:confdef} depends on whether the metric is dynamical. In the
+Polyakov formulation of \cref{ch:classical} it is, and a conformal transformation is a
+diffeomorphism whose effect on the metric can be undone by a Weyl rescaling
+$g\to\ee^{2\omega}g$: the part of the gauge group that survives conformal gauge. If instead the
+metric is a fixed flat background, the same map is a genuine global symmetry with conserved
+currents \source{Tong §4, ll.~3567--3578}. The second point of view is taken in this chapter; the
+first returns in \cref{ch:ghosts}. Classically the two are equivalent; whether they remain so in
+the quantum theory is the question behind the critical dimension
+\source{Tong §4, ll.~3590--3597}.
+
+\begin{physicsbox}[Physical picture: no scale, no particles]
+Invariance under \eqref{eq:cft:confdef} includes uniform dilatations $\sigma\to\lambda\sigma$. A
+theory with a mass $m$ has a preferred length $1/m$ and cannot be dilatation invariant, so a CFT
+has only massless excitations. The natural questions are not about particles and S-matrices but
+about correlation functions and the transformation of operators
+\source{Tong §4, ll.~3598--3604}. For strings this is no loss: the particles of interest live in
+spacetime and appear as \emph{operators} of the worldsheet CFT.
+\end{physicsbox}
+
+\subsection{Euclidean worldsheet and complex coordinates}
+
+Continue the worldsheet time to imaginary values, $(\sigma^1,\sigma^2)=(\sigma^1,\ii\sigma^0)$,
+and define
+\begin{equation}\label{eq:cft:zdef}
+  z=\sigma^1+\ii\sigma^2,\qquad \bar z=\sigma^1-\ii\sigma^2,\qquad
+  \partial\equiv\partial_z=\tfrac12(\partial_1-\ii\partial_2),\qquad
+  \bar\partial\equiv\partial_{\bar z}=\tfrac12(\partial_1+\ii\partial_2),
+\end{equation}
+so that $\partial z=\bar\partial\bar z=1$ and $\partial\bar z=\bar\partial z=0$
+\source{Tong §4.0.1, ll.~3605--3630}. These are the Euclidean versions of the light-cone
+coordinates $\sigma^\pm$ of \cref{ch:classical}; by this analogy holomorphic functions of $z$ are
+called left-moving and antiholomorphic functions right-moving. The flat metric is
+\begin{equation}\label{eq:cft:flat}
+  \dd s^2=(\dd\sigma^1)^2+(\dd\sigma^2)^2=\dd z\,\dd\bar z,
+  \qquad g_{zz}=g_{\bar z\bar z}=0,\quad g_{z\bar z}=\tfrac12 ,
+\end{equation}
+and the measure is $\dd^2z\equiv\dd z\,\dd\bar z=2\,\dd\sigma^1\dd\sigma^2$
+\source{Tong §4.0.1, ll.~3631--3646}.
+
+A warning about factors of two: because $g_{z\bar z}=\tfrac12$, one has $g^{z\bar z}=2$,
+$\partial\bar\partial=\tfrac14\partial_\alpha\partial^\alpha$, and the delta function normalized
+by $\int\dd^2z\,\delta(z,\bar z)=1$ is half of $\delta(\sigma)$. Most numerical disagreements
+between CFT texts come from these conventions.
+
+\subsection{Conformal maps are holomorphic maps}
+
+In these coordinates, take any holomorphic function $f$ and set
+\begin{equation}\label{eq:cft:holo}
+  z\to z'=f(z),\qquad \bar z\to\bar z'=\bar f(\bar z).
+\end{equation}
+Then $\dd z'\,\dd\bar z'=|f'(z)|^2\,\dd z\,\dd\bar z$, which has the form
+\eqref{eq:cft:confdef} with $\Omega^2=|f'|^2$. Every holomorphic change of coordinates is
+conformal \source{Tong §4.0.2, ll.~3651--3660}. There are infinitely many: one for each
+function $f$. This is special to two dimensions; for flat $\R^{p,q}$ with $p+q>2$ the conformal
+group is the finite-dimensional group $SO(p+1,q+1)$ \source{Tong §4.0.2, ll.~3660--3665}. The
+two simplest examples are the translation $z\to z+a$ and $z\to\zeta z$, which is a rotation for
+$|\zeta|=1$ and a dilatation for $\zeta$ real and positive.
+
+It is convenient to treat $z$ and $\bar z$ as independent complex variables and to impose
+$\bar z=z^*$ at the end; this makes contour integration available
+\source{Tong §4.0.2, ll.~3668--3673}. Almost every statement below therefore comes in a
+holomorphic and an antiholomorphic copy, of which only the first will be written.
+
+%=====================================================================================
+\section{The stress tensor}\label{sec:cft:stress}
+
+\subsection{Definition, conservation and tracelessness}
+
+The stress tensor\index{stress tensor} is the set of Noether currents of translations. A quick
+way to obtain it: couple the theory to a background metric. A coordinate change
+$\delta\sigma^\alpha=\epsilon^\alpha(\sigma)$ together with the metric change
+$\delta g_{\alpha\beta}=\partial_\alpha\epsilon_\beta+\partial_\beta\epsilon_\alpha$ is a
+diffeomorphism and leaves the action $S$ invariant. Hence the change of $S$ under the coordinate
+change alone is minus its change under the metric variation alone,
+$\delta S=-2\int\dd^2\sigma\,(\partial S/\partial g_{\alpha\beta})\,\partial_\alpha\epsilon_\beta$.
+This has the form $\int J^\alpha\partial_\alpha\epsilon$ that defines a Noether current. With the
+normalization standard in string theory,
+\begin{equation}\label{eq:cft:Tdef}
+  T_{\alpha\beta}=-\frac{4\pi}{\sqrt g}\,\frac{\partial S}{\partial g^{\alpha\beta}},
+  \qquad \partial^\alpha T_{\alpha\beta}=0\ \text{ on a flat worldsheet}
+\end{equation}
+\source{Tong §4.1.1, ll.~3680--3739}. In a conformal theory a uniform rescaling
+$\delta g_{\alpha\beta}=\epsilon\,g_{\alpha\beta}$ is a symmetry. The corresponding variation of
+the action is $\delta S=-\frac{1}{4\pi}\int\dd^2\sigma\sqrt g\,\epsilon\,T^\alpha{}_\alpha$, and it
+must vanish for all $\epsilon$:
+\begin{equation}\label{eq:cft:traceless}
+  T^\alpha{}_\alpha=0 .
+\end{equation}
+\source{Tong §4.1.1, ll.~3740--3770}. Tracelessness holds classically in many theories and is
+usually lost on quantization, because regularization introduces a scale. \Cref{sec:cft:c} shows
+how much of it survives in two dimensions.
+
+In complex coordinates \eqref{eq:cft:traceless} reads $T_{z\bar z}=0$ (since
+$T^\alpha{}_\alpha=4T_{z\bar z}$ with the metric \eqref{eq:cft:flat}), and conservation becomes
+\begin{equation}\label{eq:cft:holoT}
+  \bar\partial\,T_{zz}=0,\qquad \partial\,T_{\bar z\bar z}=0 ,
+\end{equation}
+so that $T(z)\equiv T_{zz}$ is holomorphic and $\bar T(\bar z)\equiv T_{\bar z\bar z}$ is
+antiholomorphic \source{Tong §4.1.1, ll.~3782--3795}. To see \eqref{eq:cft:holoT} directly,
+write $\partial^\alpha T_{\alpha z}=2(\bar\partial T_{zz}+\partial T_{\bar zz})$ and drop the
+second term using $T_{z\bar z}=0$.
+
+\subsection{One current for each conformal map}
+
+For the infinitesimal map $z'=z+\epsilon(z)$ the same argument, with $\epsilon$ promoted to a
+function $\epsilon(z,\bar z)$, gives
+\begin{equation}\label{eq:cft:deltaS}
+  \delta S=\frac{1}{2\pi}\int\dd^2z\,\big[\,T_{zz}\,\partial_{\bar z}\epsilon
+    +T_{\bar z\bar z}\,\partial_z\bar\epsilon\,\big]
+\end{equation}
+\source{Tong §4.1.2, ll.~3796--3826}. The step from a general $T_{\alpha\beta}$ to
+\eqref{eq:cft:deltaS} uses $T_{z\bar z}=0$; this is where conformal invariance enters. If
+$\epsilon$ is holomorphic the variation vanishes: the map is a symmetry. The associated
+conserved current is read off in the usual way and is
+\begin{equation}\label{eq:cft:current}
+  J^{z}=0,\qquad J^{\bar z}=T(z)\,\epsilon(z),
+\end{equation}
+which is itself holomorphic, a much stronger property than $\partial_\alpha J^\alpha=0$
+\source{Tong §4.1.2, ll.~3836--3856}. Since $\epsilon(z)$ is arbitrary there are infinitely many
+conserved currents: expanding $\epsilon(z)=\sum_n\epsilon_nz^{n+1}$ gives one charge for each
+integer $n$, the Virasoro generators $L_n$ of \cref{sec:cft:virasoro}.
+
+\subsection{The example that accompanies the chapter: the free scalar}
+
+The Euclidean action of one free scalar field $X(\sigma)$ is
+\begin{equation}\label{eq:cft:freeaction}
+  S=\frac{1}{4\pi\ap}\int\dd^2\sigma\,\partial_\alpha X\,\partial^\alpha X
+   =\frac{1}{2\pi\ap}\int\dd^2z\,\partial X\,\bar\partial X ,
+\end{equation}
+the Polyakov action of \cref{ch:classical} for a single coordinate $X$ in conformal gauge, with
+the overall sign changed by the Euclidean continuation \source{Tong §4.1.3, ll.~3864--3876}.
+(The second form follows from $\partial_\alpha X\partial^\alpha X=4\,\partial X\bar\partial X$ and
+$\dd^2\sigma=\tfrac12\dd^2z$.) Under $\sigma\to\lambda\sigma$ the two derivatives contribute
+$\lambda^{-2}$ and the measure $\lambda^{2}$, so the action is scale invariant; any polynomial
+potential for $X$ would break this \source{Tong §4.1.3, ll.~3884--3900}. From
+\eqref{eq:cft:Tdef},
+\begin{equation}\label{eq:cft:Tfree}
+  T_{\alpha\beta}=-\frac{1}{\ap}\Big(\partial_\alpha X\partial_\beta X
+    -\tfrac12\delta_{\alpha\beta}(\partial X)^2\Big),\qquad
+  T=-\frac1{\ap}\,\partial X\,\partial X,\qquad
+  \bar T=-\frac1{\ap}\,\bar\partial X\,\bar\partial X
+\end{equation}
+\source{Tong §4.1.3, ll.~3903--3925}. The trace vanishes because $\delta_{\alpha}{}^{\alpha}=2$.
+The equation of motion $\partial\bar\partial X=0$ has the general solution
+$X(z,\bar z)=X(z)+\bar X(\bar z)$, and on it $T$ is holomorphic, in agreement with
+\eqref{eq:cft:holoT}.
+
+%=====================================================================================
+\section{Operator products and Ward identities}\label{sec:cft:ope}
+
+\subsection{The operator product expansion}
+
+In a CFT the word \emph{field} or \emph{local operator} means any local expression, not only the
+variables of the path integral: $X$, $\partial^nX$, $\ee^{\ii kX}$, products of these. Let
+$\{\mathcal O_i\}$ be the set of all local operators. The
+\emph{operator product expansion}\index{operator product expansion} (OPE) states that two
+operators at nearby points can be replaced by a sum of single operators,
+\begin{equation}\label{eq:cft:ope}
+  \mathcal O_i(z,\bar z)\,\mathcal O_j(w,\bar w)=\sum_k C_{ij}^{k}(z-w,\bar z-\bar w)\,
+  \mathcal O_k(w,\bar w)
+\end{equation}
+\source{Tong §4.2.1, ll.~3943--3966}. Three conventions must be kept in mind. (i) The equation
+holds inside time-ordered correlation functions $\vev{\mathcal O_i\,\mathcal O_j\cdots}$ with
+arbitrary other insertions that stay farther from $w$ than $z$ does; inside a correlator bosonic
+operators commute. (ii) In a CFT the expansion converges, with radius equal to the distance to
+the nearest other insertion \source{Tong §4.2.1, ll.~4006--4012}; the reason is given in
+\cref{sec:cft:stateop}. (iii) Only the terms singular as $z\to w$ will matter: they carry the
+same information as commutation relations and as transformation laws. One writes ``$\sim$'' when
+the regular terms are omitted.
+
+\subsection{Ward identities}
+
+Noether's theorem in the quantum theory is expressed by Ward identities\index{Ward identity}.
+Let $\phi\to\phi+\epsilon\,\delta\phi$ be a symmetry of $\mathcal D\phi\,\ee^{-S}$ and promote
+$\epsilon$ to a function $\epsilon(\sigma)$. To first order the integrand changes by
+$-\frac1{2\pi}\int J^\alpha\partial_\alpha\epsilon$, which defines the current $J^\alpha$. A change
+of integration variable cannot change the integral, so $\vev{\partial_\alpha J^\alpha\cdots}=0$ as
+long as the other insertions lie outside the support of $\epsilon$. If instead $\epsilon$ is
+constant on a region containing the insertion point $\sigma_1$ of $\mathcal O_1$ and zero outside,
+the operator itself changes, and the same manipulation gives
+\begin{equation}\label{eq:cft:ward}
+  -\frac1{2\pi}\int_{\epsilon}\dd^2\sigma\;\partial_\alpha\vev{J^\alpha(\sigma)\,
+   \mathcal O_1(\sigma_1)\cdots}=\vev{\delta\mathcal O_1(\sigma_1)\cdots},
+\end{equation}
+the integral running over the region where $\epsilon\neq0$ \source{Tong §4.2.2, ll.~4018--4189}.
+
+In two dimensions the left side is a boundary integral by Stokes' theorem. For the conformal
+currents \eqref{eq:cft:current} the integrand $J_z(z)\mathcal O_1(w)$ is holomorphic in $z$ away
+from $w$, so the contour integral is $2\pi\ii$ times a residue, where ``residue'' means the
+coefficient of $(z-w)^{-1}$ in the OPE. The Ward identity for $\delta z=\epsilon(z)$ becomes
+\begin{equation}\label{eq:cft:wardres}
+  \delta\mathcal O(w,\bar w)=-\operatorname{Res}_{z\to w}\big[\epsilon(z)\,T(z)\,
+   \mathcal O(w,\bar w)\big]
+\end{equation}
+\source{Tong §4.2.2, ll.~4196--4250}, and similarly for $\bar\epsilon$ and $\bar T$. This is the
+working tool of the chapter. Read from right to left: the singular part of the OPE of $T$ with an
+operator determines how the operator transforms under every conformal map. Read from left to
+right: if the transformation is known, part of the OPE is known.
+
+%=====================================================================================
+\section{Primary operators and their weights}\label{sec:cft:primary}
+
+\subsection{Weights from translations, rotations and dilatations}
+
+Under a translation $\delta z=\epsilon$ (constant) every operator changes by
+$\delta\mathcal O=-\epsilon\,\partial\mathcal O$. By \eqref{eq:cft:wardres} the $T\mathcal O$
+OPE therefore always contains the term $\partial\mathcal O(w)/(z-w)$
+\source{Tong §4.2.3, ll.~4259--4280}. Next take $\delta z=\epsilon z$,
+$\delta\bar z=\bar\epsilon\bar z$: a dilatation for real $\epsilon$, a rotation for imaginary
+$\epsilon$. As with commuting observables in quantum mechanics, one can choose a basis of local
+operators that are eigenvectors of both.
+
+\begin{definition}\label{def:cft:weight}
+An operator $\mathcal O$ has \emph{weight}\index{conformal weight} $(h,\tilde h)$ if under
+$\delta z=\epsilon z$, $\delta\bar z=\bar\epsilon\bar z$ it transforms as
+$\delta\mathcal O=-\epsilon\,(h\,\mathcal O+z\,\partial\mathcal O)
+ -\bar\epsilon\,(\tilde h\,\mathcal O+\bar z\,\bar\partial\mathcal O)$
+\source{Tong §4.2.3, ll.~4307--4312}. Its \emph{scaling dimension}\index{scaling dimension} and
+\emph{spin} are
+\begin{equation}\label{eq:cft:dimspin}
+  \Delta=h+\tilde h,\qquad s=h-\tilde h .
+\end{equation}
+\end{definition}
+
+The derivative terms are present for any operator (they come from moving the argument); the
+terms $h\mathcal O$, $\tilde h\mathcal O$ are the eigenvalues. For $\epsilon=\bar\epsilon=\lambda$
+real the eigenvalue part is $-\lambda(h+\tilde h)\mathcal O$: the operator scales like
+(length)$^{-\Delta}$, the usual engineering dimension. For $\epsilon=-\bar\epsilon=\ii\theta$ it is
+$-\ii\theta(h-\tilde h)\mathcal O$, the phase of an object of spin $s$ under a rotation by
+$\theta$ \source{Tong §4.2.3, ll.~4318--4345}. The current for $\delta z=\epsilon z$ is $zT(z)$ by
+\eqref{eq:cft:current}; its residue with $\mathcal O(w)$ picks out the $(z-w)^{-2}$ term of the
+$T\mathcal O$ OPE. Therefore
+\begin{equation}\label{eq:cft:TOweight}
+  T(z)\,\mathcal O(w,\bar w)=\dots+\frac{h\,\mathcal O(w,\bar w)}{(z-w)^2}
+  +\frac{\partial\mathcal O(w,\bar w)}{z-w}+\dots
+\end{equation}
+
+\subsection{Primary operators}
+
+\begin{definition}\label{def:cft:primary}
+A \emph{primary operator}\index{primary operator} is an operator for which
+\eqref{eq:cft:TOweight} has no term more singular than $(z-w)^{-2}$, and likewise for $\bar T$:
+\begin{equation}\label{eq:cft:TOprimary}
+  T(z)\,\mathcal O(w,\bar w)=\frac{h\,\mathcal O(w,\bar w)}{(z-w)^2}
+  +\frac{\partial\mathcal O(w,\bar w)}{z-w}+\text{non-singular}
+\end{equation}
+\source{Tong §4.2.3, ll.~4363--4375}.
+\end{definition}
+
+For a primary operator the whole singular part is known, so \eqref{eq:cft:wardres} gives its
+change under \emph{any} conformal map. Expand $\epsilon(z)=\epsilon(w)+\epsilon'(w)(z-w)+\dots$
+and collect the coefficient of $(z-w)^{-1}$:
+\begin{equation}\label{eq:cft:deltaprimary}
+  \delta\mathcal O(w,\bar w)=-h\,\epsilon'(w)\,\mathcal O(w,\bar w)-\epsilon(w)\,
+   \partial\mathcal O(w,\bar w).
+\end{equation}
+Integrating this to a finite map $z\to\tilde z(z)$ gives
+\begin{equation}\label{eq:cft:finiteprimary}
+  \tilde{\mathcal O}(\tilde z,\bar{\tilde z})=
+  \Big(\frac{\partial\tilde z}{\partial z}\Big)^{-h}
+  \Big(\frac{\partial\bar{\tilde z}}{\partial\bar z}\Big)^{-\tilde h}\mathcal O(z,\bar z)
+\end{equation}
+\source{Tong §4.2.3, ll.~4376--4425}. A primary operator of weight $(h,\tilde h)$ thus transforms
+like a tensor with $h$ lower $z$ indices and $\tilde h$ lower $\bar z$ indices, except that $h$
+and $\tilde h$ need not be integers.
+
+The list of weights of the primary operators is the basic datum of a CFT: for a string it
+encodes the mass spectrum (\cref{sec:cft:stateop}), in statistical physics the critical
+exponents \source{Tong §4.2.3, ll.~4426--4431}.
+
+%=====================================================================================
+\section{The free boson}\label{sec:cft:boson}
+
+\subsection{Propagator}
+
+All the structure above can be computed explicitly for the free scalar
+\eqref{eq:cft:freeaction}. The path integral of a total functional derivative vanishes:
+\begin{equation*}
+  0=\int\mathcal DX\,\frac{\delta}{\delta X(\sigma)}\Big[\ee^{-S}X(\sigma')\Big]
+   =\int\mathcal DX\,\ee^{-S}\Big[\frac{1}{2\pi\ap}\,\partial^2X(\sigma)\,X(\sigma')
+   +\delta(\sigma-\sigma')\Big],
+\end{equation*}
+where $\partial^2=\partial_\alpha\partial^\alpha$ and $\delta S/\delta X=-\partial^2X/(2\pi\ap)$.
+Hence $\vev{\partial^2X(\sigma)X(\sigma')}=-2\pi\ap\,\delta(\sigma-\sigma')$
+\source{Tong §4.3.1, ll.~4463--4484}. The Green function of the two-dimensional Laplacian obeys
+$\partial^2\ln(\sigma-\sigma')^2=4\pi\,\delta(\sigma-\sigma')$; one checks this by integrating
+over a disc and using Stokes' theorem, which gives $2\oint r^2\dd\theta/r^2=4\pi$
+\source{Tong §4.3.1, ll.~4490--4524}. Therefore
+\begin{equation}\label{eq:cft:prop}
+  \vev{X(\sigma)X(\sigma')}=-\frac{\ap}{2}\ln(\sigma-\sigma')^2 ,\qquad
+  X(z)X(w)\sim-\frac{\ap}{2}\ln(z-w),
+\end{equation}
+the second formula being the OPE of the holomorphic parts. The logarithm means that $X$ itself
+has no well-defined weight. Its derivative does:
+\begin{equation}\label{eq:cft:dXdX}
+  \partial X(z)\,\partial X(w)\sim-\frac{\ap}{2}\,\frac{1}{(z-w)^2}
+\end{equation}
+\source{Tong §4.3.1, ll.~4545--4566}. (Differentiate $-\frac{\ap}2\ln(z-w)$ once in $z$ and once
+in $w$.) The growth of \eqref{eq:cft:prop} at large separation means that the wave function of $X$
+spreads over its whole target; this is why there are no Goldstone bosons in two dimensions
+\source{Tong §4.3.2, ll.~4572--4608}.
+
+\subsection{Normal ordering and Wick's theorem}
+
+The product $\partial X(z)\partial X(z)$ in \eqref{eq:cft:Tfree} is singular by
+\eqref{eq:cft:dXdX}. Define the normal-ordered\index{normal ordering} stress tensor by subtracting
+the singularity,
+\begin{equation}\label{eq:cft:Tnormal}
+  T(z)=-\frac1\ap:\!\partial X\partial X\!:(z)\equiv-\frac1\ap\lim_{z'\to z}
+  \Big(\partial X(z')\partial X(z)-\vev{\partial X(z')\partial X(z)}\Big),
+\end{equation}
+so that $\vev{T}=0$ \source{Tong §4.3.3, ll.~4609--4636}. Products of normal-ordered operators
+are evaluated by Wick's theorem: sum over all ways of replacing pairs of fields, one from each
+factor, by the propagator (a \emph{contraction}), leaving the rest normal ordered.
+
+\begin{proposition}[\TL]\label{prop:cft:dXprimary}
+$\partial X$ is a primary operator of weight $(1,0)$.
+\end{proposition}
+\begin{proof}
+In $T(z)\partial X(w)=-\frac1\ap:\!\partial X(z)\partial X(z)\!:\partial X(w)$ there are two
+ways to make one contraction, each giving \eqref{eq:cft:dXdX}:
+\begin{equation*}
+  T(z)\partial X(w)\sim-\frac{2}{\ap}\,\partial X(z)\Big(-\frac\ap2\frac1{(z-w)^2}\Big)
+  =\frac{\partial X(z)}{(z-w)^2}
+  =\frac{\partial X(w)}{(z-w)^2}+\frac{\partial^2X(w)}{z-w}+\dots ,
+\end{equation*}
+after Taylor expanding $\partial X(z)$ about $w$. This is \eqref{eq:cft:TOprimary} with $h=1$
+\source{Tong §4.3.3, ll.~4638--4690}.
+\end{proof}
+
+By contrast $\partial^2X$ has weight $(2,0)$ but is not primary: differentiating in $w$ produces
+a term $2\,\partial X(w)/(z-w)^3$ \source{Tong §4.3.3, ll.~4691--4705}.
+
+\begin{proposition}[\TL]\label{prop:cft:vertex}
+The operator $:\!\ee^{\ii kX}\!:$ is primary of weight
+$h=\tilde h=\ap k^2/4$.\index{vertex operator}
+\end{proposition}
+\begin{proof}
+First contract $\partial X(z)$ with the exponential. Expanding the exponential, a single
+contraction with one of the $n$ factors of $X(w)$ in $:\!X(w)^n\!:$ gives
+$n:\!X^{n-1}\!:\times(-\frac\ap2)\frac{1}{z-w}$, and resumming,
+\begin{equation}\label{eq:cft:dXexp}
+  \partial X(z):\!\ee^{\ii kX(w)}\!:\;\sim-\frac{\ii\ap k}{2}\,
+  \frac{:\!\ee^{\ii kX(w)}\!:}{z-w}.
+\end{equation}
+In $T(z):\!\ee^{\ii kX(w)}\!:$ both $\partial X(z)$ factors can be contracted, giving
+$-\frac1\ap\big(-\frac{\ii\ap k}{2}\big)^2(z-w)^{-2}=\frac{\ap k^2}{4}(z-w)^{-2}$, or only one of
+the two, giving $-\frac2\ap\big(-\frac{\ii\ap k}2\big):\!\partial X(z)\ee^{\ii kX(w)}\!:/(z-w)
+=\ii k:\!\partial X\ee^{\ii kX}\!:(w)/(z-w)+\dots$, which is
+$\partial_w:\!\ee^{\ii kX(w)}\!:/(z-w)$. Hence
+\begin{equation}\label{eq:cft:Texp}
+  T(z):\!\ee^{\ii kX(w)}\!:\;\sim\frac{\ap k^2}{4}\frac{:\!\ee^{\ii kX(w)}\!:}{(z-w)^2}
+  +\frac{\partial_w:\!\ee^{\ii kX(w)}\!:}{z-w}
+\end{equation}
+\source{Tong §4.3.3, ll.~4719--4800}. The antiholomorphic computation is identical.
+\end{proof}
+
+The weight $\ap k^2/4$ is a quantum effect: classically $\ee^{\ii kX}$ has dimension zero, and
+the result is proportional to $\ap$, which stands in the action where $\hbar$ would. Because $k$ is continuous the
+spectrum of weights is continuous, a consequence of the non-compact range of $X$
+\source{Tong §4.3.3, ll.~4722--4730}.
+
+\begin{example}[The tachyon from a weight]\label{ex:cft:tachyon}
+\Cref{ch:ghosts} will show that an operator can be integrated over the worldsheet in a
+conformally invariant way only if its weight is $(1,1)$, because $\dd^2z$ has weight $(-1,-1)$.
+Apply this to $D$ free bosons $X^\mu$ and the operator $:\!\ee^{\ii k\cdot X}\!:$, whose weight
+is $h=\tilde h=\ap k^2/4$ by \cref{prop:cft:vertex} applied to each direction. The condition
+$h=1$ is
+\[
+   \frac{\ap k^2}{4}=1\quad\Longleftrightarrow\quad M^2\equiv-k^2=-\frac{4}{\ap}.
+\]
+This is the mass of the closed-string tachyon found in \cref{ch:quantum} from
+$M^2=\frac{2}{\ap}(N+\tilde N-2)$ at $N=\tilde N=0$; in units $\ap=1$, $M^2=-4$. Similarly
+$:\!\partial X^\mu\bar\partial X^\nu\ee^{\ii k\cdot X}\!:$ has weight
+$(1+\ap k^2/4,\,1+\ap k^2/4)$, which is $(1,1)$ exactly when $k^2=0$: the massless level
+(graviton, $B$-field, dilaton), once a polarization $\zeta_{\mu\nu}$ with
+$k^\mu\zeta_{\mu\nu}=0$ is included so that the operator is primary
+\source{Tong §5.4, ll.~7050--7095}. The mass-shell condition of spacetime is a statement about
+conformal weights on the worldsheet.
+\end{example}
+
+\subsection{The \texorpdfstring{$TT$}{TT} OPE of the free boson}
+
+The same technique applied to two stress tensors gives
+\begin{align}
+  T(z)T(w)&=\frac{1}{\ap^2}:\!\partial X(z)\partial X(z)\!:\,:\!\partial X(w)\partial X(w)\!:
+   \nonumber\\
+  &\sim\frac{2}{\ap^2}\Big(-\frac\ap2\frac{1}{(z-w)^2}\Big)^2
+   +\frac{4}{\ap^2}\Big(-\frac\ap2\Big)\frac{:\!\partial X(z)\partial X(w)\!:}{(z-w)^2}.
+   \label{eq:cft:TTwick}
+\end{align}
+The factor $2$ counts the two ways of making two contractions, the factor $4$ the four ways of
+making one. The first term is $\frac{1/2}{(z-w)^4}$. In the second, expand
+$\partial X(z)=\partial X(w)+(z-w)\partial^2X(w)+\dots$ and recognize
+$-\frac2\ap:\!\partial X\partial X\!:=2T$ and $-\frac2\ap:\!\partial^2X\partial X\!:=\partial T$:
+\begin{equation}\label{eq:cft:TTfree}
+  T(z)T(w)\sim\frac{1/2}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial T(w)}{z-w}
+\end{equation}
+\source{Tong §4.3.3, ll.~4802--4853}. So $T$ has weight $(2,0)$ but is \emph{not} primary: the
+quartic pole is an obstruction. The number multiplying it is the subject of the next section.
+
+%=====================================================================================
+\section{The central charge}\label{sec:cft:c}
+
+\subsection{The general form of the \texorpdfstring{$TT$}{TT} OPE}
+
+In any CFT the stress tensor has dimension $\Delta=2$ (its integral over space is an energy) and
+spin $s=2$ (it is a symmetric two-index tensor), hence weight $(2,0)$ by
+\eqref{eq:cft:dimspin}. The terms $2T/(z-w)^2+\partial T/(z-w)$ are therefore always present.
+Every term in the $TT$ OPE has total dimension $4$, so a term $\mathcal O_n/(z-w)^n$ requires an
+operator of dimension $4-n$. In a unitary theory no operator has negative weight
+(\cref{sec:cft:unitarity}), so $n\le4$, and the operator multiplying $(z-w)^{-4}$ has dimension
+zero: it is a constant. One writes
+\begin{equation}\label{eq:cft:TT}
+  T(z)\,T(w)\sim\frac{c/2}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial T(w)}{z-w},
+  \qquad
+  \bar T(\bar z)\,\bar T(\bar w)\sim\frac{\tilde c/2}{(\bar z-\bar w)^4}+\dots
+\end{equation}
+and calls $c$, $\tilde c$ the (left and right) \emph{central charges}\index{central charge}
+\source{Tong §4.4, ll.~4855--4922}. A cubic pole is absent because the OPE must be symmetric
+under $z\leftrightarrow w$. The simple pole, also odd, passes this test only because Taylor
+expanding $T(z)$ and $\partial T(z)$ about $w$ trades it against the double pole
+\source{Tong §4.4, ll.~4923--4956}.
+
+Comparing \eqref{eq:cft:TT} with \eqref{eq:cft:TTfree}: \emph{one free boson has
+$c=\tilde c=1$}. For $D$ non-interacting bosons, $T=\sum_\mu T^{(\mu)}$ and cross terms have no
+contractions, so the quartic poles add and $c=D$. More generally, for two decoupled CFTs the
+central charges add. The central charge counts degrees of freedom, in a weighted sense: it need
+not be an integer \source{Tong §4.4, ll.~4915--4922}. A free Majorana fermion has $c=\tfrac12$
+\source{Tong §5.3.1, ll.~6886--6888}, a value this book quotes and does not derive.
+
+\subsection{How the stress tensor transforms}
+
+Inserting \eqref{eq:cft:TT} into the Ward identity \eqref{eq:cft:wardres} and expanding
+$\epsilon(z)$ to third order about $w$, the residue collects $\epsilon\,\partial T$ from the simple
+pole, $2\epsilon'T$ from the double pole and $\frac16\epsilon'''\cdot\frac c2$ from the quartic
+pole:
+\begin{equation}\label{eq:cft:deltaT}
+  \delta T(w)=-\epsilon(w)\,\partial T(w)-2\epsilon'(w)\,T(w)-\frac{c}{12}\,\epsilon'''(w).
+\end{equation}
+The first two terms are the law \eqref{eq:cft:deltaprimary} for $h=2$; the last is new and does
+not depend on $T$. The finite form is
+\begin{equation}\label{eq:cft:schwarzian}
+  \tilde T(\tilde z)=\Big(\frac{\partial\tilde z}{\partial z}\Big)^{-2}
+   \Big[T(z)-\frac{c}{12}\,S(\tilde z,z)\Big],\qquad
+  S(\tilde z,z)=\frac{\tilde z'''}{\tilde z'}-\frac32\Big(\frac{\tilde z''}{\tilde z'}\Big)^2 ,
+\end{equation}
+with primes denoting $\partial_z$; $S$ is the \emph{Schwarzian derivative}\index{Schwarzian
+derivative} \source{Tong §4.4, ll.~4957--5016}. For $\tilde z=z+\epsilon$ one has
+$S=\epsilon'''+O(\epsilon^2)$, which reproduces \eqref{eq:cft:deltaT} (symbolic check). Two
+properties of $S$ will be used: it vanishes identically for $\tilde z=(az+b)/(cz+d)$
+(\cref{sec:cft:sl2}), and $S(\ee^{-\ii w},w)=\tfrac12$ (both are symbolic checks; the second is
+also stated in \source{Tong §4.4.1, l.~5044}).
+
+\subsection{Worked example: the Casimir energy and the intercept}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.8]
+ % cylinder
+ \draw (0,0) ellipse (1 and 0.3);
+ \draw (-1,0) -- (-1,-3);
+ \draw (1,0) -- (1,-3);
+ \draw (-1,-3) arc (180:360:1 and 0.3);
+ \draw[dashed] (1,-3) arc (0:180:1 and 0.3);
+ \draw[thick,blue!60!black] (-1,-1.2) arc (180:360:1 and 0.3);
+ \draw[thick,blue!60!black,dashed] (1,-1.2) arc (0:180:1 and 0.3);
+ \draw[thick,blue!60!black] (-1,-2.1) arc (180:360:1 and 0.3);
+ \draw[thick,blue!60!black,dashed] (1,-2.1) arc (0:180:1 and 0.3);
+ \draw[->] (1.5,-2.8) -- (1.5,-0.4) node[midway,right] {$\tau$};
+ \draw[->] (-0.6,-3.75) arc (200:340:0.65 and 0.2) node[midway,below] {$\sigma$};
+ \node at (0,0.75) {$w=\sigma+\ii\tau$};
+ % arrow
+ \draw[->,thick] (2.6,-1.5) -- (4.6,-1.5) node[midway,above] {$z=\ee^{-\ii w}$};
+ % plane
+ \begin{scope}[shift={(7.6,-1.5)}]
+  \draw[->] (-2.3,0) -- (2.3,0) node[below] {$\operatorname{Re}z$};
+  \draw[->] (0,-2.0) -- (0,2.0) node[left] {$\operatorname{Im}z$};
+  \draw[thick,blue!60!black] (0,0) circle (0.8);
+  \draw[thick,blue!60!black] (0,0) circle (1.5);
+  \fill (0,0) circle (1.6pt);
+  \node[below right] at (0,0) {\small $\tau=-\infty$};
+  \draw[->] (35:0.8) -- (35:1.5) node[midway,above left=-2pt] {\small $D$};
+  \node[blue!60!black] at (1.75,1.35) {\small $|z|=\ee^{\tau}$};
+ \end{scope}
+\end{tikzpicture}
+\caption{The conformal map from the cylinder to the plane. Circles of constant time $\tau$ on
+the cylinder (the closed string at a given instant) become circles of constant radius; the
+infinite past becomes the origin; time translation becomes the dilatation $D$.}
+\label{fig:cft:cylinder}
+\end{figure}
+
+A closed string of coordinate length $2\pi$ sweeps out a cylinder, $w=\sigma+\ii\tau$ with
+$\sigma\sim\sigma+2\pi$. The map $z=\ee^{-\ii w}$ sends it to the plane
+(\cref{fig:cft:cylinder}): $|z|=\ee^{\tau}$, so equal-time circles become concentric circles and
+$\tau\to-\infty$ becomes $z=0$ \source{Tong §4.4.1, ll.~5018--5043}. Apply
+\eqref{eq:cft:schwarzian} with $w$ in the role of $\tilde z$:
+$T_{\rm cyl}(w)=(\partial w/\partial z)^{-2}[T_{\rm plane}(z)-\frac c{12}S(w,z)]$. With
+$\partial w/\partial z=\ii/z$ one has $(\partial w/\partial z)^{-2}=-z^2$ and
+$S(w,z)=\frac{1}{2z^2}$ (symbolic check), so
+\begin{equation}\label{eq:cft:Tcyl}
+  T_{\rm cyl}(w)=-z^2\,T_{\rm plane}(z)+\frac{c}{24}
+\end{equation}
+\source{Tong §4.4.1, ll.~5044--5050}. Suppose the vacuum energy vanishes on the plane,
+$\vev{T_{\rm plane}}=0$. On the cylinder the Hamiltonian is
+$H=\int\dd\sigma\,T_{\tau\tau}=-\int\dd\sigma\,(T_{ww}+\bar T_{\bar w\bar w})$, and
+\eqref{eq:cft:Tcyl} gives a ground state energy
+\begin{equation}\label{eq:cft:casimir}
+  \frac{E_0}{2\pi}=-\frac{c+\tilde c}{24}
+\end{equation}
+\source{Tong §4.4.1, ll.~5051--5076} (the $2\pi$ comes from the normalization of
+\eqref{eq:cft:Tdef}). This is a Casimir energy: it exists because the cylinder has a finite
+circumference, and it is fixed by $c$ alone.
+
+Now put in numbers. For one boson $c=\tilde c=1$ and $E_0/2\pi=-\frac1{12}$. In the light-cone
+quantization of \cref{ch:quantum} the closed string has $24$ transverse bosons, so
+$c=\tilde c=24$ and
+\[
+  \frac{E_0}{2\pi}=-\frac{24+24}{24}=-2 .
+\]
+This is the $-2$ in $M^2=\frac2\ap(N+\tilde N-2)$. In \cref{ch:quantum} it arose from the
+regularized sum $\sum_{n\ge1}n\to-\frac1{12}$: $2\times24\times\frac12\times(-\frac1{12})=-2$ for
+two sectors and $24$ directions. Here no divergent sum was manipulated; the number follows from
+the quartic pole of the $TT$ OPE and the Schwarzian of the exponential map
+\source{Tong §4.4.1, ll.~5072--5076}.
+
+\subsection{The Weyl anomaly and why \texorpdfstring{$c$}{c} decides consistency}
+
+The central charge has a second, related meaning. On a curved worldsheet with Ricci scalar
+$\mathcal R$ the trace of the stress tensor no longer vanishes:
+\begin{equation}\label{eq:cft:weyl}
+  \vev{T^\alpha{}_\alpha}=-\frac{c}{12}\,\mathcal R
+\end{equation}
+in every state \source{Tong §4.4.2, ll.~5094--5110 and 5262--5272}; the coefficient follows from
+a contact term implied by \eqref{eq:cft:TT}. On a fixed flat background this is harmless. For a
+string the Weyl rescaling is a gauge symmetry, \eqref{eq:cft:weyl} says it is anomalous, and the
+theory is consistent only if the total central charge of all worldsheet fields, including the
+gauge-fixing ghosts with $c=-26$, vanishes. This is the origin of $D=26$ and, more accurately, of
+the statement that the ``matter'' CFT must have $c=26$ whatever its geometric interpretation
+\source{Tong §5.3, ll.~6832--6870}; see \cref{ch:ghosts}.
+
+\begin{example}[Central charge bookkeeping for K3]\label{ex:cft:k3}
+For the superstring the corresponding requirement is $c=15$ for the matter fields, met by ten
+bosons and ten Majorana fermions: $10\,(1+\tfrac12)=15$ \source{Tong §5.3.1, ll.~6878--6892}.
+Compactify on a space of four real dimensions, leaving $\R^{1,5}$. The six non-compact
+directions contribute $6\times\tfrac32=9$; the internal theory must supply $15-9=6$. If the
+internal space is a flat torus $T^4$ this is visibly $4\cdot1+4\cdot\tfrac12=6$. The sigma model
+on K3 (\cref{ch:stringsk3}) is interacting, but it has the same $c=\tilde c=6$: on the orbifold
+$T^4/\Z_2$ of \cref{ch:kummer} the fields are still free, and $c$ cannot change under a continuous
+deformation preserving conformal invariance (standard; not checked against a source in this
+book's library). This arithmetic is what \lean{central\_charge\_k3\_eq\_six} records
+(\cref{sec:cft:lean}).
+\end{example}
+
+%=====================================================================================
+\section{The Virasoro algebra}\label{sec:cft:virasoro}
+
+\subsection{Radial quantization and the generators}
+
+States of a closed string live on circles $\tau=$ const of the cylinder, hence on circles
+$|z|=$ const of the plane, and time evolution $H=\partial_\tau$ becomes the dilatation
+$D=z\partial+\bar z\bar\partial$. This is \emph{radial quantization}\index{radial quantization};
+time ordering becomes radial ordering, operators at larger $|z|$ standing to the left
+\source{Tong §4.5.1, ll.~5408--5448}.
+
+On the cylinder one Fourier expands $T_{\rm cyl}(w)=-\sum_mL_m\ee^{\ii mw}+\frac c{24}$. By
+\eqref{eq:cft:Tcyl} this is a Laurent expansion on the plane,
+\begin{equation}\label{eq:cft:Ln}
+  T(z)=\sum_{m\in\Z}\frac{L_m}{z^{m+2}},\qquad
+  L_n=\oint\frac{\dd z}{2\pi\ii}\,z^{n+1}\,T(z),
+\end{equation}
+and similarly $\tilde L_n$ from $\bar T$ \source{Tong §4.5.1, ll.~5450--5482}. By
+\eqref{eq:cft:current}, $L_n$ is the conserved charge of the conformal map $\delta z=z^{n+1}$; the
+contour is a constant-time slice. In particular $L_{-1}$, $\tilde L_{-1}$ generate translations,
+$L_0$, $\tilde L_0$ dilatations and rotations, $D=L_0+\tilde L_0$, and a state with $L_0=h$,
+$\tilde L_0=\tilde h$ has energy on the cylinder
+\begin{equation}\label{eq:cft:D}
+  \frac{E}{2\pi}=h+\tilde h-\frac{c+\tilde c}{24}
+\end{equation}
+\source{Tong §4.5.1, ll.~5498--5514; §4.5.3, ll.~5668--5676}. The $L_n$ are the quantum versions
+of the Virasoro constraints of \cref{ch:classical,ch:quantum}.
+
+\subsection{From the OPE to the commutator}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.7,
+   arr/.style={decoration={markings,mark=at position 0.3 with {\arrow{>}}},postaction={decorate}}]
+ \begin{scope}
+  \fill (0,0) circle (1.4pt) node[below] {\small $0$};
+  \fill (1.0,0.5) circle (1.4pt) node[right] {\small $w$};
+  \draw[arr,thick] (0,0) circle (1.7);
+  \node at (0,-2.1) {\small $|z|>|w|$};
+ \end{scope}
+ \node at (2.5,0) {\Large $-$};
+ \begin{scope}[shift={(5,0)}]
+  \fill (0,0) circle (1.4pt) node[below] {\small $0$};
+  \fill (1.0,0.5) circle (1.4pt) node[right] {\small $w$};
+  \draw[arr,thick] (0,0) circle (0.6);
+  \node at (0,-2.1) {\small $|z|<|w|$};
+ \end{scope}
+ \node at (7.5,0) {\Large $=$};
+ \begin{scope}[shift={(10,0)}]
+  \fill (0,0) circle (1.4pt) node[below] {\small $0$};
+  \fill (1.0,0.5) circle (1.4pt) node[right=5pt] {\small $w$};
+  \draw[arr,thick] (1.0,0.5) circle (0.38);
+  \node at (0,-2.1) {\small around $w$};
+ \end{scope}
+\end{tikzpicture}
+\caption{The $z$ contours in $[L_m,L_n]$ at fixed $w$: outside $w$ for $L_mL_n$, inside for
+$L_nL_m$. The difference is a small circle around $w$, so only the singular part of the OPE
+contributes.}
+\label{fig:cft:contour}
+\end{figure}
+
+Write $L_m$ as a contour integral over $z$ and $L_n$ over $w$. In $L_mL_n$ radial ordering
+requires $|z|>|w|$, in $L_nL_m$ it requires $|z|<|w|$. At fixed $w$ the difference of the two
+$z$ contours can be deformed to a small circle around $w$ (\cref{fig:cft:contour}), so
+\begin{equation}\label{eq:cft:commcontour}
+  [L_m,L_n]=\oint\frac{\dd w}{2\pi\ii}\;w^{n+1}\operatorname{Res}_{z\to w}
+  \Big[z^{m+1}\Big(\frac{c/2}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial T(w)}{z-w}\Big)\Big]
+\end{equation}
+\source{Tong §4.5.2, ll.~5515--5600}. Expand $z^{m+1}$ about $w$:
+\begin{equation*}
+  z^{m+1}=w^{m+1}+(m+1)w^m(z-w)+\tfrac12m(m+1)w^{m-1}(z-w)^2
+   +\tfrac16(m+1)m(m-1)w^{m-2}(z-w)^3+\dots
+\end{equation*}
+The residue receives $w^{m+1}\partial T$ from the simple pole, $2(m+1)w^mT$ from the double pole,
+and $\frac c2\cdot\frac16(m+1)m(m-1)w^{m-2}=\frac c{12}m(m^2-1)w^{m-2}$ from the quartic pole.
+Integrate the first term by parts,
+$\oint w^{m+n+2}\partial T=-(m+n+2)\oint w^{m+n+1}T$, and use \eqref{eq:cft:Ln}:
+\begin{equation*}
+  [L_m,L_n]=\big[-(m+n+2)+2(m+1)\big]L_{m+n}
+  +\frac{c}{12}m(m^2-1)\oint\frac{\dd w}{2\pi\ii}\,w^{m+n-1}.
+\end{equation*}
+The last integral is $\delta_{m+n,0}$. The result is the \emph{Virasoro
+algebra}\index{Virasoro algebra}
+\begin{equation}\label{eq:cft:virasoro}
+  [L_m,L_n]=(m-n)\,L_{m+n}+\frac{c}{12}\,m(m^2-1)\,\delta_{m+n,0},\qquad
+  [L_m,\tilde L_n]=0,
+\end{equation}
+with the same algebra and $\tilde c$ for the $\tilde L_n$
+\source{Tong §4.5.2, ll.~5601--5646}. The number $c$ commutes with everything: it is a
+\emph{central} term, which is the origin of the name central charge.
+
+Without the central term, \eqref{eq:cft:virasoro} is the algebra of the vector fields
+$l_n=z^{n+1}\partial_z$ generating $\delta z\propto z^{n+1}$:
+$[l_n,l_m]=(m-n)\,l_{m+n}$ (Exercise~\ref{exr:cft:witt}). The central term arises because a
+conformal transformation is a coordinate change \emph{followed by a Weyl rescaling}, which is
+anomalous by \eqref{eq:cft:weyl} \source{Tong §4.5.2, ll.~5647--5661}.
+
+\begin{pitfallbox}[Common pitfall: ``the central term is $\frac{c}{12}m^3$'']
+The term linear in $m$ depends on the convention $\vev{T_{\rm plane}}=0$ (a shift of $L_0$
+changes it); the cubic term cannot be removed. In the plane convention the central term vanishes
+for $m=-1,0,1$, so $L_{-1},L_0,L_1$ close without anomaly (\cref{sec:cft:sl2}). Note also that
+the identity $\frac c{12}(m^3-m)=\frac{c\,m(m^2-1)}{12}$ holds for every number $c$ and carries
+no information about any commutator; compare \cref{sec:cft:lean}.
+\end{pitfallbox}
+
+\subsection{Representations: primaries and descendants}\label{sec:cft:reps}
+
+Let $\ket\psi$ be an eigenstate with $L_0\ket\psi=h\ket\psi$. From \eqref{eq:cft:virasoro},
+$[L_0,L_n]=-nL_n$, so
+\begin{equation}\label{eq:cft:ladder}
+  L_0\,L_n\ket\psi=(h-n)\,L_n\ket\psi :
+\end{equation}
+$L_n$ with $n>0$ lowers the energy, $L_{-n}$ raises it. If the energy is bounded below there are
+states annihilated by all lowering operators,
+\begin{equation}\label{eq:cft:primarystate}
+  L_n\ket\psi=\tilde L_n\ket\psi=0\quad\text{for all }n>0,
+\end{equation}
+called \emph{primary} or highest-weight states\index{primary state}. Acting on a primary state
+with $L_{-n}$, $n>0$, gives its \emph{descendants}\index{descendant}; at level $N$ there is one
+for each partition of $N$: $L_{-1}\ket\psi$; then $L_{-1}^2\ket\psi,\ L_{-2}\ket\psi$; and so
+on. The whole tower is a \emph{Verma module}\index{Verma module}
+\source{Tong §4.5.3, ll.~5662--5707}. The vacuum $\ket0$ has $h=0$ and obeys
+$L_n\ket0=0$ for all $n\ge0$; in a unitary theory $L_{-1}\ket0$ has zero norm by
+\eqref{eq:cft:hpos} below and also vanishes. One cannot demand $L_n\ket0=0$ for all $n$, because
+$[L_2,L_{-2}]\ket0=\frac c2\ket0\ne0$
+\source{Tong §4.5.3, ll.~5708--5718}. The conditions \eqref{eq:cft:primarystate} are the ones
+imposed on physical states in the covariant quantization of \cref{ch:quantum}, where
+$(L_0-1)\ket{\rm phys}=0$ in addition.
+
+\subsection{Unitarity}\label{sec:cft:unitarity}
+
+Hermiticity of the Hamiltonian on the Minkowski cylinder requires $L_n^\dagger=L_{-n}$
+\source{Tong §4.5.4, ll.~5743--5760}. Two consequences follow in one line each. For a primary
+state of weight $h$,
+\begin{equation}\label{eq:cft:hpos}
+  \big\|L_{-1}\ket\psi\big\|^2=\bra\psi[L_1,L_{-1}]\ket\psi=2h\,\vev{\psi|\psi}\ge0
+  \quad\Longrightarrow\quad h\ge0,
+\end{equation}
+and for the vacuum
+\begin{equation}\label{eq:cft:cpos}
+  \big\|L_{-n}\ket0\big\|^2=\bra0[L_n,L_{-n}]\ket0=\frac{c}{12}\,n(n^2-1)\ge0
+  \quad\Longrightarrow\quad c\ge0 ,
+\end{equation}
+with $c=0$ only for the trivial theory \source{Tong §4.5.4, ll.~5764--5777}. These bounds
+justify the assumption ``no negative weights'' used to derive \eqref{eq:cft:TT}.
+
+
+%=====================================================================================
+\section{The global subgroup \texorpdfstring{$SL(2,\C)$}{SL(2,C)} and M\"obius maps}
+\label{sec:cft:sl2}
+
+\subsection{Which conformal maps are globally defined?}
+
+The maps $\delta z=\epsilon z^{n+1}$ exist for every $n$ as infinitesimal transformations near a
+point. On the Riemann sphere $\C\cup\{\infty\}$, the worldsheet of a tree-level closed-string
+amplitude, most of them are singular. The vector field $l_n=z^{n+1}\partial_z$ is regular at
+$z=0$ only for $n\ge-1$. In the coordinate $u=1/z$ near $z=\infty$ one finds
+$l_n=-u^{1-n}\partial_u$, regular at $u=0$ only for $n\le1$. Only
+\begin{equation*}
+  l_{-1}:\ z\to z+\alpha,\qquad l_0:\ z\to\lambda z,\qquad l_1:\ z\to\frac{z}{1-\beta z}
+\end{equation*}
+survive, and they combine into the \emph{M\"obius transformations}\index{M\"obius transformation}
+\begin{equation}\label{eq:cft:mobius}
+  z\;\longmapsto\;\frac{az+b}{cz+d},\qquad a,b,c,d\in\C,\quad ad-bc=1
+\end{equation}
+\source{Tong §6.2.1, ll.~7506--7572}. (In this section $c$ is a matrix entry; the central
+charge does not appear until \cref{sec:cft:twopoint}.) The normalization $ad-bc=1$ removes the
+freedom to rescale all four parameters, leaving three, one for each generator. The group is $SL(2,\C)$\index{SL(2,C)@$SL(2,\C)$}, or more precisely $SL(2,\C)/\Z_2$, since
+$(a,b,c,d)$ and $(-a,-b,-c,-d)$ give the same map \source{Tong §6.2.1, ll.~7572--7581}. A
+M\"obius map can move any three points to any three others; this is what is used to fix the
+residual gauge freedom in string amplitudes.
+
+\subsection{Composition is matrix multiplication}
+
+\begin{proposition}[\TA]\label{prop:cft:mobius}
+Let $M=\begin{psmallmatrix}a&b\\c&d\end{psmallmatrix}$ and
+$N=\begin{psmallmatrix}a'&b'\\c'&d'\end{psmallmatrix}$ have determinant one and write
+$M\cdot z=(az+b)/(cz+d)$. If $c'z+d'\ne0$ and $c\,(N\cdot z)+d\ne0$, then
+$(MN)\cdot z=M\cdot(N\cdot z)$, and $\det(MN)=1$.
+\end{proposition}
+\begin{proof}
+Put $N\cdot z=p/q$ with $p=a'z+b'$, $q=c'z+d'\neq0$. Then
+$M\cdot(N\cdot z)=\frac{a\,p/q+b}{c\,p/q+d}=\frac{ap+bq}{cp+dq}$, where the denominator
+$cp+dq=q\,(c\,(N\cdot z)+d)$ is non-zero by hypothesis. Expanding,
+$ap+bq=(aa'+bc')z+(ab'+bd')$ and $cp+dq=(ca'+dc')z+(cb'+dd')$: the coefficients are the entries
+of $MN$. Finally $\det(MN)=\det M\det N=1$.
+\end{proof}
+
+This is the statement formalized as \lean{mobius\_compose} (\cref{sec:cft:lean}). The hypotheses
+are needed: on $\C$ alone, without the point $\infty$, the map is undefined at $z=-d/c$. Two
+further facts are one-line computations:
+\begin{equation}\label{eq:cft:mobiusderiv}
+  \frac{\dd}{\dd z}\,\frac{az+b}{cz+d}=\frac{ad-bc}{(cz+d)^2}=\frac{1}{(cz+d)^2},
+  \qquad S\Big(\frac{az+b}{cz+d},z\Big)=0 .
+\end{equation}
+By \eqref{eq:cft:finiteprimary} and the first of these, a primary operator of weight $h$ picks
+up the factor $(cz+d)^{2h}$ under a M\"obius map (or $(cz+d)^{-2h}$ if one writes the law in the
+opposite direction, old operator in terms of new). By the second, $T$ transforms under M\"obius
+maps as if it were primary: the anomaly \eqref{eq:cft:schwarzian} is invisible to the global
+group. On the algebraic side this is the fact that the central term $\frac c{12}m(m^2-1)$
+vanishes for $m\in\{-1,0,1\}$, so that
+\begin{equation}\label{eq:cft:sl2alg}
+  [L_1,L_{-1}]=2L_0,\qquad[L_0,L_{\pm1}]=\mp L_{\pm1}
+\end{equation}
+is an ordinary $sl(2)$ algebra, and the vacuum, annihilated by all three generators (and by their
+tilded partners), is $SL(2,\C)$ invariant.
+
+\subsection{Global Ward identities fix the two-point function}\label{sec:cft:twopoint}
+
+Invariance of the vacuum under $L_{-1},L_0,L_1$ means that a correlation function does not change
+when all operators are transformed by $\epsilon(z)=1,\ z,\ z^2$. Using
+\eqref{eq:cft:deltaprimary} for primaries $\mathcal O_i$ of weights $h_i$, the statement
+$\sum_i\vev{\mathcal O_1\cdots\delta\mathcal O_i\cdots\mathcal O_n}=0$ gives three differential
+equations for the holomorphic dependence of $G=\vev{\mathcal O_1(z_1)\cdots\mathcal O_n(z_n)}$:
+\begin{equation}\label{eq:cft:globalward}
+  \sum_i\partial_{z_i}G=0,\qquad
+  \sum_i\big(z_i\partial_{z_i}+h_i\big)G=0,\qquad
+  \sum_i\big(z_i^2\partial_{z_i}+2h_iz_i\big)G=0 .
+\end{equation}
+These are derived here from \eqref{eq:cft:deltaprimary}; they are standard, and not checked
+against a source in this book's library. For $n=2$ the first equation says $G=G(z_{12})$ with
+$z_{12}=z_1-z_2$. The second becomes $z_{12}G'+(h_1+h_2)G=0$, so
+$G=C\,z_{12}^{-(h_1+h_2)}$. Substituting into the third,
+\[
+  -(h_1+h_2)(z_1+z_2)+2h_1z_1+2h_2z_2=(h_1-h_2)\,z_{12}=0 ,
+\]
+which forces $h_1=h_2$ unless $C=0$. Including the antiholomorphic side:
+\begin{equation}\label{eq:cft:twopoint}
+  \vev{\mathcal O_1(z_1,\bar z_1)\,\mathcal O_2(z_2,\bar z_2)}
+  =\frac{C_{12}}{z_{12}^{2h}\,\bar z_{12}^{2\tilde h}}\quad\text{if }(h_1,\tilde h_1)
+  =(h_2,\tilde h_2)=(h,\tilde h),\ \text{and }0\text{ otherwise.}
+\end{equation}
+The free boson illustrates this: \eqref{eq:cft:dXdX} is \eqref{eq:cft:twopoint} with $h=1$ and
+$C=-\ap/2$. Symmetry fixes the functional form; only the constant $C_{12}$ is dynamical.
+
+%=====================================================================================
+\section{The state--operator map}\label{sec:cft:stateop}
+
+\subsection{States are local operators at the origin}
+
+In a general quantum field theory a state is a functional $\Psi[\phi(\sigma)]$ on a whole
+spatial slice, while a local operator lives at a point. In a CFT the two are in one-to-one
+correspondence\index{state--operator map}, because the infinite past of the cylinder is the single
+point $z=0$ (\cref{fig:cft:cylinder}).
+
+In path-integral language a state at radius $r_f$ is obtained by integrating over fields on an
+annulus $r_i\le|z|\le r_f$, with boundary value $\phi_f$ outside and the initial wave functional
+as a weight inside. As $r_i\to0$ the integral runs over the whole disc, and the only trace of the
+initial state is a modified weight at $z=0$, which is what a local operator insertion is:
+\begin{equation}\label{eq:cft:stateop}
+  \Psi_{\mathcal O}[\phi_f;r]=\int^{\phi(r)=\phi_f}\mathcal D\phi\;\ee^{-S[\phi]}\,
+  \mathcal O(z=0)
+\end{equation}
+\source{Tong §4.6, ll.~5779--5875}. The identity operator gives the vacuum. The map requires
+conformal invariance (it uses the map of \cref{fig:cft:cylinder}), and it is a bijection between
+states and \emph{local} operators; the mode operators $L_n$, $\alpha_n$ are contour integrals, not
+local operators \source{Tong §4.6, ll.~5876--5897}.
+
+Acting with a Virasoro generator on the state $\ket{\mathcal O}$ means surrounding the origin by
+the contour in \eqref{eq:cft:Ln}. For a primary $\mathcal O$ of weight $h$, by
+\eqref{eq:cft:TOprimary},
+\begin{equation}\label{eq:cft:LnO}
+  L_n\ket{\mathcal O}=\oint\frac{\dd z}{2\pi\ii}\,z^{n+1}\Big(\frac{h\,\mathcal O(0)}{z^2}
+   +\frac{\partial\mathcal O(0)}{z}+\dots\Big),
+\end{equation}
+from which one reads
+\begin{equation}\label{eq:cft:LnOresults}
+  L_{-1}\ket{\mathcal O}=\ket{\partial\mathcal O},\qquad
+  L_0\ket{\mathcal O}=h\ket{\mathcal O},\qquad
+  L_n\ket{\mathcal O}=0\ \ (n>0)
+\end{equation}
+\source{Tong §4.6.1, ll.~5899--5937}. The first holds for every operator, the second for every
+operator of definite weight, the third exactly for primaries: \emph{primary operators correspond
+to primary states}, and the weights $(h,\tilde h)$ are, by \eqref{eq:cft:D}, the energy and
+momentum of closed-string states on the cylinder \source{Tong §4.6.1, ll.~5938--5946}. The map
+also explains why the OPE converges: the path integral over a disc containing two operators and
+nothing else yields a state on the boundary circle, and that state is a sum of local operators at
+the centre \source{Tong §4.6.1, ll.~5960--5981}.
+
+\subsection{The free boson again}
+
+On the plane the primary field $\partial X$ has the mode expansion
+\begin{equation}\label{eq:cft:dXmodes}
+  \partial X(z)=-\ii\sqrt{\frac\ap2}\sum_{n\in\Z}\frac{\alpha_n}{z^{n+1}},\qquad
+  \alpha_n=\ii\sqrt{\frac2\ap}\oint\frac{\dd z}{2\pi\ii}\,z^n\,\partial X(z),\qquad
+  \alpha_0=\sqrt{\frac\ap2}\,p
+\end{equation}
+\source{Tong §4.6.2, ll.~5982--6030}, with $\alpha_0$ related to the momentum $p$ as in
+\cref{ch:quantum} (the source's Euclidean convention has an extra factor $\ii$). Repeating the contour argument of
+\cref{fig:cft:contour} with the OPE \eqref{eq:cft:dXdX},
+\begin{equation}\label{eq:cft:alphacomm}
+  [\alpha_m,\alpha_n]=-\frac{2}{\ap}\oint\frac{\dd w}{2\pi\ii}\operatorname{Res}_{z\to w}
+  \Big[z^mw^n\Big(-\frac{\ap}{2}\Big)\frac{1}{(z-w)^2}\Big]
+  =m\oint\frac{\dd w}{2\pi\ii}\,w^{m+n-1}=m\,\delta_{m+n,0},
+\end{equation}
+the oscillator algebra obtained by canonical quantization in \cref{ch:quantum}
+\source{Tong §4.6.2, ll.~6031--6075}. The singular part of an OPE and an equal-time commutator
+contain the same information.
+
+The dictionary between oscillator states and operators is
+\begin{equation}\label{eq:cft:dictionary}
+  \ket{0;0}\leftrightarrow 1,\qquad
+  \alpha_{-m}\ket{0;0}\leftrightarrow\ \propto\partial^mX(0)\quad(m\ge1),\qquad
+  \ket{0;p}\leftrightarrow\ :\!\ee^{\ii pX(0)}\!:
+\end{equation}
+\source{Tong §4.6.2, ll.~6076--6189}. For the first entry: fields contributing to the path
+integral over the disc are smooth, so $\oint\dd w\,w^m\partial X(w)=0$ for $m\ge0$ and the state
+created by the identity is annihilated by all $\alpha_{m\ge0}$. For the second, $\alpha_n$ acting
+on $\partial^mX(0)$ gives by \eqref{eq:cft:dXdX} a contour integral of $w^{n-m-1}$, which vanishes
+unless $n=m$. For the third, \eqref{eq:cft:dXexp} shows that $:\!\ee^{\ii pX}\!:$ has $\alpha_0$
+eigenvalue $\sqrt{\ap/2}\,p$.
+
+\begin{physicsbox}[Physical picture: looking ahead to the circle]
+On a circle the left- and right-moving zero modes $p_L$, $p_R$ of $X$ differ when the string
+winds. The operator $:\!\ee^{\ii p_LX(z)+\ii p_R\bar X(\bar z)}\!:$ has weights
+$(\ap p_L^2/4,\ \ap p_R^2/4)$ by \cref{prop:cft:vertex} applied on each side. Its dimension gives
+the mass formula of \cref{ch:circle}; its spin $h-\tilde h$ must be an integer, which is level
+matching and, in \cref{ch:narain}, the evenness of the Narain lattice.
+\end{physicsbox}
+
+
+%=====================================================================================
+\section{What the machine has checked}\label{sec:cft:lean}
+
+Four modules of the library \lean{StringTheoryFormalization} carry names from this chapter:
+three in the folder \lean{Frontier/} (\lean{CentralCharge}, \lean{SL2CSymmetry},
+\lean{ChiralPrimaries}) and one in \lean{StringDynamics/} (\lean{VertexOperators}). To
+formalize the chapter one would need local operators, correlation functions, contour integrals of operator-valued functions, and a
+proof of \eqref{eq:cft:virasoro} from \eqref{eq:cft:TT}. \emph{None of this is in the library.}
+What is checked is a set of algebraic fragments: one useful and faithful (M\"obius composition),
+some arithmetic shadows in the sense of \cref{ch:intro} (the number $6$), and some placeholders
+whose names promise more than their statements say. Reading a formal statement for what it
+literally asserts is a skill this book wants to teach (\cref{ch:leanprimer}), so the section goes
+through them one by one. The files contain no \lean{sorry}, although their header comments still
+say ``in progress''. The theorems whose axioms were inspected for this chapter
+(\lean{mobius\_compose}, \lean{central\_charge\_k3\_eq\_six}) depend only on \lean{propext},
+\lean{Classical.choice} and \lean{Quot.sound}.
+
+\subsection{M\"obius transformations: a genuine algebraic fragment}
+
+The module \lean{SL2CSymmetry} contains the one faithful piece of mathematics of this section.
+A M\"obius transformation is a quadruple of complex numbers with $ad-bc=1$, and it acts on $\C$
+by \eqref{eq:cft:mobius}:
+\begin{leancode}
+structure MobiusTransform where
+  (a b c d : ℂ)
+  det_one : a * d - b * c = 1
+
+noncomputable def MobiusTransform.act (M : MobiusTransform) (z : ℂ) : ℂ :=
+  (M.a * z + M.b) / (M.c * z + M.d)
+\end{leancode}
+\begin{leanbox}[In Lean: \texttt{StringTheory.Frontier.mobius\_compose}]
+\begin{leancode}
+theorem mobius_compose (M N : MobiusTransform) (z : ℂ)
+    (h : N.c * z + N.d ≠ 0)
+    (h' : M.c * (N.act z) + M.d ≠ 0) :
+    (MobiusTransform.mk
+      (M.a * N.a + M.b * N.c)
+      (M.a * N.b + M.b * N.d)
+      (M.c * N.a + M.d * N.c)
+      (M.c * N.b + M.d * N.d)
+      (by
+        have key : (M.a * N.a + M.b * N.c) * (M.c * N.b + M.d * N.d)
+            - (M.a * N.b + M.b * N.d) * (M.c * N.a + M.d * N.c)
+            = (M.a * M.d - M.b * M.c) * (N.a * N.d - N.b * N.c) := by ring
+        rw [key, M.det_one, N.det_one, one_mul])).act z =
+    M.act (N.act z) := by ...
+\end{leancode}
+\textbf{Reading.} The theorem builds the quadruple of entries of the matrix product $MN$; the inner \lean{by} block
+proves that its determinant is again $1$ (multiplicativity of the $2\times2$ determinant, by
+\lean{ring}). The conclusion is $(MN)\cdot z=M\cdot(N\cdot z)$ under the two non-vanishing
+hypotheses: exactly \cref{prop:cft:mobius}. A companion, \lean{mobius\_id\_act}, says that
+the identity matrix acts trivially.
+
+\textbf{Proof idea.} Unfold the action, clear denominators with \lean{field\_simp} (which consumes
+$h$ and $h'$), and close the polynomial identity with \lean{ring}, as on paper.
+
+\textbf{What it does not say.} It does not construct the group $SL(2,\C)/\Z_2$, its action on the
+Riemann sphere (the point $\infty$ is absent, hence the side conditions), or any relation to
+conformal symmetry. In Lean division by zero returns zero, so the value of \lean{act} at the pole
+is a convention, not geometry.
+\end{leanbox}
+
+The same file defines \lean{primaryTransform h M z} as $(cz+d)^{-2h}$, a complex power. By
+\eqref{eq:cft:mobiusderiv} this is $(\dd\tilde z/\dd z)^{h}$, the factor of
+\eqref{eq:cft:finiteprimary} written in the direction ``old operator in terms of new''. No theorem
+uses it; for non-integer $2h$ one would have to handle the branch cut. The file also contains
+\begin{leancode}
+theorem sl2c_fixes_two_point (h : ℚ) :
+    ∃ (C : ℂ) (f : ℂ → ℂ → ℂ), ∀ (z w : ℂ) (hzw : z ≠ w),
+    f z w = twoPointFunction h C z w hzw := by ...
+\end{leancode}
+and two declarations \lean{ward\_identity\_translation}, \lean{ward\_identity\_dilatation}
+whose conclusion is the proposition \lean{True}: they assert nothing about
+\eqref{eq:cft:globalward}. The theorem displayed says: \emph{there exist} a constant $C$ and a function $f$ equal to $C/(z-w)^{2h}$ off the
+diagonal. It is proved by taking $C=1$ and $f$ to be that very function. The content of
+\cref{sec:cft:twopoint} is a \emph{uniqueness} statement (every solution of
+\eqref{eq:cft:globalward} has this form), which is a different and harder theorem. Exercise
+\ref{exr:cft:leantwopoint} asks for a faithful formulation.
+
+\subsection{The central charge: arithmetic shadows}
+
+The module \lean{CentralCharge} records numbers from \cref{sec:cft:c}, not derivations.
+
+\begin{leanbox}[In Lean: \texttt{StringTheory.Frontier.central\_charge\_k3\_eq\_six}]
+\begin{leancode}
+def centralChargeBoson : ℚ := 1
+def centralChargeFermion : ℚ := 1/2
+def centralChargeK3 : ℚ :=
+  4 * centralChargeBoson + 4 * centralChargeFermion
+
+theorem central_charge_k3_eq_six : centralChargeK3 = 6 := by ...
+
+theorem virasoro_ope_central_term (z w : ℂ) (h : z ≠ w) :
+    (centralChargeK3 / 2 : ℚ) = 3 := by ...
+
+theorem virasoro_algebra_commutator (c : ℚ) (m n : ℤ) (L : ℤ → ℤ) :
+    c / 12 * (m^3 - m) = c * m * (m^2 - 1) / 12 := by ...
+\end{leancode}
+\textbf{Reading.} Three rational constants are \emph{defined}: $1$, $\frac12$ and
+$4\cdot1+4\cdot\frac12$. The first theorem evaluates the third constant to $6$. The second
+states $6/2=3$; the points $z,w$ and the hypothesis $z\ne w$ do not occur in the conclusion. The
+third is the polynomial identity $\frac c{12}(m^3-m)=\frac{c\,m(m^2-1)}{12}$ for all rational
+$c$ and integer $m$; the arguments $n$ and $L$ do not occur in it, and no commutator is
+mentioned. (A fourth, \lean{central\_charge\_from\_worldsheet\_action}, says that some rational
+number equals both \lean{centralChargeK3} and $6$.) Proofs: \lean{norm\_num} and \lean{ring}.
+
+\textbf{What it does not say.} That a free boson has $c=1$ is the result \eqref{eq:cft:TTfree}
+of a Wick contraction; here it is an input, typed in as a definition. Nothing in the file refers
+to a stress tensor, an OPE, the algebra \eqref{eq:cft:virasoro} or a K3 surface. The file is an
+arithmetic shadow of \cref{ex:cft:k3}: it certifies the bookkeeping $4\cdot1+4\cdot\frac12=6$,
+which is Tier~A, and nothing else. Identifying \lean{centralChargeK3} with the central charge of
+the K3 sigma model is Tier~L physics, not a formal statement. The theorem names describe goals,
+not contents; the file's own documentation says so.
+\end{leanbox}
+
+A general lesson: a Lean theorem may list hypotheses that its conclusion never uses, and is then
+true for a trivial reason; ask of every bound variable where it occurs after the colon. A faithful
+formalization of \eqref{eq:cft:virasoro} would define a Lie algebra with basis
+$\{L_n\}_{n\in\Z}\cup\{\mathbf c\}$ and prove the Jacobi identity, which is where $m^3-m$ is
+forced (Exercise~\ref{exr:cft:cocycle}).
+
+\subsection{Chiral primaries and vertex operators}
+
+The K3 sigma model has more symmetry than the Virasoro algebra: its algebra contains a $U(1)$
+current, and states carry a charge $q$ in addition to the weight $h$. Unitary representations obey
+$h\ge|q|/2$, and the states saturating the bound with $q\ge0$, the \emph{chiral
+primaries}\index{chiral primary}, are counted by the Dolbeault cohomology $H^{q,0}$ of the target.
+(Standard; not checked against a source in this book's library. See \cref{ch:ellgenus}.) In \lean{ChiralPrimaries} an \lean{N2State} is a pair of rationals
+\lean{confWeight}, \lean{u1Charge}; it is not a vector in a representation. The definitions and
+the main theorem are
+\begin{leancode}
+def bpsBound (s : N2State) : Prop :=
+  s.confWeight ≥ |s.u1Charge| / 2
+def isChiralPrimary (s : N2State) : Prop :=
+  0 ≤ s.u1Charge ∧ s.confWeight = s.u1Charge / 2
+theorem chiral_primary_saturates_bps (s : N2State) (h : isChiralPrimary s) :
+    bpsBound s := by ...
+\end{leancode}
+The theorem says: if $q\ge0$ and $h=q/2$ then $h\ge|q|/2$. It is one direction, and it is the
+elementary fact $|q|=q$ for $q\ge0$ (\lean{abs\_of\_nonneg}); the bound itself is a definition,
+not a theorem about a superconformal algebra. \lean{K3ChiralPrimaryCount} is a hand-typed table
+$1,0,1$, matching the Hodge numbers $h^{0,0},h^{1,0},h^{2,0}$ of K3 (\cref{ch:k3}) but not derived
+from them, and \lean{k3\_chiral\_primary\_total} adds its entries: $1+0+1=2$. The declaration
+\lean{chiral\_primary\_ring\_associativity} has conclusion \lean{True} and must not be quoted as
+a fact about the chiral ring.
+
+In the module \lean{VertexOperators} a \lean{VertexOperator} is a record of a rational
+\lean{confWeight}, a natural \lean{level} and a sequence \lean{modeCoeffs} of complex numbers,
+with no relation imposed between them. The function
+\begin{leancode}
+noncomputable def ope (V₁ V₂ : VertexOperator) (z w : ℂ) : ℂ :=
+  if z = w then 0
+  else (z - w)⁻¹ ^ 2 * (V₁.confWeight * V₂.confWeight : ℚ).num
+\end{leancode}
+returns $(z-w)^{-2}$ times the \emph{numerator} of the rational number $h_1h_2$, and the one
+theorem, \lean{ope\_vacuum\_left}, says that this number is $0$ when the first argument is
+\lean{vacuumVertex}, whose weight is $0$. This \lean{ope} is not the operator product expansion
+\eqref{eq:cft:ope}: an OPE is operator valued, its leading power for two exponentials is
+$(z-w)^{\ap k_1k_2/2}$ (Exercise~\ref{exr:cft:expexp}), not $(z-w)^{-2}$, and the numerator of a
+fraction has no physical meaning. Even the theorem needs care in words: the OPE of the identity
+with $V$ is $V$; what vanishes is its \emph{singular part}. \Cref{prop:cft:vertex} is not
+formalized.
+
+\subsection{Tier table}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.44\textwidth}p{0.42\textwidth}c@{}}
+\toprule
+Statement & Status & Tier\\
+\midrule
+M\"obius composition (\cref{prop:cft:mobius}) &
+ \lean{mobius\_compose}, \lean{mobius\_id\_act} & \TA\\
+$4\cdot1+4\cdot\frac12=6$ & \lean{central\_charge\_k3\_eq\_six} & \TA\\
+$\frac c{12}(m^3-m)=\frac{c\,m(m^2-1)}{12}$ & \lean{virasoro\_algebra\_commutator} & \TA\\
+$q\ge0$, $h=\frac q2\ \Rightarrow\ h\ge\frac{|q|}2$ & \lean{chiral\_primary\_saturates\_bps} & \TA\\
+$1+0+1=2$ & \lean{k3\_chiral\_primary\_total} & \TA\\
+\midrule
+$TT$ OPE, Virasoro algebra, $h\ge0$, $c\ge0$ & Tong §4.4--4.5; not formalized & \TL\\
+Casimir energy, Weyl anomaly & Tong §4.4.1--4.4.2; not formalized & \TL\\
+Free boson: $c=1$, $h(\ee^{\ii kX})=\ap k^2/4$ & Tong §4.3; not formalized & \TL\\
+State--operator map & Tong §4.6; not formalized & \TL\\
+$c=6$ for the K3 sigma model & \cref{ex:cft:k3}; arithmetic only in Lean & \TL\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Nothing in this chapter is Tier~C; the Schwarzian values and the Gram determinant of
+Exercise~\ref{exr:cft:gram} are symbolic checks (sympy). The modules named after conformal field
+theory check only the algebra in the upper half of the table; a faithful formalization of CFT
+does not yet exist in this library (\cref{ch:open}).
+
+%=====================================================================================
+\begin{summarybox}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item On a flat Euclidean worldsheet the conformal maps are the holomorphic maps $z\to f(z)$; the
+ stress tensor is traceless and splits into $T(z)$ and $\bar T(\bar z)$. The Ward identity
+ $\delta\mathcal O=-\operatorname{Res}[\epsilon\,T\,\mathcal O]$ turns OPEs with $T$ into
+ transformation laws. A primary of weight $(h,\tilde h)$ has
+ $T\mathcal O\sim h\mathcal O/(z-w)^2+\partial\mathcal O/(z-w)$, dimension $h+\tilde h$, spin
+ $h-\tilde h$.
+\item Free boson: $\partial X$ has weight $(1,0)$, $:\!\ee^{\ii kX}\!:$ has weight
+ $(\ap k^2/4,\ap k^2/4)$, and $c=1$. Requiring weight $(1,1)$ gives the tachyon mass
+ $M^2=-4/\ap$.
+\item $T(z)T(w)\sim\frac{c/2}{(z-w)^4}+\dots$ defines the central charge. It gives the Schwarzian
+ term in the transformation of $T$, the Casimir energy $-(c+\tilde c)/24$ (the $-2$ of the
+ closed-string mass formula for $c=\tilde c=24$), and the Weyl anomaly.
+\item The modes $L_n$ obey
+ $[L_m,L_n]=(m-n)L_{m+n}+\frac c{12}m(m^2-1)\delta_{m+n,0}$; unitarity gives $h\ge0$, $c\ge0$.
+ $L_{-1},L_0,L_1$ generate the anomaly-free M\"obius group $SL(2,\C)/\Z_2$, which fixes two-point
+ functions.
+\item States on the circle correspond one-to-one to local operators at the origin, primary
+ states to primary operators; weights are energies on the cylinder.
+\item Machine-checked: M\"obius composition and arithmetic identities ($4+2=6$,
+ $m^3-m=m(m^2-1)$, $1+0+1=2$). The OPE, the Virasoro algebra and the free boson are Tier~L.
+\end{itemize}
+\end{summarybox}
+
+%=====================================================================================
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{exr:cft:witt}
+Let $l_n=z^{n+1}\partial_z$. Show that $[l_n,l_m]=(m-n)\,l_{m+n}$. Which sign must be put in the
+definition of $l_n$ for the generators to satisfy $[l_m,l_n]=(m-n)l_{m+n}$, the form of
+\eqref{eq:cft:virasoro}? Verify that $l_{-1},l_0,l_1$ close among themselves.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:cft:expexp}
+Using Wick's theorem and \eqref{eq:cft:prop}, show that the holomorphic parts satisfy
+$:\!\ee^{\ii k_1X(z)}\!:\,:\!\ee^{\ii k_2X(w)}\!:\;=(z-w)^{\ap k_1k_2/2}
+:\!\ee^{\ii k_1X(z)+\ii k_2X(w)}\!:$. Compare with \eqref{eq:cft:twopoint}: for which
+$k_1,k_2$ can the two-point function be non-zero, and what does the condition mean in
+spacetime? Is the exponent then consistent with \cref{prop:cft:vertex}?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:cft:gram}
+Let $\ket\psi$ be a normalized primary state of weight $h$. Using \eqref{eq:cft:virasoro},
+$L_n^\dagger=L_{-n}$ and \eqref{eq:cft:primarystate}, show that the Gram matrix of
+$L_{-2}\ket\psi$, $L_{-1}^2\ket\psi$ has rows $(4h+\frac c2,\ 6h)$, $(6h,\ 4h(2h+1))$ and
+determinant $2h(16h^2-10h+2hc+c)$. Deduce that for $c=2h(5-8h)/(2h+1)$ the state
+$L_{-2}\ket\psi-\frac{3}{2(2h+1)}L_{-1}^2\ket\psi$ is \emph{null}\index{null state} (zero norm)
+\source{Tong §4.5.3, ll.~5724--5735}. Which $c$ corresponds to $h=\frac12$?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:cft:cocycle}
+Suppose $[L_m,L_n]=(m-n)L_{m+n}+f(m)\,\delta_{m+n,0}$ with $f$ unknown and odd. (a) Show that
+the Jacobi identity for $L_m,L_n,L_p$, $m+n+p=0$, reads
+$(m-n)f(m+n)+(2n+m)f(-m)-(2m+n)f(-n)=0$. (b) Show that $f(m)=am^3+bm$ solves it, and that $b$
+can be changed by $L_0\to L_0+\text{const}$. (c) State (b) for $f(m)=m^3-m$ as a Lean theorem
+over $\Q$; \lean{ring} proves it.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exr:cft:schwarz}
+Verify \eqref{eq:cft:mobiusderiv} and $S(w,z)=1/(2z^2)$ for $w=\ii\ln z$. For a cylinder of
+circumference $L$, mapped to the plane by $z=\ee^{-2\pi\ii w/L}$, show that
+$E_0=-2\pi(c+\tilde c)/(24L)$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$, Lean]\label{exr:cft:leancentral}
+(a) Prove in Lean~4 with Mathlib: for rational $c$ and an integer $m\in\{-1,0,1\}$ (as a
+disjunction), $\frac c{12}\big((m:\Q)^3-m\big)=0$ (\lean{rcases}, then \lean{norm\_num}). (b) Define
+the inverse $(d,-b,-c,a)$ of a \lean{MobiusTransform} (\lean{linear\_combination M.det\_one}
+proves \lean{det\_one}) and use \lean{mobius\_compose} to show that it undoes $M$ wherever both
+side conditions hold.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$, Lean]\label{exr:cft:leantwopoint}
+\lean{sl2c\_fixes\_two\_point} is an existence statement with a trivial witness. Formalize
+\emph{uniqueness} for integer weight: if $k\in\N$ and $f:\C\to\C\to\C$ satisfy (i)
+$f(z+a,w+a)=f(z,w)$ and (ii) $f(\lambda z,\lambda w)=\lambda^{-k}f(z,w)$ for $\lambda\ne0$, then
+$f(z,w)=f(1,0)/(z-w)^{k}$ for $z\ne w$. (Hint: $a=-w$, then $\lambda=(z-w)^{-1}$.) Which
+equations of \eqref{eq:cft:globalward} were used, and what does the third add?
+\end{exercise}
+
+%=====================================================================================
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item \source{Tong §4, ll.~3553--6190} is the source of this chapter; see also
+ \source{Tong §5.3--5.4, ll.~6832--7110} and \source{Tong §6.2.1, ll.~7506--7581}. Its first
+ footnote (ll.~3583--3588) names the founding papers of Belavin, Polyakov and Zamolodchikov (1984)
+ and of Friedan, Martinec and Shenker (1986) and the review by Ginsparg; none is in this library.
+\end{itemize}
