@@ -1,7 +1,9 @@
 # Stream 7 — Can the programme derive a second observable? (inventory before any new hypothesis)
 
 **Status (2026-09-18, release `v3.15.0`):** the T0 owner chose "C-A puis C-B". **C-A: frozen
-(`docs/STREAM7_PREDICTION_CA.md`, tag `stream7-ca-frozen`), derived and excluded** (§6). C-B: in progress.
+(`docs/STREAM7_PREDICTION_CA.md`, tag `stream7-ca-frozen`), derived and excluded** (§6). **C-B: frozen
+(`docs/STREAM7_PREDICTION_CB.md`, tag `stream7-cb-frozen`) before any sensitivity was pinned; verdict: not
+falsifiable in practice** (§7).
 
 ## 1. The question, and why it comes first
 
@@ -82,3 +84,22 @@ parameter-free prediction of no acceleration. Verdict: with Planck 2018's `Ω_Λ
 in advance, this is a retrodiction with a foreseeable outcome, and the input `q₀` is model-dependent.
 Together with Stream 6, both the extra-dimension reading and the Hubble-scale holographic reading of the
 dual-scale idea are now closed by recorded, kernel-checked verdicts.
+
+## 7. Result for C-B (`v3.16.0`, `DualScaleCosmology/Stream7CB.lean`)
+
+Frozen before any detector document was pinned. With the programme's own string scale (`α' = s²`, so
+`g₁² = ℓ_P H₀/c ∈ [1.1, 1.3] × 10⁻⁶¹`, `cb_g1_sq_bracket`), the pre-big-bang relic spectrum (slope `ω³` in the
+dilaton phase, `cb_slope`) ends at `ω₁ ≈ 6 × 10⁻⁵ Hz`, below LISA's stochastic band `f > 0.1 mHz`
+(`cb_peak_below_lisa_band`), and peaks at `Ω ≃ 10⁻⁶⁵`, more than fifty orders of magnitude below LISA's best
+`≈ 6.5 × 10⁻¹³` (`1702_00786.txt` ll. 692–699; `cb_peak_amplitude_unreachable`). By rule TB: **not falsifiable
+in practice** (`cb_not_testable`) — neither confirmed nor excluded.
+
+## 8. Where Stream 7 leaves the hypothesis
+
+Every observable the programme can derive without an unconstructed compactification has now been frozen
+and confronted: P1 (extra dimension) and C-A (holographic dark energy) are **excluded**; C-B (relic gravitons)
+and C-C (cosmic F-strings) are **out of reach** because the programme's own string scale is in the meV range.
+The common cause is the dual-scale identification `α' = ℓ_P · c/H₀` itself: it either conflicts with data or
+pushes every stringy signal below any conceivable sensitivity. A new hypothesis worth testing would have to
+drop or replace that identification — and, for a realistic universe, use a geometry with a chiral spectrum
+(K3 × T² gives `N = 4` in four dimensions). That is new research, recorded here as the open direction.

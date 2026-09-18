@@ -108,6 +108,11 @@ MVV's neutron-star bound (`44 μm`): **excluded** by the pre-registered rule; th
 `q = 1/2` for every `ε`; Planck 2018 (flat ΛCDM) gives `q₀ < 0`: **excluded** (retrodiction, disclosed).
 `DualScaleCosmology` 45 theorems, 0 failing. Total audited: **616**.
 
+**`v3.16.0` (2026-09-18): Stream 7, candidate C-B.** `DualScaleCosmology/Stream7CB.lean` (5 theorems): frozen C-B (tag
+`stream7-cb-frozen`, before any sensitivity was pinned) — pre-big-bang relic gravitons with `α' = s²`: `g₁² ≈ 1.2 × 10⁻⁶¹`,
+spectrum ending at `≈ 6 × 10⁻⁵ Hz` with peak `Ω ≈ 10⁻⁶⁵`; LISA (`1702_00786.txt` ll. 692–699) cannot reach it: **not
+falsifiable in practice**. `DualScaleCosmology` 50 theorems, 0 failing. Total audited: **621**.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |
 |---|---|---|---|---|---|
