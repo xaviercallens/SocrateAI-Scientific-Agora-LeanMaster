@@ -97,6 +97,12 @@ statement locks: only the two new files added. Total audited: **600**. `v3.13.1`
 (`c_g(−1) = +2` for all 26 classes, checked; Cheng's printed `−2` at l. 968 is a sign convention or misprint).
 Total audited: **602**.
 
+**`v3.14.0` (2026-09-18): Stream 6 — experimental verdict.** `DualScaleCosmology/Stream6Verdict.lean` (9 theorems):
+the frozen prediction P1 (`docs/STREAM6_PREDICTION_P1.md`, tag `stream6-p1-frozen`), `R = s = √(ℓ_P c/H₀) ≈ 47 μm`
+for one large extra dimension, fails Eöt-Wash 2020's radius (`30 μm`) and Yukawa-range (`38.6 μm`) bounds and
+MVV's neutron-star bound (`44 μm`): **excluded** by the pre-registered rule; the programme's T-duality fixes the
+`O(1)` factor at `κ = 1`. `DualScaleCosmology` 40 theorems, 0 failing. Total audited: **611**.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |
 |---|---|---|---|---|---|
