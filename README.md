@@ -40,17 +40,17 @@ literature (Tier L) versus this project's own conjectures (Tier C, not yet deriv
 
 Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
 invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
-every theorem and lemma (**425 audited theorems across the seven first-party libraries** depend on
+every theorem and lemma (**456 audited theorems across the eight first-party libraries** depend on
 nothing beyond the three standard Lean axioms — see §10 and
 [`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md), which is the authoritative,
 gate-by-gate status document that this README summarizes).
 
-The seven libraries fall in two groups, and the distinction matters for how much each result is
+The eight libraries fall in two groups, and the distinction matters for how much each result is
 worth:
 
 | Group | Libraries | Depth |
 |---|---|---|
-| **Mathlib-backed** | `DualScaleStream2` (Stream 2: K3 × T² lattices, O(d,d;ℤ), DFT generalized metric, the dual-scale bound, flux/tadpole arithmetic), `StringTheoryFormalization` (Stream 1) | genuine linear algebra over ℤ/ℝ with Mathlib |
+| **Mathlib-backed** | `DualScaleStream2` (Stream 2: K3 × T² lattices, O(d,d;ℤ), DFT generalized metric, the dual-scale bound, flux/tadpole arithmetic), `StringTheoryFormalization` (Stream 1), `DualScaleCosmology` (Stream 3: scale-factor duality, the CKN UV/IR bound, dual towers, cosmic F-strings, the dark-energy length) | genuine linear algebra / real analysis over ℤ/ℝ with Mathlib; Stream 3's *physical* identifications are Tier C |
 | **Mathlib-free core** | `DoubleFieldTheory`, `DualScaleValidation`, `DualScaleM24Formalization`, `StringTheoryFoundation`, `Lean5Corpus` | *arithmetic shadows*: physical quantities modeled by integers/rationals — kernel-checked, but thin |
 
 ### Key Claims, By Tier:
@@ -60,6 +60,7 @@ worth:
 4. **The Lean 5 Scientific Agora Corpus:** 11 solved frontier problems in mathematical physics verified in Lean 4 (Tier A arithmetic instances of Tier L source results), accompanied by 8 publication-grade scientific papers with compiled PDFs and LaTeX sources (§6).
 5. **A 38-chapter textbook**, *The Dual-Scale String: T-Duality, K3 × T², and Their Formalization in Lean 4 — A Student's Companion* (709 pp., `papers/book/`), which develops the physics and the mathematics from scratch and states, chapter by chapter, exactly what the kernel has and has not checked (§6).
 6. **LeanGraph Knowledge Discovery:** semantic dependency extraction (867 nodes, 1603 edges, verified acyclic DAG) with an interactive D3/KaTeX visual explorer (`graph/index.html`), plus a kernel-level theorem atlas (§7).
+7. **(Tier A algebra + Tier C readings) Stream 3 — micro/macro dual-scale cosmology** (`DualScaleCosmology`, [`docs/STREAM3_WORKFLOW.md`](docs/STREAM3_WORKFLOW.md)): scale-factor duality `H(a⁻¹) = −H(a)`; the Cohen–Kaplan–Nelson bound; and the finding that, read as a T-dual pair, `ℓ_P` and `c/H₀` meet the CKN bound exactly at the self-dual length `√(ℓ_P·c/H₀) ≈ 47 μm` — **which is the dark-energy length up to `(8π/3Ω_Λ)^{1/4}`** (an identity, so the numerical agreements it produces are algebra, not corroboration). That length is **excluded as a string (Regge) scale** by ≥10³⁰ in `α'` (LHC dijets) and **not excluded** as an extra-dimension radius (disfavored by O(1) only). The literal hypothesis "`ℓ_micro ~ ℓ_P` is the UV cutoff at `ℓ_macro ~ H₀⁻¹`" fails the CKN test by ≥10³⁰.
 
 ---
 
@@ -165,7 +166,7 @@ continuous parameter survives.
 | **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
 | **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
 | **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
-| **Kernel Verification** | None (paper only) | 425/425 audited theorems across seven libraries: 0 sorry, standard axioms only | Tier A |
+| **Kernel Verification** | None (paper only) | 456/456 audited theorems across eight libraries: 0 sorry, standard axioms only | Tier A |
 
 The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
 (Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
@@ -432,6 +433,9 @@ lake build
 # The two Mathlib-backed libraries (Stream 1 + Stream 2): 3708 jobs
 lake exe cache get                 # hydrate the Mathlib olean cache first
 lake build DualScaleStream2 StringTheoryFormalization
+
+# Stream 3 (Mathlib-backed, separate library)
+lake build DualScaleCosmology
 ```
 Last verified on 2026-09-17: `lake build` → 61 jobs, 0 errors; `lake build DualScaleStream2
 StringTheoryFormalization` → 3708 jobs, 0 errors.
@@ -459,7 +463,7 @@ bare keyword — and it also catches `native_decide` (`Lean.ofReduceBool`), whic
 ```bash
 lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 ```
-Last full run (2026-09-17), **425 theorems audited across all seven libraries, 0 failing**:
+Last full run (2026-09-18), **456 theorems audited across all eight libraries, 0 failing**:
 
 | Library | Theorems audited | Failing |
 |---|:---:|:---:|
@@ -470,7 +474,8 @@ Last full run (2026-09-17), **425 theorems audited across all seven libraries, 0
 | `Lean5Corpus` | 53 | 0 |
 | `DoubleFieldTheory` | 44 | 0 |
 | `DualScaleValidation` | 23 | 0 |
-| **Total** | **425** | **0** |
+| `DualScaleCosmology` (Stream 3) | 31 | 0 |
+| **Total** | **456** | **0** |
 
 "0 failing" means every theorem depends on nothing beyond `propext`, `Classical.choice` and
 `Quot.sound`.

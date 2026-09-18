@@ -44,6 +44,14 @@ Agreement is to a factor ~1.3, within the O(1) ambiguity of reduced vs. non-redu
 (a factor `(8π)^{1/4} ≈ 2.2` in this length) and of CKN's own `∼`. The theorems prove only the
 bracket, not agreement to better than that.
 
+**What this cross-check is, and is not (added 2026-09-18).** It is a *consistency* check, not
+independent corroboration: CKN's `10⁻²·⁵ eV` is their own eq. (2) saturated at the horizon, which
+is the same formula as `√(ℓ_P · c/H₀)` with different O(1) conventions. The dark-energy length
+`Λ^{−1/4} ≈ 88 μm` (Montero–Vafa–Valenzuela, `2205_12293.txt` l. 303) is that formula again —
+`DarkEnergyScale.rhoLambda_inv_eq` proves the exact relation — and it falls *outside* the
+`[40, 70] μm` bracket, which shows the bracket is convention-dependent. Do not cite these numbers
+as several sources agreeing.
+
 **Not proved, not claimed:** that `ℓ_micro` and `ℓ_macro` *are* a T-dual pair in nature; that
 a string scale of ~50 μm exists (the reading would require `√α' ~ 50 μm`, i.e. a string scale
 near the meV dark-energy scale — a claim this project does not make); nor anything about the

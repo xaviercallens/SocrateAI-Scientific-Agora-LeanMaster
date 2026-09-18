@@ -8,16 +8,21 @@ Toolchain `leanprover/lean4:v4.33.1`, Mathlib tag `v4.33.1` (`0df444a3…`).
 comment-stripped code byte-identical to the gated version for all 40 files; `lake build DualScaleStream2
 StringTheoryFormalization` 3708 jobs, 0 errors; axiom audit 99 + 89 theorems, 0 failing; statement lock OK.
 
+**Re-gated 2026-09-18 with Stream 3** (`DualScaleCosmology`, eighth library; release `v3.4.0`): all eight
+libraries built together, 3781 jobs, 0 errors; axiom audit re-run on every library (counts below unchanged
+for the first seven); `DualScaleCosmology` 31 theorems, 0 failing; its statement lock covers 44 declarations
+in 7 files. Total audited: **425 + 31 = 456 theorems**.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
-| Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) |
-|---|---|---|---|
-| `lake build <lib>` | 3670 jobs, 0 errors | 3296 jobs, 0 errors | 61 jobs, 0 errors |
-| `sorry` in source | 0 | 0 | 0 |
-| `tools/axiom_audit.py` | 99 theorems, 0 failing | 89 theorems, 0 failing | 23 + 53 + 44 + 56 + 61 = 237 theorems, 0 failing |
-| `tools/statement_lock.py --check` | OK (150 declarations) | locked 2026-09-17 (205 declarations) | not locked |
+| Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) |
+|---|---|---|---|---|
+| `lake build <lib>` | 3670 jobs, 0 errors | 3296 jobs, 0 errors | 61 jobs, 0 errors | built with all eight: 3781 jobs, 0 errors |
+| `sorry` in source | 0 | 0 | 0 | 0 (also no `admit`, `native_decide`, `axiom`) |
+| `tools/axiom_audit.py` | 99 theorems, 0 failing | 89 theorems, 0 failing | 23 + 53 + 44 + 56 + 61 = 237 theorems, 0 failing | 31 theorems, 0 failing |
+| `tools/statement_lock.py --check` | OK (150 declarations) | locked 2026-09-17 (205 declarations) | not locked | OK (44 declarations, 7 files) |
 
 "0 failing" means: every theorem depends on no axioms beyond `propext`, `Classical.choice`, `Quot.sound`
-(no `sorryAx`, no `native_decide`/`Lean.ofReduceBool`). Total audited: 99 + 326 = 425 theorems.
+(no `sorryAx`, no `native_decide`/`Lean.ofReduceBool`). Total audited: 99 + 326 + 31 = 456 theorems.
 
 **Downstream use is tested**: `examples/consumer_demo/` is a separate Lake project that `require`s this
 package, imports `DualScaleStream2` and `StringTheoryFormalization`, and proves a new statement from
@@ -41,6 +46,16 @@ package, imports `DualScaleStream2` and `StringTheoryFormalization`, and proves 
   rationals ("arithmetic shadows"): kernel-checked, but thin. Several facts are proved more than once in
   different libraries (see `papers/book/generated/atlas.md`, "Unification candidates"); build on the
   `DualScaleStream2` version.
+
+* **Stream 3 (`DualScaleCosmology`) is mostly identifications, and they are Tier C.** Its theorems are real
+  algebra and calculus over ℝ, plus `norm_num` arithmetic on constants read from pinned sources and `astropy`.
+  Every *physical* reading — the two scales as a T-dual pair, CKN's `M = 1/ℓ_micro`, `ρ_Λ` as `Ω_Λ` times the
+  critical density, the dual-tower product `M₁M₂ = M₀²` — enters as an explicit hypothesis or definition and is
+  labelled Tier C in the source. Headline results, with their honest scope, are in `docs/STREAM3_WORKFLOW.md` §6:
+  the self-dual length `√(ℓ_P · c/H₀) ≈ 47 μm` is the dark-energy length up to `(8π/3Ω_Λ)^{1/4}` (an identity,
+  so CKN's and MVV's numbers agreeing with it is algebra, not corroboration); it is **excluded as a Regge slope**
+  (≥ 10³⁰ in `α'`, CMS dijets, model-dependent); it is **not excluded** as a single extra-dimension radius
+  (disfavored by O(1) factors only).
 
 ## 3. Key theorems, verbatim from Lean (`#check`), with their axioms (`#print axioms`)
 
@@ -285,12 +300,54 @@ package, imports `DualScaleStream2` and `StringTheoryFormalization`, and proves 
   `3 = 3`  
   axioms: Quot.sound, propext
 
-## 4. How to re-confirm (5 commands)
+### `DualScaleCosmology` (Stream 3; probe re-run 2026-09-18 on the `v3.4.0` tree)
+* **`ScaleFactorDuality.hubble_dual`**  
+  `∀ (a : ℝ → ℝ) (t : ℝ), a t ≠ 0 → DifferentiableAt ℝ a t → ScaleFactorDuality.hubble (fun s => ScaleFactorDuality.scaleFactorDual (a s)) t = -ScaleFactorDuality.hubble a t`  
+  axioms: propext, Classical.choice, Quot.sound
+* **`ScaleFactorDuality.cosmoDualScale_ge_two`**  
+  `∀ {a : ℝ}, 0 < a → 2 ≤ ScaleFactorDuality.cosmoDualScale a`  
+  axioms: propext, Classical.choice, Quot.sound
+* **`CKNBound.ckn_bound`**  
+  `∀ (L Λ M : ℝ), 0 < L → L ^ 3 * Λ ^ 4 ≤ L * M ^ 2 → L ^ 2 * Λ ^ 4 ≤ M ^ 2`  
+  axioms: propext, Classical.choice, Quot.sound
+* **`CKNBound.ckn_L_Lambda_sq_le`**  
+  `∀ (L Λ M : ℝ), 0 < L → 0 < Λ → 0 < M → L ^ 2 * Λ ^ 4 ≤ M ^ 2 → L * Λ ^ 2 ≤ M`  
+  axioms: propext, Classical.choice, Quot.sound
+* **`CKNInstance.planckEnergy_gt_ckn_horizon_cutoff`**  
+  `CKNInstance.planckEnergy_eV ≥ 10 ^ 30 * CKNInstance.cknLambdaHorizon_eV`  
+  axioms: propext, Classical.choice, Quot.sound
+* **`DualTower.dualTower_sum_ge`**  
+  `∀ (M0 M1 M2 : ℝ), 0 < M0 → 0 < M1 → M1 * M2 = M0 ^ 2 → 2 * M0 ≤ M1 + M2`  
+  axioms: propext, Classical.choice, Quot.sound
+* **`DualTower.dualTower_sum_ge_needs_product`** (negative control)  
+  `¬∀ (M0 M1 M2 : ℝ), 0 < M0 → 0 < M1 → 2 * M0 ≤ M1 + M2`  
+  axioms: propext, Classical.choice, Quot.sound
+* **`SelfDualCutoff.ckn_iff_uvLength_ge_selfDual`**  
+  `∀ (lmi lma lUV : ℝ), 0 < lmi → 0 < lma → 0 < lUV → (lma ^ 2 * (1 / lUV) ^ 4 ≤ (1 / lmi) ^ 2 ↔ lmi * lma ≤ lUV ^ 2)`  
+  axioms: propext, Classical.choice, Quot.sound
+* **`CosmicString.fStringGmu_le_iff`**  
+  `∀ (lP ap g : ℝ), 0 < ap → (CosmicString.fStringGmu lP ap ≤ g ↔ lP ^ 2 ≤ 2 * Real.pi * g * ap)`  
+  axioms: propext, Classical.choice, Quot.sound
+* **`CosmicString.selfDual_alphaPrime_exceeds_cms_ceiling`**  
+  `SelfDualCutoff.planckLength_m * SelfDualCutoff.hubbleRadius_m ≥ 1e30 * (SelfDualCutoff.hbarC_eVm / CosmicString.cmsStringResonanceMin_eV) ^ 2`  
+  axioms: propext, Classical.choice, Quot.sound
+* **`DarkEnergyScale.rhoLambda_inv_eq`**  
+  `∀ (lP L Om : ℝ), 0 < lP → 0 < L → 0 < Om → 1 / DarkEnergyScale.rhoLambda lP L Om = 8 * Real.pi / (3 * Om) * (lP * L) ^ 2`  
+  axioms: propext, Classical.choice, Quot.sound
+* **`DarkEnergyScale.selfDual_lambda4_eq`**  
+  `∀ (lP L Om : ℝ), 0 < lP → 0 < L → (lP * L) ^ 2 * DarkEnergyScale.rhoLambda lP L Om = 3 * Om / (8 * Real.pi)`  
+  axioms: propext, Classical.choice, Quot.sound
+
+## 4. How to re-confirm (8 commands)
 ```bash
 cd ~/SocrateAI-Scientific-Agora-LeanMaster
 lake build DualScaleStream2 StringTheoryFormalization
 python3 tools/axiom_audit.py DualScaleStream2 | tail -1
 python3 tools/axiom_audit.py StringTheoryFormalization | tail -1
 python3 tools/statement_lock.py --check $(find DualScaleStream2 StringTheoryFormalization -name '*.lean') | tail -1
+# Stream 3
+lake build DualScaleCosmology
+python3 tools/axiom_audit.py DualScaleCosmology | tail -1
+python3 tools/statement_lock.py --check $(find DualScaleCosmology -name '*.lean') | tail -1
 ```
 If any of these disagrees with Section 1, this document is stale: trust the commands, fix the document.

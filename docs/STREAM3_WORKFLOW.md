@@ -1,8 +1,10 @@
 # Stream 3 Workflow — Micro/Macro Dual-Scale Cosmology
 
-**Status**: proposal + pilot (2026-09-18). The pilot exercised the same producer/verifier
-pipeline as Stream 2 (`docs/STREAM2_WORKFLOW.md`) on a single work package; its measured
-result is in §5. Sections 2–3 (hard constraints, model tiers) are the *same rules* Stream 2
+**Status: complete (2026-09-18, release `v3.4.0`)** by the definition of done in §6: every roadmap
+row is either closed with kernel-checked theorems or closed as out of scope with a stated reason, and
+the results are recorded in `docs/VERIFIED_FOUNDATION.md` and `README.md`. "Complete" means *the
+formalization programme for this hypothesis is finished* — not that the hypothesis is proved; its
+physical content stays Tier C (see the conclusion at the end of §6). Measured results are in §5. Sections 2–3 (hard constraints, model tiers) are the *same rules* Stream 2
 uses — restated here only where Stream 3 narrows or adds to them, not duplicated in full.
 
 ## 1. The hypothesis, and what "formalizing" it can honestly mean
@@ -37,9 +39,9 @@ from:
 involution, its fixed point, the induced bound `a + a⁻¹ ≥ 2`, and (as of the 2026-09-18
 update below) the genuine calculus fact that the Hubble parameter `H(t) = a'(t)/a(t)` is odd
 under the duality, `H(a⁻¹) = −H(a)` — and the algebra of (2) — the bound solved for each
-variable. Later work packages (P3.3, P3.5, P3.6-partial, §4–§6) test the numbers and connect
-(1) and (2) at the pair's self-dual length; what remains open is whether the identifications
-used to connect them are physics or only algebra — see the conclusion at the end of §6.
+variable. Later work packages (P3.3–P3.9, §4–§6) test the numbers, connect (1) and (2) at the
+pair's self-dual length, and identify that length as the dark-energy length — see the conclusion
+at the end of §6.
 
 ### Update, 2026-09-18: `H → −H` upgraded from Tier L to Tier A
 The pilot originally left "the Hubble parameter is odd under duality" as Tier L, reasoning
@@ -72,17 +74,28 @@ comments and docstrings, never in a `theorem`/`lemma`/`def` name.
 
 ## 3. Model tiers and pipeline
 
-Same T0–T3 tiers and S0–S9 pipeline as Stream 2 (§3–§4). The pilot below was small enough
-(5 files, 29 declarations by 2026-09-18) that T0 (orchestrator) wrote and closed every goal directly rather
-than routing through T3→T2→T1; that is a pilot-scale shortcut, not a change to the routing
-rule for future Stream 3 work packages, which should route through the local provers first
-exactly as Stream 2 does.
+Same T0–T3 tiers and S0–S9 pipeline as Stream 2 (§3–§4). P3.1–P3.7 were small enough that T0
+(orchestrator) wrote and closed every goal directly rather than routing through T3→T2→T1 — a
+pilot-scale shortcut, not a change to the routing rule. P3.8 was routed T3-first as the rule says
+(stubs → `tools/prover_loop.py` → T0 for the residue); its measured result is in §5.
 
-Ollama (T3's host) was restarted for this session (`ollama serve`, PID confirmed via
-`/api/tags`); both pinned models were still resident
-(`hf.co/unsloth/DeepSeek-Prover-V2-7B-GGUF:Q8_0`, `hf.co/mradermacher/Goedel-Prover-V2-8B-GGUF:Q6_K`)
-on the T4. Lean tactics were smoke-tested post-restart (`ring`, `omega`, `#print axioms`
-under `import Mathlib`) before any proof work began.
+**Correction (2026-09-18) — the T3 host was misconfigured for most of this stream.** Ollama
+runs as the system service `ollama.service` (user `ollama`), whose drop-in
+`/etc/systemd/system/ollama.service.d/override.conf` sets
+`OLLAMA_MODELS=/mnt/disks/disk-socrateai-local-1/leanmaster/ollama` (also `docs/INFRA_SETUP.md`
+l. 136). The stream-start "restart" killed that service's process and launched a user-level
+`ollama serve` with the *default* model directory (`~/.ollama/models`, "total blobs: 0" in its
+log); the service then crash-looped on "address already in use" for ~2 h 20 min. An earlier
+version of this paragraph said both prover models "were still resident" — **that was false**:
+the `/api/tags` check that appeared to confirm it was taken before the restart. No P3.1–P3.7 goal
+was ever sent to a local prover (all were closed by T0 directly, as §5 records), so no result
+depends on this; it was found when `tools/prover_loop.py` on P3.8's stubs returned `HTTP 404` for
+every attempt in 4 s. Fixed by stopping the user-level server and `systemctl restart ollama`:
+13 blobs, `DeepSeek-Prover-V2-7B-GGUF:Q8_0`, `Goedel-Prover-V2-8B-GGUF:Q6_K` and
+`qwen2.5-coder:7b-instruct` listed. **Restart procedure for future sessions:
+`sudo systemctl restart ollama`, then confirm the model list — never a bare `ollama serve`.**
+Lean tactics were smoke-tested post-restart (`ring`, `omega`, `#print axioms` under
+`import Mathlib`) before any proof work began; that check was unaffected.
 
 ## 4. Phases
 
@@ -91,14 +104,16 @@ under `import Mathlib`) before any proof work began.
 | **P3.1 Scale-factor duality** (pilot) | `a ↦ a⁻¹` involution; unique positive fixed point `a = 1`; `ln(a⁻¹) = −ln a`; `H(a⁻¹) = −H(a)` via `HasDerivAt` (`hubble_dual`); transferred dual-scale bound `a + a⁻¹ ≥ 2` | Gasperini–Veneziano hep-th/9211021 ll. 372–373, 639–640 |
 | **P3.2 CKN micro/macro bound** (pilot; corrected 2026-09-18) | `L³Λ⁴ ≲ L·M_P²` → `L²Λ⁴ ≤ M_P²` → `LΛ² ≤ M_P`, solved for `L` and for `Λ²` (no `rpow` needed once the exponent was right) | Cohen–Kaplan–Nelson hep-th/9803132 eq. (2) l. 77–78, l. 80 |
 | **P3.3 Numeric instantiation** (closed 2026-09-18) | used CKN's own l. 113–114 horizon-scale worked example (`Λ ~ 10⁻²·⁵ eV`) directly, rather than re-deriving `H₀⁻¹` in Planck units from scratch — avoids re-doing a unit conversion this project's own incident history warns against; compared to the CODATA Planck energy: a ≥`10^30` gap, Tier A (`CKNInstance.planckEnergy_gt_ckn_horizon_cutoff`) | CKN ll. 113–114; CODATA 2018 Planck mass energy equivalent |
-| **P3.4 Cosmic F-strings** (relation closed 2026-09-18; mechanism open) | a fundamental string is a micro object (tension `1/(2πα')`) that can be cosmologically long: `Gμ/c² = ℓ_P²/(2πα')` for an unwarped F-string; an observational bound on `Gμ` is exactly a lower bound on `α'` (iff); for the self-dual pair `Gμ = ℓ_P/(2πL)`. **Open:** the defect-formation and horizon-scaling mechanism (Kibble, network scaling) and domain walls — not formalized (`CosmicString.lean`) | Copeland–Myers–Polchinski hep-th/0312067 eqs. (3.2)–(3.3), ll. 497–506; Planck 2013 XXV (1303.5085) l. 53 |
+| **P3.4 Cosmic F-strings** (closed 2026-09-18) | a fundamental string is a micro object (tension `1/(2πα')`) that can be cosmologically long: `Gμ/c² = ℓ_P²/(2πα')` for an unwarped F-string; an observational bound on `Gμ` is exactly a lower bound on `α'` (iff); for the self-dual pair `Gμ = ℓ_P/(2πL)`. **Mechanism closed as out of scope** — see P3.9 (`CosmicString.lean`) | Copeland–Myers–Polchinski hep-th/0312067 eqs. (3.2)–(3.3), ll. 497–506; Planck 2013 XXV (1303.5085) l. 53 |
 | **P3.7 Regge reading of the self-dual length** (closed 2026-09-18) | if `α' = s² = ℓ_P · c/H₀` is taken as the fundamental string's **Regge slope**, string resonances sit at `ħc/s ≈ 4 meV`; CMS excludes them below 7.9 TeV (model-dependent, low-string-scale models) — excluded by ≥`10³⁰` in `α'`; cosmic F-strings of that `α'` would be >50 orders below CMP's brane-inflation window. **Does not touch** the compactification-radius (KK) reading of `s`. The Planck `Gμ` bound, passed by 55 orders, is deliberately not cited as evidence | Tong 0908.0333 ll. 3373–3377; CMS-EXO-19-012 (1911.03947) ll. 63, 1044–1048; CMP eq. (5.1) ll. 782–783, caveat ll. 809–811 |
 | **P3.5 Dual towers / swampland distance** (closed 2026-09-18) | eq. (2.100) itself is asymptotic with unspecified `α` — not formalizable without vacuity, so *not* formalized. Formalized instead: Palti's motivating remark (dual towers, constant product) under an explicit Tier C model `M₁M₂ = M₀²`; result: the dual-tower structure is **the same involution as P3.1** (`dualTower_sum_ge` is proved by invoking `cosmoDualScale_ge_two` unchanged), with kernel-checked negative controls showing each statement fails without the model hypothesis (`DualTower.lean`) | Ooguri–Vafa (SDC), quoted at `palti_swampland_1903_06239.txt` ll. 2156–2181 |
-| **P3.6 Combination of P3.1 and P3.2** (partially closed 2026-09-18) | under two explicit Tier C identifications (`ℓ_micro`, `ℓ_macro` a T-dual pair with `α' = ℓ_micro ℓ_macro`; CKN's `M = 1/ℓ_micro`), the CKN bound holds **iff** the UV length is at least the pair's self-dual length `√(ℓ_micro ℓ_macro)` (`SelfDualCutoff.ckn_iff_uvLength_ge_selfDual`), saturated exactly there. Numerically `√(ℓ_P · c/H₀) ≈ 47 μm` and CKN's own horizon cutoff length ≈ 62 μm lie in the same `[40, 70] μm` bracket (kernel-checked). Open: whether the two identifications are physics or only algebra | CKN l. 77–78, 113–114; Planck 2018 VI Table 2 (via astropy); CODATA 2018 |
+| **P3.6 Combination of P3.1 and P3.2** (closed 2026-09-18, with P3.7–P3.8) | under two explicit Tier C identifications (`ℓ_micro`, `ℓ_macro` a T-dual pair with `α' = ℓ_micro ℓ_macro`; CKN's `M = 1/ℓ_micro`), the CKN bound holds **iff** the UV length is at least the pair's self-dual length `√(ℓ_micro ℓ_macro)` (`SelfDualCutoff.ckn_iff_uvLength_ge_selfDual`), saturated exactly there. Numerically `√(ℓ_P · c/H₀) ≈ 47 μm` and CKN's own horizon cutoff length ≈ 62 μm lie in the same `[40, 70] μm` bracket (kernel-checked). What that length *is*: P3.7 (not a Regge slope) and P3.8 (the dark-energy length) | CKN l. 77–78, 113–114; Planck 2018 VI Table 2 (via astropy); CODATA 2018 |
+| **P3.8 What the self-dual length is** (closed 2026-09-18) | exact identity: with `ρ_Λ = Ω_Λ · 3H₀²/(8πG)`, `ρ_Λ⁻¹ = (8π/3Ω_Λ) · s⁴`, i.e. **the self-dual length is the dark-energy length** up to `(8π/3Ω_Λ)^{1/4}`; in MVV's `l = λΛ^{−1/4}` it has `λ_s = (3Ω_Λ/8π)^{1/4} ≈ 0.535`, a pure number. So CKN's horizon cutoff, `s`, and `Λ^{−1/4}` are one formula — their agreement is algebra, not corroboration. KK reading: `s` sits above the Eöt-Wash 30 μm radius bound by ~1.6× and above MVV's neutron-star estimate by ~7% — **disfavored by O(1), not excluded**; MVV's λ-suppressed dark dimension (0.1–10 μm) remains live (`DarkEnergyScale.lean`) | Montero–Vafa–Valenzuela 2205.12293 ll. 67, 303, 313–316, 327, 424–427; Lee et al. 2002.11761 ll. 285–289; Copeland–Kibble 0911.1345 eq. (4.1) ll. 430–434; Planck 2018 VI via astropy |
+| **P3.9 Defect-network mechanism and domain walls** (closed as out of scope 2026-09-18) | how defects grow to horizon size is a **simulation result**: string networks reach a scaling regime `ξ/t ≈` const by "general agreement from several simulations" (Copeland–Kibble ll. 421–423; `ρ_str/ρ = 8πGμγ²/(3ν²)`, eq. (4.1)), and walls reach `ρ_wall = Aσ/t` with `A ≃ 0.8` from field-theory simulations (Saikawa eqs. (2.17)–(2.18), ll. 269–283). Formalizing `ρ = μ/ξ²` or `ρ = Aσ/t` would only restate those definitions — the vacuity failure §2's rules exist to catch — so neither is formalized. The one structural point, quoted not proved (Tier L): a defect network carries the macro scale **by causality** (`ξ ≲ t`, Kibble, CK ll. 272–276), while the micro scale enters only through the tension; the two are not related by a duality | Copeland–Kibble 0911.1345 ll. 266–276, 418–446; Saikawa 1703.02576 ll. 269–305 |
 
 ## 5. Pilot results — measured
 
-**P3.1 – P3.5, P3.6-partial, P3.7 (37 declarations, 6 files) — 37/37 closed, gate G3 passed.**
+**P3.1 – P3.8 (44 declarations, 7 files) — 44/44 closed, gate G3 passed; P3.9 closed as out of scope.**
 
 | Declaration | Kind | Closed by |
 |---|---|---|
@@ -135,6 +150,12 @@ under `import Mathlib`) before any proof work began.
 | `CosmicString.regge_window_nonempty` | theorem | T0, `Real.pi_gt_three` + `nlinarith` |
 | `CosmicString.selfDual_alphaPrime_exceeds_cms_ceiling` | theorem | T0, `norm_num` |
 | `CosmicString.selfDual_Gmu_below_cmp_window` | theorem | T0, `Real.pi_gt_three` + `nlinarith` |
+| `DarkEnergyScale.rhoLambda` | def | T0 |
+| `DarkEnergyScale.rhoLambda_inv_eq` | theorem | **T3** (DeepSeek-Prover-V2-7B, round 0, kernel-accepted); proof body then shortened by T0 to `unfold; field_simp`, statement unchanged |
+| `DarkEnergyScale.selfDual_lambda4_eq` | theorem | **T3** (same), same shortening |
+| `DarkEnergyScale.omegaLambda` | def | cited constant (astropy `Planck18.Ode0`) |
+| `DarkEnergyScale.darkEnergyLength4_bracket`, `selfDual_lambda_above_mvv_range` | theorems | T0 after T3 failed (2 rounds each), `Real.pi_gt_d2`/`pi_lt_d2` + `nlinarith` |
+| `DarkEnergyScale.selfDual_above_torsion_radius_bound` | theorem | T0 after T3 failed (no proof extracted), `norm_num` |
 
 ### Correction, 2026-09-18: `CKNBound.lean`'s original equation was dimensionally wrong
 While doing P3.3's numeric instantiation, re-reading CKN's eq. (2) with `pdftotext -layout`
@@ -149,11 +170,19 @@ citation-transcription-error precedent this matches in a sibling project
 (`SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal`, errors E-007/E-010).
 
 Gate G3: `lake build DualScaleCosmology` green, 0 `sorry`/`admit` (source grep);
-`tools/axiom_audit.py DualScaleCosmology`: 26 theorems, 0 failing, standard axioms only
+`tools/axiom_audit.py DualScaleCosmology`: 31 theorems, 0 failing, standard axioms only
 (`propext`, `Classical.choice`, `Quot.sound`); full 8-library rebuild
 (`DualScaleStream2 StringTheoryFormalization StringTheoryFoundation DualScaleM24Formalization
-DoubleFieldTheory DualScaleValidation Lean5Corpus DualScaleCosmology`) green, 3780 jobs — no
-regression to Streams 1–2; `tools/statement_lock.py --update` locked all 37 declarations.
+DoubleFieldTheory DualScaleValidation Lean5Corpus DualScaleCosmology`) green, 3781 jobs — no
+regression to Streams 1–2 (axiom audit re-run on all eight libraries: 456 theorems, 0 failing);
+`tools/statement_lock.py --update` locked all 44 declarations.
+
+**First real T3 measurement for Stream 3 (P3.8).** Once the Ollama service was restored (§3), the local
+prover closed **2 of 5** goals: both pure algebraic identities, round 0, in ~8.5 min wall-clock including
+the cold model load; it failed on all three goals needing `π` bounds (compile errors or no proof extracted).
+That matches Stream 2's finding (T3 is good on concrete algebra, weak where a specific library lemma is
+needed). Its accepted proofs were correct but padded with a long repeated tactic chain — kernel acceptance
+does not imply readable proofs, so T3 output should be reviewed and shortened before commit.
 
 **Tiering conclusion so far**: every work package here was small, self-contained algebra or
 arithmetic from a single pinned equation or citation — exactly the shape Stream 2 found T2
@@ -173,19 +202,26 @@ honest-progress convention as Stream 2 §5.1.
 | P3.1 | scale-factor-duality involution, fixed point, log-oddness, `H → −H`, transferred bound | ✅ closed 2026-09-18 |
 | P3.2 | CKN bound (corrected exponent) solved for `L` and for `Λ²` | ✅ closed 2026-09-18 |
 | P3.3 | numeric instantiation at CKN's own horizon example vs. the Planck energy | ✅ closed 2026-09-18 — **result: a ≥`10³⁰` gap, not a match**; the CKN route does not support `ℓ_micro ~ ℓ_P` at `ℓ_macro ~ H₀⁻¹` |
-| P3.4 | cosmic F-strings: tension relation `Gμ = ℓ_P²/(2πα')` | ✅ relation closed 2026-09-18 — ⬜ formation/scaling mechanism and domain walls still open |
+| P3.4 | cosmic F-strings: tension relation `Gμ = ℓ_P²/(2πα')` | ✅ closed 2026-09-18 (mechanism moved to P3.9) |
 | P3.5 | dual towers behind the swampland distance conjecture | ✅ closed 2026-09-18 — **not an independent third route at the level of algebra**: the same involution as P3.1, under an explicit Tier C model; eq. (2.100) itself deliberately not formalized |
-| P3.6 | statement review: do P3.1/P3.2 combine into one micro/macro relation, or are they disjoint? | 🟡 partial 2026-09-18 — they combine at the **self-dual length** `√(ℓ_micro ℓ_macro)`, not at `ℓ_micro` (iff theorem + numeric bracket); the Regge-slope reading of that length is excluded (P3.7); open: the compactification-radius (KK) reading |
+| P3.6 | statement review: do P3.1/P3.2 combine into one micro/macro relation, or are they disjoint? | ✅ closed 2026-09-18 — they combine at the **self-dual length** `√(ℓ_micro ℓ_macro)`, not at `ℓ_micro`; that length is not a Regge slope (P3.7) and is the dark-energy length (P3.8) |
 | P3.7 | Regge-slope reading of the self-dual length | ✅ closed 2026-09-18 — **excluded** (CMS, ≥`10³⁰` in `α'`); turns `SelfDualCutoff.lean`'s prose disclaimer into kernel-checked arithmetic |
+| P3.8 | what the self-dual length is; the KK / dark-dimension reading | ✅ closed 2026-09-18 — **the dark-energy length** (identity); KK reading disfavored by O(1) only, MVV's λ-suppressed dark dimension live |
+| P3.9 | defect-network scaling mechanism; domain walls | ⛔ closed as out of scope 2026-09-18 — simulation results; formalizing their defining formulas would be vacuous (reason in §4) |
 
-The honest project-level claim, until P3.4 and the open half of P3.6 change it: *scale-factor
-duality (P3.1) and the CKN bound (P3.2) are each formalized from pinned sources; the dual-tower
-structure behind the swampland distance conjecture is the same involution as P3.1 (P3.5). Read
-literally — `ℓ_micro ~ ℓ_P` as the micro cutoff at `ℓ_macro ~ H₀⁻¹` — the hypothesis fails the
-CKN test by ≥10³⁰ (P3.3). Read as a T-dual pair, the CKN bound holds exactly when the UV cutoff
-length is at least the pair's self-dual length `√(ℓ_P · H₀⁻¹) ≈ 47 μm`, which agrees with CKN's
-own horizon-scale cutoff (≈ 62 μm) to a factor ~1.3 (P3.6, partial). That length cannot be the
-fundamental string's Regge slope — colliders exclude string resonances at its ~4 meV scale by
-≥10³⁰ in `α'` (P3.7). Whether it has a physical meaning as a compactification (KK) length is
-open.* Not "formalized the dual-scale cosmology hypothesis", and not
-"the hypothesis is false".
+**Definition of done (fixed 2026-09-18, before the last work package):** every row above is ✅ (Tier A
+theorems committed, zero `sorry`/`admit`/`native_decide`/`axiom`, axiom-audited, statement-locked) or ⛔
+(closed as out of scope with the reason written in §4); the eight-library build, the axiom audit of all
+eight libraries and the statement lock pass on the release tag; and `docs/VERIFIED_FOUNDATION.md` and
+`README.md` state the Stream 3 gate results and headline claims with tier labels. All three hold at `v3.4.0`.
+
+**Conclusion of Stream 3 (the sentence to cite).** *Scale-factor duality and the Cohen–Kaplan–Nelson bound
+are formalized from pinned sources, and the dual-tower structure behind the swampland distance conjecture
+is the same involution as scale-factor duality. Taken literally — `ℓ_micro ~ ℓ_P` as the UV cutoff at
+`ℓ_macro ~ H₀⁻¹` — the hypothesis fails the CKN test by ≥ 10³⁰. Taken as a T-dual pair, `ℓ_P` and `c/H₀`
+meet the CKN bound exactly at their self-dual length `√(ℓ_P · c/H₀) ≈ 47 μm`, which is the dark-energy
+length up to the factor `(8π/3Ω_Λ)^{1/4}`. That length cannot be the string (Regge) scale — excluded by
+≥ 10³⁰ in `α'` — and as the radius of one extra dimension it is disfavored by O(1) factors only, with the
+λ-suppressed "dark dimension" of Montero–Vafa–Valenzuela still experimentally live. Every physical
+identification used is Tier C.* Not "the dual-scale cosmology hypothesis is formalized", and not "the
+hypothesis is false".
