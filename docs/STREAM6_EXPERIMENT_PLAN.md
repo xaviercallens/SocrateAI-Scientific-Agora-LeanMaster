@@ -1,4 +1,4 @@
-# Stream 6 — Experimental confrontation of the K3 × T² dual-scale hypothesis (plan, awaiting sign-off)
+# Stream 6 — Experimental confrontation of the K3 × T² dual-scale hypothesis
 
 **Status (2026-09-18, release `v3.14.0`):** P6.1 and P6.2 done with the T0 owner's sign-off ("P6.1 puis
 P6.2"). **Verdict: P1 is excluded by existing data, and the programme's own T-duality leaves no `O(1)`
@@ -35,7 +35,7 @@ So the programme has exactly **one** candidate observable, and it comes with a T
 * MVV (`2205_12293.txt` ll. 320–327): heating of old neutron stars gives `l < 44 μm` for one extra
   dimension.
 
-**Verdict on P1 as stated: in tension with both bounds** (`47/30 ≈ 1.6`, `47/44 ≈ 1.07`). Stream 3 records
+**Pre-freeze assessment (kept as written before the freeze): in tension with both bounds** (`47/30 ≈ 1.6`, `47/44 ≈ 1.07`). Stream 3 records
 this as "disfavored by `O(1)`" because the identification `R ↔ s` carries an unfixed `O(1)` factor
 (`2π`, the Yukawa strength `α`, the number of extra dimensions). That factor must be fixed **from the
 theory**, not chosen now — with `R = s/2π ≈ 7.5 μm` the number would fall inside MVV's window
@@ -55,7 +55,7 @@ post-hoc fit the protocol forbids.
 Without (1), Stream 6 ends in the Home repository's F5b branch: **no pre-registerable prediction beyond
 P1, and P1 is already disfavoured by existing data.**
 
-## 5. Proposed phases (not started)
+## 5. Phases (P6.1, P6.2 done at `v3.14.0`; P6.3 not applicable since P6.2 gives `κ = 1`)
 
 | Phase | Content | Needs |
 |---|---|---|
