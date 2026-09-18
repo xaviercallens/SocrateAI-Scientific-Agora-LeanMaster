@@ -6,3 +6,4 @@ import DualScaleCosmology.CKNBound
 import DualScaleCosmology.CKNInstance
 import DualScaleCosmology.DualTower
 import DualScaleCosmology.SelfDualCutoff
+import DualScaleCosmology.CosmicString

@@ -1,0 +1,1813 @@
+                                               Astronomy & Astrophysics manuscript no. Defects                                                                                                  c ESO 2018
+                                               November 8, 2018
+
+
+
+
+                                                             Planck 2013 results. XXV. Searches for cosmic strings
+                                                                        and other topological defects
+                                               Planck Collaboration: P. A. R. Ade83 , N. Aghanim55 , C. Armitage-Caplan88 , M. Arnaud69 , M. Ashdown66,6 , F. Atrio-Barandela18 , J. Aumont55 ,
+                                                 C. Baccigalupi82 , A. J. Banday91,9 , R. B. Barreiro63 , J. G. Bartlett1,64 , N. Bartolo31 , E. Battaner92 , R. Battye65 , K. Benabed56,90 , A. Benoı̂t53 ,
+                                               A. Benoit-Lévy25,56,90 , J.-P. Bernard9 , M. Bersanelli34,46 , P. Bielewicz91,9,82 , J. Bobin69 , J. J. Bock64,10 , A. Bonaldi65 , L. Bonavera63 , J. R. Bond8 ,
+                                                      J. Borrill13,85 , F. R. Bouchet56,90 , M. Bridges66,6,59 , M. Bucher1 , C. Burigana45,32 , R. C. Butler45 , J.-F. Cardoso70,1,56 , A. Catalano71,68 ,
+                                              A. Challinor59,66,11 , A. Chamballu69,15,55 , L.-Y Chiang58 , H. C. Chiang27,7 , P. R. Christensen78,37 , S. Church87 , D. L. Clements51 , S. Colombi56,90 ,
+                                                  L. P. L. Colombo24,64 , F. Couchot67 , A. Coulais68 , B. P. Crill64,79 , A. Curto6,63 , F. Cuttaia45 , L. Danese82 , R. D. Davies65 , R. J. Davis65 , P. de
+                                                    Bernardis33 , A. de Rosa45 , G. de Zotti42,82 , J. Delabrouille1 , J.-M. Delouis56,90 , F.-X. Désert49 , J. M. Diego63 , H. Dole55,54 , S. Donzelli46 ,
+                                              O. Doré64,10 , M. Douspis55 , A. Ducout56 , J. Dunkley88 , X. Dupac39 , G. Efstathiou59 , T. A. Enßlin74 , H. K. Eriksen61 , J. Fergusson11 , F. Finelli45,47 ,
+arXiv:1303.5085v1 [astro-ph.CO] 20 Mar 2013
+
+
+
+
+                                                 O. Forni91,9 , M. Frailis44 , E. Franceschi45 , S. Galeotta44 , K. Ganga1 , M. Giard91,9 , G. Giardino40 , Y. Giraud-Héraud1 , J. González-Nuevo63,82 ,
+                                                  K. M. Górski64,94 , S. Gratton66,59 , A. Gregorio35,44 , A. Gruppuso45 , F. K. Hansen61 , D. Hanson76,64,8 , D. Harrison59,66 , S. Henrot-Versillé67 ,
+                                                C. Hernández-Monteagudo12,74 , D. Herranz63 , S. R. Hildebrandt10 , E. Hivon56,90 , M. Hobson6 , W. A. Holmes64 , A. Hornstrup16 , W. Hovest74 ,
+                                                 K. M. Huffenberger93 , T. R. Jaffe91,9 , A. H. Jaffe51 , W. C. Jones27 , M. Juvela26 , E. Keihänen26 , R. Keskitalo22,13 , T. S. Kisner73 , J. Knoche74 ,
+                                                     L. Knox28 , M. Kunz17,55,3 , H. Kurki-Suonio26,41 , G. Lagache55 , A. Lähteenmäki2,41 , J.-M. Lamarre68 , A. Lasenby6,66 , R. J. Laureijs40 ,
+                                                  C. R. Lawrence64 , J. P. Leahy65 , R. Leonardi39 , J. Lesgourgues89,81 , M. Liguori31 , P. B. Lilje61 , M. Linden-Vørnle16 , M. López-Caniego63 ,
+                                                         P. M. Lubin29 , J. F. Macı́as-Pérez71 , B. Maffei65 , D. Maino34,46 , N. Mandolesi45,5,32 , M. Maris44 , D. J. Marshall69 , P. G. Martin8 ,
+                                                        E. Martı́nez-González63 , S. Masi33 , S. Matarrese31 , F. Matthai74 , P. Mazzotta36 , J. D. McEwen25 , A. Melchiorri33,48 , L. Mendes39 ,
+                                                 A. Mennella34,46 , M. Migliaccio59,66 , S. Mitra50,64 , M.-A. Miville-Deschênes55,8 , A. Moneti56 , L. Montier91,9 , G. Morgante45 , D. Mortlock51 ,
+                                              A. Moss84 , D. Munshi83 , P. Naselsky78,37 , P. Natoli32,4,45 , C. B. Netterfield20 , H. U. Nørgaard-Nielsen16 , F. Noviello65 , D. Novikov51 , I. Novikov78 ,
+                                               S. Osborne87 , C. A. Oxborrow16 , F. Paci82 , L. Pagano33,48 , F. Pajot55 , D. Paoletti45,47 , F. Pasian44 , G. Patanchon1 , H. V. Peiris25 , O. Perdereau67 ,
+                                                   L. Perotto71 , F. Perrotta82 , F. Piacentini33 , M. Piat1 , E. Pierpaoli24 , D. Pietrobon64 , S. Plaszczynski67 , E. Pointecouteau91,9 , G. Polenta4,43 ,
+                                                     N. Ponthieu55,49 , L. Popa57 , T. Poutanen41,26,2 , G. W. Pratt69 , G. Prézeau10,64 , S. Prunet56,90 , J.-L. Puget55 , J. P. Rachen21,74 , C. Räth75 ,
+                                                 R. Rebolo62,14,38 , M. Remazeilles55,1 , C. Renault71 , S. Ricciardi45 , T. Riller74 , C. Ringeval60,56,90 , I. Ristorcelli91,9 , G. Rocha64,10 , C. Rosset1 ,
+                                              G. Roudier1,68,64 , M. Rowan-Robinson51 , B. Rusholme52 , M. Sandri45 , D. Santos71 , G. Savini80 , D. Scott23 , M. D. Seiffert64,10 , E. P. S. Shellard11 ,
+                                               L. D. Spencer83 , J.-L. Starck69 , V. Stolyarov6,66,86 , R. Stompor1 , R. Sudiwala83 , F. Sureau69 , D. Sutton59,66 , A.-S. Suur-Uski26,41 , J.-F. Sygnet56 ,
+                                                 J. A. Tauber40 , D. Tavagnacco44,35 , L. Terenzi45 , L. Toffolatti19,63 , M. Tomasi46 , M. Tristram67 , M. Tucci17,67 , J. Tuovinen77 , L. Valenziano45 ,
+                                              J. Valiviita41,26,61 , B. Van Tent72 , J. Varis77 , P. Vielva63 , F. Villa45 , N. Vittorio36 , L. A. Wade64 , B. D. Wandelt56,90,30 , D. Yvon15 , A. Zacchei44 , and
+                                                                                                                              A. Zonca29
+                                                                                                      (Affiliations can be found after the references)
+
+                                                                                                       Preprint online version: November 8, 2018
+
+
+                                                                                                                        ABSTRACT
+
+                                              Planck data have been used to provide stringent new constraints on cosmic strings and other defects. We describe forecasts of the CMB power
+                                              spectrum induced by cosmic strings, calculating these from network models and simulations using line-of-sight Boltzmann solvers. We have
+                                              studied Nambu-Goto cosmic strings, as well as field theory strings for which radiative effects are important, thus spanning the range of theoretical
+                                              uncertainty in the underlying strings models. We have added the angular power spectrum from strings to that for a simple adiabatic model, with
+                                              the extra fraction defined as f10 at multipole ` = 10. This parameter has been added to the standard six parameter fit using COSMOMC with flat
+                                              priors. For the Nambu-Goto string model, we have obtained a constraint on the string tension of Gµ/c2 < 1.5 × 10−7 and f10 < 0.015 at 95%
+                                              confidence that can be improved to Gµ/c2 < 1.3 × 10−7 and f10 < 0.010 on inclusion of high-` CMB data. For the abelian-Higgs field theory
+                                              model we find, GµAH /c2 < 3.2 × 10−7 and f10 < 0.028. The marginalized likelihoods for f10 and in the f10 –Ωb h2 plane are also presented. We have
+                                              additionally obtained comparable constraints on f10 for models with semilocal strings and global textures. In terms of the effective defect energy
+                                              scale these are somewhat weaker at Gµ/c2 < 1.1 × 10−6 . We have made complementarity searches for the specific non-Gaussian signatures of
+                                              cosmic strings, calibrating with all-sky Planck resolution CMB maps generated from networks of post-recombination strings. We have validated
+                                              our non-Gaussian searches using these simulated maps in a Planck-realistic context, estimating sensitivities of up to ∆Gµ/c2 ≈ 4 × 10−7 . We have
+                                              obtained upper limits on the string tension at 95% confidence of Gµ/c2 < 8.8 × 10−7 with modal bispectrum estimation and Gµ/c2 < 7.8 × 10−7 for
+                                              real space searches with Minkowski functionals. These are conservative upper bounds because only post-recombination string contributions have
+                                              been included in the non-Gaussian analysis.
+                                              Key words. Astroparticle physics – cosmology: cosmic background radiation – cosmology: observations – cosmology: theory – cosmology: early
+                                              Universe
+
+
+
+
+                                                                                                                                                                                                                1
+                                       Planck Collaboration: Cosmic strings and other topological defects
+
+1. Introduction                                                           structure and loop production. An alternative approach has been
+                                                                          to use field theory simulations of cosmological vortex-strings.
+This paper, one of a set associated with the 2013 release of              These yield a significantly lower number of strings per hori-
+data from the Planck1 mission (Planck Collaboration I 2013),              zon volume (less than half), reflecting the importance of radia-
+describes the constraints on cosmic strings, semi-local strings           tive effects on the microphysical scales being probed numeri-
+and global textures. Such cosmic defects are a generic outcome            cally. The degree of convergence with Nambu-Goto string sim-
+of symmetry-breaking phase transitions in the early Universe              ulations is difficult to determine computationally at present, but
+(Kibble 1976) and further motivation came from a potential                there are also global strings for which radiative effects of com-
+role in large-scale structure formation (Zeldovich 1980; Vilenkin         parable magnitude are expected to remain important on cos-
+1981a). Cosmic strings appear in a variety of supersymmetric              mological scales. It is prudent in this paper, therefore, to con-
+and other grand unified theories, forming at the end of infla-            strain both varieties of strings, labelling the field theory con-
+tion (see, for example, Jeannerot et al. 2003). However, fur-             straints as AH from the abelian-Higgs (local U(1)) model used
+ther interest in cosmic (super-)strings has been motivated by             to describe them. Given these quantitative differences, such as
+their emergence in higher-dimensional theories for the origin of          the lower density, field theory strings produce a weaker con-
+our Universe, such as brane inflation. These superstring variants         straint GµAH /c2 < 5.7 × 10−7 using WMAP data alone (Bevis
+come in a number of D− and F−string forms, creating hybrid                et al. 2008) and (Urrestilla et al. 2011). The shape of the string-
+networks with more complex dynamics (see, e.g., Polchinski                induced power spectrum also has a different shape, which allows
+2005). Cosmic strings can have an enormous energy per unit                up to a 9.5% contribution at ` = 10. These WMAP constraints
+length µ that can give rise to a number of observable effects, in-        can be improved by adding small-scale CMB anisotropy in a
+cluding gravitational lensing and a background of gravitational           joint analysis. The Nambu-Goto strings limit improves to be-
+waves. Here, we shall concentrate on the impact of strings on the         come Gµ/c2 < 1.7 × 10−7 (using SPT data, Dvorkin et al. 2011)
+cosmic microwave background (CMB), which includes the gen-                and field theory strings yield GµAH /c2 < 4.2 × 10−7 (Urrestilla
+eration of line-like discontinuities in temperature. Comparable           et al. 2011). Power-spectrum based constraints on global textures
+effects can also be caused by other types of cosmic defects, no-          were studied in Bevis et al. (2004) and (Urrestilla et al. 2008),
+tably semi-local strings and global textures. As well as influenc-        with the latter paper giving a 95% limit of Gµ/c2 < 4.5 × 10−6 .
+ing the CMB power spectrum, each type of topological defect               Urrestilla et al. (2008) also provide constraints on semi-local
+should have a counterpart non-Gaussian signature giving us the            strings, Gµ/c2 < 5.3 × 10−6 .
+ability distinguish between different defects, alternative scenar-
+ios, or systematic effects. The discovery of any of these objects              Constraints on cosmic strings from non-Gaussianity require
+would profoundly influence our understanding of fundamen-                 high resolution realisations of string-induced CMB maps that
+tal physics, identifying GUT-scale symmetry breaking patterns,            are extremely challenging to produce. Low resolution small-
+perhaps even providing direct evidence for extra dimensions.              angle and full-sky CMB maps calculated with the full recom-
+Conversely, the absence of these objects will tightly constrain           bination physics included, have indicated some evidence for a
+symmetry breaking schemes, again providing guidance for high              significant kurtosis from strings (Landriau & Shellard 2011).
+energy theory. For a general introduction to cosmic strings and           More progress has been made increating high resolution maps
+other defects, refer to Vilenkin & Shellard (2000); Hindmarsh &           from string lensing after recombination (see Ringeval & Bouchet
+Kibble (1995); Copeland & Kibble (2010).                                  (2012) and references therein) and identifying, in principle, the
+    High resolution numerical simulations of cosmic strings us-           bispectrum and trispectrum, which can be predicted for strings
+ing the Nambu-Goto action indicate that cosmological networks             analytically (Hindmarsh et al. 2009, 2010; Regan & Shellard
+tend towards a scale-invariant solution with typically tens of long       2010). The first WMAP constraint on cosmic strings using the
+strings stretching across each horizon volume. These strings              analytic CMB trispectrum yielded Gµ/c2 < 1.1 × 10−6 at 95%
+continuously source gravitational perturbations on sub-horizon            confidence (Fergusson et al. 2010b). An alternative approach is
+scales, the magnitude of that are determined by the dimension-            to fit pixel-space templates to a map, this method was applied to
+less parameter:                                                           global textures templates in Cruz et al. (2007) and Feeney et al.
+             !2                                                           (2012a,b).
+Gµ         η
+     =          ,                                                (1)          The most stringent constraints that are claimed for the string
+ c2      mPl                                                              tension arise from predicted backgrounds of gravitational waves
+where η is the
+            √ energy scale of the string-forming phase transition
+                                                                          that are created by decaying loops (Vilenkin 1981b). However,
+and mPl ≡ ~c/G is the Planck mass. String effects on the CMB              these constraints are strongly dependent on uncertain string
+power spectrum have been estimated using a phenomenological               physics, most notably the network loop production scale and the
+string model and, with WMAP and SDSS data, these estimates                nature of string radiation from cusps, i.e., points on the strings
+yield a 2σ upper bound of Gµ/c2 < 2.6 × 10−7 (Battye & Moss               approaching the speed of light c. The most optimistic con-
+2010). A consequence is that strings can be responsible for no            straint based on the European Pulsar Timing Array is Gµ/c2 <
+more than 4.4% of the CMB anisotropy signal at multipole ` =              4.0 × 10−9 (van Haasteren et al. 2011), but a much more conser-
+10.                                                                       vative estimate of Gµ/c2 < 5.3 × 10−7 can be found in Sanidas
+    As we shall discuss, the evolution of Nambu-Goto string               et al. (2012), together with a string parameter constraint survey
+networks is computationally challenging and quantitative uncer-           and an extensive discussion of these uncertainties. Such gravita-
+tainties remain, notably in characterizing the string small-scale         tional wave limits do not apply to global strings or to strings for
+                                                                          which other radiative channels are available.
+  1
+     Planck (http://www.esa.int/Planck) is a project of the
+European Space Agency (ESA) with instruments provided by two sci-             Alternative topological defects scenarios also have strong
+entific consortia funded by ESA member states (in particular the lead     motivations and we report limits on textures and global
+countries France and Italy), with contributions from NASA (USA) and       monopoles in this paper as well. Of particular recent interest are
+telescope reflectors provided by a collaboration between ESA and a sci-   hybrid networks of cosmic strings where the correlation length
+entific consortium led and funded by Denmark.                             is reduced by having several interacting varieties (e.g., F- and
+
+
+2
+                                     Planck Collaboration: Cosmic strings and other topological defects
+
+D-strings) or a small reconnection probability, p < 1. We expect       Table 1. Summary of numerical simulation results for the string
+to investigate these models using the Planck full mission data.        density parameter ζ defined in Eq. (5). The Nambu-Goto string
+    The outline of this paper is as follows. In Sect. 2 we briefly     simulations are respectively labelled as MS (Martins & Shellard
+describe the different types of topological defects that we con-       2006), RSB (Ringeval et al. 2007), and BOS (Blanco-Pillado
+sider, and their impact on the CMB anisotropies. We also dis-          et al. 2011). This is contrasted with the much lower density re-
+cuss how the CMB power spectrum is computed and how we                 sults from lattice field theory simulations of vortex-strings la-
+obtain CMB maps with a cosmic string contribution. In Sect. 3          belled as MMS (Moore et al. 2002) and BHKU (Bevis et al.
+we present the defect constraints from the CMB power spectrum          2007b).
+(with numbers given in Table 2), while Sect. 4 discusses searches
+for topological defects with the help of their non-Gaussian sig-
+nature. We finally present the overall conclusions in Sect. 5.             Epoch . . . . . . . . . .      MS     RSB   BOS    MSM   BHKU
+                                                                           Radiation . . . . . . . .      11.5   9.5   11.0   5.0    3.8
+                                                                           Matter . . . . . . . . . . .    3.0   3.2    3.7   1.5    1.3
+2. Theoretical Modelling and Forecasting
+2.1. Cosmic strings and their cosmological consequences
+                                                                       Brownian random walk characterised by a correlation length L,
+2.1.1. String network evolution                                        we have
+A detailed quantitative understanding of the cosmological evo-                 µ     ζµ
+                                                                       ρ∞ =        ≡ 2 ,                                                   (5)
+lution of string networks is an essential pre-requisite for mak-               L 2   t
+ing accurate predictions about the cosmological consequences
+of strings. Fortunately, all string network simulations to date        and the averaged equations of motion become simply
+have demonstrated convincingly that the large-scale properties          dL
+of strings approach a self-similar scale-invariant regime soon af-     2   = 2HL(1 + v2 ) + c̃v ,
+                                                                        dt
+ter formation. If we treat the string as a one-dimensional object,     dv∞         " k(v)       #
+then it sweeps out a two-dimensional worldsheet in spacetime               = 1−v 2
+                                                                                            − 2Hv ,                                        (6)
+                                                                        dt              L
+xµ = xµ (ζ a ),   a = 0, 1,                                      (2)   where c̃ measures the network loop√ production
+                                                                                                                 √        rate and k(v) is a
+where the worldsheet parameters ζ and ζ are time-like and
+                                      0        1                       curvature parameter with k ≈ 2 2(1− 2v). This is the velocity-
+space-like respectively. The Nambu-Goto action that governs            dependent one-scale (VOS) model and, with a single parameter
+string motion then becomes                                             c̃, it provides a good fit to both Nambu and field theory simula-
+        Z                                                              tions, notably through the radiation-matter transition (Martins &
+           √                                                           Shellard 1996).
+S = −µ       −γ d 2 ζ,                                  (3)                  A general consensus has emerged from the three main simu-
+                                                                       lation codes describing Nambu-Goto string networks (Martins &
+where γab = gµν ∂a xµ ∂b xν is the two-dimensional worldsheet          Shellard 2006; Ringeval et al. 2007; Blanco-Pillado et al. 2011).
+metric (γ = det(γab )) induced by the spacetime metric gµν . The       These independent codes essentially solve for left- and right-
+Nambu-Goto action Eq. (3) can be derived systematically from           moving modes along the string using special techniques to han-
+a field theory action, such as that for the abelian-Higgs model        dle contact discontinuities or kinks, including “shock fronting”,
+describing U(1) vortex-strings:                                        artificial compression methods and an exact solver for piecewise
+                                                                       linear strings, respectively. The consistency between simulations
+                                                    λ 2
+      Z            "                                              #
+ S =       4 √                µ       1       µν
+          d x −g (Dµ φ) (D φ) − 2 Fµν F − (|φ| − η ) ,
+                           ∗                                  2 2      is shown in Table 1 for the string density parameter ζ defined in
+                                     4e             4                  Eq. (5). Averaging yields the radiation era density ζ = 10.7 and
+                                                                 (4)   a matter era value ζ = 3.3. Note that these asymptotic values and
+where φ is a complex scalar field, F µν is the U(1) field strength     the intervening matter-radiation transition can be well-described
+and Dµ = ∂µ + iAµ is the gauge-covariant derivative with e and         by the VOS model Eq. (6) with c̃ = 0.23. The matter era VOS
+λ dimensionless coupling constants. The transverse degrees of          value appears somewhat anomalous from the other two simula-
+freedom in φ can be integrated out provided the string is not          tions, but this is obtained from larger simulations in a regime
+strongly curved, that is, the string width δ ≈ ~c/η  L where          where convergence is very slow, so it may more closely reflect
+L is the typical radius of curvature. For a cosmological string        the true asymptotic value. These simulations have also advanced
+network today with Gµ/c2 ∼ 10−7 , these two lengthscales are           the study of string small-scale structure and the loop distribution,
+separated by over 40 orders of magnitude, so this should be a          about which there had been less consensus (see, e.g., Blanco-
+valid approximation.                                                   Pillado et al. 2011). However, note that CMB anisotropy is far
+    In an expanding universe, the Nambu-Goto action Eq. (3)            less sensitive to this issue compared to constraints from gravita-
+yields a Hubble-damped wave equation governing the string              tional waves.
+motion. These equations can be solved numerically, pro-                      Field theory simulations using lattice gauge techniques have
+vided “kinks” or velocity discontinuities are treated carefully.       also been employed to study the evolution of string networks in
+However, they can also be averaged analytically to describe the        an expanding universe. Comparatively, these three-dimensional
+scale-invariant evolution of the whole string network in terms of      simulations are constrained to a lower dynamic range and the
+two quantities, the energy density ρ and the r.m.s. velocity v. Any    simulations require the solution of modified field equations to
+string network divides fairly neatly into two distinct populations     prevent the string core width shrinking below the lattice reso-
+of long (or “infinite”) strings ρ∞ stretching beyond the Hubble        lution. On the other hand, field theory simulations include field
+radius and the small loops ρl with length l  H −1 that the long       radiation and therefore provide a more complete account of the
+strings create Kibble (1985). Assuming the long strings form a         string physics. In Table 1 the lower string densities obtained
+
+
+                                                                                                                                            3
+                                     Planck Collaboration: Cosmic strings and other topological defects
+
+
+
+
+Fig. 1. The spacetime around a cosmic string is conical, as if
+a narrow wedge were removed from a flat sheet and the edges
+identified. For this reason cosmic strings can create double im-
+ages of distant objects. Strings moving across the line of sight
+will cause line-like discontinuities in the CMB radiation.
+                                                                                            -142                      199
+
+from two sets of abelian-Higgs simulations are given (Moore            Fig. 2. Characteristic CMB temperature discontinuity created by
+et al. 2002; Bevis et al. 2007b). The evolution can be fitted with     a cosmic string. Here, the simulated Nambu-Goto string has pro-
+a VOS model Eq. (6) with c̃ = 0.57, which is 150% higher than          duced a cusp, a small region on the string that approaches the
+for Nambu-Goto strings. Field theory simulations have further          speed of light, which has generated a localised CMB signal.
+important applications, particularly for describing delocalised
+topological defects such as textures, for describing models that
+do not form stable defects like semilocal strings, and because         where vs is the transverse velocity of the string and γs = (1 −
+they include radiative effects naturally. Radiative effects ob-        v2s )−1/2 . This rather simple picture, however, is complicated in an
+served in current abelian-Higgs simulations are comparable to          expanding universe with a wiggly string network and relativis-
+the radiative damping anticipated for cosmological global strings      tic matter and radiation components. The energy-momentum
+and so the AH analysis below should offer some insight into this       tensor T µν (x, t) essentially acts as a source term for the metric
+case.                                                                  fluctuations that perturb the CMB photons and create tempera-
+                                                                       ture anisotropies. Essentially, the problem can be recast using
+                                                                       Green’s (or transfer) functions Gµν that project forward the con-
+2.1.2. String gravity and the CMB                                      tributions of strings from early times to today:
+Despite the enormous energy per unit length µ, the spacetime           ∆T
+                                                                                                Z
+around a straight cosmic string is locally flat. The string has an           (n̂, xobs , t0 ) =   d4 x Gµν (n̂, x, xobs , t, t0 ) T µν (x, t) , (9)
+equation of state pz = −ρ, p x = py = 0 (for one lying along the         T
+z-direction), so there is no source term in the relativistic version   where n̂ is the line-of-sight direction for photon propagation
+of the Poisson equation ∇2 Φ = 4πG(ρ+ p x + py + pz ). The straight    and xobs is the observer position. The actual quantitative solu-
+string exhibits no analogue of the Newtonian pull of gravity on        tion of this problem entails a sophisticated formalism to solve
+any surrounding matter. But this does not mean the string has no       the Boltzmann equation and then to follow photon propaga-
+gravitational impact; on the contrary, a moving string has dra-        tion along the observer’s line-of-sight. An example of the line-
+matic effects on nearby matter or propagating CMB photons.             like discontinuity signal created by a cosmic string in the CMB
+    The spacetime metric about a straight static string takes the      is shown in Fig. 2. In this case, a string cusp has formed on
+simple form,                                                           the string, causing a strongly localised signal and reflecting the
+                                                                       Lorentz boost factor in Eq. (8).
+ds2 = dt2 − dz2 − dr2 − r2 dθ2 ,                                 (7)
+
+that looks like Minkowski space in cylindrical coordinates, but        2.2. Semi-local strings
+for the fact that the azimuthal coordinate θ has a restricted range
+0 ≤ θ ≤ 2π(1 − 4Gµ). The spacetime is actually conical with a          The tight constraints on the presence of cosmic strings that we
+global deficit angle ∆ = 8πGµ, that is, an angular wedge of width      will discuss later in this paper start to put pressure on the wide
+∆ is removed from the space and the remaining edges identified         class of inflation models that generate such defects (Hindmarsh
+(see Fig. 1). This means that distant galaxies on the opposite         2011). The power of these constraints would be reduced if the
+side of a cosmic string can be gravitationally lensed to produce       strings could be made unstable. This is the basic motivation
+characteristic double images.                                          behind semilocal strings: a duplication of the complex scalar
+                                                                       field φ in the abelian-Higgs action (4), occurring naturally in a
+    Cosmic strings create line-like discontinuities in the CMB
+                                                                       range of inflation models (Dasgupta et al. 2004; Achucarro et al.
+signal. As the string moves across the line of sight, the CMB
+                                                                       2006; Dasgupta et al. 2007), transforms the stable cosmic strings
+photons are boosted towards the observer, causing a relative
+                                                                       into non-topological semilocal strings (Vachaspati & Achucarro
+CMB temperature shift across the string, given by (Gott III 1985;
+                                                                       1991) as the vacuum manifold becomes S 3 , which is simply-
+Kaiser & Stebbins 1984)
+                                                                       connected. The existence and stability of the semilocal strings
+δT                                                                     is thus a question of dynamics rather than due to the topology
+   = 8πGµvs γs ,                                                 (8)   of the vacuum manifold. In general we do not expect to form
+T
+
+4
+                                    Planck Collaboration: Cosmic strings and other topological defects
+
+long strings, but rather shorter string segments, as the semilocal    two different ways for cosmic strings, as well as spectra from
+strings can have ends. The evolution of these segments is very        semilocal strings and texture models.
+complicated and arises directly from the field evolution, so that          Defect-based power spectra are dominated by different phys-
+it is only practicable to simulate these defects with the help of     ical effects across the range of angular scales. (i) On large an-
+field theory (Urrestilla et al. 2008).                                gular scales the spectra are dominated by an integrated Sachs-
+                                                                      Wolfe (ISW) component due to the strings along the line-of-sight
+                                                                      between the time of last scattering and the present day. The scal-
+2.3. Global defects                                                   ing assumption implies that this component will be close to scale
+                                                                      invariant, although in practice it typically has a mildly blue spec-
+A large alternative class of defects is due to the breaking of a      trum. (ii) At intermediate scale the dominant contribution comes
+global O(N) symmetry (rather than a gauge symmetry as in the          from anisotropies created at the time of last scattering. In con-
+case of cosmic strings) of a N-component scalar field φ. The          trast to the strong series of acoustic peaks created in adiabatic
+energy density of global defects is significantly less localised      and isocurvature models, defects produce only a broad peak be-
+than those that result from gauge symmetry breaking due to the        cause their contributions are not coherent. (iii) At very small an-
+absence of the screening by a gauge field, and there are thus         gular scales, the spectra are again dominated by the ISW effect
+long-range forces between the defects. The field self-ordering        because, rather than decaying exponentially due to the effects of
+is therefore very efficient for all types of defects with N ≥ 2,      Silk damping, there is only power-law decay with the exponent
+leading to a generic scaling of the defect energy density with the    being a characteristic of the specific type of defect.
+background energy density (see e.g.,Durrer et al. 2002). For this          The standard lore is to treat the defect stress energy tensor,
+reason global monopoles (N = 3) do not overclose the Universe         θµν , as being covariantly conserved at first order, which is known
+as their local counterparts would. In this paper we study specif-     as the “stiff approximation”. In principle, this means that it is
+ically the case N = 4 called “texture”, which can arise natu-         necessary to measure two independent quantities from the simu-
+rally in many multi-field inflation models that involve a non-zero    lations, or model them. The other two component are then com-
+vacuum expectation value and symmetry breaking. In this case          puted from the conservation equations. In practice things are a
+there are no stable topological defects present, but contrary to      little more complicated since it is necessary to provide the UETC
+local texture, global texture can have a non-negligible impact
+on the perturbations in the cosmos, with the field self-ordering                     Uµναβ (k, τ, τ0 ) = hθµν (k, τ)θαβ (k, τ0 )i ,    (10)
+leading to “unwinding events”. In spite of their non-topological
+nature, the field evolution is closely related to the one of lower-   where τ is the conformal time and k is the wavenumber. Once
+dimensional stable global defects due to the long-range nature        one has the UETC, then there two ways to proceed. The first
+of the forces. This is similar to the case of the non-topological     involves creating realisations of the defect stress-energy whose
+semilocal strings of the previous section, and indeed the semilo-     power spectra are computed then averaged to give the total
+cal example can be seen as an intermediate case between cosmic        power spectrum. The other approach involves diagonalization
+strings and global texture: Starting from the semilocal action, we    of the UETC. During pure matter or radiation domination, the
+can on the one hand revert to the cosmic string action by remov-      scaling property of defect evolution means that quantities are
+ing one of the complex scalar fields, and on the other hand we        measured relative to the horizon scale, so that the UETC is only
+find the texture action if we remove the gauge field.                 a function of x = kτ and x0 = kτ0 . These functions U(x, x0 ) can
+    The normalization of global defects is usually given in terms     be discretized and then are symmetric matrices that we can di-
+of the parameter ε = 8πGη2 /c2 when using an action like Eq. (4)      agonalize. The resulting eigenvectors can be inserted as sources
+(with a second complex scalar field but without the gauge fields).    into a Boltzmann code, and the resulting C` are then summed up,
+However, for a simpler comparison with the cosmic string results      weighted by the eigenvalues (Pen et al. 1997; Durrer et al. 2002).
+we can recast this in terms of Gµ/c2 ≡ ε/4 and quote limits on        Even though the power spectrum resulting from each “eigen-
+Gµ/c2 also for the texture model, as in Urrestilla et al. (2008).     source” exhibits a series of acoustic peaks, the summation over
+                                                                      many such spectra smears them out, as they are not coherent
+                                                                      (unlike inflationary perturbations). This smearing-out explains
+2.4. CMB power spectra from cosmic defects                            why defect power spectra generically are smooth, as mentioned
+                                                                      above.
+The CMB power spectrum from topological defects, like strings,             There are also several methods to obtain predictions for the
+is more difficult to compute than the equivalent for inflation-       UETCs of cosmic strings and other topological defects. The first
+ary scenarios that predict a spectrum dominated by an adia-           approach we will consider for cosmic strings is to use what
+batic component with a possible, but highly constrained, isocur-      has become known as the Unconnected Segment Model (USM;
+vature component. In defect-based scenarios the perturbations         Albrecht et al. 1997, 1999; Pogosian & Vachaspati 1999). In its
+are sourced continuously throughout the history of the Universe,      simplest form this models the cosmic string energy momentum
+as opposed to adiabatic and isocurvature modes that are the re-       tensor as that of an ensemble of line segments of correlation
+sult of initial conditions. In principle this requires knowledge of   length ξdH (t), moving with an r.m.s. velocity hv2 i1/2 , where dH (t)
+the source, quantified by the unequal-time correlator (UETC) of       is the horizon distance. In addition one can take into account the
+the defect stress-energy tensor, from the time of defect forma-       effects of string ‘wiggles” due to small-scale structure via a co-
+tion near the GUT scale to the present day—a dynamic range of         efficient, β = µeff /µ quantifying the ratio of the renormalized
+about 1052 —something that will never be possible to simulate.        mass per unit length to the true value. The model parameters ξ,
+Fortunately, we can use the scaling assumption to extrapolate the     hv2 i1/2 and β are computed from simulations. In our calculations
+results of simulations with substantially smaller dynamic range.      we link the USM sources to the line-of-sight Boltzmann solver
+This has allowed a qualitative picture to emerge of the charac-       CMBACT (Pogosian & Vachaspati 1999) to create an ensemble
+teristics of the power spectra from defects, though quantitative      of realisations from which we find an averaged angular power
+predictions differ. Here, we will focus on spectra calculated in      spectrum.
+
+
+                                                                                                                                          5
+                                          Planck Collaboration: Cosmic strings and other topological defects
+
+                         5     NAMBU
+                               AH mimic
+                               AH
+                         4
+`(` + 1)C` / (110C10 )
+                         3
+
+
+
+
+                                                                                            Fig. 3. Cosmic string power spectra used in this analy-
+                                                                                            sis: NAMBU (black dashed), AH-mimic (blue dotted)
+                         2
+
+
+
+
+                                                                                            and AH (red solid). The spectra have been normalized
+                                                                                            to equal power at ` = 10. The spectra are normal-
+                                                                                            ized the observed WMAP7 value at ` = 10 and have
+                                                                                            Gµ/c2 = 1.17 × 10−6 , 1.89 × 10−6 and 2.04 × 10−6 re-
+                         1
+
+
+
+
+                                                                                            spectively. Note that the limits discussed in this paper
+                                                                                            mean that the CMB spectra presented here are less than
+                                                                                            3% of the overall power spectrum amplitude and hence
+                                                                                            the differences observed at high ` do not have a much
+                         0
+
+
+
+
+                                                                                            effect.
+                                    101              102                  103
+                                                 `
+
+                               AH
+                               SL
+                         2.0
+
+
+
+
+                               TX
+`(` + 1)C` / (110C10 )
+                         1.5
+                         1.0
+
+
+
+
+                                                                                            Fig. 4. Comparison between global texture (black
+                                                                                            dashed) and semilocal (blue dotted) string power spec-
+                                                                                            tra and the AH field theory strings (red solid), normal-
+                         0.5
+
+
+
+
+                                                                                            ized to unity at ` = 10. As expected, the SL spectrum
+                                                                                            lies in between the TX and the AH spectra. The AH
+                                                                                            spectrum was recomputed for the Planck cosmological
+                                                                                            model with sources from Bevis et al. (2010), and the SL
+                         0.0
+
+
+
+
+                                                                                            and TX spectra were taken from Urrestilla et al. (2008).
+                                    101              102                  103
+                                                 `
+
+     There are two USM-based models that we will use in this                    The other approach that we will consider is to measure
+analysis which we believe span the realistic possibilities—we               the UETC directly from a simulation of cosmic strings in
+note a more general approach marginalizing over three string                the Abelian-Higgs model, which we will refer to as AH. The
+parameters is proposed in Foreman et al. (2011) (see also re-               Abelian Higgs model involves a complex scalar field φ and a
+cent work in Avgoustidis et al. 2012). The first USM model,                 gauge field Aµ described earlier Eq. (4), for which the dimen-
+which we will refer to as NAMBU, is designed to model                       sionless coupling constants e and λ are chosen with λ = 2e2 ,
+the observational consequences of simulations of cosmic string              so that the characteristic scales of the magnetic and scalar en-
+simulations performed in the Nambu-Goto approximation. In                   ergies are equal, (see Bevis et al. (2007b,a) for further details
+these simulations the scaling regime is different in the radiation          about the model). We then simulate the evolution of the fields
+and matter eras, with (ξ, hv2 i1/2 /c, β)rad = (0.13, 0.65, 1.9) and        on a grid, starting from random initial conditions designed to
+(ξ, hv2 i1/2 /c, β)mat = (0.21, 0.60, 1.5) and the extrapolation be-        mimic a phase transition, followed by a brief period of diffusive
+tween the two is modelled by using the velocity dependent one-              evolution, to rapidly reach a scaling solution expected to be typ-
+scale model (Martins & Shellard 1996). In the second, which                 ical of the configuration found long after the phase transition. As
+we will refer to as AH-mimic, we attempt to model the field the-            the simulation is performed in comoving coordinates, the string
+ory simulations using the Abelian-Higgs model described below,              width is effectively decreasing as time passes. To enlarge the dy-
+with (ξ, hv2 i1/2 /c, β) = (0.3, 0.5, 1) independent of time.               namical range available, we partially compensate this shrinking
+                                                                            with an artificial string fattening. We perform runs for various
+
+
+6
+                                    Planck Collaboration: Cosmic strings and other topological defects
+
+
+
+
+                                                                                                    100
+values of the fattening parameter to ensure that the results are
+not affected by it.
+    During the simulations, we compute the energy-momentum
+
+
+
+
+                                                                      ℓ(ℓ + 1)Cℓ /2π [(Gµ/c2 )2 ]
+tensor at regular intervals and decompose it into scalar, vec-
+tor and tensor parts. We store these components once scaling                                                                                    2048 raw
+is reached, and compute the UETCs by correlating them with
+later values of the energy-momentum tensor. UETCs from sev-
+
+
+
+
+                                                                                                    10
+eral runs are averaged, diagonalized and then fed into a modi-                                                                                  4096 raw
+fied version of the CMBEASY Boltzmann code (Doran 2005) to
+compute the CMB power spectra (both temperature and polar-
+ization). The spectra used in this paper were derived from field-
+theory simulations on a 10243 grid and used the extrapolation                                                                                   2048
+                                                                                                               2048 unaliased + pixel window    unaliased
+to sub-string scales described in Bevis et al. (2010), which are
+expected to be accurate at the 10% level to `max ≈ 4000.
+
+
+
+
+                                                                                                    1
+    In Figs. 3 and 4 we present the spectra we will use in sub-                                           10              100            1000    10000
+sequent analysis. The higher dashed black curve is the spec-                                                                         ℓ
+trum computed using the USM for the NAMBU model, and the
+smaller dashed blue and solid red curves the AH-mimic model           Fig. 5. Integrated Sachs-Wolfe angular power spectra extracted
+and the AH model, respectively. We should note that when nor-         from the full sky cosmic string maps at different resolutions (la-
+malized to the amplitude of the observed CMB anisotropies             belled by Nside ), with or without applying the anti-aliasing proce-
+on large-scales at ` = 10, the three models give Gµ/c2 =              dure (see text). The anti-aliasing filtering gives back the correct
+1.17 × 10−6 , 1.89 × 10−6 and 1.9 × 10−6 for the NAMBU, AH-           power up to `max . 2Nside .
+mimic and AH models, respectively. The reasons for differences
+between the spectra for these two approaches are discussed in
+Battye & Moss (2010). Briefly, the main reasons for the differ-       small scales probed by Planck, we have used the maps described
+ences are twofold: First, the overall normalization, which is due     in Ringeval & Bouchet (2012) that have an angular resolution
+to the NAMBU models having smaller values of ξ, more strings          of 0.850 (Nside = 4096). This map is obtained by consider-
+per horizon volume, and larger values of β, with each of the          ing the ISW contribution from (9), sourced by the Nambu-Goto
+string segments being heavier, than the two AH models. Both           stress tensor, and which can be recast into the form (Stebbins &
+these effects mean that a lower value of Gµ/c2 is required to         Veeraraghavan 1995)
+achieve the same amplitude for the anisotropies. Secondly, the
+                                                                          ∆T                                ( n̂ · X0 ) · X0
+                                                                                            Z        "                       #
+enhanced peak at small angular scales, which is caused by the                           4Gµ                                       X n̂ − X
+                                                                               ( n̂) = − 2             Ẋ −                    ·             dl .
+value of ξ being smaller in the radiation era than in the matter            T            c    X ∩ xγ           1 + n̂ · Ẋ       (X n̂ − X)2
+era, meaning that there are more strings per horizon volume in                                                                                (11)
+the radiation era when the small-scale anisotropy is imprinted,       The integral is performed over all string position vectors X =
+and hence more anisotropy on those scales for a given Gµ/c2 .         {X i } intercepting our past line cone (in the transverse temporal
+    The method used for the semilocal strings (denoted SL) and        gauge). Primes and dots denote differentiation with respect to
+O(4) global texture (denoted TX) is fundamentally the same as         the spatial and time-like worldsheet coordinates ζ 1 and ζ 0 re-
+for the AH model: we simulate the field theory on a discretized       spectively, while dl is the invariant string length element. Taking
+grid and compute the energy-momentum tensor at regular inter-         the limit X n̂ → X gives back the small angle and flat sky ap-
+vals. From these snapshots we derive the UETCs by correlating         proximation used in Hindmarsh (1994); Bouchet et al. (1988);
+the scalar, vector and tensor parts at different times. The only      Fraisse et al. (2008). For generating the full sky map, Eq. (11)
+difference is the field-theory action being used in the simula-       has been evaluated without any other approximation and re-
+tions. In Fig. 4 we present the spectra we used for the semilocal     quired more than 3000 Nambu-Goto string simulations to fill the
+strings and global textures, taken from Urrestilla et al. (2008).     whole comoving volume between the observer and the last scat-
+These models are also shown with the AH cosmic string model           tering surface. Details on the numerics can be found in Ringeval
+for comparison.                                                       & Bouchet (2012).
+                                                                            This method therefore includes all string effects from the last
+2.5. Maps of CMB anisotropies from cosmic strings                     scattering surface till today, but does not include the Doppler
+                                                                      contributions induced by the strings into the plasma prior to
+In order to go further than the two-point correlation function, we    recombination. As a result, our full sky map represents the
+have used numerical simulations of Nambu-Goto cosmic string           ISW contribution from strings, which is dominant at large and
+evolution in an FLRW spacetime to generate various CMB syn-           small scales but underestimates the signal on intermediate length
+thetic maps. The use of simulations is crucial to produce real-       scales, as can be directly checked on the power spectrum (see
+istic string configurations on our past light cone and have been      Fig. 5). We therefore expect the string searches based on this
+the subject of various code development in the last twenty years      map to be less constraining than those using the power spec-
+(see Albrecht & Turok 1989; Bennett & Bouchet 1989, 1990;             trum, but certainly more robust as any line-like gravitating object
+Allen & Shellard 1990; Vincent et al. 1998; Moore et al. 2001;        should generate such a signal.
+Ringeval et al. 2007; Blanco-Pillado et al. 2011). Until recently,          Calibration and training for the non-Gaussian searches of
+the underlying numerical challenges have limited the resolu-          Sect. 4 have required the generation of new full sky and sta-
+tion of the full sky maps to an angular resolution of 140 (corre-     tistically independent cosmic string maps. The numerical chal-
+sponding to a HEALPix resolution of Nside = 256) in Landriau          lenges underlying the Nside = 4096 map (Ringeval & Bouchet
+& Shellard (2003, 2011) (see also early work in Allen et al.          2012) are such that it was numerically too expensive to create
+1996). In order to extend the applicability of these maps to the      another one of the same kind. At this resolution, the computa-
+
+
+                                                                                                                                                           7
+                                   Planck Collaboration: Cosmic strings and other topological defects
+
+
+
+
+                -100.0                                                                                        100.0
+                                                            ∆T /T /(Gµ/c2 )
+
+Fig. 6. All sky Mollweide projection of the simulated cosmic strings CMB sky after convolution by a Gaussian beam of 50 resolution.
+The color scale indicates the range of ∆T/T/(Gµ/c2 ) fluctuations.
+
+
+
+
+                    -80.0                   80.0                                          0                   25000
+
+
+
+Fig. 7. A 20◦ gnomic projection patch extracted from the full sky map and zooming into string induced temperature steps (see
+Fig. 6). Applying the spherical gradient magnitude operator enhances the temperature steps, and thus the string locations, even
+more (right).
+
+
+
+tions typically require 800 000 cpu-hours, so we have chosen         This aliasing concerns pixel-sized structures and comes from
+to generate three new maps at a lower resolution of 1.70 , i.e.,     the method used to numerically evaluate Eq. (11). In order to
+Nside = 2048. Unfortunately, at this lower resolution, the sim-      spare computing time, the signal associated with each pixel is
+ulated string maps, hereafter referred to as raw maps, exhibit       only computed at the centroid direction n̂. This has the effect of
+a strong aliasing at small scales that could have induced spuri-     including some extra power associated with string small-scale
+ous systematics even after convolution with the Planck beam.         structure that is below the pixel angular size, thereby aliasing
+
+
+8
+                                     Planck Collaboration: Cosmic strings and other topological defects
+
+the map. In order to address this problem, we have used semi-          Table 2. 95% upper limits on the constrained parameter f10
+analytical methods to design an optimal anti-aliasing filter, both     and the derived parameter Gµ/c2 for the five defect models
+in harmonic space and in real space. As discussed in Fraisse et al.    discussed in the text. We present limits using Planck and po-
+(2008); Bevis et al. (2010), the small scale angular temperature       larization information from WMAP (Planck + WP), and from
+power spectrum slowly decays as a power law `−p such that any          also including high ` CMB information from ACT and SPT
+deviations from this behaviour can only come from the aliasing.        (Planck +WP+highL).
+For each Nside = 2048 raw map, we have performed a multi-
+parameter fit of the power spectrum, and of the one-point dis-
+tribution function, to extract, and then removes, its small scale       Defect type  ...                      Planck+WP        Planck+WP+highL
+aliasing contribution. In order to validate the procedure, we have      ................                f10         Gµ/c2       f10    Gµ/c2
+checked that the power spectrum of each of the filtered maps
+                                                                        NAMBU . . . . . . . .          0.015     1.5 × 10−7    0.010   1.3 × 10−7
+matches the one associated of the raw Nside = 4096 map, the lat-
+                                                                        AH-mimic . . . . . . .         0.033     3.6 × 10−7    0.034    3.7 × 10−7
+ter being also being affected but at half the scale. In Fig. 5, we      AH . . . . . . . . . . . . .   0.028     3.2 × 10−7    0.024    3.0 × 10−7
+have plotted the power spectra of one of the Nside = 2048 maps          SL . . . . . . . . . . . . .   0.043     11.0 × 10−7   0.041   10.7 × 10−7
+before and after convolution with our anti-aliasing filter. As ex-      TX . . . . . . . . . . . . .   0.055     10.6 × 10−7   0.054   10.5 × 10−7
+pected, it matches with the one extracted from the Nside = 4096
+map (here truncated at ` = 4096). Finally, in order to include
+the effects associated with the HEALPix pixelization scheme, the
+anti-aliased maps have been convolved with the HEALPix pixel           added high-` CMB data from SPT and ACT to obtain stronger
+window function before being used for further processing.              constraint(Sievers et al. 2013; Hou et al. 2012).
+    In total, this method has provided four theoretical full sky            For the USM-based models we use the approach used in
+string maps that have been used in the string searches we will         Battye et al. (2006) and Battye & Moss (2010). We find that
+discuss in Sect. 4. As an illustration, we have represented in         the constraints on the standard six parameters are not signif-
+Fig. 6, one of the filtered string map after convolution by a          icantly affected by the inclusion of the extra string parameter
+Gaussian beam of FWHM = 50 . The color scale traces the rel-           and that there are no significant correlations with other param-
+ative temperature anisotropies ∆T/T , divided by the string ten-       eters (see Table 3). For the case of Planck data only and us-
+sion Gµ/c2 . The anisotropy patterns may look Gaussian at first        ing the NAMBU model we find that Gµ/c2 < 1.5 × 10−7 and
+because most of the string signatures show up on the smallest           f10 < 0.015, whereas for the AH-mimic model we find that
+length scales. In Fig. 7, we have plotted a gnomic projection rep-     Gµ/c2 < 3.6 × 10−7 and f10 < 0.033, with all the upper lim-
+resenting a field of view of 20◦ , in which the temperature steps      its being at 95% confidence level. The 1D marginalized likeli-
+are now clearly apparent. The right panel of Fig. 7 represents the     hoods for f10 are presented in the upper panels of Fig. 8. The
+magnitude of the spherical gradient, which enhances the steps.         differences between the upper limits for the NAMBU and AH-
+    Finally, in order to provide a much larger statistical sample      mimic models is compatible with those seen previously using
+beyond only four string realisations, we have also produced a          WMAP 7-year and SDSS data (Battye & Moss 2010). The upper
+collection of 1000 small angle patches (7.20 ) of the CMB sky de-      limits from this version of the Planck likelihood are better than
+rived in the flat sky approximation (Stebbins 1988; Hindmarsh          those computed from WMAP7+SPT (Dvorkin et al. 2011) and
+1994; Stebbins & Veeraraghavan 1995; Bouchet et al. 1988;              WMAP7+ACT (Dunkley et al. 2011) and are significantly better
+Fraisse et al. 2008). Although the large-scale correlations are        than those from WMAP7+SDSS (Battye & Moss 2010). Based
+lost, these maps have been shown to accurately reproduce var-          on the Planck “Blue Book” values for noise levels we predicted
+ious analytically expected non-Gaussian string effects such as         (Battye et al. 2008) a limit of Gµ/c2 < 6×10−8 , while the present
+the one-point and higher n-points functions by Takahashi et al.        limit is about a factor of two worse than this. The main reason
+(2009); Hindmarsh et al. (2009, 2010); Regan & Shellard (2010);        for this is that the projected limit ignored the need for nuisance
+Yamauchi et al. (2010b,a); Ringeval (2010).                            parameters to model high ` foregrounds and that not all the fre-
+                                                                       quency channels have been used. The corresponding limits for
+                                                                       the AH model are f10 < 0.028 and Gµ/c2 < 3.2 × 10−7 .
+3. Power spectrum constraints on cosmic strings                             There is now very little degeneracy between the f10 and nS
+   and other topological defects                                       parameters, something that was not the case for WMAP alone
+                                                                       (Battye et al. 2006; Bevis et al. 2008; Urrestilla et al. 2011).
+In order to compute constraints on cosmic string scenarios we          This has implication for supersymmetric hybrid inflation mod-
+just add the angular power spectrum to that for an simple adia-        els as discussed in Battye et al. (2010) that typically require
+batic model—which assumes that they are uncorrelated— with             nS > 0.98. The simplest versions of these models appear to be
+the fraction of the spectrum contributed by cosmic strings be-         ruled out. The strongest correlation using the NAMBU and AH
+ing f10 at ` = 10. This parameter is then added as an ex-              mimic models is between f10 and Ωb h2 as illustrated in Fig. 10.
+tra parameter to the standard six parameter fit using COSMOMC          In addition, we find agreement with Lizarraga et al. (2012), that
+and the Planck likelihood described in Planck Collaboration XV         there are significant correlations between the amount of strings
+(2013). We use a Flat ΛCDM cosmology defined through the                f10 in the AH model and the number of relativistic degrees of
+physical densities of baryons, Ωb h2 , and cold dark matter, Ωc h2 ,   freedom Neff as well as between f10 and the primordial helium
+the acoustic scale, θMC , the amplitude, As and spectral index,        abundance YHe . We leave a detailed study of these correlations
+ns of density fluctuations and the optical depth to reionization       to later work.
+τ. The Hubble constant is a derived parameter and is given by               In Fig. 8 we also present the 1D marginalized likelihoods
+H0 = 100 h km sec−1 Mpc−1 . We use the same priors on the              for the texture and semilocal string models (compared to the
+cosmological and nuisance parameters as are used in Planck             AH field theory strings). The resulting constraints on the f10
+Collaboration XVI (2013) and use WMAP polarization data to             parameter are given in Table 2 as well. For the conversion
+help fix τ. In addition to just using the Planck data, we have also    into constraints on Gµ/c2 we have that for semilocal strings
+
+
+                                                                                                                                                     9
+                                                            Planck Collaboration: Cosmic strings and other topological defects
+
+Table 3. Constraints on the fitted cosmological parameters in the case of Planck alone. It is clear from this that the fitted parameters
+are not significantly affected by the inclusion of defects.
+
+                    Parameter . . . . . . . .                NAMBU                AH mimic                       AH                SL                  TX
+                    Ωb h2 . . . . . . . . . . .        0.0223 ± 0.0003          0.0223 ± 0.0003      0.0223 ± 0.0003         0.0223 ± 0.0003    0.0223 ± 0.0003
+                    Ωc h2 . . . . . . . . . . .         0.119 ± 0.003            0.119 ± 0.003         0.119 ± 0.003          0.119 ± 0.003      0.119 ± 0.003
+                    θMC . . . . . . . . . . . .        1.0415 ± 0.0006          1.0415 ± 0.0006      1.0415 ± 0.0006         1.0415 ± 0.0006    1.0415 ± 0.0006
+                    τ ..............                    0.089 ± 0.013            0.090 ± 0.013        0.090 ± 0.013           0.090 ± 0.013      0.088 ± 0.014
+                    log(1010 As ) . . . . . . .         3.080 ± 0.027            3.080 ± 0.026        3.081 ± 0.025           3.081 ± 0.025      3.078 ± 0.028
+                    ns . . . . . . . . . . . . . .      0.961 ± 0.007            0.963 ± 0.008        0.963 ± 0.008           0.964 ± 0.007      0.965 ± 0.008
+                    H0 . . . . . . . . . . . . .          68.4 ± 1.3               68.3 ± 1.2           68.3 ± 1.3              68.2 ± 1.2         68.3 ± 1.2
+                    Gµ/c2 . . . . . . . . . .            < 1.5 × 10−7             < 3.6 × 10−7         < 3.2 × 10−7           < 1.10 × 10−6      < 1.06 × 10−6
+                     f10 . . . . . . . . . . . . .         < 0.015                  < 0.033               < 0.028                < 0.043            < 0.055
+              1.0
+
+
+
+
+                                                                                                           1.0
+                                                                                   NAMBU                                                                           AH
+                                                                                   AH mimic                                                                        SL
+              0.8
+
+
+
+
+                                                                                   AH
+
+
+
+
+                                                                                                           0.8
+                                                                                                                                                                   TX
+              0.6
+
+
+
+
+                                                                                                           0.6
+     P/Pmax
+
+
+
+
+                                                                                                  P/Pmax
+              0.4
+
+
+
+
+                                                                                                           0.4
+              0.2
+
+
+
+
+                                                                                                           0.2
+
+
+
+
+               0.00         0.01       0.02          0.03         0.04   0.05     0.06   0.07               0.00      0.02         0.04         0.06        0.08    0.10
+                                                            f10                                                                           f10
+Fig. 8. Marginalized constraints on f10 for topological defects from Planck data plus polarization from WMAP (Planck+WP). The
+left panel show constraints on cosmic strings, with NAMBU in black dashed, AH-mimic in blue dotted and AH in red solid. The
+right panel show the constraints on SL (blue dotted) and TX (black dashed) compared to AH (again solid red).
+              1.0
+
+
+
+
+                                                                                                           1.0
+
+
+
+
+                                                                                   NAMBU                                                                           AH
+                                                                                   AH mimic                                                                        SL
+              0.8
+
+
+
+
+                                                                                   AH
+                                                                                                           0.8
+
+
+
+
+                                                                                                                                                                   TX
+              0.6
+
+
+
+
+                                                                                                           0.6
+     P/Pmax
+
+
+
+
+                                                                                                  P/Pmax
+              0.4
+
+
+
+
+                                                                                                           0.4
+              0.2
+
+
+
+
+                                                                                                           0.2
+
+
+
+
+               0.00         0.01       0.02          0.03         0.04   0.05     0.06   0.07               0.00      0.02         0.04         0.06        0.08    0.10
+                                                            f10                                                                           f10
+Fig. 9. Marginalized constraints on f10 for topological defects with high-` CMB data from SPT and ACT added to the Planck +
+WP constraints data (compare with constraints shown in Fig. 8). The left panel show constraints on cosmic strings, with NAMBU
+in black dashed, AH-mimic in blue dotted and AH in red solid. The right panel show the constraints on SL (blue dotted) and TX
+(black dashed) compared to AH (solid red).
+
+
+Gµ10 /c2 = 5.3×10−6 and for global texture Gµ10 /c2 = 4.5×10−6 ,                                   Gµ, semilocal strings lead to significantly less anisotropies than
+cf Urrestilla et al. (2008). We notice that, as expected for a fixed                               cosmic strings (a factor of about 8 in the C` ), and texture are sim-
+
+
+10
+                                       Planck Collaboration: Cosmic strings and other topological defects
+
+                                                                              Foreground-cleaned CMB maps are provided using four dif-
+                                              AH mimic                   ferent component separation techniques (for further details, see
+         0.0232                                                          Planck Collaboration XII 2013): SMICA (semi-blind approach);
+                                              NG
+                                                                         NILC (internal linear combination in needlet space);SEVEM (in-
+                                                                         ternal template fitting); and Commander/Ruler (C-R, parametric
+         0.0228
+                                                                         method). To demonstrate the robustness of a particular result,
+                                                                         it should be replicated with at least two different cleaned CMB
+ Ωb h2
+
+
+
+
+         0.0224
+                                                                         maps. The adoption of different masks that exclude different re-
+                                                                         gions of the sky (ranging from more aggressive to more conser-
+                                                                         vative) has been used to test the stability of non-Gaussian es-
+         0.0220                                                          timates. Another interesting test is the use of cleaned maps at
+                                                                         different frequencies (for instance, those provided by the SEVEM
+                                                                         foreground separation technique). A given detection should be
+         0.0216                                                          consistent at all frequencies, since the behaviour of contaminants
+             0.00   0.01       0.02         0.03      0.04       0.05    and systematic effects will, in general, vary with frequency. A
+                                      f10                                further test is the study of noise maps constructed from the dif-
+                                                                         ference between two Planck maps (either at the same or at dif-
+Fig. 10. Marginalized likelihoods for f10 and in the f10 -Ωb h2          ferent frequencies) smoothed to the same resolution. These maps
+plane for the NAMBU model in blue and the AH mimic model                 will not contain the CMB signal and, therefore, any NG detec-
+in red using Planck +WP. This is the strongest correlation with          tion should vanish on them. The opposite would indicate that the
+any of the standard cosmological parameters                              claimed result is due to foreground residuals or to the presence
+                                                                         of systematic effects.
+ilar to the semilocal strings. We thus expect significantly weaker            In order to validate the various non-Gaussian methods
+constraints on Gµ for the SL and TX models, especially since             that are described below, we instituted a series of Planck
+in addition the constraints on f10 for these models are weaker.          String Challenges. These were blind tests employing post-
+Indeed we find a 95% limit of Gµ/c2 < 1.10 × 10−6 for semilo-            recombination string simulation maps with an unknown Gµ/c2 ,
+cal strings and Gµ/c2 < 1.06 × 10−6 for global textures.                 co-added to a Gaussian CMB map, together with standard masks
+                                                                         and increasingly more realistic noise models. For calibrating the
+                                                                         non-Gaussian tests, several different string simulations were also
+4. Non-Gaussian searches for cosmic strings                              provided. In addition, 1000 ΛCDM Gaussian maps, with simu-
+                                                                         lated noise and using the same mask, were provided for anal-
+Cosmic strings and other topological defects generically create          ysis purposes, notably for determining the variance of different
+non-Gaussian signatures in the cosmic microwave sky, counter-            techniques. The aim has been to determine the sensitivity of the
+parts of their inevitable impact on the CMB power spectrum.              proposed non-Gaussian tests and to see if the Gµ/c2 in the string
+This is a critical test of differentiating defects from simple infla-    challenge map could be measured accurately. The results from
+tion, while offering the prospect of direct detection. Searches for      these challenges were an important part of the validation for each
+these non-Gaussian defect signatures are important for two key           of the methods described below. Planck simulation pipelines for
+reasons: on the one hand, constraints from the CMB power spec-           each of the component separation methods were also used to es-
+trum can be susceptible to degeneracies with cosmological pa-            timate realistic foreground residuals and were used to validate
+rameters in the standard concordance model; on the other hand,           non-Gaussian pipelines and to remove string signal bias.
+any apparent defect detection in the power spectrum should have
+a well-defined prediction in higher-order correlators or other
+non-Gaussian signals, and vice versa. Non-Gaussian tests can             4.2. Cosmic string bispectrum
+also be used to distinguish cosmic defects from residual fore-
+grounds or systematic contributions. Below we will present re-           4.2.1. Modal bispectrum methods
+sults from NG tests that seek strings in multipole space (bis-
+pectrum) and in real space (Minkowski functionals), as well as           The CMB bispectrum is the three point correlator of the alm coef-
+hybrid methods (wavelets).                                               ficients, B`m11`m2 `23m3 = a`1 m1 a`2 m2 a`3 m3 . For the purposes of a search
+                                                                         for cosmic strings we assume the network cumulatively creates
+4.1. Foregrounds, systematics and validation                             a statistically isotropic signal, that is, we can employ the angle-
+                                                                         averaged reduced bispectrum b`1 `2 `3 , defined by
+It is well-known that the microwave sky contains not only the
+CMB signal but also emission from different astrophysical con-                         X
+                                                                                                       `1 `2 `3  `1 `2 `3
+taminants. In particular, point source emission is expected to be        b`1 `2 `3 =         `1 `2 `3 Gm1 m2 m3 Bm1 m2 m3 ,
+                                                                                            h−2                                                  (12)
+a special cause of confusion for cosmic defects, notably those                         mi
+with high resolution signatures, such as cosmic strings. In addi-
+tion, systematic effects may also be present in the maps at a cer-
+tain level. Therefore, before claiming a cosmological origin of a        where h`1 `2 `3 is a weakly scale-dependent geometrical factor and
+given detection, alternative extrinsic sources should be investi-        Gml11 ml22 m
+                                                                                    l3
+                                                                                       3
+                                                                                         is the well-known Gaunt integral over three Y`m s that
+gated and discarded. This can be done by performing a number             can be expressed in terms of Wigner-3 j symbols. The CMB bis-
+of consistency checks in the data, most of which are common              pectrum b`1 `2 `3 is defined on a tetrahedral domain of multipole
+to the other non-Gaussianity papers, where they are discussed            triples {`1 `2 `3 } satisfying both a triangle condition and ` < `max
+in greater detail. Here, we provide a brief summary of the main          set by the experimental resolution. When seeking the string bis-
+                                                                                           string
+issues.                                                                  pectrum b`1 `2 `3 in the Planck data, we employ the following es-
+
+
+                                                                                                                                                    11
+                                                Planck Collaboration: Cosmic strings and other topological defects
+
+
+
+
+                                                                                                          4.0
+timator to find or limit its amplitude:
+                  `1 `2 `3   string
+        1 X Gm1 m2 m3 b`1 `2 `3
+
+
+
+
+                                                                                                          0.0
+E=                               a`1 m1 a`2 m2 a`3 m3 ,                     (13)
+       Ñ 2 li mi C̃`1 C̃`2 C̃`3
+
+
+
+
+                                                                                                          -4.0
+                                                                                      Mode coefficients
+where we assume a nearly diagonal covariance matrix                                                                                                     Map 1
+C`1 m1 ,`2 m2 ≈ C` δ`1 `2 δm1 −m2 and we modify C` and b`1 `2 `3 ap-
+
+
+
+
+                                                                                                          -8.0
+                                                                                                                                                        Map 2
+propriately to incorporate instrument beam and noise effects, as                                                                                        Map 3
+
+
+
+
+                                                                                                          -12.0
+well as a cut-sky. To simplify Eq. (13), we have ignored the “lin-                                                                                      Map 4
+ear term” (which is included in the analysis). A much more ex-                                                                                          Average
+tensive introduction to bispectrum estimation can be found in
+
+
+
+
+                                                                                                          -16.0
+Planck Collaboration XXIV (2013).                                                                                 0   50   100     150       200   250             300
+     A key step in observational searches for non-separable bis-                                                                 Mode number n
+pectra, such as those induced by cosmic strings (denoted by
+ string
+b`1 `2 `3 ), is to expand it into separable modes (Fergusson &
+
+
+
+
+                                                                                                          4.0
+Shellard 2009; Fergusson et al. 2010a) taking the signal-to-
+noise-weighted form:
+
+
+
+
+                                                                                                          2.0
+       string
+     b`1 `2 `3
+
+
+
+
+                                                                                                          0.0
+                                                                                      Mode coefficients
+                     X
+p            =            βnQ Qn (`1 , `2 , `3 ) ,                          (14)
+ C`1 C`2 C`3          n                                                                                                                                  Map 1
+
+
+
+
+                                                                                                          -2.0
+                                                                                                                                                         Map 2
+where the modes Qn (`1 , `2 , `3 ) = 61 [q̄ p (l1 ) q̄r (l2 ) q̄ s (l3 ) + perms.]                                                                       Map 3
+are constructed from symmetrized products (the n label a
+                                                                                                          -4.0
+                                                                                                                                                         Map 4
+distance-ordering for the triples {prs}). The product basis func-                                                                                        Average
+tions Qn (`1 , `2 , `3 ) are not in general orthogonal, so it is very                                     -6.0
+
+useful to construct a related set of orthonormal mode functions                                                   0   5    10       15       20    25              30
+Rn (`1 , `2 , `3 ) such that hRn , R p i = δnp . Substituting the separable                                                      Mode number n
+mode expansion (14) reduces the estimator (13) to the simple
+form
+       1 X Q Q                                                                       Fig. 11. Coefficients αRn Eq. (14) for the hybrid Fourier mode ex-
+E= 2              β β ,                                                (15)          pansion of the cosmic string bispectrum Eq. (14). The average
+      N n n n
+                                                                                     value hαRn i (bold black line) is in remarkable agreement with
+                                                                                     all four string simulations as can be seen for n < 30 (lower
+where the βnQ coefficients are found by integrating products of
+                                                                                     panel), with each exhibiting better than a 97% correlation over-
+three Planck maps filtered using the basis function αnQ (an effi-
+                                                                                     all. Figure to be updated imminently. ]
+cient product with each map multiplied by the separable qr (`)).
+We can validate this estimator by using the modal methodology
+to create CMB map realisations for cosmic strings from the pre-                      well as a hybrid Fourier basis (nmax = 300), which are both de-
+dicted βnQ with a given Gµ/c2 (see Fergusson et al. 2010a). It is                    scribed in Planck Collaboration XXIV (2013).
+easy to show that the expectation value for βRn for such an en-                          To extract the string bispectrum in a Planck-realistic context,
+semble of maps in the orthogonal basis should be                                     we chose a fairly high non-Gaussian signal with Gµ/c2 = 1 ×
+hβRn i = αRn .                                                              (16)     10−6 . The normalized string maps were added to noise maps gen-
+                                                                                     erated by the component separation pipelines of SMICA, NILC
+Alternatively, we can exploit this fact by reconstructing the αRn                    and SEVEM, creating twelve sets of 200 simulated string realisa-
+from given CMB map realisations created directly from string                         tions. Each of these maps was then filtered using the modal esti-
+simulations, an approach we will adopt here.                                         mator to find the βRn coefficients appropriate for each component-
+                                                                                     separation method. After averaging each set of modal coeffi-
+                                                                                     cients αRn = hβRn i over the different (unmasked) noise realisa-
+4.2.2. Post-recombination string bispectrum                                          tions, we found remarkable consistency between the estimated
+In order to estimate the string bispectrum at Planck resolu-                         βRn for the four string simulations as shown in Fig. 11 for the
+tion we employed the modal reconstruction method Eq. (16) on                         Fourier modes. Agreement was good across all the 300 αRn
+the post-recombination string challenge simulations described in                     modes determined, as shown in detail for n=1−30 (see the lower
+Sect 2.5. These string maps include the accumulated line-like                        panel of Fig. 11).
+discontinuities induced by the string network on CMB photons                             Quantitatively, the different string simulations produced bis-
+propagating from the surface of last scattering to the present day.                  pectrum shapes that had above 97% correlations with each
+                                                                                     other (i.e., n N −1 α(1)
+                                                                                                           n αn > 0.97 for N =
+                                                                                                               (2)                    P (1) 2 P (2) 2
+                                                                                                                                        n αn    n αn ).
+                                                                                                 P                              2
+This work does not include recombination physics, that is, con-
+tributions from the surface of last scattering that will increase the                The overall integrated bispectrum amplitudes was consistent to
+string anisotropy signal substantially. As discussed previously,                     within 4%. Despite only four string map simulations, these are
+there are four full-sky maps of two different resolutions, which                     small errors relative to experimental and theoretical uncertain-
+were provided for the purpose of calibrating Planck searches for                     ties. This robustness indicates that the overall string bispectrum
+cosmic strings (Ringeval & Bouchet 2012). For the modal anal-                        signal at Planck resolution is a statistical summation of very
+ysis, we have adopted the hybrid polynomial basis augmented                          many contributions from the millions of strings between the ob-
+with a local shape mode (in total with nmax = 600 modes), as                         server and the last scattering surface. To ensure the bispectrum
+
+
+12
+                                      Planck Collaboration: Cosmic strings and other topological defects
+
+Cl weighting was not significantly affected by the presence of
+
+
+
+
+                                                                             1500 2000
+the large string signal, we repeated the modal extraction pro-
+cedure for Gµ/c2 = 5 × 10−7 (the string bispectrum amplitude
+reduced by a factor of 8). For the same string simulation, the
+shape correlations for different Gµ/c2 were 99.4% or above and
+the amplitude scaled as expected with (Gµ/c2 )3 to within 2%.
+The string bispectrum shown in Fig. 11 is well converged with
+random errors from the averaging procedure small relative to the
+
+
+
+
+                                                                             1000
+actual signal. We conclude that, assuming the physics and nu-
+merical accuracy of the string simulations that are available, we
+have extracted a string bispectrum of sufficient accuracy for the
+
+
+
+
+                                                                             500
+present non-Gaussian analysis.
+
+    The overall three-dimensional reconstruction of the string
+bispectrum shape is shown in Fig. 12, normalized in the usual
+
+
+
+
+                                                                             0
+way to approximately illustrate the signal-to-noise expected                       0 50
+(that is, removing an overall l−4 scaling, by dividing by the con-                     0 10
+                                                                                           001                               2000
+stant Sachs-Wolfe bispectrum shape). The first point to note is                               500
+                                                                                                  0        500     1000 1500
+that the bispectrum is negative, reflecting the underlying string
+velocity correlations and curvature correlations that have cre-
+ated it; in the expanding universe, curved strings preferentially
+collapse, creating a negative temperature fluctuation towards the       Fig. 12. Modal reconstruction of the post-recombination string
+centre and a positive signal outside. In the overall spectrum, the      bispectrum Eq. (14) extracted from Planck resolution map sim-
+n=0 mode is dominant, but it is modulated by other modes pro-           ulations. This is a 3D view of the allowed tetrahedral set of mul-
+viding further interesting structure that could be described as         tipoles (`1 , `2 , `3 ) showing isosurfaces of the bispectrum density
+broad arms extending along each axis (see Fig. 11); although            with darker blue for more negative values (it is normalized rela-
+somewhat “squeezed”, the correlation with the local model is            tive to the constant SW bispectrum).
+low. The string simulation power spectrum shown in Fig. 5 can
+be understood to be quantitatively modulating the string bispec-
+trum away from the axes, with the signal slowly decaying be-            4.2.3. Planck string bispectrum results
+yond (say) l1 , l2 > 500 in the l3 direction.
+                                                                        Using the modal bispectrum estimator, we have searched for the
+                                                                        string bispectrum in the Planck CMB maps obtained using the
+    The CMB bispectrum and trispectrum induced by the post-
+                                                                        foreground-separation techniques SMICA, NILC and SEVEM. We
+recombination gravitational effects of cosmic strings have been
+                                                                        note that the modal estimator has passed through the full vali-
+estimated analytically (Hindmarsh et al. 2009, 2010; Regan &
+                                                                        dation suite of NG tests described in the Planck Collaboration
+Shellard 2010). With simplifying assumptions, these predicted
+                                                                        XXIV (2013), where further details about the analysis can be
+that the constant mode would be dominant with a broad central
+                                                                        found. In summary, we have used the standard U73 mask, which
+“equilateral” peak, but not the substructure observed in Fig. 12.
+                                                                        includes a Galactic cut and a conservative point source mask,
+In terms of missing physics in this post-recombination string bis-
+                                                                        together with “inpainting” as in the fNL analysis (essentially
+pectrum, we expect the recombination signal to lie in the range
+                                                                        apodizing the mask). Together with the foreground separated
+` = 200 − 1000 (shown in the full NAMBU power spectrum in
+                                                                        maps, realistic noise simulations were were used to determine
+Fig. 3) and to significantly enhance the the overall amplitude of
+                                                                        the estimator’s linear correction term and to determine the bis-
+the bispectrum (see also Landriau & Shellard 2011, where re-
+                                                                        pectrum variance, which was very nearly optimal. For calibra-
+combination physics is included).
+                                                                        tion purposes, we always compare to the string model with ten-
+                                                                        sion Gµ/c2 = 1 × 10−6 , for which can choose to define and nor-
+    The correlation of the post-recombination string bispectrum         malise a string bispectrum parameter fNL = 1 at `max = 2000.
+with standard primordial shapes is small, because it does not           The standard deviation ∆ fNL = 0.2 obtained from this Planck
+contain an oscillatory component from the transfer functions.           analysis would imply Gµ/c2 = 1 × 10−6 string detection at 5σ.
+The local, equilateral and orthogonal bispectrum models corre-          Instead, defining an FNL normalized relative to the local model,
+late with strings at about 6%, 11% and 12%, respectively. The           we could expect to measure FNL = 31.6±6.3. The strong scaling
+late-time CMB ISW-lensing bispectrum bISW     `1 `2 `3 is also mainly   of the bispectrum amplitude on the string tension ∝ (Gµ/c2 )3 ,
+negative, but it is much more squeezed/flattened and correlates         implies a given measurement yields Gµ/c2 = ( fNL )1/3 × 10−6 .
+at only about 11% with the present string bispectrum, so the pre-           The results of the string bispectrum estimation for each of the
+dicted ISW signal should provide a small positive bias for string       SMICA, NILC and SEVEM maps are shown in Table 4. Given that
+detection of about 0.44 σ (see below). Diffuse point-source con-        the Planck data exhibit significant detections of both ISW lens-
+tamination is of greater concern because at `max = 2000 this            ing and residual point source signals, we also quote their mea-
+has a 40% anti-correlation with strings (for the simple Poisson-        surements. In the first instance, we have undertaken an indepen-
+distributed point source template with bPS `1 `2 `3 = constant). This   dent analysis of each map, which showed no evidence for a cos-
+close relationship with point sources requires a joint analysis.        mic string signal (all estimates were were within 1σ). However,
+Other foreground contamination must also be considered, as we           given the significant measurement of diffuse point sources and
+shall discuss, and for this we rely on realistic simulated fore-        their strong anti-correlation with the string bispectrum, we have
+ground residuals provided by the Planck component separation            also undertaken a joint analysis of the Planck data (which in
+pipelines (see Planck Collaboration XII 2013).                          this case is the same as marginalising over the point source sig-
+
+
+                                                                                                                                          13
+                                      Planck Collaboration: Cosmic strings and other topological defects
+
+Table 4. Modal bispectrum analysis of foreground-separated              weaker than that from the power spectrum, it is an independent
+SMICA, NILC and SEVEM maps showing fNL from strings, ISW-               test for strings and the first quantitative string bispectrum limit
+lensing and diffuse point sources. Three values for fNL are given       to date. This should be considerably improved in future by in-
+from independent analysis, joint point source/string analysis af-       clusion of recombination physics and more precise foreground
+ter ISW-lensing subtraction, and joint analysis after both ISW-         analysis. A comparison with the power spectrum amplitude indi-
+lensing and foreground residual subtraction. Resulting 95% con-         cates the string bispectrum should rise by (2)3/2 , which, together
+fidence limits for Gµ/c2 are also given.                                with the full mission data, would see the sensitivity improve by
+                                                                        a factor of two (allowing constraints around Gµ/c2 < 4 × 10−7 ).
+                                                                        We note that the bispectrum is not the optimal non-Gaussian test
+       Bispectrum      Independent      ISW subtract    ISW/FG res.     for strings, because the string signal is somewhat suppressed by
+Method signal type     analysis fNL       Joint fNL       Joint fNL     symmetry (the bispectrum cancels for straight strings). This fact
+                                                                        motivates further study of the trispectrum, for which the Planck
+SMICA Lensing ISW 0.75 ± 0.37                –               –
+      Diff. PS ×1028 1.05 ± 0.32        1.35 ± 0.34     1.40 ± 0.34     sensitivity is forecast to be ∆Gµ/c2 ≈ 1 × 10−7 (Fergusson et al.
+      Cosmic strings 0.19 ± 0.20        0.50 ± 0.21     0.37 ± 0.21     2010b), as well as joint analysis of polyspectra.
+      Gµ/c2 (95%)    8.4 × 10−7         9.7 × 10−7      9.3 × 10−7
+NILC    Lensing ISW 0.91 ± 0.36              –               –          4.3. Steerable wavelet searches for cosmic strings
+        Diff. PS ×1028 1.16 ± 0.32      1.44 ± 0.34     1.44 ± 0.34
+        Cosmic strings 0.13 ± 0.20      0.46 ± 0.21     0.23 ± 0.21     Wavelets offer a powerful signal analysis tool due to their abil-
+        Gµ/c2 (95%)    8.1 × 10−7       9.6 × 10−7       8.7 × 10−7     ity to localise signal content in scale (cf. frequency) and posi-
+                                                                        tion simultaneously. Consequently, wavelets are well-suited for
+SEVEM Lensing ISW    0.6 ± 0.36              –               –
+                                                                        detecting potential CMB temperature contributions due to cos-
+      Diff. PS ×1028 1.07 ± 0.35        1.33 ± 0.38          –
+      Cosmic strings 0.10 ± 0.20        0.38 ± 0.21          –          mic strings, which exhibit spatially localised signatures with dis-
+      Gµ/c2 (95%)    7.9 × 10−7         9.3 × 10−7           –          tinct frequency content. Wavelets defined on the sphere are re-
+                                                                        quired to analyse full-sky Planck observations (see, for exam-
+                                                                        ple, Freeden & Windheuser 1997; Wiaux et al. 2005; Sanz et al.
+                                                                        2006; McEwen et al. 2006; Starck et al. 2006; Marinucci et al.
+nal). Before doing so, we subtract the expected ISW lensing sig-
+                                                                        2008; Wiaux et al. 2008).
+nal that provides a fNL = 0.09 string bias. The third column
+                                                                            We perform an analysis using the steerable wavelets on the
+in Table 4 shows that marginalising point sources enhances the
+                                                                        sphere constructed by Wiaux et al. (2005). Here we exploit steer-
+string signal up to the 2σ level for all component separation
+                                                                        ability to dynamically adapt the orientations analysed to the un-
+methods; essentially the constant mode becomes more strongly
+                                                                        derlying data, performing frequentist hypothesis testing. We ap-
+negative once the measured point sources are removed.
+                                                                        ply the first (1GD) and second (2GD) Gaussian derivative steer-
+     Other foregrounds, such as dust emission, could poten-
+                                                                        able wavelets, defined on the sphere through a stereographic
+tially produce spurious string signals if not subtracted prop-
+                                                                        projection, in order to search for cosmic strings in the Planck
+erly. Foreground contamination has been extensively simulated
+                                                                        data. A steerable wavelet is a directional filter whose rotation by
+within the Planck pipeline and foreground residual maps are
+                                                                        χ ∈ [0, 2π) about itself can be expressed in terms of a finite lin-
+provided by each component separation team. We have anal-
+                                                                        ear combination of non-rotated basis filters. Thus, the analysis
+ysed the residual maps provided by both SMICA and NILC to
+                                                                        of a signal with a given steerable wavelet Ψ naturally identifies a
+seek evidence of correlations with the string bispectrum. The
+                                                                        set of wavelet coefficients, WΨ (ω0 , χ, R), which describe the lo-
+SMICA combined-residual map, without point sources and anal-
+                                                                        cal features of the signal at each position ω0 on the sphere, for
+ysed with realistic noise, produces a string bias of fNL = 0.23,
+                                                                        each orientation χ and for each physical scale R. Several local
+which after ISW subtraction becomes fNL = 0.14 (relative to a
+                                                                        morphological properties can be defined in terms of the wavelet
+variance ∆ fNL = 0.20). After both ISW and foreground residual
+                                                                        coefficients (Wiaux et al. 2008), including the signed-intensity,
+subtraction, a joint analysis with point sources yields a SMICA
+string signal fNL = 0.37 ± 0.21 . The apparent string bias in                               I (ω0 , R) ≡ WΨ (ω0 , χ0 , R) .           (18)
+NILC from residual foregrounds was even higher fNL = 0.22 (af-
+                                                                        This quantity represents the value of the wavelet coefficient at
+ter ISW subtraction), meaning a joint analysis obtained fNL =
+                                                                        the local orientation χ0 (ω0 , R) that maximizes the absolute value
+0.23 ± 0.21 (see Table 4).
+                                                                        of the wavelet coefficient itself.
+     We conclude, given our present understanding of point
+                                                                            The presence of a cosmic string signal in the CMB is ex-
+sources and foregrounds, that there does not appear to be signif-
+                                                                        pected to leave a non-Gaussian signature that induces a modifi-
+icant evidence for a string bispectrum signal in the Planck nom-
+                                                                        cation in the distribution of I(ω0 , R) with respect to the lensed
+inal mission maps, so we infer the following post-recombination
+                                                                        Gaussian case. We calibrated the dependence of these signatures
+bispectrum constraint on strings (from fNL = 0.30 ± 0.21):
+                                                                        on the string tension using four simulations of the cosmic string
+Gµ/c2 < 8.8 × 10−7       (95% confidence) .                      (17)   contribution (Ringeval & Bouchet 2012) combined with a large
+                                                                        set of lensed Gaussian CMB realizations, along with a realistic
+The susceptibility of the string bispectrum to point source and         description of the Planck instrumental properties (refer to Planck
+other foreground contamination deserves further investigation           Collaboration XII (2013)).
+and will require improved characterisation of the diffuse point             A wide range of string tension values were explored,
+source bispectrum (beyond the simple Poisson model), as well            Gµ/c2 ∈ [2.0 × 10−7 , 1.0 × 10−6 ], considering several wavelet
+as identification of other foreground residuals generating a small      scales, R = [4.0, 4.5, 5.0, 6.0, 8.0, 10.0] arcmin. We choose the
+string bias.                                                            wavelet scale range as a trade off between the signal-to-noise
+    The string bispectrum constraint Eq. (17) is a conservative         ratio of the string contribution and the small scale foreground
+upper limit on the string tension Gµ/c2 because we have not in-         contamination. In fact, the wavelet for the smallest scale con-
+cluded recombination contributions. Although this constraint is         sidered in this analysis peaks at ` = 1300, while extending at
+
+
+14
+                                                  Planck Collaboration: Cosmic strings and other topological defects
+
+                           1GD                                 2GD                  nent separation pipelines (Planck Collaboration XII 2013). We
+          6                                                                         found that at the smallest wavelet scale considered in this anal-
+                       R=4.0                                                        ysis, R = 4 arcmin, these residual foregrounds induce a shift in
+                       R=4.5
+          5
+                       R=5.0
+                                                                                    the kurtosis, ∆K/σ = 0.03, i.e., a bias that is negligible for the
+                       R=6.0                                                        present analysis. This shift increases to more than ∆K/σ = 0.3
+          4            R=8.0                                                        when extending the analysis to wavelet scales as small as R = 2.5
+                       R=10.0                                                       arcmin. However, the shift induced by unresolved point sources
+ 6K / m
+
+
+
+
+          3                                                                         increases the kurtosis of the signed intensity, so it could not rec-
+                                                                                    oncile the tension between the model and the data pointed out
+          2                                                                         above. Validation tests performed on the String Challenge data
+                                                                                    set demonstrated that the sensitivity of the estimator can improve
+          1
+                                                                                    to ∆Gµ/c2 ≈ 4 × 10−7 for small values of Gµ/c2 when wavelet
+                                                                                    small scales are included. For this reason, we believe it could
+          0
+              0   2     4      6     8   10   0       2     4      6     8   10     be a powerful tool in constraining strings, even though further
+                      Gµ / c2 (× 10−7)                    Gµ / c2 (× 10−7)          investigation is needed to reliably modeling the string signal,
+                                                                                    the foreground contribution and the noise properties, in order
+Fig. 13. Deviation of the kurtosis of the signed-intensity as a                     to fully exploit the sensitivity of the Planck data.
+function of Gµ/c2 , normalized to the standard deviation of CMB                         Finally, we note that we have also endeavoured to study the
+and noise simulations: ∆K/σ = (K(R, Gµ/c2 ) − K(R, Gµ/c2 =                          simulated string maps using spherical wavelets, making an ex-
+0))/σ. The left panel shows results for the 1GD wavelet and                         tension of previous work (Wiaux et al. 2008; Hammond et al.
+the right shows the 2GD wavelet. Each curve corresponds to                          2009) to compute the Bayesian posterior distribution of the
+a wavelet scale, R (arcmin), included in the analysis. The final                    string tension. Both the spherical and steerable wavelet meth-
+sensitivity of the method is determined by combining the two                        ods offer good prospects for improved non-Gaussian string con-
+wavelets and all the scales.                                                        straints from the Planck full mission data.
+
+
+higher multipoles with a broad distribution. We use maps at an                      4.4. Real space tests for cosmic strings
+HEALPix resolution of Nside = 2048, including multipoles till
+                                                                                    4.4.1. Minkowski functionals method
+`max = 2500. We analyse the simulations with the same U73
+mask on the Planck CMB map (refer to Planck Collaboration                           Minkowski Functionals (MFs) describe morphological proper-
+XII 2013), which masks both diffuse and compact foregrounds,                        ties of the CMB field, and can be used as generic estimators
+leaving 73% of the sky remaining for further analysis (refer to                     of non-Gaussianities. They have long been considered to con-
+discussion in Sect. 4.2.3).                                                         strain cosmic string physics, for example on gradient tempera-
+     The string non-Gaussian signatures are characterized in                        ture maps (see e.g., Gott et al. 1990). Indeed they have sensi-
+terms of the kurtosis of the signed-intensity I(ω0 , R) in Eq. (18)                 tivity to non-Gaussianity sourced by strings at all orders (i.e.,
+at the different scales R and for both the 1GD and 2GD wavelets.                    including the kurtosis or trispectrum) and they could prove to be
+The averaged results from the non-Gaussian simulations were                         a powerful tool to constrain topological defects in general. For
+used to model the distribution of the kurtosis as functions of                      the sake of brevity and conciseness, precise definitions of MFs
+Gµ/c2 , i.e., K(R, Gµ/c2 ). Other statistics, such as the skewness                  and analytic formulations are presented in Planck Collaboration
+and the Higher-Criticism, have also been explored. We found                         XXIII (2013) and, here, we only review how MFs can be used to
+that the kurtosis sensitivity to the string tension is higher than                  constrain the string energy density Gµ/c2 , following the method
+the alternative measures. In Fig. 13, we show the difference be-                                                                            local
+                                                                                    discussed in Ducout et al. (2012), for the local model fNL    .
+tween the average kurtosis at several Gµ/c2 values and the av-                           We measure the four normalized functionals vk (k = 0, 3)
+                                                                                                                          2
+erage kurtosis for Gµ/c2 = 0, normalized to the standard devi-                      (respectively Area, Perimeter, Genus and Ncluster ), computed on
+ation of the simulations. On the given range of scales, the 2GD                     nth = 26 thresholds ν, between νmin = −3.5 and νmax = +3.5
+wavelet appears to be more sensitive to the string signal. The                      in units of the standard deviation of the map. The curves are
+final sensitivity of the method in recovering the string tension                    combined into one vector y (of size n = 104).
+from simulated data is established through a goodness-of-fit test,
+                                                                                         The principle is then to compare measurement of MFs on
+performed jointly on the two wavelets for all the scales, and tak-
+                                                                                    Planck data ŷ to measurements on NG simulations including
+ing into account the correlations by means of a covariance ma-
+                                                                                    a string tension level Gµ/c2 , that is, we determine ŷ(Gµ/c2 )
+trix estimated from CMB and noise simulations. From the distri-
+                                                                                    numerically. These simulations reproduce the same systemat-
+bution of the Gµ/c2 values recovered from simulations the null
+                                                                                    ics (noise, beam) and the same processing (filter, masks) as the
+hypothesis can be rejected at 95% CL for Gµ/c2 > 7 × 10−7 .
+                                                                                    data. Assuming that MFs are multi-variate Gaussians, we obtain
+     The procedure described above was applied to the SEVEM
+                                                                                    a posterior distribution for Gµ/c2 through a χ2 test :
+CMB cleaned map, observing no evidence of a string signal at
+any of the scales studied. This would imply a wavelet constraint
+                                                                                                                         χ (ŷ, Gµ/c2 )
+                                                                                                                      " 2               #
+on the string tension at 95% CL, Gµ/c2 < 7 × 10−7 , however,                                       P(Gµ/c2 | ŷ) ∝ exp −                  ,             (19)
+we note that the signed intensity kurtosis of the data is smaller                                                               2
+than that of the model even for small values of Gµ/c2 , and it
+is not fully compatible with it. A similar behavior is observed                       2
+                                                                                         Raw Minkowski functionals Vk depend on the Gaussian part of
+for the skewness of I (ω0 , R). We evaluated the impact on the                      fields through a normalization factor Ak , that is a function only of the
+estimator of unresolved point sources, both from radio galaxies                     power spectrum shape. We therefore normalize functionals vk = Vk /Ak
+and sub-millimetre star-forming galaxies, using simulations of                      to focus on non-Gaussianity, see Planck Collaboration XXIII (2013)
+these astrophysical components processed through the compo-                         and references therein.
+
+
+                                                                                                                                                          15
+                                        Planck Collaboration: Cosmic strings and other topological defects
+
+with
+                                                                                                                                    SMICA, WM + WD1
+                     h               iT   h               i
+
+
+
+
+                                                                                        0.08
+      χ (ŷ, Gµ/c ) ≡ ŷ − ȳ(Gµ/c2 ) C −1 ŷ − ȳ(Gµ/c2 ) .
+           2     2
+                                                                  (20)
+
+The covariance matrix C is computed from 104 Gaussian simu-
+
+
+
+
+                                                                           P (Gµ/c2 )
+lations3 because, given the existing stringent constraints on cos-
+mic strings, this should be accurate without biasing results. The
+
+
+
+
+                                                                                        0.04
+cosmic string MF curve ȳ(Gµ/c2 ) is calibrated on 103 realistic
+lensed Planck simulations, to which we have added a string com-
+ponent at a specified level. These simulations take into account
+the asymmetry of beams and the component separation process
+(FFP6 simulations, see Planck Collaboration ES (2013) for a
+
+
+
+
+                                                                                        0.00
+detailed description). For the string component, we had at our
+disposal only two high resolution string simulations (Ringeval                             0          2            4            6            8        10
+& Bouchet 2012), so our model is the averaged curve obtained                                                     Gµ/c2 (×10−7 )
+from this combination of Planck and string simulations.
+    Due to the nonlinear dependence of MFs on Gµ/c2 and the               Fig. 15. Posterior distribution of the parameter Gµ/c2 obtained
+small number of string simulations, the posterior distribution is         with Minkowski functionals. This estimate takes into account the
+quite complex and noisy. For this reason, we evaluated the pos-           lensing of the data, but not the effects of foreground residuals.
+terior at nNL = 51 values of Gµ/c2 , between 0 and 10 × 10−7 , to
+obtain our Planck estimate for Gµ/c2 . This estimate is stable and
+                                                                          Sunyaev-Zeldovich cluster4 (SZ) signals can be introduced as
+has been validated in realistic conditions with the Planck String
+                                                                          a simple additive bias ∆ȳPS,... on MF curves following:
+Challenges described above, and for which we found consistent
+results with the underlying (unknown) Gµ/c2 .                                                    ŷ = ŷFGsubtracted + ∆ȳPS + ∆ȳCIB + ∆ȳSZ .     (21)
+                                                                          These biases are obtained as an average from 100 simulations,
+4.4.2. Minkowski functionals results
+                                                                          however, these do not comprehensively cover all the different
+For the constraint on Gµ/c2 , we analysed the foregrounds sepa-           component contributions in the actual Planck data.
+rated SMICA map at Nside = 2048 and `max = 2000, using the                     We eventually obtain the posterior distribution of Gµ/c2 , and
+U73 mask ( fsky = 73% of the sky is unmasked). The small-                 we integrate it to report confidence intervals. Results are summa-
+est point sources holes were inpainted. We applied two specific           rized in Table 5, for raw data (lensing subtracted) and foreground
+Wiener filters to the map, designed to enhance the information            subtracted data (PS, CIB and SZ subtracted). The discrepancy
+from the√map itself (WM ) and from the gradients of the map               between the two filters can be explained because the derivative
+(WD1 = `(` + 1)WM ). The filters are shown in Fig. 14.                    filter WD1 scans smaller scales than WM so it is more easily bi-
+    Additionally, we estimated the average impact of some resid-          ased by foreground residuals. Given the remaining foreground
+ual foregrounds and secondaries (FG) on Gµ/c2 , using the linear          uncertainties, we take the most conservative MF constraint for
+properties of MFs and foregrounds models processed through                the cosmic string contribution to the Planck data to be
+the Planck simulation pipeline (FFP6 simulations, see Planck
+Collaboration ES (2013)). Uncorrelated (Poissonian) unresolved                                    Gµ/c2 < 7.8 × 10−7           at 95% C.L.
+point sources (PS), Cosmic Infrared Background (CIB) and                  The corresponding posterior is presented in Fig. 15.
+ 3                                                                            Some caveats need to be mentioned that may influence these
+    The Gaussian simulations endeavour to incorporate realistic noise
+from the Planck data, but only the effective isotropic beam of the com-
+                                                                          results. First, for the MF method itself, an important limitation
+ponent separation method.                                                 is the small number of string simulations used to calibrate the
+                                                                          estimator. The estimator appears to be mostly sensitive to low-
+                                                                          redshift strings (infinite strings, with redshifts between 0 and
+     1.0
+
+
+
+
+                                                                          30), and this is affected by cosmic variance. As low-redshift
+                                                     WM                   string simulations are much faster to produce than complete
+                                                     WD1                  simulations back to recombination, it should be possible to im-
+     0.8
+
+
+
+
+                                                                          prove the robustness of the constraint using these relatively soon.
+                                                                          Secondly, the impacts of the different point-source foreground
+                                                                          components (here, PS, CIB and SZ) have been evaluated by av-
+     0.6
+
+
+
+
+                                                                          eraging over 100 Planck simulation maps for which the mod-
+W
+
+
+
+
+                                                                          elling is only partial. The precise contributions of these differ-
+     0.4
+
+
+
+
+                                                                          ent components needs to be investigated in more detail for the
+                                                                          Planck data. Fortunately, using the linearity of MFs for these
+                                                                          contributions it will be possible to jointly estimate these as their
+     0.2
+
+
+
+
+                                                                          characterisation improves in future studies. Finally, the impact of
+                                                                          Galactic residuals should also be assessed in further detail, espe-
+                                                                          cially for the filter WD1 that we have observed to be less robust
+     0.0
+
+
+
+
+       0       500      1000      1500       2000      2500      3000     against residuals than the WM filter.
+                                    ℓ                                         With advances in studying these experimental effects there
+                                                                          are good prospects for the full mission data, the sensitivity
+Fig. 14. The two Wiener filters, WM and WD1 used to constrain
+Gµ/c2 with Minkowski Functionals.                                              4
+                                                                                        The SZ signal does not include the SZ-lensing NG contribution.
+
+
+16
+                                      Planck Collaboration: Cosmic strings and other topological defects
+
+Table 5. MFs constraints obtained on Gµ/c2 , at the 95% C.L.            for simple adiabatic inflationary scenarios. It requires knowledge
+These results are obtained on the SMICA map with the U73 mask           of the source, quantified by the unequal-time correlator (UETC)
+( fsky = 0.73). The “Raw map” result includes only the lensing          of the defect stress-energy tensor, from well before recombina-
+contribution to the data, while the “Foreground subtracted map”         tion to the present day, which is not computationally feasible.
+includes the lensing, Poissonian point sources, CIB and SZ clus-        Fortunately, we can exploit scale-invariant string evolution to
+ters contributions.                                                     extrapolate the results of simulations with substantially smaller
+                                                                        dynamic range. We use two methods to obtain predictions for
+                                                                        the UETCs. An unconnected segment model (USM) is used to
+                                                                        model the properties of an evolving string network, determin-
+          Gµ/c2                     WM         WM + WD1                 ing its density from an analytic one-scale evolution model, and
+          Raw map               < 6.8 ×10−7
+                                               < 7.8 ×10−7              the sources are coupled to the line-of-sight Boltzmann solver
+          FG subtracted map     < 6.0 ×10−7    < 3.6 ×10−7              CMBACT. A second independent pipeline measures the UETCs
+                                                                        directly from string simulations in the abelian-Higgs field the-
+                                                                        ory, passing these to a modified form of the CMBEASY Boltzmann
+                                                                        code. The resulting Nambu-Goto and abelian-Higgs string CMB
+                                                                        power spectra are illustrated in Fig. 3. Free parameters in the
+of the MFs estimator should improve substantially, with sim-            USM model can be chosen to phenomenologically match the
+ulations forecasting possible MF cosmic string constraints of           field theory UETCs (denoted the AH-mimic model) and the
+Gµ/c2 < 3 × 10−7 at the 95% C.L. We note that further real              comparison is also shown in Fig. 3, validating the two indepen-
+space analysis of string map simulations has been undertaken            dent pipelines.
+with scaling indices of the pixel temperature distribution (see,            To compute constraints on cosmic string scenarios we have
+e.g., Räth et al. 2011). Extensions calculating a set of anisotropic   added the angular power spectrum to that for a simple adia-
+scaling indices along predefined directions appear to offer good        batic model, assuming that they are uncorrelated, with the frac-
+prospects fro string detection.                                         tion of the spectrum contributed by cosmic strings being f10 at
+                                                                        ` = 10. This has been added to the standard 6 parameter fit using
+5. Conclusions                                                          COSMOMC with flat priors. For the USM models we have obtained
+                                                                        the constraint for the Nambu-Goto string model
+We have reviewed the signatures induced by cosmic strings in
+                                                                        Gµ/c2 < 1.5 × 10−7 ,               f10 < 0.015 ,              (22)
+the CMB and searched for these in the Planck data, resulting in
+new more stringent constraints on the dimensionless string ten-         while for the abelian-Higgs field theory model we find,
+sion parameter Gµ/c2 . A pre-requisite for accurate constraints
+                                                                        GµAH /c2 < 3.2 × 10−7 ,              f10 < 0.028 .            (23)
+on cosmic strings is a quantitative understanding of both cosmo-
+                                                                                                                                  2
+logical string network evolution and the effects they induce in         The marginalized likelihoods for f10 and in the f10 –Ωb h plane
+the CMB. These are computationally demanding problems but               were presented in Fig. 10. With Planck nominal mission data
+progress has been made recently on several fronts: First, high          these limits are already about a factor of two more stringent
+resolution simulations of Nambu-Goto strings have yielded ro-           than the comparable WMAP 7-year string constraints and these
+bust results for the scale-invariant properties of string networks      Planck limits improve further with the inclusion of high-` data.
+on large scales, while there has been increasing convergence
+about small-scale structure and loops (for which the CMB pre-
+                                                                        5.2. Non-Gaussian searches for cosmic strings
+dictions are less sensitive). Secondly, post-recombination grav-
+itational effects of strings have been incorporated into full-          Complementary searches for non-Gaussian signatures from cos-
+sky Planck resolution CMB temperature maps that are impor-              mic strings were performed and we have reported constraints
+tant for validating non-Gaussian search methods. Finally, fast          from the string bispectrum, steerable wavelets and Minkowski
+Boltzmann pipelines to calculate CMB power spectra induced by           functionals. These methods participated in the Planck String
+causal sources have been developed and tested at high resolution,       Challenges and have undergone non-Gaussian validation tests.
+whether for field theory simulations of strings or textures or for           The post-recombination string bispectrum has been recon-
+models of Nambu-Goto strings. Three-dimensional field theory            structed and calibrated from string-induced CMB maps using a
+simulations of vortex-strings at sufficient resolution should, in       modal estimator. String Challenge analysis with Planck-realistic
+principle, converge towards the one-dimensional Nambu-Goto              noise simulations and mask indicated a nominal mission sen-
+string simulations, but testing this is not numerically feasible        sitivity of ∆Gµ/c2 ≈ 5.8 × 10−7 . Analysis of SMICA, NILC and
+at present. For this reason, we believe it is prudent to also in-       SEVEM foreground-separated maps has yielded fNL = 0.37 ± 0.21
+clude constraints on field theory strings (labelled GµAH ), thus        for the string bispectrum shape, which translates into a bispec-
+encompassing cosmic string models for which radiative effects           trum constraint on the string tension, Gµ/c2 < 8.8 × 10−7 (95 %
+are important at late times (such as global strings). We believe        CL). Steerable wavelet methods have been calibrated on string
+this brackets the important theoretical uncertainties that remain,      simulation maps added to Gaussian CMB maps with realistic
+that is, we have used the best available information to constrain       noise and masking, showing a sensitivity of up to ∆Gµ/c2 ≈
+both Nambu-Goto strings (NAMBU) and field theory strings                4 × 10−7 . The string signal was shown to have greater impact
+(AH). This work has also obtained more stringent constraints            on the kurtosis of the signed-intensity than on its skewness,
+on semilocal strings and global textures.                               and no evidence of a string signal was found in the Planck
+                                                                        data. Minkowski functionals have been applied to string sim-
+5.1. Cosmic string constraints and the CMB power spectrum               ulation maps in a Planck-realistic context, computing the four
+                                                                        functionals—area, perimeter, genus and Ncluster —after applica-
+Accurate forecasts for the CMB power spectrum induced by cos-           tion of Weiner filters. Using these distributions, a Bayesian es-
+mic strings are more difficult to compute than their equivalent         timator has been constructed to constrain the string tension.
+
+
+                                                                                                                                       17
+                                           Planck Collaboration: Cosmic strings and other topological defects
+
+Analysis of the SMICA foreground-cleaned maps yielded a MF                        Fergusson, J. & Shellard, E. 2009, Phys.Rev., D80, 043510
+constraint of Gµ/c2 < 7.8 × 10−7 (95 % CL).                                       Foreman, S., Moss, A., & Scott, D. 2011, Phys. Rev. D, 84, 043522
+                                                                                  Fraisse, A. A., Ringeval, C., Spergel, D. N., & Bouchet, F. R. 2008, Phys. Rev.,
+     Non-Gaussian searches for strings are complementary to the                       D78, 043535
+power spectrum analysis and yield constraints as low as Gµ/c2 <                   Freeden, W. & Windheuser, U. 1997, Applied Comput. Harm. Anal., 4, 1
+7.8 × 10−7 , though we note the potential impact of foreground                    Gott, J. R. I., Park, C., Juszkiewicz, R., et al. 1990, ApJ, 352, 1
+residuals in limiting current precision. These are conservative                   Gott III, J. R. 1985, Astrophys. J., 288, 422
+upper bounds because they only include post-recombination                         Hammond, D. K., Wiaux, Y., & Vandergheynst, P. 2009, Mon. Not. Roy. Astron.
+                                                                                      Soc., 398, 1317
+string contributions, unlike the string power spectrum analy-                     Hindmarsh, M. 1994, Astrophys. J., 431, 534
+sis. Having such a broad suite of tools, ranging from multipole                   Hindmarsh, M. 2011, Prog.Theor.Phys.Suppl., 190, 197
+space, through wavelets, to real space detection methods, allows                  Hindmarsh, M. & Kibble, T. 1995, Rept.Prog.Phys., 58, 477
+cross-validation and reinforces the conclusion that there is at                   Hindmarsh, M., Ringeval, C., & Suyama, T. 2009, Phys. Rev., D80, 083501
+                                                                                  Hindmarsh, M., Ringeval, C., & Suyama, T. 2010, Phys. Rev., D81, 063505
+present no evidence for cosmic strings in the Planck nominal                      Hou, Z., Reichardt, C. L., Story, K. T., et al. 2012, ArXiv e-prints
+mission data.                                                                     Jeannerot, R., Rocher, J., & Sakellariadou, M. 2003, Phys. Rev., D68, 103514
+                                                                                  Kaiser, N. & Stebbins, A. 1984, Nature (London), 310, 391
+Acknowledgements. The development of Planck has been supported by:                Kibble, T. 1976, J.Phys., A9, 1387
+ESA; CNES and CNRS/INSU-IN2P3-INP (France); ASI, CNR, and INAF                    Kibble, T. 1985, Nucl.Phys., B252, 227
+(Italy); NASA and DoE (USA); STFC and UKSA (UK); CSIC, MICINN,                    Landriau, M. & Shellard, E. 2003, Phys.Rev., D67, 103512
+JA and RES (Spain); Tekes, AoF and CSC (Finland); DLR and MPG                     Landriau, M. & Shellard, E. 2011, Phys.Rev., D83, 043516
+(Germany); CSA (Canada); DTU Space (Denmark); SER/SSO (Switzerland);              Lizarraga, J., Sendra, I., & Urrestilla, J. 2012, Phys.Rev., D86, 123014
+RCN (Norway); SFI (Ireland); FCT/MCTES (Portugal); and PRACE (EU).                Marinucci, D., Pietrobon, D., Balbi, A., et al. 2008, Mon. Not. Roy. Astron. Soc.,
+A description of the Planck Collaboration and a list of its members,                  383, 539
+including the technical or scientific activities in which they have been          Martins, C. & Shellard, E. 1996, Phys.Rev., D54, 2535
+involved, can be found at http://www.sciops.esa.int/index.php?                    Martins, C. & Shellard, E. 2006, Phys.Rev., D73, 043515
+project=planck&page=Planck_Collaboration. We also wish to acknowl-                McEwen, J. D., Hobson, M. P., & Lasenby, A. N. 2006, ArXiv:astro-ph/0609159
+edge the use of the COSMOS supercomputer, part of the DiRAC HPC Facility          Moore, J., Shellard, E., & Martins, C. 2002, Phys.Rev., D65, 023503
+funded by STFC and the UK Large Facilities Capital Fund, as well as the use of    Moore, J. N., Shellard, E. P. S., & Martins, C. J. A. P. 2001, Phys. Rev., D65,
+the Andromeda cluster of the University of Geneva.                                    023503
+                                                                                  Pen, U.-L., Seljak, U., & Turok, N. 1997, Phys.Rev.Lett., 79, 1611
+                                                                                  Planck Collaboration ES. 2013, The Explanatory Supplement to the Planck 2013
+                                                                                      results (ESA)
+References                                                                        Planck Collaboration I. 2013, In preparation
+Achucarro, A., Celi, A., Esole, M., Van den Bergh, J., & Van Proeyen, A. 2006,    Planck Collaboration XII. 2013, In preparation
+   JHEP, 0601, 102                                                                Planck Collaboration XV. 2013, In preparation
+Albrecht, A., Battye, R. A., & Robinson, J. 1997, Phys.Rev.Lett., 79, 4736        Planck Collaboration XVI. 2013, In preparation
+Albrecht, A., Battye, R. A., & Robinson, J. 1999, Phys.Rev., D59, 023508          Planck Collaboration XXIII. 2013, In preparation
+Albrecht, A. & Turok, N. 1989, Phys. Rev., D40, 973                               Planck Collaboration XXIV. 2013, In preparation
+Allen, B., Caldwell, R., Shellard, E., Stebbins, A., & Veeraraghavan, S. 1996,    Pogosian, L. & Vachaspati, T. 1999, Phys.Rev., D60, 083504
+   Phys.Rev.Lett., 77, 3061                                                       Polchinski, J. 2005, Int.J.Mod.Phys., A20, 3413
+Allen, B. & Shellard, P. 1990, Phys. Rev. Lett., 64, 119                          Räth, C., Banday, A. J., Rossmanith, G., et al. 2011, MNRAS, 415, 2205
+Avgoustidis, A., Copeland, E. J., Moss, A., & Skliros, D. 2012, Phys.Rev., D86,   Regan, D. M. & Shellard, E. P. S. 2010, Phys. Rev., D82, 063527
+   123513                                                                         Ringeval, C. 2010, Adv. Astron., 2010, 380507
+Battye, R., Garbrecht, B., & Moss, A. 2010, Phys.Rev., D81, 123512                Ringeval, C. & Bouchet, F. R. 2012, Phys.Rev., D86, 023513
+Battye, R. & Moss, A. 2010, Phys.Rev., D82, 023521                                Ringeval, C. & Bouchet, F. R. 2012, ArXiv e-prints
+Battye, R. A., Garbrecht, B., & Moss, A. 2006, JCAP, 0609, 007                    Ringeval, C., Sakellariadou, M., & Bouchet, F. 2007, JCAP, 0702, 023
+Battye, R. A., Garbrecht, B., Moss, A., & Stoica, H. 2008, JCAP, 0801, 020        Sanidas, S., Battye, R., & Stappers, B. 2012, Phys.Rev., D85, 122003
+Bennett, D. P. & Bouchet, F. R. 1989, Phys. Rev. Lett., 63, 2776                  Sanz, J. L., Herranz, D., López-Caniego, M., & Argüeso, F. 2006, in EUSIPCO
+Bennett, D. P. & Bouchet, F. R. 1990, Phys. Rev., D41, 2408                       Sievers, J. L., Hlozek, R. A., Nolta, M. R., et al. 2013, ArXiv e-prints
+Bevis, N., Hindmarsh, M., & Kunz, M. 2004, Phys.Rev., D70, 043508                 Starck, J.-L., Moudden, Y., Abrial, P., & Nguyen, M. 2006, Astron. &
+Bevis, N., Hindmarsh, M., Kunz, M., & Urrestilla, J. 2007a, Phys.Rev., D76,           Astrophys., 446, 1191
+   043005                                                                         Stebbins, A. 1988, Astrophys. J., 327, 584
+Bevis, N., Hindmarsh, M., Kunz, M., & Urrestilla, J. 2007b, Phys.Rev., D75,       Stebbins, A. & Veeraraghavan, S. 1995, Phys. Rev., D51, 1465
+   065015                                                                         Takahashi, K. et al. 2009, JCAP, 0910, 003
+Bevis, N., Hindmarsh, M., Kunz, M., & Urrestilla, J. 2008, Phys.Rev.Lett., 100,   Urrestilla, J., Bevis, N., Hindmarsh, M., & Kunz, M. 2011, JCAP, 1112, 021
+   021301                                                                         Urrestilla, J., Bevis, N., Hindmarsh, M., Kunz, M., & Liddle, A. R. 2008, JCAP,
+Bevis, N., Hindmarsh, M., Kunz, M., & Urrestilla, J. 2010, Phys.Rev., D82,            0807, 010
+   065004                                                                         Vachaspati, T. & Achucarro, A. 1991, Phys.Rev., D44, 3067
+Blanco-Pillado, J. J., Olum, K. D., & Shlaer, B. 2011, Phys.Rev., D83, 083514     van Haasteren, R., Levin, Y., Janssen, G., et al. 2011
+Bouchet, F. R., Bennett, D. P., & Stebbins, A. 1988, Nature, 335, 410             Vilenkin, A. 1981a, Phys.Rev.Lett., 46, 1169
+Copeland, E. J. & Kibble, T. 2010, Proc.Roy.Soc.Lond., A466, 623                  Vilenkin, A. 1981b, Phys.Lett., B107, 47
+Cruz, M., Turok, N., Vielva, P., Martinez-Gonzalez, E., & Hobson, M. 2007,        Vilenkin, A. & Shellard, E. 2000, Cosmic Strings and Other Topological Defects,
+   Science, 318, 1612                                                                 Cambridge Monographs on Mathematical Physics (Cambridge University
+Dasgupta, K., Firouzjahi, H., & Gwyn, R. 2007, JHEP, 0704, 093                        Press)
+Dasgupta, K., Hsu, J. P., Kallosh, R., Linde, A. D., & Zagermann, M. 2004,        Vincent, G., Antunes, N. D., & Hindmarsh, M. 1998, Phys. Rev. Lett., 80, 2277
+   JHEP, 0408, 030                                                                Wiaux, Y., Jacques, L., & Vandergheynst, P. 2005, Astrophys. J., 632, 15
+Doran, M. 2005, JCAP, 0510, 011                                                   Wiaux, Y., McEwen, J. D., Vandergheynst, P., & Blanc, O. 2008, Mon. Not. Roy.
+Ducout, A., Bouchet, F. R., Colombi, S., & Pogosyan, D. 2012, ArXiv e-prints          Astron. Soc., 388, 770
+Dunkley, J., Hlozek, R., Sievers, J., et al. 2011, Astrophys.J., 739, 52          Wiaux, Y., Vielva, P., Barreiro, R. B., Martinez-González, E., & Vandergheynst,
+Durrer, R., Kunz, M., & Melchiorri, A. 2002, Phys.Rept., 364, 1                       P. 2008, MNRAS, 385, 939
+Dvorkin, C., Wyman, M., & Hu, W. 2011, Phys.Rev., D84, 123519                     Yamauchi, D., Sendouda, Y., Yoo, C.-M., et al. 2010a, JCAP, 1005, 033
+Feeney, S. M., Johnson, M. C., McEwen, J. D., Mortlock, D. J., & Peiris, H. V.    Yamauchi, D., Takahashi, K., Sendouda, Y., Yoo, C.-M., & Sasaki, M. 2010b,
+   2012a                                                                              Phys. Rev., D82, 063518
+Feeney, S. M., Johnson, M. C., Mortlock, D. J., & Peiris, H. V. 2012b,            Zeldovich, Y. 1980, Mon.Not.Roy.Astron.Soc., 192, 663
+   Phys.Rev.Lett., 108, 241301
+Fergusson, J., Liguori, M., & Shellard, E. 2010a, Phys.Rev., D82, 023502
+Fergusson, J., Regan, D., & Shellard, E. 2010b
+
+
+18
+                                       Planck Collaboration: Cosmic strings and other topological defects
+
+                                                                           33
+                                                                              Dipartimento di Fisica, Università La Sapienza, P. le A. Moro 2,
+1
+   APC, AstroParticule et Cosmologie, Université Paris Diderot,              Roma, Italy
+                                                                           34
+   CNRS/IN2P3, CEA/lrfu, Observatoire de Paris, Sorbonne Paris                Dipartimento di Fisica, Università degli Studi di Milano, Via
+   Cité, 10, rue Alice Domon et Léonie Duquet, 75205 Paris Cedex            Celoria, 16, Milano, Italy
+                                                                           35
+   13, France                                                                 Dipartimento di Fisica, Università degli Studi di Trieste, via A.
+ 2
+   Aalto University Metsähovi Radio Observatory, Metsähovintie 114,         Valerio 2, Trieste, Italy
+                                                                           36
+   FIN-02540 Kylmälä, Finland                                               Dipartimento di Fisica, Università di Roma Tor Vergata, Via della
+ 3
+   African Institute for Mathematical Sciences, 6-8 Melrose Road,             Ricerca Scientifica, 1, Roma, Italy
+                                                                           37
+   Muizenberg, Cape Town, South Africa                                        Discovery Center, Niels Bohr Institute, Blegdamsvej 17,
+ 4
+   Agenzia Spaziale Italiana Science Data Center, c/o ESRIN, via              Copenhagen, Denmark
+                                                                           38
+   Galileo Galilei, Frascati, Italy                                           Dpto. Astrofı́sica, Universidad de La Laguna (ULL), E-38206 La
+ 5
+   Agenzia Spaziale Italiana, Viale Liegi 26, Roma, Italy                     Laguna, Tenerife, Spain
+                                                                           39
+ 6
+   Astrophysics Group, Cavendish Laboratory, University of                    European Space Agency, ESAC, Planck Science Office, Camino
+   Cambridge, J J Thomson Avenue, Cambridge CB3 0HE, U.K.                     bajo del Castillo, s/n, Urbanización Villafranca del Castillo,
+ 7
+   Astrophysics & Cosmology Research Unit, School of Mathematics,             Villanueva de la Cañada, Madrid, Spain
+                                                                           40
+   Statistics & Computer Science, University of KwaZulu-Natal,                European Space Agency, ESTEC, Keplerlaan 1, 2201 AZ
+   Westville Campus, Private Bag X54001, Durban 4000, South                   Noordwijk, The Netherlands
+                                                                           41
+   Africa                                                                     Helsinki Institute of Physics, Gustaf Hällströmin katu 2, University
+ 8
+   CITA, University of Toronto, 60 St. George St., Toronto, ON M5S            of Helsinki, Helsinki, Finland
+                                                                           42
+   3H8, Canada                                                                INAF - Osservatorio Astronomico di Padova, Vicolo
+ 9
+   CNRS, IRAP, 9 Av. colonel Roche, BP 44346, F-31028 Toulouse                dell’Osservatorio 5, Padova, Italy
+                                                                           43
+   cedex 4, France                                                            INAF - Osservatorio Astronomico di Roma, via di Frascati 33,
+10
+   California Institute of Technology, Pasadena, California, U.S.A.           Monte Porzio Catone, Italy
+                                                                           44
+11
+   Centre for Theoretical Cosmology, DAMTP, University of                     INAF - Osservatorio Astronomico di Trieste, Via G.B. Tiepolo 11,
+   Cambridge, Wilberforce Road, Cambridge CB3 0WA U.K.                        Trieste, Italy
+                                                                           45
+12
+   Centro de Estudios de Fı́sica del Cosmos de Aragón (CEFCA),               INAF/IASF Bologna, Via Gobetti 101, Bologna, Italy
+                                                                           46
+   Plaza San Juan, 1, planta 2, E-44001, Teruel, Spain                        INAF/IASF Milano, Via E. Bassini 15, Milano, Italy
+                                                                           47
+13
+   Computational Cosmology Center, Lawrence Berkeley National                 INFN, Sezione di Bologna, Via Irnerio 46, I-40126, Bologna, Italy
+                                                                           48
+   Laboratory, Berkeley, California, U.S.A.                                   INFN, Sezione di Roma 1, Università di Roma Sapienza, Piazzale
+14
+   Consejo Superior de Investigaciones Cientı́ficas (CSIC), Madrid,           Aldo Moro 2, 00185, Roma, Italy
+                                                                           49
+   Spain                                                                      IPAG: Institut de Planétologie et d’Astrophysique de Grenoble,
+15
+   DSM/Irfu/SPP, CEA-Saclay, F-91191 Gif-sur-Yvette Cedex,                    Université Joseph Fourier, Grenoble 1 / CNRS-INSU, UMR 5274,
+   France                                                                     Grenoble, F-38041, France
+                                                                           50
+16
+   DTU Space, National Space Institute, Technical University of               IUCAA, Post Bag 4, Ganeshkhind, Pune University Campus, Pune
+   Denmark, Elektrovej 327, DK-2800 Kgs. Lyngby, Denmark                      411 007, India
+                                                                           51
+17
+   Département de Physique Théorique, Université de Genève, 24,           Imperial College London, Astrophysics group, Blackett
+   Quai E. Ansermet,1211 Genève 4, Switzerland                               Laboratory, Prince Consort Road, London, SW7 2AZ, U.K.
+                                                                           52
+18
+   Departamento de Fı́sica Fundamental, Facultad de Ciencias,                 Infrared Processing and Analysis Center, California Institute of
+   Universidad de Salamanca, 37008 Salamanca, Spain                           Technology, Pasadena, CA 91125, U.S.A.
+                                                                           53
+19
+   Departamento de Fı́sica, Universidad de Oviedo, Avda. Calvo                Institut Néel, CNRS, Université Joseph Fourier Grenoble I, 25 rue
+   Sotelo s/n, Oviedo, Spain                                                  des Martyrs, Grenoble, France
+                                                                           54
+20
+   Department of Astronomy and Astrophysics, University of                    Institut Universitaire de France, 103, bd Saint-Michel, 75005,
+   Toronto, 50 Saint George Street, Toronto, Ontario, Canada                  Paris, France
+                                                                           55
+21
+   Department of Astrophysics/IMAPP, Radboud University                       Institut d’Astrophysique Spatiale, CNRS (UMR8617) Université
+   Nijmegen, P.O. Box 9010, 6500 GL Nijmegen, The Netherlands                 Paris-Sud 11, Bâtiment 121, Orsay, France
+                                                                           56
+22
+   Department of Electrical Engineering and Computer Sciences,                Institut d’Astrophysique de Paris, CNRS (UMR7095), 98 bis
+   University of California, Berkeley, California, U.S.A.                     Boulevard Arago, F-75014, Paris, France
+                                                                           57
+23
+   Department of Physics & Astronomy, University of British                   Institute for Space Sciences, Bucharest-Magurale, Romania
+                                                                           58
+   Columbia, 6224 Agricultural Road, Vancouver, British Columbia,             Institute of Astronomy and Astrophysics, Academia Sinica, Taipei,
+   Canada                                                                     Taiwan
+                                                                           59
+24
+   Department of Physics and Astronomy, Dana and David Dornsife               Institute of Astronomy, University of Cambridge, Madingley Road,
+   College of Letter, Arts and Sciences, University of Southern               Cambridge CB3 0HA, U.K.
+                                                                           60
+   California, Los Angeles, CA 90089, U.S.A.                                  Institute of Mathematics and Physics, Centre for Cosmology,
+25
+   Department of Physics and Astronomy, University College                    Particle Physics and Phenomenology, Louvain University,
+   London, London WC1E 6BT, U.K.                                              Louvain-la-Neuve, Belgium
+                                                                           61
+26
+   Department of Physics, Gustaf Hällströmin katu 2a, University of         Institute of Theoretical Astrophysics, University of Oslo, Blindern,
+   Helsinki, Helsinki, Finland                                                Oslo, Norway
+                                                                           62
+27
+   Department of Physics, Princeton University, Princeton, New                Instituto de Astrofı́sica de Canarias, C/Vı́a Láctea s/n, La Laguna,
+   Jersey, U.S.A.                                                             Tenerife, Spain
+                                                                           63
+28
+   Department of Physics, University of California, One Shields               Instituto de Fı́sica de Cantabria (CSIC-Universidad de Cantabria),
+   Avenue, Davis, California, U.S.A.                                          Avda. de los Castros s/n, Santander, Spain
+                                                                           64
+29
+   Department of Physics, University of California, Santa Barbara,            Jet Propulsion Laboratory, California Institute of Technology, 4800
+   California, U.S.A.                                                         Oak Grove Drive, Pasadena, California, U.S.A.
+                                                                           65
+30
+   Department of Physics, University of Illinois at                           Jodrell Bank Centre for Astrophysics, Alan Turing Building,
+   Urbana-Champaign, 1110 West Green Street, Urbana, Illinois,                School of Physics and Astronomy, The University of Manchester,
+   U.S.A.                                                                     Oxford Road, Manchester, M13 9PL, U.K.
+                                                                           66
+31
+   Dipartimento di Fisica e Astronomia G. Galilei, Università degli          Kavli Institute for Cosmology Cambridge, Madingley Road,
+   Studi di Padova, via Marzolo 8, 35131 Padova, Italy                        Cambridge, CB3 0HA, U.K.
+                                                                           67
+32
+   Dipartimento di Fisica e Scienze della Terra, Università di Ferrara,      LAL, Université Paris-Sud, CNRS/IN2P3, Orsay, France
+   Via Saragat 1, 44122 Ferrara, Italy
+
+
+                                                                                                                                                 19
+                                      Planck Collaboration: Cosmic strings and other topological defects
+
+68
+   LERMA, CNRS, Observatoire de Paris, 61 Avenue de
+   l’Observatoire, Paris, France
+69
+   Laboratoire AIM, IRFU/Service d’Astrophysique - CEA/DSM -
+   CNRS - Université Paris Diderot, Bât. 709, CEA-Saclay, F-91191
+   Gif-sur-Yvette Cedex, France
+70
+   Laboratoire Traitement et Communication de l’Information, CNRS
+   (UMR 5141) and Télécom ParisTech, 46 rue Barrault F-75634
+   Paris Cedex 13, France
+71
+   Laboratoire de Physique Subatomique et de Cosmologie,
+   Université Joseph Fourier Grenoble I, CNRS/IN2P3, Institut
+   National Polytechnique de Grenoble, 53 rue des Martyrs, 38026
+   Grenoble cedex, France
+72
+   Laboratoire de Physique Théorique, Université Paris-Sud 11 &
+   CNRS, Bâtiment 210, 91405 Orsay, France
+73
+   Lawrence Berkeley National Laboratory, Berkeley, California,
+   U.S.A.
+74
+   Max-Planck-Institut für Astrophysik, Karl-Schwarzschild-Str. 1,
+   85741 Garching, Germany
+75
+   Max-Planck-Institut für Extraterrestrische Physik,
+   Giessenbachstraße, 85748 Garching, Germany
+76
+   McGill Physics, Ernest Rutherford Physics Building, McGill
+   University, 3600 rue University, Montréal, QC, H3A 2T8, Canada
+77
+   MilliLab, VTT Technical Research Centre of Finland, Tietotie 3,
+   Espoo, Finland
+78
+   Niels Bohr Institute, Blegdamsvej 17, Copenhagen, Denmark
+79
+   Observational Cosmology, Mail Stop 367-17, California Institute
+   of Technology, Pasadena, CA, 91125, U.S.A.
+80
+   Optical Science Laboratory, University College London, Gower
+   Street, London, U.K.
+81
+   SB-ITP-LPPC, EPFL, CH-1015, Lausanne, Switzerland
+82
+   SISSA, Astrophysics Sector, via Bonomea 265, 34136, Trieste,
+   Italy
+83
+   School of Physics and Astronomy, Cardiff University, Queens
+   Buildings, The Parade, Cardiff, CF24 3AA, U.K.
+84
+   School of Physics and Astronomy, University of Nottingham,
+   Nottingham NG7 2RD, U.K.
+85
+   Space Sciences Laboratory, University of California, Berkeley,
+   California, U.S.A.
+86
+   Special Astrophysical Observatory, Russian Academy of Sciences,
+   Nizhnij Arkhyz, Zelenchukskiy region, Karachai-Cherkessian
+   Republic, 369167, Russia
+87
+   Stanford University, Dept of Physics, Varian Physics Bldg, 382 Via
+   Pueblo Mall, Stanford, California, U.S.A.
+88
+   Sub-Department of Astrophysics, University of Oxford, Keble
+   Road, Oxford OX1 3RH, U.K.
+89
+   Theory Division, PH-TH, CERN, CH-1211, Geneva 23,
+   Switzerland
+90
+   UPMC Univ Paris 06, UMR7095, 98 bis Boulevard Arago,
+   F-75014, Paris, France
+91
+   Université de Toulouse, UPS-OMP, IRAP, F-31028 Toulouse cedex
+   4, France
+92
+   University of Granada, Departamento de Fı́sica Teórica y del
+   Cosmos, Facultad de Ciencias, Granada, Spain
+93
+   University of Miami, Knight Physics Building, 1320 Campo Sano
+   Dr., Coral Gables, Florida, U.S.A.
+94
+   Warsaw University Observatory, Aleje Ujazdowskie 4, 00-478
+   Warszawa, Poland
+
+
+
+
+20
+
