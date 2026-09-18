@@ -563,22 +563,26 @@ If you use this work, the Dual-Scale string theory formalization, or the Lean 5 
 }
 ```
 
-### Archived versions (Zenodo, CC-BY-4.0, release `v3.5.0`)
-The book and the eight papers are archived with DOIs; each record holds the PDF and its LaTeX source.
-Cite the record you use. Papers 1–6 carry a scope note in their record: their Lean results are arithmetic
+### Archived versions (Zenodo, CC-BY-4.0, releases `v3.5.0` and `v3.17.0`)
+The book and the eleven papers are archived with DOIs; each record holds the PDF and its LaTeX source.
+Cite the record you use. The book, paper 7 (Revision 5) and paper 8 (Revision 2) have a second version
+(`v3.17.0`) on the same concept DOI; papers 9–11 were first deposited at `v3.17.0`. Papers 1–6 carry a scope note in their record: their Lean results are arithmetic
 instances of literature results, and "formal resolution" in their titles refers to those instances.
 
 | Work | Title | DOI |
 |---|---|---|
-| Book (711 pp.) | The Dual-Scale String: T-Duality, K3 × T², and Their Formalization in Lean 4 — A Student's Companion | [10.5281/zenodo.22823716](https://doi.org/10.5281/zenodo.22823716) |
+| Book (711 pp.) | The Dual-Scale String: T-Duality, K3 × T², and Their Formalization in Lean 4 — A Student's Companion | [10.5281/zenodo.22823716](https://doi.org/10.5281/zenodo.22823716) (v3.5.0); [10.5281/zenodo.22837841](https://doi.org/10.5281/zenodo.22837841) (v3.17.0); all versions: [10.5281/zenodo.22823715](https://doi.org/10.5281/zenodo.22823715) |
 | Paper 1 | Dual-Scale Generalized Geometry and Non-Perturbative Moduli Stabilization on K3 × T² | [10.5281/zenodo.22823718](https://doi.org/10.5281/zenodo.22823718) |
 | Paper 2 | Mathieu M24 Moonshine Rigidity, Mukai Lattices, and Holographic BPS Dyons on K3 × T² | [10.5281/zenodo.22823720](https://doi.org/10.5281/zenodo.22823720) |
 | Paper 3 | The Frontier Triad: Swampland Distance Bounds, Tachyon Condensation, and Non-Perturbative Vacuum Decay on K3 × T² | [10.5281/zenodo.22823722](https://doi.org/10.5281/zenodo.22823722) |
 | Paper 4 | Formal Resolution of Three Conjectures in the Lean 5 Agora Corpus: Navier-Stokes Helicity Dissipation, Mathieu Frobenius Rigidity, and Dual-Scale Horizon Censorship | [10.5281/zenodo.22823724](https://doi.org/10.5281/zenodo.22823724) |
 | Paper 5 | Formal Resolution of Five Frontier Problems in the Lean 5 Agora Corpus: Mukai Monodromy, Kolmogorov Turbulence, Flux Swampland, Courant Torsion, and Golay Holography | [10.5281/zenodo.22823726](https://doi.org/10.5281/zenodo.22823726) |
 | Paper 6 | Formal Resolution of Three Advanced Frontier Problems in the Lean 5 Agora Corpus: Kummer Surface Modularity, Non-Perturbative SYM Instantons, and Holographic Entanglement Strong Subadditivity | [10.5281/zenodo.22823729](https://doi.org/10.5281/zenodo.22823729) |
-| Paper 7 | The Dual-Scale String Theory: Mechanized Foundations, Singularity Resolution, Mathieu Moonshine, and a Zero-Free-Parameter Cosmological Conjecture on K3 × T² | [10.5281/zenodo.22823731](https://doi.org/10.5281/zenodo.22823731) |
-| Paper 8 | Lattices, T-Duality, and Double Field Theory on K3 × T²: A Lean 4 Companion Formalization | [10.5281/zenodo.22823733](https://doi.org/10.5281/zenodo.22823733) |
+| Paper 7 | The Dual-Scale String Theory: Mechanized Foundations, Singularity Resolution, Mathieu Moonshine, and a Zero-Free-Parameter Cosmological Conjecture on K3 × T² | [10.5281/zenodo.22823731](https://doi.org/10.5281/zenodo.22823731) (Rev. 4); [10.5281/zenodo.22837842](https://doi.org/10.5281/zenodo.22837842) (Rev. 5); all versions: [10.5281/zenodo.22823730](https://doi.org/10.5281/zenodo.22823730) |
+| Paper 8 | Lattices, T-Duality, and Double Field Theory on K3 × T²: A Lean 4 Companion Formalization | [10.5281/zenodo.22823733](https://doi.org/10.5281/zenodo.22823733) (Rev. 1); [10.5281/zenodo.22837843](https://doi.org/10.5281/zenodo.22837843) (Rev. 2); all versions: [10.5281/zenodo.22823732](https://doi.org/10.5281/zenodo.22823732) |
+| Paper 9 | Testing a Micro/Macro Dual-Scale Hypothesis on K3 × T²: Scale-Factor Duality, the Cohen–Kaplan–Nelson Bound, and the Dark-Energy Length in Lean 4 | [10.5281/zenodo.22837833](https://doi.org/10.5281/zenodo.22837833) |
+| Paper 10 | Mathieu Moonshine Computed, the Double-Scaled Little String Bridge, and Dyons on K3 × T² in Lean 4 | [10.5281/zenodo.22837835](https://doi.org/10.5281/zenodo.22837835) |
+| Paper 11 | Pre-Registered Confrontation of a K3 × T² Dual-Scale Hypothesis with Data: Four Observables, Four Negative Verdicts, and a Common Cause | [10.5281/zenodo.22837837](https://doi.org/10.5281/zenodo.22837837) |
 
 ### Acknowledgements & Foundations
 This work builds upon and synthesizes foundational open-source formalizations:
