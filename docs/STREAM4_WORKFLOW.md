@@ -1,8 +1,8 @@
 # Stream 4 Workflow — Mathieu Moonshine, Computed Rather Than Typed
 
-**Status (2026-09-18, release `v3.8.0`):** P4.1, P4.2, P4.3 (all 21 columns of CDH Table 20, i.e. all
+**Status (2026-09-18, release `v3.8.1`):** P4.1, P4.2, P4.3 (all 21 columns of CDH Table 20, i.e. all
 26 conjugacy classes), P4.3b (all classes) and P4.5 (all classes) closed; P4.4 and P4.6 open. Library
-`DualScaleMoonshine` (6 files, 151 declarations, 66 theorems, 0 failing). Rules are those of Stream 2 §2 and Stream 3 §2 (kernel is
+`DualScaleMoonshine` (6 files, 153 declarations, 68 theorems, 0 failing). Rules are those of Stream 2 §2 and Stream 3 §2 (kernel is
 the only accept gate; no citation from memory; ASCII identifiers; separate `lean_lib`).
 
 ## 1. Why this stream exists
@@ -116,9 +116,10 @@ Nine-library build 3787 jobs, 0 errors. `tools/axiom_audit.py DualScaleMoonshine
 declarations in 4 files. Local prover not used; every goal was closed by `decide` in the orchestrating
 model's first draft, after the formulas had been checked numerically.
 
-## 8. Gates at `v3.8.0`
-Nine-library build 3789 jobs, 0 errors. `tools/axiom_audit.py DualScaleMoonshine`: 66 theorems, 0 failing
-(each depends only on `propext`). Repository total 523 theorems, 0 failing. Statement lock: before the
+## 8. Gates at `v3.8.1`
+Nine-library build 3789 jobs, 0 errors. `tools/axiom_audit.py DualScaleMoonshine`: 68 theorems, 0 failing
+(each depends only on `propext`). Repository total 525 theorems, 0 failing. Statement lock: before the
 update the check reported the four `v3.7.0` files unchanged and the two new files unlocked; after review,
-151 declarations in 6 files. Every goal closed by `decide`; the formulas and the overline search were
+153 declarations in 6 files (`v3.8.1` adds `eta_lambda_agree_2B/4A`: CDH's two printed
+`Λ`-forms equal their eta quotients through `q⁹`). Every goal closed by `decide`; the formulas and the overline search were
 prototyped in Python first. Kernel time: `TwiningAll.lean` about 45 s, `CharactersAll.lean` about 55 s.

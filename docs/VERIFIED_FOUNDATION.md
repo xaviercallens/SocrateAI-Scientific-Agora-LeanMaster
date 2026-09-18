@@ -30,25 +30,26 @@ twining test to paper 7's "27720 lock", which fails it. Gates: nine-library buil
 `DualScaleMoonshine` 28 theorems, 0 failing (axioms: `propext` only); statement lock 52 declarations in 4
 files; no file of the other eight libraries changed. Total audited: **485**.
 
-**`v3.8.0` (2026-09-18): Stream 4 phase P4.3 completed at every conjugacy class.** Two files added to
+**`v3.8.0`, `v3.8.1` (2026-09-18): Stream 4 phase P4.3 completed at every conjugacy class.** Two files added to
 `DualScaleMoonshine`: `TwiningAll.lean` computes the sixteen remaining twined series of Cheng–Duncan–Harvey's
 Table 20 (eta quotients, the newforms `f₁₁, f₁₄, f₁₅, f₂₃,ₐ, f₂₃,ᵦ`, prefactors `2/5, 1/3, 1/4, 1/3, 1/11`)
 and proves each equal to the printed column through `q⁹`; `CharactersAll.lean` transcribes the full `M₂₄`
 character table over `ℤ[b₇]`, `ℤ[b₁₅]`, `ℤ[b₂₃]`, guards it (centralizer orders from column norms, class
 equation, full row orthogonality), and proves that at **all 26 classes** and levels 1–7 the traces on EOT's
 representations equal the computed twined coefficients. The forger's test now fails at all 25 non-identity
-classes. Gates: nine-library build 3789 jobs, 0 errors; `DualScaleMoonshine` 66 theorems, 0 failing
-(axioms: `propext` only); statement lock 151 declarations in 6 files (the pre-update check showed the four
+classes. Gates: nine-library build 3789 jobs, 0 errors; `DualScaleMoonshine` 68 theorems, 0 failing
+(axioms: `propext` only); statement lock 153 declarations in 6 files (the pre-update check showed the four
 existing files unchanged and only the two new files unlocked); no file of the other eight libraries
-changed. Total audited: **523**.
+changed. Counts are those of `v3.8.1`, which adds `eta_lambda_agree_2B/4A` (CDH's two forms printed both as
+`Λ`-combinations and as eta quotients agree through `q⁹`); `v3.8.0` had 66 / 523. Total audited: **525**.
 
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
-| Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) |
-|---|---|---|---|---|
-| `lake build <lib>` | 3670 jobs, 0 errors | 3296 jobs, 0 errors | 61 jobs, 0 errors | built with all eight: 3781 jobs, 0 errors |
-| `sorry` in source | 0 | 0 | 0 | 0 (also no `admit`, `native_decide`, `axiom`) |
-| `tools/axiom_audit.py` | 100 theorems, 0 failing | 89 theorems, 0 failing | 23 + 53 + 44 + 56 + 61 = 237 theorems, 0 failing | 31 theorems, 0 failing |
-| `tools/statement_lock.py --check` | OK (151 declarations) | locked 2026-09-17 (205 declarations) | not locked | OK (44 declarations, 7 files) |
+| Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |
+|---|---|---|---|---|---|
+| `lake build <lib>` | 3670 jobs, 0 errors | 3296 jobs, 0 errors | 61 jobs, 0 errors | built with all nine: 3789 jobs, 0 errors | built with all nine: 3789 jobs, 0 errors |
+| `sorry` in source | 0 | 0 | 0 | 0 (also no `admit`, `native_decide`, `axiom`) | 0 (also no `admit`, `native_decide`, `axiom`) |
+| `tools/axiom_audit.py` | 100 theorems, 0 failing | 89 theorems, 0 failing | 23 + 53 + 44 + 56 + 61 = 237 theorems, 0 failing | 31 theorems, 0 failing | 68 theorems, 0 failing (`propext` only) |
+| `tools/statement_lock.py --check` | OK (151 declarations) | locked 2026-09-17 (205 declarations) | not locked | OK (44 declarations, 7 files) | OK (153 declarations, 6 files) |
 
 "0 failing" means: every theorem depends on no axioms beyond `propext`, `Classical.choice`, `Quot.sound`
 (no `sorryAx`, no `native_decide`/`Lean.ofReduceBool`). Total audited: 100 + 326 + 31 = 457 theorems.

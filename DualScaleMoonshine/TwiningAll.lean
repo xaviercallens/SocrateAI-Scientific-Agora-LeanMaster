@@ -166,6 +166,12 @@ theorem twinedAll_div :
       dataF12A, dataF12B, dataF14AB, dataF15AB, dataF21AB, dataF23AB].all
       fun d => (twinedD d).all (· % (24 * d.1 : ℤ) = 0) := by decide
 
+/-- CDH Table 3 prints two forms twice, as a `Λ`-combination and as an eta quotient:
+`24Λ₂ − 8Λ₄ = −2η(τ)⁸/η(2τ)⁴` (`2B`) and `−4Λ₂ + 6Λ₄ − 2Λ₈ = −2η(2τ)⁸/η(4τ)⁴` (`4A`). The two
+readings agree through `q⁹` (a finite check of the printed identities, not a proof of them). -/
+theorem eta_lambda_agree_2B : dataF2B.2.2 = scS (-48) (etaQ 9 [(1, 8)] [(2, 4)]) := by decide
+theorem eta_lambda_agree_4A : dataF4A.2.2 = scS (-48) (etaQ 9 [(2, 8)] [(4, 4)]) := by decide
+
 /-- **Negative control.** Without the newform, `11A` fails: `F_11A` is not a multiple of `Λ₁₁`. -/
 theorem twined_11A_needs_newform :
     twinedD (5, 2, lambda24 9 11 (-2)) ≠ scaled dataF11A table11A := by decide
