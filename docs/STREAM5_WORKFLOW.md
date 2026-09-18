@@ -1,7 +1,7 @@
 # Stream 5 Workflow — Dyons on K3 × T²: from the K3 elliptic genus to single-centred black holes
 
-**Status (2026-09-18, release `v3.11.0`):** P5.1–P5.5 closed (Tier A, 17 theorems, 0 failing,
-`propext` only; 48 declarations locked in 2 files); P5.6 open. Library `DualScaleDyons` (separate `lean_lib`, imports
+**Status (2026-09-18, release `v3.11.1`):** P5.1–P5.5 closed (Tier A, 18 theorems, 0 failing,
+`propext` or no axiom; 50 declarations locked in 2 files); P5.6 open. Library `DualScaleDyons` (separate `lean_lib`, imports
 `DualScaleMoonshine` for its exact `q`-series with Laurent-polynomial coefficients). Rules are those of
 Streams 2–4: the kernel is the only accept gate; no citation from memory; ASCII identifiers; every
 printed number that is used is pinned to a file and line range.
@@ -64,7 +64,9 @@ From the K3 elliptic genus of Stream 4 alone (no transcribed coefficient enters 
 * DMZ's six printed identities (5.16) (`dmz_516_q1`, `dmz_516_q2`): the product and the additive formulas
   in `A = φ₋₂,₁`, `B = φ₀,₁`, `E₄`, `E₆` agree.
 * The two-centred part `p₂₄(m+1)·A₂,ₘ`, expanded in the strip `|q| < |y| < 1` (equal to (9.55)), removes
-  the double pole of `ψ_m` — with exactly that coefficient (`m = 1, 2, 3`).
+  the double pole of `ψ_m` — with exactly that coefficient (`m = 1, 2, 3`). (The second-order condition
+  is automatic by `y ↔ y⁻¹` symmetry; the discriminating content is the first-order one. The full
+  second-order content, exact division by `A`, is `immortal_m1_exact` at `m = 1`.)
 * **The single-centred ("immortal") dyons at `m = 1`**: `∆ψ₁^F = 3E₄A − 648H` through `q³`, with `H` the
   Hurwitz class numbers counted from reduced binary quadratic forms (`immortal_m1`); dropping `H` fails.
   DMZ's printed tables of Example 5 are reproduced from our series (`example5_tables`).
@@ -73,7 +75,8 @@ Again the number 24 is structural: it is `χ(K3)`, it sets the 24 colours of `p�
 multiplicity of the two-centred (wall-crossing) sector. Reading the two-centred/single-centred split as
 the programme's "macro/micro" structure is Tier C.
 
-## 7. Gates at `v3.11.0`
-Ten-library build 3795 jobs, 0 errors. `tools/axiom_audit.py DualScaleDyons`: 17 theorems, 0 failing
-(`propext` or no axiom at all). Repository total 572 theorems, 0 failing. Statement lock: 48
-declarations in 2 files. Heavy theorems use `decide +kernel`; the library checks in about 4 minutes.
+## 7. Gates at `v3.11.1`
+Ten-library build 3795 jobs, 0 errors. `tools/axiom_audit.py DualScaleDyons`: 18 theorems, 0 failing
+(`propext` or no axiom at all). Repository total 573 theorems, 0 failing. Statement lock: 50
+declarations in 2 files (`v3.11.1` added `negBinomPairs`, `negBinom_exact`: the integer divisions in the
+product are exact; the pre-update check showed exactly these two ADDED). Heavy theorems use `decide +kernel`; the library checks in about 4 minutes.
