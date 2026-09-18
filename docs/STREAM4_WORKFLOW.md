@@ -1,9 +1,10 @@
 # Stream 4 Workflow — Mathieu Moonshine, Computed Rather Than Typed
 
-**Status (2026-09-18, release `v3.9.0`):** P4.1, P4.2, P4.3 (all 21 columns of CDH Table 20, i.e. all
-26 conjugacy classes), P4.3b (all classes), P4.4 (arithmetic skeleton of the shadow; mock modularity
-itself still Tier L) and P4.5 (all classes) closed; P4.6 open. Library `DualScaleMoonshine` (7 files,
-190 declarations, 76 theorems, 0 failing). Rules are those of Stream 2 §2 and Stream 3 §2 (kernel is
+**Status (2026-09-18, release `v3.10.0`):** all phases closed. P4.1, P4.2, P4.3 (all 21 columns of CDH
+Table 20, i.e. all 26 conjugacy classes), P4.3b (all classes), P4.4 (arithmetic skeleton of the shadow;
+mock modularity itself still Tier L), P4.5 (all classes) and P4.6 (HMN's arithmetic reproduced; the
+link to Stream 2's `(−2)`-reflections closed ⛔ as not available, with the reason in §4). Library
+`DualScaleMoonshine` (8 files, 234 declarations, 98 theorems, 0 failing). Rules are those of Stream 2 §2 and Stream 3 §2 (kernel is
 the only accept gate; no citation from memory; ASCII identifiers; separate `lean_lib`).
 
 ## 1. Why this stream exists
@@ -52,7 +53,7 @@ shaped the plan; none is a result.
 | **P4.3b Group side** | Traces of **every** class on EOT's representations (levels 1–7), from CDH Table 8 over `ℤ[b₇], ℤ[b₁₅], ℤ[b₂₃]`, equal the **computed** twined coefficients; transcription guarded by centralizer orders from column norms, the class equation and full row orthogonality | CDH Table 8; EOT (1.14)–(1.15) | ✅ `Characters.lean` (`2A, 3A`), `CharactersAll.lean` (all 26) |
 | **P4.4 Shadow** | where the `24` of the shadow `24·η³` comes from: the K3 elliptic genus computed from theta functions has `Z(τ,0) = 24`; its polar/finite decomposition `Ψ₁,₁Z = 24·Av⁽²⁾[(y+1)/(y−1)] + H·θ̂₁` holds with the **computed** `H` and fails for `23`, `25`; the shadow's theta series is `η³`; twined multiplicities `χ_g` are traces on `1 ⊕ 23`. The shadow property itself (completion, modular transformation) stays Tier L | CDH (2.15)–(2.30), (2.49), (2.62), (A.2), Table 14; HMN ll. 246–270 | ✅ `Shadow.lean` (arithmetic skeleton) |
 | **P4.5 Forger's test** | does paper 7's "27720 lock" survive twining? **No** — at all 25 non-identity classes | `DualScaleValidation.UseCase2` | ✅ `ForgerTest.lean`, `CharactersAll.lean` |
-| P4.6 HMN bridge | relate HMN's double-scaled LST counting to Stream 2's `(−2)`-reflections, or show no such formal relation is available | HMN §2–3 | ⬜ open |
+| **P4.6 HMN bridge** | relate HMN's double-scaled LST counting to Stream 2's `(−2)`-reflections, or show no such formal relation is available. **Done as:** HMN's BPS index `χ₂^Y` (2.36) reproduced (printed (4.10), (4.11)); at `k = 2` it is `−½η³H`; HMN's (4.9) umbral ↔ DSLST relation checked for `ℓ = 2, 3, 4, 5, 7, 13` with umbral forms built from theta functions; HMN's divisibility observation proved two-sided (`rk(Y)` divides all coefficients iff `rk(Y) ∣ 24`, all `A`, all `D`, `E₆₇₈`). ⛔ The reflection link is not available (§4) | HMN (1.10), (2.29)–(2.37), (4.5)–(4.11), Table 1; CDH (2.49)–(2.51), (2.62) | ✅ arithmetic (`HMNBridge.lean`); ⛔ reflections |
 
 ## 4. Results
 
@@ -116,6 +117,35 @@ Atlas-lean (Meta, `lean4basesource/atlas-lean`) was searched for reusable materi
 forms, Appell–Lerch sums or mock modular forms (its only modular content is the `jacobiTheta`
 S-transform, a Mathlib re-export) and its toolchain is Lean v4.29.0, so it was not used.
 
+**P4.6 — HMN's double-scaled little strings, reproduced (`v3.10.0`).** HMN attach to each ADE root
+system `Y` (the lattice of vanishing `(−2)`-cycles of `k` NS5-branes, Coxeter number `k`) a BPS index
+`χ₂^Y = rk(Y)E₂ − 24F₂^Y` (their (2.36)), and relate it to umbral moonshine for `X = Y^{24/rk(Y)}` by
+`χ₂^Y = −(rk(Y)/2)χ₂^X` (4.9). `HMNBridge.lean` checks, all Tier A:
+
+* the closed formula reproduces HMN's printed series for `A₃` and `A₇`; HMN's sum `F₂^{(2,1)}` equals
+  Cheng–Harrison's `F₂` through `q⁴⁰`; and at `k = 2`, `−2χ₂^{A₁} = η³H`, the series `numer` of
+  `QSeries.lean` — the DSLST of two NS5-branes counts Mathieu moonshine's weight-2 form;
+* for `ℓ = 2, 3, 4, 5, 7, 13`, the umbral Jacobi forms `Z⁽ℓ⁾` built from theta functions (CDH (2.49)–(2.51))
+  are integral, have `Z(τ,0) = 24/(ℓ−1)`, their polar part removes the pole, and (4.9) holds with
+  `Y = A_{ℓ−1}` through `q⁶` (control: `ℓ = 3` against `A₃` fails);
+* HMN's divisibility, which they call unexplained, is two-sided and elementary: every coefficient is
+  `−24(rk(Y)σ(n) + F₂^Y(n))` with `F₂^Y(n) ∈ ℤ`, so `rk(Y) ∣ 24` forces divisibility **for all `n`**
+  (`divisible_of_dvd_24`), and conversely for every `A_{k−1}` and every `D_{j+1}` the `q¹` coefficient
+  fails unless `rk(Y) ∣ 24` (`A_divisible_iff`, `D_divisible_iff`); `E₆, E₈` divide, `E₇` fails. The
+  divisible `Y` are exactly HMN's umbral list (4.7).
+
+A reading note: HMN's (4.2) prints `−rk(Y)E₂ + 24F₂^Y`, the opposite sign of their (2.36); the printed
+series (4.10)–(4.11) and the `rk(Y)` massless vector multiplets fix the sign of (2.36), which is the one
+used.
+
+**The reflection link — closed as not available (⛔).** P4.6 asked to relate this counting to Stream 2's
+`(−2)`-reflections, or to show that no formal relation is available. In HMN the lattice-theoretic
+structure enters through the Niemeier lattice `L_X` and its Weyl group `W_X` (`G^X = Aut(L_X)/W_X`,
+(1.10)), a rank-24 even unimodular lattice this repository does not formalize. Nothing computed in
+`HMNBridge.lean` involves a reflection or an isometry; `rk(Y)` and the Coxeter number enter only as
+numbers. Formalizing the Niemeier lattices `A_{ℓ−1}^{24/(ℓ−1)}` with their Weyl groups would be the
+prerequisite for such a bridge; it is recorded as open work, not attempted.
+
 **P4.5 — the lock is numerology.** Paper 7's Theorem 6.1, `𝒜₂/(N_Q·𝒜₁) = 462/360 = 77/60` with product
 `27720`, holds at the identity, now from the computed series (`lock_at_identity`). Its twined version —
 the same ratio relation with each series' own coefficients — **fails at `2A`, `3A`, `5A`, `7AB`**
@@ -136,7 +166,7 @@ arithmetic on finite truncations, decided by the kernel.
 Every row of §3 is ✅ with Tier A theorems (zero `sorry`/`admit`/`native_decide`/`axiom`, audited, locked)
 or ⛔ closed with a written reason; the full build, the axiom audit of all libraries and the statement
 locks pass on the release tag; `docs/VERIFIED_FOUNDATION.md` and `README.md` state the results with tiers.
-**Not yet met:** P4.6 is open.
+**Met at `v3.10.0`:** every row is ✅ or ⛔ with a written reason (P4.6's reflection link, §4).
 
 ## 7. Gates at `v3.7.0`
 Nine-library build 3787 jobs, 0 errors. `tools/axiom_audit.py DualScaleMoonshine`: 28 theorems, 0 failing
@@ -159,3 +189,13 @@ pre-update check showed the six `v3.8.1` files unchanged and only `Shadow.lean` 
 190 declarations in 7 files. `Shadow.lean` takes about 105 s of kernel time; the Laurent polynomials in
 `y` are exact (offset + coefficient list), so no truncation in `y` occurs, and the Appell–Lerch
 geometric series were checked (Python) to be unchanged when the summation ranges are doubled.
+
+## 10. Gates at `v3.10.0`
+Nine-library build 3791 jobs, 0 errors. `tools/axiom_audit.py DualScaleMoonshine`: 98 theorems, 0
+failing; the computational theorems depend only on `propext`, the divisibility proofs on the three standard
+axioms `propext`, `Classical.choice`, `Quot.sound`. Repository total 555 theorems, 0 failing. Statement lock: the pre-update check showed the seven
+`v3.9.0` files unchanged and only `HMNBridge.lean` unlocked; after review, 234 declarations in 8 files.
+`HMNBridge.lean` takes about 17 minutes of checking: the three theorems involving `Z⁽¹³⁾` use
+`decide +kernel` (kernel evaluation of the decision procedure; no `native_decide`, no extra axiom).
+The divisibility theorems are ordinary proofs (`simp`, `omega`, `nlinarith`, `ring`) quantified over all
+`n` and all `k`, `j`.

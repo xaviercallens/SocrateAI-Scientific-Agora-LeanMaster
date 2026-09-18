@@ -52,13 +52,22 @@ itself (completion, modularity) remains Tier L. Gates: nine-library build 3790 j
 `DualScaleMoonshine` 76 theorems, 0 failing (axioms: `propext` only); statement lock 190 declarations in
 7 files (pre-update check: only `Shadow.lean` new). Total audited: **533**.
 
+**`v3.10.0` (2026-09-18): Stream 4 phase P4.6 — Harvey–Murthy–Nazaroglu's DSLST index reproduced; Stream 4
+complete.** `HMNBridge.lean`: HMN's closed formula for the BPS index `χ₂^Y` reproduces their printed series;
+at `k = 2` it equals `−½η³H`; their umbral relation (4.9) holds for `ℓ = 2, 3, 4, 5, 7, 13` through `q⁶`
+with umbral forms built from theta functions; their divisibility observation is proved in both directions
+(`rk(Y) ∣` all coefficients iff `rk(Y) ∣ 24`) for all `A`, all `D` and `E₆₇₈`. The link to Stream 2's
+`(−2)`-reflections is closed as not available (it needs Niemeier lattices). Gates: nine-library build
+3791 jobs, 0 errors; `DualScaleMoonshine` 98 theorems, 0 failing; statement lock 234 declarations in
+8 files (pre-update check: only `HMNBridge.lean` new). Total audited: **555**.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |
 |---|---|---|---|---|---|
-| `lake build <lib>` | 3670 jobs, 0 errors | 3296 jobs, 0 errors | 61 jobs, 0 errors | built with all nine: 3790 jobs, 0 errors | built with all nine: 3790 jobs, 0 errors |
+| `lake build <lib>` | 3670 jobs, 0 errors | 3296 jobs, 0 errors | 61 jobs, 0 errors | built with all nine: 3791 jobs, 0 errors | built with all nine: 3791 jobs, 0 errors |
 | `sorry` in source | 0 | 0 | 0 | 0 (also no `admit`, `native_decide`, `axiom`) | 0 (also no `admit`, `native_decide`, `axiom`) |
-| `tools/axiom_audit.py` | 100 theorems, 0 failing | 89 theorems, 0 failing | 23 + 53 + 44 + 56 + 61 = 237 theorems, 0 failing | 31 theorems, 0 failing | 76 theorems, 0 failing (`propext` only) |
-| `tools/statement_lock.py --check` | OK (151 declarations) | locked 2026-09-17 (205 declarations) | not locked | OK (44 declarations, 7 files) | OK (190 declarations, 7 files) |
+| `tools/axiom_audit.py` | 100 theorems, 0 failing | 89 theorems, 0 failing | 23 + 53 + 44 + 56 + 61 = 237 theorems, 0 failing | 31 theorems, 0 failing | 98 theorems, 0 failing |
+| `tools/statement_lock.py --check` | OK (151 declarations) | locked 2026-09-17 (205 declarations) | not locked | OK (44 declarations, 7 files) | OK (234 declarations, 8 files) |
 
 "0 failing" means: every theorem depends on no axioms beyond `propext`, `Classical.choice`, `Quot.sound`
 (no `sorryAx`, no `native_decide`/`Lean.ofReduceBool`). Total audited: 100 + 326 + 31 = 457 theorems.
