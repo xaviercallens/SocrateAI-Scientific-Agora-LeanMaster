@@ -40,6 +40,7 @@ Every PDF here is hash-pinned at fetch time. `.txt` files are `pdftotext` extrac
 | 1106_4315.pdf | 1106.4315 | Symmetries of K3 sigma models | M.R. Gaberdiel, S. Hohenegger, R. Volpato | 2011 | b5168ebb07517de740890f1c2965575aaa12f6d5e8ad703149f4e1f09050fb7c | yes | Stream 4 motivation (no K3 sigma model has `M₂₄` symmetry); not yet cited by a Lean docstring |
 | 1208_4074.pdf | 1208.4074 | Quantum Black Holes, Wall Crossing, and Mock Modular Forms | A. Dabholkar, S. Murthy, D. Zagier | 2012 | 7260e103bdfb71d9f06d727f88432a789efcaee9ddcd2fde5cff30521f670213 | yes | Stream 5 (added 2026-09-18): quarter-BPS dyons on K3×T², the counting function 1/Φ₁₀, its Fourier–Jacobi coefficients, polar (multi-centred, wall-crossing) vs finite (single-centred, mock modular) parts |
 | 1005_5415.pdf | 1005.5415 | K3 Surfaces, N=4 Dyons, and the Mathieu Group M24 | M. C. N. Cheng | 2010 | 3376a15b41ef3ab3f46b67d0d990d97c7aa04d76cfa51c6693639d28af7a3d47 | yes | Stream 5 (added 2026-09-18): twisted K3 elliptic genera (2.5)–(2.9), twisted dyon denominators Φ_g (3.9)–(3.11), EOT level-7 proposal inconsistent (ll. 533–549) |
+| gasperini_veneziano_pbb_hep-th_0207130.pdf | hep-th/0207130 | The Pre-Big Bang Scenario in String Cosmology | M. Gasperini, G. Veneziano | 2002 | 1d77e3483a72911ffa1b7b6259f34e4209d0a5cc28d8e2fbc73c68ea1154332e | yes | Stream 7 C-B (added 2026-09-18): relic graviton spectrum Ω ∼ ω^{3−2ν} (Table 2, (4.105)), dilaton phase α = 1/2 → ω³ (l. 4505), (5.15)–(5.16) end points ω₁, Ω(ω₁), g₁ ≃ M_s/M_P |
 
 ## Not downloaded (journal-only, cite by reference)
 
