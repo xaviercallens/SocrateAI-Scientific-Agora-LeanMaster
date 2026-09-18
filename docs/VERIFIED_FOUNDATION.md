@@ -61,6 +61,17 @@ with umbral forms built from theta functions; their divisibility observation is 
 3791 jobs, 0 errors; `DualScaleMoonshine` 98 theorems, 0 failing; statement lock 234 declarations in
 8 files (pre-update check: only `HMNBridge.lean` new). Total audited: **555**.
 
+**`v3.11.0` (2026-09-18): tenth library `DualScaleDyons` (Stream 5, `docs/STREAM5_WORKFLOW.md`)**, importing
+Stream 4. From the K3 elliptic genus computed in Stream 4 it builds the DMVV/Borcherds product for the
+quarter-BPS dyon partition function `1/Φ₁₀` on K3 × T² (Dabholkar–Murthy–Zagier) and proves, through the
+orders stated: the index-1 Jacobi property of `Z_K3`; an enumerated reachability guard for the truncated
+product; Göttsche's `p₂₄(k)` for `k ≤ 5`; DMZ's six printed identities (5.16); the strip expansion (9.55);
+that the polar part `p₂₄(m+1)A₂,ₘ` removes the double pole of `ψ_m` (and `p₂₄ ± 1` do not), `m = 1, 2, 3`;
+and that the single-centred counting function `∆ψ₁^F` equals `3E₄A − 648H` with `H` the Hurwitz class
+numbers, counted independently. Gates: ten-library build 3795 jobs, 0 errors; `DualScaleDyons` 17
+theorems, 0 failing (axioms: `propext` only); statement lock 48 declarations in 2 files; no file of the
+other nine libraries changed. Total audited: **572**.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |
 |---|---|---|---|---|---|

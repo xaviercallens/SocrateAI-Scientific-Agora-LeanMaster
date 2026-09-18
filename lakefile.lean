@@ -64,3 +64,9 @@ lean_lib «DualScaleCosmology» where
 
 lean_lib «DualScaleMoonshine» where
   roots := #[`DualScaleMoonshine]
+
+-- === Stream 5: dyons on K3 × T² — from the K3 elliptic genus to 1/Φ₁₀ (imports Stream 4) ===
+-- Not a default_target; build with `lake build DualScaleDyons`.
+
+lean_lib «DualScaleDyons» where
+  roots := #[`DualScaleDyons]
