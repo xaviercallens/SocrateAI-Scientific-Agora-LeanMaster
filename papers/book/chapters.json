@@ -31,6 +31,10 @@
   {
    "id": "VIII",
    "title": "The Formalization"
+  },
+  {
+   "id": "IX",
+   "title": "Moonshine Computed, Dyons, and the Verdicts"
   }
  ],
  "chapters": [
@@ -770,6 +774,82 @@
    "lean": [],
    "brief": "A graded list of ~25 concrete projects: (formalization) Narain lattice even self-duality for general d, generation of O(d,d;Z), uniqueness of the dual-scale minimizer, Buscher rules as a theorem about the generalized metric, K3 lattice from classification, Mukai isometries, modular invariance of the torus partition function, Jacobi forms and the elliptic genus, EOT coefficients from characters; (physics) what the dual-scale proposal must do to become testable. Each with prerequisites, difficulty, the Mathlib state, and a precise suggested Lean statement (as leancode marked 'not yet proved').",
    "file": "chapters/ch38_open.tex"
+  },
+  {
+   "id": "ch39",
+   "num": 39,
+   "part": "IX",
+   "slug": "moonshinecomputed",
+   "title": "Mathieu Moonshine Computed: Twining, the Shadow, and the Little-String Bridge",
+   "pages": 14,
+   "sources": [
+    "CDH (4.18), Tables 3, 8, 14, 20, 48",
+    "CH (3.5)-(3.6)",
+    "HMN (2.29)-(2.36), (4.5)-(4.11)",
+    "EOT",
+    "Cheng ll. 533-549"
+   ],
+   "lean": [
+    "DualScaleMoonshine/QSeries.lean",
+    "DualScaleMoonshine/Twining.lean",
+    "DualScaleMoonshine/TwiningAll.lean",
+    "DualScaleMoonshine/Characters.lean",
+    "DualScaleMoonshine/CharactersAll.lean",
+    "DualScaleMoonshine/Decompositions.lean",
+    "DualScaleMoonshine/ForgerTest.lean",
+    "DualScaleMoonshine/Shadow.lean",
+    "DualScaleMoonshine/HMNBridge.lean"
+   ],
+   "brief": "Stream 4 for students: truncated q-series as exact integer computations; H computed from (-2E2+48F2)/eta^3; twined series for all classes; the character table over Z[b_n] with orthogonality guards and the overline ambiguity; traces = twined coefficients (levels 1-9 via CDH Table 48); the forger's test (27720 lock fails, 24 passes); where the 24 of the shadow comes from (polar/finite decomposition of the elliptic genus); the HMN double-scaled little-string index and the divisibility iff rk|24; the reflection link closed as not available; reading notes (HMN (4.2) sign, EOT level 7).",
+   "file": "chapters/ch39_moonshinecomputed.tex"
+  },
+  {
+   "id": "ch40",
+   "num": 40,
+   "part": "IX",
+   "slug": "dyons",
+   "title": "Dyons on K3 × T²: From the Elliptic Genus to Class Numbers",
+   "pages": 13,
+   "sources": [
+    "DMZ (1.1)-(1.7), (5.13)-(5.17), (9.4)-(9.13), (9.55), Example 5",
+    "Cheng (2.5)-(2.9), (3.9)-(3.11)",
+    "CDH Tables 8, 14"
+   ],
+   "lean": [
+    "DualScaleDyons/DMVV.lean",
+    "DualScaleDyons/Immortal.lean",
+    "DualScaleDyons/ImmortalHigher.lean",
+    "DualScaleDyons/TwinedHilbert.lean",
+    "DualScaleDyons/TwistedDyons.lean",
+    "DualScaleDyons/TwistedNotes.lean"
+   ],
+   "brief": "Stream 5 for students: the dyon partition function 1/Phi10 as a Borcherds/DMVV product of the K3 elliptic genus; Goettsche numbers p24(k); DMZ (5.16); meromorphic Jacobi forms with a double pole, polar part p24(m+1)A_{2,m} (two-centred, wall-crossing, strip dependence, (1.4) vs (9.55)) and finite part (single-centred, immortal); immortal dyons at m=1,2,3 = Hurwitz class numbers through H|V_m; the twining test on Hilbert schemes and twisted dyons 1/Phi_g as M24 characters; c_g(-1)=+2.",
+   "file": "chapters/ch40_dyons.tex"
+  },
+  {
+   "id": "ch41",
+   "num": 41,
+   "part": "IX",
+   "slug": "verdicts",
+   "title": "Confronting the Dual-Scale Hypothesis with Data: Pre-Registration and Four Verdicts",
+   "pages": 11,
+   "sources": [
+    "EW 2002.11761 ll. 283-289",
+    "MVV 2205.12293 ll. 320-329, 424-427",
+    "GV hep-th/0207130 Table 2, (4.105), (5.15)-(5.16)",
+    "LISA 1702.00786 ll. 692-699",
+    "Asp ll. 2713-2743"
+   ],
+   "lean": [
+    "DualScaleCosmology/Stream6Verdict.lean",
+    "DualScaleCosmology/Stream7CA.lean",
+    "DualScaleCosmology/Stream7CB.lean",
+    "DualScaleCosmology/SelfDualCutoff.lean",
+    "DualScaleCosmology/DarkEnergyScale.lean",
+    "DualScaleCosmology/CosmicString.lean"
+   ],
+   "brief": "Streams 6-7 for students: what a test is (freeze before verdict, decision rules, disclosure of prior knowledge, retrodiction vs forward prediction, vacuity of observables); the inventory of derivable observables; P1 (extra dimension, excluded, kappa = 1 by T-duality), C-A (holographic dark energy with IR c/H: q = 1/2, excluded), C-B (pre-big-bang relic gravitons: not falsifiable in practice; premise excluded), C-C (cosmic F-strings); the common cause alpha' = l_P c/H0; why K3 x T2 cannot be our universe as it stands (N=4, non-chiral); lessons and open directions.",
+   "file": "chapters/ch41_verdicts.tex"
   }
  ]
 }

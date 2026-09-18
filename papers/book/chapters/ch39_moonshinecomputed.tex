@@ -1,0 +1,738 @@
+\chapter{Mathieu Moonshine Computed: Twining, the Shadow, and the Little-String Bridge}\label{ch:moonshinecomputed}
+
+In \cref{ch:moonshine} the coincidence between the elliptic-genus multiplicities
+$2A_n$ and the dimensions of $\Mtf$ was checked in Lean as one typed table against
+another. That is weak evidence: a table matching a table only shows that two lists of
+numbers were copied consistently, and this project has already caught one mistyped
+$\Mtf$ table. This chapter asks a sharper question. \emph{Can both sides of Mathieu
+moonshine be recomputed from formulas---the $q$-series from modular forms, the traces from
+the character table---so that the agreement is a computation and not a transcription? And
+which integers of this programme survive the test that separates moonshine from
+numerology?}\index{Mathieu moonshine!computed} The answers are: yes, at every one of the
+$26$ conjugacy classes and for the first ten graded pieces; the programme's own ``$27720$
+lock'' fails the test at every non-trivial class, while the number $24=\chi(\mathrm{K3})$
+passes it; and the same arithmetic reproduces a bridge, due to Harvey--Murthy--Nazaroglu,
+between the elliptic genus and the BPS states of double-scaled little string theories.
+Along the way the student learns a technique worth keeping: treating a truncated
+$q$-series as an exact list of integers, so that a proof assistant can decide an
+identity between modular objects coefficient by coefficient.
+
+Conventions follow \cref{ch:moonshine}: $q=\ee^{2\pi\ii\tau}$, $y=\ee^{2\pi\ii z}$,
+$A_n=45,231,770,\dots$ are the EOT coefficients \source{EOT eq.~(1.12), l.~208} and the
+massive multiplicities are $2A_n$. The source keys CDH (Cheng--Duncan--Harvey,
+\emph{Umbral Moonshine}), CH (Cheng--Harrison), HMN (Harvey--Murthy--Nazaroglu) and Cheng
+are listed in the bibliography.
+
+\section{Why compute instead of type}\label{sec:moonshinecomputed:why}
+
+A moonshine statement has two sides. On the \emph{modular} side there is a function,
+here the mock modular form
+\begin{equation}\label{eq:moonshinecomputed:H}
+  H(\tau)=2q^{-1/8}\bigl(-1+45q+231q^2+770q^3+\dots\bigr),
+\end{equation}
+whose coefficients are fixed by modularity and a few pieces of data. On the \emph{group}
+side there is a graded representation $K=\bigoplus_nK_n$ of $\Mtf$ whose dimensions are
+those coefficients. The literature records both sides as tables: the $A_n$ as printed
+numbers, the $\Mtf$ representations through a printed character table. Checking one
+table against the other tests the copying, not the mathematics.
+
+The alternative is to compute each side from a short formula and compare the outputs.
+Three things then become checkable that were not before. First, a misprint in a table can
+no longer hide: the computed column either equals the printed one or it does not. Second,
+one can compare not only dimensions but \emph{traces} of every group element, which is
+the real content of moonshine. Third, one can apply the same test to any other integer
+coincidence, including this programme's own. The price is that one needs an exact
+arithmetic for power series; the next section supplies it.
+
+\section{Truncated \texorpdfstring{$q$}{q}-series as lists of integers}\label{sec:moonshinecomputed:series}
+
+A power series $f=\sum_{n\ge0}f_nq^n$ with integer coefficients, known through
+$q^N$, is stored as the list $[f_0,f_1,\dots,f_N]$ of $N+1$ integers.\index{q-series@$q$-series!truncated}
+Two operations suffice.\index{Cauchy product!truncated} The truncated Cauchy product
+\begin{equation}\label{eq:moonshinecomputed:mul}
+  (fg)_n=\sum_{k=0}^{n}f_kg_{n-k},\qquad 0\le n\le N,
+\end{equation}
+is exact: the coefficients of $fg$ through $q^N$ depend only on those of $f$ and $g$
+through $q^N$. If $p_0=1$ the quotient $r=s/p$ is computed by the recursion
+\begin{equation}\label{eq:moonshinecomputed:div}
+  r_n=s_n-\sum_{k=0}^{n-1}r_k\,p_{n-k},
+\end{equation}
+obtained by reading off the coefficient of $q^n$ in $s=rp$; it too is exact, and it
+involves no division by anything but $p_0=1$. With these two operations every eta
+product, every Eisenstein series and every quotient appearing below becomes a finite list
+of integers, and an identity between two such lists is decided by comparing them entry by
+entry. Nothing in this is approximate; everything is also \emph{finite}: an identity
+checked through $q^9$ says nothing about $q^{10}$.
+
+\subsection{Worked example: the first coefficients of \texorpdfstring{$H$}{H}}\label{sec:moonshinecomputed:worked}
+
+Cheng and Harrison write the mock modular form of the Niemeier root system $A_1^{24}$
+(the case of Mathieu moonshine) in closed form \source{CH eqs.~(3.5)--(3.6), ll.~797--815}:
+\begin{equation}\label{eq:moonshinecomputed:CH}
+  H(\tau)=\frac{-2E_2(\tau)+48F_2(\tau)}{\eta(\tau)^3},\qquad
+  F_2(\tau)=\sum_{\substack{r>s>0\\ r-s\ \mathrm{odd}}}(-1)^r s\,q^{rs/2}
+  =q+q^2-q^3+q^4+\dots,
+\end{equation}
+with the Eisenstein series\index{Eisenstein series!$E_2$} $E_2(\tau)=1-24\sum_{n\ge1}\sigma_1(n)q^n$ \source{HMN eq.~(2.37), l.~736}. Since
+$\eta^3=q^{1/8}\prod_{n\ge1}(1-q^n)^3$, the series $q^{1/8}H$ is the quotient of the
+integer series
+\begin{equation}
+  s=-2E_2+48F_2=-2+48\bigl(\sigma_1(n)+[q^n]F_2\bigr)_{n\ge1}
+  =-2+96q+192q^2+144q^3+\dots
+\end{equation}
+by $p=\prod(1-q^n)^3=1-3q+5q^3-7q^6+\dots$ (Jacobi's identity; in Lean it is checked
+through $q^9$, not proved). The recursion \eqref{eq:moonshinecomputed:div} gives
+\begin{align*}
+  r_0&=-2,\\
+  r_1&=96-r_0p_1=96-(-2)(-3)=90,\\
+  r_2&=192-(r_0p_2+r_1p_1)=192-(0-270)=462,\\
+  r_3&=144-(r_0p_3+r_1p_2+r_2p_1)=144-(-10+0-1386)=1540.
+\end{align*}
+These are $-2,\,2A_1,\,2A_2,\,2A_3$. Carried through $q^9$, the same recursion reproduces
+all nine tabulated values $2\cdot45,\dots,2\cdot132825$; in Lean this is the theorem
+\lean{hComputed\_eq\_table} of \cref{sec:moonshinecomputed:lean}. \TA\ for the equality
+of lists; \TL\ for the statement that \eqref{eq:moonshinecomputed:CH} is the mock modular
+form attached to the K3 elliptic genus.
+
+\begin{pitfallbox}[Ten coefficients are not an identity]
+The theorem \lean{eta3\_jacobi} says that $\prod(1-q^n)^3$ and Jacobi's series
+$\sum(-1)^n(2n+1)q^{n(n+1)/2}$ agree through $q^9$. That is a check of ten numbers, not a
+proof of Jacobi's triple product identity, and the chapter never uses it as one. The same
+holds for every ``$=$'' in this chapter: it is an equality of truncations.
+\end{pitfallbox}
+
+\section{Twining from the modular side}\label{sec:moonshinecomputed:twining}
+
+Moonshine becomes structural when dimensions are replaced by traces\index{twining genus}
+(\cref{ch:moonshine}). For each conjugacy class $g$ of $\Mtf$ the twined series $H_g$
+has coefficients $\Tr_{K_n}(g)$. Cheng--Duncan--Harvey give all of them in one formula
+\source{CDH eq.~(4.18), ll.~2931--2936}:
+\begin{equation}\label{eq:moonshinecomputed:twined}
+  H_g(\tau)=\frac{\chi_g}{24}\,H(\tau)+\frac{F_g(\tau)}{\eta(\tau)^3},
+\end{equation}
+where $\chi_g$ is the number of points of the $24$-point set fixed by $g$
+\source{CDH Table~14, ll.~4349--4364} and $F_g$ is a weight-$2$ modular form for
+$\Gamma_0(N_g)$ listed in \source{CDH Table~3, ll.~2882--2915}. Most $F_g$ are built from
+$\Lambda_N=Nq\,\partial_q\log\bigl(\eta(N\tau)/\eta(\tau)\bigr)$ \source{CDH eq.~(A.3),
+l.~4100}, which is an integer series after multiplication by $24$:
+\begin{equation}
+  24\Lambda_N=N(N-1)+24N\sum_{n\ge1}\Bigl(\sigma_1(n)-N\sigma_1(n/N)\Bigr)q^n,
+\end{equation}
+the second term present only when $N\mid n$. To stay in $\Z$ one computes
+$24H_g=(\chi_g\,s+24F_g)/p$ with $s$ and $p$ as in \cref{sec:moonshinecomputed:worked}.
+
+\begin{example}[The class $2A$]
+Here $\chi_{2A}=8$ and $F_{2A}=-16\Lambda_2$ \source{CDH Table~3, l.~2886}, so
+$24F_{2A}=-16\cdot24\Lambda_2=-32-768q+\dots$. The numerator is
+$8s+24F_{2A}=(-16-32)+(768-768)q+\dots=-48+0\cdot q+\dots$, and the recursion gives
+$r_0=-48$, $r_1=0-(-48)(-3)=-144$. Dividing by $24$: $-2,\,-6$, the first two entries of
+the $2A$ column of \source{CDH Table~20, ll.~4494--4512}. The trace of $2A$ on the
+$90$-dimensional $K_1=\mathbf{45}\oplus\overline{\mathbf{45}}$ is therefore $-6$, which is
+$2\chi_{\mathbf{45}}(2A)=2\cdot(-3)$ from the character table (\cref{ch:m24}).
+\end{example}
+
+\subsection{Eta quotients and their shift}\label{sec:moonshinecomputed:etaq}
+
+Several $F_g$ are eta quotients,\index{eta quotient} and these carry a fractional power of $q$ that has to be
+accounted for before anything is stored in a list of integers. Since
+$\eta(k\tau)=q^{k/24}\prod_{n\ge1}(1-q^{kn})$, a quotient
+$\prod_k\eta(k\tau)^{e_k}$ equals
+\begin{equation}\label{eq:moonshinecomputed:etaq}
+  q^{\,\sum_kke_k/24}\prod_k\prod_{n\ge1}(1-q^{kn})^{e_k},
+\end{equation}
+where the second factor is an integer series computed by
+\eqref{eq:moonshinecomputed:mul}--\eqref{eq:moonshinecomputed:div}. The prefactor is a
+genuine power of $q$ exactly when $24\mid\sum_kke_k$, and each quotient used here satisfies
+that. For the newform $f_{11}=\eta(\tau)^2\eta(11\tau)^2$ one has
+$\sum_kke_k=2\cdot1+2\cdot11=24$, so $f_{11}=q\prod_n(1-q^n)^2(1-q^{11n})^2$, and indeed
+$f_{11}=q-2q^2-q^3+2q^4+\dots$ begins at $q^1$, as the normalisation
+$f_{23,a}=q+O(q^3)$, $f_{23,b}=q^2+O(q^3)$ of \source{CDH eq.~(A.8), ll.~4134--4137}
+requires for its companions. The Lean file checks the divisibility condition for every
+quotient it uses before using it, and checks these normalisations; without them a shift of
+one power of $q$ would silently move a whole column.
+
+\begin{pitfallbox}[A displaced exponent]
+In the text extraction of CDH's Table~3 the exponent $3$ of $\eta(\tau)$ in the $12A$ entry
+sits on the next line, so the entry reads as if the exponent were missing. It was
+reconstructed by requiring weight $2$ (the exponents of an eta quotient of weight $w$ sum to
+$2w$), and the reconstruction is confirmed by the match with the printed column; a Lean
+control shows that the exponent $2$ instead of $3$ does \emph{not} reproduce it. This is the
+kind of error a computed check catches and a typed table hides.
+\end{pitfallbox}
+
+Sixteen of the $21$ columns of CDH's Table~20 need more than a single $\Lambda_N$: eta
+quotients, sums of several $\Lambda_d$, and for $11A$, $14AB$, $15AB$ and $23AB$ the
+newforms of CDH's Appendix~A with rational prefactors. For instance
+$F_{11A}=\tfrac25(-\Lambda_{11}+11f_{11})$ \source{CDH Table~3, l.~2900} with the newform
+$f_{11}=\eta(\tau)^2\eta(11\tau)^2$ \source{CDH eq.~(A.4), l.~4115}. An eta quotient
+$\prod_k\eta(k\tau)^{e_k}$ is $q^{\sum_kke_k/24}$ times an integer series, and every
+quotient used here has $\sum_kke_k\equiv0\pmod{24}$, so the power of $q$ is an integer.
+A prefactor $1/D$ is handled by computing $24D\,H_g$. In Lean all $21$ computed columns
+equal the printed ones through $q^9$ (\TA), and each has every coefficient divisible by
+$24D$, so the division back to $H_g$ is exact. Two negative controls make the agreement
+informative: without $F_g$ the $2A$ column is not reproduced, and without the newform
+$f_{11}$ the $11A$ column is not either. Because CDH's table was read from a flattened
+PDF, these theorems also certify the transcription; one exponent in CDH's Table~3 is
+displaced in the text extraction ($12A$) and was fixed by weight counting, which the
+match then confirms.
+
+\section{Twining from the group side}\label{sec:moonshinecomputed:group}
+
+\subsection{A character table with irrational entries}
+
+The other side needs the traces $\Tr_{K_n}(g)$ computed from the character table of
+$\Mtf$ \source{CDH Table~8, ll.~4170--4209} and the decompositions of the $K_n$. Most
+entries are integers; a few are the algebraic integers\index{character table!of M24@of $\Mtf$}
+\begin{equation}
+  b_n=\frac{-1+\sqrt{-n}}{2},\qquad n=7,15,23,\qquad b_n^2=-b_n-\frac{n+1}{4},\qquad
+  \overline{b_n}=-1-b_n.
+\end{equation}
+An entry $a+b\,b_n$ is stored as the integer pair $(a,b)$; multiplication and complex
+conjugation are the two polynomial rules just written, so all arithmetic stays in $\Z$.
+Each column of the table lives in one ring: $\Z$, $\Z[b_7]$ (classes $7A,7B,14A,14B,21A,
+21B$), $\Z[b_{15}]$ ($15A,15B$) or $\Z[b_{23}]$ ($23A,23B$).
+
+\subsection{Guards: what a character table must satisfy}
+
+A mistyped table is how this project went wrong before, so the transcription is guarded
+by identities every character table satisfies. The column norms
+$\sum_i|\chi_i(g)|^2$ equal the centralizer orders $|C(g)|$ (second orthogonality);
+Lean computes them from the table, rather than taking them from memory, and checks that
+each divides $|\Mtf|=244\,823\,040$ and is divisible by the order of $g$. The class sizes
+$|\Mtf|/|C(g)|$ then add up to $|\Mtf|$ (the class equation).\index{class equation} Finally the first
+orthogonality relation\index{orthogonality relations}
+\begin{equation}\label{eq:moonshinecomputed:orth}
+  \sum_g|g^{\Mtf}|\,\chi_i(g)\,\overline{\chi_j(g)}=|\Mtf|\,\delta_{ij}
+\end{equation}
+is checked for all $26\times26$ pairs. The sum mixes values in four rings; it is
+accumulated as a quadruple (rational part, coefficient of $b_7$, of $b_{15}$, of
+$b_{23}$). Since $1,\sqrt{-7},\sqrt{-15},\sqrt{-23}$ are linearly independent over $\Q$
+(standard; \TL), \eqref{eq:moonshinecomputed:orth} holds exactly when the quadruple is
+$(|\Mtf|\delta_{ij},0,0,0)$.
+
+\begin{pitfallbox}[What the guards do not fix]
+The text extraction of CDH's table loses the overlines: $b_7$ and $\overline{b_7}$ both
+print as ``b7''. A search over the ten independent choices (in Python, not in the kernel)
+finds $128$ readings that pass all guards---exactly the orbit of one reading under
+renaming the classes $7A\leftrightarrow7B$, $14A\leftrightarrow14B$, \dots\ and the
+characters $\mathbf{45}\leftrightarrow\overline{\mathbf{45}}$, \dots---and all of them give
+the same traces below. So the guards pin the table up to relabelling, not absolutely, and
+the chapter's statements are invariant under that relabelling. A reading \emph{outside}
+the orbit is rejected: the Lean control \lean{misread\_fails\_gram} swaps one pair of
+entries and orthogonality fails.
+\end{pitfallbox}
+
+\subsection{Traces equal computed coefficients}
+
+With the table in hand, the trace of $g$ on $K_n=\bigoplus_im_{n,i}\rho_i$ is
+$\sum_im_{n,i}\chi_i(g)$. For levels $n=1,\dots,7$ EOT give decompositions
+(\cref{ch:moonshine}), and Lean checks that at \emph{every} class the resulting trace is a
+rational integer (its $b_n$-parts cancel) and equals the coefficient of $q^{n-1/8}$ in the
+computed $H_g$ (\TA). Two independent computations---one from modular forms, one from
+the character table---meet at $26\times7$ numbers.
+
+\begin{example}[The class $3A$ at levels $1,2,3$]
+The $3A$ column of the character table gives $\chi_{\mathbf{45}}(3A)=0$,
+$\chi_{\mathbf{231}}(3A)=-3$, $\chi_{\mathbf{770}}(3A)=5$ \source{CDH Table~8,
+ll.~4170--4209}. Since $K_1=\mathbf{45}\oplus\overline{\mathbf{45}}$,
+$K_2=\mathbf{231}\oplus\overline{\mathbf{231}}$ and
+$K_3=\mathbf{770}\oplus\overline{\mathbf{770}}$, and each pair contributes twice the real
+part, the traces are
+\[
+  \Tr_{K_1}(3A)=0,\qquad \Tr_{K_2}(3A)=-6,\qquad \Tr_{K_3}(3A)=10 .
+\]
+On the modular side, $\chi_{3A}=6$ and $F_{3A}=-6\Lambda_3$ \source{CDH Table~3,
+ll.~2882--2915} give the column $-2,\,0,\,-6,\,10,\,0,\,-18,\dots$
+\source{CDH Table~20, ll.~4494--4512}. The three numbers agree---and they agree for all
+$26$ classes and all seven levels at once, which is the content of
+\lean{trace\_eq\_twined\_coeff\_all}. Note how little room there is for an accident: the
+modular side knows only $\chi_{3A}$ and one weight-two form, the group side only a column
+of characters.
+\end{example}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth,node distance=6mm,
+  box/.style={draw,rounded corners,align=center,inner sep=2.6mm,font=\small}]
+  \node[box] (mod) at (-4.4,0)
+    {\textbf{modular side}\\[1mm] $E_2,\ F_2,\ \Lambda_N,\ \eta$\\ newforms $f_{11},f_{14},f_{15},f_{23}$\\[1mm]
+     $H_g=\frac{\chi_g}{24}H+\frac{F_g}{\eta^3}$};
+  \node[box] (grp) at (4.4,0)
+    {\textbf{group side}\\[1mm] character table over\\ $\Z,\ \Z[b_7],\ \Z[b_{15}],\ \Z[b_{23}]$\\[1mm]
+     $\Tr_{K_n}(g)=\sum_i m_{n,i}\chi_i(g)$};
+  \node[box,fill=black!4] (mid) at (0,0) {lists of integers\\ through $q^9$};
+  \draw[->] (mod) -- node[above,font=\scriptsize]{computed} (mid);
+  \draw[->] (grp) -- node[above,font=\scriptsize]{computed} (mid);
+  \node[box,fill=tierA!12] (out) at (0,-2.1)
+    {equal at all $26$ classes, levels $0$--$9$\\[0.5mm]
+     \scriptsize (and: $27720$ ratio fails at $25$ classes; $\chi_g$ is a character)};
+  \draw[->] (mid) -- (out);
+\end{tikzpicture}
+\caption{The two routes of this chapter. Neither side is copied from the other: the left
+side is computed from modular forms, the right side from a guarded character table, and the
+comparison is made on finite lists of integers.}
+\label{fig:moonshinecomputed:tworoutes}
+\end{figure}
+
+\begin{physicsbox}[What the twined numbers count]
+$\Tr_{K_n}(g)$ is a graded character: it counts the BPS states of the K3 sigma model at
+level $n$ with a sign given by how the symmetry $g$ acts on them. Two consequences make it
+a sharper probe than the dimension. Because characters are additive over direct sums, any
+relation coming from a module structure survives the replacement of dimensions by traces.
+And because a non-trivial $g$ mixes states, the traces are small numbers of both signs, so
+an accidental numerical relation among the $\dim K_n$ has no reason to persist. This is why
+the comparison in \cref{fig:moonshinecomputed:tworoutes} is evidence for a module and the
+$27720$ relation of \cref{sec:moonshinecomputed:forger} is not.
+\end{physicsbox}
+
+For $n=8,9$ EOT give no decomposition. The direction can then be reversed: the
+multiplicity of $\rho_i$ in $K_n$ is the inner product
+\begin{equation}\label{eq:moonshinecomputed:mult}
+  m_{n,i}=\frac1{|\Mtf|}\sum_g|g^{\Mtf}|\;[q^{n-1/8}]H_g\;\overline{\chi_i(g)}.
+\end{equation}
+Lean evaluates \eqref{eq:moonshinecomputed:mult} for $n=0,\dots,9$ and all $26$ irreducibles
+from the \emph{computed} $H_g$: every $m_{n,i}$ is an integer, non-negative for $n\ge1$,
+and equal to CDH's printed decomposition \source{CDH Table~48, ll.~5305--5330}.
+
+\begin{example}[Level $8$]
+The computed multiplicities give
+\begin{align*}
+  K_8=\ &990\oplus\overline{990}\oplus1035'\oplus1035''\oplus2\cdot1265\oplus2\cdot2277\\
+  &\oplus\,2\cdot3312\oplus2\cdot3520\oplus4\cdot5313\oplus2\cdot5796\oplus2\cdot5544
+   \oplus6\cdot10395,
+\end{align*}
+whose dimension is $1980+2070+2530+4554+6624+7040+21252+11592+11088+62370=131100
+=2A_8$. The level-$7$ decomposition $10395\oplus5796\oplus5544\oplus5313\oplus2024\oplus1771$
+(doubled) is the one used in \cref{ch:moonshine}; the earlier proposal
+$10395+2\cdot5796+5544+3312$ has the right dimension but the wrong traces, as Cheng
+observed \source{Cheng, ll.~533--549}, and Lean confirms it disagrees with the computed
+twined series at some class.
+\end{example}
+
+\section{The forger's test}\label{sec:moonshinecomputed:forger}
+
+Anyone can find integers that match: $A_2\cdot60=4A_1\cdot77=27720$, with
+$27720\cdot8832=|\Mtf|$, is the ``lock'' of \cref{ch:moonshine}. What made monstrous
+moonshine more than numerology was that the coincidences survive \emph{twining}: replace
+every dimension by the trace of an element and the relation still holds.\index{forger's test}\index{twining!test}
+Apply this to the lock in its ratio form,
+$[q^2]H_g\cdot(4\cdot[q^1]H)=[q^2]H\cdot(4\cdot[q^1]H_g)$, i.e.\ $A_2(g)/A_1(g)=A_2/A_1$.
+At $g=2A$ the computed coefficients are $A_1(2A)=-6$, $A_2(2A)=14$, and $14/(-6)\neq
+462/90$. Lean checks that the relation holds at the identity and fails at every one of the
+$25$ non-identity classes (\TA). By this criterion the lock is numerology.
+
+The number $24$ behaves differently. The multiplicity $\chi_g$ in
+\eqref{eq:moonshinecomputed:twined}, which replaces $24$ when one twines, is at every class
+the trace of $g$ on the permutation representation $\mathbf1\oplus\mathbf{23}$ computed
+from the character table: $24,8,0,6,0,0,4,\dots$ (Lean checks all $26$ entries). The
+$24$ twines into a genuine character.
+
+\begin{physicsbox}[Why twining separates structure from coincidence]
+A relation that comes from a module structure---``$K_n$ is this sum of representations''---
+holds for traces because traces are additive over direct sums. A relation between
+dimensions that is only numerical has no reason to survive: the traces of a non-trivial
+element are smaller, of both signs, and unrelated by any multiplicative identity. The test
+is cheap once both sides are computed, and it should be applied to every integer
+coincidence before a physical reading is proposed.
+\end{physicsbox}
+
+\section{Where the 24 of the shadow comes from}\label{sec:moonshinecomputed:shadow}
+
+$H$ is a mock modular form: it becomes modular only after adding a non-holomorphic
+correction built from its \emph{shadow}, which for Mathieu moonshine is
+$24\eta(\tau)^3$ \source{HMN §1, ll.~244--248}.\index{shadow}\index{mock modular form!shadow}
+The $24$ in the shadow can be located arithmetically. CDH write any weight-$1$
+meromorphic Jacobi form of the shape $\psi=\Psi_{1,1}\phi$, with
+$\Psi_{1,1}=-\ii\,\theta_1(\tau,2z)\eta^3/\theta_1(\tau,z)^2$ and $\phi$ a weak Jacobi form
+of weight $0$, as a polar part plus a finite part \source{CDH eqs.~(2.19)--(2.25),
+ll.~657--711}:
+\begin{equation}\label{eq:moonshinecomputed:polar}
+  \psi=\chi\,\mathrm{Av}^{(m)}\!\Bigl[\frac{y+1}{y-1}\Bigr]+\sum_rh_r\,\hat\theta_r^{(m)},
+  \qquad \chi=\phi(\tau,0),
+\end{equation}
+and the shadow of $(h_r)$ is $\chi$ times the unary theta series\index{theta series!unary} $S^{(m)}$
+\source{CDH eqs.~(2.26)--(2.30), ll.~716--768}. For K3, $\phi$ is the elliptic genus
+$Z=8(f_2^2+f_3^2+f_4^2)$ with $f_i=\theta_i(\tau,z)/\theta_i(\tau,0)$ \source{CDH
+eqs.~(2.49), (2.62), ll.~1258--1270, 1397}, $m=2$, and $S^{(2)}_1=\eta^3$.
+
+Everything in \eqref{eq:moonshinecomputed:polar} except the word ``shadow'' is a finite
+computation once denominators are cleared: the theta functions are products, $Z$ is a
+$q$-series whose coefficients are Laurent polynomials in $y$, and the Appell--Lerch sum
+$\mathrm{Av}^{(2)}$ is a sum of geometric series. Lean checks three facts through $q^9$.
+First, $Z(\tau,0)=24$: the constant term of $Z$ at $y=1$ is $24$ and every higher
+coefficient vanishes. Second, the decomposition \eqref{eq:moonshinecomputed:polar} holds
+with $\chi=24$ and $h_1$ equal to the series $H$ \emph{computed} from
+\eqref{eq:moonshinecomputed:CH}. Third, it fails with $\chi=23$ or $\chi=25$. So two
+independent facts meet at $24$: the value $Z(\tau,0)$, i.e.\ the Euler characteristic
+of K3 (the Witten index), and the multiplicity of the polar part. That this multiplicity is
+the coefficient of the shadow is Zwegers' theorem as recast by CDH (\TL); nothing in Lean
+constructs the non-holomorphic completion.
+
+\begin{pitfallbox}[Located, not proved]
+The Lean files never define a shadow, a completion or a modular transformation. What is
+proved is the arithmetic skeleton: the $24$ of $Z(\tau,0)$ and the $24$ of the polar part
+are the same integer, and no other integer makes the decomposition hold. ``$H$ is mock
+modular with shadow $24\eta^3$'' remains \TL.
+\end{pitfallbox}
+
+\section{The little-string bridge}\label{sec:moonshinecomputed:hmn}
+
+\subsection{A BPS index labelled by ADE diagrams}
+
+Harvey, Murthy and Nazaroglu study $k$ NS5-branes on K3 in a double-scaling limit; the
+branes' positions define an ADE root system $Y$ with Coxeter number $k$, the lattice of
+vanishing $(-2)$-cycles.\index{little string theory!double-scaled}\index{ADE} The holomorphic part of the second
+helicity supertrace\index{helicity supertrace}, a BPS index of this theory, is given in closed form
+\source{HMN eqs.~(2.29)--(2.37), ll.~700--736}:
+\begin{equation}\label{eq:moonshinecomputed:chi2Y}
+  \chi_2^Y=\mathrm{rk}(Y)\,E_2-24\,F_2^Y,\qquad
+  F_2^{(k,d)}=\sum_{n\ge1}q^n\sum_{rs=n}s\bigl(d\,[kr>d^2s]-\tfrac kd\,[d^2r>ks]\bigr),
+\end{equation}
+with $F_2^Y$ a combination of $F_2^{(k,d)}$ fixed by $Y$ ($A_{k-1}$: $F_2^{(k,1)}$;
+$D_{m/2+1}$: $F_2^{(m,1)}+F_2^{(m,m/2)}$; and three combinations for $E_{6,7,8}$).
+
+\begin{example}[$Y=A_3$]
+Here $k=4$, $\mathrm{rk}=3$, and at $n=1$ the only factorization is $r=s=1$, giving
+$F_2^{(4,1)}(1)=1\cdot(1\cdot[4>1]-4\cdot[1>4])=1$. Hence
+$[q^1]\chi_2^{A_3}=3\cdot(-24)-24\cdot1=-96$, the second coefficient of HMN's printed
+series $3-96q-288q^2-384q^3-576q^4-360q^5+\dots$ \source{HMN eq.~(4.10), l.~1290}. Lean
+reproduces all six printed coefficients, and the six of $Y=A_7$ \source{HMN eq.~(4.11),
+l.~1292}, whose coefficients $7$ and $192$ share no factor.
+\end{example}
+
+For $k=2$ ($Y=A_1$, two NS5-branes) the formula gives $-2\chi_2^{A_1}=-2E_2+48F_2$, the
+numerator of \eqref{eq:moonshinecomputed:CH}: the little-string index is
+$\eta^3H$, the weight-$2$ form of Mathieu moonshine (Lean checks it through $q^9$, and that
+HMN's sum $F_2^{(2,1)}$ equals Cheng--Harrison's $F_2$ through $q^{40}$).
+
+\subsection{The umbral relation and a divisibility}
+
+\begin{example}[The relation \eqref{eq:moonshinecomputed:umbral} at $\ell=2$, by hand]
+Take $Y=A_1$, so $k=2$, $\mathrm{rk}(Y)=1$ and $X=A_1^{24}$, whose umbral form is the $H$ of
+\eqref{eq:moonshinecomputed:CH}; here $\chi_2^X=\eta^3H=-2E_2+48F_2$, whose $q^1$
+coefficient is $96$ (\cref{sec:moonshinecomputed:worked}). The right-hand side of
+\eqref{eq:moonshinecomputed:umbral} is then $-\tfrac12\cdot96=-48$. The left-hand side comes
+from \eqref{eq:moonshinecomputed:chi2Y}: $F_2^{(2,1)}(1)=1\cdot(1\cdot[2>1]-2\cdot[1>2])=1$,
+so $[q^1]\chi_2^{A_1}=1\cdot(-24)-24\cdot1=-48$. The two agree, and the constant terms agree
+as well ($\mathrm{rk}=1$ against $-\tfrac12\cdot(-2)=1$). The general statement, for the six
+lambencies with $X$ a power of a single $A$ component, is checked in Lean through $q^6$.
+\end{example}
+
+HMN relate $\chi_2^Y$ to umbral moonshine for the Niemeier root system
+$X=Y^{24/\mathrm{rk}(Y)}$ \source{HMN eqs.~(4.5), (4.9), ll.~1229--1266}:
+\begin{equation}\label{eq:moonshinecomputed:umbral}
+  \chi_2^Y=-\frac{\mathrm{rk}(Y)}2\,\chi_2^X,\qquad \chi_2^X=\sum_rH^X_r\,S_{m,r}.
+\end{equation}
+For $Y=A_{\ell-1}$ the umbral forms can be built from theta functions exactly as in
+\cref{sec:moonshinecomputed:shadow}, now with CDH's $Z^{(\ell)}$ for
+$\ell=2,3,4,5,7,13$ \source{CDH eqs.~(2.49)--(2.51), (2.62), ll.~1258--1285, 1397}; the
+quantity $\chi_2^X$ is the first Taylor coefficient at $z=0$ of the finite part. Lean checks
+\eqref{eq:moonshinecomputed:umbral} for all six values of $\ell$ through $q^6$, and that
+pairing $\ell=3$ with $Y=A_3$ instead of $A_2$ fails.
+
+HMN observe that for the ``umbral'' $Y$ (those with $\mathrm{rk}(Y)\mid24$) every coefficient
+of $\chi_2^Y$ is divisible by $\mathrm{rk}(Y)$, and write that ``it is not clear why this
+should be true for the coefficients of higher powers of $q$'' \source{HMN §4, ll.~1280--1296}.
+Within their own formula \eqref{eq:moonshinecomputed:chi2Y} the reason is elementary. For
+$n\ge1$,
+\begin{equation}
+  [q^n]\chi_2^Y=-24\bigl(\mathrm{rk}(Y)\,\sigma_1(n)+F_2^Y(n)\bigr),\qquad F_2^Y(n)\in\Z,
+\end{equation}
+so $\mathrm{rk}(Y)\mid24$ forces divisibility of every coefficient. Conversely, for
+$A_{k-1}$ one has $F_2^Y(1)=1$ and $[q^1]\chi_2^Y=-24(\mathrm{rk}+1)$, divisible by
+$\mathrm{rk}$ only if $\mathrm{rk}\mid24$; for $D_{j+1}$, $F_2^Y(1)=-1$ gives
+$-24(\mathrm{rk}-1)$ with the same conclusion. Lean proves both directions for every
+$A_{k-1}$ and every $D_{j+1}$, and checks $E_6,E_8$ (divisible) and $E_7$ (not). The
+divisible $Y$ are exactly HMN's umbral list $A_1,A_2,A_3,A_4,A_6,A_8,A_{12},A_{24},D_4,D_6,
+D_8,D_{12},D_{24},E_6,E_8$. Why the factor in \eqref{eq:moonshinecomputed:chi2Y} is $24$ is
+not addressed here; reading it as $\chi(\mathrm{K3})$ is \TC.
+
+\begin{pitfallbox}[A sign in the source]
+HMN's eq.~(4.2) \source{HMN eq.~(4.2), l.~1194} prints $\chi_2^Y=-\mathrm{rk}(Y)E_2+24F_2^Y$,
+the opposite overall sign of their eq.~(2.36). The printed series (4.10)--(4.11) start with
+$+\mathrm{rk}(Y)$, as does the count of $\mathrm{rk}(Y)$ massless vector multiplets
+\source{HMN §4, ll.~1257--1260}; they fix the sign of (2.36), which is the one used here.
+\end{pitfallbox}
+
+\subsection{What is not available: a reflection bridge}
+
+The vanishing $(-2)$-cycles of $Y$ suggest a link with the reflections in $(-2)$-vectors
+that \cref{ch:mukai} and Stream~2 formalize. HMN's lattice structure, however, enters
+through the Niemeier lattice\index{Niemeier lattice} $L_X$ and its Weyl group,\index{Weyl group}
+$G^X=\mathrm{Aut}(L_X)/W_X$ \source{HMN eq.~(1.10), l.~277}, a rank-$24$ even unimodular
+lattice that this project does not formalize. Nothing in the computations of this section
+involves a reflection or a lattice isometry; $\mathrm{rk}(Y)$ and the Coxeter number enter
+only as numbers. The bridge is therefore recorded as \emph{not available}, with that
+reason, rather than claimed.
+
+\section{What the machine has checked}\label{sec:moonshinecomputed:lean}
+
+The files are in the library \lean{DualScaleMoonshine}. All theorems quoted depend only on
+\lean{propext}, \lean{Classical.choice} and \lean{Quot.sound} (most on \lean{propext}
+alone); the heavy ones are closed by \lean{decide} or \lean{decide +kernel}, which have the
+kernel evaluate the decision procedure.
+
+\begin{leanbox}[In Lean: $H$ computed equals the table]
+\begin{leancode}
+def numer (N : ℕ) : List ℤ :=
+  (List.range (N + 1)).map fun n => if n = 0 then -2 else 48 * (sigma n + f2Coeff n)
+
+def hComputed (N : ℕ) : List ℤ := divTrunc N (numer N) (eta3 N)
+
+theorem eta3_jacobi : eta3 9 = [1, -3, 0, 5, 0, 0, -7, 0, 0, 0] := by ...
+
+theorem hComputed_eq_table : hComputed 9 = hFromTable := by ...
+\end{leancode}
+(\lean{DualScaleMoonshine/QSeries.lean}.) \textbf{Reading.} \lean{hFromTable} is
+$[-2,2A_1,\dots,2A_9]$ from EOT's table; the list computed by the recursion
+\eqref{eq:moonshinecomputed:div} from $-2E_2+48F_2$ and $\prod(1-q^n)^3$ equals it through
+$q^9$. \textbf{Proof idea.} Kernel evaluation of two lists of ten integers.
+\textbf{Tier} \TA\ for the lists; \TL\ that the formula is the K3 mock modular form.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: twined series, with newforms and controls]
+\begin{leancode}
+theorem twined_2A : twined24 9 8 2 (-16) = table2A.map (24 * ·) := by ...
+
+theorem twined_11A : twinedD dataF11A = scaled dataF11A table11A := by ...
+theorem twined_23AB : twinedD dataF23AB = scaled dataF23AB table23AB := by ...
+
+theorem twined_11A_needs_newform :
+    twinedD (5, 2, lambda24 9 11 (-2)) ≠ scaled dataF11A table11A := by ...
+\end{leancode}
+(\lean{DualScaleMoonshine/Twining.lean}, \lean{TwiningAll.lean}.) \textbf{Reading.}
+$24H_{2A}$ computed from $\chi_{2A}=8$ and $F_{2A}=-16\Lambda_2$ equals $24$ times CDH's
+printed $2A$ column through $q^9$; likewise $24D\,H_g$ for $11A$ ($D=5$) and $23AB$
+($D=11$), whose $F_g$ contain newforms; dropping $f_{11}$ breaks $11A$. All $21$ columns have
+such a theorem. \textbf{Tier} \TA\ for the arithmetic, \TL\ for the formulas of CDH.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the character table and the traces]
+\begin{leancode}
+theorem colNorm_eq_cent : (List.range 26).map colNorm = cent.map (·, 0) := by ...
+theorem class_equation : classSize.sum = 244823040 := by ...
+theorem gram_ok : gramOK charTab = true := by ...
+
+theorem trace_eq_twined_coeff_all :
+    ∀ j : Fin 26, eotMult.map (traceQ j) =
+      (((computedSeries.getD j []).drop 1).take 7).map (·, 0) := by ...
+\end{leancode}
+(\lean{DualScaleMoonshine/CharactersAll.lean}.) \textbf{Reading.} The column norms of the
+table (entries in $\Z[b_n]$ stored as pairs) are the listed centralizer orders; the class
+sizes add to $|\Mtf|$; all $26\times26$ orthogonality relations hold; and at every class
+$j$, the traces on EOT's representations at levels $1$--$7$ (doubled, as in
+\lean{eotMult}) have zero irrational part and equal the computed twined coefficients.
+\textbf{Tier} \TA; that the table is the character table of $\Mtf$ is \TL.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the modules $K_0,\dots,K_9$ decomposed]
+\begin{leancode}
+theorem moonshine_modules_decompose :
+    (List.range 10).all (fun n => (List.range 26).all fun i =>
+      let v := moonshineInner n i
+      v.2.1 == 0 && v.2.2.1 == 0 && v.2.2.2 == 0 &&
+        v.1 == 244823040 * ((table48.getD n []).getD i 0)) = true := by ...
+\end{leancode}
+(\lean{DualScaleMoonshine/Decompositions.lean}.) \textbf{Reading.} For $n\le9$ and every
+irreducible $i$, the inner product \eqref{eq:moonshinecomputed:mult} computed from the
+twined series has vanishing irrational parts and equals $|\Mtf|$ times CDH's Table~48 entry,
+so every multiplicity is an integer equal to the printed one. A companion theorem,
+\lean{eot\_level7\_proposal\_inconsistent}, shows the traces of the older level-$7$
+proposal differ from the computed series. \textbf{Tier} \TA.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the forger's test]
+\begin{leancode}
+theorem lock_at_identity :
+    coeff untwined 1 = 90 ∧ coeff untwined 2 = 462 ∧ literalLock untwined ∧
+      coeff untwined 2 * 60 = 27720 := by ...
+
+theorem ratio_fails_at_every_class :
+    ∀ j : Fin 26, j.val ≠ 0 →
+      ¬ ratioTwines ((computedSeries.getD j []).map (24 * ·)) := by ...
+\end{leancode}
+(\lean{DualScaleMoonshine/ForgerTest.lean}, \lean{CharactersAll.lean}.) \textbf{Reading.}
+The lock holds for the untwined series and its ratio form fails for the twined series of
+every one of the $25$ non-identity classes. \textbf{Tier} \TA\ for both; the conclusion
+``numerology'' is the reading the twining criterion gives (\TC\ as a methodological
+judgement).
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the 24 of the shadow]
+\begin{leancode}
+theorem ellipticGenus_z0 :
+    (ellipticGenus 9).map LP.eval1 = [24, 0, 0, 0, 0, 0, 0, 0, 0, 0] := by ...
+
+theorem decomposition : Ser.eqB (starLHS 9) (starRHS 9 24 (hComputed 9)) = true := by ...
+
+theorem decomposition_pins_chi :
+    Ser.eqB (starLHS 9) (starRHS 9 23 (hComputed 9)) = false ∧
+      Ser.eqB (starLHS 9) (starRHS 9 25 (hComputed 9)) = false := by ...
+\end{leancode}
+(\lean{DualScaleMoonshine/Shadow.lean}.) \textbf{Reading.} The elliptic genus computed from
+theta products is $24$ at $y=1$ at every order through $q^9$; the decomposition
+\eqref{eq:moonshinecomputed:polar}, cleared of denominators, holds with polar multiplicity
+$24$ and finite part the computed $H$, and fails for $23$ and $25$. \textbf{Tier} \TA; the
+word ``shadow'' is \TL.
+\end{leanbox}
+
+\begin{leanbox}[In Lean: the little-string index]
+\begin{leancode}
+def chi2Y (Ys : List (ℕ × ℕ)) (rk : ℤ) (n : ℕ) : ℤ :=
+  if n = 0 then rk else rk * (-24 * sigma n) - 24 * (Ys.map fun p => f2kd p.1 p.2 n).sum
+
+theorem hmn_A3_printed : chi2YSer (yA 4) 3 5 = [3, -96, -288, -384, -576, -360] := by ...
+theorem hmn_k2_eq_moonshine : (chi2YSer (yA 2) 1 9).map (-2 * ·) = numer 9 := by ...
+theorem hmn_umbral_relation_3 :
+    (chi2YSer (yA 3) 2 6).map (4 * ·) = (thetaPsiF 6 3).map (2 * ·) := by ...
+\end{leancode}
+(\lean{DualScaleMoonshine/HMNBridge.lean}.) \textbf{Reading.} The first theorem reproduces
+HMN's printed $A_3$ series; the second says the $k=2$ index times $-2$ is the moonshine
+numerator; the third is \eqref{eq:moonshinecomputed:umbral} for $\ell=3$ through $q^6$, with
+the umbral side built from theta functions (the other lambencies have their own theorems).
+The divisibility statements \lean{divisible\_of\_dvd\_24}, \lean{A\_divisible\_iff} and
+\lean{D\_divisible\_iff} are ordinary proofs quantified over all $n$ and all $k$ (resp.\
+$j$); their statements use the divisibility sign of Lean, which this book's fonts do not
+typeset, so we give them in words: if $\mathrm{rk}\mid24$ then $\mathrm{rk}$ divides every
+coefficient; for $A_{k-1}$ ($k\ge2$) and $D_{j+1}$ ($j\ge3$), all coefficients are divisible
+by the rank if and only if the rank divides $24$. \textbf{Tier} \TA; the physical meaning
+of $\chi_2^Y$ is \TL.
+\end{leanbox}
+
+\begin{remark}[What the checks cost]
+Exactness is not free. The heaviest file, the little-string bridge, takes about a quarter of
+an hour of kernel time: the products of eta quotients and the sixteen-fold Newton
+recursions are evaluated on integers, with no floating point anywhere. Three theorems in it
+use \lean{decide +kernel}, which skips the elaborator's own evaluation and lets the kernel
+do the arithmetic directly; this adds no axiom and is not the compiled evaluation that the
+project's rules forbid. A reader who wants to reproduce a single column should compute it
+with the recursion \eqref{eq:moonshinecomputed:div} in any language: the numbers are small.
+\end{remark}
+
+\begin{center}\small
+\begin{tabular}{p{7.3cm}ll}
+\hline
+Claim & Tier & Where\\ \hline
+$H$ from $(-2E_2+48F_2)/\eta^3$ equals $2A_n$, $n\le9$ & \TA & \lean{hComputed\_eq\_table}\\
+$21$ twined columns equal CDH Table~20 through $q^9$ & \TA & \lean{twined\_2A}, \dots\\
+traces $=$ twined coefficients, all classes, $n\le7$ & \TA & \lean{trace\_eq\_twined\_coeff\_all}\\[2pt]
+$K_0,\dots,K_9$ decompose as CDH Table~48 & \TA & \lean{moonshine\_modules\_decompose}\\
+$27720$ lock fails twining at $25$ classes & \TA & \lean{ratio\_fails\_at\_every\_class}\\
+$Z(\tau,0)=24=$ polar multiplicity; $23,25$ fail & \TA & \lean{decomposition\_pins\_chi}\\
+little-string index $=$ umbral form, $\ell\le13$ & \TA & \lean{hmn\_umbral\_relation\_3}\\
+divisibility iff $\mathrm{rk}\mid24$ ($A$, $D$) & \TA & \lean{A\_divisible\_iff}\\
+$H$ is mock modular with shadow $24\eta^3$ & \TL & CDH, HMN\\
+$\Mtf$ acts on a module with these traces & \TL & Gannon (via CDH)\\
+$24$ in \eqref{eq:moonshinecomputed:chi2Y} is $\chi(\mathrm{K3})$ & \TC & ---\\
+reflection bridge to Stream~2 & not available & \cref{sec:moonshinecomputed:hmn}\\ \hline
+\end{tabular}
+\end{center}
+
+\begin{summarybox}
+\begin{itemize}[leftmargin=*]
+\item Truncated $q$-series are finite lists of integers; products and quotients by series
+  with constant term $1$ are exact, so identities through $q^N$ are decidable.
+\item $q^{1/8}H=(-2E_2+48F_2)/\prod(1-q^n)^3=-2+90q+462q^2+1540q^3+\dots$ reproduces
+  $2A_1,\dots,2A_9$; the twined $H_g=\frac{\chi_g}{24}H+F_g/\eta^3$ reproduces all $21$ columns
+  of CDH's table, including those needing newforms.
+\item The character table over $\Z[b_7],\Z[b_{15}],\Z[b_{23}]$ is guarded by orthogonality
+  and the class equation (up to relabelling); traces equal computed coefficients at every
+  class, and $K_0,\dots,K_9$ decompose with the printed multiplicities.
+\item Forger's test: the $27720$ lock fails at all $25$ non-identity classes; the $24$
+  twines into the character of $\mathbf1\oplus\mathbf{23}$.
+\item $Z(\tau,0)=24$ and the polar multiplicity of the elliptic genus are the same integer,
+  and only $24$ works; the shadow statement itself is \TL.
+\item HMN's little-string index reproduces Mathieu moonshine at $k=2$ and umbral moonshine
+  for $\ell=3,4,5,7,13$; its coefficients are divisible by $\mathrm{rk}(Y)$ iff
+  $\mathrm{rk}(Y)\mid24$, for elementary reasons; the reflection bridge is not available.
+\end{itemize}
+\end{summarybox}
+
+\section*{Exercises}
+\addcontentsline{toc}{section}{Exercises}
+
+\begin{exercise}[$\star$]\label{exo:moonshinecomputed:h4}
+Continue the recursion of \cref{sec:moonshinecomputed:worked} to $q^4$. You need
+$[q^4]F_2=1$, $\sigma_1(4)=7$ and $p_4=0$. Check that you obtain $2A_4=4554$.
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{exo:moonshinecomputed:2Aq2}
+For the class $2A$, compute $[q^2]$ of $24H_{2A}$ from $8s+24F_{2A}$ and the recursion,
+and verify that $[q^{15/8}]H_{2A}=14=2\chi_{\mathbf{231}}(2A)$.
+\end{exercise}
+
+\begin{exercise}[$\star$]\label{exo:moonshinecomputed:lock}
+Show that the literal lock $A_2(g)\cdot60=4A_1(g)\cdot77$ fails at $3A$, using
+$A_1(3A)=0$, $A_2(3A)=-3$ (half the entries $0,-6$ of CDH's $3A$ column). Why is the ratio
+form of the lock the fairer test?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exo:moonshinecomputed:b7}
+Verify $b_7^2=-b_7-2$ and $b_7\overline{b_7}=2$ from the definition, and show that the
+rule $(a,b)\cdot(c,d)=(ac-kbd,\ ad+bc-bd)$ with $k=(n+1)/4$ is multiplication in
+$\Z[b_n]$. Why is $\Z[b_n]$ closed under complex conjugation?
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exo:moonshinecomputed:A7}
+Show that $10395+2\cdot5796+5544+3312=30843=A_7$, so the older proposal has the right
+dimension. Using the $2A$ column of the character table, compute the trace of $2A$ on the
+doubled module and compare with $[q^{55/8}]H_{2A}=-138$.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exo:moonshinecomputed:D4}
+For $Y=D_4$ ($m=6$, $j=3$) compute $F_2^{(6,1)}(1)$ and $F_2^{(6,3)}(1)$ from
+\eqref{eq:moonshinecomputed:chi2Y}, and verify $[q^1]\chi_2^{D_4}=-72$. Is it divisible by
+$\mathrm{rk}(D_4)=4$? Repeat for $D_5$ and explain the difference.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exo:moonshinecomputed:lean1}
+In Lean, state and prove by \lean{decide} that the level-$9$ multiplicities of
+\lean{table48} sum, weighted by the dimensions in \lean{chi1A}, to $2A_9=265650$. Which
+theorem of this chapter makes your statement redundant, and why is it still a useful
+check on the transcription of Table~48?
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]\label{exo:moonshinecomputed:lean2}
+Write a Lean definition of the ratio relation for an arbitrary pair of levels $(a,b)$ and
+prove, by \lean{decide} on \lean{computedSeries}, that $A_3(g)/A_1(g)=A_3/A_1$ also fails at
+some class. Then formulate a relation between the $A_n$ that \emph{does} survive twining at
+every class (hint: a decomposition of $K_6$) and prove it.
+\end{exercise}
+
+\begin{exercise}[$\star\star$]\label{exo:moonshinecomputed:etaq}
+Check that the eta quotient $-2\eta(\tau)^8/\eta(2\tau)^4$ of the class $2B$
+\source{CDH Table~3, ll.~2882--2915} satisfies $24\mid\sum_kke_k$, and compute its first two
+coefficients from \eqref{eq:moonshinecomputed:etaq}. Compare with $24\Lambda_2-8\Lambda_4$,
+the other form in which CDH print the same $F_{2B}$.
+\end{exercise}
+
+\begin{exercise}[$\star\star\star$]\label{exo:moonshinecomputed:shadow}
+Clear the denominators in \eqref{eq:moonshinecomputed:polar} for $m=2$: with
+$E=\prod(1-q^n)$, $B_1=\prod(1-yq^n)(1-y^{-1}q^n)$ and $B_2=\prod(1-y^2q^n)(1-y^{-2}q^n)$,
+show that $\Psi_{1,1}=\frac{y+1}{y-1}\,E^2B_2/B_1^2$, and check the first two coefficients
+$(y+1)/(y-1)-(y^2-y^{-2})q$ against \source{CDH eq.~(2.20), ll.~670--675}.
+\end{exercise}
+
+\section*{Further reading}
+\addcontentsline{toc}{section}{Further reading}
+\begin{itemize}[leftmargin=*]
+\item The closed formula for $H$: \source{CH eqs.~(3.5)--(3.6), ll.~797--815}; the
+  twined series, the forms $F_g$, the twisted Euler characters and the printed columns:
+  \source{CDH eq.~(4.18), ll.~2931--2936}, \source{CDH Table~3, ll.~2882--2915},
+  \source{CDH Table~14, ll.~4349--4364}, \source{CDH Table~20, ll.~4494--4512}; the
+  newforms: \source{CDH App.~A, ll.~4100--4137}.
+\item The character table and the decompositions: \source{CDH Table~8, ll.~4170--4209},
+  \source{CDH Table~48, ll.~5305--5330}; the level-$7$ discussion: \source{Cheng,
+  ll.~533--549}.
+\item Meromorphic Jacobi forms, polar and finite parts, and the shadow:
+  \source{CDH §2.3, ll.~657--768}; the umbral Jacobi forms: \source{CDH §2.5,
+  ll.~1258--1397}; the shadow $24\eta^3$ and the mixed mock form $\eta^3H$:
+  \source{HMN §1, ll.~244--270}.
+\item The little-string index, its ADE combinations and the umbral relation:
+  \source{HMN §2.1--2.2, ll.~587--736}, \source{HMN §4, ll.~1179--1300}.
+\item The observation, twining genera and the older decompositions are in
+  \cref{ch:moonshine}; the group $\Mtf$ in \cref{ch:m24}; the elliptic genus and its
+  characters in \cref{ch:ellgenus}; the dyon partition function built from the same
+  elliptic genus in \cref{ch:dyons}. The project record is
+  \texttt{docs/STREAM4\_WORKFLOW.md}.
+\end{itemize}

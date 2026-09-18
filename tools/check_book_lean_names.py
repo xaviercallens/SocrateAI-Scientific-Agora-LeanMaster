@@ -60,7 +60,8 @@ for line in (ROOT / "papers/book/generated/lean_name_allowlist.tsv").read_text()
 # declaration, and each one actually cited is then verified by Lean under its fully qualified name.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from axiom_audit import qualified_names
-SRC_LIBS = ["DualScaleStream2", "StringTheoryFormalization", "DualScaleCosmology", "DualScaleM24Formalization"]
+SRC_LIBS = ["DualScaleStream2", "StringTheoryFormalization", "DualScaleCosmology", "DualScaleM24Formalization",
+            "DualScaleMoonshine", "DualScaleDyons"]
 src_tails = {}
 for lib in SRC_LIBS:
     for f in (ROOT / lib).rglob("*.lean"):
@@ -77,13 +78,18 @@ unresolved += [q for q in SRC_VERIFY if q not in unresolved]
 unresolved += sorted({t for t in ALLOW.values() if t != "-"} - set(unresolved))
 # Everything not in the project's own dump goes to Lean itself (Mathlib and core names, namespaces).
 import subprocess, tempfile
-IMPORTS = ["Mathlib", "DualScaleStream2", "StringTheoryFormalization", "DualScaleCosmology", "DualScaleM24Formalization"]
-PRELUDE = "".join(f"import {m}\n" for m in IMPORTS) + "open Matrix\n"  # quoted code uses `open Matrix`
+IMPORTS = ["Mathlib", "DualScaleStream2", "StringTheoryFormalization", "DualScaleCosmology", "DualScaleM24Formalization",
+           "DualScaleMoonshine", "DualScaleDyons"]
+PRELUDE = "".join(f"import {m}\n" for m in IMPORTS) + "open Matrix\nopen DualScaleCosmology DualScaleMoonshine DualScaleDyons\nopen DualScaleCosmology.Stream6Verdict DualScaleCosmology.Stream7CA DualScaleCosmology.Stream7CB\n"  # quoted code uses `open Matrix`; chapters 39-41 cite names relative to these namespaces
 probe = PRELUDE + "".join(
     f"#check @{n}\n" for n in unresolved)
 with tempfile.NamedTemporaryFile("w", suffix=".lean", delete=False, dir=ROOT / ".leancache") as fh:
     fh.write(probe)
-out = subprocess.run(["lake", "env", "lean", fh.name], cwd=ROOT, capture_output=True, text=True).stdout
+out = subprocess.run(["lake", "env", "lean", "-DmaxErrors=1000000", fh.name], cwd=ROOT, capture_output=True,
+                     text=True).stdout
+# Lean stops reporting after `maxErrors` errors; every name after that point would silently pass.
+if "maximum number of errors" in out:
+    sys.exit("check_book_lean_names: Lean hit maxErrors in the probe; the result would be incomplete")
 Path(fh.name).unlink()
 bad_lines = {int(m.group(1)) for m in re.finditer(r":(\d+):\d+: error", out)}
 unknown = {n for i, n in enumerate(unresolved, start=PRELUDE.count("\n") + 1) if i in bad_lines}
@@ -92,7 +98,8 @@ bad_targets = sorted(t for t in unknown if t in set(ALLOW.values()) or t in set(
 prefixes = {".".join(n.split(".")[:k]) for n in full for k in range(1, len(n.split(".")))}
 # a module path (file under a first-party library) is a legitimate thing to name in prose
 LIBS = ["DualScaleStream2", "StringTheoryFormalization", "StringTheoryFoundation", "DualScaleM24Formalization",
-        "DoubleFieldTheory", "DualScaleValidation", "Lean5Corpus", "DualScaleCosmology"]
+        "DoubleFieldTheory", "DualScaleValidation", "Lean5Corpus", "DualScaleCosmology", "DualScaleMoonshine",
+        "DualScaleDyons"]
 modules = set(LIBS)
 for lib in LIBS:
     for f in (ROOT / lib).rglob("*.lean"):

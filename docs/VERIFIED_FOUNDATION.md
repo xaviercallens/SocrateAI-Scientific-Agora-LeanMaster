@@ -111,7 +111,17 @@ MVV's neutron-star bound (`44 μm`): **excluded** by the pre-registered rule; th
 **`v3.16.0` (2026-09-18): Stream 7, candidate C-B.** `DualScaleCosmology/Stream7CB.lean` (5 theorems): frozen C-B (tag
 `stream7-cb-frozen`, before any sensitivity was pinned) — pre-big-bang relic gravitons with `α' = s²`: `g₁² ≈ 1.2 × 10⁻⁶¹`,
 spectrum ending at `≈ 6 × 10⁻⁵ Hz` with peak `Ω ≈ 10⁻⁶⁵`; LISA (`1702_00786.txt` ll. 692–699) cannot reach it: **not
-falsifiable in practice**. `DualScaleCosmology` 50 theorems, 0 failing. Total audited: **621**. `v3.16.1`: two C-B
+falsifiable in practice**. `DualScaleCosmology` 50 theorems, 0 failing. Total audited: **621**.
+
+**Book name checker — a latent bug found and fixed (2026-09-18).** `tools/check_book_lean_names.py` sends every
+name it cannot resolve locally to Lean in one probe file. Lean stops reporting after `maxErrors` (default 100)
+errors, so **every name after the 100th error in the probe passed silently**; earlier "0 unknown to Lean"
+reports were therefore incomplete for books whose probe exceeded 100 errors. Fix: the probe now runs with
+`-DmaxErrors=1000000` and the tool aborts if Lean reports hitting the limit; chapters 39–41 and the Streams 4–5
+libraries were added to its scope. After the fix it flagged 51 names; triage found **no name presented as a real
+library result that does not exist** (all were exercise/hypothetical names, tactics, options, versions, files,
+locals, or real declarations cited by short names); 45 allowlist entries with reasons were added, 7 of them with a
+target that the tool verifies with `#check`. Negative controls (a bogus name appended to a chapter) are flagged. `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 

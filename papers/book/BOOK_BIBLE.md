@@ -93,7 +93,8 @@ AMN = aldazabal_marques_nunez_dft_review_1305_1907 · Asp = aspinwall_hep-th_961
 DRS = dasgupta_rajesh_sethi_hep-th_9908088 · GVW = gukov_vafa_witten_hep-th_9906070 · SVW = sethi_vafa_witten_hep-th_9606122 ·
 BB = becker_becker_eightfolds_hep-th_9605053 · GKP = giddings_kachru_polchinski_hep-th_0105097 · Gra = grana_flux_compactifications_hep-th_0509003 ·
 Pal = palti_swampland_1903_06239 · EOT = eguchi_ooguri_tachikawa_1004_0956 · GHV = gaberdiel_hohenegger_volpato_mathieu_1006_0221 ·
-BW = battefeld_watson_string_gas_hep-th_0510022. Project documents: `docs/STREAM2_WORKFLOW.md`, `LL.md`,
+BW = battefeld_watson_string_gas_hep-th_0510022 · CDH = 1204_2779 · CH = 1406_0619 · HMN = 1410_6174 · DMZ = 1208_4074 · Cheng = 1005_5415 ·
+GV = gasperini_veneziano_pbb_hep-th_0207130 · LISA = 1702_00786 · EW = 2002_11761 · MVV = 2205_12293 · CKN = hep-th_9803132. Project documents: `docs/STREAM2_WORKFLOW.md`, `LL.md`,
 `docs/PAPER_REVISION_BRIEF_2026_09_17.md`, `papers/book/generated/atlas.md`.
 
 ## 7. Chapter labels

@@ -56,6 +56,7 @@ Every PDF here is hash-pinned at fetch time. `.txt` files are `pdftotext` extrac
 | 1511_06978.pdf | 1511.06978 | Do All BPS Black Hole Microstates Carry Zero Angular Momentum? | A. Chowdhury, R.S. Garavuso, S. Mondal, A. Sen | 2015 | d865cfc2291b68b8abbc9ba6fa5fe28342d1c8f100d7d20846c222c459ad4a01 | yes | Community roadmap (added 2026-09-18): single-centred microstates: explicit D-brane tests |
 | 2206_07071.pdf | 2206.07071 | The Dark Dimension, the Swampland, and the Dark Matter Fraction Composed of Primordial Black Holes | L. Anchordoqui, I. Antoniadis, D. Lust | 2022 | 2a699b877909fc18b198c3b40716aa35b80a61e893a150817cb0fb9492874af0 | yes | Community roadmap (added 2026-09-18): phenomenology of the micron-scale dark dimension (the live neighbour of excluded P1) |
 | 2405_08863.pdf | 2405.08863 | HepLean: Digitalising high energy physics | J. Tooby-Smith | 2024 | d54baf78ed823590a8a6c2d1d635bc548fa902b9abfd384d647c1ff7934ff72b | yes | Community roadmap (added 2026-09-18): Lean 4 library for high-energy physics: the natural home/partner for this repo's physics formalization |
+| hep-th_9807087.pdf | hep-th/9807087 | Arithmetic and Attractors | G. Moore | 1998 | 174138260dcc3e89bd2ad6265bde7529c66f3580902512090460783ec17f6481 | yes | Stream 8 (added 2026-09-18): K3 × T² attractor points; discriminant controls horizon area (ll. 1150–1160); N(D) = h(D) for primitive charges (3.17), N(D) = Σ_m h(D/m²) in general (3.18) (ll. 1250–1262); attractive = singular K3 (ll. 1410–1425) |
 
 ## Not downloaded (journal-only, cite by reference)
 
