@@ -137,7 +137,9 @@ not formalized.
 
 **E2 ∩ E3 (Tier L).** The K3 selected in E2, `X₃` with `T(X₃) = A₂` (form `(1,1,1)`), is by Shioda–Inose a double
 cover of the Kummer surface of `E₁ × E₂` with `τ₁ = (−1 + √−3)/2 = ω`, `τ₂ = (1 + √−3)/2 = ω + 1` (Huybrechts Remark
-3.22, ll. 13684–13687): the two experiments land on the same torus. On the same ray the Kummer K3 itself is the
+3.22, ll. 13684–13687), and `ω + 1 ≅ ω` under `SL(2, ℤ)`, so `E₂ ≅ E₁ = E_ω`: the two experiments land on the same
+value of `τ`. The tori are distinct objects — the compactification factor `T²` (E2) and the abelian surface underlying
+the Shioda–Inose cover (E3); only their complex structure coincides. On the same ray the Kummer K3 itself is the
 attractive surface with `T = A₂(2)` (Kummer iff `T = T'(2)`, Huybrechts Remark 3.24 and ll. 13643–13644), form `(2,2,2)`,
 `D = 12` — `first_kummer_attractive`.
 
