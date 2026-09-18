@@ -228,7 +228,7 @@ $\operatorname{tr}G+\operatorname{tr}G^{-1}\ge2d$~\cite{Callens2026Paper8} to th
 An earlier commit of this work stated CKN's eq.~(2) as $L^3\Lambda^4\le M_P^2$. This compiled as
 valid Lean and was reported, correctly, as Tier~A --- but it is \emph{dimensionally
 inconsistent} ($[L^3\Lambda^4]=\mathrm{GeV}$, $[M_P^2]=\mathrm{GeV}^2$) and therefore not what the
-paper says. The kernel cannot catch a false Tier~L citation; only a human re-reading the source
+paper says. The kernel cannot catch a false Tier~L citation; only someone re-reading the source
 can. The error was found not by re-reading in the abstract, but by trying to \emph{use} the
 statement for the numeric test of \Cref{sec:falsify} and finding the units did not close.
 Re-extracting the source with \texttt{pdftotext~-layout} (rather than trusting the first,
@@ -525,7 +525,8 @@ service and launched a user-level server pointing at an empty model directory, w
 crash-looped on a port conflict for roughly two hours; the \texttt{/api/tags} check that appeared
 to confirm the models was run \emph{before} the restart, not after. No result in this paper depends
 on the local prover having been available during that window, because every Stream~3 goal through
-\Cref{sec:towers} was closed by the human orchestrator directly. The error was found only when a
+\Cref{sec:towers} was closed by the orchestrating model directly (the orchestrator in this
+programme is a model working under the author's direction, not a human checking each step). The error was found only when a
 later prover invocation returned \texttt{HTTP~404} for every attempt in four seconds --- an
 implausibly fast failure for a model that should take over a minute to cold-load. \textbf{Lesson:}
 a status check taken before an action is not evidence about the state after it, and a suspiciously
@@ -665,7 +666,7 @@ python3 tools/axiom\_audit.py DualScaleCosmology
 \end{center}
 reports \textbf{31 theorems, 0 failing}, every declaration's axiom footprint limited to
 \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}. Across all eight libraries in
-this repository: \textbf{456 theorems, 0 failing}.
+this repository: \textbf{457 theorems, 0 failing} (release \texttt{v3.6.0}, which added one theorem to Stream~2).
 
 \subsection{Statement lock}
 \begin{center}

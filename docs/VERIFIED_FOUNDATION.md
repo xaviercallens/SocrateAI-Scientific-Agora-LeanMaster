@@ -17,16 +17,22 @@ in 7 files. Total audited: **425 + 31 = 456 theorems**.
 figure caption in papers 1/7/8, book chapter 38, and `tools/check_book_lean_names.py`. Every gate result above
 applies unchanged.
 
+**`v3.6.0` (2026-09-18): one theorem added to `DualScaleStream2`**, `dualScale_eq_iff` (uniqueness of the
+dual-scale minimizer), in response to an external review recorded in `docs/reviews/`. Gates re-run on that
+tree: eight-library build 3781 jobs, 0 errors; `DualScaleStream2` audit 100 theorems, 0 failing; statement
+lock reported exactly one change (`ADDED dualScale_eq_iff`) before it was locked. Total audited: **457**.
+Earlier paragraphs above record the counts at their own dates (99 / 425 / 456) and are left as written.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) |
 |---|---|---|---|---|
 | `lake build <lib>` | 3670 jobs, 0 errors | 3296 jobs, 0 errors | 61 jobs, 0 errors | built with all eight: 3781 jobs, 0 errors |
 | `sorry` in source | 0 | 0 | 0 | 0 (also no `admit`, `native_decide`, `axiom`) |
-| `tools/axiom_audit.py` | 99 theorems, 0 failing | 89 theorems, 0 failing | 23 + 53 + 44 + 56 + 61 = 237 theorems, 0 failing | 31 theorems, 0 failing |
-| `tools/statement_lock.py --check` | OK (150 declarations) | locked 2026-09-17 (205 declarations) | not locked | OK (44 declarations, 7 files) |
+| `tools/axiom_audit.py` | 100 theorems, 0 failing | 89 theorems, 0 failing | 23 + 53 + 44 + 56 + 61 = 237 theorems, 0 failing | 31 theorems, 0 failing |
+| `tools/statement_lock.py --check` | OK (151 declarations) | locked 2026-09-17 (205 declarations) | not locked | OK (44 declarations, 7 files) |
 
 "0 failing" means: every theorem depends on no axioms beyond `propext`, `Classical.choice`, `Quot.sound`
-(no `sorryAx`, no `native_decide`/`Lean.ofReduceBool`). Total audited: 99 + 326 + 31 = 456 theorems.
+(no `sorryAx`, no `native_decide`/`Lean.ofReduceBool`). Total audited: 100 + 326 + 31 = 457 theorems.
 
 **Downstream use is tested**: `examples/consumer_demo/` is a separate Lake project that `require`s this
 package, imports `DualScaleStream2` and `StringTheoryFormalization`, and proves a new statement from
@@ -43,7 +49,8 @@ package, imports `DualScaleStream2` and `StringTheoryFormalization`, and proves 
   from the Gram matrices. (Positive definiteness of `E8` is proved separately: `cartanE8_posDef`.)
 * **One-direction results stay one-direction**: `thetaShift_isODD` (antisymmetric Θ ⇒ O(d,d), not ⇔);
   `basisChange_comm_thetaShift` (det A = 1 ⇒ commute; the converse was only checked symbolically);
-  `dualScale_one` (bound attained at G = 1; uniqueness of the minimizer is not formalized);
+  `dualScale_one` (bound attained at G = 1) — uniqueness of the minimizer *was* one-directional until
+  `v3.6.0`, and is now proved as `dualScale_eq_iff` (at B = 0 only; nothing is proved for B ≠ 0);
   generation of O(d,d;ℤ) by the exhibited elements is Tier L (GPR), not proved.
 * **Depth differs by library**: `DualScaleStream2` and much of `StringTheoryFormalization` are genuine linear
   algebra over ℤ/ℝ with Mathlib. The five Mathlib-free libraries model physical quantities by integers or
@@ -219,6 +226,10 @@ package, imports `DualScaleStream2` and `StringTheoryFormalization`, and proves 
 * **`DualScaleStream2.DualScale.circle_effective_scale_ge_two`**  
   `∀ (R : ℝ), 0 < R → 2 ≤ R + R⁻¹`  
   axioms: Classical.choice, Quot.sound, propext
+
+* **`DualScaleStream2.DualScale.dualScale_eq_iff`** (added `v3.6.0`)  
+  `∀ {d : ℕ} (G : Matrix (Fin d) (Fin d) ℝ), G.PosDef → (DualScaleStream2.DualScale.dualScale G = 2 * ↑d ↔ G = 1)`  
+  axioms: propext, Classical.choice, Quot.sound
 
 ### `DualScaleStream2.Flux.Tadpole`
 

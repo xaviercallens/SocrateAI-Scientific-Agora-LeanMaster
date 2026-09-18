@@ -139,8 +139,9 @@ We can now state the thesis in the form in which the rest of the chapter examine
  $R_{\rm eff}(R)\ge2\sqrt{\ap}$, with equality only at $R=\sqrt{\ap}$. For every positive
  definite $d\times d$ matrix $G$, $\Tr G+\Tr G^{-1}\ge2d$, with equality only at $G=\mathbf1$,
  and $\Tr G^{-1}+\Tr(G^{-1})^{-1}=\Tr G+\Tr G^{-1}$. The inequalities and the invariance are
- \TA{} (\cref{sec:dualscale:lean}); the uniqueness statements are proved by hand below and not
- formalized.
+ \TA{} (\cref{sec:dualscale:lean}). Uniqueness of the matrix minimizer is proved by hand below and,
+ since September 2026, also in Lean (\lean{dualScale\_eq\_iff}, \TA); the other uniqueness statements
+ of this chapter are by hand only.
 \item[(L)] \textbf{Literature.} A closed string cannot distinguish $R$ from $\ap/R$, so that
  ``a small compactification radius is completely equivalent to a very large one'', which GPR
  read as ``the existence of a minimal length in string theory'' \source{GPR §2.2,
@@ -416,9 +417,14 @@ No eigenvalue is computed in the second proof. Its ingredients are: the algebra 
 \eqref{eq:dualscale:sandwich}, the facts that the inverse of a positive definite matrix is
 positive semidefinite and that sandwiches preserve positive semidefiniteness, and the
 nonnegativity of the trace of a positive semidefinite matrix. Each of these is a lemma in
-Mathlib, and \cref{sec:dualscale:lean} shows the proof assembled from them. The uniqueness
-paragraph is \emph{not} part of the formalized statement: Lean proves the inequality and,
-separately, that the value $2d$ is attained at $G=\mathbf1$.
+Mathlib, and \cref{sec:dualscale:lean} shows the proof assembled from them. When this chapter
+was first written the uniqueness paragraph was not formalized: Lean proved the inequality and,
+separately, that the value $2d$ is attained at $G=\mathbf1$. It now also proves the converse,
+\lean{dualScale\_eq\_iff}: for positive definite $G$, $\Tr G+\Tr G^{-1}=2d$ if and only if
+$G=\mathbf1$. The Lean proof follows the paragraph above with one difference: where we used
+$2\times2$ minors to pass from zero trace to $S=0$, Lean calls Mathlib's
+\lean{Matrix.PosSemidef.trace\_eq\_zero\_iff}, which goes through the spectral theorem. So the
+inequality is still proved without eigenvalues, but the equality case, in Lean, is not.
 
 \begin{corollary}\label{thm:dualscale:corollaries}
 For positive definite $G$ and antisymmetric $B$:
@@ -1004,7 +1010,8 @@ integers: $L\tilde L=L_*^2$ symmetric; $-(-x)=x$; $R^2+1\ge2$ for $R\ge1$ &
 $\mathrm{Sym}^2$ coefficients for three integer instances; $-c_0=b^3$ &
  \lean{sym2\_fibonacci\_verification}, \lean{sym2\_det\_identity} & \TA{} (shadow)\\
 \midrule
-uniqueness of the minimizer; $B$-shifts increase $\Tr\HH$; the general $\mathrm{Sym}^2$ lemma &
+uniqueness of the minimizer at $B=0$ & \lean{dualScale\_eq\_iff} & \TA\\
+$B$-shifts increase $\Tr\HH$; the general $\mathrm{Sym}^2$ lemma &
  this chapter, by hand & ---\\
 $G$ is a torus metric; $\mathcal D$ is a physical size; singularity resolution &
  docstrings; \cref{ch:cosmology} & \TC\\
@@ -1037,8 +1044,8 @@ docstrings are not part of what was checked.
  $\propto R+1/R$ and is driven to the self-dual radius (BW).
 \item Lean (\TA, all $d$, over $\R$): \lean{dualScale\_eq}, \lean{dualScale\_inv},
  \lean{dualScale\_ge} (sandwich proof, no eigenvalues), \lean{dualScale\_one},
- \lean{dualScale\_circle}, \lean{circle\_effective\_scale\_ge\_two} (direct proof). Not
- formalized: uniqueness of the minimizer. Older modules are arithmetic shadows over
+ \lean{dualScale\_circle}, \lean{circle\_effective\_scale\_ge\_two} (direct proof), and
+ \lean{dualScale\_eq\_iff} (uniqueness of the minimizer, added after the first edition). Older modules are arithmetic shadows over
  $\N$, $\Z$, $\Q_{>0}$; in particular \lean{self\_dual\_is\_global\_minimum} proves
  $R^2+1\ge2$, not $R^2+1\ge2R$.
 \item The cosmological use of the bound (a minimal size, a bounce) is a proposal (\TC), whose

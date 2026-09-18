@@ -14,7 +14,8 @@ Tier A here, for every `d`:
 * `𝒟(G⁻¹) = 𝒟(G)` — invariance under the full T-duality;
 * `𝒟(G) ≥ 2d` for every positive-definite `G` — via `tr((G−1) G⁻¹ (G−1)) ≥ 0`, which
   expands to `tr G + tr G⁻¹ − 2d`; no eigenvalue decomposition needed;
-* the bound is attained at the self-dual point `G = 1`;
+* the bound is attained at the self-dual point `G = 1`, **and only there**: for positive-definite
+  `G`, `𝒟(G) = 2d ↔ G = 1` (`dualScale_eq_iff`, added 2026-09-18);
 * at `d = 1`, `G = R²`: `𝒟 = (R + 1/R)² − 2`, so the torus bound specializes to exactly the
   circle statement `R + 1/R ≥ 2` behind Stream 1's dual-scale principle.
 
@@ -69,6 +70,7 @@ different library — a related fact about self-duality, not a shared dependency
 -/
 import DualScaleStream2.DFT.GeneralizedMetric
 import Mathlib.LinearAlgebra.Matrix.PosDef
+import Mathlib.Analysis.Matrix.PosDef
 
 namespace DualScaleStream2.DualScale
 
@@ -150,6 +152,67 @@ theorem dualScale_one : dualScale (1 : Matrix (Fin d) (Fin d) ℝ) = 2 * d := by
   rw [dualScale_eq]
   simp [Matrix.trace_one, inv_one]
   ring
+
+/-- **The self-dual metric is the unique minimizer.** For positive-definite `G`, the dual-scale
+bound `𝒟(G) ≥ 2d` (`dualScale_ge`) is an equality **iff** `G = 1`.
+
+Added 2026-09-18. Until then this library proved attainment only (`dualScale_one`), and paper 8
+said so; an external review nevertheless read the bound as "minimized exactly at the self-dual
+point" (`docs/reviews/2026-09-18_external_review_paper8.md`). Rather than only correct the
+reading, this theorem makes it true.
+
+Proof idea: equality forces `tr((G−1) G⁻¹ (G−1)) = 0`; that matrix is positive semidefinite, and a
+positive-semidefinite matrix with zero trace is zero (`Matrix.PosSemidef.trace_eq_zero_iff`, which
+rests on the spectral theorem — the one place this file now uses eigenvalues, inside Mathlib). Then
+`xᵀ(G−1)ᵀ G⁻¹ (G−1)x = 0` for every `x`, and since `G⁻¹` is positive **definite** this forces
+`(G−1)x = 0` for every `x`, i.e. `G = 1`.
+
+Scope: a statement about real positive-definite matrices with `B = 0`. It says nothing about
+`B ≠ 0`, and it does not make `𝒟` the physically preferred measure of size (Tier C, as in the
+module docstring). -/
+theorem dualScale_eq_iff (G : Matrix (Fin d) (Fin d) ℝ) (hG : G.PosDef) :
+    dualScale G = 2 * d ↔ G = 1 := by
+  constructor
+  · intro h
+    rw [dualScale_eq] at h
+    have hdet : IsUnit G.det := G.isUnit_iff_isUnit_det.mp hG.isUnit
+    have hl : G⁻¹ * G = 1 := Matrix.nonsing_inv_mul G hdet
+    have hr : G * G⁻¹ = 1 := Matrix.mul_nonsing_inv G hdet
+    have hGinv : G⁻¹.PosDef := hG.inv
+    have hGT : Gᵀ = G := (Matrix.conjTranspose_eq_transpose_of_trivial G).symm.trans hG.isHermitian
+    have hMh : (G - 1)ᴴ = G - 1 := by
+      rw [Matrix.conjTranspose_eq_transpose_of_trivial, Matrix.transpose_sub,
+        Matrix.transpose_one, hGT]
+    have hpsd : ((G - 1)ᴴ * G⁻¹ * (G - 1)).PosSemidef :=
+      Matrix.PosSemidef.conjTranspose_mul_mul_same hGinv.posSemidef (G - 1)
+    have hexpand : (G - 1) * G⁻¹ * (G - 1) = (G - 1) - (1 - G⁻¹) := by
+      rw [Matrix.sub_mul, Matrix.one_mul, Matrix.sub_mul, Matrix.mul_sub, Matrix.mul_sub]
+      simp only [Matrix.mul_one]
+      rw [hr, hl, Matrix.one_mul]
+    -- equality in the bound says exactly that the sandwich has zero trace
+    have htr0 : ((G - 1)ᴴ * G⁻¹ * (G - 1)).trace = 0 := by
+      rw [hMh, hexpand, Matrix.trace_sub, Matrix.trace_sub, Matrix.trace_sub, Matrix.trace_one]
+      simp only [Fintype.card_fin]
+      linarith
+    -- a positive-semidefinite matrix with zero trace is zero
+    have hzero : (G - 1)ᴴ * G⁻¹ * (G - 1) = 0 := hpsd.trace_eq_zero_iff.mp htr0
+    -- G⁻¹ is positive definite, so Mᴴ G⁻¹ M = 0 forces M = 0
+    have hM : G - 1 = 0 := by
+      by_contra hne
+      obtain ⟨x, hx⟩ : ∃ x, (G - 1) *ᵥ x ≠ 0 := by
+        by_contra hall
+        push Not at hall
+        exact hne (Matrix.ext fun i j => by
+          have := congrFun (hall (Pi.single j 1)) i
+          simpa using this)
+      have hpos := hGinv.dotProduct_mulVec_pos hx
+      have hq : star ((G - 1) *ᵥ x) ⬝ᵥ (G⁻¹ *ᵥ ((G - 1) *ᵥ x))
+          = star x ⬝ᵥ (((G - 1)ᴴ * G⁻¹ * (G - 1)) *ᵥ x) := by
+        simp only [star_mulVec, dotProduct_mulVec, vecMul_vecMul, Matrix.mul_assoc]
+      rw [hq, hzero] at hpos
+      simp at hpos
+    exact sub_eq_zero.mp hM
+  · rintro rfl; exact dualScale_one
 
 /-- Circle case: `𝒟(R²) = (R + 1/R)² − 2`. -/
 theorem dualScale_circle (R : ℝ) (hR : R ≠ 0) :

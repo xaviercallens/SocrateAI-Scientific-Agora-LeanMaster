@@ -137,7 +137,7 @@ narrower, provable sub-statement, before the Lean gap can be.
 \begin{center}\small
 \begin{tabular}{@{}p{0.6cm}p{5.4cm}p{1.7cm}cp{4.6cm}@{}}\toprule
 \# & Project & Prereq. & Diff. & Mathlib / project state \\ \midrule
-6\label{ex:open:dualscale-unique} & Uniqueness of the dual-scale minimizer up to $O(d)$-conjugation & \cref{ch:dualscale} & $\star\star$ & \lean{dualScale\_ge}, \lean{dualScale\_one} exist; the equality case of the trace-of-a-PSD-sandwich argument is not extracted \\
+6\label{ex:open:dualscale-unique} & Uniqueness of the dual-scale minimizer up to $O(d)$-conjugation & \cref{ch:dualscale} & $\star\star$ & \textbf{closed after the first edition}: \lean{dualScale\_eq\_iff} proves $\mathcal D(G)=2d\iff G=\mathbf1$ for positive definite $G$ (the minimizer is $\mathbf1$ itself, so no conjugation freedom remains); prompted by an external review that had read the bound as already having a unique minimizer \\
 7 & Siegel--Narain theta function, modular transformation law & \cref{ch:narain} & $\star\star\star$ & Mathlib's modular-forms library covers weight-$k$ forms for $\SLZ$, not vector-valued or Siegel forms; a real gap \\
 8 & $A_n$ (EOT coefficients) positivity, extended past $n=2$ & \cref{ch:moonshine} & $\star$ & the existing decomposition theorems cover $A_1=45$, $A_2=231$; extending to $A_3,A_4,\dots$ needs the $M_{24}$ character table entries this project has not encoded \\
 9 & $A_n$ as a virtual $M_{24}$ character (i.e.\ $A_n=\sum_i m_i\chi_i$ with $m_i\in\Z$) & item 8 & $\star\star\star$ & needs the full 26-dimensional $M_{24}$ character table; \lean{M24RepDim} covers only irrep dimensions, not characters \\

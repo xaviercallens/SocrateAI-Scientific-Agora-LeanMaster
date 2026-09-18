@@ -55,7 +55,24 @@ for line in (ROOT / "papers/book/generated/lean_name_allowlist.tsv").read_text()
     if line.strip() and not line.startswith("#"):
         name, target, _reason = line.split("\t")
         ALLOW[name] = target
-unresolved = sorted({n for s in per_file.values() for n in s if n not in full and n not in tails and n not in ALLOW})
+# The dependency dump can lag behind the sources (it is regenerated with the theorem atlas, not on every
+# commit). Theorems declared in the sources but missing from the dump are resolved through their source
+# declaration, and each one actually cited is then verified by Lean under its fully qualified name.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from axiom_audit import qualified_names
+SRC_LIBS = ["DualScaleStream2", "StringTheoryFormalization", "DualScaleCosmology", "DualScaleM24Formalization"]
+src_tails = {}
+for lib in SRC_LIBS:
+    for f in (ROOT / lib).rglob("*.lean"):
+        for q in qualified_names(f):
+            if q not in full:
+                parts = q.split(".")
+                for i in range(len(parts)):
+                    src_tails.setdefault(".".join(parts[i:]), set()).add(q)
+mentions = {n for s_ in per_file.values() for n in s_}
+SRC_VERIFY = sorted({q for n in mentions if n in src_tails and n not in full and n not in tails for q in src_tails[n]})
+unresolved = sorted({n for n in mentions if n not in full and n not in tails and n not in ALLOW and n not in src_tails})
+unresolved += [q for q in SRC_VERIFY if q not in unresolved]
 # allowlisted names that claim a real target must have that target exist
 unresolved += sorted({t for t in ALLOW.values() if t != "-"} - set(unresolved))
 # Everything not in the project's own dump goes to Lean itself (Mathlib and core names, namespaces).
@@ -70,7 +87,7 @@ out = subprocess.run(["lake", "env", "lean", fh.name], cwd=ROOT, capture_output=
 Path(fh.name).unlink()
 bad_lines = {int(m.group(1)) for m in re.finditer(r":(\d+):\d+: error", out)}
 unknown = {n for i, n in enumerate(unresolved, start=PRELUDE.count("\n") + 1) if i in bad_lines}
-bad_targets = sorted(t for t in unknown if t in set(ALLOW.values()))
+bad_targets = sorted(t for t in unknown if t in set(ALLOW.values()) or t in set(SRC_VERIFY))
 # a namespace or module path is not a constant: accept prefixes of known names
 prefixes = {".".join(n.split(".")[:k]) for n in full for k in range(1, len(n.split(".")))}
 # a module path (file under a first-party library) is a legitimate thing to name in prose

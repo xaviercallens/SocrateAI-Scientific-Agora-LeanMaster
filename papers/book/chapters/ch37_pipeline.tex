@@ -648,8 +648,9 @@ with $P=G^{-1}$ positive-semidefinite; expanding that same trace with $G^{-1}G=G
 gives exactly $\Tr G+\Tr G^{-1}-2d$ \source{TraceBound.lean, ll.~105--143}. No eigenvalue
 of $G$ is ever computed, which is why the statement is genuinely $d$-independent and why
 T1 closed it in about six minutes once given this route \source{STREAM2\allowbreak\_WORKFLOW.md §6,
-final gate}. \textbf{Not proved.} That $G=1$ is the \emph{only} minimizer up to
-$O(d)$-conjugation (\cref{ex:open:dualscale-unique} of \cref{ch:open}); the physical
+final gate}. \textbf{Not proved at the time.} That $G=1$ is the \emph{only} minimizer
+(\cref{ex:open:dualscale-unique} of \cref{ch:open}); this was proved later, as
+\lean{dualScale\_eq\_iff}. The physical
 reading of $\mathcal D(G)$ as a minimal length is \TC. \TA
 \end{leanbox}
 

@@ -57,7 +57,7 @@ A Lean~4 Companion Formalization}
 \author{\textbf{Xavier Callens}$^{1}$ \and \textbf{SocrateAI Scientific Agora Collaboration}$^{1}$ \\[0.5em]
 $^{1}$\textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal Verification}}
 
-\date{September 2026}
+\date{Revision 2 --- September 18, 2026}
 
 \usepackage{graphicx}
 \graphicspath{{../book/generated/figures/}}
@@ -83,7 +83,7 @@ Hull--Zwiebach generalized metric of Double Field Theory and its $B$-field shift
 condition; a $d$-dimensional trace-bound generalization, $\operatorname{tr}G+\operatorname{tr}G^{-1}\ge 2d$,
 of the one-dimensional statement behind this research programme's ``dual-scale'' proposal; flux
 integrality and D-brane tadpole counting on $K3\times T^2$ and $K3\times K3$; and the arithmetic
-of the Eguchi--Ooguri--Tachikawa Mathieu-moonshine coefficients. All 99 theorems are accepted by
+of the Eguchi--Ooguri--Tachikawa Mathieu-moonshine coefficients. All 100 theorems are accepted by
 the Lean~4 kernel with zero \texttt{sorry} and an axiom footprint limited to Lean's three
 standard axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}). We state
 throughout, and repeat in a dedicated section, what this formalization does and does not
@@ -99,6 +99,30 @@ compilation were false and caught only because every claim was independently rec
 \newpage
 \tableofcontents
 \newpage
+
+\section*{Revision note (Revision 2, 2026-09-18)}
+An external review of the first version (recorded verbatim, with a point-by-point response, in
+\texttt{docs/reviews/} of the repository) was favourable but read several results as stronger than
+they were. This revision responds as follows.
+\begin{enumerate}
+  \item The review stated that the trace bound is ``minimized exactly at the self-dual point.'' The
+    first version proved attainment at $G=\mathbf 1_d$ only, and said so. \textbf{That gap is now
+    closed}: the new theorem \texttt{dualScale\_eq\_iff} proves
+    $\mathcal{D}(G)=2d\iff G=\mathbf 1_d$ for positive-definite $G$ (\Cref{sec:trace-bound}). The
+    library has 100 theorems, not 99.
+  \item The review called Tier~A ``absolute mathematical certainty'' and the library ``bulletproof,
+    bug-free.'' We do not accept either description; \Cref{sec:tiers} now states the trust base of
+    a Tier~A claim and adds these phrases to the list this paper does not use.
+  \item The review said false agent reports were ``caught 100\% of the time.'' That rate cannot be
+    known, and \Cref{sec:methods} now says why and what is guaranteed instead. It also described the
+    orchestrator as human; it was a model, working under the author's direction, as
+    \Cref{sec:methods} already stated.
+\end{enumerate}
+Three further readings in the review are corrected in the response document rather than here,
+because this paper already stated them correctly: the hyperbolic plane $U$ is indefinite, not
+definite (\Cref{sec:lattices}); the lattice signatures are bookkeeping on Tier~L inputs, not computed
+from Gram matrices; and the moonshine module checks an arithmetic coincidence, it does not validate
+the moonshine observation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
@@ -175,9 +199,19 @@ placements) that were verified with \texttt{sympy} \emph{before} the Lean statem
 as a sanity check on the formalization choice, and are explicitly \emph{not} Tier~A: a symbolic
 computer-algebra check is not a kernel proof, and this paper never cites one as if it were.
 
+\textbf{What a Tier~A claim rests on.} Tier~A is not ``absolute certainty.'' It is certainty
+\emph{relative to} a stated trust base: the soundness of Lean's type theory and the correctness of
+its kernel implementation at this version, the three standard axioms, the Mathlib definitions the
+statement is written in, and --- the part no kernel can check --- that the formal statement says what
+the prose next to it says. The last item is where every error this project has actually found
+occurred (a mistyped $M_{24}$ table, a \texttt{Nat}-truncated ``unique'' minimum, a source equation
+transcribed with the wrong exponent in a later library), and it is why statements are reviewed
+against their sources and then hash-locked (\Cref{app:repro}).
+
 \textbf{Forbidden phrasings.} Following \texttt{docs/PAPER\_REVISION\_BRIEF\_2026\_09\_17.md} \S0,
 this paper does not use the phrases ``zero axioms,'' ``100\% mathematical rigor,'' ``certifies
-stability,'' ``formalizes string theory,'' ``first fully certified,'' or ``all of physics.'' The
+stability,'' ``formalizes string theory,'' ``first fully certified,'' ``all of physics,''
+``absolute certainty,'' ``bulletproof,'' or ``bug-free.'' The
 correct form used throughout is: proved in Lean~4 with no axioms beyond Lean's three standard
 axioms, with the string-theoretic reading of each proved statement stated separately and tiered.
 
@@ -664,10 +698,19 @@ proved directly from $\operatorname{tr}\big((G-1)^{\mathsf T}G^{-1}(G-1)\big)\ge
 semi-definiteness of a conjugate of a positive-definite matrix), which expands to
 $\operatorname{tr}G+\operatorname{tr}G^{-1}-2d\ge0$ --- \emph{no eigenvalue decomposition of $G$
 is used}. The bound is attained at the self-dual metric $G=\mathbf 1_d$,
-$\mathcal{D}(\mathbf 1_d)=2d$ (\texttt{dualScale\_one}); \textbf{the Lean statement proves the
-lower bound and its attainment at $G=1$, not that $G=1$ is the unique minimizer} --- uniqueness of
-the minimizing metric is not claimed or proved here, and this paper does not write ``equality
-iff'' for this theorem. At $d=1$, $G=R^2$,
+$\mathcal{D}(\mathbf 1_d)=2d$ (\texttt{dualScale\_one}), \textbf{and only there}: for
+positive-definite $G$,
+\begin{equation}
+  \mathcal{D}(G)=2d \iff G=\mathbf 1_d \qquad(\texttt{dualScale\_eq\_iff}).
+\end{equation}
+The first version of this paper proved attainment only and declined to write ``equality iff''; the
+uniqueness half was added in Revision~2. Its proof: equality forces
+$\operatorname{tr}\big((G-1)^{\mathsf T}G^{-1}(G-1)\big)=0$; a positive-semidefinite matrix with zero
+trace is zero (Mathlib's \texttt{PosSemidef.trace\_eq\_zero\_iff}, which rests on the spectral
+theorem --- so, unlike \texttt{dualScale\_ge}, this half does use eigenvalues, inside Mathlib); and
+since $G^{-1}$ is positive \emph{definite}, $x^{\mathsf T}(G-1)^{\mathsf T}G^{-1}(G-1)x=0$ for all $x$
+forces $G=\mathbf 1_d$. This is a statement at $B=0$; nothing is proved about the minimizer once
+$B\ne0$. At $d=1$, $G=R^2$,
 \begin{equation}
   \mathcal{D}(R^2) = (R+R^{-1})^2-2 \qquad(\texttt{dualScale\_circle}),
 \end{equation}
@@ -698,7 +741,8 @@ in Stream~1 and paper~7.
 \texttt{dualScale\_eq} & A --- $\mathcal{D}(G)=\operatorname{tr}G+\operatorname{tr}G^{-1}$ \\
 \texttt{dualScale\_inv} & A --- $\mathcal{D}(G^{-1})=\mathcal{D}(G)$ \\
 \texttt{dualScale\_ge} & A --- $\mathcal{D}(G)\ge 2d$ for $G$ positive definite \\
-\texttt{dualScale\_one} & A --- bound attained at $G=\mathbf 1_d$ (attainment only, not uniqueness) \\
+\texttt{dualScale\_one} & A --- bound attained at $G=\mathbf 1_d$ \\
+\texttt{dualScale\_eq\_iff} & A --- $\mathcal{D}(G)=2d\iff G=\mathbf 1_d$, $G$ pos.\ def.\ (Rev.~2) \\
 \texttt{dualScale\_circle} & A --- $d=1$: $\mathcal{D}(R^2)=(R+R^{-1})^2-2$ \\
 \texttt{circle\_effective\_scale\_ge\_two} & A --- $R+R^{-1}\ge2$, real, for all $R>0$ \\
 Singularity resolution / minimum length & C --- physical reading, not proved \\
@@ -854,7 +898,7 @@ $M_{24}$ irreducible dimensions (eq.\,A.3); $M_{24}$ action on the genus & L ---
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{scopebox}
-\textbf{Is proved (Tier A, kernel-checked, 99 theorems, 0 \texttt{sorry}, standard axioms only):}
+\textbf{Is proved (Tier A, kernel-checked, 100 theorems, 0 \texttt{sorry}, standard axioms only):}
 exact integer/rational identities about explicit matrices --- unimodularity and
 positive-definiteness of $E_8$ and $E_8(-1)$; evenness, unimodularity, and a signature witness for
 $U$; signature and rank arithmetic for the K3, Mukai, and $K3\times T^2$ lattices, cross-checked
@@ -880,8 +924,9 @@ narrative); that the exhibited $O(d,d;\mathbb{Z})$ generators generate the full 
 Sylvester's law of inertia, the mod-8 theorem for even unimodular indefinite lattices, or the
 classification of $K3$ moduli space (all Tier~L, none re-derived); the converse directions of
 several ``if'' statements (\texttt{thetaShift\_isODD}, \texttt{basisChange\_comm\_thetaShift}) ---
-one of which was checked only symbolically (sympy) and is explicitly flagged as not Tier~A; that
-$G=1$ is the \emph{unique} minimizer of the dual-scale bound; invariance of the full string
+one of which was checked only symbolically (sympy) and is explicitly flagged as not Tier~A; the
+minimizer of the dual-scale bound once $B\ne0$ (uniqueness at $B=0$ is now proved,
+\texttt{dualScale\_eq\_iff}); invariance of the full string
 partition function under T-duality (only the discrete charge spectrum is matched); the existence
 of any actual flux configuration achieving a stated tadpole budget; and that the elliptic-genus
 coefficients carry a genuine $M_{24}$ \emph{action} rather than merely matching its representation
@@ -925,7 +970,7 @@ Full per-package tables are in \texttt{docs/STREAM2\_WORKFLOW.md} \S6; we summar
 here rather than re-deriving a single global percentage (the package-level goal counts there ---
 26, 23, 10, and 6 goals for the lattice/T-duality pilot, the P2.3/P2.4-core/P2.5/P2.6 batch, the
 P2.2 factorized-duality batch, and the dual-scale bound, respectively, summing to 65 of the
-project's 99 final theorems --- are reported \emph{per package}, not as a global tier table; the
+project's 99 theorems at the time of those runs --- are reported \emph{per package}, not as a global tier table; the
 remaining goals were closed in later rounds, described qualitatively rather than re-tabulated, on
 the mirror identity, section-condition, $SL(2,\mathbb{Z})$-product, $B$-shift, spectrum-equivalence,
 reflection, and flux-integrality modules). The qualitative pattern was consistent and, in the
@@ -944,6 +989,16 @@ target and emitted \texttt{sorry} scaffolds; this was recorded as a configuratio
 hardware's speed, not a capability verdict, and the model was dropped from routing.
 
 \subsection{Honest failures}
+The orchestrator throughout was a model (Opus) working under the author's direction, not a human
+checking each step. We report below the false success reports that the gate \emph{caught}. We make
+no claim about a detection rate: a misstatement the gate missed would, by construction, not appear in
+this list, so ``all were caught'' is not something this method can establish. What the design does
+guarantee is narrower and sufficient for Tier~A: no agent's report is ever counted, only a kernel
+recompilation is, so a false report of success cannot by itself put an unproved statement into the
+library. It gives no protection against a statement that compiles but says the wrong thing, which is
+why statement review is a separate step. Three incidents are also too few to support a general
+conclusion about language models and mathematics, and we draw none.
+
 Two Haiku agent reports misstated their own compile status and were caught only because the
 orchestrator recompiled every report before counting it (producer $\ne$ verifier, enforced, not
 merely stated): one claimed five clean \texttt{sorry} placeholders while actually leaving eight
@@ -1011,7 +1066,7 @@ build-system measurement, not a count of theorems.
 \footnotesize\ttfamily
 python3 tools/axiom\_audit.py DualScaleStream2
 \end{center}
-reports \textbf{99 theorems}, \textbf{0 failing}, with every declaration's axiom footprint limited
+reports \textbf{100 theorems}, \textbf{0 failing}, with every declaration's axiom footprint limited
 to \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound} --- Lean's three standard
 axioms, no custom axiom, and no \texttt{sorryAx} or \texttt{native\_decide} anywhere in the
 library. Stream~1 was re-gated in the same session for comparison: \texttt{lake build} 3353 jobs
