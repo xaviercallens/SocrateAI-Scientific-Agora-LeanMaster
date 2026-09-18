@@ -84,6 +84,17 @@ multiplicities over all 26 irreducibles). Gates: ten-library build 3797 jobs, 0 
 32 theorems, 0 failing (`propext` or none); statement lock 74 declarations in 4 files (pre-update check:
 only the two new files). Total audited: **587**.
 
+**`v3.13.0` (2026-09-18): Stream 5 phase P5.7 — `M₂₄`-twisted dyons; Stream 4 levels 8–9 closed.**
+`DualScaleDyons/TwistedDyons.lean`: the 26 twisted K3 elliptic genera `Z_g = (χ_g/24)Z − F_g·A` from Stream 4's
+data (integral, index 1, `Z_g(τ,0) = χ_g`); Cheng's twisted denominators `1/Φ_g` by the plethystic product
+with Newton's identities and CDH's power maps (untwisted case recovered; `z = 0` gives the twined Göttsche
+numbers); all coefficients of `G₁^{(g)}, G₂^{(g)}` and of the twisted single-centred counting function at
+`m = 1` are virtual characters of `M₂₄` (through `q²`). `DualScaleMoonshine/Decompositions.lean`: for
+`n = 0 … 9` the computed twined series decompose with integer multiplicities equal to CDH Table 48 (levels
+8, 9 were open in Stream 4); EOT's original level-7 proposal is inconsistent (Cheng). Gates: ten-library
+build 3799 jobs, 0 errors; `DualScaleMoonshine` 101 theorems, `DualScaleDyons` 42 theorems, 0 failing;
+statement locks: only the two new files added. Total audited: **600**.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |
 |---|---|---|---|---|---|

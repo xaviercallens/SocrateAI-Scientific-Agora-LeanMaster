@@ -146,6 +146,12 @@ structure enters through the Niemeier lattice `L_X` and its Weyl group `W_X` (`G
 numbers. Formalizing the Niemeier lattices `A_{ℓ−1}^{24/(ℓ−1)}` with their Weyl groups would be the
 prerequisite for such a bridge; it is recorded as open work, not attempted.
 
+**Addendum (`v3.13.0`, with Stream 5) — levels 8 and 9.** `Decompositions.lean` decomposes the computed
+twined series directly: for `n = 0 … 9` the inner products with all 26 irreducibles are integers, equal to
+CDH Table 48 and non-negative from `n = 1`, so levels 8 and 9 (for which EOT give no decomposition) are
+now covered too. EOT's original level-7 proposal `10395 + 2·5796 + 5544 + 3312` is inconsistent with the
+twined series, as Cheng observed; the decomposition used in `Characters.lean` is the consistent one.
+
 **P4.5 — the lock is numerology.** Paper 7's Theorem 6.1, `𝒜₂/(N_Q·𝒜₁) = 462/360 = 77/60` with product
 `27720`, holds at the identity, now from the computed series (`lock_at_identity`). Its twined version —
 the same ratio relation with each series' own coefficients — **fails at `2A`, `3A`, `5A`, `7AB`**

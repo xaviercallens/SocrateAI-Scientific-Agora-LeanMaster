@@ -9,3 +9,4 @@ import DualScaleMoonshine.TwiningAll
 import DualScaleMoonshine.CharactersAll
 import DualScaleMoonshine.Shadow
 import DualScaleMoonshine.HMNBridge
+import DualScaleMoonshine.Decompositions

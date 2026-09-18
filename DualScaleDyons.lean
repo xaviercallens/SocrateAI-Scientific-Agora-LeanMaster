@@ -5,3 +5,4 @@ import DualScaleDyons.DMVV
 import DualScaleDyons.Immortal
 import DualScaleDyons.ImmortalHigher
 import DualScaleDyons.TwinedHilbert
+import DualScaleDyons.TwistedDyons

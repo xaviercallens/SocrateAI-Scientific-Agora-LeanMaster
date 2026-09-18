@@ -1,7 +1,7 @@
 # Stream 5 Workflow — Dyons on K3 × T²: from the K3 elliptic genus to single-centred black holes
 
-**Status (2026-09-18, release `v3.12.0`):** P5.1–P5.6 closed (Tier A, 32 theorems, 0 failing,
-`propext` or no axiom; 74 declarations locked in 4 files); P5.7 open. Library `DualScaleDyons` (separate `lean_lib`, imports
+**Status (2026-09-18, release `v3.13.0`):** P5.1–P5.7 closed (Tier A, 42 theorems, 0 failing,
+`propext` or no axiom; locked in 5 files). No open phase; next directions in §10. Library `DualScaleDyons` (separate `lean_lib`, imports
 `DualScaleMoonshine` for its exact `q`-series with Laurent-polynomial coefficients). Rules are those of
 Streams 2–4: the kernel is the only accept gate; no citation from memory; ASCII identifiers; every
 printed number that is used is pinned to a file and line range.
@@ -35,7 +35,7 @@ dual-scale hypothesis `R ↔ α'/R` (refuted in Stream 3). Any reading in those 
 | **P5.4 Polar part** | the double pole of `ψ_m` at `z = 0` is removed by `p₂₄(m+1)·A₂,ₘ` and by no other multiple (`m = 1, 2, 3`); the Fourier expansion of `A₂,ₘ` in the strip `|q| < |y| < 1` equals DMZ (9.55) | DMZ (1.2)–(1.4), (9.4), (9.55), ll. 196–213, 3655–3700, 5199–5210 | ✅ `DMVV.lean` |
 | **P5.5 Immortal dyons, `m = 1`** | the single-centred counting function `∆ψ₁^F = ∆ψ₁ − 324·A₂,₁` equals `3E₄A − 648·H`, with `H` the generating function of Hurwitz class numbers, computed independently by counting reduced binary quadratic forms; DMZ's printed tables of Example 5 as transcription control | DMZ Example 5 (ll. 3530–3558), (9.8), (9.10) | ✅ `Immortal.lean` |
 | **P5.6 Higher `m`, twining test** | `m = 2, 3`: DMZ (9.11), (9.13) checked; immortal counting functions `= p₂₄(m+1)(−H|V_m) +` weak Jacobi forms; the twining test on `24` and the Göttsche numbers: traces on `H*(Hilbᵏ K3)`, `k ≤ 4`, are `M₂₄`-characters; Frame shapes vs power maps | DMZ (9.11)–(9.13); CDH Table 8 (power maps), Table 14 (Frame shapes) | ✅ `ImmortalHigher.lean`, `TwinedHilbert.lean` |
-| P5.7 Twined dyons | the `M₂₄`-twined (CHL-type) dyon partition functions `1/Φ_g` and their polar/finite split; requires pinning Cheng 1005.5415 or equivalent | — | ⬜ open |
+| **P5.7 Twisted dyons** | Cheng's twisted denominators `1/Φ_g` for all 26 classes from Stream 4's twisted genera and CDH's power maps; coefficients (including the twisted single-centred counts at `m = 1`) are virtual `M₂₄`-characters; Stream 4's levels 8–9 closed (CDH Table 48) | Cheng 1005.5415 (2.5)–(2.9), (3.9)–(3.11), ll. 533–549; CDH Table 48 | ✅ `TwistedDyons.lean`, `DualScaleMoonshine/Decompositions.lean` |
 
 ## 3. Reading notes (recorded, not corrections)
 * DMZ (1.4), l. 211, as printed, lists the terms `ℓ q^{(r²−ℓ²)/4m} y^r` with `r ≥ ℓ > 0` for the strip
@@ -98,3 +98,21 @@ product are exact; the pre-update check showed exactly these two ADDED). Heavy t
 Ten-library build 3797 jobs, 0 errors. `DualScaleDyons`: 32 theorems, 0 failing. Repository total 587.
 Statement lock: 74 declarations in 4 files (pre-update check: only `ImmortalHigher.lean` and
 `TwinedHilbert.lean` new).
+
+## 10. Results at `v3.13.0` (P5.7) and what next
+* **Twisted genera.** `Z_g = (χ_g/24)Z − F_g·A` for all 26 classes, integral, index 1 (`c_g` depends only on
+  `4n − l²`), `Z_g(τ,0) = χ_g`. (Cheng prints `c_g(−1) = −2` at l. 968; in the normalisation used here and
+  in his own (2.5), the coefficient of `y^{±1}q⁰` is `+2` — a sign convention, noted.)
+* **Twisted dyon partition functions.** Cheng's (3.10) by Newton's identities (exact divisions checked):
+  `g = 1A` recovers `dmvv`; at `z = 0` the `p`-coefficients are the twined Göttsche numbers (the `p`-side
+  of Cheng's factorisation (3.11)); every coefficient of `G₁^{(g)}, G₂^{(g)}` through `q²` is a virtual
+  character; for all 26 classes `T₂(g)·A₂,₁` removes the double pole, and the twisted single-centred
+  counting function at `m = 1` has virtual-character coefficients (`−1800 = 2·1 + 2·23 + 2·45 + 2·4̅5̅ −
+  231 − 2̅3̅1̅ + 2·252 − 1035′ − 1035″`). Expected once the twisted genera are characters (Gannon); the
+  content is the certified end-to-end computation.
+* **Stream 4 closed at levels 8–9.** From the computed twined series, `K₀ … K₉` decompose with integer
+  multiplicities, equal to CDH Table 48; EOT's original level-7 proposal is inconsistent (Cheng).
+
+**Possible next directions** (not started): higher `m` and `q` for the twisted immortal counts (cost grows
+quickly); the Siegel-modular properties of `Φ₁₀` (would need analytic Siegel forms, not in Mathlib);
+formalising the Niemeier lattices that would reopen Stream 4's reflection question.
