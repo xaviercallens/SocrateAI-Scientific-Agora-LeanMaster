@@ -1,0 +1,2837 @@
+                                                 Umbral Moonshine and K3 Surfaces
+                                                                    Miranda C. N. Cheng∗1 and Sarah Harrison†2
+
+                                                1
+                                                    Institute of Physics and Korteweg-de Vries Institute for Mathematics,
+                                                              University of Amsterdam, Amsterdam, the Netherlands‡
+arXiv:1406.0619v4 [hep-th] 18 Jul 2017
+
+
+
+
+                                         2
+                                             Stanford Institute for Theoretical Physics, Department of Physics, and Theory Group,
+                                                               SLAC, Stanford University, Stanford, CA 94305, USA
+
+
+
+
+                                                                                          Abstract
+
+                                                    Recently, 23 cases of umbral moonshine, relating mock modular forms and finite groups,
+                                               have been discovered in the context of the 23 even unimodular Niemeier lattices. One of the
+                                               23 cases in fact coincides with the so-called Mathieu moonshine, discovered in the context of
+                                               K3 non-linear sigma models. In this paper we establish a uniform relation between all 23 cases
+                                               of umbral moonshine and K3 sigma models, and thereby take a first step in placing umbral
+                                               moonshine into a geometric and physical context. This is achieved by relating the ADE root
+                                               systems of the Niemeier lattices to the ADE du Val singularities that a K3 surface can develop,
+                                               and the configuration of smooth rational curves in their resolutions. A geometric interpretation
+                                               of our results is given in terms of the marking of K3 surfaces by Niemeier lattices.
+
+
+
+
+                                         ∗
+                                           mcheng@uva.nl
+                                         †
+                                           sarharr@stanford.edu
+                                         ‡
+                                           On leave from CNRS, Paris.
+
+
+                                                                                              1
+                      Umbral Moonshine and K3 Surfaces        2
+
+
+Contents
+1 Introduction and Summary                                3
+
+2 The Elliptic Genus of Du Val Singularities              8
+
+3 Umbral Moonshine and Niemeier Lattices                 14
+
+4 Umbral Moonshine and the (Twined) K3 Elliptic Genus    20
+
+5 Geometric Interpretation                               27
+
+6 Discussion                                             30
+
+A Special Functions                                      32
+
+B Calculations and Proofs                                34
+
+C The Twining Functions                                  41
+
+References                                               49
+                         Umbral Moonshine and K3 Surfaces                                              3
+
+
+1     Introduction and Summary
+Mock modular forms are interesting functions playing an increasingly important role in various
+areas of mathematics and theoretical physics. The “Mathieu moonshine” phenomenon relating
+certain mock modular forms and the sporadic group M24 was surprising, and its apparent
+relation to non-linear sigma models of K3 surfaces even more so. The fundamental role played by
+two-dimensional supersymmetric conformal field theories and K3 compactifications makes this
+moonshine relation interesting not just for mathematicians but also for string theorists. In 2013
+it was realised that this Mathieu moonshine is but just one case out of 23 such relations, called
+“umbral moonshine”. The 23 cases admit a uniform construction from the 23 even unimodular
+positive-definite lattices of rank 24 labeled by their non-trivial root systems. While the discovery
+of these 23 cases of moonshine perhaps adds to the beauty of the Mathieu moonshine relation,
+it also adds more mystery. In particular, it was previously entirely unclear what the physical or
+geometrical context for these other 22 instances of umbral moonshine could be. In this paper
+we establish a relation between K3 sigma models and all 23 cases of umbral moonshine, and
+thereby take a first step in incorporating umbral moonshine into the realm of geometry and
+theoretical physics.
+
+Background
+    In mathematics, the term “moonshine” is used to refer to a particular type of relation be-
+tween modular objects and finite groups. It was first introduced to describe the remarkable
+“monstrous moonshine” phenomenon [1] relating modular functions such as the J-function dis-
+cussed below and the “Fischer–Griess monster group” M, the largest of the 26 sporadic groups
+in the classification of finite simple groups. The study of this mysterious phenomenon was ini-
+tiated by the observation by J. McKay that the second coefficient in the Fourier expansion of
+the modular function
+
+
+         J(τ ) = J(τ + 1) = J(−1/τ )                                                           (1.1)
+                  X
+               =      a(m) q m = q −1 + 196884 q + 21493760 q 2 + 864299970 q 3 + · · ·
+                 m≥−1
+
+
+with q = e2πiτ satisfies 196884 = 196883+1, and 196883 is precisely the dimension of the smallest
+non-trivial representation of M. Note that the J-function has the mathematical significance
+as the unique holomorphic function on the upper-half plane H invariant under the natural
+action of P SL2 (Z) generated by τ → τ + 1 and τ → −1/τ , that moreover has the behaviour
+J(τ ) = q −1 + O(q) near the cusp τ → i∞. Why and how the specific modular functions and the
+                          Umbral Moonshine and K3 Surfaces                                            4
+
+
+monster group, usually thought of as belonging to two very different branches of mathematics,
+are related to each other, remained a puzzle until about a decade after its discovery.
+   The key structure that unifies the two turns out to be that of a (chiral) 2d conformal field
+theory (CFT), or vertex operator algebra in more mathematical terms [2, 3]. The two sides of
+moonshine – the modularity and the finite group symmetry – can naturally be viewed as the
+manifestation of two kinds of symmetries – the world-sheet and the space-time symmetries– the
+CFT possesses. The mathematical proof of monstrous moonshine is achieved by constructing a
+generalised Kac–Moody algebra based on the above chiral CFT and utilising the no-ghost theo-
+rem of string theory, which roughly corresponds to considering the full 26 dimensions including
+the 2 light-cone directions of the bosonic string theory [4]. We refer to, for instance, [5] for an
+introduction on the theory of modular forms and to [6] or the introduction of [7] for a summary
+of monstrous moonshine.
+   In 2010, an entirely unexpected new observation, pointing towards a new type of moonshine
+relating “mock modular forms” and finite groups, was made in the context of the elliptic genus of
+K3 surfaces. Mock modular forms embody a novel variation of the concept of modular forms and
+are interesting due to their significance in number theory as well as a wide range of applications
+(cf. (3.3)). See, for instance, [8, 9] for an expository account on mock modular forms. From
+a physical point of view, as demonstrated in a series of recent works, the “mockness” of mock
+modular forms is often related to the non-compactness of relevant spaces in the theory. See, for
+instance, [10–13].
+   As we will discuss in more detail in §4, the elliptic genus EG(K3) of K3 surfaces enumerates
+the BPS states of a K3 non-linear sigma model, and by taking the N = 4 superconformal
+symmetry of this theory into account, one arrives at a weight 1/2 mock modular form with
+Fourier expansion [14–16]
+
+                      X=A24
+                     H1  1
+                              (τ ) = 2q −1/8 (−1 + 45 q + 231 q 2 + 770 q 3 + O(q 4 )).       (1.2)
+
+
+The observation by Eguchi–Ooguri–Tachikawa then states that the numbers 45, 231, and 770
+are all dimensions of certain irreducible representations of the sporadic Mathieu group M24 [17].
+This connection has since been studied, refined, extended, and finally established in [18–28].
+From a mathematical point of view, the prospect of a novel type of moonshine for mock modular
+forms is extremely exciting. From a physical point of view, the ubiquity of K3 surfaces and
+the importance of BPS spectra in the study of string theory makes this “Mathieu moonshine”
+potentially much more relevant than the previous monstrous moonshine. See [29] for a review
+and [30–34], [35–40] for some of the explorations in string theory and K3 conformal field theories
+                          Umbral Moonshine and K3 Surfaces                                              5
+
+
+inspired by this connection.
+   In 2013, the above relation was realised to be just the tip of the iceberg, or less metaphorically
+just one case out of a series of such relations, called “umbral moonshine” [7, 41]. As will
+be reviewed in more detail in §3, to each one of the 23 Niemeier lattices LX – the 23 even
+unimodular positive-definite lattices of rank 24 labeled by their non-trivial root systems X –
+one can attach on the one hand a finite group GX and on the other hand a vector-valued
+mock modular form H X , such that the Fourier coefficients of H X are again suggestive of a
+relation to certain representations of GX , analogous to the observation on the functions J(τ )
+      X=A24
+and H1   1
+               (τ ) in (1.1) and (1.2). Further evidence for this relation was provided by relating
+characters of the same GX -representations to the Fourier coefficients of other mock modular
+forms HgX , for each conjugacy class [g] of GX . More precisely, it was conjectured that an
+infinite-dimensional GX -module K X reproduces the mock modular forms HgX as its graded
+g-characters. The finite group GX is defined by considering the symmetries of the Niemeier
+lattice LX , while the mock modular form is determined by its root system X. The important
+role played by the rank 24 root systems X suggests the importance of the corresponding 24-
+dimensional representation of GX . For instance, for the Niemeier lattice with the simplest root
+                                                24
+system X = A24 1 , the mock modular form H
+                                             A1
+                                                is simply given by the function (1.2) above, and
+                     X ∼
+the finite group is G = M24 . In this case the umbral moonshine is the Mathieu moonshine first
+observed in the context of the K3 elliptic genus that we described above. Given the uniform
+construction of the 23 instances of umbral moonshine from the Niemeier lattices LX , one is
+naturally led to the following questions: What about the other 22 cases of umbral moonshine
+with X 6= A24
+           1 ? What, if any, is the physical and geometrical relevance of umbral moonshine?
+
+Are they also related to string or conformal field theories on K3? What is the relation between
+K3 and the Niemeier lattices LX ? And the group GX ? The mock modular form H X and the
+underlying GX –module K X ?
+
+Summary
+   In the present paper we propose a first step in answering the above questions. To discuss the
+relation between the mock modular form H X and the K3 elliptic genus, we first take a closer
+look at the construction of H X from the root system X. For any of the 23 Niemeier lattices, the
+root system is a union of simply-laced root systems with an ADE classification with the same
+Coxeter number m. As is well-known, a wide variety of elegant structures in mathematics and
+physics admit an ADE classification. Apart from the simply-laced root systems, another such
+structure that will be important for us is that of modular invariant combinations of characters
+         (1)
+of the A1      Kac–Moody algebra at level m − 2 [42]. As will be reviewed in more detail in §2,
+                           Umbral Moonshine and K3 Surfaces                                              6
+
+
+this classification leads to the introduction of the so-called Cappelli–Itzykson–Zuber matrices
+for every ADE root system, and these matrices in turn determine the relevant mock modular
+properties, which uniquely determine H X when combined with a certain analyticity condition.
+Hence, the Cappelli–Itzykson–Zuber matrices ΩΦ constitute a key element in the construction
+of the 23 instances of umbral moonshine.
+      By itself, the question of the classification of certain modular invariants seems remote from
+any physics or geometry. However, the parafermionic description of the N = 2 minimal models
+relates this classification to that of the N = 2 minimal superconformal field theories [43–46].
+Moreover, their seemingly mysterious ADE classification can be related to the ADE classification
+of du Val (or Kleinian, or rational) surface singularities [45, 46], whose minimal resolution gives
+rise to smooth rational (genus 0) curves with intersection given by the corresponding ADE
+Dynkin diagram. A third way to think about the ADE classification is the fact that these du Val
+singularities are isomorphic to the quotient singularity C2 /G, with G being the finite subgroup of
+SU2 (C) with the corresponding ADE classification [47]. Therefore, a perhaps simple-minded but
+logical step towards understanding the physical and geometrical context of umbral moonshine
+would be to take the ADE origin of the mock modular form H X seriously. In particular we
+would like to explore if the ADE-ology in umbral moonshine can be related to that of the du
+Val singularities.
+      Recall that the du Val singularities are precisely the singularities a K3 surface can develop.
+After computing the elliptic genus of du Val singularities (see §2), one realises that the K3 elliptic
+genus can naturally be split into two parts: one is the contribution from the configuration of
+the singularities given by X and the other is the contribution from the mock modular form
+H X . Equipped with the mock modular form H X for the other 22 Niemeier root systems X
+constructed in umbral moonshine, one finds that the same splitting holds uniformly for all 23
+instances of umbral moonshine (cf. (4.9)). Note that this splitting makes no reference to the
+N = 4 characters, although for the special case X = A24
+                                                     1 the two considerations render the same
+
+result.
+      While the above fact might be surprising and suggestive, one should be careful not to claim
+a strong connection between umbral moonshine and K3 string theory too quickly: it’s logically
+possible that the above relation is just a consequence of the fact that the space of the relevant
+modular objects, the Jacobi forms of weight 0 and index 1 to be more precise, is very constrained
+and in fact only one-dimensional. See Appendix B for more details.
+      To gather more evidence that the umbral moonshine – a conjecture on the existence of a
+G –module K X which (re)produces the mock modular forms HgX , [g] ⊂ GX as its graded
+  X
+
+characters – and the K3 sigma model, one should compare the way GX acts on K X with the
+                         Umbral Moonshine and K3 Surfaces                                             7
+
+
+way the BPS spectrum of the K3 CFT transforms under its finite group symmetry G, when such
+a non-trivial G exists. Let us first focus on the geometric symmetries of K3 surfaces (as opposed
+to “stringy” CFT symmetries without direct geometric origins). As we will review in more detail
+in §5, thanks to the global Torelli theorem for K3, we know that a finite group G is the group
+of hyper-Kähler-preserving symmetries of a certain K3 surface M if and only if it acts on the
+24-dimensional K3 cohomology lattice H ∗ (M, Z) in a certain way. Relating this 24-dimensional
+representation of G to the natural 24-dimensional representation of GX induced from its action
+on the root system X, this translates into a criterion for a conjugacy class [g] ⊂ GX to arise as
+a K3 symmetries for each of the 23 GX .
+   On the one hand, umbral moonshine suggests a “twined” function ZgX for each [g] ⊂ GX ,
+where ZgX = EG(K3) for the special case that [g] is the identity class (cf. (4.12)). In particular,
+from this consideration we arrive at a conjecture for the elliptic genus of the du Val singularity
+twined by its symmetries given by the automorphism of the corresponding Dynkin diagram.
+On the other hand, whenever the CFT admits a non-trivial finite automorphism group G, one
+can compute the elliptic genus “twined” by any g ∈ G. These twined elliptic genera EGg (K3)
+provide information about the Hilbert space as a representation of G. As a result, for a conjugacy
+class [g] ⊂ GX arising from K3 symmetries, we have two ways to attach a twined function –
+ZgX and EGg (K3) – to such a “geometric” conjugacy class of [g] ⊂ GX . It turns out that
+they coincide for all the geometric conjugacy classes [g] of any one of the 23 GX . This identity
+clearly provides non-trivial evidence that all 23 instances of umbral moonshine are related to
+K3 non-linear sigma models.
+   Recall that in arriving at the above relation we have interpreted the ADE root systems X
+as the configuration of rational curves given by the ADE singularities. The above result hence
+suggests that it might be fruitful to study the symmetries of different K3 surfaces with distinct
+configurations of rational curves in a different framework corresponding to the 23 cases of umbral
+moonshine. In fact, this has been implemented in a recent analysis of the relation between
+the K3 Picard lattice, K3 symplectic automorphisms, and the Niemeier lattices, through a
+“marking” of a K3 surface M by one of the LX such that the Dynkin diagram obtained from
+the smooth rational curves of M is a sub-diagram of X [48, 49]. As will be discussed in more
+detail in §5, through this marking by the Niemeier lattice LX , the root system X obtains the
+interpretation as the “enveloping configuration of smooth rational curves” while the finite group
+GX is naturally interpreted as the “enveloping symmetry group” of the K3 surfaces that can
+be marked by the given LX . On the one hand, this provides a geometric interpretation of our
+results. On the other hand, one can view our results as a moonshine manifestation and extension
+of the geometric analysis in [48].
+                         Umbral Moonshine and K3 Surfaces                                              8
+
+
+    The organisation of the paper is as follows. In §2 we compute the elliptic genus of the ADE
+du Val singularities that K3 surfaces can develop. In §3 we review the umbral moonshine con-
+struction from 23 Niemeier lattices and introduce the necessary ingredients for later calculations.
+Utilising the results of §2, in §4 we establish the relation between the (twined) elliptic genus and
+the mock modular forms of umbral moonshine. In §5 we provide a geometric interpretation of
+this result. In §6 we close this paper by discussing some open questions and point to some pos-
+sible future directions. In Appendix A we collect useful definitions. In Appendix B we present
+the calculations and proofs, and present our conjectures for the twined (or equivariant) elliptic
+genus for the du Val singularities. The explicit results for the twining functions are recorded in
+the Appendix C.
+
+
+
+2     The Elliptic Genus of Du Val Singularities
+The rational singularities in two (complex) dimensions famously admit an ADE classification.
+See, for instance, [50]. They are also called the du Val or Kleinian singularities and are iso-
+morphic to the quotient singularity C2 /G, with G being the finite subgroup of SU2 (C) with
+the corresponding ADE classification [47]. Any such singularity has a unique minimal reso-
+lution. The so-called resolution graph, the graph of the intersections of the smooth rational
+(genus 0) curves of the minimal resolution, gives precisely the corresponding ADE Dynkin dia-
+gram. We will denote by Φ the corresponding simply-laced irreducible root system. In terms of
+hypersurfaces, it is given by WΦ0 = 0 with
+
+
+                                    WA0 m−1 = x21 + x22 + xm
+                                                           3                                   (2.1)
+                                   0                               m/2
+                                  WD m/2+1
+                                           = x21 + x22 x3 + x3                                 (2.2)
+
+                                       WE0 6 = x21 + x32 + x43                                 (2.3)
+                                       WE0 7 = x21 + x32 + x2 x33                              (2.4)
+                                       WE0 8 = x21 + x32 + x53 .                               (2.5)
+
+
+These singularities show up naturally as singularities of K3 surfaces and play an important role
+in various physical setups, such as in heterotic–type II dualities and in geometric engineering,
+in string theory compactifications. See, for instance, [51, 52] and [53].
+    The 2d conformal field theory description of these (isolated) singularities was proposed in [54]
+to be the product of a non-compact super-coset model SL(2,R)
+                                                      U (1) (the Kazama–Suzuki model [55])
+and an N = 2 minimal model, followed by an orbifoldisation by the discrete group Z/mZ, where
+                                  Umbral Moonshine and K3 Surfaces                                                9
+
+
+       m is the Coxeter number of the corresponding simply-laced root system (cf. Table 1). In other
+       words, we consider the super-string background that is schematically given by
+                                                                                
+                                     5,1                           SL(2, R)
+            Minkowski space-time R         ⊗ N = 2 minimal ⊗ N = 2          coset /(Z/mZ).                (2.6)
+                                                                    U (1)
+
+       Recall that, when the minimal model is chosen to be the “diagonal” Am−1 theory, the above
+       theory also describes the near-horizon geometry of m NS five-branes [56]. Note that this point
+       of view plays an important role in the work of [37, 57], also in the context of discussing the
+       possible physical context of umbral moonshine.
+             To resolve the singularity let us consider WΦ0 = µ. In [54] it was proposed that the sigma
+       model with the non-compact target space WΦ0 = µ has an alternative description as the Landau–
+       Ginsburg model with superpotential
+
+
+                                                W̃Φ = −µx−m
+                                                         0  + WΦ0 ,
+
+
+       where x0 is an additional chiral superfield and m is again given by the Coxeter number of Φ.
+             The purpose of the rest of the section is to compute the elliptic genus of (the supersymmetric
+       sigma model with the target space being) the du Val singularities. First let us focus on the min-
+       imal model part. The N = 2 minimal models are known to have an ADE classification [43–46]
+       1
+           , based on an ADE classification of the modular invariant combinations of chiral (holomor-
+                                                                        (1)
+       phic) and anti-chiral (anti-holomorphic) characters of the A1 Kac–Moody algebra [42]. In this
+       language, the ADE classification can be thought of as a classification of the possible ways to
+       consistently combine left- and right-movers. To be more precise, in [42] it was found that a
+                                                                                              (1)
+       physically acceptable and modular invariant combination of characters of the A1              Kac–Moody
+       algebra at level m − 2 is necessarily given by a 2m × 2m matrix ΩΦ corresponding to an ADE
+       root system Φ, where we say that a modular invariant is physically acceptable if it satisfies
+       certain integrality, positivity and normalisation conditions. See [42] for more details. The list
+       of these matrices is given in Table 3. The relation between ΩΦ and the ADE root system Φ
+       lies in the following two facts. First, ΩΦ is a 2m × 2m matrix where m is the Coxeter number
+       of Φ. Moreover, ΩΦ       Φ       Φ
+                         r,r − Ωr,−r = αr for r = 1, . . . , m − 1 coincides with the multiplicity of r
+                                                                                  Qr
+       as a Coxeter exponent of Φ (cf. Table 1). Recall that a Coxeter element i=1 ri of the Weyl
+       group of a rank-r root system is the product of reflections with respect to all simple roots (the
+       order in which the product is taken does not change the conjugacy class of the element), and
+   1
+    Strictly speaking, this classification applies when one requires the presence of a spectral flow symmetry.
+See for instance [58, 59] for a discussion on related subtleties.
+                            Umbral Moonshine and K3 Surfaces                                                    10
+
+
+the Coxeter number is the order of such a Coxeter element.
+
+                         Am−1                     D1+m/2                   E6           E7         E8
+   Coxeter
+                           m                          m                    12           18         30
+   number
+   Coxeter                                  1, 3, 5, . . . , m − 1,      1,4,5,     1,5,7,9,    1,7,11,13,
+                  1, 2, 3, . . . , m − 1
+  exponents                                          m/2                7, 8, 11    11,13,17   17,19,23,29
+
+          Table 1: Simply-laced root systems, Coxeter numbers and Coxeter exponents
+
+
+   A quantity that played an important role in the the CFT/LG correspondence [60] as well
+as in the recent developments of mock modular form moonshine is the elliptic genus. From a
+physical point of view, the elliptic genus for a 2d N = (2, 2) superconformal field theory T is
+defined as [61]
+                                                                            
+                             ZT (τ, z) = trHT ,RR (−1)FR +FL y J0 q HL q̄ HR                            (2.7)
+
+where FR,L denotes the right- and left-moving fermion number respectively. Moreover, the
+left- (right-) moving Hamiltonian is given by HL = L0 − cL /24 (HR = L̄0 − cR /24 ), where
+J0 , L0 , J¯0 , L̄0 are the zero modes of the left- and right-moving copies of the U (1) R-current and
+Virasoro parts of the N = 2 superconformal algebra, respectively. HT ,RR denotes the space of
+quantum states of theory T in the Ramond–Ramond sector, and cL and cR denote the left- and
+right-moving central charge of the SCFT. In the above formula, τ takes values in the upper-half
+plane H while z takes values in the complex plane C, and we have written q = e(τ ) and y = e(z).
+Throughout the paper we use e(x) := e2πix . Because of the insertion (−1)FR , the elliptic genus
+only receives contributions from left-moving states that are paired with a right-moving Ramond
+ground state and is therefore holomorphic, at least when the spectrum of the theory is discrete.
+As such, it is rigid in the sense of being invariant under any continuous deformation of the
+theory.
+   The elliptic genus of the N = 2 minimal model can be computed in various ways. First,
+from the relation to the parafermion theory, we obtain that the building block of the elliptic
+genus is the function χ̃rs (τ, z), where |s| ≤ r − 1 < m [44, 62]. See Appendix B for the definition
+of χ̃rs . From the known spectrum of the minimal model given in terms of the matrix ΩΦ and the
+identity χ̃rs (τ, 0) = δr,s − δr,−s it is straightforward to see that the elliptic genus of the minimal
+model corresponding to the ADE root system Φ is given by [63, 64]
+
+                                                X
+                         Φ
+                        Zminimal (τ, z) =                  ΩΦ       r                Φ
+                                                            r,r 0 χ̃r 0 (τ, z) = Tr(Ω · χ̃).            (2.8)
+                                            r,r 0 ∈Z/2mZ
+                         Umbral Moonshine and K3 Surfaces                                              11
+
+
+We again refer to Appendix B for more details.
+   On the other hand, the Landau-Ginzburg description facilitates a free-field computation for
+                                                                       Φ
+the elliptic genus and one obtains an infinite-product expression for Zminimal (τ, z) [61]. In terms
+of the Jacobi theta function (A.1), the results are [61, 64]
+
+                                            τ, m−1
+                                                       
+                             Φ         θ1       m z
+                            Zminimal =           z         for Φ = Am−1                        (2.9)
+                                          θ1 τ, m
+
+for the A-series where m ≥ 2,
+
+                                     τ, m−2        m+2
+                                                         
+                      Φ         θ1       m z θ1 τ, 2m z
+                     Zminimal =                             for Φ = D m2 +1                  (2.10)
+                                   θ1 τ, 2z       m−2
+                                         m θ1 τ, 2m z
+
+
+for the D series where m ≥ 6 and even, and finally
+
+                                            θ1 τ, 34 z θ1 τ, 23 z
+                                                                 
+                                  E6
+                                 Zminimal =                                                  (2.11)
+                                              θ1 τ, z4 θ1 τ, z3
+                                                               
+
+                                            θ1 τ, 79 z θ1 τ, 23 z
+                                                                 
+                                  E7
+                                 Zminimal =                                                  (2.12)
+                                             θ1 τ, 29 z θ1 τ, z3
+                                                                
+
+                                            θ1 τ, 45 z θ1 τ, 23 z
+                                                                 
+                                  E8
+                                 Zminimal =                                                  (2.13)
+                                              θ1 τ, z5 θ1 τ, z3
+                                                               
+
+
+for the E-type cases. The central charge of these minimal models are given by the Coxeter
+number m of the corresponding simply-laced root system by
+
+                                                             2
+                                        ĉ = c/3 = 1 −         .                             (2.14)
+                                                             m
+
+   In order to obtain the elliptic genus of the isolated ADE singularities, another ingredient we
+need is the elliptic genus of the SL(2,R)
+                                   U (1)  super-coset model. The SL(2,R)
+                                                                  U (1)  super-coset model is
+known to describe the geometry of a semi-infinite cigar (a 2d Euclidean black hole) [65] and is
+mirror to the N = 2 super Liouville theory [56,66]. The level of the super-coset model is related
+to the mass of the corresponding 2d black hole, and the central charge of the super Liouville
+theory. Here, we will consider SL(2, R) super-current algebra of (super) level m. The central
+charge of the corresponding super-coset theory is
+
+                                                       2
+                                            ĉ = 1 +     .
+                                                       m
+
+Due to the presence of the adjoint fermions, there is a shift between the level of the super
+Kac–Moody algebra [ĝ]k and the level of its bosonic sub-algebra ĝk̄ given by the corresponding
+                           Umbral Moonshine and K3 Surfaces                                               12
+
+
+quadratic invariant as
+                                                k̄ = k − c2 (g) ,
+
+which is given explicitly in terms of structure constants by c2 (g)δab = fa cd fbcd .
+   The spectrum of the super-coset model and the corresponding torus conformal blocks has
+been discussed in [67, 68], following the earlier work [69, 70]. Since the model is non-compact,
+the spectrum not surprisingly contains both discrete and continuous states. In the geometric
+picture, the discrete states are those localised at the tip of the cigar while the continuous ones
+are those states whose wave-functions spread into the infinitely long half-cylinder and are only
+                            1
+present above a “mass gap” 4m on the conformal weight [71]. The fact that the torus conformal
+blocks of the super-coset theory coincide with the characters of the corresponding highest weight
+representations of the N = 2 superconformal algebra constitutes non-trivial evidence for its
+equivalence to the N = 2 super Liouville theory. Moreover, the continuous states correspond
+to massive (or long) N = 2 highest weight representations while the discrete states correspond
+to massless (or short) ones. As such, it is easy to see from the Hilbert space (Hamiltonian)
+definition (2.7) of the elliptic genus that it only receives contribution from the discrete part of
+the spectrum. Accepting the above argument, the building block of the elliptic genus is the
+Ramond character graded by (−1)F
+
+                                                                                    s−1
+                           (R̃)                   iθ1 (τ, z) X 2k mk2 (yq mk ) m
+                       Chmassless (τ, z; s) =                 y q
+                                                    η 3 (τ )           1 − yq mk
+                                                             k∈Z
+
+
+where η(τ ) = q 1/24                  n
+                       Q
+                         n≥1 (1 − q       ) is the Dedekind eta function and s/2 is the U (1) charge of
+the highest weight. The above formula can also be identified as N = 2 characters extended
+by spectral flow. Putting them together, from the spectrum of the super-coset model it is
+straightforward to work out the elliptic genus of the theory
+
+                  m
+                1 X (R̃)                       (R̃)                1        z  iθ1 (τ, z)
+ ZLm (τ, z) =        Ch        (τ, z; m+2−s)+Chmassless (τ, z; s) = µm,0 τ,                , (2.15)
+                2 s=1 massless                                     2        m η(τ )3
+
+where we have used the (specialised) Appell–Lerch sum
+
+                                                    X        2         1 + yq k
+                                  µm,0 (τ, z) = −         q mk y 2km            .                (2.16)
+                                                                       1 − yq k
+                                                    k∈Z
+
+
+The above partition function has also been calculated in [11] using an alternative free-field
+representation of the theory. See also [72, 73].
+   From this we can derive the elliptic genus of the super coset theory coupled to the rational
+                             Umbral Moonshine and K3 Surfaces                                                       13
+
+
+theory                                                      
+                                               SL(2, R)
+                         N = 2 minimal ⊗ N = 2          coset /(Z/mZ),
+                                                U (1)
+describing the corresponding du Val surface singularities of type Φ, by using the orbifoldisation
+formula [63]
+
+                  1     X          2
+ Z Φ,S (τ, z) =                  q a y 2a Zminimal
+                                           Φ
+                                                   (τ, z + aτ + b)ZLm (τ, z + aτ + b)                     (2.17)
+                  m
+                      a,b∈Z/mZ
+
+                   1 iθ1 (τ, z)        X               2                                          z + aτ + b
+             =                             (−1)a+b q a /2 y a Zminimal
+                                                               Φ
+                                                                       (τ, z + aτ + b) µm,0 (τ,              ).
+                  2m η 3 (τ )                                                                         m
+                                  a,b∈Z/mZ
+
+                                                                                                          (2.18)
+
+   Note that the above elliptic genus is not modular, as opposed to the familiar situation with
+elliptic genera of a supersymmetric conformal field theory. In fact, it is mock modular in the
+following sense [74]. Let the “completion” of µm,0 (τ, z) be
+
+                                                                  Z i∞
+                                           1    X
+ µ̂m,0 (τ, z) = µm,0 (τ, z) − e(− 18 ) √              θm,r (τ, z)      (τ 0 + τ )−1/2 Sm,r (−τ̄ 0 ) dτ 0 , (2.19)
+                                           2m r∈Z/2mZ              −τ̄
+
+
+then µ̂m,0 transforms like a Jacobi form of weight 1 and index m under the Jacobi group
+SL2 (Z) n Z2 but is not holomorphic. (See Appendix A for the definition of Jacobi forms.) In the
+above formula, Sm = (Sm,r ) denotes the vector-valued cusp form for SL2 (Z) whose components
+are given by the unary theta function (cf. (A.3))
+
+                                           X               2         1 ∂
+                        Sm,r (τ ) =                   k q k /4m =          θm,r (τ, z)|z=0 .              (2.20)
+                                                                    2πi ∂z
+                                       k=r (mod 2m)
+
+
+   In Appendix B.2, we will also conjecture the answer for the elliptic genera of these ADE-
+singularities twined by automorphisms of the corresponding Dynkin diagram, which can be
+thought of as permuting the smooth rational curves in the minimal resolution.
+   This absence of the usual modularity can be attributed to the fact that the target space
+of the theory is non-compact and hence the spectrum contains a continuous part [11]. This is
+however seemingly in contradiction with the expectation that a path integral formulation of the
+elliptic genus should render a function transforming nicely under SL2 (Z), corresponding to the
+SL2 (Z) mapping class group of the world-sheet torus underlying the path integral formulation.
+This issue has been recently addressed in [11], and further refined in [75, 76], for the cigar
+theory. These authors found that a path integral computation indeed renders an answer that
+is modular but non-holomorphic, and the breakdown of holomorphicity is attributed to the
+                                Umbral Moonshine and K3 Surfaces                                                          14
+
+
+imperfect cancellation between contributions of the bosonic and fermonic states to the elliptic
+genus (2.7) in the continuous part of the spectrum. Analogously, we expect the path integral
+formulation of the elliptic genus of the ADE singularities will render as the answer the real
+Jacobi form
+
+                    1 iθ1 (τ, z)     X                 2                                                  z + aτ + b
+ Ẑ Φ,S (τ, z) =                          (−1)a+b q a /2 y a Zminimal
+                                                              Φ
+                                                                      (τ, z + aτ + b) µ̂m,0 (τ,                      ).
+                   2m η 3 (τ )                                                                                m
+                                   a,b∈Z/mZ
+
+                                                                                                                 (2.21)
+
+    Finally, we note that there is a different definition of elliptic genus that is purely geometric.
+For a compact complex manifold M with dimC M = d0 , the elliptic genus is defined as the
+character-valued Euler characteristic of the formal vector bundle [61, 77–80]
+
+                                    ∗ N
+        Eq,y = y d/2                                     ∗                                ∗
+                         V                  V              N    V          N
+                             −y −1 TM         −y −1 q n TM        −yq n TM  n≥0 Sq (TM ⊕ TM ),
+                                                                                  n
+                                        n≥1                 n≥1
+
+
+              ∗
+where TM and TM are the holomorphic tangent bundle and its dual, and we adopt the notation
+
+                                          V2
+                         = 1 + qV + q 2                       Sq V = 1 + qV + q 2 S 2 V + · · · · · · ,
+               V
+                    qV                         V + ...,
+
+
+with S k V denoting the k-th symmetric power of V . In other words, we have
+                                                          Z
+                                      EG(τ, z; M ) =           ch(Eq,y )Td(M )                                   (2.22)
+                                                           M
+
+
+where Td(M ) is the Todd class of TM . For M a (compact) Calabi–Yau manifold, the above
+geometric definition and the conformal field theory definition, when the CFT is taken to be
+the 2d non-linear sigma model of M , are believed to give the same function [78, 81]. The fact
+that the CFT elliptic genus is rigid corresponds to the geometric fact that EG(τ, z; M ) is a
+topological invariant. Note that the above definition is manifestly holomorphic. We expect that
+a suitable generalisation of the above definition which handles non-compact geometries will lead
+to the geometric elliptic genus EG(τ, z; Φ) = Z Φ,S (τ, z) of the du Val singularity. In this paper
+we will simply refer to Z Φ,S (τ, z) as the elliptic genus of the ADE singularity of type Φ.
+
+
+
+3     Umbral Moonshine and Niemeier Lattices
+In this section we will briefly review the umbral moonshine conjecture and its construction from
+the 23 Niemeier lattices [41]. The readers are referred to [41] for more details. Let us start by
+recalling what the Niemeier lattices are. Consider positive-definite lattices of rank 24, we would
+                          Umbral Moonshine and K3 Surfaces                                                 15
+
+
+like to know which of them are even and unimodular. In string theory, one is often interested
+in even, unimodular lattices due to the modular invariance of their theta functions. In the
+classification of positive-definite even unimodular lattices, a special role will be played by the
+root system of the lattice L, given by ∆(L) = {v ∈ L|hv, vi = 2}.
+   The even unimodular positive-definite lattices of rank 24 were classified by Niemeier [82].
+There are 24 of them (up to isomorphisms). The Leech lattice is the unique even, unimodular,
+positive-definite lattice of rank 24 with no roots [83], discovered shortly before the classification of
+Niemeier [84,85]. Apart from the Leech lattice, there are 23 other inequivalent even unimodular
+lattices of rank 24. They are uniquely determined by their root systems ∆(L), that are all unions
+of the simply-laced root systems. Moreover, the 23 root systems of the 23 Niemeier lattices are
+precisely the 23 unions of ADE root systems satisfying the following two simple conditions: first,
+all of the irreducible components have the same Coxeter numbers; second, the total rank is 24.
+They are listed in Table 2, where n denotes Z/nZ. Here and in the rest of the paper we will
+adopt the shorthand notation Adm−1
+                                A   dD
+                                   Dm/2+1 (E (m) )dE for the direct sum of dA copies of Am−1 ,
+dD copies of Dm/2+1 and dE copies of
+                                       
+                                       E6 , E7 , E8
+                                       
+                                                       for m = 12, 18, 30
+                             E (m) =                                        .                     (3.1)
+                                       ∅
+                                       
+                                                       otherwise
+
+
+   Let X be one of the 23 root systems listed above, and denote by LX the unique (up to
+isomorphism) Niemeier lattice with root system X. For each of these 23 LX we will have an
+instance of umbral moonshine as we will explain now. First, we need to define the finite group
+relevant for this new type of moonshine. Let us consider the automorphism group Aut(LX ) of
+the lattice LX . Clearly, any element of the Weyl group Weyl(X) generated by reflections with
+respect to any root vector leaves the lattice invariant. In fact, Weyl(X) is a normal subgroup
+of Aut(LX ) and we define the “umbral group” GX to be the corresponding quotient
+
+
+                                       GX = Aut(LX )/Weyl(X).                                     (3.2)
+
+
+The list of the 23 GX is given in Table 2.
+   After defining the relevant finite group GX , we will now define the relevant (vector-valued)
+mock modular forms HgX , [g] ⊂ GX , for the umbral moonshine. As explained in §2, the ADE
+                                                              (1)
+classification of the modular invariant combinations of Â1         characters is given by a symmetric
+matrix ΩΦ of size 2m, where m denotes the Coxeter number of Φ, for every simply-laced root
+system Φ. As we have seen, the Cappelli–Itzykson–Zuber matrix ΩΦ also controls the spectrum
+                         Umbral Moonshine and K3 Surfaces                                                  16
+
+
+                                      Table 2: Umbral Groups
+
+     X        A24
+               1         A12
+                          2            A83                 A64              A45 D4      A46      A27 D52
+    GX        M24       2.M12     2.AGL3 (2)        GL2 (5)/2               GL2 (3)    SL2 (3)   Dih4
+    ḠX       M24        M12       AGL3 (2)         PGL2 (5)               PGL2 (3)   PSL2 (3)    22
+
+     X         A38      A29 D6     A11 D7 E6               A212             A15 D9    A17 E7      A24
+    GX       Dih6          4            2                    4                2          2         2
+    ḠX      Sym3          2            1                    2                1          1         1
+
+     X         D46        D64          D83            D10 E72                 2
+                                                                             D12      D16 E8      D24
+    GX      3.Sym6      Sym4          Sym3                   2                2          1         1
+    ḠX      Sym6       Sym4          Sym3                   2                2          1         1
+
+     X         E64        E83
+    GX     GL2 (3)      Sym3
+    ḠX    PGL2 (3)     Sym3
+
+
+
+and hence the elliptic genus (2.9) of the 2d minimal model of type Φ. Now consider any one of
+the 23 Niemeier root systems X listed above. Since they are unions X = ∪i Φi of simply-laced
+root systems Φi with the same Coxeter number, we can extend the definition of the Ω-matrix
+to ΩX = i ΩΦi . Using these Ω-matrices we can then define for each Niemeier lattice LX the
+          P
+
+vector-valued weight 3/2 cusp form
+
+
+                                S X = ΩX Sm = (SrX ),            r ∈ Z/2mZ
+
+
+with the r-th component given by
+
+                                                 X
+                                      SrX =                ΩX
+                                                            r,r 0 Sm,r 0
+                                              r 0 ∈Z/2mZ
+
+
+in terms of the unary theta function (2.20). From (ΩX )r,r0 = (ΩX )−r,−r0 and Sm,r = −Sm,−r
+it is easy to see that SrX = −S−r
+                               X
+                                  .
+   Given the cusp form S X , we can now specify the mock modular form H X by the following
+two conditions. First we specify its mock modular property: we require H X to be a weight 1/2
+                           Umbral Moonshine and K3 Surfaces                                                     17
+
+
+vector-valued mock modular form whose shadow is given by S X . More precisely, let
+                                                           Z i∞
+                                                      1                          1
+                  ĤrX (τ ) = HrX (τ ) + e(− 18 ) √                 (τ 0 + τ )− 2 SrX (−τ̄ 0 ) dτ 0 ,
+                                                      2m      −τ̄
+
+
+then
+                                          X
+                                                  ĤrX (τ ) θm,r (τ, z)
+                                        r∈Z/2mZ
+
+transforms as a Jacobi form of weight 1 and index m under the Jacobi group SL2 (Z)nZ2 . Recall
+that the shadow s(τ ) of a mock modular form f (τ ) of weight w is the function, a modular form
+of weight 2 − w itself for the same Γ < SL2 (R), whose integral gives the non-holomorphic
+completion
+                                                       Z i∞
+                                               w−1
+                          fˆ(τ ) = f (τ ) + e(     )           (τ + τ 0 )−w s(−τ̄ 0 ) dτ 0              (3.3)
+                                                4       −τ̄
+
+of f which transforms as a weight w modular form. This definition has a straightforward
+generalisation to the vector-valued case which we have employed above.
+   After specifying the mock modularity, we impose the following analyticity condition : we
+require its growth near the cusp to be
+
+
+                                   q 1/4m HrX (τ ) = O(1)           as τ → i∞                           (3.4)
+
+
+for every element r ∈ Z/2mZ. The above two conditions turn out to be sufficient to determine
+H X uniquely (up to a rescaling), as shown in [12, 41, 86]. We also fix the scaling by requiring
+q 1/4m H1X (τ ) = −2 + O(q).
+   For instance, when considering the Niemeier lattice with the simplest root system, X = A24
+                                                                                           1 ,
+
+the unique mock modular form determined by the above condition reads
+
+                                                                                     (2)
+                     X=A24               X=A24             −2E2 (τ ) + 48F2 (τ )
+                   H1   1
+                              (τ ) = −H−1   1
+                                                 (τ ) =                                                 (3.5)
+                                                                   η(τ )3
+                                  = 2q −1/8 (−1 + 45 q + 231 q 2 + 770 q 3 + O(q 4 )).                  (3.6)
+
+
+where E2 (τ ) stands for the weight 2 Eisenstein series and
+
+                    (2)
+                                    X
+                  F2 (τ ) =                 (−1)r s q rs/2 = q + q 2 − q 3 + q 4 + . . . .
+                                  r>s>0
+                                r−s=1 mod 2
+
+
+As mentioned in §1, the first observation that led to the recent development in the moonshine
+phenomenon for mock modular forms is the fact that the above numbers 45, 231, 770 coincide
+                           Umbral Moonshine and K3 Surfaces                                             18
+
+
+with the dimensions of certain irreducible representations of the corresponding umbral group
+GX ∼= M24 for X = A24 .1
+
+   Note that without the non-holomorphic completion, the function
+
+                                             X
+                                                     HrX θm,r
+                                           r∈Z/2mZ
+
+
+does not transform nicely under the modular group; it is a mock Jacobi form according to the
+definition given in [12]. In [41], following [12], this mock Jacobi form is interpreted as the finite
+part of a meromorphic (as a function of z ) Jacobi form with simple poles at m-torsion points.
+For later convenience, we will define another mock Jacobi form
+
+                               iθ1 (τ, mz)θ1 (τ, (m − 1)z)      X
+                 φX (τ, z) =                                           HrX (τ ) θm,r (τ, z)    (3.7)
+                                       η 3 (τ )θ1 (τ, z)
+                                                             r∈Z/2mZ
+
+
+which contains exactly the same information as the vector-valued mock modular form H X .
+   In order to relate such functions to representations of the finite group GX that we have
+constructed, we need as many vector-valued functions similar to H X as the number of con-
+jugacy classes of GX to encode the characters of the underlying representation. Hence, for
+every Niemeier lattice X, and for every conjugacy class [g] ⊂ GX we would like to define a
+vector-valued mock modular form HgX . As before, first we need to specify their mock modular
+properties. The relevant congruence subgroup Γ0 (ng ) ⊆ SL2 (Z) (see (A.6)), is determined by
+ng , the order group element g. This is similar to the situation both in monstrous moonshine [1]
+and, not unrelatedly, 2-dimensional CFT.
+   We need two more pieces of data to completely specify the mock modularity of HgX . The
+first one is the shadow. By studying the action of hgi, the cyclic group generated by g, we can
+analogously define a 2m × 2m matrix ΩX                                  X    X       X
+                                     g and the corresponding cusp form Sg = Ωg Sm = Sg,r .
+
+See §5.1 of [41] for the list of ΩX
+                                  g . The second piece of data we need is the multiplier system
+
+system on Γ0 (ng ), namely a projective representation νg : Γ0 (ng ) → GL2m (C) of the congruence
+subgroup Γ0 (ng ). In the case where the specified shadow SgX does not vanish, the definition of
+the shadow stipulates the multiplier of the mock modular form to be the inverse of the shadow.
+As a result, this second piece of data is implied by the first. If however SgX = 0, namely when
+the mock modular form HgX is in fact modular, one needs to specify the multiplier system
+independently. It turns out that νg is identical to the inverse of the multiplier of S X on a group
+                           Umbral Moonshine and K3 Surfaces                                                     19
+
+
+Γ0 (ng hg ) < Γ0 (ng ) for certain integral hg > 1. See [41] for more details. In particular, let
+
+                                                            Z i∞
+                                                       1
+                   X
+                 Ĥg,r         X
+                       (τ ) = Hg,r (τ ) + e(− 18 ) √               (τ 0 + τ )−1/2 Sg,r
+                                                                                   X (−τ̄ 0 ) dτ 0 ,
+                                                       2m    −τ̄
+
+
+then
+                                          X
+                                                   X
+                                                 Ĥg,r (τ ) θm,r (τ, z)
+                                       r∈Z/2mZ
+
+transforms like a Jacobi form of weight 1 and index m under the group Γ0 (ng hg ) n Z2 . By the
+                                       X
+                           P
+same token, the function r∈Z/2mZ Hg,r    θm,r is a mock Jacobi form of weight 1 and index m
+under Γ0 (ng hg ) n Z2 .
+   As before, after specifying the mock modular property we also need to fix the analyticity
+property of HgX . For Γ0 (ng ) with ng > 1, there is more than one cusp (representative), namely
+more than one Γ0 (ng )-orbit among Q ∪ i∞. For the cusp (representative) located at τ → i∞
+we require the same growth condition
+
+
+                                  q 1/4m Hg,r
+                                          X
+                                              (τ ) = O(1)          as τ → i∞.                           (3.8)
+
+
+for every r ∈ Z/2mZ. Moreover we require the function to be bounded
+
+                            X
+                           Hg,r (τ ) = O(1)    as τ → α ∈ Q,            α 6∈ Γ0 (ng )∞.                 (3.9)
+
+
+at all other cusps.
+   After specifying the shadow SgX , the multiplier system νg and the behaviour at the cusps,
+a vector-valued mock modular form HgX of weight 1/2 for Γ0 (ng ) was then given in [41] for
+every [g] ⊂ GX and for all 23 Niemeier lattices LX . See [41] for explicit Fourier coefficients
+                        X
+of the q-expansions of Hg,r . Finally, it was conjectured in [41] that HgX is the unique (up to
+rescaling) vector-valued mock modular form with the above mock modularity and poles. For
+later convenience, we will also define
+
+                                iθ1 (τ, mz)θ1 (τ, (m − 1)z)          X
+                  φX
+                   g (τ, z) =
+                                                                              X
+                                                                             Hg,r (τ ) θm,r (τ, z)     (3.10)
+                                        η 3 (τ )θ1 (τ, z)
+                                                                   r∈Z/2mZ
+
+
+Note that we recover H X and φX by putting [g] to be the identity class in the above discussions
+on HgX and φX
+            g .
+
+   After constructing the finite group GX and the set of vector-valued mock modular forms
+HgX = (Hg,r
+        X
+            ) for each Niemeier lattice LX , we can now formulate the umbral moonshine con-
+                         Umbral Moonshine and K3 Surfaces                                           20
+
+
+jecture [41]. This conjecture states that for every Niemeier lattice X, for every 1 ≤ r ≤ m − 1
+we have an infinite-dimensional Z-graded module KrX = ⊕D Kr,D X
+                                                                  for GX such that Hg,r
+                                                                                      X
+                                                                                         is
+                                                                D/4m
+                                          P
+essentially given by the graded characters D=−r2 (mod 4m),D>0 q      TrKr,D
+                                                                        X g, up to the pos-
+
+
+sible inclusion of a polar term −2q −1/4m and a constant term (as well as an additional factor
+of 3 in the case X = A38 ). See §6.1 of [41] for the precise statement of the conjecture. In
+summary, umbral moonshine conjectures for each of the 23 Niemeier lattices the existence of a
+special module K X of the finite group GX , which underlies the special mock Jacobi forms φX
+                                                                                           g .
+
+This conjecture has so far been proven for the case X = A24
+                                                         1 [28], and explicitly verified till
+
+the first hundred terms in the q-expansion for the other 22 cases. In the following section we
+will demonstrate the relation between the mock Jacobi forms φX
+                                                             g and the elliptic genus of K3
+
+surfaces. Subsequently we will explore the relation between the Niemeier lattices LX , the finite
+group GX , the (conjectural) GX -module K X , and the (stringy) symmetry of K3 surfaces.
+
+
+
+4     Umbral Moonshine and the (Twined) K3 Elliptic Genus
+In §2 we have computed the elliptic genus of Du Val singularities a K3 surface can develop. In
+§3 we have briefly reviewed the umbral moonshine conjecture relating a finite group GX and a
+set of mock Jacobi forms φX
+                          g for every Niemeier lattice L
+                                                        X
+                                                          via an underlying GX -module K X .
+In this section we will see how these two separate topics meet in the framework of (twined)
+elliptic genera for K3 surfaces.
+    Let’s start by briefly reviewing the relation between the elliptic genus of K3 surfaces and
+the Mathieu group M24 , which is also the umbral group GX for the Niemeier lattice with root
+system X = A24
+            1 . The 2d non-linear sigma model of a K3 surface is a CFT with central charge
+
+c = 6 and with a (small) N = 4 superconformal symmetry. As explained in §2, the elliptic genus
+(2.7) is the same for different K3 sigma models and coincides with the geometric elliptic genus
+of K3. It is computed to be (cf. (A.1)) [16]
+
+                                                X  θi (τ, z) 2
+                              EG(τ, z; K3) = 8                   .                          (4.1)
+                                               i=2,3,4
+                                                       θi (τ, 0)
+
+The N = 4 superconformal symmetry of the theory implies that the spectrum is composed of
+irreducible representations (“multiplets”) of the N = 4 superconformal algebra, and the elliptic
+genus permits a decomposition into their characters.
+   Recall that the N = 4 superconformal algebra contains subalgebras isomorphic to the affine
+            ˆ 2 and the Virasoro algebra, and in a unitary representation the former of these
+Lie algebra sl
+                             Umbral Moonshine and K3 Surfaces                                                             21
+
+
+acts with level m − 1 and the latter with central charge c = 6(m − 1) for some integer m > 1.
+The unitary irreducible highest weight representations vm;h,j are labelled by the two quantum
+numbers h and j which are the eigenvalues of L0 and 21 J03 of the highest weight state, respectively,
+when acting on the highest weight state [15,87]. (We adopt a normalisation of the SU(2) current
+J 3 such that the zero mode J03 has integer eigenvalues. The shift by −1 in the central charge
+and the level of the current algebra is due to the −1 difference between the level and the index of
+the theta functions underlying the characters, as we will see below.) The algebra has two types
+of highest weight representations: the short (or BPS, supersymmetric) ones and the long (or
+                                                                             c
+non-BPS, non-supersymmetric) ones. In the Ramond sector, the former has h = 24 = m−1
+                                                                                  4  and
+j ∈ {0, 21 , · · · , m−1
+                      2 }, while the latter has h >
+                                                    m−1
+                                                     4  and j ∈ { 12 , 1, · · · , m−1
+                                                                                   2 }. Their (Ramond)
+graded characters, defined as
+                                                            3    3
+                                                                              
+                              chm;h,j (τ, z) = trvm;h,j (−1)J0 y J0 q L0 −c/24 ,                                  (4.2)
+
+
+are given by
+                                                       i θ1 (τ, z)2
+                                  chm;h,j (τ, z) =    3
+                                                                      µm,j (τ, z)                                 (4.3)
+                                                     η (τ )θ1 (τ, 2z)
+and
+                                      i θ1 (τ, z)2         c   j2
+                                                     q h− 24 − m θm,2j (τ, z) − θm,−2j (τ, z)
+                                                                                             
+                 chm;h,j (τ, z) =    3
+                                                                                                                  (4.4)
+                                    η (τ )θ1 (τ, 2z)
+in the short and long cases, respectively [15]. In the above formulas, µm,j is given by µm,0 (2.16)
+and the identity
+
+                                                        r
+                                                        X            (r−n+1)2
+       µm, r2 = (−1)r (r + 1)µm,0 + (−1)r−n+1                 n q−      4m      (θm,r−n+1 − θm,−(r−n+1) ).
+                                                        n=1
+
+
+   When applying the above formula to the K3 sigma models which have c = 6 (m = 2), we
+obtain the following rewriting of the function in (4.1):
+
+                                                                                                              
+  EG(τ, z; K3) = 20 ch2; 14 ,0 − 2 ch2; 41 , 12 + 90 ch2; 45 , 12 + 462 ch2; 49 , 21 + 1540 ch2; 13 1 + ...
+                                                                                                 4 ,2
+                                                                                                                  (4.5)
+                                2
+                   i θ1 (τ, z)      n
+               = 3                   24 µ2,0 (τ, z) + (θ2,−1 (τ, z) − θ2,1 (τ, z))
+                 η (τ )θ1 (τ, 2z)
+                                                                                       o
+                 × (−2q −1/8 + 90q 7/8 + 462q 15/8 + 1540q 23/8 + . . . )                                         (4.6)
+
+                                                                                      2
+where . . . corresponds to terms in EG(τ, z; K3) of the form η3i(τθ1)θ(τ,z)
+                                                                       1 (τ,2z)
+                                                                                q α y β with α − β 2 /8 > 3.
+Note that the q-series in the last line is nothing but the umbral mock modular form (3.5)
+coresponding to the Niemeier lattice with root system X = A24
+                                                           1 that we introduced in the
+                                 Umbral Moonshine and K3 Surfaces                                                     22
+
+
+       previous section. As mentioned in §1, it was precisely in this context of decomposing the K3
+       elliptic genus into N = 4 characters that the first case of moonshine for mock modular forms
+       was observed [17].
+          From the above discussion, we see that the two contributions to EG(τ, z; K3), given by
+
+
+                                                       24 µ2,0 (τ, z)
+
+
+       and
+                                                         X=A24
+                                               X
+                                          −            Hr   1
+                                                                 (τ )θ2,r (τ, z),
+                                              r∈Z/4Z
+
+       in the {} bracket, can roughly be thought of as the contributions from the BPS and non-BPS
+       N = 4 multiplets respectively2 .
+          However, there is a possible alternative interpretation, thanks to the identity between the
+       short N = 4 characters and the elliptic genus of an Φ = A1 singularity:
+
+
+                                            Z A1 ,S (τ, z) = ch2; 41 ,0 (τ, z),                               (4.7)
+
+
+       which follows from the identity
+
+                        1
+                    1 X a2 2a                          z + aτ + b     θ1 (τ, z)2
+                       q y θ1 (τ, z + aτ + b) µ2,0 (τ,            )=             µ2,0 (τ, z).
+                    2                                      2         iθ1 (τ, 2z)
+                      a,b=0
+
+
+          In other words, we can re-express the elliptic genus of K3 as
+
+                                                               i θ1 (τ, z)2       X         A24
+                     EG(τ, z; K3) = 24Z A1 ,S (τ, z) −                                    Hr 1 θ2,r (τ, z).   (4.8)
+                                                            η 3 (τ )θ1 (τ, 2z)
+                                                                                 r∈Z/4Z
+
+
+          Using the identity
+                                       θ2,1 (τ, z) − θ2,−1 (τ, z) = −iθ1 (τ, 2z),
+
+       and
+                                           −q 1/2 y θ1 (τ, z + τ ) = θ1 (τ, z)
+                                                       X=A24
+   2
+    Strictly speaking, the polar term “−2q −1/8 ” of H1  1
+                                                            also corresponds to the contributions from BPS multiplets,
+while all the infinitely many other terms are contributions from non-BPS multiplets.
+                         Umbral Moonshine and K3 Surfaces                                                 23
+
+
+we can rewrite the above expression as
+
+                                               1     X          2                 z + aτ + b 
+              EG(τ, z; K3) = Z X,S (τ, z) +                   q a y 2a φX τ,                      (4.9)
+                                              2m                                      m
+                                                   a,b∈Z/mZ
+
+
+for X = A24
+         1 , where φ
+                     X
+                       is the function defined in (3.7) that encodes the umbral moonshine
+mock modular form H X . In the above, for a root system X that is the union of simply-laced
+root systems with the same Coxeter number m (cf. (3.1))
+
+
+                                  X = Adm−1
+                                         A   dD
+                                            Dm/2+1 (E (m) )dE ,
+
+
+we write
+                                                                        (m)
+                          Z X,S = dA Z Am−1 + dD Z Dm/2+1 + dE Z E            ,                  (4.10)
+
+corresponding to a collection of non-interacting ADE theories with the total Hilbert space given
+by the direct sum of the Hilbert spaces of the component theories.
+   In other words, instead of interpreting the two contributions to the K3 elliptic genus as
+that of the BPS and that of the non-BPS N = 4 multiplets, one might interpret them as the
+contribution from the 24 copies of A1 -type surface singularities and the “umbral moonshine”
+contribution given by the umbral moonshine mock modular forms H X with X = A24
+                                                                            1 .
+
+   The first surprise we encounter is that such an interpretation actually holds for all 23 cases
+of umbral moonshine. In particular, the equality (4.9) is valid not only for the case X = A24
+                                                                                           1
+
+but also for all other 22 cases corresponding to all the 23 Niemeier lattices LX . The detailed
+proof will be supplied in Appendix B. Put differently, corresponding to the 23 Niemeier lattices
+LX we have 23 different ways of separating EG(K3) into two parts. On the one hand, by
+replacing the Niemeier root system X with the corresponding configuration of singularities, we
+obtain a contribution to the K3 elliptic genus by the singularities. On the other hand, the
+umbral moonshine construction attaches a mock Jacobi form φX to every LX , which gives the
+rest of EG(K3) after a summation procedure reminiscent of the “orbifoldisation” formula for
+the elliptic genus of orbifold SCFTs [63].
+   Recall that in umbral moonshine for a given Niemeier lattice LX , the mock Jacobi form
+φX is conjectured to encode the graded dimension of an infinite-dimensional module K X of the
+umbral finite group GX . The existence of such a module is supported by the construction of
+the other mock Jacobi forms φX
+                             g for the other (non-identity) conjugacy classes [g] of the umbral
+
+group GX (cf. (3.2)), that are conjectured to encode the graded characters of K X . Given the
+above relation between the K3 elliptic genus and the mock modular form H X = HgX for [g]
+                           Umbral Moonshine and K3 Surfaces                                            24
+
+
+being the identity class, a natural question is whether a K3 interpretation also exists for other
+mock modular forms HgX corresponding to other conjugacy classes of the group GX .
+   To discuss the relation between the graded characters in umbral moonshine and the elliptic
+genus of K3, let us first discuss how the equality (4.9) might be “twined” in the presence of a non-
+trivial group element. On the left-hand side (the K3 side) of the equation is the elliptic genus,
+defined in terms of the Ramond-Ramond Hilbert space HT ,RR of the underlying supersymmetric
+sigma model T as in (2.7). In the event that every Hilbert subspace Hh,j;T ,RR ⊂ HT ,RR , con-
+sisting of states with the same L0 , J0 eigenvalues h and j, is a representation of the cyclic group
+generated by g, or that g acts on the theory and commutes with the superconformal algebra in
+other words, we can define the so-called “twisted elliptic genus” as the graded character
+                                                                             
+                        EGg (τ, z; K3) = trHT ,RR g (−1)FR +FL y J0 q HL q̄ HR .             (4.11)
+
+
+   Let us now turn to the right-hand side (the umbral moonshine side) of the equation. Assum-
+ing the (linear) relevance of the umbral moonshine module K X for the calculation of EG(K3),
+the unique way to twine the second term
+
+                                    X         2              z + aτ + b 
+                                            q a y 2a φX τ,
+                                                                 m
+                                 a,b∈Z/mZ
+
+
+is to replace it with
+                                    X         2              z + aτ + b 
+                                            q a y 2a φX
+                                                      g τ,
+                                                                 m
+                                 a,b∈Z/mZ
+
+where φX
+       g is defined in (3.10). This is equivalent to replacing the graded dimension of the
+
+module K X with its graded character. What remains to be twined is the first term in (4.9),
+the contribution from the configuration of singularities stipulated by the root system X of the
+Niemeier lattice LX . For an element g of the umbral group GX , consider its action on the rank
+24 root system X. In the case that g simply permutes the different irreducible components of
+its root system, it is easy to write down the twining of the singularity part Z X,S of EG(K3):
+ZgX,S is simply given by the contribution from the irreducible components of X that are left
+invariant by the action of g. For instance, for X = A24
+                                                     1 , consider the order 2 element g of the
+
+umbral group GX = M24 whose action on LX is to exchange 8 pairs of A1 root systems and leave
+the other 8 copies of A1 invariant when restricted to the root vectors of LX . In this case the
+twined singularity part of the elliptic genus is simply ZgX,S = 8Z A1 ,S . It can also happen that
+g also involves a non-trivial automorphism of the individual irreducible components of the root
+system, such as the Z/2Z symmetry of the An , n > 1 Dynkin diagram and the Z/3Z symmetry
+                          Umbral Moonshine and K3 Surfaces                                                  25
+
+
+of the D4 Dynkin diagram. In this case the computation for ZgX,S is more involved and will be
+discussed in Appendix B.2. Combining the two parts, we can now define the twining for the
+right-hand side (the umbral moonshine side) (4.9) which we denote by
+
+                                               1     X          2              z + aτ + b 
+                ZgX (τ, z) = ZgX,S (τ, z) +                   q a y 2a φX
+                                                                        g τ,                .      (4.12)
+                                              2m                                   m
+                                                   a,b∈Z/mZ
+
+
+   The second surprise is that these twining functions given by umbral moonshine precisely
+reproduce the elliptic genus twined by a geometric symmetry of the underlying K3 surface
+whenever the latter interpretation is available, a fact we will now explain. The symmetries
+of a K3 surface M that are of interest for the purpose of studying the elliptic genus are the
+so-called finite symplectic automorphisms of M , as we need to require the symmetry to preserve
+the hyper-Kähler structure in order for it to commute with the N = 4 superconformal algebra.
+As we will discuss in §5, a necessary condition for a subgroup G ⊆ GX to admit such an
+interpretation as the group of finite symplectic automorphisms of a certain K3 surface is that
+it has at least 5 orbits and 1 fixed point on the 24-dimensional representation of GX . See [88]
+for a proof by S. Kondō utilising the previous results by V. Nikulin [89, 90], and [48] for a more
+refined analysis.
+   For convenience, above and in the rest of the paper we will simply refer to the 24-dimensional
+representation that encodes the action of GX on X as “the 24-dimensional representation” of
+GX . As above and in §5, this representation is also the relevant one when describing the action
+of various subgroups of GX on the K3 cohomology lattice, via the embedding of its sub-lattice
+into LX . The action of an element g ∈ GX on the 24-dimensional representation is encoded in
+the 24 eigenvalues, or equivalently its “24-dimensional cycle shape”
+
+                    k
+                    Y                                                           k
+                                                                                X
+             ΠX
+              g =        `m
+                          i , where mi ∈ Z>0 , 0 < `1 < · · · < `k and
+                            i
+                                                                                     mi `i = 24,   (4.13)
+                     i                                                           i
+
+
+where the relation between the cycle shape and the eigenvalues λ1 , . . . , λ24 is given by
+
+                              k
+                              Y
+                                (x`i − 1)mi = (x − λ1 ) · · · (x − λ24 ).                          (4.14)
+                                i
+
+
+We will say that an element g ∈ GX satisfies the “geometric condition” if it satisfies the criterium
+                                                 Pk
+of Mukai, namely when it has at least 5 orbits ( i mi ≥ 5) and one fixed point (`1 = 1) on the
+24-dimensional representation.
+   Moreover, this implies that G must be (isomorphic to) a subgroup of one of the 11 maxi-
+                        Umbral Moonshine and K3 Surfaces                                            26
+
+
+mal subgroups of M23 listed in [91] and provides an alternative proof of Mukai’s theorem [91].
+Conversely, given any GX among the 23 umbral groups and for any element g ∈ GX satisfying
+the geometric condition, there exists a K3 surface M whose finite group of symplectic automor-
+phisms has a subgroup isomorphic to hgi. This can be shown using the global Torelli theorem
+and in fact holds not just for the Abelian groups but also for all 11 maximal subgroups of M23 .
+See the Appendix by S. Mukai in [88].
+   As a result, for any of the 23 GX for any element g ∈ GX satisfying the geometric condition,
+one can compute EGg (K3) geometrically by considering the supersymmetric sigma model on
+a K3 surface with hgi symmetry. Note that the latter is well-defined because of the uniqueness
+of the hgi action. To be more precise, it was shown in [92] that if Gi ∼ = hgi acts on a K3
+surface Mi faithfully and symplectically (i = 1, 2), then there exists a lattice isomorphism
+α : H 2 (M1 , Z) → H 2 (M2 , Z) preserving the intersection forms such that α · G1 · α−1 = G2 in
+H 2 (M2 , Z) (see [93] for a generalisation of this result to many non-Abelian groups). Together
+with the global Torelli theorem, which states that any lattice isomorphism ϕ∗ : H 2 (M, Z) →
+H 2 (M 0 , Z) between the second cohomology groups of two K3 surfaces that preserves the Hodge
+structure and the effectiveness of the cycles is induced by a unique isomorphism ϕ : M → M 0 ,
+this shows the uniqueness of the symplectic action of hgi on K3 and thereby that of EGg (K3).
+   On the other hand, using the prescription of umbral moonshine (4.12) one can compute ZgX .
+The first non-trivial fact is that, whenever g1 ∈ GX1 and g2 ∈ GX2 both satisfy the geometric
+condition and moreover have the same 24-dimensional cycle shape ΠX     X2
+                                                                 g1 = Πg2 , we obtain
+                                                                   1
+
+
+
+
+                                          ZgX11 = ZgX22                                    (4.15)
+
+
+despite the fact that they are defined in a very different way and each consists of two very
+different contributions (cf. (4.12)). Second, the result also coincides with the geometrically
+twined elliptic genus for a K3 admitting hgi-symmetry
+
+
+                                        ZgX = EGg (K3)                                     (4.16)
+
+
+whose induced action on 24-dimensional representation is isomorphic to that of g ∈ GX .
+   For the conjugacy classes g ∈ GX that do not satisfy the geometric condition, the interpreta-
+tion of the function ZgX is much less clear, similar to the situation in the M24 -moonshine. Just
+like the more familiar case when X = A24
+                                      1 [32], some of them correspond to SCA-preserving
+
+symmetries of certain SCFT T in the same moduli space as that of K3 sigma model, while some
+of them don’t. We will discuss their interpretation in §6. The explicit formulas for the ZgX for
+                                Umbral Moonshine and K3 Surfaces                                                 27
+
+
+       all the conjugacy classes [g] ⊂ GX for all 23 X can be found in Appendix C.
+
+
+
+       5     Geometric Interpretation
+       The result of the previous section suggests that it can be fruitful to study the symmetries of
+       (the non-linear sigma models on) different K3 surfaces with different configurations of rational
+       curves in a different framework corresponding to the 23 different cases of umbral moonshine. In
+       this section we will see how, on the geometric side, this has in fact been implemented in a recent
+       analysis of the relation between the K3 Picard lattice, K3 symplectic automorphisms, and the
+       Niemeier lattices [48, 49]. On the one hand, this provides a geometric interpretation of the
+       results in this paper. On the other hand, one can view our results as a moonshine manifestation
+       and extension of the geometric analysis in [48].
+           To discuss this interpretation, let us first briefly review the result in [48], in which Nikulin
+       advocates a more refined study of the geometric and arithmetic properties of K3 surfaces by
+       introducing an additional marking using Niemeier lattices. (Note that the idea of using the
+       specific Niemeier lattice that has root lattice A24
+                                                        1 to mark the K3 lattice was first proposed and
+
+       concretely realised in [31].) Usually, to specify a “marking” of a K3 surface M is to specify an
+       isomorphism between the rank 22 lattice H 2 (M, Z) and the unique (up to isomorphism) even
+       unimodular lattice Γ3,19 ∼
+                                = 2E8 (−1) ⊕ 3U of signature (3,19), where U is the hyperbolic lattice
+                 3
+       U = 01 10 . To introduce an additional marking by Niemeier lattices, on top of the marking
+       described above, an important ingredient is the Picard lattice
+
+
+                                        Pic(M ) = H 2 (M, Z) ∩ H 1,1 (M )
+
+
+       of M . The real space H 1,1 (M, R) has signature (1, 19) and the Picard lattice is either: a.
+       negative definite with 0 ≤ rk (Pic(M )) ≤ 19 ; b. hyperbolic of signature (1, rk (Pic(M )) − 1)
+       and with 1 ≤ rk (Pic(M )) ≤ 20; c. semi-negative definite with a null direction and with
+       1 ≤ rk (Pic(M )) ≤ 19. The condition b. holds if and only if M is algebraic. On the other hand,
+       a generic non-algebraic K3 suface satisfies the first condition. Unless differently stated, we will
+       focus on these two, the “generic” (a.) and the “algebraic” (b.), cases.
+           To obtain an additional marking of M by a Niemeier lattice, consider the maximal negative
+       definite sublattice of the Picard lattice, denoted by SM (−1) ⊆ Pic(M ). To be more explicit,
+   3
+    The “(−1)” means that we multiply the lattice bilinear form by a factor of −1. This (−1) comes from the fact
+that the signature of the K3 cohomology lattice is mostly negative while the usual convention for the signature of
+the simply-laced root system and hence the Niemeier lattices is positive definite. The same goes for the (−1) factor
+in the definition of SM below.
+                                Umbral Moonshine and K3 Surfaces                                                28
+
+
+      in the generic case we have simply SM (−1) = Pic(M ), while in the algebraic case SM (−1) =
+      h⊥
+       Pic(M ) is the orthogonal complement in the Picard lattice of the one-dimensional sublattice
+      generated by the primitive h ∈ Pic(M ) with h2 > 0 corresponding to a nef divisor on M . Using
+      the properties of the Torelli period map, one can show that a lattice SM may arise in the above
+      way from a K3 surface M if and only if SM (−1) admits a primitive embedding into Γ3,19 , a
+      condition that can be further translated into more concrete terms using the lattice embedding
+      results in [89].
+          We say ιM,X is a marking of the K3 surface M by the Niemeier lattice LX if ιM,X : SM → LX
+      is a primitive embedding of SM into LX . The first result of [48] states that every K3 surface
+      admits a marking by (at least) one of the 23 Niemeier lattices. This can be shown using the
+      fact that SM (−1) admits a primitive embedding into Γ3,19 and the embedding theorem in [89]4 .
+      We will denote by S̃M the image of SM , and (S̃M )⊥                                    X
+                                                        LX by its orthonormal complement in L .
+          The second result, demonstrating the importance of all 23 Niemeier lattices for the study
+      K3 surfaces, proves that for every LX with the exception of X = A24 and X = A212 , there
+      exists a K3 surface that can only be marked using LX and not by any other Niemeier lattice.
+      It was also conjectured in [48] that the same statement also holds for X = A24 and X = A212 .
+      In particular, from this point of view the case X = A24
+                                                           1 is not more special than any other of
+
+      the 22 cases. The third result on the additional Niemeier marking states that, for any LX , any
+      primitive sublattice of LX which can be primitively embedded into Γ3,19 (−1) arises from the
+      Picard lattice Pic(M ) in the way described above for a certain K3 surface M .
+          The above three results show that the additional marking of K3 lattices is general and
+      universally applicable. Now we will see that such an extra marking is also useful. In [48], two
+      applications of the Niemeier marking are discussed. As we will see, both are crucial for the
+      geometric interpretation of our results. The first application is to use the Niemeier marking to
+      constrain the configuration of smooth rational curves in a K3 surface: for the generic cases, a K3
+      surface M that can be marked by LX has the configuration of all smooth rational curves given
+      by X ∩ SM ; for the algebraic cases, this holds modulo multiples of the primitive nef element.
+      In particular, if one thinks of the rational curves as arising from the minimal resolutions of the
+      du Val singularities, then the singularities have to be given by a sub-diagram of the Dynkin
+      diagram corresponding to X. The second application involves studying the symmetries of K3.
+      If M is a K3 surface of the generic or the algebraic type and M admits a marking by LX , then
+      the finite symplectic automorphism group GM of M is a subgroup of GX . More precisely, we
+   4
+     The trick of considering SM ⊕ A1 , also used in [88] to prove Mukai’s theorem, is employed here to exclude the
+Leech lattice.
+                          Umbral Moonshine and K3 Surfaces                                               29
+
+
+have
+                           GM = {g ∈ GX |gv = v for all v ∈ (S̃M )⊥
+                                                                  LX }.
+
+
+In the other direction, G ⊂ GX is the finite symplectic automorphism group of some K3 surface if
+the orthonormal complement (LX )G ⊂ LX of the fixed point lattice {v ∈ LX |gv = v for all g ∈
+G} can be primitively embedded into Γ3,19 (−1). Such G ⊂ GX that arise from K3 symmetries
+have been computed in [48] for all 23 LX . In particular, it is easy to see that they indeed satisfy
+the geometric condition mentioned in §4: they must have at least 5 orbits on the 24-dimensional
+representation and at least 1 fixed point.
+   From the above two applications, we see that the marking by Niemeier lattices facilitates a
+more refined study of K3 geometry by labelling a K3 surface by one of the Niemeier lattices
+LX via marking. This labelling is, as explained above, sometimes unique and sometimes not.
+It tends to be unique when the K3 surface has very large symmetry – the type of K3 surfaces
+especially of interest to us. In the above two applications, the two most important pieces of data
+associated to the Niemeier lattice LX for the construction of umbral moonshine – the root system
+X and the umbral group GX – acquire the meaning of the “enveloping smooth rational curve
+configuration” and the “enveloping symmetry group” respectively, for all the K3 surfaces that
+can be labelled by LX . Employing this obvious interpretation for X and GX , the contribution
+from the ADE singularities to the (twined) K3 elliptic genus (cf. (4.9) and (4.12)) acquires the
+interpretation of the contribution from the “enveloping smooth rational curve configuration” of
+the (class of) K3 surface, while the twining given by umbral moonshine is to be interpreted as
+encoding the action of the “enveloping symmetry group” on the non-linear sigma model.
+   Before closing the section, let us give a few examples to illustrate the above discussion.
+Consider a K3 surface M with 16 smooth rational curves giving the root system A16
+                                                                               1 , generating
+
+a primitive sublattice ΠK of Pic(M ). It is known that such a K3 surface is a Kummer surface,
+i.e. a resolution of T 4 /Z2 by replacing the 16 A1 du Val singularities with 16 rational curves [94].
+Note that the K3 is not necessarily algebraic since the T 4 can be non-algebraic. From the above
+discussion we see that M can only be marked by the Niemeier lattice LX with X = A24
+                                                                                 1 and
+
+hence its finite symplectic automorphism group is a subgroup of M24 . More precisely, it is
+a subgroup of {g ∈ M24 |g(ΠK ) = ΠK }. Similarly, let’s consider as the second example a K3
+surface M with 18 smooth rational curves giving the root system A92 . It can arise in the Kummer-
+type construction, where we consider the minimal resolution of the nine A2 type singularities of
+T 4 /Z3 (for a certain type of T 4 and a certain Z3 ). Similarly, M can only marked by the Niemeier
+lattice LX with X = A12
+                     2 and hence its finite symplectic automorphism group is a subgroup of
+  X ∼
+G = 2.M12 . For a certain T 4 /Z6 model, by resolving the singularities of type A5 ⊕ A4 ⊕ A5  2     1
+                          Umbral Moonshine and K3 Surfaces                                               30
+
+
+we obtain a K3 surface that can be marked by LX with X = A27 D52 . See [95,96] for the detailed
+description of these K3 at the orbifold limit. From the above analysis the symmetry of this K3
+           ∼ Dih4 .
+lies in GX =
+
+
+
+6     Discussion
+In this paper we established a relation between umbral moonshine and the K3 elliptic genus,
+thereby taking a first step in placing umbral moonshine into a geometric and physical context.
+However, many questions remain unanswered and much work still needs to be done before one
+can solve the mystery of umbral moonshine. In this section we discuss some of the open questions
+and future directions.
+
+    • In §5 we have provided an interpretation of the umbral group GX as the “enveloping
+      symmetry group” of the (sigma model of) K3 surfaces that can be marked by the given
+      Niemeier lattice LX . It would be interesting to investigate to what extent this general idea
+      of “enveloping symmetry group” can be made precise and can be confirmed by combining
+      geometric symmetries at different points in the moduli space, similar to the idea explored
+      in [35]. Abstractly, it seems rather clear that varying the moduli induces a varying primitive
+      embedding of SM into LX and can generate a subgroup of GX that doesn’t necessarily
+      admit an interpretation as a group of geometric symmetries of any specific K3 surface. As
+      a concrete example, one family of K3 surfaces that that might be amenable to an explicit
+      analysis is the torus orbifold T 4 /Z3 , where one can easily vary the moduli of the T 4 . As
+      discussed in §5, the umbral group relevant for this family is GX ∼  = 2.M12 with X = A12 ,   2
+                                                            4
+      analogous to the M24 case for the torus orbifold T /Z2 studied in [35].
+
+    • Another obvious possible interpretation for the conjugacy classes [g] that do not admit a
+      geometric interpretation in the present context is as stringy symmetries of certain K3 sigma
+      models preserving the N = (4, 4) superconformal symmetries that have no counterpart in
+      classical geometry. Note that they must have at least 4 orbits in the 24-dimensional
+      representation in order for this interpretation to be possible [32,97]. As a result, it is clear
+      that not all conjugacy classes of all of the 23 GX admit such a possible interpretation.
+      When a conjugacy class [g] does have at least 4 orbits, often the resulting umbral moonshine
+      twining ZgX is observed to coincide with a known elliptic genus EGg0 (K3) twined by
+      a certain symmetry g 0 of the non-linear sigma model whose induced action on the 24-
+      dimensional representation is isomorphic to that of g, i.e. they have the same cycle shape.
+      However, we have not been able to match all ZgX with some known CFT twining results
+                     Umbral Moonshine and K3 Surfaces                                               31
+
+
+  for all [g] ⊂ GX with at least 4 orbits. Moreover, for non-geometric classes g the twining
+                                                                                                0
+  ZgX is not uniquely determined by the cycle shape ΠX                        X     X
+                                                     g and it can occur that Zg 6= Zg 0
+                        0
+  even when ΠX    X
+             g = Πg 0 . See the following point for a closely-related discussion.
+
+  Curiously, various twining functions ZgX coincide with those obtained in the work of [40].
+  It will be interesting to understand better the relation of the two analysis.
+
+• It seems possible and natural to generalise the analysis in §5 beyond the realm of geometric
+  symmetries to include the CFT symmetries. To do so, one should consider the “quantum
+  Picard lattice” Pic(M ) ⊕ U instead of Pic(M ) and consider its embedding into Γ4,20 =
+  Γ3,19 ⊕ U instead of Γ3,19 . The relevant symmetry groups are again subgroups of GX , now
+  with at least 4 orbits on the 24-dimensional representation. The analysis should amount to
+  a combination of that in [48] and in [32]. However, a lack of a Torelli type theorem means
+  some of the very strong results in [48] will not necessarily hold for the CFT generalisation.
+  Finally, given a fixed Niemeier marking one may also generalise the “symmetry surfing”
+  analysis (see above) into the realm of CFT symmetries.
+
+• It would be illuminating to provide the CFT underpinning of the separation of EG(K3)
+  into the contribution from the singularities and the rest (4.9), by for instance analysing
+  the twisted and untwisted fields in the orbifold K3 models.
+
+• It would be interesting to extend the geometrical definition of elliptic genus (2.22) to non-
+  compact spaces and obtain a geometric derivation of the CFT result (2.17). Similarly, one
+  should compute the geometrical twined (or equivariant) elliptic genera and compare them
+  with the conjecture in Appendix B.2.
+
+• The map (4.12) from the umbral moonshine function HgX (or equivalently φX
+                                                                          g ) to the
+
+  weak Jacobi form ZgX is a projection: the summing over the torsion points projects out
+  terms that would have corresponded to states with fractional U (1) charges. In particular,
+  determining a GX -module for the set of weak Jacobi forms ZgX is in general not sufficient
+  to construct the GX -module K X underlying HgX . It is hence important to gain a better
+  understanding about the physical origin of this projection. Its form is very reminiscent
+  of the Landau–Ginzburg description of the non-linear sigma model and we are currently
+  investigating the relation between umbral moonshine and Landau–Ginzburg type theories.
+
+• The above fact suggests that the full content of umbral moonshine might go well beyond
+  the realm of K3 sigma models, and to explain the origin of umbral moonshine we might
+  need to go beyond CFT. It has been suggested that Mathieu moonshine has imprints in
+  a variety of string theory setups (see for instance [18, 26, 34, 36, 37, 57]). Analogously, for
+  all 23 cases of umbral moonshine, it would be interesting to explore the possible string
+                            Umbral Moonshine and K3 Surfaces                                           32
+
+
+      theoretic extension of the current result.
+
+
+
+Acknowledgements
+We would like to thank John Duncan, Sameer Murthy, Slava Nikulin, Anne Taormina, Jan
+Troost, Cumrun Vafa, Dan Whalen and in particular Shamit Kachru, for helpful discussions.
+MC would like to thank Stanford University and Cambridge University for hospitality. SH is
+supported by an ARCS Fellowship. We thank the Simons Center for Geometry and Physics
+for hosting the programme “Mock Modular Forms, Moonshine, and String Theory”, where this
+project was initiated.
+
+
+
+A      Special Functions
+First, we define the Jacboi theta functions θi (τ, z) as follows.
+
+                                                  ∞
+                                                  Y
+                    θ1 (τ, z) = −iq 1/8 y 1/2         (1 − q n )(1 − yq n )(1 − y −1 q n−1 )   (A.1)
+                                               n=1
+                                              ∞
+                                              Y
+                    θ2 (τ, z) = q 1/8 y 1/2       (1 − q n )(1 + yq n )(1 + y −1 q n−1 )
+                                              n=1
+                                  ∞
+                                  Y
+                    θ3 (τ, z) =        (1 − q n )(1 + y q n−1/2 )(1 + y −1 q n−1/2 )
+                                  n=1
+                                  Y∞
+                    θ4 (τ, z) =        (1 − q n )(1 − y q n−1/2 )(1 − y −1 q n−1/2 )
+                                  n=1
+
+
+    In particular we will use the transformation of θ1 under the Jacobi group
+
+
+                         θ1 (τ, z) = −θ1 (τ, −z)
+                                              2
+                                  = e(− 12 zτ )(iτ )−1/2 θ1 (− τ1 , τz )
+                                  = e(−1/8) θ1 (τ + 1, z)
+                                  = (−1)λ+µ e( 21 (λ2 τ + 2λz))θ1 (τ, z + λτ + µ).             (A.2)
+
+
+    Second, we introduce the theta functions
+
+                                                          X            2
+                                  θm,r (τ, z) =                      q k /4m y k .             (A.3)
+                                                    k=r   (mod 2m)
+                           Umbral Moonshine and K3 Surfaces                                                   33
+
+
+for m ∈ Z>0 which satisfy
+
+
+                            θm,r (τ, z) = θm,r+2m (τ, z) = θm,−r (τ, −z).
+
+
+The theta function θm = (θm,r ), r ∈ Z/2mZ, is a vector-valued Jacobi form of weight 1/2 and
+index m satisfying
+                                    r        r
+                                         1       i        2
+                      θm (τ, z) =                  e(− m               1 z
+                                                       τ z ) Sθ .θm (− τ , τ )
+                                        2m       τ
+                                = Tθ .θm (τ + 1, z)
+                                = θm (τ, z + 1) = e(m(τ + 2z))θm (τ, z + τ ),                         (A.4)
+
+
+where the Sθ and Tθ matrices are 2m × 2m matrices with entries
+
+                                        0            0                              2
+                                    rr
+                     (Sθ )r,r0 = e( 2m ) e( −r+r
+                                              2  ) ,                              r
+                                                                  (Tθ )r,r0 = e(− 4m ) δr,r0 .        (A.5)
+
+
+   For later use we also introduce some weight two modular forms for the Hecke congruence
+subgroups
+                                                                                       
+                               a            b                                            
+                     Γ0 (N ) =                | a, b, c, d ∈ Z, ad − bcN = 1, .                     (A.6)
+                               cN           d                                 
+
+
+including ΛN ∈ M2 (Γ0 (N )) for all N ∈ Z>0
+                                                            
+                                                 η(N τ )
+                 ΛN (τ )    = N q∂q log                                                               (A.7)
+                                                  η(τ )
+                                                                                                 !
+                                N (N − 1)                   24 X
+                            =                        1+          σ(k)(q k − N q N k ) ,
+                                   24                      N −1
+                                                                    k>0
+
+                                                     P
+where σ(k) is the divisor function σ(k) =                d|k d.   For N = 44 we will need the unique weight
+two newform
+
+               44
+              fnew   = q + q 3 − 3q 5 + 2q 7 − 2q 9 − q 11 − 4q 13 − 3q 15 + 6q 17 + . . .
+
+
+   Finally we discuss Jacobi forms following [98]. For every pair of integers k and m, we say a
+holomorphic function φ : H × C → C is an (unrestricted) Jacobi form of weight k and index m
+                         Umbral Moonshine and K3 Surfaces                                          34
+
+
+for the Jacobi group SL2 (Z) n Z2 if it satisfies
+
+
+                         φ(τ, z) = e(m(λ2 τ + 2λz)) φ(τ, z + λτ + µ)                       (A.8)
+                                              2
+                                                               −k
+                                   = e(−m cτcz+d ) (cτ + d)         φ( aτ +b     z
+                                                                       cτ +d , cτ +d ).    (A.9)
+
+
+    The invariance of φ(τ, z) under τ → τ + 1 and z → z + 1 implies a Fourier expansion
+
+                                                  X
+                                      φ(τ, z) =           c(n, r)q n y r                  (A.10)
+                                                  n,r∈Z
+
+
+for q = e(τ ) and y = e(z), and the elliptic transformation can be used to show that c(n, r)
+depends only on the discriminant D = r2 − 4mn and on r mod 2m. An unrestricted Jacobi
+form is called a weak Jacobi form when the Fourier coefficients satisfy c(n, r) = 0 whenever
+n < 0. See, for instance, [41] for an introduction of Jacobi forms following [98].
+
+
+
+B     Calculations and Proofs
+
+B.1      Proof of (4.9)
+The aim of this subsection is to provide more details on the elliptic genus computed in §2 and
+to prove the identity (4.9) for all 23 Niemeier lattices LX .
+    As we mentioned in the main text, the Cappelli–Itzykson–Zuber matrices govern the spec-
+trum of N = 2 minimal models as well as the mock modularity of mock modular forms featuring
+in umbral moonshine. Explicitly, the matrices ΩΦ labelled by the root system Φ is given in Table
+3, where we have introduced for each divisor n of m the following matrices
+                              
+                              1    if r + r0 = 0 mod 2n and r − r0 = 0 mod 2m/n,
+                              
+               Ωm (n)r,r0 =                                                                (B.1)
+                              0
+                              
+                                    otherwise,
+
+
+    One significance of the Cappelli–Itzykson–Zuber matrices in our context is that it captures
+the action of the so-called Eichler–Zagier operator Wm (n), defined for every divisor n of m
+acting on a function f : H × C → C as [98]
+
+                                      n−1
+                                   1 X   a2                  
+                                      e m n2 τ + 2 na z + nab2    f τ, z + na τ + nb .
+                                                                                    
+            (f |Wm (n)) (τ, z) =                                                           (B.2)
+                                   n
+                                     a,b=0
+                            Umbral Moonshine and K3 Surfaces                                           35
+
+
+                            Φ                           ΩΦ
+                        Am−1                        Ωm (1)
+                       Dm/2+1                 Ωm (1) + Ωm (m/2)
+                         E6               Ω12 (1) + Ω12 (4) + Ω12 (6)
+                         E7               Ω18 (1) + Ω18 (6) + Ω18 (9)
+                         E8         Ω30 (1) + Ω30 (6) + Ω30 (10) + Ω30 (15)
+
+                Table 3: The ADE matrices Ω of Cappelli–Itzykson–Zuber [42].
+
+
+To be more precise, acting on the theta function (A.3) it satisfies
+
+
+                                      θm |Wm (n) = Ωm (n) · θm .                              (B.3)
+
+
+In order to exploit this equality in the calculation, we define the operator W Φ by replacing Ωm (n)
+with Wm (n) in the definition of ΩΦ (cf. Table 3), with the understanding that f | i Wm (ni ) =
+                                                                                      P
+
+                                         Φ0
+                                            = i W Φi for a union of the simply-laced root systems
+P                                             P
+   i f |Wm (ni ). Similarly, we define W
+Φ0 = ∪i Φi where all Φi have the same Coxeter number. For later convenience, analogous to
+(3.7) we will also define
+
+                      0             −iθ1 (τ, mz)θ1 (τ, (m − 1)z)           0
+                   φΦ ,P (τ, z) =            3
+                                                                 (µm,0 |W Φ (τ, z))           (B.4)
+                                            η (τ )θ1 (τ, z)
+
+where m denotes the Coxeter number of Φ as usual.
+   In [41] a meromorphic function
+
+
+                                          ψ X,P = µm,0 |W X
+
+
+was defined for every Niemeier root system X, where µm,0 is given by the Appell–Lerch sum
+as in (2.16) and W X is defined as above. Note that ψ X as a function of z has in general poles
+at z ∈ m
+       Z  Z
+         +m τ . In [41], following [12] this meromorphic function has the interpretation as the
+polar part of the meromorphic Jacobi form
+
+                                                       X
+                                ψ X = µm,0 |W X −              HrX θm,r
+                                                     r∈Z/2mZ
+
+
+of weight 1 and index m.
+                            Umbral Moonshine and K3 Surfaces                                                       36
+
+
+   First, we would like to prove
+
+                                             1      X             2             z + aτ + b 
+                      Z Φ,S (τ, z) =                         q a y 2a φΦ,P τ,                .             (B.5)
+                                            2m                                      m
+                                                 a,b∈Z/mZ
+
+
+We will start by providing more details on the expression (2.8) of the minimal model elliptic
+genus, which is a building block of the elliptic genus of the ADE singularities (2.17).
+   Fix m and let m̄ = m − 2. The Â1 string functions (chiral parafermion partition function
+times η(τ ), see [44]) are given by crs = 0 if r = s (mod 2) and otherwise
+
+                               1                         X                                     2       2
+               crs (τ ) =                                                           sgn(α) q mα −m̄β
+                            η 3 (τ )
+                                                      −|α|<β≤|α|
+                                                  1     1        r    s
+                                       (α,β) or ( 2 −α, 2 +β)=( 2m , 2m̄ ) mod Z2
+
+
+Note that we have shifted r by one compared to the convention in, for instance, [44], [63].
+Clearly, r ∈ Z/2mZ and s ∈ Z/2m̄Z, and crs (τ ) = −c−r        r
+                                                    s (τ ) = c−s (τ ). They can also be defined
+
+through the branching relation
+
+                                            X                     θm,r − θm,−r
+                                                    crs θm̄,s =                 ,
+                                                                   θ2,1 − θ2,−1
+                                         s∈Z/2m̄Z
+
+
+where we have used the theta function defined in (A.3). Define
+
+                                            X                                               z 
+                     χrs, (τ, z) =                crs−+4k (τ ) θ2mm̄,2s+(4k−)m τ,            .
+                                                                                           2m
+                                         k∈Z/m̄Z
+
+
+We have  ∈ Z/4Z, from which  = 0, 2 correspond to the NS and  = 1, 3 to the Ramond sector.
+Note that now both r and s in χrs, take value in Z/2mZ.
+   Now let
+
+
+                                        χ̃rs (τ, z) = χrs,1 (τ, z) − χrs,−1 (τ, z).
+
+
+It is easy to check that it transforms under the elliptic transformation as
+
+
+                χ̃rs (τ, z + aτ + b) = (−1)a+b e( sb      ĉ  2           r
+                                                  m ) e(− 2 (a τ + 2az))χ̃s−2a (τ, z).                     (B.6)
+
+
+They are the Ramond sector superconformal blocks relevant for the N = 2 minimal models with
+c = 3 m−2
+       m .
+   Using these building blocks, the elliptic genus of the minimal model corresponding to the
+                              Umbral Moonshine and K3 Surfaces                                                               37
+
+
+simply-laced root system Φ is then given by
+
+                 Φ                     1     X                                  X                       0
+                Zminimal (τ, z) =                     (ΩΦ        Φ
+                                                        r,r 0 − Ωr,−r 0 )                χ̃rs (τ, z)χ̃rs (τ̄ , 0).
+                                       2
+                                           0<r,r 0 <m                        s∈Z/2mZ
+
+
+                                            −r
+Using ΩΦ        Φ           r                                r
+       r,r 0 = Ω−r,−r 0 , χ̃r 0 (τ, z) = −χ̃r 0 (τ, z) and χ̃s (τ, 0) = δr,s − δr,−s , we arrive at
+
+
+                       Φ                      1      X                                   1
+                      Zminimal (τ, z) =                          ΩΦ       r
+                                                                  r,r 0 χ̃r 0 (τ, z) =     Tr(ΩΦ · χ̃).
+                                              2                                          2
+                                                  r,r 0 ∈Z/2mZ
+
+
+     Now we define for any nñ = m, n, ñ ∈ Z and operator acting on a function f : H × C → C
+as
+                               1       X
+                                              (−1)a+b+ab e          m−2 2
+                                                                                                  
+         f W̃m (n)(τ, z) =                                          2m (a τ + 2az + ab) f (τ, z + aτ + b)
+                               n
+                                   a,b∈Z/mZ
+                                   a,b=0 (ñ)
+
+Using (B.6) it is easy to check that
+
+                                                                 X
+                    χ̃rs W̃m (n) = (Ωm (n) · χ̃)rs =                      δs−s0 ,0 (2ñ) δs+s0 ,0 (2n) χ̃rs0
+                                                           s0 ∈Z/2mZ
+
+
+     Finally, one can verify that
+
+                    m−1
+                    X                 2                                         z + ατ + β 
+                           (−1)α+β q α /2 y α χ̃rs W̃m (n) (τ, z + ατ + β) µ τ,
+                                                          
+                                                                                    m
+                   α,β=0
+                   m−1
+                   X                2                                        z + ατ + β 
+                         (−1)α+β q α /2 y α χ̃rs (τ, z + ατ + β) µ Wm (n) τ,
+                                                                         
+               =                                                                          .
+                                                                                 m
+                   α,β=0
+
+
+Subsequently, the identity (B.5) follows from the above equality and
+
+                                   A                                      θ1 (t, z/m)
+                                 m−1
+                               Zminimal (τ, z) = 12 Trχ̃ =                              .
+                                                                     θ1 (t, z(m − 1)/m)
+
+     Finally we are ready to prove (4.9), which can be re-expressed as
+
+                                                 1      X            2                   z + aτ + b 
+                       EG(τ, z; K3) =                             q a y 2a φX,T τ,                                   (B.7)
+                                                2m                                           m
+                                                     a,b∈Z/mZ
+
+
+when combined with the identity (B.5) that we just verified and when we use the definition
+
+                                                             −iθ1 (τ, mz)θ1 (τ, (m − 1)z) X
+              φX,T (τ, z) = (φX,P + φX )(τ, z) =                                         ψ (τ, z).
+                                                                     η 3 (τ )θ1 (τ, z)
+                          Umbral Moonshine and K3 Surfaces                                             38
+
+
+From the fact that ψ X transforms as a weight 1, index m Jacobi form and using the transfor-
+mation (A.2) of the Jacobi theta function, it is straightforward to show that the RHS of (B.7)
+transforms as a weight 0, index 1 Jacobi form. Moreover, the poles of ψ X at m-torsion points
+are combined with the zeros of θ1 (τ, mz) and as a result φX,T is a holomorphic function on H×C
+admitting a double-expansion in powers of q and y. In order to show that the RHS of (B.7)
+is a weight 0, index 1 weak Jacobi form, we need to prove that there is no term in its Fourier
+expansion with q n , n < 0. This can be shown by using the explicit formulas involving µm,0 and
+                                                  2
+θ1 , combining with the fact that HrX = O(q −r /4m ) and the fact that the sum over b projects
+out all terms with fractional powers of y. After showing that both sides of (B.7) are weight 0,
+index 1 weak Jacobi forms, using the fact that the space of such functions is one-dimensional,
+the equality is proven by comparing both sides at, say, z = 0.
+
+
+B.2      Computing ZgX
+In this subsection we compute the twining function ZgX in (4.12). The results of the computation
+are recorded in Appendix C. In particular, we will give the details of the computation of ZgX,S .
+As a part of the computation, we also make conjectures for the elliptic genus ZhΦ,S of du Val
+singularities twined by certain automorphisms hhi of the corresponding Dynkin diagram Φ.
+   From the action of g ∈ GX on the Niemeier root lattice X, we can divide the conjugacy classes
+[g] into the following two types. In the first type, there exists an element in the conjugacy class
+that only permutes the irreducible components of X. More precisely, there exists an element g
+in the class that descends from an element in ḠX ⊆ GX , where ḠX is a quotient of GX and is
+defined by
+
+
+                                      ḠX = Aut(LX )/Ŵ X ,
+
+
+where Ŵ X < Aut(LX ) is the subgroup of lattice automorphisms that stabilize the irreducible
+components of X. See Table 2 for the list of ḠX . In the second type, the action of an element in
+[g] necessarily involves certain non-trivial automorphisms of some of the irreducible components
+in X. See [41] for a more detailed discussion.
+   As mentioned in §4, the twined function ZgX,S for a conjugacy class [g] of the first type, point-
+wise fixing a (not necessarily non-empty) union Xg = ∪i Φi ⊂ X of the irreducible components
+Φi , is simply given by
+                                                  X
+                                        ZgX,S =           Z Φi ,S .
+                                                      i
+
+   In order to compute the twined function ZgX,S for [g] for the second type of conjugacy
+                           Umbral Moonshine and K3 Surfaces                                         39
+
+
+
+
+                            Figure 1: The ADE Dynkin diagrams
+
+
+
+classes, we need to twine the elliptic genus of the (irreducible) ADE singularities by symmetries
+corresponding to the automorphisms of the Dynkin diagram Φ. In the rest of this appendix we
+will propose a conjectural answer.
+   For the Am−1 singularity with m > 2 we have the Z2 automorphism exchanging the simple
+root fi with fm−i , in the notation shown in Figure 1. We conjecture that the corresponding
+twined elliptic genus is
+                               ZZΦ,S
+                                  2
+                                     = Z Φ,S |W (−) , Φ = Am−1 ,
+
+where we have defined the operator acting on a function f : H × C → C as
+
+
+                                 f |W (−) (τ, z) = −f (τ, z + 21 ).
+
+
+   In fact, the above expression for ZZΦ,S
+                                        2
+                                           can be deduced from the action of Z2 on the eigen-
+vectors of the appropriate Coxeter element, and similarly for the twined elliptic genus of the D-
+and E-type singularities discussed below.
+                          Umbral Moonshine and K3 Surfaces                                         40
+
+
+   For later use we also define the operators
+
+                                                                  2
+                                         (3)            1X
+                                  f |W         (τ, z) =       f (τ, z + a3 )
+                                                        3 a=0
+                                                                  5
+                                                         1X
+                                 f |W (6) (τ, z) =             f (τ, z + a6 ).
+                                                         6 a=0
+
+We remark that the above conjecture, if proven, provides a geometrical explanation of the
+following interesting property of the GX -module K X . It was observed and conjectured in [7,41]
+that in the cases where X has only A-type components (i.e. when m − 1|24), the GX -module
+KrX underlying the even components of the mock modular form Hg,r
+                                                             X
+                                                                 (r even), are composed of
+irreducible faithful representations of GX . On the other hand, the module KrX underlying the
+                                         X
+odd components of the mock modular form Hg,r (r odd), are composed of GX -representations
+that factor through ḠX . Similar considerations also apply to the cases when X contains also
+D- and E-type components.
+   For the D-type singularity different from D4 , we have the Z2 automorphism exchanging
+the simple root fm/2 with f1+m/2 , in the notation shown in Figure 1. We conjecture that the
+corresponding twined elliptic genus is
+
+                                         1      X             2            z + aτ + b 
+                       ZZΦ,S (τ, z) =                   q a y 2a φΦ,P
+                                                                  Z2  τ,
+                          2
+                                         m                                     m
+                                             a,b∈Z/mZ
+
+
+for D1+m/2 for m 6= 6, where
+
+                    −iθ1 (τ, mz)θ1 (τ, (m − 1)z)
+     φΦ,P                                        − µm,0 |Wm (m/2) + µm,0 |W (−) (τ, z).
+                                                                               
+      Z2 (τ, z) =                                                                         (B.8)
+                            η 3 (τ )θ1 (τ, z)
+
+   The Φ = D4 Dynkin diagram permits a S3 symmetry on the roots {f1 , f3 , f4 }. We conjecture
+that the corresponding twined elliptic genera are given by
+
+                                         1      X         2                z + aτ + b 
+                        ZZΦ,S (τ, z) =                  q a y 2a φΦ,P
+                                                                  Z2  τ,
+                           2
+                                         6                                     6
+                                             a,b∈Z/6Z
+                                       1        X         2                z + aτ + b 
+                        ZZΦ,S (τ, z) =                  q a y 2a φΦ,P
+                                                                  Z3  τ,
+                           3
+                                       6                                       6
+                                             a,b∈Z/6Z
+                             Umbral Moonshine and K3 Surfaces                                                41
+
+
+where
+
+                                        −iθ1 (τ, 6z)θ1 (τ, 5z)
+                           φΦ,P
+                            Z2 (τ, z) =                        µ6,0 |WD4 ,Z2 (τ, z)
+                                           η 3 (τ )θ1 (τ, z)
+                                        −iθ1 (τ, 6z)θ1 (τ, 5z)
+                           φΦ,P
+                            Z3 (τ, z) =                        µ6,0 |WD4 ,Z3 (τ, z)
+                                           η 3 (τ )θ1 (τ, z)
+
+and
+
+
+                                    WD4 ,Z2 = −W6 (3) + W (−) + 2W (6)
+                                    WD4 ,Z3 = W D4 − 3W (3) .
+
+
+    The only E-type diagram with non-trivial automorphism is the Z2 generated by the action
+fi 7→ f6−i of E6 , for 1 ≤ i ≤ 5. We conjecture that corresponding twined elliptic genus is
+
+                                              1     X           2                    z + aτ + b 
+                         ZZE26 ,S (τ, z) =                    q a y 2a φZE26 ,P τ,
+                                             12                                          12
+                                                  a,b∈Z/12Z
+
+
+where
+
+                    −iθ1 (τ, 12z)θ1 (τ, 11z)
+ φE 6 ,P
+                                             µ12,0 |W12 (6) + µ12,0 |W (−) + µ12,0 |W12 (4)|W (−) (τ, z).
+                                                                                                 
+  Z2     (τ, z) =         3
+                        η (τ )θ1 (τ, z)
+                                                                                                     (B.9)
+    After giving the conjectural answer for the building blocks ZhΦ,S of the twining of ZgX,S , we
+need to know how such a g ∈ GX acts on the Niemeier root system X. This is encoded in the
+twisted Euler characters χ̄XA , χXA , χ̄XD , χXD . . . attached to the A-, D-, and E-components of
+each X. See §2.4 of [41] for details and see Appendix B.2 of the same reference for the values of
+such twisted Euler characters for all 23 X. Combining these ingredients leads to the answer for
+ZgX,S for all conjugacy classes [g] for all the umbral groups GX . This completes our computation
+of ZgX (4.12).
+
+
+
+C       The Twining Functions
+In this appendix we provide the expression of ZgX (τ, z) (cf. (4.12)) in terms of the function hX
+                                                                                                g :
+
+
+                               iθ1 (τ, z)2 n X                                                      o
+            ZgX (τ, z) =                       c µ2,0 (t, z) + hX
+                                                                  (τ )(θ 2,−1 (τ, z) − θ 2,1 (τ, z))
+                            θ1 (τ, 2z)η 3 (τ ) g                g
+
+
+
+where cX                                                                       X
+       g is the number of fixed point in the 24-dimensional representation of G . In other
+
+words, for the cycle shape ΠX                             X                     X
+                            g defined in (4.13), we have cg = m1 if `1 = 1 and cg = 0
+                         Umbral Moonshine and K3 Surfaces                                             42
+
+
+otherwise. For instance, for X = A24
+                                  1 and [g] the identity class, the above formula gives the
+
+N = 4 character decomposition of EG(K3) in (4.6).
+                                                     X ∼
+   For X = A24                 X
+            1 , the functions hg (τ ) for all [g] ⊂ G = M24 have been worked out in [18–21].
+                                                                                        A24
+We refer to these papers, or the summary in [7, 29]. For convenience we will denote hg 1 simply
+by Hg for [g] ⊂ M24 . Recall that Hg is nothing but the function discussed in (1.2) when [g] = 1A
+is the identity class of M24 . There are two cases, corresponding to X = D24 and X = D16 E8 ,
+with trivial GX . As a result they are not included in the present appendix.
+                                              0
+   When hX                                                                                   X
+         g coincides with Hg 0 for a certain g , we will simply use this identity to define hg .
+
+When there does not exist such a [g 0 ] ⊂ M24 , we write
+
+                                             cX
+                                              g            T̃gX (τ )
+                                 hX
+                                  g (τ ) =      H1A (τ ) −                                    (C.1)
+                                             24             η(τ )3
+
+and we will give the explicit expression for T̃gX in the following tables using the functions given
+in Appendix A. We also use the short hand notation (n)k := η k (nτ ).
+                         Umbral Moonshine and K3 Surfaces                                           43
+
+
+
+
+                                       Table 4: X = A12
+                                                     2
+
+ [g]      ΠX
+           g                                             hX
+                                                          g
+
+ 1A        124                                           H1A
+ 2A        212                                           H2B
+ 4A        46                                            H4C
+ 2B       18 28                                          H2A
+ 2C        212                                           H2B
+ 3A       16 36                                          H3A
+ 6A       23 63                        X = 3Λ + 2Λ − Λ − 3Λ + Λ
+                                     T̃6A        2        3      4         6   12
+ 3B        38                            X = 2(−4Λ + Λ − (1)6 /(3)2 )
+                                       T̃3B             3      9
+                                                                 5
+ 6B        64                                        X = 2 (1) (3)
+                                                   T̃6B       (2)(6)
+ 4B       24 44                                          H4A
+ 4C     14 22 44                                         H4B
+ 5A       14 54                                          H5A
+ 10A    22 102                                          H10A
+                                                                   5 (3)
+ 12A      122                                   T̃12A = 2 (1)(2)
+                                                   X
+                                                              (4)2 (6)
+ 6C    12 22 32 62                                       H6A
+ 6D       23 63                                      hX6D = h6A
+                                                                X
+
+8AB       42 82                               X
+                                            T̃8AB    = 2(2)4 (4)2 /(8)2
+8CD    1 21 41 82
+        2                                                H8A
+                                                               (2)7 (5)
+20AB    41 201                                   X
+                                              T̃20AB = 2 (1)(4)     2 (10)
+
+11AB    12 112                       T̃11AB = (2Λ11 (τ ) + 33(1)2 (11)2 )/5
+                                        X
+
+22AB    21 221         X
+                     T̃22AB = (3Λ2 − Λ4 + 2Λ11 − 3Λ22 + Λ44 )/15 − 22           44    11   2
+                                                                             3 fnew + 5 (1) (11)
+                                                                                                2
+                                             44      2      2    88      2   2
+                                           + 5 (2) (22) + 5 (4) (44)
+                           Umbral Moonshine and K3 Surfaces                           44
+
+
+                                      Table 5: X = A83
+
+ [g]            ΠX
+                 g                                       hX
+                                                          g
+
+ 1A               124                                   H1A
+ 2A              18 28                                  H2A
+ 2B               212                                  H2B
+ 4A              24 44                                  H4A
+ 4B               46                   X
+                                     T̃4B = 2Λ4 − 3Λ8 + Λ16 − 2(1)4 (2)2 /(4)2
+ 2C              18 28                                  H2A
+ 3A              16 36                                  H3A
+ 6A          1 22 32 62
+               2                                        H6A
+6BC              23 63                        hX6BC  = h Y , Y = A12
+                                                         6A       2
+ 8A              42 82        X = (2Λ − 3Λ + Λ )/8 + 8(4)4 (16)4 /(8)4 − 8(4)2 (8)2
+                            T̃8A       8     16     32
+ 4C            14 22 44                                H4B
+7AB              13 73                                 H7AB
+14AB         1 21 71 141
+              1                    X
+                                 T̃14AB  = (−Λ2 − Λ7 + Λ14 + 28(1)(2)(7)(14))/3
+
+
+
+                                      Table 6: X = A64
+
+       [g]        ΠX
+                   g                                    hX
+                                                         g
+
+    1A            124                                H1A
+    2A            212                                H2B
+    2B            212                                H2B
+    2C           18 28                               H2A
+    3A             38                                H3B
+    6A             64                                H6B
+    5A           14 54                               H5A
+   10A          22 102      T̃10A = (3Λ2 − Λ4 + 2Λ5 − 3Λ10 + Λ20 + 40(2)2 (10)2 )/3
+                              X
+
+   4AB             46                       hX        Y
+                                              4AB = h4B , Y = A3
+                                                                         8
+
+  4CD           1 22 44
+                 4                                   H4B
+                                                             2     4 (1)2
+  12AB           122                         T̃12AB = 2 (2)(3)(6)
+                                               X
+                                                               2 (12)2
+
+
+
+
+                                    Table 7: X = A45 D4
+
+                                    [g]      ΠX
+                                              g         hX
+                                                         g
+
+                                    1A        124       H1A
+                                    2A       18 28      H2A
+                                    2B       18 28      H2A
+                                    4A     14 22 44     H4B
+                                    3A       16 36      H3A
+                                    6A    1 22 32 62
+                                           2            H6A
+                                   8AB    12 21 41 82   H8A
+                           Umbral Moonshine and K3 Surfaces                      45
+
+
+
+                                       Table 8: X = D46
+
+ [g]      ΠX
+           g                                               hX
+                                                            g
+
+ 1A        124                                      H1A
+ 3A       16 36                                     H3A
+ 2A       18 28                                     H2A
+ 6A    12 22 32 62                                  H6A
+ 3B       16 36                                     H3A
+ 3C         38                             hX3C = h Y , Y = A12
+                                                    3B       2
+ 4A       24 44                                     H4A
+ 12A   2 41 61 121
+        1                X = (−2Λ + 3Λ + 2Λ − Λ − 3Λ + Λ )/4 + 18(2)(4)(6)(12)
+                       T̃12A       2    4     6     8     12    24
+ 5A       14 54                                     H5A
+15AB   1 31 51 151
+        1                        X
+                               T̃15AB = (−Λ3 − Λ5 + Λ15 + 45(1)(3)(5)(15))/4
+ 2B       18 28                                     H2A
+ 2C        212                                      H2B
+ 4B      1 22 44
+          4                                         H4B
+ 6B    12 22 32 62                                  H6A
+ 6C         64                             hX6C = h Y , Y = A12
+                                                    6B       2
+
+
+
+
+                                       Table 9: X = A46
+
+                     [g]    ΠX
+                             g                        hX
+                                                       g
+
+                  1A         124                  H1A
+                  2A         212                  H2B
+                  4A         46                   H4C
+                 3AB        16 36                 H3A
+                 6AB        23 63   hX
+                                     6AB = hY = hZ
+                                            6A
+                                                            12       8
+                                                 6BC , Y = A2 , Z = A3
+
+
+
+
+                                     Table 10: X = A27 D52
+
+                                       [g]   ΠX
+                                              g      hX
+                                                      g
+
+                                       1A     124    H1A
+                                       2A    18 28   H2A
+                                       2B    18 28   H2A
+                                       2C    18 28   H2A
+                                       4A    24 44   H4A
+Umbral Moonshine and K3 Surfaces               46
+
+
+
+
+           Table 11: X = A38
+
+  [g]   ΠX
+         g                      hX
+                                 g
+
+  1A     124                 H1A
+  2A     212                 H2B
+  2B    18 28                H2A
+  2C     212                 H2B
+  3A     38          hX      Y
+                      3A = h3B , Y = A2
+                                        12
+                           (1) 5 (3)
+  6A     64          X =2
+                   T̃6A     (2)(6) + 24(6)
+                                           4
+
+
+
+
+         Table 12: X = A29 D6
+
+           [g]         ΠX
+                        g         hX
+                                   g
+
+           1A          124       H1A
+           2A         18 28      H2A
+          4AB        14 22 44    H4B
+
+
+
+           Table 13: X = D64
+
+             [g]     ΠX
+                      g         hX
+                                 g
+
+            1A        124       H1A
+            2A        212       H2B
+            3A       16 36      H3A
+            2B       18 28      H2A
+            4A        46        H4C
+
+
+        Table 14: X = A11 D7 E6
+
+             [g]      ΠX
+                       g        hX
+                                 g
+
+             1A       124       H1A
+             2A      18 28      H2A
+                    Umbral Moonshine and K3 Surfaces                                  47
+
+
+
+
+                                Table 15: X = E64
+
+[g]      ΠX
+          g                                         hX
+                                                     g
+
+ 1A       124                                   H1A
+ 2A      18 28                                  H2A
+ 2B      18 28                                  H2A
+ 4A      24 44                                  H4A
+ 3A      16 36                                  H3A
+ 6A   1 22 32 62
+       2                                        H6A
+8AB      42 82        X
+                    T̃8AB = (2Λ8 − 3Λ16 + Λ32 )/8 + 24(4)2 (8)2 + 8(4)4 (16)4 /(8)4
+
+
+
+                                Table 16: X = A212
+
+              [g]     ΠX
+                       g                       hX
+                                                g
+
+               1A     124                  H1A
+               2A     212                  H2B
+              4AB     46    hX      Y     Z          8        6
+                             4AB = h4B = h4AB , Y = A3 , Z = A4
+
+
+
+
+                                Table 17: X = D83
+
+                                 [g]   ΠX
+                                        g      hX
+                                                g
+
+                                 1A     124    H1A
+                                 2A    18 28   H2A
+                                 3A     38     H3B
+
+
+
+                              Table 18: X = A15 D9
+
+                                 [g]   ΠX
+                                        g      hX
+                                                g
+
+                                 1A     124    H1A
+                                 2A    18 28   H2A
+Umbral Moonshine and K3 Surfaces          48
+
+
+
+
+         Table 19: X = A17 E7
+
+            [g]       ΠX
+                       g      hX
+                               g
+
+            1A         124    H1A
+            2A        18 28   H2A
+
+
+
+         Table 20: X = D10 E72
+
+            [g]       ΠX
+                       g      hX
+                               g
+
+            1A         124    H1A
+            2A        18 28   H2A
+
+
+
+                         2
+          Table 21: X = D12
+
+               [g]    ΠX
+                       g      hX
+                               g
+
+            1A        124     H1A
+            2A        212     H2B
+
+
+
+          Table 22: X = A24
+
+               [g]    ΠX
+                       g      hX
+                               g
+
+            1A        124     H1A
+            2A        212     H2B
+
+
+
+           Table 23: X = E83
+
+   [g]   Π̃g                  Zg
+   1A     124                H1A
+   2A    18 28               H2A
+   3A     38         hX
+                      3B = hY , Y = A12
+                            3B       2
+                         Umbral Moonshine and K3 Surfaces                                        49
+
+
+References
+ [1] J. H. Conway and S. P. Norton, “Monstrous Moonshine,” Bull. London Math. Soc. 11
+    (1979) 308 339.
+
+ [2] I. B. Frenkel, J. Lepowsky, and A. Meurman, “A natural representation of the
+    Fischer-Griess Monster with the modular function J as character,” Proc. Nat. Acad. Sci.
+    U.S.A. 81 (1984) no. 10, Phys. Sci., 3256–3260.
+
+ [3] I. B. Frenkel, J. Lepowsky, and A. Meurman, “A moonshine module for the Monster,” in
+    Vertex operators in mathematics and physics (Berkeley, Calif., 1983), vol. 3 of Math. Sci.
+    Res. Inst. Publ., pp. 231–273. Springer, New York, 1985.
+
+ [4] R. E. Borcherds, “Monstrous moonshine and monstrous Lie superalgebras,” Invent. Math.
+    109, No.2 (1992) 405–444.
+
+ [5] J. H. Bruinier, G. van der Geer, G. Harder, and D. Zagier, The 1-2-3 of modular forms.
+    Universitext. Springer-Verlag, Berlin, 2008. Lectures from the Summer School on
+    Modular Forms and their Applications held in Nordfjordeid, June 2004, Edited by
+    Kristian Ranestad.
+
+ [6] T. Gannon, Moonshine beyond the monster. The bridge connecting algebra, modular forms
+    and physics. Cambridge University Press, 2006.
+
+ [7] M. C. N. Cheng, J. F. R. Duncan, and J. A. Harvey, “Umbral Moonshine,”
+    arXiv:1204.2779 [math.RT].
+
+ [8] A. Folsom, “What is . . . a mock modular form?,” Notices Amer. Math. Soc. 57 (2010)
+    no. 11, 1441–1443.
+
+ [9] D. Zagier, “Ramanujan’s mock theta functions and their applications (after Zwegers and
+    Ono-Bringmann),” Astérisque (2009) no. 326, Exp. No. 986, vii–viii, 143–164 (2010).
+    Séminaire Bourbaki. Vol. 2007/2008.
+
+[10] C. Vafa and E. Witten, “A strong coupling test of S-duality,” Nuclear Phys. B 431
+    (1994) no. 1-2, 3–77. http://dx.doi.org/10.1016/0550-3213(94)90097-3.
+
+[11] J. Troost, “The non-compact elliptic genus: mock or modular,” JHEP 1006 (2010) 104,
+    arXiv:1004.3649 [hep-th].
+
+[12] A. Dabholkar, S. Murthy, and D. Zagier, “Quantum Black Holes, Wall Crossing, and
+    Mock Modular Forms,” arXiv:1208.4074 [hep-th].
+
+[13] S. Alexandrov, J. Manschot, and B. Pioline, “D3-instantons, Mock Theta Series and
+    Twistors,” JHEP 1304 (2013) 002, arXiv:1207.1109 [hep-th].
+                       Umbral Moonshine and K3 Surfaces                                      50
+
+
+[14] T. Eguchi and A. Taormina, “Unitary representations of the N = 4 superconformal
+    algebra,” Phys. Lett. B 196 (1987) no. 1, 75–81.
+    http://dx.doi.org/10.1016/0370-2693(87)91679-0.
+
+[15] T. Eguchi and A. Taormina, “Character formulas for the N = 4 superconformal algebra,”
+    Phys. Lett. B 200 (1988) no. 3, 315–322.
+    http://dx.doi.org/10.1016/0370-2693(88)90778-2.
+
+[16] T. Eguchi, H. Ooguri, A. Taormina, and S.-K. Yang, “Superconformal Algebras and
+    String Compactification on Manifolds with SU(N) Holonomy,” Nucl. Phys. B315 (1989)
+    193.
+
+[17] T. Eguchi, H. Ooguri, and Y. Tachikawa, “Notes on the K3 Surface and the Mathieu
+    group M24 ,” Exper.Math. 20 (2011) 91–96, arXiv:1004.0956 [hep-th].
+
+[18] M. C. Cheng, “K3 Surfaces, N=4 Dyons, and the Mathieu Group M24 ,”
+    Commun.Num.Theor.Phys. 4 (2010) 623–658, arXiv:1005.5415 [hep-th].
+
+[19] M. R. Gaberdiel, S. Hohenegger, and R. Volpato, “Mathieu twining characters for K3,”
+    JHEP 1009 (2010) 058, arXiv:1006.0221 [hep-th].
+
+[20] M. R. Gaberdiel, S. Hohenegger, and R. Volpato, “Mathieu Moonshine in the elliptic
+    genus of K3,” JHEP 1010 (2010) 062, arXiv:1008.3778 [hep-th].
+
+[21] T. Eguchi and K. Hikami, “Note on Twisted Elliptic Genus of K3 Surface,” Phys.Lett.
+    B694 (2011) 446–455, arXiv:1008.4924 [hep-th].
+
+[22] M. C. Cheng and J. F. Duncan, “On Rademacher Sums, the Largest Mathieu Group, and
+    the Holographic Modularity of Moonshine,” Commun.Num.Theor.Phys. 6 (2012)
+    697–758, arXiv:1110.3859 [math.RT].
+
+[23] M. R. Gaberdiel, D. Persson, H. Ronellenfitsch, and R. Volpato, “Generalised Mathieu
+    Moonshine,” Commun.Num.Theor.Phys. 7 (2013) 145–223, arXiv:1211.7074 [hep-th].
+
+[24] M. C. N. Cheng and J. F. R. Duncan, “On the Discrete Groups of Mathieu
+    Moonshine,”ArXiv e-prints (Dec., 2012) , arXiv:1212.0906 [math.NT].
+
+[25] M. R. Gaberdiel, D. Persson, and R. Volpato, “Generalised Moonshine and Holomorphic
+    Orbifolds,” arXiv:1302.5425 [hep-th].
+
+[26] D. Persson and R. Volpato, “Second Quantized Mathieu Moonshine,” arXiv:1312.0622
+    [hep-th].
+
+[27] M. Raum, “M24-twisted product expansions are siegel modular forms,” arXiv:1208.3453
+    [math.NT].
+                        Umbral Moonshine and K3 Surfaces                                     51
+
+
+[28] T. Gannon, “Much ado about Mathieu,” arXiv:1211.5531 [math.RT].
+
+[29] M. C. N. Cheng and J. F. R. Duncan, “The Largest Mathieu Group and (Mock)
+    Automorphic Forms,” 1201.4140 [math.RT].
+
+[30] A. Taormina and K. Wendland, “The symmetries of the tetrahedral kummer surface in
+    the mathieu group M24 ,” 1008.0954.
+
+[31] A. Taormina and K. Wendland, “The overarching finite symmetry group of Kummer
+    surfaces in the Mathieu group M24 ,” JHEP 1308 (2013) 125, arXiv:1107.3834
+    [hep-th].
+
+[32] M. R. Gaberdiel, S. Hohenegger, and R. Volpato, “Symmetries of K3 sigma models,”
+    Commun.Num.Theor.Phys. 6 (2012) 1–50, arXiv:1106.4315 [hep-th].
+
+[33] S. Govindarajan, “Unravelling Mathieu Moonshine,” Nucl.Phys. B864 (2012) 823–839,
+    arXiv:1106.5715 [hep-th].
+
+[34] M. C. Cheng, X. Dong, J. Duncan, J. Harvey, S. Kachru, et al., “Mathieu Moonshine and
+    N=2 String Compactifications,” JHEP 1309 (2013) 030, arXiv:1306.4981 [hep-th].
+
+[35] A. Taormina and K. Wendland, “Symmetry-surfing the moduli space of Kummer K3s,”
+    arXiv:1303.2931 [hep-th].
+
+[36] S. Harrison, S. Kachru, and N. M. Paquette, “Twining Genera of (0,4) Supersymmetric
+    Sigma Models on K3,” JHEP 1404 (2014) 048, arXiv:1309.0510 [hep-th].
+
+[37] J. A. Harvey and S. Murthy, “Moonshine in Fivebrane Spacetimes,” JHEP 1401 (2014)
+    146, arXiv:1307.7717 [hep-th].
+
+[38] T. Wrase, “Mathieu moonshine in four dimensional N = 1 theories,” JHEP 1404 (2014)
+    069, arXiv:1402.2973 [hep-th].
+
+[39] T. Creutzig and G. Hoehn, “Mathieu Moonshine and the Geometry of K3 Surfaces,”
+    arXiv:1309.2671 [math.QA].
+
+[40] J. Duncan and S. Mack-Crane, “Derived Equivalences of K3 Surfaces and Twined
+    Ellipitic Genera,” to appear .
+
+[41] M. C. N. Cheng, J. F. R. Duncan, and J. A. Harvey, “Umbral Moonshine and the
+    Niemeier Lattices,” arXiv:1307.5793 [math.RT].
+
+[42] A. Cappelli, C. Itzykson, and J. Zuber, “The ADE Classification of Minimal and A1(1)
+    Conformal Invariant Theories,” Commun.Math.Phys. 113 (1987) 1.
+
+[43] A. Cappelli, C. Itzykson, and J. Zuber, “Modular Invariant Partition Functions in
+    Two-Dimensions,” Nucl.Phys. B280 (1987) 445–465.
+                        Umbral Moonshine and K3 Surfaces                                       52
+
+
+[44] D. Gepner, “Space-Time Supersymmetry in Compactified String Theory and
+    Superconformal Models,” Nucl.Phys. B296 (1988) 757.
+
+[45] C. Vafa and N. P. Warner, “Catastrophes and the Classification of Conformal Theories,”
+    Phys.Lett. B218 (1989) 51.
+
+[46] E. J. Martinec, “Algebraic Geometry and Effective Lagrangians,” Phys.Lett. B217 (1989)
+    431.
+
+[47] H. Cartan, “Quotient d’un espace analytique par un groupe d’automorphismes,” in
+    Algebraic geometry and topology, pp. 90–102. Princeton University Press, Princeton, N.
+    J., 1957. A symposium in honor of S. Lefschetz,.
+
+[48] V. V. Nikulin, “Kählerian K3 Surfaces and Niemeier Lattices,” arXiv:1109.2879
+    [math.AG].
+
+[49] V. V. Nikulin, “Degenerations of Kählerian K3 surfaces with finite symplectic
+    automorphism groups ,” arXiv:1403.6061 [math.AG].
+
+[50] A. H. Durfee, “Fifteen characterizations of rational double points and simple critical
+    points,” Enseign. Math. (2) 25 (1979) no. 1-2, 131–163.
+
+[51] E. Witten, “String theory dynamics in various dimensions,”Nuclear Physics B 443 (June,
+    1995) . http://arxiv.org/abs/hep-th/9503124.
+
+[52] P. S. Aspinwall, “Enhanced gauge symmetries and K3 surfaces,” Phys.Lett. B357 (1995)
+    329–334, arXiv:hep-th/9507012 [hep-th].
+
+[53] S. H. Katz, A. Klemm, and C. Vafa, “Geometric engineering of quantum field theories,”
+    Nucl.Phys. B497 (1997) 173–195, arXiv:hep-th/9609239 [hep-th].
+
+[54] H. Ooguri and C. Vafa, “Two-dimensional black hole and singularities of CY manifolds,”.
+    http://arxiv.org/abs/hep-th/9511164. Nucl.Phys.B463:55-72,1996.
+
+[55] Y. Kazama and H. Suzuki, “New N=2 Superconformal Field Theories and Superstring
+    Compactification,” Nucl.Phys. B321 (1989) 232.
+
+[56] A. Giveon and D. Kutasov, “Little string theory in a double scaling limit,” JHEP 9910
+    (1999) 034, arXiv:hep-th/9909110 [hep-th].
+
+[57] J. A. Harvey, S. Murthy, and C. Nazaroglu, “ADE Double Scaled Little String Theories,
+    Mock Modular Forms and Umbral Moonshine,” arXiv:1410.6174 [hep-th].
+
+[58] T. Gannon, “U(1)m modular invariants, N = 2 minimal models, and the quantum Hall
+    effect,” Nuclear Phys. B 491 (1997) no. 3, 659–688.
+    http://dx.doi.org/10.1016/S0550-3213(97)00032-1.
+                        Umbral Moonshine and K3 Surfaces                                         53
+
+
+[59] O. Gray, “On the complete classification of unitary N = 2 minimal superconformal field
+    theories,” Comm. Math. Phys. 312 (2012) no. 3, 611–654.
+    http://dx.doi.org/10.1007/s00220-012-1478-z.
+
+[60] E. Witten, “Phases of N=2 theories in two-dimensions,” Nucl.Phys. B403 (1993)
+    159–222, arXiv:hep-th/9301042 [hep-th].
+
+[61] E. Witten, “On the Landau-Ginzburg Description of N = 2 Minimal Models,”
+    Int.J.Mod.Phys.A 9:4783-4800,1994 (Int.J.Mod.Phys.A9:4783-4800,1994) ,
+    hep-th/9304026.
+
+[62] Z.-a. Qiu, “Modular Invariant Partition Functions for N = 2 Superconformal Field
+    Theories,” Phys.Lett. B198 (1987) 497.
+
+[63] T. Kawai, Y. Yamada, and S.-K. Yang, “Elliptic Genera and N=2 Superconformal Field
+    Theory,”. http://arxiv.org/abs/hep-th/9306096. Nucl.Phys.B414:191-212,1994.
+
+[64] P. Di Francesco and S. Yankielowicz, “Ramond sector characters and N=2
+    Landau-Ginzburg models,” Nucl.Phys. B409 (1993) 186–210, arXiv:hep-th/9305037
+    [hep-th].
+
+[65] E. Witten, “On string theory and black holes,” Phys.Rev. D44 (1991) 314–324.
+
+[66] K. Hori and A. Kapustin, “Duality of the fermionic 2-D black hole and N=2 liouville
+    theory as mirror symmetry,” JHEP 0108 (2001) 045, arXiv:hep-th/0104202 [hep-th].
+
+[67] D. Israel, C. Kounnas, A. Pakman, and J. Troost, “The Partition function of the
+    supersymmetric two-dimensional black hole and little string theory,” JHEP 0406 (2004)
+    033, arXiv:hep-th/0403237 [hep-th].
+
+[68] T. Eguchi and Y. Sugawara, “SL(2,R)/U(1) supercoset and elliptic genera of noncompact
+    Calabi-Yau manifolds,” JHEP 0405 (2004) 014, arXiv:hep-th/0403193 [hep-th].
+
+[69] L. J. Dixon, M. E. Peskin, and J. D. Lykken, “N=2 Superconformal Symmetry and
+    SO(2,1) Current Algebra,” Nucl.Phys. B325 (1989) 329–355.
+
+[70] A. Hanany, N. Prezas, and J. Troost, “The Partition function of the two-dimensional black
+    hole conformal field theory,” JHEP 0204 (2002) 014, arXiv:hep-th/0202129 [hep-th].
+
+[71] R. Dijkgraaf, H. L. Verlinde, and E. P. Verlinde, “String propagation in a black hole
+    geometry,” Nucl.Phys. B371 (1992) 269–314.
+
+[72] T. Eguchi and Y. Sugawara, “Non-holomorphic Modular Forms and SL(2,R)/U(1)
+    Superconformal Field Theory,” JHEP 1103 (2011) 107, arXiv:1012.5721 [hep-th].
+                        Umbral Moonshine and K3 Surfaces                                       54
+
+
+[73] S. K. Ashok and J. Troost, “A Twisted Non-compact Elliptic Genus,” JHEP 1103 (2011)
+    067, arXiv:1101.1059 [hep-th].
+
+[74] S. Zwegers, “Mock theta functions,” arXiv:0807.4834 [math.RT].
+
+[75] S. K. Ashok, N. Doroud, and J. Troost, “Localization and real Jacobi forms,”
+    arXiv:1311.1110 [hep-th].
+
+[76] S. Murthy, “A holomorphic anomaly in the elliptic genus,” arXiv:1311.0918 [hep-th].
+
+[77] S. Ochanine Topology. An International Journal of Mathematics 26 (1987) 143.
+
+[78] E. Witten, “ELLIPTIC GENERA AND QUANTUM FIELD THEORY,” Commun.
+    Math. Phys. 109 (1987) 525.
+
+[79] P. S. Landweber, ed., Elliptic curves and modular forms in algebraic topology.
+    Springer-Verlag, Berlin, 1988.
+
+[80] T. Kawai, Y. Yamada, and S.-K. Yang, “Elliptic genera and n=2 superconformal field
+    theory,” Nucl.Phys.B 414:191-212,1994 (Nucl.Phys.B414:191-212,1994) ,
+    hep-th/9306096.
+
+[81] A. Kapustin, “Chiral de Rham complex and the half-twisted sigma-model,”
+    arXiv:hep-th/0504074 [hep-th].
+
+[82] H.-V. Niemeier, “Definite quadratische Formen der Dimension 24 und Diskriminante 1,”
+    J. Number Theory 5 (1973) 142–178.
+
+[83] J. H. Conway, “A characterisation of Leech’s lattice,” Invent. Math. 7 (1969) 137–142.
+
+[84] J. Leech, “Notes on sphere packings,” Canad. J. Math. 19 (1967) 251–267.
+
+[85] J. Leech, “Some sphere packings in higher space,” Canad. J. Math. 16 (1964) 657–682.
+
+[86] N.-P. Skoruppa, Über den Zusammenhang zwischen Jacobiformen und Modulformen
+    halbganzen Gewichts. Bonner Mathematische Schriften [Bonn Mathematical
+    Publications], 159. Universität Bonn Mathematisches Institut, Bonn, 1985. Dissertation,
+    Rheinische Friedrich-Wilhelms-Universität, Bonn, 1984.
+
+[87] T. Eguchi and A. Taormina, “On the unitary representations of N = 2 and N = 4
+    superconformal algebras,” Phys. Lett. B 210 (1988) no. 1-2, 125–132.
+    http://dx.doi.org/10.1016/0370-2693(88)90360-7.
+
+[88] S. Kondō, “Niemeier lattices, Mathieu groups, and finite groups of symplectic
+    automorphisms of K3 surfaces,” Duke Math. J. 92 (1998) no. 3, 593–603.
+    http://dx.doi.org/10.1215/S0012-7094-98-09217-1. With an appendix by Shigeru
+    Mukai.
+                        Umbral Moonshine and K3 Surfaces                                   55
+
+
+[89] V. V. Nikulin, “Integral symmetric bilinear forms and some of their applications,”
+    Mathematics of the USSR-Izvestiya 14 (1980) no. 1, 103.
+    http://stacks.iop.org/0025-5726/14/i=1/a=A06.
+
+[90] V. V. Nikulin, “Finite groups of automorphisms of Kählerian surfaces of type K3,”
+    Uspehi Mat. Nauk 31 (1976) no. 2(188), 223–224.
+
+[91] S. Mukai, “Finite groups of automorphisms of K3 surfaces and the Mathieu group,”
+    Invent. Math. 94 (1988) no. 1, 183–221. http://dx.doi.org/10.1007/BF01394352.
+
+[92] V. V. Nikulin, “Finite groups of automorphisms of Kählerian K3 surfaces,” Trudy
+    Moskov. Mat. Obshch. 38 (1979) 75–137.
+
+[93] K. Hashimoto, “Finite symplectic actions on the K3 lattice,” Nagoya Math. J. 206
+    (2012) 99–153. http://projecteuclid.org/euclid.nmj/1337690053.
+
+[94] V. V. Nikulin, “On Kummer Surfaces,” Izv. Akad. Nauk SSSR Ser. Mat. .
+
+[95] A. Fujiki, “Finite automorphism groups of complex tori of dimension 2,” Publ. RIMS.
+    Kyoto Univ. 24 (1988) 1–97.
+
+[96] K. Wendland, “Consistency of orbifold conformal field theories on K3,”
+    Adv.Theor.Math.Phys. 5 (2002) 429–456, arXiv:hep-th/0010281 [hep-th].
+
+[97] P. S. Aspinwall and D. R. Morrison, “String theory on K3 surfaces,”
+    arXiv:hep-th/9404151 [hep-th].
+
+[98] M. Eichler and D. Zagier, The theory of Jacobi forms. Birkhäuser, 1985.
+

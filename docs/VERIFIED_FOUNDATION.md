@@ -23,6 +23,13 @@ tree: eight-library build 3781 jobs, 0 errors; `DualScaleStream2` audit 100 theo
 lock reported exactly one change (`ADDED dualScale_eq_iff`) before it was locked. Total audited: **457**.
 Earlier paragraphs above record the counts at their own dates (99 / 425 / 456) and are left as written.
 
+**`v3.7.0` (2026-09-18): ninth library `DualScaleMoonshine` (Stream 4, `docs/STREAM4_WORKFLOW.md`)**,
+importing Stream 2. It computes the Mathieu-moonshine coefficients from a closed formula instead of
+reading them from a table, twines them, checks them against the `M₂₄` character table, and applies the
+twining test to paper 7's "27720 lock", which fails it. Gates: nine-library build 3787 jobs, 0 errors;
+`DualScaleMoonshine` 28 theorems, 0 failing (axioms: `propext` only); statement lock 52 declarations in 4
+files; no file of the other eight libraries changed. Total audited: **485**.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) |
 |---|---|---|---|---|
@@ -353,6 +360,20 @@ package, imports `DualScaleStream2` and `StringTheoryFormalization`, and proves 
   `∀ (lP L Om : ℝ), 0 < lP → 0 < L → (lP * L) ^ 2 * DarkEnergyScale.rhoLambda lP L Om = 3 * Om / (8 * Real.pi)`  
   axioms: propext, Classical.choice, Quot.sound
 
+### `DualScaleMoonshine` (Stream 4; probe on the `v3.7.0` tree)
+* **`DualScaleMoonshine.hComputed_eq_table`**  
+  `hComputed 9 = hFromTable`  — the series computed from `(−2E₂ + 48F₂)/η³` equals `−2, 2A₁, …, 2A₉` of EOT's table  
+  axioms: propext
+* **`DualScaleMoonshine.twined_2A`**  
+  `twined24 9 8 2 (-16) = List.map (fun x => 24 * x) table2A`  
+  axioms: propext
+* **`DualScaleMoonshine.trace_2A_eq_twined_coeff`**  
+  `List.map (dot chi2A) eotMult = List.take 7 (List.drop 1 (List.map (fun x => x / 24) (twined24 9 8 2 (-16))))`  
+  axioms: propext
+* **`DualScaleMoonshine.ratio_fails_at_2A`**  
+  `¬ratioTwines (twined24 9 8 2 (-16))`  — paper 7's 27720 ratio relation does not survive twining  
+  axioms: propext
+
 ## 4. How to re-confirm (8 commands)
 ```bash
 cd ~/SocrateAI-Scientific-Agora-LeanMaster
@@ -363,6 +384,9 @@ python3 tools/statement_lock.py --check $(find DualScaleStream2 StringTheoryForm
 # Stream 3
 lake build DualScaleCosmology
 python3 tools/axiom_audit.py DualScaleCosmology | tail -1
+# Stream 4
+lake build DualScaleMoonshine
+python3 tools/axiom_audit.py DualScaleMoonshine | tail -1
 python3 tools/statement_lock.py --check $(find DualScaleCosmology -name '*.lean') | tail -1
 ```
 If any of these disagrees with Section 1, this document is stale: trust the commands, fix the document.

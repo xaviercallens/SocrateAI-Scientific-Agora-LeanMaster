@@ -40,17 +40,17 @@ literature (Tier L) versus this project's own conjectures (Tier C, not yet deriv
 
 Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
 invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
-every theorem and lemma (**457 audited theorems across the eight first-party libraries** depend on
+every theorem and lemma (**485 audited theorems across the nine first-party libraries** depend on
 nothing beyond the three standard Lean axioms — see §10 and
 [`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md), which is the authoritative,
 gate-by-gate status document that this README summarizes).
 
-The eight libraries fall in two groups, and the distinction matters for how much each result is
+The nine libraries fall in two groups, and the distinction matters for how much each result is
 worth:
 
 | Group | Libraries | Depth |
 |---|---|---|
-| **Mathlib-backed** | `DualScaleStream2` (Stream 2: K3 × T² lattices, O(d,d;ℤ), DFT generalized metric, the dual-scale bound, flux/tadpole arithmetic), `StringTheoryFormalization` (Stream 1), `DualScaleCosmology` (Stream 3: scale-factor duality, the CKN UV/IR bound, dual towers, cosmic F-strings, the dark-energy length) | genuine linear algebra / real analysis over ℤ/ℝ with Mathlib; Stream 3's *physical* identifications are Tier C |
+| **Mathlib-backed** | `DualScaleStream2` (Stream 2: K3 × T² lattices, O(d,d;ℤ), DFT generalized metric, the dual-scale bound, flux/tadpole arithmetic), `StringTheoryFormalization` (Stream 1), `DualScaleCosmology` (Stream 3: scale-factor duality, the CKN UV/IR bound, dual towers, cosmic F-strings, the dark-energy length), `DualScaleMoonshine` (Stream 4: Mathieu moonshine computed from formulas, twined, and checked against the `M₂₄` character table) | genuine linear algebra / real analysis over ℤ/ℝ with Mathlib; Stream 3's *physical* identifications are Tier C |
 | **Mathlib-free core** | `DoubleFieldTheory`, `DualScaleValidation`, `DualScaleM24Formalization`, `StringTheoryFoundation`, `Lean5Corpus` | *arithmetic shadows*: physical quantities modeled by integers/rationals — kernel-checked, but thin |
 
 ### Key Claims, By Tier:
@@ -61,6 +61,7 @@ worth:
 5. **A 38-chapter textbook**, *The Dual-Scale String: T-Duality, K3 × T², and Their Formalization in Lean 4 — A Student's Companion* (709 pp., `papers/book/`), which develops the physics and the mathematics from scratch and states, chapter by chapter, exactly what the kernel has and has not checked (§6).
 6. **LeanGraph Knowledge Discovery:** semantic dependency extraction (867 nodes, 1603 edges, verified acyclic DAG) with an interactive D3/KaTeX visual explorer (`graph/index.html`), plus a kernel-level theorem atlas (§7).
 7. **(Tier A algebra + Tier C readings) Stream 3 — micro/macro dual-scale cosmology** (`DualScaleCosmology`, [`docs/STREAM3_WORKFLOW.md`](docs/STREAM3_WORKFLOW.md)): scale-factor duality `H(a⁻¹) = −H(a)`; the Cohen–Kaplan–Nelson bound; and the finding that, read as a T-dual pair, `ℓ_P` and `c/H₀` meet the CKN bound exactly at the self-dual length `√(ℓ_P·c/H₀) ≈ 47 μm` — **which is the dark-energy length up to `(8π/3Ω_Λ)^{1/4}`** (an identity, so the numerical agreements it produces are algebra, not corroboration). That length is **excluded as a string (Regge) scale** by ≥10³⁰ in `α'` (CMS dijet limit on string resonances, model-dependent) and **not excluded** as an extra-dimension radius (disfavored by O(1) only). The literal hypothesis "`ℓ_micro ~ ℓ_P` is the UV cutoff at `ℓ_macro ~ H₀⁻¹`" fails the CKN test by ≥10³⁰.
+8. **(Tier A computation + Tier C reading) Stream 4 — Mathieu moonshine computed, not typed** (`DualScaleMoonshine`, [`docs/STREAM4_WORKFLOW.md`](docs/STREAM4_WORKFLOW.md)): the coefficients `A₁…A₉` are computed from the closed formula `(−2E₂ + 48F₂)/η³` and equal the published table; the twined series for `2A, 3A, 5A, 7AB` are computed and equal the published ones; the traces of `2A`, `3A` on the `M₂₄`-representations (levels 1–7) equal the computed twined coefficients. Applied to this project's own "27720 lock" (paper 7), the same twining test **fails** at every class tested: by that criterion the lock is numerology, not moonshine.
 
 ---
 
@@ -166,7 +167,7 @@ continuous parameter survives.
 | **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
 | **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
 | **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
-| **Kernel Verification** | None (paper only) | 457/457 audited theorems across eight libraries: 0 sorry, standard axioms only | Tier A |
+| **Kernel Verification** | None (paper only) | 485/485 audited theorems across nine libraries: 0 sorry, standard axioms only | Tier A |
 
 The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
 (Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
@@ -437,6 +438,9 @@ lake build DualScaleStream2 StringTheoryFormalization
 
 # Stream 3 (Mathlib-backed, separate library)
 lake build DualScaleCosmology
+
+# Stream 4 (Mathieu moonshine, computed)
+lake build DualScaleMoonshine
 ```
 Last verified on 2026-09-17: `lake build` → 61 jobs, 0 errors; `lake build DualScaleStream2
 StringTheoryFormalization` → 3708 jobs, 0 errors.
@@ -464,7 +468,7 @@ bare keyword — and it also catches `native_decide` (`Lean.ofReduceBool`), whic
 ```bash
 lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 ```
-Last full run (2026-09-18), **457 theorems audited across all eight libraries, 0 failing**:
+Last full run (2026-09-18), **485 theorems audited across all nine libraries, 0 failing**:
 
 | Library | Theorems audited | Failing |
 |---|:---:|:---:|
@@ -476,7 +480,8 @@ Last full run (2026-09-18), **457 theorems audited across all eight libraries, 0
 | `DoubleFieldTheory` | 44 | 0 |
 | `DualScaleValidation` | 23 | 0 |
 | `DualScaleCosmology` (Stream 3) | 31 | 0 |
-| **Total** | **457** | **0** |
+| `DualScaleMoonshine` (Stream 4) | 28 | 0 |
+| **Total** | **485** | **0** |
 
 "0 failing" means every theorem depends on nothing beyond `propext`, `Classical.choice` and
 `Quot.sound`.

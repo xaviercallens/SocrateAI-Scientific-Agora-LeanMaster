@@ -58,3 +58,9 @@ lean_lib «DualScaleStream2» where
 
 lean_lib «DualScaleCosmology» where
   roots := #[`DualScaleCosmology]
+
+-- === Stream 4: Mathieu moonshine computed from formulas (imports Stream 2) ===
+-- Not a default_target; build with `lake build DualScaleMoonshine`.
+
+lean_lib «DualScaleMoonshine» where
+  roots := #[`DualScaleMoonshine]

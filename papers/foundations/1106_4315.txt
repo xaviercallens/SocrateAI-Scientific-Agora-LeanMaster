@@ -1,0 +1,2160 @@
+                                         Preprint typeset in JHEP style - HYPER VERSION
+
+
+
+
+                                                                                                                MPP-2011-69
+
+
+
+
+                                         Symmetries of K3 sigma models
+arXiv:1106.4315v1 [hep-th] 21 Jun 2011
+
+
+
+
+                                         Matthias R. Gaberdiel1 , Stefan Hohenegger2 and Roberto Volpato1
+                                            1 Institut für Theoretische Physik
+
+                                               ETH Zurich
+                                               CH-8093 Zürich
+                                               Switzerland
+
+                                            2 Max-Planck-Institute for Physics
+
+                                               Föhringer Ring 6
+                                               D-80805 München
+                                               Germany
+
+
+                                         Abstract: It is shown that the supersymmetry-preserving automorphisms of any
+                                         non-linear σ-model on K3 generate a subgroup of the Conway group Co1 . This is the
+                                         stringy generalisation of the classical theorem, due to Mukai and Kondo, showing that
+                                         the symplectic automorphisms of any K3 manifold form a subgroup of the Mathieu
+                                         group M23 . The Conway group Co1 contains the Mathieu group M24 (and therefore
+                                         in particular M23 ) as a subgroup. We confirm the predictions of the Theorem with
+                                         three explicit CFT realisations of K3: the T4 /Z2 orbifold at the self-dual point,
+                                         and the two Gepner models (2)4 and (1)6 . In each case we demonstrate that their
+                                         symmetries do not form a subgroup of M24 , but lie inside Co1 as predicted by our
+                                         Theorem.
+Contents
+
+1. Introduction                                               2
+   1.1 Sketch of Proof                                        4
+   1.2 Comments and Outline                                   4
+
+2. Symmetries of Non-linear σ-models on K3                    5
+   2.1 Moduli Space of Non-linear σ-models on K3              6
+   2.2 Characterisation of N = (4, 4) Preserving Symmetries   6
+   2.3 Classification of the Groups of Symmetries             7
+
+3. The Z2 Orbifold Model                                      10
+   3.1 The Spectrum in the RR sector                          10
+   3.2 Symmetries and Twining Genera                          11
+   3.3 The D-brane Charge Lattice                             13
+
+4. The Gepner Model (1)6                                      14
+   4.1 The Spectrum                                           14
+   4.2 Symmetries and Twining Genera                          16
+   4.3 The D-brane Charge Lattice                             18
+
+5. The (2)4 Model                                             19
+   5.1 The Spectrum                                           19
+   5.2 Symmetries and Twining Genera                          20
+   5.3 The D-brane Charge Lattice                             21
+
+6. Conclusions                                                23
+
+A. Notation and Mathematical Background                       24
+   A.1 Group Theory                                           24
+   A.2 Lattices                                               25
+   A.3 The Leech Lattice and the Golay Code                   26
+
+B. Proof of the Theorem                                       26
+   B.1 G as a Subgroup of O(Γ25,1 )                           27
+   B.2 G as a Subgroup of Co0                                 28
+   B.3 The Proof of the Theorem                               29
+   B.4 Realising all Symmetry Groups of K3                    32
+
+
+
+                                    –1–
+C. Gepner Models                                                                            33
+   C.1 N = 2 Minimal Models and Gepner Models at c = 6                                      33
+   C.2 D-branes in Gepner Models                                                            35
+
+
+
+
+1. Introduction
+Recently, a hidden M24 symmetry of the elliptic genus of K3 has attracted some
+attention. This development started with the observation of Eguchi, Ooguri and
+Tachikawa [1] who noted that the first few multiplicities with which the N = 4
+characters appear in the elliptic genus of K3 are sums (with integer coefficients) of
+dimensions of representations of the Mathieu group M24 . The appearance of these
+dimensions suggests that the underlying vector space (consisting of the states that
+contribute to the elliptic genus) carries an action of M24 . Assuming this group action
+one can then also define the ‘twining genera’1 , i.e. the elliptic genus with the insertion
+of a group element g ∈ M24 ,
+                                           c                 c
+                                                                      
+                        TrRR g y J0 q L0 − 24 (−1)F q̄ L̄0 − 24 (−1)F̄ ,              (1.1)
+
+and the usual string arguments suggest that these twining genera must have good
+modular properties under some congruence subgroup of SL(2, Z). Using these modu-
+lar properties as well as the explicit knowledge of the first few coefficients that follow
+from the observation of [1], all twining genera could be determined [3, 4, 5, 6]. In
+turn, this leads to a stringent test of the proposal: knowing all twining genera one
+can deduce the decomposition of all multiplicity spaces into M24 representations,
+and it was found that at least for the first 1000 coefficients, non-negative integer
+multiplicities appear [5, 6].2 This analysis therefore gives very convincing evidence
+for a hidden M24 symmetry underlying the elliptic genus of K3. Further support for
+this conjecture was given in [7] (see also [8, 9]).
+     Part of this symmetry can be understood geometrically. First of all, the elliptic
+genus is independent of the specific point in the moduli space of K3 that is considered,
+and thus the symmetries of the elliptic genus are in some sense the union of all
+symmetries that are present at different points in moduli space. The geometrical
+symmetries of K3, i.e. the symplectic automorphisms, have been studied some time
+ago by Mukai and Kondo [10, 11], and they found that at any point in moduli space
+   1
+      These are the analogues of the so-called MacKay-Thompson series for Monstrous Moonshine,
+see [2] for a modern review.
+    2
+      We thank Yuji Tachikawa for informing us that he has now checked the decomposition for the
+first 1000 coefficients.
+
+
+
+
+                                             –2–
+these symmetries form a subgroup of M23 . The Mathieu group M23 is a maximal
+subgroup of M24 , and thus this argument ‘explains’ part of the observation of [1].
+    As is familiar for example from T-duality, string theory typically has more than
+just the geometric symmetries, and one may therefore expect that the remaining
+symmetries of M24 may be accounted for by ‘stringy symmetries’ (see also [12]). In
+order to analyse this question, we study in this paper the stringy version of the
+Mukai-Kondo theorem. More specifically, we classify the spacetime supersymmetry
+preserving automorphisms of the non-linear σ-model at an arbitrary point in the
+moduli space of K3. From the point of view of the worldsheet, these symmetries
+are characterised by the property that they preserve the N = (4, 4) superconformal
+algebra, as well as the spectral flow operators. Given the observation of [1], one may
+have expected that all these symmetries should form a subgroup of M24 , but actually
+the answer is more complicated:
+Theorem: Let G be the group of symmetries of a non-linear σ-model on K3 pre-
+serving the N = (4, 4) superconformal algebra as well as the spectral flow operators.
+Then one of the following possibilities holds:
+
+  (i) G = G′ .G′′ , where G′ is a subgroup of Z11        ′′
+                                               2 , and G is a subgroup of M24 with
+      at least four orbits when acting as a permutation on {1, . . . , 24}
+
+ (ii) G = 51+2 .Z4
+
+(iii) G = Z43 .A6
+
+(iv) G = 31+4 .Z2 .G′′ , where G′′ is either trivial, Z2 , Z22 or Z4 .
+
+Here p1+2n denotes an extra special group of order p1+2n , and N.Q denotes a group
+G for which N is a normal subgroup such that G/N ∼       = Q (for an exposition of our
+mathematical notation and conventions see Appendix A). Note that except for case
+(i) with G′ trivial, these groups are not subgroups of M24 ; in particular, for cases
+(ii)-(iv) this follows from the fact that their order does not divide
+
+                             |M24 | = 210 · 33 · 5 · 7 · 11 · 23 .               (1.2)
+
+On the other hand, all groups in (i)–(iv) are subgroups of the Conway group Co1 ,
+and thus the analogue of the Mukai-Theorem is that the stringy symmetries all lie
+in Co1 . One may take this as evidence that the elliptic genus of K3 should in fact
+have a hidden Co1 symmetry, but from its decomposition in terms of N = 4 elliptic
+genera, we have not seen any hint for this. In any case, the result of the Theorem
+means that the explanation of the M24 symmetry appearing in the elliptic genus of
+K3 must be more subtle.
+
+
+
+                                            –3–
+1.1 Sketch of Proof
+
+Let us briefly sketch the proof of the Theorem, before returning to more general con-
+siderations below; the details of this argument as well as the underlying assumptions
+will be spelled out in Section 2 and Appendix B.
+     The basic strategy of the proof follows closely the proof of the Mukai-theorem,
+given by Kondo. The moduli space of sigma-models on K3 has the form
+
+                     MK3 = O(Γ4,20 )\O(4, 20)/(O(4) × O(20)) .                    (1.3)
+
+Here the Grassmannian O(4, 20)/(O(4)×O(20)) parametrises the choice of a positive
+definite four-dimensional subspace Π ⊂ R4,20 , and O(Γ4,20 ) is the group of automor-
+phisms of the even unimodular lattice Γ4,20 ⊂ R4,20 of signature (4, 20). We may think
+of Γ4,20 as the integral homology of K3, i.e. as the D-brane charge lattice, while the
+position of Π is specified by the choice of a Ricci-flat metric and a B-field on K3. In
+particular, it therefore determines the four left- and right-moving supercharges.
+    The supersymmetry preserving automorphisms of the non-linear σ-model char-
+acterised by Π generate the group G ≡ GΠ that consists of those elements of O(Γ4,20 )
+that leave Π pointwise fixed. We denote by LG the sublattice of G-invariant vectors
+of L ≡ Γ4,20 , and define LG to be its orthogonal complement. By construction, Π is
+a subspace of the real vector space LG ⊗ R ⊂ R4,20 , and since Π has signature (4, 0),
+the orthogonal complement LG must be a negative definite lattice of rank at most
+20. The basic idea is now to embed LG (−1) — the (−1) means that we change the
+sign of its intersection matrix — into the Leech lattice Λ. Such an embedding exists,
+provided we assume that LG (−1) does not contain any vectors of length squared
+two (which would signal some gauge enhancement and thus would lead to a singular
+CFT). Since the action of G fixes all vectors of Λ orthogonal to LG (−1), it follows
+that G must be a subgroup of Co1 ⊂ Co0 = Aut(Λ) that fixes pointwise a sublattice
+of the Leech lattice of rank at least 4. A more careful analysis then leads to the
+separate cases (i)-(iv) above.
+
+1.2 Comments and Outline
+
+Since the result of the Theorem is somewhat contrary to expectations, we have also
+studied a few explicit conformal field theories describing K3 at different points in
+moduli space in detail. In particular, we have done this for (A) the orbifold point
+T4 /Z2 ; (B) the orbifold point T4 /Z4 which is equivalent to the Gepner model (2)4 ;
+and (C) the Gepner model (1)6 . Given that these descriptions are very explicit, it is
+possible to identify (at least some of) the supersymmetry-preserving automorphisms.
+In each case we have computed the resulting symmetry group, and compared it with
+the possibilities allowed for by the Theorem. We find that (C) realises case (iii),
+while both (A) and (B) correspond to case (i) with G′ non-trivial. In particular,
+
+
+
+                                        –4–
+all of these cases therefore describe K3s for which the stringy symmetries do not lie
+inside M24 .
+     From the point of view of the argument leading to the Theorem, the symme-
+tries of the worldsheet theory should have an interpretation as lattice symmetries.
+Actually, this point of view can also be directly understood in conformal field the-
+ory: as mentioned before, the lattice Γ4,20 can be identified with the D-brane charge
+lattice, and Π describes the four left- and right-moving supercharges. Thus the
+supersymmetry preserving automorphisms of the CFT should be in one-to-one cor-
+respondence with the symmetries of the D-brane charge lattice that leave Π pointwise
+invariant. Using conformal field theory methods, it is fairly straightforward to de-
+termine the D-brane charge lattice, as well as the Π-preserving symmetries. For
+each of the three cases (A)–(C) we have verified that the resulting symmetry groups
+reproduce precisely those obtained from the explicit construction of the symmetry
+generators above. Incidentally, this method to determine the supersymmetry pre-
+serving automorphisms by analysing the D-brane charge lattice constitutes a nice
+general approach that can be applied to any non-linear σ-model on K3.
+
+
+     The paper is organised as follows. In the following section (Section 2) we give
+a more detailed description of the main Theorem and the assumptions that go into
+its proof. Section 3 is devoted to the study of the orbifold point T4 /Z2 . Among
+other things, we calculate the twining genera for the various symmetries and find the
+twining genus of the 2B conjugacy class of M24 that does not lie inside M23 . (The
+corresponding symmetry is the stringy 4-fold T-duality symmetry T , see (3.14).)
+However, we also find symmetries that do not lie inside M24 , and whose twining genus
+does not agree with the twining genus of any conjugacy class in M24 . (The simplest
+example is the ‘quantum symmetry’ Q, see (3.18).) In Section 4, the same analysis is
+done for the (1)6 Gepner point, while Section 5 deals with the (2)4 Gepner model. Our
+notation and some basic mathematical background is described in Appendix A, while
+some of the details of the proof of the Theorem have been delegated to Appendix B.
+Finally, Appendix C contains some of the details of the D-brane charge analysis for
+the Gepner models.
+
+
+
+2. Symmetries of Non-linear σ-models on K3
+
+In the following we shall consider two-dimensional theories with N = (4, 4) super-
+conformal symmetry and central charge c = 6. Theories of this type can be classified
+according to their elliptic genus φ(τ, z). The symmetries of the theory constrain the
+elliptic genus to be a weak Jacobi form of weight 0 and index 1, and the only possi-
+bilities are φ(τ, z) = 0, which corresponds to the case of the target space being T4 ,
+
+
+
+                                        –5–
+or
+                               4
+                               X ϑi (τ, z)2
+                 φ(τ, z) = 8                  = 2y + 20 + 2y −1 + O(q) ,          (2.1)
+                                  ϑ (τ, 0)2
+                               i=2 i
+
+where ϑi are the Jacobi theta functions. This second case arises if the target space
+is K3 and it is the main focus of the present paper.
+
+2.1 Moduli Space of Non-linear σ-models on K3
+As mentioned in the introduction, the moduli space of N = (4, 4) theories with
+elliptic genus (2.1) is believed to be the quotient (see for example [13, 14])
+
+                     MK3 = O(Γ4,20 )\O(4, 20)/(O(4) × O(20)) .                    (2.2)
+
+Here the Grassmannian O(4, 20)/(O(4)×O(20)) parametrises the choice of a positive
+definite four-dimensional subspace in R4,20 , and O(Γ4,20 ) is the group of automor-
+phisms of the even unimodular lattice Γ4,20 with signature (4, 20).
+     Geometrically, we can think of Γ4,20 as the integral homology lattice Heven (X, Z)
+of the K3 manifold X, with the bilinear form given by the intersection number. The
+space R4,20 is interpreted as the real even cohomology H even (X, R) endowed with the
+cup product, and the embedding Γ4,20 ⊂ R4,20 is realised through Poincaré duality
+Heven (X, Z) ∼= H even (X, Z) ⊂ H even (X, R). The non-linear σ-model is determined
+by choosing a Ricci-flat metric and a B-field on the manifold X; this corresponds to
+the choice of the 4-dimensional subspace Π ⊂ H even (X, R), though the relationship
+is rather involved (see e.g. [13]).
+     In string theory, the homology lattice can be identified with the lattice of D-
+brane charges, and the intersection number for α, β ∈ Heven (X, Z) is reproduced by
+the overlap
+                                       1              c
+                         α · β = hhαkq 2 (L0 +L̃0 )− 12 (−1)FL kβiiRR .           (2.3)
+Here only the RR part of the boundary states kαii, kβii corresponding to the D-
+branes wrapping the cycles α and β contribute [15]. (Alternatively, (2.3) is the
+Witten index in the R-sector of the relative open string.) In this picture, the dual
+space of real cohomology is naturally identified with the space of 24 (anti-)chiral RR
+ground states with h = h̄ = 41 . Under the action of SU(2)L ×SU(2)R , which is part of
+the N = (4, 4) superconformal symmetry, the 24 RR ground states split into a four-
+dimensional (2, 2)-representation and 20 singlets. The four-dimensional subspace
+Π ⊂ R4,20 is then to be identified with the subspace of RR states transforming in the
+(2, 2)-representation.
+
+2.2 Characterisation of N = (4, 4) Preserving Symmetries
+Our goal is to classify the discrete symmetries G̃Π of a given N = (4, 4) theory
+parametrised by Π in the moduli space MK3 . Any symmetry g ∈ G̃Π must obviously
+
+
+
+                                          –6–
+leave Π invariant. It must therefore either be an element of O(Γ4,20), or it must
+act trivially on the Grassmannian in (2.2). However, the latter case would imply
+that the symmetry exists everywhere in moduli space, and we know (for example
+from studying deformations of the orbifold line) that this is not possible. Thus we
+conclude that the symmetries G̃Π of the theory at Π is precisely the subgroup of
+O(Γ4,20 ) ⊂ O(4, 20, R) that leaves Π (setwise) fixed.
+     A general symmetry g ∈ G̃Π will preserve the N = (4, 4) superconformal algebra
+only up to an automorphism. From now on we want to focus on the subgroup
+GΠ ⊂ G̃Π that actually leaves the N = (4, 4) superconformal algebra invariant, i.e.
+for which this automorphism is trivial, and that preserve the spectral flow operators.
+These symmetries are characterised by the condition that they preserve space-time
+supersymmetry [16]. They are also relevant for the analysis of ‘Mathieu Moonshine’
+[1] that was reviewed at the beginning of the Introduction. Indeed, M24 appears to act
+on the multiplicity spaces with which the N = 4 representations appear in the elliptic
+genus, and hence must commute with the left-moving N = 4 superconformal algebra.
+Furthermore, according to the proposal of [3, 4], the four RR ground states that
+transform in the (2, 2) of the SU(2)L ×SU(2)R — these are the spacetime supercharges
+— sit in a singlet representation of M24 . Thus the symmetries that are described by
+M24 should leave the full N = (4, 4) superconformal algebra invariant, and preserve
+the spectral flow operators. Obviously, M24 is not a subgroup of O(Γ4,20 ), and thus we
+cannot explain the full M24 symmetry by looking at just one point in moduli space.
+However, the elliptic genus is constant over moduli space, and one may therefore
+expect that we can account for the entire M24 by putting information from different
+points in moduli space together. This is one of the main motivations for classifying
+the symmetry groups at different points in moduli space.
+     In any case, since Π ⊂ R4,20 can be identified with the subspace of RR states
+transforming in the (2, 2)-representation, we conclude that
+         The subgroup GΠ of symmetries of the K3 σ-model characterised by
+         Π ∈ R4,20 that leave the N = (4, 4) superconformal algebra invari-
+         ant and that preserve the spectral flow operators, is the subgroup of
+         O(Γ4,20) ⊂ O(4, 20, R) that leaves Π (pointwise) fixed.
+     In the following, by a symmetry of an N = (4, 4) theory in MK3 , we will always
+mean a transformation with these properties. Note that this restriction excludes
+some very interesting symmetries, for example mirror symmetry in a self-mirror
+theory. On the other hand, the extension of our arguments to more general cases is
+fairly straightforward.
+
+2.3 Classification of the Groups of Symmetries
+In this section we will classify the possible groups GΠ . The related problem in classi-
+cal geometry has been previously considered by Mukai [10], who classified the groups
+
+
+
+                                         –7–
+of symplectic automorphisms of K3 surfaces. Mukai proved that the symplectic au-
+tomorphisms of any K3 surface form a subgroup of M23 , which in turn is a maximal
+subgroup of M24 . The Mathieu group M23 is finite and its subgroups are well studied,
+so that the Mukai theorem provides a very explicit description of all symplectic auto-
+morphisms. In the following, we will extend the Mukai theorem to the classification
+of the symmetry groups of the σ-models. In particular, we will show that GΠ ⊂ Co1 ,
+the Conway group Co1 . Note that Co1 contains M23 (as well as M24 ) as a subgroup.
+     As argued in the previous section, the symmetries of interest form the subgroup
+of O(Γ4,20) ⊂ O(4, 20, R) that fix (pointwise) the positive-definite four-dimensional
+subspace Π ⊂ R4,20 , characterising the relevant point in moduli space. However, not
+all choices of Π correspond to well-defined conformal field theories. In particular,
+when Π is orthogonal to a vector v ∈ Γ4,20 of norm v 2 = −2 (usually called a
+root of Γ4,20 ), the corresponding non-linear σ-model is not well defined [17]. This
+subtlety can be understood by considering the model as an internal CFT in type
+IIA superstring theory. This theory is dual to heterotic string theory compactified
+on T4 . Generically, the corresponding low energy effective field theory contains an
+abelian gauge group U(1)24 . However, when Π is orthogonal to a root v, the gauge
+group is enhanced to a non-abelian gauge group, and v is interpreted as a root of
+the corresponding Lie algebra. The additional states in type IIA superstring theory
+are interpreted as D-branes becoming massless at this point of the moduli space.
+This means that the corresponding perturbative superconformal field theory cannot
+describe correctly all massless degrees of freedom of the theory, and hence the non-
+linear σ-model is expected to be inconsistent [18]. Therefore, in the following, we
+shall exclude the points in the moduli space where Π is orthogonal to a root. It is
+believed that these are the only singular points in the moduli space.
+    Our strategy to characterise the groups GΠ is inspired by the proof of the Mukai
+theorem given by Kondo [11]. Let Π ∈ R4,20 be a 4-dimensional positive definite
+space, not orthogonal to any root (vector of norm −2) in L ≡ Γ4,20 ⊂ R4,20 , and let
+G ≡ GΠ ⊂ O(Γ4,20 ) be the subgroup of lattice automorphisms fixing Π pointwise.
+We denote by LG the sublattice of vectors fixed by G
+
+                 Γ4,20 ⊃ LG := {v ∈ Γ4,20 |g(v) = v for all g ∈ G} ,             (2.4)
+
+and by LG its orthogonal complement
+
+                Γ4,20 ⊃ LG := {w ∈ Γ4,20 |w · v = 0 for all v ∈ LG } .           (2.5)
+
+By definition, the real vector space LG ⊗ R ⊂ R4,20 will contain Π, Π ⊂ LG ⊗ R,
+and since Π has signature (4, 0), the orthogonal complement LG must be negative
+definite and have rank at most 20. Furthermore, every vector in LG is orthogonal to
+Π, so that, by our assumption on Π, LG contains no roots. The proof of the Theorem
+then proceeds as follows — the relevant details are given in Appendix B:
+
+
+
+                                        –8–
+   • First (see Appendix B.1), we prove that LG (−1), can be embedded in the even
+     unimodular lattice Γ25,1 . The action of G on LG extends to an action on Γ25,1 ,
+     which fixes all vectors orthogonal to LG (−1) in Γ25,1 . Thus, G is a subgroup
+     of Aut(Γ25,1 ).
+
+   • Next (see Appendix B.2), using the fact that LG (−1) contains no vectors of
+     norm 2 and the properties of Aut(Γ25,1 ), we show that LG (−1) must be con-
+     tained in a positive definite sublattice of Γ25,1 , namely the Leech lattice Λ.
+     This is the unique 24-dimensional even unimodular lattice with no roots and
+     its group of automorphisms is the Conway group Co0 [22]. This group can be
+     obtained by extending the sporadic finite simple group Co1 [27] of order
+                      |Co1 | = 221 · 39 · 54 · 72 · 11 · 13 · 23 ∼ 4 × 1018 ,     (2.6)
+     by the Z2 symmetry that changes the sign of all vectors in Λ. Once again, the
+     action of G on LG (−1) can be extended to an action on Λ which fixes all vectors
+     orthogonal to LG (−1). This means, in particular, that the Z2 symmetry that
+     changes the sign of all vectors in Λ is not an element of G, since it has no
+     non-trivial fixed vectors. It follows that G is a subgroup of the finite simple
+     group Co1 .
+Combining these results thus leads to the natural analogue of the Mukai-Theorem:
+
+Proposition. The group GΠ of symmetries of any non-linear σ-model on K3 is a
+subgroup of the Conway group Co1 ⊂ Co0 = Aut(Λ) that fixes pointwise a sublattice
+of the Leech lattice Λ of rank at least 4.
+    In order to give a more precise description of the groups of symmetries GΠ , one
+needs a detailed classification of the subgroups of Co0 that fix a sublattice of rank 4
+in Λ. The result of this somewhat technical analysis — the details are explained in
+Appendix B.3 — is the Theorem stated in the Introduction.
+    We should mention that our analysis does not actually prove that Co1 is the
+smallest possible group containing all these symmetry groups. However, some simple
+considerations on the order of the groups |GΠ | are sufficient to exclude all maximal
+subgroups of Co1 , except for Co2 . Furthermore, all the cases (i)–(iv) in the Theorem
+are actually realised by some N = (4, 4) model, provided we assume that every four-
+dimensional subspace Π ⊂ R4,20 , not orthogonal to any vector of norm −2 in Γ4,20 ,
+leads to a consistent conformal field theory (see Appendix B.4). The characterisation
+of the symmetry groups as given in the Theorem is therefore optimal.
+
+    In the following we shall describe in detail specific examples that realise some
+of the possibilities of the Theorem. In particular, the T4 /Z2 orbifold model to be
+discussed in Section 3 and the (2)4 Gepner model of Section 5 are examples of case (i)
+and have symmetry groups that are not subgroups of M24 , while the Gepner model
+(1)6 that will be studied in Section 4 realises precisely case (iii).
+
+
+
+                                           –9–
+3. The Z2 Orbifold Model
+In order to illustrate the general predictions of the Theorem let us consider a few
+specific examples. We begin with the T4 /Z2 orbifold model where we take T4 to be
+the orthogonal torus at the self-dual radius, i.e. the four radii take on the self-dual
+value, and set the B-field on the torus to zero. We write T4 = T2 × T2 , and label
+the two T2 s by i = 1, 2. For each T2 we use complex coordinates, and thus the
+left-moving bosonic and fermionic modes are
+
+                  αn(i) ,     ᾱn(i) ,                ψn(i) ,        ψ̄n(i) ,   i = 1, 2 ,         (3.1)
+
+and similarly for the right-movers. (The right-movers are denoted by a tilde.) The
+Z2 orbifold I acts as −1 an all of these modes. In addition it maps the momentum
+ground states I(pL , pR ) = (−pL , −pR ).
+
+3.1 The Spectrum in the RR sector
+We denote the states in the untwisted sector of T4 = T2 × T2 by
+
+                                           |pL , pR ; N, Ñ; s; s̃i ,                              (3.2)
+                      √                √
+where pL = (n + w)/ 2, pR = (n − w)/ 2 are the left and right momenta at the
+self dual radius, with n ∈ Z4 the momentum and w ∈ Z4 the winding numbers.
+Furthermore, N and Ñ denote the left and right oscillator contributions, while s, s̃
+label the Ramond ground states. More specifically,
+
+                                         (s; s̃) = (s1 , s2 ; s̃1 , s̃2 ) ,                        (3.3)
+                                                                                             (i)     (i)
+where each si , i = 1, 2, can take the two values ± 21 , and the zero modes ψ̄0 and ψ0
+map the states with si = ± 21 into one another; the analogous statement holds for the
+s̃i in the right-moving sector. The RR ground states have charge (S, S̃) with respect
+to the left- and right-moving U(1)-current, where
+                                   X                X
+                               S=      si ,    S̃ =       s̃i .                    (3.4)
+                                             i                        i
+
+To obtain the spectrum of the Z2 -orbifold theory we have to project onto states that
+are even under the operator I acting as
+
+       I|pL , pR ; N, Ñ; s; s̃i = (−1)|N |+|Ñ| (−1)S+S̃ | − pL , −pR ; N, Ñ; s; s̃i ,           (3.5)
+
+where |N| is the total number of oscillators appearing in N, and likewise for |Ñ|.
+In the twisted sector the states are labelled by
+
+                                                  |i; N, Ñi ,                                     (3.6)
+
+
+
+                                                     – 10 –
+where i = 1, . . . , 16 distinguishes the 16 different fixed points of the orbifold, while
+N, Ñ denote again the oscillator numbers. The ground states do not carry any charge
+with respect to the left- and right-moving U(1)-currents. The orbifold projection in
+the twisted sector acts as
+
+                                 I |i; N, Ñi = (−1)|N |+|Ñ| |i; N, Ñi .                         (3.7)
+
+It is straightforward to calculate the elliptic genus from this description. In the
+untwisted sector one finds
+                                                ∞
+         (U )                              −1
+                                                Y (1 + q n y)2 (1 + q n y −1)2      ϑ2 (τ, z)2
+     φ          (τ, z) = (2y + 4 + 2y )                                          =8            ,   (3.8)
+                                                n=1
+                                                            (1 + q n )4             ϑ2 (τ, 0)2
+
+while the contribution of the twisted sector equals
+                                                    ϑ (τ, z)2 ϑ3 (τ, z)2 
+                                 (T )                 4
+                             φ          (τ, z) = 8           +              .                      (3.9)
+                                                   ϑ4 (τ, 0)2 ϑ3 (τ, 0)2
+
+It is easy to see that their sum, φ(U ) (τ, z) + φ(T ) (τ, z), reproduces precisely (2.1).
+
+3.2 Symmetries and Twining Genera
+The orbifold theory possesses various symmetries that leave the N = (4, 4) supercon-
+formal algebra invariant and that preserve the spectral flow operators; in particular,
+we have
+
+ (1) R: rotation of the two T2 ’s by 90 and −90 degrees, respectively.
+
+ (2) E: exchanging the two T2 ’s, together with an inversion acting on the second
+     T2 , say.
+
+ (3) Ha : half-period translations, that act as (−1)p·a , a ∈ (Z/2Z)4 , in the untwisted
+     sector, and by a permutation on the 16 twisted sectors.
+
+ (4) T : 4-fold T-duality. (Note that the 2-fold T-duality induces a non-trivial
+     automorphism of the N = (4, 4) superconformal algebra.)
+
+ (5) Q: the quantum symmetry that acts as +1 on the untwisted, and as −1 on the
+     twisted sector.
+
+These symmetries generate the group G = 21+8 ⋊ Z32 . The normal subgroup acting
+trivially on the untwisted sector RR ground states with pL = pR = 0 is the extra
+special group 21+8 of order 29 , containing Q, the center of G. It is generated by the
+half-shifts Ha that form an abelian Z42 , and by their dual symmetries Ga = T Ha T
+that change the sign of half of the twisted sectors. The only non-trivial commutators
+are Ha Gb Ha Gb = Qa·b , where a, b ∈ (Z/2Z)4 . The quotient group G/21+8 ∼    = Z32 is
+
+
+
+                                                      – 11 –
+generated by R, E and T . Conjugation by R and E yields a permutation of the half
+shifts (and the analogous permutations for Ga ), while conjugation by T exchanges
+Ga and Ha . The group G = 21+8 ⋊ Z32 realises case (i) of the Theorem with G′ = Z62
+and G′′ = Z42 ⋊ Z22 . Here G′′ ⊂ M24 is generated by Ha , E and R, while G′ ⊂ Z11  2 is
+generated by Q (one Z2 factor), by the composition T RE (another Z2 ), and by the
+elements of the form Ha T REHa (giving Z42 ).
+     Given the explicit description of the RR sector from above, it is straightforward
+to calculate the corresponding twining genera,
+                                                      1      1
+                        φg (τ, z) = TrRR (g q L0 − 4 q̄ L̄0 − 4 y J0 (−1)F +F̄ ) ,       (3.10)
+
+i.e. the elliptic genus with the insertion of the symmetry g.3 In particular, we can
+check how these twining genera compare with the Mathieu twining genera that were
+worked out in [3, 4, 5, 6]. Our explicit results are for example
+
+                           ϑ2 (2τ, 2z)      ϑ3 (2τ, 2z)
+            φR (τ, z) = 4              +4                 = φ2A (τ, z)                   (3.11)
+                           ϑ2 (2τ, 0)        ϑ3 (2τ, 0)
+                           ϑ2 (2τ, 2z)      ϑ3 (2τ, 2z)
+             φE (τ, z) = 4             +4                 = φ2A (τ, z)                   (3.12)
+                           ϑ2 (2τ, 0)        ϑ3 (2τ, 0)
+                           ϑ2 (τ, z)2
+           φHa (τ, z) = 8             = φ2A (τ, z)                                       (3.13)
+                           ϑ2 (τ, 0)2
+                                      ϑ1 (τ, z)2
+            φT (τ, z) = −2ϑ4 (2τ )4              = φ2B (τ, z)                            (3.14)
+                                       η(τ )6
+          φT Ha (τ, z) = φ4A (τ, z)                     [a2 even, say a = (1100)]        (3.15)
+          φRHa (τ, z) = φ4B (τ, z)                        [e.g. for a = (1111)]          (3.16)
+          φT Ha (τ, z) = φ4C (τ, z)                    [e.g. for a = (1000)]             (3.17)
+                           ϑ (τ, z)2 ϑ (τ, z)2 ϑ (τ, z)2 
+                              2            3              4
+            φQ (τ, z) = 8             2
+                                        −           2
+                                                      −
+                            ϑ2 (τ, 0)     ϑ3 (τ, 0)      ϑ4 (τ, 0)2
+                       = 2φ2A (τ, z) − φ1A (τ, z)                                        (3.18)
+                             ϑ3 (2τ )4 ϑ1 (τ, z)2     ϑ3 (τ, z)2     ϑ4 (τ, z)2
+       φQT Ha Gb (τ, z) = −2                      − 2            − 2             (3.19)
+                                    η(τ )6             ϑ3 (τ )2       ϑ4 (τ )2
+                      = 12 (−φ1A + φ2A + 2φ4B ) [e.g. for a = (1100), b = (0011)] .
+
+It is worth pointing out that the generators Ha , E and R that generate G′′ ⊂ M24
+lead to twining genera that directly agree with M24 twining genera. On the other
+hand, the twining genera of the quantum symmetry Q, see (3.18), and of the group
+elements g = QT Ha Gb for suitable choices of a and b, see (3.19), do not equal any
+   3
+    The condition that the symmetry preserves the full N = (4, 4) superconformal algebra guar-
+antees that the resulting twining genus still defines a weak Jacobi form. Symmetries that only
+preserve the N = (2, 2) superconformal algebra typically act non-trivially on J ± , and then the
+resulting twining genera do not have the shift symmetry under z 7→ z + τ .
+
+
+
+
+                                                – 12 –
+Mathieu twining genus (but can only be expressed in terms of linear combinations of
+such twining genera). Finally, certain twining genera involving the 4-fold T-duality,
+namely T and T Ha for suitable a, give rise to twining genera, whose conjugacy classes
+(2B, 4A and 4C) do not lie inside M23 . This ties in with the fact that T-duality is a
+non-geometric symmetry.
+
+3.3 The D-brane Charge Lattice
+As suggested by the proof of the Theorem (and explained in Section 2), we should
+also be able to characterise the symmetry group of the model as the symmetries of
+the D-brane charge lattice that leave the 4-dimensional subspace Π (corresponding
+to the 4 supercharges) invariant. For the case at hand, the D-brane charge lattice
+can be computed straightforwardly since the primitive branes may be taken to be
+fractional D0, D2 and D4 branes. They can be constructed as explained, for example,
+in [19] (see also [20]). If we denote the Ishibashi states in the untwisted and the ith
+twisted sector by |Dp, Uii and |Dp, iii, respectively, the fractional branes have the
+structure
+                                                         16
+                                                         X
+                      ||D4, ǫ, δiif = 12 |D4, Uii + 4ǫ         δi |D4, iii                (3.20)
+                                                         i=1
+                                                               X
+                  ||D2(jk), ǫ, δiif = 21 |D2(jk), Uii + 2ǫ             δi |D2(jk), iii    (3.21)
+                                                               i∈Pjk
+
+                       ||D0, i, ǫiif = 12 |D0, Uii + ǫ|D0, iii ,                          (3.22)
+
+where ||D0, i, fii is the fractional D0-brane at the ith fixed point, while ||D2(jk), fii
+denotes the fractional D2-branes oriented along the (jk) direction, with Pjk the set
+of four fixed points between which the D2-brane is ‘spanned’. Furthermore, ǫ and
+δi are signs, and the configurations of signs δi arise from Wilson lines, i.e. not all
+configurations of signs are allowed. The complete even self-dual charge lattice is
+spanned by4
+  (I) 9 fractional D4-branes: one has no Wilson line and all twisted charges + 41
+      (ǫ = +1); one has no Wilson line and all twisted charges − 14 (ǫ = −1); the
+      remaining 7 fractional D-branes have twisted charge + 14 at the origin, and
+      different choices of Wilson lines.
+
+ (II) 9 fractional D0-branes: one sits at the origin and has twisted charge +1; one sits
+      at the origin and has twisted charge −1; the remaining 7 fractional D0-branes
+      have charge +1 and sit at different fixed points.
+
+(III) 6 fractional D2-branes, oriented along all 6 = 42 2-planes, without any Wilson
+                                                        
+
+      lines (i.e. δi = +1) and positive twisted charge (ǫ = +1).
+   4
+    The explicit description of the relevant branes and their intersection matrix is given in the
+LATEX source.
+
+
+
+
+                                             – 13 –
+The non-zero entries of the intersection form are
+
+   hhD4,U|D0,Uii = 2 ,
+   hhD2(12),U |D2(34),Uii = hhD2(13),U |D2(24),Uii = hhD2(14),U |D2(23),Uii = 2
+   hhD∗, i|D∗, jii = −2δij .                                                            (3.23)
+
+It is then straightforward to check that the intersection matrix of the above D-branes
+has determinant 1, i.e. that these 24 branes generate indeed the full charge lattice.
+     The RR charges that transform in the (2, 2)-representation of SU(2)L × SU(2)R
+and hence span Π are precisely those carried by the bulk brane combinations
+                                                                                     
+ D0+D4 ,          D2(12)+D2(34) ,                     D2(13)+D2(24) ,     D2(14)+D2(23) ,
+                                                                                    (3.24)
+where D2(ij) denotes the bulk D2-brane oriented along the (ij) direction; this can be
+deduced from the analysis of [21], see in particular Appendix A.2. The orthogonal
+complement (with respect to the intersection form) then turns out to be a lattice of
+rank 20. Upon changing the sign of its quadratic form, this lattice can be embedded
+into the Leech lattice Λ. Its orthogonal complement in Λ is generated by four vectors
+y1 , . . . , y4 ∈ Λ with yi · yj = 4δij . According to our general argument, the group of
+symmetries G of the model is isomorphic to the group of automorphisms of Λ that
+act trivially on y1 , . . . , y4 . Since G fixes some vectors of norm 8 in Λ (for example
+y1 + y2 ), it must be a subgroup of Z12       2 ⋊ M24 , see Appendix B.3. A more detailed
+                                  1+8    3
+analysis shows that G = 2             ⋊ Z2 , thus matching the results from above.
+
+
+4. The Gepner Model (1)6
+
+Next we consider the (1)6 Gepner model which will turn out to realise case (iii) of
+the Theorem. It is constructed by taking six tensor powers of the N = 2 minimal
+model at k = 1, subject to the Z3 orbifold projection generated by
+                                                2πi P
+                     ⊗6i=1 Φlmi ,si;m̄i ,s̄i 7→ e 3  i mi   ⊗6i=1 Φlmi ,si;m̄i ,s̄i .    (4.1)
+
+For a short review of Gepner models, as well as an outline of our notations and
+conventions see Appendix C.
+
+4.1 The Spectrum
+The orbifold theory has an untwisted (H(0) ) and two twisted (H(1) and H(−1) ) sectors,
+with spectrum
+                               O 6
+                          (n)
+                         H =       Hli ,mi +n,si ⊗ H̄li ,mi −n,s̄i .              (4.2)
+                                      i=1
+
+
+
+
+                                                – 14 –
+Invariance under the orbifold symmetry requires
+                                      6
+                                      X
+                                             mi ≡ 0     mod 3 .                                      (4.3)
+                                       i=1
+
+For k = 1, we may take l = 0, with m ∈ Z/6Z and s ∈ Z/4Z. The only states that
+contribute to the elliptic genus are the RR states with h̄ = 41 . It is easy to see that
+the condition h̄ = 41 together with the U(1)-charge integrality condition (that follows
+from orbifold invariance) is only satisfied if the right-moving ground state is of the
+form
+                (0, 1, 1)⊗6, (0, −1, −1)⊗6 , (0, 1, 1)⊗3(0, −1, −1)⊗3 .            (4.4)
+In the last case, all the 20 different permutations of the factors should be considered.
+Thus, the RR states for which the right-movers are R ground states are explicitly
+
+    n=0:            ⊗6i Φ01,si ;1,1                                                           (1 state)
+                    ⊗6i Φ0−1,si ;−1,−1                                                        (1 state)
+                                                        
+                     ⊗3i Φ01,si ;1,1 ⊗ ⊗3i Φ0−1,si ;−1,−1 and permutations                  (20 states)
+    n=1:            ⊗6i Φ03,si ;1,1 ,                                                         (1 state)
+                    ⊗6i Φ01,si ;−1,−1                                                         (1 state)
+                     ⊗3i Φ03,si ;1,1 ⊗ ⊗3i Φ01,si ;−1,−1 and permutations
+                                                       
+                                                                                            (20 states)
+    n = −1 :        ⊗6i Φ0−1,si ;1,1                                           (1 state)
+                    ⊗6i Φ03,si ;−1,−1                                          (1 state)
+                     ⊗3i Φ0−1,si ;1,1 ⊗ ⊗3i Φ03,si ;−1,−1 and permutations
+                                                        
+                                                                             (20 states)
+                                                                                       (4.5)
+where si = 1, 3. In each case, states with si = 1 and si = 3, i = 1, . . . , 6, are mapped
+into one another under the action of the N = 2 algebra of the ith model. The
+contribution to the elliptic genus of the N = 2 representation containing ⊗6i Φ0mi ,si ;m̄i ,s̄i
+is
+                                 Y 6
+                                       0          0
+                                      Im i
+                                           (τ, z)Im̄i
+                                                      (τ̄ , 0) ,                       (4.6)
+                                        i
+       l
+where Im (τ, z) are the N = 2 ‘characters’ that are defined in (C.9). Since
+                   0
+                  I−1 (τ̄ , 0) = −1 ,         I10 (τ̄ , 0) = 1 ,       I30 (τ̄ , 0) = 0 ,            (4.7)
+
+we obtain
+                             X                            X
+                                      0
+              φ(τ, z) = 2            Im (τ, z)6 − 20                0
+                                                                   Im (τ, z)3 Im+2
+                                                                               0
+                                                                                   (τ, z)3 ,         (4.8)
+                            m∈Z/6Z                      m∈Z/6Z
+                             m odd                       m odd
+
+which reproduces indeed (2.1).
+
+
+
+                                                – 15 –
+4.2 Symmetries and Twining Genera
+Let us first describe the symmetries that preserve the N = 2 superconformal sym-
+metry. For i ∈ {1, . . . , 6}, we denote by ei the Z3 symmetry that acts as
+                                                            2πimi
+                       ei (⊗6j=1 Φ0mj ,sj ;m̄j ,s̄j ) = e     3     (⊗6j=1 Φ0mj ,sj ;m̄j ,s̄j ) .    (4.9)
+
+These symmetries generate a group Z53 (because the product of all of them is the
+orbifold symmetry, under which all states are invariant by construction). There are
+also the right-moving analogs ēi , where the phase depends on m̄i instead of mi . In
+                                                                                  2πin
+addition we have the quantum symmetry Q which acts by multiplication by e 3 on
+the nth twisted sector H(n) . This gives an additional Z3 . Note that in the nth twisted
+sector m̄i = mi − 2n, and thus
+                                       ēi = Qei ,                                 (4.10)
+implying that the transformations Q, ei , ēi form a group Z63 . Finally, there are per-
+mutations of the six factors of (1)6 , where we define the action of π ∈ S6 by
+
+            π ⊗6i=1 Φlmi +n,0;mi −n,0 = sgn(π)n ⊗6i=1 Φlmπ(i) +n,0;mπ(i) −n,0 ,
+                                                                            
+                                                                                  (4.11)
+
+with additional signs for si , s̄i 6= 0, given by the usual bosonic/fermionic statistics.
+    Thus, the group of symmetries preserving the N = 2 superconformal symmetry
+is Z3 × Z53 .S6 . The subgroup preserving the N = 4 superconformal algebra is then
+generated by the transformations that leave the currents J + and J − of the N = 4
+superconformal algebra
+
+                        (Φ0−2,2;0,0 )⊗6 ∈ H(−1) ,               (Φ02,2;0,0 )⊗6 ∈ H(+1)              (4.12)
+
+invariant. This group has the structure Z43 ⋊ A6 and is generated by5
+
+ (1) The phase transformations
+                                 6
+                                 Y                            6
+                                                              X
+                                       eni i     with                ni ≡ 0       mod 3 ,           (4.13)
+                                 i=1                          i=1
+
+        where the constraint assures invariance of the currents. Because of the orbifold
+        invariance relation 6i=1 ei = 1, they generate the normal subgroup Z43 .
+                           Q
+
+ (2) The even permutations, since the odd permutations act on the states (4.11)
+     with a minus sign. The even permutations form the alternating group A6 .
+
+The resulting group is the semidirect product Z43 ⋊ A6 , where we have the obvious
+action π( 6i=1 eni i ) = 6i=1 enπ(i) of A6 on the generators of Z43 . The (1)6 Gepner model
+          Q             Q        i
+
+
+is therefore an example of case (iii) of the Theorem.
+  5
+      We have also checked that these symmetries preserve the spectral flow operators.
+
+
+
+
+                                                    – 16 –
+    With this description it is now straightforward to calculate the corresponding
+twining genera, and for the convenience of the reader we have collected them in
+Table 1. For example, we have for the phase transformation e1 e2 e3
+                             X                                            X
+                                       6
+    φe1 e2 e3 (τ, z) = 2              Im − (2 + 9e2πi/3 + 9e−2πi/3 )                3 3
+                                                                                   Im Im+2        (4.14)
+                           m=−1,1,3                                     m=−1,1,3
+                             X                  X
+                                       6                  3 3
+                   =2                 Im +7              Im Im+2 = − 12 φ1A + 23 φ3A ≡ φ̂3a ,     (4.15)
+                           m=−1,1,3           m=−1,1,3
+
+
+which corresponds to the fourth line of the table. The other twining genera that do
+
+                               symmetry                                            properties
+       perm.        conditions on phases                                  N        #     Tr24     φg
+      ijklmn        ni = nj = nk = nl = mm = nn = 0                        1        1        24   φ1A
+    (ij)(kl)mn      ni + nj = nk + nl = nm = nn = 0                        2       405       8    φ2A
+      ijklmn        ni = 2 , nj = 1 , nk + nl + nm + nm = 0
+     (ijk)lmn       ni + nj + nk = 0 , nl + nm + nn = 0                    3    2220         6    φ3A
+    (ijk)(lmn)      ni + nj + nk = 0 , nl + nm + nn = 0
+      ijklmn        ni = nj = nk = 1 , nl = nm = nn = 0                    3       20        −3   φ̂3a
+    (ijkl)(mn)      ni + nj + nk + nl + nm + nn = 0                        4    7290         4    φ4B
+     (ijklm)n       ni + nj + nk + nl + nm + nn = 0                        5   11664         4    φ5A
+   (ij)(kl)mn       ni + nj = nk + nl = 0 , nm = 1 , nn = 2
+   (ij)(kl)mn       ni + nj = nk + nl = 1 , nm = 1 , nn = 0
+   (ij)(kl)mn       ni + nj = nk + nl = 2 , nm = 2 , nn = 0                6    1620         2    φ6A
+   (ij)(kl)mn       ni + nj = 2 , nk + nl = 0 , nm + nn = 1
+   (ij)(kl)mn       ni + nj = 1 , nk + nl = 0 , nm + nn = 2
+   (ij)(kl)mn       ni +nj = 2 , nk +nl = 0 , nm = 1 , nn = 0              6    1620         5    φ̂6a
+   (ijk)(lmn)       ni + nj + nk = 2 , nl + nm + nn = 1                    9    3240         3    φ̂9a
+     (ijk)lmn       ni + nj + nk = 2 , nl + nm + nn = 1
+                                                                           9    1080         3    φ̂9b
+     (ijk)lmn       ni + nj + nk = 1 , nl + nm + nn = 2
+
+Table 1: Twining genera of the (1)6 model. The symmetry generators have been labelled
+by the structure of the permutations {i, j, k, l, m, n} of the minimal models and the indi-
+                           n
+vidual phase shifts eni i ej j enk k enl l enmm ennn . The multiplicity (labelled by #) is the number of
+‘independent’ generators within each class of symmetries which are not identified through
+the action of the orbifold. The order of each generator is denoted by N and Tr24 gives the
+trace over the 24-dimensional representation. Finally, the twining genera φ̂3a , φ̂6a and φ̂9ab
+are not Mathieu twining genera and are defined in the main body of the text.
+
+
+
+
+                                                  – 17 –
+not directly agree with M24 twining genera — since we are in case (iii) of the Theorem,
+there is no reason to expect any M24 twining genera — are
+   φ̂6a (τ, z) = 12 (φ2A (τ, z) + φ6A (τ, z))                                            (4.16)
+   φ̂9a (τ, z) = 12 (φ3A (τ, z) + φ3B (τ, z))                                            (4.17)
+                    h                                                               i
+                                                                  (9)
+   φ̂9b (τ, z) = 41 φ0,1 (τ, z) + 6 2ψ (3) (τ ) + 3ψ (9) (τ ) + 3E2 (τ ) φ−2,1(τ, z) ,
+                                                                        
+                                                                                         (4.18)
+
+where φ0,1 and φ−2,1 are the standard Jacobi forms of SL(2, Z) of index one and
+                                                     (9)
+weight 0 and −2, respectively, and {ψ (3) , ψ (9) , E2 } form a basis of weight 2 modular
+forms of Γ0 (9) (for more information and explicit definitions see [5]).
+
+4.3 The D-brane Charge Lattice
+As before, we can also determine the symmetry group of this model from an analysis
+of the D-brane charge lattice. The construction of Gepner model D-branes is stan-
+dard, and is briefly sketched in Appendix C. The tensor product A-type branes with
+Li = Si = 0 and M1 , . . . , M6 ∈ Z6 generate a charge lattice of rank 22 with signature
+(2, 20). This is as expected, since the A-type tensor product branes only couple to
+the 22 RR ground states in the untwisted sector.
+     The other charges are carried by B-type permutation branes of the type described
+in (C.25). As we vary M1 , . . . , M6 , M̂ ∈ Z6 , the intersection form of the B-type branes
+gives a matrix of rank 10 with signature (2, 8). Again, this is what we expect since
+these permutation branes couple to the 2 RR ground states in the twisted sectors
+n = ±1, and to the 8 RR ground states in the untwisted sector with m1 = −m2 ,
+m3 = −m4 , and m5 = −m6 .
+     In order to obtain the full charge lattice we have to combine these two construc-
+tions; for example, a set of 22 A-type D-branes with Li = 0 = Si , i = 1, . . . , 6 and
+suitable values for M1 , . . . , M6 , and two B-type D-branes with Li = Mi = 0, Si = 0
+and M̂ = ±2 generate the full unimodular lattice Γ4,20 (see the LATEX source code
+for details).
+     Next, we denote that four RR ground states in the (2, 2) representation of
+SU(2)L × SU(2)R according to their J03 , J˜03 charges as Φ1,1̄ , Φ1,−1̄ , Φ−1,1̄ , and Φ−1,−1̄ ,
+Let us consider the sublattice (Γ4,20 )⊥ of D-branes that are neutral under these four
+states. The 22 A-type branes generate the sublattice of D-branes that are neutral
+with respect to Φ1,−1̄ and Φ−1,1̄ , while their charge with respect to Φ1,1̄ and Φ−1,−1̄
+is given by
+                                                       1 πi P
+                             QΦ1,1̄ (k0, Mi , 0iiA ) = e 3 i Mi ,                        (4.19)
+                                                       3
+                                                       1 πi P
+                            QΦ−1,−1̄ (k0, Mi , 0iiA ) = e− 3 i Mi .                      (4.20)
+                                                       3
+With the redefinition
+                                                         √
+                Φa = 3(Φ1,1̄ + Φ−1,−1̄ ) ,         Φb = 2 3i(Φ1,1̄ − Φ−1,−1̄ ) ,         (4.21)
+
+
+
+                                                – 18 –
+the states Φa , Φb correspond to elements of the dual lattice (Γ4,20 )∗ ∼
+                                                                        = Γ4,20 so that
+the sublattice generated by A-type D-branes and orthogonal to these elements has
+maximal rank,
+                                   rk(Γ4,20 )⊥ = 20 .                            (4.22)
+
+The discriminant group of this 20-dimensional lattice is Z9 × Z23 , and its discriminant
+form is the same as the one of the S-lattice 29 36 (see Appendix B.3), whose quadratic
+form is                                                
+                                          4 1 1 −2
+                                       1 4 1 −2
+                                                       
+                             Q29 36 =                   .                        (4.23)
+                                       1 1 4 1
+                                        −2 −2 1 4
+
+By the general lattice gluing procedure [22], it follows that the S-lattice 29 36 and
+(Γ4,20 )⊥ (−1) are orthogonal sublattices of a positive definite even unimodular lattice
+of rank 24. This procedure also provides explicitly the quadratic form for this uni-
+modular lattice. With the help of some computer algorithm we have shown that the
+resulting lattice has no vectors of norm 2, thus proving that it is indeed the Leech
+lattice Λ. All sublattices of Λ with quadratic form (4.23) are related to the S-lattice
+29 36 by some Leech lattice automorphism, and the pointwise stabiliser of each of
+them is the group G = Z43 ⋊ A6 [23], thus matching the results from the previous
+subsection.
+
+
+5. The (2)4 Model
+
+Our last example is the ‘quartic’ model (2)4 which is constructed by taking a Z4
+orbifold of four tensor powers of the N = 2 minimal model of level k = 2. Our
+notation and conventions are the same as in the previous section and are again
+summarised in Appendix C.
+
+5.1 The Spectrum
+For the Z4 orbifold we have in addition to the untwisted sector H(0) three twisted
+sectors (n = 1, 2, 3), with spectrum
+
+                                  4
+                                  O
+                         H(n) =         Hli ,mi +n,si ⊗ H̄li ,mi −n,s̄i ,          (5.1)
+                                  i=1
+
+
+where invariance under the Z4 -orbifold enforces 4i=1 mi ≡ 0 mod 4. At k = 2 there
+                                                 P
+
+are six N = 2 R-sector representations, which we may label by (l = 0, m = ±1, ±3)
+and (l = 1, m = 0, 2). For the elliptic genus we are again only interested in those RR
+states for which the right-moving states are ground states with h̄ = 41 . The relevant
+
+
+
+                                            – 19 –
+coset representations are (compare also [21, 24])
+
+                (0, 1, 1)⊗4 ,                (1, 2, 1)⊗4 ,              (0, −1, −1)⊗4 ,                  (5.2)
+                   ⊗2                   ⊗2                                                      ⊗2
+       (0, 1, 1)        ⊗ (0, −1, −1)        ,       (0, 1, 1) ⊗ (0, −1, −1) ⊗ (1, 2, 1)             ,   (5.3)
+
+where in the second line all 6 and 12 permutations are included, respectively. Ex-
+plicitly, the RR states that can contribute to the elliptic genus are thus of the form
+
+      n=0:                      n=1:                    n=2:                      n=3:
+      ⊗4i Φ01,si ;1,1           ⊗4i Φ03,si ;1,1         ⊗4i Φ0−3,si ;1,1          ⊗4i Φ0−1,si ;1,1
+                                                                                                         (5.4)
+      ⊗4i Φ12,si ;2,1           ⊗4i Φ10,si ;2,1         ⊗4i Φ1−2,si ;2,1          ⊗4i Φ10,si ;2,1
+      ⊗4i Φ0−1,si ;−1,−1        ⊗4i Φ01,si ;−1,−1       ⊗4i Φ03,si ;−1,−1         ⊗4i Φ0−3,si ;−1,−1 .
+
+In addition, there are the states (again written in the order n = 0, n = 1, n = 2, and
+n = 3)
+                                                                              
+      ⊗2i Φ01,si ;1,1 ⊗ ⊗2i Φ0−1,si ;−1,−1   ⊗2i Φ03,si ;1,1 ⊗ ⊗2i Φ01,si ;−1,−1
+                                                                                     (5.5)
+      ⊗2i Φ0−3,si ;1,1 ⊗ ⊗2i Φ03,si ;−1,−1   ⊗2i Φ0−1,si ;1,1 ⊗ ⊗2i Φ0−3,si ;−1,−1 ,
+                                                                                
+
+
+where in each case there are 6 different permutations, as well as the states
+                                                                  
+    ⊗2i Φ12,si ;2,1 ⊗ Φ0−1,si ;−1,−1 ⊗ Φ01,si ;1,1  ⊗2i Φ10,si ;2,1 ⊗ Φ01,si ;−1,−1 ⊗ Φ03,si ;1,1
+    ⊗2i Φ1−2,si ;2,1 ⊗ Φ03,si ;−1,−1 ⊗ Φ0−3,si ;1,1 ⊗2i Φ10,si ;2,1 ⊗ Φ0−3,si ;−1,−1 ⊗ Φ0−1,si ;1,1 ,
+                                                                  
+
+                                                                                                   (5.6)
+where now there are 12 different permutations each. Again, the states with si = 1, 3
+are mapped into one another under the action of the N = 2 algebra of the ith model.
+Since
+        0                           0
+       I±1 (τ̄ , 0) = ±1 ,         I±3 (τ̄ , 0) = 0 ,        I01 (τ̄ , 0) = 0 ,    1
+                                                                                  I±2 (τ̄ , 0) = ±1      (5.7)
+
+the total contribution to the elliptic genus is then
+            X h                                                            i
+                     0 4       0 2 0
+      φ=          2(Im ) + 6(Im  ) (Im−2 )2 − 12Im0 0     1
+                                                   Im+2 (Im+3 )2 + (Im+1
+                                                                     1
+                                                                         )4 ,                            (5.8)
+             m∈Z/8Z
+              m odd
+
+which agrees indeed with (2.1).
+
+5.2 Symmetries and Twining Genera
+In the quartic (2)4 model the currents J ± of the left- and right moving N = 4
+superconformal algebra are given by
+                                       ⊗4                                                      ⊗4
+  J ± = (0, ±2, 2)⊗4 ⊗ (0, 0, 0)             ,      and          J¯± = (0, 0, 0)⊗4 ⊗ (0, ±2, 2) . (5.9)
+
+The symmetries that leave these currents invariant are
+
+
+
+                                                     – 20 –
+  (1) Phase shifts, which are generated by
+           4                                          4
+           Y                           A2            X
+                 eiai    2
+                        Q (−1)   Fs
+                                             ,   A=          ai         with              A ≡ 0 mod 2 .   (5.10)
+           i=1                                         i=1
+
+       Here each eai i acts as
+                                                                   2πimi ai
+                                 eai i : Φℓmi ,si;m̄i ,s̄i 7−→ e      4       Φℓmi ,si ;m̄i ,s̄i ,        (5.11)
+                                                                                                          πin
+       Q is the quantum symmetry of the Gepner orbifold (that acts as a phase e 2 on
+       the states of the nth twisted sector), and (−1)Fs is the left-moving spacetime
+       fermion number operator that acts as +1 (−1) on the left-moving NS (R)
+       sector. (The inclusion of (−1)Fs is required in order to preserve the spectral
+       flow operators.) Taking into account the overall Z4 invariance coming from the
+       Gepner orbifold, these phase shifts generate the group Z24 × Z2 .
+
+  (2) The permutations
+
+          π ⊗4i=1 Φlmi +n,0;mi −n,0 = sgn(π)n Qsgn(π)−1 ⊗4i=1 Φlmπ(i) +n,0;mπ(i) −n,0 .
+                                                                                    
+                                                                                                          (5.12)
+
+       They generate the symmetric group S4 .
+
+These symmetries generate the group (Z2 × Z24 ) ⋊ S4 , thus realising case (i) of the
+Theorem with G′ = Z32 and G′′ = Z22 .S4 . Here G′ ⊂ Z11  2 is generated by the phases
+ 2 2     2 2       2 2     Fs        ′′
+e1 e2 , e2 e3 and e3 Q (−1) , while G ⊂ M24 is generated by the permutations, giving
+the S4 factor, as well as by the phases e1 e2 Q2 (−1)Fs and e32 e33 Q2 (−1)Fs , giving the
+Z22 factor.6
+      We can also calculate the associated twining genera, and our results are collected
+in Table 2. Again, we see that some of the generators in G′ lead to the twining genus
+                                              1
+                                      φ̂4a = − (φ1A − φ2A − 2φ4B ) ,                                      (5.13)
+                                              2
+that does not coincide with any twining genus of M24 .
+
+5.3 The D-brane Charge Lattice
+The derivation of a set of D-branes generating the lattice of RR charges is analogous
+to the construction for the (1)6 model. The A-type tensor product branes (see
+Appendix C.2) are now only charged under the 21 RR ground states in the untwisted
+sector. The remaining charges can be accounted for in terms of B-type permutation
+branes. Taking 21 A-type branes with Li = Si = 0 and suitable combinations for Mi ,
+as well as 3 B-type permutation branes with Li = Mi = Si = 0 and suitable values
+   6
+    Note that these last two phases are order 2 only after taking the quotient by G′ ; in fact, their
+squares are non-trivial elements in G′ , so that as elements of the whole group G they are order 4.
+
+
+
+
+                                                    – 21 –
+                             symmetry                                          properties
+  perm.     conditions on phases                             nQ    nF    N     #      Tr24    φg
+   ijkl     ni = nj = nk = nl = 0                             0     0     1     1      24    φ1A
+   ijkl     ni = nj = 2 , nk + nl = 0                         0     0
+ (ij)(kl)   ni + nj = nk + nl ∈ {0, 2}                        0     0
+  (ij)kl    ni + nj = nk + nl = 0 , nk,l ∈ {0, 2}             2     0     2    79      8     φ2A
+  (ij)kl    ni + nj = 0 , nk + nl = 2 , nk,l ∈ {0, 2}         0     1
+   ijkl     ni + nj + nk + nl = 2 , ni,j,k,l ∈ {0, 2}         2     1
+ (ij)(kl)   ni + nj = nk + nl ∈ {1, 3}                        2     1     2     24     0     φ2B
+  (ijk)l    ni + nj + nk + nl = 0                             0     0     3    128     6     φ3A
+   ijkl   ni = nj ∈ {1, 3} , nk = nl = 0                      2     1     4     6     −4     φ̂4a
+   ijkl   ni = 1 , nj + nk + nl = 3                           0     0
+  (ijkl) ni + nj + nk + nl = 0                                2     0
+ (ij)(kl) ni = nj = 1 , nk + nl = 2                           0     0
+  (ij)kl ni + nj + nk + nl = 2 , ni,j ∈ {1, 3}                0     1
+                                                                          4    306     4     φ4B
+  (ij)kl ni + nj + nk + nl = 2 , nk,l ∈ {1, 3}                0     1
+  (ij)kl ni + nj = nk + nl = 0 , ni,j ∈ {1, 3}                2     0
+  (ij)kl ni + nj = nk + nl = 0 , nk,l ∈ {1, 3}                2     0
+   ijkl   ni = 1 , nj + nk + nl = 1                           2     1
+  (ijk)l ni + nj + nk + nl = 2                                2     1     6    128     2     φ6A
+  (ij)kl ni + nj = 1 , nk + nl = 3                            2     0     8     96     2     φ8A
+Table 2: The twining genera of the (2)4 model. Here the symmetries have been labelled by
+the structure of the permutations of {i, j, k, l}, the phase shifts of the individual symmetries
+       n
+eni i ej j enk k enl l , the power of the operator QnQ and the spacetime fermion number (−1)nF Fs .
+The remaining part of the notation is the same as for Table 1.
+
+
+
+
+of M̂ leads indeed to the full charge lattice Γ4,20 , i.e. the resulting intersection form
+has determinant one.7
+
+    The sublattice (Γ4,20 )⊥ of D-branes that are neutral with respect to the RR
+ground states in the (2, 2) representation of SU(2)L × SU(2)R has maximal rank 20.
+Upon changing the sign of its quadratic form, it can be embedded into the Leech
+
+
+
+   7
+    See the LATEX source code for details; there we also give further details about the sublattice
+(Γ4,20 )⊥ and its embedding into the Leech lattice.
+
+
+
+
+                                             – 22 –
+lattice Λ, and its orthogonal complement ΛG has quadratic form
+                                            
+                                   6 2 0 0
+                                 2 4 −2 4 
+                                            
+                                              .                                        (5.14)
+                                 0 −2 6 −4
+                                 
+                                   0 4 −4 8
+
+Since ΛG contains a vector of norm 8, its point-wise stabiliser must be a subgroup
+of Z12
+    2 ⋊ M24 (see Appendix B.3). More precisely, we have shown that the stabiliser
+turns out to be isomorphic to G = (Z2 × Z24 ) ⋊ S4 , which is the group of symmetries
+we have found in the previous subsection.
+
+
+6. Conclusions
+In this paper, we have shown that the symmetries of a non-linear σ-model on K3 that
+preserve the N = (4, 4)-superconformal algebra as well as the spectral flow operators,
+form a subgroup of the Conway group Co1 . This provides a stringy analogue of the
+Mukai theorem in algebraic geometry that shows that the symplectic automorphisms
+of any K3 form a subgroup of the Mathieu group M23 . The specific subgroups
+that can actually arise in our case are spelled out in the Theorem stated in the
+Introduction.
+     Our result is somewhat unexpected in view of the recent observation of [1],
+relating the elliptic genus of K3 to the Mathieu group M24 . In particular, it follows
+from our Theorem (as well as the explicit examples) that the symmetries of a given
+K3 model are not, in general, subgroups of M24 .8 As a consequence, their twining
+genera do not, in general, agree with those appearing in the context of Mathieu
+moonshine [3, 4, 5, 6], and we have seen explicit examples of this. In particular, this
+therefore means that the naive idea that M24 arises as the ‘union’ of all symmetries
+from different points in moduli space needs to be refined.
+     At least on the face of it, our Theorem seems to suggest that the elliptic genus
+of K3 could exhibit some sort of moonshine based on Co1 or Co2 , but we have seen
+no evidence of this since the dimensions of their representations do not match the
+coefficients of the elliptic genus. It is intriguing that a connection between Co1 and
+the BKM algebras arising in T6 -compactifications of the heterotic string has recently
+been observed in [25]; given that the heterotic string on T6 is dual to type IIA on
+K3 × T2 this could be related to our findings.
+     Our analysis also provides useful tools for the general understanding of non-
+linear σ-models on K3. For example, our Theorem suggests the existence of models
+with some large symmetry groups, and gives precise predictions for their lattice of
+   8
+    Apparently this was also independently noted by the authors of [1]; we thank Yuji Tachikawa
+for discussions about this point.
+
+
+
+
+                                            – 23 –
+D-brane charges. These predictions were nicely verified in the three examples we
+considered. In particular, we showed that the (1)6 Gepner model realises case (iii) of
+the Theorem. Some preliminary investigations suggest that the groups described in
+case (iv) might be realised in terms of T4 /Z3 torus orbifolds for different choices of
+metric and B-field, while it is more difficult to guess which model realises case (ii).
+For case (i), the Theorem predicts the existence of a model with symmetry group
+Z82 ⋊ M20 , that might correspond to a certain T4 /Z2 orbifold.
+     On more general grounds, the sublattice of D-branes that are neutral under the
+RR ground states in the (2, 2) representation of SU(2)L ×SU(2)R is, in a certain sense,
+the stringy analogue of the Picard lattice in algebraic geometry. Since the groups
+of symmetries have a genuine action on this sublattice, it would be interesting to
+understand for which models this lattice has maximal rank 20. For example, one can
+show that for a Gepner model of type (k1 ) · · · (kr ), a necessary condition for this to
+happen is that the greatest common divisor gcd(k1 + 2, k2 + 2, . . .) of their shifted
+levels is 3, 4 or 6.
+
+
+Acknowledgements
+We thank Michael Douglas, Martin Fluder, Daniel Persson and Yuji Tachikawa for
+useful discussions and correspondences. The research of MRG is supported by the
+Swiss National Science Foundation.
+
+
+A. Notation and Mathematical Background
+A.1 Group Theory
+Let us give a brief summary of our conventions regarding finite groups.
+
+   A×B      The direct product of the groups A and B.
+
+  N ⋊H      The semidirect product of H acting on the normal subgroup N.
+
+    N.Q     A group G having N as a normal subgroup such that G/N ∼       = Q.
+            (This notation includes the direct and semidirect product as special
+            subcases.)
+       Zn   Cyclic group of order n.
+
+    p1+2n
+     +
+          Extra-special group of order p1+2n (we will always omit the plus in our
+          notation). For a prime p and positive integer n, p1+2n is the extension
+          of Z2n
+               p by a central element z of order p. It is generated by 2n elements
+          x , . . . , x , y , . . . , y of order p, with xi xj = xj xi , yi yj = yj yi and
+          Q1 ri Q nsj 1 r·s Qn sj Q ri
+             xi        yj = z           yj   xi .
+
+
+
+
+                                          – 24 –
+        Sn   Group of permutations of n elements (symmetric group).
+
+        An   Group of even permutations of n elements (alternating group).
+
+       M24   The largest Mathieu group, a sporadic simple group of order 210 · 33 · 5 ·
+             7 · 11 · 23 = 244823040. It can be described as a group of permutations
+             of 24 elements. More precisely, it is the subgroup of S24 that preserves
+             the binary Golay code. This group has 26 conjugacy classes.
+
+       M23   The subgroup of M24 that, in its representation as a permutation of
+             24 elements, fixes one element.
+
+       Co0   The Conway group is the automorphism group Aut(Λ) of the Leech
+             lattice. It is an extension of Co1 by the central Z2 that flips the sign
+             of all vectors in Λ.
+       Co1   A sporadic simple group of order
+             221 · 39 · 54 · 72 · 11 · 13 · 23 = 4157776806543360000.
+ Z12
+  2 ⋊M24
+             A maximal subgroup of Aut(Λ). It fixes a set of 24 mutually orthogo-
+             nal vectors x1 , . . . , x24 ∈ Λ of norm 8 (xi · xj = 8δij ), up to signs. Each
+             element of the normal subgroup Z12      2 changes the sign of n of these 24
+             vectors, with n = 0, 8, 12, 16, 24. This description establishes a one
+             to one correspondence of Z12      2 with the binary Golay code [22]. The
+             subgroup M24 acts by permutations of x1 , . . . , x24 .
+
+
+A.2 Lattices
+For any lattice L, we denote by L∗ its dual lattice and by L(n), n ∈ R, the lattice
+obtained from L by multiplying the quadratic form by n. If L is integral, then
+L ⊆ L∗ , and the finite abelian group AL = L∗ /L is called the discriminant group.
+We denote by l(L) the minimal number of generators of AL (notice that l(L) ≤ rk L,
+with rk L the rank of the lattice ).
+    Let AL be the discriminant group of an integral lattice L, and qL the associated
+discriminant quadratic form, i.e. the form
+
+                                    qL : AL → Q/2Z                                     (A.1)
+
+induced by the quadratic form on L. More generally, we denote by Aq a finite abelian
+group with a quadratic form q : Aq → Q/2Z. The quadratic form q determines a
+bilinear form on Aq which takes values in Q/Z; we denote it by a · b, where a, b ∈ Aq .
+     If L is a sublattice of a unimodular lattice Γ and L⊥ is its orthogonal complement
+in Γ, then there is an isomorphism between the discriminant groups
+                                             ∼
+                                             =
+                                     γ : AL → AL⊥ ,                                    (A.2)
+
+
+
+                                          – 25 –
+that flips the sign of the quadratic form
+
+                                   qL = −qL⊥ ◦ γ .                                (A.3)
+
+More precisely, x̄ ∼= ȳ, with x̄ ∈ AL and ȳ ∈ AL⊥ , if and only if x + y ∈ Γ for
+any choice x ∈ L , y ∈ (L⊥ )∗ of representatives of x̄, ȳ. Conversely, given two even
+                  ∗
+                                                                 ∼
+                                                                 =
+lattices L1 , L2 with isomorphic discriminant groups γ : AL1 → AL2 and opposite
+discriminant quadratic forms qL1 = −qL2 ◦ γ, one can construct an even unimodular
+lattice Γ by ‘gluing’ L1 and L2 , i.e.
+
+                           Γ = {x ⊕ y ∈ L∗1 ⊕ L∗2 | x̄ ∼
+                                                       = ȳ} ,                    (A.4)
+
+where x̄, ȳ are the images in AL1 , AL2 of x ∈ L∗1 and y ∈ L∗2 , respectively.
+    A sublattice L′ of a lattice L is called primitive if L/L′ is a free group; in other
+words, L′ = (L′ ⊗ Q) ∩ L. Correspondingly, a primitive embedding of a lattice L′ in
+L is an embedding such that the image is primitive.
+
+A.3 The Leech Lattice and the Golay Code
+The Leech lattice can be defined in terms of the binary Golay code C24 , a 12-
+dimensional subspace of the vector space F24     2 , where F2 = {0, 1} is the field with
+two elements. To each vector f = (f1 , . . . , f24 ) of C24 (i.e. to each codeword) we
+associate a subset Xf of Ω = {1, . . . , 24}, corresponding to the non-zero coordinates
+of f , i.e. Xf = {i ∈ Ω | fi 6= 0}. This collection of 212 = 4096 subsets of Ω (called
+C-sets) includes the empty set, Ω itself, 759 C-sets with 8 elements (special octads),
+2576 with 12 elements and 759 with 16 elements (the complements in Ω of the special
+octads). Furthermore, for any choice of 5 distinct elements in Ω there is a unique
+special octad containing them. These properties are sufficient to determine the col-
+lection of C-sets, and thus the Golay code, up to permutations of the objects in Ω.
+The Mathieu group M24 can be defined as the group of automorphisms of the Golay
+code, or, equivalently, as the subgroup of S24 stabilising the collection of C-sets.
+    An explicit description of the Leech lattice Λ ⊂ R24 can be given as follows: the
+vector v = √18 (v1 , . . . , v24 ) is an element of the Leech lattice provided that
+
+   – the vi , i = 1, . . . , 24, are all integers of the same parity;
+     P24
+   –   i=1 vi ≡ 0 or 4 mod 8 according to vi ≡ 0 or 1 mod 2, respectively; and
+
+   – for each ν ∈ {0, 1, 2, 3}, the set {i ∈ Ω | vi ≡ ν mod 4} is a C-set.
+
+
+B. Proof of the Theorem
+In this appendix, we give the remaining details of the arguments of Section 2, leading
+to the proof of the Theorem.
+
+
+
+                                         – 26 –
+B.1 G as a Subgroup of O(Γ25,1 )
+For each lattice L and group G ⊂ Aut(L), we define as in (2.4) the G-invariant
+lattice LG as LG = {x ∈ L | g(x) = x, ∀g ∈ G}. Furthermore, LG is its orthogonal
+complement in L, LG = {x ∈ L | x · y = 0, ∀y ∈ LG }. We take L = Γ4,20 ⊂ R4,20 ,
+and consider the case where G is the subgroup of Aut(Γ4,20 ) ⊂ O(4, 20, R), fixing a
+positive-definite four plane Π ⊂ R4,20 .
+Proposition 1. For any choice of a positive 4-plane Π, LG is a negative definite
+lattice of rank rk LG ≤ 20. G acts trivially on ALG , and l(LG ) ≤ 24 − rk(LG ).
+
+Proof. The first part is obvious. By definition G acts trivially on LG , and hence
+its induced action on ALG is also trivial. Since LG and LG are orthogonal primitive
+sublattices of the self-dual lattice L, it follows that for each y ∈ (LG )∗ there exists a
+vector v = x + y ∈ L with x ∈ (LG )∗ . For all w ∈ LG and any lattice automorphism
+g ∈ G, w · g(v) = g(w) · g(v) = w · v, so that g(v) − v ∈ (LG )⊥ = LG . Since g is
+linear and fixes x ∈ (LG )∗ , we have g(v) − v = g(x + y) − (x + y) = g(y) − y. It
+follows that g(y) ≡ y mod LG , so that G acts trivially on ALG = (LG )∗ /LG . Finally,
+l(LG ) = l(LG ) ≤ rk(LG ), and the last statement follows.
+
+     Up to isomorphism, there is a unique even unimodular lattice Γ25,1 of signature
+(25, 1). The lattice Γ25,1 can be defined as the (additive) subgroup of R25,1 with
+elements (x0 , . . . , x24 ; x25 ) such that
+
+                               x0 + . . . + x24 − x25 ∈ 2Z ,                         (B.1)
+
+where either xi ∈ Z for all i, or xi ∈ Z + 21 for all i. In the rest of this subsection, we
+will prove that LG (−1) can be embedded into Γ25,1 .
+
+    Recall that, for any prime p, a p-group is a group whose order is a power of p.
+A Sylow p-subgroup of a group G is a maximal p-subgroup, i.e. a p-subgroup of G
+which is not a proper subgroup of any other p-subgroup. For abelian groups, there is
+a unique Sylow p-subgroup for each prime p, the subgroup of elements whose order is
+a power of p. For more general finite groups, for each given p the Sylow p-subgroups
+are all isomorphic and related by conjugation.
+    Let Aq be a finite abelian group with quadratic form q : Aq → Q/2Z. For any
+prime p, let Aqp be the Sylow p-subgroup of Aq , and qp the restriction of q to Aqp .
+Note that if a ∈ Aqp , then for any b ∈ Aq
+
+                                 pn (a · b) ≡ 0 mod Z ,                              (B.2)
+
+where pn is the order of a, and a · b is the bilinear form induced by q. In particular,
+if b ∈ Aqp′ , with p′ 6= p, this implies a · b ≡ 0 mod Z. Thus, we have an orthogonal
+decomposition of the quadratic form q = ⊕p qp , where each qp is a quadratic form on
+an abelian p-group.
+
+
+
+                                          – 27 –
+     It follows from Theorem 1.12.2 of [26] that an even lattice L of signature (t+ , t− )
+and discriminant group Aq can be primitively embedded into some even unimodular
+lattice of signature (d+ , d− ), provided that
+
+       d+ − d− ≡ 0 mod 8                                                              (B.3a)
+        −     −          +     +           +     −         −   +
+       d − t ≥ 0,       d − t ≥ 0,       d + d − t − t ≥ l(Aq ),                      (B.3b)
+       d− + d+ − t− − t+ > l(Aqp )       for all odd primes p,                         (B.3c)
+                                                     (2)
+       d− + d+ − t− − t+ > l(Aq2 ) or q2 = qθ (2) ⊕ q2′ for some q2′ ,                (B.3d)
+
+where qθ (2) is the discriminant quadratic form of the su(2) root lattice A1 ∼
+       (2)
+                                                                             = Z(2).
+Proposition 2. The lattice LG (−1) can be primitively embedded into Γ25,1 . The
+action of G can be extended to an action on Γ25,1 such that the G-invariant sublattice
+(Γ25,1 )G is the orthogonal complement of LG (−1) in Γ25,1 , and such that (Γ25,1 )G
+contains an element of norm 2.
+Proof. Let us prove that we can embed LG (−1) ⊕ A1 into Γ25,1 , where A1 denotes
+the root lattice of the su(2) Lie algebra. Condition (B.3a) obviously holds. By
+proposition 1, we have rk(LG (−1) ⊕ A1 ) + l(LG (−1) ⊕ A1 ) ≤ 26, so that also (B.3b)
+is satisfied. Let Aq be the discriminant group of LG (−1) ⊕ A1 , with discriminant
+quadratic form q. Let us consider the decomposition q = ⊕p qp where, for each prime
+p, qp is the restriction of q to the p-Sylow subgroup Aqp . Since the discriminant group
+of A1 is Z/2Z, we have l(Aqp ) ≤ l(LG ) < 26 − rk(LG ⊕ A1 ) for all odd p, and (B.3c)
+                                        (2)                 (2)
+holds. Finally, it is clear that q2 = qθ (2) ⊕ q2′ , where qθ (2) is the discriminant form
+of A1 and q2′ is the restriction of qLG to the 2-Sylow subgroup. Thus, it follows from
+(B.3) that LG (−1) ⊕ A1 can be primitively embedded into Γ25,1 .
+     Since G acts trivially on ALG , the action of G on LG (−1) can be extended to
+an action on Γ25,1 which acts trivially on the orthogonal complement of LG (−1) in
+Γ25,1 . Thus, (Γ25,1 )G ∼
+                        = (LG (−1))⊥ , and A1 is a sublattice of (Γ25,1 )G , so that (Γ25,1 )G
+contains a vector of norm 2.
+
+B.2 G as a Subgroup of Co0
+The automorphism group Aut(Γ25,1 ) of Γ25,1 is generated by the sign flip xi 7→ −xi ,
+together with the subgroup of autochronous transformations Aut+ (Γ25,1 ) which sta-
+bilise the cone of positive time vectors in R25,1 (see chapter 27 of [22]). The group
+Aut+ (Γ25,1 ) contains a normal subgroup W (the Weyl group), generated by the re-
+flections Rr with respect to the hyperplanes r ⊥
+
+                          Rr (x) = x − (x · r)r ,          x ∈ Γ25,1 ,                  (B.4)
+
+where r is any root in r ∈ Γ25,1 , i.e. satisfies r · r = 2. The complement in R25,1 of
+the union r·r=2 r ⊥ of the corresponding hyperplanes has infinitely many connected
+          S
+
+components, and the closure of each component is called a Weyl chamber.
+
+
+
+                                           – 28 –
+     The group of autochronous transformations is the semidirect product W ⋊ Co∞ ,
+where Co∞ is the automorphism group of the Dynkin diagram of W . The groups W
+and Co∞ can be described more explicitly upon choosing a set of generators for W ,
+i.e. a set of fundamental roots. One convenient choice is given by the set of Leech
+roots, i.e. by the vectors r ∈ Γ25,1 with
+
+                                r·r =2          r · w = −1 ,                        (B.5)
+
+where w is the null (Weyl) vector
+
+                         w = (0, 1, 2, 3, . . . , 23, 24; 70) ∈ Γ25,1 .             (B.6)
+
+The sublattice Γ25,1 ∩ w ⊥ is degenerate, while its quotient (Γ25,1 ∩ w ⊥ )/w is the Leech
+lattice Λ (see chapter 26 of [22]), the unique positive even unimodular lattice of rank
+24 containing no roots. The automorphism group Co∞ of the Dynkin diagram of
+W contains Aut(Λ) = Co0 , the automorphism group of the Leech lattice, as the
+subgroup which fixes a given reference Leech root r̄. The group Co∞ is generated by
+Co0 , together with the translations of the Leech roots by vectors in Λ.
+     Let us consider the embedding of LG (−1) ⊕ A1 into Γ25,1 . Clearly, the sign flip
+does not fix any linear sublattice of Γ25,1 , so that G ⊆ Aut+ (Γ25,1 ). Note that the
+lattice (Γ25,1 )G always contains a vector in the interior of some Weyl chamber. For if
+this was not true, then (Γ25,1 )G would be contained in one of the hyperplanes orthog-
+onal to some root r, and thus r ∈ (Γ25,1 )G = LG (−1). But this would contradict our
+assumption that LG contains no vector of norm −2. Since W acts transitively on the
+Weyl chambers, we can choose our embedding of LG (−1) into Γ25,1 such that (Γ25,1 )G
+contains a vector in the interior K of the fundamental Weyl chamber containing w.
+Since K ∩ t(K) = ∅, for all non-trivial t ∈ W , it follows that G must be contained in
+Co∞ . Since w is fixed by Co∞ , we have (Γ25,1 )G ⊂ (Γ25,1 ∩ w ⊥ ), and the projection
+(Γ25,1 ∩ w ⊥ ) → (Γ25,1 ∩ w ⊥ )/w ∼
+                                  = Λ induces an embedding of (Γ25,1 )G into the Leech
+lattice Λ
+
+                     = (Γ25,1 )G ⊂ (Γ25,1 ∩ w ⊥ ) → (Γ25,1 ∩ w ⊥ )/w ∼
+             LG (−1) ∼                                               =Λ.            (B.7)
+
+As in proposition 2, the action of G on (Γ25,1 )G can be extended to an action on Λ,
+such that LG (−1) ∼= (Γ25,1 )G ∼
+                               = ΛG is the orthogonal complement of the sublattice
+Λ ⊂ Λ fixed by G. We conclude that G is a subgroup of Aut(Λ) ∼
+  G
+                                                                     = Co0 fixing a
+            G
+sublattice Λ of rank at least 4, thus proving the Proposition in Section 2.
+
+B.3 The Proof of the Theorem
+The stabilisers of sublattices of the Leech lattice have been classified [23, 27]. We
+will use this classification to prove now the Theorem stated in the Introduction. The
+action of Aut(Λ) ∼  = Co0 is well defined on the classes of the quotient Λ/2Λ, because
+
+
+
+                                            – 29 –
+2Λ is stable under lattice automorphisms. In particular, if v ∈ Λ is fixed by the action
+of G, then G must be in the stabiliser of the class of Λ/2Λ containing v. Note that
+opposite vectors x, −x ∈ Λ are contained in the same class in this quotient. More
+generally, if we define the short vectors x ∈ Λ to be the vectors of norm x2 ≤ 8, then
+for each non-trivial class in Λ/2Λ, one of the following mutually exclusive alternatives
+holds [22]:
+
+   1. the class contains exactly one pair of short vectors ±x ∈ Λ of type 2 (x2 = 4);
+
+   2. the class contains exactly one pair of short vectors ±x ∈ Λ of type 3 (x2 = 6);
+
+   3. the class contains exactly 24 pairs of short vectors ±x1 , . . . , ±x24 ∈ Λ of type
+      4, that are mutually orthogonal (xi · xj = 8δij ).
+
+Thus, each primitive vector v ∈ ΛG is congruent modulo 2Λ to some short vector
+vs ∈ Λ, vs2 ≤ 8. We can now distinguish the following cases:
+Case 1: Suppose there is a vector v ∈ ΛG which is congruent modulo 2Λ to a short
+vector of norm 8. Then the class of v in Λ/2Λ contains 24 mutually orthogonal
+pairs ±x1 , . . . , ±x24 ∈ Λ of norm 8. The subgroup of Co0 stabilising such a class
+is the semidirect product N = Z12       2 ⋊ M24 . Here, M24 acts by permutations of the
+24 pairs ±x1 , . . . , ±x24 , while each element ǫf ∈ Z12 2 is associated to a codeword
+f ≡ (f1 , . . . , f24 ) ∈ (Z/2Z)24 in the binary Golay code ([22], chapter 11) and acts by
+
+                           ǫf (xi ) = (−1)fi xi ,     i = 1, . . . , 24 ,              (B.8)
+
+on the vectors of the class. Thus, G is a subgroup of Z12 2 ⋊M24 that fixes a subspace of
+dimension at least 4. This realises case (i) of the Theorem. In particular, G′′ ⊂ M24
+can be any subgroup with at least four orbits Ω1 , . . . , Ω4 when acting on {1, . . . , 24},
+and G′ is generated by the ǫf ∈ Z122 such that fi = 0 for all i ∈ Ω1 ⊔ . . . ⊔ Ω4 .
+
+
+Case 2: If Case 1 does not apply, then each primitive vector v ∈ ΛG is congruent
+modulo 2Λ to a pair of short vectors ±vs ∈ Λ with vs2 ≤ 6. Let us assume that, for
+each v ∈ ΛG , the corresponding short vector vs is also contained in ΛG . Since ΛG is
+primitive, (v − vs )/2 ∈ Λ is also contained in ΛG . The sublattices S ⊂ Λ containing
+only short vectors of norm 4 and 6 and such that each primitive vector is congruent
+to a short one mod 2S are called S-lattices, and they have been completely classified
+[23]. In particular, up to automorphisms, there are only three S-lattices of rank at
+least 4 [27]:
+
+                   S           rk S       Stab(S)              Aut(S)
+                    9 6
+                  23            4         Z43 ⋊ A6        Z2 × (S3 × S3 ).Z2
+                 25 310         4         51+2 .Z4            Z2 × S5
+                 227 336        6         31+4 .Z2         Z2 × U4 (2).Z2 .
+
+
+
+                                             – 30 –
+Since ΛG is a S-lattice of rank at least 4, G must be one of the groups Stab(S) from
+above, corresponding to the cases (ii), (iii) and (iv) (with G′′ trivial) of the Theorem.
+
+
+Case 3: The last case arises if each primitive vector v ∈ ΛG is congruent modulo
+2Λ to a pair of short vectors ±vs ∈ Λ with vs2 ≤ 6, but some of these short vectors
+are not contained in ΛG . In this case, we define a finite chain of sublattices of Λ
+
+                           Λ G = S0 ⊂ S1 ⊂ . . . ⊂ SN = S ,                        (B.9)
+
+where each Si+1 is defined in terms of Si as follows [28]:
+
+ (1) If Si is contained in an S-lattice of the same rank or if Si contains a vector
+     congruent modulo 2Λ to a short vector of norm 8, then we set S = Si and the
+     procedure stops.
+
+ (2) Otherwise, if Si contains a vector v ∈ 2Λ with v/2 ∈
+                                                        / Si , then Si+1 is obtained by
+     adjoining v/2 to Si . There are only a finite number of vectors to check, namely
+     one representative for each class in Si /2Si . Note that Si ⊗ Q = Si+1 ⊗ Q, so
+     that rk Si = rk Si+1 and Stab(Si ) = Stab(Si+1 ).
+
+If neither of these cases applies, then there is a nonempty set of short vectors vs ∈
+                                                                                    /
+                    2
+Si ⊗ Q, with 0 < vs ≤ 6, congruent modulo 2Λ to some v ∈ Si . Then Si+1 is defined
+as follows:
+
+ (3) If one of the short vectors is such that vs · w 6= 0 for some w ∈ Si , then Si+1
+     is obtained by adjoining vs to Si . Any element g ∈ Stab(Si ) must preserve the
+     class of vs in Λ/2Λ, so that g(vs ) ∈ {±vs }, and also the product vs ·w 6= 0. Thus,
+     the only possibility is g(vs ) = vs , so that Stab(Si+1 ) = Stab(Si ). Furthermore,
+     we have a strong inequality rk Si+1 > rk Si .
+
+ (4) If all the short vectors vs are orthogonal to Si , we choose one of them and define
+     Si+1 as the Z-linear span of Si and vs . The only non-trivial action of an element
+     g ∈ Stab(Si ) on Si+1 is g(vs ) = −vs , so that |Stab(Si ) : Stab(Si+1 )| ≤ 2.
+     Furthermore, rk Si+1 > rk Si .
+
+The stabiliser Stab(S) of the lattice S at the end of the chain must be a subgroup
+of Z12
+    2 ⋊ M24 or one of the stabilisers of the S-lattices above. However, if the case
+(4) of the above procedure occurs for some intermediate Si , Stab(S) might be just
+a normal subgroup of G. Our analysis is greatly simplified by the following result,
+which is an immediate consequence of Lemma 4.8 of [28].
+
+Proposition 3. If rk Si > 3 and none of the cases (1), (2) and (3) applies, then Si
+is a sublattice of the S-lattice 227 336 .
+
+
+
+                                         – 31 –
+     It is easy to see that if Si is a sublattice of an S-lattice also Si+1 is. Since the
+starting point S0 = ΛG of the chain has already rank greater than 3, this proposition
+implies that if ΛG is not a sublattice of 227 336 , then case (4) above never occurs.
+Thus, in this case, G ∼ = Stab(S) and we reobtain the groups (i), (ii) or (iii) of the
+Theorem. If Λ is a sublattice of 227 336 , then we have an inverse chain of inclusions
+                G
+
+for the stabilisers
+
+                      Stab(S) ⊆ . . . ⊆ Stab(S1 ) ⊆ G = Stab(S0 ) ,                  (B.10)
+
+where each stabiliser group is a subgroup of index at most 2 in the previous one
+
+                               |Stab(Si ) : Stab(Si+1 )| ≤ 2 .                       (B.11)
+
+Furthermore, whenever |Stab(Si ) : Stab(Si+1 )| = 2, we have rk Si+1 > rk Si , and
+since rk S227 336 − rk ΛG ≤ 2, we have
+                                        |G|
+                                                 ≤ 22 .                              (B.12)
+                                   |Stab(S2 3 )|
+                                           27 36
+
+
+
+Thus, G is the extension of Stab(S227 336 ) by a group G′′ of order at most 4, and all
+the possibilities are considered in the case (iv) of the Theorem. This completes the
+proof of the Theorem.
+
+B.4 Realising all Symmetry Groups of K3
+Let G ⊂ Aut(Λ) be the pointwise stabiliser of a sublattice S ∼     = ΛG of rank rk S ≥ 4.
+In this section, we will prove that, for each such G, there exists a non-linear σ-model
+on K3 having G as its group of symmetries. This result is based on the assumption
+that for every choice of a positive definite 4-dimensional subspace Π ⊂ R4,20 such
+that no root v ∈ Γ4,20 is orthogonal to Π, the corresponding non-linear σ-model is
+well defined.
+     Let d + 4, with d ≥ 0, be the rank of S and let S ⊥ ≡ ΛG be its orthogonal
+complement in Λ. Suppose that S ⊥ (−1), obtained from S ⊥ by changing the sign of its
+quadratic form, can be primitively embedded into Γ4,20 . Then, by a reasoning similar
+to proposition 2, we conclude that the action of G on S ⊥ (−1) can be extended to
+Γ4,20 , in such a way that (Γ4,20 )G ∼
+                                     = S ⊥ (−1), i.e. that the sublattice (Γ4,20 )G invariant
+under G is the orthogonal complement of S ⊥ (−1). Since (Γ4,20 )G has signature (4, d),
+one can always find a positive definite four dimensional subspace Π ⊂ R4,20 such that
+(Γ4,20 )G = Γ4,20 ∩ Π⊥ . Furthermore, (Γ4,20 )G contains no vectors of norm −2, and G
+is the subgroup of O(Γ4,20 ) fixing Π pointwise. Following the arguments of Section 2,
+Π corresponds to a well defined non-linear σ-model with symmetry group G.
+     Thus it remains to prove that a primitive embedding of S ⊥ (−1) into Γ4,20 always
+exists. The ‘gluing’ construction described in Appendix B.1 shows that, for an even
+lattice with signature (t+ , t− ) and discriminant form q — we will denote them as a
+
+
+
+                                           – 32 –
+triple (t+ , t− ; q) — the existence of an embedding into some even unimodular lattice
+with signature (l+ , l− ) is equivalent to the existence of an even lattice with signature
+and discriminant form (l+ − t+ , l− − t− , −q). In [26, Theorem 1.12.4], the following
+sufficient conditions are proved for the existence of such an embedding:
+
+   1. l+ − l− ≡ 0 mod 8
+
+   2. t+ ≤ l+ , t− ≤ l− and t+ + t− ≤ 12 (l+ + l− ).
+
+The lattice S has signature (4 + d, 0), so that it can be embedded into an even
+unimodular lattice Γ8+d,d ∼= E8 ⊕U d of signature (8+d, d), where U is the unimodular
+lattice of signature (1, 1). Let S ′ be the orthogonal complement of S in Γ8+d,d .
+If q denotes the discriminant form of S, then S ′ , S ⊥ and S ⊥ (−1) have signature
+and discriminant form (4, d; −q), (20 − d, 0; −q) and (0, 20 − d; q), respectively. By
+comparing the signatures and discriminant forms of S ⊥ (−1) and S ′ , we conclude that
+these two lattices can be ‘glued’ together to form the even unimodular lattice Γ4,20 .
+
+
+C. Gepner Models
+
+Here we collect, following [29], our conventions for the description of N = 2 minimal
+models and Gepner models.
+
+C.1 N = 2 Minimal Models and Gepner Models at c = 6
+                                                           3k
+The N = 2 minimal model at level k has central charge c = k+2 , and can be described
+in terms of the coset
+                                su(2)k+2 ⊕ u(1)4
+                                                                               (C.1)
+                                    u(1)2k+4
+that captures the bosonic subalgebra of the N = 2 superconformal algebra. The
+coset representations are labeled by
+
+                 (l, m, s) ,     l = 0, . . . , k,   m ∈ Z2k+4 ,   s ∈ Z4 ,         (C.2)
+
+subject to the condition
+                                l + m + s = 0 mod 2 ,                               (C.3)
+and with the field identification
+
+                          (l, m, s) ∼ (k − l, m + k + 2, s + 2) .                   (C.4)
+
+We denote by [l, m, s] the class corresponding to (l, m, s). In terms of the N = 2
+algebra, the irreducible representations are of the form H(l,m,s) ⊕ H(l,m,s+2) with s
+even (odd) for the NS (R) sector, since the fermionic generators of the N = 2 algebra
+
+
+
+                                            – 33 –
+map H(l,m,s) to H(l,m,s+2) . The conformal weight and U(1)-charge of the ground state
+in the (l, m, s) sector are given by
+               l(l + 2) − m2 s2                                          m   s
+    hl,m,s =                +          mod Z ,              ql,m,s =       −             mod 2Z .    (C.5)
+                  4(k + 2)    8                                         k+2 2
+The character of the (l, m, s) coset representation equals (with q = e2πiτ , y = e2πiz )
+                                        c
+                                                   X               k+2    m    s     2   m    s
+   χ[l,m,s](τ, z) = TrH[l,m,s] (q L0 − 24 y J0 ) =   clm+4j−s (τ )q 2k ( k+2 − 2 +2j) y k+2 − 2 +2j .
+                                                    j∈Z
+                                                                                                     (C.6)
+Here, clm (τ ) can be obtained from the identity
+                   X                               θl+1,k+2 (τ, z) − θ−l−1,k+2 (τ, z)
+                          clm (τ )θm,k (τ, z) =                                       ,              (C.7)
+                                                     θ1,k+2 (τ, z) − θ−1,k+2 (τ, z)
+                m∈Z/2kZ
+
+where θm,k (τ, z) is the su(2) theta function
+                                                   m 2         m
+                                          X
+                            θm,k (τ, z) =   q k(n+ 2k ) y k(n+ 2k )                                  (C.8)
+                                                 n∈Z
+
+with m ∈ Z/2kZ. For the calculation of the elliptic genus we are interested in the
+trace with the insertion of (−1)F ; for the N = 2 representation corresponding to
+(l, m, s), this leads to
+                           l
+                          Im (τ, z) = χ[l,m,s](τ, z) − χ[l,m,s+2] (τ, z) ,                           (C.9)
+
+where s = 0 in the NS sector and s = 1 in the Ramond sector.
+      A Gepner model at c = 6 is defined as a ZH orbifold of a tensor product
+(k1 ) · · · (kr ) of N = 2 minimal models, where
+                       r
+                      X     3ki
+                                  =6,             and         H = lcm{ki + 2} .                     (C.10)
+                      i=1
+                          k i + 2
+
+The spectrum of the orbifold theory is given by
+                                r
+                              M O
+                                            H[li ,mi +n,si ] ⊗ H̄[li ,mi −n,s̄i] ,                  (C.11)
+                              n∈ZH i=1
+                            [li ,mi ,si ]
+
+and the sum is over the sectors [li , mi , si ] satisfying the orbifold conditions
+                        r
+                       X      mi
+                                   ∈Z                                        r even ,               (C.12)
+                       i=1
+                           k i + 2
+                        r
+                       X    mi   s1
+                               −    ∈Z                                         r odd ,              (C.13)
+                          k +2
+                       i=1 i
+                                 2
+
+
+
+
+                                                  – 34 –
+together with the spin alignment condition
+
+                                     si − sj ∈ 2Z ,                          i, j = 1, . . . , r .                                   (C.14)
+
+We denote a state transforming in the Hl,m,s ⊗ H̄l,m̄,s̄ coset representations by
+
+                                               Φlm,s;m̄,s̄ = φl,m,s ⊗ φ̄l,m̄,s̄ .                                                    (C.15)
+
+Imposing the various constraints, it is then clear that the elliptic genus of these
+Gepner models is given by [30]
+                            H Y ki
+                              r X                           kX
+                                                             i +2
+                       1    X                                                2πi(mi +a)b
+                                                                                            li          li
+     φ(τ, z) =                                                           e      ki +2
+                                                                                           Im    (τ, z)Im  i +2a
+                                                                                                                 (τ̄ , 0) .          (C.16)
+                  2r−1 H   a,b=0 i=1 li =0 mi =−ki −1
+                                                                                               i
+
+
+
+
+Using
+                                                l
+                                               Im (τ, 0) = δm,l+1 − δm,−l−1                                                          (C.17)
+
+we can directly evaluate (C.16). For the two cases considered in this paper, namely
+(1)6 and (2)4 , we then find indeed (2.1).
+
+C.2 D-branes in Gepner Models
+A-type (B-type) D-branes satisfy the gluing conditions
+
+  (Ln − L̄−n )||Aii = 0             (Jn − J¯−n )||Aii = 0            (A-type)    (G±        ±
+                                                                                   r + iη Ḡ−r )||Aii = 0
+  (Ln − L̄−n )||Bii = 0             (Jn + J¯−n )||Bii = 0            (B-type) ,  (G±        ±
+                                                                                   r + iη Ḡ−r )||Bii = 0
+                                                                           (C.18)
+where η = ±1. In our construction we shall always consider tensor product A-type
+D-branes, as well as permutation B-type D-branes. The former are described by the
+boundary states [31]
+                                                   ki kX
+                                                       i +1 X
+                                                            1 Y                                                                     P
+                           −πi      P                            1 + (−1)li +mi +s  1 X                                                mi     
+                                                                                                                              2πit
+                                                   X
+||Li , Mi , Si iiA,s =N e− 2 s          i Si                                                                               e          i ki +2
+
+                                               li =0 mi =0 νi =0 i
+                                                                                              2                H t∈Z
+                                                                                                                       H
+                                P                 P      mi Y S
+                                    i Si ν i
+                                               πi i Mi k +2        Li li
+                       · (−1)                  e               i             p     |li , mi , s + 2νi iiA ,                          (C.19)
+                                                                     i
+                                                                              S0li
+                                                   √       Q     2
+                                                                     1/4
+where H = lcm{ki + 2}, N =                             H     i ki +2      and
+
+Li = 0, . . . , ki ,    Mi ∈ Z2ki +4 ,                     Si ∈ Z4 ,               Li + Mi + Si even ,                Si + Sj even.
+
+Here s = 0, 1 labels the NSNS or the RR closed string sector, respectively, and
+                                r
+                                     2       (L + 1)(l + 1) 
+                                                i      i
+                       SLi li =          sin π                                (C.20)
+                                  ki + 2          ki + 2
+
+
+
+                                                                   – 35 –
+is the S-matrix of the su(2) affine algebra at level ki . Furthermore
+
+                         |li , mi , s + 2νi iiA ∈ ⊗i H[li ,mi ,s+2νi] ⊗ H̄[li ,mi ,s+2νi ]                 (C.21)
+
+is the Ishibashi state satisfying the A-type gluing conditions (C.18) for each minimal
+model factor separately. The left-moving world-sheet fermion number operator acts
+on this boundary state as
+
+                         (−1)FL kLi , Mi , Si iiA,s = kLi , Mi + 1, Si + 1iiA,s .                          (C.22)
+
+The overlap between two such boundary states is given by
+                              1              c
+              ′    ′    ′       (L0 +L̄0 )− 24
+       A,s hhLi , Mi , Si ||q 2                (−1)FL ||Li , Mi , Si iiA,s                                 (C.23)
+                                                        P
+                                                  − πis
+                                 X X                                 ′
+                                                                            Y
+                           =                        e2    i (Si +1−Si +si )   (2)
+                                                                                  δ (Si + 1 − Si′ + si )
+                               t∈ZH (li ,mi ,si )                             i
+                                                          ′
+                                        (ki +2) Mi + 1 − Mi + mi
+                                    Yh                             
+                                                                      L′i
+                                                                                              i
+                                  ·   δ                          + t NLi li χ[li ,mi ,si] (q̃) ,
+                                    i
+                                                        2
+
+where q̃ is the open string parameter.
+    Given a permutation π ∈ Sr , a permutation brane ||Biiπ satisfies the π-twisted
+B-type boundary conditions
+                                  (π(i))                                      π(i)
+                     (Ln(i) − L̄−n )kBiiπ = 0 ,                      (Jn(i) + J¯−n )kBiiπ = 0 ,            (C.24)
+
+and similarly for the fermionic gluing conditions. For example, for the (1)6 model
+we consider π ∈ S6 with cycle decomposition (12)(34)(56). The corresponding per-
+mutation brane is defined as [32]
+
+  ||L1 ,L2 , L3 , M1 , M2 , M3 , M̂ , Si iiπB,s
+                                          1           5             X Y 1 + (−1)li +mi +n+s 
+                1 1 X − πinM̂ X                      X
+          =        √         e  3
+               23 3 n∈Z            l1 ,l2 ,l3 =0 m1 ,m2 ,m3 =0 ν1 ,...,ν6 ∈Z2 i
+                                                                                   2
+                           3
+                Y SL l π P3                    P6           sπ P6                           n
+              ·           e 3 i mi Mi (−1) i Si νi e−i 2 i Si |[li , mi + n, s + 2νi ]iiπ,g
+                       i i i
+                                                                                        B     , (C.25)
+                 i
+                     S0li
+                                     P
+where M̂ ∈ Z6 , while Li + Mi , M̂ + i Mi and Si + Sj are even, so that the boundary
+                                                                                                n
+state is invariant under n 7→ n+3, mi 7→ mi +3, i = 1, . . . , 3. Here, |[li , mi +n, si ]iiπ,g
+                                                                                            B
+is the Ishibashi state in the nth twisted sector
+ 3 
+ O                                                                                                 
+          H[li ,mi +n,s2i−1 ] ⊗ H̄[li ,mi −n,−s2i] ⊗ H[li ,−mi +n,s2i] ⊗ H̄[li ,−mi −n,−s2i−1 ]          , (C.26)
+ i=1
+
+that is uniquely characterised (up to normalisation) by the B-type boundary condi-
+tions (C.24) (together with the corresponding fermionic formulae). Note that
+
+                       (−1)FL ||Li , Mi , M̂ , Si iiπB,s = ||Li , Mi , M̂, Si + 1iiπB,s .                  (C.27)
+
+
+
+                                                            – 36 –
+For the case at hand, the overlap between two such branes with Li = 0 and s = 1
+(RR sector) is
+                                           1              c
+ π                 ′    ′    ′     ′         (L0 +L̄0 )− 24
+ B,s=1 hh0, 0, 0, M1 , M2 , M3 , M̂ , 0||q
+                                           2                (−1)FL ||0, 0, 0, M1, M2 , M3 , M̂, 0iiπB,s=1
+                        P6                                            3
+                                                   M̂ ′ − M̂ + P m  Y                                  M − M′ + m
+                                                                                                                               2i−1 − m2i
+                                                                                                                                             
+                 − πi                                                              i                          i
+        X
+                            i (1+mi )       (3)                                                                       i
+  =            e   2                    δ                                      i
+                                                                                                 δ (3)                                           .
+      mi =±1
+                                                                 2                         i=1
+                                                                                                                           2
+                                                                                                                                            (C.28)
+
+
+    In order to determine the relative intersection number between the A-type and
+the B-type D-branes, we also need to understand the overlap between the different
+types of branes. For the (1)6 model, the only non-vanishing overlaps are between
+Ishibashi states in the n = 0 sectors of the form
+                        3
+                        O
+                              (H[li ,mi ,si ] ⊗ H̄[li ,mi ,si] ⊗ H[li ,−mi ,−si ] ⊗ H̄[li ,−mi ,−si] ) .                                    (C.29)
+                        i=1
+
+Taking into account the implicit relative phase between the Ishibashi states as in
+[29], one finds that the overlap between the relevant Ishibashi states is
+                                                                                           3
+                            1              c                                                       πi      πi
+                                                                                           Y
+                              (L0 +L̄0 )− 24
+      A hhli , mi , si |q   2                     |[li , mi + n, si ]iiπB =                      e 3 mi − 2 si χ[li ,mi ,si] (q 2 ) ,       (C.30)
+                                                                                           i=1
+
+and hence the overlap between the relevant boundary states is given by
+                        1              c
+               ′          (L0 +L̄0 )− 24
+   A,s=1 hh0, Mi , 0||q 2                (−1)FL ||0, 0, 0, M1, M2 , M3 , M̂, 0iiπB,s=1
+                                                                 3             M − M′                    ′
+                                                    P
+                                                                                                  2i−1 + M2i + mi + 1
+                                                                                                                      
+                                        − πi                                           i
+                   X                                             Y
+                                             (1+        i mi )           (3)
+         =                       −e       2                          δ                                                                  .   (C.31)
+             m1 ,m2 ,m3 =±1                                      i
+                                                                                                          2
+
+    A similar computation can be done for the (2)4 model. The B-type permutation
+brane for π ∈ S4 with cycle decomposition (12)(34) is
+
+   ||L1 ,L2 , M1 , M2 , M̂, Si iiπB,s
+                                       2        7            1     Y 1 + (−1)li +mi +n+s 
+              1 1 X −i πn M̂ X                X           X
+           = 2   √         e 4                                                                (C.32)
+             2 4 n∈Z              l1 ,l2 =0 m1 ,m2 =0 ν1 ,...,ν4 =0 i
+                                                                             2
+                         4
+              Y SL l π P                    P4         πs P4                              n
+            ·           e 4 i mi Mi (−1) i Si νi e−i 2 i Si |[li , mi + n, s + 2νi ]iiπ,g
+                     i i i
+                                                                                       B    ,
+               i
+                   S0li
+                                  P
+where M̂ ∈ Z8 , and Li + Mi , M̂ + i Mi and Si + Sj are all even. The left-moving
+fermionic number operator acts now by
+
+   (−1)FL ||L1 , L2 , M1 , M2 , M̂ , Si iiπB,s = ||L1 , L2 , M1 , M2 , M̂ + 4, Si + 1iiπB,s ,                                               (C.33)
+
+
+
+                                                                     – 37 –
+and the overlap between two branes with L1 , L2 = 0 is
+                                      1              c
+    π              ′    ′     ′         (L0 +L̄0 )− 24
+    B,s=1 hh0, 0, M1 , M2 , M̂ , 0||q
+                                      2                (−1)FL ||0, 0, M1, M2 , M̂, 0iiπB,s=1
+                          4                   P4                 M̂ ′ − M̂ + 4 + P4 m 
+       1 X               Y
+                              (2)        − πi    (1+s   )   (4)                    i  i
+     =     δl1 l2 δl3 l4     δ (si + 1) e 2 i         i
+                                                          δ
+       4                 i=1
+                                                                             2
+           (li ,mi ,si )
+                                2             M − M′ + m
+                                                                            2i−1 − m2i
+                                                                                                
+                                                 i
+                                Y
+                                                                i
+                            ·         δ (4)                                                         χ[li mi si ] (q̃)
+                                i=1
+                                                                    2
+                                                                M̂ ′ − M̂ + 4 + P2 m (s + 1) 
+                                − πi                                                                        i   i
+              X
+                                     (2+s1 +s2 )         (4)                                        i
+     =                       e    2                  δ
+                                                                                            2
+         m1 ,m2 ∈{1,2,3}
+           s1 ,s2 =±1
+                                2              M − M ′ + m (s − 1) 
+                                                 i                          i   i
+                                Y
+                                                                i
+                            ·         δ (4)                                                     .                           (C.34)
+                                i=1
+                                                                    2
+
+Finally, the RR-overlap between A-type and permutation B-type branes in this model
+is given by
+                                     1              c
+                            ′          (L0 +L̄0 )− 24
+                A,s=1 hh0, Mi , 0||q 2                (−1)FL ||0, 0, 0, M1, M2 , M̂, 0iiπB,s=1
+                                             P                        ′     ′
+                                         (2+ i mi ) (4) M1 − M1 + M2 + m1 + 1
+                                                                                         
+                                    − πi
+                          X
+                     =                 2  e                         δ
+                           m1 ,m2 =±1
+                                                                                                        2
+                                                               M − M′ + M′ + m + 1
+                                                                        2           3       4               2
+                                                     · δ (4)                                                            .   (C.35)
+                                                                                        2
+
+References
+ [1] T. Eguchi, H. Ooguri and Y. Tachikawa, Notes on the K3 surface and the Mathieu
+     group M24 , Exper. Math. 20 (2011) 91 [arXiv:1004.0956 [hep-th]].
+
+ [2] T. Gannon, Moonshine beyond the Monster: The bridge connecting algebra, modular
+     forms and physics, Cambridge University Press (2006).
+
+ [3] M.C.N. Cheng, K3 Surfaces, N=4 dyons, and the Mathieu group M24 , Commun.
+     Number Theory Phys. 4 (2010) 623 [arXiv:1005.5415 [hep-th]].
+
+ [4] M.R. Gaberdiel, S. Hohenegger and R. Volpato, Mathieu twining characters for K3,
+     JHEP 1009 (2010) 058 [arXiv:1006.0221 [hep-th]].
+
+ [5] M.R. Gaberdiel, S. Hohenegger and R. Volpato, Mathieu Moonshine in the elliptic
+     genus of K3, JHEP 1010 (2010) 062 [arXiv:1008.3778 [hep-th]].
+
+ [6] T. Eguchi and K. Hikami, Note on twisted elliptic genus of K3 surface, Phys. Lett. B
+     694 (2011) 446 [arXiv:1008.4924 [hep-th]].
+
+ [7] S. Govindarajan, Brewing moonshine for Mathieu, arXiv:1012.5732 [math.NT].
+
+
+
+
+                                                                    – 38 –
+ [8] S. Govindarajan, BKM Lie superalgebras from counting twisted CHL dyons,
+     arXiv:1006.3472 [hep-th].
+
+ [9] S. Govindarajan and K. Gopala Krishna, BKM Lie superalgebras from dyon spectra
+     in Z(N) CHL orbifolds for composite N, JHEP 1005 (2010) 014 [arXiv:0907.1410
+     [hep-th]].
+
+[10] S. Mukai, Finite groups of automorphisms of K3 surfaces and the Mathieu group,
+     Invent. Math. 94 (1988) 183.
+
+[11] S. Kondo, Niemeier lattices, Mathieu groups and finite groups of symplectic
+     automorphisms of K3 surfaces, Duke Math. Journal 92 (1998) 593, appendix by
+     S. Mukai.
+
+[12] A. Taormina and K. Wendland, The symmetries of the tetrahedral Kummer surface
+     in the Mathieu group M24 , arXiv:1008.0954 [hep-th].
+
+[13] P.S. Aspinwall, K3 surfaces and string duality, arXiv:hep-th/9611137.
+
+[14] W. Nahm and K. Wendland, A hiker’s guide to K3: Aspects of N = (4,4)
+     superconformal field theory with central charge c = 6, Commun. Math. Phys. 216
+     (2001) 85 [arXiv:hep-th/9912067].
+
+[15] I. Brunner, M.R. Douglas, A.E. Lawrence and C. Romelsberger, D-branes on the
+     quintic, JHEP 0008 (2000) 015 [arXiv:hep-th/9906200].
+
+[16] T. Banks and L.J. Dixon, Constraints on string vacua with space-time
+     supersymmetry, Nucl. Phys. B 307 (1988) 93.
+
+[17] P.S. Aspinwall, Enhanced gauge symmetries and Calabi-Yau threefolds, Phys. Lett. B
+     371 (1996) 231 [arXiv:hep-th/9511171].
+
+[18] A. Strominger, Massless black holes and conifolds in string theory, Nucl. Phys. B
+     451 (1995) 96 [arXiv:hep-th/9504090].
+
+[19] M.R. Gaberdiel, Lectures on non-BPS Dirichlet branes, Class. Quant. Grav. 17
+     (2000) 3483 [arXiv:hep-th/0005029].
+
+[20] O. Bergman and M.R. Gaberdiel, Non-BPS states in heterotic type IIA duality,
+     JHEP 9903 (1999) 013 [arXiv:hep-th/9901014].
+
+[21] I. Brunner, M.R. Gaberdiel and C.A. Keller, Matrix factorisations and D-branes on
+     K3, JHEP 0606 (2006) 015 [arXiv:hep-th/0603196].
+
+[22] J.H. Conway and N.J.A. Sloane, Sphere packings, lattices and groups, Grundlehren
+     der Mathematischen Wissenschaften 290 3rd edition, Springer-Verlag, New York
+     (1999).
+
+[23] R.T. Curtis, On subgroups of ·0. I. Lattice stabilizers, J. Algebra 27 (1973) 549.
+
+
+
+
+                                          – 39 –
+[24] I. Brunner, M.R. Gaberdiel, S. Hohenegger and C.A. Keller, Obstructions and lines
+     of marginal stability from the world-sheet, JHEP 0905 (2009) 007
+     [arXiv:0902.3177 [hep-th]].
+
+[25] S. Govindarajan, D.P. Jatkar and K.G. Krishna, BKM superalgebras from counting
+     dyons in N=4 supersymmetric type II compactifications, arXiv:1106.1318
+     [hep-th].
+
+[26] V.V. Nikulin, Integer symmetric bilinear forms and some of their geometric
+     applications, Izv. Akad. Nauk SSSR Ser. Mat. 43 (1979) 111.
+
+[27] J.H. Conway, R.T. Curtis, S.P. Norton, R.A. Parker and R.A. Wilson, Atlas of finite
+     groups, Oxford University Press (1985).
+
+[28] D. Allcock, Orbits in the Leech lattice, Exper. Math. 14(4) (2005) 491.
+
+[29] I. Brunner and M.R. Gaberdiel, Matrix factorisations and permutation branes, JHEP
+     0507 (2005) 012 [arXiv:hep-th/0503207].
+
+[30] T. Kawai, Y. Yamada and S.K. Yang, Elliptic genera and N=2 superconformal field
+     theory, Nucl. Phys. B 414 (1994) 191 [arXiv:hep-th/9306096].
+
+[31] A. Recknagel and V. Schomerus, D-branes in Gepner models, Nucl. Phys. B 531
+     (1998) 185 [arXiv:hep-th/9712186].
+
+[32] A. Recknagel, Permutation branes, JHEP 0304 (2003) 041
+     [arXiv:hep-th/0208119].
+
+
+
+
+                                         – 40 –
+
