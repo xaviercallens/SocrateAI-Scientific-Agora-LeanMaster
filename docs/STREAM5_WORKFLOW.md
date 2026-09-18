@@ -1,6 +1,6 @@
 # Stream 5 Workflow — Dyons on K3 × T²: from the K3 elliptic genus to single-centred black holes
 
-**Status (2026-09-18, release `v3.13.0`):** P5.1–P5.7 closed (Tier A, 42 theorems, 0 failing,
+**Status (2026-09-18, release `v3.13.1`):** P5.1–P5.7 closed (Tier A, 44 theorems, 0 failing,
 `propext` or no axiom; locked in 5 files). No open phase; next directions in §10. Library `DualScaleDyons` (separate `lean_lib`, imports
 `DualScaleMoonshine` for its exact `q`-series with Laurent-polynomial coefficients). Rules are those of
 Streams 2–4: the kernel is the only accept gate; no citation from memory; ASCII identifiers; every
@@ -102,7 +102,8 @@ Statement lock: 74 declarations in 4 files (pre-update check: only `ImmortalHigh
 ## 10. Results at `v3.13.0` (P5.7) and what next
 * **Twisted genera.** `Z_g = (χ_g/24)Z − F_g·A` for all 26 classes, integral, index 1 (`c_g` depends only on
   `4n − l²`), `Z_g(τ,0) = χ_g`. (Cheng prints `c_g(−1) = −2` at l. 968; in the normalisation used here and
-  in his own (2.5), the coefficient of `y^{±1}q⁰` is `+2` — a sign convention, noted.)
+  in his own (2.5), the coefficient of `y^{±1}q⁰` is `+2`; checked for all 26 classes in `TwistedNotes.lean`
+  (`c_minus_one`, `twisted_genus_q0`), so the printed `−2` is a sign convention or misprint.)
 * **Twisted dyon partition functions.** Cheng's (3.10) by Newton's identities (exact divisions checked):
   `g = 1A` recovers `dmvv`; at `z = 0` the `p`-coefficients are the twined Göttsche numbers (the `p`-side
   of Cheng's factorisation (3.11)); every coefficient of `G₁^{(g)}, G₂^{(g)}` through `q²` is a virtual

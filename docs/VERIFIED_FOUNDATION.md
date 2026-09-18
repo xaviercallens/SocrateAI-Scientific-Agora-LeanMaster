@@ -93,7 +93,9 @@ numbers); all coefficients of `G₁^{(g)}, G₂^{(g)}` and of the twisted single
 `n = 0 … 9` the computed twined series decompose with integer multiplicities equal to CDH Table 48 (levels
 8, 9 were open in Stream 4); EOT's original level-7 proposal is inconsistent (Cheng). Gates: ten-library
 build 3799 jobs, 0 errors; `DualScaleMoonshine` 101 theorems, `DualScaleDyons` 42 theorems, 0 failing;
-statement locks: only the two new files added. Total audited: **600**.
+statement locks: only the two new files added. Total audited: **600**. `v3.13.1` adds `TwistedNotes.lean`
+(`c_g(−1) = +2` for all 26 classes, checked; Cheng's printed `−2` at l. 968 is a sign convention or misprint).
+Total audited: **602**.
 
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |
