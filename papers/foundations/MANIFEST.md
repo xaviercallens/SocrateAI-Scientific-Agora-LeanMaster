@@ -38,6 +38,7 @@ Every PDF here is hash-pinned at fetch time. `.txt` files are `pdftotext` extrac
 | 1204_2779.pdf | 1204.2779 | Umbral Moonshine | M.C.N. Cheng, J.F.R. Duncan, J.A. Harvey | 2012 | 8cb8a06908b4f45e884ec105786dba3321f6866f2382297b35181ab25e5dd27c | yes | Stream 4: twined series eq. (4.18) ll. 2931–2936; `F_g` Table 3 ll. 2882–2915; `Λ_N` eq. (A.3) ll. 4100–4104; `η` App. A.1; `M₂₄` character table Table 8 ll. 4170–4209; `χ_g` Table 14 ll. 4349–4362; McKay–Thompson coefficients Table 20 ll. 4494–4512 |
 | 1406_0619.pdf | 1406.0619 | Umbral Moonshine and K3 Surfaces | M.C.N. Cheng, S. Harrison | 2014 | c8f13dc3e3c357e413eab70c7397d7a25f0b47b24af2b096556446260bb534f8 | yes | Stream 4: closed formula `H⁽²⁾ = (−2E₂ + 48F₂⁽²⁾)/η³` and `F₂⁽²⁾`, eqs. (3.5)–(3.6), ll. 800–813 |
 | 1106_4315.pdf | 1106.4315 | Symmetries of K3 sigma models | M.R. Gaberdiel, S. Hohenegger, R. Volpato | 2011 | b5168ebb07517de740890f1c2965575aaa12f6d5e8ad703149f4e1f09050fb7c | yes | Stream 4 motivation (no K3 sigma model has `M₂₄` symmetry); not yet cited by a Lean docstring |
+| 1208_4074.pdf | 1208.4074 | Quantum Black Holes, Wall Crossing, and Mock Modular Forms | A. Dabholkar, S. Murthy, D. Zagier | 2012 | 7260e103bdfb71d9f06d727f88432a789efcaee9ddcd2fde5cff30521f670213 | yes | Stream 5 (added 2026-09-18): quarter-BPS dyons on K3×T², the counting function 1/Φ₁₀, its Fourier–Jacobi coefficients, polar (multi-centred, wall-crossing) vs finite (single-centred, mock modular) parts |
 
 ## Not downloaded (journal-only, cite by reference)
 
