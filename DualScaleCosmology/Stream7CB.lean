@@ -21,6 +21,9 @@ LISA mission proposal `1702_00786.txt` ll. 692–699 (OR7.2): measure `Ω = 1.3 
 * **Verdict** (`cb_not_testable`): by the pre-registered rule TB, C-B is **not falsifiable in practice** —
   neither confirmed nor excluded. The reason is the programme's own string scale (`M_s ~ 1/s`, meV range):
   it puts every stringy relic of this kind out of reach, as it did for cosmic F-strings (C-C).
+* Stronger, and recorded separately: the premise (B2) — `α' = s²` as the string's Regge slope, string
+  resonances at `ħc/s ≈ 4 meV` — was already **excluded** in Stream 3 (P3.7, CMS, by `≥ 10³⁰` in `α'`). So C-B
+  (and C-C, which uses the same `α'`) fails at the level of its assumption, not only for lack of sensitivity.
 -/
 import DualScaleCosmology.SelfDualCutoff
 
@@ -48,18 +51,28 @@ theorem cb_peak_below_lisa_band : g1Sq * (1e11 : ℝ) ^ 4 < (1e-4 : ℝ) ^ 4 := 
   have h := cb_g1_sq_bracket.2
   nlinarith [h]
 
-/-- `Ω(ω₁) ≃ 10⁻⁴ g₁² < 10⁻⁶⁴`, far below LISA's best `6.5 × 10⁻¹³` in its band. -/
-theorem cb_peak_amplitude_unreachable : 1e-4 * g1Sq < (1e-64 : ℝ) ∧ (1e-64 : ℝ) * 1e50 < 6.5e-13 := by
+/-- The predicted peak amplitude `Ω(ω₁) ≃ 10⁻⁴ g₁²` ((5.16)). -/
+noncomputable def omegaPeak : ℝ := 1e-4 * g1Sq
+
+/-- LISA's best stochastic-background sensitivity in its band `0.1–2 mHz`: `1.3 × 10⁻¹¹ (f/10⁻⁴ Hz)⁻¹` at
+`f = 2 mHz` (`1702_00786.txt` ll. 692–699). -/
+noncomputable def omegaLisaBest : ℝ := 1.3e-11 / 20
+
+/-- `Ω(ω₁) < 10⁻⁶⁴`, and the peak times `10⁵⁰` is still below LISA's best: more than fifty orders of
+magnitude short. -/
+theorem cb_peak_amplitude_unreachable : omegaPeak < (1e-64 : ℝ) ∧ omegaPeak * 1e50 < omegaLisaBest := by
   have h := cb_g1_sq_bracket.2
+  unfold omegaPeak omegaLisaBest
   constructor
   · nlinarith [h]
-  · norm_num
+  · nlinarith [h]
 
 /-- **Verdict (rule TB): not testable** — the spectrum ends below LISA's band and its peak is below LISA's
 sensitivity by more than fifty orders of magnitude. -/
 theorem cb_not_testable :
-    g1Sq * (1e11 : ℝ) ^ 4 < (1e-4 : ℝ) ^ 4 ∧ 1e-4 * g1Sq * 1e50 < (6.5e-13 : ℝ) := by
+    g1Sq * (1e11 : ℝ) ^ 4 < (1e-4 : ℝ) ^ 4 ∧ omegaPeak < omegaLisaBest := by
   have h := cb_g1_sq_bracket.2
+  unfold omegaPeak omegaLisaBest
   constructor
   · nlinarith [h]
   · nlinarith [h]

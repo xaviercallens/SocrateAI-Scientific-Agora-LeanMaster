@@ -111,7 +111,9 @@ MVV's neutron-star bound (`44 μm`): **excluded** by the pre-registered rule; th
 **`v3.16.0` (2026-09-18): Stream 7, candidate C-B.** `DualScaleCosmology/Stream7CB.lean` (5 theorems): frozen C-B (tag
 `stream7-cb-frozen`, before any sensitivity was pinned) — pre-big-bang relic gravitons with `α' = s²`: `g₁² ≈ 1.2 × 10⁻⁶¹`,
 spectrum ending at `≈ 6 × 10⁻⁵ Hz` with peak `Ω ≈ 10⁻⁶⁵`; LISA (`1702_00786.txt` ll. 692–699) cannot reach it: **not
-falsifiable in practice**. `DualScaleCosmology` 50 theorems, 0 failing. Total audited: **621**.
+falsifiable in practice**. `DualScaleCosmology` 50 theorems, 0 failing. Total audited: **621**. `v3.16.1`: two C-B
+statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
+exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |

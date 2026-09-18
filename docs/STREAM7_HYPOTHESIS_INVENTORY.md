@@ -92,13 +92,19 @@ Frozen before any detector document was pinned. With the programme's own string 
 dilaton phase, `cb_slope`) ends at `ω₁ ≈ 6 × 10⁻⁵ Hz`, below LISA's stochastic band `f > 0.1 mHz`
 (`cb_peak_below_lisa_band`), and peaks at `Ω ≃ 10⁻⁶⁵`, more than fifty orders of magnitude below LISA's best
 `≈ 6.5 × 10⁻¹³` (`1702_00786.txt` ll. 692–699; `cb_peak_amplitude_unreachable`). By rule TB: **not falsifiable
-in practice** (`cb_not_testable`) — neither confirmed nor excluded.
+in practice** (`cb_not_testable`) — neither confirmed nor excluded by that rule.
+
+**Stronger, recorded separately (`v3.16.1`).** C-B's premise (B2) — `α' = s²` as the string's Regge slope, i.e.
+string resonances at `ħc/s ≈ 4 meV` — was already **excluded** in Stream 3 (P3.7: CMS excludes such resonances
+below 7.9 TeV, by `≥ 10³⁰` in `α'`). The same applies to C-C, which uses the same `α'`. So C-B and C-C fail at the
+level of their assumption, not only for lack of sensitivity.
 
 ## 8. Where Stream 7 leaves the hypothesis
 
 Every observable the programme can derive without an unconstructed compactification has now been frozen
 and confronted: P1 (extra dimension) and C-A (holographic dark energy) are **excluded**; C-B (relic gravitons)
-and C-C (cosmic F-strings) are **out of reach** because the programme's own string scale is in the meV range.
+and C-C (cosmic F-strings) are **out of reach**, and their shared premise (a meV string scale) is itself excluded
+by Stream 3's P3.7.
 The common cause is the dual-scale identification `α' = ℓ_P · c/H₀` itself: it either conflicts with data or
 pushes every stringy signal below any conceivable sensitivity. A new hypothesis worth testing would have to
 drop or replace that identification — and, for a realistic universe, use a geometry with a chiral spectrum
