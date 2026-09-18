@@ -40,7 +40,7 @@ literature (Tier L) versus this project's own conjectures (Tier C, not yet deriv
 
 Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
 invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
-every theorem and lemma (**572 audited theorems across the ten first-party libraries** depend on
+every theorem and lemma (**573 audited theorems across the ten first-party libraries** depend on
 nothing beyond the three standard Lean axioms — see §10 and
 [`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md), which is the authoritative,
 gate-by-gate status document that this README summarizes).
@@ -168,7 +168,7 @@ continuous parameter survives.
 | **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
 | **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
 | **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
-| **Kernel Verification** | None (paper only) | 572/572 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
+| **Kernel Verification** | None (paper only) | 573/573 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
 
 The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
 (Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
@@ -446,8 +446,8 @@ lake build DualScaleMoonshine
 # Stream 5 (dyons on K3 × T²)
 lake build DualScaleDyons
 ```
-Last verified on 2026-09-17: `lake build` → 61 jobs, 0 errors; `lake build DualScaleStream2
-StringTheoryFormalization` → 3708 jobs, 0 errors.
+Last verified on 2026-09-18 (`v3.11.x`): `lake build` → 61 jobs, 0 errors; all ten libraries in one
+invocation → 3795 jobs, 0 errors (see `docs/VERIFIED_FOUNDATION.md` for the per-library gates).
 
 > **Single-file compiles need explicit options.** `lake env lean` does *not* apply the `leanOptions`
 > from `lakefile.lean`, so a file that builds under `lake build` can spuriously time out:
@@ -472,7 +472,7 @@ bare keyword — and it also catches `native_decide` (`Lean.ofReduceBool`), whic
 ```bash
 lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 ```
-Last full run (2026-09-18), **572 theorems audited across all ten libraries, 0 failing**:
+Last full run (2026-09-18), **573 theorems audited across all ten libraries, 0 failing**:
 
 | Library | Theorems audited | Failing |
 |---|:---:|:---:|
@@ -485,8 +485,8 @@ Last full run (2026-09-18), **572 theorems audited across all ten libraries, 0 f
 | `DualScaleValidation` | 23 | 0 |
 | `DualScaleCosmology` (Stream 3) | 31 | 0 |
 | `DualScaleMoonshine` (Stream 4) | 98 | 0 |
-| `DualScaleDyons` (Stream 5) | 17 | 0 |
-| **Total** | **572** | **0** |
+| `DualScaleDyons` (Stream 5) | 18 | 0 |
+| **Total** | **573** | **0** |
 
 "0 failing" means every theorem depends on nothing beyond `propext`, `Classical.choice` and
 `Quot.sound`.

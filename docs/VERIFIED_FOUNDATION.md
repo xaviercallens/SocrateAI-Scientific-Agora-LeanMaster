@@ -70,7 +70,9 @@ that the polar part `p₂₄(m+1)A₂,ₘ` removes the double pole of `ψ_m` (an
 and that the single-centred counting function `∆ψ₁^F` equals `3E₄A − 648H` with `H` the Hurwitz class
 numbers, counted independently. Gates: ten-library build 3795 jobs, 0 errors; `DualScaleDyons` 17
 theorems, 0 failing (axioms: `propext` only); statement lock 48 declarations in 2 files; no file of the
-other nine libraries changed. Total audited: **572**.
+other nine libraries changed. Total audited: **572**. `v3.11.1` adds `negBinom_exact` (the integer
+divisions inside the product are exact; 18 theorems, 50 declarations) and clarifies that the polar-part
+theorems discriminate the first-order pole condition. Total audited: **573**.
 
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |

@@ -28,8 +28,11 @@ Stream 5 · P5.2–P5.4 — from the K3 elliptic genus to the dyon partition fun
 * `a2m_strip_eq_955`: in the strip `|q| < |y| < 1`, the direct expansion of (1.3) equals (9.55).
 * `polar_part_removes_pole`: `G_{m+1} − p₂₄(m+1)·A·A₂,ₘ` vanishes to second order at `y = 1` at every
   order in `q` (`m = 1, 2, 3`), i.e. `∆ψ_m − p₂₄(m+1)A₂,ₘ` has no pole at `z = 0`; `polar_coefficient_pinned`:
-  the multiples `p₂₄(m+1) ± 1` fail. (Second-order vanishing follows from the `y ↔ y⁻¹` symmetry; the
-  content is that the pole coefficient is `G_{m+1}(τ, 0) = p₂₄(m+1)`, constant in `τ`.)
+  the multiples `p₂₄(m+1) ± 1` fail. Caveat: the second-order condition (`d1 = 0`) holds automatically by
+  the `y ↔ y⁻¹` symmetry, so what these two theorems discriminate is the first-order condition — the pole
+  coefficient is `G_{m+1}(τ, 0) = p₂₄(m+1)`, constant in `τ`. The full second-order content (the division
+  by `A` is exact at every coefficient) is carried by `Immortal.immortal_m1_exact` for `m = 1`.
+* `negBinom_exact`: the integer divisions inside the product are exact at every pair used.
 
 ### Not proved
 That `1/Φ₁₀` counts dyons, that `Φ₁₀` is a Siegel modular form or that the product converges (Tier L).
@@ -113,6 +116,24 @@ theorem dmvv_reachable :
 
 /-- **Negative control**: the truncation `p⁴, q³` would need `c(48)`, which is not available. -/
 theorem dmvv_unreachable_example : (dmvvDs 4 3).all cAvailable = false := by decide
+
+/-- The pairs `(e, j)` at which `dmvv K Q` evaluates `negBinom e j` (same loops as `dmvv`). -/
+def negBinomPairs (K Q : ℕ) : List (ℤ × ℕ) :=
+  (List.range K).flatMap fun i =>
+    let r := i + 1
+    (List.range (Q + 1)).flatMap fun s =>
+      let tm : ℕ := 2 * r * s + 1
+      ((List.range (2 * tm + 1)).filterMap fun j =>
+        let D : ℤ := 4 * (r : ℤ) * s - ((j : ℤ) - tm) ^ 2
+        if D < -1 then none else some (cK3 D)).flatMap fun e =>
+          (List.range (K / r + 1)).map fun j => (e, j)
+
+/-- **`negBinom` is an exact division** at every pair the products of this stream use: the integer
+quotient `e(e+1)⋯(e+j−1)/j!` never truncates. -/
+theorem negBinom_exact :
+    [(5, 1), (4, 2), (2, 3)].all (fun kq : ℕ × ℕ => (negBinomPairs kq.1 kq.2).all fun p =>
+      ((List.range p.2).foldl (fun acc i => acc * (p.1 + i)) 1) %
+        (((List.range p.2).foldl (fun acc i => acc * (i + 1)) 1 : ℕ) : ℤ) == 0) = true := by decide
 
 /-- `p₂₄(n)`: coefficient of `qⁿ` in `Π (1 − qᵏ)^{−24}` (24-coloured partitions). -/
 def p24 (n : ℕ) : ℤ :=
