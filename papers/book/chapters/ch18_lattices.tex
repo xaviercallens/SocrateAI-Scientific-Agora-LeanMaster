@@ -1073,11 +1073,12 @@ element of \eqref{eq:lattices:OU}.
 \begin{exercise}[$\star\star$ Lean: $A_2$ is not unimodular]\label{ex:lattices:leanA2}
 Define in Lean the Gram matrix of $A_2$ and state that its determinant is $3$:
 \begin{leancode}
+-- exercise: not yet proved (not in the library)
 def cartanA2 : Gram 2 := !![2, -1; -1, 2]
 theorem cartanA2_det : cartanA2.det = 3 := by
   simp [cartanA2, Matrix.det_fin_two]; norm_num
 \end{leancode}
-Repair the proof if necessary, and deduce that \lean{IsUnimodular cartanA2} is false. Then prove that it has even diagonal, imitating
+Repair the proof if necessary, and deduce that \texttt{IsUnimodular cartanA2} is false. Then prove that it has even diagonal, imitating
 the proof of \lean{hyperbolicU\_evenDiag}.
 \end{exercise}
 

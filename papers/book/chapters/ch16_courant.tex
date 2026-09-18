@@ -748,7 +748,7 @@ it is $vb$, which is not symmetric. Equivalently, the antisymmetric part of this
 \lean{DorfmanBracket} is $3(vb-ua)$, three times \lean{CBracket} rather than twice. So the pair
 (\lean{DorfmanBracket}, \lean{CBracket}) does not satisfy \cref{def:courant:courant}. On the family
 $X_{(v,a)}$ above, the true Dorfman product is $X_{(v,a)}\circ X_{(u,b)}=X_{(0,\,2vb)}$, because
-$\dd\alpha=0$ on a line; the model with \lean{alpha := 2 * (X.v * Y.alpha)} would satisfy both
+$\dd\alpha=0$ on a line; the model with \texttt{alpha := 2 * (X.v * Y.alpha)} would satisfy both
 relations (\cref{exr:courant:leanfix}).
 \end{leanbox}
 
@@ -889,7 +889,7 @@ theorem dorfman_antisymm_three (X Y : CourantSection) :
       = 3 * (CBracket X Y).alpha := by
   sorry
 \end{leancode}
-(b) Define \lean{DorfmanExp X Y} with form slot \lean{2 * (X.v * Y.alpha)} and vector slot $0$, and
+(b) Define \texttt{DorfmanExp X Y} with form slot \texttt{2 * (X.v * Y.alpha)} and vector slot $0$, and
 prove that its antisymmetric part is \lean{2 * (CBracket X Y).alpha} and its symmetric part is
 twice the pairing $vb+ua$. Hint: \lean{dsimp} with the definitions, then \lean{omega}. (We have
 checked that both statements compile against the library.)

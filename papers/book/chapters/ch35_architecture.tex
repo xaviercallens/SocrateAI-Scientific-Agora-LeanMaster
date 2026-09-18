@@ -273,8 +273,8 @@ Burnside check $\sum_i \dim(\rho_i)^2 = |M_{24}| = 244\,823\,040$ over the 26 ir
 dimensions is a shadow, and it caught a wrong table that had been in the repository for
 months (\cref{sec:architecture:gates}). What a shadow cannot do is stand in for the general
 theorem. To turn \lean{gen\_metric\_duality} into \lean{etaR\_genMetric\_sq} one needs, in
-order: a type of $d\times d$ real matrices with a genuine inverse (Mathlib's
-\lean{Matrix.nonsing\_inv}), block matrices (\lean{Matrix.fromBlocks}), the invertibility
+order: a type of $d\times d$ real matrices with a genuine inverse (in Mathlib,
+\lean{Matrix.nonsing\_inv\_mul}: $A^{-1}A=1$ when $\det A$ is a unit), block matrices (\lean{Matrix.fromBlocks}), the invertibility
 hypothesis in place of $g=1$, and a proof that is a computation with the algebraic laws of
 inverses rather than a computation on literals. That is precisely the gap Mathlib fills, and
 it is why the two Mathlib-based libraries are where the faithful statements live.
@@ -353,13 +353,13 @@ $e,d$ (truncated subtraction); $1/(2-1)=1$ in $\N$. \\[3pt]
 \lean{kummer\_fixed\_points\_dim4}, \lean{exceptional\_divisor\_cartan\_a1},
 \lean{mukai\_lattice\_rank\_equals\_24}, \lean{mukai\_signature\_difference} &
 $2^4=16$; the constant $-2$ equals $-2$; $1+22+1=24$; $4-20=-16$. \\[3pt]
-\lean{Statistical}\allowbreak\lean{LearningBridge} \newline\source{ll.~46--81} &
+\lean{StatisticalLearningBridge} \newline\source{ll.~46--81} &
 \lean{zero\_empirical\_risk\_}\allowbreak\lean{on\_perfect\_proofs},
 \lean{rademacher\_bound\_positive} &
 $(n-n)\cdot10^4/n=0$ for $n>0$; $2k>0$ for $k>0$. \\[3pt]
 \lean{AtlasGeometryBridge} \newline\source{ll.~23--78} &
-\lean{atlas\_k3\_euler\_}\allowbreak\lean{characteristic}, \lean{atlas\_k3\_signature},
-\lean{atlas\_poincare\_}\allowbreak\lean{curvature\_negative} &
+\lean{atlas\_k3\_euler\_characteristic}, \lean{atlas\_k3\_signature},
+\lean{atlas\_poincare\_curvature\_negative} &
 $1-0+22-0+1=24$; $3-19=-16$; the constant $-1$ equals $-1$. \\
 \bottomrule\end{tabular}
 \end{table}
@@ -466,7 +466,7 @@ The script \lean{tools/axiom\_audit.py} automates this over a whole library
 \item Write a probe file that imports the built library and contains one
   \lean{\#print axioms} line per name; run it with \lean{lake env lean} (ll.~62--67).
 \item If the probe itself fails to elaborate---typically because the library was not
-  rebuilt---exit with code 2 and the message \lean{AUDIT ERROR} (ll.~70--77). This clause
+  rebuilt---exit with code 2 and the message \texttt{AUDIT ERROR} (ll.~70--77). This clause
   was added after an audit of a stale build reported ``89 theorems audited, 89 failing
   (MISSING)'', which ``looks like a proof result, but it was an infrastructure failure''
   \source{LL.md §S2.11, ll.~94--99}.
@@ -565,9 +565,9 @@ whose SHA-256 begins \lean{94394facb0c97f29}. Everything after \lean{:=}---the t
 \lean{have} lines and \lean{omega}---is absent from the hash. If an agent replaced the
 hypothesis \lean{(h23 : t2 ≤ t3)} by \lean{(h23 : t1 ≤ t3)}, making the theorem trivially
 provable, the normalized text would change and so would the hash; the check would print
-\lean{CHANGED} and exit 1. If instead the agent edited \lean{Tier.toNat} so that
+\texttt{CHANGED} and exit 1. If instead the agent edited \lean{Tier.toNat} so that
 \lean{Tier.A} mapped to $3$ and \lean{Tier.B} to $4$, no theorem statement would change,
-but the definition's hash (\lean{d839f1061e526f25} on the current text) would, and the
+but the definition's hash (\texttt{d839f1061e526f25} on the current text) would, and the
 check would fail for the same reason: every theorem about $\le$ on tiers now means something
 else. This is why definitions are hashed whole and theorems only up to \lean{:=}.
 \end{example}
@@ -873,7 +873,7 @@ g&0\end{psmallmatrix}$, and $(\eta\HH)^2=\mathbf 1$.
 \end{exercise}
 
 \begin{exercise}[$\star\star$]
-For each edit, say whether \lean{statement\_lock.py --check} would report \lean{CHANGED},
+For each edit, say whether \lean{statement\_lock.py --check} would report \texttt{CHANGED},
 and why: (a) replacing \lean{:= by sorry} with \lean{:= by omega} in \lean{tier\_trans};
 (b) adding the hypothesis \lean{(h : t1 = t2)} to \lean{tier\_antisymm}; (c) rewriting the
 docstring of \lean{Sound}; (d) changing \lean{Tier.toNat} so that \lean{Tier.L} maps to $3$

@@ -55,7 +55,7 @@ and a Zero-Free-Parameter Cosmological Conjecture on $K3 \times T^2$}
 \author{\textbf{Xavier Callens}$^{1}$ \and \textbf{SocrateAI Scientific Agora Collaboration}$^{1}$ \\[0.5em]
 $^{1}$\textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal Verification}}
 
-\date{Revision 3 --- September 17, 2026}
+\date{Revision 4 --- September 18, 2026}
 
 \usepackage{graphicx}
 \graphicspath{{../book/generated/figures/}}
@@ -193,6 +193,28 @@ against the Lean kernel or against the downloaded literature file it cites (see
     the same three-axiom footprint as the Mathlib-free core.
 \end{enumerate}
 
+\paragraph{Revision 4 (2026-09-18), in response to external peer review.} Each change below answers a
+specific reviewer request; none alters a Lean statement.
+\begin{enumerate}
+  \item \Cref{sec:phenomenology} now states for each relation that it is an empirical pattern-match with
+    no derivation and no proposed mechanism, including the factor $55$ and the ratio $77/360$.
+  \item The scalar spectral index is \emph{re-classified}: no formula in this corpus produces
+    $n_s=0.965$; it is the Planck 2018 central value restated. Revision~3 listed it as a
+    ``consistent'' prediction, which a restated input cannot fail to be; it is now labelled a benchmark
+    input, not a prediction (\Cref{sec:phenomenology}, \Cref{tab:phenomenology}).
+  \item A paragraph in \Cref{sec:phenomenology} spells out why accommodating dark energy threatens
+    \Cref{conj:zeroparam}.
+  \item The one-dimensional DFT and moduli toy models (\Cref{sec:dft,sec:moduli-obstruction}) are now
+    described explicitly as software-level unit tests, not physically meaningful verifications.
+  \item The weighting $N_Q=4$ is stated to have no physical justification in this corpus.
+  \item The roadmap of \Cref{sec:formalization} said its Lean sketches were ``not compiled'' because the
+    repository lacked Mathlib; the repository has depended on Mathlib since Stream~2. On compiling them,
+    the first sketch's proof \emph{failed}; it is replaced by a proof that compiles (standard axioms only).
+  \item Figure captions for the trace bound now state that $G$ is positive definite.
+\end{enumerate}
+The abstract's $\mathrm{ind}(\slashed D)=2$ is correct in the source; some PDF text extractors render
+the slashed $D$ as ``/'' followed by $D$.
+
 \subsection{AI-assisted tooling}
 The Lean formalization, the audit that produced this revision, and portions of this manuscript's
 prose were produced with the assistance of large-language-model-based agents operating under human
@@ -247,8 +269,11 @@ structure on a \textbf{1-dimensional scalar model}: a \texttt{CourantSection} is
 is identically zero on scalars by commutativity of multiplication. The certified antisymmetry
 (\texttt{cbracket\_antisymm}) and Jacobiator-vanishing (\texttt{jacobiator\_vector\_vanishes})
 theorems are therefore true, but largely because every bracket in the scalar model is trivial; they
-are \emph{consistency checks on the algebraic shape} of the definitions, not a formalization of the
-Courant algebroid on $\mathbb{T}M = TM\oplus T^*M$ for an actual manifold $M$. Promoting this to a
+are \emph{consistency checks on the algebraic shape} of the definitions --- in software terms, unit
+tests of types and sign conventions, not physically meaningful verifications --- and not a formalization
+of the Courant algebroid on $\mathbb{T}M = TM\oplus T^*M$ for an actual manifold $M$. (The generalized
+metric itself is treated for real $d\times d$ metrics in Stream~2, \Cref{sec:stream2-dft}, which is a
+genuine step beyond this scalar model but still pointwise linear algebra, not bundle geometry.) Promoting this to a
 genuine bundle-valued formalization (vector fields and 1-forms on $K3\times T^2$, with a nontrivial
 Lie bracket) is future work and would require Mathlib's \texttt{VectorBundle} and differential-forms
 libraries; see \Cref{sec:formalization}.
@@ -260,7 +285,7 @@ libraries; see \Cref{sec:formalization}.
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=\linewidth]{dual_scale_bound.pdf}
-\caption{The dual-scale bound. (a) On a circle the effective scale $R+\alpha'/R$ is minimized at the self-dual radius. (b) For $d=2$ and $G$ with eigenvalues $\lambda_{1,2}$, $\mathrm{tr}\,G+\mathrm{tr}\,G^{-1}=\sum_i(\lambda_i+\lambda_i^{-1})$ has its minimum $2d=4$ at $G=1$. (c) Excess over $2d$ for 4000 random positive definite matrices in each dimension: never negative, as the Lean theorem \texttt{dualScale\_ge} guarantees. The plot illustrates the theorem; it proves nothing. \emph{Computed figure; data: Lean \texttt{dualScale\_circle}, \texttt{circle\_effective\_scale\_ge\_two}, \texttt{dualScale\_ge} (TraceBound.lean).}}
+\caption{The dual-scale bound. (a) On a circle the effective scale $R+\alpha'/R$ is minimized at the self-dual radius. (b) For $d=2$ and positive-definite $G$ with eigenvalues $\lambda_{1,2}$, $\mathrm{tr}\,G+\mathrm{tr}\,G^{-1}=\sum_i(\lambda_i+\lambda_i^{-1})$ has its minimum $2d=4$ at $G=1$. (c) Excess over $2d$ for 4000 random positive definite matrices in each dimension: never negative, as the Lean theorem \texttt{dualScale\_ge} guarantees. The plot illustrates the theorem; it proves nothing. \emph{Computed figure; data: Lean \texttt{dualScale\_circle}, \texttt{circle\_effective\_scale\_ge\_two}, \texttt{dualScale\_ge} (TraceBound.lean).}}
 \label{fig:dual_scale_bound}
 \end{figure}
 % [/fig:dual_scale_bound]
@@ -424,7 +449,9 @@ definition has been changed to \texttt{Int}, and the genuinely new theorem
 asserted. This is a one-dimensional single-field toy model illustrating what a stabilizing potential
 would look like near an isolated minimum; it is \emph{not} a formalization of the $K3\times T^2$
 moduli-space potential, and does not by itself resolve the $\mathcal{N}=4$ non-renormalization
-obstruction above. A genuine treatment would need to (a) introduce a concrete flux or brane
+obstruction above. Its role in this corpus is that of a software unit test: it exercises the
+minimum-and-uniqueness logic, and its \texttt{Nat}-truncation history shows such a test catching a real
+bug; it is not a physically meaningful verification. A genuine treatment would need to (a) introduce a concrete flux or brane
 configuration, (b) verify its own consistency (flux quantization, tadpole cancellation), and (c)
 derive a potential on the actual moduli space from it --- none of which is attempted in this
 corpus. We list this as the top item in the roadmap of \Cref{sec:formalization}.
@@ -512,7 +539,9 @@ $2^3,3^2,5,7,11$ is automatically a multiple of $27720$ --- which $|M_{24}|=2^{1
 is. The divisibility in \Cref{thm:mathieufactor} is therefore weaker evidence for a physical ``lock''
 than it may appear; we flag it explicitly rather than presenting it as a nontrivial coincidence. The
 weighting $N_Q=4$ in \Cref{thm:bpslock} is likewise a modeling choice, not independently derived here
-(Tier C). A related fact, audited separately: \texttt{StringDynamics.\discretionary{}{}{}bps\_\discretionary{}{}{}ratio\_\discretionary{}{}{}reduced}
+(Tier C). We have no physical justification for it: it is the choice that makes
+$\mathcal A_2/(N_Q\cdot\mathcal A_1)=462/(4\cdot90)$ reduce to $77/60$, and it should not be read as the
+charge count of any black-hole microstate system, which we have neither derived nor checked. A related fact, audited separately: \texttt{StringDynamics.\discretionary{}{}{}bps\_\discretionary{}{}{}ratio\_\discretionary{}{}{}reduced}
 (the same $77/60$ ratio, library \texttt{StringTheoryFormalization}, distinct from the
 \texttt{UseCase2} theorems above) previously relied on \texttt{native\_\discretionary{}{}{}decide},
 whose axiom footprint includes \texttt{Lean.\discretionary{}{}{}ofReduceBool}; it is now a kernel
@@ -588,7 +617,11 @@ potential of \Cref{sec:moduli-obstruction}, not a consequence of Fact~1 alone).
 Because \Cref{conj:zeroparam} would, if established, leave no continuous parameters to fit,
 Tier~C numerical relations attached to it are maximally falsifiable \emph{if they could be derived}.
 None of the three relations below is derived from a Lagrangian or an explicit compactification
-calculation; each is a pattern-match between an integer from \Cref{tab:locks} and an observable. We
+calculation; each is a pattern-match between an integer from \Cref{tab:locks} and an observable.
+\textbf{There is no suppressed derivation behind them}: the factor $55$ in the $r$ relation, the ratio
+$77/360$ in the $\delta_{\mathrm{CP}}$ relation, and any link from these numbers to inflationary
+dynamics or to the PMNS matrix have no geometric or dynamical origin in this corpus and no proposed
+mechanism. The spectral index $n_s$, discussed last, is not a relation at all. We
 report each with full data provenance (value $\pm$ uncertainty, dataset/release, what it measures,
 and its role: measurement, benchmark, or forecast), following standard practice for this kind of
 falsifiability claim.
@@ -597,7 +630,8 @@ falsifiability claim.
 \begin{equation}
     r \;\overset{\mathrm{Tier\ C}}{=}\; \frac{2}{27720/55} = \frac{110}{27720} = \frac{1}{252} \approx 0.0039683
 \end{equation}
-stored in Lean as the exact reduced fraction $1/252$ (theorem
+The factor $55$ has no geometric or physical origin in this corpus; it is part of the pattern-match.
+The value is stored in Lean as the exact reduced fraction $1/252$ (theorem
 \texttt{tensor\_to\_scalar\_ratio\_reduction}, module \texttt{Observables}; an earlier revision
 stored a rounded decimal, $0.00396$, inconsistent with the fraction it was supposed to
 approximate). LiteBIRD targets a total
@@ -614,6 +648,9 @@ $r\sim4\times10^{-3}$ would be consistent with (not proof of) it.
 \begin{equation}
     \delta_{\mathrm{CP}} \;\overset{\mathrm{Tier\ C}}{=}\; 360^\circ\times\left(1-\frac{77}{360}\right) = 283^\circ
 \end{equation}
+No map from $77/360$ to the PMNS matrix or to neutrino mixing is proposed: $77$ is the numerator of
+the reduced ratio of \Cref{thm:bpslock} and $360=N_Q\cdot\mathcal A_1$ its unreduced denominator, and
+combining them this way is a pattern-match
 (an earlier revision reported $282.4^\circ$, obtained by silently mixing the fraction $77/360$ used
 here with the unrelated ratio $77/60$ of \Cref{thm:bpslock}; the exact value of the stated formula is
 $283^\circ$). NuFIT~5.2 (without Super-Kamiokande atmospheric data) reports, for \textbf{normal
@@ -639,17 +676,30 @@ preferred over $\Lambda$CDM at $3.1\sigma$ \cite{DESI2025DR2,DESI2025DR2ext} (\e
 \textbf{Verdict: in tension with current leading data}, not merely ``to be tested'' by a future
 survey as an earlier revision stated.
 
-\subsection{Scalar spectral index \texorpdfstring{$n_s$}{ns} (Tier C, consistent)}
-$n_s=0.965$, consistent with Planck 2018, $n_s=0.9649\pm0.0042$ \cite{Planck2018} (\emph{benchmark},
-not a joint fit with any data of this paper). This is the one relation in this section not currently
-in tension with data, though it is also the least distinctive (a wide range of inflationary models
-predict $n_s$ close to this value).
+\paragraph{Consequence for \Cref{conj:zeroparam}.} Accommodating a positive vacuum energy --- and, a
+fortiori, the dynamical dark energy DESI DR2 prefers --- requires adding a de~Sitter uplift sector or a
+quintessence field. Each such sector brings continuous parameters of its own (for example an uplift
+tension and its location, or a quintessence potential's scale and slope). For \Cref{conj:zeroparam} to
+survive, those parameters would themselves have to be fixed by discrete data, and no mechanism for that
+is proposed here. This is a direct threat to the zero-free-parameter premise, not a detail. Stream~3 of
+this repository (library \texttt{DualScaleCosmology}, \texttt{docs/STREAM3\_WORKFLOW.md}) shows that the
+observed dark-energy length $\Lambda^{-1/4}$ equals the self-dual length $\sqrt{\ell_P\,c/H_0}$ up to
+$(8\pi/3\Omega_\Lambda)^{1/4}$ (\texttt{DarkEnergyScale.rhoLambda\_inv\_eq}, Tier A); but that is an
+identity that re-expresses $\rho_\Lambda=\Omega_\Lambda\rho_c$, it does not fix $\Omega_\Lambda$, and so
+it does not rescue the conjecture.
+
+\subsection{Scalar spectral index \texorpdfstring{$n_s$}{ns} (benchmark input, not a prediction)}
+No formula in this corpus produces $n_s$. The value $n_s=0.965$ (stored in Lean as the constant
+$965/1000$) is the Planck 2018 central value, $n_s=0.9649\pm0.0042$ \cite{Planck2018}, restated. It is
+therefore not a prediction, and its agreement with Planck is not evidence for anything: a restated
+input cannot fail to agree with the measurement it was taken from. An earlier revision listed it as a
+``consistent'' prediction; that was a check that could not fail, and it is withdrawn as such.
 
 \begin{table}[htbp]
 \centering
 \footnotesize
 \caption{\textbf{Confrontation summary.} All predictions are Tier C (\Cref{sec:phenomenology}); none
-is derived from a Lagrangian.}
+is derived from a Lagrangian, and $n_s$ is an input, not a prediction.}
 \label{tab:phenomenology}
 \begin{tabular}{@{}l l >{\raggedright\arraybackslash}p{5.8cm} >{\raggedright\arraybackslash}p{2.1cm}@{}}
 \toprule
@@ -658,7 +708,7 @@ is derived from a Lagrangian.}
 $r$ & $1/252\approx0.00397$ & $\lesssim0.03$--$0.04$ (BICEP/Keck+Planck, meas.);\newline $\delta r\approx0.001$ (LiteBIRD, forecast) & untestable now \\[2pt]
 $\delta_{\mathrm{CP}}$ & $283^\circ$ & $197^{+42}_{-25}$ NO / $286^{+27}_{-32}$ IO\newline (NuFIT 5.2, meas.) & consistent (near IO); tension w/ preferred NO \\[2pt]
 $(w_0,w_a)$ & $(-1,0)$ & $w_0>-1,\,w_a<0$ at $3.1\sigma$\newline (DESI DR2+CMB+SNe, meas.) & tension \\[2pt]
-$n_s$ & $0.965$ & $0.9649\pm0.0042$ (Planck 2018, benchmark) & consistent \\
+$n_s$ & (none) & $0.9649\pm0.0042$ (Planck 2018); $0.965$ is this value restated & input, not a prediction \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -990,24 +1040,41 @@ bundles, and Riemannian metrics) that the present corpus does not use. A natural
 re-expressing \Cref{thm:reff-min} and \Cref{prop:toypotential} in that setting.
 
 \subsection{Roadmap: promoting Tier L/C claims toward Tier A}
-The following sketches are \textbf{written but not compiled} (they require adding Mathlib as a
-dependency, which this repository currently does not have); we present them as a concrete,
-falsifiable roadmap rather than claim them as verified.
+Earlier revisions presented the sketches below as ``written but not compiled'', because the
+repository then had no Mathlib dependency. It has had one since Stream~2 (\Cref{sec:stream2}), so they
+were compiled on 2026-09-18 against Mathlib \texttt{v4.33.1}: the \emph{first sketch's proof, as printed
+in Revision~3, failed} (\texttt{nlinarith} does not close the goal with the division present), and is
+replaced below by a proof that compiles; both now depend only on the three standard axioms. They were
+compiled as a scratch check and are not part of an audited library, so they are not counted as Tier A;
+the case $\alpha'=1$ of the first is Tier A in Stream~2 as
+\texttt{TraceBound.circle\_\discretionary{}{}{}effective\_\discretionary{}{}{}scale\_\discretionary{}{}{}ge\_\discretionary{}{}{}two}
+(\Cref{sec:stream2-dualscale}).
 \begin{verbatim}
-import Mathlib
+import Mathlib.Analysis.SpecialFunctions.Sqrt
 
-/-- Real AM-GM form of Theorem 3.2, with equality iff self-dual. -/
+/-- Real AM-GM form of Theorem 3.2, `R + a/R >= 2 sqrt a`. -/
 theorem reff_lower_bound {a R : Real} (ha : 0 < a) (hR : 0 < R) :
     2 * Real.sqrt a <= R + a / R := by
   have hs : Real.sqrt a ^ 2 = a := Real.sq_sqrt ha.le
-  nlinarith [sq_nonneg (R - Real.sqrt a), hs, Real.sqrt_nonneg a,
-             mul_pos hR hR]
+  have key : R + a / R - 2 * Real.sqrt a
+      = (R - Real.sqrt a) ^ 2 / R := by
+    field_simp
+    nlinarith [hs]
+  have h0 : 0 <= (R - Real.sqrt a) ^ 2 / R :=
+    div_nonneg (sq_nonneg _) hR.le
+  linarith
 
 /-- Real form of Proposition 5.1, matching the Int version already proved. -/
 theorem toy_potential_zero_iff (phi phi0 : Real) :
     (phi - phi0) ^ 2 = 0 <-> phi = phi0 := by
   simp [sub_eq_zero]
 \end{verbatim}
+Lifting the two toy models of \Cref{sec:dft,sec:moduli-obstruction} from unit tests to physics would
+need, respectively: vector fields and 1-forms on an actual manifold with a nontrivial Lie bracket
+(Mathlib's \texttt{VectorBundle} and differential-forms libraries), so that the Courant bracket is not
+identically zero; and a concrete flux superpotential on the $K3\times T^2$ moduli space, with flux
+quantization and tadpole cancellation checked (the integer tadpole and flux-integrality facts of
+\Cref{sec:stream2-flux} are the first, discrete, part of this).
 Promoting \Cref{conj:zeroparam} to any tier above C requires, at minimum: (1) a concrete flux or
 brane completion consistent with the $\mathcal{N}=4$ non-renormalization obstruction of
 \Cref{sec:moduli-obstruction}; (2) a derivation, not an assertion, connecting that completion's

@@ -679,7 +679,7 @@ In words: reflecting the right-movers twice is the identity, and a configuration
 Neumann relation of \cref{prop:dbranes:modes} if and only if its reflection satisfies the
 Dirichlet relation. The first proof is a case split on the structure followed by \lean{simp};
 the second unfolds the definitions and uses that negation is injective. The statement is
-deliberately modest. It identifies \lean{ModeData} with nothing physical; the identification
+deliberately modest. It identifies \texttt{ModeData} with nothing physical; the identification
 of $\alpha_k,\tilde\alpha_k$ with the modes of a string, and the derivation of the two relations
 from $\partial_\sigma X=0$ and $\partial_\tau X=0$, remain \TL.
 
@@ -796,7 +796,7 @@ finite sum of products \lean{m.right (-k) * m.right k} and show that it is invar
 \begin{exercise}[$\star\star$, Lean]\label{ex:dbranes:leanflip}
 Let \lean{bc : Fin D → Bool} record the boundary conditions, with \lean{true} for Neumann. Define
 \lean{flip i bc := Function.update bc i (!bc i)} and
-\lean{numNeumann bc := (Finset.univ.filter fun j => bc j = true).card}. State and prove: if
+\texttt{numNeumann bc := (Finset.univ.filter fun j => bc j = true).card}. State and prove: if
 \lean{bc i = true} then \lean{numNeumann (flip i bc) + 1 = numNeumann bc}, and the analogous
 statement for \lean{bc i = false}. Show also that \lean{flip i} is an involution. This is
 \cref{prop:dbranes:pshift} as combinatorics.

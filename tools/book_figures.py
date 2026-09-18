@@ -168,7 +168,7 @@ def fig_dual_scale():
     fig.tight_layout()
     save(fig, "dual_scale_bound", ["ch31_dualscale", "ch08_tduality", "ch01_intro"],
          "The dual-scale bound. (a) On a circle the effective scale $R+\\alpha'/R$ is minimized at the "
-         "self-dual radius. (b) For $d=2$ and $G$ with eigenvalues $\\lambda_{1,2}$, "
+         "self-dual radius. (b) For $d=2$ and positive-definite $G$ with eigenvalues $\\lambda_{1,2}$, "
          "$\\mathrm{tr}\\,G+\\mathrm{tr}\\,G^{-1}=\\sum_i(\\lambda_i+\\lambda_i^{-1})$ has its minimum $2d=4$ at $G=1$. "
          "(c) Excess over $2d$ for 4000 random positive definite matrices in each dimension: never negative, "
          "as the Lean theorem `dualScale_ge` guarantees. The plot illustrates the theorem; it proves nothing.",

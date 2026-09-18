@@ -311,6 +311,84 @@ and is the natural target for anyone wanting to extend \cref{ch:m24,ch:moonshine
 direction EOT themselves point.
 
 %=====================================================================================
+\section{After the first edition: Stream~3 and an external review}\label{sec:open:after}
+
+This section was added after the chapters above were written. It records two things: a partial
+answer to item 19 from a third companion library, and five recommendations from an external review of
+this book and its papers, mapped onto the roadmap.
+
+\subsection{Item 19 after Stream~3}\label{sec:open:stream3}
+The library \texttt{DualScaleCosmology} (described in \texttt{docs/STREAM3\_WORKFLOW.md}) tests one
+reading of the dual-scale proposal: a microscopic scale $\ell_{\rm micro}\sim\ell_P$ paired with a
+macroscopic scale $\ell_{\rm macro}\sim c/H_0$. Its results, with their tiers:
+{\sloppy\begin{itemize}
+  \item Taking $\ell_P$ as the ultraviolet cutoff at the Hubble scale fails the Cohen--Kaplan--Nelson
+    bound $L^3\Lambda^4\lesssim L M_P^2$ \source{\texttt{hep-th\_9803132.txt}, ll.~77--78} by more
+    than thirty orders of magnitude: CKN's own horizon-scale cutoff is $\Lambda\sim10^{-2.5}$\,eV
+    \source{\texttt{hep-th\_9803132.txt}, ll.~113--114}, against a Planck energy of about
+    $1.2\times10^{28}$\,eV. \TA{} for the arithmetic
+    (\lean{DualScaleCosmology.}\allowbreak\lean{CKNInstance.}\allowbreak\lean{planckEnergy\_gt\_}\allowbreak\lean{ckn\_horizon\_cutoff}), \TL{} for the
+    two cited numbers.
+  \item Reading $\ell_P$ and $c/H_0$ instead as a T-dual pair, with $\alpha'=\ell_P\cdot c/H_0$
+    (\TC{}), the CKN bound holds exactly when the ultraviolet length is at least the self-dual length
+    $s=\sqrt{\ell_P\,c/H_0}\approx47\,\mu$m
+    (\lean{DualScaleCosmology.}\allowbreak\lean{SelfDualCutoff.}\allowbreak\lean{ckn\_iff\_uvLength\_}\allowbreak\lean{ge\_selfDual}, \TA{} as algebra).
+    With $\rho_\Lambda=\Omega_\Lambda\cdot3H_0^2/(8\pi G)$ one has
+    $\rho_\Lambda^{-1}=(8\pi/3\Omega_\Lambda)\,s^4$
+    (\lean{DualScaleCosmology.}\allowbreak\lean{DarkEnergyScale.}\allowbreak\lean{rhoLambda\_inv\_eq}, \TA): the self-dual length
+    \emph{is} the dark-energy length $\Lambda^{-1/4}\approx88\,\mu$m up to a fixed factor. Because it
+    is one formula, the numerical agreement is algebra, not evidence.
+  \item Read as the string's Regge slope, $\alpha'=s^2$ puts string excitations near $4$\,meV; the CMS
+    dijet search excludes string resonances below $7.9$\,TeV in the models it tests
+    \source{\texttt{1911\_03947.txt}, ll.~1044--1048}, a gap of more than $10^{30}$ in $\alpha'$
+    (\lean{DualScaleCosmology.}\allowbreak\lean{CosmicString.}\allowbreak\lean{selfDual\_alphaPrime\_}\allowbreak\lean{exceeds\_cms\_ceiling}). Read as the
+    radius of one extra dimension, $s$ lies above the torsion-balance bound of $30\,\mu$m
+    \source{\texttt{2002\_11761.txt}, ll.~285--289} by a factor of about $1.6$ only, well within the
+    order-one conventions involved: disfavored, not excluded. \TC{} for both readings.
+\end{itemize}}
+So item 19 now has a partial and mostly negative answer: the literal reading is excluded, and the
+reading that survives adds nothing observable beyond existing proposals for a single micron-scale
+extra dimension. What the machine checked here is algebra and arithmetic on cited constants; every
+identification with physics is \TC.
+
+\subsection{Recommendations from an external review}\label{sec:open:review}
+An external review of this book and its companion papers made five recommendations for turning the
+project into a convincing demonstration that theoretical physics can be machine-checked. Two coincide
+with items above: replacing hard-coded Gram matrices by lattices defined as free $\Z$-modules with a
+symmetric bilinear form is item~1 (with items~3--4 for the groups acting on them), and removing
+theorems proved several times in different libraries is the atlas debt of items~12--16. The other
+three are new.
+
+\begin{center}\small
+\begin{tabular}{@{}p{0.6cm}p{6.6cm}p{2.1cm}p{0.9cm}p{3.1cm}@{}}\toprule
+\# & Item & Extends & Diff. & State of machinery \\ \midrule
+23 & Make the tiers a compile-time property: attributes marking a declaration Tier A, L or C, and a
+linter that walks the dependency graph and rejects a Tier A declaration that depends on a Tier L or C
+one & \cref{ch:architecture,ch:pipeline} & $\star\star$ & Lean~4 attributes and environment
+extensions exist; the dependency walk exists as \texttt{tools/}\allowbreak\texttt{lean\_depgraph.lean} \\
+24 & An anti-vacuity linter: reject a theorem whose statement is \texttt{True}, a reflexive equation, or
+does not mention one of its hypotheses' variables & \cref{ch:pipeline} & $\star$ & today done by hand:
+the statement lock (\cref{ch:architecture}) and, in Stream~3, explicit counterexample theorems such as
+\lean{DualScaleCosmology.}\allowbreak\lean{DualTower.}\allowbreak\lean{dualTower\_sum\_ge\_}\allowbreak\lean{needs\_product} \\
+25 & A first continuous theory with no arithmetic shadow: the classical equivalence of the Nambu--Goto
+and Polyakov actions, by eliminating the worldsheet metric through its equation of motion
+\source{Tong §1.3, ll.~1255--1280} & \cref{ch:classical} & $\star\star\star$ & pointwise, a statement
+about $2\times2$ matrices provable today; the full field-level statement needs variational calculus on
+maps from a surface, which Mathlib does not yet provide \\
+\bottomrule\end{tabular}
+\end{center}
+
+Item~25 has a finite-dimensional first step worth stating. At one point of the worldsheet let
+$\gamma_{\alpha\beta}$ be the induced metric, with $\det\gamma<0$. The Polyakov Lagrangian density
+$-\tfrac12\sqrt{-\det h}\,h^{\alpha\beta}\gamma_{\alpha\beta}$ is unchanged under $h\mapsto\lambda h$
+(in two dimensions $\sqrt{-\det h}$ scales as $\lambda$ and $h^{\alpha\beta}$ as $\lambda^{-1}$), and at
+$h=\gamma$ it equals $-\sqrt{-\det\gamma}$, the Nambu--Goto density. Both facts are identities about
+$2\times2$ real matrices and could be kernel-checked with Mathlib as it stands; the calculus-of-variations
+statement that this is where the Polyakov action is stationary is the part that is not yet available.
+The Hubble-parameter theorem \lean{DualScaleCosmology.}\allowbreak\lean{ScaleFactorDuality.}\allowbreak\lean{hubble\_dual} shows that
+pointwise derivative calculus of this kind is already routine in the project.
+
+%=====================================================================================
 \section{What the machine has checked}\label{sec:open:lean}
 
 Every leancode block in this chapter marked \textbf{not yet proved} is exactly that: no

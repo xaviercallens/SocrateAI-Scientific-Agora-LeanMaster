@@ -1,0 +1,22 @@
+# name	resolves_to (verified by the checker; '-' = nothing to verify)	reason
+G.det	Matrix.det	dot notation on a local matrix variable G, not a constant name
+G.trace	Matrix.trace	dot notation on a local matrix variable G, not a constant name
+G.PosDef	Matrix.PosDef	dot notation on a local matrix variable G, not a constant name
+Foo	-	placeholder name in the Lean primer (ch34), defined in the example itself
+Mathlib.Meta.NormNum	Mathlib.Meta.NormNum.isNat_ofNat	Mathlib namespace, quoted from the theorem atlas
+IsNatPowT.bit0	Mathlib.Meta.NormNum.IsNatPowT.bit0	short form of a Mathlib norm_num internal, quoted from the theorem atlas
+ModularGroup	ModularGroup.exists_smul_mem_fd	Mathlib namespace
+M.det_one	StringTheory.Frontier.MobiusTransform.det_one	field access on a local hypothesis M : MobiusTransform, inside a quoted tactic call
+Tier.A	SocrateAI.Epistemic.Tier.A	constructor, quoted with its namespace opened; constructors are absent from the dependency dump
+Tier.B	SocrateAI.Epistemic.Tier.B	constructor, quoted with its namespace opened
+Tier.L	SocrateAI.Epistemic.Tier.L	constructor, quoted with its namespace opened
+conjTranspose_mul_mul_same	Matrix.PosSemidef.conjTranspose_mul_mul_same	short form, quoted from code with `open Matrix` and dot notation on a PosSemidef hypothesis
+direct	SocrateAI.Epistemic.Depends.direct	constructor of Depends, named as in a `match` on it
+elan	-	name of the Lean toolchain installer, not a declaration
+flux	-	local variable (a natural number) in a quoted statement, ch25
+hDW	-	local hypothesis name in quoted proof text, ch26
+gradV	-	local function variable in a quoted statement, ch27
+hFix	-	local hypothesis name in quoted proof text, ch34
+ginv	-	local variable in a quoted statement, ch35
+h23	-	local hypothesis name in a quoted statement, ch35
+grep	-	shell command, not a declaration

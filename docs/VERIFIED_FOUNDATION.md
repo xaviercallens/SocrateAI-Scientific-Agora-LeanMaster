@@ -13,6 +13,10 @@ libraries built together, 3781 jobs, 0 errors; axiom audit re-run on every libra
 for the first seven); `DualScaleCosmology` 31 theorems, 0 failing; its statement lock covers 44 declarations
 in 7 files. Total audited: **425 + 31 = 456 theorems**.
 
+**`v3.5.0` (2026-09-18) changes no `.lean` file**: it revises paper 7 (Revision 4, external peer review), a
+figure caption in papers 1/7/8, book chapter 38, and `tools/check_book_lean_names.py`. Every gate result above
+applies unchanged.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) |
 |---|---|---|---|---|

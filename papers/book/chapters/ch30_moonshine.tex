@@ -950,18 +950,18 @@ constraint does integrality of these dimensions impose on the parity of $c_n$?
 \end{exercise}
 
 \begin{exercise}[$\star\star$]\label{exo:moonshine:lean1}
-In Lean, state and prove \lean{A8\_decomposition}: $65550$ equals some sum of entries of
+In Lean, state and prove \texttt{A8\_decomposition}: $65550$ equals some sum of entries of
 \lean{M24RepDim} (find one; it is not unique). Then state, without proving, what a theorem
-\lean{A8\_decomposition\_unique} would have to say, and explain why such a statement would
+\texttt{A8\_decomposition\_unique} would have to say, and explain why such a statement would
 be false.
 \end{exercise}
 
 \begin{exercise}[$\star\star\star$]\label{exo:moonshine:lean2}
-Write a Lean definition \lean{chi2A : Fin 26 → ℤ} holding the $2A$ column of
+Write a Lean definition \texttt{chi2A : Fin 26 → ℤ} holding the $2A$ column of
 \eqref{eq:moonshine:chars} in the order of \lean{M24RepDim}, and prove
-$\sum_i\lean{M24RepDim}\,i\cdot\lean{chi2A}\,i=0$ and $\sum_i(\lean{chi2A}\,i)^2=21504$
+$\sum_i\lean{M24RepDim}\,i\cdot\texttt{chi2A}\,i=0$ and $\sum_i(\texttt{chi2A}\,i)^2=21504$
 by \lean{decide} or \lean{simp [Fin.sum\_univ\_succ]}. Then prove
-\lean{c7\_2A : 2 * (chi2A 25 + chi2A 23 + chi2A 24 + chi2A 22 + chi2A 18 + chi2A 17) = -138}.
+\texttt{c7\_2A : 2 * (chi2A 25 + chi2A 23 + chi2A 24 + chi2A 22 + chi2A 18 + chi2A 17) = -138}.
 Which parts of \cref{sec:moonshine:worked2} would still \emph{not} be formalized?
 \end{exercise}
 
