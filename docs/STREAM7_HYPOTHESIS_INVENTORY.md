@@ -1,7 +1,7 @@
 # Stream 7 — Can the programme derive a second observable? (inventory before any new hypothesis)
 
-**Status (2026-09-18):** inventory and candidate derivations only. **Nothing is frozen; no data has been
-fetched or compared for this document.** Freezing a candidate (P1′) needs the T0 owner's sign-off.
+**Status (2026-09-18, release `v3.15.0`):** the T0 owner chose "C-A puis C-B". **C-A: frozen
+(`docs/STREAM7_PREDICTION_CA.md`, tag `stream7-ca-frozen`), derived and excluded** (§6). C-B: in progress.
 
 ## 1. The question, and why it comes first
 
@@ -71,3 +71,14 @@ prediction that no experiment can reach is not a test.
 2. **Develop C-B**: pin a pre-big-bang source, derive the conditional slope prediction, freeze it as a
    *forward* prediction for future spectral measurements (LISA/PTA), with its conditions stated.
 3. **Record F5b for Stream 7** and redirect effort to a new geometry (K3-fibred threefold) — research-level.
+
+## 6. Result for C-A (`v3.15.0`, `DualScaleCosmology/Stream7CA.lean`)
+
+Derivation (Tier A given the Tier C assumptions A1–A2): CKN saturation with infrared length `c/H` and
+conserved matter force `ρ_m = (1 − ε)H²/k` (`ca_matter_fraction`), hence `H² = C/a³` (`ca_hubble_scaling`),
+hence the deceleration parameter is `q = 1/2` at every epoch and for every `ε` (`ca_deceleration`) — a
+parameter-free prediction of no acceleration. Verdict: with Planck 2018's `Ω_Λ = 0.68885` (flat ΛCDM),
+`q₀ = Ω_m/2 − Ω_Λ < 0` (`ca_verdict_excluded`): **C-A is excluded** by the pre-registered rule. As disclosed
+in advance, this is a retrodiction with a foreseeable outcome, and the input `q₀` is model-dependent.
+Together with Stream 6, both the extra-dimension reading and the Hubble-scale holographic reading of the
+dual-scale idea are now closed by recorded, kernel-checked verdicts.

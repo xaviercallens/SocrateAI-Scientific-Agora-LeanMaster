@@ -103,6 +103,11 @@ for one large extra dimension, fails Eöt-Wash 2020's radius (`30 μm`) and Yuka
 MVV's neutron-star bound (`44 μm`): **excluded** by the pre-registered rule; the programme's T-duality fixes the
 `O(1)` factor at `κ = 1`. `DualScaleCosmology` 40 theorems, 0 failing. Total audited: **611**.
 
+**`v3.15.0` (2026-09-18): Stream 7, candidate C-A.** `DualScaleCosmology/Stream7CA.lean` (5 theorems): frozen C-A
+(tag `stream7-ca-frozen`) — CKN saturation with infrared length `c/H` and conserved matter give `H² = C/a³` and
+`q = 1/2` for every `ε`; Planck 2018 (flat ΛCDM) gives `q₀ < 0`: **excluded** (retrodiction, disclosed).
+`DualScaleCosmology` 45 theorems, 0 failing. Total audited: **616**.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |
 |---|---|---|---|---|---|

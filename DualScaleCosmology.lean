@@ -9,3 +9,4 @@ import DualScaleCosmology.SelfDualCutoff
 import DualScaleCosmology.CosmicString
 import DualScaleCosmology.DarkEnergyScale
 import DualScaleCosmology.Stream6Verdict
+import DualScaleCosmology.Stream7CA
