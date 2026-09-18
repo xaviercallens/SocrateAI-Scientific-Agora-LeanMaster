@@ -27,7 +27,7 @@ So the programme has exactly **one** candidate observable, and it comes with a T
 ## 3. The one testable prediction and the data that already exist
 
 **Prediction P1 (candidate for freezing).** One large extra dimension with KK tower scale `m ~ 1/R` and
-`R = s ≈ 47 μm` (the convention `m⁻¹ ~ l` is MVV's, `2205_12293.txt` l. 320).
+`R = s ≈ 47 μm` (the convention `m⁻¹ ~ l` is MVV's, `2205_12293.txt` l. 327).
 
 **Existing data (Tier L, pinned):**
 * Eöt-Wash 2020 (`2002_11761.txt` ll. 283–289): any gravitational-strength Yukawa interaction has

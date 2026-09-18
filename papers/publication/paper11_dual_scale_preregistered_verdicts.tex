@@ -1,0 +1,476 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{cite}
+\usepackage{microtype}
+\usepackage{tcolorbox}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=red,
+    urlcolor=cyan,
+    pdftitle={Pre-Registered Confrontation of a K3 x T2 Dual-Scale Hypothesis with Data: Four Observables, Four Negative Verdicts, and a Common Cause},
+    pdfauthor={Xavier Callens and the SocrateAI Scientific Agora Collaboration}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Epistemic tier badges, following papers 7--10.
+\newcommand{\tierA}{\colorbox{green!15}{\textsf{\scriptsize Tier A --- Lean kernel}}}
+\newcommand{\tierL}{\colorbox{blue!10}{\textsf{\scriptsize Tier L --- literature}}}
+\newcommand{\tierC}{\colorbox{orange!15}{\textsf{\scriptsize Tier C --- conjecture}}}
+\newcommand{\lean}[1]{\texttt{#1}}
+
+\newtcolorbox{headlinebox}{%
+  colback=red!4, colframe=red!45!black, boxrule=0.5pt, arc=1pt,
+  left=6pt, right=6pt, top=4pt, bottom=4pt,
+  fonttitle=\bfseries\small, title={Headline result}
+}
+\newtcolorbox{protocolbox}{%
+  colback=gray!5, colframe=gray!45, boxrule=0.4pt, arc=1pt,
+  left=6pt, right=6pt, top=3pt, bottom=3pt,
+  fonttitle=\bfseries\small, title={Pre-registration protocol used in this paper}
+}
+\newtcolorbox{scopebox}{%
+  colback=gray!5, colframe=gray!45, boxrule=0.4pt, arc=1pt,
+  left=6pt, right=6pt, top=3pt, bottom=3pt,
+  fonttitle=\bfseries\small, title={What is not proved}
+}
+
+\title{\Huge \textbf{Pre-Registered Confrontation of a}\\[0.3em]
+\LARGE \textbf{$K3\times T^2$ Dual-Scale Hypothesis with Data:}\\[0.2em]
+Four Observables, Four Negative Verdicts, and a Common Cause}
+
+\author{\textbf{Xavier Callens}$^{1}$ \and \textbf{SocrateAI Scientific Agora Collaboration}$^{1}$ \\[0.5em]
+$^{1}$\textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal Verification}}
+
+\date{September 2026}
+
+\makeatletter\let\LMoldunderscore\_\renewcommand{\_}{\LMoldunderscore\allowbreak}\makeatother
+\setlength{\emergencystretch}{3em}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+A research programme built around a ``micro/macro dual-scale'' reading of string theory on
+$K3\times T^2$ identifies the string scale with the geometric mean of the Planck length and the Hubble
+radius, $\alpha'=\ell_P\,c/H_0$, and hence a self-dual length $s=\sqrt{\ell_P\,c/H_0}\approx47\,\mu$m.
+We report what happens when every observable this programme can derive --- without passing through a
+compactification that has never been constructed --- is written down, frozen by a git tag together
+with its decision rule \emph{before} the verdict is computed, and then confronted with pinned data.
+There are exactly four such observables. (P1) $s$ as the radius of one large extra dimension is
+\textbf{excluded} by the E\"ot-Wash torsion-balance bound ($<30\,\mu$m) and fails the neutron-star bound
+($<44\,\mu$m); the programme's own T-duality fixes the order-one factor that could have rescued it.
+(C-A) Vacuum energy saturating the Cohen--Kaplan--Nelson bound with infrared length $c/H$ forces a
+deceleration parameter $q=+1/2$ at every epoch, for every value of its only parameter, and is
+\textbf{excluded} by the observed acceleration. (C-B) Pre-big-bang relic gravitons at the programme's
+string scale end at $\approx6\times10^{-5}$~Hz with a peak $\Omega_{\rm GW}\approx10^{-65}$, more than fifty
+orders of magnitude below LISA's design sensitivity: \textbf{not falsifiable in practice}. (C-C) Cosmic
+F-strings have $G\mu\sim10^{-62}$: likewise out of reach. The premise shared by C-B and C-C --- a meV
+string scale --- was already excluded by LHC resonance searches. The common cause of all four negative
+verdicts is the identification $\alpha'=\ell_P c/H_0$ itself. Every derivation and every numerical
+comparison is kernel-checked in Lean~4 (\texttt{DualScaleCosmology}, 50 theorems; repository 621 theorems,
+0 failing, release \texttt{v3.16.1}); the physical identifications are stated as conjectures and the
+experimental bounds as literature, each pinned to a source file and line range. We record the two freezes
+made after the relevant bounds were known as retrodictions, and the one made before its comparison
+document was pinned as a forward prediction. The mathematics of the programme (moonshine, dyons, lattices)
+is unaffected and is reported separately; the lesson is methodological: pre-registration turned an
+``order-one tension'' into a recorded exclusion and located the single assumption responsible.
+\end{abstract}
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Papers~7--9 of this series~\cite{Callens2026Paper7,Callens2026Paper8,Callens2026Paper9} built a
+Lean~4 companion to a ``dual-scale'' reading of string theory on $K3\times T^2$ and tested its literal
+form against the Cohen--Kaplan--Nelson (CKN) bound~\cite{CKN1999}, which it fails by a factor of at least
+$10^{30}$. Paper~9 left one reading open: the self-dual length $s=\sqrt{\ell_P\,c/H_0}\approx47\,\mu$m as
+the radius of an extra dimension, ``disfavoured by an order-one factor, not excluded''. An order-one
+tension is exactly where a theory can be quietly rescued by a convention chosen after the data are seen.
+This paper closes that door. It asks two questions, in this order:
+\begin{enumerate}
+\item What in the programme yields a number \emph{with units}, by a derivation that does not pass through an
+  unconstructed compactification (flux quanta, brane wrapping, moduli stabilisation)?
+\item For each such number: what does a prediction frozen \emph{before} the verdict --- with its decision rule
+  fixed in advance --- say, and what do pinned data say about it?
+\end{enumerate}
+
+\begin{headlinebox}
+Four observables are derivable; all four were frozen and confronted. Two are \textbf{excluded} (P1, C-A);
+two are \textbf{out of reach} of any foreseeable experiment (C-B, C-C), and their shared premise is
+itself excluded. The common cause is the dual-scale identification $\alpha'=\ell_P c/H_0$. The testable
+forms of the hypothesis do not survive existing data; the programme's Tier~A mathematics does.
+\end{headlinebox}
+
+\paragraph{Companion material.} Lean sources: \texttt{DualScaleCosmology/\allowbreak Stream6Verdict.lean},
+\texttt{Stream7CA.lean}, \texttt{Stream7CB.lean}; they build on \texttt{SelfDualCutoff.lean},
+\texttt{DarkEnergyScale.lean}, \texttt{CosmicString.lean}, \texttt{CKNInstance.lean}. Frozen predictions:
+\texttt{docs/\allowbreak STREAM6\_PREDICTION\_P1.md}, \texttt{docs/\allowbreak STREAM7\_PREDICTION\_CA.md},
+\texttt{docs/\allowbreak STREAM7\_PREDICTION\_CB.md}. Inventory: \texttt{docs/\allowbreak STREAM7\_HYPOTHESIS\_INVENTORY.md}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Epistemic tiers and the pre-registration protocol}
+\label{sec:protocol}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Every claim carries one of three labels. \tierA: a proposition checked by the Lean~4 kernel (toolchain
+\texttt{v4.33.1}, Mathlib), with no \texttt{sorry} and with axioms among \texttt{propext},
+\texttt{Classical.choice}, \texttt{Quot.sound} (audited per theorem). \tierL: a statement taken from the
+literature, pinned to a hash-registered file in \texttt{papers/foundations/} and a line range. \tierC: a
+physical identification or hypothesis --- never a theorem. A Tier~A theorem about numbers with Tier~L
+inputs certifies the arithmetic, not the inputs; a verdict inherits the weakest tier of its premises.
+
+\begin{protocolbox}
+\begin{enumerate}
+\item \textbf{Derive before comparing.} The observable and its numerical value are derived from the
+  programme's stated assumptions, each labelled measured (M), derived in Lean (D) or assumed (A). A non-empty
+  (A) list makes the prediction Tier~C, stated as such.
+\item \textbf{Freeze by tag.} The statement, the inputs and a \emph{decision rule} with outcome categories are
+  committed and tagged (\texttt{stream6-p1-frozen}, \texttt{stream7-ca-frozen}, \texttt{stream7-cb-frozen})
+  before the verdict is computed. Any later change is a new prediction, not an edit.
+\item \textbf{Disclose prior knowledge.} If the relevant bound was already known to the authors, the freeze
+  is recorded as a \emph{retrodiction}; only a freeze made before its comparison document was pinned is a
+  \emph{forward} prediction.
+\item \textbf{Compute the verdict mechanically} in Lean against the pinned bounds, and record it whatever it
+  is --- including ``not falsifiable in practice'', which by this protocol is not a test.
+\item \textbf{No post-hoc conventions.} An order-one factor may not be chosen after the bounds are read; it
+  must be derived, or the prediction is taken with the convention stated in the freeze.
+\end{enumerate}
+\end{protocolbox}
+
+Two of the four freezes (P1, C-A) are retrodictions: the bounds, and in C-A's case the outcome, were known
+in advance, and the frozen documents say so. The C-B freeze preceded the pinning of the detector document it
+was compared with.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The programme's one physical identification}
+\label{sec:identification}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The dual-scale programme pairs a micro length $\ell_{\rm micro}=\ell_P$ with a macro length
+$\ell_{\rm macro}=c/H_0$ as a T-dual pair with $\alpha'=\ell_{\rm micro}\ell_{\rm macro}$ \tierC. Its
+self-dual length is $s=\sqrt{\alpha'}$. With $\ell_P=1.616255\times10^{-35}$~m (CODATA~2018) and
+$c/H_0=1.3672\times10^{26}$~m ($H_0=67.66$~km/s/Mpc, Planck~2018~VI~\cite{Planck2018VI}) \tierL,
+$s^2\approx2.2097\times10^{-9}\,\mathrm{m}^2$, $s\approx47.0\,\mu$m, and $(40\,\mu\mathrm{m})^2\le s^2\le
+(70\,\mu\mathrm{m})^2$ (\lean{SelfDualCutoff.selfDual\_length\_sq\_bracket}) \tierA.
+
+Three facts from paper~9 frame what follows.
+\begin{itemize}
+\item \textbf{CKN.} With $L=\ell_{\rm macro}$, $M=1/\ell_{\rm micro}$ and UV length $\ell_{\rm UV}$, the corrected
+  CKN bound holds iff $\ell_{\rm micro}\ell_{\rm macro}\le\ell_{\rm UV}^2$
+  (\lean{SelfDualCutoff.ckn\_iff\_uvLength\_ge\_selfDual}) \tierA; the literal hypothesis (Planck-scale cutoff with
+  Hubble IR) fails by at least $10^{30}$ (\lean{CKNInstance.planckEnergy\_gt\_ckn\_horizon\_cutoff}) \tierA.
+\item \textbf{Regge reading excluded.} If $\alpha'=s^2$ is the Regge slope, string resonances sit near
+  $\hbar c/s\approx4$~meV; CMS excludes them below 7.9~TeV in low-string-scale models~\cite{CMS2020} \tierL,
+  and $s^2$ exceeds the CMS ceiling $(\hbar c/7.9\,\mathrm{TeV})^2$ by at least $10^{30}$
+  (\lean{CosmicString.selfDual\_alphaPrime\_exceeds\_cms\_ceiling}) \tierA.
+\item \textbf{Dark-energy identity.} With $\rho_\Lambda=\Omega_\Lambda\,3H_0^2/(8\pi G)$,
+  $\rho_\Lambda^{-1}=(8\pi/3\Omega_\Lambda)(\ell_P L_H)^2$ (\lean{DarkEnergyScale.rhoLambda\_inv\_eq}) \tierA: the
+  self-dual length \emph{is} the dark-energy length up to $(8\pi/3\Omega_\Lambda)^{1/4}$ --- an identity, not a
+  corroboration.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Inventory: what can be derived?}
+\label{sec:inventory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\Cref{tab:inventory} lists every output of the programme's five formal streams and asks whether it is a
+number with units derivable without an unconstructed compactification.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{p{1.4cm}p{6.2cm}p{6.6cm}}
+\toprule
+Stream & Output & Observable? \\
+\midrule
+1--2 & lattices, $O(d,d;\mathbb Z)$, double field theory, the dual-scale bound, flux/tadpole arithmetic & no --- no number with units \\
+3 & self-dual length $s$ & yes --- \textbf{P1} (\Cref{sec:p1}) \\
+3 & CKN saturation with infrared length $c/H(t)$ & yes, given a Tier~C identification --- \textbf{C-A} (\Cref{sec:ca}) \\
+3 & scale-factor duality $a\leftrightarrow1/a$ & only with dilaton-gravity dynamics --- \textbf{C-B} (\Cref{sec:cb}) \\
+3 & cosmic F-string tension from $\alpha'=s^2$ & yes --- \textbf{C-C} (\Cref{sec:cc}) \\
+4--5 & moonshine, umbral forms, dyon counts on $K3\times T^2$ & no --- dimensionless, and properties of $\mathcal N=4$ string theory \\
+\bottomrule
+\end{tabular}
+\caption{Inventory of derivable observables (\texttt{docs/STREAM7\_HYPOTHESIS\_INVENTORY.md}).}
+\label{tab:inventory}
+\end{table}
+
+Streams 4--5 deserve a word. Type~IIA string theory on $K3\times T^2$ gives an $\mathcal N=4$ theory in four
+dimensions (Aspinwall, l.~2743~\cite{Aspinwall1996}) \tierL; four-dimensional $\mathcal N=4$ supersymmetry is
+non-chiral (l.~2715) and admits no chiral matter (standard background, \tierL). The moonshine and dyon
+results~\cite{Callens2026Paper10} are therefore mathematics of a supersymmetric string compactification, not
+a model of our universe, and yield no observable here.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{P1: the self-dual length as an extra dimension}
+\label{sec:p1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Frozen statement} (tag \texttt{stream6-p1-frozen}, commit \texttt{53f15b7}; retrodiction,
+disclosed). One large extra dimension of radius $R=s$, with the Kaluza--Klein convention $m\sim1/R$ used by
+Montero--Vafa--Valenzuela (MVV, $m^{-1}\sim l$, l.~327~\cite{MVV2023}) \tierC.
+
+\paragraph{Tests fixed in advance} \tierL:
+\begin{itemize}
+\item T1: E\"ot-Wash 2020, ``the largest extra dimension must have a toroidal radius less than
+  $30\,\mu$m'' (l.~289~\cite{LeeAdelberger2020});
+\item T2: any gravitational-strength Yukawa interaction has range $\lambda<38.6\,\mu$m (l.~285), read with
+  $\lambda=R$ for the lowest KK mode (\tierC);
+\item T3: heating of old neutron stars, one extra dimension, $l<44\,\mu$m (MVV l.~327).
+\end{itemize}
+Outcome rule: \emph{excluded} if T1 fails; \emph{in tension} if only T2 or T3 fails; \emph{consistent} otherwise.
+
+\begin{theorem}[Verdict on P1] \tierA\ \label{thm:p1}
+With $R^2=\ell_P\,c/H_0$ (\lean{Stream6Verdict.\allowbreak p1RadiusSq}):
+$(30\,\mu\mathrm m)^2<R^2$, $(38.6\,\mu\mathrm m)^2<R^2$ and $(44\,\mu\mathrm m)^2<R^2$ (\lean{p1\_fails\_T1}, \lean{p1\_fails\_T2}, \lean{p1\_fails\_T3};
+\lean{p1\_verdict\_excluded}). Margins: $R>1.5\times30\,\mu$m and $R>1.06\times44\,\mu$m (\lean{p1\_margin}).
+Passing T1 would need $R=\kappa s$ with $\kappa<0.64$ (\lean{p1\_factor\_needed}: $\kappa=0.64$ fails,
+$\kappa=0.63$ passes).
+\end{theorem}
+By the frozen rule, \textbf{P1 is excluded}. The factor $\kappa$ is recorded, not chosen: with $R=s/2\pi\approx
+7.5\,\mu$m the number would fall inside MVV's ``dark dimension'' window $0.1$--$10\,\mu$m
+(l.~427~\cite{MVV2023}), and choosing that convention after reading the bounds is exactly what the protocol forbids.
+
+\paragraph{Can $\kappa$ be derived? Yes, and it is 1.} Within the programme's own T-duality $R\mapsto\alpha'/R$
+with $\alpha'=s^2$:
+\begin{theorem}[The self-dual radius is fixed] \tierA\ \label{thm:kappa}
+For $R,s>0$: $R=s^2/R\iff R=s$ (\lean{p62\_selfdual\_fixed\_point}); at $R=s$ the Kaluza--Klein scale $1/R$ equals
+the winding scale $R/\alpha'$ (\lean{p62\_towers\_coincide}).
+\end{theorem}
+With the standard normalisation $m_n=n/R$, the programme's radius is $\sqrt{\alpha'}=s$: $\kappa=1$. Taking both
+circles of $T^2$ large makes things worse: MVV's two-dimension bound $l<1.6\times10^{-4}\,\mu$m (l.~329) is missed
+by more than $10^5$ (\lean{p62\_two\_dims\_excluded}) \tierA.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{C-A: holographic dark energy at the Hubble scale}
+\label{sec:ca}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Frozen statement} (tag \texttt{stream7-ca-frozen}, commit \texttt{90217a3}; retrodiction with a
+foreseeable outcome, disclosed: Hubble-scale holographic dark energy is classically objected to because it does
+not accelerate, and the acceleration is observed). Assumptions \tierC: (A1) $\rho_\Lambda(t)=\varepsilon\,
+3H(t)^2/(8\pi G)$ with constant $0<\varepsilon<1$ (CKN saturation with infrared length $c/H$); (A2) flat FRW,
+$H^2=(8\pi G/3)(\rho_m+\rho_\Lambda)$, with matter separately conserved, $\rho_m\propto a^{-3}$.
+
+\begin{theorem}[Derivation] \tierA\ \label{thm:ca}
+Write $k=8\pi G/3$. (i) (A1)--(A2) force $\rho_m=(1-\varepsilon)H^2/k$ (\lean{Stream7CA.ca\_matter\_fraction}).
+(ii) Hence $H(a)^2=C/a^3$ with $C=k\rho_{m0}/(1-\varepsilon)$ (\lean{ca\_hubble\_scaling}). (iii) For $E(a)=C/a^3$,
+$E'(a)=-3C/a^4$ (\lean{hasDerivAt\_E}) and the deceleration parameter $q=-1-aE'(a)/(2E(a))$ equals $1/2$ at every
+$a>0$ and for every $C>0$ (\lean{ca\_deceleration}).
+\end{theorem}
+The prediction has no free parameter: whatever $\varepsilon$, the universe decelerates with $q=+1/2$.
+
+\paragraph{Test and verdict.} Rule fixed in advance: C-A passes iff $q_0\ge0$. With Planck~2018's
+$\Omega_\Lambda=0.68885$ in flat $\Lambda$CDM (\lean{DarkEnergyScale.omegaLambda}) \tierL, $q_0=(1-\Omega_\Lambda)/2-
+\Omega_\Lambda\approx-0.53<0$, and $q_0\neq1/2$ (\lean{ca\_verdict\_excluded}) \tierA. \textbf{C-A is excluded.} The
+input $q_0$ is model-dependent (a $\Lambda$CDM fit), as recorded in the freeze; the qualitative fact tested ---
+present acceleration --- does not rest on $\Lambda$CDM alone, but no model-independent source is pinned here.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{C-B: pre-big-bang relic gravitons at the programme's string scale}
+\label{sec:cb}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Frozen statement} (tag \texttt{stream7-cb-frozen}, commit \texttt{60320a4}; frozen \emph{before} any
+detector document was pinned). Assumptions \tierC: (B1) the programme's scale-factor duality is realised
+dynamically as a pre-big-bang phase; (B2) $\alpha'=s^2$ fixes the string scale, so the transition curvature
+$g_1=H_1/M_P\simeq M_s/M_P=\ell_P/s$.
+
+\paragraph{Literature input} \tierL\ (Gasperini--Veneziano~\cite{GasperiniVeneziano2002}). For $a=|\eta|^\alpha$ the
+relic spectrum is $\Omega\sim\omega^{3-2\nu}$, $\nu=|\alpha-1/2|$ (Table~2, ll.~4467--4485); the dilaton-driven
+phase has $\alpha=1/2$, hence $\Omega\sim\omega^3$ (l.~4505) in the low band (5.15), ll.~5040--5053; end points
+$\omega_1\simeq g_1^{1/2}\,10^{11}$~Hz and $\Omega(\omega_1)\simeq10^{-4}g_1^2$, with $g_1=H_1/M_P\simeq M_s/M_P$
+((5.16), ll.~5058--5061).
+
+\begin{theorem}[Derived numbers] \tierA\ \label{thm:cb}
+The slope $3-2|\alpha-1/2|$ is $3$ at $\alpha=1/2$ and $0$ (flat) at $\alpha=-1$ (\lean{Stream7CB.cb\_slope}).
+With $g_1^2=\ell_P/(c/H_0)$ (\lean{g1Sq}): $1.1\times10^{-61}\le g_1^2\le1.3\times10^{-61}$ (\lean{cb\_g1\_sq\_bracket});
+$\omega_1<10^{-4}$~Hz, stated as $\omega_1^4=g_1^2\cdot10^{44}<10^{-16}$ (\lean{cb\_peak\_below\_lisa\_band}); the
+peak $\Omega(\omega_1)\simeq10^{-4}g_1^2$ (\lean{omegaPeak}) is below $10^{-64}$ (\lean{cb\_peak\_amplitude\_unreachable}).
+\end{theorem}
+So $\omega_1\approx6\times10^{-5}$~Hz and $\Omega_{\rm GW}(\omega_1)\approx1.2\times10^{-65}$; the only free element,
+the break $\omega_s\le\omega_1$, can only lower the spectrum.
+
+\paragraph{Test and verdict.} Rule fixed in advance: testable iff the prediction reaches the design sensitivity of
+the most sensitive detector whose design document is pinned after the freeze. The LISA mission proposal requires
+the ability to measure $\Omega=1.3\times10^{-11}(f/10^{-4}\,\mathrm{Hz})^{-1}$ for $0.1<f<2$~mHz (OR7.2,
+ll.~692--699~\cite{LISA2017}) \tierL, i.e.\ at best $\approx6.5\times10^{-13}$ at 2~mHz (\lean{omegaLisaBest}). The
+predicted spectrum ends below LISA's band and its peak, even multiplied by $10^{50}$, stays below LISA's best
+(\lean{cb\_not\_testable}, \lean{cb\_peak\_amplitude\_unreachable}) \tierA. \textbf{C-B is not falsifiable in
+practice} --- neither confirmed nor excluded by its rule.
+
+\paragraph{Stronger.} Premise (B2) is the Regge reading of $\alpha'=s^2$, a meV string scale, which is already
+excluded (\Cref{sec:identification}; \lean{CosmicString.selfDual\_alphaPrime\_exceeds\_cms\_ceiling}). C-B fails at the
+level of its assumption, not only for lack of sensitivity.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{C-C: cosmic F-strings}
+\label{sec:cc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+An unwarped cosmic F-string has $G\mu/c^2=\ell_P^2/(2\pi\alpha')$ (Copeland--Myers--Polchinski~\cite{CMP2004})
+\tierL. For $\alpha'=\ell_P L$ this is $\ell_P/(2\pi L)$ (\lean{CosmicString.fStringGmu\_selfDual}) \tierA; with
+$L=c/H_0$, $G\mu\approx1.9\times10^{-62}$, and in any case $G\mu\le10^{-61}$, more than fifty orders below the lower
+end $10^{-11}$ of the brane-inflation window (\lean{CosmicString.selfDual\_Gmu\_below\_cmp\_window}) \tierA. A
+prediction that no experiment can reach is not a test; C-C is recorded as out of reach (paper~9 deliberately does
+not count the Planck $G\mu$ bound, passed by 55 orders, as evidence). It shares premise (B2) with C-B.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The common cause}
+\label{sec:cause}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{llp{4.2cm}p{4.6cm}}
+\toprule
+Observable & Freeze & Verdict & Where $\alpha'=\ell_Pc/H_0$ enters \\
+\midrule
+P1 & retrodiction & \textbf{excluded} (T1--T3) & $R=\sqrt{\alpha'}$, fixed by T-duality \\
+C-A & retrodiction & \textbf{excluded} ($q=+1/2$ vs $q_0<0$) & IR length $c/H$ = $\ell_{\rm macro}$ \\
+C-B & forward & not falsifiable in practice; premise excluded & $M_s\sim1/\sqrt{\alpha'}\sim4$~meV \\
+C-C & (paper 9) & out of reach; premise excluded & $G\mu=\ell_P^2/(2\pi\alpha')$ \\
+\bottomrule
+\end{tabular}
+\caption{The four verdicts and the role of the one identification.}
+\label{tab:verdicts}
+\end{table}
+
+Each verdict traces back to the identification $\alpha'=\ell_{\rm micro}\ell_{\rm macro}=\ell_P c/H_0$
+(\Cref{tab:verdicts}). Read as a length, it lands at tens of microns, where gravity has been tested and
+it conflicts with data (P1). Read as an energy density at the Hubble scale, it fixes the dynamics
+with no room for acceleration (C-A). Read as a string scale, it is a meV scale: excluded by colliders and, as a
+by-product, hiding every stringy relic below any sensitivity (C-B, C-C). Together with the CKN result, the
+dual-scale hypothesis in all of its testable forms does not survive the existing data.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{What survives}
+\label{sec:survives}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The verdicts concern physical identifications (Tier~C). The Tier~A mathematics of the programme is untouched:
+lattices, $O(d,d;\mathbb Z)$ and the dual-scale bound $\operatorname{tr}G+\operatorname{tr}G^{-1}\ge2d$ with its unique
+minimiser (\lean{dualScale\_eq\_iff}, paper~8~\cite{Callens2026Paper8}); Mathieu moonshine computed at all 26 classes
+and levels 0--9 (\lean{moonshine\_modules\_decompose}), the shadow's $24$ (\lean{shadow\_coeff\_eq\_perm\_trace}), and the
+single-centred dyon counts on $K3\times T^2$ given by Hurwitz class numbers (\lean{immortal\_m1}), all in
+paper~10~\cite{Callens2026Paper10}. The same twining (``forger's'') test that the number $24=\chi(K3)$ passes is
+failed by paper~7's ``27720 lock'' at every non-identity class (\lean{ratio\_fails\_at\_every\_class}); paper~7's
+Revision~5 records this.
+
+\begin{scopebox}
+That any of the identifications (P1, A1--A2, B1--B2) is part of string theory (Tier~C); that the Tier~L inputs are
+correct beyond their sources; a model-independent measurement of $q_0$ (not pinned); any realistic compactification.
+Two of four freezes are retrodictions, as disclosed. ``Not falsifiable in practice'' is not a confirmation.
+\end{scopebox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lessons for pre-registered theory testing}
+\label{sec:lessons}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item \textbf{Inventory before hypothesis.} Asking first which observables are derivable at all prevented a search
+  for a convenient one; the answer (four) bounded the whole exercise.
+\item \textbf{Freeze the order-one factors.} Paper~9's ``disfavoured by $O(1)$'' became an exclusion once the factor was
+  either fixed in the freeze or derived (\Cref{thm:kappa}). An unfixed factor is where post-hoc rescue lives.
+\item \textbf{Retrodiction is still worth recording.} Even with a known outcome, a frozen, kernel-checked derivation
+  (C-A) turns an informal objection into a checkable one and removes it from future debate.
+\item \textbf{Separate ``not excluded'' from ``not testable''.} C-B and C-C are neither confirmed nor excluded by
+  their rules; the protocol says so explicitly rather than counting consistency with an unreachable bound as
+  support.
+\item \textbf{Name quantities in verdict theorems.} A review of release \texttt{v3.16.0} found two C-B statements whose
+  second conjunct was a fact about powers of ten; they were restated with named quantities (\lean{omegaPeak},
+  \lean{omegaLisaBest}), with the statement lock recording exactly those two changes.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Open directions}
+\label{sec:open}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item \textbf{Drop or replace $\alpha'=\ell_Pc/H_0$.} Any new hypothesis worth testing must do without this
+  identification; its observables must again be derived and frozen before comparison.
+\item \textbf{A chiral geometry.} $K3\times T^2$ gives $\mathcal N=4$ in four dimensions; a realistic model needs a
+  geometry with a chiral spectrum --- for instance a $K3$-fibred Calabi--Yau threefold --- together with an explicit
+  construction (fluxes, moduli stabilisation). This is new research, not a patch.
+\item \textbf{Model-independent inputs.} Pinning a model-independent determination of the present acceleration
+  would lift C-A's verdict from a $\Lambda$CDM-conditional one.
+\item \textbf{Reusable protocol.} The freeze-by-tag protocol and the Lean verdict files are generic and could be
+  reused by other programmes that make order-one-sensitive claims.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\label{sec:conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A hypothesis that links the Planck length and the Hubble radius through string T-duality yields exactly four
+observables without an unconstructed compactification. Frozen before their verdicts and checked in Lean against
+pinned data, two are excluded and two are out of reach with an excluded premise. The single cause is the
+identification $\alpha'=\ell_Pc/H_0$. We regard this as a clean negative result: the programme's testable physical
+content does not survive, its mathematics does, and the protocol that established this is reusable.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\section{Reproducibility}
+\label{app:repro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Build and audit.}
+{\footnotesize\ttfamily lake build DualScaleCosmology}\\
+{\footnotesize\ttfamily python3 tools/axiom\_audit.py DualScaleCosmology}\\
+reports 50 theorems, 0 failing; across the ten libraries of the repository, 621 theorems, 0 failing (release
+\texttt{v3.16.1}). Axioms used: at most \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}.
+
+\paragraph{Statement lock.}
+{\footnotesize\ttfamily python3 tools/statement\_lock.py --check \$(find DualScaleCosmology -name '*.lean')}\\
+locks 68 declarations in 10 files, including \texttt{Stream6Verdict.lean}, \texttt{Stream7CA.lean} and
+\texttt{Stream7CB.lean}.
+
+\paragraph{Freezes.} \texttt{git show stream6-p1-frozen}, \texttt{stream7-ca-frozen}, \texttt{stream7-cb-frozen}
+(commits \texttt{53f15b7}, \texttt{90217a3}, \texttt{60320a4}) display the frozen documents; the verdict files were
+committed afterwards.
+
+\paragraph{Sources pinned} (hash-registered in \texttt{papers/foundations/MANIFEST.md}): \texttt{2002.11761},
+\texttt{2205.12293}, \texttt{hep-th/0207130}, \texttt{1702.00786}, \texttt{hep-th/0312067}, \texttt{1911.03947},
+\texttt{hep-th/9803132}, \texttt{hep-th/9611137}; CODATA~2018 and Planck~2018~VI constants via \texttt{astropy}.
+
+\begin{thebibliography}{99}
+\bibitem{Callens2026Paper7} X.~Callens and the SocrateAI Agora Collaboration, ``The Dual-Scale String Theory: Mechanized Foundations, Singularity Resolution, Mathieu Moonshine, and a Zero-Free-Parameter Cosmological Conjecture on $K3\times T^2$,'' Revision~5 (2026).
+\bibitem{Callens2026Paper8} X.~Callens and the SocrateAI Agora Collaboration, ``Lattices, T-Duality, and Double Field Theory on $K3\times T^2$: A Lean 4 Companion Formalization'' (2026).
+\bibitem{Callens2026Paper9} X.~Callens and the SocrateAI Agora Collaboration, ``Testing a Micro/Macro Dual-Scale Hypothesis on $K3\times T^2$: Scale-Factor Duality, the Cohen--Kaplan--Nelson Bound, and the Dark-Energy Length in Lean~4'' (2026).
+\bibitem{Callens2026Paper10} X.~Callens and the SocrateAI Agora Collaboration, ``Mathieu Moonshine Computed, the Double-Scaled Little String Bridge, and Dyons on $K3\times T^2$ in Lean~4'' (2026).
+\bibitem{CKN1999} A.~G.~Cohen, D.~B.~Kaplan, and A.~E.~Nelson, ``Effective Field Theory, Black Holes, and the Cosmological Constant,'' \textit{Phys. Rev. Lett.} 82 (1999) 4971, \textit{arXiv:hep-th/9803132}.
+\bibitem{Planck2018VI} Planck Collaboration, ``Planck 2018 results. VI. Cosmological parameters,'' \textit{Astron. Astrophys.} 641 (2020) A6, \textit{arXiv:1807.06209}.
+\bibitem{CMS2020} CMS Collaboration, ``Search for high mass dijet resonances with a new background prediction method in proton-proton collisions at $\sqrt{s}=13$~TeV,'' \textit{JHEP} 05 (2020) 033, \textit{arXiv:1911.03947}.
+\bibitem{LeeAdelberger2020} J.~G.~Lee, E.~G.~Adelberger, T.~S.~Cook, S.~M.~Fleischer, and B.~R.~Heckel, ``New Test of the Gravitational $1/r^2$ Law at Separations down to $52\,\mu$m,'' \textit{Phys. Rev. Lett.} 124 (2020) 101101, \textit{arXiv:2002.11761}.
+\bibitem{MVV2023} M.~Montero, C.~Vafa, and I.~Valenzuela, ``The Dark Dimension and the Swampland,'' \textit{JHEP} 02 (2023) 022, \textit{arXiv:2205.12293}.
+\bibitem{GasperiniVeneziano2002} M.~Gasperini and G.~Veneziano, ``The Pre-Big Bang Scenario in String Cosmology,'' \textit{Phys. Rept.} 373 (2003) 1, \textit{arXiv:hep-th/0207130}.
+\bibitem{LISA2017} P.~Amaro-Seoane et al., ``Laser Interferometer Space Antenna,'' \textit{arXiv:1702.00786} (2017).
+\bibitem{CMP2004} E.~J.~Copeland, R.~C.~Myers, and J.~Polchinski, ``Cosmic F- and D-strings,'' \textit{JHEP} 06 (2004) 013, \textit{arXiv:hep-th/0312067}.
+\bibitem{Aspinwall1996} P.~S.~Aspinwall, ``K3 Surfaces and String Duality,'' \textit{arXiv:hep-th/9611137} (1996).
+\end{thebibliography}
+
+\end{document}

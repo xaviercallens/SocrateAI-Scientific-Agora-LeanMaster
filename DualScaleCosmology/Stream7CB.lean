@@ -6,7 +6,7 @@ sensitivity was pinned).
 Assumptions (Tier C): (B1) scale-factor duality realised as a pre-big-bang phase; (B2) `α' = s² = ℓ_P c/H₀`,
 so `g₁ = H₁/M_P ≃ M_s/M_P = ℓ_P/s`, i.e. `g₁² = ℓ_P/(c/H₀)`. Tier L (Gasperini–Veneziano,
 `gasperini_veneziano_pbb_hep-th_0207130.txt`): `Ω ∼ ω^{3−2ν}`, `ν = |α − 1/2|` (Table 2, ll. 4467–4485);
-`ω₁ ≃ g₁^{1/2} 10¹¹ Hz`, `Ω(ω₁) ≃ 10⁻⁴ g₁²` ((5.16), ll. 5056–5058). Detector (pinned after the freeze):
+`ω₁ ≃ g₁^{1/2} 10¹¹ Hz`, `Ω(ω₁) ≃ 10⁻⁴ g₁²` ((5.16), ll. 5059–5061). Detector (pinned after the freeze):
 LISA mission proposal `1702_00786.txt` ll. 692–699 (OR7.2): measure `Ω = 1.3 × 10⁻¹¹ (f/10⁻⁴ Hz)⁻¹` for
 `0.1 mHz < f < 2 mHz`, i.e. at best `Ω ≈ 6.5 × 10⁻¹³` in that band.
 
