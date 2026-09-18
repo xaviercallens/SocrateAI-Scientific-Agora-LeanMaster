@@ -1,7 +1,7 @@
 # Stream 8 — Which K3? (convergence, thought experiments, open questions)
 
-**Status (2026-09-18, release `v3.18.0`):** one Tier A file (`DualScaleDyons/WhichK3.lean`, 5 theorems); the rest is
-a research plan. Thought experiments are **Tier C** and each is tied to a formalizable target.
+**Status (2026-09-18, release `v3.19.0`):** two Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
+`DualScaleDyons/SelfDualT2.lean`, 7 theorems — E2, §5); the rest is a research plan. Thought experiments are **Tier C** and each is tied to a formalizable target.
 
 ## 0. The question, made precise
 
@@ -79,5 +79,32 @@ the twined genera of its elements are among the 26 computed ones.
 | P8.1 | convergence and `N` vs `H` relation, Kummer criterion, Fermat quartic | A — **done** (`WhichK3.lean`) |
 | P8.2 | attractor form of explicit charges `(Q, P)` in `Γ_{6,22}`; `N(D)` by enumeration for small `D` | A |
 | P8.3 | Kummer lattice from `𝔽₂⁴`: rank 16, discriminant `2⁶`, the `8 + 16` split of 24 | A |
-| P8.4 | E2: derive (or refute) a "maximal self-duality" selection principle; freeze any consequence before testing | C → A |
+| P8.4 | E2: derive (or refute) a "maximal self-duality" selection principle; freeze any consequence before testing | C → A — **T² part done** (§5); K3 part open (P8.4c) |
 | P8.5 | E4: symmetry groups of the candidate K3s vs the 26 twined genera | L + A |
+
+## 5. E2 — results (`v3.19.0`, `DualScaleDyons/SelfDualT2.lean`)
+
+**Mechanism, not choice (Tier L).** Moduli trapping (Kofman–Linde–Liu–Maloney–McAllister–Silverstein,
+hep-th/0403001): particle production traps rolling moduli at enhanced symmetry points; they "come to rest on a
+locus of maximally enhanced symmetry" — for a torus, every circle at its self-dual radius (ll. 1299–1307) — and
+the ESPs "with the largest number of light states" are selected (ll. 1309–1311), within the range allowed by
+Hubble friction and the potential. This is the circle's `κ = 1` (Stream 6) promoted to a dynamical principle.
+
+**The count (Tier A).** Massless gauge bosons (`p_R = 0`, `p_L² = 2`) with the Stream 2 conventions:
+circle at the self-dual radius: 2 (`SU(2)`, `roots_circle`); T² at `(i, i)`: 4 + 4 (`roots_ii`); T² at
+`(ω, ω)`: **6 + 6** (`SU(3)_L × SU(3)_R`, `roots_ww`). The counts are complete, not box searches: a sum-of-squares
+identity bounds every root's entries (`h3w_sos`, `h3w_bound`, `qI_bound`). Six is the most a rank-2 root system can
+have (the kissing number of the plane, standard). So **under trapping, T² comes to rest at `(ω, ω)`**, not `(i, i)`.
+
+**The K3 over it (Tier A + Tier C).** The left roots at `(ω, ω)` span the `A₂` lattice (Gram `[[2, −1], [−1, 2]]`),
+and the transcendental lattice of the most attractive K3, `T(X₃) = [[2, 1], [1, 2]]` (form `(1,1,1)`, `τ = ω`), is
+isometric to it (`ww_root_lattice_is_A2`). The K3 that Shioda–Inose attach to the self-dual `SU(3)` torus has as
+transcendental lattice the root lattice of that very `SU(3)`. *Reading (Tier C):* the dual-scale K3 × T² selected
+by maximal self-duality is `X₃ × E_ω` with T² at `(ω, ω)`.
+
+**What E2 does not settle.** (i) The K3 factor's own moduli: trapping selects the point of K3 moduli with the most
+light states — the maximal ADE enhancement from `(−2)`-vectors orthogonal to the positive 4-plane — and whether
+that point is `X₃` (or related to it) is open (P8.4c; it connects to Stream 2's `(−2)`-reflections). (ii) The
+assumptions of trapping (accessible range, Hubble friction, early-universe dynamics). (iii) Observables: none —
+`N = 4`, non-chiral. Any consequence would be frozen before comparison (paper 11 protocol). (iv) E3 (Kummer) is the
+next experiment: the Kummer K3s on the `τ = ω` ray are `T = A₂(2)` (`D = 12`, `first_kummer_attractive`).

@@ -1,0 +1,2159 @@
+                                                                                                               hep-th/0403001
+                                                                                                               CITA-04-3
+                                                                                                               SLAC-PUB-10343
+                                                                                                               SU-ITP-04/05
+
+
+
+
+                                                                   Beauty is Attractive:
+arXiv:hep-th/0403001v2 19 Apr 2004
+
+
+
+
+                                        Moduli Trapping at Enhanced Symmetry Points
+
+                                                                 Lev Kofman,a Andrei Linde,b Xiao Liu,b,c
+                                                   Alexander Maloney,b,c Liam McAllister,b,c and Eva Silversteinb,c
+                                                   a
+                                                       CITA, University of Toronto, Toronto, ON M5S 3H8, Canada
+                                             b
+                                                 Department of Physics, Stanford University, Stanford, CA 94305, USA
+                                                        c
+                                                            SLAC, Stanford University, Stanford, CA 94309, USA
+
+
+                                         We study quantum effects on moduli dynamics arising from the production of particles
+                                     which are light at special points in moduli space. The resulting forces trap the moduli
+                                     at these points, which often exhibit enhanced symmetry. Moduli trapping occurs in time-
+                                     dependent quantum field theory, as well as in systems of moving D-branes, where it leads
+                                     the branes to combine into stacks. Trapping also occurs in an expanding universe, though
+                                     the range over which the moduli can roll is limited by Hubble friction. We observe that a
+                                     scalar field trapped on a steep potential can induce a stage of acceleration of the universe,
+                                     which we call trapped inflation. Moduli trapping ameliorates the cosmological moduli
+                                     problem and may affect vacuum selection. In particular, rolling moduli are most powerfully
+                                     attracted to the points with the largest number of light particles, which are often the points
+                                     of greatest symmetry. Given suitable assumptions about the dynamics of the very early
+                                     universe, this effect might help to explain why among the plethora of possible vacuum
+                                     states of string theory, we appear to live in one with a large number of light particles and
+                                     (spontaneously broken) symmetries. In other words, some of the surprising properties of
+                                     our world might arise not through pure chance or miraculous cancellations, but through a
+                                     natural selection mechanism during dynamical evolution.
+                                         Contents
+1. Introduction     . . . . . . . . . . . . . . . . . . . . . . .      .   .   .   .   .   .   .   .   .   .    1
+  1.1. Moduli Trapping Near Enhanced Symmetry Points . . . . .         .   .   .   .   .   .   .   .   .   .    1
+  1.2. Relation to Other Works     . . . . . . . . . . . . . . . .     .   .   .   .   .   .   .   .   .   .    4
+2. Moduli Trapping: Basic Mechanism . . . . . . . . . . . . .          .   .   .   .   .   .   .   .   .   .    6
+  2.1. Quantum Production of χ Particles . . . . . . . . . . . .       .   .   .   .   .   .   .   .   .   .    6
+  2.2. Backreaction on the Motion of φ . . . . . . . . . . . . .       .   .   .   .   .   .   .   .   .   .    8
+  2.3. The Example of Moving D-branes       . . . . . . . . . . . .    .   .   .   .   .   .   .   .   .   .   10
+3. Moduli Trapping: Detailed Analysis . . . . . . . . . . . . .        .   .   .   .   .   .   .   .   .   .   12
+  3.1. Formal Description of Particle Production Near an ESP . . .     .   .   .   .   .   .   .   .   .   .   13
+  3.2. Moduli Trapping: Numerical Results . . . . . . . . . . .        .   .   .   .   .   .   .   .   .   .   16
+  3.3. The Special Case of One-Dimensional Motion . . . . . . .        .   .   .   .   .   .   .   .   .   .   17
+4. Trapped Moduli in an Expanding Universe . . . . . . . . . .         .   .   .   .   .   .   .   .   .   .   21
+  4.1. Rapid Trapping . . . . . . . . . . . . . . . . . . . .          .   .   .   .   .   .   .   .   .   .   21
+  4.2. Scanning Range in an Expanding Universe       . . . . . . . .   .   .   .   .   .   .   .   .   .   .   22
+  4.3. Trapping in an Expanding Universe . . . . . . . . . . . .       .   .   .   .   .   .   .   .   .   .   24
+  4.4. Efficiency of Trapping . . . . . . . . . . . . . . . . . .      .   .   .   .   .   .   .   .   .   .   25
+5. String Theory Effects . . . . . . . . . . . . . . . . . . . .       .   .   .   .   .   .   .   .   .   .   26
+  5.1. Large χ Mass . . . . . . . . . . . . . . . . . . . . .          .   .   .   .   .   .   .   .   .   .   26
+  5.2. Large v and the Hagedorn Density of States . . . . . . . .      .   .   .   .   .   .   .   .   .   .   26
+  5.3. Light Field-Theoretic Strings   . . . . . . . . . . . . . .     .   .   .   .   .   .   .   .   .   .   28
+6. The Vacuum Selection Problem . . . . . . . . . . . . . . .          .   .   .   .   .   .   .   .   .   .   28
+  6.1. Vacuum Selection in Quantum Field Theory . . . . . . . .        .   .   .   .   .   .   .   .   .   .   29
+  6.2. Vacuum Selection in Supergravity and Superstring Cosmology      .   .   .   .   .   .   .   .   .   .   29
+  6.3. Properties of the Resulting Vacua    . . . . . . . . . . . .    .   .   .   .   .   .   .   .   .   .   30
+7. The Moduli Problem . . . . . . . . . . . . . . . . . . . .          .   .   .   .   .   .   .   .   .   .   32
+8. Trapped Inflation and Acceleration of the Universe . . . . . . .    .   .   .   .   .   .   .   .   .   .   32
+9. Conclusion . . . . . . . . . . . . . . . . . . . . . . . .          .   .   .   .   .   .   .   .   .   .   36
+Appendix A. Particle Production Due to Motion on Moduli Space .        .   .   .   .   .   .   .   .   .   .   37
+Appendix B. Annihilation of the χ Particles . . . . . . . . . . .      .   .   .   .   .   .   .   .   .   .   39
+Appendix C. Bending Angle and Energy Loss during the First Pass .      .   .   .   .   .   .   .   .   .   .   41
+Appendix D. Classical Trapping Versus Quantum Trapping . . . .         .   .   .   .   .   .   .   .   .   .   45
+
+
+
+
+1. Introduction
+
+1.1. Moduli Trapping Near Enhanced Symmetry Points
+
+    Supersymmetric string and field theories typically contain a number of light scalar
+fields, or moduli, which describe low-energy deformations of the system. If the kinetic
+energy of these fields is large compared to their potential energy then the classical dynamics
+of the moduli is described by geodesic motion on moduli space.
+
+                                              1
+      At certain special points (or subspaces) of moduli space, new degrees of freedom
+become light and can affect the dynamics of moduli in a significant way [1,2,3,4,5]. These
+extra species often contribute to an enhanced symmetry at the special point. We will refer
+to any points where new species become light as ESPs, which stands for extra species
+points, and also, when applicable, for enhanced symmetry points.
+      A canonical example is a system of two parallel D-branes. When the branes coincide,
+the two individual U (1) gauge symmetries are enhanced to a U (2) symmetry, as the strings
+that stretch between the branes become massless [6]. Similar points with new light species
+arise in many contexts; examples include the Seiberg-Witten massless monopole and dyon
+points in N = 2 supersymmetric field theories [7], the conifold point [8] and ADE singu-
+larities in Calabi-Yau compactification [9], the self-dual radius of string compactifications
+on a torus, small instantons in heterotic string theory [10], and many other configurations
+with less symmetry.
+      Classically, there is no sense in which these ESPs are dynamically preferred over other
+metastable vacuum states of the system. We will argue that this changes once quantum
+effects are included. In particular, quantum particle production of the light fields alters
+the dynamics in such a way as to drive the moduli towards the ESPs and trap them there.
+      The basic mechanism of this trapping effect is quite simple. Consider a modulus φ
+moving through moduli space near an ESP associated to a new light field χ. For example,
+φ could be the separation between a pair of parallel D-branes, and χ a string stretching
+between the two branes – in this case the ESP φ = 0 is the point where the branes coincide
+and χ becomes massless. As φ rolls through moduli space, the mass of χ changes; χ gets
+lighter as φ moves closer to the ESP and heavier as φ moves farther away. This changing
+mass leads to quantum production of χ particles; as φ moves past the ESP some of its
+kinetic energy will be dumped into χ particles. As φ rolls away from the ESP, more
+and more of its energy will be drained into the χ sector as the χ mass increases, until
+eventually φ stops rolling. At this point the moduli space approximation for φ has broken
+down, and all of the original kinetic energy contained in the coherent motion of φ has
+been transferred into χ particles, and ultimately into all of the fields interacting with χ
+(including decoherent quanta δφ). As we will see in detail, the χ excitations generate a
+classical potential for φ which drives the modulus back toward the ESP and traps it there.1
+  1
+      There are also corrections to the effective action for φ from loops of χ particles, including both
+kinetic corrections and a Coleman-Weinberg effective potential. Both effects will be subdominant
+in the weakly-coupled, supersymmetric, kinetic-energy dominated regimes we will consider.
+
+                                                   2
+    In the example of the pair of moving D-branes, the consequences of this are simple:
+two parallel branes that are sent towards each other will collide and remain bound to-
+gether. The original kinetic energy of the moving branes will be transferred into open
+string excitations on the branes and eventually into closed string radiation in the bulk.
+    In §2 we will describe the general trapping mechanism and study its range of appli-
+cability using a few simple estimates. In §3 we will write down the equations of motion
+governing trapping in more detail, and describe the numerical and analytic solutions of
+these equations in a variety of cases.
+    It is important to recognize that this trapping effect is in no way special to string
+theory. Flat space quantum field theory with a moduli space for φ and an ESP is an ideal
+setting for the trapping effect, and it is in this setting that we will perform the analysis of
+§2 and §3. In §4 we will generalize this to incorporate the effects of cosmological expansion,
+and in §5 we will discuss the possibility of significant effects from string theory. Having
+established the moduli trapping effect in a variety of contexts, we will then study its
+applications to problems in cosmology.
+    The most immediate application is to the problem of vacuum selection. As we will
+see in §6, the trapping effect can provide a dynamical vacuum selection principle, reducing
+the problem to that of selecting one point within the class of ESPs. This represents
+significant progress, since the vast majority of metastable vacua are not ESPs. Trapping
+at ESPs may also help solve the cosmological moduli problem, as we will see in §7. In
+particular, trapping strengthens the proposal of [11] by providing a dynamical mechanism
+which explains why moduli sit at points of enhanced symmetry.
+    Finally, as we will explain in §8, the trapping of a scalar field with a potential can
+lead to a period of accelerated expansion, in a manner reminiscent of thermal inflation
+[12]. This effect, which we will call trapped inflation, can occur in a steeper potential than
+normally admits such behavior.
+    From a more general perspective, moduli trapping gives us insight into the celebrated
+question of why the world is so symmetric. The initial puzzle is that although highly
+symmetric theories are aesthetically appealing and theoretically tractable, they are also
+very special and hence, in an appropriate sense, rare. One expects that in a typical string
+theory vacuum, most symmetries will be strongly broken and most particles will have
+masses of order the string or Planck mass, just as in a typical vacuum one expects a large
+cosmological constant. Vacua with enhanced symmetry or light particles should comprise
+a minuscule subset of the space of all vacua.
+
+                                              3
+    Nevertheless, we observe traces of many symmetries in the properties of elementary
+particles, as spontaneously broken global and gauge invariances. Moreover, all known
+particles are hierarchically light compared to the Planck mass. Given the expectation that
+a typical vacuum contains very few approximate symmetries and very few light particles,
+it is puzzling that we see such symmetries and such particles in our world.
+    For questions of this nature, moduli trapping may have considerable explanatory
+power. Specifically, the force pulling moduli toward a point of enhanced symmetry is
+proportional to the number of particles which become massless at this point, which is
+often associated with a high degree of symmetry. This means that the most attractive
+ESPs are typically the ones with the largest symmetry, and rolling moduli are most likely
+to be trapped at highly symmetric points, where many particles become massless or nearly
+massless. Moreover, the process of trapping can proceed sequentially: a modulus moving
+in a multi-dimensional moduli space can experience a sequence of trapping events, each
+of which increases the symmetry. These effects suggest that the symmetry and beauty we
+see in our world may have, at least in part, a simple dynamical explanation: beauty is
+attractive. We will discuss this possibility in §6.
+
+1.2. Relation to Other Works
+
+    Similar effects have been described in the literature. There has been much work
+on multi-scalar quantum field theory in the context of inflation, especially concerning
+preheating in interacting scalar field theories. Some of our results will be based on the
+theory of particle production and preheating developed in the series of papers [1,2,3],
+which explores many of the basic phenomena in scalar theories of the sort we will consider.
+Likewise, Chung et al. [4] have explored the effects of particle production on the inflaton
+trajectory and on the spectrum of density perturbations. Although we will derive what we
+need here in a self-contained way, many of the technical results in this paper overlap with
+those works, as well as with standard results on particle production in time-dependent
+systems as summarized in e.g. [13]. Although we will not study the case in which χ goes
+tachyonic for some range of φ, our results may nevertheless have application to models of
+hybrid inflation [14,15], including models based on rapidly-oscillating interacting scalars
+[16,17,18].
+    In strong ’t Hooft coupling regions of moduli spaces which are accessible through the
+AdS/CFT correspondence, virtual effects from the large numbers of light species dramati-
+cally slow down the motion of φ as it approaches an ESP, with the result that the modulus
+
+                                              4
+gets trapped there [5]. This also provides a mechanism for slow roll inflation without very
+flat potentials. In the present work, which applies at weak ’t Hooft coupling, it is quantum
+production of on-shell light particles which leads to trapping on moduli space.
+    Other works in the context of string theory have explored the localization of moduli
+at ESPs. The authors of [19,20] studied the evolution of a supersymmetric version of the
+φ − χ system arising near a flop transition using an effective supergravity action. They
+showed that, given nonvanishing initial vevs for both φ and χ, the fields will settle at the
+ESP even if one formally turns off particle production effects. Our proposal, by contrast, is
+to take into account on-shell quantum effects which dynamically generate a nonzero hχ2 i.
+In works such as [21] attention was focused on the boundaries of moduli space, while here
+we focus on ESPs in the interior of moduli space. In [22], production of light strings was
+studied in the context of D0-brane quantum mechanics; as we explain in §2.3, this has some
+similarities, but important differences, with our case of space-filling branes. Scattering of
+Dp-branes was also studied in [23].
+    Dine has suggested that enhanced symmetry points may provide a solution to the
+moduli problem, as moduli which begin at an enhanced symmetry minimum of the quan-
+tum effective potential can consistently remain there both during and immediately after
+inflation [11]. One would still like to explain why the moduli began at such a point. As
+we discuss in §7, our trapping mechanism provides a natural explanation for this initial
+configuration.
+    Horne and Moore [24] have argued that the classical motion on certain moduli spaces is
+ergodic, provided that the potential energy is negligible. This means that all configurations
+are sampled given a sufficiently long time, and in particular a given modulus will eventually
+approach an ESP. We will argue that quantum corrections to the classical trajectory are
+significant, and indeed lead to trapping, whenever the classical trajectory comes close to
+an ESP. Combining these two observations, we expect that in the full, quantum-corrected
+system the moduli are stuck near an ESP at late times. This means that the quantum-
+corrected evolution is not fully ergodic: the dynamics of [24] (see also [25]) implies that
+the modulus will eventually approach an ESP, at which point quantum effects will trap it
+there, preventing the system from sampling any further regions of moduli space.
+
+                                             5
+2. Moduli Trapping: Basic Mechanism
+
+    We will now describe the mechanism of moduli trapping in more detail. Our discussion
+in this section will be based on simple estimates of particle production and the consequent
+backreaction, generalizing the results of [1,2,3] to the case of a complex field. A more
+complete analysis, along with numerical results, will be presented in §3.
+    We will consider the specific model
+
+                                1             1           g2
+                          L=      ∂µ φ∂ µ φ̄ + ∂µ χ∂ µ χ − |φ|2 χ2                    (2.1)
+                                2             2           2
+
+where a complex modulus φ = φ1 + iφ2 interacts with a real scalar field χ. We are
+restricting ourselves to the case of a flat moduli space which has a single ESP at φ = 0,
+where χ becomes massless, and a particularly simple form for the χ interaction. This
+simple case illustrates the basic physics and can be generalized as necessary, for example
+to include supersymmetry.
+    We will consider the case where φ approaches the origin with some impact parameter
+µ, following a classical trajectory of the form
+
+                                       φ(t) = iµ + vt.                                (2.2)
+
+Classically, if χ vanishes then (2.2) is an exact solution to the equations of motion, and
+the presence of the ESP will not affect the motion of φ.
+    Quantum effects will alter this picture considerably, because the trajectory (2.2) will
+lead to the production of χ particles, as we discuss in §2.1. The backreaction of these
+particles on the motion of φ will then lead to trapping, as we will see in §2.2. In §2.3 we
+will illustrate this effect with the example of colliding D-branes.
+
+2.1. Quantum Production of χ Particles
+
+    Let us first study the creation of χ particles without considering how they may back-
+react to alter the motion of φ. In this approximation we may substitute (2.2) into the
+action (2.1) to get a free quantum field theory for χ with a time-varying mass
+
+                                     m2χ (t) = g 2 |φ(t)|2 .                          (2.3)
+
+This time dependence leads to particle production.
+
+                                               6
+      Consider a mode of the χ field with spatial momentum k, whose frequency
+                                             p
+                                    ω(t) =       k 2 + g 2 |φ(t)|2                          (2.4)
+
+varies in time. This mode becomes excited when the non-adiabaticity parameter ω̇/ω 2
+becomes at least of order one. This parameter vanishes as t → ±∞, indicating that
+particle creation takes place only while φ is near the ESP. It is straightforward to see that,
+for the trajectory (2.2), ω̇/ω 2 can be large only in the small interval |φ| <∼ ∆φ near the
+ESP, where
+                                                   v
+                                                r
+                                         ∆φ =        ,                                   (2.5)
+                                                   g
+and only for momenta
+                                         k 2 + g 2 µ2
+                                                      < 1.                                  (2.6)
+                                             gv       ∼
+When the quantity on the left hand side is small, particle creation effects are very strong.
+They are strongest if the modulus passes sufficiently close to the ESP, i.e. if
+                                                  p
+                                           µ<
+                                            ∼         v/g.                                  (2.7)
+
+In this case χ modes whose momenta k fall in the range (2.6) will be excited.2 Qualitatively,
+we expect that the occupation numbers nk of such modes will vary from zero (no real
+particles) for modes with vanishing non-adiabaticity to of order unity for modes with very
+large non-adiabaticity. The full computation of nk given in Appendix A yields
+
+                                              k 2 + g 2 µ2
+                                                          
+                                  nk = exp −π                ,                              (2.9)
+                                                  gv
+
+which agrees with this qualitative expectation. Note that even when (2.7) is not satisfied,
+there is generically a nonvanishing, though exponentially suppressed, number density of
+created particles; even in this case we will find a nontrivial trapping effect.
+
+  2
+     This may be checked as follows. We have argued that unsuppressed particle production
+                                                                     p
+occurs only when the modulus is sufficiently close to the ESP, |φ| <
+                                                                   ∼ v/g. The modulus remains
+within this window for a time             p
+                                             v/g
+                                   ∆t ∼           ∼ (gv)−1/2 .                           (2.8)
+                                             v
+The uncertainty principle implies in this case that the created particles will have typical energy
+E ∼ (∆t)−1 and thus momenta k ∼ (gv − g 2 µ2 )1/2 . This agrees with the estimate (2.6).
+
+                                                  7
+    Before discussing the backreaction due to the production of χ particles, it is crucial to
+control other effects from the χ field. In particular, there is another important quantum
+effect which arises in motion toward the origin: loops of light χ particles give corrections
+to the effective action. These include both kinetic corrections and the Coleman-Weinberg
+potential energy. The latter we will subtract by hand, as we will explain in §3.1. This gives
+a good approximation to the dynamics in any situation where kinetic energy dominates.
+    The kinetic corrections are organized in an expansion in v 2 /φ4 [5]. The parameters
+controlling both remaining effects – the nonadiabaticity controlling particle production
+and the kinetic factor v 2 /φ4 controlling light virtual χ particles – diverge as we approach
+the origin. However, at weak coupling, the nonadiabaticity parameter is parametrically
+enhanced relative to the kinetic corrections, i.e. v 2 /g 2 φ4 ≫ v 2 /φ4 , so we can sensibly
+focus on the effects of particle production. More specifically, we can ensure that the
+kinetic corrections are insignificant by including a sufficiently large impact parameter µ.
+    We will also analyze the case of small µ, including µ = 0. This relies on the plausible
+assumption that the effects of the kinetic corrections remain subdominant as we approach
+very close to the origin, and that in particular in our weak coupling case they do not by
+themselves stop φ from progressing through the origin. It would be interesting to develop
+theoretical tools to analyze this issue more directly and check this hypothesis.
+
+2.2. Backreaction on the Motion of φ
+
+    One might expect a priori that any description of the motion of φ which fully incorpo-
+rates backreaction from particle production would be immensely complicated. Fortunately,
+this turns out not to be the case, and a simple description is possible. The key simplifica-
+tion is that creation of χ particles happens primarily in a small vicinity of the ESP φ = 0,
+so one can treat this as an instant event of particle production. These particles induce
+a very simple linear, confining potential acting on φ, V ∼ |φ|. The motion of φ in this
+potential between successive events of particle production can be described rather simply.
+    Let us now explore this in more detail. We have seen that as φ moves in moduli
+space, some of its energy will be transferred into excitations of χ. This leads to a quantum
+vacuum expectation value hχ2 i =
+                               6 0. As φ rolls away from the ESP, the mass of the created
+χ particles increases, further increasing the energy contained in the χ sector. At this point
+the backreaction of the χ field on the dynamics of φ becomes important, and the moduli
+space approximation breaks down.
+
+                                             8
+      We will concentrate on the backreaction of the created particles on the motion of the
+                                                                               p
+field φ far away from the small region of non-adiabaticity, i.e. for φ ≫ ∆φ ∼ v/g. At this
+                                                                                 √
+stage the typical momenta are such that the χ particles are nonrelativistic, k <
+                                                                               ∼ gv ≪ g|φ|.
+Therefore the total energy density of the gas of χ particles is easily seen to be
+
+                                     d3 k
+                                Z             p
+                     ρχ (φ) =             n k  k 2 + g 2 |φ(t)|2 ≈ g|φ(t)|nχ ,          (2.10)
+                                    (2π)3
+
+where nχ is the number density of χ particles,
+
+                                          d3 k       (gv)3/2 −πgµ2 /v
+                                    Z
+                            nχ =               n k =        e                           (2.11)
+                                         (2π)3        (2π)3
+
+As φ continues to move away from the ESP φ = 0, the number density of χ particles
+remains constant, as particles are produced only in the vicinity of φ = 0. However, the
+energy density of the χ particles grows as g|φ(t)|nχ . This leads to an attractive force of
+magnitude gnχ , which always points towards the ESP φ = 0.
+    This force of attraction slows down the motion of φ, and eventually turns φ back
+toward the ESP. This reversal occurs in the vicinity of the point φ∗ at which the initial
+kinetic energy density 21 φ̇2 ≡ 12 v 2 matches the energy density ρχ contained in χ particles.
+We find
+                                               4π 3 1/2 πgµ2 /v
+                                        φ∗ =         v e        .                       (2.12)
+                                               g 5/2
+Observe that for g ≪ 1 the trapping length on the first pass is always much greater than
+the impact parameter µ, which means that the motion of the moduli after the first impact
+is effectively one-dimensional.
+    After changing direction at φ∗ , φ falls back toward the origin. On this second pass by
+the ESP, more χ particles are produced, leading to a stronger attractive force. This process
+repeats itself, leading ultimately to a trapped orbit of φ about the ESP, in a trajectory
+determined by the effective potential and consistent with angular momentum conservation
+on moduli space.
+    We conclude that, in this simplified setup, a scalar field which rolls past an ESP will
+oscillate about the ESP with an initial amplitude given by (2.12).
+    In fact, in many cases the amplitude of these oscillations will rapidly decrease due to
+the effect of parametric resonance, similar to the effects studied in the theory of preheating
+[1], and the field φ will fall swiftly towards the ESP. This important result will be described
+in more detail in §3.3.
+
+                                                    9
+      So far we have not incorporated the effects of scattering and decay of the χ particles.
+These could weaken the trapping potential (2.10) by reducing the number of χ particles.
+Specifically, the energy density ρχ contained in a fixed number of χ particles (2.10) grows
+at late times, since the χ mass increases as φ rolls away from the ESP. However, if the
+number density of χ particles decreases due to annihilation or decay into lighter modes,
+this mass amplification effect is lost. It is therefore important to determine the rate of
+decay and annihilation of the χ particles.
+      In Appendix B we address these issues and demonstrate that the trapping effect is ro-
+bust for certain parameter ranges, provided that the light states are relatively stable. This
+stability can easily be arranged in supersymmetric models, and in fact occurs automatically
+in certain D-brane systems.
+      Rescattering effects, in contrast, may actually strengthen the trapping effect. Once χ
+particles have been created, they will scatter off of the homogeneous φ condensate, causing
+it to gradually decay into inhomogeneous, decoherent φ excitations [1,26,27]. However, we
+will not consider this potentially beneficial effect here.
+
+
+2.3. The Example of Moving D-branes
+
+      Before proceeding, it may be illustrative to discuss these results in terms of a simple,
+mechanical example – a moving pair of D-branes. The moduli space of a system of two
+D-branes is the space of brane positions. In terms of the brane worldvolume fields the
+separation between the two branes can be regarded as a Higgs field φ. The off-diagonal
+components of the U (2) gauge field are the W bosons. At the ESP of this system, φ = 0,
+the W bosons are massless. Away from φ = 0 the W bosons acquire a mass by the Higgs
+mechanism, breaking the symmetry group from U (2) down to U (1) × U (1). If we identify
+χ with the W field3 and g 2 ∼ gY2 M ∼ gs with the string coupling, then we find that the
+brane worldvolume theory contains a term like (2.1). We therefore expect this system to
+exhibit moduli trapping.
+
+  3
+      For simplicity we ignore the superpartner of the χ boson.
+
+                                               10
+                              A                              time
+                                              B
+                                                       B A
+                                                                    B      A
+
+
+
+
+                      X
+                          0       B
+                                          A
+
+
+
+
+                                      1
+                                  X
+
+
+
+
+       Fig. 1: This figure illustrates the creation of open strings as two D-branes pass
+       near each other. The left corner shows the target space picture of the creation of
+       the open strings.
+
+
+    The trapping effect is a quantum correction to the motion of D-branes. As the D-
+branes approach each other, the open strings stretched between them become excited.
+When the D-branes pass by each other and begin moving apart the stretched open strings
+become massive and pull the D-branes back together. We depict this in fig. 1.
+    This effect can be a significant correction to the dynamics of any system with a
+number of mobile, mutually BPS D-branes. Consider, for example, N D3-branes which fill
+spacetime and are transverse to a compact six-manifold M . Let us take these branes to
+begin with small, random, classical velocities in M . The classical dynamics of this system is
+similar to that of a nonrelativistic, noninteracting, classical gas. When we include quantum
+production of light strings, the branes begin to trap each other, pairwise or in small groups,
+then gradually agglomerate until only a few massive clumps of many branes remain.
+    One interesting consequence is that such a system will tend to exhibit enhanced gauge
+symmetry, with gauge group U (N ) if the final state consists of a single clump. (Hubble
+friction may bring the branes to rest before the aggregation is complete, in which case
+the gauge group will be a product of smaller factors; we will address related issues in
+§4.1.) Another important effect of massive clumps is their gravitational backreaction: a
+
+                                                  11
+large cluster of D-branes will produce a warped throat region in M , which may be of
+phenomenological interest [28].
+      There are additional corrections to the classical moduli space approximation of the
+D-brane motion which come from velocity-dependent forces. These correspond in the
+D-brane worldvolume field theory to higher-derivative corrections generated by virtual
+effects. When this field theory is at weak ’t Hooft coupling, open string production is the
+dominant effect as one approaches an ESP. However, sufficiently large clusters of branes
+will be described by gauge theories at strong ’t Hooft coupling, where the dynamics of
+additional probe branes is governed instead by the analysis of [5].4
+      A similar interaction was studied in the context of the scattering of D0-branes in [22].
+There is a crucial difference between that system and the case of interest here, in which the
+branes are extended along 3 + 1 dimensions. In the D0-brane problem, there is a nontrivial
+probability for the D0-branes to pass by each other without getting trapped: because the
+D0-brane is pointlike, there is some probability for no open strings between them to be
+created or for those created to annihilate rapidly. This is the leading contribution to the
+S-matrix. In our case, there is always a nonzero number density of particles created. As
+we argue in Appendix B, for certain ranges of parameters these particles do not annihilate
+rapidly enough to prevent trapping.
+
+
+
+3. Moduli Trapping: Detailed Analysis
+
+      In the previous section we gave an intuitive explanation of the trapping effect, which
+we will now describe in more detail. In §3.1 we will present the equations of motion which
+govern the trajectory of the modulus φ, including the backreaction due to production of
+light particles. These equations are difficult to solve exactly, so in §3.2 we will integrate
+the system numerically. In §3.3 we focus on the special case µ = 0, where the modulus
+rolls directly through the ESP. In this case analytic techniques are available, and as we
+will see the trapping effect is considerably stronger than in the µ 6= 0 case. Even for µ 6= 0
+some aspects can be derived analytically in a perturbative expansion. This last case is
+somewhat technical, so we refer the reader to Appendix C for details.
+
+  4
+      A further correction to our dynamics could arise if, as we will discuss in §5, the branes keep
+moving until the system is beyond the range of effective field theory.
+
+                                                 12
+3.1. Formal Description of Particle Production Near an ESP
+
+      The full equations of motion are found by coupling the classical motion of φ to the
+time-dependent χ quantum field theory defined by (2.1).5
+      In general, the presence of an ESP will alter the moduli dynamics in two ways. First,
+any χ excitations produced by the mechanism described above will backreact on the classi-
+cal evolution of φ. In particular, as we saw in (2.10), a non-zero expectation value hχ2 i =
+                                                                                           6 0
+arising from particle production effectively acts like a linear potential for φ and drives the
+moduli towards the origin. This is the effect we wish to describe. Second, virtual χ parti-
+cles generate quadratic and higher-derivative contributions to the effective action as well
+as an effective potential for a spacetime-homogeneous φ.
+      As we discussed in §2.1, we can neglect the kinetic corrections in our weakly-coupled
+situation. The interaction in (2.1) also induces important radiative corrections to the
+effective potential. Specifically, it leads to a Coleman-Weinberg effective potential and
+three UV-divergent terms:
+
+                            Vef f (φ) = Λef f + g 2 m2ef f φ2 + g 4 λef f φ4 .                (3.1)
+
+These UV divergences could be subtracted by hand using appropriate counterterms. In a
+supersymmetric system these divergences are absent.
+      In order to isolate the effects of particle production at the order we are working, we will
+subtract by hand the entire Coleman-Weinberg effective potential for φ that is generated
+by one loop of χ particles. This mimics the effect of including extended supersymmetry,
+which is a toy case of interest in string theory and supergravity. For the more realistic
+N = 1 supersymmetry in four dimensions, radiative corrections do generically generate
+a nontrivial potential energy. Nevertheless, particle production effects can still dominate
+the virtual corrections to the potential after spontaneous supersymmetry breaking. The
+reason is that bosons and fermions contribute with opposite signs in loops, but on-shell
+bosons and fermions, such as those produced by the changing mass of χ, contribute with
+the same sign to backreaction on φ.
+      To describe the production of χ particles, we first expand the quantum field χ in terms
+of Fock space operators as
+                                                   ak χk + a†k χ∗k
+                                             X
+                                        χ=                                                    (3.2)
+                                               k
+
+  5
+      We remain in flat space quantum field theory, reserving gravitational effects for §4.
+
+                                                    13
+where the χk are a complete set of positive-frequency solutions to the Klein-Gordon equa-
+tion with mass
+                                             m2χ (t) = g 2 |φ(t)|2 .                            (3.3)
+
+Expanding in plane waves
+                                               χk = uk (t)eik·x                                 (3.4)
+
+the equation of motion is                                  
+                                     ∂t2 + k 2 + g 2 |φ(t)|2 uk = 0.                            (3.5)
+
+The modes (3.4) are normalized with respect to the Klein-Gordon inner product, which
+fixes
+                                             u∗k u̇k − u̇∗k uk = −i.                            (3.6)
+
+The wave equation (3.5) has two linearly-independent solutions for each k, so in general
+there will be many inequivalent choices of positive-frequency modes χk . Each such choice
+of mode decomposition defines a set of Fock space operators via (3.2), which in turn define
+a vacuum state of the theory. The wave equation depends explicitly on time, so there
+is no canonical choice of Poincaré invariant vacuum. Instead, there is a large family of
+inequivalent vacua for χ.
+        We can choose a set of positive frequency modes uin
+                                                         k that take a particularly simple
+form in the far past,
+                                                     Rt√
+                                1               −i         k2 +g 2 |φ(t′ )|2 dt′
+                uin
+                 k → q     p                   e                                   as t → −∞.   (3.7)
+                          2 k 2 + g 2 |φ|2
+
+This choice of mode decomposition defines a vacuum state |ini. In the far past the phases
+of the solutions (3.7) are monotone decreasing with t, indicating that the state |ini has no
+particles in the far past. This state, known as the adiabatic vacuum, evolves into a highly
+excited state as the modulus φ rolls past the ESP.
+        We can now write down the classical equation of motion for φ including the effects of
+χ production. Including a subtraction δM , to be determined shortly, it is
+
+                                                              
+                                        ∂ 2 + g 2 (hχ2 i − δM ) φ = 0.                          (3.8)
+
+The expectation value hχ2 i depends on time and is calculated in the adiabatic vacuum
+|ini. At time t
+                                                              d3 k in 2
+                                                       Z
+                                         2
+                                hin|χ (t)|ini =                   |u (t)| .                     (3.9)
+                                                             (2π)3 k
+
+                                                       14
+where the uin
+           k are determined by the boundary condition (3.7) in the far past.
+    In order to subtract the Coleman-Weinberg potential, we must remove the contribution
+to hχ2 i coming from one loop of χ particles, replacing the χ mass-squared with g 2 |φ(t)|2 .
+That is, the subtraction δM can be written as
+                                       d3 k       1
+                                   Z
+                             δM ≡           3
+                                              p           .                            (3.10)
+                                      (2π) 2 k + g 2 |φ|2
+                                                2
+
+With this form it is straightforward to see that when the impact parameter is very large,
+(hχ2 i − δM ) is negligible and φ follows its original trajectory (2.2).
+    To summarize, the effects of quantum production of χ particles on the classical motion
+of the modulus φ are governed by:
+                                                        
+                                  ∂ 2 + g 2 (hχ2 i − δM ) φ = 0
+                                                      
+                                ∂t2 + k 2 + g 2 |φ(t)|2 uin
+                                                          k = 0                        (3.11)
+                                              d3 k in 2
+                                        Z
+                            hχ2 (t)i =             |u (t)| .
+                                             (2π)3 k
+    The above equations of motion can be reformulated in terms of the energy transferred
+between the two systems. In particular, it is straightforward to show that the coupled
+equations (3.11) are equivalent to the statement
+                                  d          d
+                                     Hφ = − hin|Hχ |ini.                                (3.12)
+                                  dt         dt
+The left-hand side of (3.12) involves the classical energy of the rolling φ(t) fields, whereas
+the right hand side is an expectation value of the time-dependent χ Hamiltonian calculated
+in quantum field theory. This is the more precise form of energy conservation which applies
+to our rough estimate in §2.2.
+    Furthermore, the angular momentum on moduli space is conserved, since the action
+(2.1) is invariant under phase rotations φ → φeiθ . In the present case (2.1), the χ particles
+do not carry angular momentum, so the orbit of φ around the ESP will have fixed angular
+momentum. The result is an angular momentum barrier which keeps the modulus at a
+finite distance from the ESP.
+    More complicated scenarios allow for the exchange of angular momentum between φ
+and χ. This includes the case of colliding D-branes, where the strings stretching between
+the two D-branes can carry angular momentum. Moreover, as we will see in §4, the situ-
+ation changes once gravitational effects are included, as angular momentum is redshifted
+away by cosmological expansion. This leads to scenarios where the moduli are trapped
+exactly at the ESP, rather than orbiting around it at some finite distance.
+
+                                               15
+3.2. Moduli Trapping: Numerical Results
+    The coupled set of integral and differential equations (3.11) governing the trapping
+trajectory is hard to solve in general. Some analytic results can be obtained through an
+expansion in the non-adiabaticity parameter ω̇/ω 2 , combined with a systematic iteration
+procedure. Specifically, to the extent that this non-adiabaticity parameter is small enough
+that the correction to the motion of the moduli field only shows up at exponentially late
+times, we can calculate the bending angle and the energy loss during its first pass. This is
+given in Appendix C.
+    As time goes on, the mass amplification of the χ particles makes higher order terms
+as well as non-perturbative terms in the adiabatic expansion crucial for the motion of the
+moduli. This makes it very hard to proceed analytically to obtain the detailed evolution
+of the system.
+    We have numerically integrated the coupled equations (3.11) in Mathematica, using a
+discrete sum to approximate the momentum integral k, and implementing the subtraction
+of the Coleman-Weinberg potential described above.
+
+
+
+                                              1
+
+
+                                            0.5
+
+
+
+                   -2            -1                         1             2
+
+
+                                          -0.5
+
+
+                                             -1
+
+
+       Fig. 2: This figure shows the evolution, in the complex φ plane, of a system with
+       parameters g 2 = 20, µ = 0.3, v = 1. The field rolls in from the right and gets
+       trapped into the precessing orbit exhibited in the plot. The orbit is initially an
+       elongated ellipse, but gradually becomes more circular. In an expanding universe,
+       the field would lose its angular momentum, so that the radius of the circle would
+       eventually shrink to zero.
+
+
+
+    In fig. 2 we plot a trajectory for the case µ > 0, where φ becomes trapped in a
+spiral orbit around the ESP. The radius of the orbit varies with the parameters, but the
+qualitative features shown are typical.
+
+                                              16
+                    20
+
+                    10
+
+
+                                  100          200         300          400
+                   -10
+
+                   -20
+
+                   -30
+
+                   -40
+
+                   -50
+
+       Fig. 3: This shows one-dimensional trapping, in which φ passes directly through
+       the ESP φ = 0. The vertical axis is the real part of φ, and the horizontal axis
+       is time. The amplitude of the oscillations decreases exponentially as a result of
+       parametric resonance, as we explain in §3.3.
+
+
+
+    In fig. 3 we plot the trajectory of a modulus which is aimed to pass directly through
+an ESP, with vanishing impact parameter. In this case the motion becomes effectively
+one-dimensional, and the field moves directly through the ESP φ = 0. The trapping effect
+in this case is especially strong, and can be understood analytically to come from resonant
+production of χ particles, as we will now explain.
+
+
+3.3. The Special Case of One-Dimensional Motion
+
+    In this section we will concentrate on the interesting and important special case of
+one-dimensional motion, i.e. vanishing impact parameter µ. Perhaps surprisingly, this
+is a good approximation to the general case. Indeed, the results of §2 demonstrate that
+trapping becomes exponentially suppressed when the impact parameter µ (the imaginary
+                                               q                                 q
+                                                 v                                 v
+part of the moduli field) becomes greater than   πg . On the other hand, for µ ≪   πg
+                                            3 1/2
+the motion of the field φ stops at φ∗ ∼ 4πg 5/2
+                                             v
+                                                 . The ratio of φ∗ to µ in the regime where
+                                   q
+                                     v
+trapping is efficient (i.e. for µ < πg ) is therefore
+
+
+                                        φ∗   4π 7/2
+                                           >        .                                      (3.13)
+                                        µ     g2
+
+Thus, in the case of efficient trapping and weak coupling, the ellipticity of the moduli orbit
+is very high, so that the motion is effectively one-dimensional.
+
+                                              17
+     In the case µ = 0 the number density of χ particles created when the field φ passes
+the ESP is                                           3
+                                              (gv) 2
+                                         nχ =        .                                  (3.14)
+                                              (2π)3
+           q
+               v
+At |φ| ≫       g , when the χ particles are nonrelativistic, the mass of each particle is equal
+to g|φ|, and their energy density is given by [2]
+                                                         5
+                                                    g 2 v 3/2
+                                 ρχ (φ) = gnχ |φ| =           |φ|                       (3.15)
+                                                     (2π)3
+
+We have written |φ| because this energy does not depend on the sign of the field φ. This
+will be very important for us in what follows.
+     One should note that, strictly speaking, the χ particles have some kinetic energy even
+at φ = 0, but for g ≪ 1 this energy is much smaller than the kinetic energy of φ [2]:
+
+                                             g2 v2      g2
+                             ρχ (φ = 0) ∼            =       ρkin .                     (3.16)
+                                            4π 7/2 2   4π 7/2 φ
+
+This means that the energy of φ decreases only slightly when it passes through the ESP
+φ = 0. Although the initial energy in χ particles is small, this energy increases with |φ|,
+ρχ ∼ gnχ |φ|, and creates an effective potential for φ. The equation of motion for φ in this
+potential is [1]:
+                                                   φ
+                                       φ̈ + gnχ       =0.                               (3.17)
+                                                  |φ|
+The last term means that φ is attracted to the ESP φ = 0 with a constant force proportional
+to nχ .
+     At some location φ∗1 the χ energy density ρχ equals the initial kinetic energy density
+1 2
+2
+  φ̇ ≡ 12 v 2 ; at this point φ stops and then falls back toward φ = 0.
+     On this second pass by the origin, the energy density of the χ particles again becomes
+much smaller than the kinetic energy of φ. Energy conservation implies that φ will pass
+the point φ = 0 at almost exactly the initial velocity v. Since the conditions are almost the
+same as on the first pass, new χ particles will be created, i.e. nχ will increase. The field
+φ will continue moving for a while, stop at some point φ∗2 , and then fall back once more
+to the ESP, creating more particles. Because each new collection of particles is created
+in the presence of previous generations of particles, the process occurs in the regime of
+parametric resonance, as in the theory of preheating.
+
+                                               18
+    A detailed theory of this process was considered in [1]; see in particular Eqs. (59),(60).
+By translating the problem into a one-dimensional quantum mechanics system (as in Ap-
+pendix A) with a particle scattering repeatedly across an inverted harmonic potential,
+[1] calculated the multiplicative increase of the Bogoliubov coefficients during each pass
+in terms of the reflection and transition amplitudes. In application to our problem, the
+equations describing the occupation numbers of χ particles with momentum k produced
+when the field passes through the ESP j + 1 times look as follows:
+
+                                    nj+1
+                                     k   = njk exp(2πµjk ),                            (3.18)
+
+where
+                           1            2               π 2
+                                                             p         
+                  µjk =      ln 1 + 2e−πξ − 2 sin θ j e− 2 ξ  1 + e−πξ2 .              (3.19)
+                          2π
+             2
+           k
+Here ξ 2 = gv and θ j is a relative phase variable which takes values from 0 to 2π. In a
+cyclic particle creation process in which the parameters of the system change considerably
+during each oscillation (which is our case, as will become clear shortly), the phases θ j
+change almost randomly. As a result, the coefficient µj for small k takes different values,
+from 0.28 to −0.28, but for 3/4 of all values of the angle θ j the coefficient µj is positive.
+The average value of µj is approximately equal to 0.15. This means that, on average, the
+number density of χ particles grows by approximately a factor of two or three each time
+that φ passes through the ESP φ = 0.
+    But this means that with each pass, the coefficient nχ in (3.15) grows by a factor
+of two or three. It follows that the effective potential becomes two to three times more
+steep with each pass. Correspondingly, the maximal deviation |φ∗i | from the point φ = 0
+exponentially decreases with each new oscillation. Since the velocity of the field at the
+point φ = 0 remains almost unchanged until φ loses its energy to the created particles, the
+duration of each oscillation decreases exponentially as well. Therefore the whole process
+takes a time O(10)φ∗1 /v, after which the backreaction of the created particles becomes
+important, and the field falls to the ESP.
+    This process is very similar to the last stages of preheating, as studied in [1]. The
+main difference is that in the simplest models of preheating the field oscillates near the
+minimum of its classical potential. In our case the effective potential is initially absent,
+but a potential is generated due to the created particles. This is exactly what happens at
+the late stages of preheating, when the effective potential (with an account taken of the
+
+                                              19
+produced particles) becomes dominated by the rapidly-growing term proportional to |φ|;
+see the discussion in Section VIII B of [1].
+    We would like to emphasize that until the very last stages of the process, the backre-
+action of the created particles can be studied by the simple methods described above. At
+this stage the total number of created particles is still very small, but their number grows
+exponentially with each new oscillation. This leads to an exponentially rapid increase of
+the steepness of the potential energy of the field φ (3.15) and, correspondingly, to an expo-
+nentially rapid decrease of the amplitude of its oscillations. This extremely fast trapping
+of φ happens despite the fact that at this first stage of oscillations the total energy of φ,
+including its potential energy, remains almost constant.
+    Once the amplitude of oscillations becomes smaller than the width of the nonadi-
+                                p
+abaticity region, |φ(t)| <
+                         ∼ ∆φ ∼    v/g, one can no longer assume that the number of
+particles will continue to grow via a rapidly-developing parametric resonance. The ampli-
+                                        v2
+                                                                           p
+tude of the oscillations is given by 2g|φ|nχ
+                                             , so the amplitude becomes O(  v/g) when the
+total number of the produced particles grows to
+
+                                      nχ ∼ v 3/2 g −1/2 .                             (3.20)
+                                                            p
+Note that the typical energy of each χ particle at |φ(t)| ∼ v/g is of the same order as
+                     √
+its kinetic energy O( gv). One can easily see that the total energy density of particles χ
+                        √
+at that stage is roughly gvnχ ∼ O(v 2 ), i.e. it is comparable to the initial kinetic energy
+of φ.
+    Thus, our estimates indicate that the regime of the broad parametric resonance ends
+when a substantial part of the initial kinetic energy of φ is converted to the energy of the
+χ particles, and the amplitude of the oscillating field φ becomes comparable to the width
+of the nonadiabaticity region,
+                                                    p
+                                    |φ| ∼ ∆φ =       v/g .                            (3.21)
+
+    We will use these estimates in our discussion of the cosmological consequences of
+moduli trapping. In order to obtain a more complete and reliable description of the
+last stages of this process one should use lattice simulations, taking into account the
+rescattering of created particles [26,27]. An investigation of a similar situation in the
+theory of preheating has shown that rescattering makes the process of particle production
+more efficient. This speeds up the last stages of particle production and leads to a rapid
+decay of the field φ [29], which in our case corresponds to a rapid descent of φ toward the
+enhanced symmetry point.
+
+                                               20
+4. Trapped Moduli in an Expanding Universe
+
+4.1. Rapid Trapping
+
+    In this section we will study the conditions under which the trapping mechanism in
+quantum field theory survives the effects of coupling to gravity in an expanding universe.
+    First, we should point out one very beneficial effect of cosmological expansion. The
+field-theoretic mechanism presented above often leads to moduli being trapped in large-
+amplitude fluctuations (2.12) around an ESP when µ 6= 0. On timescales where the
+expansion is noticeable, Hubble friction will naturally extract the energy from this motion,
+drawing the modulus inward and leading the modulus to come to rest at the ESP.
+    Let us now ask whether the expansion of the universe can impede moduli trapping.
+Consider a system of moduli coupled to gravity, with the fields arranged to roll near an
+ESP. For simplicity we will consider FRW solutions with flat spatial slices,
+
+
+                                    ds2 = dt2 − a(t)2 d~x2 .                            (4.1)
+
+
+The Friedman equation determining a(t) is
+
+                                                    1
+                                        3H 2 =         ρ                                (4.2)
+                                                   Mp2
+
+where H = ȧ/a and ρ is the energy density of the moduli.
+    The trapping effect will be robust against cosmological expansion if the timescale
+governing trapping is short compared to H −1 , i.e. if H ≪ v/φ∗ , where φ∗ is given by
+(2.12). Assuming that the potential energy of the moduli is non-negative, this implies that
+
+
+                               √             4π 3 v 1/2 πgµ2 /v
+                        φ∗ ≪       6Mp →                 e      ≪ 1.                    (4.3)
+                                           61/2 g 5/2 Mp
+
+This condition suffices to ensure that trapping is very rapid.
+    If this condition is satisfied, trapping occurs in much less than a Hubble time, in which
+case the analysis of §2 and §3 remains valid. We will show in §4.3 that even when (4.3) is
+not satisfied, trapping does still occur, although with somewhat different dynamics.
+
+                                              21
+4.2. Scanning Range in an Expanding Universe
+
+    An important effect of the gravitational coupling is that during the expansion of the
+universe, the energy density in produced χ particles dilutes like 1/a3 if they are non-
+relativistic and like 1/a4 if they are relativistic. The energy in coherent motion of φ,
+however, has the equation of state p = ρ and therefore dilutes much faster, as 1/a6 .
+    This effect reduces the range of motion for the moduli even before they encounter any
+ESPs. Hubble friction slows the progress of any rolling scalar field, and if the distance
+between ESPs is sufficiently large then a typical rolling modulus will come to rest without
+ever passing near an ESP. In order to apply our results to the vacuum selection problem,
+we will need to know how large a range of φ we can scan over in the presence of Hubble
+friction. This can be obtained as follows [30].
+    If we are in an FRW phase,
+                                        a(t) = a0 tβ                                    (4.4)
+
+then the equation of motion for φ (ignoring any potential terms)
+
+                                       φ̈ + 3H φ̇ = 0                                   (4.5)
+
+has solutions of the form                                3β
+                                                     t0
+                                     φ̇(t) = v                     .                    (4.6)
+                                                      t
+We can integrate this to determine how far the field rolls before stopping.
+    Let us first consider the case β = 1/3, which corresponds to the equation of state
+p = ρ. This includes the case where the coherent, classical kinetic energy of φ drives the
+expansion. The value of φ,                                        
+                                                               t
+                                    φ(t) = vt0 log                                      (4.7)
+                                                              t0
+diverges at large t. Thus φ can travel an arbitrarily large distance in moduli space.
+    In the more general case β > 1/3 the field will travel a distance
+
+                                                   v       β
+                               φ(t) − φ(t0 ) =                                          (4.8)
+                                                  H(t0 ) 3β − 1
+before stopping.
+    In order to be in a phase with β > 1/3, the kinetic energy of φ must not be totally
+dominant; that is, we must have 21 φ̇2 < ρ, where ρ ≡ 3Mp2 H 2 is the total energy density
+
+                                             22
+appearing on the right hand side of the Friedman equation. Plugging this into (4.8) we
+obtain the constraint
+                                                 √           β
+                               φ(t) − φ(t0 ) <       6Mp          .                       (4.9)
+                                                           3β − 1
+     Let us consider a specific example. Suppose that we start at t0 with kinetic energy
+domination: K0 /ρ0 = 1 − ǫ, ǫ ≪ 1, in some region of the universe that can be modelled as
+an expanding FRW cosmology. The kinetic energy drops like K ∼ ρ0 (a0 /a)6 ∼ ρ0 (t0 /t)2 ,
+while the other components of the energy dilute like
+
+                                    ρ(t) = ǫρ0 (t0 /t)1+w ,                           (4.10)
+
+with w < 1. The universe will stop being kinetic-energy dominated at the time tc =
+t0 ǫ−1/(1−w) , at which point, according to (4.7), the modulus has travelled a distance
+
+                                                      1
+                             φ(tc ) − φ(t0 ) = −         vt0 log ǫ.                   (4.11)
+                                                     1−w
+
+After this the field keeps moving and covers an additional range
+
+                                                 √             2
+                             φ(t∗ ) − φ(tc ) =       3Mp            .                 (4.12)
+                                                           3(1 − w)
+
+     To get a feel for the numbers, consider the case where vt0 ∼ Mp , ǫ ∼ 10−2 , and
+w = 0. Then φ will travel a total distance φ(t∗ ) − φ(t0 ) ∼ 6Mp in field space, which is not
+particularly far. However, as we will discuss in §6, certain moduli spaces of interest have
+a rich structure on sub-Planckian scales, so in these cases there is a good chance that the
+modulus will encounter an ESP and get trapped before Hubble friction brings the system
+to rest.
+     There is another natural possibility if we assume low-energy N = 1 supersymmetry.
+If the moduli acquire their potentials from supersymmetry breaking then there is a large
+ratio between the Planck scale and the scale of these potentials, leading to significant
+scanning ranges. Specifically, consider a contribution to the energy density coming from
+a potential energy V at the supersymmetry-breaking scale. If the initial kinetic energy of
+the moduli is Planckian and the supersymmetry-breaking scale is TeV then there will be a
+prolonged phase in which kinetic energy dominates, since ǫ = V /Mp4 ∼ 10−64 . This allows
+φ to scan a significantly super-Planckian range in field space.
+
+                                              23
+4.3. Trapping in an Expanding Universe
+
+    We are now in a position to combine all the relevant effects and consider trapping
+during expansion of the universe. For simplicity, we will concentrate on the case of ef-
+                                      p
+fectively one-dimensional motion, µ ≪ v/g. Suppose that, taking into account Hubble
+friction, the modulus field passes in the vicinity of the ESP at some moment t0 , so that
+                                                   3/2
+χ particles are produced, with nχ (t0 ) = (gv)
+                                           (2π)3 . We will now determine the remaining
+evolution including both our trapping force and Hubble friction. After the particles have
+been produced, the field φ becomes attracted toward φ = 0 by a force gnχ , so taking into
+account the dilution of the produced particles, for φ > 0 the equation of motion is
+                                                                     3
+                                                             a(t0 )
+                              φ̈ + 3H φ̇ = −gnχ (t0 )                                     (4.13)
+                                                             a(t)
+
+For the general power law case, a(t) ∝ tβ , this becomes
+
+                                     β
+                               φ̈ + 3 φ̇ = −gnχ (t0 )(t0 /t)3β .                          (4.14)
+                                     t
+
+The general solution of this equation is
+
+                                                  gnχ (t0 )t20   gnχ (t0 )
+        φ(t) = φ(t0 ) + c(t−3β+1
+                           0     − t−3β+1 ) +                  −           (t0 /t)3β t2   (4.15)
+                                                  (2 − 3β)       (2 − 3β)
+
+where c is some constant. In the important case β = 2/3, which corresponds to a universe
+dominated by pressureless cold matter, the general solution is
+
+                                                                            t
+                          φ = φ(0) + c(t−1
+                                        0 −t
+                                             −1
+                                                ) − gnχ t20 log               .           (4.16)
+                                                                           t0
+
+According to these solutions, in a universe dominated by matter with non-negative pressure
+(i.e. β ≤ 2/3) the field φ moves to −∞ as t → ∞.
+    Of course, as soon as the field reaches the point φ = 0, this solution is no longer
+applicable, since the attractive force changes its sign (the potential is proportional to |φ|).
+The result above simply means that the attractive force is always strong enough to bring
+the field back to the point φ = 0 within finite time. Then the field moves further, with
+ever decreasing speed, turns back again, and returns to φ = 0 once again. The amplitude
+of each oscillation rapidly decreases due to the combined effect of the Hubble friction and
+of the (weak) parametric resonance. This means that once φ passes near the ESP, its fate
+is sealed: eventually it will be trapped there.
+
+                                              24
+4.4. Efficiency of Trapping
+
+    It is useful to determine what fraction of all initial conditions for the moving moduli
+lead to trapping. There are several constraints to be satisfied. First of all, if the impact
+                                 p
+parameter µ is much larger than v/g, the number of produced particles will be expo-
+nentially small, and the efficiency of trapping will be exponentially suppressed. Of course,
+eventually φ will fall to the enhanced symmetry point, but if this process takes an expo-
+nentially large time, the trapping effect will be of no practical significance. Thus one can
+                                                                          p
+roughly estimate the range of interesting impact parameters to be O( v/g).
+    Another constraint is related to the fact that even if initially the energy density of the
+universe was dominated by the moving moduli, as discussed in §4.2, these fields can only
+move the distance given by (4.11),(4.12). This distance depends on the initial ratio 1 − ǫ
+of kinetic energy to total energy, leading to a scanning range CMp in field space, where
+the prefactor C is logarithmically related to ǫ.
+     Thus, the field becomes trapped only if there is an enhanced symmetry point inside a
+                                                                               p
+rectangle with sides of length CMp along the direction of motion and width O( v/g) in
+the direction perpendicular to the motion.
+    Interestingly, the total area (phase space) of the moduli trap
+
+                                                       v
+                                                   r
+                                     Strap ∼ CMp                                       (4.17)
+                                                       g
+
+increases as the coupling decreases. This implies that the efficiency of trapping grows at
+weak coupling. Although this may seem paradoxical, it happens because the mass of the
+χ particles is proportional to the coupling constant and (fixing the other parameters) it is
+easier to produce lighter particles. On the other hand, if g becomes too small, the trapping
+force gnχ ∼ g 5/2 v 3/2 becomes smaller than the usual forces due to the effective potential,
+which we assumed subdominant in our investigation.
+    So far we have studied the simplest model where only one scalar field becomes massless
+at the enhanced symmetry point. Let us suppose, however, that N fields become massless
+at the point φ = 0. If these fields interact with φ with the same coupling constant g,
+then particles of each of these fields are produced, and the trapping force becomes N times
+stronger. In other words, the trapping force is proportional to the degree of symmetry at
+the ESP.
+
+                                             25
+5. String Theory Effects
+
+      It is interesting to ask if there is any controlled situation where string-theoretic effects
+become important for moduli trapping. Here we will simply list several circumstances
+in which stringy and/or quantum gravity effects can come into play, as well as some
+constraints on these effects, leaving a full analysis of this subtle and interesting situation
+for the future.
+
+5.1. Large χ Mass
+
+      One way stringy and quantum gravity effects could become important in the colliding
+D-brane case is if the χ mass at the turnaround point is greater than string scale, gφ∗ > ms .
+This can happen even if the velocity is so small that during the non-adiabatic period near
+the origin only unexcited stretched strings are created. Then, as in our above field theory
+analysis, we have
+                                              4π 3 1/2 πgµ2 /v
+                                      gφ∗ =         v e        .                              (5.1)
+                                              g 3/2
+In this case, the full system includes modes, namely the created χ strings, which are
+heavier than the string oscillator mode excitations on the individual branes. This means
+that the system as a whole cannot consistently be captured by pure effective field theory.
+However, it may still happen that the created stretched strings are relatively stable against
+annihilation or decay into the lighter stringy modes. Their annihilation cross section is
+suppressed by their large mass, as discussed in Appendix B.6 Furthermore, an individual
+stretched string will not directly decay if it is the lightest particle carrying a conserved
+charge.
+      This latter situation happens in the simplest version of a D-brane collision. The
+created stretched string cannot decay into lighter string or field theory modes because it
+is charged and they are not.
+
+5.2. Large v and the Hagedorn Density of States
+
+      If we increase the field velocity φ̇ = v, then we may obtain a situation in which excited
+string states are produced as φ passes the ESP. The number of string states produced in
+
+  6
+      For stringy densities of stretched strings, there could be additional corrections to the anni-
+hilation rate, but we will not consider this possibility.
+
+                                                  26
+this process is enhanced by the Hagedorn density of states, so the Bogoliubov coefficients
+have the structure
+                                               √
+                                        X        n         2         2   2   2
+                             |βk |2 =        e 2π 2 e−π(k +nms +g µ )/(gv)
+                                                √
+                                                                                                      (5.2)
+                                        n
+                                        √
+where in the D-brane context, g =           gs is the Yang-Mills coupling on the D-branes. Because
+       −πnm2s /(gv)
+of the e              suppression in the second factor, this effect is only significant if gv ≫ m2s .
+     However, in the case of colliding D-branes, and any situation dual to it, there is a
+fundamental bound on the field velocity from the relativistic speed limit of the branes.
+That is, for large velocity one must include the full Dirac-Born-Infeld Lagrangian for φ,
+which takes the form
+                                                                 s
+                                       1                                         φ̇2
+                                                     Z
+                               S=−                        d4 x       1 − g2          .                (5.3)
+                                   (2π) gs α′2
+                                       3                                         m4s
+
+This action governs the nontrivial dynamics of φ for velocities approaching the string scale,
+and in particular, it reflects the fact that the brane velocity g φ̇α′ must be less than the
+speed of light in the ambient space. Applied to our situation, (5.3) implies that the D-
+brane velocity cannot be large enough for the Hagedorn enhancement (5.2) to substantially
+increase the trapping effect.
+     However, in the presence of a large velocity, the effective mass of the stretched string
+also has important velocity-dependent contributions [5].                          This may enhance the non-
+adiabaticity near the origin and thus enhance the particle production effect. If anything,
+we expect this to increase the trapping effect; it would be interesting to study this case
+further. As we discuss at the end of Appendix A, by using unitarity combined with the
+stringy calculations in [23], it might be possible to determine the net result of all these
+effects on the stringy trapping mechanism. It would be interesting if, taking into account
+all relevant quantum effects, a large contribution to string production occurred in some
+controlled setting, as suggested in [31,32,33]. If such an effect occurred for motion near
+an ESP, it would apparently enhance the trapping effect and possibly even indicate that φ
+slows down enormously before passing through the origin, as occurred in the case studied
+in [5]. However, it would be important to check for control of the quantum corrections to
+such a system.
+
+                                                     27
+5.3. Light Field-Theoretic Strings
+
+    A further possibility is to formally reduce the tension of strings by considering strings
+in warped throats, strings from branes partially wrapped on shrinking cycles, and the
+like. In these situations, the strings are essentially field-theoretic, though string theory
+techniques such as AdS/CFT and “geometric engineering” of field theories may provide
+technical help in analyzing the situation.
+
+
+
+6. The Vacuum Selection Problem
+
+    We can now apply the ideas of the previous five sections to the cosmology of theories
+with moduli.
+    A natural application of the moduli trapping effect is to the problem of vacuum
+selection. One mechanism of vacuum selection is based on the dynamics of light scalars
+during inflation. Moduli fields experience large quantum fluctuations during inflation and
+can easily jump from one minimum (or valley) of their effective potential to another. It
+was suggested long ago that such processes may be responsible, e.g., for the choice of
+the vacuum state in supersymmetric theories [34] and for the smallness of the cosmological
+constant [35]. The probability of such processes and the resulting field distribution depends
+on the details of the inflationary scenario and the structure of the effective potential [36].
+    The mechanism that we consider in this paper is, in a certain sense, complementary
+to the inflationary mechanism discussed above. During inflation the average velocities of
+the fields are very small, but quantum fluctuations tend to take the light scalar fields away
+from their equilibrium positions. On the other hand, after inflation, the fields often find
+themselves not necessarily near the minima of their potentials or in the valleys correspond-
+ing to the flat directions, but on a hillside. As they roll down, they often acquire some
+speed along the valleys, see e.g. [3]. At this stage (as well as in a possible pre-inflationary
+epoch) the moduli trapping mechanism may operate.
+    This mechanism may reduce the question of how one vacuum configuration is selected
+dynamically out of the entire moduli space of vacua to the question of how one ESP is
+selected out of the set of all ESPs. This residual problem is much simpler because ESPs
+generically comprise a tiny subset of the moduli space.
+
+                                              28
+6.1. Vacuum Selection in Quantum Field Theory
+
+     In pure quantum field theory, discussed in §2, we saw that if a scalar field φ is initially
+aimed to pass near an ESP, then φ gets drawn toward the ESP and is ultimately trapped
+there. This appears to be a basic phenomenon in time-dependent quantum field theory:
+moduli which begin in a coherent classical motion typically become trapped at an ESP.
+This leads to a dynamical preference for ESPs.
+     In many of the supersymmetric quantum field theories that have been studied rig-
+orously [7], the moduli space contains singular points at which light degrees of freedom
+emerge. We have seen that moduli can become trapped near these points given suitable
+initial conditions.
+
+6.2. Vacuum Selection in Supergravity and Superstring Cosmology
+
+     Compactifications of M/string theory which have a description as a low energy effective
+supersymmetric field theory can have a natural separation of scales: the string or Planck
+scale can be much larger than the energy scales in the effective field theory potential. Thus,
+the intrinsically stringy effects of §5 are unimportant in this limit. On the other hand, the
+effects of coupling to gravity given in §4 continue to provide a crucial constraint, as we will
+now discuss.
+     First of all, as in the case of pure quantum field theory, there exist very instructive
+toy models with extended supersymmetry, for which there is no potential at all on the
+moduli space. For these examples, in situations where higher-derivative corrections to
+the effective action are suppressed, a rolling scalar field has the equation of state p = ρ.
+This corresponds to the β = 1/3 case (4.7) of §4, for which one can scan an arbitrarily
+large distance in field space. Therefore, in this case, the trapping effect applies in a
+straightforward way to dynamically select the ESPs for regimes in which (4.3) is also
+satisfied.
+     More generally, however, one may wish to implement cosmological trapping in theories
+with some potential energy. In this case the requirement that the scanning range of φ (as
+constrained by Hubble friction in §4) should be large enough to cover multiple vacua is
+an important constraint. The absolute minimum requirement is that the scanning range
+is sufficient for the moduli to reach one ESP before stopping from Hubble friction; but to
+address the vacuum selection problem one should ideally scan a number of ESPs.
+     One context in which this can happen is in a phase in which the kinetic energy of the
+rolling scalar fields dominates the energy density of the universe so that the β = 1/3 result
+
+                                              29
+(4.7) applies. This may occur in a pre-inflationary phase in some patches of spacetime,
+though it is subject to the stringent limitation in duration given in (4.11). Given such a
+phase, the field will roll around until it gets trapped at an ESP.
+    During the ordinary radiation-dominated (β = 1/2) and matter-dominated (β = 2/3)
+eras, the more stringent constraint (4.9) applies. As we indicated in §4, this scanning range
+is not large in Planck units, so we can usefully apply moduli trapping to the problem of
+vacuum selection in these eras only if the vacuum has appropriately rich structure on
+sub-Planckian scales. In other words, the average distance in moduli space between ESPs
+should be sub-Planckian.
+    Gravitationally-coupled scalars φ generically have a potential energy V (φ/Mp ) which
+has local minima separated by Planck-scale distances. In this cases, the limited scanning
+range during the β 6= 1/3 cosmological eras prevents our mechanism from addressing the
+vacuum selection problem. However, it is generic for compactification moduli to have
+special ESPs where the gravitationally-coupled system is enhanced to a system with light
+field theory degrees of freedom. Given a rich enough effective field theory in this ESP
+region, there will generically be interesting vacuum structure on sub-Planckian distances.
+In this sort of region moduli trapping will pick out the ESP vacua of the system.
+
+6.3. Properties of the Resulting Vacua
+
+    Let us now consider the qualitative features of the vacua selected by moduli trapping,
+assuming that the constraint imposed by Hubble friction has been evaded in one of the
+ways described above.
+    First of all, it is important to recognize that what we have called ESPs may well be
+subspaces of various dimensions, not points. For example, in toroidal compactification of
+the heterotic string, there is one enhanced symmetry locus for each circle in the torus – new
+states appear when the circle is at the self-dual radius. Each of these loci is codimension
+one in the moduli space, but of course their intersections, where multiple radii are self-dual,
+have higher codimension.
+    When moduli trapping acts in such a system of intersecting enhanced symmetry loci,
+we expect that the moduli will first become trapped on the locus of lowest codimension,
+but retain some velocity parallel to this locus. Further trapping events can then localize
+the modulus to subspaces of progressively higher codimension. The final result is that the
+moduli come to rest on a locus of maximally enhanced symmetry.
+
+                                              30
+      The simplest examples of this phenomenon are toroidal compactification, in which all
+circles end up at the self-dual radius, and the system of N D-branes discussed in §2.3, in
+which the gauge symmetry is enhanced to U (N ).7
+      Quite generally, we expect that within the accessible range in field space, taking into
+account Hubble friction and the form of the potential, moduli trapping will select the ESPs
+with the largest number of light states, which often corresponds to the highest degree of
+symmetry.8
+      In some very early epoch the rolling moduli can have large velocities, so trapping
+can occur even at points where the “light” states χ have a relatively large mass, and the
+enhanced symmetry is strongly broken. However, Hubble friction inevitably slows the
+motion of the moduli. Thus, trapping at late times is possible only at ESPs with weakly-
+broken symmetries and very light particles. One could speculate about a possible relation
+of this fact to the mass hierarchy problem.
+      Note that even though we emphasized the natural role of enhanced symmetry in
+moduli trapping, in fact the only strict requirement was the appearance of new light
+particles at the trapping points. In some of the many vacua of string theory, particles may
+be light not because of symmetry but because of some miraculous cancellations. Invoking
+such unexplained cancellations to produce a small mass is highly undesirable. However,
+moduli trapping may ameliorate this problem, as those rare points in moduli space where
+the cancellation does happen are actually dynamical attractors.
+      Thus, the attractive power of symmetry and of light particles may have implications
+for questions involving the distribution of vacua in string theory [37,38,39,40]. Given the
+strong preference we have seen for highly-enhanced symmetry, the distribution of all string
+vacua obtained by a naive counting, weighted only by multiplicity, may be quite different
+from the distribution of vacua produced by the dynamical populating process discussed in
+our paper. It is therefore very tempting to speculate that some of the surprising properties
+of our world, which might seem to be due to pure chance or miraculous cancellations, in
+fact may result from dynamical evolution and natural selection.
+                                                                                          2
+  7
+      A toy model for this situation, in the case of three D-branes, has the potential g2 χ21 |φ2 −
+                                                                                              
+                                         
+φ3 |2 + χ22 |φ1 − φ3 |2 + χ23 |φ1 − φ2 |2 , where φi and χi are six different fields. Suppose that φ2
+moves through the point φ2 − φ3 = 0. This creates χ1 particles and traps the system at φ2 = φ3 ,
+where χ1 is massless. Subsequent motion of φ1 can trap it at the point φ1 = φ2 = φ3 , making the
+remaining fields χ2 and χ3 massless.
+  8
+    Moreover, as we discuss in Appendix B, the trapping effect is far more effective at ESPs for
+which the χ particles do not decay rapidly. We therefore expect moduli trapping to select ESPs
+which have relatively stable light states.
+
+                                                 31
+7. The Moduli Problem
+
+    One aspect of the moduli problem is that reheating and nucleosynthesis can be cor-
+rupted by energy locked in oscillations of the moduli. The source of the problem is that
+the true minima of the low-temperature effective potential applicable after inflation do
+not coincide with the minima of the Hubble-temperature effective potential which is valid
+during inflation. It follows that moduli which sit in minima of the latter during inflation
+will find themselves displaced from their true, low-temperature minima once inflation is
+complete. The energy stored in this displacement, and in the resulting oscillations about
+the true minimum, poses problems for nucleosynthesis.
+    One way to address this problem is to permit initial displacements of the moduli, as
+described above, but somehow arrange that the oscillating moduli decay very rapidly to
+Standard Model particles. Alternatively, one could fix the moduli at a scale high enough
+that the Hubble temperature during inflation does not destabilize them. This may work
+in string models with stabilized moduli such as [38,41,39,42].
+    Another approach to this problem [11] is to posit that the moduli sit at an enhanced
+symmetry point minimum of the finite-temperature effective potential during inflation.
+Then, when inflation ends, the moduli are still guaranteed to be at an extremum of the
+effective potential. If this extremum is a minimum then the moduli have no problematic
+oscillations after inflation. Our trapping mechanism allies nicely with this idea by providing
+a preinflationary dynamical mechanism which explains the initial condition assumed in this
+scenario. That is, in parts of the universe where φ kinetic energy dominates well before
+inflation, the trapping effect can explain why the moduli find themselves in ESP minima
+at the onset of inflation.
+
+
+8. Trapped Inflation and Acceleration of the Universe
+
+    The main motivation of our investigation was to study the behavior of moduli in
+quantum field theory and string theory. However, the results we have obtained have more
+general applicability. To give an example, in this section we will study the cosmological
+implications of the trapping of a scalar field φ with a relatively steep potential.
+    Consider the theory of a real scalar field φ with the effective potential m2 φ2 /2. In
+the regime φ < Mp the curvature of the effective potential is greater than H 2 , with H
+the Hubble parameter, so φ falls rapidly to its minimum, and inflation does not normally
+occur.
+
+                                             32
+       We will assume that φ gives some bosons χ a mass g|φ − φ1 |. Let us assume that φ
+falls from its initial value φ0 = φ1 (1 + α) < Mp with vanishing initial speed. If we take
+α ≪ 1 and neglect for the moment the expansion of the universe, then φ arrives at φ1 with
+                √
+the velocity v = 2α mφ1 .
+       As φ passes φ1 , it creates χ particles with number density nχ = (gv)3/2 /8π 3 . After a
+very short time these particles become nonrelativistic, and further motion of φ away from
+φ1 requires an energy g|φ − φ1 |nχ . In other words, the effective potential becomes
+
+                             1 2 2                  1             v 3/2
+                   V (φ) ≈     m φ + gnχ |φ − φ1 | = m2 φ2 + g 5/2 3 |φ − φ1 |.           (8.1)
+                             2                      2             8π
+             3/2
+For g 5/2 8πv 3 m2 > φ1 , the minimum of the effective potential is not at φ = 0, but at the
+                                                                             3/2
+point φ1 , where the particle production takes place. The condition g 5/2 8πv 3 m2 > φ1 implies
+that
+                                       m < 2−9/2 π −6 g 5 α3/2 φ1 .                       (8.2)
+
+Thus, if the mass of φ is sufficiently small, the field will be trapped near the point φ1 .
+       To give a particular example, take φ1 ∼ Mp /2, α ∼ 1/4. Then φ is trapped near φ1 if
+
+                                           m < 10−6 g 5 Mp .                              (8.3)
+
+For a very light field, such as a modulus with m ∼ 102 GeV ∼ 10−16 Mp , this condition is
+readily satisfied unless g is very small.
+       Once the field is trapped, it starts oscillating around φ1 with ever-decreasing am-
+plitude, creating new χ particles in the regime of parametric resonance. Eventually φ
+transfers a large fraction of its energy to χ particles. One can easily check that in this
+model the fall of φ to the point φ1 and the subsequent process of creation of χ particles
+occurs within a time smaller than H −1 , so one can neglect expansion of the universe at
+this stage. This process is therefore governed by the theory described in §3. In particular,
+we may use the estimate (3.20) of the total number of χ particles produced in the process.
+At the end of the particle production, the correction to the effective potential becomes
+much larger than at the beginning of the process:
+
+                               ∆V = g|φ − φ1 |nχ ∼ v 3/2 g 1/2 |φ − φ1 | ,                (8.4)
+
+       Subsequent expansion of the universe dilutes the density of χ particles as a−3 , which
+eventually makes the correction to the effective potential small, so that φ starts moving
+
+                                                   33
+down again. The field φ remains trapped at φ = φ1 until the scale factor of the universe
+grows by a factor
+                                                          1/6
+                                          1/4        gφ1
+                                    a∼α                                                  (8.5)
+                                                      m
+since the beginning of the trapping process.
+     In the beginning of the first e-folding, the kinetic energy of the χ particles and of
+the oscillations of φ is comparable to the potential energy of φ. However, the kinetic
+energy rapidly decreases, and during the remaining time the energy is dominated by the
+potential energy V (φ1 ). This means that the trapping of φ may lead to a stage of inflation
+or acceleration of the universe, even if the original potential V (φ) is too steep to support
+inflation.
+     Let us consider various possibilities for the scales in the potential, to get some simple
+numerical estimates for the duration of inflation. For example, if we take α, g = O(1),
+φ1 ∼ Mp and m ∼ 102 GeV, then the scale factor during a single trapping event will
+grow by a factor of e6 . If one considers a model with m ∼ 10−30 Mp , which can arise in a
+radiatively stable manner (as in the “new old inflation” model [17]), the scale factor during
+a single trapping event can grow by a factor of e11 . Finally, if the moduli mass is of the
+same order as a typical mass taken in theories of quintessence, m ∼ 10−60 Mp , we can have
+an accelerated expansion of the universe by a factor e23 , in a sub-Planckian regime of field
+space, just from trapping. (In this last case, as in ordinary quintessence models, tuning is
+required.)
+     Thus, the stage of inflation in this simple model is shorter than the usual 60 e-folds,
+but it may nevertheless be very useful for initiating a first stage of inflation in theories
+where this would otherwise be impossible, or for diluting unwanted relics at the later stages
+of the evolution of the universe. Moreover, this scenario can easily describe the present
+stage of acceleration of the universe.
+     One can also make the effect more substantial by constructing a more complicated
+scenario, consisting of a chain of N particle production events at locations φ = φi , where
+some fields χi become light. The field φ may be trapped and enter the stage of parametric
+resonance near each of these points. Correspondingly, the universe enters the stage of
+inflation many times. One could arrange for 60 e-folds of inflation by taking, for example,
+m ∼ 102 GeV, N ∼ 10.
+
+                                                34
+                                                     V( φ )
+
+                                                                                A
+
+
+                                                       B
+                A
+
+                                                                     φ2   φ1
+
+                                              B
+
+
+
+
+                    φ1
+                         φ2
+
+                                     φ
+
+
+
+
+       Fig. 4: The D-brane picture of a series of trapping events.
+
+
+
+    A D-brane example provides a useful geometrical model of this process. Suppose we
+have an observable brane B and another brane A approaching it. Suppose also that there
+are a number of other branes in between A and B. Each time the moving brane passes
+through one of the standing intermediate branes, stretched strings are created and slow
+the motion of A. The cumulative effect of a number of standing branes is perceived on the
+observable brane as a slowing-down of the motion of A due to the interactions.
+    One should note that inflation in our scenario is rather unusual: the inflaton φ rolls a
+short distance, then oscillates for a long time, but with period much smaller than H −1 , then
+rolls again, etc. This may lead to peculiar features in the spectrum of density perturbations.
+One can avoid these features if the points φi are very close to each other, and each of them
+does not stop the rolling of φ but only slows it down. In this case, particle production will
+not lead to parametric resonance, so it is not very important to us whether the fields χi
+are bosons or fermions, as long as their masses vanish at φi .
+    This scenario is similar to the string-inspired thermal inflation considered in [12] (see
+also [43]), but our proposal does not require thermal equilibrium. The main effect which
+
+                                              35
+supports inflation in our scenario is based on particle production and has a nonperturbative
+origin. (A closely-related mechanism uses the corrections to the kinetic terms in the strong
+coupling regime, where the particle production is suppressed [5].) We hope to return to a
+discussion of this possibility in a separate publication.
+
+
+
+9. Conclusion
+
+    We have argued that the dynamics of rolling moduli is considerably modified due to
+quantum production of light fields. In flat space quantum field theory, moduli typically
+become trapped in orbits around loci which have extra light degrees of freedom. In the
+presence of gravity, Hubble friction limits the field range the system samples, but any
+trapping events which do occur are enhanced by Hubble friction, which rapidly brings the
+modulus to rest at an ESP. Moduli trapping may aid in solving the cosmological moduli
+problem by driving moduli to sit at points of enhanced symmetry. Furthermore, the
+trapping of a scalar field which has a potential can lead to a short period of accelerated
+expansion in situations with steeper potentials than would otherwise allow this. Finally,
+the trapping effect has important consequences for the problem of vacuum selection, as
+it can reduce the problem to that of selecting one point within the class of ESPs. An
+intriguing feature of this process is that the trapping is more efficient near points with a
+large number of unbroken symmetries.
+
+
+
+Acknowledgements
+    We would like to thank M. Dine, G. Felder, S. Kachru, R. Kallosh, R. Myers, S.-
+J. Rey, S. Shenker, D. Tong, and A. Tseytlin for useful discussions. L.K. is supported
+by NSERC and CIAR. The remaining authors are supported in part by the DOE under
+contract DE-AC03-76SF00515 and by the NSF grant PHY-0244728.
+
+
+
+
+                                             36
+Appendix A. Particle Production Due to Motion on Moduli Space
+
+      In this section we will calculate the quantum production of χ particles, ignoring the
+effect of backreaction on the motion of φ.
+      A mode of χ with spatial momentum k obeys the wave equation
+                                                  
+                               2    2   2 2    2 2
+                              ∂t + k + g (µ + v t ) uk = 0.                            (A.1)
+
+There are two solutions to this equation, uin     out
+                                           k and uk , associated to vacuum states with
+no particles in the far past and no particles in the far future, respectively. These two sets
+of modes are related by a Bogoliubov transformation
+
+                                  uin      out     out ∗
+                                   k = αk uk + βk uk     .                             (A.2)
+
+If we start in the state with no particles in the far past, then one can calculate the number
+density of particles in the far future to be
+
+                                         nk = |βk |2                                   (A.3)
+
+in the k th mode. This may be evaluated by solving equation (A.1) in terms of hypergeo-
+metric functions (see e.g. §3.5 of [13]), but we will present here a more physical argument.
+      One can view (A.1) as a one dimensional Schrödinger equation for particle scatter-
+ing/penetration through an inverted parabolic potential. If we send in a wave ψkin from
+the far right of the potential, part of it will penetrate to the far left, with an asymptotic
+amplitude Tk ψkout , and part of it will be reflected back to the right, with an asymptotic
+amplitude Rk ψkin∗ , where Tk and Rk are the transmission and reflection amplitudes.9
+      The Bogoliubov coefficient in (A.2) is determined in terms of these transmission and
+reflection amplitudes via
+                                                 Rk∗
+                                          βk =       .                                 (A.4)
+                                                 Tk∗
+      Now we use a trick from quantum mechanics to relate R and T using the WKB
+method. If we are moving along the real time coordinate, the WKB form of the solution
+uin
+ k (t) will be violated at small t, due to non-adiabaticity. However, if we take t to be
+
+  9
+      The modes in the two problems are related by uin            ∗ out ∗
+                                                    k (t → −∞) = Tk ψk  , etc.
+
+                                               37
+complex then we can move from t = −∞ to t = +∞ along a complex contour in such a
+way that the WKB approximation
+                                                               Rt√
+                                   1                                       k2 +g 2 (µ2 +v 2 t′ 2 )dt′
+                uin
+                 k (t) ∼ q p                         e−i                                                (A.5)
+                          2 k 2 + g 2 (µ2 + v 2 t2 )
+                              Rt
+is valid. Here the integral        dt′ becomes a contour integral along a semicircle of large
+radius in the lower complex t plane. For large |t|, we can estimate the phase integral in
+(A.5) by expanding
+                         p                                         k 2 + g 2 µ2
+                             k 2 + g 2 (µ2 + v 2 t2 ) ∼ gvt +                   .                       (A.6)
+                                                                       2gvt
+As we go around half of the circle, this term generates a factor
+
+                                    2   2   2                          2      2   2
+                       (e−iπ )−i(k +g µ )/2gv−1/2 = ie−π(k +g µ )/2gv .                                 (A.7)
+
+This is exactly the ratio between R∗ and T ∗ , so we find
+
+                                                          2    2   2
+                                   nk = |βk |2 = e−π(k +g µ )/gv .                                      (A.8)
+
+It is important to note that this result applies much more generally than for
+
+                                                φ = iµ + vt.                                            (A.9)
+
+In many cases the nonadiabaticity is only appreciable near the origin φ = 0, so that the
+near-origin trajectory can be approximated by (A.9) with some appropriate near-origin
+velocity v, even if the evolution away from the origin is very different from (2.2).
+    Moreover, in analogous circumstances (T-dual in the brane context) with a nontrivial
+electric field, we obtain a similar expression due to Schwinger pair production; a related
+point was made in [23]. In addition, formula (A.8) applies not only to scalar fields, but
+also to fields of arbitrary spin. From this universal behavior, it is tempting to speculate
+that (A.8) could provide an effective model for string theory effects, but we will not pursue
+this direction here.
+    The result (A.8) is nonperturbative in g (with g, not g 2 , appearing in the denominator
+of the exponent); it is interesting to ask whether there is a simple interpretation of this
+nonanalytic, nonperturbative effect. Similarly, it is interesting to note that as discussed in
+§3, the potential for φ induced by particle production is linear, so that if extended to the
+origin it would have a nonanalytic cusp there.
+
+                                                    38
+    Our results correspond to the low-velocity limit of the D-brane calculation by Bachas
+[23]. There, he obtains an imaginary part to the action for moving D3-branes of the form
+                               ∞
+                               X (−1)(n+1)  gv 3/2
+                      Im S ∝                           exp(−nπgµ2 /v)                  (A.10)
+                               n=1
+                                       n       πn
+
+where we have translated his results into our variables. The first term in this expansion
+is proportional to the overlap d3~k|βk |2 giving the number density (3.14) of produced
+                              R
+
+particles; this agrees with what we expect from unitarity. More generally, backing away
+from this low-velocity limit, the calculation in [23] combined with unitarity may provide a
+simple generalization of our results to the string case, as we briefly discussed in §5.2.
+
+
+Appendix B. Annihilation of the χ Particles
+
+    In this section we study the effects of collisions and direct decays of the created χ
+particles, and demonstrate that for suitably chosen parameters the trapping effect receives
+only small corrections. More specifically, we place limits on the reduction of the χ number
+density through processes like χχ → φφ̄ and χ → η η̄, where η is some light field.
+    Direct decays, if present, could easily ruin the trapping mechanism: if the χ particles
+decay too rapidly into light fields then the energy stored in created χ particles will not
+suffice to stop φ. In this case the modulus will roll past the ESP, feel a transient tug
+toward the ESP while the χ particles remain, and then gradually break free and glide off
+to infinity at a reduced speed.
+    We will therefore consider only models in which couplings of the form χψ̄ψ, with
+ψ̄, ψ very light, are negligible. As an example, one can easily exclude such decays in a
+supersymmetric model with a superpotential of the form W ∼ gΦX2 . Here X is a chiral
+superfield with scalar component χ and fermion ψχ , and Φ is a chiral superfield with scalar
+component φ and fermion ψφ . This generates Yukawa couplings of the form χψχ ψφ and
+φψχ ψχ , which do not allow decays from a component of X to purely Φ particles. Thus, if
+all components of X are heavy, the X-particle energy density we produce cannot decrease
+by direct decays. In some of the simplest brane setups, exactly this situation is realized: a
+string which is heavy because it stretches between two branes separated in a purely closed
+string bulk space cannot decay perturbatively into two light, unstretched strings.
+                                                                    2
+    On the other hand, a priori we cannot ignore the coupling g2 χ2 φ2 as it is this which
+gives rise to the desired trapping effect. This means that we must tolerate a certain rate
+
+                                             39
+of annihilation (as opposed to direct decay). We will now review the cross section for this
+process and determine its effect on the number density nχ appearing in (2.10).
+    The Lorentz-invariant cross section for the annihilation process χχ → φφ̄ is, written
+in terms of center of mass variables,
+
+                                                       g 4 k′
+                                               σ=             ,                                 (B.1)
+                                                      4πkE 2
+
+where k and k ′ are the momenta of the ingoing and outgoing particles and E is the energy
+of the ingoing χ particles. The reverse process φφ̄ → χχ tends to enhance the trapping
+effect. As we are in search of a lower bound on the number of χ particles, we will simply
+omit this reverse process.
+    We now determine the annihilation rate to find the rate at which χ particles are lost.
+If we assume that all the χ’s are produced at t = 0, we find
+                                                            q
+                     ṅ(~k1 , t)
+                                      Z                      (k1 k2 )2 − m4χ
+                                 =−       d~k2 n(~k2 , t)                      σ(~k1 , ~k2 ).   (B.2)
+                     n(~k1 , t)                                  E1 E2
+            q
+Here u = (k1 k2 )2 − m2χ /E1 E2 is the Lorentz-invariant relative velocity of the initial χ’s
+and σ(k~1 , k~2 ) is the cross section, to be calculated using (B.1) in the center of mass frame.
+    We can simplify (B.2) to get an upper bound on how fast χ decays. Ignoring the
+momentum dependence on the right hand side of (B.2), which amounts to taking the
+non-relativistic limit, and ignoring the mass of φ produced by the χ particles, we have
+
+                               ṅ(~k1 , t)     g4
+                                                    Z
+                                           ≥−         d~k2 n(~k2 , t).                          (B.3)
+                               n(~k1 , t)     2πm2χ
+
+We can bound the integral in the second term on the right hand side by nχ , the total
+number of χ’s produced, as given in (3.14). To approximate the time-dependence of the
+mass mχ , we take m2χ = µ2 + v 2 t2 , which is what the uncorrected motion for φ would give.
+So we have finally
+                                  ṅ(k~1 , t)        g 4 nχ
+                                              ≥−                  ,                             (B.4)
+                                  n(k~1 , t)     2π(µ2 + v 2 t2 )
+
+which yields
+                              n(~k, t)
+                                             4
+                                               g nχ
+                                                              
+                                                           vt
+                                       ≥ exp −      arctan      .                               (B.5)
+                              n(~k, 0)         2πµv        µ
+
+                                                      40
+This is clearly bounded from below by
+                                               g4n 
+                                                   χ
+                                           exp −      .                                 (B.6)
+                                                 2µv
+
+so that the number density is reduced over time by at worst the factor (B.6).
+    The total energy density in the χ particles at a given time is therefore
+                            Z
+                            d~kn(~k, t) k 2 + g 2 (µ2 + v 2 t2 )
+                                       p
+                       E=
+                                                    4                                  (B.7)
+                                                       g nχ
+                                                                         
+                            p
+                               2    2    2 2
+                                                                      vt
+                         ≥nχ g (µ + v t ) exp −                arctan      .
+                                                       2πµv           µ
+From this we see that the mass amplification effect of the χ particles inevitably prevails
+and stops φ from rolling arbitrarily far past the enhanced symmetry point.
+    This reduction of the number density softens, but does not ruin, the trapping effect.
+Using the energy density (B.7) in the simple estimate leading to (2.12), we find a new
+estimate for φ∗ :
+                                         4π 3 1/2 πgµ2 /v g 4 nχ /4µv
+                                φ∗ =           v e       e                              (B.8)
+                                         g 5/2
+Thus, although collisions never lead to an escape, they do lead to a somewhat increased
+stopping length φ∗ .
+    For suitably chosen parameters we can arrange that the effect of collisions is unimpor-
+tant and the estimates (2.12),(B.8) approximately agree. For example, the final exponential
+factor, which encodes the consequences of annihilations, will be less important than the
+           2
+factor eπgµ /v as long as g 3 v ≪ µ2 .
+    We conclude that direct decays can be forbidden using symmetry, whereas collisions
+increase the stopping length (B.8) but do not ruin the trapping effect.
+
+
+
+Appendix C. Bending Angle and Energy Loss during the First Pass
+
+    In this section we will demonstrate that one can obtain analytical results for the
+early stage of the motion of the moduli through a systematic expansion and iteration
+procedure. Specifically, we start with the uncorrected trajectory for the moduli, work out
+the production of χ particles to the second order in ω̇/ω 2 , feed this back into the equation
+of motion for the modulus, and then obtain the corrected trajectory for the modulus to
+leading nontrivial order of the iteration and ω̇/ω 2 .
+
+                                                  41
+      The solution shows deflection and energy loss, as we would expect. However, without
+going to higher orders in the iteration, and without being able to detect particle production
+which is nonperturbative in ω̇/ω 2 (as in (2.9)), we do not expect our solution to capture the
+full dynamics. In particular, the leading-order calculations presented here do not capture
+the late-time behavior of the system, where any small particle production, such as that in
+(2.9), can alter the trajectory from an escaping one to a trapped one.
+      We choose to work with the simple model (2.1) in which the complex modulus φ =
+φ1 + iφ2 has an ESP at the origin, where a real scalar field χ becomes light. Without
+including backreaction, the trajectory (2.2) leads to a time-varying frequency for the χ
+excitations,
+                                              p
+                                   ωk (t) =    k 2 + g 2 (µ2 + v 2 t2 ).                        (C.1)
+
+      We start by defining the generalized Bogoliubov coefficients α~k (t) and β~k (t):10
+                                           Z t                          Z t              
+                     1                                 ′    ′                         ′    ′
+      u~k (t) = p              α~k (t) exp −i    ω~k (t )dt + β~k (t) exp +i    ω~k (t )dt
+                    2ω~k (t)
+                   r                         Z t                           Z t
+                       ω~k (t)
+                                                                                             
+                                                         ′    ′                         ′    ′
+      u̇~k (t) = −i              α~k (t) exp −i    ω~k (t )dt − β~k (t) exp +i    ω~k (t )dt      .
+                          2
+                                                                                                 (C.2)
+This is possible as long as ωk (t) is never zero. The consistency of this definition combined
+with the Klein-Gordon equation for u~k (t) leads to two coupled first-order ODE’s for α~k (t)
+and β~k (t)
+                                                       Z t
+                                     ω̇~k (t)
+                                                                      
+                                                                 ′   ′
+                          α˙~k (t) =           exp +2i     ω~k (t )dt β~k (t)
+                                     2ω~k (t)
+                                                       Z t                                      (C.3)
+                                      ω̇   (t)
+                                                                      
+                                        ~
+                          β˙~k (t) =     k
+                                               exp −2i           ′   ′
+                                                           ω~k (t )dt α~k (t).
+                                     2ω~k (t)
+
+The normalization for u~k (t) implies
+
+
+                                         α~2k (t) − β~k2 (t) = 1.                               (C.4)
+
+
+Finally, the initial condition for χ(t) as t → −∞ corresponds to
+
+
+                                         α~k = 1,        β~k = 0.                               (C.5)
+
+ 10
+      Similar calculations appeared in [1].
+
+                                                    42
+When the frequency ωk (t) changes adiabatically, |ω̇/ω 2 | ≪ 1, the exponentials approxi-
+mate the positive and negative frequency modes of the system and βk (t) describes particle
+production.
+    In terms of α~k (t) and β~k (t)
+                  Z ∞                                                        Z t
+                          dkk 2
+                                                                                          
+    2       1                                    2             ∗                      ′    ′
+ hχ (t)i =                          1 + 2|βk (t)| + 2Re αk (t)βk (t) exp −2i     ωk (t )dt       .
+           4π 2       0   ωk (t)
+                                                                                                      (C.6)
+The first term in the above equation is the ordinary Coleman-Weinberg potential (after
+cancelling against some polynomial counterterms), and we ignore it for the reasons men-
+tioned in §3.2. The second and third terms encode the particle production effects; we will
+calculate these by an adiabatic approximation.
+    To the leading nontrivial order, αk (t) and βk (t) satisfy
+
+                               α˙k (t) = 0
+                                        ω̇k (t)
+                                                       Z t                                          (C.7)
+                                ˙
+                               βk (t) =         exp −2i          ′
+                                                            ωk (t )dt ′
+                                        2ωk (t)
+
+where we have used the zeroth-order Bogoliubov coefficients, α~0k (t) = 1, β~k0 (t) = 0. These
+are subject to the initial conditions (C.5), so that αk (t) = 1 and
+                                                                 Z t
+                                     ω̇k2
+                                                     
+                              iω̇k           ω̈k
+                  βk (t) =         −      +      + ... exp(−2i       ωk dt′ ).                        (C.8)
+                              4ωk2   4ωk4   8ωk3
+
+This yields
+                                              Z ∞
+                                                                               3ω̇k (t)2
+                                                                                                
+                  2            1                       2  1          ω̈k (t)
+              hχ (t)i − δM =                        dkk                      −           + ...
+                             16π 2            0         ωk (t)       ωk (t)3   2ωk (t)4
+                                               2 2
+                                                                                                      (C.9)
+                                          v µ
+                                   =                     .
+                                     48π (µ2 + v 2 t2 )2
+                                        2
+
+
+To the first order of iteration, the corrected equation of motion for φ is
+
+                                                    g 2 v 2 µ2
+                                       φ̈ +                         φ=0                              (C.10)
+                                              48π 2 (µ2 + v 2 t2 )2
+with initial conditions
+                                     φ(t0 ) = vt0 + iµ,          φ̇(t0 ) = v.                        (C.11)
+
+We will eventually take the initial time t0 to be −∞. Moreover, we have in mind v0 < 0,
+µ > 0, so that φ comes from φ1 = +∞ with a displacement in the positive direction of φ2
+and shoots towards the left.
+
+                                                       43
+    The solution for the above system is
+                        √                                            
+                      iπ 1+c          1       µ            1       µ
+            φ(t) = µe 2       (1 + √     )ϕ1 ( ) + (1 − √     )ϕ2 ( ) ,              (C.12)
+                                     1+c      vt          1+c      vt
+
+where
+                               g2
+                            c=
+                             48π 2        √              √
+                              1         1+ 1+c        1− 1+c
+                    ϕ1 (z) =    (z − i)    2   (z + i) 2 ,                           (C.13)
+                             2z     √               √             √
+                             (−1)− 1+c            1− 1+c        1+ 1+c
+                    ϕ2 (z) =              (z − i)   2    (z + i) 2 ,
+                                  2z
+and the branch cut goes from z = −i to z = i.
+    As time goes from −∞ to +∞, z goes from 0+ to ∞ and then to 0− . We can enclose
+the contour by a semicircle either in the upper or lower half-plane, giving the same result:
+                                                   √
+                                    ϕ1 → eiπ(1+ 1+c) ϕ1
+                                                   √                                 (C.14)
+                                    ϕ2 → eiπ(1− 1+c) ϕ2 .
+
+We find that at late time
+                                     √            i         √      
+                φ(t → +∞) → − vt cos(π 1 + c) + √      sin(π 1 + c)
+                                                  1+c
+                                     √          √           √       
+                            − iµ cos(π 1 + c) + i 1 + c sin(π 1 + c)                 (C.15)
+                                 µ
+                            + O( ).
+                                 vt
+The leading large time behavior is captured by the first term, which describes a con-
+stant linear motion on the moduli space. It shows a deflection in the direction of the
+                                                                              √
+ESP (counterclockwise) determined by the coefficient of the leading term cos(π 1 + c) +
+           √      
+√i    sin(π 1 + c) . As we expect, if g = 0 the modulus goes through a straight line
+  1+c
+from right to left. The bending angle increases monotonically, with no upper bound, as g
+increases. Thus, if g is very big, φ can orbit around the origin many times, with a growing
+radius, until eventually it shoots out to infinity in a fixed direction.
+    The modulus loses a finite fraction of its energy as it passes by the ESP. This can
+be seen from the fact that the coefficient of −vt has norm less than one in (C.15). It so
+happens that at this order of iteration the fraction of energy lost depends only on the
+coupling g:
+                                            c         √
+                              −∆E/E0 =         sin2 (π 1 + c).                       (C.16)
+                                           1+c
+
+                                              44
+     The above picture is valid only in certain parameter regimes. Specifically, if taking
+only the leading nontrivial contribution to hχ2 (t)i is to make any sense, then the non-
+adiabaticity parameter must be small:
+
+                                       ω̇k    v
+                                         2 ∼     ≪ 1.                                   (C.17)
+                                       ωk    gµ2
+This condition also implies that the effects of the produced χ particles on the motion of
+φ shows up only at exponentially late times, so that it is sensible to have an intermediate
+stage in which the φ field has a linear motion. Of course, we know this is not the full
+picture. The linear growth of the mass of the χ particles would eventually stop φ and
+bring it back.
+
+
+Appendix D. Classical Trapping Versus Quantum Trapping
+
+     In this section we will compare our quantum trapping mechanism with the purely
+classical trapping proposed in [44].
+     Consider for simplicity a theory of two real scalar fields, φ and χ, with the interaction
+ 2
+g
+ 2
+   φ2 χ2 . In our discussion in the main text we assumed the initial conditions hχi = 0, hφi =
+                                                                                             6
+0, χ̇ = 0, φ̇ = v. Potentially interesting classical dynamics arises in the more general case
+in which the initial velocity of χ is nonzero [44].
+     Let us therefore consider the classical
+                                    q        behavior of these fields, ignoring particle pro-
+duction entirely. If we define v ≡      χ̇2 + φ̇2 , then energy conservation implies that the
+trajectory of φ and χ is bounded by the surface g 2 φ2 χ2 = v 2 . The fields will evidently
+start bouncing off the curved walls of the potential. This bouncing will be highly random.
+     Naively, one would expect that on average the fields become confined in the region
+
+                                                         v
+                                       hφ2 i = hχ2 i ∼     .                             (D.1)
+                                                         g
+
+This result would coincide with our estimate for the amplitude of the oscillations of φ at
+the end of the stage of parametric resonance, cf. (3.21).
+    However, the situation is more complicated. As we are going to show, the fields spend
+                                      q
+                                        v
+most of the time not at |φ| ∼ |χ| ∼     g
+                                          , but exponentially far away from this region,
+moving along one of the flat directions of the potential.
+     To see this, note that because of the chaotic nature of the bouncing, it will occasionally
+happen that the fields enter the valley χ ≪ φ at a small angle to the flat direction, i.e.
+
+                                              45
+with velocities obeying |χ̇| ≪ φ̇. Defining |χ̇| ≡ αv, we are interested in the case that the
+angle α happens to be small.
+    Energy conservation implies that the amplitude of the oscillations of χ at the initial
+                                                                                 2
+                                                                            g
+stage of this process is approximately αv                                      2 2
+                                       gφ . Because of the interaction term 2 φ χ , these
+                                                                      2 2
+oscillations act on the field φ with an average returning force ∼ α φv , which corresponds
+to the logarithmic potential V (φ) ∼ α2 v 2 log φ [44]. Clearly, this potential will eventually
+pull the field φ back to the ESP φ = 0. However, this happens at exponentially large φ:
+the field starts moving back only after its value approaches
+
+                                                       v c/α
+                                                  r
+                                      φ∗class ∼          e ,                             (D.2)
+                                                       g
+
+where c = O(1).
+    Once again, because the bouncing process is highly random, we do not expect that
+the probability to enter the valley at a small angle α is exponentially suppressed. This
+means that after bouncing back and forth near the point φ = χ = 0, the fields φ and χ
+eventually enter one of the valleys at a small angle, and subsequently spend a very long
+time there. In general, the fields will spend an exponentially long time at an exponentially
+large distance from the origin. Thus, the classical trapping mechanism, unlike the particle
+production mechanism described in our paper, does not lead to a permanent trapping of
+the fields in the vicinity of the point φ = χ = 0.
+
+
+
+
+                                                  46
+                                       References
+
+ [1] L. Kofman, A. D. Linde and A. A. Starobinsky, “Towards the theory of reheating after
+     inflation,” Phys. Rev. D 56, 3258 (1997), hep-ph/9704452.
+ [2] G. N. Felder, L. Kofman and A. D. Linde, “Instant preheating,” Phys. Rev. D 59,
+     123523 (1999), hep-ph/9812289.
+ [3] G. Felder, L. Kofman, and A. Linde, “Inflation and Preheating in NO Models,”
+     Phys.Rev. D60 (1999) 103505, hep-ph/9903350.
+ [4] D.J.H. Chung, E.W. Kolb, A. Riotto, and I.I. Tkachev, “Probing Planckian Physics:
+     Resonant Production of Particles During Inflation and Features in the Primordial
+     Power Spectrum,” Phys.Rev. D62 (2000) 043508, hep-ph/9910437.
+ [5] E. Silverstein and D. Tong, “Scalar speed limits and cosmology: Acceleration from D-
+     cceleration,” hep-th/0310221; M. Alishahiha, E. Silverstein, and D. Tong, in progress.
+ [6] E. Witten, “Bound states of strings and p-branes,” Nucl. Phys.B460 (1996) 335, hep-
+     th/9510135.
+ [7] N. Seiberg and E. Witten, “Electric-Magnetic Duality, Monopole Condensation, and
+     Confinement in N=2 Supersymmetric Yang-Mills Theory,” Nucl.Phys. B426 (1994)
+     19, hep-th/9407087 ;
+     N. Seiberg and E. Witten, “ Monopoles, Duality and Chiral Symmetry Breaking in
+     N=2 Supersymmetric QCD,” Nucl.Phys.B431 (1994) 484, hep-th/9408099 ;
+     K. Intriligator and N. Seiberg, “Lectures on Supersymmetric Gauge Theories and
+     Electric-Magnetic Duality,” Nucl.Phys.Proc.Suppl. 45BC (1996) 1, hep-th/9509066.
+ [8] A. Strominger, “Massless Black Holes and Conifolds in String Theory,” Nucl.Phys.
+     B451 (1995) 96, hep-th/9504090.
+ [9] E. Witten, “String Theory Dynamics In Various Dimensions,” Nucl.Phys. B443 (1995)
+     85, hep-th/9503124 ;
+     S. Katz, D. R. Morrison, and M. R. Plesser, “Enhanced Gauge Symmetry in Type II
+     String Theory,” Nucl.Phys. B477 (1996) 105, hep-th/9601108 ;
+     M. Bershadsky, K. Intriligator, S. Kachru, D.R. Morrison, V. Sadov, and C. Vafa,
+     “Geometric Singularities and Enhanced Gauge Symmetries,” Nucl.Phys. B481 (1996)
+     215, hep-th/9605200.
+[10] E. Witten, “Small Instantons in String Theory,” Nucl.Phys. B443 (1995) 85, hep-
+     th/9511030.
+[11] M. Dine, “Towards a Solution of the Moduli Problems of String Cosmology,”
+     Phys.Lett. B482 (2000) 213, hep-th/0002047 ;
+     M. Dine, Y. Nir, and Y. Shadmi, “Enhanced Symmetries and the Ground State of
+     String Theory,” Phys.Lett. B438 (1998) 61, hep-th/9806124.
+[12] A. Berera and T. W. Kephart, “Ubiquitous inflaton in string-inspired models,” Phys.
+     Rev. Lett. 83 (199) 1084, hep-ph/9904410.
+
+                                            47
+[13] N. D. Birrell and P.C.W. Davies, Quantum Fields in Curved Space, Cambridge Uni-
+     versity Press, Cambridge, England (1982).
+[14] A. Linde, “Hybrid Inflation,” Phys.Rev. D49 (1994) 748, astro-ph/9307002.
+[15] G. N. Felder, J. Garcia-Bellido, P. B. Greene, L. Kofman, A. D. Linde and I. Tkachev,
+     “Dynamics of symmetry breaking and tachyonic preheating,” Phys. Rev. Lett. 87
+     (2001) 011601, hep-ph/0012142.
+[16] L. Kofman, A. D. Linde and A. A. Starobinsky, “Non-Thermal Phase Transitions
+     After Inflation,” Phys. Rev. Lett. 76 (1996) 1011, hep-th/9510119;
+     G. N. Felder, L. Kofman, A. D. Linde and I. Tkachev, “Inflation after preheating,”
+     JHEP 0008 (2000) 10, hep-ph/0004024.
+[17] G. Dvali and S. Kachru, “New Old Inflation,” hep-th/0309095.
+[18] R. Easther, J. Khoury and K. Schalm, “Tuning Locked Inflation: Supergravity versus
+     Phenomenology,” hep-th/0402218.
+[19] L. Jarv, T. Mohaupt, and F. Saueressig, “Effective Supergravity Actions for Flop
+     Transitions,” JHEP 0312 (2003) 047, hep-th/0310173 ;
+     L. Jarv, T. Mohaupt, and F. Saueressig, “M-theory Cosmologies from Singular Calabi-
+     Yau Compactifications,” hep-th/0310174.
+[20] M. Brandle and A. Lukas, “Flop transitions in M-theory cosmology,” Phys. Rev. D
+     68 (2003) 24030, hep-th/0212263.
+[21] T. Banks, W. Fischler, and L. Motl, “Dualities versus Singularities,” JHEP 9901
+     (1999) 019, hep-th/9811194 ;
+     L. Motl and T. Banks, “On the hyperbolic structure of moduli spaces with 16 SUSYs,”
+     JHEP 9905 (1999) 015, hep-th/9904008.
+[22] M. R. Douglas, D. Kabat, P. Pouliot and S. H. Shenker, “D-branes and short distances
+     in string theory,” Nucl. Phys. B485 (1997) 85, hep-th/9608024.
+[23] C. Bachas, “D-brane dynamics,” Phys. Lett. B374 (1996) 37, hep-th/9511043.
+[24] J. Horne and G. Moore, “Chaotic Coupling Constants,” Nucl.Phys. B432 (1994) 109,
+     hep-th/9403058.
+[25] T. Banks, M. Berkooz, S. H. Shenker, G. W. Moore and P. J. Steinhardt, Phys. Rev.
+     D 52 (1995) 3548, hep-th/9503114.
+[26] S. Y. Khlebnikov and I. I. Tkachev, “Classical decay of inflaton,” Phys. Rev. Lett. 77,
+     219 (1996), hep-ph/9603378.
+[27] G. N. Felder and I. Tkachev, “LATTICEEASY: A program for lattice simulations of
+     scalar fields in an expanding universe,” hep-ph/0011159.
+[28] L. Randall and R. Sundrum, “A Large Mass Hierarchy from a Small Extra Dimension,”
+     Phys.Rev.Lett.83 (1999) 3370, hep-ph/9905221.
+[29] G. N. Felder and L. Kofman, “The development of equilibrium after preheating,”
+     Phys. Rev. D 63, 103503 (2001), hep-ph/0011160.
+
+                                             48
+[30] G. N. Felder, A. V. Frolov, L. Kofman and A. D. Linde, “Cosmology with negative
+     potentials,” Phys. Rev. D 66 (2002) 023507, hep-th/0202017.
+[31] A. Strominger, “Open string creation by S-branes,” hep-th/0209090.
+[32] A. Maloney, A. Strominger and X. Yin, “S-brane thermodynamics,” JHEP 0310
+     (2003) 048, hep-th/0302146.
+[33] S.S. Gubser, “String Production at the Level of Effective Field Theory,” hep-
+     th/0305099; “String Creation and Cosmology,” hep-th/0312321;
+     J.J. Friess, S.S. Gubser, and I. Mitra, “String Creation in Cosmologies with a Varying
+     Dilaton,” hep-th/0402156.
+[34] A. D. Linde, “Inflation Can Break Symmetry In SUSY,” Phys. Lett. B 131 (1983)
+     330.
+[35] A. D. Linde, “Inflation And Quantum Cosmology,” Print-86-0888 (June 1986), in 300
+     Years of Gravitation, S.W. Hawking and W. Israel, eds., Cambridge University Press,
+     Cambridge (1987).
+[36] A. D. Linde, D. A. Linde and A. Mezhlumian, “From the Big Bang theory to the
+     theory of a stationary universe,” Phys. Rev. D 49 (1994) 1783, gr-qc/9306035;
+     J. Garcia-Bellido, A. D. Linde and D. A. Linde, “Fluctuations of the gravitational
+     constant in the inflationary Brans-Dicke cosmology,” Phys. Rev. D 50 (1994) 730,
+     astro-ph/9312039;
+     J. Garriga and A. Vilenkin, “A prescription for probabilities in eternal inflation,”
+     Phys. Rev. D 64 (2001) 23507, gr-qc/0102090;
+     A. Linde, “Inflation, quantum cosmology and the anthropic principle,” in Science and
+     Ultimate Reality: From Quantum to Cosmos,” J.D. Barrow, P.C.W. Davies, and C.L.
+     Harper, eds., Cambridge University Press, Cambridge (2003), hep-th/0211048;
+     J. Garriga, A. Linde and A. Vilenkin, “Dark energy equation of state and anthropic
+     selection,” hep-th/0310034.
+[37] R. Bousso and J. Polchinski, “Quantization of four-form fluxes and dynamical neu-
+     tralization of the cosmological constant,” JHEP 0006 (2000) 006, hep-th/0004134.
+[38] A. Maloney, E. Silverstein and A. Strominger, “De Sitter space in noncritical string
+     theory,” hep-th/0205316; E. Silverstein, “(A)dS backgrounds from asymmetric orien-
+     tifolds,” hep-th/0106209.
+[39] S. Kachru, R. Kallosh, A. Linde and S. P. Trivedi, “de Sitter Vacua in String Theory,”
+     Phys. Rev. D 68 (2003) 046005, hep-th/0301240.
+[40] M. R. Douglas, “The Statistics of String/M Theory Vacua,” JHEP 0305 (2003)
+     046, hep-th/0303194; S. Ashok and M. R. Douglas, “Counting Flux Vacua,” hep-
+     th/0307049.
+[41] B. S. Acharya, “A moduli fixing mechanism in M theory,” hep-th/0212294.
+[42] S. Gukov, S. Kachru, X. Liu and L. McAllister, “Heterotic Moduli Stabilization with
+     Fractional Chern-Simons Invariants,” hep-th/0310159.
+
+                                            49
+[43] R. Fardon, A.E. Nelson, and N. Weiner, “Dark Energy from Mass Varying Neutrinos,”
+     astro-ph/0309800.
+[44] R. Helling, “Beyond eikonal scattering in M(atrix)-theory,” hep-th/0009134.
+
+
+
+
+                                          50
+51
+

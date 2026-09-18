@@ -8,3 +8,4 @@ import DualScaleDyons.TwinedHilbert
 import DualScaleDyons.TwistedDyons
 import DualScaleDyons.TwistedNotes
 import DualScaleDyons.WhichK3
+import DualScaleDyons.SelfDualT2

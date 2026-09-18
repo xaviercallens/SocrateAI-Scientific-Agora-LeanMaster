@@ -127,7 +127,13 @@ target that the tool verifies with `#check`. Negative controls (a bogus name app
 `DualScaleDyons/WhichK3.lean` (5 theorems): attractive (ρ = 20) K3s, dyon charges (Moore) and the immortal index
 share the reduced binary forms; `12·N(D) = 12·H(D) + 6·[D = 4f²] + 8·[D = 3f²]` for `D ≤ 400` — the counts differ only
 at the self-dual points of the torus; Kummer criterion; the first Kummer attractive K3s (`D = 12, 16`); the Fermat
-quartic's form. `DualScaleDyons` 49 theorems, 0 failing. Total audited: **626**. `v3.16.1`: two C-B
+quartic's form. `DualScaleDyons` 49 theorems, 0 failing. Total audited: **626**.
+
+**`v3.19.0` (2026-09-18): Stream 8 E2.** `DualScaleDyons/SelfDualT2.lean` (7 theorems): exact, complete counts of
+massless gauge bosons — circle at the self-dual radius 2, T² at `(i, i)` 4 + 4, T² at `(ω, ω)` 6 + 6 (completeness by a
+sum-of-squares bound); the `(ω, ω)` roots span `A₂`, isometric to `T(X₃)` of the most attractive K3. With moduli
+trapping (hep-th/0403001, Tier L) this selects `(ω, ω)` for T². `DualScaleDyons` 56 theorems, 0 failing. Total
+audited: **633**. `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
