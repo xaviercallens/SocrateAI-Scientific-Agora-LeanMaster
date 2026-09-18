@@ -121,7 +121,13 @@ reports were therefore incomplete for books whose probe exceeded 100 errors. Fix
 libraries were added to its scope. After the fix it flagged 51 names; triage found **no name presented as a real
 library result that does not exist** (all were exercise/hypothetical names, tactics, options, versions, files,
 locals, or real declarations cited by short names); 45 allowlist entries with reasons were added, 7 of them with a
-target that the tool verifies with `#check`. Negative controls (a bogus name appended to a chapter) are flagged. `v3.16.1`: two C-B
+target that the tool verifies with `#check`. Negative controls (a bogus name appended to a chapter) are flagged.
+
+**`v3.18.0` (2026-09-18): book Part IX (ch39–41, 753 pages) and Stream 8 (`docs/STREAM8_WHICH_K3.md`).**
+`DualScaleDyons/WhichK3.lean` (5 theorems): attractive (ρ = 20) K3s, dyon charges (Moore) and the immortal index
+share the reduced binary forms; `12·N(D) = 12·H(D) + 6·[D = 4f²] + 8·[D = 3f²]` for `D ≤ 400` — the counts differ only
+at the self-dual points of the torus; Kummer criterion; the first Kummer attractive K3s (`D = 12, 16`); the Fermat
+quartic's form. `DualScaleDyons` 49 theorems, 0 failing. Total audited: **626**. `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
