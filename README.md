@@ -40,7 +40,7 @@ literature (Tier L) versus this project's own conjectures (Tier C, not yet deriv
 
 Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
 invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
-every theorem and lemma (**573 audited theorems across the ten first-party libraries** depend on
+every theorem and lemma (**587 audited theorems across the ten first-party libraries** depend on
 nothing beyond the three standard Lean axioms — see §10 and
 [`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md), which is the authoritative,
 gate-by-gate status document that this README summarizes).
@@ -62,7 +62,7 @@ worth:
 6. **LeanGraph Knowledge Discovery:** semantic dependency extraction (867 nodes, 1603 edges, verified acyclic DAG) with an interactive D3/KaTeX visual explorer (`graph/index.html`), plus a kernel-level theorem atlas (§7).
 7. **(Tier A algebra + Tier C readings) Stream 3 — micro/macro dual-scale cosmology** (`DualScaleCosmology`, [`docs/STREAM3_WORKFLOW.md`](docs/STREAM3_WORKFLOW.md)): scale-factor duality `H(a⁻¹) = −H(a)`; the Cohen–Kaplan–Nelson bound; and the finding that, read as a T-dual pair, `ℓ_P` and `c/H₀` meet the CKN bound exactly at the self-dual length `√(ℓ_P·c/H₀) ≈ 47 μm` — **which is the dark-energy length up to `(8π/3Ω_Λ)^{1/4}`** (an identity, so the numerical agreements it produces are algebra, not corroboration). That length is **excluded as a string (Regge) scale** by ≥10³⁰ in `α'` (CMS dijet limit on string resonances, model-dependent) and **not excluded** as an extra-dimension radius (disfavored by O(1) only). The literal hypothesis "`ℓ_micro ~ ℓ_P` is the UV cutoff at `ℓ_macro ~ H₀⁻¹`" fails the CKN test by ≥10³⁰.
 8. **(Tier A computation + Tier C reading) Stream 4 — Mathieu moonshine computed, not typed** (`DualScaleMoonshine`, [`docs/STREAM4_WORKFLOW.md`](docs/STREAM4_WORKFLOW.md)): the coefficients `A₁…A₉` are computed from the closed formula `(−2E₂ + 48F₂)/η³` and equal the published table; the twined series for **all 21 columns** of Cheng–Duncan–Harvey's table (every conjugacy class of `M₂₄`, including those whose correction terms need the newforms `f₁₁, f₁₄, f₁₅, f₂₃`) are computed and equal the published ones through `q⁹`; the full `M₂₄` character table, with its irrational values in `ℤ[(−1+√−7)/2]`, `ℤ[(−1+√−15)/2]`, `ℤ[(−1+√−23)/2]`, passes the orthogonality relations and the class equation, and at **all 26 classes** the traces on the `M₂₄`-representations (levels 1–7) equal the computed twined coefficients. Applied to this project's own "27720 lock" (paper 7), the same twining test **fails** at all 25 non-identity classes: by that criterion the lock is numerology, not moonshine. Finally, the K3 elliptic genus computed from theta functions has `Z(τ,0) = 24`, and its polar/finite decomposition holds with polar multiplicity exactly 24 and finite part exactly the computed `H` (it fails for 23 and 25): the arithmetic skeleton of the statement that `H` has shadow `24·η³` (the shadow property itself remains Tier L). Harvey–Murthy–Nazaroglu's BPS index of double-scaled little string theories is reproduced from their closed formula: at two NS5-branes it equals `−½η³H`, their umbral relation holds for `ℓ = 2, 3, 4, 5, 7, 13` against umbral forms built from theta functions, and the divisibility they found unexplained is proved two-sided (`rk(Y)` divides every coefficient iff `rk(Y) ∣ 24`) for all `A`, `D` and `E` types.
-9. **(Tier A computation + Tier L physics) Stream 5 — dyons on K3 × T²** (`DualScaleDyons`, [`docs/STREAM5_WORKFLOW.md`](docs/STREAM5_WORKFLOW.md)): the dyon partition function `1/Φ₁₀` is built from the computed K3 elliptic genus (the DMVV/Borcherds product); it reproduces Göttsche's Euler numbers `1, 24, 324, 3200, 25650, 176256` and the six printed identities (5.16) of Dabholkar–Murthy–Zagier; the two-centred (wall-crossing) part `p₂₄(m+1)A₂,ₘ` removes the double pole with exactly that coefficient; and the single-centred ("immortal") counting function at `m = 1` equals `3E₄A − 648H`, with `H` the Hurwitz class numbers counted independently.
+9. **(Tier A computation + Tier L physics) Stream 5 — dyons on K3 × T²** (`DualScaleDyons`, [`docs/STREAM5_WORKFLOW.md`](docs/STREAM5_WORKFLOW.md)): the dyon partition function `1/Φ₁₀` is built from the computed K3 elliptic genus (the DMVV/Borcherds product); it reproduces Göttsche's Euler numbers `1, 24, 324, 3200, 25650, 176256` and the six printed identities (5.16) of Dabholkar–Murthy–Zagier; the two-centred (wall-crossing) part `p₂₄(m+1)A₂,ₘ` removes the double pole with exactly that coefficient; and the single-centred ("immortal") counting function at `m = 1` equals `3E₄A − 648H`, with `H` the Hurwitz class numbers counted independently. At `m = 2, 3` the same holds with the Hecke-like operators `H|V₂`, `H|V₃` (DMZ (9.11), (9.13) checked, not cited). The `24` of this sector and the Göttsche numbers pass the twining test that the 27720 lock failed: for `k ≤ 4` the traces of `M₂₄` on `H*(Hilbᵏ K3)` are genuine characters.
 
 ---
 
@@ -168,7 +168,7 @@ continuous parameter survives.
 | **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
 | **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
 | **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
-| **Kernel Verification** | None (paper only) | 573/573 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
+| **Kernel Verification** | None (paper only) | 587/587 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
 
 The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
 (Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
@@ -472,7 +472,7 @@ bare keyword — and it also catches `native_decide` (`Lean.ofReduceBool`), whic
 ```bash
 lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 ```
-Last full run (2026-09-18), **573 theorems audited across all ten libraries, 0 failing**:
+Last full run (2026-09-18), **587 theorems audited across all ten libraries, 0 failing**:
 
 | Library | Theorems audited | Failing |
 |---|:---:|:---:|
@@ -485,8 +485,8 @@ Last full run (2026-09-18), **573 theorems audited across all ten libraries, 0 f
 | `DualScaleValidation` | 23 | 0 |
 | `DualScaleCosmology` (Stream 3) | 31 | 0 |
 | `DualScaleMoonshine` (Stream 4) | 98 | 0 |
-| `DualScaleDyons` (Stream 5) | 18 | 0 |
-| **Total** | **573** | **0** |
+| `DualScaleDyons` (Stream 5) | 32 | 0 |
+| **Total** | **587** | **0** |
 
 "0 failing" means every theorem depends on nothing beyond `propext`, `Classical.choice` and
 `Quot.sound`.

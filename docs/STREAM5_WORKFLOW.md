@@ -1,7 +1,7 @@
 # Stream 5 Workflow — Dyons on K3 × T²: from the K3 elliptic genus to single-centred black holes
 
-**Status (2026-09-18, release `v3.11.1`):** P5.1–P5.5 closed (Tier A, 18 theorems, 0 failing,
-`propext` or no axiom; 50 declarations locked in 2 files); P5.6 open. Library `DualScaleDyons` (separate `lean_lib`, imports
+**Status (2026-09-18, release `v3.12.0`):** P5.1–P5.6 closed (Tier A, 32 theorems, 0 failing,
+`propext` or no axiom; 74 declarations locked in 4 files); P5.7 open. Library `DualScaleDyons` (separate `lean_lib`, imports
 `DualScaleMoonshine` for its exact `q`-series with Laurent-polynomial coefficients). Rules are those of
 Streams 2–4: the kernel is the only accept gate; no citation from memory; ASCII identifiers; every
 printed number that is used is pinned to a file and line range.
@@ -34,7 +34,8 @@ dual-scale hypothesis `R ↔ α'/R` (refuted in Stream 3). Any reading in those 
 | **P5.3 DMZ (5.16)** | the six printed identities `∆ψ₋₁ = A⁻¹`, …, `72∆ψ₄ = 51A⁻¹B⁵ + …` hold, with `A = φ₋₂,₁`, `B = φ₀,₁` from theta products and `E₄`, `E₆` from divisor sums | DMZ (5.16)–(5.17), ll. 1880–1900 | ✅ `DMVV.lean` (`dmz_516_q1`, `dmz_516_q2`) |
 | **P5.4 Polar part** | the double pole of `ψ_m` at `z = 0` is removed by `p₂₄(m+1)·A₂,ₘ` and by no other multiple (`m = 1, 2, 3`); the Fourier expansion of `A₂,ₘ` in the strip `|q| < |y| < 1` equals DMZ (9.55) | DMZ (1.2)–(1.4), (9.4), (9.55), ll. 196–213, 3655–3700, 5199–5210 | ✅ `DMVV.lean` |
 | **P5.5 Immortal dyons, `m = 1`** | the single-centred counting function `∆ψ₁^F = ∆ψ₁ − 324·A₂,₁` equals `3E₄A − 648·H`, with `H` the generating function of Hurwitz class numbers, computed independently by counting reduced binary quadratic forms; DMZ's printed tables of Example 5 as transcription control | DMZ Example 5 (ll. 3530–3558), (9.8), (9.10) | ✅ `Immortal.lean` |
-| P5.6 Further | `m = 2` (`Φ₂,₂^opt = −H|V₂`, (9.11)); twined dyon counting (CHL); the twining test on any integer coincidence found here | DMZ §9.2 | ⬜ open |
+| **P5.6 Higher `m`, twining test** | `m = 2, 3`: DMZ (9.11), (9.13) checked; immortal counting functions `= p₂₄(m+1)(−H|V_m) +` weak Jacobi forms; the twining test on `24` and the Göttsche numbers: traces on `H*(Hilbᵏ K3)`, `k ≤ 4`, are `M₂₄`-characters; Frame shapes vs power maps | DMZ (9.11)–(9.13); CDH Table 8 (power maps), Table 14 (Frame shapes) | ✅ `ImmortalHigher.lean`, `TwinedHilbert.lean` |
+| P5.7 Twined dyons | the `M₂₄`-twined (CHL-type) dyon partition functions `1/Φ_g` and their polar/finite split; requires pinning Cheng 1005.5415 or equivalent | — | ⬜ open |
 
 ## 3. Reading notes (recorded, not corrections)
 * DMZ (1.4), l. 211, as printed, lists the terms `ℓ q^{(r²−ℓ²)/4m} y^r` with `r ≥ ℓ > 0` for the strip
@@ -80,3 +81,20 @@ Ten-library build 3795 jobs, 0 errors. `tools/axiom_audit.py DualScaleDyons`: 18
 (`propext` or no axiom at all). Repository total 573 theorems, 0 failing. Statement lock: 50
 declarations in 2 files (`v3.11.1` added `negBinomPairs`, `negBinom_exact`: the integer divisions in the
 product are exact; the pre-update check showed exactly these two ADDED). Heavy theorems use `decide +kernel`; the library checks in about 4 minutes.
+
+## 8. Results at `v3.12.0` (P5.6)
+* **Immortal dyons at `m = 2, 3`** (through `q²`): `3∆ψ₂^F = −800·(12H|V₂) + 22E₄AB − 10E₆A²` and
+  `48∆ψ₃^F = −102600·(12H|V₃) + 467E₄AB² − 430E₆A²B + 203E₄²A³`, with `12(H|V_p)` having coefficients
+  `12H(∆) + p·12H(∆/p²)`. DMZ's (9.11) and (9.13) at `m = 2, 3` are checked directly, and their printed
+  tables reproduced. Dropping the Hecke correction breaks `m = 2`.
+* **The twining test on the dyon sector's integers.** CDH's Frame shapes have degree 24, fixed points
+  `χ_g`, and agree with the power maps for `p = 2, 3, 5, 7, 11, 23`. The twined Göttsche numbers
+  `Tr(g | H*(Hilbᵏ K3))` decompose, for `k ≤ 4`, with non-negative integer multiplicities
+  (`H*(Hilb² K3) = 3·1 ⊕ 3·23 ⊕ 252`). These integers pass the test paper 7's 27720 lock failed; the
+  result is mathematically expected (symmetric powers of a permutation module), and its value is the
+  certified cross-check of three transcribed tables and the contrast with the lock.
+
+## 9. Gates at `v3.12.0`
+Ten-library build 3797 jobs, 0 errors. `DualScaleDyons`: 32 theorems, 0 failing. Repository total 587.
+Statement lock: 74 declarations in 4 files (pre-update check: only `ImmortalHigher.lean` and
+`TwinedHilbert.lean` new).

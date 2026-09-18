@@ -74,6 +74,16 @@ other nine libraries changed. Total audited: **572**. `v3.11.1` adds `negBinom_e
 divisions inside the product are exact; 18 theorems, 50 declarations) and clarifies that the polar-part
 theorems discriminate the first-order pole condition. Total audited: **573**.
 
+**`v3.12.0` (2026-09-18): Stream 5 phase P5.6 — immortal dyons at `m = 2, 3`, and the twining test.**
+`ImmortalHigher.lean`: DMZ's (9.11) and (9.13) at `m = 2, 3` checked (the finite parts of `ψ₀,₃^opt/A`,
+`ψ₀,₄^opt/A` are `−12^{m+1}·H|V_m`); the single-centred counting functions `∆ψ₂^F`, `∆ψ₃^F` from the product
+equal `p₂₄(m+1)·(−H|V_m)` plus explicit weak Jacobi forms; without the Hecke correction the `m = 2`
+identity fails. `TwinedHilbert.lean`: CDH's Frame shapes cross-checked against the power maps; for
+`k ≤ 4` the twined Göttsche numbers `Tr(g | H*(Hilbᵏ K3))` are characters of `M₂₄` (non-negative integer
+multiplicities over all 26 irreducibles). Gates: ten-library build 3797 jobs, 0 errors; `DualScaleDyons`
+32 theorems, 0 failing (`propext` or none); statement lock 74 declarations in 4 files (pre-update check:
+only the two new files). Total audited: **587**.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |
 |---|---|---|---|---|---|
