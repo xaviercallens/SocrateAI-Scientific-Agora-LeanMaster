@@ -90,14 +90,14 @@ under `import Mathlib`) before any proof work began.
 |---|---|---|
 | **P3.1 Scale-factor duality** (pilot, this session) | `a ↦ a⁻¹` involution; unique positive fixed point `a = 1`; log-scale-factor oddness `ln(a⁻¹) = −ln a` (algebraic shadow of `H → −H`); transferred dual-scale bound `a + a⁻¹ ≥ 2` | Gasperini–Veneziano hep-th/9211021 ll. 372–373, 639–640 |
 | **P3.2 CKN micro/macro bound** (pilot, this session) | `L³Λ⁴ ≤ M_P²` solved for `L` and for `Λ` via `Real.rpow` monotonicity | Cohen–Kaplan–Nelson hep-th/9803132 eq. (2) l. 78, l. 80 |
-| P3.3 (open) Numeric instantiation | substitute `ℓ_P`, `H₀⁻¹` into the CKN bound and report what UV cutoff it actually implies (CKN's own l. 113–117 method); state, and clearly Tier-C-label, whether this matches or contradicts the hypothesis's `ℓ_micro ~ ℓ_P` | CKN ll. 103–117 (needs a pinned value of `H₀`; not yet sourced) |
+| **P3.3 Numeric instantiation** (closed 2026-09-18) | used CKN's own l. 113–114 horizon-scale worked example (`Λ ~ 10⁻²·⁵ eV`) directly, rather than re-deriving `H₀⁻¹` in Planck units from scratch — avoids re-doing a unit conversion this project's own incident history warns against; compared to the CODATA Planck energy: a ≥`10^30` gap, Tier A (`CKNInstance.planckEnergy_gt_ckn_horizon_cutoff`) | CKN ll. 113–114; CODATA 2018 Planck mass energy equivalent |
 | P3.4 (open) Cosmic strings / domain walls | topological-defect route to a macro scale, as named in the hypothesis | not yet sourced — candidates: Vilenkin–Shellard review, Kibble mechanism papers |
 | P3.5 (open) Swampland distance bound as a third route | `Palti hep-th/1903.06239` (already pinned) gives `m(Δφ) ~ e^{-αΔφ}`; whether this is a third, independent micro/macro relation or a restatement of P3.1/P3.2 is open | palti_swampland_1903_06239.txt (already in repo) |
-| P3.6 (open) Statement review of whether P3.1–P3.2 can be *combined* | the actual test of the Stream 3 hypothesis: is there a single duality/bound relating `ℓ_micro` and `ℓ_macro`, or are (1) and (2) genuinely disjoint pieces of physics that only share the word "duality" in casual English? | — (this is a statement-review question, not a source-pinning one) |
+| P3.6 (open, informed by P3.3) Statement review of whether P3.1–P3.2 can be *combined* | the actual test of the Stream 3 hypothesis: is there a single duality/bound relating `ℓ_micro` and `ℓ_macro`, or are (1) and (2) genuinely disjoint pieces of physics that only share the word "duality" in casual English? P3.3's result is evidence *against* a naive combination via the CKN route specifically — the numbers don't fit — but does not settle whether the scale-factor-duality route (P3.1) fares any better | — (this is a statement-review question, not a source-pinning one) |
 
 ## 5. Pilot results — measured
 
-**P3.1 + P3.2 (10 declarations, 2 files) — 10/10 closed, gate G3 passed.**
+**P3.1 + P3.2 + P3.3 (15 declarations, 3 files) — 15/15 closed, gate G3 passed.**
 
 | Declaration | Kind | Closed by |
 |---|---|---|
@@ -109,22 +109,40 @@ under `import Mathlib`) before any proof work began.
 | `ScaleFactorDuality.hubble_dual` | theorem | T0 (added 2026-09-18), `HasDerivAt.inv` + `field_simp`; technique confirmed working under this project's Mathlib pin by first recompiling `SocrateAI-Scientific-Agora-K3-DarkMatter`'s `HubbleTension.lean` standalone |
 | `ScaleFactorDuality.cosmoDualScale` | def | T0 |
 | `ScaleFactorDuality.cosmoDualScale_ge_two` | theorem | T0, same algebraic identity as Stream 2 `TraceBound.circle_effective_scale_ge_two` |
-| `CKNBound.ckn_L_le` | theorem | T0, `Real.rpow_le_rpow` + `Real.rpow_mul`; needed 4 interactive fixes (`le_div_iff₀` argument shape, `Real.rpow_natCast` normal form, final `inv_pow` mismatch) before compiling — kept here as a record that this is genuinely T1-level work, not mechanical |
-| `CKNBound.ckn_Lambda_le` | theorem | T0, same technique, second application |
+| `CKNBound.ckn_bound` | theorem | T0 (rewritten 2026-09-18 — see correction below), `le_of_mul_le_mul_left` |
+| `CKNBound.ckn_L_Lambda_sq_le` | theorem | T0, `nlinarith` on `(a−b)(a+b) ≤ 0` — no `rpow` needed once the correct exponent was used |
+| `CKNBound.ckn_L_le` | theorem | T0, `le_div_iff₀` |
+| `CKNBound.ckn_Lambda_sq_le` | theorem | T0, `le_div_iff₀` |
+| `CKNInstance.cknLambdaHorizon_eV` | def | T0 (added 2026-09-18), CKN's own l. 113–114 number |
+| `CKNInstance.planckEnergy_eV` | def | T0 (added 2026-09-18), CODATA 2018 |
+| `CKNInstance.planckEnergy_gt_ckn_horizon_cutoff` | theorem | T0, `norm_num` |
 
-Gate G3: `lake build DualScaleCosmology` green, 0 `sorry`/`admit` (source grep), 0 warnings;
-`tools/axiom_audit.py DualScaleCosmology`: 6 theorems, 0 failing, standard axioms only
+### Correction, 2026-09-18: `CKNBound.lean`'s original equation was dimensionally wrong
+While doing P3.3's numeric instantiation, re-reading CKN's eq. (2) with `pdftotext -layout`
+(rather than trusting the first, unlayouted extraction from commit `2989a74`) showed the
+pilot's original `L³Λ⁴ ≤ M_P²` doesn't type-check dimensionally (`[L³Λ⁴] = GeV`,
+`[M_P²] = GeV²`). The actual eq. (2), l. 77–78, is `L³Λ⁴ ≲ L·M_P²`, which — dividing by
+`L > 0` — is the standard holographic-dark-energy scaling `L²Λ⁴ ≤ M_P²`. `CKNBound.lean` was
+rewritten for the correct exponent; the fix turned out to *simplify* the proofs (no `rpow`
+cube/fourth-roots needed — `L²Λ⁴ ≤ M²` is literally `(LΛ²)² ≤ M²`, one `nlinarith` step from
+`LΛ² ≤ M`). See that file's own correction note for the full account, including the
+citation-transcription-error precedent this matches in a sibling project
+(`SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal`, errors E-007/E-010).
+
+Gate G3: `lake build DualScaleCosmology` green, 0 `sorry`/`admit` (source grep);
+`tools/axiom_audit.py DualScaleCosmology`: 10 theorems, 0 failing, standard axioms only
 (`propext`, `Classical.choice`, `Quot.sound`); full 8-library rebuild
 (`DualScaleStream2 StringTheoryFormalization StringTheoryFoundation DualScaleM24Formalization
-DoubleFieldTheory DualScaleValidation Lean5Corpus DualScaleCosmology`) green, 3769 jobs — no
-regression to Streams 1–2; `tools/statement_lock.py --update` locked all 8 declarations.
+DoubleFieldTheory DualScaleValidation Lean5Corpus DualScaleCosmology`) green, 3770 jobs — no
+regression to Streams 1–2; `tools/statement_lock.py --update` locked all 15 declarations.
 
-**Tiering conclusion so far**: both work packages were small, self-contained algebra
-transfers from a single pinned equation each — exactly the shape Stream 2 found T2 (Haiku)
-or T1 (Sonnet) closes, not T3 (local prover) territory, which Stream 2 found effective only
-on concrete/computational goals. `ckn_L_le`/`ckn_Lambda_le` needed real proof engineering
-(rpow normal-form juggling) and would be routed to T1 in a multi-goal batch; the four
-`ScaleFactorDuality` declarations are exactly the `simp`/`field_simp` shape T2 closes.
+**Tiering conclusion so far**: every work package here was small, self-contained algebra or
+arithmetic from a single pinned equation or citation — exactly the shape Stream 2 found T2
+(Haiku) or T1 (Sonnet) closes, not T3 (local prover) territory (effective only on
+concrete/computational goals, per Stream 2 §6). The one genuinely T1-level step was
+`hubble_dual`'s differentiation, and even that closed in four lines once the right combinator
+(`HasDerivAt.inv`) was confirmed working via the sibling-repo precedent — the rest is
+`simp`/`field_simp`/`nlinarith`/`norm_num` shape.
 
 ## 6. Roadmap coverage checklist
 
@@ -133,16 +151,19 @@ honest-progress convention as Stream 2 §5.1.
 
 | Phase | Item | Status |
 |---|---|---|
-| P3.1 | scale-factor-duality involution, fixed point, log-oddness, transferred bound | ✅ this session |
-| P3.2 | CKN bound solved for `L` and for `Λ` | ✅ this session |
-| P3.3 | numeric instantiation at `ℓ_P`, `H₀⁻¹` | ⬜ open — needs a pinned `H₀` source |
+| P3.1 | scale-factor-duality involution, fixed point, log-oddness, `H → −H`, transferred bound | ✅ closed 2026-09-18 |
+| P3.2 | CKN bound (corrected exponent) solved for `L` and for `Λ²` | ✅ closed 2026-09-18 |
+| P3.3 | numeric instantiation at CKN's own horizon example vs. the Planck energy | ✅ closed 2026-09-18 — **result: a ≥`10³⁰` gap, not a match**; the CKN route does not support `ℓ_micro ~ ℓ_P` at `ℓ_macro ~ H₀⁻¹` |
 | P3.4 | cosmic-string / domain-wall route to a macro scale | ⬜ open — needs a pinned source |
 | P3.5 | swampland distance bound as a third route | ⬜ open — source already pinned, statement not yet drafted |
-| P3.6 | statement review: do P3.1/P3.2 combine into one micro/macro relation, or are they disjoint? | ⬜ open — the actual test of the hypothesis |
+| P3.6 | statement review: do P3.1/P3.2 combine into one micro/macro relation, or are they disjoint? | ⬜ open — P3.3 is negative evidence for the CKN half of this question, not a full answer |
 
 Until P3.6 closes with a "yes, and here is the combined statement", the honest project-level
 claim is: *two independent, literature-anchored formal results exist that are each
-individually relevant to a micro/macro dual-scale programme; no formal statement yet
-connects them into the single duality the hypothesis describes.* That sentence, not
-"formalized the dual-scale cosmology hypothesis", is what belongs in any README/paper text
-citing this stream until P3.6 changes it.
+individually relevant to a micro/macro dual-scale programme; the CKN route, tested
+numerically (P3.3), does not support the specific pairing `ℓ_micro ~ ℓ_P`, `ℓ_macro ~ H₀⁻¹`
+the hypothesis names; whether the scale-factor-duality route fares differently is untested.*
+That sentence, not "formalized the dual-scale cosmology hypothesis" and not "the hypothesis
+is false" (only one of its two candidate mechanisms was tested, and only at one macro
+scale), is what belongs in any README/paper text citing this stream until P3.4–P3.6 change
+it.

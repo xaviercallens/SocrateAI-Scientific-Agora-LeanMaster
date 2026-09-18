@@ -3,3 +3,4 @@
 
 import DualScaleCosmology.ScaleFactorDuality
 import DualScaleCosmology.CKNBound
+import DualScaleCosmology.CKNInstance
