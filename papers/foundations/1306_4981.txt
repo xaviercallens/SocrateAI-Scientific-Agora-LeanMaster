@@ -1,0 +1,1480 @@
+                                                                                          SU/ITP-13/09, EFI-13-12, NSF-KITP-13-113
+
+
+
+
+                                               Mathieu Moonshine and N = 2 String Compactifications
+
+
+                                               Miranda C. N. Cheng1 , Xi Dong2,3 , John F. R. Duncan4 , Jeffrey A. Harvey5 ,
+arXiv:1306.4981v2 [hep-th] 11 Sep 2013
+
+
+
+
+                                                                 Shamit Kachru2 and Timm Wrase2,3
+
+                                                             1 Universite Paris 7, UMR CNRS 7586, Paris, France
+
+                                                                     2 SITP, Department of Physics and
+
+                                                                           Theory Group, SLAC
+                                                                Stanford University, Stanford, CA 94305, USA
+                                                                   3 Kavli Institute for Theoretical Physics
+
+                                                                       Santa Barbara, CA 93106, USA
+                                                                        4 Department of Mathematics
+
+                                                         Case Western Reserve University, Cleveland, OH 44106, USA
+                                                             5 Enrico Fermi Institute and Department of Physics
+
+                                                                University of Chicago, Chicago, IL 60637, USA
+
+                                                chengm@math.jussieu.fr, xidong@stanford.edu, john.duncan@case.edu,
+                                               j-harvey@uchicago.edu, skachru@stanford.edu, timm.wrase@stanford.edu
+
+
+
+
+                                                                                  Abstract
+
+                                         There is a ‘Mathieu moonshine’ relating the elliptic genus of K3 to the sporadic group
+                                         M24 . Here, we give evidence that this moonshine extends to part of the web of dualities
+                                         connecting heterotic strings compactified on K3 × T 2 to type IIA strings compactified on
+                                         Calabi-Yau threefolds. We demonstrate that dimensions of M24 representations govern the
+                                         new supersymmetric index of the heterotic compactifications, and appear in the Gromov–
+                                         Witten invariants of the dual Calabi-Yau threefolds, which are elliptic fibrations over the
+                                         Hirzebruch surfaces Fn .
+
+
+
+
+                                                                                      1
+Contents
+
+1 Introduction                                                                                 2
+
+
+2 Universal threshold corrections in heterotic K3 compactifications                            4
+
+    2.1   Basic facts about N = 2 heterotic models . . . . . . . . . . . . . . . . . . .       4
+
+    2.2   Threshold corrections and the new supersymmetric index . . . . . . . . . .           5
+
+    2.3   Discovering M24 representations . . . . . . . . . . . . . . . . . . . . . . . .      7
+
+    2.4   Compactifications with Wilson lines . . . . . . . . . . . . . . . . . . . . . .      9
+
+
+3 Type IIA compactifications on elliptic Calabi-Yau threefolds                                10
+
+    3.1   Prepotentials of Calabi-Yau models . . . . . . . . . . . . . . . . . . . . . .      10
+
+    3.2   The higher genera . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   13
+
+
+4 Matching the results                                                                        14
+
+    4.1   Simplest case . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   14
+
+    4.2   Other values of n . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   16
+
+    4.3   Gravitational threshold corrections . . . . . . . . . . . . . . . . . . . . . .     19
+
+
+5 Discussion                                                                                  20
+
+
+A Conventions                                                                                 23
+
+
+
+1    Introduction
+
+Monstrous moonshine [1] is a mysterious relation between two very natural objects in
+mathematics: the largest of the sporadic simple finite groups (the Fischer-Griess Monster),
+and the simplest modular function (the J-function). More generally, it relates conjugacy
+
+                                                2
+classes of the Monster to Hauptmoduls for genus zero subgroups of SL(2, R).
+
+This relationship is (partially) explained by the physics of a particular string compacti-
+fication. The chiral conformal field theory corresponding to a Z2 orbifold of the bosonic
+string on R24 /Λ where Λ is the Leech lattice has as its partition function the J-function
+with constant term set equal to zero, and admits Monster symmetry. The relation between
+moonshine and vertex algebras of chiral conformal field theories is discussed in the math-
+ematics literature in [2, 3], and from an accessible physical point of view in [4]. A more
+general review of the story of moonshine appears in [5].
+
+It is encouraging that the Monstrous moonshine relations between fundamental objects
+from two a priori distinct areas of mathematics find a natural home in string theory.
+However, it is fair to say that the string vacuum which appears here has not played a very
+central role in other developments in string theory and quantum gravity. For this reason,
+moonshine has not yet had significant impact on our present understanding of string theory.
+
+In 2010, Eguchi, Ooguri and Tachikawa (EOT) observed similar mysterious relations be-
+tween the sporadic group M24 and the elliptic genus of the (4,4) superconformal field theory
+with K3 target [6]. This hints that generalizations of moonshine may be important in un-
+derstanding more physically central string vacua. K3 serves as the simplest non-trivial
+example of Calabi-Yau compactification, and has played a central role in duality relations
+between string theories [7]. Further work has considerably elucidated, refined and gener-
+alized the EOT conjecture [8–19]. For fairly recent reviews, see [20, 21].
+
+In this note, we provide evidence that the Mathieu moonshine of [6] extends to a richer
+structure visible also in 4d N = 2 string compactifications. Such compactifications arise
+simply in two different ways: from heterotic strings on K3×T 2 (with suitable gauge bundles
+over the compactification manifold), or from type II strings on Calabi-Yau threefolds. These
+two sets of compactifications are related by string duality [22, 23]. We show here that in
+the heterotic theories, with either arbitrary choices of gauge bundles and no Wilson lines or
+with all instantons embedded in one E8 and only Wilson lines in the other E8 , the one-loop
+prepotential universally exhibits a structure encoding degeneracies of M24 representations.
+We demonstrate that this structure is also visible in the Gromov–Witten invariants of the
+dual type IIA Calabi-Yau compactifications. Our results build on a large body of work on
+threshold corrections in heterotic strings [24–33] as well as recent advances in understanding
+the Gromov–Witten theory of elliptic Calabi-Yau manifolds [34, 35].
+
+
+
+
+                                              3
+2     Universal threshold corrections in heterotic K3 compactifica-
+      tions
+
+
+2.1    Basic facts about N = 2 heterotic models
+
+A heterotic compactification on a manifold X involves, in an obligatory way, data beyond
+the sigma-model metric on X. The heterotic string comes equipped with E8 × E8 (or
+Spin(32)/Z2 ) gauge fields in ten dimensions. The Bianchi identity for the three-form field
+requires that one turns on a non-trivial gauge bundle V over X whenever c2 (X) 6= 0. More
+precisely, in the simplest case without five-branes one requires:
+
+                           c2 (X) = c2 (V1 ) + c2 (V2 ), c1 (V1,2 ) = 0                  (2.1)
+
+where V1,2 are stable, holomorphic vector bundles embedded in the two E8 factors.
+
+We consider the case of 4d N = 2 compactifications on K3 × T 2 with trivial bundles
+on the T 2 . The internal worldsheet theory corresponding to the K3 compactification is
+then generically a conformal field theory with (0, 4) supersymmetry. In this case, the first
+condition in (2.1) implies
+                           Z             Z
+                              c2 (V1 ) +   c2 (V2 ) = n1 + n2 = 24                    (2.2)
+                             X             X
+                             R
+where we use the fact that X c2 (T X) = 24 for X a K3 surface, and n1,2 ≥ 0 for a su-
+persymmetric compactification. Therefore, we must choose an embedding of 24 instantons
+into the E8 × E8 gauge groups.
+              R
+For the case X c2 (V1 ) = 24, a particular choice of bundle – V1 = T X – yields the so-called
+‘standard embedding’. The gauge connection is set equal to the spin connection of the
+K3 surface. In this case, the (0, 4) worldsheet supersymmetry is enhanced to (4, 4). Then
+the elliptic genus of such a sigma-model will match the results computed in [36], and the
+observation of [6] about the elliptic genus of such a model will continue to hold force.
+
+This implies immediately that in a very different physical setting from type II compactifica-
+tion on K3 – heterotic standard embeddings enjoy half the supersymmetry and completely
+different space-time physics – one can expect M24 to emerge. This is interesting in itself,
+but we will demonstrate now a considerably stronger result.
+
+We will show that for each choice of n1,2 consistent with (2.2), there is a universal physical
+quantity which is governed by dimensions of M24 representations. However, while for
+
+                                                4
+the standard embedding we can conclude that there is Mathieu moonshine based on the
+enhanced worldsheet supersymmetry, this is a priori not clear for other cases. In [37]
+(see also [38]) we compute twining genera for simple K3 conformal field theories with a
+variety of different instanton embeddings and only (0,4) worldsheet supersymmetry. We
+successfully identify certain symmetries of the CFT with conjugacy classes of M24 and
+therefore expect Mathieu moonshine for all instanton embeddings. Since the values of n1,2
+can only be varied by non-perturbative transitions in the heterotic string, this is a much
+stronger result than any statement about the standard embedding.
+
+
+
+2.2     Threshold corrections and the new supersymmetric index
+
+The new supersymmetric index [39] is defined by
+                                     1
+                          Znew =         TrR J0 eiπJ0 q L0 −c/24 q̄ L0 −c̄/24 ,           (2.3)
+                                   η(q)2
+where TrR means that the trace is taken over the Ramond sector of the (c, c̄) = (22, 9)
+internal CFT associated to the K3 × T 2 factor plus the E8 × E8 gauge bundle. The extra
+factor of η12 arises from the two extra 4d space-time bosons that are present in light-cone
+gauge string theory.
+
+The new supersymmetric index is a natural object in 4d N = 2 heterotic compactifications
+because it counts the number of BPS states. As discussed in §3 of [27], morally speaking,
+                                "                                   #
+                                                 ¯                ¯
+                                   X                 X
+                     Znew = −2i           q ∆ q̄ ∆ −       q ∆ q̄ ∆ .               (2.4)
+                                    BPS vectors             BPS hypers
+
+Therefore, any special properties or moonshine exhibited by Znew reflect on important
+properties of the BPS states in the compactified string theory.
+
+Universal threshold corrections to gauge and gravitational couplings can be expressed in
+terms of this index [24]. As described there and studied in greater depth in [27–29], one
+finds
+                Z 2                                                                    
+                  dτ       i      
+                                       iπJ0 L0 −c/24 L0 −c̄/24
+                                                                          
+  ∆gauge/grav =        −       TrR J0 e q           q̄         Fgauge/grav − bgauge/grav . (2.5)
+                  τ2     η(q)2
+Here,
+                                   1                          3
+                  Fgauge = Q2 −       ,     Fgrav = E2 (q) −     ≡ Ê2 (q) ,             (2.6)
+                                 8πτ2                        πτ2
+where Q is some generator of a simple factor in the gauge group, and E2 is the second
+Eisenstein series (see appendix A for its definition and our conventions). bgauge/grav are the
+constant beta function coefficients that will not play an important role in the following.
+
+                                                  5
+                         2
+Because the measure dτ 2τ is modular invariant and the total integrand in equation (2.5)
+                      2
+must be modular invariant, it follows that
+                            i        
+                                           iπJ0 L0 −c/24 L0 −c̄/24
+                                                                               
+                   − τ2         Tr R  J 0 e    q        q̄         Fgauge/grav     (2.7)
+                          η(q)2
+must be modular invariant.
+
+Focusing on the gravitational threshold and pulling the factor of Fgrav out of the trace in
+(2.5), we find that τ2 Znew should be a (non-holomorphic) modular form of weight -2 (with
+a pole at the infinite cusp). For the case of compactifications on K3 × T 2 without Wilson
+lines, the new supersymmetric index further factorizes as
+                                                        1 ΘΓ2,2
+                                 Znew = −2i                       GK3 .                                       (2.8)
+                                                      η(q)2 η(q)2
+Here, we have defined the sum over windings and momenta on the torus
+                                      X 1 2 1 2         X 1 2 2                2
+       ΘΓ2,2 (q, q̄; T, U, T̄ , Ū) =  q 2 pL q̄ 2 pR =  q 2 (pL −pR ) e−2πτ2 pR
+                                     p∈ Γ2,2                   p∈ Γ2,2
+                                                                         πτ
+                                                  2πiτ (m1 n1 +m2 n2 )− T U2 |T U n2 +T n1 −U m1 +m2 |2
+                                       X
+                                 =                e                      2 2                              ,   (2.9)
+                                     mi ,ni ∈ Z
+
+
+where T and U are the moduli that determine the metric and Kalb–Ramond field (or NSNS
+B-field) on the two torus. One can show (c.f. for example, equations (2.1.52) and (2.1.53)
+of [40]) that ΘΓ2,2 is invariant under τ → τ + 1 (since Γ2,2 is an even lattice), and that
+τ2 ΘΓ2,2 is modular invariant. The latter follows from Poisson resummation using the fact
+that Γ2,2 is unimodular. Therefore, we find that GK3 as defined in (2.8) should transform
+                                      GK3
+under the modular group such that η(q)  4 has weight -2.
+
+
+
+One can now show by elementary reasoning that GK3 , and hence Znew , is uniquely deter-
+mined:
+
+• The definition of Znew in (2.3) together with the existence of the bosonic string tachyon
+at L0 = 0 and the fact that the left moving central charge is c = 22 tells us that Znew has
+a 1q pole.
+
+                      GK3
+• The same is true of η(q)4 , since ΘΓ2,2 has only non-negative powers of q.
+
+
+
+• Removing the 1q pole by multiplying through by η(q)24 , we find that η(q)20 GK3 must be a
+holomorphic modular form of weight 10. Up to multiplication by a constant factor, there
+is a unique such form, which is E4 E6 . We recall the definition of the two Eisenstein series
+E4 and E6 in the appendix in equation (A.8).
+
+                                                       6
+We conclude that, independent of the choice of instanton numbers n1,2 , one has
+                                                        E4 (q)E6 (q)
+                                            GK3 = C                  ,                                        (2.10)
+                                                           η 20 (q)
+for some constant C. This multiplicative constant C can be fixed to unity by various
+arguments. For instance, due to gravitational anomalies, 6d perturbative heterotic com-
+pactifications on K3 always satisfy
+
+                                                nH − nV = 244 ,                                               (2.11)
+
+where nH is the number of massless hyper-multiplets and nV is the number of massless
+vector-multiplets of the 6d N = 1 supersymmetry. (More generally, there is a term pro-
+portional to the number of massless tensor multiplets nT , but this is determined to be
+nT = 1 in perturbative heterotic models). The condition (2.11) fixes the coefficient of the
+q 1/6 term in the expansion (2.10), and in turn requires C ≡ 1. Similar arguments about
+the universality of the new supersymmetric index can be found in [28, 29, 31, 33].
+
+
+
+2.3      Discovering M24 representations
+
+For the particular case of the standard embedding [27] showed that the new supersymmetric
+index is related to the K3 elliptic genus (cf. appendix A for the definition of the θi (q, y))
+                                    "           2            2            2 #
+                elliptic               θ2 (q, y)      θ3 (q, y)      θ4 (q, y)
+              ZK3        (q, y) = 8                +              +                 .   (2.12)
+                                       θ2 (q, 1)      θ3 (q, 1)      θ4 (q, 1)
+
+For the case without Wilson lines one finds
+         i ΘΓ2,2 (q, q̄; T, U, T̄ , Ū )E4 (q) h SO(12)            SO(12)
+                                                                           
+                                                                              elliptic
+Znew =                        12
+                                                     chs      + chc          ZK3       (q, −1)                (2.13)
+        2                η(q)
+                                    1                     1
+                                                                                           1                  1
+                                                                                                                   i
+            SO(12)                          elliptic                  SO(12)                     elliptic
+      + chb          + chSO(12)
+                           v           q 4Z
+                                            K3       (q, −q 2) −   ch b      − ch  SO(12)
+                                                                                   v        q 4Z
+                                                                                                K3        (q, q 2)   ,
+
+where the basic, vector, spinor and conjugate spinor characters of level 1 SO(12) are given
+by
+                                                 6           6 !
+                          SO(12)     1     θ3 (q)        θ4 (q)
+                        chb       =                 +                ,
+                                     2     η(q)          η(q)
+                                                 6           6 !
+                          SO(12)     1     θ3 (q)        θ4 (q)
+                        chv       =                 −                ,
+                                     2     η(q)          η(q)
+                                                          6
+                          SO(12)       SO(12)     1 θ2 (q)
+                        chs       = chc        =                .                    (2.14)
+                                                  2 η(q)
+
+                                                          7
+These characters arise for the standard embedding from the twelve free fermions. These
+fermions lead to a manifest SO(12) gauge group that is enhanced to E7 . The extra factors
+of q 1/4 in the third and fourth term in (2.13) account for the fact that in the heterotic
+string we also have to sum over anti-periodic boundary conditions while the elliptic genus
+of K3 is defined by a trace over the Ramond sector only.
+
+Following [36] we define N = 4 Virasoro characters
+                                              1            ∞              1
+                                         iy 2 θ1 (q, y) X (−1)n q 2 n(n+1) y n
+                  chh=1/4,l=0 (q, y) = −                                       ,              (2.15)
+                                             η(q)3 n=−∞      1 − qny
+
+and
+                                                                 θ1 (q, y)2
+                           chh=n+1/4,l=1/2 (q, y) = q n−1/8                 .                 (2.16)
+                                                                   η(q)3
+These are the elliptic genera of the short and long representations of the N = 4 supercon-
+formal algebra.
+                    elliptic
+Now one can expand ZK3       (q, y) as follows
+                                                          ∞
+                                                          X
+              elliptic
+             ZK3       (q, y) = 24 chh=1/4,l=0 (q, y) +         An chh=n+1/4,l=1/2 (q, y) ,   (2.17)
+                                                          n=0
+
+with
+                           An = −2, 90, 462, 1540, 4554, 11592, ... .                         (2.18)
+One recognizes the first few coefficients as simply related to the dimensions of irreducible
+representations of M24 [6], while the higher coefficients can be decomposed in a way which
+is fixed by requiring the twining genera to behave appropriately [8–11].
+
+Due to the relation between the new supersymmetric index and the elliptic genus of K3
+(2.13) it is clear that the new supersymmetric index can be expanded in a similar way.
+Using our result from the last section we write
+                                        E4 (q)E6 (q)   i        E4 (q)
+                   Znew = −2iΘΓ2,2                   ≡   Θ Γ2,2        × G(q) .               (2.19)
+                                           η(q)24      2        η(q)12
+
+Then we can expand G(q) = −4E6 /η 12 as
+                                                                       ∞
+                                                                       X
+                      G(q) = 24gh=1/4,l=0(q) + gh=1/4,l=1/2 (q)               An q n          (2.20)
+                                                                        n=0
+
+where
+                                                          
+                 gh=1/4,l (q) =       chSO(12)
+                                        s      + ch SO(12)
+                                                    c        chh=1/4,l (q, −1)
+
+                                                  8
+                                                                                          1
+                                                     SO(12)
+                                          + q 1/4 chb       + chSO(12)
+                                                                v        chh=1/4,l (q, −q   2)
+                                                                                       1
+                                              1/4    SO(12)     SO(12)
+                                          − q      chb      − chv        chh=1/4,l (q, q 2 ) .                                               (2.21)
+
+Importantly, the An take again the values given in (2.18).
+
+As we have argued in the previous subsection, in the absence of Wilson lines the new
+supersymmetric index takes always the form (2.19) so that the above expansion is also
+possible for instanton embeddings for which the world sheet symmetry is N = (0, 4). Thus
+we have found that for the case without Wilson lines and arbitrary instanton embeddings
+the new supersymmetric index and therefore the BPS states (2.4) have a decomposition in
+terms of dimensions of irreducible representations of M24 .
+
+
+
+2.4     Compactifications with Wilson lines
+
+In this subsection we discuss the case where we embed all instantons in the first E8 and
+keep track of the eight Wilson lines moduli V i , i = 1, . . . , 8 for the second E8 . For the
+standard embedding one finds [27] that the supersymmetric index takes the form
+
+        i ΘΓ10,2 (q, q̄; T, U, V i , T̄ , Ū , V̄ i ) h SO(12)          SO(12)
+                                                                                
+                                                                                   elliptic
+Znew =                                                   ch s      +  ch c        ZK3       (q, −1)               (2.22)
+        2                η(q)12
+                                 1                          1
+                                                                                             1                    1
+                                                                                                                       i
+           SO(12)                            elliptic                   SO(12)                       elliptic
+       + chb       + chSO(12)
+                          v          q 4Z
+                                            K3        (q, −q  2) −   ch b       − ch SO(12)
+                                                                                     v          q 4Z
+                                                                                                    K3        (q, q 2)   ,
+
+with
+                                  1 2    1 2                    1   2       2         2
+                        X                            X
+       ΘΓ10,2 =                  q 2 pL q̄ 2 pR =              q 2 (pL −pR ) e−2πτ2 pR                                                       (2.23)
+                    p∈ Γ10,2                        p∈ Γ10,2
+                                                  P                                           P                                              i 2
+             X          2πiτ (   m1 n1 +m2 n2 + 12 i b2i   )− T2 U2 − πτ
+                                                                      1 P (V i )2 |(T U − 2
+                                                                         2                1
+                                                                                                  i (V
+                                                                                                         i )2 )n
+                                                                                                                   2 +T n1 −U m1 +m2 +bi V   |
+       =                e                                               2  i    2                                                                  ,
+           mj ,nj ∈ Z
+           bi ∈ Γ8,0
+
+
+where Γ8,0 denotes the E8 root lattice. Note that p2L − p2R is the length squared of the
+vector (bi ; m1 , −n1 ; n2 , m2 ) with respect to the signature (10, 2) inner product and p2R is
+proportional to the inner product of this vector with the moduli vector defined in (2.10)
+of [27].
+
+Since the K3 elliptic genus appears in (2.22) exactly as in (2.13) in the previous subsection
+we can again expand the new supersymmetric index and find coefficients that are related
+to the dimensions of representations of M24 . Such an expansion is possible for arbitrary
+embeddings of all instantons in the first E8 gauge group since we have only replaced
+
+                                                                        9
+ΘΓ2,2 E4 with ΘΓ10,2 and a universality arguments like the one presented in §2.2 fixes Znew =
+−2iΘΓ10,2 E6 /η 24 uniquely. We can of course also turn off any number of Wilson lines. Thus
+we conclude that if we embed all instantons in the first E8 and turn on an arbitrary number
+of Wilson lines in the second E8 , the new supersymmetric index and therefore the BPS
+states (2.4) have a decomposition in terms of dimensions of irreducible representations of
+M24 .
+
+
+
+3     Type IIA compactifications on elliptic Calabi-Yau threefolds
+
+The heterotic string with n1 = 12 + n, n2 = 12 − n instantons in the two E8 factors is dual
+to a Calabi-Yau compactification on the elliptic fibration over the Hirzebruch surface Fn .
+Special examples of this duality were first discovered in [22, 23], and the duality has been
+better understood and mapped out in great detail in the F-theory setting in [41–43].
+
+In the last section, we saw that the q-expansions of the integrands in the one-loop thresh-
+old corrections for N = 2 compactifications of heterotic strings are controlled in part by
+dimensions of representations of M24 . In this section, we will show that the same modu-
+lar function which played a starring role in §2, E4η(q)
+                                                    (q)E6 (q)
+                                                        24    , also appears universally in the
+Gromov–Witten invariants of the dual Calabi-Yau compactifications of type II strings.
+That is, this modular form governs certain terms in the 4d prepotential of these models.
+Here, q is the complexified Kähler class evaluated on the fiber of an elliptic Calabi-Yau,
+and the q-expansion is counting multi-wrappings of this fiber by worldsheet instantons
+correcting the prepotential.
+
+It is not immediately obvious that this is related to the results of the previous section, since
+there one is discussing the integrand of a one-loop integral, and here one is discussing the
+space-time prepotential directly. In §4, we will show that in fact the results of this section
+are implied by those of §2 together with string duality.
+
+
+
+3.1     Prepotentials of Calabi-Yau models
+
+The prepotential obtained from type IIA compactifications on a Calabi-Yau threefold M
+has the general form
+
+            1                χ(M)ζ(3)     1         X                                  P      A
+                                                                                                 
+    F II = − κABC tA tB tC −       3
+                                      +                          nd1 ,...,dh1,1 Li3 e−2π A dA t    . (3.1)
+            6                  16π      (2π)3
+                                                 d1 ,...,dh1,1
+
+
+
+                                              10
+Here, κABC are the triple intersection numbers of M, χ(M) is the Euler character, and
+nd1 ,...,dh1,1 gives the instanton counting of genus 0 and multi-degree dA . The polylogarithm
+                                      xn
+Lik is defined as Lik (x) = ∞
+                                P
+                                  n=1 nk .
+
+
+The Hirzebruch surface Fn is a P1 bundle over P1 , and for this reason, the elliptic Calabi-
+Yau over Fn always has at least three Kähler moduli. Viewing Fn as a P1 bundle over P1 ,
+these are the moduli controlling the sizes of the two P1 s tB1 , tB2 , and a fiber modulus tF .
+In the heterotic dual, these three ‘universal’ moduli correspond to the heterotic dilaton
+S, and to the T and U moduli parametrizing the Kähler and complex structure of the
+T 2 . Additional vector multiplet moduli exist at generic points in moduli space if n is such
+that maximal Higgsing of either E8 is impossible; this happens for n ≥ 3. We will not
+be concerned with these additional moduli in this section; activating them corresponds to
+turning on Wilson lines.
+
+Therefore, we shall be interested in the Calabi-Yau threefolds M dual to the maximally
+Higgsed heterotic models (with a given n) with all Wilson lines turned off. For these
+theories, the expansion of the prepotential (3.1), as well as its higher-genus analogues, can
+be further refined. Let us write the free energy of the topological string with target M as
+                                                ∞
+                                                X
+                                        A
+                               F (gs , t ) =          gs2g−2F (g) (tA ) .                 (3.2)
+                                                g=0
+
+
+F (0) coincides with the N = 2 prepotential F II . The F (g) for g ≥ 1 control the couplings of
+the operators (F+grav )2g−2 R+
+                             2
+                               [44], where the + subscripts denote the self-dual parts, F grav
+is the field strength of the graviphoton and R denotes the Riemann tensor.
+
+In the duality with heterotic strings, the overall volume of the base P1 , controlled by tB1 ,
+is dual to the heterotic dilaton S. This follows from the results of [45], if we view the space
+as a K3 fibration. Hence, we will work in the limit:
+
+               Perturbative heterotic limit : tB1 → ∞, qB1 ≡ e−2πtB1 → 0 .                (3.3)
+
+To make use of the beautiful results of [34, 35], we do a double expansion of the F (g) (q A )
+in the two base moduli, multiplying functions of the elliptic fiber modulus qF ≡ e−2πtF ,
+                                                      (g)
+                                                X
+                               F (g) (q A ) =       fk,l (qF ) qBk 1 qBl 2 .              (3.4)
+
+The question of determining the prepotential and its higher-genus analogues now reduces to
+                       (g)
+finding the functions fk,l (qF ). The terms which can be compared to perturbative heterotic
+computations are those with k = 0.
+
+
+                                                 11
+The recent papers [34, 35], building on [46, 47] and other earlier works, found a set of
+                                          (g)
+recursion relations which determine the fk,l . Because they are functions of qF , it transpires
+           (g)
+that the fk,l are actually quasi-modular forms with weight depending on k, l as well as the
+integer n parametrizing which Hirzebruch surface Fn appears as the base.
+
+More precisely, the result of [34, 35] states
+                                1  !2p(k,l)
+               (g)           q 24
+                               F
+              fk,l (qF ) =                  P2g−2+p(k,l)(E2 (qF ), E4 (qF ), E6 (qF )),              (3.5)
+                            η(qF )
+where P2g−2+p(k,l) is a quasi-modular form of weight 2g − 2 + p(k, l) and
+                                 k                 l
+                                   Z                 Z
+                       p(k, l) =     c2 (M) ∧ J2 +      c2 (M) ∧ J1 .                                (3.6)
+                                 2 M               2 M
+Here, J1 and J2 are the harmonic (1,1) forms appearing in the expansion of the Kähler
+                                                                                     (g)
+form that control the real parts of tB1 and tB2 , respectively. 1 Furthermore, the fk,l (qF )
+satisfy the following recursion relation when M is the fibration over Fn for n = 0, 1, 2: 2
+               (g)             g    k     l
+           ∂fk,l        1 XXX                                           (g−h) (h)
+                     =                (ns(k − s) − s(l − t) − t(k − s))fs,t fk−s,l−t
+           ∂E2         24 h=0 s=0 t=0
+                              1                               (g−1)
+                         −      (2kl + (n − 2)k − 2l − nk 2 )fk,l ,                                   (3.7)
+                             24
+                                                            (g)
+where we take the E2 -derivative of functions fk,l as given in (3.5) by differentiating the
+function P2g−2+p(k,l) (E2 , E4 , E6 ) with respect to the first argument. To compare to the
+heterotic string results of §2, we want to focus on one-loop computations in the heterotic
+string-coupling expansion. We should therefore study terms in the prepotential indepen-
+dent of qB1 .
+                                                                  (0)
+The simplest non-trivial term we can study is then f0,1 (qF ). The recursion relation (3.7)
+tells us that
+                                             (0)
+                                           ∂f0,1
+                                                 =0.                                  (3.8)
+                                           ∂E2
+                     R
+Using the fact that c2 (M) ∧ J1 = 24 (which follows from the discussion in e.g. [45]), we
+                        (0)
+find from (3.5) that f0,1 should be fixed entirely by determining a modular form of weight
+10. As mentioned before, such a form is unique up to multiplication by a constant and
+is given by E4 (qF )E6 (qF ). Fixing the overall normalization by comparing with the known
+Gromov–Witten invariants one finds [34]
+                                    (0)              1 qF E4 (qF )E6 (qF )
+                                   f0,1 (qF ) = −                          .                          (3.9)
+                                                    4π 3   η(qF )24
+   1
+                                                                                R
+     Note that although k counts the powers of qB1 it appears as coefficient of M c2 (M ) ∧ J2 in (3.6).
+   2
+     We thank E. Scheidegger for clarifying discussions about this recursion relation.
+
+                                                       12
+This in particular leads to a prepotential whose q-expansion in base moduli (multiplying
+appropriate quasi-modular forms of the fiber modulus) takes the form
+                                      1 qF E4 (qF )E6 (qF )
+                    F II = . . . −                          qB2 + O(qB1 , qB2 2 ) .    (3.10)
+                                     4π 3   η(qF )24
+This set of terms in the prepotential (in the n = 0 model) also played an important role
+in the discussion of [48].
+
+While the modular form Eη424E6 has played a starring role both in §2 and here, the matching
+between the results of the two sections is far from obvious at this stage. In one case the
+expression appeared as an integrand in a loop amplitude, while in the other it is the final
+result for a (set of terms in the) prepotential. After we connect the two results in §4, it
+becomes clear that the universal heterotic result derived in §2.2 together with string duality
+implies that the result above holds for all n, if we set the “extra” vector multiplet moduli
+that generically appear (as Wilson lines of the generic un-Higgsed gauge factor) for n ≥ 3
+to zero. It would be interesting to check this explicitly on the type II side.
+
+
+
+3.2    The higher genera
+
+From the form of the recursion relation (3.7), we see that generically the E2 -derivative of
+      (g)                     (0)
+the fk,l for g ≥ 1 involves f0,1 . In the next section we will match the heterotic and type
+                               (0)
+II results and thus connect f0,1 to M24 . Due to the recursion relation it is then tempting
+to conjecture that all F (g) for g ≥ 1 should to a certain degree know about M24 . This
+conjecture is bolstered by our previous observation that the BPS states on the heterotic
+string side are governed by M24 and the fact that the duality between type II and the
+heterotic string maps BPS states to BPS states.
+                                                                         (g)
+In the dual heterotic compactifications one can calculate the fk,l for k = 0 and for all g at
+one-loop [49], so let us look at the particular case of k = 0 for which the recursion relation
+                                                             (g)
+(3.7) simplifies significantly. In particular the functions f0,1 satisfy
+                                              (g)     1 (g−1)
+                                        ∂E2 f0,1 =     f      .                        (3.11)
+                                                     12 0,1
+For g = 1 this means that
+                                 (1)      E2 E4 E6 + c1 E43 + c2 E62
+                               f0,1 ∝                                .                 (3.12)
+                                                    η 24
+                                                                                        (1)
+For the case of the elliptic fibration over F0 [50] find that c1 = c2 = 0 so that f0,1 ∝
+E2 E4 E6 /η 24 . This particular quasimodular form has appeared in the integrand of ∆grav in
+
+                                                    13
+(2.5), which as we explain in the next section is not a coincidence but follows from string
+duality.
+
+By induction we find from (3.11) for all g that
+                                         (g)    (0)      E4 E6
+                                 (∂E2 )g f0,1 ∝ f0,1 ∝         .                       (3.13)
+                                                          η 24
+In the next section we relate the heterotic and type II results and clarify the connection
+          (0)                                                                           (g)
+between f0,1 and M24 . The above recursion relation (3.13) then links M24 to all f0,1 . In
+                                       (g)
+§4.3 we review how one calculates the f0,l for all g explicitly on the heterotic side [49] and
+reproduce (3.13).
+
+
+
+4     Matching the results
+
+Here, we demonstrate that in fact §2.3 and §3.1 give results which match precisely, due to
+the happy appearance of the unique modular form of weight 10 in both computations. We
+first outline the proof in the particular case of the standard embedding, and then explain
+why the result is unaltered for other instanton embeddings. Here we rely on the beautiful
+results of [31, 33].
+
+
+
+4.1    Simplest case
+
+In the heterotic theory the prepotential in the ST U model is given by
+
+                         F het = ST U + f 1−loop (T, U) + O(e−2πS ) .                    (4.1)
+
+One can obtain a second-order differential equation for the one-loop prepotential, depend-
+ing on the new supersymmetric index, by equating two distinct formulas for the low-energy
+gauge couplings appearing in [25,26]. Following [27] let us consider the case of the standard
+embedding, which implies n1 = 24, n2 = 0 with the second E8 unbroken.
+
+The running of the second E8 gauge coupling depends on, among other things, the value
+                                                                   1
+of the new supersymmetric index with the insertion Q2 (E8 ) − 8πτ    2
+                                                                        
+                E8     1        iπJ0 L0 −c/24 L0 −c̄/24    2           1
+              Znew = 2 TrR J0 e q            q̄           Q (E8 ) −          .  (4.2)
+                      η                                              8πτ2
+The supersymmetric index with the Q2 insertion is a descendent of the new supersymmetric
+index (2.3) and can be obtained by an appropriate q-derivative. For an E8 gauge group we
+
+                                               14
+have to take the derivative of the E8 current algebra and find
+                        ΘΓ2,2 q∂q E4                           Ê2 E4 E6 − E62
+                                             
+              E8                          E4            i
+            Znew = −2i 24              −        E6 = − ΘΓ2,2                   .             (4.3)
+                         η         8     8πτ2          12             η 24
+The two formulae for the low-energy gauge coupling for the heterotic string compactified
+on T 2 × K3 are the following:
+
+1) A direct one-loop calculation in the perturbative string theory [25] yields for the effective
+coupling of the E8 gauge group:
+                 1                     1
+               2   2
+                      =   Re(S)   +          Re(f 1−loop − (T1 ∂T + U1 ∂U )f 1−loop )
+              g (p )                 8πT1 U1
+                                      2             Z 2
+                          b(E8 )       Ms        1       dτ        E8
+                      +        2
+                                 log     2
+                                             +      2
+                                                             (−iZnew  − b(E8 )) .          (4.4)
+                           16π         p       16π        τ2
+The first line includes the tree-level and one-loop shift in the usual definition of the string
+coupling in terms of the dilaton. The second line is a sum of the contributions coming from
+a usual field theory beta function (with b(E8 ) = −60) and the one-loop string threshold
+corrections from charged massive states. p denotes an energy scale below the string scale
+Ms .
+
+2) Calculating the one-loop exact effective gauge coupling in a (string-based) effective
+quantum field theory with cutoff at the Planck scale [25, 26] one finds
+                                                 2
+                                                    Mp
+                                                                                 
+              1                         b(E8 )
+                    = Re [h(S, T, U)] +         log     + K(S, T, U, S̄, T̄ , Ū) . (4.5)
+          g 2 (p2 )                     16π 2       p2
+Here the Wilsonian gauge coupling is given by (cf. equation (4.39) of [26])
+                    1                     1                         b(E8 )
+ h(S, T, U) = S −     ∂T ∂U f 1−loop − 2 log[J(iT ) − J(iU)] −             log[η(iT )η(iU)] , (4.6)
+                   8π                    8π                          4π 2
+and K is the tree-level Kähler potential
+            K(S, T, U, S̄, T̄ , Ū ) = −log 21 (S + S̄) − log 21 (T + T̄ )(U + Ū ) .
+                                                                                
+                                                                                              (4.7)
+Using that Mp2 = Ms2 Re(S) we can rewrite the gauge coupling (4.5) as
+                                                                          
+             1                 1         1−loop   1
+                   = Re S −      ∂T ∂U f        − 2 log[J(iT ) − J(iU)]
+         g 2 (p2 )            8π                 8π
+                              2                                                
+                     b(E8 )       Ms
+                   +         log          − log[2T1 U1 ] − 4 Re [log(η(iT )η(iU))] .         (4.8)
+                     16π 2         p2
+For energies p well below the string scale both couplings have to be equal which leads to
+a differential equation for the one-loop prepotential in terms of the new supersymmetric
+index (with the Q2 insertion). We find
+                                                                                     
+                                1−loop     1      1−loop                     1−loop
+                  −Re ∂T ∂U f          +       (f        − (T1 ∂T + U1 ∂U )f        )
+                                         T1 U1
+
+                                                15
+                    Z 2
+                  1     d τ      E8                 1
+               =            (−iZnew    − b(E8 )) + Re(log[J(iT ) − J(iU)])
+                 2π      τ2                        π
+                   b(E8 )
+                 +        (log[2T1 U1 ] + 4 Re [log(η(iT )η(iU))]) .                          (4.9)
+                     2π
+The integral
+                                       d2 τ
+                                    Z
+                                                E8
+                                            (−iZnew − b(E8 ))                         (4.10)
+                                        τ2
+is evaluated explicitly in appendix A of [27]. One finds [27] that the one-loop prepotential
+                                              1 X
+                f 1−loop (T, U) = p(U, T ) − 3          c(kl)Li3 e−2π(kT +lU )
+                                                                               
+                                                                                      (4.11)
+                                             4π k>0,l∈Z
+                                                  k=0,l>0
+
+solves the differential equation, where p(U, T ) is a specific cubic polynomial that is not
+relevant for us. Here, the coefficients c(m) are defined by
+        E4 E6     X               1
+           24
+              =       c(m)q m = − 240 + · · · , and c(m) = 0 ∀m < −1 .               (4.12)
+         η       m≥−1
+                                  q
+
+Using the identification qB2 = e−2π(T −U ) , qF = e−2πU , we can expand the heterotic prepo-
+tential3
+                                      1         X
+                      F het = . . . − 3 qF qB2      c(l)qFl + O(qB1 , qB2 2 ) .       (4.13)
+                                     4π        l≥−1
+
+Comparing (3.10) with (4.13), we see that the perturbative heterotic corrections as a
+function of the moduli T and U match perfectly with the type IIA worldsheet instanton
+sum over rational curves which don’t wrap the P1 dual to the heterotic dilaton, at least in
+the leading order of qB2 .
+
+
+
+4.2    Other values of n
+
+The previous section shows that the M24 multiplicities encoded in the integrand for the
+one-loop threshold corrections in the heterotic theory indeed map directly over to the M24
+multiplicities visible in counts of rational curves, for the case n = 12. A similar proof
+goes through for all other values of n. If we embed n1 instantons in the first E8 and n2
+instantons in the second E8 so that the second E8 is broken to some subgroup G, one finds
+                                                        1
+for the new supersymmetric index with a Q2 (G) − 8πτ      2
+                                                            insertion (cf. equation (2.4) in [33])
+                                              3              n1 2    n2 3
+                                                                           !
+                 G           1        (E 2 − πτ
+                                                  )E4 E6  −  24
+                                                                E6 − 24
+                                                                        E4
+               Znew    = − ΘΓ2,2                2
+
+                            12                         η 24
+  3
+    The base modulus tB1 is proportional to the dilaton S but there is no canonical geometric way to
+identify the dilaton [50]. This does not matter to us since we work to zeroth order in qB1 .
+
+                                                16
+                                                                                       !
+                             1              (E2 − πτ32 )E4 E6 − E62
+                         = − ΘΓ2,2                                    − 72(24 − n1 )       .    (4.14)
+                            12                       η 24
+
+In the second line we have used the identity E43 − E62 = 1728η 24 . Thus we can think of the
+different instanton embeddings as only changing the constant term in the q-expansion of
+E62
+η24
+     by 72(24 − n1 ). This also changes the beta-function coefficients b(G) → b(G) + 6(24 −
+n1 ). Going through the calculation of [27] on finds that these two changes cancel in the
+calculation of the one-loop prepotential which is therefore again given by (4.11).
+
+Alternatively, we can also obtain the one-loop prepotential from the more general results
+of [31, 33]. These authors turn on a Wilson line in an SU(2) factor of the gauge group
+remaining “unHiggsed” in the E8 with more instantons. The resulting theory, in addition
+to the S, T, U moduli, will have a modulus V parametrizing the value of the Wilson line.
+
+The heterotic prepotential then takes the general form
+
+               F het(S, T, U, V ) = S(T U − V 2 ) + f 1−loop (T, U, V ) + O(e−2πS ) .           (4.15)
+
+The one-loop prepotential f 1−loop is determined by solving the differential equation analo-
+gous to that discussed in §4.1. It is given by:
+                                             1 X
+      f 1−loop (T, U, V ) = p(T, U, V ) −            c̃ 4kl − b2 Li3 e−2π(kT +lU +bV ) ,
+                                                                                     
+                                              3
+                                                                                                (4.16)
+                                            4π k,l,b
+
+where p(T, U, V ) is a cubic polynomial that will not be important for us. The n1 , n2
+dependent c̃ (4kl − b2 ) are defined via:
+                 n1 E4 (q, y)E6(q) n2 E4 (q)E6 (q, y) X
+                             24
+                                  +            24
+                                                     =     c̃(4m − b2 )q m y b .                (4.17)
+                 24     η(q)        24    η(q)         m,b
+
+One can recover the results without Wilson line, for the prepotential of the three-modulus
+model by setting V = 0 and doing the sum over multi-wrappings of the appropriate curve
+in (4.16). Performing the sum over b yields
+                          1 X                                           X
+       F het = · · · −          c(kl)Li3 e−2π(kT +lU ) ,                      c̃(4kl − b2 ) .
+                                                      
+                           3
+                                                              c(kl) ≡                           (4.18)
+                         4π k,l                                           b
+
+Since the sum over b amounts to setting y = 1 in (4.17) it follows that the coefficients
+c(kl) defined in this way are independent of n1 , n2 and agree precisely with those in (4.11),
+(4.12).
+
+Above we have argued that the heterotic string theory leads to the same prepotential for all
+n, if we set the Wilson lines that generically arise for n ≥ 3 to zero. On the type II side this
+
+                                                    17
+corresponds to taking a singular limit of the elliptic fibration over Fn≥3 by setting certain
+Kähler moduli to zero. While we expect from string duality that the resulting prepotentials
+match in this singular limit, it is nevertheless illuminating to study it in more detail. For
+instance, Harvey and Moore [27] work out the prepotential for n = 12 and keep track of
+the eight Wilson lines that generically arise in the universal threshold corrections through
+Znew as given in (2.22). They find that the one-loop prepotential has the following form
+
+                                           ĉ(0)ζ(3)
+   f 1−loop (T, U, V i ) = p(T, U, V i ) −
+                                              8π 3
+                              1         X                                                 i
+                                                                                             
+                                                 ĉ kl − 21 ( i b2i ) Li3 e−2π(kT +lU +bi V ) ,(4.19)
+                                                             P 
+                           − 3
+                             4π k>0,l∈Z,b ∈Γ
+                                           i   8,0
+                                  k=0,l>0,bi ∈Γ8,0
+                                    k=l=0,bi >0
+
+
+where p(T, U, V i ) is a for us irrelevant cubic polynomial and this time we did not absorb
+the constant term proportional to ζ(3) in the polynomial. The coefficients ĉ(m) are defined
+by
+         E6     X                 1
+          24
+             =        ĉ(m)q m = − 480 + · · · , and ĉ(m) = 0 ∀m < −1 .              (4.20)
+        η      m≥−1
+                                  q
+
+Comparing with the type II prepotential (3.1) we find that the Euler characteristic of the
+elliptic fibration over F12 is correctly given by χ = 2ĉ0 = −960. If we now take the limit
+V i = 0 we find that the constant term proportional to ζ(3) gets shifted since
+                              X
+                                     ĉ − 21 ( i b2i ) Li3 (1) = 120ζ(3) ,
+                                              P 
+                                                                                     (4.21)
+                          k=l=0,bi >0
+
+
+where we used that Li3 (1) = ζ(3), ĉ(−1) = 1 and that there are 120 positive roots in the
+E8 lattice that satisfy i b2i = 2. The constant term in the one-loop prepotential thus
+                         P
+
+changes from
+                           ĉ(0)ζ(3)      (ĉ(0) + 240)ζ(3)     c(0)ζ(3)
+                       −             →  −                   = −          ,              (4.22)
+                              8π 3                8π 3            8π 3
+where c(0) = −240 as defined in (4.12). Similarly, since E4 (q) is the theta function associ-
+ated to the E8 root lattice it follows that
+       X                                                  X
+                ĉ kl − 12 ( i b2i ) Li3 e−2π(kT +lU ) =       c(kl)Li3 e−2π(kT +lU ) . (4.23)
+                             P                                                     
+   k>0,l∈Z,bi ∈Γ8,0                                       k>0,l∈Z
+   k=0,l>0,bi ∈Γ8,0                                       k=0,l>0
+
+
+This explicitly verifies that for n = 12 setting all the Wilson lines to zero gives our universal
+answer.
+
+
+
+
+                                                     18
+4.3    Gravitational threshold corrections
+
+Another quantity that receives only one-loop corrections and has been calculated in het-
+erotic perturbation theory is the gravitational coupling i.e. the coefficient of the term
+R2 [51]. As we discussed in §2.2 the universal threshold corrections for this coupling are
+determined by (2.5)
+                     Z 2                                                              
+                       dτ        i         
+                                               iπJ0 L0 −c/24 L0 −c̄/24
+                                                                              
+          ∆grav =            −       TrR J0 e q             q̄         Ê2 (q) − bgrav
+                        τ2     η(q)2
+                     Z 2 "                               #
+                       dτ      2iΘΓ2,2 Ê2 E4 E6
+                 =           −                   − bgrav .                               (4.24)
+                        τ2            η 24
+
+Since the integrand in this case is just Ê2 (q)Znew , it follows from our discussion in §2 that it
+receives contributions only from BPS states and is independent of the particular instanton
+embedding. Moreover, it might be relevant for the Mathieu moonshine.
+
+This coupling is actually the first of an infinite series of perturbative heterotic terms which
+are dual to the type II higher-genus topological amplitudes F (g) introduced in (3.2). The
+weakly coupled heterotic string captures the F (g) in the limit when the base P1 of the dual
+Calabi-Yau threefold is very large. As mentioned above, the F (g) enter the action in the
+schematic form F (g) (F+grav )2g−2 R+ 2
+                   R
+                                        , where the + subscripts denote the self-dual parts,
+  grav
+F      is the field strength of the graviphoton and R denotes the Riemann tensor. On the
+heterotic side the F (g) are one-loop exact and have been calculated in [52]. They also only
+receive contributions from BPS states [27]. For the symmetric embedding with n = 0 and
+in the weak coupling limit (S → ∞), one can write a generating function for the F (g) [49]
+                    ∞
+                    X
+   F (λ, T, U) =          λ2g F (g) (T, U)
+                    g=1
+                     ∞
+                             λ2g                   d2 τ 2(g−1) E4 E6
+                    X                        Z                           X 2(g−1) 1 2 1 2
+                =                                      τ2            P2g      pR q 2 pL q̄ 2 pR , (4.25)
+                  g=1
+                      2π 2 (2T2 U2 )g−1          F  τ2          η 24
+                                                                          2,2
+                                                                        p∈ Γ
+
+
+where P2g is a function of Ê2 , E4 and E6 of weight 2g that can be explicitly calculated
+following the prescription in [49]. However, its precise form is not important to us.
+
+The F (g) (T, U) in (4.25) can be explicitly calculated [49] and (the antiholomorphic parts)
+turn out to be polylogarithms whose coefficients are given by the Gromov–Witten invariants
+of the dual type II geometry and are related to the expansion coefficients of E4 Eη24
+                                                                                   6 P2g
+                                                                                         . The
+appearance of polylogarithms is particularly natural on the type II (or M-theory) side
+when writing topological string amplitudes in terms of Gopakumar–Vafa invariants. On
+
+                                                      19
+the heterotic side one finds [49] that one of the terms in P2g is proportional to (E2 )g . This
+matches nicely with the recursion relation (3.13) we found in the type II dual theories. We
+also note that the integrands in (4.25) all contain a factor Eη424E6 that is connected to M24 .
+For the case of g = 1 this follows from our discussion in section §2. For g ≥ 2 the explicit
+calculation of an expression very similar to (4.25) in [52] shows that Eη424E6 arises in exactly
+the same way as for g = 1. This also follows from the observation that schematically the
+(F+grav )2g−2 part for g ≥ 2 arises from taking appropriate derivatives of the ΘΓ2,2 factor
+in Znew = −2iΘΓ2,2 E4 E6 /η 24 = −2iΘΓ2,2 GK3 /η 4 since the graviphoton arises from the T 2
+compactification. Thus the GK3 part that is related to M24 remains unaltered and we find
+that all F (g) are related to M24 . Although equation (4.25) was derived for n = 0, we expect
+that it should be also true for all other instanton embeddings based on the universality
+argument for GK3 given in §2.2. Of course, this will be true only on the locus where the
+“extra” vector multiplet moduli which are generically present in the n ≥ 3 cases are turned
+off, as otherwise dependence on the additional Wilson-lines can complicate the issue.
+
+
+
+5    Discussion
+
+It was recently discovered that the elliptic genus of the (4,4) supersymmetric sigma model
+with K3 target exhibits a moonshine relation to the Mathieu group M24 . This hints
+at a hidden symmetry governing the BPS states of string theories with 16 supercharges.
+Here, we saw that in theories with just 8 supercharges, corresponding to heterotic (0,4)
+compactifications on K3 × T 2 , a similar phenomenon occurs. The new supersymmetric
+                     E6 (q)
+index has a factor η(q)  12 whose expansion involving N = 4 characters and characters of
+
+SO(12) suggests a hidden role for M24 in these theories. The type II duals of the heterotic
+models are Calabi-Yau compactifications; the q-expansion of the new supersymmetric index
+appears there (in a subtle way) in the Gromov–Witten invariants. These again determine
+(part of) the BPS spectrum of Calabi-Yau compactifications.
+
+Our results suggest several broad questions for future exploration.
+
+• In the case of the original Monstrous moonshine conjectures, the McKay-Thompson series
+provided considerable further evidence for a relationship between distinct mathematical ob-
+jects. Here, a similar role can be played by the twining genera, as demonstrated already in
+the (4,4) avatar of Mathieu moonshine [8–12]. It is therefore interesting to examine explicit
+(0,4) conformal field theories, find appropriate discrete symmetries, compute the relevant
+twining genera, and see if they coincide with the prediction of Mathieu moonshine, at least
+
+
+                                              20
+in some cases. In fact, we have already found that twining genera do show interesting
+properties in specific CFTs illustrating the cases n = 0, 4, 12. We shall report on compu-
+tations of twining genera, and identification of symmetries of certain particularly simple
+(0,4) K3 conformal field theories with certain subgroups of M24 , in [37] (see also [38]).
+
+• Another natural thought in the study of Mathieu moonshine has been the following.
+It is an old result of Mukai that the most general symplectic automorphisms of K3 are
+subgroups of M23 [53]. Recent investigations have explored the very natural question:
+could (4,4) conformal worldsheet theories with (c, c̃) = (6, 6) that correspond to a K3
+compactification have ‘stringy symmetries’ that enlarge the M23 of Mukai to M24 , and can
+large subgroups of M24 arise in such theories [12]? The answers are somewhat surprising:
+not all discrete symmetries (which commute with the N = 4 worldsheet SUSY) fit into
+M24 ; no such (4,4) theory realizes M24 as a symmetry; however, all groups could potentially
+be contained in the Conway group Co1 .
+
+The moduli space of (0,4) conformal field theories is much larger than that of their (4,4)
+counterparts. It would be natural to try and classify discrete symmetries of such theories;
+to find the maximal order symmetries realized at any points in moduli space; and to see
+if any role for the large sporadic simple finite groups seems natural in the answer to these
+questions. A large number of (0,4) theories are given as orbifolds of K3 (see [33] for a nice
+list), and even more should be realizable as (0,4) Landau-Ginzburg orbifolds with various
+gauge bundles using gauged linear sigma model techniques along the lines of [54].
+
+• In §2.3, where we discuss how dimensions of M24 representations can be seen in the
+q-expansion of the modular forms arising in the new supersymmetric index, we expanded
+in characters of the N = 4 algebra without further comment. This is arguably natural in
+the context of Mathieu moonshine for (4,4) theories. However, in the (0,4) context, the
+left-movers (whose excited states the q-expansion is counting) do not naturally play well
+with any N = 4 superalgebra. An expansion in Virasoro characters (perhaps extended by
+a U(1) current algebra) would seem more natural. Why do N = 4 characters still seem
+to play a natural role in reading off multiplicities of M24 representations, even for (0,4)
+conformal field theories?
+
+• We have found evidence for M24 moonshine in heterotic models with instantons in one E8
+and Wilson lines in the other E8 gauge group as well as arbitrary instanton configurations
+with all Wilson lines turned off. It would be interesting to check whether this is also
+true for models that have both Wilson lines and instantons in the same E8 . The general
+heterotic prepotential for the particular case of one Wilson line is discussed in [31, 33]. [31]
+
+
+                                              21
+also compare this to the type IIA prepotential for certain n.
+
+• On the type II side we have argued that the Gromov–Witten invariants (or equivalently
+Gopakumar–Vafa invariants) for Calabi-Yau threefolds which are elliptic fibrations over the
+Hirzebruch surfaces Fn are governed by the dimensions of representations of M24 . Since
+these Calabi-Yau spaces are K3 fibered, one might wonder whether M24 also plays a role in
+the Gromov–Witten invariants for other K3 fibered Calabi-Yau manifolds, at least when
+one restricts to curves in the fibre.
+
+• For heterotic orbifold compactification to four dimensions, it was shown in [55] that
+moduli dependent one-loop corrections to the gauge couplings are only non-trivial, if the
+orbifold has a sector that preserves 4d N = 2 supersymmetry. There is a large class of
+orbifold compactifications that lead to 4d N = 1 supersymmetric theories and have twisted
+sectors that preserve N = 2 supersymmetry. We expect that the Mathieu group M24 will
+also play a role in these N = 1 compactifications. We are going to study this further
+in [56].
+
+• Why does a factor of the theta function of affine E8 current algebra Eη(q)
+                                                                           4 (q)
+                                                                               8 naturally arise
+
+in the index computation in §2.3? At a technical level this is true because e.g. the index
+is independent of n, and for n = 12 there is an unbroken E8 symmetry. But one would
+like a more physical understanding of why the E8 appears in theories with other values
+of n. A related observation (that the states contributing to the index seem to appear
+in E8 multiplets despite the evident absence of unbroken E8 symmetry) appeared in the
+original elliptic genus computations of [36]. Perhaps this affine E8 can be related to the one
+appearing in BPS spectra of certain non-critical strings in the Calabi-Yau description [57].
+
+• It is interesting that the function E6 (q)/η(q)12 also appears in monstrous moonshine: as
+the twining function attached to a commuting pair of 2A elements in the monster. As such
+the coefficients of E6 (q)/η(q)12 admit an interpretation as dimensions of virtual, projec-
+tive representations of the twisted Chevalley group 2 E6 (2), and our arguments therefore
+indicate a possible role for 2 E6 (2) in the counting of BPS states in N = 2 string compac-
+tifications. The precise physical interpretation for 2 E6 (2) in this setting is as yet unclear,
+but we can observe that it must play a role significantly different from that of M24 , for
+the decompositions into degrees of M24 -modules presented here suggest commuting actions
+of affine SO(12) and the N = 4 algebra—actions which cannot be preserved by 2 E6 (2)—
+and the twining functions attached to M24 are generally mock modular, while the twining
+functions attached to (a suitable cover of) 2 E6 (2) are principal moduli or vanish identically
+according to the generalized moonshine conjectures. Also, 2 E6 (2) does not admit M24 as
+
+
+                                              22
+a subgroup, so we can rule out the possibility that the observations about M24 made here
+are specializations of an interpretation for 2 E6 (2).
+
+• From [17,58] we have seen that the M24 moonshine is but one instance of the more general
+phenomenon of “umbral moonshine”. Moreover, different instances of umbral moonshine
+have a very similar structure given by the underlying Niemeier lattices [58]. Another
+natural direction is to clarify the relation between the other instances of umbral moonshine
+and string theory compactifications. It is possible that to capture these other cases, one
+has to consider the wider class of heterotic compactifications with more general Wilson
+lines turned on.
+
+One can hope that further study of N = 2 string vacua may shed light on the phenomenon
+of moonshine, or even more optimistically, that moonshine may help lead us to a more
+abstract reformulation of string vacua.
+
+                                  Acknowledgements
+
+We are grateful to S. Harrison, S. Hohenegger, D. Israel, A. Klemm, V. Kumar, E. Schei-
+degger, S. Stieberger and D. Whalen for conversations about related subjects. J.H. ac-
+knowledges the support of NSF grant 1214409. S.K. would like to acknowledge UCSF and
+the Aspen winter conference on “Inflationary theory and its confrontation with data in
+the Planck era” for hospitality during the very early stages of this work. S.K. and X.D.
+are supported by the U.S. National Science Foundation grant PHY-0756174, the Depart-
+ment of Energy under contract DE-AC02-76SF00515, and the John Templeton Foundation.
+T.W. is supported by a Research Fellowship (Grant number WR 166/1-1) of the German
+Research Foundation (DFG). T.W. and X.D. would also like to acknowledge the KITP
+program on “Primordial Cosmology” for hospitality during part of this work. This re-
+search was supported in part by the National Science Foundation under Grant No. NSF
+PHY11-25915.
+
+
+
+A    Conventions
+
+We use the following conventions for the Jacobi θi (q, y) functions
+                                          ∞                        1 )2
+                                          X                    (n− 2           1
+                          θ1 (q, y) = i        (−1)n q            2       y n− 2 ,    (A.1)
+                                          n=−∞
+                                          ∞               2
+                                          X        (n− 1
+                                                       2)          1
+                          θ2 (q, y) =          q      2       y n− 2 ,                (A.2)
+                                        n=−∞
+
+
+                                              23
+                                              ∞
+                                                         n2
+                                              X
+                             θ3 (q, y) =               q 2 yn ,                                     (A.3)
+                                             n=−∞
+                                               ∞
+                                                                   n2
+                                              X
+                             θ4 (q, y) =               (−1)n q 2 y n ,                              (A.4)
+                                             n=−∞
+
+
+where q = e2πiτ and y = e2πiz . Whenever the y-dependence is not specified, we have set
+y = 1, for example θi = θi (q) = θi (q, 1) and likewise for the other functions defined below.
+
+We also use the Dedekind η(q) function
+                                                       ∞
+                                                   1
+                                                       Y
+                                       η(q) = q   24          (1 − q n ) ,                          (A.5)
+                                                       n=1
+
+and the Jacobi–Eisenstein series E4 (q, y) and E6 (q, y), of index 1, defined by
+               1
+                  θ2 (q, y)2θ26 + θ3 (q, y)2θ36 + θ4 (q, y)2θ46 ,
+                                                               
+   E4 (q, y) =                                                                                        (A.6)
+               2
+                 1
+   E6 (q, y) = − θ2 (q, y)2θ26 (θ34 + θ44 ) + θ3 (q, y)2θ36 (θ24 − θ44 ) − θ4 (q, y)2θ46 (θ24 + θ34 ) .
+                                                                                                     
+                 2
+Lastly we define the quasimodular Eisenstein series
+                                        ∞                     ∞
+                                       X     nq n            X
+                       E2 (q) = 1 − 24            n
+                                                    = 1 − 24     σ1 (n)q n ,                        (A.7)
+                                       n=1
+                                           1 −  q            n=1
+
+                                                                                                            k
+                                                                                                  P
+and the non-holomorphic modular form Ê2 (q) = E2 (q) − 3/(πτ2 ), where σk (n) =                    d|n d
+is the sum of the k-th powers of the divisors of n.
+
+The Eisenstein series E4 (q) = E4 (q, 1) and E6 (q) = E6 (q, 1) can likewise be expanded as
+                                           ∞                                 ∞
+                                           X n3 q n                          X
+                    E4 (q) = 1 + 240                        n
+                                                              = 1 + 240            σ3 (n)q n ,
+                                           n=1
+                                               1−q                           n=1
+                                           ∞                                 ∞
+                                           X n5 q n                          X
+                    E6 (q) = 1 − 504                           = 1 − 504           σ5 (n)q n .      (A.8)
+                                           n=1
+                                               1 − qn                        n=1
+
+Finally let us recall that a modular form of weight k (with trivial multiplier system) satisfies
+                                                               !
+                    aτ + b                                 a   b
+                f             = (cτ + d)k f (τ ), for all           ∈ SL(2, Z) ,         (A.9)
+                    cτ + d                                 c b
+
+and the Dedekind η function has weight 1/2 (and a non-trivial multiplier system), while
+Ê2 , E4 and E6 transform as modular forms with weight 2, 4 and 6, respectively.
+
+
+
+                                                       24
+References
+
+ [1] J. H. Conway and S. P. Norton, Monstrous Moonshine, Bull. London Math. Soc. 11
+     (1979) 308–339.
+
+ [2] I. Frenkel, J. Lepowsky, and A. Meurman, Vertex Operator Algebras and the
+     Monster, vol. 134 of Pure and Applied Mathematics. Elsevier Science, 1989.
+
+ [3] R. E. Borcherds, Monstrous Moonshine and Monstrous Lie Superalgebras , Invent.
+     Math. 109 (1992) 405.
+
+ [4] L. J. Dixon, P. H. Ginsparg, and J. A. Harvey, Beauty and the Beast: Superconformal
+     Symmetry in a Monster Module, Commun.Math.Phys. 119 (1988) 221–241.
+
+ [5] T. Gannon, Moonshine Beyond the Monster: The Bridge Connecting Algebra,
+     Modular Forms and Physics. Cambridge Monographs on Mathematical Physics.
+     Cambridge University Press, 2006.
+
+ [6] T. Eguchi, H. Ooguri, and Y. Tachikawa, Notes on the K3 Surface and the Mathieu
+     group M24 , Exper.Math. 20 (2011) 91–96, [arXiv:1004.0956].
+
+ [7] P. S. Aspinwall, K3 surfaces and string duality, Yau, S.T. (ed.): Differential
+     geometry inspired by string theory (1996) 1–95, [hep-th/9611137].
+
+ [8] M. C. Cheng, K3 Surfaces, N=4 Dyons, and the Mathieu Group M24,
+     Commun.Num.Theor.Phys. 4 (2010) 623–658, [arXiv:1005.5415].
+
+ [9] M. R. Gaberdiel, S. Hohenegger, and R. Volpato, Mathieu twining characters for K3,
+     JHEP 1009 (2010) 058, [arXiv:1006.0221].
+
+[10] M. R. Gaberdiel, S. Hohenegger, and R. Volpato, Mathieu Moonshine in the elliptic
+     genus of K3, JHEP 1010 (2010) 062, [arXiv:1008.3778].
+
+[11] T. Eguchi and K. Hikami, Note on Twisted Elliptic Genus of K3 Surface, Phys.Lett.
+     B694 (2011) 446–455, [arXiv:1008.4924].
+
+[12] M. R. Gaberdiel, S. Hohenegger, and R. Volpato, Symmetries of K3 sigma models,
+     Commun.Num.Theor.Phys. 6 (2012) 1–50, [arXiv:1106.4315].
+
+[13] M. R. Gaberdiel, D. Persson, H. Ronellenfitsch, and R. Volpato, Generalised Mathieu
+     Moonshine, arXiv:1211.7074.
+
+
+
+                                            25
+[14] M. R. Gaberdiel, D. Persson, and R. Volpato, Generalised Moonshine and
+     Holomorphic Orbifolds, arXiv:1302.5425.
+
+[15] A. Taormina and K. Wendland, Symmetry-surfing the moduli space of Kummer K3s,
+     arXiv:1303.2931.
+
+[16] A. Taormina and K. Wendland, A twist in the M24 moonshine story,
+     arXiv:1303.3221.
+
+[17] M. C. Cheng, J. F. Duncan, and J. A. Harvey, Umbral Moonshine,
+     arXiv:1204.2779.
+
+[18] M. C. Cheng and J. F. Duncan, Rademacher Sums and Rademacher Series,
+     arXiv:1210.3066.
+
+[19] T. Gannon, Much ado about Mathieu, arXiv:1211.5531.
+
+[20] M. C. Cheng and J. F. Duncan, The Largest Mathieu Group and (Mock)
+     Automorphic Forms, arXiv:1201.4140.
+
+[21] M. R. Gaberdiel and R. Volpato, Mathieu Moonshine and Orbifold K3s,
+     arXiv:1206.5143.
+
+[22] S. Kachru and C. Vafa, Exact results for N=2 compactifications of heterotic strings,
+     Nucl.Phys. B450 (1995) 69–89, [hep-th/9505105].
+
+[23] S. Ferrara, J. A. Harvey, A. Strominger, and C. Vafa, Second quantized mirror
+     symmetry, Phys.Lett. B361 (1995) 59–65, [hep-th/9505162].
+
+[24] I. Antoniadis, E. Gava, and K. Narain, Moduli corrections to gauge and gravitational
+     couplings in four-dimensional superstrings, Nucl.Phys. B383 (1992) 93–109,
+     [hep-th/9204030].
+
+[25] V. Kaplunovsky and J. Louis, On Gauge couplings in string theory, Nucl.Phys.
+     B444 (1995) 191–244, [hep-th/9502077].
+
+[26] B. de Wit, V. Kaplunovsky, J. Louis, and D. Lüst, Perturbative couplings of vector
+     multiplets in N=2 heterotic string vacua, Nucl.Phys. B451 (1995) 53–95,
+     [hep-th/9504006].
+
+[27] J. A. Harvey and G. W. Moore, Algebras, BPS states, and strings, Nucl.Phys. B463
+     (1996) 315–368, [hep-th/9510182].
+
+
+
+                                           26
+[28] E. Kiritsis, C. Kounnas, P. Petropoulos, and J. Rizos, Universality properties of N=2
+     and N=1 heterotic threshold corrections, Nucl.Phys. B483 (1997) 141–171,
+     [hep-th/9608034].
+
+[29] M. Henningson and G. W. Moore, Threshold corrections in K3 x T2 heterotic string
+     compactifications, Nucl.Phys. B482 (1996) 187–212, [hep-th/9608145].
+
+[30] T. Kawai, String duality and modular forms, Phys.Lett. B397 (1997) 51–62,
+     [hep-th/9607078].
+
+[31] G. Lopes Cardoso, G. Curio, and D. Lüst, Perturbative couplings and modular forms
+     in N=2 string models with a Wilson line, Nucl.Phys. B491 (1997) 147–183,
+     [hep-th/9608154].
+
+[32] D. Lüst, String vacua with N=2 supersymmetry in four-dimensions,
+     hep-th/9803072.
+
+[33] S. Stieberger, (0,2) heterotic gauge couplings and their M theory origin, Nucl.Phys.
+     B541 (1999) 109–144, [hep-th/9807124].
+
+[34] M. Alim and E. Scheidegger, Topological Strings on Elliptic Fibrations,
+     arXiv:1205.1784.
+
+[35] A. Klemm, J. Manschot, and T. Wotschke, Quantum geometry of elliptic Calabi-Yau
+     manifolds, arXiv:1205.1795.
+
+[36] T. Eguchi, H. Ooguri, A. Taormina, and S.-K. Yang, Superconformal Algebras and
+     String Compactification on Manifolds with SU(N) Holonomy, Nucl.Phys. B315
+     (1989) 193.
+
+[37] To appear.
+
+[38] S. Harrison, S. Kachru, and N. M. Paquette, Twining Genera of (0,4)
+     Supersymmetric Sigma Models on K3, arXiv:1309.0510.
+
+[39] S. Cecotti, P. Fendley, K. A. Intriligator, and C. Vafa, A New supersymmetric index,
+     Nucl.Phys. B386 (1992) 405–452, [hep-th/9204102].
+
+[40] M. C. Cheng, The Spectra of Supersymmetric States in String Theory,
+     arXiv:0807.3099.
+
+[41] D. R. Morrison and C. Vafa, Compactifications of F theory on Calabi-Yau threefolds.
+     1, Nucl.Phys. B473 (1996) 74–92, [hep-th/9602114].
+
+                                            27
+[42] D. R. Morrison and C. Vafa, Compactifications of F theory on Calabi-Yau threefolds.
+     2., Nucl.Phys. B476 (1996) 437–469, [hep-th/9603161].
+
+[43] M. Bershadsky, K. A. Intriligator, S. Kachru, D. R. Morrison, V. Sadov, et. al.,
+     Geometric singularities and enhanced gauge symmetries, Nucl.Phys. B481 (1996)
+     215–252, [hep-th/9605200].
+
+[44] I. Antoniadis, E. Gava, K. Narain, and T. Taylor, Topological amplitudes in string
+     theory, Nucl.Phys. B413 (1994) 162–184, [hep-th/9307158].
+
+[45] P. S. Aspinwall and J. Louis, On the ubiquity of K3 fibrations in string duality,
+     Phys.Lett. B369 (1996) 233–242, [hep-th/9510234].
+
+[46] S. Yamaguchi and S.-T. Yau, Topological string partition functions as polynomials,
+     JHEP 0407 (2004) 047, [hep-th/0406078].
+
+[47] M. Alim and J. D. Länge, Polynomial Structure of the (Open) Topological String
+     Partition Function, JHEP 0710 (2007) 045, [arXiv:0708.2886].
+
+[48] A. Klemm, D. Maulik, R. Pandharipande, and E. Scheidegger, Noether-Lefschetz
+     theory and the Yau-Zaslow conjecture, J. Amer. Math. Soc. 23 (2010) 1013,
+     [arXiv:0807.2477].
+
+[49] M. Marino and G. W. Moore, Counting higher genus curves in a Calabi-Yau
+     manifold, Nucl.Phys. B543 (1999) 592–614, [hep-th/9808131].
+
+[50] A. Klemm, M. Kreuzer, E. Riegler, and E. Scheidegger, Topological string
+     amplitudes, complete intersection Calabi-Yau spaces and threshold corrections, JHEP
+     0505 (2005) 023, [hep-th/0410018].
+
+[51] I. Antoniadis, E. Gava, and K. Narain, Moduli corrections to gravitational couplings
+     from string loops, Phys.Lett. B283 (1992) 209–212, [hep-th/9203071].
+
+[52] I. Antoniadis, E. Gava, K. Narain, and T. Taylor, N=2 type II heterotic duality and
+     higher derivative F terms, Nucl.Phys. B455 (1995) 109–130, [hep-th/9507115].
+
+[53] S. Mukai, Finite groups of automorphisms of K3 surfaces and the Mathieu group,
+     Invent. Math. 94 (1988), no. 1 183–221.
+
+[54] J. Distler and S. Kachru, (0,2) Landau-Ginzburg theory, Nucl.Phys. B413 (1994)
+     213–243, [hep-th/9309110].
+
+
+
+                                            28
+[55] L. J. Dixon, V. Kaplunovsky, and J. Louis, Moduli dependence of string loop
+     corrections to gauge coupling constants, Nucl.Phys. B355 (1991) 649–688.
+
+[56] To appear.
+
+[57] A. Klemm, P. Mayr, and C. Vafa, BPS states of exceptional noncritical strings, La
+     Londe les Maures 1996, Advanced quantum field theory (1996) 177–194,
+     [hep-th/9607139].
+
+[58] M. C. N. Cheng, J. F. R. Duncan, and J. A. Harvey, Umbral Moonshine and the
+     Niemeier Lattices, arXiv:1307.5793.
+
+
+
+
+                                           29
+

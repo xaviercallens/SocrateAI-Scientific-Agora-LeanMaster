@@ -1,0 +1,843 @@
+                                                                                                                            MPP-2022-60
+                                                                                                                          LMU-ASC 24/22
+                                              The Dark Dimension, the Swampland, and the Dark Matter
+                                                          Fraction Composed of Primordial Black Holes
+
+                                               Luis A. Anchordoqui,1, 2, 3 Ignatios Antoniadis,4, 5, 6 and Dieter Lüst7, 8
+                                                                          1
+                                                                              Department of Physics and Astronomy,
+                                                          Lehman College, City University of New York, NY 10468, USA
+                                                                                         2
+                                                                                             Department of Physics,
+arXiv:2206.07071v3 [hep-th] 20 Sep 2022
+
+
+
+
+                                                       Graduate Center, City University of New York, NY 10016, USA
+                                                                                    3
+                                                                                        Department of Astrophysics,
+                                                             American Museum of Natural History, NY 10024, USA
+                                                      4
+                                                          Laboratoire de Physique Théorique et Hautes Énergies - LPTHE,
+                                                      Sorbonne Université, CNRS, 4 Place Jussieu, 75005 Paris, France
+                                                                   5
+                                                                       SISSA, Via Bonomea 265, 34136, Trieste, Italy
+                                                                   6
+                                                                       ICTP, Strada Costiere 11, 34151 Trieste, Italy
+                                                                                7
+                                                                                    Max–Planck–Institut für Physik,
+                                                              Werner–Heisenberg–Institut, 80805 München, Germany
+                                                               8
+                                                                   Arnold Sommerfeld Center for Theoretical Physics,
+                                                     Ludwig-Maximilians-Universität München, 80333 München, Germany
+
+                                                                                                  Abstract
+                                          Very recently, it was suggested that combining the Swampland program with the smallness of
+                                          the dark energy and confronting these ideas to experiment lead to the prediction of the existence
+                                          of a single extra-dimension (dubbed the dark dimension) with characteristic length-scale in the
+                                          micron range. We show that the rate of Hawking radiation slows down for black holes perceiving
+                                          the dark dimension and discuss the impact of our findings in assessing the dark matter fraction
+                                          that could be composed of primordial black holes. We demonstrate that for a species scale of
+                                          O(1010 GeV), an all-dark-matter interpretation in terms of primordial black holes (PBHs) should
+                                          be feasible for masses in the range 1014 . MBH /g . 1021 . This range is extended compared to
+                                          that in the 4D theory by 3 orders of magnitude in the low mass region. We also show that PBHs
+                                          with MBH ∼ 1012 g could potentially explain the well-known Galactic 511 keV gamma-ray line if
+                                          they make up a tiny fraction of the total dark matter density.
+
+
+
+
+                                                                                                      1
+I.     INTRODUCTION
+
+
+      The swampland program [1] seeks to demarcate the set of four-dimensional effective
+field theories (EFTs) that can be coupled to quantum gravity in a consistent way, e.g.,
+the landscape of superstring theory vacua, and discriminate these theories from those that
+cannot, to strengthen the predictive power of quantum gravity in general, and superstring
+theory in particular. This is accomplished by enumerating criteria that an EFT must fulfill so
+as to be in the landscape, rather than be relegated to the “swampland.” These criteria have
+evolved to some set of conjectures, which can be used as new guiding principles to construct
+compelling UV-completions of the Standard Model (SM). Moreover, the UV constraints on
+IR physics have led to a shift in the way we approach cosmology model building. There are
+many swampland conjectures in the market, indeed too many to be listed here and readers
+are referred to comprehensive reviews [2, 3].
+      It was argued some time ago that the cosmological hierarchy problem, i.e. the smallness
+of dark energy in Planck units (Λ ∼ 10−122 MPl
+                                            4
+                                               ), can be explained statistically [4] or even
+anthropically [5–7] by the huge number of vacua in the string landscape. However very
+recently, it was suggested [8] that by a combination of the cosmological hierarchy problem
+and the distance conjecture one naturally ends up in a peculiar corner of the string landscape,
+namely with a single extra-dimension characterized by a length-scale in the micron range.1
+      The distance conjecture predicts the appearance of infinite towers of states that become
+light and imply a breakdown of the EFT in the infinite distance limits in moduli space [12].
+Stated in the form of the anti-de Sitter (AdS) distance conjecture [13], it suggests that
+there should be an infinite tower of states, whose mass is related to the magnitude of the
+cosmological constant. More precisely, the mass scale m behaves as m ∼ |Λ|α , as the
+negative AdS vacuum energy Λ → 0, with α a positive constant of O(1). In [13] also some
+implications of the AdS distance conjecture for de Sitter space were discussed, namely, when
+assuming this scaling behavior to hold in dS (or quasi dS) space with a positive cosmological
+constant, approaching Λ = 0 will also lead to an unbounded number of massless modes.
+      To each tower we can associate two mass scales: m, which is the mass scale of states
+in the tower, and M̂ , which is the scale local EFT description breaks down. The latter
+
+1
+     Large extra dimension scenarios were originally introduced to solve the electroweak hierarchy problem
+     [9–11].
+
+
+                                                    2
+is the so-called “species scale” [14, 15] that corresponds to the Planck scale of the higher
+                                      2/(n+2)
+dimensional theory, M̂ = mn/(n+2) MPl           , where n is the number of effective dimensions
+decompactifying. Requiring the experimental bound on deviations from Newton’s gravita-
+tional inverse-square law [16] to be consistent with the theoretical bound from the swampland
+conjectures leads to α = 1/4 and so the mass scale of the KK modes in the tower is esti-
+mated to be m ∼ λ−1 Λ1/4 . Consistency with neutron star heating [17] yields n = 1 [8],
+whereas consistency with the sharp cutoff observed in the cosmic ray spectrum requires
+λ ∼ 10−3 [18]. On the whole, swampland considerations combined with observational data
+lead to the prediction of a single extra mesoscopic dimension of length R ∼ λΛ−1/4 ∼ 1 µm,
+where Λ1/4 = 2.31 meV. This extra dimension, nicknamed the dark dimension, opens up at
+the scale m of the tower, where physics must be described by an EFT in higher dimensions
+up to the species scale M̂ ∼ 1010 GeV.
+   In this paper we study some phenomenological aspects of black holes perceiving the dark
+dimension and, in the spirit of [19], we investigate the impact of these higher dimensional
+objects in assessing the fraction of dark matter that could be composed of primordial black
+holes, fPBH . The layout of the paper is as follows. We begin in Sec. II with an overview of
+existing limits on fPBH . This includes constraints from the isotropic photon backgrounds,
+observations of the cosmic microwave background (CMB), and measurements of the positron
+density at the Galactic bulge. In Sec. III we first reexamine the rate of Hawking radiation
+of 5-dimensional black holes with the new species scale in mind, and after that we confront
+our predictions to experiment. In Sec. IV we reexamine within the 5D theory whether black
+holes evaporating right now could be responsible for the excess of 511 keV photons observed
+from the inner Galaxy by the SPI spectrometer on board the INTEGRAL satellite [20, 21].
+In Sec. V we discuss the possibility for primordial black holes to grow via the accretion. The
+paper wraps up with some conclusions presented in Sec. VI. Before proceeding, we pause to
+note that a specific realization of the model proposed in [8] should guarantee that the SM
+interacts with the extra dimension only gravitationally, while the cosmological constant scale
+is fixed by the size of the extra dimension. Although a priori this does not seem obvious
+at all, we continue here on the assumption that such a realization can indeed emerge from
+string theory.
+
+
+
+
+                                                3
+FIG. 1: (Taken from [44].) Compilation of contraints on fPBH as a function of the PBH mass MBH ,
+assuming a monochromatic mass function. The different probes considered are: the impact of
+PBH evaporation (red) on the extragalactic γ-ray background [45] and on the CMB spectrum [46];
+non-observation of microlensing events (blue) from the MACHO [31], EROS [32], Kepler [33],
+Icarus [34], OGLE [35] and Subaru-HSC [36] collaborations; PBH accretion signatures on the
+CMB (orange), assuming spherical accretion of PBHs within halos [47]; dynamical constraints,
+such as disruption of stellar systems by the presence of PBHs (green), on wide binaries [48] and on
+ultra-faint dwarf galaxies [49]; power spectrum from the Lyα forest (cyan) [50]; merger rates from
+gravitational waves (purple), either from individual mergers [42, 51] or from searches of stochastic
+gravitational wave background [52]. Gravitational wave limits, denoted by dashed lines, are model
+dependent [53]. The dotted brown line corresponds to forecasts from the 21 cm power spectrum
+with SKA sensitivities [54] and from 21 cm forest prospects [55].
+
+
+II.     PRIMORDIAL BLACK HOLES AS A DARK MATTER CANDIDATE
+
+
+      It has long been suspected that black holes could emerge from the collapse of large am-
+plitude fluctuations in the very early universe [22–25]. Although the mass spectrum of these
+primordial black holes (PBHs) is not set in stone, on cosmological scales they would behave
+
+
+                                                4
+like a typical cold dark matter particle. Actually, the idea that PBHs could be interesting
+dark matter candidates dates back at least as far as 1975 [26], with punctuated revivals of
+activity following the microlensing searches for massive compact halo objects (MACHOs) in
+1997 [27], and the LIGO/Virgo detections of merging binary black holes in 2016 [28]. The
+first microlensing searches suggested that dark matter could be composed of MACHOs with
+mass ∼ 0.5M , which is the expected mass scale for PBHs produced during the quark-hadron
+phase transition [29]. However, more recent observations exclude significant contributions
+of MACHOs to dark matter over most of the plausible mass range [30–36]. The question of
+whether the LIGO/Virgo merger events correspond to black holes of astrophysical or pri-
+mordial origin is still under debate [37–39], and a mixed population may also be compatible
+with observations [40]. However, data suggest that the binary black hole merging rate is
+incompatible with an all-dark-matter scenario and that PBHs could only contribute to less
+than 1% of the total dark matter [41, 42].
+   The mass distribution of PBHs is usually characterized by the mass function
+
+                                              MBH dnPBH
+                                 ψ(MBH ) =              ,                                 (1)
+                                              ρCDM dMBH
+
+where MBH is the black hole mass, dnPBH is the number density of PBHs within the mass
+range (MBH , MBH + dMBH ), and ρCDM is the energy density of cold dark matter [43]. Inte-
+grating ψ(MBH ) gives the total fraction of dark matter in PBHs,
+                                              Z
+                                     ρPBH
+                            fPBH ≡          = ψ(MBH ) dMBH ,                     (2)
+                                     ρCDM
+             R
+where ρPBH = MBH dnPBH is the energy density of PBHs. If all of the dark matter were
+made of PBH, we would have fPBH = 1. A compilation of upper limits on the dark matter
+fraction that can be composed of PHBs is shown in Fig. 1.
+   The question we want to address herein is whether primordial black holes perceiving the
+dark dimension could ameliorate the constraints on fPBH shown in Fig. 1. In terms of the size
+of the extra dimension R and the string length ls , we can distinguish three definite regimes
+for the black hole horizon rs : (i) rs > R, where the theory looks like 4D and rs ' MBH ;
+(ii) ls < rs < R, where the black hole perceives the higher dimensional space; (iii) rs < ls ,
+where the black hole turns into a string state [56, 57]. In our analysis, only the regime (ii)
+will be relevant, i.e. we will study black holes that are smaller than the size of the extra
+dimension, but larger than the string size.
+
+                                              5
+III.    RADIATION TIME-SCALE OF FIVE-DIMENSIONAL BLACK HOLES
+
+
+   PBHs will Hawking evaporate, provided the semiclassical approximation is valid. The
+average number [58, 59] and the probability distribution of the number [60–62] of outgoing
+particles in each mode obey a thermal spectrum, with temperature [63]
+                                                  n+1
+                                         TBH =                                             (3)
+                                                  4 π rs
+and entropy
+                                             4 π MBH rs
+                                      S=                ,                                  (4)
+                                                n+2
+where                                "                           #1/(1+n)
+                                 1     MBH 2n π (n−3)/2 Γ( n+3
+                                                            2
+                                                               )
+                    rs (MBH ) =                                           ,                (5)
+                                MPl,n MPl,n       n+2
+is the radius of a (4 + n)-dimensional Schwarzschild black hole,
+                                          n 2 1/(n+2)
+                                          m MPl
+                                MPl,n =                    ,                               (6)
+                                             8π
+and where Γ(x) is the Gamma function [64].
+   The black hole, however, produces an effective potential barrier surrounding the event
+horizon that backscatters part of the outgoing radiation, making alterations to the Planckian
+spectrum. The black hole absorption cross section, σs (a.k.a. the greybody factor), depends
+on: (i) the spin s of particle being emitted, (ii) the particle’s energy Q, and (iii) MBH [65].
+At high frequencies (Qrs  1) the greybody factor for each kind of particle must approach
+the geometrical optics limit. The integrated power emission is reasonably well approximated
+taking such a high energy limit. In our calculations we adopt the geometric optics approx-
+imation, where the black hole acts as a perfect absorber of a slightly larger radius, with
+emitting area given by
+                                                  2/(n+1)
+                                             n+3              n+3 2
+                           A4⊂4+n = 4π                           r .                       (7)
+                                              2               n+1 s
+Within this framework, we can conveniently write the greybody factor as a dimensionless
+constant normalized to the black hole surface area seen by the SM fields Γs = σs /A4⊂4+n ,
+such that Γs=0 = 1, Γs=1/2 ≈ 2/3, and Γs=1 ≈ 1/4 [66].
+   All in all, a black hole emits particles with initial total energy between (Q, Q + dQ) at a
+rate                                                      −1
+                          dṄi    σs 2         Q          2s
+                               =      Q exp         − (−1)                                 (8)
+                          dQ     8 π2         TBH
+
+                                              6
+per degree of particle freedom i. The change of variables u = Q/T, brings Eq. (8) into a
+more familiar form,
+                            Γs (n + 3)(n+3)/(n+1) (n + 1)                      u2
+                                                                       Z
+                   Ṅi = f                                TBH                          du.                (9)
+                           32 π 3       22/(n+1)                           eu − (−1)2s
+This expression can be easily integrated using
+                                 Z ∞ n−1
+                                       z
+                                             dz = Γ(n) ζ(n)                                              (10)
+                                  0   ez − 1
+and                                Z ∞
+                                          z n−1      1 n
+                                                dz =    (2 − 2) Γ(n) ζ(n) ,                              (11)
+                                   0     ez + 1      2n
+yielding
+                                    Γs (n + 3)(n+3)/(n+1) (n + 1)
+                        Ṅi = f                                   Γ(3) ζ(3) TBH ,                        (12)
+                                   32 π 3       22/(n+1)
+where ζ(x) is the Riemann zeta function and f = 1 (f = 3/4) for bosons (fermions).
+Therefore, the black hole emission rate is found to be
+                                           (n + 3)(n+3)/(n+1)
+                                                                            
+                                                                       TBH
+                           Ṅi ≈ 3.7 × 1021 2/(n+1)                              s−1 ,                   (13)
+                                           2        (n + 1)−1          GeV
+
+                                           (n + 3)(n+3)/(n+1)
+                                                                            
+                                                                       TBH
+                           Ṅi ≈ 1.8 × 1021 2/(n+1)                              s−1 ,                   (14)
+                                           2        (n + 1)−1          GeV
+                                           (n + 3)(n+3)/(n+1)
+                                                                            
+                                                                       TBH
+                           Ṅi ≈ 9.2 × 1020 2/(n+1)                              s−1 ,                   (15)
+                                           2        (n + 1)−1          GeV
+for particles with s = 0, 1/2, 1, respectively [67].
+     At any given time, the rate of decrease in the black hole mass is just the total power
+radiated
+                                   ṀBH    X σs       Q3
+                                        =−   ci 2 Q/T           ,                                        (16)
+                                    dQ     i
+                                               8π e BH − (−1)2s
+where ci is the number of internal degrees of freedom of particle species i. A straightforward
+calculation yields
+                              X            Γs (n + 3)(n+3)/(n+1) (n + 1)
+                  ṀBH = −          ci f˜                                           2
+                                                                         Γ(4) ζ(4) TBH ,                 (17)
+                               i
+                                          32 π 3       22/(n+1)
+
+where f˜ = 1 (f˜ = 7/8) for bosons (fermions). Herein, we assume that the effective high
+energy theory contains approximately the same number of modes as the SM (i.e. cs=0 = 1,
+cs=1/2 = 90, and cs=1 = 27) and we neglect the effect of graviton emission.2
+
+2
+    A point worth noting at this juncture is that at first sight it may appear that the KK modes must dominate
+
+
+                                                     7
+   A.    Black hole radiation rate for n = 0
+
+
+   The rate of Hawking radiation is estimated to be
+                                 dMBH                     1
+                                         ' −9 × 1073 GeV4 2 .                                            (18)
+                                  dt n=0                 MBH
+Ignoring accretion and thresholds, i.e., assuming that the mass of the black hole evolves
+according to Eq. (18) during the entire process of evaporation, we can obtain an estimate
+for the lifetime of the black hole,
+                                                            Z
+                              n=0
+                             τBH  ' 1 × 10−74 GeV−4              2
+                                                                MBH dMBH .                               (19)
+
+Using } = 6.58 × 10−25 GeV s, Eq. (19) can then be rewritten as
+
+                                  n=0
+                                 τBH  ' 1.6 × 10−35 (MBH /g)3 yr .                                       (20)
+
+Note that a black hole with MBH ∼ 5×1014 g will have a lifetime of about 2 Gyr, comparable
+to the age of the Universe [69, 70]. Therefore, PBHs with MBH . 5 × 1014 g cannot form
+part of the observed dark matter density. PBHs with masses small enough, but still alive
+in the Universe, should emit strong photon and cosmic ray backgrounds which could be
+observed [71, 72]. Null results from detection of these backgrounds exclude an all dark
+matter interpretation in terms of PBHs for masses MBH . 1017 g. As shown in Fig. 1, the
+allowed mass range for the PHB dark matter interpretation is 1017 < MBH /g . 1021 .
+
+
+   B.    Black hole radiation rate for n = 1
+
+
+   We now assume the black hole can be treated as a flat (4 + n)-dimensional object. This
+assumption is valid for extra dimensions that are larger than the Schwarzschild radius [19].
+For MPl,n ∼ 1010 GeV, the rate of Hawking radiation is estimated to be
+                                 dMBH                      1
+                                         ' −4 × 1029 GeV3     ,                                          (21)
+                                  dt n=1                  MBH
+
+  Hawking radiation because there are a large number – O(R/rs )2 – light modes with masses below the TBH
+  scale. However, as noted in [68] it is incorrect to think of the individual KK modes of the bulk graviton as
+  massive spin two fields on the brane with standard (minimal) gravitational couplings. Rather, since the
+  KK modes are excitations in the full transverse space, their overlap with the small (higher-dimensional)
+  black holes is suppressed by the geometric factor (rs /R)2 relative to the brane fields. Thus, the geometric
+  suppression precisely compensates for the enormous number of modes, and the total contribution of all
+  KK modes is only the same order as that from a single brane field.
+
+
+                                                    8
+FIG. 2: Compilation of constraints on fPBH in the 5D theory as a function of the PBH mass MBH ,
+assuming a monochromatic mass function. See Fig. 1 for details of the different probes considered.
+
+
+and so                                                Z
+                           n=1
+                          τBH  ' 3 × 10−30 GeV−3          MBH dMBH ,                         (22)
+
+which implies
+
+                               n=1
+                              τBH  ' 9 × 10−15 (MBH /g)2 yr .                                (23)
+
+For n = 1, a black hole lives longer than a usual n = 0 black hole of the same mass. A black
+hole with MBH ∼ 5 × 1011 g has a lifetime approximately equal to the age of the Universe.
+   As shown in Fig. 1, PBHs in the 4D theory with 1015 . MBH /g . 1017 are incompatible
+with an all-dark-matter interpretation. However, black holes sensing the dark dimension slow
+down the Hawking radiation. For a given mass, the black hole lives longer in the 5D theory
+than in the 4D theory. This implies that black holes sensing the extra mesoscopic dimension
+emit less particles and so the limits from isotropic photon backgrounds [71, 72], CMB ob-
+servations [73, 74], and measurements of the positron density at the Galactic bulge [75, 76]
+can be relaxed. Via a direct comparison of our calculations with the limits shown in Fig. 1
+we can conclude that an all-dark-matter interpretation in terms of PBHs in the 5D theory
+
+
+                                               9
+should be feasible for 1014 . MBH /g . 1021 , thus extending the allowed mass range by 3
+orders of magnitude.
+  Three observations are in order: (i) The temperature of PBHs evaporating today may
+not be enough to emit all the SM degrees of freedom. Herein we are interested in the order
+of magnitude estimate and we take this to fall within errors. (ii) The lack of femtolensing
+detection in the gamma-ray burst data have been interpreted as evidence that PBHs in the
+mass range 5×1017 < MBH /g < 1020 cannot constitute a major fraction of dark matter. This
+interpretation, however, has been disputed [77]. (iii) For MBH ∼ 5×1011 g, the Schwarzschild
+radius is rs ∼ 5 × 10−5 µm, whereas for MBH ∼ 1017 g, we have rs ∼ 2 × 10−2 µm, justifying
+our assumption that these black holes are 5-dimensional objects. It is noteworthy that a
+black hole with MBH ∼ 1 × 1021 g has a horizon radius rs ∼ 2 µm, saturating the range
+of validity of our 5D description. In Fig. 2 we illustrate how the longer lifetime of PBH
+perceiving the mesoscopic-scale extra-dimension modifies the constraints on fPBH . Moreover,
+the Hawking temperature of the lightest PBHs evaporating today, with MBH ∼ 1012 g, is
+roughly 1 MeV. For this mass scale, Hawking radiation could potentially explain the well-
+known Galactic 511 keV gamma-ray line. It is this that we now turn to study.
+
+
+IV.   A NEW PBH WINDOW FOR EXPLAINING THE GALACTIC 511 keV LINE
+
+
+  It has long been known that electron–positron annihilation proceeds at a surprisingly
+high rate in the central region of the Galaxy [78]. In particular, the SPI spectrometer on
+the INTEGRAL satellite has detected an intense 511 keV gamma ray line flux aligned with
+the Galactic center (bulge component) [20, 21], and also provided evidence for the line in
+the disk or halo component [79].
+  A variety of potential astrophysical sources explaining this signal have been proposed [80],
+including PHBs [81, 82]. The source of positrons responsible for the 511-keV line must gen-
+erate O(1050 ) positrons per year [83]. However, if these positrons are injected at even
+mildly relativistic energies, higher-energy gamma rays will also be produced. Diffuse Galac-
+tic gamma-ray data strongly constrain the positron injection energy to be . 3 MeV [84].
+Another key constraint comes from the local e+ e− flux as measured by Voyager 1 [85].
+
+
+
+
+                                            10
+     In the 4D theory the black temperature scales as
+                                                    −1
+                                               MBH
+                              TBH,4D ' 1.05              MeV .                                       (24)
+                                              1016 g
+
+Herein we are particularly interested in black holes with masses above the evaporation
+limit. In this mass range, PBHs are Hawking evaporating today, emitting particles with a
+characteristic spectrum centered around tens of MeV. Note that most of these PBHs would
+be excluded by Galactic gamma-ray observations.
+     In the 5D theory discussed herein, PBHs evaporating today are bigger, longer-lived, and
+colder than in the 4D theory; the PBH temperature scales as
+                                                         −1/2
+                                                 MBH
+                                TBH,5D ∼                          MeV .                              (25)
+                                                1012 g
+
+     In the most recent data analysis it was shown that in 4D theory primordial black holes in
+mass range of 1 < MBH /1016 g < 4 could potentially produce the 511 keV gamma-ray signal
+if 10−4 < fPBH < 4×10−3 [86]. This study takes into account the gamma-ray fluxes measured
+by INTEGRAL in the 0.1-0.2 MeV, 0.2-0.6 MeV, 0.6-1.8 MeV bands, and by COMPTEL in
+the 1-3 MeV, 3-10 MeV, 10-30 MeV bands, as well as the local Voyager constraint on the flux
+of e+ e− . Remarkably, the regions of parameter space in which PBHs could accommodate the
+observed 511-keV excess require a PBH number density in the vicinity of the Solar System
+of                                                                                         −1
+                       fPBH ρlocal
+                                                                        
+                                                                  fPBH          MBH
+              nlocal
+               PBH   =       DM
+                                   ' 1.2 × 10−4 AU−3 ×                                           ,   (26)
+                         MBH                                      10−3        2 × 1016 g
+where ρlocal          3
+       DM = 0.4 GeV/cm is the local dark matter density [86]. Since we have seen that
+
+black holes in the 5D theory with temperature of 1 MeV have masses roughly 4 orders of
+magnitude smaller, to a first approximation a simple rescaling of the result of (26) while
+demanding the same number density suggests that an interpretation of the 511-keV line
+would be, in principle, possible for fPBH ∼ 10−7 .
+     As already noted in [86], for such particular number density, the closest PBH would be
+located at a distance                             1/3
+                                          3
+                               d∼                         ∼ O(10 AU) .                               (27)
+                                        4πnlocal
+                                           PBH
+This suggests that the Solar System could contain several hundred black holes at any given
+moment and detectability of their Hawking evaporation could be at reach of future gamma-
+ray telescopes [87]. Moreover, e-ASTROGAM [88] would not only be able to detect the
+
+                                                   11
+Hawking radiation from a PBH population responsible for the 511 keV excess, it would
+be able to characterize the properties of such a population with remarkable precision [87].
+A simultaneous study of the allowed (MBH , fPBH ) parameter space could then be used to
+disentangle a PBH evaporating in 4D from one evaporating in 5D.
+
+
+V.     BLACK HOLE GROWTH BY ACCRETION
+
+
+     In Sec. III we estimated the black hole lifetime assuming that black holes do not accrete.
+In general, the net change of the black hole mass is given by
+
+                              dMBH   dMBH       dMBH
+                                   =          +          ,                                (28)
+                               dt     dt accr    dt evap
+
+where dMBH /dt|evap is given by Eq. (17) and
+                                                   2/(n+1)
+                          dMBH                n+3              n+3 2
+                                   ≈π                             r ε,                    (29)
+                           dt accr             2               n+1 s
+where ε is the energy density of the plasma in the vicinity of the event horizon [89]. Note,
+however, that any correction from the dMBH /dt|accr term will tend to enlarge the black hole
+lifetime, and so the conclusions presented in Sec. III would still hold.
+     The mesoscopic-size dimension imposes generic constraints on the production of PBHs.
+Namely, as in the context of large extra dimensions [90, 91], the universe should remain 4D
+at the nucleosynthesis MeV temperature, even if the compactification scale is much smaller
+(at meV). This is attributed to the stabilization of the extra dimension which should happen
+actually even before the reheating temperature. This of course assumes that the inflation
+mechanism can be re-adapted in a higher dimensional theory and implements also the sta-
+bilization. Hence, the 5D PBHs should be produced after inflation but before reheating.
+     Since black holes and dark matter are diluted by cosmic expansion in the same way, in
+the absence of accretion and decay the PBH mass function given in (1) is a constant over
+time. Although a precise characterization of ψ(MBH ) is beyond the scope of this paper, we
+note that the bigger, longer-lived, and colder 5D black holes are more prompted to growth
+through accretion than those in the 4D theory. As noted in [92] PBHs may accrete and
+increase their mass by several orders of magnitude. Moreover, accretion may play a critical
+role in explaining the LIGO-VIRGO events in terms of PBHs [93]. However, we stress
+once more that the 5D description breaks down for MBH & 10−12 M , and so while the 5D
+
+                                               12
+enhanced accretion effects could influence ψ(MBH ) in the golden window of black-hole mass
+range (1014 . MBH /g . 1021 ) where PBHs can account for all of the dark matter content of
+the Universe, it will play a negligible role in the mass growth of M -scale black holes.
+
+
+VI.   CONCLUSIONS
+
+
+  We have studied some phenomenological aspects of black holes perceiving the dark dimen-
+sion and analyzed the impact of these higher dimensional objects in assessing the fraction
+of dark matter that could be composed of PBHs. We have shown that the rate of Hawking
+radiation slows down for 5-dimensional black holes and thereby an all-dark-matter inter-
+pretation in terms of PBHs for 1014 . MBH /g . 1021 should be possible. We have also
+shown that an explanation of the Galactic 511-keV line could be possible for MBH ∼ 1012 g
+if fPBH ∼ 10−7 . Of course, for a PBH distribution that peaks at MBH ∼ 1015 g, one can, in
+principle, obtain a simultaneous all-dark-matter interpretation, with an explanation of the
+Galactic 511 keV gamma-ray signal. These results are strongly dependent on the choice of
+MPl,n and to a lesser degree on the behavior of σs with Q.
+  It is interesting to note that a rotating black hole would first shed its spin radiating
+particles, dominantly in the equatorial plane. Roughly 25% of its mass is lost in the so-
+called “spin down phase” [94]. Spin down leaves a Schwarzschild black hole which continues
+to Hawking radiate in the “Schwarzschild phase.” Since the radiation temperature in the
+Schwarzschild phase is larger than the one in the spin-down phase [95], we conclude that
+existing limits on spinning PBHs [96] would also be relaxed. All in all, our results are also
+valid for PBHs produced with angular momentum.
+  It is also interesting to note that the black hole decay rate could be slowed down due
+to quantum effects, when compared to the semiclassical Hawking radiation adopted in our
+calculations [97]. These quantum corrections would become important if the black hole
+half-time is comparable to the age of the Universe.
+  In summary, within the 5D model proposed in [8], with a species scale at 1010 GeV, PBHs
+                                                                                  −(2+n)/(1+n)
+sensing the extra dimension would have a larger horizon radius, which scales as MPl,n
+as shown in (5). From (3) we see that a larger horizon radius in turn implies a smaller black
+                                                                                2
+hole temperature TBH . Now, one can check in (17) that the Hawking radiation ∝ TBH , and
+therefore the PBHs in the 5D theory live longer, automatically relaxing existing bounds on
+
+
+                                            13
+fPBH . In conclusion, the PBHs as dark matter candidates could provide a complete picture
+for the swampland and its cosmology.
+
+
+   Acknowledgments
+
+
+   We thank Gia Dvali and Ranjan Laha for discussion, and Sergio Palomares-Ruiz for
+permission to reproduce Fig. 1. The work of L.A.A. is supported by the U.S. National
+Science Foundation (NSF Grant PHY-2112527). The work of D.L. is supported by the
+Origins Excellence Cluster and by the German-Israel-Project (DIP) on Holography and the
+Swampland.
+
+
+
+
+ [1] C. Vafa, The string landscape and the swampland, [arXiv:hep-th/0509212 [hep-th]].
+ [2] E. Palti, The Swampland: Introduction and Review, Fortsch. Phys. 67, no.6, 1900037 (2019)
+    doi:10.1002/prop.201900037 [arXiv:1903.06239 [hep-th]].
+ [3] M. van Beest, J. Calderón-Infante, D. Mirfendereski and I. Valenzuela, Lectures on the Swamp-
+    land Program in String Compactifications, [arXiv:2102.01111 [hep-th]].
+ [4] R. Bousso and J. Polchinski, Quantization of four form fluxes and dynamical neutraliza-
+    tion of the cosmological constant, JHEP 06, 006 (2000) doi:10.1088/1126-6708/2000/06/006
+    [arXiv:hep-th/0004134 [hep-th]].
+ [5] S. Weinberg, Anthropic Bound on the Cosmological Constant, Phys. Rev. Lett. 59, 2607
+    (1987) doi:10.1103/PhysRevLett.59.2607.
+ [6] L. Susskind, The anthropic landscape of string theory, [arXiv:hep-th/0302219 [hep-th]].
+ [7] A. N. Schellekens, The Landscape ’avant la lettre’, [arXiv:physics/0604134 [physics]].
+ [8] M. Montero, C. Vafa and I. Valenzuela, The dark dimension and the swampland,
+    [arXiv:2205.12293 [hep-th]].
+ [9] I. Antoniadis, A Possible new dimension at a few TeV, Phys. Lett. B 246, 377-384 (1990)
+    doi:10.1016/0370-2693(90)90617-F
+[10] N. Arkani-Hamed, S. Dimopoulos and G. R. Dvali, The Hierarchy problem and new dimen-
+    sions at a millimeter, Phys. Lett. B 429, 263-272 (1998) doi:10.1016/S0370-2693(98)00466-3
+    [arXiv:hep-ph/9803315 [hep-ph]].
+
+
+                                              14
+[11] I. Antoniadis, N. Arkani-Hamed, S. Dimopoulos and G. R. Dvali, New dimensions at a millime-
+    ter to a Fermi and superstrings at a TeV, Phys. Lett. B 436, 257-263 (1998) doi:10.1016/S0370-
+    2693(98)00860-0 [arXiv:hep-ph/9804398 [hep-ph]].
+[12] H. Ooguri and C. Vafa, On the Geometry of the String Landscape and the Swampland, Nucl.
+    Phys. B 766, 21-33 (2007) doi:10.1016/j.nuclphysb.2006.10.033 [arXiv:hep-th/0605264 [hep-
+    th]].
+[13] D. Lüst, E. Palti and C. Vafa, AdS and the Swampland, Phys. Lett. B 797, 134867 (2019)
+    doi:10.1016/j.physletb.2019.134867 [arXiv:1906.05225 [hep-th]].
+[14] G. Dvali, Black holes and large N species solution to the hierarchy problem, Fortsch. Phys.
+    58, 528-536 (2010) doi:10.1002/prop.201000009 [arXiv:0706.2050 [hep-th]].
+[15] G. Dvali and M. Redi, Black hole bound on the number of species and quantum gravity
+    at LHC, Phys. Rev. D 77, 045027 (2008) doi:10.1103/PhysRevD.77.045027 [arXiv:0710.4344
+    [hep-th]].
+[16] J. G. Lee, E. G. Adelberger, T. S. Cook, S. M. Fleischer and B. R. Heckel, New test of the
+    gravitational 1/r2 law at separations down to 52 µm, Phys. Rev. Lett. 124, no.10, 101101
+    (2020) doi:10.1103/PhysRevLett.124.101101 [arXiv:2002.11761 [hep-ex]].
+[17] S. Hannestad and G. G. Raffelt, Supernova and neutron star limits on large extra dimensions
+    reexamined, Phys. Rev. D 67, 125008 (2003) [erratum: Phys. Rev. D 69, 029901 (2004)]
+    doi:10.1103/PhysRevD.69.029901 [arXiv:hep-ph/0304029 [hep-ph]].
+[18] L. A. Anchordoqui, The dark dimension, the Swampland, and the origin of cosmic rays beyond
+    the GZK barrier, [arXiv:2205.13931 [hep-ph]].
+[19] P. C. Argyres, S. Dimopoulos and J. March-Russell, Black holes and submillimeter dimensions,
+    Phys. Lett. B 441, 96-104 (1998) doi:10.1016/S0370-2693(98)01184-8 [arXiv:hep-th/9808138
+    [hep-th]].
+[20] J. Knodlseder et al., The All-sky distribution of 511 keV electron-positron annihilation emis-
+    sion, Astron. Astrophys. 441, 513-532 (2005) doi:10.1051/0004-6361:20042063 [arXiv:astro-
+    ph/0506026 [astro-ph]].
+[21] P. Jean, J. Knodlseder, W. Gillard, N. Guessoum, K. Ferriere, A. Marcowith, V. Lonjou and
+    J. P. Roques, Spectral analysis of the galactic e+ e− annihilation emission, Astron. Astrophys.
+    445, 579-589 (2006) doi:10.1051/0004-6361:20053765 [arXiv:astro-ph/0509298 [astro-ph]].
+[22] Y. B. Zel’dovich and I. D. Novikov, The hypothesis of cores retarded during expansion and
+
+
+                                               15
+    the hot cosmological model, Soviet Astron. AJ (Engl. Transl. ), 10, 602 (1967)
+[23] S. Hawking, Gravitationally collapsed objects of very low mass, Mon. Not. Roy. Astron. Soc.
+    152, 75 (1971)
+[24] B. J. Carr and S. W. Hawking, Black holes in the early Universe, Mon. Not. Roy. Astron. Soc.
+    168, 399-415 (1974)
+[25] B. J. Carr, The primordial black hole mass spectrum, Astrophys. J. 201, 1-19 (1975)
+    doi:10.1086/153853
+[26] G. F. Chapline, Cosmological effects of primordial black holes, Nature 253, no.5489, 251-252
+    (1975) doi:10.1038/253251a0
+[27] C. Alcock et al. [MACHO], The MACHO project LMC microlensing results from the first
+    two years and the nature of the galactic dark halo, Astrophys. J. 486, 697-726 (1997)
+    doi:10.1086/304535 [arXiv:astro-ph/9606165 [astro-ph]].
+[28] B. P. Abbott et al. [LIGO Scientific and Virgo], Observation of gravitational waves
+    from a binary black hole merger,           Phys. Rev. Lett. 116,        no.6,   061102 (2016)
+    doi:10.1103/PhysRevLett.116.061102 [arXiv:1602.03837 [gr-qc]].
+[29] K. Jedamzik, Could MACHOS be primordial black holes formed during the QCD epoch?,
+    Phys. Rept. 307, 155-162 (1998) doi:10.1016/S0370-1573(98)00067-2 [arXiv:astro-ph/9805147
+    [astro-ph]].
+[30] C. Alcock et al. [MACHO], The MACHO project: Microlensing results from 5.7 years of LMC
+    observations, Astrophys. J. 542, 281-307 (2000) doi:10.1086/309512 [arXiv:astro-ph/0001272
+    [astro-ph]].
+[31] R. A. Allsman et al. [MACHO], MACHO project limits on black hole dark matter in the
+    1-30 solar mass range, Astrophys. J. Lett. 550, L169 (2001) doi:10.1086/319636 [arXiv:astro-
+    ph/0011506 [astro-ph]].
+[32] P. Tisserand et al. [EROS-2], Limits on the MACHO content of the Galactic halo from
+    the EROS-2 survey of the Magellanic clouds, Astron. Astrophys. 469, 387-404 (2007)
+    doi:10.1051/0004-6361:20066017 [arXiv:astro-ph/0607207 [astro-ph]].
+[33] K. Griest, A. M. Cieplak and M. J. Lehner, Experimental limits on primordial black hole dark
+    matter from the first 2 yr of Kepler data, Astrophys. J. 786, no.2, 158 (2014) doi:10.1088/0004-
+    637X/786/2/158 [arXiv:1307.5798 [astro-ph.CO]].
+[34] M. Oguri, J. M. Diego, N. Kaiser, P. L. Kelly and T. Broadhurst, Understanding caustic cross-
+
+
+                                              16
+    ings in giant arcs: characteristic scales, event rates, and constraints on compact dark matter,
+    Phys. Rev. D 97, no.2, 023518 (2018) doi:10.1103/PhysRevD.97.023518 [arXiv:1710.00148
+    [astro-ph.CO]].
+[35] H. Niikura, M. Takada, S. Yokoyama, T. Sumi and S. Masaki, Constraints on Earth-mass
+    primordial black holes from OGLE 5-year microlensing events, Phys. Rev. D 99, no.8, 083503
+    (2019) doi:10.1103/PhysRevD.99.083503 [arXiv:1901.07120 [astro-ph.CO]].
+[36] D. Croon, D. McKeen, N. Raj and Z. Wang, Subaru-HSC through a different lens: Mi-
+    crolensing by extended dark matter structures, Phys. Rev. D 102, no.8, 083021 (2020)
+    doi:10.1103/PhysRevD.102.083021 [arXiv:2007.12697 [astro-ph.CO]].
+[37] S. Bird, I. Cholis, J. B. Muñoz, Y. Ali-Haı̈moud, M. Kamionkowski, E. D. Kovetz, A. Rac-
+    canelli and A. G. Riess, Did LIGO detect dark matter?, Phys. Rev. Lett. 116, no.20, 201301
+    (2016) doi:10.1103/PhysRevLett.116.201301 [arXiv:1603.00464 [astro-ph.CO]].
+[38] M. Sasaki, T. Suyama, T. Tanaka and S. Yokoyama, Primordial black hole scenario for
+    the gravitational-wave event GW150914, Phys. Rev. Lett. 117, no.6, 061101 (2016) [er-
+    ratum: Phys. Rev. Lett. 121, no.5, 059901 (2018)] doi:10.1103/PhysRevLett.117.061101
+    [arXiv:1603.08338 [astro-ph.CO]].
+[39] A. Hall, A. D. Gow and C. T. Byrnes, Bayesian analysis of LIGO-Virgo mergers: Pri-
+    mordial vs. astrophysical black hole populations, Phys. Rev. D 102, 123524 (2020)
+    doi:10.1103/PhysRevD.102.123524 [arXiv:2008.13704 [astro-ph.CO]].
+[40] V. De Luca, G. Franciolini, P. Pani and A. Riotto, Bayesian evidence for both astrophysical
+    and primordial black holes: Mapping the GWTC-2 catalog to third-generation detectors,
+    JCAP 05, 003 (2021) doi:10.1088/1475-7516/2021/05/003 [arXiv:2102.03809 [astro-ph.CO]].
+[41] K. W. K. Wong, G. Franciolini, V. De Luca, V. Baibhav, E. Berti, P. Pani and A. Ri-
+    otto, Constraining the primordial black hole scenario with Bayesian inference and machine
+    learning: the GWTC-2 gravitational wave catalog, Phys. Rev. D 103, no.2, 023026 (2021)
+    doi:10.1103/PhysRevD.103.023026 [arXiv:2011.01865 [gr-qc]].
+[42] B. P. Abbott et al. [LIGO Scientific and Virgo], Search for Subsolar Mass Ultracompact
+    Binaries in Advanced LIGO’s Second Observing Run, Phys. Rev. Lett. 123, no.16, 161102
+    (2019) doi:10.1103/PhysRevLett.123.161102 [arXiv:1904.08976 [astro-ph.CO]].
+[43] V. De Luca, G. Franciolini and A. Riotto, On the primordial black hole mass function
+    for broad spectra, Phys. Lett. B 807, 135550 (2020) doi:10.1016/j.physletb.2020.135550
+
+
+                                              17
+    [arXiv:2001.04371 [astro-ph.CO]].
+[44] P. Villanueva-Domingo, O. Mena and S. Palomares-Ruiz, A brief review on primordial black
+    holes as dark matter, Front. Astron. Space Sci. 8, 87 (2021) doi:10.3389/fspas.2021.681084
+    [arXiv:2103.12087 [astro-ph.CO]].
+[45] B. J. Carr, K. Kohri, Y. Sendouda and J. Yokoyama, New cosmological constraints on
+    primordial black holes, Phys. Rev. D 81, 104019 (2010) doi:10.1103/PhysRevD.81.104019
+    [arXiv:0912.5297 [astro-ph.CO]].
+[46] S. Clark, B. Dutta, Y. Gao, L. E. Strigari and S. Watson, Planck constraint on relic pri-
+    mordial black holes, Phys. Rev. D 95, no.8, 083006 (2017) doi:10.1103/PhysRevD.95.083006
+    [arXiv:1612.07738 [astro-ph.CO]].
+[47] P. D. Serpico, V. Poulin, D. Inman and K. Kohri, Cosmic microwave background bounds on
+    primordial black holes including dark matter halo accretion, Phys. Rev. Res. 2, no.2, 023204
+    (2020) doi:10.1103/PhysRevResearch.2.023204 [arXiv:2002.10771 [astro-ph.CO]].
+[48] M. A. Monroy-Rodrı́guez and C. Allen, The end of the MACHO era- revisited: new
+    limits on MACHO masses from halo wide binaries, Astrophys. J. 790, no.2, 159 (2014)
+    doi:10.1088/0004-637X/790/2/159 [arXiv:1406.5169 [astro-ph.GA]].
+[49] T. D. Brandt, Constraints on MACHO dark matter from compact stellar systems in ultra-faint
+    dwarf galaxies, Astrophys. J. Lett. 824, no.2, L31 (2016) doi:10.3847/2041-8205/824/2/L31
+    [arXiv:1605.03665 [astro-ph.GA]].
+[50] R. Murgia, G. Scelfo, M. Viel and A. Raccanelli, Lyman-α forest constraints on
+    primordial black holes as dark matter, Phys. Rev. Lett. 123, no.7, 071102 (2019)
+    doi:10.1103/PhysRevLett.123.071102 [arXiv:1903.10509 [astro-ph.CO]].
+[51] B. J. Kavanagh, D. Gaggero and G. Bertone, Merger rate of a subdominant population of
+    primordial black holes, Phys. Rev. D 98, no.2, 023536 (2018) doi:10.1103/PhysRevD.98.023536
+    [arXiv:1805.09034 [astro-ph.CO]].
+[52] Z. C. Chen and Q. G. Huang, Distinguishing primordial black holes from astrophysical black
+    holes by Einstein Telescope and Cosmic Explorer, JCAP 08, 039 (2020) doi:10.1088/1475-
+    7516/2020/08/039 [arXiv:1904.02396 [astro-ph.CO]].
+[53] C. Boehm, A. Kobakhidze, C. A. J. O’hare, Z. S. C. Picker and M. Sakellariadou, Elim-
+    inating the LIGO bounds on primordial black hole dark matter, JCAP 03, 078 (2021)
+    doi:10.1088/1475-7516/2021/03/078 [arXiv:2008.10743 [astro-ph.CO]].
+
+
+                                             18
+[54] O. Mena, S. Palomares-Ruiz, P. Villanueva-Domingo and S. J. Witte, Constraining the pri-
+    mordial black hole abundance with 21-cm cosmology, Phys. Rev. D 100, no.4, 043540 (2019)
+    doi:10.1103/PhysRevD.100.043540 [arXiv:1906.07735 [astro-ph.CO]].
+[55] P. Villanueva-Domingo and K. Ichiki, 21 cm forest constraints on primordial black holes,
+    doi:10.1093/pasj/psab119 [arXiv:2104.10695 [astro-ph.CO]].
+[56] G. T. Horowitz and J. Polchinski, A Correspondence principle for black holes and strings, Phys.
+    Rev. D 55, 6189-6197 (1997) doi:10.1103/PhysRevD.55.6189 [arXiv:hep-th/9612146 [hep-th]].
+[57] G. T. Horowitz and J. Polchinski, Selfgravitating fundamental strings, Phys. Rev. D 57,
+    2557-2563 (1998) doi:10.1103/PhysRevD.57.2557 [arXiv:hep-th/9707170 [hep-th]].
+[58] S. W. Hawking, Black hole explosions, Nature 248, 30-31 (1974) doi:10.1038/248030a0
+[59] S. W. Hawking, Particle creation by black holes, Commun. Math. Phys. 43, 199-220 (1975)
+    [erratum: Commun. Math. Phys. 46, 206 (1976)] doi:10.1007/BF02345020
+[60] L. Parker, Probability distribution of particles created by a black hole, Phys. Rev. D 12,
+    1519-1525 (1975) doi:10.1103/PhysRevD.12.1519
+[61] R. M. Wald, On particle creation by black holes, Commun. Math. Phys. 45, 9-34 (1975)
+    doi:10.1007/BF01609863
+[62] S. W. Hawking, Breakdown of predictability in gravitational collapse, Phys. Rev. D 14, 2460-
+    2473 (1976) doi:10.1103/PhysRevD.14.2460
+[63] L. A. Anchordoqui, J. L. Feng, H. Goldberg and A. D. Shapere, Black holes from cosmic rays:
+    Probes of extra dimensions and new limits on TeV scale gravity, Phys. Rev. D 65, 124027
+    (2002) doi:10.1103/PhysRevD.65.124027 [arXiv:hep-ph/0112247 [hep-ph]].
+[64] R. C. Myers and M. J. Perry, Black holes in higher dimensional space-times, Annals Phys.
+    172, 304 (1986) doi:10.1016/0003-4916(86)90186-7
+[65] D. N. Page, Particle emission rates from a black hole: Massless particles from an uncharged,
+    nonrotating hole, Phys. Rev. D 13, 198-206 (1976) doi:10.1103/PhysRevD.13.198
+[66] T. Han, G. D. Kribs and B. McElrath, Black hole evaporation with separated fermions, Phys.
+    Rev. Lett. 90, 031601 (2003) doi:10.1103/PhysRevLett.90.031601 [arXiv:hep-ph/0207003
+    [hep-ph]].
+[67] L. Anchordoqui and H. Goldberg, Black hole chromosphere at the CERN LHC, Phys. Rev. D
+    67, 064010 (2003) doi:10.1103/PhysRevD.67.064010 [arXiv:hep-ph/0209337 [hep-ph]].
+[68] R. Emparan, G. T. Horowitz and R. C. Myers, Black holes radiate mainly on the brane,
+
+
+                                               19
+    Phys. Rev. Lett. 85, 499-502 (2000) doi:10.1103/PhysRevLett.85.499 [arXiv:hep-th/0003118
+    [hep-th]].
+[69] J. H. MacGibbon, B. J. Carr and D. N. Page, Do Evaporating Black Holes Form Photo-
+    spheres?, Phys. Rev. D 78, 064043 (2008) doi:10.1103/PhysRevD.78.064043 [arXiv:0709.2380
+    [astro-ph]].
+[70] J. H. MacGibbon, T. N. Ukwatta, J. T. Linnemann, S. S. Marinelli, D. Stump and K. Tollefson,
+    Primordial black holes, [arXiv:1503.01166 [astro-ph.HE]].
+[71] R. Laha, J. B. Muñoz and T. R. Slatyer, INTEGRAL constraints on primordial
+    black holes and particle dark matter, Phys. Rev. D 101, no.12, 123514 (2020)
+    doi:10.1103/PhysRevD.101.123514 [arXiv:2004.00627 [astro-ph.CO]].
+[72] J. Iguaz, P. D. Serpico and T. Siegert, Isotropic X-ray bound on orimordial black hole
+    dark matter, Phys. Rev. D 103, no.10, 103025 (2021) doi:10.1103/PhysRevD.103.103025
+    [arXiv:2104.03145 [astro-ph.CO]].
+[73] V. Poulin, J. Lesgourgues and P. D. Serpico, Cosmological constraints on exotic injec-
+    tion of electromagnetic energy, JCAP 03, 043 (2017) doi:10.1088/1475-7516/2017/03/043
+    [arXiv:1610.10051 [astro-ph.CO]].
+[74] H. Poulter, Y. Ali-Haı̈moud, J. Hamann, M. White and A. G. Williams, CMB constraints on
+    ultra-light primordial black holes with extended mass distributions, [arXiv:1907.06485 [astro-
+    ph.CO]].
+[75] R. Laha, Primordial black holes as a dark matter candidate are severely constrained
+    by the Galactic center 511 keV γ-ray line, Phys. Rev. Lett. 123, no.25, 251101 (2019)
+    doi:10.1103/PhysRevLett.123.251101 [arXiv:1906.09994 [astro-ph.HE]].
+[76] W. DeRocco and P. W. Graham,              Constraining primordial black hole abundance
+    with the Galactic 511 keV line,           Phys. Rev. Lett. 123,       no.25,   251102 (2019)
+    doi:10.1103/PhysRevLett.123.251102 [arXiv:1906.07740 [astro-ph.CO]].
+[77] B. Carr, K. Kohri, Y. Sendouda and J. Yokoyama, Constraints on primordial black holes,
+    Rept. Prog. Phys. 84, no.11, 116902 (2021) doi:10.1088/1361-6633/ac1e31 [arXiv:2002.12778
+    [astro-ph.CO]].
+[78] W.N. Johnson III, F. R. Harnden Jr., R. C. Haymes, The spectrum of low-energy gamma
+    radiation from the Galactic-center region Astrophys. J. 172, L1 (1972) doi:10.1086/180878
+[79] G. Weidenspointner et al., The sky distribution of 511-keV positron annihilation line emission
+
+
+                                               20
+    as measured with INTEGRAL/SPI, ESA Spec. Publ. 622, 25 (2007) [arXiv:astro-ph/0702621
+    [astro-ph]].
+[80] N. Prantzos et al., The 511 keV emission from positron annihilation in the Galaxy, Rev.
+    Mod. Phys. 83, 1001-1056 (2011) doi:10.1103/RevModPhys.83.1001 [arXiv:1009.4620 [astro-
+    ph.HE]].
+[81] P. H. Frampton and T. W. Kephart, Primordial black holes, Hawking radiation and the
+    early universe, Mod. Phys. Lett. A 20, 1573-1576 (2005) doi:10.1142/S0217732305017688
+    [arXiv:hep-ph/0503267 [hep-ph]].
+[82] C. Bambi, A. D. Dolgov and A. A. Petrov, Primordial black holes and the observed Galactic
+    511-keV line, Phys. Lett. B 670, 174-178 (2008) [erratum: Phys. Lett. B 681, 504-504 (2009)]
+    doi:10.1016/j.physletb.2009.10.053 [arXiv:0801.2786 [astro-ph]].
+[83] G. M. Fuller, A. Kusenko, D. Radice and V. Takhistov, Positrons and 511 keV radiation as
+    tracers of recent binary neutron star mergers, Phys. Rev. Lett. 122, no.12, 121101 (2019)
+    doi:10.1103/PhysRevLett.122.121101 [arXiv:1811.00133 [astro-ph.HE]].
+[84] J. F. Beacom and H. Yuksel, Stringent constraint on galactic positron production, Phys. Rev.
+    Lett. 97, 071102 (2006) doi:10.1103/PhysRevLett.97.071102 [arXiv:astro-ph/0512411 [astro-
+    ph]].
+[85] M. Boudaud and M. Cirelli, Voyager 1 e± further constrain primordial black holes as dark
+    matter, Phys. Rev. Lett. 122, no.4, 041104 (2019) doi:10.1103/PhysRevLett.122.041104
+    [arXiv:1807.03075 [astro-ph.HE]]. Copy to ClipboardDownload
+[86] C. Keith and D. Hooper, 511 keV excess and primordial black holes, Phys. Rev. D 104, no.6,
+    063033 (2021) doi:10.1103/PhysRevD.104.063033 [arXiv:2103.08611 [astro-ph.CO]].
+[87] C. Keith, D. Hooper, T. Linden and R. Liu, The sensitivity of future gamma-ray telescopes
+    to primordial black holes, [arXiv:2204.05337 [astro-ph.HE]].
+[88] A. De Angelis et al. [e-ASTROGAM], The e-ASTROGAM mission, Exper. Astron. 44, no.1,
+    25-82 (2017) doi:10.1007/s10686-017-9533-6 [arXiv:1611.02232 [astro-ph.HE]].
+[89] A. Chamblin, F. Cooper and G. C. Nayak, Interaction of a TeV scale black hole
+    with the quark gluon plasma at CERN LHC, Phys. Rev. D 69, 065010 (2004)
+    doi:10.1103/PhysRevD.69.065010 [arXiv:hep-ph/0301239 [hep-ph]].
+[90] N. Arkani-Hamed, S. Dimopoulos and J. March-Russell, Stabilization of submillimeter di-
+    mensions: The New guise of the hierarchy problem, Phys. Rev. D 63, 064020 (2001)
+
+
+                                              21
+    doi:10.1103/PhysRevD.63.064020 [arXiv:hep-th/9809124 [hep-th]].
+[91] K. R. Dienes, E. Dudas, T. Gherghetta and A. Riotto, Cosmological phase transitions and ra-
+    dius stabilization in higher dimensions, Nucl. Phys. B 543, 387-422 (1999) doi:10.1016/S0550-
+    3213(98)00855-4 [arXiv:hep-ph/9809406 [hep-ph]].
+[92] V. De Luca, G. Franciolini, A. Kehagias, P. Pani and A. Riotto, Primordial black
+    holes in matter-dominated eras: the role of accretion, doi:10.1016/j.physletb.2022.137265
+    [arXiv:2112.02534 [astro-ph.CO]].
+[93] V. De Luca, G. Franciolini, P. Pani and A. Riotto, Primordial black holes con-
+    front LIGO/Virgo data:         current situation, JCAP 06, 044 (2020) doi:10.1088/1475-
+    7516/2020/06/044 [arXiv:2005.05641 [astro-ph.CO]].
+[94] S. B. Giddings, Black holes in the lab?, Gen. Rel. Grav. 34, 1775-1779 (2002)
+    doi:10.1023/A:1020739305635 [arXiv:hep-th/0205205 [hep-th]].
+[95] D. N. Page, Particle emission rates from a black hole 2: Massless particles from a rotating
+    hole, Phys. Rev. D 14, 3260-3273 (1976) doi:10.1103/PhysRevD.14.3260
+[96] R. Laha, P. Lu and V. Takhistov, Gas heating from spinning and non-spinning evaporating
+    primordial black holes, Phys. Lett. B 820, 136459 (2021) doi:10.1016/j.physletb.2021.136459
+    [arXiv:2009.11837 [astro-ph.CO]].
+[97] G. Dvali, L. Eisemann, M. Michel and S. Zell, Black hole metamorphosis and stabilization by
+    memory burden, Phys. Rev. D 102, no.10, 103523 (2020) doi:10.1103/PhysRevD.102.103523
+    [arXiv:2006.00011 [hep-th]].
+
+
+
+
+                                              22
+

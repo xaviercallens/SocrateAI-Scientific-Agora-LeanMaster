@@ -1,0 +1,743 @@
+                                                                                                                                        YITP-10-74
+
+                                                NOTE ON TWISTED ELLIPTIC GENUS OF K3 SURFACE
+
+                                                                   TOHRU EGUCHI AND KAZUHIRO HIKAMI
+
+
+                                                Abstract. We discuss the possibility of Mathieu group M24 acting as symmetry group
+                                                on the K3 elliptic genus as proposed recently by Ooguri, Tachikawa and one of the
+                                                present authors. One way of testing this proposal is to derive the twisted elliptic genera
+                                                for all conjugacy classes of M24 so that we can determine the unique decomposition of
+                                                expansion coefficients of K3 elliptic genus into irreducible representations of M24 . In
+                                                this paper we obtain all the hitherto unknown twisted elliptic genera and find a strong
+                                                evidence of Mathieu moonshine.
+arXiv:1008.4924v2 [hep-th] 31 Aug 2010
+
+
+
+
+                                                                                 1. Introduction
+
+                                           Let us consider the string theory compactified on the K3 surface. It is well-known
+                                         that string theory on K3 has the symmetry of N = 4 superconformal algebra. In [6, 10]
+                                         the elliptic genus of K3 was expanded in terms of irreducible representations of N = 4
+                                         superconformal algebra
+                                                          "             2              2              2 #
+                                                             θ10 (z; τ )      θ00 (z; τ )      θ01 (z; τ )
+                                           ZK3(z; τ ) = 8                  +                +
+                                                             θ10 (0; τ )      θ00 (0; τ )      θ01 (0; τ )
+                                                                                                            ∞
+                                                               e                       e                                   e
+                                                                                                            X
+                                                      = 20 chR                       R
+                                                             h= 1 ,ℓ=0 (z; τ ) − 2 chh= 1 ,ℓ= 1 (z; τ ) +         A(n) chR
+                                                                                                                         h=n+ 1 ,ℓ= 1 (z; τ ). (1.1)
+                                                                   4                       4       2                            4   2
+                                                                                                            n=1
+
+                                         In the RHS the first two terms denote characters of short (BPS) representations of N = 4
+                                         algebra (with isospin ℓ = 0, 1/2), and an infinite series denotes the sum over long (non-
+                                         BPS) representations. A new discovery was made in [9]: expansion coefficients A(n)
+                                         agree with the dimensions of irreducible or reducible dimensions of representations of
+                                         the Mathieu group M24 ,
+                                          n      1      2       3       4        5         6         7         8     ···
+                                         A(n) 2 × 45 2 × 231 2 × 770 2 × 2277 2 × 5796 2 × 13915 2 × 30843 2 × 65550 · · ·
+                                                                                                                                              (1.2)
+                                         In fact M24 has 26 representations with dimensions
+                                                   {1, 23, 252, 253, 1771, 3520, 45, 45, 990, 990, 1035, 1035, 1035′, 231, 231,
+                                                    770, 770, 483, 1265, 2024, 2277, 3312, 5313, 5796, 5544, 10395}.
+                                         Here the pairs of 45, 990, 1035, 231, 770-dimensional representations are complex con-
+                                         jugate of each other. At the level n = 6 we have a decomposition into irreducible
+                                         representations 13915 = 3520 + 10395 and at n = 7 30843 = 10395 + 5796 + 5544 +
+                                         5313 + 2024 + 1171 etc.
+                                           Date: August 29, 2010.
+                                           2000 Mathematics Subject Classification.
+                                           Key words and phrases.
+                                                                                               1
+2                                         T. EGUCHI AND K. HIKAMI
+
+    Explicitly characters of short and long representations (in R̃ sector) are given by [11]
+                                      e                     [θ11 (z; τ )]2
+                                 chR
+                                   h= 1 ,ℓ=0 (z; τ ) =                     µ(z; τ ),                                (1.3)
+                                          4                   [η(τ )]3
+                                                                                                   2
+                      e                          e                      − 81 [θ11 (z; τ )]
+                    chR                          R
+                      h= 41 ,ℓ= 21 (z; τ ) + 2 chh= 41 ,ℓ=0 (z; τ ) = q                3               ,            (1.4)
+                                                                                         [η(τ )]
+                                                                 1
+                                          i eπiz X           n q
+                                                                 2
+                                                                   n(n+1) 2πinz
+                                                                         e
+                             µ(z; τ ) =                 (−1)                    ,                                   (1.5)
+                                        θ11 (z; τ ) n∈Z          1 − q n e2πiz
+and
+                                          e           [θ11 (z; τ )]2
+                                                                  3
+                                      chR
+                                        h,ℓ= 1 (z; τ ) = q
+                                                           h− 8
+                                                                     .                  (1.6)
+                                    2                   [η(τ )]3
+It is known that the above series µ(z; τ ) is a typical example of a Mock theta function [25].
+Expansion coefficients A(n) are given in terms of µ at half-periods
+                                            ∞
+                        1
+                                          X                    X
+                     − q Σ(τ ) ≡ −2 +
+                        8                      A(n) q n = 8            µ(w; τ ).        (1.7)
+                                                     n=1                  w∈{ 12 , 1+τ , τ2 }
+                                                                                    2
+
+Prefactor q 1/8 above is for convenience. As studied in detail in [6], Σ(τ ) is a mock theta
+function whose shadow [24] is [η(τ )]3 .
+    Now consider a graded vector space
+                                      X∞
+                                                          V (n) q n
+                                                    n=1
+
+where the space V (n) has a dimension dim V (n) = A(n). Since the dimension of the
+representation space is given by the trace of the identity element, we may rewrite the
+sum (1.7) as
+                                              ∞
+                               1
+                                              X
+                           − q 8 Σ(τ ) = −2 +    TrV (n) 1 · q n .               (1.8)
+                                                              n=1
+
+    Twisted elliptic genus is defined instead by considering an arbitrary group element g
+                                                   ∞
+                                   1
+                                                   X
+                              − q 8 Σg (τ ) = −2 +    Ag (n) q n ,                   (1.9)
+                                                                  n=1
+where
+                                                Ag (n) = TrV (n) g.                                                (1.10)
+Since the trace of g depends only on its conjugacy class, there exists a twisted elliptic
+genus Zg (z; τ ) corresponding to each conjugacy class. As a generalization of (1.1), we
+define the twisted elliptic genus by the decomposition
+                                                                        ∞
+                          e                        e                               e
+                                                                        X
+  Zg (z; τ ) = (χg − 4) chR
+                          h= 1 ,ℓ=0 (z; τ ) − 2 ch R
+                                                   h= 1 ,ℓ= 1 (z; τ ) +   Ag (n) chR
+                                                                                   h=n+ 1 ,ℓ= 1 (z; τ )
+                                  4                           4       2                                    4   2
+                                                                                     n=1
+
+                     e                        [θ11 (z; τ )]2
+            = χg chR
+                   h= 1 ,ℓ=0 (z; τ ) −                       Σg (τ ),                                              (1.11)
+                         4                      [η(τ )]3
+where χg ∈ Z is the Witten index Zg (z = 0; τ ). The q-series Σg (τ ) is thus the analogue
+of the McKay–Thompson series of the monstrous moonshine [4].
+                                TWISTED ELLIPTIC GENUS OF K3                                     3
+
+  The Mathieu group M24 has the following 26 conjugacy classes: (we use the ATLAS
+naming of the conjugacy classes [3]. See Table 1)
+  type I : 1A, 2A, 3A, 5A, 4B, 7A, 7B, 8A, 6A, 11A, 15A, 15B, 14A, 14B, 23A, 23B, (1.12)
+  type II : 12B, 6B, 4C, 3B, 2B, 10A, 21A, 21B, 4A, 12A.                                    (1.13)
+Elements of the conjugacy classes of the type I (1.12) fix 1 element out of 24 and these
+classes may be considered as conjugacy classes of the subgroup M23 . See the cycle
+representation of these classes in Table 1. On the other hand, classes of the type II (1.13)
+do not have a fixed element and are regarded as intrinsic elements of M24 . It turns out
+that the twisted elliptic genera of these two types of conjugacy classes have a qualitatively
+different behavior. Especially the Witten index χg in (1.11) vanishes if and only if g ∈
+type II;
+      g    1A 2A 3A 5A 4B 7A 8A 6A 11A 15A 14A 23A others
+                                                                                            (1.14)
+      χg   24  8  6  4  4  3  2  2   2   1   1   1      0
+It is observed [2, 13] that χg is related to the first and the second rows of the character
+table of M24 in Table 2; χ1A = 1 + 23, χ2A = 1 + 7, and so on. In the character
+decomposition (1.11), Ag (n) is the Fourier coefficient of mock theta functions if g ∈ type I
+and of modular form if g ∈ type II. Note that twisted elliptic genera for the pairs,
+(7A, 7B), (15A, 15B), (14A, 14B), (23A, 23B), (21A, 21B), are equal to each other.
+
+   Twisted elliptic genera of the conjugacy classes of type I have already been obtained in
+the literature [2, 13]. On the other hand, twisted elliptic genera of type II are yet largely
+unknown. In this paper we obtain all the twisted elliptic genera of type II and then use
+the character formula of the Mathieu group to derive the coefficients of the decomposition
+of K3 elliptic genus into a sum of irreducible representations of M24 . We have checked
+that we always obtain the positive integral coefficients in the decomposition up to q 600 .
+We thus provide a very strong support for the Mathieu moonshine conjecture.1
+
+
+                     2. Twisted elliptic genus of the set type I
+
+  Twisted elliptic genera of the type I has been obtained previously [2, 5, 13]. Type I
+genera for basic classes, pA (p = 2, 3, 5, 7) were discussed by A.Sen and his collabora-
+tors [5, 16] (also [15]) in connection with the counting problem of 14 BPS monopoles and
+dyons.
+  We first introduce the standard notation in the theory of Jacobi forms [12]
+                              "             2              2              2 #
+                                 θ10 (z; τ )      θ00 (z; τ )      θ01 (z; τ )
+             φ0,1 (z; τ ) = 4                  +                +                   ,        (2.1)
+                                 θ10 (0; τ )      θ00 (0; τ )      θ01 (0; τ )
+and
+                                                      [θ11 (z; τ )]2
+                                    φ−2,1 (z; τ ) = −                .                       (2.2)
+                                                        [η(τ )]6
+  1Very recently a preprint [14] by M.Gaberdiel, S.Hohenegger and R. Volpato has appeared which has
+a substantial overlap with the present paper.
+4                                      T. EGUCHI AND K. HIKAMI
+
+Here the Jacobi theta functions are defined in Appendix A. φM,N denotes a Jacobi form
+with weight M and index N. We also use the Eisenstein series
+                                                     ∞
+       (N )       24              η(Nτ )         24 X
+     φ2 (τ ) =         q ∂q log            =1+           σ1 (k)(q k − N q N k ). (2.3)
+                N −1               η(τ )        N −1
+                                                                  k=1
+
+
+    The elliptic genus for K3 is given by [10, 17]
+                               ZK3(z; τ ) = Z1A (z; τ ) = 2 φ0,1 (z; τ ).                           (2.4)
+Note that the class 1A consists of the identity element and hence Z1A is the original
+untwisted elliptic genus.
+
+   In the case of classes pA (p = 2, 3, 5, 7) there is a general formula for the twisted
+elliptic genera [2]
+                                       2               2p (p)
+                      ZpA (z; τ ) =       φ0,1 (τ ) +     φ (τ ) φ−2,1 (z; τ ).                     (2.5)
+                                      p+1             p+1 2
+Explicitly we have
+                                      2                4 (2)
+                        Z2A (z; τ ) =   φ0,1 (z; τ ) + φ2 (τ ) φ−2,1 (z; τ ),                        (2.6)
+                                      3                3
+                                      1                3 (3)
+                       Z3A (z; τ ) = φ0,1 (z; τ ) + φ2 (τ ) φ−2,1 (z; τ ),                           (2.7)
+                                      2                2
+                                      1                5 (5)
+                       Z5A (z; τ ) = φ0,1 (z; τ ) + φ2 (τ ) φ−2,1 (z; τ ),                           (2.8)
+                                      3                3
+                                      1                7 (7)
+                       Z7A (z; τ ) = φ0,1 (z; τ ) + φ2 (τ ) φ−2,1 (z; τ ).                           (2.9)
+                                      4                4
+Twisted elliptic genera for other classes are given by [2, 13]
+                                                                     
+                        1                     1 (2)            (4)
+         Z4B (z; τ ) = φ0,1 (z; τ ) + − φ2 (τ ) + 2 φ2 (τ ) φ−2,1 (z; τ ),                          (2.10)
+                        3                     3
+                                                                             
+                 1                    1 (2)          1 (3)          5 (6)
+  Z6A (z; τ ) = φ0,1 (z; τ ) + − φ2 (τ ) − φ2 (τ ) + φ2 (τ ) φ−2,1 (z; τ ),                         (2.11)
+                 6                    6              2              2
+                                                                     
+                        1                    1 (4)          7 (8)
+         Z8A (z; τ ) = φ0,1 (z; τ ) + − φ2 (τ ) + φ2 (τ ) φ−2,1 (z; τ ),                            (2.12)
+                        6                    2              3
+                                                                            
+                   1                  11 (11)          22                  2
+   Z11A (z; τ ) = φ0,1 (z; τ ) +         φ (τ ) −          [η(τ ) η(11 τ )] φ−2,1 (z; τ ),          (2.13)
+                   6                   6 2              5
+                                       
+                      1                     1 (2)            7 (7)         91 (14)
+     Z14A (z; τ ) =     φ0,1 (z; τ ) + − φ2 (τ ) −             φ2 (τ ) +       φ (τ )               (2.14)
+                     12                    36               12             36 2
+                                                                             
+                                          14
+                                        − η(τ ) η(2 τ ) η(7 τ ) η(14 τ ) φ−2,1 (z; τ ),
+                                           3
+                                       
+                      1                     1 (3)            5 (5)         35 (15)
+     Z15A (z; τ ) =     φ0,1 (z; τ ) + − φ2 (τ ) −             φ2 (τ ) +       φ (τ )               (2.15)
+                     12                    16               24             16 2
+                                                                             
+                                          15
+                                        − η(τ ) η(3 τ ) η(5 τ ) η(15 τ ) φ−2,1 (z; τ ),
+                                           4
+                                                                                      
+                  1                   23 (23)          23              161
+  Z23A (z; τ ) =     φ0,1 (z; τ ) +      φ (τ ) −         f23,1 (τ ) −       f23,2 (τ ) φ−2,1 (z; τ ).
+                  12                  12 2             22              22
+                                                                                                    (2.16)
+                                 TWISTED ELLIPTIC GENUS OF K3                                               5
+
+In the class 23A we have used the newforms [23]
+     f23,1 (τ ) = 2 q − q 2 − q 4 − 2 q 5 − 5 q 6 + 2 q 7 + 4 q 9 + 6 q 10 − 6 q 11 + 5 q 12 + 6 q 13
+                          + 4 q 14 − 10 q 15 − 3 q 16 + 6 q 17 − 2 q 18 − 4 q 19 + · · · ,
+
+     f23,2 (τ ) = q 2 − 2 q 3 − q 4 + 2 q 5 + q 6 + 2 q 7 − 2 q 8 − 2 q 10 − 2 q 11 + q 12
+                          + 2 q 15 + 3 q 16 − 2 q 17 + 2 q 18 + · · · .
+
+                    3. Twisted elliptic genus of the set type II
+
+   Our main task in this paper is to obtain all the twisted elliptic genera belonging to
+type II. Here, unfortunately there is no definite guiding principle. We have to make an
+educated guess for the candidate elliptic genera which reproduce the correct coefficients
+of lower order q-expansions (see Table 3) and have the correct weight and level as modular
+forms.
+  By trial and error we have obtained the following elliptic genera which are written in
+the form of η-product;
+                                          η(τ )8
+                          Z2B (z; τ ) = 2         φ−2,1 (z; τ ),                                        (3.1)
+                                          η(2τ )4
+                                            η(2τ )8
+                          Z4A (z; τ ) = 2           φ−2,1 (z; τ ),                                      (3.2)
+                                            η(4τ )4
+                                            η(τ )4 η(2τ )2
+                          Z4C (z; τ ) = 2                  φ−2,1 (z; τ ),                               (3.3)
+                                               η(4τ )2
+                                            η(τ )6
+                          Z3B (z; τ ) = 2           φ−2,1 (z; τ ),                                      (3.4)
+                                            η(3τ )2
+                                            η(τ )2 η(2τ )2 η(3τ )2
+                          Z6B (z; τ ) = 2                          φ−2,1 (z; τ ),                       (3.5)
+                                                   η(6τ )2
+                                            η(τ )4 η(4τ ) η(6τ )
+                         Z12B (z; τ ) = 2                        φ−2,1 (z; τ ),                         (3.6)
+                                              η(2τ ) η(12τ )
+                                            η(τ )3 η(2τ ) η(5τ )
+                         Z10A (z; τ ) = 2                        φ−2,1 (z; τ ),                         (3.7)
+                                                  η(10τ )
+                                      η(τ )3 η(4τ )2 η(6τ )3
+                         Z12A (z; τ ) = 2                    φ−2,1(z; τ ).                              (3.8)
+                                      η(2τ ) η(3τ ) η(12τ )2
+For the class 21A one has a linear combination of η-products
+                                 7 η(τ )3 η(7 τ )3    1 η(τ )6
+                                                              
+                Z21A (z; τ ) =                     −              φ−2,1 (z; τ ).                        (3.9)
+                                 3 η(3 τ ) η(21 τ ) 3 η(3 τ )2
+One sees that Σg (τ ) is the η-product which is modular on congruence subgroup Γ0 (ord(g))
+with character.
+
+  We note the following relation among the genera of type I and type II
+                               Z2A (z; τ ) + Z2B (z; τ ) = 2 Z4B (z; τ ),                           (3.10)
+6                                   T. EGUCHI AND K. HIKAMI
+
+                              Z4A (z; τ ) + Z4B (z; τ ) = 2 Z8A (z; τ ).              (3.11)
+
+                                   4. Mathieu moonshine
+
+   In Table 2 the character formula for the Mathieu group M24 is presented. We denote its
+elements as χRg where R runs over irreducible representations and g runs over conjugacy
+classes. It is well-known that the character formula obeys the orthogonality relation
+                                 X
+                                     ng χRg′ χRg = |G| δRR′                         (4.1)
+                                      g
+
+where ng is the number of elements in the conjugacy class g and |G| is the order of the
+group G. Let us denote the multiplicity of the representation R in the decomposition of
+the K3 elliptic genus at level n as cR (n). We then obtain the value of the twisted genus
+of the class g at level n as      X
+                                      cR (n) χRg = Ag (n),                           (4.2)
+                                       R
+where Ag (n) is defined in (1.10). Note that by choosing g = 1A in (4.2) we find
+                        X                 X
+                            cn (R) χR1A =    cn (R) dim R = A(n)                       (4.3)
+                          R                     R
+
+In fact cR (n) is the multiplicity of representation R at level n.
+   If one uses the orthogonality relation (4.1), we can invert the relation (4.2) and find a
+formula for the multiplicities
+                               X 1
+                                       ng χRg Ag (n) = cR (n).                          (4.4)
+                                g
+                                   |G|
+
+  We have checked by computer that the multiplicities cR (n) are positive integers for all
+representations up to n = 600. See Table 4. This provides a very strong support of the
+Mathieu moonshine conjecture.
+
+                                           5. Entropy
+
+  In Table 3, we have tabulated the values of Ag (n), the expansion coefficients of twisted
+genera Zg (z; τ ). In the untwisted case (g = 1A) we have applied the the method of
+Bringmann–Ono [1] and obatined the Poincaré series [6]
+                           ∞        √
+                 −2 π i X 1          π 8n− 1                        −4
+                                                                  
+                                                                             k
+                                                         X
+     A(n) =             1    √ I1                                          e 2c πi ,  (5.1)
+              (8 n − 1) 4 c=1 c 2       2c             k mod 4c
+                                                                     k
+                                                         k 2 =−8n+1   mod 8c
+        −4
+           
+where    •
+           is the Legendre symbol, and I denotes the Bessel function,
+                                         r
+                                            2
+                               I 1 (x) =      sinh(x).
+                                 2         πx
+We have identified the expotential growth of {A(n)} at large n as the entropy of K3
+surface                                       s          
+                                                 1      1
+                         SK3 = log A(n) ∼ 2 π       n−     .                   (5.2)
+                                                 2      8
+                              TWISTED ELLIPTIC GENUS OF K3                                7
+
+See [7, 8] for the discussion of entropy of higher-dimensional complex manifolds with
+reduced holonomy.
+  In case of g ∈ type I, twisted elliptic genus Zg (z; τ ) is modular on the congruence
+subgroup Γ0 (ord(g)) of SL(2; Z). Correspondingly the q-series Σg (τ ) is a mock theta
+function on Γ0 (ord(g)), and by using the same method as above the Fourier coefficients
+Ag (n) are given by
+                          ∞           √
+               −2 π i                 π 8n−1                          −4
+                                                                    
+                         X     1                           X                 k
+    Ag (n) =           1      √ I1                                         e 2c πi . (5.3)
+             (8 n − 1) 4 c=1    c  2      2c            k mod 4c
+                                                                      k
+                        ord(g)|c                          k 2 =−8n+1   mod 8c
+
+See [6] where a case of Γ0 (2) was studied. The above formula shows that the entropy Sg
+of “twisted” K3 is given by
+                                                          SK3
+                                   Sg = log |Ag (n)| ∼          .                     (5.4)
+                                                         ord(g)
+Thus the entropy of twisted K3 is reduced by a factor 1/ ord(g). This coincides with the
+result of [20] that the entropy of the ZN twisted CHL model is 1/N times the entropy
+of the untwisted model.
+
+
+                                        6. Discussions
+
+  We have completed the analysis initiated in [2, 13] on Mathieu moonshine phenomenon
+by providing all the twisted elliptic genera for K3 surface. Making use of them we are
+able to decompose uniquely the expansion coefficients {Ag (n)} into a sum of irreducible
+representations of M24 . We find that the multiplicities of all irreducible representations
+are positive integers up to the level n = 600.
+  For the sake of illustration we present the decomposition at the level n = 98;
+    1754939889054075390
+    = 7168167560 × 1 + 164868700882 × 23 + 1806385660318 × 252
+    + 1813554671156 × 253 + 12694876811718 × 1771 + 25232056046588 × 3520
+                                                         
+    + 322568604932 × 45 + 45 + 7096515632052 × 990 + 990
+    + 7419084236984 × 1035 + 1035 + 7419083183322 × 1035′
+                                  
+                                                            
+    + 1655854140602 × 231 + 231 + 5519511336942 × 770 + 770
+    + 3462239800920 × 483 + 9067771260936 × 1265 + 14508430647818 × 2024
+    + 16321986797048 × 2277 + 23741069980370 × 3312 + 38084633405380 × 5313
+    + 41546870254732 × 5796 + 39740484586192 × 5544 + 74513414138524 × 10395
+Thus the observation of [9] may well be proved to be true.
+  We are, however, still very far from satisfactory understanding of the origin of the
+symmetry of the Mathieu group M24 . As is well-known, there are special classes of K3
+surfaces which possess automorphism under subgroups of M23 [18, 19] (see [22] for a
+recent result). Thus it appears that M24 emerges as an enhanced symmetry in string
+8                                    T. EGUCHI AND K. HIKAMI
+
+theory. Hopefully the twisted genera we have obtained offer some clue in our search for
+the action of M24 on the string Hilbert space in K3 compactification.
+
+                                       Acknowledgments
+
+   We thank H.Ooguri and Y.Tachikawa for their collaboration at the early stage of
+this work. K.H. thanks D.Zagier for useful discussions at MFO, and participants in
+“Prospects in q-series and modular forms” at Dublin for discussions. Some computa-
+tions are performed by use of SAGE [21]. Research of T.E. and K.H. are supported
+by Japan Ministry of Education, Culture, Sports, Science and Technology under grant
+No. 19GS0219, 21654053, and 22540069.
+
+                          Appendix A. Jacobi Theta Functions
+
+    The Jacobi theta functions are defined by
+                                                 1 2
+                                         q 2 (n+ 2 ) e2πi(n+ 2 ) (z+ 2 ) ,
+                                       X 1                   1       1
+                         θ11 (z; τ ) =
+                                             n∈Z
+
+                                                                   1 2
+                                                   q 2 (n+ 2 ) e2πi(n+ 2 )z ,
+                                             X         1                         1
+                             θ10 (z; τ ) =
+                                             n∈Z
+                                                                                     (A.1)
+                                                       1 2
+                                             X
+                                                         n     2πinz
+                             θ00 (z; τ ) =         q   2       e         ,
+                                             n∈Z
+
+
+                                                   q 2 n e2πin(z+ 2 ) .
+                                             X         1   2                 1
+                             θ01 (z; τ ) =
+                                             n∈Z
+
+Throughout this paper, we set q = e2πiτ with τ in the upper half plane, τ ∈ H.
+                                        TWISTED ELLIPTIC GENUS OF K3                                                             9
+
+conjugacy class    cycle shape
+     1A                  124           ()
+     2A                18 · 28         (1, 8)(2, 12)(4, 15)(5, 7)(9, 22)(11, 18)(14, 19)(23, 24)
+     3A                16 · 36         (3, 18, 20)(4, 22, 24)(5, 19, 17)(6, 11, 8)(7, 15, 10)(9, 12, 14)
+     5A                14 · 54         (2, 21, 13, 16, 23)(3, 5, 15, 22, 14)(4, 12, 20, 17, 7)(9, 18, 19, 10, 24)
+      4B             14 · 22 · 44      (1, 17, 21, 9)(2, 13, 24, 15)(3, 23)(4, 14, 5, 8)(6, 16)(12, 18, 20, 22)
+     7A                13 · 73         (1, 17, 5, 21, 24, 10, 6)(2, 12, 13, 9, 4, 23, 20)(3, 8, 22, 7, 18, 14, 19)
+      7B               13 · 73         (1, 21, 6, 5, 10, 17, 24)(2, 9, 20, 13, 23, 12, 4)(3, 7, 19, 22, 14, 8, 18)
+     8A           1 · 21 · 41 · 82
+                    2
+                                       (1, 13, 17, 24, 21, 15, 9, 2)(3, 16, 23, 6)(4, 22, 14, 12, 5, 18, 8, 20)(7, 11)
+     6A           12 · 22 · 32 · 62    (1, 8)(2, 24, 11, 12, 23, 18)(3, 20, 10)(4, 15)(5, 19, 9, 7, 14, 22)(6, 16, 13)
+     11A               12 · 112        (1, 3, 10, 4, 14, 15, 5, 24, 13, 17, 18)(2, 21, 23, 9, 20, 19, 6, 12, 16, 11, 22)
+     15A          1 · 31 · 51 · 151
+                   1
+                                       (2, 13, 23, 21, 16)(3, 7, 9, 5, 4, 18, 15, 12, 19, 22, 20, 10, 14, 17, 24)(6, 8, 11)
+     15B          11 · 31 · 51 · 151   (2, 23, 16, 13, 21)(3, 12, 24, 15, 17, 18, 14, 4, 10, 5, 20, 9, 22, 7, 19)(6, 8, 11)
+     14A          11 · 21 · 71 · 141   (1, 12, 17, 13, 5, 9, 21, 4, 24, 23, 10, 20, 6, 2)(3, 18, 8, 14, 22, 19, 7)(11, 15)
+     14B          11 · 21 · 71 · 141   (1, 13, 21, 23, 6, 12, 5, 4, 10, 2, 17, 9, 24, 20)(3, 14, 7, 8, 19, 18, 22)(11, 15)
+     23A               11 · 231        (1, 7, 6, 24, 14, 4, 16, 12, 20, 9, 11, 5, 15, 10, 19, 18, 23, 17, 3, 2, 8, 22, 21)
+     23B               11 · 231        (1, 4, 11, 18, 8, 6, 12, 15, 17, 21, 14, 9, 19, 2, 7, 16, 5, 23, 22, 24, 20, 10, 3)
+     12B                 122           (1, 12, 24, 23, 10, 8, 18, 6, 3, 21, 2, 7)(4, 9, 11, 15, 13, 16, 20, 5, 22, 17, 14, 19)
+      6B                  64           (1, 24, 10, 18, 3, 2)(4, 11, 13, 20, 22, 14)(5, 17, 19, 9, 15, 16)(6, 21, 7, 12, 23, 8)
+      4C                  46           (1, 23, 18, 21)(2, 12, 10, 6)(3, 7, 24, 8)(4, 15, 20, 17)(5, 14, 9, 13)(11, 16, 22, 19)
+      3B                  38           (1, 10, 3)(2, 24, 18)(4, 13, 22)(5, 19, 15)(6, 7, 23)(8, 21, 12)(9, 16, 17)(11, 20, 14)
+      2B                 212           (1, 8)(2, 10)(3, 20)(4, 22)(5, 17)(6, 11)(7, 15)(9, 13)(12, 14)(16, 18)(19, 23)(21, 24)
+     10A               22 · 102        (1, 8)(2, 18, 21, 19, 13, 10, 16, 24, 23, 9)(3, 4, 5, 12, 15, 20, 22, 17, 14, 7)(6, 11)
+     21A               31 · 211        (1, 3, 9, 15, 5, 12, 2, 13, 20, 23, 17, 4, 14, 10, 21, 22, 19, 6, 7, 11, 16)(8, 18, 24)
+     21B               31 · 211        (1, 12, 17, 22, 16, 5, 23, 21, 11, 15, 20, 10, 7, 9, 13, 14, 6, 3, 2, 4, 19)(8, 24, 18)
+     4A                24 · 44         (1, 4, 8, 15)(2, 9, 12, 22)(3, 6)(5, 24, 7, 23)(10, 13)(11, 14, 18, 19)(16, 20)(17, 21)
+     12A          21 · 41 · 61 · 121   (1, 15, 8, 4)(2, 19, 24, 9, 11, 7, 12, 14, 23, 22, 18, 5)(3, 13, 20, 6, 10, 16)(17, 21)
+                          Table 1. Representatives of conjugacy classes.
+                                                                                                                                                                                                       10
+ep± = 12 (± −p − 1).
+Table 2. √
+
+
+                                                                            1A     2A   3A 5A 4B   7A   7B 8A 6A 11A 15A 15B 14A 14B 23A 23B 12B 6B 4C 3B                  2B 10A 21A 21B 4A 12A
+                                                                              1      1   1  1  1   1    1  1  1    1     1     1   1   1     1     1    1    1    1    1     1    1   1    1  1    1
+                                                                             23      7   5  3  3   2    2  1  1    1     0     0   0   0     0     0   −1   −1   −1   −1    −1   −1 −1 −1 −1      −1
+           Character table of the Mathieu group M24 . Here we have used
+
+
+
+
+                                                                            252     28   9  2  4   0    0  0  1   −1   −1    −1    0   0   −1    −1     0    0    0    0    12    2   0    0  4    1
+                                                                            253     13  10  3  1   1    1 −1 −2    0     0     0 −1 −1       0     0    1    1    1    1   −11   −1   1    1 −3    0
+                                                                           1771    −21  16  1 −5   0    0 −1  0    0     1     1   0   0     0     0   −1   −1   −1    7    11    1   0    0  3    0
+                                                                           3520     64  10  0  0 −1 −1     0 −2    0     0     0   1   1     1     1    0    0    0   −8     0    0 −1 −1     0    0
+                                                                             45     −3   0  0  1 e+7  e−
+                                                                                                       7  −1  0    1     0     0 −e+
+                                                                                                                                   7 −e−
+                                                                                                                                       7   −1    −1     1   −1    1    3     5    0  e−
+                                                                                                                                                                                      7  e+
+                                                                                                                                                                                          7  −3    0
+                                                                                                   −
+                                                                                    −3                e+  −1                   0 −e7 −e+
+                                                                                                                                   −
+                                                                                                                                           −1    −1         −1                        +
+                                                                                                                                                                                         e−  −3
+
+
+
+
+                                                                                                                                                                                                       T. EGUCHI AND K. HIKAMI
+                                                                             45          0  0  1 e7    7      0    1     0             7                1         1    3     5    0  e7   7        0
+                                                                            990    −18   0  0  2 e+7  e−
+                                                                                                       7   0  0    0     0     0  e+
+                                                                                                                                   7  e−
+                                                                                                                                       7     1     1    1   −1   −2    3   −10    0  e−
+                                                                                                                                                                                      7  e+
+                                                                                                                                                                                          7   6    0
+                                                                            990    −18   0  0  2 e−7  e+
+                                                                                                       7   0  0    0     0     0  e−
+                                                                                                                                   7  e+
+                                                                                                                                       7     1     1    1   −1   −2    3   −10    0  e+
+                                                                                                                                                                                      7  e−
+                                                                                                                                                                                          7   6    0
+                                                                           1035    −21   0  0  3 2e+
+                                                                                                   7 2e−
+                                                                                                       7  −1  0    1     0     0   0   0     0     0   −1    1   −1   −3    −5    0 −e−
+                                                                                                                                                                                      7 −e+
+                                                                                                                                                                                          7   3    0
+                                                                                                   −   +                                                                              +   −
+                                                                           1035    −21   0  0  3 2e7 2e7 −1   0    1     0     0   0   0     0     0   −1    1   −1   −3    −5    0 −e7 −e7   3    0
+                                                                           1035′    27   0  0 −1 −1 −1     1  0    1     0     0 −1 −1       0     0    0    2    3    6    35    0 −1 −1     3    0
+                                                                            231      7 −3   1 −1   0    0 −1  1    0   e+
+                                                                                                                        15   e−
+                                                                                                                              15   0   0     1     1    0    0    3    0    −9    1   0    0 −1   −1
+                                                                            231      7 −3   1 −1   0    0 −1  1    0   e−
+                                                                                                                        15   e+
+                                                                                                                              15   0   0     1     1    0    0    3    0    −9    1   0    0 −1   −1
+                                                                            770    −14   5  0 −2   0    0  0  1    0     0     0   0   0   e+
+                                                                                                                                            23   e−
+                                                                                                                                                  23    1    1   −2   −7    10    0   0    0  2   −1
+                                                                            770    −14   5  0 −2   0    0  0  1    0     0     0   0   0   e−
+                                                                                                                                            23   e+
+                                                                                                                                                  23    1    1   −2   −7    10    0   0    0  2   −1
+                                                                            483     35   6 −2  3   0    0 −1  2   −1     1     1   0   0     0     0    0    0    3    0     3   −2   0    0  3    0
+                                                                           1265     49   5  0  1 −2 −2     1  1    0     0     0   0   0     0     0    0    0   −3    8   −15    0   1    1 −7   −1
+                                                                           2024      8 −1 −1   0   1    1  0 −1    0   −1    −1    1   1     0     0    0    0    0    8    24   −1   1    1  8   −1
+                                                                           2277     21   0 −3  1   2    2 −1  0    0     0     0   0   0     0     0    0    2   −3    6   −19    1 −1 −1 −3       0
+                                                                           3312     48   0 −3  0   1    1  0  0    1     0     0 −1 −1       0     0    0   −2    0   −6    16    1   1    1  0    0
+                                                                           5313     49 −15  3 −3   0    0 −1  1    0     0     0   0   0     0     0    0    0   −3    0     9   −1   0    0  1    1
+                                                                           5796    −28 −9   1  4   0    0  0 −1   −1     1     1   0   0     0     0    0    0    0    0    36    1   0    0 −4   −1
+                                                                           5544    −56   9 −1  0   0    0  0  1    0   −1    −1    0   0     1     1    0    0    0    0    24   −1   0    0 −8    1
+                                                                          10395    −21   0  0 −1   0    0  1  0    0     0     0   0   0   −1    −1     0    0    3    0   −45    0   0    0  3    0
+                                                                          n            1A       2A    3A   5A   4B   7A 8A    6A 11A 15A 14A 23A 12B        6B   4C    3B      2B 10A 21A     4A 12A
+                                                                           1            90       −6     0   0    2 −1    −2     0    2    0    1   −2    2 −2     2     6      10    0   −1  −6     0
+                                                                           2           462       14   −6    2  −2    0   −2     2    0   −1    0    2    0   0    6     0    −18     2    0  −2    −2
+Table 3. Values Ag (n) from twisted elliptic genera for lower levels n.
+
+
+                                                                           3          1540      −28    10   0  −4    0    0     2    0    0    0   −1    2   2  −4   −14       20    0    0    4   −2
+                                                                           4          4554       42     0 −6     2   4   −2     0    0    0    0    0    0   4  −6     12    −38     2   −2  −6     0
+                                                                           5         11592      −56  −18    2    8   0    0    −2   −2    2    0    0    0   0    0     0      72    2    0  −8    −2
+                                                                           6         27830       86    20   0  −2 −2      2    −4    0    0    2    0    0   0    6  −16     −90     0   −2    6    0
+                                                                           7         61686     −138     0   6 −10    2   −2     0   −2    0    2    0   −2 −2   −2     30     118   −2    2    6    0
+                                                                           8        131100      188  −30    0    4 −3     0     2    2    0   −1    0    0   0 −12      0   −180     0    0  −4     2
+                                                                           9        265650     −238    42 −10   10   0   −2     2    0    2    0    0   −2   6   10  −42      258   −2    0 −14    −2
+                                                                          10        521136      336     0   6  −8    0   −4     0    0    0    0    2   −2   2   16    42   −352    −2    0    0    0
+                                                                          11        988770     −478  −60    0 −14    6    2    −4    2    0   −2    0    0   0  −6      0     450    0    0   18    0
+
+
+
+
+                                                                                                                                                                                                        TWISTED ELLIPTIC GENUS OF K3
+                                                                          12       1830248      616    62   8    8   0    0    −2    2    2    0    0    2 −6 −16    −70    −600     0    0  −8    −2
+                                                                          13       3303630     −786     0   0   22 −6     2     0    0    0   −2    2    0 −4     6    84     830    0    0 −18     0
+                                                                          14       5844762     1050  −90 −18   −6    0    2     6    0    0    0    2    0   0   18     0  −1062    −2    0   10   −2
+                                                                          15      10139734    −1386   118   4 −26 −4     −2     6    0   −2    0    0    2   2 −10 −110      1334    4    2   22   −2
+                                                                          16      17301060     1764     0   0   12   0    0     0   −4    0    0    0    2   6 −28    126  −1740     0    0 −12     0
+                                                                          17      29051484    −2212 −156   14   28   0   −4    −4    0   −1    0    0    0   0   12     0    2268   −2    0 −36     0
+                                                                          18      48106430     2814   170   0 −18    8   −2    −6   −2    0    0   −2    2 −6    38 −166   −2850     0    2   14    2
+                                                                          19      78599556    −3612     0 −24 −36    0    0     0    2    0    0    0   −2 −6 −20     210    3540    0    0   36    0
+                                                                          20     126894174     4510 −228   14   14 −6    −2     4    0    2    2    0    0   0 −42      0  −4482    −2    0 −18     0
+                                                                          21     202537080    −5544   270   0   48   4    4     6   −2    0    0    0   −2   6   16 −282     5640    0   −2 −40     2
+                                                                          22     319927608     6936     0  18 −16 −7      4     0    0    0   −1    0    0   4   48   300  −6968     2   −1   24    0
+                                                                          23     500376870    −8666 −360    0 −58    0   −2    −8    4    0    0    2    0   0 −18      0    8550    0    0   54    0
+                                                                          24     775492564    10612   400 −36   28   0    0    −8    0    0    0    0    0 −8 −60 −392 −10556        4    0 −28    −4
+                                                                          25    1191453912   −12936     0  12   64  12   −4     0    0    0    0    0    2 −10   32   462   13064    4    0 −72     0
+                                                                          26    1815754710    15862 −510    0 −34    0   −6    10    0    0    0   −1    0   0   78     0 −15930     0    0   22   −2
+                                                                          27    2745870180   −19420   600  30 −76 −10     4     8   −2    0   −2    0    0   8 −36 −600     19268   −2    2   84    0
+                                                                          28    4122417420    23532     0   0   36   2    0     0    0    0   −2    0    0  12 −84    660 −23460     0    2 −36     0
+                                                                          29    6146311620   −28348 −762 −50   100 −6     4   −10   −2   −2    2    0    0   0   36     0   28548   −2    0 −92    −2
+                                                                          30    9104078592    34272   828  22 −40    0    4   −12    4   −2    0    0    0 −8    96 −840 −34352     −2    0   48    0
+                                                                          31   13401053820   −41412     0   0 −116   0   −4     0    0    0    0   −2   −2 −10 −44    966   41180    0    0  108    0
+                                                                          32   19609321554    49618 −1062  34   50  18    2    10   −2   −2    2    0    0   0 −126     0 −49518     2    0 −46     2
+                                                                          33   28530824630   −59178  1220   0  126   0   −6    12    0    0    0    2   −4  12   62 −1204   59430    0    0 −138    0
+                                                                          34   41286761478    70758     0 −72 −66 −10    −6     0    6    0    2    0    0  12  150  1332 −70890     0    2   54    0
+                                                                          35   59435554926   −84530 −1518  26 −154   6    2   −14    0    2    2    0    0   0 −66      0   84222    2    0  158    2
+                                                                          36   85137361430   100310  1670   0   70 −12   −2   −10    0    0    0    0   −2 −18 −170 −1666 −100170    0    0 −74    −2
+
+
+
+
+                                                                                                                                                                                                                11
+                                                                                                                                                                                                                                     12
+                                                                                                               45     990    1035              231    770
+                                                            n      1     23    252      253    1771    3520                           1035′                   483    265     2024    2277    3312     5313    5796    5544   10395
+                                                                                                               45     990    1035              231    770
+                                                             1     0      0       0       0        0       0     1      0        0        0       0      0      0      0        0        0       0       0       0       0       0
+                                                             2     0      0       0       0        0       0     0      0        0        0       1      0      0      0        0        0       0       0       0       0       0
+Table 4. Multiplicites cR (n) in decomposition of Ag (n).
+
+
+
+
+                                                             3     0      0       0       0        0       0     0      0        0        0       0      1      0      0        0        0       0       0       0       0       0
+                                                             4     0      0       0       0        0       0     0      0        0        0       0      0      0      0        0        2       0       0       0       0       0
+                                                             5     0      0       0       0        0       0     0      0        0        0       0      0      0      0        0        0       0       0       2       0       0
+                                                             6     0      0       0       0        0       2     0      0        0        0       0      0      0      0        0        0       0       0       0       0       2
+                                                             7     0      0       0       0        2       0     0      0        0        0       0      0      0      0        2        0       0       2       2       2       2
+                                                             8     0      0       0       0        0       2     0      1        1        0       0      0      0      2        0        2       2       4       2       2       6
+                                                             9     0      0       0       0        2       4     0      0        2        2       0      2      2      0        2        2       4       4       8       8      10
+                                                            10     0      0       0       2        4       8     0      2        2        2       2      0      2      4        4        6       6      12      10      10      24
+                                                            11     0      0       0       0        8      12     0      4        4        6       0      4      0      2       10        8      14      22      26      24      40
+
+
+
+
+                                                                                                                                                                                                                                     T. EGUCHI AND K. HIKAMI
+                                                            12     0      2       2       4       12      30     0      8        8        4       2      6      4     12       12       18      26      40      40      38      80
+                                                            13     0      0       4       2       26      44     2     14       14       18       2     10      6     16       30       28      44      70      84      80     136
+                                                            14     0      0       4       6       38      86     0     24       24       22       8     16     14     34       46       58      80     128     132     126     254
+                                                            15     0      0      12       8       78     144     2     40       44       46       8     38     18     46       86       88     138     218     246     238     424
+                                                            16     0      2      18      22      122     252     2     72       72       68      18     50     36    100      140      170     232     378     400     382     742
+                                                            17     0      2      30      26      212     410     8    116      124      130      25     94     54    140      246      262     392     630     704     670    1222
+                                                            18     0      6      50      58      342     704     6    194      202      192      50    148    100    256      388      454     654    1044    1120    1074    2058
+                                                            19     0      4      80      72      582    1116    18    318      332      346      68    252    150    394      664      722    1062    1702    1880    1800    3320
+                                                            20     0     14     128     138      904    1836    20    516      536      520     126    390    254    676     1036     1196    1716    2764    2980    2846    5408
+                                                            21     2     20     214     200     1476    2902    40    814      860      872     182    652    396   1020     1684     1862    2742    4384    4828    4622    8572
+                                                            22     2     32     328     346     2302    4616    55   1298     1348     1336     314    988    640   1686     2630     3000    4324    6950    7532    7204   13620
+                                                            23     2     40     512     496     3638    7166    98   2020     2118     2144     460   1590    972   2546     4162     4624    6768   10856   11898   11376   21204
+                                                            24     0     80     798     824     5584   11192   132   3140     3278     3236     744   2426   1544   4050     6376     7248   10500   16834   18294   17504   32976
+                                                            25     8    108    1232    1208     8654   17084   234   4814     5038     5084    1106   3764   2336   6108     9892    11042   16112   25840   28288   27056   50524
+                                                            26     6    174    1860    1904    13090   26148   322   7348     7670     7626    1742   5677   3602   9444    14968    16940   24566   39428   42894   41022   77176
+                                                            27    12    252    2836    2802    19914   39436   514 11092     11618    11666    2560   8688   5394 14100     22744    25462   37148   59564   65114   62294 116494
+                                                            28    16    398    4238    4310    29772   59330   742 16686     17418    17356    3922 12912    8160 21414     34026    38434   55764   89490   97456   93218 175146
+                                                            29    26    560    6328    6286    44512   88280 1154 24840      25994    26078    5758 19380 12090 31636       50892    57068   83146 133356 145690 139342 260828
+                                                            30    34    876    9368    9486    65776 131020 1642 36824       38480    38368    8642 28580 18008 47172       75158    84776 123176 197596 215318 205970 386724
+                                                            31    58   1236   13802   13764    97060 192538 2500 54178       56660    56800   12582 42218 26384 69082      110920   124506 181274 290780 317502 303700 568798
+                                                            32    76   1866   20166   20356   141714 282074 3564 79320       82884    82730   18576 61574 38738 101530     161978   182554 265284 425624 463950 443760 832834
+                                                            33   122   2664   29396   29374   206524 410062 5286 115334     120644   120798   26830 89868 56226 147156     236010   265136 385974 619072 675796 646432 1211106
+                                                            34   166   3900   42474   42810   298508 593800 7542 166990     174510   174330   39066 129694 81546 213644    341154   384250 558530 896052 977004 934530 1753356
+                                                            35   248   5536   61184   61234   430134 854284 10988 240304    251292   251544   55956 187094 117138 306736   491602   552494 804038 1289768 1407604 1346380 2523178
+                                                            36   334   8058   87622   88196   615626 1224424 15560 344314   359902   359564   80470 267604 168092 440318   703542   792158 1151786 1847690 2014952 1927370 3615350
+                           TWISTED ELLIPTIC GENUS OF K3                               13
+
+                                     References
+ [1] K. Bringmann and K. Ono, The f (q) mock theta function conjecture and partition
+     ranks, Invent. Math. 165, 243–266 (2006).
+ [2] M. C. N. Cheng, K3 surfaces, N = 4 dyons, and the Mathieu group M24 , preprint
+     (2010), arXiv:1005.5415 [hep-th].
+ [3] J. H. Conway, R. T. Curtis, R. A. Wilson, S. P. Norton, and R. A. Parker, ATLAS
+     of Finite Groups, Clarendon Press, Oxford, 1985.
+ [4] J. H. Conway and S. P. Norton, Monstrous moonshine, Bull. London Math. Soc. 11,
+     308–339 (1979).
+ [5] J. R. David, P. D. Jatkar, and A. Sen, Product representation of dyon partition
+     function in CHL model, JHEP 06, 064 (2006), 31 pages, hep-th/0602254.
+ [6] T. Eguchi and K. Hikami, Superconformal algebras and mock theta functions 2.
+     Rademacher expansion for K3 surface, Commun. Number Theory Phys. 3, 531–554
+     (2009), arXiv:0904.0911 [math-ph].
+ [7] ———, N = 4 superconformal algebra and the entropy of hyperKähler manifolds,
+     JHEP 2010, 019 (2010), 28 pages, arXiv:0909.0410 [hep-th].
+ [8] ———, N = 2 superconformal algebra and the entropy of Calabi–Yau manifolds,
+     Lett. Math. Phys. 92, 269–297 (2010), arXiv:1003.1555 [hep-th].
+ [9] T. Eguchi, H. Ooguri, and Y. Tachikawa, Notes on the K3 surface and the Mathieu
+     group M24 , preprint (2010), arXiv:1004.0956 [hep-th].
+[10] T. Eguchi, H. Ooguri, A. Taormina, and S.-K. Yang, Superconformal algebras and
+     string compactification on manifolds with SU(n) holonomy, Nucl. Phys. B 315, 193–
+     221 (1989).
+[11] T. Eguchi and A. Taormina, On the unitary representations of N = 2 and N = 4
+     superconformal algebras, Phys. Lett. B 210, 125–132 (1988).
+[12] M. Eichler and D. Zagier, The Theory of Jacobi Forms, vol. 55 of Progress in Math-
+     ematics, Birkhäuser, Boston, 1985.
+[13] M. R. Gaberdiel, S. Hohenegger, and R. Volpato, Mathieu twining characters for
+     K3, preprint (2010), arXiv:1006.0221 [hep-th].
+[14] ———, Mathieu moonshine in the elliptic genus of K3, preprint (2010),
+     arXiv:1008.3778 [math.AG].
+[15] S. Govindarajan and K. G. Krishna, BKM Lie superalgebras from dyon spectra in
+     ZN -CHL orbifolds for composite N, preprint (2009), arXiv:0907.1410 [hep-th].
+[16] P. D. Jatkar and A. Sen, Dyon spectrum in CHL models, JHEP 0604, 018 (2006),
+     31 pages, hep-th/0510147.
+[17] T. Kawai, Y. Yamada, and S.-K. Yang, Elliptic genera and N = 2 superconformal
+     field theory, Nucl. Phys. B 414, 191–212 (1994), hep-th/9306096.
+[18] S. Kondō, Niemeier lattices, Mathieu groups, and finite groups of symplectic auto-
+     morphisms of K3 surfaces, Duke Math. J. 92, 593–603 (1998), with an appendix
+     by S. Mukai.
+[19] S. Mukai, Finite groups of automorphisms of K3 surfaces and the Mathieu group,
+     Invent. math. 94, 183–221 (1988).
+[20] A. Sen, Discrete information from CHL black holes, preprint (2010),
+     arXiv:1002.3857 [hep-th].
+14                                 T. EGUCHI AND K. HIKAMI
+
+[21] W. A. Stein et al., Sage Mathematics Software, The Sage Development Team (2010),
+     http://www.sagemath.org.
+[22] A. Taormina and K. Wendland, The symmetries of the tetrahedral Kummer surface
+     in the Mathieu group M24 , preprint (2010), arXiv:1008.0954 [hep-th].
+[23] D. Zagier, Introduction to modular forms, in M. Waldschmidt, P. Moussa, J.-M.
+     Luck, and C. Itzykson, eds., From Number Theory to Physics, pp. 238–291, Springer,
+     Berlin, 1992, lectures given at the meeting ‘Number Theory and Physics’, Les
+     Houches 1989.
+[24] ———, Ramanujan’s mock theta functions and their applications [d’après Zwegers
+     and Bringmann–Ono], Séminaire Bourbaki 986 (2006–2007).
+[25] S. P. Zwegers, Mock Theta Functions, Ph.D. thesis, Universiteit Utrecht (2002),
+     arXiv:0807.4834 [math.NT].
+
+     Yukawa Institute for Theoretical Physics, Kyoto University, Kyoto 606–8502, Japan
+     E-mail address:   eguchi@yukawa.kyoto-u.ac.jp
+
+  Department of Mathematics, Naruto University of Education, Tokushima 772-8502,
+Japan.
+     E-mail address:   KHikami@gmail.com
+

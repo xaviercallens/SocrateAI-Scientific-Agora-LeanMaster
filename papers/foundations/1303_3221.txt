@@ -1,0 +1,2044 @@
+                                                                                                                                DCPT-13/09
+
+
+
+                                                             A twist in the M24 moonshine story
+arXiv:1303.3221v3 [hep-th] 7 Mar 2015
+
+
+
+
+                                                               Anne Taormina∗ and Katrin Wendland†
+
+                                                      ∗
+                                                          Centre for Particle Theory, Department of Mathematical Sciences
+                                                                   Durham University, Durham, DH1 3LE, U.K.
+                                                                  †
+                                                                      Mathematics Institute, University of Freiburg
+                                                                              D-79104 Freiburg, Germany.
+
+                                                               AMS Subject Classification: 81T40, 81T60, 14J28
+
+
+
+                                                                                       Abstract
+                                                  Prompted by the Mathieu Moonshine observation, we identify a pair of 45-dimensional
+                                              vector spaces of states that account for the first order term in the massive sector of the
+                                              elliptic genus of K3 in every Z2 -orbifold CFT on K3. These generic states are uniquely
+                                              characterized by the fact that the action of every geometric symmetry group of a Z2 -
+                                              orbifold CFT yields a well-defined faithful representation on them. Moreover, each such
+                                              representation is obtained by restriction of the 45-dimensional irreducible representation
+                                              of the Mathieu group M24 constructed by Margolin. Thus we provide a piece of evidence
+                                              for Mathieu Moonshine explicitly from SCFTs on K3.
+                                                  The 45-dimensional irreducible representation of M24 exhibits a twist, which we prove
+                                              can be undone in the case of Z2 -orbifold CFTs on K3 for all geometric symmetry groups.
+                                              This twist however cannot be undone for the combined symmetry group (Z2 )4 o A8 that
+                                              emerges from surfing the moduli space of Kummer K3s. We conjecture that in general,
+                                              the untwisted representations are exclusively those of geometric symmetry groups in some
+                                              geometric interpretation of a CFT on K3. In that light, the twist appears as a represen-
+                                              tation theoretic manifestation of the maximality constraints in Mukai’s classification of
+                                              geometric symmetry groups of K3.
+                                        ∗
+                                            anne.taormina@durham.ac.uk
+                                        †
+                                            katrin.wendland@math.uni-freiburg.de
+
+
+                                                                                           1
+Introduction
+The Mathieu Moonshine observation [EOT11] continues to inspire three years on. It is now
+proven that the multiplicity spaces of irreducible characters of the N = 4 superconformal alge-
+bra in the elliptic genus of K3 do indeed correspond to representations of the sporadic group
+M24 [Gan12]. The reason why M24 is singled out remains a mystery. From the properties
+of twining elliptic genera, one may expect a representation of M24 on a vertex algebra which
+governs the elliptic genus of K3, as argued in [GPRV12, Gan12, GPV13]. However, there are
+conceptual difficulties in following this lead, particularly in the sector of the elliptic genus
+corresponding to massless states at leading order.
+
+In a recent paper [TW13], we suggest a starting point for the construction of a vertex algebra
+that governs the states occuring at lowest order in the elliptic genus. Our approach uses a
+subtle interplay between the geometry inherited from the K3 surfaces on which superstrings
+propagate and the (chiral, chiral) algebra associated with N = (4, 4) superconformal algebras
+at central charge c = c = 6 [LVW89]. Since the elliptic genus is an invariant on the moduli
+space of such superconformal field theories (SCFTs), we are at liberty to choose the special
+class of Z2 -orbifold conformal field theories C = T /Z2 on K3 to present our arguments1 , which
+we summarize here.
+The elliptic genus counts states (with signs) that appear in the Ramond-Ramond sector of the
+partition function, after projection onto Ramond ground states in the antiholomorphic sector
+of the theory. Although the expected vertex algebra Xb cannot arise in the Ramond-Ramond
+sector of such SCFTs, one may, by choosing appropriate holomorphic and antiholomorphic
+U (1)-currents within the relevant N = (4, 4) superconformal algebra, spectral flow the states
+into the Neveu-Schwarz sector of the theory where (prior to all projections and truncations)
+they yield a closed vertex algebra Xb. The Ramond-Ramond ground states, in particular, flow
+to (chiral, chiral) states. In fact, the (chiral, chiral) algebra X of [LVW89], which accounts
+for the contributions to the lowest order terms of the elliptic genus, is obtained from Xb by
+truncation. In any theory C = T /Z2 on K3, the vector space X is generated by the 24 fields
+
+                        ξ1 ξ2 ξ3 ξ4 ,   ξi ξj (1 ≤ i < j ≤ 4),   1;   Te~a (~a ∈ F42 ),            (0.1)
+
+where ξi are holomorphic-antiholomorphic combinations of the Dirac fermions in the theory,
+1 denotes the vacuum field, and the Te~a , ~a ∈ F42 , are the sixteen fields spectral-flowed from the
+RR twist fields.
+Interestingly, the truncation of the OPE to the (chiral, chiral) algebra X leaves the latter
+independent of all moduli. This may seem desirable, since the elliptic genus does not depend
+on the moduli. Mathieu Moonshine indicates that one should consider symmetries of some
+underlying vertex algebra, while it is far from clear from inspecting the fields in (0.1) which
+  1
+    Throughout our work, C = T /Z2 refers to the standard Z2 -orbifold construction induced by the Kummer
+construction for K3 surfaces.
+
+
+                                                      2
+linear maps are symmetries of the whole theory C = T /Z2 . In [TW13], we motivate why
+in our setting, we restrict our attention to symmetry groups that are induced geometrically
+in some geometric interpretation of C stemming from T . In other words, all such symmetry
+groups are subgroups of M24 by Mukai’s seminal result [Muk88]. Imposing that the supercon-
+formal algebra of C be pointwise fixed also requires that a four-dimensional subspace of (0.1)
+is fixed under symmetries. Therefore, this condition rules out the possibility for X to carry a
+representation of M24 , as also argued in [GPRV12] albeit from a different perspective. Hence
+a vertex algebra which governs the leading order terms of the elliptic genus and which at the
+same time carries the expected representation of M24 must be related to X by some nontrivial
+map. The Niemeier markings and the overarching maps which were constructed in [TW11]
+should be viewed as a first approach towards constructing such a map.
+
+This indicates interesting geometric avenues to explore while searching for a vertex algebra
+governing the leading order terms of the elliptic genus. In this paper, we take a closer look
+at the leading order in the massive sector of the elliptic genus. After all, the Mathieu Moon-
+shine observation [EOT11] originally refers to the massive sector. We use again the framework
+of Z2 -orbifold CFTs on K3, we analyze the massive states at leading order and show that
+they populate two complex 45-dimensional representation spaces of the respective symmetry
+                                     CF T
+groups, which we call V45CF T and V 45 . This has long been anticipated from mere Moonshine
+numerology: the massive character with the lowest conformal weight appears with the coeffi-
+cient 90 in the elliptic genus, and M24 has two complex conjugate irreducible 45-dimensional
+representations. Nevertheless, it is remarkable that one obtains well-defined representations of
+the symmetry groups from the net contributions to the elliptic genus in such a natural fashion.
+                                                    CF T
+We prove that the representations on V45CF T and V 45 can be induced from the two irreducible,
+complex conjugate 45-dimensional representations of M24 . By working within specific orbifold
+theories C = T /Z2 , we gain much deeper insights into the nature of these massive states, and
+crucially, appreciate how the symmetries of interest act on them. In particular, we show that
+                      CF T
+the space V45CF T ⊕ V 45 is uniquely characterized by the quantum numbers of states yielding
+leading order massive contributions to the elliptic genus together with the requirement that it
+carries a faithful representation of the generic geometric symmetry group (Z2 )4 of Z2 -orbifold
+CFTs C = T /Z2 .
+An indispensable ingredient is the work of Margolin [Mar93], who constructs an irreducible
+45-dimensional representation of M24 on the 45-dimensional space V45 . There, an action of
+(Z2 )4 o A8 ⊂ M24 on V45 is exhibited as an important stepping stone in the construction of
+the full M24 action. This maximal subgroup of M24 is particularly relevant to us, as we have
+emphasized its role as combined symmetry group of all holomorphic symplectic automorphism
+groups of Kummer surfaces in [TW13]. There, we encrypt the action of (Z2 )4 oA8 unequivocally
+on the Niemeier lattice with root lattice A24
+                                            1 , which carries a natural representation of M24 . In
+that setting, the very fact that the Niemeier lattice has definite signature while the full integral
+homology lattice H∗ (X, Z) of K3 surfaces X has indefinite signature is a geometric obstruction
+against an action of (Z2 )4 o A8 and a fortiori of M24 in terms of geometric symmetries on any
+
+                                                 3
+K3 surface, a fact already appreciated by Mukai [Muk88] and Kondo [Kon98].
+In the present work, we discover a new potential obstruction from representation theory to
+the action of M24 as a geometric symmetry group. Indeed, we prove that the group action on
+V45 simplifies when one restricts from the group (Z2 )4 o A8 to the subgroups which happen to
+be symmetry groups of Kummer surfaces with dual Kähler class induced from the underlying
+torus. More precisely, we deduce from [Mar93] that V45 possesses the structure of a tensor
+product V45 = V ⊗ B, where the factorization however is not respected by the action of
+(Z2 )4 o A8 on V45 . Here, V is a 3-dimensional complex vector space, and the 15-dimensional
+space B is referred to as the base of V45 . In fact, (Z2 )4 o A8 permutes the 3-dimensional
+“fibers” V ⊗ spanC {B}, B ∈ B, introducing a twist on each fiber (see Def. A.1). Such a twist
+is necessary for the construction of the (reducible) 45-dimensional representation of that group,
+since (Z2 )4 o A8 does not possess any nontrivial 3-dimensional representations that V could
+carry. The above-mentioned simplification under restriction to geometric symmetry groups
+amounts to the fact that these groups act without a twist, as we prove. On the CFT side this
+                                                                  CF T
+is expected from the very structure of the states in V45CF T ⊕ V 45 , which forbids geometric
+symmetry group actions induced from T to exhibit a twist.
+Nevertheless, in view of our search for an explanation to Mathieu Moonshine, we interpret
+the representation space V45 as a medium which combines the actions of symmetry groups at
+distinct points of the moduli space of N = (4, 4) SCFTs on K3 to representations of larger
+groups, similarly to the ideas we present in [TW11, TW13]. Indeed, we generate the action of
+the entire group (Z2 )4 o A8 on V45 by combining the actions of the maximal symmetry groups
+of Kummer K3s. Moreover, we prove that this action of (Z2 )4 o A8 is obtained from Margolin’s
+irreducible representation of M24 by restriction to the maximal subgroup (Z2 )4 o A8 . Thus
+we obtain a first piece of evidence for an action of M24 on a selection of states generic to all
+Z2 -orbifold CFTs on K3.
+
+We start in Section 1 by a detailed account of the massive states described above. This exercise
+leads to Proposition 1.1, which provides the mathematical structure organising 90 twisted
+massive states into two 45-dimensional spaces. More precisely, we find V45CF T = 3 ⊗ 15 and
+  CF T
+V 45 = 3 ⊗ 15, with 3 and 3 being complex representation spaces of SO(3), and 15 being
+a representation space of Aff(F42 ) hosting twisted ground states. In Section 2, we focus on the
+action of the maximal subgroup (Z2 )4 o A8 of M24 on the base 15 of the space of states V45CF T .
+In Proposition 2.1 we show that the representation of (Z2 )4 o A8 on the space 15 of twisted
+ground states is equivalent to the representation of the same group constructed by Margolin
+[Mar93] on the 15-dimensional base B of V45 = V ⊗ B. Section 3 analyzes the properties of
+the space V45CF T in order to substantiate the expectation that for every Z2 -orbifold CFT, this
+space carries a representation of a geometric symmetry group G ⊂ M24 which is induced from
+Margolin’s representation of M24 on V45 . A first step in proving this is to show that none of the
+symmetry groups of maximally symmetric Kummer surfaces acts with a twist in Margolin’s
+representation on V45 . This is the purpose of Propositions 3.1, 3.2 and 3.3. A second step is
+to prove that the representation of each of the three maximal symmetry groups of Kummer
+
+                                                4
+surfaces on V45CF T is equivalent to the representation of that same group viewed as a subgroup
+of (Z2 )4 o A8 acting on V45 . This is done in Proposition 3.4. Our main result, Theorem 3.5,
+generalizes these findings to arbitrary symmetry groups of Z2 -orbifold CFTs which are induced
+by geometric symmetries of the underlying toroidal theories. We then briefly discuss the role
+and limitations of a lattice of rank 20 that accommodates the combined action of the three
+maximal symmetry groups of Kummer surfaces in our efforts to understand the role of M24
+on the CFT side. In the Appendix we collect the details of Margolin’s construction that are
+relevant for our work.
+
+
+1     Counting states in Z2-orbifold CFTs on K3
+In this section, we use the conformal field theoretic elliptic genus of K3 to determine a 45-
+dimensional vector space V45CF T of states, which exists in all Z2 -orbifold conformal field theories
+on K3 and which is expected to be related to a representation of the Mathieu group M24 by
+the Mathieu Moonshine phenomenon [EOT11].
+We use the notion of CFTs on K3 which can be found, for example, in [AM94, NW01], along
+with many further relevant references to the topic. One may also consult the more recent
+publications [We10, GHV11, We14]. In the present work, however, we solely address Z2 -orbifold
+CFTs C = T /Z2 with T a toroidal SCFT at central charge c = 6 = c and C the standard Z2 -
+orbifold of this theory, cf. footnote 1. This ensures the mathematical foundations of the present
+work: Recall that a definition of the underlying toroidal theories T has been given in [KO03],
+generalizing Kac’s lattice algebras [Ka98] to non-holomorphic CFTs. For all cyclic groups G,
+thus including the case G = Z2 that is relevant to our work, orbifold techniques for toroidal
+theories have been put on a solid mathematical foundation in a series of papers by Fröhlich,
+Fuchs, Runkel and Schweigert, culminating in [FFRS10]. That C = T /Z2 as above obeys all
+defining properties of a SCFT on K3, in particular that it enjoys N = (4, 4) supersymmetry
+and that its conformal field theoretic elliptic genus agrees with the geometric elliptic genus of
+K3 surfaces, has been shown in [EOTY89], see also [AM94, NW01, Wen00, We14].
+
+1.1    Evidence for the 45 ⊕ 45 of M24 from the elliptic genus of K3
+The conformal field theoretic elliptic genus of N = (2, 2) superconformal field theories (SCFTs)
+[AKMW87, Wit87] yields an invariant on every connected component of the moduli space of
+N = (2, 2) SCFTs. For SCFTs on K3, one has central charges c = c = 6 and N = (4, 4)
+supersymmetry, and the conformal field theoretic elliptic genus ZK3 (τ, z) may be defined as
+                                        1        1
+                                                    
+    ZK3 (τ, z) := trHR (−1)F y J0 q L0 − 4 q L0 − 4 , q := e2πiτ , y := e2πiz , τ, z ∈ C, =(τ ) > 0.
+
+Here, the trace is over the states belonging to the Ramond-Ramond sector HR of the theory,
+F is the fermion number operator, J0 is the zero mode of a choice of U (1)-current in the
+holomorphic N = 4 superconformal algebra, while L0 (resp. L0 ) is the zero-mode of the
+
+                                                 5
+holomorphic (resp. antiholomorphic) Virasoro field. In fact, the above definition implies that
+the K3 elliptic genus is obtained from the partition function of any N = (4, 4) SCFT on K3
+by
+                                ZK3 (τ, z) = ZRe (τ, z; τ , z = 0),
+where ZRe (τ, z; τ , z) is the Ramond-Ramond (R eR)
+                                                  e partition function with fermion number
+insertion in both the holomorphic and antiholomorphic sectors. By standard cohomological
+arguments, the insertion of z = 0 in the ReRe partition function suppresses the dependence of
+the resulting function on τ . One therefore expects a decomposition of ZK3 in terms of N = 4
+characters stemming from the holomorphic sector of the partition function. Such a decom-
+position was achieved in [EOTY89], where the N = (4, 4) SCFTs chosen for calculation were
+Gepner models at c = c = 6. The very form in which the Mathieu Moonshine phenomenon
+was observed appears in [Oog89, Wen00]. Indeed, in terms of characters of irreducible repre-
+sentations of the N = 4 superconformal algebra one may write
+
+                                                                           eR
+                                                                               e
+                   ZK3 (τ, z) = −2 chR                  R
+                                     1, 1 (τ, z) + 20 ch1,0 (τ, z) + e(τ ) ch (τ, z).             (1.1)
+                                     e                  e
+                                           2
+
+
+Here, the N = 4 massless characters chR                    R
+                                          1,0 (τ, z) and ch1, 1 (τ, z) may be obtained from the
+                                                e                 e
+                                                              2
+Ramond sector characters derived in [ET88] through the shift z 7→ z+ 21 , and with h ∈ R, h > 0,
+the massive N = 4 characters in this sector are of the form
+           R
+           e              1   ϑ21 (τ, z)
+      q h ch
+          e (τ, z) = q h− 8              = q h (2 − y − y −1 ) 1 + q(1 − 2y − 2y −1 ) + · · · .
+                                                                                             
+                                  3
+                                                                                                  (1.2)
+                               η (τ )
+The function e(τ ) in (1.1) is closely related to a weakly holomorphic mock modular form of
+weight 12 on SL(2, Z) [DMZ12], and its q-expansion starts with
+
+                                      e(τ ) = 90q + 462q 2 + · · · .                              (1.3)
+
+The root of the Mathieu Moonshine phenomenon lies in the coefficients of the series (1.3): it
+was observed in [EOT11] that these coefficients appeared to be twice the dimensions of some
+representations of the sporadic Mathieu group M24 . A proof of this fact, along with its highly
+non-trivial generalizations to twining genera, was given recently in [Gan12], which builds on
+the works [Che10, GHV10b, GHV10a, EH11]. The field theoretic reason for M24 to act on the
+states in the massive sector that ZK3 accounts for has remained a mystery so far. In order
+to unveil some of this M24 Moonshine Mystery, it seems natural to track the states of one’s
+favourite N = (4, 4) SCFT on K3 and determine explicitly which ones contribute to the elliptic
+genus in the form of representations of M24 or its subgroups. In this work we shall do so for the
+leading order term of (1.3) in the case of any Z2 -orbifold conformal field theory on K3, which
+we denote C = T /Z2 , where T is the underlying toroidal CFT in four dimensions. The current
+section is devoted to determining a 45-dimensional space V45CF T of states which is generic to
+                                         CF T
+all such theories, such that V45CF T ⊕ V 45 accounts for the leading order coefficient 90 of e(τ )
+in (1.3).
+
+                                                     6
+1.2     Counting massive states in Z2 -orbifold conformal field theories
+Every toroidal conformal field theory T possesses two free Dirac fermions on the holomorphic
+side, which we denote by χ1+ (z), χ2+ (z). The fields of the complex conjugates are denoted
+χ1− (z), χ2− (z), such that
+
+                                                         δk`
+                                 χk+ (z)χ`− (w) ∼            ,       k, ` ∈ {1, 2},                        (1.4)
+                                                        z−w
+while the antiholomorphic counterparts are denoted χ1± (z), χ2± (z). The superpartners of the
+two Dirac fermions χ1+ (z), χ2+ (z) are given by
+
+                 j+1 (z) := √12 (j 1 (z) + i j 2 (z))     and     j+2 (z) := √12 (j 3 (z) + i j 4 (z)),    (1.5)
+
+with j K (z), K ∈ {1, . . . , 4}, four real holomorphic U (1)-currents. We remark that the intro-
+duction of the fields χk± (z), χk± (z) and their superpartners amounts to a choice of basis for
+fields with appropriate quantum numbers, which is tantamount to a choice of geometric in-
+terpretation (see [NW01, Wen00] for extensive discussions of this issue). Indeed, the fields
+j±k (z), k ∈ {1, 2}, are identified with the holomorphic coordinate vector fields ∂z∂k , k ∈ {1, 2},
+in such a geometric interpretation. As was argued in the introduction, in this work we are only
+interested in geometric symmetries of our respective CFTs. For this notion to make sense, the
+choice of a geometric interpretation is inevitable. As usual, in T we have the mode expansions
+                                   X                         X
+                        j K (z) =      aK
+                                        n z n−1
+                                                ,  χ k
+                                                     ± (z) =     (χk± )n z n−1/2 ,             (1.6)
+                                     n∈Z                              n∈Z+r
+
+
+where r = 12 in the Neveu-Schwarz sector and r = 0 in the Ramond sector. The charges with
+respect to (j 1 , . . . , j 4 ; 1 , . . . , 4 ) are denoted p := (pL ; pR ) ∈ Γ ⊂ R4,4 , where Γ is a self-dual
+even integral lattice with signature (4, 4).
+
+The Z2 -orbifold action on the Dirac fermions is given by χk± (z) 7→ −χk± (z), and on the U (1)-
+currents by j K (z) 7→ −j K (z). One may construct Z2 -invariant generators of the N = 4
+superconformal algebra from these free fields, namely the U (1)-current
+                                                1
+                                           J 3 = (: χ1+ χ1−: + : χ2+ χ2−:),
+                                                2
+the energy-momentum tensor
+                                               1
+                T = : j+1 j−1 : + : j+2 j−2 : + (: ∂χ1+ χ1−: + : ∂χ1− χ1+: + : ∂χ2+ χ2−: + : ∂χ2− χ2+:),
+                                               2
+and the remaining SU (2)-currents and N = 4 supercurrents
+                              √                                √
+   J ± = ± : χ1± χ2±:, G± = 2(: χ1± j∓1 : + : χ2± j∓2 :), G0± = 2(: χ1∓ j∓2 : − : χ2∓ j∓1 :).              (1.7)
+
+                                                           7
+Similar expressions are obtained in the antiholomorphic sector. We denote by Q and h (resp.
+                                                3
+Q and h) the eigenvalues of J03 and L0 (resp. J 0 and L0 ).
+
+We label the four RR ground states that correspond to the two Dirac fermions by σi±± , i ∈
+{1, 2}. These states are odd under the Z2 -action. We summarize the RR ground state content
+of the untwisted sector of the Z2 -orbifold conformal field theory C = T /Z2 on K3 in Table 1.
+Note that each of the four charged RR ground states can be obtained from, say, σ := σ1−− σ2−−
+
+                     charged                              uncharged
+                   ground state    (h, Q; h, Q)          ground state   (h, Q; h, Q)
+
+                   σ1++ σ2++       ( 14 , 1; 14 , 1)     σ1++ σ2−−      ( 41 , 0; 14 , 0)
+                   σ1+− σ2+−       ( 14 , 1; 14 , −1)    σ1−− σ2++      ( 41 , 0; 14 , 0)
+                   σ1−+ σ2−+       ( 14 , −1; 14 , 1)    σ1−+ σ2+−      ( 41 , 0; 14 , 0)
+                   σ1−− σ2−−       ( 14 , −1; 14 , −1)   σ1+− σ2−+      ( 41 , 0; 14 , 0)
+
+
+                 Table 1: RR ground states in the untwisted sector of T /Z2 .
+                                             +
+by application of the zero-modes J0+ , J 0 of the SU (2)-currents listed in (1.7); these states
+comprise the ground states of the vacuum representation of the N = (4, 4) superconformal
+algebra in the Ramond-Ramond sector. On the other hand, each of the uncharged RR ground
+states is the ground state of a massless matter representation.
+Moreover, there is a 16-dimensional space of twisted ground states in the Ramond-Ramond
+sector with orthonormal basis T~a , where each state has quantum numbers (h, Q; h, Q) =
+( 14 , 0; 14 , 0). In any geometric interpretation of C on a Kummer surface with underlying torus
+T = R4 /Λ, the label ~a ∈ F42 ∼     = 21 Λ/Λ refers to the fixed point of Z2 at which the respective
+field is localized.
+
+We now identify the states in our theory C = T /Z2 which are expected to form a 45 ⊕ 45
+representation of M24 because they generically contribute to the leading coefficient 90 in (1.3).
+In the next two sections, we show how a maximal subgroup (Z2 )4 o A8 of M24 acts on these
+states, and we establish a link with the geometric picture we have developed in [TW11, TW13].
+
+The ReRe partition function of T /Z2 may be read off [EOTY89, Wen00] after suitable spectral
+flow. We write
+                                   Z R := Zuntwisted
+                                           R            R
+                                                     + Ztwisted ,
+                                     e      e            e
+
+
+
+
+                                                     8
+with
+                                                
+                                                                                p2       p2
+                                                                                                             4                4
+        R                              1                      X                  L        R       ϑ1 (τ, z)          ϑ2 (τ, z)
+       Zuntwisted (τ, z; τ , z)   =              1+                         q        q                            +8           , (1.8)
+         e
+                                                                                 2        2
+                                    2|η(τ )|8                                                      η(τ )              ϑ2 (τ )
+                                                          (pL ;pR )∈Γ,
+                                                         (pL ;pR )6=(0;0)
+                                                    4                       4
+          R                             ϑ3 (τ, z)            ϑ4 (τ, z)
+         Ztwisted (τ, z; τ , z) = 8                     +8             ,                                                           (1.9)
+            e
+                                         ϑ3 (τ )              ϑ4 (τ )
+with Γ the charge lattice. From (1.1) and (1.2) we deduce that the massive states which
+contribute to the leading order term of e(τ ) have weights (h; h) = ( 54 ; 14 ). Moreover, it suffices
+to focus on the states with quantum numbers (h, Q; h, Q) = ( 54 , 1; 14 , Q).
+
+The untwisted sector
+We first identify all states with these quantum numbers which generically come from the
+untwisted sector (1.8). Since each factor 1/η(τ ) counts states created from the vacuum by
+the bosonic oscillators aK     n , n ∈ N, for fixed K, and since each factor ϑ1 (τ, z)/η(τ ) counts
+bosonic and fermionic states (with signs) created from the vacuum by the fermionic modes
+(χk± )n , n ∈ N, for a fixed value of k, one can read from the expansion
+                                   2
+                  1       ϑ1 (τ, z)
+                                       = −y −1 (1 − 2y + y 2 )(1 + q (4 − 2y − 2y −1 ) + · · · )
+               η 4 (τ )    η(τ )
+that the factor y −1 accounts for a Ramond ground state with U (1)-charge Q = −1, the term
+(−2y) in (1 − 2y + y 2 ) accounts for the two fermionic zero modes (χk+ )0 , k ∈ {1, 2}, while the
+term y 2 accounts for the bilinear (χ1+ )0 (χ2+ )0 . On the other hand, the term 4q in the factor
+(1 + q (4 − 2y − 2y −1 ) + · · · ) accounts for the four bosonic oscillators aK     1 , while (−2yq) and
+     −1                       k               k
+(−2y q) account for (χ+ )1 and (χ− )1 , k ∈ {1, 2}, respectively. The states with quantum
+                                                 4
+           5     1              1     ϑ1 (τ, z)
+numbers ( 4 , 1; 4 , Q) in                         that are Z2 -invariant are thus encoded in the terms
+                            |η(τ )|8 η(τ )
+                         (y −1 y −1 ) (y 2 ) (4q) (−2y) + (−2y) (−2qy) (1 + y 2 ) .
+                                                                                  
+                                                                                                   (1.10)
+                                                                                                                                   4
+                                                                                      ϑ2 (τ, z)
+Since the charge lattice Γ depends on the moduli of T , and since the term 2                     in
+                                                                                       ϑ2 (τ )
+(1.9) implements the projection onto the Z2 -invariant states, (1.10) accounts for all those Z2 -
+invariant untwisted states with quantum numbers ( 45 , 1; 14 , Q) which exist in every Z2 -orbifold
+conformal field theory C = T /Z2 . Hence, the generic contribution from the untwisted sector
+of the theory to this class of states amounts to eight fermions and eight bosons. Indeed, the
+eight fermions are (with signs) given by2
+  (4q) (y 2 ) (−2y) (y −1 y −1 ) :       aK  1 2 `
+                                          1 χ0 χ0 χ0 σ,          K ∈ {1, . . . , 4}, ` ∈ {1, 2},                     [Q = 0], (1.11)
+   2
+    From now on, we set χ` := χ`+ and χ` := χ`+ , ` ∈ {1, 2}, as the fields χ`− and χ`− do not appear in the
+expressions of the states we are considering.
+
+
+                                                             9
+and the eight bosons are given by
+
+                 (2qy) (2y) (1) (y −1 y −1 ) :                  χk1 χ`0 σ [Q = −1],
+                                                                                        k, ` ∈ {1, 2},         (1.12)
+                 (2qy) (2y) (y 2 ) (y −1 y −1 ) :       χk1 χ`0 χ10 χ20 σ [Q = 1],
+
+where σ := σ1−− σ2−− is the ground state with charges (Q; Q) = (−1; −1) from Table 1, such
+that the χk0 χ`0 σ with k, ` ∈ {1, 2} yield the four uncharged states from Table 1, while χ10 χ20 σ
+yields the one with charges (Q; Q) = (−1; 1). Actually, the eight fermionic states in (1.11) are
+massless, since they are the images of the massless matter states χk0 χ`0 σ, k, ` ∈ {1, 2}, under
+                    0−
+the modes G+  1 , G1 of the N = 4 supercurrents listed in (1.7), respectively. Each set of four
+bosons in (1.12) consists of one massless boson L1 J0+ σ or L1 J0+ χ10 χ20 σ, and three massive ones.
+The occurrence of six massive contributions in total can also readily be checked by rewriting
+the ReRe partition function of the untwisted sector of C = T /Z2 in terms of N = 4 characters.
+Indeed, using
+
+   e R 1 (τ, z) = −(y + y −1 ) + q(2 − y − y −1 ) + · · · ,
+      e
+   ch1,                                                                                          vacuum, massless
+       2
+      R
+      e
+    e (τ, z) = 1 + q(2 − 2y − 2y −1 + y 2 + y −2 ) + · · · ,
+    ch                                                                                           massless matter
+      1,0
+          R
+          e
+     e (τ, z) = 2 − y − y −1 + q(6 − 5y − 5y −1 + 2y 2 + 2y −2 ) + · · · , massive
+     ch
+
+one obtains
+
+                                                 e R 1 (τ , z) + 4 ch
+                                     e R 1 (τ, z)ch                          e R (τ , z)
+                                                                   e R (τ, z)ch
+                                       e                e                     e          e
+           R
+          Zuntwisted (τ, z; τ , z) = ch
+            e
+                                       1,          1,                1,0       1,0
+                                           2                2
+
+                                                                                    e R 1 (τ , z) + · · · ,
+                                                                          e R (τ, z)ch
+                                                                                  e      e
+                                                                     + 3q ch          1,
+                                                                                             2
+
+which reflects accurately the order q (and q 0 ) contribution. In summary, the 16 generic
+Ramond-Ramond states with quantum numbers ( 45 , 1; 14 , Q) in the untwisted sector of C =
+T /Z2 are
+   • one massless boson with Q = 1 and one massless boson with Q = −1,
+
+   • eight massless fermions with Q = 0,
+
+   • three massive bosons with Q = 1 and three massive bosons with Q = −1.
+These massive bosons contribute a term −6q to the function e(τ ) in (1.3).
+
+
+The twisted sector
+                                          R
+On the other hand, the expansion of Ztwisted   (τ, z; τ , z) encodes the contribution to the states
+                                                    e
+
+                        5     1
+with quantum numbers ( 4 , 1; 4 , Q) in the term 16(−8qy), where the factor 16 accounts for the
+
+                                                                10
+number of twisted ground states T~a , ~a ∈ F42 . By a similar analysis as above, the 128 states of
+interest are fermionic of the form3 aK1 χ`1 T~a , K ∈ {1, . . . , 4}, ` ∈ {1, 2}, with Q = 0. Since one
+                                         2  2
+can write
+                                                                                            
+           R                            Re        R
+                                                  e                  Re        R
+                                                                               e
+          Ztwisted (τ, z; τ , z) = 16 ch
+            e                          e (τ, z)ch
+                                                e (τ , z) + 6q ch           e (τ , z) + · · · ,
+                                                                   e (τ, z)ch
+                                        1,0       1,0                          1,0
+
+
+it follows that 32 of these states are massless, while the remaining 96 are massive, and con-
+tribute +96q to (1.3). Since our goal is to study these massive states, it is imperative to
+determine which combinations of the aK1 χ`1 T~a are massless. These are the 32 states which
+                                               2    2
+                                                                                0−
+are created from the massless ground states T~a , ~a ∈ F42 , by the modes G+
+                                                                           1 , G1 of the N = 4
+supercurrents listed in (1.7). We therefore introduce the modes of the complex currents (1.5),
+                                        1
+                             (j+1 )n := √ (a1n + ia2n ),           j−1 := (j+1 )∗ ,
+                                         2
+                                        1
+                             (j+2 )n := √ (a3n + ia4n ),           j−2 := (j+2 )∗ ,
+                                         2
+
+and from (1.7) we find that the 32 massless states may be written as4
+
+                      χ1 j−1 + χ2 j−2 T~a ,  χ1 j+2 − χ2 j+1 T~a , ~a ∈ F42 .
+                                                           
+                                                                                                      (1.13)
+
+The massive states are perpendicular to these massless ones with respect to the standard metric
+induced by the Zamolodchikov metric. Therefore we conveniently set
+
+       3 := {χ1 j+2 + χ2 j+1 , χ1 j+1 , χ2 j+2 },       3 := {χ1 j−1 − χ2 j−2 , χ1 j−2 , χ2 j−1 },    (1.14)
+
+such that the 96-dimensional vector space of massive twisted states with quantum numbers
+( 54 , 1; 14 , Q) has the basis
+                                  W T~a | W ∈ 3 ∪ 3, ~a ∈ F42 .
+                                
+                                                                                   (1.15)
+Note that all these states are fermionic.
+
+1.3     A generic space V45CF T in Z2 -orbifold CFTs on K3
+In the previous subsection, we have determined all massive states with quantum numbers
+( 45 , 1; 14 , Q) which exist generically in Z2 -orbifold conformal field theories on K3. Indeed, we
+have recovered a 6-dimensional space of untwisted bosonic states, along with a 96-dimensional
+space of twisted fermionic states, correctly accounting for a net contribution of −90qy to
+the elliptic genus. As explained in Section 1.1, our interpretation of the Mathieu Moonshine
+  3
+    Recall that the mode expansion (1.6) of the U (1)-currents and free fermions in the twisted RR sector has
+                           1
+modes aK     `
+       n , χn with n ∈ Z + 2 .
+  4
+    We suppress the modes for ease of reading.
+
+
+                                                        11
+                                                   CF T
+observations predicts that a pair V45CF T ⊕ V 45 of 45-dimensional representation spaces of the
+Mathieu group M24 should arise from these states. While the emergence of the group M24
+remains mysterious, we expect to observe, on the space V45CF T , the representation of subgroups
+of M24 which occur as geometric symmetry groups of Z2 -orbifold limits of K3 surfaces, in
+accordance with ideas already promoted in our previous works [TW11, TW13].
+Indeed, we focus on symmetry groups of SCFTs C = T /Z2 which are induced by geometric
+symmetries of the underlying toroidal conformal field theories.5 We emphasize that this notion
+only makes sense after the choice of a geometric interpretation for the theory T on some torus
+R4 /Λ. As is explained in detail in [TW11, TW13], we even have to make a choice of generators
+for the lattice Λ, and this means that in fact we are working on a cover of the moduli space of
+SCFTs on K3. These choices in particular induce an identification 21 Λ/Λ ∼ = F42 , such that every
+geometric symmetry group G acts on the twisted ground states T~a , ~a ∈ F42 , as permutation
+group by means of affine linear maps on the space of labels F42 . In other words, we have a
+natural representation
+                                       RG : G −→ Aff(F42 ),
+once the very choices listed above have been made; see [TW13] and Section 2.1 for details.
+Furthermore, G acts linearly as subgroup of SO(3) on the U (1)-currents j+1 , j+2 of (1.5). More
+precisely, j+1 , j+2 form a doublet 2 of SU (2), as do their fermionic superpartners χ1+ , χ2+ of
+(1.4), while j−1 , j−2 carry a 2. By a direct calculation one checks that the states (1.13) are
+invariant under the resulting action of SU (2) and that the action respects the decomposition
+(1.14). In fact, we have 2 ⊗ 2 = 1 ⊕ 3, 2 ⊗ 2 = 1 ⊕ 3. Since −1 ∈ SU (2) acts trivially on
+2 ⊗ 2, we have an action of SO(3) = SU (2)/{±1 } on 3 and 3. This action thus descends to
+a representation on the 96-dimensional space of massive twisted states with basis (1.15), as
+does the action of Aff(F42 ) on the indices of the twisted ground states. We formally denote the
+resulting representation of SO(3) by S, where
+
+              Vb := spanC W T~a | W ∈ 3 ∪ 3, ~a ∈ F42 ,
+                           
+                                                             S : SO(3) −→ EndC (Vb ).      (1.16)
+
+Every symmetry group G of C = T /Z2 which is induced by geometric symmetries of T has
+the form G = (Z2 )4 o GT with GT ⊂ SO(3), see for example [TW11, TW13] for an exposition.
+                          CF T
+Then the representation RG     : G −→ EndC (Vb ) obtained from the symmetries of C is given
+by
+
+         ∀ g = (~c, gT ) ∈ G = (Z2 )4 o GT , W ∈ 3 ∪ 3, ~a ∈ F42 :
+                                                  CF T
+                                                RG     (g) (W T~a ) = S(gT )(W )TRG (g)(~a) .           (1.17)
+
+It is important to note that Vb thereby is simply a tensor product of the representation spaces
+3 ⊕ 3 of SO(3) by a 16-dimensional representation space of Aff(F42 ), a fact that will be crucial
+later on, when we discuss group actions on this space of states.
+   5
+    This includes the symmetries which are induced by shifts by half lattice vectors on the underlying toroidal
+theory.
+
+
+                                                      12
+In fact, we immediately obtain a natural decomposition of Vb according to
+                               96 = (3 ⊕ 3) ⊗ 1 ⊕ (3 ⊕ 3) ⊗ 15
+as follows: we decompose the 16-dimensional   P16 space of twisted ground states into a one-
+                                            1
+dimensional space generated by N0000 := 4 ~a∈F4 T~a , and its orthogonal complement A. Since
+                                                    2
+N0000 is invariant under the action of Aff(F42 ), this action descends to a representation on A.
+We now obtain the desired 45-dimensional vector space V45CF T as the space which is generated
+                                                                                     CF T
+by the states W A with W ∈ {χ1 j+2 + χ2 j+1 , χ1 j+1 , χ2 j+2 } and A ∈ A. Then V 45 is defined
+analogously by using the 3 from (1.14) instead of the 3 as above. The restrictions of the repre-
+                                       CF T
+sentations RG and S to V45CF T and V 45 are denoted by RG and S as well. While at this point
+                          CF T
+the choice of V45CF T ⊕ V 45 in Vb is only justified by the fact that it is natural and compatible
+with a restriction of the representations RG and S, in Theorem 3.5 we prove that these spaces
+are in fact uniquely determined.
+
+In summary, we have obtained the result that the generic field content of Z2 -orbifold conformal
+field theories on K3 ensures the existence of a space of states which naturally accounts for the
+massive net contributions to the elliptic genus in leading order:
+Proposition 1.1 Consider the orthogonal complement A of N0000 := 41 ~a16∈F4 T~a in the space
+                                                                               P
+                                                                                    2
+of twisted ground states of an arbitrary Z2 -orbifold conformal field theory on K3. Then the
+space
+               V45CF T := spanC W A | W ∈ {χ1 j+2 + χ2 j+1 , χ1 j+1 , χ2 j+2 }, A ∈ A
+                               
+
+                                                                            CF T
+is a 45-dimensional vector space of massive states which together with V 45 accounts for the
+leading order contribution to the function e(τ ) that governs the elliptic genus of K3 according
+to (1.1). In terms of representations of symmetry groups, V45CF T is a tensor product W ⊗ A,
+where W is the three-dimensional representation space 3 of SO(3), while A is a 15-dimensional
+                                                CF T
+representation space of Aff(F42 ). Similarly, V 45 = W ⊗ A = 3 ⊗ 15.
+From the above proposition it follows that the vector space underlying V45CF T serves as a
+medium to collect the actions of the geometric symmetry groups when symmetry-surfing the
+moduli space of Z2 -orbifold conformal field theories C = T /Z2 on K3. In the remaining sections
+of this paper, we show that the combined action of these symmetry groups generates an action
+of Aff(F42 ) which can be induced from a 45-dimensional irreducible representation of M24 by
+restriction to Aff(F42 )∼
+                        = (Z2 )4 o A8 .
+To clear notations, we make use of the fact that N0000 is invariant under both the action of
+SO(3) and of Aff(F42 ). We let
+                  W0 := W N0000 | W ∈ {χ1 j 2 + χ2 j 1 , χ1 j 1 , χ2 j 2 } ∼
+                          
+                                               +       +      +      +     =W
+and frequently view S as a representation on W0 ,
+                                   S : SO(3) −→ EndC (W0 ),
+the model fiber of V45CF T .
+
+                                               13
+2     The action of (Z2)4 o A8 on twisted ground states
+In Prop. 1.1, we have determined a 45-dimensional space V45CF T of states which in every theory
+C = T /Z2 yields a representation of the group of symmetries induced from geometric symme-
+tries of the underlying toroidal theory. This representation depends on a choice of geometric
+interpretation for the theory T on some torus R4 /Λ together with a choice of generators for
+Λ, thus lifting our construction onto a cover of the moduli space of SCFTs. As explained in
+Section 1.1, Mathieu Moonshine predicts that this space is in fact related to a representation
+of the Mathieu group M24 . Indeed, M24 possesses an irreducible representation of dimension
+45 on the space V45 which has been constructed by Margolin [Mar93], see Appendix A for
+a summary. Eventually we would like to understand how our space of states V45CF T can be
+identified with the space V45 as a representation of M24 . In the present work we focus on the
+action of the maximal subgroup (Z2 )4 o A8 ∼= Aff(F42 ) of M24 , which is obtained by combining
+all groups of symmetries of SCFTs C = T /Z2 induced by geometric symmetry groups of the
+underlying toroidal theory.
+
+The structure of the space V45CF T of fields obtained in the previous section is that of a tensor
+product W ⊗ A, where A is a fifteen-dimensional space of twisted ground states in our Z2 -
+orbifold CFT, and W is three-dimensional and furnishes a triplet 3 of SO(3). By choice of
+an appropriate orthonormal basis {NX | X ∈ {A, B, . . . , N, O}} of A one can thus write this
+space in a form which is very similar to the form of V45 given in (A.3),
+ V45CF T = WA ⊕ WB ⊕ · · · WN ⊕ WO ,       WX := spanC {NX } ⊗ W        ∀ X ∈ {A, B, . . . , N, O}.
+By construction, see Appendix A, Margolin’s representation M of (Z2 )4 o A8 induces a well-
+defined action on the fifteen-dimensional vector space which we call the base B of V45 , and which
+is generated by the counterparts PX (see the discussion of (A.3)) of the ‘CFT’ orthonormal
+basis {NX | X ∈ {A, . . . , O}} of A. On the other hand, in Section 1.3 we mentioned that
+(Z2 )4 o A8 ∼    = Aff(F42 ) acts naturally on A by affine linear maps on the indices of the twisted
+ground states T~a , ~a ∈ F42 . Hence we expect that the latter representation of (Z2 )4 o A8 on A is
+equivalent to the representation M of this group on B described in Appendix A. In the current
+section, we prove that this expectation holds true.
+To make the claim precise, let us describe the space A in more detail. The space of twisted
+ground states in our CFT C = T /Z2 has a natural orthonormal basis {T~a | ~a ∈ F42 }, where ~a ∈
+F42 labels the sixteen resolved singular points in any geometric interpretation on an orbifold limit
+of K3. As is explained in our previous work [TW11, TW13], the group (Z2 )4 o A8 ∼         = Aff(F42 )
+therefore acts naturally on these states by affine linear transformations on the indices ~a ∈ F42 .
+InPProp. 1.1 the space A is obtained as the orthogonal complement of the state N0000 :=
+1                                                             4      ∼      4
+4    ~a∈F42 T~a , which is invariant under the action of (Z2 ) o A8 = Aff(F2 ) by construction. The
+space A hence indeed carries an action of (Z2 )4 o A8 ∼      = Aff(F42 ).
+Proposition 2.1 Consider the orthogonal complement A of the state N0000 = 41 ~a∈F4 T~a in
+                                                                                        P
+                                                                                              2
+the space of twisted ground states in a Z2 -orbifold conformal field theory on K3. The natural
+
+                                                 14
+ representation of (Z2 )4 oA8 ∼
+                              = Aff(F42 ) on A through affine linear transformations of the indices
+~a ∈ F2 of the twisted ground states T~a is equivalent to the representation M of (Z2 )4 o A8
+       4
+
+ constructed by Margolin on the base B of V45 .
+
+We postpone the proof of Prop. 2.1 to Section 2.2, since as a preparation and for later conve-
+nience we first recall some of the constructions and notations of [TW11, TW13].
+
+2.1     The action of (Z2 )4 o A8 as combined symmetry group
+In [TW11, TW13] we show that the group (Z2 )4 o A8 ∼    = Aff(F42 ) can be obtained by combining
+the symmetry groups of the three maximally symmetric Kummer surfaces6 . More precisely,
+the images RGk (Gk ), k ∈ {0, 1, 2}, of these three groups under their natural representations
+on F42 generate the entire group Aff(F42 ). The three maximally symmetric Kummer surfaces are
+the square Kummer surface X0 with symmetry group G0 := (Z2 )4 o (Z2 × Z2 ), the tetrahedral
+Kummer surface X1 with symmetry group G1 := (Z2 )4 o A4 , and the triangular Kummer
+surface X2 with symmetry group G2 := (Z2 )4 o S3 . Let us denote by Λk , k ∈ {0, 1, 2}, the
+defining lattices of the complex tori underlying the Kummer surfaces Xk . Then each group
+Gk acts on the twisted ground states T~a through the permutations induced on F42 ∼     = 21 Λk /Λk
+by the geometric action on Λk . This defines the representations RGk : Gk −→ Aff(F42 ).
+Let us fix some additional notations. The translational subgroup (Z2 )4 is common to all
+symmetry groups of Kummer K3s, and its elements ι~c with ~c ∈ F42 act by
+
+                                        ι~c :   T~a 7−→ T~a+~c ∀ ~a ∈ F42                                 (2.1)
+
+on the twisted ground states. To realize the action of the non-translational part of each
+symmetry group Gk , we first fix convenient generators for each of the lattices Λk and for the
+groups Gk , k ∈ {0, 1, 2}, see [TW13, (1.5)-(1.9)] for our particular choices. In the case of the
+square Kummer surface X0 with non-translational symmetry group Z2 × Z2 , we introduce two
+generators α1 , α2 in [TW11, (4.23)] whose action on the T~a , ~a ∈ F42 , is7
+                     
+                        T1000 ←→ T0100 ,      T0010 ←→ T0001 ,           T1010 ←→ T0101 ,
+      RG0 (α1 ) :
+                        T1001 ←→ T0110 ,      T1110 ←→ T1101 ,           T1011 ←→ T0111 ,
+                     
+                        T1000 ←→ T0010 ,      T0100 ←→ T0001 ,           T1100 ←→ T0011 ,
+      RG0 (α2 ) :                                                                           (2.2)
+                        T1001 ←→ T0110 ,      T1110 ←→ T1011 ,           T1101 ←→ T0111 .
+   6
+     On a K3 surface X, we call a biholomorphic map f : X −→ X a symmetry, if its induced action on
+cohomology fixes the holomorphic volume form and the dual Kähler class of X. As is explained in [TW11,
+TW13], this implies that all symmetry groups of K3 surfaces are finite. We require all our Kummer surfaces to
+be equipped with the dual Kähler class which is induced from the standard Euclidean metric on the underlying
+torus.
+   7
+     Here and in the following we only list the action on those T~a which are not invariant under the respective
+symmetry.
+
+
+
+                                                       15
+Similarly, for the non-translational symmetry group A4 of the tetrahedral Kummer surface X1 ,
+we introduce three generators γ1 , γ2 , γ3 in [TW11, (4.23)], where
+                     
+                        T1000 ←→ T0100 ,        T0010 ←→ T1110 ,    T0001 ←→ T0111 ,
+      RG1 (γ1 ) :
+                        T1001 ←→ T0011 ,        T0101 ←→ T1111 ,    T1011 ←→ T1101 ,
+                     
+                        T1000 ←→ T0010 ,        T0100 ←→ T1110 ,    T0001 ←→ T1101 ,
+      RG1 (γ2 ) :                                                                      (2.3)
+                        T1001 ←→ T1111 ,        T0101 ←→ T0011 ,    T1011 ←→ T0111 ,
+                     
+                     
+                       T1000 7−→ T0101 7−→ T1101 7−→ T1000 ,
+                      T0100 7−→ T0011 7−→ T0111 7−→ T0100 ,
+                     
+                     
+      RG1 (γ3 ) :       T0010 7−→ T1001 7−→ T1011 7−→ T0010 ,
+                        T      7−→ T1110 7−→ T1111 7−→ T0001 ,
+                     
+                      0001
+                     
+                     
+                     
+                        T1100 7−→ T0110 7−→ T1010 7−→ T1100 .
+
+Finally, generators β1 and β2 for the triangular Kummer surface with non-translational symme-
+try group S3 are given in [TW13, (1.9)]. Note that β2 = α2 acts as in (2.2), RG2 (β2 ) = RG0 (α2 ),
+while                          
+                               
+                                 T1000 7−→ T0100 7−→ T1100 7−→ T1000 ,
+                                T0010 7−→ T0011 7−→ T0001 7−→ T0010 ,
+                               
+                               
+                  RG2 (β1 ) :     T1010 7−→ T0111 7−→ T1101 7−→ T1010 ,                      (2.4)
+                                  T0110 7−→ T1111 7−→ T1001 7−→ T0110 ,
+                               
+                               
+                               
+                               
+                                  T0101 7−→ T1110 7−→ T1011 7−→ T0101 .
+                               
+
+The permutations RG0 (α1 ), RG0 (α2 ), RG1 (γ1 ), RG1 (γ2 ), RG1 (γ3 ), RG2 (β1 ) generate the action
+of A8 ∼
+      = GL4 (F2 ) on the indices ~a ∈ F42 of the twisted ground states T~a in a form which is
+convenient for us [TW13], but of course they do not furnish a minimal set of generators.
+
+At this point, it is important to keep in mind that we view any of our Kummer surfaces
+as coming equipped with a preferred choice of generators for the lattice Λ which defines the
+underlying torus. The indexing of the twisted ground states by ~a ∈ F42 is directly correlated to
+this choice. As we explain in [TW11, TW13], this induces a choice of common marking for all
+our Kummer surfaces, that is, an isometry between the lattice H∗ (X, Z) of integral homology
+on K3 with a standard lattice of signature (4, 20). This marking ensures that we can view the
+location of the Kummer lattice8 Π in H∗ (X, Z) as fixed among all Kummer surfaces.
+Another lattice that plays an important role in our previous work is the Niemeier lattice N
+with root lattice A24
+                   1 . We denote by fn , n ∈ I, with I = {1, . . . , 24} a choice of 24 pairwise
+perpendicular roots in N . The Mathieu group M24 acts faithfully by lattice automorphisms
+on the Niemeier lattice N , permuting the roots {f1 , . . . , f24 }. The Niemeier lattice9 N (−1)
+   8
+      For a Kummer surface X obtained by blowing up the 16 singularities of T /Z2 for some complex torus
+T , the Kummer lattice Π is the smallest primitive sublattice of H∗ (X, Z) which contains the classes of the
+sixteen rational curves obtained from the blow-up.
+    9
+      For a lattice Γ, by Γ(n), n ∈ Z, we denote the Z-module Γ with quadratic form rescaled by the factor n.
+
+
+                                                     16
+contains a lattice Π(−1)
+                   e     which is isometric to the Kummer lattice [TW11, Prop. 2.3.3]. In
+[TW11, Prop. 2.3.4] we construct an explicit isometry ι : Π −→ Π(−1),
+                                                                  e       where we define the
+lattice Π(−1)
+        e     by choosing a reference octad O9 := {3, 5, 6, 9, 15, 19, 23, 24} from the Golay
+code,
+                         Π(−1)
+                         e      := {v ∈ N | hv, fn i = 0 ∀ n ∈ O9 } .                    (2.5)
+The lattice H∗ (X, Z) is central to our description of symmetries, since every symmetry of a
+K3 surface X induces a lattice automorphism on H∗ (X, Z) which by the Torelli theorem for
+K3 surfaces determines the symmetry uniquely. The discussion of symmetries hence reduces
+to a discussion of lattice automorphisms. In particular, for every symmetry group G of a
+K3 surface X, the action on the orthogonal complement LG of the invariant lattice, LG :=
+(H∗ (X, Z)G )⊥ ∩ H∗ (X, Z), uniquely determines the action of G. If X is a Kummer surface with
+induced dual Kähler class, then G also induces a lattice automorphism on the Kummer lattice
+Π, which in turn uniquely determines the action of G on X. Since LG can never contain Π,
+and Π in general does not contain LG , in [TW11] we propose to consider the lattice MG which
+is generated by LG , Π, and the vector υ0 − υ, where υ0 ∈ H0 (X, Z) and υ ∈ H4 (X, Z) with10
+hυ0 , υi = 1.
+A key result is [TW11, Theorem 3.3.7], which in the case of Kummer surfaces with induced
+dual Kähler class generalizes and improves techniques introduced by Kondo [Kon98]. It states
+that for each such Kummer surface with symmetry group G, the lattice MG mentioned above
+can be primitively embedded in N (−1) in such a way that on the Kummer lattice Π, the
+embedding induces the isometry ι : Π −→ Π(−1)e       of [TW11, Prop. 2.3.4]. We call such an
+embedding ιG : MG ,→ N (−1) a Niemeier marking. The Niemeier marking allows us to
+represent the group G as a group of lattice automorphisms on the Niemeier lattice N (−1),
+where the action on the image of MG is prescribed by enforcing the Niemeier marking to be
+G-equivariant, while on the orthogonal complement of ιG (MG ), the group G acts trivially. This
+allows us to elegantly realize G as a subgroup of the Mathieu group M24 . Its action on the
+Niemeier lattice N (−1) is uniquely determined by its action on the sublattice Π(−1).
+                                                                                e        More-
+over, this construction allows us to combine symmetry groups of distinct Kummer surfaces by
+means of their action on N (−1).
+
+As was mentioned above, in [TW13] we show that the combined action of all symmetry groups
+of Kummer K3s on N (−1) – and by the above, equivalently, on F42 – yields the group (Z2 )4 oA8 .
+Here, the normal subgroup (Z2 )4 is the common translational subgroup of all symmetry groups
+of Kummer surfaces, which on the labels ~a ∈ F42 acts by translation as in (2.1). This naturally
+fixes the action on the sublattice Π(−1)
+                                    e       of the Niemeier lattice N (−1). The translational
+            4
+group (Z2 ) acts trivially on the orthogonal complement of Π(−1)
+                                                             e       in N (−1).
+                                   ∼
+The non-translational group A8 = GL4 (F2 ) acts on the labels ~a ∈ F42 as the linear group
+GL4 (F2 ). In terms of our favourite generators, this is encoded in (2.2), (2.3) and (2.4), and
+this naturally determines the action on the sublattice Π(−1)
+                                                       e     of the Niemeier lattice N (−1). On
+ 10
+      On H∗ (X, Z), we use the standard quadratic form induced by the intersection form.
+
+
+                                                      17
+the orthogonal complement of Π(−1) e       in N (−1), the action is obtained from this by means of the
+                      ∼
+isomorphism A8 = GL4 (F2 ). The result is most conveniently described in terms of the induced
+permutation of the roots in this lattice, which by (2.5) are labelled by our reference octad
+O9 . The permutations of the eight points of this octad that are induced by our symmetries
+γ1 , γ2 , γ3 , α1 , α2 , β1 are [TW13, (3.1),(3.2),(3.9)]
+
+               γ̌1 = (9, 24)(15, 19),        γ̌2 = (9, 19)(15, 24),          γ̌3 = (9, 19, 24),
+                                                                                                          (2.6)
+               α̌1 = (6, 19)(23, 24),        α̌2 =      (3, 9)(23, 24),     β̌1   = (5, 24, 23).
+
+2.2     The proof of Proposition 2.1
+To prove Prop. 2.1, let us first consider the translational subgroup (Z2 )4 ⊂ Aff(F42 ), which acts
+by (2.1) on the twisted ground states. In Margolin’s representation M : Aff(F42 ) −→ EndC (V45 ),
+this group is simultaneously diagonalised by the basis {PX | X ∈ {A, B, . . . , N, O}} which
+yields the decomposition (A.3). Hence we need to use the common eigenbasis of the transla-
+tional group (Z2 )4 on A, which is given by
+                                       ~
+                             X
+  ∀ ~a ∈ F42 : N~aCF T := 14   (−1)h~a,bi T~b , such that ι~c(N~aCF T ) = (−1)h~c,~ai N~aCF T ∀ ~c ∈ F42 , (2.7)
+                           ~b∈F4
+                               2
+
+
+where h·, ·i denotes the standard scalar product on F42 . Hence an isomorphism of represen-
+tations of (Z2 )4 between A and the base B of V45 is induced by identifying the transla-
+tions ι1 , . . . , ι4 by the four standard basis vectors of F42 with any set of four generators of
+(Z2 )4 = {1 , A0 , B 0 , . . . , N 0 , O0 } according to Table 6 in the Appendix. We choose
+
+                            ι1 = A0 ,      ι2 = B 0 ,        ι3 = D0 ,      ι4 = F 0 .
+
+Then from Table 6 we read, for example, ι1 (NA ) = NA , ι2 (NA ) = NA , ι3 (NA ) = −NA , ι4 (NA ) =
+                                     CF T
+−NA and hence (2.7) implies NA = N0011     . Altogether we have
+          CF T         CF T                          CF T         CF T         CF T
+    NA = N0011 , NB = N0001 ,                  NC = N0010 , ND = N1001 , NE = N1010 ,
+          CF T         CF T         CF T                                       CF T         CF T
+    NF = N1110 , NG = N1101 , NH = N1000 ,                               NI = N1011 , NJ = N0111 ,
+               CF T              CF T               CF T              CF T              CF T
+    NK = N0100      , NL = N0110      , NM = N0101       , NN = N1111      , NO = N1100      .
+                                                                                            (2.8)
+                                                                                      ∼
+To complete the proof of Prop. 2.1, it remains to check that the induced action of A8 = GL4 (F2 )
+on the orthonormal basis {NX | X ∈ {A, B, . . . , N, O}} of A indeed yields the representation
+on A equivalent to the one on the base B of V45 described in Appendix A, by means of the
+isomorphism induced by NX 7→ PX for all X ∈ {A, B, . . . , N, O}.
+To do so, one first calculates the permutation of {A, B, . . . , N, O} induced by (2.2), (2.3),
+(2.4). For example, γ1 interchanges NA and NC , ND and NJ ,. . . , NI and NK , and we write
+
+                          M (γ1 ) :     (A, C)(D, J)(E, M )(G, O)(H, L)(I, K).
+
+                                                        18
+Next, using the array Aeven of Table 2 in the Appendix one checks that s = (0, 2)(1, 5) is the
+unique even permutation of the eight points {∞, 0, . . . , 6}, such that conjugation by s induces
+the permutation (A, C)(D, J)(E, M )(G, O)(H, L)(I, K) of the rows of Aeven . We denote this
+by
+                     (A, C)(D, J)(E, M )(G, O)(H, L)(I, K) = ρ(0,2)(1,5) ,
+and we proceed analogously for the other generators listed in (2.2), (2.3), (2.4). Altogether we
+obtain
+            M (α1 ) :          (B, C)(D, L)(E, M )(F, G)(H, K)(I, J) = ρ(∞,2)(1,6) ,
+            M (α2 ) :           (A, O)(B, K)(C, H)(D, L)(F, I)(G, J) = ρ(∞,2)(0,4) ,
+            M (γ1 ) :          (A, C)(D, J)(E, M )(G, O)(H, L)(I, K) = ρ(0,2)(1,5) ,
+                                                                                                (2.9)
+            M (γ2 ) :          (A, G)(C, O)(D, L)(E, I)(H, J)(K, M ) = ρ(0,1)(2,5) ,
+            M (γ3 ) :   (A, H, I)(B, N, F )(C, J, M )(D, K, G)(E, O, L) = ρ(0,1,2) ,
+            M (β1 ) :   (A, C, B)(D, N, L)(E, G, J)(F, M, I)(H, O, K) = ρ(∞,3,2) .
+
+We can now confirm that (2.8) under NX 7→ PX for all X ∈ {A, . . . , O} furnishes an iso-
+morphism between the space A of twisted ground states, on the one hand, and the base B
+of V45 , on the other hand, as representations of (Z2 )4 o A8 . Indeed, by construction, this
+correctly identifies the action of the translational subgroup (Z2 )4 . As explained in Section 2.1,
+the action of the non-translational subgroup A8 as permutation group is most efficiently de-
+termined by the action (2.6) of A8 on the reference octad O9 . Finally, the following bijec-
+tion O9 −→ {∞, 0, . . . , 6} induces γ̌1 7→ ρ(0,2)(1,5) , . . . , β̌1 7→ ρ(∞,3,2) and thus proves that
+NX 7→ PX , X ∈ {A, . . . , O}, gives an isomorphism between representations of (Z2 )4 o A8 :
+
+        3 7→ 4,    5 7→ 3,   6 7→ 6,   9 7→ 0,   15 7→ 5,   19 7→ 1,   23 7→ ∞,     24 7→ 2.
+
+                                                                                                    
+
+
+3     A twist in the (Z2)4 o A8 action
+In the previous sections, we have constructed a (45 + 45)-dimensional space of states V45CF T ⊕
+  CF T
+V 45 , which is generic to all Z2 -orbifold conformal field theories on K3, and which accounts for
+the leading order term 90q in the function e(τ ) of (1.3) that governs the massive contributions
+to the elliptic genus (1.1). According to Prop. 1.1, this space decomposes as V45CF T = W ⊗ A,
+where W is a complex 3-dimensional vector space, while A is a 15-dimensional space of twisted
+ground states which carries a faithful action of (Z2 )4 o A8 . According to Prop. 2.1, this rep-
+resentation is equivalent to the representation M of (Z2 )4 o A8 on the base B of the space
+V45 = V ⊗ B of (A.3) which was constructed by Margolin [Mar93].
+
+
+
+                                                 19
+We are now ready to explain how the properties of V45CF T give evidence in favour of our
+surfing ideas, whose ultimate goal is to unravel the role of the full group M24 in the context
+of Mathieu Moonshine, and so far provide a mathematical framework for the action of the
+maximal subgroup (Z2 )4 o A8 . Namely, the representation of (Z2 )4 o A8 generated by the
+action of geometric symmetry groups on V45CF T can be identified in a natural way with the
+45-dimensional irreducible representation M of this maximal subgroup of the Mathieu group
+M24 described by Margolin on V45 . Recall however from Appendix A that the representation
+of (Z2 )4 o A8 on V45 does not respect the tensor product structure V45 = V ⊗ B in a simple
+way. More precisely, we have the orthogonal direct decomposition
+
+                                       V45 = VA ⊕ VB ⊕ . . . ⊕ VN ⊕ VO
+
+according to (A.3), where every M (g) with g ∈ (Z2 )4 o A8 permutes the fibers VX of V45 , and
+the induced maps VX −→ VM (g)(X) depend non-trivially on g and on X ∈ {A, B, . . . , N, O}.
+Indeed, such a “twist” (see Def. A.1) is necessary, since there exists no nontrivial three-
+dimensional representation of (Z2 )4 o A8 that V could carry11 .
+This may appear counter-intuitive at first sight, as we have not observed a twist in our space
+of states V45CF T = W ⊗ A. Indeed, according to Prop. 1.1, the three-dimensional space W
+is identified with the representation 3 of SO(3) under S : SO(3) −→ EndC (V45CF T ): as was
+explained in Section 1.3, every symmetry group of a Z2 -orbifold CFT on K3 which is induced
+from the underlying toroidal theory by geometric symmetry groups acts as a subgroup of SO(3)
+on W by means of the representation 3 of SO(3).
+The key to this puzzle lies in the very groups that can occur as such symmetry groups. As
+we recalled in Section 2.1, the maximal groups in our setting are the symmetry groups G0 =
+(Z2 )4 o (Z2 × Z2 ) of the square Kummer K3, G1 = (Z2 )4 o A4 of the tetrahedral Kummer K3,
+and G2 = (Z2 )4 o S3 of the triangular Kummer K3, where the common translational subgroup
+(Z2 )4 acts trivially on W. In other words, only the finite subgroups GT = Z2 ×Z2 , A4 and S3 of
+SO(3) are of relevance here, all of which have standard nontrivial 3-dimensional representations
+on W, induced by GT ⊂ SO(3), S : SO(3) −→ EndC (W).
+In order to understand how V45CF T can be identified with Margolin’s V45 in a natural way, we
+first need to prove that these three groups act on V45 without a twist (see Def. A.1). We may
+view the twist in Margolin’s representation on V45 as yet another obstruction for any known
+(orbifold) CFT on K3 to enjoy a larger geometric symmetry.
+
+Let us briefly comment on the possibility of an action of a subgroup of (Z2 )4 oA8 on V45 = V ⊗B
+without a twist. Since the translational group (Z2 )4 acts trivially on V, we can restrict our
+attention to subgroups of A8 , in accord with Def. A.1. Recall from [Mar93] or from Appendix A
+that the action of τ ∈ A8 between any two fibers VX and VY with Y = M (τ )(X) of V45 is
+                                    (X,Y )
+given in terms of a permutation mτ         on the seven points {0, . . . , 6} of the Fano plane P(F32 ).
+Such a permutation encodes a linear map VX −→ VY , because a preferred set of generators
+  11
+       The minimal dimension of a nontrivial linear representation of the alternating group A8 is seven [CCN+ 85].
+
+
+                                                         20
+of the vector spaces VX and VY , namely the root vectors of the lattice Λb7        3 , is conveniently
+encoded in terms of lines with marked points in P(F32 ). The precise labelling by {0, . . . , 6}
+of the A8 permutations of cycle shape 24 in the rows X and Y of the array Aeven of Table 2
+thus corresponds to a specific choice of generators for the vector spaces VX and VY . This in
+particular means that a relabelling of a row X simply amounts to a change of basis in VX , as
+long as the relabelling respects the projective linear structure of P(F32 ). It follows that for every
+τ ∈ A8 , there exists a labelling of the array Aeven such that τ acts without a twist according
+                                                  (X,M (τ )(X))
+to Def. A.1, i.e. such that the permutations mτ                 agree for all X ∈ {A, B, . . . , N, O}.
+That the subgroups GT = Z2 × Z2 , A4 and S3 of A8 which are relevant to our construction
+can act without a twist is a nontrivial claim which we need to prove:
+
+Proposition 3.1 Consider the square Kummer surface X0 with symmetry group G0 = (Z2 )4 o
+(GT )0 , where (GT )0 = Z2 × Z2 with generators α1 , α2 as in [TW11, (4.23)], whose action on
+the base B of V45 is given in (2.9). Then the group (GT )0 acts without a twist on V45 .
+
+Proof: We claim that the labelling of the array Aeven of Table 2 exhibits no element of (GT )0
+with a twist. The proof is a straightforward calculation, where we check that for none of the
+generators α1 , α2 , there is a twist.
+From (2.9) we read that the generator α1 of (GT )0 acts by the conjugation ρ(∞,2)(1,6) on the rows
+of the array Aeven , and it induces the permutation τ1 := (B, C)(D, L)(E, M )(F, G)(H, K)(I, J)
+of the rows. One then checks for every pair (X, τ1 (X)) with X ∈ {A, B, . . . , N, O} that the
+                          (X,τ (X))
+induced permutation mτ1 1           of Fano plane labels in the rows is (0, 3)(4, 5), independently
+of X. In other words, α1 acts without a twist. For example, τ1 maps row A into itself, where
+conjugation by (∞, 2)(1, 6) interchanges the first entry (∞, 0)(1, 5)(2, 3)(4, 6), labelled 0, with
+the entry (∞, 3)(0, 2)(1, 4)(5, 6), labelled 3.
+Similarly, from (2.9) we read that the generator α2 of (GT )0 acts by the conjugation ρ(∞,2)(0,4)
+on the rows of the array Aeven , that is by τ2 := (A, O)(B, K)(C, H)(D, L)(F, I)(G, J). One
+then checks for every pair (X, τ2 (X)) with X ∈ {A, B, . . . , N, O} that the induced permu-
+          (X,τ (X))
+tation mτ2 2        of Fano plane labels in the rows is (0, 3)(1, 6), independently of X. In other
+words, α2 acts without a twist.                                                                  
+
+Since the square Kummer surface has maximal symmetry, we cannot expect the labelling of
+Aeven given in Table 2 to exhibit an action without twist for the other maximal symmetry
+groups G1 , G2 of Kummer surfaces as well. Nevertheless, we have
+
+Proposition 3.2 Consider the tetrahedral Kummer surface X1 with symmetry group G1 =
+(Z2 )4 o (GT )1 , where (GT )1 = A4 with generators γ1 , γ2 , γ3 as in [TW11, (4.10),(4.11)], whose
+action on the base B of V45 is given in (2.9). Then the group (GT )1 acts without a twist on
+V45 .
+
+Proof:
+
+
+
+                                                  21
+We claim that the following relabelling yields the action of (GT )1 without a twist, where for
+each row of Table 2, we list the seven labels from left to right:
+               A:    0   1   2   3   4   5   6
+               B:    2   1   3   0   6   4   5                I:     0   1   2   5   4   6   3
+               C:    3   5   0   2   1   4   6                J:     2   1   6   5   3   4   0
+               D:    6   5   2   0   1   4   3                K:     5   3   2   6   0   4   1
+               E:    0   2   3   1   6   4   5                L:     6   4   2   5   1   0   3
+               F :   0   1   5   6   4   2   3                M:     4   3   2   6   0   1   5
+               G:    0   1   4   3   5   2   6                N:     0   2   6   5   3   4   1
+               H:    0   1   2   6   4   3   5                O:     5   6   1   3   0   4   2
+
+One checks that this relabelling respects the linear structure of each PX (F32 ) with X ∈
+{A, B, . . . , N, O}. The rest of the proof is analogous to the proof of Prop. 3.1: From (2.9) one
+reads the action of the generators γ1 , γ2 , γ3 of (GT )1 on the rows of the array Aeven and checks
+                                      (X,M (γ1 )(X))
+that the induced permutation mγ1                     of Fano plane labels in the rows is (0, 2)(1, 4), in-
+                               (X,M (γ2 )(X))                                                (X,M (γ3 )(X))
+dependently of X, while mγ2                   yields (0, 1)(2, 4), independently of X, and mγ3
+yields (0, 1, 2)(3, 5, 6), independently of X. In other words, (GT )1 acts without a twist.              
+
+The final case that we need to study works analogously:
+Proposition 3.3 Consider the triangular Kummer surface X2 with symmetry group G2 =
+(Z2 )4 o (GT )2 , where (GT )2 = S3 with generators β1 , β2 = α2 as in [TW13, (1.9)], whose
+action on the base B of V45 is given in (2.9). Then the group (GT )2 acts without a twist on
+V45 .
+Proof:
+We work analogously to the proof of Prop. 3.2 and claim that the following relabelling yields
+the action of (GT )2 without a twist:
+
+               A:    0   1   2   3   4   5   6
+               B:    2   6   3   0   1   5   4                I:     1   6   5   2   4   3   0
+               C:    3   4   0   2   6   5   1                J:     6   1   2   3   0   5   4
+               D:    4   2   3   6   1   0   5                K:     4   1   2   3   6   5   0
+               E:    6   1   2   4   3   5   0                L:     5   2   0   3   1   4   6
+               F :   2   0   3   6   1   4   5                M:     0   6   2   5   1   4   3
+               G:    1   6   5   3   2   4   0                N:     1   2   4   0   6   3   5
+               H:    1   4   2   5   0   6   3                O:     4   1   6   3   0   5   2
+
+One checks that this relabelling respects the linear structure of each PX (F32 ) with X ∈
+{A, B, . . . , N, O}. From (2.9) one reads the action of the generators β1 , β2 = α2 of (GT )2
+                                                                                (X,M (β1 )
+on the rows of the array Aeven and checks that the induced permutation mβ1                 (X)) of
+                                                                                         (X,M (β2 )(X))
+Fano plane labels in the rows is (0, 2, 3)(4, 5, 6), independently of X, while mβ2                        yields
+
+                                                    22
+(0, 3)(4, 5), independently of X. In other words, (GT )2 acts without a twist.                                
+
+In summary, for each of the three maximal symmetry groups Gk = (Z2 )4 o (GT )k of Kummer
+surfaces, k ∈ {0, 1, 2}, there exists a consistent labelling of the array Aeven in Table 2, such
+that no twist is exhibited for the action of the group (GT )k on V45 . We furthermore find
+Proposition 3.4 Consider the three maximal symmetry groups Gk = (Z2 )4 o (GT )k of Kum-
+mer surfaces, k ∈ {0, 1, 2}, whose generators are given in [TW11, (4.10), (4.11), (4.23)] and
+[TW13, (1.9)]. For each group Gk , the natural action on V45CF T , which is induced by the re-
+spective symmetries of the states of Z2 -orbifold conformal field theories according to (1.17), is
+equivalent to the action of Gk viewed as a subgroup of (Z2 )4 o A8 in Margolin’s representation
+M : Gk −→ EndC (V45 ).
+Proof: Prop. 2.1 implies that Margolin’s representation M of Gk on the base B of V45 = V ⊗ B
+is equivalent to the representation RGk of Gk on the base A of V45CF T = W ⊗ A. Moreover,
+the translational subgroup (Z2 )4 of (Z2 )4 o A8 acts trivially both on W and V in the tensor
+products V45CF T = W ⊗ A and V45 = V ⊗ B. Finally, by Props. 3.1, 3.2 and 3.3 along with
+Prop. 1.1, Gk acts without a twist both on V45 and on V45CF T for each k ∈ {0, 1, 2}. Hence
+for each Gk , k ∈ {0, 1, 2}, it remains to be shown that the representation M of the subgroup
+(GT )k on the fibers of V45CF T is equivalent to the representation S : (GT )k −→ EndC (W0 ) which
+is induced by (GT )k ⊂ SO(3) on the fibers W ∼     = W0 of V45 .
+
+To do so, let us fix some notations first. Let
+             w1 := i χ1 j+2 + χ2 j+1 N0000 , w2 := χ1 j+1 N0000 ,            w3 := χ2 j+2 N0000
+                                    
+                                                                                                           (3.1)
+denote a basis of W0 = spanC {N0000 } ⊗ W according to Prop. 1.1. For the generators α1 , α2
+of (GT )0 , γ1 , γ2 , γ3 of (GT )1 and β1 , β2 = α2 of (GT )2 we determine the induced actions on
+the respective fields of the Z2 -orbifold CFT on the square, the tetrahedral and the triangular
+Kummer K3, according to [TW13, (1.5),(1.7),(1.9)]. Here, in accord with [TW13] the complex
+currents j+k , k ∈ {1, 2}, whose real and imaginary parts are the four left-handed U (1)-currents
+generating a U (1)4 -symmetry in T , are identified with the holomorphic coordinate vector fields
+ ∂
+∂zk
+    , k ∈ {1, 2}. Hence the induced symmetries on the free fields in T are given by
+         1                  1
+                                            1             2
+                                                                             1               1
+                                                                                                   
+        
+          χ      −
+                  7 →     iχ   , 
+                                           
+                                              χ     −
+                                                     7 →  χ   , 
+                                                                            
+                                                                               χ     −
+                                                                                      7 →  ζχ    , 
+                                                                                                   
+         χ2 7−→ −iχ2 , 
+                                           χ2 7−→ −χ1 , 
+                                                                            χ2 7−→ ζ −1 χ2 , 
+                                                                                                  
+  α1 :                             , α  2 :                        , β  1  :                          ,
+        
+          j+1 7−→        ij+1 , 
+                                           
+                                              j+1 7−→    j+2 , 
+                                                                            
+                                                                               j+1 7−→    ζj+1 , 
+                                                                                              
+                                                                                j+ 7−→ ζ −1 j+2
+         2
+           j+ 7−→ −ij+2
+                                             2
+                                               j+ 7−→ −j+1
+                                                                            2                   
+
+                                                                                          i+1
+        1                   1
+                                            1            2
+                                                                             1                   1     2
+                                                                                                              
+       
+         χ     −
+                7   →    iχ    , 
+                                           
+                                             χ    −
+                                                   7   → χ   ,  
+                                                                            
+                                                                              χ    −
+                                                                                    7   →  2
+                                                                                              (iχ    −  χ  ), 
+                                                                                                              
+        χ2 7−→ −iχ2 , 
+                                           χ2 7−→ −χ1 , 
+                                                                            χ2 7−→ − i+1 (iχ1 + χ2 ), 
+                                                                                                             
+                                                                                           2
+  γ1 :                             , γ 2 :                        ,  γ 3 :                i+1                   ,
+       
+          j+1 7−→       ij+1 ,           
+                                             j+1 7−→    j+2 ,             
+                                                                              j+1 7−→     2
+                                                                                              (ij+1 − j+2 ), 
+                                                                                                         
+                                                                               j+ 7−→ − i+1
+        2
+           j+ 7−→ −ij+2
+                                             2
+                                              j+ 7−→ −j+1
+                                                                              2                   1      2 
+                                                                                               (ij   +  j   )
+                                                               
+                                                                                            2      +      +
+
+
+                                                      23
+where as before ζ = e2πi/3 . Hence we have
+
+                                                                           
+         w1 −
+             7 →    w1 ,          w1 −
+                                       7 → −w1 ,            w1 −
+                                                                 7 →       w1 , 
+S(α1 ) : w2 − 7 → −w2 , , S(α2 ) : w2 − 7 →  w3 , , S(β1 ) : w2 − 7 → ζ −1 w2 , .
+          w3 − 7 → −w3              w3 − 7 → w2               w3 − 7 →   ζw3
+                                                                           
+                                                                                             (3.2)
+                                                                                            
+        
+         w 1 7 − →  w 1 , 
+                                   
+                                     w 1  7 − → −w 1 , 
+                                                                
+                                                                  w 1 7 − → −w 2 − w 3 ,        
+                                                                                                 
+                                                                             i
+S(γ1 ) : w2 −   7 → −w2 , , S(γ2 ) : w2 −    7 →  w3 , , S(γ3 ) : w2 −   7 → 2 (−w1 − w2 + w3 ) , ,
+        
+        w −                                                   w 7−→ i (w − w + w ) 
+                                                                 
+            3 7 →   −w3            w −
+                                        3 7 →     w2                                            
+                                                                    3        2   1     2   3
+
+
+Note that γ2 = γ12 γ3 γ1 γ3−1 , so henceforth we will not continue to consider the generator γ2 . We
+now argue that the respective representations are equivalent for the three relevant cases.
+
+   1. The square Kummer surface X0 with (GT )0 = Z2 × Z2
+      For (GT )0 , we have a nontrivial action for each nontrivial element of this group both on
+      W0 and on V. Moreover, in both spaces, every g ∈ (GT )0 is represented by a unitary
+      involution with determinant 1. Hence there is a common eigenbasis of V for the entire
+      group M ((GT )0 ), such that for each nontrivial g ∈ (GT )0 , M (g) has a two-fold eigenvalue
+      −1 and a simple eigenvalue 1, as in (3.2). Thus there exists an orthonormal basis
+      {we1 , w    e3 } of V such that
+             e2 , w
+
+        M (α1 ) : (w
+                   e1 , w    e3 ) 7−→ (w
+                        e2 , w         e1 , −w
+                                             e2 , −w
+                                                   e3 ),   M (α2 ) : (w
+                                                                      e1 , w    e3 ) 7−→ (−w
+                                                                           e2 , w          e1 , w
+                                                                                                e3 , w
+                                                                                                     e2 ).
+
+      Then wk 7−→ w
+                  ek for k ∈ {1, 2, 3} induces an equivalence of representations of (GT )0 .
+
+   2. The tetrahedral Kummer surface X1 with (GT )1 = A4
+      For (GT )1 = A4 , we know from [CCN+ 85] that every linear 3-dimensional representation
+      of the alternating group A4 is either irreducible, or it decomposes into the direct sum of
+      three one-dimensional representations. Moreover, there is only one equivalence class of
+      irreducible linear 3-dimensional representations of A4 .
+      By (3.2), there exists no common eigenvector of S(γ1 ) and S(γ3 ), hence W0 cannot be
+      the sum of three one-dimensional representations of S((GT )1 ), and thus it carries the
+      3-dimensional irreducible representation of A4 . It suffices to show the same for V.
+      From the proof of Prop. 3.2 we know that M (γ1 ) acts on the seven points {0, . . . , 6} of
+      the Fano plane by means of the permutation mγ1 := (0, 2)(1, 4), while γ3 is represented by
+      (0, 1, 2)(3, 5, 6). Hence M (γ1 ) maps the lines with marked points (0, 023), (0, 501), (0, 460)
+      to (2, 023), (2, 245),
+                            (2, 612), implying that the basis {(2, 0, 0), (0, 2, 0), (0, 0, 2)} of V ∼
+                                                                                                      =
+        3
+      C is mapped to ±(0, b7, b7), ±(−b7, 1, −1), ±(b7, 1, −1) . The signs are uniquely de-
+      termined by the fact that M (γ1 ) is represented on V by a linear map with determinant
+      one, and mγ1 fixes the point labelled 3 in the Fano plane, such that M (γ1 ) permutes
+
+                                                   24
+      the three pairs of root vectors which belong to the point frame 3 in Table 3. From this
+      and by similar arguments for γ3 one obtains the following matrix representations for the
+      generators of (GT )1 with respect to the standard basis of C3 ∼
+                                                                    = V:
+                                                                            
+                                 0 b7 b7                            b7   1 −1
+                           1                                   1
+                 M (γ1 ) =  b7 −1         1 ,      M (γ3 ) =  0 b7 b7  .
+                           2                                   2
+                                b7    1 −1                          b7 −1    1
+
+      Calculating the eigenvectors of M (γ1 ), one finds a one-dimensional eigenspace with eigen-
+      value +1 and the corresponding eigenvector ve1 = (b7, 1, 1)T , which as one immediately
+      checks is not an eigenvector of M (γ3 ). Hence M (γ1 ) and M (γ3 ) do not have a common
+      eigenbasis. It follows that V cannot be the sum of three one-dimensional representations
+      of A4 . Hence it agrees with the irreducible 3-dimensional representation of A4 .
+
+  3. The triangular Kummer surface X2 with (GT )2 = S3
+      From the proof of Prop. 3.3 we know that M (β1 ) acts on the seven points {0, . . . , 6} of
+      the Fano plane by means of the permutation (0, 2, 3)(4, 5, 6), while β2 is represented by
+      (0, 3)(4, 5). By a calculation similar to the one performed for the tetrahedral Kummer
+      surface, one obtains the following matrix representations for the generators of (GT )2 with
+      respect to the standard basis of C3 ∼= V:
+                                                                                      
+                           0 −b7 b7                                         0 b7 −b7
+                     1                                              1
+           M (β1 ) =  b7 −1 −1  ,              M (α2 ) = M (β2 ) =  b7 −1 −1  .
+                     2                                              2
+                          b7     1    1                                  −b7 −1 −1
+
+      Calculating the respective eigenvectors one finds that with the eigenbasis
+                                                                          
+                             1                   b7
+                                                 √                        −b7
+                                                                           √
+                   we1 =  0  ,       we2 =  i 3  ,       we3 = ζ −1  i 3 
+                            b7                  −1                         1
+
+      of M (β1 ), ζ = e2πi/3 as above, the isomorphism induced by wk 7−→ w
+                                                                         ek for k ∈ {1, 2, 3}
+      induces an equivalence of representations of (GT )2 .
+                                                                                                  
+
+From Prop. 3.4 we now infer how to identify the space of states V45CF T in an arbitrary Z2 -orbifold
+CFT C = T /Z2 with the representation space V45 of M24 in a fashion which is compatible with
+                   e of symmetries of C. The idea is similar to the surfing procedure described
+the relevant group G
+in [TW13]. As always, we assume that all symmetries in G         e are induced from geometric
+symmetries of T in a fixed geometric interpretation on some torus T = R4 /Λ.        e As detailed
+in [TW13, Section 4], for at least one k ∈ {0, 1, 2}, we find G    e ⊂ Gk along with a smooth
+                        e call it Λt with t ∈ [0, 1] and Λ0 = Λk , Λ1 = Λ,
+deformation of Λk into Λ,                                                   e such that the linear
+
+                                                25
+automorphism group of each Λt with t 6= 0 is G  e0 ⊂ SU (2) where G  eT = G e0 /Z2 . By Prop. 3.4,
+                                                  T                           T
+                                      CF T
+there exists an isomorphism from V45 to V45 which induces an equivalence of representations
+of Gk . By construction, this isomorphism yields the desired identification of the space of
+                   CF T
+states V45CF T ⊕ V 45 of C. Note that on Margolin’s V45 = V ⊗ B, the translational subgroup
+(Z2 )4 which is common to all geometric symmetry groups of Kummer K3s acts faithfully on
+B and trivially on V. Hence its fixed point set is {0}. This implies that our selection of
+                                           CF T
+the 90-dimensional subspace V45CF T ⊕ V 45 in Vb (see (1.16)) is in fact unique. Indeed, by
+                                                                               CF T
+construction, the only fixed state of the translational (Z2 )4 in V45CF T ⊕ V 45 is 0, while the
+group acts trivially on the six-dimensional orthogonal complement of this space in Vb . The
+                                     CF T
+90-dimensional subspace V45CF T ⊕ V 45 is thus uniquely characterized by the requirement that
+it carries a faithful representation of the translational subgroup (Z2 )4 . In summary, we have
+shown
+Theorem 3.5 Consider a Z2 -orbifold CFT C on K3, and let G        e ⊂ Aff(F42 ) = (Z2 )4 o A8 de-
+note the group of those symmetries of C which are induced from the geometric symmetries of
+the underlying toroidal theory in a fixed geometric interpretation. Then the natural represen-
+tation of G e in terms of symmetries of C on the space V CF T of massive states of Prop. 1.1
+                                                            45
+is equivalent to the representation of this group on V45 which is obtained by restricting Mar-
+golin’s representation M : M24 −→ EndC (V45 ) to G.    e In other words, the representation of
+          CF T
+Ge on V
+         45    can be viewed as a representation which is induced by Margolin’s representation
+M : M24 −→ EndC (V45 ).
+Moreover, within the 96-dimensional space Vb of generic states with the appropriate quantum
+                                                                                   CF T
+numbers in Z2 -orbifold CFTs on K3, the subspace singled out as V45CF T ⊕ V 45 is uniquely
+determined by the property that the action of any geometric symmetry group of a Z2 -orbifold
+conformal field theory is equivalent to the one induced by M .
+This theorem encompasses the main result of the present work. Indeed, we have shown that
+on a large component of the moduli space, there is a 45-dimensional subspace of the space of
+states, which exists generically and which accounts for the expected net contributions to the
+elliptic genus. We have also shown that these states are actually uniquely characterized by the
+action of the symmetry groups.
+Furthermore, our surfing procedure predicts that the combined action of the symmetry groups
+at distinct points of the moduli space generates the action of a subgroup of M24 ; that this
+should be the case is by no means clear a priori. Not only do we confirm this part of our
+prediction, but the group that we generate is a maximal subgroup of M24 , which is not a
+subgroup of M23 , and it acts in precisely the predicted way. This is the first piece of evidence
+in the literature whatsoever for a trace of M24 that is intrinsic to CFTs on K3.
+
+As we recall in Section 2.1, according to our previous work [TW13] the images of the max-
+imal symmetry groups G0 , G1 , G2 of Kummer surfaces under the respective representations
+RG0 , RG1 , RG2 altogether generate the group Aff(F42 ) ∼
+                                                        = (Z2 )4 o A8 . By construction this im-
+plies that the combined action of these groups on V45 yields the representation of Aff(F42 ) on
+
+                                               26
+V45 induced by Margolin’s representation M . By Thm. 3.5, in analogy to our construction of
+overarching symmetry groups by means of Niemeier markings, this procedure combines sym-
+metry groups that are obtained at distinct points in moduli space. Due to the twisting in
+the representation space V45 it is not clear how to interpret an induced combined action on
+V45CF T geometrically. Note for example that, according to (3.2), the generators α1 and γ1 of
+this combined group have the same representation S(α1 ) = S(γ1 ) on W. On the other hand,
+by (2.9), M (α1 ) and M (γ1 ) both fix the label N , so both induce a linear map on the fiber
+VN of V45 . However, one checks that these maps are distinct. Indeed, α1 permutes the seven
+points in row N of Table 2 according to (0, 3)(4, 5) with respect to the square labelling, such
+that for example the first entry of that row, ∞0.13.24.56, is mapped to ∞4.02.15.36. On
+the other hand, γ1 permutes the seven points in row N according to (0, 2)(1, 4) with respect
+to the tetrahedral labelling given in Prop. 3.2, i.e. the first entry of that row is mapped to
+∞2.04.16.35. This implies that there is a nontrivial twist which is induced on W on transition
+between distinct points of the moduli space of SCFTs on K3.
+It may be useful to push the analogy to the Niemeier markings of [TW13] a little bit further.
+Consider a SCFT C = T /Z2 as before, where T has a geometric interpretation on the torus
+T = R4 /Λ. Let µ             ~ 4 denote generators of the lattice Λ∗ which by means of the Euclidean
+                ~ 1, . . . , µ
+scalar product we identify as a lattice in R4 ∼   = (R4 )∗ . With µl1 , . . . , µl4 denoting the Euclidean
+coordinates of µ
+               ~ 1, . . . , µ
+                            ~ 4 , according to [TW13, (A.2)] we consider the fields
+                                           4
+                                           X
+                               Jk (z) :=         µlk j l (z),   k ∈ {1, . . . , 4},
+                                           l=1
+
+
+and their superpartners Ψ   e k (z) as building blocks to construct a lattice which within the (chiral,
+chiral) algebra of C plays a role analogous to that of the integral homology of K3 within the
+real K3 homology. For our purposes, a slightly different lattice might be helpful. We set
+                                                       
+           κjk := 21 (Ψ                  e k ) 1 (Jj ) 1 N0000 , j, k ∈ {1, . . . , 4} with j ≤ k.
+                      e j ) 1 (Jk ) 1 + (Ψ
+                           2     2          2        2
+
+
+Let K denote the complex 10-dimensional vector space with basis {κjk , j, k ∈ {1, . . . , 4},
+j ≤ k}, and let K ⊂ K be the lattice of rank 20 generated over Z by the κjk and the iκjk . By
+construction, K contains the vector space W0 which yields the model fiber of V45CF T . We have
+a natural action of each of our maximal symmetry groups G0 , G1 , G2 on the lattice K which
+induces the action of these groups on W0 . In light of the fact that the very representations
+RGk of our groups Gk , k ∈ {0, 1, 2}, on the base A of V45CF T are encoded by means of their
+action on F42 ∼= 12 Λ/Λ, in other words by their description in terms of the lattice Λ, this
+description of the representation is more natural than the one obtained by the representation
+S : SO(3) −→ EndC (W0 ) that was mentioned in Prop. 1.1. The combined action yields an
+infinite group which descends to GL4 (F2 ) when we project to 21 K/K.
+Note that compared to the standard descriptions of the moduli space of SCFTs on K3 [AM94,
+NW01], the space K plays the role of the real K3 homology, and the lattice K is the analog of
+
+                                                         27
+the integral K3 homology. Then the space W0 plays the role of the positive definite four-plane
+in K3 homology whose relative position with respect to the integral K3 homology determines
+the point in moduli space. Indeed, the relative position of the basis vectors w1 , w2 , w3 of (3.1)
+with respect to K depends on the moduli of our CFT C. For example, in the SCFTs associated
+with the square and the tetrahedral Kummer surfaces, respectively, the basis vector w3 is given
+by
+                       κ33 − κ44 + iκ34 ,    κ33 + 12 κ34 + 2i (κ34 + κ44 ).
+That these two expressions differ is the source of the twist which we observed above when com-
+paring the action of α1 and γ1 on the fiber VN of V45 . The precise meaning and interpretation
+of this twist clearly needs further investigation.
+
+
+4     Conclusions
+Z2 -orbifold conformal field theories on K3 provide us with a concrete framework to investigate
+the nature of the CFT states counted by the elliptic genus of K3 surfaces. In this paper, we
+have focused on the massive states contributing to leading order. We have taken a close look
+at the symmetries that act on them in an effort to identify signatures of the M24 Moonshine
+phenomenon. Our motivation has been to carry over, in a field theory context, the essence
+of what we have recently discovered by scrutinizing the geometry of Kummer surfaces, which
+form a large class of K3 surfaces [TW11, TW13]. In our previous work, we considered the
+finite symplectic automorphism groups of Kummer surfaces equipped with a dual Kähler class
+induced from the underlying torus. These groups are subgroups of three maximal symmetry
+groups G0 = (Z2 )4 o (Z2 × Z2 ), G1 = (Z2 )4 o A4 and G2 = (Z2 )4 o S3 , and we showed that they
+have a combined action on the Niemeier lattice with root lattice A24   1 . This yields the action of
+                                      4
+the combined symmetry group (Z2 ) o A8 of all Kummer surfaces. In [TW13] we have shown
+that this group is (Z2 )4 o A8 ⊂ M24 , and that it is the largest group one can expect to generate
+on the Niemeier lattice, given the restrictions imposed. The Niemeier lattice may be seen as a
+device that provides a ‘memory’ of the action of all finite symplectic automorphism groups of
+Kummer surfaces, by accommodating the action of a group which is maximal in M24 but not
+contained in M23 . Of course, there is a geometric obstruction to any string theory propagating
+on a Kummer surface enjoying this combined symmetry: the Niemeier lattice and the full inte-
+gral homology lattice H∗ (X, Z) of a Kummer surface X have same rank but different signatures.
+
+In the present work, we impose analogous restrictions on the symmetries of Z2 -orbifold con-
+formal field theories on K3. We assume that these theories come with a choice of generators
+of the N = (4, 4) superconformal algebra, which in particular fixes the U (1)-currents and a
+preferred N = (2, 2) subalgebra. We furthermore require the symmetries to fix the superconfor-
+mal algebra pointwise. These restrictions ensure that every symmetry preserves the conformal
+weights and U (1)-charges of every field. In [TW13] we motivate why we restrict our attention
+to symmetries which are compatible with taking a large volume limit. These restrictions imply
+
+
+                                                28
+that the symmetry groups of interest to us are those induced geometrically in the underlying
+toroidal theory in a fixed geometric interpretation, that is, the subgroups of G0 , G1 and G2 .
+Our first task has been to show that there are ninety massive states accounting for the net
+contribution to the leading massive order of the elliptic genus of K3, which organise themselves
+into two 45-dimensional vector spaces with tensor product structure V45CF T = W ⊗ A and
+  CF T
+V 45 = W ⊗A. Here, W and W are the 3-dimensional representation spaces 3 and 3 of SO(3)
+which accommodate massive fermionic excitations from the twisted sector of the theory, while
+A is a 15-dimensional representation space of Aff(F42 )= (Z2 )4 o A8 accommodating twisted
+ground states. The next task has been to show how closely these two 45-dimensional spaces
+are related to the complex 45(45)-dimensional irreducible representations of M24 constructed
+by Margolin [Mar93]. Since the groups G0 , G1 and G2 are all subgroups of (Z2 )4 o A8 , which is
+also the combined symmetry group of all Kummer surfaces, it is natural to study its action on
+the space V45CF T . We found that the representation of (Z2 )4 o A8 on the space A is equivalent
+to the representation of (Z2 )4 o A8 constructed by Margolin on the 15-dimensional “base” B of
+V45 = V ⊗ B, where V45 carries an irreducible representation of M24 . In particular, symmetry-
+surfing the moduli space of Z2 -orbifold CFTs C = T /Z2 on K3 one generates the action of
+the group Aff(F42 ) on V45CF T from the combined actions of G0 , G1 and G2 . However, the action
+of (Z2 )4 o A8 on the space V45 does not factorize according to this tensor product structure:
+a twist is necessary between fibers, as there are no nontrivial 3-dimensional representations
+of this combined symmetry group that the fiber V could carry. On the other hand, such a
+twist is not apparent in the CFT space V45CF T in its natural description in terms of Z2 -orbifold
+CFTs. In fact, the three maximal symmetry groups Gk , k ∈ {0, 1, 2}, act without a twist on
+V45 , as we proved. Moreover, we showed that their natural action on V45CF T , which is induced
+by the respective symmetries of CFT massive states, is equivalent to the action of these groups
+viewed as subgroups of (Z2 )4 o A8 in Margolin’s representation.
+We have been discussing generic states in Z2 -orbifold CFTs C = T /Z2 on K3 that account
+for the net contribution to the leading massive order of the elliptic genus of K3. There is
+a 96-dimensional vector space of fermionic such states, canceling a contribution of 6 generic
+                                                                                      CF T
+bosonic states. We have shown that this 96-dimensional space contains V45CF T ⊕ V 45 as the
+unique 90-dimensional subspace on which the generic geometric symmetry group (Z2 )4 of all
+Z2 -orbifold CFTs C = T /Z2 on K3 acts faithfully.
+
+Since we restrict ourselves to maximal symmetry groups Gk , finding a Z2 -orbifold CFT on
+K3 with more geometric symmetry is obviously impossible. We view the twist in Margolin’s
+representation as another manifestation of the geometric obstruction to accommodate larger
+geometric symmetry groups, reinforcing the statement just made in the previous sentence.
+Vice versa we conjecture that for any N = (4, 4) SCFT on K3 whose symmetry group G        e is
+a subgroup of one of the eleven subgroups of M24 , which Mukai identifies as maximal sym-
+metry groups of K3 surfaces, G e acts without a twist on Margolin’s representation on V45 .
+Moreover, assume that (1) C is a SCFT on K3 with geometric interpretation on a K3 sur-
+face with symmetry group G  e ⊂ M24 , (2) the B-field of C in this geometric interpretation is
+
+                                               29
+invariant under G,  e such that G     e acts as a group of geometric symmetries of C. Then we ex-
+pect that there is a 45-dimensional space of massive states Ve45CF T of C with quantum numbers
+(h, Q; h, Q) = ( 45 , 1; 14 , Q), such that Ge acts on Ve45CF T by means of symmetries of C. We also
+expect that this representation is equivalent to the representation of G     e on V45 which is induced
+by Margolin’s representation M : M24 −→ EndC (V45 ). If true, this provides information about
+states in SCFTs on K3 which nobody has been able to construct so far.
+
+Finally, it would be illuminating to pin down the analog of the Niemeier markings [TW11,
+TW13], which were designed to bring the combined group action into light. As mentioned in
+the introduction, we interpret the representation space V45 as a medium which can collect the
+actions of symmetry groups from distinct points of the moduli space and combine them to
+representations of larger groups, making its role directly comparable to that of the Niemeier
+lattice. Moreover, we have identified a 10-dimensional complex vector space K and a rank
+20 lattice K ⊂ K that play analogous roles to the real K3 homology and the integral K3
+homology that were so crucial in constructing the Niemeier markings. There are however
+interesting novel features we inherit from the representation theory of M24 , which will have
+to await interpretation in a way that would lift a corner of the veil surrounding Mathieu
+Moonshine.
+
+
+Acknowledgements
+K.W. thanks Paul Aspinwall and Ron Donagi for their very helpful comments. We thank the
+Heilbronn Institute and the International Centre for Mathematical Sciences in Edinburgh as
+well as the (other) organisers of the Heilbronn Day and Workshop on ‘Algebraic geometry,
+modular forms and applications to physics’, where part of this work was done. A.T. thanks
+the University of Freiburg for their hospitality, and acknowledges a Leverhulme Research Fel-
+lowship RF/2012-335. K.W. acknowledges an ERC Starting Independent Researcher Grant
+StG No. 204757-TQFT.
+
+
+A      A 45-dimensional vector space with M24 action
+We review Margolin’s construction of a 45-dimensional irreducible representation of M24 [Mar93].
+We focus on the features of this representation that are crucial for our present work.
+
+A core component in the construction is a 3-dimensional vector space V over F2 . The asso-
+ciated projective plane P(V ) ∼ = P(F32 ) is the so-called Fano plane: it contains seven points
+represented by the seven non-zero vectors of F32 . There are seven lines, each comprising three
+distinct points whose representatives in F32 together with the origin form a hyperplane. Under
+addition in F32 , the four points of every hyperplane form a Kleinian 4-group, that is, a group
+
+                                                 30
+                                  (1, 0, 1)                                              2
+
+
+
+
+                      (0, 0, 1)                     (0, 1, 1)                      6             5
+
+                                        (1, 1, 1)                                            0
+
+
+                                                                              1                      4
+              (1, 0, 0)                                     (1, 1, 0)                    3
+                                  (0, 1, 0)
+                                                                                         (b)
+                                    (a)
+
+
+
+
+Figure 1: The Fano plane (a) labelled by points in F32 ; (b) labelled by points in F7 .
+
+isomorphic to (Z2 )2 . Figure 1(a) illustrates the structure of the Fano plane. The projective
+linear transformations of P(F32 ) act by permuting the seven points of the Fano plane, and they
+form a group isomorphic to the group L3 (2) := GL3 (F2 ) of linear automorphisms of V . It
+will be helpful for our purposes to label the non-zero elements of V by integers modulo 7,
+according to Figure 1(b), such that the set of points in each projective line in P(V ) has the
+form {i, i + 2, i + 3}, i ∈ F7 . In addition, the origin of V is labelled ∞. Note that translation
+by a fixed vector in V permutes the points of V . In the notations of Figure 1(b), the eight
+resulting translations are
+                          translation by (0, 0, 0) (∞) :                     1 (identity),
+                          translation by (1, 1, 1) (point 0) : (0, ∞)(1, 5)(2, 3)(4, 6),
+                          translation by (1, 0, 0) (point 1) : (1, ∞)(0, 5)(2, 6)(3, 4),
+                          translation by (1, 0, 1) (point 2) : (2, ∞)(0, 3)(1, 6)(4, 5),
+                                                                                                         (A.1)
+                          translation by (0, 1, 0) (point 3) : (3, ∞)(0, 2)(1, 4)(5, 6),
+                          translation by (1, 1, 0) (point 4) : (4, ∞)(0, 6)(1, 3)(2, 5),
+                          translation by (0, 1, 1) (point 5) : (5, ∞)(0, 1)(2, 4)(3, 6),
+                          translation by (0, 0, 1) (point 6) : (6, ∞)(0, 4)(1, 2)(3, 5).
+The Fano plane structure appears in two incarnations in Margolin’s construction, as we shall
+discuss now.
+
+First consider the 105 permutations of cycle shape 24 in the alternating group A8 , i.e. all
+permutations of type (a1 , a2 )(a3 , a4 )(a5 , a6 )(a7 , a8 ) with ai ∈ F7 ∪ {∞}, ai all distinct. Note
+that A8 acts by conjugation on this set of permutations. Denote by S the set of seven nontrivial
+translations in (A.1), such that S ∪ {1 } is the group of translations of V . It follows that
+
+                                                                        31
+S ∪ {1 } ∼
+         = (Z2 )3 is the maximal normal subgroup of the group Aff(V ) = (Z2 )3 o L3 (2) of linear
+affine transformations of V . In particular, S is invariant under conjugation by this group.
+Since Aff(V ) acts by permutations on the eight points of V , labelled ∞, 0, . . . , 6 in (A.1), we
+realize this group as a subgroup of the alternating group A8 of index 15. In summary, the set
+S is a subset of cardinality seven in the set of 105 permutations in A8 of cycle shape 24 , which
+is invariant under conjugation by Aff(V ) = (Z2 )3 o L3 (2) ⊂ A8 . It follows that the remaining
+98 permutations in A8 of cycle shape 24 decompose into fourteen sets of seven elements each,
+the images of S under conjugations by elements of A8 \ Aff(V ). One thus obtains an array
+Aeven of fifteen 7-sets such that
+
+  1. each 7-set X, X ∈ {A, B, . . . , N, O}, together with the identity permutation, forms a
+     multiplicative abelian group of order 8;
+
+  2. each 7-set X, X ∈ {A, B, . . . , N, O}, displays a Fano plane structure, i.e. it is possible
+     to label the seven involutions in each set by a distinct element i ∈ F7 , such that each
+     set contains seven triplets of involutions labelled {i, i + 2, i + 3} which correspond to the
+     lines in the Fano plane; indeed, these triplets yield seven multiplicative abelian 4-groups
+     {1 , i, i + 2, i + 3}. For instance, {1 , 3, 5, 6} with the involutions labelled {3, 5, 6} in row
+     C of Table 2 is the 4-group {1 , (∞6)(05)(13)(24), (∞0)(14)(23)(56), (∞5)(06)(12)(34)};
+     note that this leaves a freedom of choice for the labelling which amounts to the action
+     of L3 (2) in each row;
+
+  3. the 7-set S appears as row A of Table 2.
+
+The 45-dimensional space affording the representation of interest is obtained by taking 15
+copies of a complex three-dimensional vector space to be described below. Each copy of this
+vector space is labelled by one of the letters A, . . . , O corresponding to the fifteen 7-sets with
+Fano plane structure displayed in Table 2. This Fano plane structure on the rows A, . . . , O
+will be crucial to explain the action of M24 , or rather of its subgroup (Z2 )4 o A8 , which we
+focus on in this appendix, on the representation space. Therefore we think of the fifteen 7-sets
+in Table 2 as yielding the base of our representation: formally, we introduce a 15-dimensional
+complex Euclidean vector space B and choose an orthonormal basis {PA , PB , . . . , PN , PO } for
+it. It is immediate that the vector space B carries a linear representation of A8 . Indeed, A8 acts
+by conjugation on the rows of the array Aeven thus permuting the labels {A, B, . . . , N, O}
+and thereby permuting our orthonormal basis of B. We refer to B as the base of Margolin’s
+representation space.
+
+The Fano plane structure also appears within an irreducible 3-dimensional representation of
+L3 (2) constructed from a rank 3 sublattice Λb7
+                                             3 of the icosian Leech lattice that appears in
+                    12
+Wilson’s description of the maximal subgroup L3 (2) o Z2 of the Hall-Janko group J2 [Wil86].
+ 12
+      This lattice is also very closely related to the lattice generated from the root graph J3 (4) introduced in
+
+
+                                                        32
+             c0             c1                  c2             c3                  c4             c5                  c6
+         A   ∞0.15.23.460   ∞1.05.26.341        ∞2.03.16.452   ∞3.02.14.563        ∞4.06.13.254   ∞5.01.24.365        ∞6.04.12.356
+
+         B   ∞2.03.14.562   ∞1.06.24.353        ∞3.02.15.464   ∞0.16.23.455        ∞4.05.12.360   ∞5.04.13.261        ∞6.01.25.346
+         C   ∞3.02.16.454   ∞1.04.25.361        ∞0.14.23.565   ∞2.03.15.462        ∞4.01.26.350   ∞5.06.12.346        ∞6.05.13.243
+
+         D   ∞0.12.36.455   ∞3.06.14.250        ∞2.01.35.463   ∞4.05.13.264        ∞1.02.34.566   ∞5.04.16.232        ∞6.03.15.241
+         E   ∞0.16.24.354   ∞4.02.13.565        ∞2.04.15.362   ∞1.06.25.340        ∞3.05.14.261   ∞5.03.12.463        ∞6.01.23.456
+
+         F   ∞0.14.26.351   ∞1.04.23.560        ∞4.01.25.365   ∞3.05.12.466        ∞5.03.16.242   ∞2.06.13.454        ∞6.02.15.343
+         G   ∞0.12.34.560   ∞1.02.35.461        ∞5.06.13.244   ∞3.04.15.263        ∞2.01.36.455   ∞4.03.16.252        ∞6.05.14.236
+
+         H   ∞0.13.26.450   ∞1.03.25.461        ∞2.06.15.342   ∞5.04.12.366        ∞4.05.16.234   ∞6.02.14.353        ∞3.01.24.565
+         I   ∞0.16.25.342   ∞1.06.23.451        ∞2.05.13.464   ∞6.01.24.356        ∞4.03.15.260   ∞3.04.12.563        ∞5.02.14.365
+
+         J   ∞4.06.12.356   ∞1.03.24.563        ∞2.05.14.365   ∞3.01.26.451        ∞6.04.15.230   ∞5.02.16.342        ∞0.13.25.464
+         K   ∞6.04.13.256   ∞1.02.36.453        ∞2.01.34.562   ∞3.05.16.245        ∞0.12.35.460   ∞5.03.14.261        ∞4.06.15.234
+
+         L   ∞1.05.24.365   ∞5.01.23.463        ∞2.06.14.350   ∞3.04.16.252        ∞4.03.12.561   ∞0.15.26.346        ∞6.02.13.454
+         M   ∞5.01.26.343   ∞0.15.24.364        ∞2.04.13.562   ∞3.06.12.456        ∞4.02.16.355   ∞1.05.23.461        ∞6.03.14.250
+
+         N   ∞0.13.24.564   ∞2.04.16.352        ∞6.05.12.346   ∞3.01.25.463        ∞4.02.15.365   ∞5.06.14.230        ∞1.03.26.451
+         O   ∞0.14.25.365   ∞6.03.12.456        ∞1.04.26.351   ∞3.06.15.243        ∞4.01.23.560   ∞5.02.13.464        ∞2.05.16.342
+
+
+Table 2: Array Aeven of 105 permutations of cycle shape 24 in A8 with labelling rel-
+ative to the square torus symmetry, where a1 a2 .a3 a4 .a5 a6 .a7 a8 denotes the permutation
+(a1 , a2 )(a3 , a4 )(a5 , a6 )(a7 , a8 ).
+
+
+To understand the Fano plane structure in this context, consider the following 21 pairs of root
+vectors13 :
+                ± (2, 0, 0)σ , ±(0, b7, ±b7)σ , ±(±b7, 1, −1)σ ± (b7, ±1, ±1)σ              (A.2)
+                              √                      √
+in C3 , where b7 := 12 (−1 + −7) and b7 := 12 (−1 − −7), and (a, b, c)σ means that all cyclic
+permutations of {a, b, c} should also be considered. These root vectors generate the lattice
+Λb7      3
+  3 ⊂ C over Z[b7]. The automorphism group of this lattice is Z2 × L3 (2), where L3 (2) can
+be generated by the 21 reflections in the root vectors (A.2). This fact can be used to define
+an action of L3 (2) on the underlying vector space C3 : The three root vectors (2, 0, 0)σ form a
+coordinate frame, that is an orthonormal basis of C3 , where (2, 0, 0) now represents the pair
+of root vectors ±(2, 0, 0), etc. The remaining 18 pairs of root vectors can be partitioned into
+six other coordinate frames as follows:
+     0                1                    2                    3                      4                  5                     6
+
+ 2   0   0      −1     b7   1      −b7      1     −1      b7    1     1       b7     b7     0      −b7     0     b7        −1   −1    b7
+ 0   2   0      −1    −b7    1       0     b7     b7      b7   −1    −1        1     −1    b7       1     b7      1        b7   −b7    0
+ 0   0   2      b7      0   b7      b7     1      −1       0   b7    −b7       1     −1    −b7     −1     b7     −1        1     1    b7
+
+
+                                   Table 3: Point frames of the lattice Λb7
+                                                                         3 .
+
+
+The labels 0, . . . , 6 in Table 3 indicate the structure of the points in a Fano plane on these
+seven orthonormal bases of C3 : any pair a, b of coordinate frames is fixed, up to signs, by a
+nontrivial automorphism in L3 (2), and all automorphisms fixing this pair fix a third frame c.
+[Coh76], whose associated complex reflection group preserves the Klein quartic F (x, y, z) = xy 3 + yz 3 + zy 3 = 0
+[Kle78].
+  13
+     We follow Margolin’s conventions and scale all root vectors to length 2.
+
+
+                                                                    33
+The frames a, b, c then yield the points on a line in the Fano plane Figure 1(b). These seven
+frames are therefore called point frames.
+
+Another partition of the pairs of root vectors into seven different coordinate frames is possible.
+The first frame consists of the first root vector pair of point frame 0, the second root vector
+pair of point frame 2, and the third root vector pair of point frame 3. It is labelled 023 and
+called a line frame. This way the seven line frames of Table 4 correspond to the lines of the
+Fano plane whose points are the point frames. We can now uniquely specify every root vector
+      023              134                 245             356             460             501             612
+
+ 2    0      0    −1   b7     1      −b7    1    −1   b7     1   1    b7    b7   0   −b7    0    b7   −1   −1      b7
+ 0   b7     b7    b7   −1    −1       1    −1    b7    1    b7    1   b7   −b7   0    0     2    0    −1   −b7     1
+ 0   b7     −b7   1    −1    −b7     −1    b7    −1    1    1    b7    0    0    2   b7     0    b7   b7    1      −1
+
+
+                                   Table 4: Line frames of the lattice Λb7
+                                                                        3 .
+
+
+in Λb7
+     3 up to sign by the line frame, that is by the line in the Fano plane that it belongs to,
+along with a point on that line, that is by a point frame. In other words, pairs of root vectors
+in Λb7
+     3 are in 1 : 1 correspondence with lines in P(V ) with one marked point. The group L3 (2)
+of lattice automorphisms of Λb7  3 of determinant one acts faithfully on the point frames and
+on the line frames, and it preserves the projective structure of the Fano plane. We obtain an
+induced irreducible representation of L3 (2) on the vector space V ∼  = C3 generated by Λb7   3 over
+C: consider the orthonormal basis (2, 0, 0), (0, 2, 0), (0, 0, 2) of C3 and specify each of these
+root vectors in terms of a point and a line in the Fano plane, that is, (0, 023), (0, 501), (0, 460),
+respectively. The images of the three basis vectors under g ∈ L3 (2) are specified, up to a sign,
+by the images of these points and lines under the permutation by which g acts on the seven
+points of the Fano plane. The correct signs of the images follow from the requirement that g
+maps the pairs of root vectors in point frame a to the pairs of root vectors in point frame g(a)
+for all a ∈ F7 .
+
+The 45-dimensional space of the irreducible representation of M24 that we are interested in is
+obtained by assigning to each row of the array Aeven in Table 2 one of 15 mutually orthogonal
+copies of the complex vector space V generated by Λb7 3 over C [Mar93]. In other words, the
+representation space is given by
+
+                                      V45 := VA ⊕ VB ⊕ . . . ⊕ VN ⊕ VO ,                                         (A.3)
+
+where each VX is a copy of V which carries the irreducible representation of L3 (2) described
+above, and X ∈ {A, B, . . . N, O} with A, B, . . . , N, O labelling the rows as in Table 2. Using
+the vector space B with orthonormal basis {PA , PB , . . . , PN , PO } that was introduced above,
+we have V45 = V ⊗ B. We refer to B as the base of the representation space V45 , while the VX
+are referred to as the fibers.
+
+
+                                                           34
+It remains to identify how the group M24 acts on this space. Margolin constructs an irre-
+ducible representation M : M24 −→ EndC (V45 ) in [Mar93]. Here we only discuss the action of
+the maximal subgroup (Z2 )4 o A8 , as this is of primary relevance to our work. Margolin gives
+an explicit construction of the extra group element that generates M24 together with the copy
+of (Z2 )4 o A8 we describe below.
+
+The group A8 acts on the 45-dimensional space V45 as follows: the fifteen rows of Aeven are
+permuted under conjugation by elements of A8 , so let τ ∈ A8 and M (τ )(X) := Y if τ Xτ −1 = Y
+for rows of Aeven labelled X, Y (X may be equal to Y ). Since τ maps 4-groups to 4-groups, the
+Fano plane structure of the rows X and Y is preserved under τ . To describe the induced action
+VX −→ VY , as above we use the fact that every root vector in Λb7               3 (up to a sign) is specified by
+a line p1 p2 p3 of the Fano plane PX (F32 ) associated with row X and a point pk , k ∈ {1, 2, 3}, on
+that line. The label of the point pk is one of the labels attached to the involutions of Aeven in row
+                                                              (X,Y )
+X. The permutation τ therefore induces a map mτ                       : PX (F32 ) −→ PY (F32 ). The root vector
+                                                (X,Y )                           (X,Y )       (X,Y )       (X,Y )
+image in VY is then reconstructed from mτ              (pk ) and the line mτ            (p1 )mτ      (p2 )mτ      (p3 ).
+For instance, suppose one conjugates Aeven by τ = (∞, 0)(1, 5). The corresponding permu-
+tation on the 15 rows is given by (B, C)(D, O)(E, N )(F, H)(G, I)(J, K), i.e. τ maps VA , VL
+and VM to themselves, VB to VC , VD to VO etc. To determine the precise action on these
+spaces, one reads off the permutation on the seven points of the Fano plane encoded in the
+labelling of involutions within Aeven . In the case of the labelling displayed in Table 2, the
+                                                          (B,C)                                           (B,C)
+permutation (B, C) corresponds to the map mτ                      : PB (F32 ) −→ PC (F32 ) with mτ              (0) =
+     (B,C)             (B,C)             (B,C)                (B,C)                (B,C)               (B,C)
+1, mτ      (1) = 0, mτ       (2) = 4, mτ       (3) = 3, mτ           (4) = 2, mτ          (5) = 5, mτ        (6) = 6.
+                                                                                                (B,C)
+We encode this map succinctly and mnemonically as the “permutation” mτ                                 = (1, 0)(2, 4),
+which governs how VB is mapped to VC . Specifically, the root vector in VB corresponding
+to point 0 within the line 023 of PB (F32 ) is mapped on VC to the root vector 1 within line
+134 of PC (F32 ). In other words, Margolin’s representation M : A8 −→ EndC (V45 ) enforces
+M ((∞, 0)(1, 5)) ((2, 0, 0)B ) = ±(−1, b7, 1)C . Since A is fixed under τ , the corresponding per-
+                             (A,A)
+mutation of PA (F32 ) is mτ        = (2, 3)(4, 6), which induces a map from VA to itself, and so on.
+                                  (X,Y )         (U,V )
+We note that the maps mτ        and mτ                    for two pairs of rows need not be identical. This
+prompts us to introduce the following
+Definition A.1 Let Aeven be an array as in Table 2, with fixed labelling, and let τ ∈ A8 act by
+conjugation on the 15 rows of Aeven . If the induced maps mτ between Fano planes associated
+with the permuted rows are not all identical, then the array is said to exhibit the action of τ
+on the 45-dimensional space V45 with a twist.
+For a subgroup G ⊂ A8 , assume that there exists a labelling of the array Aeven which is
+compatible with the linear structure of the Fano planes PX (F42 ) for all X ∈ {A, B, . . . , N, O}
+and which exhibits a twist for no τ ∈ G. In other words, the action of G factorizes according
+to V45 = V ⊗ B. Then we say that G acts without a twist.
+Another partition of the 105 permutations of cycle shape 24 in A8 is useful for exhibiting the
+
+                                                           35
+        c00            c01            c02            c03            c04              c05            c06
+   A0   ∞0.15.23.46A   ∞5.01.26.34M   ∞3.02.16.45C   ∞2.03.14.56B   ∞6.04.13.25K     ∞1.05.24.36L   ∞4.06.12.35J
+
+   B0   ∞3.02.14.56A   ∞6.01.24.35I   ∞2.03.15.46C   ∞0.16.23.45B   ∞5.04.12.36H     ∞4.05.13.26D   ∞1.06.25.34E
+   C0   ∞2.03.16.45A   ∞4.01.25.36F   ∞0.14.23.56C   ∞3.02.15.46B   ∞1.04.26.35O     ∞6.05.12.34N   ∞5.06.13.24G
+
+   D0   ∞0.12.36.45D   ∞6.03.14.25M   ∞1.02.35.46G   ∞5.04.13.26B   ∞2.01.34.56K     ∞4.05.16.23H   ∞3.06.15.24O
+   E0   ∞0.16.24.35E   ∞2.04.13.56M   ∞4.02.15.36N   ∞6.01.25.34B   ∞5.03.14.26K     ∞3.05.12.46F   ∞1.06.23.45I
+
+   F0   ∞0.14.26.35F   ∞4.01.23.56O   ∞1.04.25.36C   ∞5.03.12.46E   ∞3.05.16.24K     ∞6.02.13.45L   ∞2.06.15.34H
+   G0   ∞0.12.34.56G   ∞2.01.35.46D   ∞6.05.13.24C   ∞4.03.15.26I   ∞1.02.36.455,K   ∞3.04.16.25L   ∞5.06.14.23N
+
+   H0   ∞0.13.26.45H   ∞3.01.25.46N   ∞6.02.15.34F   ∞4.05.12.36B   ∞5.04.16.23D     ∞2.06.14.35L   ∞1.03.24.56J
+   I0   ∞0.16.25.34I   ∞6.01.23.45E   ∞5.02.13.46O   ∞1.06.24.35B   ∞3.04.15.26G     ∞4.03.12.56L   ∞2.05.14.36J
+
+   J0   ∞6.04.12.35A   ∞3.01.24.56H   ∞5.02.14.36I   ∞1.03.26.45N   ∞4.06.15.23K     ∞2.05.16.34O   ∞0.13.25.46J
+   K0   ∞4.06.13.25A   ∞2.01.36.45G   ∞1.02.34.56D   ∞5.03.16.24F   ∞0.12.35.46K     ∞3.05.14.26E   ∞6.04.15.23J
+
+   L0   ∞5.01.24.36A   ∞1.05.23.46M   ∞6.02.14.35H   ∞4.03.16.25G   ∞3.04.12.56I     ∞0.15.26.34L   ∞2.06.13.45F
+   M0   ∞1.05.26.34A   ∞0.15.24.36M   ∞4.02.13.56E   ∞6.03.12.45O   ∞2.04.16.35N     ∞5.01.23.46L   ∞3.06.14.25D
+
+   N0   ∞0.13.24.56N   ∞4.02.16.35M   ∞5.06.12.34C   ∞1.03.25.46H   ∞2.04.15.36E     ∞6.05.14.23G   ∞3.01.26.45J
+   O0   ∞0.14.25.36O   ∞3.06.12.45M   ∞4.01.26.35C   ∞6.03.15.24D   ∞1.04.23.56F     ∞2.05.13.46I   ∞5.02.16.34J
+
+
+
+          Table 5: Array Aodd obtained from Aeven through conjugation by (0, ∞).
+
+
+
+action of the normal subgroup (Z2 )4 in (Z2 )4 o A8 ⊂ M24 , that is, to exhibit M : (Z2 )4 −→
+EndC (V45 ). This action is obtained from the array Aeven by conjugation with an element of
+S8 \ A8 . We choose this element to be (0, ∞) and call the conjugate array Aodd , displayed
+in Table 5. We label each of the permutations in the array by a letter A, B, . . . , N, or O,
+according to the row in which this permutation occurs in Aeven . Note that under conjuga-
+tion by (0, ∞), the seven boldfaced involution of column c1 of Aeven are interchanged with
+the seven involutions of row A, leaving (∞, 0)(1, 5)(2, 3)(4, 6) invariant. Similarly, (0, ∞) in-
+terchanges the seven boldfaced involutions of columns ci , i = 2, . . . , 6 with the involutions
+of rows M, C, B, K, L, J respectively, leaving (∞, 0)(1, 5)(2, 4)(3, 6), (∞, 0)(1, 4)(2, 3)(5, 6),
+(∞, 0)(1, 6)(2, 3)(4, 5), (∞, 0)(1, 2)(3, 5)(4, 6), (∞, 0)(1, 5)(2, 6)(3, 4), and (∞, 0)(1, 3)(2, 5)(4, 6)
+invariant. In fact, each row X 0 with X 0 ∈ {A0 , B 0 , . . . , N 0 , O0 } of Aodd contains involutions
+from seven different rows of Aeven , and therefore specifies seven of the 15 copies of V. To each
+row X 0 of Aodd , Margolin associates an automorphism of V45 (call it X 0 as well) that fixes
+these seven copies of V pointwise, and acts as −1 on the other eight. In other words, X 0 acts
+linearly on the base B of V45 = V ⊗ B; it fixes the seven vectors PY in our orthonormal basis
+of B which have labels Y occurring in the line X 0 of the dual array Aodd , while multiplying
+the other eight basis vectors by −1. X 0 acts trivially on V. The resulting automorphisms
+A0 , B 0 , . . . , N 0 , O0 are captured by Table 6, which can easily be identified as the character
+table of an abelian group of order 24 . Since this group is normalised by the action of A8 , alto-
+gether one obtains an action of (Z2 )4 o A8 on the 45-dimensional space V45 of (A.3) and thus
+M : (Z2 )4 o A8 −→ EndC (V45 ). The representation of the full group M24 on V45 is described
+in [Mar93].
+
+
+
+
+                                                       36
+         1       1    1    1    1    1    1    1    1    1    1    1    1    1    1    1
+
+                 A0   B0   C0   D0   E0   F0   G0   H0   I0   J0   K0   L0   M0   N0   O0
+
+         1   A   1     1    1   -1   -1   -1   -1   -1   -1    1    1    1    1   -1   -1
+         1   B   1     1    1    1    1   -1   -1   1     1   -1   -1   -1   -1   -1   -1
+         1   C   1     1    1   -1   -1    1    1   -1   -1   -1   -1   -1   -1    1    1
+         1   D   -1    1   -1    1   -1   -1    1   1    -1   -1    1   -1   1    -1    1
+         1   E   -1    1   -1   -1    1    1   -1   -1   1    -1    1   -1   1     1   -1
+         1   F   -1   -1    1   -1    1    1   -1   1    -1   -1    1   1    -1   -1    1
+         1   G   -1   -1    1    1   -1   -1    1   -1   1    -1    1   1    -1    1   -1
+         1   H   -1    1   -1    1   -1    1   -1   1    -1    1   -1   1    -1    1   -1
+         1   I   -1    1   -1   -1    1   -1    1   -1   1     1   -1   1    -1   -1    1
+         1   J   1    -1   -1   -1   -1   -1   -1   1     1    1    1   -1   -1    1    1
+         1   K   1    -1   -1    1    1    1    1   -1   -1    1    1   -1   -1   -1   -1
+         1   L   1    -1   -1   -1   -1    1    1    1    1   -1   -1    1    1   -1   -1
+         1   M   1    -1   -1    1    1   -1   -1   -1   -1   -1   -1   1    1     1    1
+         1   N   -1   -1    1   -1    1   -1    1   1    -1    1   -1   -1   1     1   -1
+         1   O   -1   -1    1    1   -1    1   -1   -1   1     1   -1   -1   1    -1    1
+
+              Table 6: The action of (Z2 )4 on the 45-dimensional space V45 .
+
+References
+[AKMW87] O. Alvarez, T.P. Killingback, M. Mangano, and P. Windey, String
+         theory and loop space index theorems, Commun. Math. Phys. 111 (1987), 1–12.
+
+   [AM94] P.S. Aspinwall and D.R. Morrison, String theory on K3 surfaces, in:
+          Mirror symmetry II, B. Greene and S.T. Yau, eds., AMS, 1994, pp. 703–716;
+          hep-th/9404151.
+
+ [CCN+ 85] J.H. Conway, R.T. Curtis, S.P. Norton, R.W. Parker, and R.A. Wil-
+           son, Atlas of finite groups, Oxford University Press, Eynsham, 1985, Maximal
+           subgroups and ordinary characters for simple groups, With computational assis-
+           tance from J. G. Thackray.
+
+   [Che10] M.C.N. Cheng, K3 surfaces, N = 4 dyons, and the Mathieu group M24 , Com-
+           mun. Number Theory Phys. 4 (2010), 623; arXiv:1005.5415[hep-th].
+
+   [Coh76] A. M. Cohen, Finite complex reflection groups, Ann. Sci. École Norm. Sup. 4
+           (1976), 379.
+
+  [DMZ12] A. Dabholkar, S. Murthy and D. Zagier, Quantum black holes, wall cross-
+          ing and mock modular forms; arXiv:1208.4074 [hep-th].
+
+                                               37
+   [EH11] T. Eguchi and K. Hikami, Note on Twisted Elliptic Genus of K3 Surface,
+          Phys. Lett. B694 (2011), 446–455; arXiv1008.4924 [hep-th].
+
+ [EOT11] Tohru Eguchi, Hirosi Ooguri, and Yuji Tachikawa, Notes on K3 surface
+         and the Mathieu group M24 , Exper.Math. 20 (2011), 91–96; arXiv:1004.0956
+         [hep-th].
+
+[EOTY89] T. Eguchi, H. Ooguri, A. Taormina, and S.-K. Yang, Superconformal
+         algebras and string compactification on manifolds with SU (n) holonomy, Nucl.
+         Phys. B315 (1989), 193–221.
+
+   [ET88] T. Eguchi and A. Taormina, Extended superconformal algebras and string
+          compactifications, Trieste School 1988: Superstrings, pp. 167–188.
+
+[FFRS10] J. Fröhlich, J. Fuchs, I. Runkel and C. Schweigert, Defect lines, du-
+         alities, and generalised orbifolds, Proceedings of the XVIth ICMP (2010), World
+         Sci. Publ., Hackensack NJ, 608–613.
+
+  [Gan12] T. Gannon, Much ado about Mathieu; arXiv:1211.5531 [math.RT].
+
+[GHV10a] M.R. Gaberdiel, S. Hohenegger, and R. Volpato, Mathieu moonshine in
+         the elliptic genus of K3, JHEP 1010 (2010), 062; arXiv:1008.3778 [hep-th].
+
+[GHV10b]       , Mathieu twining characters for K3,          JHEP 1009 (2010),        058;
+           arXiv:1006.0221 [hep-th].
+
+ [GHV11] M.R. Gaberdiel, S. Hohenegger and R. Volpato, Symmetries of K3 and
+         sigma models, Commun. Number Theory Phys. 6 (2012), 1–50
+
+[GPRV12] M.R. Gaberdiel, D. Persson, H. Ronellenfitsch, and R. Volpato,
+         Generalised Mathieu Moonshine; arXiv:1211.7074 [hep-th].
+
+ [GPV13] M.R. Gaberdiel, D. Persson, and R. Volpato, Generalised Moonshine
+         and Holomorphic Orbifolds; arXiv:1302.5425 [hep-th].
+
+   [Ka98] V. Kac, Vertex algebras for beginners, University Lecture Series 10, AMS (1998).
+
+  [KO03] A. Kapustin and D. Orlov, Vertex algebras, mirror symmetry, and D-branes:
+         the case of complex tori, Commun. Math. Phys. 233 (2003), 79–136.
+
+   [Kle78] F. Klein, Über die Transformation siebenter Ordnung der elliptische Funktionen,
+           in: Gesammelte Math. Abhandlungen III, 1878, p. 90.
+
+  [Kon98] S. Kondo, Niemeier lattices, Mathieu groups and finite groups of symplectic
+          automorphisms of K3 surfaces, Duke Math. J. 92 (1998), 593–603, Appendix by
+          S. Mukai.
+
+                                           38
+[LVW89] W. Lerche, C. Vafa, and N.P. Warner, Chiral rings in N = 2 superconfor-
+        mal theories, Nucl. Phys. B324 (1989), 427–474.
+
+[Mar93] R. S. Margolin, A geometry for M24 , J. Algebra 156 (1993), 370.
+
+[Muk88] S. Mukai, Finite groups of automorphisms of K3 surfaces and the Mathieu group,
+        Invent. Math. 94 (1988), 183–221.
+
+ [NW01] W. Nahm and K. Wendland, A hiker’s guide to K3 – Aspects of N = (4, 4)
+        superconformal field theory with central charge c = 6, Commun. Math. Phys. 216
+        (2001), 85–138; hep-th/9912067.
+
+ [Oog89] H. Ooguri, Superconformal symmetry and geometry of Ricci flat Kähler mani-
+         folds, Int. J. Mod. Phys. A4 (1989), 4303.
+
+ [TW11] A. Taormina and K. Wendland, The overarching finite symmetry group
+        of Kummer surfaces in the Mathieu group M24 , JHEP 08 (2013) 125;
+        arXiv:1107.3834 [hep-th].
+
+ [TW13]       , Symmetry-surfing the moduli space of Kummer K3s; arXiv:1303.2931
+          [hep-th].
+
+[Wen00] K. Wendland, Moduli spaces of unitary conformal field theories, Ph.D. thesis,
+        University of Bonn, 2000.
+
+ [We10] K. Wendland, On the geometry of singularities in quantum field theory, Proc.
+        of the ICM 2010, Hyderabad, Hindustan Book Agency (2010), 2144-2170.
+
+ [We14] K. Wendland, Snapshots of conformal field theory, arXiv:1404.3108 [hep-th].
+
+ [Wil86] R. A. Wilson, The geometry of the Hall-Janko group as quaternionic reflection
+         group, Geometriae Dedicata 20 (1986), 157.
+
+ [Wit87] E. Witten, Elliptic genera and quantum field theory, Commun. Math. Phys.
+         109 (1987), 525–536.
+
+
+
+
+                                        39
+

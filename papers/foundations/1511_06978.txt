@@ -1,0 +1,2046 @@
+                                           Do All BPS Black Hole Microstates Carry Zero Angular
+                                                              Momentum?
+
+
+
+                                          Abhishek Chowdhurya, Richard S. Garavusob, Swapnamay Mondala, Ashoke Sena
+arXiv:1511.06978v2 [hep-th] 11 Jan 2016
+
+
+
+
+                                                                       a
+                                                                     Harish-Chandra Research Institute
+                                                             Chhatnag Road, Jhusi, Allahabad 211019, India
+                                                          b
+                                                            Physical Sciences, Kingsborough Community College
+                                                                     The City University of New York
+                                                        2001 Oriental Boulevard, Brooklyn, NY 11235-2398, USA
+                                                        E-mail: abhishek,swapno,sen@hri.res.in, richard.garavuso@kbcc.cuny.edu
+
+
+                                                                                        Abstract
+
+                                              From the analysis of the near horizon geometry and supersymmetry algebra it has been
+                                           argued that all the microstates of single centered BPS black holes with four unbroken supersym-
+                                           metries carry zero angular momentum in the region of the moduli space where the black hole
+                                           description is valid. A stronger form of the conjecture would be that the result holds for any
+                                           sufficiently generic point in the moduli space. In this paper we set out to test this conjecture
+                                           for a class of black hole microstates in type II string theory on T 6 , represented by four stacks of
+                                           D-branes wrapped on various cycles of T 6 . For this system the above conjecture translates to
+                                           the statement that the moduli space of classical vacua must be a collection of points. Explicit
+                                           analysis of systems carrying a low number of D-branes supports this conjecture.
+
+
+
+
+                                                                                            1
+Contents
+1 Introduction                                                                                              2
+
+2 The system                                                                                                6
+
+3 Supersymmetric ground states for N = 1                                                                  11
+  3.1 F-term equations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                12
+        3.2   D-term equations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         13
+               (k)
+        3.3   Xi dependent terms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           14
+        3.4   Gauss’ law constraint . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        14
+
+4 Supersymmetric ground states for N = 2                                                                  15
+  4.1 F-term equations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                15
+  4.2 D-term equations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                17
+                (k)
+        4.3   Xi dependent terms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           18
+        4.4   Gauss’ law constraint . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        19
+
+5 Supersymmetric ground states for N = 3                                                                  20
+
+6 Conclusion                                                                                              21
+
+A Normalization of Z-Z-Z coupling                                                                         21
+
+B Explicit solutions for N = 2                                                                            32
+
+
+1         Introduction
+Based on the analysis of the near horizon geometry of a BPS black hole it has been argued
+that as long as the black hole carries four unbroken supersymmetries, the microstates of single
+centered black holes will all carry zero angular momentum [1, 2].1 Since the counting of black
+    1
+    This statement requires some qualification since all BPS black holes form a representation of the super-
+symmetry algebra carrying many different spins. This arises from the quantization of the fermion zero modes
+associated with broken supersymmetry. In the black hole description these modes live outside the horizon. On
+the other hand, the property of zero angular momentum refers to the microstates associated with the black
+hole horizon. Therefore the correct statement is that the microstates of single centered BPS black holes are
+given by the tensor product of the elementary BPS supermultiplet, obtained by quantization of the goldstino
+fermion zero modes, and singlet representation of the SU(2) rotation group. For black holes in five dimensions
+
+
+                                                      2
+hole microstates is normally done in a regime that is different from the regime in which the
+black hole description is valid, it is difficult to test this conjecture directly. Indirect tests of
+this have been performed by examining the BPS index – given by number of states weighted by
+(−1)2J3 after factoring out the goldstino fermion zero mode contributions – which is expected
+to be independent of the moduli. On the black hole side if all the microstates carry zero angular
+momentum, then the BPS index will be positive. This implies that on the microscopic side
+also we must always have positive index. This has been tested in many examples [3, 4], and so
+far no counterexample has been found, even though the microscopic counting typically gives
+states carrying different angular momenta (even after factoring out the the goldstino zero mode
+contribution), some of which give positive contribution to the index and others give negative
+contribution.
+   If this conjecture is correct, then one might wonder at what point in the moduli space does
+the spectrum of BPS states change from having various different angular momenta to only
+zero angular momentum? A natural conjecture – which we shall call the strong form of the
+zero angular momentum conjecture – will be that this happens at any sufficiently generic point
+in the moduli space, even in regions where the system is weakly coupled and the microscopic
+description is valid. This is not in direct conflict with the results for the microscopic spectrum
+described at the end of the previous paragraph, since typically the microscopic spectrum is
+computed not only by setting the string coupling to be weak, but also by setting several other
+moduli to special values where the quantum mechanics describing the microstates simplifies.
+   A possible complication in testing this conjecture is that it refers to the microstates of single
+centered black holes. Even in regions where the black hole description is valid, typically there
+are multi-centered BPS black hole configurations contributing to this index, and these typically
+carry non-zero angular momentum. In N = 2 supersymmetric theories in 3+1 dimensions the
+contribution from the multi-centered black holes is very complicated [5] and it is not easy to
+disentangle it from the contribution from single centered black holes, although some progress
+has been made on this front [6]. In this context the results of [7–11] can be taken as providing
+partial support to this conjecture. The situation is somewhat better in N = 4 supersymmetric
+theories where the contribution from multi-centered black holes are better understood [12–15].
+But the situation is best for N = 8 supersymmetric theories, where for the charge configuration
+of the kind for which we have black holes, there is no contribution to the index from multi-
+a further qualification is needed – the black hole microstates are singlets under one of the two SU (2)’s– the
+one that forms a subgroup of the SU (1, 1|2) supergroup describing symmetries of the near horizon geometry.
+This complication will not affect our analysis since we shall focus on black holes in 3+1 dimensions.
+
+                                                      3
+centered black holes [16] and in fact all multi-centered BPS states are expected to disappear
+at a generic point in the moduli space. Therefore in this case the strong form of the conjecture
+will imply that at a generic point in the moduli space, all the microstates must carry zero
+angular momentum.
+    In a previous paper [17] we began to test this conjecture by considering a system of four
+stacks of D-branes in type II string theory of T 6 . If we denote by x4 , . . . , x9 the coordinates
+along T 6 , then in an appropriate duality frame the general system considered in [17] can
+be represented as N1 D2-branes wrapped along the 4-5 directions, N2 D2-branes wrapped
+along the 6-7 directions, N3 D2-branes wrapped along the 8-9 directions and N4 D6-branes
+wrapped along the 4-5-6-7-8-9 directions. We keep the moduli sufficiently generic by switching
+on generic values of the constant metric and NS-NS 2-form background along T 6 . The low
+energy dynamics of the system was shown to describe a specific quantum mechanical system,
+obtained from the dimensional reduction of an N = 1 supersymmetric field theory in 3+1
+dimensions to 0+1 dimensions. The moduli space describing the classical supersymmetric
+solutions2 corresponds to gauge inequivalent solutions to the F- and D-term constraints of the
+theory, and the quantum BPS states are given by harmonic forms on this moduli space [18]. By
+considering the simplest system in which we have one D-brane in each of the four stacks, it was
+found that except for trivial flat directions associated with translation along the non-compact
+directions as well as along T 6 and dual T 6 , the moduli space is a collection of 12 points. The
+quantization of the translational zero modes produces states carrying different momenta along
+the non-compact directions and along T 6 and also different fundamental string winding charges
+along T 6 . Once these quantum numbers are fixed we get a unique state from quantization of the
+bosonic zero modes. The fermionic partners of these bosonic zero modes are the 28 goldstino
+fermion zero modes, whose quantization produces the basic BPS supermultiplet. The fact
+that after factoring out the zero mode contributions the moduli space becomes a collection of
+isolated points shows that the BPS ground state associated with each solution is unique, and
+hence must be singlets of the SU(2) rotation group.3 The 12 isolated configurations then lead
+to 12 BPS states, each carrying zero angular momentum. This is consistent with the strong
+conjecture stated above. This also shows that the BPS index of this system is 12. This is in
+perfect agreement with the result of the computation of the index for the same system in a
+dual description [20, 21].
+   2
+     This should not be confused with the moduli space describing background closed string fields which are
+kept at generic values.
+   3
+     A similar result for the D0-D4 system was found in [19].
+
+                                                    4
+   In this paper we extend the analysis of [17] to the cases where the number of D6-branes in
+the stack is 2 or 3. Again we find that for generic constant background values of metric and
+NS-NS 2-form fields, the moduli space of classical supersymmetric configurations consists of a
+discrete set of points after factoring out the zero mode contribution. This in turn shows that
+after factoring out the basic BPS supermultiplet we are left with a set of singlet representations
+of the SU(2) rotation group: 56 for the case of 2 D6-branes and 208 for the case of 3 D6-branes.
+This is again consistent with the strong form of the conjecture stated above. Furthermore since
+all states are SU(2) singlets, the BPS indices associated with these states are also given by 56
+and 208, respectively. This agrees precisely with the index computed in a dual description [21].
+However in [21] the counting was carried out at a non-generic point in the moduli space, and the
+spectrum contained BPS states carrying different angular momenta. The index was the final
+result after imperfect cancellation between contributions from bosonic and fermionic states.
+In contrast here all states carry zero angular momentum and give positive contribution to the
+index.
+   The rest of the paper is organized as follows. In §2 we describe the system under study,
+and review the results of [17] for the supersymmetric quantum mechanics describing the low
+energy dynamics of this system. In §3 we describe in detail the steps we follow for counting
+the number of BPS states consisting of a system of one D2-brane along 4-5 directions, one
+D2-brane along 6-7 directions, one D2-brane along 8-9 directions and one D6-brane along 4-
+5-6-7-8-9 directions. In §4 we describe the analysis for a system consisting of one D2-brane
+along 4-5 directions, one D2-brane along 6-7 directions, one D2-brane along 8-9 directions and
+two D6-branes along 4-5-6-7-8-9 directions. In §5 we briefly describe the analysis for three D6-
+branes along 4-5-6-7-8-9 directions, leaving the number of D2-branes unchanged. We conclude
+in §6 with a discussion on the possible implications of our results in general, and in particular
+for the fuzzball program. In appendix A we carefully fix the signs and normalizations of various
+terms in the superpotential – the analysis of [17] was insensitive to these choices but they seem
+to be relevant for analyzing the general case with multiple D-branes in one or more stacks. In
+this we fix the normalization by explicit string theory computation and the signs by various
+symmetry requirements. We are however left with a twofold ambiguity in the choice of sign,
+only one of which yields the correct answer in different cases we have studied. While a careful
+string theory computation should be able to resolve this ambiguity, we have not done this. In
+appendix B we give explicit results for the 56 solutions in the special case when one of the
+stacks contains two D-branes with the other stacks containing one D-brane each.
+
+
+                                                5
+2       The system
+We consider type IIA string theory on T 6 labelled by the coordinates x4 , . . . , x9 and in this
+theory we take a system containing one D2-brane wrapped along 4-5 directions, one D2-brane
+wrapped along 6-7 directions, one D2-brane wrapped along 8-9 directions and N D6-branes
+wrapped along 4-5-6-7-8-9 directions, where N takes values 1, 2 and 3.4 As in [17] we shall
+work at a generic point in the moduli space at which constant metric and 2-form backgrounds
+are turned on along T 6 . The supersymmetric quantum mechanics describing this system was
+constructed in [17]. Since this system has four unbroken supercharges – the same as for N = 1
+supersymmetric theories in four dimensions – we shall use the language of four dimensional
+theories to organize the fields and terms in the Lagrangian. However since we are really
+considering a quantum mechanical system, we ignore all spatial derivative terms in the action.
+   We begin by listing the field content of this 0+1 dimensional field theory. We shall focus
+only on the bosons since the fermionic field content is determined by supersymmetry. The four
+dimensional theory can be regarded as an N = 1 supersymmetric theory with gauge group
+                                                                                         (k)
+U(1) ×U(1) ×U(1) ×U(N) with additional chiral multiplets. We denote by Xi for 1 ≤ k ≤ 4,
+1 ≤ i ≤ 3 the i-th spatial component of these four sets of gauge fields. k = 1, 2, 3 will stand for
+                                                                           (4)
+the U(1) factors and k = 4 will stand for the U(N) factor.5 Therefore Xi denotes an N × N
+                                            (k)
+Hermitian matrix for each i whereas Xi for 1 ≤ k ≤ 3, 1 ≤ i ≤ 3 are real numbers. Physically
+     (k)
+the Xi for 1 ≤ k ≤ 3 describe the position of the k-th D2-brane along the three non-compact
+                                                  (4)
+directions and the diagonal elements of Xi label the positions of the N D6-branes along the
+                                                         (4)
+non-compact directions. The off-diagonal components of Xi arise from open strings stretched
+between the D6-branes. The rest of the bosonic fields can be organized into chiral multiplet
+scalars. First of all, for each of the four stacks of D-branes we have three chiral multiplets in
+                                                           (k)                            (k)
+the adjoint representation. We shall denote them by Φi for 1 ≤ k ≤ 4, 1 ≤ i ≤ 3. Φi for
+                                                            (4)
+1 ≤ k ≤ 3 describe 1×1 complex matrices whereas Φi will describe an N ×N complex matrix,
+                                                                                           (k)
+transforming in the adjoint representation of the respective gauge groups. Physically the Φi ’s
+for 1 ≤ k ≤ 3 label the position of the k-th D2-brane along the directions of T 6 transverse to
+the D2-brane, and also the Wilson lines on the k-th D2-brane along directions tangential to
+    4
+     Alternatively, by making T-duality transformations along each of the six circles we can regard this as
+a system of one D4-brane along each of the three 4-cycles 4567, 6789 and 4589, and N D0-branes. Under
+this transformation the quantum theory will remain the same, but the physical interpretation of the different
+variables given below will differ, with positions and Wilson lines getting exchanged.
+   5                                         (k)
+     There are also non-dynamical fields X0 which implement the gauge invariance constraints. Their effect
+will be discussed later.
+
+
+                                                        6
+                                                                                 (4)
+the D2-brane. On the other hand the diagonal elements of Φi label the Wilson lines along the
+                                            (4)
+D6-branes. The off-diagonal components of Φi arise from open strings stretched between the
+D6-branes. Besides these fields, for every pair of D-brane stacks labelled by (k, ℓ) we have two
+chiral superfields Z (kℓ) and Z (ℓk) arising from open strings stretched between the two D-brane
+stacks, transforming respectively in the bi-fundamental and anti-bi-fundamental representation
+of the corresponding gauge groups. Therefore Z (kℓ) for 1 ≤ k, ℓ ≤ 3 are 1 × 1 matrices, Z (k4) for
+1 ≤ k ≤ 3 are 1 × N matrices and Z (4k) for 1 ≤ k ≤ 3 are N × 1 matrices. Under the rotation
+                                                                           (k)                              (k)
+group SU(2) acting on the non-compact directions, Xi ’s transform as vectors whereas Φi ’s
+and Z (kℓ) ’s transform as scalars.
+   The potential involving these fields receives contributions from several sources. First of all
+we have several terms in the superpotential.6 They are given by [17]
+                 " 3
+             √     X                             X  3                    
+                          kℓm      (k) (kℓ) (ℓk)                   (k)
+    W1 =       2        ε Tr Φm Z Z               +     Tr Z (4k) Φk Z (k4)
+                         k,ℓ,m=1                                     k=1
+                                                           #
+                             3
+                             X                        
+                                       (4)
+                         −         Tr Φk Z (4k) Z (k4)
+                             k=1
+                     
+                √            (1)      (2)                      (2)   (3)               (3)   (1)
+            =    2 (Φ3 − Φ3 )Z (21) Z (12) + (Φ1 − Φ1 )Z (32) Z (23) + (Φ2 − Φ2 )Z (31) Z (13)
+                                                                            
+                      (1)     (4)                     (2)          (4)
+                +Tr (Φ1 IN − Φ1 )Z (41) Z (14) + Tr (Φ2 IN − Φ2 )Z (42) Z (24)
+                                             
+                      (3)     (4)   (43) (34)
+                +Tr (Φ3 IN − Φ3 )Z Z             ,                                            (2.1)
+
+                                                                           
+            √           4
+                         X                                               
+                                                                            
+  W2 =       2                    (−1)δk1 δℓ3 δm4 Tr Z (kℓ) Z (ℓm) Z (mk) 
+                      k,ℓ,m=1
+                     k<ℓ,m; ℓ6=m
+                                                                                                           
+            √
+        =    2 Z (31) Z (12) Z (23) + Z (13) Z (32) Z (21) + Tr Z (12) Z (24) Z (41) + Tr Z (42) Z (21) Z (14)
+                                                                                       
+                  (13) (34) (41)                 (31) (14) (43)              (34) (42) (23)
+            −Tr Z Z Z                 + Tr Z Z Z                  + Tr Z Z Z
+                                   
+            +Tr Z (43) Z (32) Z (24) ,                                                                      (2.2)
+
+   6
+    The superpotential may contain other terms, e.g. terms quartic in Z (kℓ) ’s. However if we consider the
+limit when all the c(kℓ) ’s and c(k) ’s are small, say of order
+                                                            √ λ for some small parameter λ, then the solutions
+                                                      (k)
+to the F- and D-term equations occur at Z (kℓ) , Φi ∼ λ. In this limit the effect of the other terms in the
+                                                                                       (k)
+superpotential can be ignored. This limit also allows us to ignore the fact that the Φi fields have periodic
+identification.
+
+                                                                7
+                   "                                                                #
+           √            3
+                        X                           X3      h                i
+                                                                      (k)     (4)
+W3 =           2                 c(kℓ) εkℓm Tr Φ(k)
+                                                m    +   c(k4) N4 Tr Φk − Tr Φk
+                       k,ℓ,m=1                       k=1
+                                                                                           
+           √          (1)  (2)            (2)    (3)         (3)  (1)            (1)     (4)
+       =    2 c(12) (Φ3 − Φ3 ) + c(23) (Φ1 − Φ1 ) + c(13) (Φ2 − Φ2 ) + c(14) Tr Φ1 IN − Φ1
+                                                         
+             (24)     (2)      (4)     (34)     (3)     (4)
+           +c Tr Φ2 IN − Φ2 + c Tr Φ3 IN − Φ3                   ,                       (2.3)
+
+and                         h         i                                  
+                  √      (4)   (4) (4)
+                                             √      (4) (4) (4) (4) (4) (4)
+            W4 = − 2 Tr Φ1 Φ2 , Φ3        = − 2 Tr Φ1 Φ2 Φ3 − Φ1 Φ3 Φ2 ,                                  (2.4)
+where c(kℓ) = c(ℓk) for 1 ≤ k < ℓ ≤ 4 are parameters whose values are determined in terms of
+the background metric and 2-form fields [17], and Ip denotes the p × p identity matrix. There
+are some differences from the form of the superpotential given in [17]. First of all in [17] the
+overall coefficient of W2 was undetermined. For N = 1 this constant can be scaled away by
+                                            (k)
+appropriate scaling of the fields Z (kℓ) , Φi and the parameters c(kℓ) , and so its value was not
+needed. However for N ≥ 2 this can no longer be done without changing the coefficient of
+the cubic Φ-Φ-Φ coupling. Since the result depends on the choice of this coefficient, we have
+fixed it from explicit string theory computation described in appendix A. Second, we have
+                    δk1 δℓ3 δm4
+a strange sign (−1)
+                               in the expression for W2 which is responsible for the minus sign
+in front of the Tr Z (13) Z (34) Z (41) term. This sign was missed in [17] but must be there for
+symmetry reasons. This has also been explained in appendix A.7 In appendix A we also discuss
+generalization of (2.1)-(2.4) to the case where we have an arbitrary number of D-branes in each
+of the four stacks.
+    The F-term potential is given by
+                                                         X ∂W 2
+                                                VF =                     ,                                (2.5)
+                                                           α
+                                                                   ∂ϕα
+where
+                                            W = W1 + W2 + W3 + W4 ,                                       (2.6)
+and {ϕα } denotes the set of all the chiral superfields.
+   Besides the F -term potential, there is a D-term potential given by
+              4      X4                 4                  3                     2 
+           1 X              (kℓ) (kℓ)†
+                                         X
+                                               (ℓk)† (ℓk)
+                                                            X     (k)  (k)†   (k)
+    VD =         Tr        Z Z         −     Z      Z     +     [Φi , Φi ] − c INk      ,                 (2.7)
+           2 k=1       ℓ=1               ℓ=1                i=1
+                                   ℓ6=k           ℓ6=k
+
+   7
+    As discussed in §3, the result for the number of states for N = 1, obtained in [17], is not affected by this
+change of sign.
+
+                                                               8
+where N1 = N2 = N3 = 1 and N4 = N. The FI parameters c(k) are also determined from the
+background values of the 2-form field and satisfy
+                                             4
+                                             X
+                                                    c(k) Nk = 0 .                                 (2.8)
+                                              k=1
+
+   Finally the dimensional reduction of the coupling of the gauge fields (whose spatial com-
+                               (k)
+ponents are denoted by Xi ) to chiral multiplets leads to the potential
+            4 X
+            X 4 X
+                3              h                        †                         i
+                                  (k)                (ℓ)      (k)                (ℓ)
+Vgauge =                  Tr     Xi Z (kℓ) − Z (kℓ) Xi       Xi Z (kℓ) − Z (kℓ) Xi
+            k=1 ℓ=1 i=1
+                ℓ6=k
+
+              4 X
+              X 3                                   1X  4 X   3                          
+                             (k) (k) †  (k)  (k)                      (k)  (k) † (k)  (k)
+            +           Tr Xi , Φj       Xi , Φj      +             Tr [Xi , Xj ] [Xi , Xj ] .
+              k=1 i,j=1
+                                                        4 k=1 i,j=1
+                                                                                                  (2.9)
+
+Therefore the total potential is given by
+
+                                         V = VF + VD + Vgauge .                                  (2.10)
+
+   The potential given above has a shift symmetry
+
+             Φ(k)  (k)
+              m → Φm + ξm ,           for 1 ≤ k ≤ 3,        k 6= m,   1 ≤ m ≤ 3,
+              (k)  (k)                (4)   (4)
+             Φk → Φk + ζk ,          Φk → Φk + ζk IN , for 1 ≤ k ≤ 3 ,
+               (k)  (k)                 (4)   (4)
+             Xi → Xi + ai ,          Xi → Xi + ai IN , for 1 ≤ i ≤ 3,               1 ≤ k ≤ 3,   (2.11)
+
+where {ξm } and {ζk } are arbitrary complex parameters and {ai } are arbitrary real parameters.
+These shift symmetries generate six complex translations along the compact directions and
+their duals and three real translations along the non-compact directions.
+   Our strategy for determining the spectrum of BPS states will be to regard the low energy
+dynamics of the system as the motion of a superparticle moving on the classical vacuum
+manifold defined by the space of V = 0 configurations, and then quantize the system and find
+its supersymmetric ground states. Now the shift symmetries (2.11) generate flat directions of
+the potential V . Quantization of the bosonic zero modes associated with these flat directions
+leads to a unique ground state if we restrict to the sector carrying zero momentum and winding
+along the internal directions and zero momentum along the non-compact directions. There
+are also associated fermionic zero modes describing the goldstino modes corresponding to
+
+                                                       9
+32 − 4 = 28 broken supersymmetries. Quantization of these fermion zero modes produces the
+supermultiplet describing 1/8 BPS states of N = 8 supersymmetric string theory but has no
+other effect on the rest of the system. The BPS spectrum is given by a tensor product of
+this basic supermultiplet with some (possibly reducible) representation of the rotation group
+SU(2). Our goal will be to determine which representation of SU(2) is tensored with the basic
+supermultiplet.
+   The information about the SU(2) representation with which the supermultiplet is tensored
+is contained in the character P (y) ≡ T r(y 2J3 ) of the representation. P (y) is computed as
+follows. We shall show at the end of appendix A that the vanishing of Vgauge given in (2.9)
+                     (k)
+requires all the Xi ’s to vanish (up to the shift symmetry described in the last line of (2.11)).
+If the gauge inequivalent solutions to the VF = VD = 0 condition generate a manifold M of
+complex dimension d after factoring out the flat directions of the potential associated with the
+                                               (k)
+symmetries given in (2.11), and setting the Xi ’s to zero, then the BPS states of the system
+are in one to one correspondence with the harmonic forms on M, and the rotational SU(2)
+is identified with the Lefschetz SU(2) acting on these forms (see e.g. [7, 22]). Therefore if bp
+denotes the p-th betti number of M and d denotes the complex dimension of M, then we
+have8
+                                                      X
+                                            P (y) =        bp y p−d .                                      (2.12)
+                                                       p
+
+If M contains several components then we have to add up the contribution from various
+components to get the total P (y). The BPS index (which is the 14-th helicity trace −B14 [23,24]
+from the space-time viewpoint) is given by T r(−1)2J3 , with the trace running over the states
+with which the basic BPS supermultiplet is tensored to get the full spectrum of BPS states.
+Therefore it is given by P (−1), which, according to (2.12), is (−1)d times the Euler character
+of M.
+   The conjecture that all BPS states carry zero angular momentum now translates to the
+requirement that P (y) is y-independent, i.e. the subspace M consists of isolated points. In
+   8                                                                                                 (k)
+     Intuitively this identification can be understood as follows. Since the vacuum manifold has Xi = 0 for
+all k, i, the moduli space is spanned by the scalars. The fermionic partners of the scalars take values in the
+tangent space of M – in fact for each tangent vector there are two massless fermions which we can denote by
+ψ a and ψ a† where a labels independent tangent vectors. We can choose ψ a and ψ a† such that ψ a† has J3 = 1/2
+and ψ a has J3 = −1/2. Now we can begin with the states annihilated by all the ψ a ’s, identify them as the zero
+forms on M, and build the total space of states by applying ψ a† ’s on this state. This space is isomorphic to
+the space of forms on M, and the BPS condition translates to these forms being harmonic. In this notation we
+see that the p-forms carry J3 eigenvalue (p − d)/2, where the shift −d/2 is the J3 eigenvalue of the zero forms,
+and is necessary to ensure that the states form a representation of SU (2). This leads to (2.12).
+
+
+                                                      10
+this case the BPS index P (−1) is equal to the degeneracy P (1) and just counts the number of
+gauge inequivalent solutions to the V = 0 condition.
+   We conclude this section by giving the expected result for the index from analysis of the
+spectrum in a dual description containing a D1-D5-KK monopole state carrying momentum
+along the common circle shared by the world-volume of the D1-brane, D5-brane and the KK
+monopole. Let us denote by ĉ(u) the numbers appearing in the expansion
+                                              X
+                       − ϑ1 (z|τ )2 η(τ )−6 ≡   ĉ(4k − l2 ) e2πi(kτ +lz) ,                     (2.13)
+                                                  k,l
+
+where ϑ1 (z|τ ) and η(τ ) are respectively the odd Jacobi theta function and the Dedekind eta
+function. Then the expected result for the index P (−1) is [21]9
+
+                                               − ĉ(4N) .                                       (2.14)
+
+Explicit computation gives
+
+               − ĉ(4) = 12,    −ĉ(8) = 56,    −ĉ(12) = 208,    −ĉ(16) = 684,    ···         (2.15)
+
+In the previous paper [17] we carried out the analysis for N = 1 and found 12 isolated solutions
+to the V = 0 equation. Using (2.14) and (2.15) we see that this is in perfect agreement with the
+results from the dual description. In this paper we shall carry out the computation for N = 1,
+2 and 3 using a slightly
+                        different method.
+                                           The reanalysis of the N = 1 case is important since
+the sign of the Tr Z (13) Z (34) Z (41) term in W2 given in (2.2) differs from that used in [17]. It
+turns out however that the result remains unchanged.
+
+
+3       Supersymmetric ground states for N = 1
+Our goal is to determine the manifold M parametrizing the gauge inequivalent solutions to
+the equation V = 0. Since the potential is a sum of positive semi-definite terms, this in turn
+requires that each term in the potential vanishes separately. We shall now analyze the condition
+for vanishing of various terms separately. Our method differs from the one used in [17] in that
+in [17] we used gauge invariant combinations of variables for analyzing the F-term equations,
+whereas here we work in a specific gauge. While for N = 1 both approaches are equally
+efficient, working in a fixed gauge seems to make the analysis simpler for N ≥ 2.
+    9
+    Various macroscopic tests of this formula beyond the one provided by the Bekenstein-Hawking formula
+have been carried out in [25–29].
+
+                                                  11
+3.1      F-term equations
+Vanishing of the F-term contribution to the potential requires that ∂W/∂ϕα vanishes for each
+                     (k)
+α. The ∂W/∂Φm = 0 equations give
+
+                                       Z (kℓ) Z (ℓk) = −c(kℓ)                for 1 ≤ k, ℓ ≤ 4,             k 6= ℓ .              (3.1)
+
+The ∂W/∂Z (kℓ) = 0 equations give
+            3
+            X                                                                  4
+                                                                                 X
+                         kℓm           (ℓk)
+                     ε             Z          Φ(k)  (ℓ) (ℓk)
+                                               m − Φm Z                      +            Z (ℓm) Z (mk) (−1)δk1 δℓ3 δm4 = 0
+            m=1                                                                  m=1
+                                                                                 m6=k,ℓ
+
+                                                                         for 1 ≤ k, ℓ ≤ 3,            k 6= ℓ ,
+                                                                3
+                                                                  X
+                    (k)                             (4)
+                Φk Z (k4) − Z (k4) Φk                         +          Z (kℓ) Z (ℓ4) (−1)δk1 δℓ3 = 0 for 1 ≤ k ≤ 3 ,
+                                                                  ℓ=1
+                                                                  ℓ6=k
+
+                                                                3
+                                                                  X
+                    (4k)    (k)  (4)
+                Z          Φk − Φk Z (4k)                     +           Z (4m) Z (mk) (−1)δm1 δk3 = 0 for 1 ≤ k ≤ 3 .          (3.2)
+                                                                  m=1
+                                                                  m6=k
+
+
+   Since the superpotential has a large group of symmetries, in order to find solutions to these
+F-term equations we need to choose one representative from each symmetry orbit. First we
+use the shift symmetries (2.11) to choose
+                    (1)                       (1)                 (1)                (2)             (2)               (3)
+                Φ1 = 0,                  Φ2 = 0,              Φ3 = 0,              Φ1 = 0,         Φ2 = 0,            Φ3 = 0 .   (3.3)
+
+This effectively removes the flat directions associated with the shift symmetries. As discussed
+below (2.11), once we have made this choice, we can forget about the flat directions associated
+with these shift symmetries and also the fermionic superpartners of these flat directions. The
+information about P (y) is contained in the rest of the system of equations.
+    Next we note that the superpotential is invariant under the complexified gauge transfor-
+mation
+
+                                   Z (kℓ) → ak (aℓ )−1 Z (kℓ)                    for 1 ≤ i ≤ 4,            1 ≤ k ≤ 4,            (3.4)
+
+where ak for 1 ≤ k ≤ 4 are complex numbers. Therefore solutions to the F-term equations
+come as orbits of this symmetry group. Using this we shall now make a convenient choice of
+gauge. Of the four parameters encoded in a1 , a2 , a3 and a4 , one combination does not act
+on the fields. Therefore only three are independent. Now, since Z (kℓ) ’s for 1 ≤ k, ℓ ≤ 4 are
+
+                                                                              12
+complex numbers, (3.1) shows that neither Z (kℓ) nor Z (ℓk) can vanish as long as c(kℓ) ’s are
+chosen to be non-zero. This allows us to fix the gauge corresponding to the transformations
+generated by a1 , a3 and a4 by setting
+
+                              Z (12) = 1,    Z (23) = 1,     Z (14) = 1 .                  (3.5)
+
+   We now substitute the gauge choices (3.3) and (3.5) into the F-term equations and look
+for solutions to these equations. For this we choose random rational values of the c(kℓ) ’s for
+1 ≤ k, ℓ ≤ 4. A numerical analysis of the Hilbert series using Singular [30] and Macaulay2
+[31], treating the F-term equations as ideals of the ring, shows that the solution space is a
+collection of 12 points. Explicit numerical solutions in Mathematica [32] also yields precisely
+12 solutions for each choice of the constants {c(kℓ) }.
+
+3.2    D-term equations
+Next we turn to solving the D-term equations. For this we recall that the F-term equations
+do not give isolated solutions, but give orbits of the complexified gauge group generated by
+the complex numbers a1 , a2 , a3 and a4 . The D-term equations only respect a subgroup of
+this symmetry group consisting of physical gauge transformations. Therefore for each of the
+solutions to the F-term equations we can examine the orbit under (3.4) and then try to de-
+termine a1 , a2 , a3 and a4 by demanding that the D-term equations are satisfied. As before,
+one combination of a1 , a2 , a3 and a4 does not act on the variables, and so we can restrict to
+transformations for which a3 = 1. However this is not expected to fix the parameters a1 , a2 ,
+a3 and a4 completely since a subgroup of the transformations (3.4), corresponding to physical
+gauge transformations, generates a symmetry of the D-term equations of motion as well. This
+subgroup is generated by taking the ai ’s to be phases. This means that once we have found
+a set of ai ’s that give a solution to the D-term equations, we can generate other solutions by
+performing U(1)4 transformations. The effect of these transformations will be to transform the
+parameters a1 , a2 , a3 and a4 by
+                                            ak → eiφk ak ,                                 (3.6)
+where φk are real numbers. Therefore for finding solutions up to gauge transformations, we
+can use the transformations (3.6) to fix the ‘gauge’ for a1 , a2 , a3 and a4 . We choose a gauge
+in which all the ak ’s are real and positive.
+   We now transform each of the 12 solutions to the F-term equations by (3.4) with real
+positive ak ’s and try to determine the ak ’s by solving the D-term equations. For each of the
+
+                                                 13
+12 cases, we find that there is a unique choice of real positive ak ’s that solves the D-term
+equations. This shows that up to gauge transformations, there are precisely 12 solutions to
+the F- and D-term equations. More accurately we have 12 different gauge orbits, generated by
+U(1)4 transformation, as solutions to the F- and D-term equations.
+
+          (k)
+3.3    Xi       dependent terms
+                                                                                    (k)
+Although at the end of appendix A we shall give a general argument that all Xi ’s must vanish
+up to the shift symmetry described in the last line of (2.11), we shall now verify this explicitly
+                                                                          (k)
+for this example. For this we have to demand the vanishing of the Xi dependent terms in
+the potential given in (2.9). Since vanishing of F- and D-terms is a necessary condition for a
+                                                     (k)
+supersymmetric vacuum, the choice of Z (kℓ) ’s and Φi ’s must be restricted to the 12 solutions
+that we have found. Now we note that since (2.9) is a sum of positive definite terms, in order
+for Vgauge to vanish, each term in the potential must vanish. In particular this will require
+                  (k)       (ℓ)
+                (Xi     − Xi ) Z (kℓ) = 0 ,   for 1 ≤ k, ℓ ≤ 4,   k 6= ℓ,   1 ≤ i ≤ 3.       (3.7)
+                                                            (k)      (ℓ)
+Using the result that the Z (kℓ) are non-zero, we get Xi = Xi . Using the shift symmetry
+                                               (1)                                  (k)
+given in the third line of (2.11) we can set Xi to zero for 1 ≤ i ≤ 3. As a result Xi for
+k = 2, 3 and 4 must also vanish. This shows that the only way to make the potential vanish is
+                 (k)
+to have all the Xi ’s vanish for 1 ≤ k ≤ 4 and 1 ≤ i ≤ 3.
+
+3.4    Gauss’ law constraint
+Finally we turn to the Gauss’ law constraint. This is not a constraint on the classical configura-
+tion but on the quantum vacuum. When we dimensionally reduce the 3+1 dimensional theory
+to 0+1 dimensions we also get non-dynamical fields from the zeroth component of the gauge
+                                                               (k)
+fields which we have set to zero. The equations of motion for A0 imposes the constraint that
+the total gauge charge carried by the state must vanish. Since for a charged complex scalar
+the gauge charge will involve a product of the field and its time derivative, the gauge charge
+will vanish for a classical solution which is time independent. But we still need to examine if
+the quantum ground state – which can be regarded as the ground state of a system of coupled
+harmonic oscillators describing small oscillations around the isolated vacua, and a set of flat
+directions generated by the gauge transformation – is invariant under the gauge transformation.
+    Now as already mentioned, the solutions to the potential minimization equations generate
+12 different gauge orbits. The effect of gauge transformation is to move a point in the vacuum
+
+                                                   14
+manifold along the gauge orbit. Therefore the requirement that the quantum ground state
+is gauge invariant simply translates to the requirement that the ground state wave-function
+is independent of the coordinates along the gauge orbit. By expressing the kinetic term for
+                              (k)
+each variable (Z (kℓ) ’s and Φi ’s) in terms of the collective coordinates generated by the gauge
+transformations we can bring the Lagrangian of the collective coordinates to that of three
+independent free particles (corresponding to three independent gauge transformations that act
+non-trivially on the fields) with compact target space and positive masses. Therefore the gauge
+invariant state indeed is the lowest energy state of the system. This leads us to conclude that for
+each of the 12 gauge orbits, the quantum ground state is invariant under gauge transformations
+and hence satisfies the Gauss’ law constraint.
+   Therefore we see from (2.12) that the for N = 1 we have
+
+                                             P (y) = 12 .                                     (3.8)
+
+The y independence of P (y) is the result of the gauge inequivalent solutions being isolated
+points, and is consistent with the conjecture that all the microstates carry zero angular mo-
+mentum.
+
+
+4     Supersymmetric ground states for N = 2
+We shall now determine the number of supersymmetric ground states for N = 2 following the
+same steps as in §3.
+
+4.1    F-term equations
+Vanishing of the F-term contribution to the potential requires that ∂W/∂ϕα vanishes for each
+                (k)
+α. The ∂W/∂Φm = 0 equations give
+
+                   Z (kℓ) Z (ℓk) = −c(kℓ)    for 1 ≤ k, ℓ ≤ 3,   k 6= ℓ ,
+                  Z (k4) Z (4k) = −2 c(k4) ,     1 ≤ k ≤ 3,
+                                                  X3
+                                                            (4)
+                  Z (4k) Z (k4)   = −c (k4)
+                                            I2 −      εkℓm Φℓ Φ(4)
+                                                                m ,   1 ≤ k ≤ 3.              (4.1)
+                                                ℓ,m=1
+
+
+The equations in the second line follow from the trace of the equation in the third line,
+but we have listed them separately as they will be useful in analyzing the solutions. The
+
+
+                                                  15
+∂W/∂Z (kℓ) = 0 equations give
+            3
+            X                                  X4
+                  εkℓm Z (ℓk) Φ(k)
+                               m   − Φ(ℓ) (ℓk)
+                                      m  Z      +   Z (ℓm) Z (mk) (−1)δk1 δℓ3 δm4 = 0
+            m=1                                                m=1
+                                                               m6=k,ℓ
+
+                                                                            for 1 ≤ k, ℓ ≤ 3,         k 6= ℓ ,
+                                                 3
+                                                   X
+                 (k)                 (4)
+                Φk Z (k4) − Z (k4) Φk          +          Z (kℓ) Z (ℓ4) (−1)δk1 δℓ3 = 0 for 1 ≤ k ≤ 3 ,
+                                                   ℓ=1
+                                                   ℓ6=k
+
+                                     X3
+                        (k)  (4)
+                Z (4k) Φk − Φk Z (4k) +   Z (4m) Z (mk) (−1)δm1 δk3 = 0 for 1 ≤ k ≤ 3 .                          (4.2)
+                                                   m=1
+                                                   m6=k
+
+
+As in §3, we use the shift symmetries (2.11) to choose
+                  (1)          (1)                 (1)              (2)            (2)          (3)
+                Φ1 = 0,      Φ2 = 0,            Φ3 = 0,            Φ1 = 0,        Φ2 = 0,     Φ3 = 0 .           (4.3)
+
+  Next we note that the superpotential is invariant under the complexified gauge transfor-
+mation
+
+             Z (kℓ) → ak (aℓ )−1 Z (kℓ) ,       Z (4k) → (ak )−1 M Z (4k) ,          Z (k4) → ak Z (k4) M −1 ,
+                                                                              for 1 ≤ k ≤ 3,          k 6= ℓ ,
+              (k)  (k)           (4)   (4)
+             Φi → Φi ,          Φi → MΦi M −1 ,                      for 1 ≤ i ≤ 3,       1 ≤ k ≤ 3,             (4.4)
+
+where ak for 1 ≤ k ≤ 3 are complex numbers and M is a 2 × 2 complex matrix. Therefore
+solutions to the F-term equations come as orbits of the symmetry group. Using this we shall
+now make a convenient choice of gauge. Since Z (kℓ) ’s for 1 ≤ k, ℓ ≤ 3 are complex numbers
+the first equation in (4.1) shows that neither Z (kℓ) nor Z (ℓk) can vanish as long as c(kℓ) ’s are
+chosen to be non-zero. This allows us to fix the gauge corresponding to the transformations
+generated by a1 and a3 by setting
+
+                                               Z (12) = 1,         Z (23) = 1 .                                  (4.5)
+
+Similarly, since Z (k4) are two component row vectors and Z (4k) are two component column
+vectors for 1 ≤ k ≤ 3, the second equation in (4.1) tells us that neither Z (k4) nor Z (4k) can
+have both components vanishing. This allows us to use the transformation generated by M to
+set
+                                                  
+                                     Z (14) = 1 0 .                                   (4.6)
+
+                                                              16
+This does not fix M completely since the choice of M given by
+                                               
+                                           1 0
+                                                  .                                           (4.7)
+                                            r s
+
+preserves the form of Z (14) . Since Z (24) is non-zero, we can use this residual gauge symmetry
+to set
+                                                         
+                                           Z (24) = 0 1 .                                   (4.8)
+
+There is one case where this gauge condition fails, and that is in the case when Z (24) is parallel
+to Z (14) to begin with. In this case the gauge symmetry described in (4.7) cannot be used to
+bring Z (24) to the form (4.8). We shall deal with this case separately. Once we have used a1 , a3
+and M to fix these gauges, we cannot use a2 any more since its action is determined in terms
+of the others.
+    We now substitute the gauge choices (4.3), (4.5), (4.6) and (4.8) into the F-term equations
+and look for solutions to these equations. For this we choose random rational values of the
+c(kℓ) ’s for 1 ≤ k < ℓ ≤ 4. A numerical analysis of the Hilbert series using Singular and
+Macaulay2, treating the F-term equations as ideals of the ring, shows that the solution space
+is a collection of 56 points. Explicit numerical solutions in Mathematica also yields precisely
+56 solutions for each choice of the constants {c(kℓ) }.
+   We also explore the possibility of having solutions with Z (24) proportional to Z (14) for
+which the gauge choice (4.8) will be invalid. In this case the analysis of the Hilbert series
+shows that there are no solutions. Explicit attempts to find solutions to the F-term equations
+in Mathematica also gives no results. This shows that there are no solutions for which the
+gauge choice (4.8) breaks down.
+
+4.2    D-term equations
+The solutions to the F-term equations give orbits of the complexified gauge group generated
+by the complex numbers a1 , a2 , a3 and the 2 × 2 complex matrix M as given in (4.4). The
+D-term equations only respect a subgroup of this symmetry group consisting of physical gauge
+transformations. Therefore for each of the solutions to the F-term equations we can examine
+the orbit under (4.4) and then try to determine a1 , a2 , a3 and M by demanding that the
+D-term equations are satisfied. As before, one combination of a1 , a2 , a3 and det M do not
+act on the variables, and so we can restrict to transformations for which det M = 1. However
+this is not expected to fix the parameters a1 , a2 , a3 and M completely since a subgroup of the
+
+                                                17
+transformations (4.4), corresponding to physical gauge transformations, generates a symmetry
+of the D-term equations of motion as well. This subgroup is generated by taking the ai to be
+phases and M to be an SU(2) matrix. This means that once we have found a set of ai ’s and
+M that give a solution to the D-term equations, we can generate other solutions by performing
+U(1)3 × SU(2) transformations. The effect of these transformations will be to transform the
+parameters a1 , a2 , a3 and M by
+
+                                   ak → eiφk ak ,    M →UM,                                (4.9)
+
+where the φk are real numbers and U is an SU(2) matrix. Therefore for finding solutions up
+to gauge transformations, we can use the transformations (4.9) to fix the ‘gauge’ for a1 , a2 ,
+a3 and M. Using the transformations generated by the φk ’s we can make the ak ’s real and
+positive. Furthermore, one can easily check that using the transformations generated by U
+and the constraint det M = 1, we can bring M to the form
+                                                 
+                                            1/a b
+                                     M=              ,                                    (4.10)
+                                             0 a
+
+where a is a real positive number and b is a complex number.
+   We now transform each of the 56 solutions to the F-term equations by (4.4) with real
+positive ak ’s and M of the form (4.10) and try to determine the ak ’s, a and b by numerically
+solving the D-term equations. For each of the 56 cases, we find that there is a unique choice of
+real positive ak ’s and M of the form (4.10) that solves the D-term equations. This shows that
+up to gauge transformations, there are precisely 56 solutions to the F- and D-term equations.
+More accurately we have 56 different gauge orbits, generated by U(1)3 ×SU(2) transformation,
+as solutions to the F- and D-term equations.
+
+         (k)
+4.3     Xi     dependent terms
+                                 (k)
+Next we have to check if the Xi dependent terms in the potential given in (2.9) vanish. For
+each of the 56 solutions there is a simple way to make these terms vanish – we simply choose
+  (k)
+Xi = 0 for 1 ≤ i ≤ 3, 1 ≤ k ≤ 4. The question we shall be interested in is: are there other
+                              (k)
+configurations that make the Xi dependent terms vanish?
+   Since vanishing of F- and D-terms is a necessary condition for a supersymmetric vacuum,
+                           (k)
+the choice of Z (kℓ) ’s and Φi ’s must be restricted to the 56 solutions that we have found. We
+                                                          (k)
+shall now argue that for each of these solutions, the Xi ’s for 1 ≤ k ≤ 4 and 1 ≤ i ≤ 3 must
+
+                                                18
+vanish identically up to the shift symmetries described in the last line of (2.11). For this we
+turn to the potential (2.9) and note that since this is a sum of positive definite terms, in order
+for Vgauge to vanish, each term in the potential must vanish. In particular this will require
+                (k)              (ℓ)
+             Xi Z (kℓ) − Z (kℓ) Xi = 0 ,   for 1 ≤ k, ℓ ≤ 4,                 k 6= ℓ,    1 ≤ i ≤ 3.      (4.11)
+                           (k)
+For 1 ≤ k, ℓ ≤ 3, k 6= ℓ, Xi and Z (kℓ) are numbers and hence, using the result that the Z (kℓ)
+                         (k)   (ℓ)
+are non-zero, we get Xi = Xi . Using the shift symmetry given in the third line of (2.11)
+              (1)                                             (2)             (3)
+we can set Xi to zero for 1 ≤ i ≤ 3. As a result Xi and Xi                          must also vanish. Choosing
+k = 4 and ℓ = 1, 2 or 3 in (4.11), and vice versa, we now get
+                                   (4)                          (4)
+                                 Xi Z (4ℓ) = 0,        Z (ℓ4) Xi      = 0.                              (4.12)
+
+Since we have seen that Z (4ℓ) and Z (ℓ4) cannot have their both components vanish, this shows
+                                                                       (4)
+that Z (4ℓ) and Z (ℓ4) are right and left eigenvectors of Xi with zero eigenvalues. Let us
+                (4)
+suppose that Xi is non-zero for at least one i. In that case the Z (ℓ4) ’s for 1 ≤ ℓ ≤ 3 must be
+                                                                                              (4)
+proportional to each other since each of them is a left eigenvector of the non-vanishing Xi
+with zero eigenvalue. However as already mentioned, while examining the validity of the gauge
+choice (4.8) we have explicitly checked that there are no solutions to the F-term equations in
+which Z (14) and Z (24) are parallel to each other. This shows that our initial assumption must
+                           (4)
+have been wrong, and Xi for each i must vanish identically. This shows that the only way
+                                                        (k)
+to make the potential vanish is to have all the Xi ’s vanish for 1 ≤ k ≤ 4 and 1 ≤ i ≤ 3.
+
+4.4    Gauss’ law constraint
+Finally we turn to the Gauss’ law constraint. This analysis is identical to that given in §3.4
+except for one difference: the collective modes associated with the SU(2) gauge transforma-
+tions have a kinetic term given by that of a rigid rotator with positive definite inertia matrix
+instead of that of a free particle with positive mass. Positive definiteness of the inertia matrix
+guarantees that the ground state wave-function is independent of these collective coordinates
+and hence the ground state is gauge invariant. Thus the Gauss’ law constraint is automatically
+satisfied for each of the 56 gauge orbits.
+    Therefore we see from (2.12) that for N = 2 we have
+
+                                           P (y) = 56 .                                                 (4.13)
+
+
+                                                  19
+As in §3, the y independence of P (y) is the result of the gauge inequivalent solutions being
+isolated points, and is consistent with the conjecture that all the microstates carry zero angular
+momentum. We also see from (2.14) and (2.15) that the counting in the dual description gives
+a BPS index 56. Thus there is perfect agreement between our result and that in the dual
+description.
+
+
+5     Supersymmetric ground states for N = 3
+The analysis of the equations for the N = 3 case proceeds similarly to that for the N = 2 case.
+Up to (4.5) there is essentially no change. The gauge conditions (4.6) and (4.8) are replaced
+by
+                      Z (14) = (1, 0, 0),   Z (24) = (0, 1, 0),   Z (34) = (0, 0, 1) .           (5.1)
+
+Such a gauge choice is always possible if initially the vectors Z (14) , Z (24) and Z (34) are linearly
+independent. The case where they are linearly dependent is analyzed separately and we find
+no solution in this sector. With the gauge choice (5.1) we find 208 distinct solutions to the
+                                                                        (k)
+set of F-term constraints. Furthermore for each of these solutions the Xi ’s can be shown to
+vanish identically using arguments identical to those given below (4.12). We have not checked
+explicitly that for each of these solutions we have a unique solution to the D-term constraints
+up to gauge transformation, but since the D-term constraints usually amount to quotienting
+by complexified gauge transformations, and since following arguments similar to the one given
+below (4.5) one can argue that none of the vectors Z (4k) and Z (k4) can vanish as a vector, one
+expects on general grounds that the quotient by complexified gauge transformation will give
+a unique solution for each solution to the F-term constraints. Therefore we conclude that in
+this case we have
+                                              P (y) = 208 .                                      (5.2)
+
+Again the y independence of P (y) is the result of the gauge inequivalent solutions being isolated
+points, and is consistent with the conjecture that all the microstates carry zero angular mo-
+mentum. (5.2) is in perfect agreement with the result in the dual description which, according
+to (2.14) and (2.15), gives P (−1) = 208.
+
+
+
+
+                                                    20
+6    Conclusion
+In this paper we have provided evidence for the conjecture that all the microstates of single
+centered BPS black holes carry strictly zero momentum at a generic point in the moduli space.
+This conjecture is consistent with the near horizon AdS2 × S 2 geometry of extremal black
+holes, but there are no direct arguments in the microscopic theory leading to this conjecture.
+Therefore the test of this conjecture provides evidence that the black hole horizon carries more
+information than just some average properties of the microstates.
+    These results put a strong constraint on possible fuzzball solutions describing black hole
+microstates [33–37]. Typical fuzzball solutions are constructed at special points in the moduli
+space and carry states of different angular momenta. For demonstrating that they describe
+genuine black hole microstates, one needs to construct these solutions for generic values of
+the asymptotic moduli and show that the solutions so obtained carry strictly zero angular
+momentum.
+  A different approach to this problem has been suggested in [38] where one constructs solu-
+tions with asymptotic AdS2 boundary conditions. These solutions carry strictly zero angular
+momentum. However these are not truly in the spirit of the fuzzball program since they exist
+within the near horizon geometry of the black hole instead of replacing the near horizon geom-
+etry by a smooth solution. Furthermore since these solutions have two asymptotic boundaries,
+they most likely describe an entangled state living on two copies of the black hole Hilbert space
+instead of the microstates of a single black hole [39].
+
+Acknowledgements: We wish to thank Atish Dabholkar, Joao Gomes, Dileep Jatkar, Jan
+Manschot, Noppadol Mekareeya, Sameer Murthy, Boris Pioline and Savdeep Sethi for useful
+discussions. We have benefited from the use of symbolic manipulation programs Macaulay2,
+Mathematica and Singular, and the use of the High Performance Cluster Computing facility
+at the Harish-Chandra Research Institute. This work was supported in part by the DAE
+project 12-R&D-HRI-5.02-0303. The work of A.S. was also supported in part by the J. C.
+Bose fellowship of the Department of Science and Technology, India.
+
+
+A     Normalization of Z-Z-Z coupling
+In this appendix we shall determine the normalizations and signs of the Z-Z-Z coupling ap-
+pearing in (2.2) by analyzing respectively open string amplitudes and symmetry requirements.
+
+                                               21
+The computation will be done around a background in which all the circles of T 6 are orthonor-
+                   √
+mal and have radius α′ . Fluctuations away from this background will be parametrized by the
+constants c(kℓ) and c(k) appearing in (2.3) and (2.7). Since we work in the region where these
+constants are small (see footnote 6), the corrections to the cubic terms in the superpotential
+proportional to these constants can be ignored.
+   The easiest way to determine a cubic term in the superpotential is to examine the Yukawa
+coupling between two fermions and one boson that arises from this term. For this we need
+to construct the vertex operators of the corresponding states and compute their three point
+function on the disk. We shall denote by b and c the usual diffeomorphism ghost fields, by β
+and γ the superconformal ghosts and by φ the scalar that arises from bosonization of the β − γ
+system [40], normalized such that
+
+    hc(z1 )e−φ (z1 ) c(z2 )e−φ/2 (z2 ) c(z3 )e−φ/2 (z3 )i = (z1 − z2 )1/2 (z1 − z3 )1/2 (z2 − z3 )3/4 ,             (A.1)
+
+up to a sign. In the matter sector, we shall combine the compact spatial coordinates into
+complex coordinates as
+
+                          w 1 = x4 + ix5 ,        w 2 = x6 + ix7 ,         w 3 = x8 + ix9 .                         (A.2)
+
+w 1 , . . . , w 3 are complex coordinates. For each coordinate w i we have a complex world-sheet
+scalar field which we shall denote by W i . Their superpartners are complex world sheet fermions
+which we denote by ψ i . We also introduce the complex spin field si that twists ψ i by a Z2
+transformation ψ i → −ψ i and the real twist field σi that twists W i by a Z2 transformation
+W i → −W i . Since a world-sheet scalar satisfying a Neumann boundary condition at one end
+and a Dirichlet boundary condition at the other end has a half-integer mode expansion, the
+twist fields σi will be necessary for constructing the vertex operators for open string states
+satisfying Neumann-Dirichlet boundary conditions in some directions. The spin fields si will
+be needed for constructing the vertex operators for open string states satisfying Neumann-
+Dirichlet boundary conditions in some directions and also for constructing vertex operators in
+                                                  (nc)
+the Ramond sector. Finally we shall denote by sα the spin fields associated with the non-
+compact directions carrying spinor index α of SO(3, 1). We shall use standard normalizations
+for the fields ψ i , si and σi , e.g.
+
+           ψ i (z1 )ψ̄ j (z2 ) = δij (z1 − z2 )−1 ,    si (z1 )s̄j (z2 ) = δij (z1 − z2 )−1/4 ,
+           ψ̄ i (z1 )sj (z2 ) = δij (z1 − z2 )−1/2 s̄j (z2 ),   ψ i (z1 )s̄j (z2 ) = δij (z1 − z2 )−1/2 sj (z2 ),
+                                                                    (nc)
+           σi (z1 )σj (z2 ) = δij (z1 − z2 )−1/4 ,      s(nc)
+                                                         α (z1 )sβ (z2 ) = ǫαβ (z1 − z2 )
+                                                                                          −1/2
+                                                                                               ,                    (A.3)
+
+                                                          22
+up to multiplicative signs and less singular additive terms. The operator products given in the
+                                                             (nc)
+last line are determined by the conformal weights of σi , sα and their normalizations. The
+operator products in the first two lines can be shown to be mutually compatible by bosonizing
+the fermions ψ i to scalar fields φi and using the identification
+
+                        ψ i = eiφi ,    ψ̄ i = e−iφi ,     si = eiφi /2 ,   s̄i = e−iφi /2 .        (A.4)
+
+    The other ingredient we need for the construction of the vertex operator is Chan-Paton
+factors. Since we have altogether N + 3 D-branes, the Chan-Paton factors can be taken to
+be (N + 3) × (N + 3) matrices. We shall choose the convention in which the first three rows
+and columns represent the branes 1, 2 and 3 and the last N rows and columns label the brane
+stack 4. In this notation, for 1 ≤ k, ℓ ≤ 3, 1 ≤ r, s ≤ N, the Chan-Paton factors for the
+                      (k)   (4)               (k4)   (4k)
+vertex operators for Φℓ , (Φℓ )rs , Z (kℓ) , Zr and Zr will be matrices whose only non-zero
+entries are the (k, k)’th, (3 + r, 3 + s)’th, (k, ℓ)’th, (k, 3 + r)’th and (3 + r, k)’th elements,
+respectively. In the analysis that follows we shall suppress the Chan-Paton factors – they just
+accompany the vertex operators as multiplicative matrices. The correlation function of a given
+set of vertex operators will contain a term proportional to the trace of the ordered product of
+their Chan-Paton factors.
+                                                          (k)
+   The vertex operators for the states corresponding to Φi and Z (kℓ) can be constructed using
+                                                         f
+these operators. For a superfield A we shall denote by VA,α   and VAb the vertex operators of the
+fermionic and bosonic components of the superfield. Here α denotes a 3+1 dimensional spinor
+index. In this notation we have, for example
+
+                         VΦb(k) = c e−φ ψ 1 ,    V f(k)    = c e−φ/2 s1 s̄2 s̄3 s(nc)
+                                                                                 α ,
+                            1                      Φ1 ,α
+
+                         VZb(12) = c e−φ σ1 σ2 s1 s2 ,     VZf(12) ,α = c e−φ/2 σ1 σ2 s̄3 s(nc)
+                                                                                           α    ,   (A.5)
+
+up to multiplicative signs. Here the ψ 1 factor in the expression for V b(k) reflects that this
+                                                                                               Φ1
+mode represents position / Wilson line on the brane along w 1 , whereas the s1 s̄2 s̄3 factor in
+V f(k)   is obtained by starting with the operator s̄1 s̄2 s̄3 that appears in the expression for the
+ Φ1 ,α
+supersymmetry generator, and taking the leading term in its operator product with ψ 1 – the
+same factor that is present in V b(k) . In the expression for VZb(12) the σ1 σ2 and s1 s2 factors reflect
+                                   Φ1
+that the fields W 1 and W 2 and their fermionic partners ψ 1 and ψ 2 satisfy Neumann boundary
+conditions at one end of the open string and Dirichlet boundary conditions at the other end.
+On the other hand the σ1 σ2 s̄3 term in the expression for VZf(12) ,α is the leading term in the
+
+                                                          23
+expression for the operator product of s̄1 s̄2 s̄3 and σ1 σ2 s1 s2 . Following this strategy we can find
+the expressions for all the vertex operators V b(k) , V f(k) , VZb(kℓ) and VZf(kℓ) ,α .
+                                                            Φi       Φi ,α
+   Let us now calculate the three point function
+
+                                                 hVΦb(4) V f(4) V f(4) i ,                                          (A.6)
+                                                      1    Φ2 ,α Φ3 ,β
+
+to fix the normalization of the terms in W4 in (2.4). Using the generalization of (A.5) we see
+that this is computed using the correlation function
+                                                                                        (nc)
+                       hc e−φ ψ 1 (z1 ) c e−φ/2 s̄1 s2 s̄3 s(nc)
+                                                            α (z2 ) c e
+                                                                       −φ/2
+                                                                            s̄1 s̄2 s3 sβ (z3 )i .                  (A.7)
+
+This correlator can be factorized and evaluated using (A.1) and (A.3) as
+
+                          hc e−φ (z1 ) c e−φ/2 (z2 ) c e−φ/2 (z3 )ighost hψ 1 (z1 )s̄1 (z2 )s̄1 (z3 )iψ1
+                                                                                 (nc)
+                          hs2 (z2 )s̄2 (z3 )iψ2 hs̄3 (z2 )s3 (z3 )iψ3 hs(nc)
+                                                                        α (z2 )sβ (z3 )inc
+
+                     = ǫαβ ,                                                                                        (A.8)
+
+up to a sign. This agrees with the normalization of the three point coupling of Φ(4) given in
+                                √                     √
+(2.4) after ignoring the overall 2 factor. (Since the 2 factor appears universally in front
+of all terms in the superpotential W, we can ignore this for fixing the relative normalization
+between different terms.)
+                                                                    (1)
+   Next we compute the Φ-Z-Z three point function. For example the Φ3 Z (12) Z (21) coupling
+will be given by the coefficient of ǫαβ in
+                                                                                                             (nc)
+hVΦb(1) (z1 )VZf(12) ,α (z2 )VZf(21) ,β (z3 )i = hc e−φ ψ 3 (z1 ) c e−φ/2 σ1 σ2 s̄3 s(nc)
+                                                                                     α (z2 ) c e
+                                                                                                −φ/2
+                                                                                                     σ1 σ2 s̄3 sβ (z3 )i
+    3
+
+                                            = ǫαβ                                                                   (A.9)
+
+up to a sign. In the last step we have used (A.1) and (A.3) and factorized the correlator into
+contributions from the ghost sector and different components of the matter sector. This is in
+agreement with the normalization of the Φ-Z-Z coupling given in (2.1).
+    Finally let us compute the Z-Z-Z three point coupling. For definiteness we focus on the
+Z (12) Z (23) Z (31) coupling. For this we compute
+
+                       hVZb(12) (z1 )VZf(23) ,α (z2 )VZf(31) ,β (z3 )i
+                                                                                                (nc)
+                  = hc e−φ σ1 σ2 s1 s2 (z1 ) c e−φ/2 σ2 σ3 s̄1 s(nc)
+                                                                α (z2 ) c e
+                                                                           −φ/2
+                                                                                σ3 σ1 s̄2 sβ (z3 )i
+                  = ǫαβ                                                                                         (A.10)
+
+                                                              24
+Again in the last step we have used (A.1) and (A.3) and factorized the correlator into con-
+tributions from the ghost sector and different components of the matter sector. The result is
+valid only up to a sign. This agrees with the normalization of the Z-Z-Z coupling in W2 given
+in (2.2).
+    Following the same procedure we can show that the coefficients of all the Φ-Φ-Φ, Φ-Z-Z and
+Z-Z-Z couplings are unity up to signs. In principle these signs can be determined by careful
+string theory computation but we shall describe an alternative approach based on symmetry
+considerations. For this we consider a more general system than what has been discussed
+so far, containing N1 D2-branes along 4-5 directions, N2 D2-branes along 6-7 directions, N3
+D2-branes along 8-9 directions and N4 D6-branes along 4-5-6-7-8-9 directions. We claim that
+the correct form of the superpotential, up to field redefinition, is given by
+                                                                                           
+              √          (1)              (2)                  (2)              (3)
+    W1 =        2 Tr Φ3 Z (12) Z (21) − Φ3 Z (21) Z (12) + Φ1 Z (23) Z (32) − Φ1 Z (32) Z (23)
+                                                                                     
+                   (3) (31) (13)    (1) (13) (31)        (1) (14) (41)    (4) (41) (14)
+              + Φ2 Z Z           − Φ2 Z Z          + Φ1 Z Z            − Φ1 Z Z
+                                                                                     
+                   (2) (24) (42)    (4) (42) (24)        (3) (34) (43)    (4) (43) (34)
+              + Φ2 Z Z           − Φ2 Z Z          + Φ3 Z Z            − Φ3 Z Z            ,
+
+                                                                                                       (A.11)
+                   
+               √
+      W2   =  2 Tr Z (31) Z (12) Z (23) + Z (13) Z (32) Z (21) + Z (12) Z (24) Z (41) + Z (42) Z (21) Z (14)
+                                                                                                    
+                (13) (34) (41)        (31) (14) (43)         (34) (42) (23)         (43) (32) (24)
+             −Z Z Z              +Z Z Z                 +Z Z Z                 +Z Z Z                  , (A.12)
+
+                                                                                     
+             √          (12)    (1)               (2)      (23)    (2)               (3)
+      W3 =       2 Tr c        Φ3 ⊗ IN2 − IN1 ⊗ Φ3 + c            Φ1 ⊗ IN3 − IN2 ⊗ Φ1
+                                                                                         
+                          (13)     (3)               (1)     (14)     (1)               (4)
+                      +c         Φ2 ⊗ IN1 − IN3 ⊗ Φ2 + c            Φ1 ⊗ IN4 − IN1 ⊗ Φ1
+                                                                                         
+                          (24)     (2)               (4)     (34)     (3)               (4)
+                      +c         Φ2 ⊗ IN4 − IN2 ⊗ Φ2 + c            Φ3 ⊗ IN4 − IN3 ⊗ Φ3        ,
+
+                                                                                                       (A.13)
+
+and
+                                                                                    
+              √        (1) (1) (1)     (1) (1) (1)          (2) (2) (2)     (2) (2) (2)
+      W4   = − 2 Tr Φ1 Φ2 Φ3 − Φ1 Φ3 Φ2 − Tr Φ1 Φ2 Φ3 − Φ1 Φ3 Φ2
+                                                                                
+                  (3) (3) (3)     (3) (3) (3)          (4) (4) (4)     (4) (4) (4)
+             +Tr Φ1 Φ2 Φ3 − Φ1 Φ3 Φ2 + Tr Φ1 Φ2 Φ3 − Φ1 Φ3 Φ2                         . (A.14)
+
+                                                    25
+This superpotential reduces to the one given in (2.1)-(2.4) for N1 = N2 = N3 = 1. We shall
+now describe the arguments leading to (A.11)-(A.14).
+   Let us begin with the arguments leading to the form of W2 . Since by field redefinitions
+involving changes of signs of the Z (kℓ) ’s we can change the relative signs of various terms in
+W2 , we only have to show that W2 is given by (A.12) up to these field redefinitions. Now these
+field redefinitions can only change the signs of an even number of terms in W2 since each Z (kℓ)
+appears as a factor in two of the terms. Thus an expression for W2 with an even number of
+minus signs cannot be turned into an expression with an odd number of minus signs and vice
+versa. Furthermore, it can be shown by inspection that by these field redefinitions all possible
+choices of W2 with an even number of minus signs can be brought to the form in which each
+term in W2 has positive sign, and all possible choices of W2 with an odd number of minus
+signs can be brought to the form given in (A.12). Thus the possible candidates for W2 can
+be restricted to either (A.12) or the one with all positive signs. We shall argue shortly that
+requiring symmetry under the exchange of different stacks of D-branes leads to the form given
+in (A.12).
+    Next we turn to W1 and W3 . The shift symmetries (2.11) fix the relative sign between the
+pair of terms inside each parenthesis in (A.11) and (A.13), but do not fix the signs that appear
+in front of the parentheses. However starting with any arbitrary choice of these signs, we can
+                                                                                         (k)
+arrive at (A.11) and (A.13) by redefinition involving changes of the signs of the fields Φi and
+the parameters c(kℓ) . These field redefinitions change the signs of various terms in W4 , but
+leave W2 unchanged.
+   Finally turning to W4 we see that the relative sign between the pair of terms inside each
+parenthesis is fixed by the requirement that these come from the dimensional reduction of
+N = 4 supersymmetric theories in 3+1 dimensions. We shall see shortly that the relative
+signs between the different parentheses are fixed by the symmetry under the exchange of brane
+stacks. This however does not fix the overall sign of W4 leaving behind a 2-fold ambiguity. We
+expect that a careful string theory calculation will be able to resolve this ambiguity, but we
+have not done this. As we have described in the text, the choice of W4 given in (A.14), after
+restriction to the case N1 = N2 = N3 = 1, N4 = N gives the results 12, 56 and 208 for the
+index for N = 1, 2 and 3, respectively, in agreement with the results in the dual description.
+In contrast the opposite choice of sign gives the results 12, 60 and 232 for the index for the
+cases N = 1, 2 and 3, respectively. These do not agree with the results computed using the
+dual description.
+
+
+                                              26
+   What remains is to show how the exchange symmetry constrains the form of W2 and W4 .
+For this we need to examine how the exchange symmetry acts on the coefficients c(kℓ) . It was
+shown in [17] that the coefficients c(kℓ) = c(ℓk) for 1 ≤ k < ℓ ≤ 4 are determined in terms of
+the background values of the metric and 2-form fields. For general values of N1 , N2 , N3 and
+N4 the results are as follows:10
+                         (12)                        (12)                         (13)                        (13)
+  g47 + g56 = N12 cR ,           g57 − g46 = N12 cI ,        g49 + g58 = N13 cR ,        g59 − g48 = N13 cI ,
+                        (14)                         (14)                        (23)                         (23)
+  b68 − b79 = N14 cR ,           b69 + b78 = N14 cI ,        g69 + g78 = N23 cR ,        g79 − g68 = N23 cI ,
+                        (24)                         (24)                        (34)                        (34)
+  b48 − b59 = N24 cR ,           b49 + b58 = N24 cI ,        b46 − b57 = N34 cR ,        b47 + b56 = N34 cI          ,
+                                                                                                           (A.15)
+
+where Nij = 2(Ni + Nj ) and the subscripts R and I stand for real and imaginary parts
+respectively. (A.15) generalizes the result of [17] for N1 = N2 = N3 = N4 = 1 following the
+same logic. For completeness we also give the expressions for the Fayet-Iliopoulos parameters
+c(k) for 1 ≤ k ≤ 4 in terms of the background fields:
+                              1                         1
+                        c(1) =  (b45 − b67 − b89 ) + c0 ,    c(2) =
+                                                          (b67 − b45 − b89 ) + c0 ,
+                              2                         2
+                              1                         1
+                        c(3) = (b89 − b45 − b67 ) + c0 ,
+                                                  c(4) = (b45 + b67 + b89 ) + c0 ,                         (A.16)
+                              2                         2
+                                                     P
+where c0 is a constant that is chosen to ensure that 4k=1 c(k) Nk = 0.
+   Now type IIA string theory on T 6 has an exchange symmetry x4 ↔ x6 , x5 ↔ x7 , N1 ↔
+N2 under which the D2-brane stacks 1 and 2 get exchanged and the stacks 3 and 4 remain
+unchanged. We see from (A.15) that under this transformation c(34) changes sign, c(12) remains
+unchanged, and c(1i) and c(2i) get exchanged for i = 3, 4. Thus there must be an action on
+                  (k)
+the variables Φi and Z (kℓ) which, together with these transformations on the c(kℓ) ’s and Ni ’s,
+transform the Wi ’s at most by an overall multiplicative phase.11 It is easy to verify that for
+the superpotential given in (A.11)-(A.14) the following accompanying transformation takes
+  10
+     In [17] only the values of |c(kℓ) | were determined. Here we have chosen an extra minus sign in the expressions
+     (kℓ)
+for cI for 1 ≤ k < ℓ ≤ 3 in order to have simple realization of different symmetries.
+  11
+     Multiplying the superpotential by an overall phase leaves the potential invariant.
+
+
+
+
+                                                        27
+Wi → −Wi for 1 ≤ i ≤ 4:
+                       (4)   (3)         (4)   (3)       (2)    (1)        (1)      (2)
+                    (Φ3 , Φ3 ) → (Φ3 , Φ3 ),          (Φ3 , Φ3 ) → (Φ3 , Φ3 ),
+                       (2)   (3)         (1)   (3)       (4)    (1)          (4)      (2)
+                    (Φ1 , Φ1 ) ↔ (Φ2 , Φ2 ),          (Φ1 , Φ1 ) ↔ −(Φ2 , Φ2 ),
+                    Z (34) → Z (34) ,    Z (i1) ↔ −Z (i2) ,    Z (1i) ↔ −Z (2i) ,         for i = 3, 4,
+                    Z (12) ↔ −Z (21) ,     Z (43) → −Z (43) .                                             (A.17)
+
+On the other hand, for the choice of W2 without the sign (−1)δk1 δℓ3 δm4 , i.e. all Z-Z-Z coupling
+coming with positive coefficients, this property will be lost.12 This shows that the form of W2
+given in (A.12) is the correct one, and also fixes the relative signs between the terms in W4
+           (1)       (2)
+involving Φk and Φk .
+   We now turn to the second exchange symmetry, generated by the transformation x6 ↔ x8 ,
+x7 ↔ x9 and N2 ↔ N3 . This exchanges the second and the third D-brane stacks. (A.15) shows
+that under this transformation c(14) → −c(14) , c(23) → c(23) , c(12) ↔ c(13) and c(24) ↔ c(34) . We
+can verify that all the Wi ’s change sign if we accompany these transformations of c(kℓ) and Ni
+with the following transformation on the fields:
+                       (4)   (1)         (4)   (1)       (1)    (2)        (1)      (3)
+                    (Φ1 , Φ1 ) → (Φ1 , Φ1 ),          (Φ3 , Φ3 ) ↔ (Φ2 , Φ2 ),
+                       (2)   (3)         (3)   (2)       (4)    (2)          (4)      (3)
+                    (Φ1 , Φ1 ) → (Φ1 , Φ1 ),          (Φ2 , Φ2 ) ↔ −(Φ3 , Φ3 ),
+                    Z (41) → Z (41) ,    Z (2i) ↔ −Z (3i) ,    Z (i2) ↔ −Z (i3) ,         for i = 1, 4,
+                    Z (32) ↔ −Z (23) ,     Z (14) → −Z (14) .                                             (A.18)
+                                                                             (i)             (4)
+It follows from (A.17) and (A.18) that if for i = 1 and 3, Φi and Φi are interpreted as
+                                                                      (2)      (4)
+Wilson lines along the w i direction on the respective branes, then Φ2 and Φ2 should be
+interpreted as Wilson lines along the −w 2 direction on the D2-brane along the 6-7 directions
+and the D6-brane, respectively. This analysis also fixes the relative signs between the terms in
+              (2)       (3)
+W4 involving Φk and Φk .
+    The theory under consideration also has a symmetry that exchanges brane stacks 1 and 4,
+leaving the stacks 2 and 3 unchanged. This is induced by making a T-duality transformation
+  12
+    Since the c(kℓ) ’s are only determined up to phases in terms of the background fields, one may wonder
+whether the analysis that led to the conclusion that the choice of all positive signs in W2 is not allowed could
+be modified if we use c(kℓ) with different phases. To this end we note that the information that was needed
+to arrive at this result was that under the exchange x4 ↔ x6 and x5 ↔ x7 , c(12) remains unchanged and c(34)
+changes sign. These transformation laws of c(12) and c(34) do not depend on the choice of phases of the c(kℓ) ’s
+given in (A.15). Thus our argument holds.
+
+
+                                                       28
+along 6-7-8-9 directions and then performing an exchange 6 ↔ 8, 7 ↔ 9, and at the same time
+exchanging N1 and N4 . We shall use the convention that, under a T-duality transformation
+along the xm direction, gmn ↔ bmn to leading order in gmn and bmn for n 6= m . It is easy to see
+from (A.15) that under this exchange c(14) remains unchanged, c(23) changes sign, c(12) ↔ i c(24)
+and c(13) ↔ i c(34) . It can be seen that the following accompanying transformation rules of the
+fields take Wi to −Wi for 1 ≤ i ≤ 4:
+                (4)     (1)         (1)   (4)       (1)      (3)            (4)   (3)
+             (Φ1 , Φ1 ) → (Φ1 , Φ1 ),             (Φ2 , Φ2 ) ↔ i (Φ3 , Φ3 ),
+                (2)     (3)         (2)   (3)       (4)      (2)            (1)   (2)
+             (Φ1 , Φ1 ) → (Φ1 , Φ1 ),             (Φ2 , Φ2 ) ↔ i (Φ3 , Φ3 ),
+             Z (12) ↔ −Z (42) ,       Z (13) ↔ −i Z (43) ,         Z (21) ↔ −iZ (24) ,        Z (31) ↔ −Z (34) ,
+             Z (14) ↔ i Z (41) ,     Z (32) → Z (32) ,    Z (23) → −Z (23) .                                       (A.19)
+                                                                                        (1)        (4)
+This fixes the relative signs between the terms in W4 involving Φk and Φk . The factors of i
+                                      (k)      (k)       (4)
+in the transformation laws relating Φi ’s to Φk ’s and Φk ’s for 1 ≤ i, k ≤ 3, i 6= k show that
+                  (k)                                                                                              (4)
+if we interpret Φi as the position of the k-th D2-brane along w i , then up to signs, i Φi and
+   (i)
+i Φi are to be interpreted as Wilson lines along w i on the i-th D2-brane and the D6-brane,
+respectively. Due to the comments below (A.18) it follows that there is a further factor of −1
+                      (2)    (4)                       (i)     (4)
+in the definition of Φ2 and Φ2 relative to those for Φi and Φi for i = 1, 3.
+   All other exchange symmetries are compositions of the above three transformations and
+hence invariance of the potential under the former follows as a consequence of their invariance
+under the latter. Thus we see that the exchange symmetries together with judicious utilization
+of the field redefinition freedom fixes the signs of all the terms in the superpotential except for
+the overall sign of W4 relative to the other terms.
+   The superpotential determined this way also has other desired symmetries. For example
+we see from (A.15) that under the transformation x4 → x5 , x5 → −x4 , c(12) , c(13) , c(24) and
+c(34) get multiplied by −i while the other c(kℓ) ’s remain unchanged. It is easy to see that under
+this transformation the superpotential gets multiplied by an overall factor of −i, and hence
+leaves the potential invariant, if we transform the various fields as
+                 (k)          (k)
+               Φ1 → −iΦ1              for 1 ≤ k ≤ 4,       Z (12) → −iZ (12) ,           Z (13) → −iZ (13) ,
+               Z (42) → −iZ (42) ,        Z (43) → −iZ (43) ,                                                      (A.20)
+
+leaving the other fields invariant.
+    Finally consider the world-sheet parity transformation under which the NS-NS 2-form field
+changes sign. This by itself is not a symmetry of type IIA string theory, but becomes a
+
+                                                          29
+symmetry if we accompany this by the parity transformation along the non-compact directions
+and (−1)FL – this is simply the symmetry group by which we quotient the theory to generate
+orientifold 6-planes. Furthermore this transformation leaves the D6- and D2-branes invariant.
+We see from (A.15) that under this transformation c(kℓ) → c(kℓ) and c(k4) → −c(k4) for 1 ≤ k <
+ℓ ≤ 3. It is easy to see that the following transformation on the fields combined with the above
+leaves the superpotential invariant:
+            (4)            (4)            (i)          (i)          (i)       (i)
+          Φi → −(Φi )T ,                 Φi → −(Φi )T ,            Φj → (Φj )T        for 1 ≤ i, j ≤ 3, j 6= i,
+          Z (kℓ) → (Z (ℓk) )T         for 1 ≤ k, ℓ ≤ 3, ℓ 6= k,
+          Z (14) → (Z (41) )T ,          Z (24) → −(Z (42) )T ,      Z (34) → (Z (43) )T ,
+          Z (41) → −(Z (14) )T ,           Z (42) → (Z (24) )T ,     Z (43) ↔ −(Z (34) )T .                       (A.21)
+
+The transposition operation involved in the transformation laws is a reflection of the fact that
+under world-sheet parity transformation open strings change their orientation.
+    Given the superpotential constructed above, the potential V is given by (2.5)-(2.10). The
+shift symmetry (2.11) generalizes to
+
+                  Φ(k)  (k)
+                   m → Φm + ξm INk ,                  for 1 ≤ k ≤ 3,          k 6= m;        1 ≤ m ≤ 3,
+                    (k)           (k)                  (4)         (4)
+                  Φk → Φk + ζk INk ,                  Φk → Φk + ζk IN4 ,            for 1 ≤ k ≤ 3 ,
+                     (k)           (k)
+                  Xi       → Xi          + ai INk ,    for 1 ≤ i ≤ 3 .                                            (A.22)
+
+   We shall now argue that at a generic point in the moduli space, the vanishing of Vgauge
+                                           (k)
+given in (2.9) requires all the Xi ’s to vanish (up to the shift symmetry described in the last
+line of (A.22)). To see this first note that the vanishing of Vgauge requires each of the terms in
+(2.9) to vanish separately since each is a positive definite term. The vanishing of the last term
+                (k)       (k)                     (k)
+tells us that Xi and Xj commute. Since Xi ’s are hermitian matrices, this implies that
+                                                                                                                     (k)
+with the help of U(Nk ) gauge transformations we can simultaneously diagonalize each Xi .
+Therefore we can take
+                       
+                    (k)        (k)
+                   Xi      = ai,m δmn , for 1 ≤ m, n ≤ Nk , 1 ≤ k ≤ 4 .             (A.23)
+                                 mn
+            (k)
+Physically ai,m has the interpretation of the position along xi of the m-th brane in the k-th
+stack. Now requiring that the first two terms in (2.9) vanish we can easily see that
+                     (k)    (ℓ)
+                                  
+            Z (kℓ) mn ai,m − ai,n = 0 for 1 ≤ m ≤ Nk , 1 ≤ n ≤ Nℓ , 1 ≤ i ≤ 3 ,
+               (k)
+                     (k)    (k)
+                                  
+             Φ mn ai,m − ai,n       = 0 for 1 ≤ m, n ≤ Nk , 1 ≤ i ≤ 3 .                (A.24)
+
+                                                             30
+This gives
+                              (k)     (ℓ)
+             Z (kℓ) mn = 0 if ai,m 6= ai,n for any i for 1 ≤ m ≤ Nk , 1 ≤ n ≤ Nℓ ,
+                              (k)     (k)
+             Φ(k) mn = 0 if ai,m 6= ai,n for any i for 1 ≤ m, n ≤ Nk .                     (A.25)
+                                                                                (k)
+Furthermore, once (A.25) is satisfied, there is no further constraint on the ai,m ’s. Physically
+this means that if the m’th brane in the k-th stack and the n-th brane in the ℓ-th stack are
+separated along the non-compact directions, then all fields associated with the open strings
+stretched between the two branes must have zero expectation value. Therefore we can divide
+the brane stacks into groups, where within each group all branes are coincident along the
+non-compact directions, and the brane stacks in two different groups are separated from each
+other along at least one of the non-compact directions. In this case all fields associated with
+open strings stretching between two different groups must vanish, and once this condition is
+satisfied we have no further constraint on the locations of the groups along the non-compact
+directions. In particular we can separate the different groups by arbitrary distance. If such a
+solution exists, then the mass of the total brane system will be given by the sum of the masses
+of the individual groups. But at a generic point in the moduli space away from subspaces
+of marginal stability this violates the BPS bound if the total charge vector is primitive, i.e.
+gcd{N1 , N2 , N3 , N4 } = 1. This shows that it should be impossible to satisfy the F- and D-term
+                                                                                           (k)
+equations in this case. Therefore the only way to solve the equations is to set all the ai,m ’s to
+be equal for any given i. Using the shift symmetry given in the last line of (A.22) we can set
+                                      (k)
+these to zero, showing that all the Xi ’s can be taken to vanish.
+   We can also see the absence of solutions with more than one group by directly analyzing the
+F-term equations. Let us consider for example the equations we get by setting the variation of
+                    (1)      (2)
+W with respect to Φ3 and Φ3 to zero. Using (A.11)-(A.14) these equations take the form
+                                                             (1)   (1)
+                             Z (12) Z (21) + N2 c(12) IN1 − [Φ1 , Φ2 ] = 0 ,
+                                                             (2)   (2)
+                             Z (21) Z (12) + N1 c(12) IN2 + [Φ1 , Φ2 ] = 0 .               (A.26)
+
+Now suppose that we have a solution with multiple groups, with the first group containing M1
+D2-branes along 4-5 directions, M2 D2-branes along 6-7 directions, M3 D2-branes along 8-9
+directions and M4 D6-branes along 4-5-6-7-8-9 directions. Let us now take the trace of the first
+equation over the M1 D2-branes in the 4-5 directions and the trace of the second equation over
+                                                                                      (k)
+the M2 D2-branes in the 6-7 directions. Since there are no components of Z (kℓ) or Φm with
+one leg in the first group and another leg in another group, the traces described above restrict
+
+                                                 31
+the sum to be over the indices in the first group only. Denoting the trace with all indices in
+the first group by Tr1 , we get
+
+             Tr1 (Z (12) Z (21) ) + c(12) N2 M1 = 0 ,             Tr1 (Z (21) Z (12) ) + c(12) N1 M2 = 0 .   (A.27)
+
+Taking the difference between the two equations we see that we must have N1 M2 = N2 M1 .
+Repeating the analysis for other equations we get Ni Mj = Nj Mi for 1 ≤ i < j ≤ 4, or
+equivalently, Mi /Ni =constant. The same analysis may be repeated for other groups, showing
+that the charge vector of each group must be proportional to the total charge vector. But this
+is impossible if the total charge vector is primitive. This shows that for primitive charge vector
+there are no solutions to the F-term equations with more than one group.
+   For completeness we also give the expected number of solutions to the F- and D-term
+constraints from the counting in the dual description [21]. For the Ni ’s satisfying the restriction
+
+                        gcd{N1 N2 , N1 N3 , N1 N4 , N2 N3 , N2 N4 , N3 N4 } = 1 ,                            (A.28)
+
+this is given by [17]
+                                              X
+                                          −           c(4N1 N2 N3 N4 /s2 )
+                                                     sb                                                      (A.29)
+                                              s|s0
+
+where b
+      c(u) has been defined in (2.13) and
+                                                     4
+                                                     Y
+                                            s0 =             gcd{Ni , Nj } .                                 (A.30)
+                                                     i,j=1
+                                                      i<j
+
+
+Note that (A.30) is a slight rewriting of the corresponding expression given in [17].
+
+
+B     Explicit solutions for N = 2
+In this appendix we shall give the explicit solutions to the F- and D-term equations for the
+N = 2 case. We give the results for the following choice of parameters:
+
+                          (c(12) , c(13) , c(14) , c(23) , c(24) , c(34) , c(1) , c(2) , c(3) , c(4) )
+                                                                                         
+                            2 3 5 7 11 13 17 19 23 31859
+                        =     , , , , , , , , ,−                                              .               (B.1)
+                            3 5 7 11 13 17 19 23 29 25346
+
+If we scale all the c(kℓ) ’s and c(k) ’s by a real positive parameter λ, then the solutions given
+                                              √
+below get scaled by an overall factor of λ. As discussed in footnote 6, we can justify the
+
+                                                             32
+                                                                                                                                                 (k)
+dropping of higher order terms in the superpotential and the periodicity of the variables Φi if
+we take the limit λ → 0. This is the way we should interpret our solutions, although, in order
+                                                                          √
+to avoid cluttering, we shall refrain from displaying the factors of λ and λ in the expressions
+for the parameters and solutions, respectively.
+   In the gauge (4.3) we give the 56 solutions below by specifying, for each solution, the
+variables in the following order:
+                                                                                 (14)      (14)      (41)         (41)      (24)      (24)
+                  Z (12) , Z (21) , Z (13) , Z (31) , Z (23) , Z (32) , Z1              , Z2      , Z1      , Z2         , Z1      , Z2      ,
+                     (42)      (42)      (34)      (34)      (43)      (43)      (2)      (3)      (3)      (4)      (4)        (4)       (4)
+                  Z1        , Z2      , Z1      , Z2      , Z1      , Z2      , Φ3 , Φ1 , Φ2 , Φ1,11 , Φ1,12 , Φ1,21 , Φ1,22 ,
+                     (4)       (4)      (4)       (4)       (4)       (4)        (4)      (4)
+                  Φ2,11 , Φ2,12 , Φ2,21 , Φ2,22 , Φ3,11 , Φ3,12 , Φ3,21 , Φ3,22 .                                                                (B.2)
+
+The solutions can be organized by two Z2 symmetries. The first Z2 corresponds to complex
+conjugation of all the fields. Since the parameters c(kℓ) and c(k) have been chosen to be real, the
+F- and D-term constraints are invariant under complex conjugation and hence given a solution,
+its complex conjugate will also be a solution. The second Z2 corresponds to a change in sign of
+all the fields under which the superpotential picks up an overall minus sign, and hence again the
+F- and D-term constraints are invariant under this transformation. However since the gauge
+conditions (4.5), (4.6) and (4.8) are not preserved by the second transformation, we have to
+accompany this with a compensating gauge transformation to restore the gauge. This can be
+done with the help of the element −1 of the second U(1) and the element diag(−1, 1) of the
+U(2) group. It turns out that 12 of the 56 solutions are invariant under the product of the two
+Z2 transformations – they are the first twelve among the solutions listed below. These solutions
+come in pairs related by the first Z2 transformation. The others transform non-trivially under
+both Z2 ’s and hence come in groups of four, related by the Z2 × Z2 transformation. The full
+set of solutions are:
+
+     1.1031, −0.60435, 0.48800, −1.2295, 1.0504, −0.60582, 1.3763, −0.63328, −0.73151, 0.66599, 0, 1.4940, 0.086853, −1.1327, 0.99557, −0.83985,
+     −1.0579, 0.56703, 0.49066, 0.52570, 1.3450, −0.66999, 1.1383, −0.68895, −0.77563, 0.46310, 0.18210, 0.14322, −0.33432, −0.75607, −0.62011,
+     1.1187, −0.58452 ,                                                                                                                           (B.3)
+
+
+
+
+     1.1031, −0.60435, −0.48800, 1.2295, 1.0504, −0.60582, 1.3763, 0.63328, −0.73151, −0.66599, 0, 1.4940, −0.086853, −1.1327, 0.99557, 0.83985,
+     −1.0579, −0.56703, −0.49066, −0.52570, −1.3450, 0.66999, 1.1383, −0.68895, 0.77563, −0.46310, 0.18210, 0.14322, 0.33432, 0.75607, −0.62011,
+     1.1187, 0.58452 ,                                                                                                                            (B.4)
+
+
+
+
+       0.61097, −1.0912, 1.2046i, 0.49808i, 0.62251, −1.0223, 1.4463, 0.72947i, −0.26673, 1.4295i, 0, 1.4840, 0.48529i, −1.1404, 1.0588, −1.3941i,
+       −1.3097, −0.10235i, −2.2283i, −2.3555i, −1.1947i, −0.85898i, −0.98702, −0.045414, −0.89763i, −2.9804i, 0.23714, −0.61928, −1.1212i,
+       −0.46046i, −0.19871, −0.86642, −1.1979i ,                                                                                                  (B.5)
+
+
+
+
+                                                                            33
+  0.61097, −1.0912, −1.2046i, −0.49808i, 0.62251, −1.0223, 1.4463, −0.72947i, −0.26673, −1.4295i, 0, 1.4840, −0.48529i, −1.1404, 1.0588,
+  1.3941i, −1.3097, 0.10235i, 2.2283i, 2.3555i, 1.1947i, 0.85898i, −0.98702, −0.045414, 0.89763i, 2.9804i, 0.23714, −0.61928, 1.1212i,
+  0.46046i, −0.19871, −0.86642, 1.1979i ,                                                                                                    (B.6)
+
+
+
+
+0.73263, −0.90996, 1.1484i, 0.52249i, 0.73592, −0.86472, 1.0930, 0.72576i, −0.55912, 1.1263i, 0, 1.4575, 0.18706i, −1.1611, 1.0416, −1.2563i,
+−0.89879, −0.47215i, −2.2265i, −2.3550i, −0.087600i, −0.82484i, −0.97754, −0.40590, −0.95563i, −2.2487i, 0.045714, −0.15648,
+−1.0875i, −0.67719i, −0.36232, −1.0160, −1.0046i ,                                                                                           (B.7)
+
+
+
+
+ 0.73263, −0.90996, −1.1484i, −0.52249i, 0.73592, −0.86472, 1.0930, −0.72576i, −0.55912, −1.1263i, 0, 1.4575, −0.18706i, −1.1611, 1.0416,
+ 1.2563i, −0.89879, 0.47215i, 2.2265i, 2.3550i, 0.087600i, 0.82484i, −0.97754, −0.40590, 0.95563i, 2.2487i, 0.045714, −0.15648, 1.0875i,
+ 0.67719i, −0.36232, −1.0160, 1.0046i ,                                                                                                      (B.8)
+
+
+
+
+    0.66655, −1.0002, 0.75311i, 0.79669i, 0.59925, −1.0619, 1.0227, −1.3300i, 0.080251, −1.1358i, 0, 1.5175, 0.14385i, −1.1152, −1.1436,
+    −0.73340i, 1.3732, 0.055941i, 1.2460i, −1.1153i, 2.4939i, 0.92246i, −0.77136, 0.061744, 0.93839i, 1.9135i, 1.0129, −1.1256, 0.58697i,
+    0.0064870i, 0.30129, −1.1211, −0.28274i ,                                                                                                (B.9)
+
+
+
+
+   0.66655, −1.0002, −0.75311i, −0.79669i, 0.59925, −1.0619, 1.0227, 1.3300i, 0.080251, 1.1358i, 0, 1.5175, −0.14385i, −1.1152, −1.1436,
+   0.73340i, 1.3732, −0.055941i, −1.2460i, 1.1153i, −2.4939i, −0.92246i, −0.77136, 0.061744, −0.93839i, −1.9135i, 1.0129, −1.1256,
+   −0.58697i, −0.0064870i, 0.30129, −1.1211, 0.28274i ,                                                                                     (B.10)
+
+
+
+
+0.68357, −0.97528, −0.78353i, −0.76577i, 0.69051, −0.92159, 2.0781, −0.27085i, −0.88339, 1.5034i, 0, 1.7460, −1.1808i, −0.96926, −0.70695,
+−1.8244i, −1.2693, −1.3301i, −2.1494i, −2.2566i, 3.2237i, −0.29046i, 1.2418, −0.18345, 0.15652i, 1.0460i, 0.69047, −1.4404, −0.57024i,
+0.67798i, 0.48642, 0.60953, −0.80716i ,                                                                                                     (B.11)
+
+
+
+
+  0.68357, −0.97528, 0.78353i, 0.76577i, 0.69051, −0.92159, 2.0781, 0.27085i, −0.88339, −1.5034i, 0, 1.7460, 1.1808i, −0.96926, −0.70695,
+  1.8244i, −1.2693, 1.3301i, 2.1494i, 2.2566i, −3.2237i, 0.29046i, 1.2418, −0.18345, −0.15652i, −1.0460i, 0.69047, −1.4404, 0.57024i,
+  −0.67798i, 0.48642, 0.60953, 0.80716i ,                                                                                                   (B.12)
+
+
+
+
+ 0.59598, −1.1186, −0.73969i, −0.81115i, 0.65823, −0.96678, 1.6985, 0.30140i, −0.92427, −0.46869i, 0, 1.3919, 0.16684i, −1.2158, 0.29842,
+ −1.4089i, 0.63575, −1.2202i, 1.0605i, −1.3233i, −2.4873i, 0.19243i, 1.1190, −0.35198, 0.095824i, −1.6071i, 1.1791, −1.2238, −0.90847i,
+ −0.98383i, −0.042304, 0.76948, −0.77265i ,                                                                                                 (B.13)
+
+
+
+
+  0.59598, −1.1186, 0.73969i, 0.81115i, 0.65823, −0.96678, 1.6985, −0.30140i, −0.92427, 0.46869i, 0, 1.3919, −0.16684i, −1.2158, 0.29842,
+  1.4089i, 0.63575, 1.2202i, −1.0605i, 1.3233i, 2.4873i, −0.19243i, 1.1190, −0.35198, −0.095824i, 1.6071i, 1.1791, −1.2238, 0.90847i,
+  0.98383i, −0.042304, 0.76948, 0.77265i ,                                                                                                  (B.14)
+
+
+
+
+     0.45313, −1.4712, 0.56822 − 0.90538i, −0.29838 − 0.47544i, 0.44418, −1.4327, 1.6133, −0.28628 + 0.85922i, −1.06265 − 0.20046i,
+     0.23903 − 0.41227i, 0, 1.4603, 0.25762 − 0.03156i, −1.1589, −1.18478 − 0.54983i, −0.58503 + 0.44603i, 1.29014 − 0.03809i,
+     0.52573 − 0.73456i, −0.14716 + 0.55274i, −0.15369 + 0.58393i, −0.8983 − 2.4883i, 0.64477 + 0.07407i, 0.51341 − 0.56880i,
+     −0.96725 + 0.17004i, 0.22399 + 0.20236i, −0.12969 − 0.36193i, 1.9718 − 0.0456i, −1.9858 − 0.1672i, 0.11047 − 0.72999i,
+     0.50307 + 0.02573i, 0.94973 − 0.33977i, −0.48769 + 0.41436i, 0.30881 + 0.23653i ,                                                      (B.15)
+
+
+
+
+     0.45313, −1.4712, 0.56822 + 0.90538i, −0.29838 + 0.47544i, 0.44418, −1.4327, 1.6133, −0.28628 − 0.85922i, −1.06265 + 0.20046i,
+     0.23903 + 0.41227i, 0, 1.4603, 0.25762 + 0.03156i, −1.1589, −1.18478 + 0.54983i, −0.58503 − 0.44603i, 1.29014 + 0.03809i,
+     0.52573 + 0.73456i, −0.14716 − 0.55274i, −0.15369 − 0.58393i, −0.8983 + 2.4883i, 0.64477 − 0.07407i, 0.51341 + 0.56880i,
+     −0.96725 − 0.17004i, 0.22399 − 0.20236i, −0.12969 + 0.36193i, 1.9718 + 0.0456i, −1.9858 + 0.1672i, 0.11047 + 0.72999i,
+     0.50307 − 0.02573i, 0.94973 + 0.33977i, −0.48769 − 0.41436i, 0.30881 − 0.23653i ,                                                      (B.16)
+
+
+
+
+                                                                  34
+  0.45313, −1.4712, −0.56822 + 0.90538i, 0.29838 + 0.47544i, 0.44418, −1.4327, 1.6133, 0.28628 − 0.85922i, −1.06265 − 0.20046i,
+  −0.23903 + 0.41227i, 0, 1.4603, −0.25762 + 0.03156i, −1.1589, −1.18478 − 0.54983i, 0.58503 − 0.44603i, 1.29014 − 0.03809i,
+  −0.52573 + 0.73456i, 0.14716 − 0.55274i, 0.15369 − 0.58393i, 0.8983 + 2.4883i, −0.64477 − 0.07407i, 0.51341 − 0.56880i,
+  −0.96725 + 0.17004i, −0.22399 − 0.20236i, 0.12969 + 0.36193i, 1.9718 − 0.0456i, −1.9858 − 0.1672i, −0.11047 + 0.72999i,
+  −0.50307 − 0.02573i, 0.94973 − 0.33977i, −0.48769 + 0.41436i, −0.30881 − 0.23653i ,                                              (B.17)
+
+
+
+  0.45313, −1.4712, −0.56822 − 0.90538i, 0.29838 − 0.47544i, 0.44418, −1.4327, 1.6133, 0.28628 + 0.85922i, −1.06265 + 0.20046i,
+  −0.23903 − 0.41227i, 0, 1.4603, −0.25762 − 0.03156i, −1.1589, −1.18478 + 0.54983i, 0.58503 + 0.44603i, 1.29014 + 0.03809i,
+  −0.52573 − 0.73456i, 0.14716 + 0.55274i, 0.15369 + 0.58393i, 0.8983 − 2.4883i, −0.64477 + 0.07407i, 0.51341 + 0.56880i,
+  −0.96725 − 0.17004i, −0.22399 + 0.20236i, 0.12969 − 0.36193i, 1.9718 + 0.0456i, −1.9858 + 0.1672i, −0.11047 − 0.72999i,
+  −0.50307 + 0.02573i, 0.94973 + 0.33977i, −0.48769 − 0.41436i, −0.30881 + 0.23653i ,                                              (B.18)
+
+
+
+0.95002, −0.70174, −0.32710 + 0.46207i, 0.61236 + 0.86502i, 0.91139, −0.69823, 1.4042, 0.69607 + 0.01764i, −1.07310 + 0.03164i,
+0.110778 − 0.066634i, 0, 1.5414, −0.32109 − 0.41749i, −1.0979, 0.55005 + 1.21024i, 0.16063 − 0.43612i, −0.57733 + 0.76664i,
+−0.77052 − 0.36748i, −1.0386 − 0.9771i, −1.0513 − 0.9773i, −1.6481 + 0.1394i, 0.75969 − 0.23579i, 0.16464 − 0.02762i,
+−0.45318 + 0.69073i, 1.5501 − 0.2952i, 0.21242 − 0.81845i, 0.18804 + 0.61876i, −0.31405 + 0.71559i, −0.22192 − 0.26590i,
+1.13165 − 0.17765i, 0.54413 + 0.83642i, 0.132118 + 0.002732i, 1.05645 − 0.27973i ,                                                 (B.19)
+
+
+
+0.95002, −0.70174, −0.32710 − 0.46207i, 0.61236 − 0.86502i, 0.91139, −0.69823, 1.4042, 0.69607 − 0.01764i, −1.07310 − 0.03164i,
+0.110778 + 0.066634i, 0, 1.5414, −0.32109 + 0.41749i, −1.0979, 0.55005 − 1.21024i, 0.16063 + 0.43612i, −0.57733 − 0.76664i,
+−0.77052 + 0.36748i, −1.0386 + 0.9771i, −1.0513 + 0.9773i, −1.6481 − 0.1394i, 0.75969 + 0.23579i, 0.16464 + 0.02762i,
+−0.45318 − 0.69073i, 1.5501 + 0.2952i, 0.21242 + 0.81845i, 0.18804 − 0.61876i, −0.31405 − 0.71559i, −0.22192 + 0.26590i,
+1.13165 + 0.17765i, 0.54413 − 0.83642i, 0.132118 − 0.002732i, 1.05645 + 0.27973i ,                                                 (B.20)
+
+
+
+0.95002, −0.70174, 0.32710 − 0.46207i, −0.61236 − 0.86502i, 0.91139, −0.69823, 1.4042, −0.69607 − 0.01764i, −1.07310 + 0.03164i,
+−0.110778 + 0.066634i, 0, 1.5414, 0.32109 + 0.41749i, −1.0979, 0.55005 + 1.21024i, −0.16063 + 0.43612i, −0.57733 + 0.76664i,
+0.77052 + 0.36748i, 1.0386 + 0.9771i, 1.0513 + 0.9773i, 1.6481 − 0.1394i, −0.75969 + 0.23579i, 0.16464 − 0.02762i,
+−0.45318 + 0.69073i, −1.5501 + 0.2952i, −0.21242 + 0.81845i, 0.18804 + 0.61876i, −0.31405 + 0.71559i, 0.22192 + 0.26590i,
+−1.13165 + 0.17765i, 0.54413 + 0.83642i, 0.132118 + 0.002732i, −1.05645 + 0.27973i ,                                               (B.21)
+
+
+
+0.95002, −0.70174, 0.32710 + 0.46207i, −0.61236 + 0.86502i, 0.91139, −0.69823, 1.4042, −0.69607 + 0.01764i, −1.07310 − 0.03164i,
+−0.110778 − 0.066634i, 0, 1.5414, 0.32109 − 0.41749i, −1.0979, 0.55005 − 1.21024i, −0.16063 − 0.43612i, −0.57733 − 0.76664i,
+0.77052 − 0.36748i, 1.0386 − 0.9771i, 1.0513 − 0.9773i, 1.6481 + 0.1394i, −0.75969 − 0.23579i, 0.16464 + 0.02762i,
+−0.45318 − 0.69073i, −1.5501 − 0.2952i, −0.21242 − 0.81845i, 0.18804 − 0.61876i, −0.31405 − 0.71559i, 0.22192 − 0.26590i,
+−1.13165 − 0.17765i, 0.54413 − 0.83642i, 0.132118 − 0.002732i, −1.05645 − 0.27973i ,                                               (B.22)
+
+
+
+  0.91406, −0.72935, −0.32785 + 0.21228i, 1.2895 + 0.8349i, 1.4439, −0.44072, 1.9777, 0.59874 − 0.39052i, −0.71679 + 0.35810i,
+  0.52839 − 0.83821i, 0, 1.5872, −1.4616 − 0.0841i, −1.0662, 0.53349 + 0.85291i, 0.25457 − 0.94589i, −0.54140 + 0.29559i,
+  −0.56202 − 0.89376i, −3.7027 + 0.1711i, −0.45217 − 1.08965i, −1.31223 − 0.02937i, 0.28581 − 0.03529i, 0.28570 + 0.19367i,
+  −0.42571 + 0.11678i, 1.4713 − 0.2882i, 0.25631 − 0.43236i, 0.00524 + 0.38763i, −0.42348 + 0.77593i, −0.04355 − 0.68106i,
+  3.3594 − 0.7888i, 1.36463 + 0.09310i, 0.80459 − 0.12635i, 1.13364 − 0.56938i ,                                                   (B.23)
+
+
+
+  0.91406, −0.72935, −0.32785 − 0.21228i, 1.2895 − 0.8349i, 1.4439, −0.44072, 1.9777, 0.59874 + 0.39052i, −0.71679 − 0.35810i,
+  0.52839 + 0.83821i, 0, 1.5872, −1.4616 + 0.0841i, −1.0662, 0.53349 − 0.85291i, 0.25457 + 0.94589i, −0.54140 − 0.29559i,
+  −0.56202 + 0.89376i, −3.7027 − 0.1711i, −0.45217 + 1.08965i, −1.31223 + 0.02937i, 0.28581 + 0.03529i, 0.28570 − 0.19367i,
+  −0.42571 − 0.11678i, 1.4713 + 0.2882i, 0.25631 + 0.43236i, 0.00524 − 0.38763i, −0.42348 − 0.77593i, −0.04355 + 0.68106i,
+  3.3594 + 0.7888i, 1.36463 − 0.09310i, 0.80459 + 0.12635i, 1.13364 + 0.56938i ,                                                   (B.24)
+
+
+
+ 0.91406, −0.72935, 0.32785 − 0.21228i, −1.2895 − 0.8349i, 1.4439, −0.44072, 1.9777, −0.59874 + 0.39052i, −0.71679 + 0.35810i,
+ −0.52839 + 0.83821i, 0, 1.5872, 1.4616 + 0.0841i, −1.0662, 0.53349 + 0.85291i, −0.25457 + 0.94589i, −0.54140 + 0.29559i,
+ 0.56202 + 0.89376i, 3.7027 − 0.1711i, 0.45217 + 1.08965i, 1.31223 + 0.02937i, −0.28581 + 0.03529i, 0.28570 + 0.19367i,
+ −0.42571 + 0.11678i, −1.4713 + 0.2882i, −0.25631 + 0.43236i, 0.00524 + 0.38763i, −0.42348 + 0.77593i, 0.04355 + 0.68106i,
+ −3.3594 + 0.7888i, 1.36463 + 0.09310i, 0.80459 − 0.12635i, −1.13364 + 0.56938i ,                                                  (B.25)
+
+
+
+                                                            35
+ 0.91406, −0.72935, 0.32785 + 0.21228i, −1.2895 + 0.8349i, 1.4439, −0.44072, 1.9777, −0.59874 − 0.39052i, −0.71679 − 0.35810i,
+ −0.52839 − 0.83821i, 0, 1.5872, 1.4616 − 0.0841i, −1.0662, 0.53349 − 0.85291i, −0.25457 − 0.94589i, −0.54140 − 0.29559i,
+ 0.56202 − 0.89376i, 3.7027 + 0.1711i, 0.45217 − 1.08965i, 1.31223 − 0.02937i, −0.28581 − 0.03529i, 0.28570 − 0.19367i,
+ −0.42571 − 0.11678i, −1.4713 − 0.2882i, −0.25631 − 0.43236i, 0.00524 − 0.38763i, −0.42348 − 0.77593i, 0.04355 − 0.68106i,
+ −3.3594 − 0.7888i, 1.36463 − 0.09310i, 0.80459 + 0.12635i, −1.13364 − 0.56938i ,                                                (B.26)
+
+
+
+  1.6191, −0.41174, −0.31539 + 0.21907i, 1.2832 + 0.8914i, 0.89136, −0.71393, 1.1087, 0.83973 + 0.29799i, −1.00374 + 0.24552i,
+  −0.43614 − 0.16939i, 0, 2.2206, −0.24786 − 1.13810i, −0.76211, 0.9500 + 1.2734i, 0.22293 + 0.17133i, −0.27088 + 0.66960i,
+  −1.8137 + 0.0879i, −0.42589 − 1.01614i, −4.3726 + 0.1178i, −1.27855 − 0.01388i, 0.94073 − 0.59690i, −0.10924 − 0.54527i,
+  −0.17013 + 1.07890i, 4.2738 − 0.7905i, 0.27296 − 1.10597i, 0.13837 + 0.05770i, 0.17575 + 0.51118i, −0.066218 + 0.013520i,
+  1.05447 − 0.31776i, 0.18575 + 0.84116i, −0.06819 − 0.18417i, 0.54875 + 0.00570i ,                                              (B.27)
+
+
+
+  1.6191, −0.41174, −0.31539 − 0.21907i, 1.2832 − 0.8914i, 0.89136, −0.71393, 1.1087, 0.83973 − 0.29799i, −1.00374 − 0.24552i,
+  −0.43614 + 0.16939i, 0, 2.2206, −0.24786 + 1.13810i, −0.76211, 0.9500 − 1.2734i, 0.22293 − 0.17133i, −0.27088 − 0.66960i,
+  −1.8137 − 0.0879i, −0.42589 + 1.01614i, −4.3726 − 0.1178i, −1.27855 + 0.01388i, 0.94073 + 0.59690i, −0.10924 + 0.54527i,
+  −0.17013 − 1.07890i, 4.2738 + 0.7905i, 0.27296 + 1.10597i, 0.13837 − 0.05770i, 0.17575 − 0.51118i, −0.066218 − 0.013520i,
+  1.05447 + 0.31776i, 0.18575 − 0.84116i, −0.06819 + 0.18417i, 0.54875 − 0.00570i ,                                              (B.28)
+
+
+
+ 1.6191, −0.41174, 0.31539 − 0.21907i, −1.2832 − 0.8914i, 0.89136, −0.71393, 1.1087, −0.83973 − 0.29799i, −1.00374 + 0.24552i,
+ 0.43614 + 0.16939i, 0, 2.2206, 0.24786 + 1.13810i, −0.76211, 0.9500 + 1.2734i, −0.22293 − 0.17133i, −0.27088 + 0.66960i,
+ 1.8137 − 0.0879i, 0.42589 + 1.01614i, 4.3726 − 0.1178i, 1.27855 + 0.01388i, −0.94073 + 0.59690i, −0.10924 − 0.54527i,
+ −0.17013 + 1.07890i, −4.2738 + 0.7905i, −0.27296 + 1.10597i, 0.13837 + 0.05770i, 0.17575 + 0.51118i, 0.066218 − 0.013520i,
+ −1.05447 + 0.31776i, 0.18575 + 0.84116i, −0.06819 − 0.18417i, −0.54875 − 0.00570i ,                                             (B.29)
+
+
+
+ 1.6191, −0.41174, 0.31539 + 0.21907i, −1.2832 + 0.8914i, 0.89136, −0.71393, 1.1087, −0.83973 + 0.29799i, −1.00374 − 0.24552i,
+ 0.43614 − 0.16939i, 0, 2.2206, 0.24786 − 1.13810i, −0.76211, 0.9500 − 1.2734i, −0.22293 + 0.17133i, −0.27088 − 0.66960i,
+ 1.8137 + 0.0879i, 0.42589 − 1.01614i, 4.3726 + 0.1178i, 1.27855 − 0.01388i, −0.94073 − 0.59690i, −0.10924 + 0.54527i,
+ −0.17013 − 1.07890i, −4.2738 − 0.7905i, −0.27296 − 1.10597i, 0.13837 − 0.05770i, 0.17575 − 0.51118i, 0.066218 + 0.013520i,
+ −1.05447 − 0.31776i, 0.18575 − 0.84116i, −0.06819 + 0.18417i, −0.54875 + 0.00570i ,                                             (B.30)
+
+
+
+1.9767, −0.33727, 0.05613 − 0.20931i, −0.7171 − 2.6743i, 1.8266, −0.34838, 2.5896, −0.97646 + 0.06703i, −0.50833 + 0.57791i,
+0.0097 + 1.5333i, 0, 3.0381, 2.6956 + 0.4993i, −0.55702, 0.2200 + 1.8898i, −0.39511 + 0.29393i, −0.34960 + 0.14642i,
+2.6774 + 0.4012i, 3.7967 + 0.6721i, 4.4427 + 0.7059i, 0.66723 − 0.48517i, −0.31466 + 0.03542i, 0.56011 + 0.26856i,
+−0.42542 + 0.12618i, −4.6583 + 0.4940i, −0.25449 + 0.46452i, −0.062714 + 0.060676i, −0.15517 + 1.13620i, −0.12916 + 0.16928i,
+−3.7951 + 0.4902i, 1.3886 + 0.3523i, 0.32390 − 0.11002i, −0.46294 + 0.00590i ,                                                   (B.31)
+
+
+
+1.9767, −0.33727, 0.05613 + 0.20931i, −0.7171 + 2.6743i, 1.8266, −0.34838, 2.5896, −0.97646 − 0.06703i, −0.50833 − 0.57791i,
+0.0097 − 1.5333i, 0, 3.0381, 2.6956 − 0.4993i, −0.55702, 0.2200 − 1.8898i, −0.39511 − 0.29393i, −0.34960 − 0.14642i,
+2.6774 − 0.4012i, 3.7967 − 0.6721i, 4.4427 − 0.7059i, 0.66723 + 0.48517i, −0.31466 − 0.03542i, 0.56011 − 0.26856i,
+−0.42542 − 0.12618i, −4.6583 − 0.4940i, −0.25449 − 0.46452i, −0.062714 − 0.060676i, −0.15517 − 1.13620i, −0.12916 − 0.16928i,
+−3.7951 − 0.4902i, 1.3886 − 0.3523i, 0.32390 + 0.11002i, −0.46294 − 0.00590i ,                                                   (B.32)
+
+
+
+  1.9767, −0.33727, −0.05613 + 0.20931i, 0.7171 + 2.6743i, 1.8266, −0.34838, 2.5896, 0.97646 − 0.06703i, −0.50833 + 0.57791i,
+  −0.0097 − 1.5333i, 0, 3.0381, −2.6956 − 0.4993i, −0.55702, 0.2200 + 1.8898i, 0.39511 − 0.29393i, −0.34960 + 0.14642i,
+  −2.6774 − 0.4012i, −3.7967 − 0.6721i, −4.4427 − 0.7059i, −0.66723 + 0.48517i, 0.31466 − 0.03542i, 0.56011 + 0.26856i,
+  −0.42542 + 0.12618i, 4.6583 − 0.4940i, 0.25449 − 0.46452i, −0.062714 + 0.060676i, −0.15517 + 1.13620i, 0.12916 − 0.16928i,
+  3.7951 − 0.4902i, 1.3886 + 0.3523i, 0.32390 − 0.11002i, 0.46294 − 0.00590i ,                                                   (B.33)
+
+
+
+  1.9767, −0.33727, −0.05613 − 0.20931i, 0.7171 − 2.6743i, 1.8266, −0.34838, 2.5896, 0.97646 + 0.06703i, −0.50833 − 0.57791i,
+  −0.0097 + 1.5333i, 0, 3.0381, −2.6956 + 0.4993i, −0.55702, 0.2200 − 1.8898i, 0.39511 + 0.29393i, −0.34960 − 0.14642i,
+  −2.6774 + 0.4012i, −3.7967 + 0.6721i, −4.4427 + 0.7059i, −0.66723 − 0.48517i, 0.31466 + 0.03542i, 0.56011 − 0.26856i,
+  −0.42542 − 0.12618i, 4.6583 + 0.4940i, 0.25449 + 0.46452i, −0.062714 − 0.060676i, −0.15517 − 1.13620i, 0.12916 + 0.16928i,
+  3.7951 + 0.4902i, 1.3886 − 0.3523i, 0.32390 + 0.11002i, 0.46294 + 0.00590i ,                                                   (B.34)
+
+
+
+                                                            36
+1.9110, −0.34887, 0.00327 − 0.22368i, −0.0393 − 2.6819i, 1.7784, −0.35783, 2.6804, −0.53916 + 0.27523i, −0.27538 + 0.28432i,
+0.4435 + 1.6399i, 0, 3.0545, −2.7364 − 0.4622i, −0.55405, 0.2485 − 1.8820i, −0.15028 − 0.62950i, −0.84974 − 0.35066i,
+2.5088 − 0.4469i, −3.6825 − 0.6863i, 4.3083 − 0.7236i, −0.03074 + 0.48708i, 0.24037 − 0.02620i, 1.36785 + 0.30507i,
+0.42890 − 0.02582i, −4.0393 − 0.4868i, 0.03734 − 0.23398i, 0.021371 − 0.082685i, −0.16148 − 1.09578i, −0.02592 − 0.39795i,
+3.6366 − 0.4677i, −0.64660 − 0.11788i, 0.38877 − 0.11146i, −0.38953 − 0.01540i ,                                                (B.35)
+
+
+
+1.9110, −0.34887, 0.00327 + 0.22368i, −0.0393 + 2.6819i, 1.7784, −0.35783, 2.6804, −0.53916 − 0.27523i, −0.27538 − 0.28432i,
+0.4435 − 1.6399i, 0, 3.0545, −2.7364 + 0.4622i, −0.55405, 0.2485 + 1.8820i, −0.15028 + 0.62950i, −0.84974 + 0.35066i,
+2.5088 + 0.4469i, −3.6825 + 0.6863i, 4.3083 + 0.7236i, −0.03074 − 0.48708i, 0.24037 + 0.02620i, 1.36785 − 0.30507i,
+0.42890 + 0.02582i, −4.0393 + 0.4868i, 0.03734 + 0.23398i, 0.021371 + 0.082685i, −0.16148 + 1.09578i, −0.02592 + 0.39795i,
+3.6366 + 0.4677i, −0.64660 + 0.11788i, 0.38877 + 0.11146i, −0.38953 + 0.01540i ,                                                (B.36)
+
+
+
+ 1.9110, −0.34887, −0.00327 + 0.22368i, 0.0393 + 2.6819i, 1.7784, −0.35783, 2.6804, 0.53916 − 0.27523i, −0.27538 + 0.28432i,
+ −0.4435 − 1.6399i, 0, 3.0545, 2.7364 + 0.4622i, −0.55405, 0.2485 − 1.8820i, 0.15028 + 0.62950i, −0.84974 − 0.35066i,
+ −2.5088 + 0.4469i, 3.6825 + 0.6863i, −4.3083 + 0.7236i, 0.03074 − 0.48708i, −0.24037 + 0.02620i, 1.36785 + 0.30507i,
+ 0.42890 − 0.02582i, 4.0393 + 0.4868i, −0.03734 + 0.23398i, 0.021371 − 0.082685i, −0.16148 − 1.09578i, 0.02592 + 0.39795i,
+ −3.6366 + 0.4677i, −0.64660 − 0.11788i, 0.38877 − 0.11146i, 0.38953 + 0.01540i ,                                               (B.37)
+
+
+
+ 1.9110, −0.34887, −0.00327 − 0.22368i, 0.0393 − 2.6819i, 1.7784, −0.35783, 2.6804, 0.53916 + 0.27523i, −0.27538 − 0.28432i,
+ −0.4435 + 1.6399i, 0, 3.0545, 2.7364 − 0.4622i, −0.55405, 0.2485 + 1.8820i, 0.15028 − 0.62950i, −0.84974 + 0.35066i,
+ −2.5088 − 0.4469i, 3.6825 − 0.6863i, −4.3083 − 0.7236i, 0.03074 + 0.48708i, −0.24037 − 0.02620i, 1.36785 − 0.30507i,
+ 0.42890 + 0.02582i, 4.0393 − 0.4868i, −0.03734 − 0.23398i, 0.021371 + 0.082685i, −0.16148 + 1.09578i, 0.02592 − 0.39795i,
+ −3.6366 − 0.4677i, −0.64660 + 0.11788i, 0.38877 + 0.11146i, 0.38953 − 0.01540i ,                                               (B.38)
+
+
+
+1.4754, −0.45185, 0.26993 − 0.31443i, −0.9431 − 1.0986i, 0.90647, −0.70202, 1.1900, −0.64403 + 0.44663i, −0.70679 + 0.19227i,
+0.44962 + 0.66707i, 0, 2.1641, −0.58808 − 1.12062i, −0.78201, −0.5172 − 1.5098i, −0.13148 − 0.42354i, −0.15008 − 0.87223i,
+1.6534 − 0.1717i, −0.26139 − 0.99093i, 3.8126 − 0.2532i, −0.61422 − 0.01569i, 0.40219 − 0.56716i, 0.78585 + 1.09294i,
+0.52651 − 1.06313i, −3.4366 − 0.4772i, −0.20918 − 0.81249i, 0.19179 − 0.23502i, −0.46509 − 0.63244i, 0.07940 − 0.27067i,
+0.96433 − 0.28726i, 0.02610 − 0.29483i, 0.12662 − 0.40894i, −0.39814 − 0.03508i ,                                               (B.39)
+
+
+
+1.4754, −0.45185, 0.26993 + 0.31443i, −0.9431 + 1.0986i, 0.90647, −0.70202, 1.1900, −0.64403 − 0.44663i, −0.70679 − 0.19227i,
+0.44962 − 0.66707i, 0, 2.1641, −0.58808 + 1.12062i, −0.78201, −0.5172 + 1.5098i, −0.13148 + 0.42354i, −0.15008 + 0.87223i,
+1.6534 + 0.1717i, −0.26139 + 0.99093i, 3.8126 + 0.2532i, −0.61422 + 0.01569i, 0.40219 + 0.56716i, 0.78585 − 1.09294i,
+0.52651 + 1.06313i, −3.4366 + 0.4772i, −0.20918 + 0.81249i, 0.19179 + 0.23502i, −0.46509 + 0.63244i, 0.07940 + 0.27067i,
+0.96433 + 0.28726i, 0.02610 + 0.29483i, 0.12662 + 0.40894i, −0.39814 + 0.03508i ,                                               (B.40)
+
+
+
+1.4754, −0.45185, −0.26993 + 0.31443i, 0.9431 + 1.0986i, 0.90647, −0.70202, 1.1900, 0.64403 − 0.44663i, −0.70679 + 0.19227i,
+−0.44962 − 0.66707i, 0, 2.1641, 0.58808 + 1.12062i, −0.78201, −0.5172 − 1.5098i, 0.13148 + 0.42354i, −0.15008 − 0.87223i,
+−1.6534 + 0.1717i, 0.26139 + 0.99093i, −3.8126 + 0.2532i, 0.61422 + 0.01569i, −0.40219 + 0.56716i, 0.78585 + 1.09294i,
+0.52651 − 1.06313i, 3.4366 + 0.4772i, 0.20918 + 0.81249i, 0.19179 − 0.23502i, −0.46509 − 0.63244i, −0.07940 + 0.27067i,
+−0.96433 + 0.28726i, 0.02610 − 0.29483i, 0.12662 − 0.40894i, 0.39814 + 0.03508i ,                                               (B.41)
+
+
+
+1.4754, −0.45185, −0.26993 − 0.31443i, 0.9431 − 1.0986i, 0.90647, −0.70202, 1.1900, 0.64403 + 0.44663i, −0.70679 − 0.19227i,
+−0.44962 + 0.66707i, 0, 2.1641, 0.58808 − 1.12062i, −0.78201, −0.5172 + 1.5098i, 0.13148 − 0.42354i, −0.15008 + 0.87223i,
+−1.6534 − 0.1717i, 0.26139 − 0.99093i, −3.8126 − 0.2532i, 0.61422 − 0.01569i, −0.40219 − 0.56716i, 0.78585 − 1.09294i,
+0.52651 + 1.06313i, 3.4366 − 0.4772i, 0.20918 − 0.81249i, 0.19179 + 0.23502i, −0.46509 + 0.63244i, −0.07940 − 0.27067i,
+−0.96433 − 0.28726i, 0.02610 + 0.29483i, 0.12662 + 0.40894i, 0.39814 − 0.03508i ,                                               (B.42)
+
+
+
+0.91505, −0.72856, 0.27183 + 0.31858i, −0.9300 + 1.0899i, 1.3057, −0.48737, 2.0032, −0.14161 − 0.38149i, −0.57789 − 0.19254i,
+−0.65685 − 0.95410i, 0, 1.6661, 1.4419 − 0.0115i, −1.0157, 0.58147 − 0.19814i, −0.13423 + 1.20011i, −0.70261 + 0.14143i,
+−0.07650 + 0.96588i, 3.1688 + 0.2287i, −0.24929 + 1.05474i, −0.57752 + 0.03039i, −0.114872 − 0.004834i, 0.95170 + 0.00885i,
+0.27274 + 0.12463i, 0.66228 + 0.34284i, −0.091636 − 0.007210i, 0.05332 + 0.23213i, −0.42025 − 0.15528i, −0.04327 + 1.10732i,
+−2.8851 + 0.3857i, 0.92607 − 0.07941i, 1.16570 + 0.08767i, 0.42643 + 0.60833i ,                                                 (B.43)
+
+
+
+                                                          37
+ 0.91505, −0.72856, 0.27183 − 0.31858i, −0.9300 − 1.0899i, 1.3057, −0.48737, 2.0032, −0.14161 + 0.38149i, −0.57789 + 0.19254i,
+ −0.65685 + 0.95410i, 0, 1.6661, 1.4419 + 0.0115i, −1.0157, 0.58147 + 0.19814i, −0.13423 − 1.20011i, −0.70261 − 0.14143i,
+ −0.07650 − 0.96588i, 3.1688 − 0.2287i, −0.24929 − 1.05474i, −0.57752 − 0.03039i, −0.114872 + 0.004834i, 0.95170 − 0.00885i,
+ 0.27274 − 0.12463i, 0.66228 − 0.34284i, −0.091636 + 0.007210i, 0.05332 − 0.23213i, −0.42025 + 0.15528i, −0.04327 − 1.10732i,
+ −2.8851 − 0.3857i, 0.92607 + 0.07941i, 1.16570 − 0.08767i, 0.42643 − 0.60833i ,                                                   (B.44)
+
+
+
+  0.91505, −0.72856, −0.27183 − 0.31858i, 0.9300 − 1.0899i, 1.3057, −0.48737, 2.0032, 0.14161 + 0.38149i, −0.57789 − 0.19254i,
+  0.65685 + 0.95410i, 0, 1.6661, −1.4419 + 0.0115i, −1.0157, 0.58147 − 0.19814i, 0.13423 − 1.20011i, −0.70261 + 0.14143i,
+  0.07650 − 0.96588i, −3.1688 − 0.2287i, 0.24929 − 1.05474i, 0.57752 − 0.03039i, 0.114872 + 0.004834i, 0.95170 + 0.00885i,
+  0.27274 + 0.12463i, −0.66228 − 0.34284i, 0.091636 + 0.007210i, 0.05332 + 0.23213i, −0.42025 − 0.15528i, 0.04327 − 1.10732i,
+  2.8851 − 0.3857i, 0.92607 − 0.07941i, 1.16570 + 0.08767i, −0.42643 − 0.60833i ,                                                  (B.45)
+
+
+
+  0.91505, −0.72856, −0.27183 + 0.31858i, 0.9300 + 1.0899i, 1.3057, −0.48737, 2.0032, 0.14161 − 0.38149i, −0.57789 + 0.19254i,
+  0.65685 − 0.95410i, 0, 1.6661, −1.4419 − 0.0115i, −1.0157, 0.58147 + 0.19814i, 0.13423 + 1.20011i, −0.70261 − 0.14143i,
+  0.07650 + 0.96588i, −3.1688 + 0.2287i, 0.24929 + 1.05474i, 0.57752 + 0.03039i, 0.114872 − 0.004834i, 0.95170 − 0.00885i,
+  0.27274 − 0.12463i, −0.66228 + 0.34284i, 0.091636 − 0.007210i, 0.05332 − 0.23213i, −0.42025 + 0.15528i, 0.04327 + 1.10732i,
+  2.8851 + 0.3857i, 0.92607 + 0.07941i, 1.16570 − 0.08767i, −0.42643 + 0.60833i ,                                                  (B.46)
+
+
+
+0.83084, −0.80240, 0.54517 + 0.28351i, −0.86630 + 0.45050i, 0.82640, −0.77005, 1.2825, −0.63500 − 0.65516i, −0.62821 − 0.25417i,
+0.21863 − 0.73889i, 0, 1.4650, 0.07479 + 0.15346i, −1.1552, 0.19925 + 0.77645i, −0.39963 + 1.01146i, −0.55839 + 0.66064i,
+0.56405 + 0.67208i, 0.49305 + 0.88504i, 0.47057 + 0.91614i, −0.114229 − 0.033999i, −0.03362 + 0.17079i, 1.07828 − 0.23571i,
+0.43204 + 0.65475i, −0.15165 + 0.37036i, −0.00587 + 0.19230i, 0.05368 + 0.63486i, −0.59003 + 0.43800i, 0.12237 + 0.92941i,
+−0.073227 + 0.088523i, 0.72886 + 0.09120i, 0.87484 + 0.67036i, −0.13807 + 0.40776i ,                                               (B.47)
+
+
+
+0.83084, −0.80240, 0.54517 − 0.28351i, −0.86630 − 0.45050i, 0.82640, −0.77005, 1.2825, −0.63500 + 0.65516i, −0.62821 + 0.25417i,
+0.21863 + 0.73889i, 0, 1.4650, 0.07479 − 0.15346i, −1.1552, 0.19925 − 0.77645i, −0.39963 − 1.01146i, −0.55839 − 0.66064i,
+0.56405 − 0.67208i, 0.49305 − 0.88504i, 0.47057 − 0.91614i, −0.114229 + 0.033999i, −0.03362 − 0.17079i, 1.07828 + 0.23571i,
+0.43204 − 0.65475i, −0.15165 − 0.37036i, −0.00587 − 0.19230i, 0.05368 − 0.63486i, −0.59003 − 0.43800i, 0.12237 − 0.92941i,
+−0.073227 − 0.088523i, 0.72886 − 0.09120i, 0.87484 − 0.67036i, −0.13807 − 0.40776i ,                                               (B.48)
+
+
+
+0.83084, −0.80240, −0.54517 − 0.28351i, 0.86630 − 0.45050i, 0.82640, −0.77005, 1.2825, 0.63500 + 0.65516i, −0.62821 − 0.25417i,
+−0.21863 + 0.73889i, 0, 1.4650, −0.07479 − 0.15346i, −1.1552, 0.19925 + 0.77645i, 0.39963 − 1.01146i, −0.55839 + 0.66064i,
+−0.56405 − 0.67208i, −0.49305 − 0.88504i, −0.47057 − 0.91614i, 0.114229 + 0.033999i, 0.03362 − 0.17079i, 1.07828 − 0.23571i,
+0.43204 + 0.65475i, 0.15165 − 0.37036i, 0.00587 − 0.19230i, 0.05368 + 0.63486i, −0.59003 + 0.43800i, −0.12237 − 0.92941i,
+0.073227 − 0.088523i, 0.72886 + 0.09120i, 0.87484 + 0.67036i, 0.13807 − 0.40776i ,                                                 (B.49)
+
+
+
+0.83084, −0.80240, −0.54517 + 0.28351i, 0.86630 + 0.45050i, 0.82640, −0.77005, 1.2825, 0.63500 − 0.65516i, −0.62821 + 0.25417i,
+−0.21863 − 0.73889i, 0, 1.4650, −0.07479 + 0.15346i, −1.1552, 0.19925 − 0.77645i, 0.39963 + 1.01146i, −0.55839 − 0.66064i,
+−0.56405 + 0.67208i, −0.49305 + 0.88504i, −0.47057 + 0.91614i, 0.114229 − 0.033999i, 0.03362 + 0.17079i, 1.07828 + 0.23571i,
+0.43204 − 0.65475i, 0.15165 + 0.37036i, 0.00587 + 0.19230i, 0.05368 − 0.63486i, −0.59003 − 0.43800i, −0.12237 + 0.92941i,
+0.073227 + 0.088523i, 0.72886 − 0.09120i, 0.87484 − 0.67036i, 0.13807 + 0.40776i ,                                                 (B.50)
+
+
+
+  0.39164, −1.7022, −0.35103 − 0.95729i, 0.20259 − 0.55248i, 0.38227, −1.6647, 1.1443, 0.0237 + 1.6373i, 0.16720 − 0.16022i,
+  0.09765 + 0.99081i, 0, 1.5031, −0.53246 − 0.03874i, −1.1259, 0.21939 − 0.79376i, −0.26452 − 1.01231i, 0.80162 − 0.64935i,
+  −0.43261 − 1.28844i, −0.13172 − 0.75084i, −0.13792 − 0.80345i, −0.2954 − 3.4158i, 0.75140 − 0.93916i, −0.15858 − 0.75731i,
+  0.61414 + 0.02289i, 0.17208 − 1.00307i, 0.5605 − 2.5543i, 0.77415 + 0.28436i, −1.24006 − 0.20187i, −0.0941 − 2.1116i,
+  0.41179 − 0.61812i, −0.61289 − 0.14385i, 0.00420 + 0.62552i, 0.45087 − 1.21007i ,                                                (B.51)
+
+
+
+  0.39164, −1.7022, −0.35103 + 0.95729i, 0.20259 + 0.55248i, 0.38227, −1.6647, 1.1443, 0.0237 − 1.6373i, 0.16720 + 0.16022i,
+  0.09765 − 0.99081i, 0, 1.5031, −0.53246 + 0.03874i, −1.1259, 0.21939 + 0.79376i, −0.26452 + 1.01231i, 0.80162 + 0.64935i,
+  −0.43261 + 1.28844i, −0.13172 + 0.75084i, −0.13792 + 0.80345i, −0.2954 + 3.4158i, 0.75140 + 0.93916i, −0.15858 + 0.75731i,
+  0.61414 − 0.02289i, 0.17208 + 1.00307i, 0.5605 + 2.5543i, 0.77415 − 0.28436i, −1.24006 + 0.20187i, −0.0941 + 2.1116i,
+  0.41179 + 0.61812i, −0.61289 + 0.14385i, 0.00420 − 0.62552i, 0.45087 + 1.21007i ,                                                (B.52)
+
+
+
+                                                            38
+         0.39164, −1.7022, 0.35103 + 0.95729i, −0.20259 + 0.55248i, 0.38227, −1.6647, 1.1443, −0.0237 − 1.6373i, 0.16720 − 0.16022i,
+         −0.09765 − 0.99081i, 0, 1.5031, 0.53246 + 0.03874i, −1.1259, 0.21939 − 0.79376i, 0.26452 + 1.01231i, 0.80162 − 0.64935i,
+         0.43261 + 1.28844i, 0.13172 + 0.75084i, 0.13792 + 0.80345i, 0.2954 + 3.4158i, −0.75140 + 0.93916i, −0.15858 − 0.75731i,
+         0.61414 + 0.02289i, −0.17208 + 1.00307i, −0.5605 + 2.5543i, 0.77415 + 0.28436i, −1.24006 − 0.20187i, 0.0941 + 2.1116i,
+         −0.41179 + 0.61812i, −0.61289 − 0.14385i, 0.00420 + 0.62552i, −0.45087 + 1.21007i ,                                              (B.53)
+
+
+
+
+         0.39164, −1.7022, 0.35103 − 0.95729i, −0.20259 − 0.55248i, 0.38227, −1.6647, 1.1443, −0.0237 + 1.6373i, 0.16720 + 0.16022i,
+         −0.09765 + 0.99081i, 0, 1.5031, 0.53246 − 0.03874i, −1.1259, 0.21939 + 0.79376i, 0.26452 − 1.01231i, 0.80162 + 0.64935i,
+         0.43261 − 1.28844i, 0.13172 − 0.75084i, 0.13792 − 0.80345i, 0.2954 − 3.4158i, −0.75140 − 0.93916i, −0.15858 + 0.75731i,
+         0.61414 − 0.02289i, −0.17208 − 1.00307i, −0.5605 − 2.5543i, 0.77415 − 0.28436i, −1.24006 + 0.20187i, 0.0941 − 2.1116i,
+         −0.41179 − 0.61812i, −0.61289 + 0.14385i, 0.00420 − 0.62552i, −0.45087 − 1.21007i ,                                              (B.54)
+
+
+
+
+      0.81486, −0.81813, 0.79755 − 0.60073i, −0.47999 − 0.36154i, 0.78430, −0.81138, 0.41009, −0.44206 − 1.09721i, −0.34785 + 0.02123i,
+      0.41308 − 1.00557i, 0, 1.4888, −0.22666 + 0.09476i, −1.1367, −0.69448 + 0.34912i, −0.45294 + 1.25709i, 0.36740 + 0.11056i,
+      0.27722 + 0.88306i, −0.2915 + 2.1764i, −0.3057 + 2.3029i, −1.7000 − 0.4665i, 1.3091 + 0.9847i, 0.13999 + 0.46494i,
+      0.92298 + 0.19622i, 0.90835 + 1.06028i, 0.4322 + 1.8622i, 0.27019 − 0.27159i, −0.59122 + 0.18392i, 0.00432 + 1.26521i,
+      0.96442 + 0.86007i, −0.64767 − 0.00816i, −0.11705 − 0.57289i, 1.1066 + 1.0690i ,                                                    (B.55)
+
+
+
+
+      0.81486, −0.81813, 0.79755 + 0.60073i, −0.47999 + 0.36154i, 0.78430, −0.81138, 0.41009, −0.44206 + 1.09721i, −0.34785 − 0.02123i,
+      0.41308 + 1.00557i, 0, 1.4888, −0.22666 − 0.09476i, −1.1367, −0.69448 − 0.34912i, −0.45294 − 1.25709i, 0.36740 − 0.11056i,
+      0.27722 − 0.88306i, −0.2915 − 2.1764i, −0.3057 − 2.3029i, −1.7000 + 0.4665i, 1.3091 − 0.9847i, 0.13999 − 0.46494i,
+      0.92298 − 0.19622i, 0.90835 − 1.06028i, 0.4322 − 1.8622i, 0.27019 + 0.27159i, −0.59122 − 0.18392i, 0.00432 − 1.26521i,
+      0.96442 − 0.86007i, −0.64767 + 0.00816i, −0.11705 + 0.57289i, 1.1066 − 1.0690i ,                                                    (B.56)
+
+
+
+
+       0.81486, −0.81813, −0.79755 + 0.60073i, 0.47999 + 0.36154i, 0.78430, −0.81138, 0.41009, 0.44206 + 1.09721i, −0.34785 + 0.02123i,
+       −0.41308 + 1.00557i, 0, 1.4888, 0.22666 − 0.09476i, −1.1367, −0.69448 + 0.34912i, 0.45294 − 1.25709i, 0.36740 + 0.11056i,
+       −0.27722 − 0.88306i, 0.2915 − 2.1764i, 0.3057 − 2.3029i, 1.7000 + 0.4665i, −1.3091 − 0.9847i, 0.13999 + 0.46494i,
+       0.92298 + 0.19622i, −0.90835 − 1.06028i, −0.4322 − 1.8622i, 0.27019 − 0.27159i, −0.59122 + 0.18392i, −0.00432 − 1.26521i,
+       −0.96442 − 0.86007i, −0.64767 − 0.00816i, −0.11705 − 0.57289i, −1.1066 − 1.0690i ,                                                 (B.57)
+
+
+
+
+       0.81486, −0.81813, −0.79755 − 0.60073i, 0.47999 − 0.36154i, 0.78430, −0.81138, 0.41009, 0.44206 − 1.09721i, −0.34785 − 0.02123i,
+       −0.41308 − 1.00557i, 0, 1.4888, 0.22666 + 0.09476i, −1.1367, −0.69448 − 0.34912i, 0.45294 + 1.25709i, 0.36740 − 0.11056i,
+       −0.27722 + 0.88306i, 0.2915 + 2.1764i, 0.3057 + 2.3029i, 1.7000 − 0.4665i, −1.3091 + 0.9847i, 0.13999 − 0.46494i,
+       0.92298 − 0.19622i, −0.90835 + 1.06028i, −0.4322 + 1.8622i, 0.27019 + 0.27159i, −0.59122 − 0.18392i, −0.00432 + 1.26521i,
+       −0.96442 + 0.86007i, −0.64767 + 0.00816i, −0.11705 + 0.57289i, −1.1066 + 1.0690i .                                                 (B.58)
+
+
+
+
+References
+[1] A. Sen, “Arithmetic of Quantum Entropy Function,” JHEP 0908, 068 (2009)
+    [arXiv:0903.1477 [hep-th]].
+
+[2] A. Dabholkar, J. Gomes, S. Murthy and A. Sen, “Supersymmetric Index from Black Hole
+    Entropy,” JHEP 1104, 034 (2011) [arXiv:1009.3226 [hep-th]].
+
+[3] A. Sen, “How Do Black Holes Predict the Sign of the Fourier Coefficients of Siegel Modular
+    Forms?,” Gen. Rel. Grav. 43, 2171 (2011) [arXiv:1008.4209 [hep-th]].
+
+
+                                                                   39
+ [4] K. Bringmann and S. Murthy, “On the positivity of black hole degeneracies in string
+     theory,” arXiv:1208.3476 [hep-th].
+
+ [5] F. Denef and G. W. Moore, “Split states, entropy enigmas, holes and halos,” JHEP 1111,
+     129 (2011) [arXiv:hep-th/0702146].
+
+ [6] J. Manschot, B. Pioline and A. Sen, “A fixed point formula for the index of multi-centered
+     N=2 black holes,” JHEP 1105, 057 (2011) [arXiv:1103.1887 [hep-th]].
+
+ [7] I. Bena, M. Berkooz, J. de Boer, S. El-Showk, and D. Van den Bleeken, “Scaling BPS
+    Solutions and pure-Higgs States,” JHEP 1211 171 (2012) [arXiv:1205.5023 [hep-th]].
+
+ [8] S.-J. Lee, Z.-L. Wang, and P. Yi, “Quiver Invariants from Intrinsic Higgs States,” JHEP
+    1207 169 (2012) [arXiv:1205.6511 [hep-th]].
+
+ [9] S.-J. Lee, Z.-L. Wang, and P. Yi, “BPS States, Refined Indices, and Quiver Invariants,”
+     JHEP 1210 094 (2012) [arXiv:1207.0821 [hep-th]].
+
+[10] J. Manschot, B. Pioline and A. Sen, “From Black Holes to Quivers,” JHEP 1211, 023
+     (2012) [arXiv:1207.2230 [hep-th]].
+
+[11] J. Manschot, B. Pioline and A. Sen, “On the Coulomb and Higgs branch formu-
+     lae for multi-centered black holes and quiver invariants,” JHEP 1305, 166 (2013)
+    [arXiv:1302.5498 [hep-th]].
+
+[12] A. Sen, “Walls of Marginal Stability and Dyon Spectrum in N=4 Supersymmetric String
+     Theories,” JHEP 0705, 039 (2007) [hep-th/0702141].
+
+[13] A. Dabholkar, D. Gaiotto and S. Nampuri, “Comments on the spectrum of CHL dyons,”
+     JHEP 0801, 023 (2008) [arXiv:hep-th/0702150].
+
+[14] A. Sen, “Two centered black holes and N=4 dyon spectrum,” JHEP 0709, 045 (2007)
+     [arXiv:0705.3874 [hep-th]].
+
+[15] M. C. N. Cheng and E. Verlinde, “Dying Dyons Don’t Count,” JHEP 0709, 070 (2007)
+    [arXiv:0706.2363 [hep-th]].
+
+[16] A. Sen, “N=8 Dyon Partition Function and Walls of Marginal Stability,” JHEP 0807,
+    118 (2008) [arXiv:0803.1014 [hep-th]].
+
+                                              40
+[17] A. Chowdhury, R. S. Garavuso, S. Mondal and A. Sen, “BPS State Counting in N=8
+     Supersymmetric String Theory for Pure D-brane Configurations,” JHEP 1410, 186 (2014)
+    [arXiv:1405.0412 [hep-th]].
+
+[18] E. Witten, “Constraints on Supersymmetry Breaking,” Nucl. Phys. B 202, 253 (1982).
+
+[19] S. Sethi and M. Stern, “Invariance theorems for supersymmetric Yang-Mills theories,”
+     Adv. Theor. Math. Phys. 4, 487 (2000) [hep-th/0001189].
+
+[20] J. M. Maldacena, G. W. Moore and A. Strominger, “Counting BPS black holes in toroidal
+    Type II string theory,” arXiv:hep-th/9903163.
+
+[21] D. Shih, A. Strominger and X. Yin, “Counting dyons in N=8 string theory,” JHEP 0606,
+    037 (2006) [arXiv:hep-th/0506151].
+
+[22] F. Denef, “Quantum quivers and Hall / hole halos,” JHEP 0210, 023 (2002) [hep-
+    th/0206072].
+
+[23] C. Bachas and E. Kiritsis, “F 4 terms in N=4 string vacua,” Nucl. Phys. Proc. Suppl.
+    55B, 194 (1997) [hep-th/9611205].
+
+[24] A. Gregori, E. Kiritsis, C. Kounnas, N. A. Obers, P. M. Petropoulos and B. Pioline, “R2
+     corrections and nonperturbative dualities of N=4 string ground states,” Nucl. Phys. B
+    510, 423 (1998) [hep-th/9708062].
+
+[25] S. Banerjee, R. K. Gupta and A. Sen, “Logarithmic Corrections to Extremal Black Hole
+    Entropy from Quantum Entropy Function,” JHEP 1103, 147 (2011) [arXiv:1005.3044
+    [hep-th]].
+
+[26] S. Banerjee, R. K. Gupta, I. Mandal, A. Sen, “Logarithmic Corrections to N=4 and N=8
+     Black Hole Entropy: A One Loop Test of Quantum Gravity,” JHEP 1111, 143 (2011)
+    [arXiv:1106.0080 [hep-th]].
+
+[27] A. Dabholkar, J. Gomes and S. Murthy, “Quantum black holes, localization and the
+     topological string,” JHEP 1106, 019 (2011) [arXiv:1012.0265 [hep-th]].
+
+[28] A. Dabholkar, J. Gomes and S. Murthy, “Localization & Exact Holography,” JHEP 1304,
+     062 (2013) [arXiv:1111.1161 [hep-th]].
+
+
+                                            41
+[29] A. Dabholkar, J. Gomes and S. Murthy, “Nonperturbative black hole entropy and Kloost-
+     erman sums,” JHEP 1503, 074 (2015) [arXiv:1404.0033 [hep-th]].
+
+[30] W. Decker, G.-M. Greuel, G. Pfister and H. Schönemann, “Singular 4-0-2 — A computer
+     algebra system for polynomial computations,” http://www.singular.uni-kl.de (2015).
+
+[31] D. R. Grayson and M. E. Stillman, “Macaulay2, a software system for research in algebraic
+     geometry,” http://www.math.uiuc.edu/Macaulay2/ (2015).
+
+[32] Wolfram Research, Inc., Mathematica, Version 10.3, Champaign, IL (2015).
+
+[33] S. D. Mathur, “The fuzzball proposal for black holes: An elementary review,” Fortsch.
+     Phys. 53, 793 (2005) [arXiv:hep-th/0502050].
+
+[34] S. D. Mathur, “Fuzzballs and the information paradox: a summary and conjectures,”
+     arXiv:0810.4525 [hep-th].
+
+[35] I. Bena and N. P. Warner, “Black holes, black rings and their microstates,” Lect. Notes
+     Phys. 755, 1 (2008) [arXiv:hep-th/0701216].
+
+[36] K. Skenderis and M. Taylor, “The fuzzball proposal for black holes,” Phys. Rept. 467,
+     117 (2008) [arXiv:0804.0552 [hep-th]].
+
+[37] V. Balasubramanian, J. de Boer, S. El-Showk and I. Messamah, “Black Holes as Effective
+    Geometries,” Class. Quant. Grav. 25, 214004 (2008) [arXiv:0811.0263 [hep-th]].
+
+[38] O. Lunin, “Bubbling geometries for AdS2 × S 2 ,” arXiv:1507.06670 [hep-th].
+
+[39] A. Sen, “State Operator Correspondence and Entanglement in AdS2 /CF T1 ,” Entropy 13,
+     1305 (2011) [arXiv:1101.4254 [hep-th]].
+
+[40] D. Friedan, E. J. Martinec and S. H. Shenker, “Conformal Invariance, Supersymmetry
+     and String Theory,” Nucl. Phys. B 271, 93 (1986).
+
+
+
+
+                                             42
+

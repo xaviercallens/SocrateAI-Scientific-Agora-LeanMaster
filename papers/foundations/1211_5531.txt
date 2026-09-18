@@ -1,0 +1,2271 @@
+                                                                Much ado about Mathieu
+                                                                           Terry Gannon
+arXiv:1211.5531v2 [math.RT] 15 Mar 2013
+
+
+
+
+                                                              Department of Mathematics, University of Alberta,
+                                                                    Edmonton, Alberta, Canada T6G 2G1
+                                                                     e-mail: tgannon@math.ualberta.ca
+
+                                                                          November 27, 2024
+
+
+                                                                                 Abstract
+                                                   Eguchi, Ooguri and Tachikawa have observed that the elliptic genus of type
+                                               II string theory on K3 surfaces appears to possess a Moonshine for the largest
+                                               Mathieu group. Subsequent work by several people established a candidate for
+                                               the elliptic genus twisted by each element of M24 . In this paper we prove that
+                                               the resulting sequence of class functions are true characters of M24 , proving
+                                               the Eguchi-Ooguri-Tachikawa conjecture. The integrality of multiplicities is
+                                               proved using a small generalisation of Sturm’s Theorem, while positivity in-
+                                               volves a modification of a method of Hooley. We also prove the evenness prop-
+                                               erty of the multiplicities, as conjectured by several authors. We also identify
+                                               the role group cohomology plays in both K3-Mathieu Moonshine and Mon-
+                                               strous Moonshine; in particular this gives a cohomological interpretation for
+                                               the non-Fricke elements in Norton’s Generalised Monstrous Moonshine con-
+                                               jecture. We investigate the proposal of Gaberdiel-Hohenegger-Volpato that
+                                               K3-Mathieu Moonshine lifts to the Conway group Co1 .
+
+
+                                          Contents
+                                          1 Introduction                                                                          2
+
+                                          2 K3-Mathieu Moonshine: Review                                                          5
+
+                                          3 Weak K3-Mathieu Moonshine I: Integrality                                             11
+
+                                          4 Weak Mathieu Moonshine II: Positivity                                                17
+
+                                          5 Is the Conway group the stringy symmetry?                                            30
+
+                                          6 Speculations                                                                         33
+
+                                          References                                                                             37
+
+
+
+
+                                                                                     1
+1     Introduction
+The elliptic genus (a.k.a. partition function) of a nonlinear sigma model with K3
+target space is a very special function. On general grounds, it is a weak Jacobi form
+of index one and weight zero for Z2 ×SL2 (Z), and is therefore equal to the unique (up
+to scaling) such function, φ0,1 (z, τ ). This implies it is topological in the sense that it
+is independent of where you are on the 20-(complex) dimensional K3 moduli space,
+or indeed of where you are on the 40-dimensional moduli space of K3 sigma models.
+    The world-sheet description of these string theories is as an N = 4 supercon-
+formal field theory, and thus the whole state space can be organised as an N = 4
+superconformal representation. In particular, the elliptic genus can be decomposed
+into sums of elliptic genera of N = 4 superconformal representations. Eguchi, Ooguri
+and Tachikawa [24] observed that the multiplicities with which these N = 4 elliptic
+genera contribute to the elliptic genus are dimensions of M24 -group representations.
+    According to Conway, the sporadic simple group M24 is the most remarkable of
+all finite groups (p.300, [9]), with a great wealth of structure and applications. For
+instance it is the automorphism group of the Golay code, a stabilizer in the Leech
+lattice, and all symplectic symmetries of K3 surfaces can be embedded in it (in fact
+in a subgroup M23 ) [42, 39]. Its order (size) is 244 823 040, and class number (i.e.
+number of conjugacy classes) is 26. The character table is given in Table 1; we retain
+the order of irreps(= irreducible representations) in [8], relate with a bar the complex
+conjugate irrep (when nonisomorphic),
+                              √            and write√ρ0 = 1 for the trivial representation.
+                                                                                √
+We write there αts = (s + ti 7)/2, βts = (s + ti 15)/2, and γts = (s + ti 23)/2, for
+all choices of signs s, t ∈ {±1}.
+    K3-Mathieu Moonshine was pushed further — indeed, made well-defined — by the
+work of Cheng [5], Gaberdiel, Hohenegger & Volpato [28, 29] and Eguchi & Hikami
+[20] who calculated the analogue φg (τ, z) of the McKay-Thompson series here. The
+resulting functions are weak Jacobi forms for Z2 ×Γ0 (|g|) up to certain phases (|g|
+denotes the order of g ∈ M24 ). At the conclusion of this paper (see also [31]) we
+identify the cohomological source of these phases. The K3-Mathieu Moonshine fits
+beautifully into this general cohomological framework of conformal field theory (CFT)
+[31].
+    Once we know the weak Jacobi forms φg , we obtain modular forms fg from (2.10)
+below and can read off the class functions Hn from (2.11) and (2.13) (a class function
+is a function constant on conjugacy classes). These Hn can also be obtained explicitly
+from (4.4) below. In any case, our most important result is the proof that these class
+functions Hn are all true representations of M24 . This can be regarded as a proof of
+the weak form of the K3-Mathieu moonshine conjecture.
+Theorem A. Each Hn (n ≥ 1) is a true character of M24 (i.e. a sum of irreducible
+characters of M24 ).
+
+
+
+
+                                             2
+                                 Table 1. Character table of M24
+
+Kg    1A      2A    2B 3A 3B 4A 4B 4C 5A 6A 6B 7A 7B 8A 10A 11A 12A 12B 14A 14B 15A 15B 21A 21B 23A 23B
+1     1         1     1   1 1   1 1 1   1  1 1    1    1  1  1  1  1  1    1   1   1   1   1   1   1   1
+ρ1    23        7    -1   5 -1 -1 3 -1 3   1 -1   2    2  1 -1  1 -1 -1    0   0   0   0  -1  -1   0   0
+ρ2    45       -3     5   0 3 -3 1 1    0  0 -1 α−
+                                                 +   α−
+                                                      −  -1  0  1  0  1 α+−  α+
+                                                                              +    0   0 α−
+                                                                                          +  α−
+                                                                                              −   -1  -1
+ρ2    45       -3     5   0 3 -3 1 1    0  0 -1 α−
+                                                 −   α−
+                                                      +  -1  0  1  0  1 α++  α+
+                                                                              −    0   0 α−
+                                                                                          −  α−
+                                                                                              +   -1  -1
+                                                                                  −   −
+ρ3    231       7    -9 -3 0 -1 -1 3    1  1 0    0    0 -1  1  0 -1  0    0   0 β+ β−     0   0   1   1
+                                                                                  −   −
+ρ3    231       7    -9 -3 0 -1 -1 3    1  1 0    0    0 -1  1  0 -1  0    0   0 β−  β+    0   0   1   1
+ρ4    252      28    12   9 0   4 4 0   2  1 0    0    0  0  2 -1  1  0    0   0  -1  -1   0   0  -1  -1
+ρ5    253      13   -11 10 1 -3 1 1     3 -2 1    1    1 -1 -1  0  0  1   -1  -1   0   0   1   1   0   0
+ρ6    483      35     3   6 0   3 3 3 -2   2 0    0    0 -1 -2 -1  0  0    0   0   1   1   0   0   0   0
+                                                                                                  −   −
+ρ7    770     -14    10   5 -7  2 -2 -2 0  1 1    0    0  0  0  0 -1  1    0   0   0   0   0   0 γ+  γ−
+                                                                                                  −   −
+ρ7    770     -14    10   5 -7  2 -2 -2 0  1 1    0    0  0  0  0 -1  1    0   0   0   0   0   0 γ−  γ+
+                                                 −    −                   −   −           −   −
+ρ8    990     -18   -10   0 3   6 2 -2 0   0 -1 α+ α−     0  0  0  0  1 α+ α−      0   0 α+ α−     1   1
+ρ8    990     -18   -10   0 3   6 2 -2 0   0 -1 α−
+                                                 −   α−
+                                                      +   0  0  0  0  1 α−−  α−
+                                                                              +    0   0 α−
+                                                                                          −  α−
+                                                                                              +    1   1
+ρ9    1035     27    35   0 6   3 -1 3  0  0 2   -1   -1  1  0  1  0  0   -1  -1   0   0  -1  -1   0   0
+ρ10   1035    -21    -5   0 -3  3 3 -1 0   0 1 2α−
+                                                 + 2α−
+                                                      −
+                                                         -1  0  1  0 -1    0   0   0   0 α+
+                                                                                          −  α++   0   0
+                                                                                          +   +
+ρ10   1035    -21    -5   0 -3  3 3 -1 0   0 1 2α−
+                                                 −  2α−
+                                                      +  -1  0  1  0 -1    0   0   0   0 α+  α−    0   0
+ρ11   1265     49   -15   5 8 -7 1 -3 0    1 0   -2   -2  1  0  0 -1  0    0   0   0   0   1   1   0   0
+ρ12   1771    -21    11 16 7    3 -5 -1 1  0 -1   0    0 -1  1  0  0 -1    0   0   1   1   0   0   0   0
+ρ13   2024      8    24 -1 8    8 0 0 -1 -1 0     1    1  0 -1  0 -1  0    1   1  -1  -1   1   1   0   0
+ρ14   2277     21   -19   0 6 -3 1 -3 -3   0 2    2    2 -1  1  0  0  0    0   0   0   0  -1  -1   0   0
+ρ15   3312     48    16   0 -6  0 0 0 -3   0 -2   1    1  0  1  1  0  0   -1  -1   0   0   1   1   0   0
+ρ16   3520     64     0 10 -8   0 0 0   0 -2 0   -1   -1  0  0  0  0  0    1   1   0   0  -1  -1   1   1
+ρ17   5313     49     9 -15 0   1 -3 -3 3  1 0    0    0 -1 -1  0  1  0    0   0   0   0   0   0   0   0
+ρ18   5544    -56    24   9 0 -8 0 0 -1    1 0    0    0  0 -1  0  1  0    0   0  -1  -1   0   0   1   1
+ρ19   5796    -28    36 -9 0 -4 4 0     1 -1 0    0    0  0  1 -1 -1  0    0   0   1   1   0   0   0   0
+ρ20   10395   -21   -45   0 0   3 -1 3  0  0 0    0    0  1  0  0  0  0    0   0   0   0   0   0  -1  -1
+
+
+    The strong conjecture says that these φg are the twisted elliptic genera of an N = 4
+vertex operator superalgebra — we have nothing to say about this. One would have
+liked to prove Theorem A by explicitly constructing these M24 -representations Hn .
+This remains an important challenge. Instead, we prove Theorem A in two steps.
+    The first step in showing this is to prove that the Hn are virtual characters, i.e.
+linear combinations over the integers of irreducible characters. It can be easily shown
+that the coefficients Hn (g) will be integer-valued class functions, but this only implies
+the class function is a linear combination over Q of irreducibles, with denominators
+dividing the order |G| of the group (244 million, in our case!). We prove the Hn are
+virtual by verifying that for each n the quantities Hn (g) satisfy certain congruences;
+we can verify this simultaneously for all n by studying mod pα reductions of associated
+modular forms. (Our result Lemma 3 on mod n reductions of modular forms is a
+refinement of older results in the literature.)
+    The other and more difficult step in proving Theorem A, is to show that each
+Hn (g) is a nonnegative (real) linear combination of irreducible characters. It is easy
+to reduce this to showing that for any g 6= 1, |Hn (g)| is small compared to Hn (1)
+for all n > N for some N (the coefficients for n ≤ N are then checked explicitly).
+Thanks to [6] we know                                      !
+                                                √
+                                              eπ 8n−1/2|g|
+                               Hn (g) = O      √                                     (1.1)
+                                                 8n − 1
+where |g| denotes the order of g, so for all n > N, where N is sufficiently large, Hn (1)
+
+                                                 3
+will dwarf Hn (g) for g 6= 1, but we need to make this effective by finding that N, and
+this is the hard part of this positivity argument. It is tempting to guess we could follow
+Rademacher’s calculation of effective bounds for the partition numbers, which looks
+like it should be similar, but Rademacher’s series was absolutely convergent whereas
+those in [6] aren’t, so the argument is much more delicate. But the analogy with
+partition numbers is still useful: generalised Kloosterman sums arise here, and the
+corresponding zeta functions are what we need to bound; but Whiteman [51] showed
+long ago that the classical Kloosterman sum has an elegant expression as a sparse
+sum, and Hooley [37] explained how to use the theory of binary quadratic forms to
+bound series associated to similar sums, so we follow their lead. This involves though
+finding significant generalisations of Whiteman’s and Hooley’s results. As an aside,
+our inequalities yield an independent proof of the convergence of the Rademacher
+sum expressions in [6].
+    Integrality of these multiplicities is crucial. In contrast, the significance of posi-
+tivity is not as clear to this author — after all, elliptic genus is a signed trace. What
+happens here should be contrasted with the N = 4 c = 6 toroidal theories, where
+the elliptic genus vanishes. Positivity could be a consequence of the minimality of
+this string theory (see e.g. the discussions in [44],[52]) — we return to this important
+question in the conclusion. In any case, it is intriguing to note that the elliptic genera
+of the M24 -twisted modules (these have been recently obtained in [31]) also appear to
+be true representations (of the appropriate central extension of centralisers in M24 ).
+    Our methods of proving weak Moonshine are quite robust. In particular, they can
+surely be applied to the twisted twining Mathieu Moonshine elliptic genera of [31],
+the ‘Umbral Moonshine’ of [7] and the PSL2 (Z11 ) N = 2 Moonshine of [21] (as well
+of course to Monstrous Moonshine itself).
+    It is a consequence of our proof that the multiplicities multρi (Hn ) tend to infinity
+with n, for each i, and all multρi (Hn ) are strictly positive for n ≥ 25. See Theorem
+4 below.
+    It is common in the Mathieu Moonshine literature
+                                                   P         to emphasise the presence of
+mock modular forms. Indeed, the sums q −1/8 ∞         n=0 H       n
+                                                            n (g)q are mock modular for
+each g, not (usually) modular. We had no use however of mock modularity in this
+paper; however the true modularity of the derived functions we call fg plays a crucial
+role.
+    In Section 3 we also obtain an evenness result conjectured by several authors:
+Theorem B. Each head character Hn is a sum of
+
+          {2, 2ρ1 , ρ2 + ρ2 , ρ3 + ρ3 , 2ρ4 , 2ρ5 , 2ρ6 , ρ7 + ρ7 , ρ8 + ρ8 , 2ρ9 ,
+                    ρ10 + ρ10 , 2ρ11 , 2ρ12 , 2ρ13 , 2ρ14 , 2ρ15 , 2ρ16 , 2ρ17 , 2ρ18 , 2ρ19 , 2ρ20 }
+
+    Theorems A and B are both used in [12] to prove a conjecture in Umbral Moon-
+shine [7]. Indeed, their Theorem 1.2 is far stronger than Conjecture 5.11 in [7]
+(specialised to M24 ), and a little weaker than Conjecture 5.12 in [7]. Incidentally, it
+is curious that imaginary quadratic fields play a role in Umbral Moonshine (see Sec-
+tion 5.4 of [7]) while the equivalent theory of positive-definite quadratic forms plays
+
+                                                    4
+a crucial role in our Section 4 proof. Perhaps this can supply a deeper explanation
+for Conjecture 5.12 than would arise from arguments as in [12].
+    Theorems A and B also imply that the elliptic genus of Enriques surfaces can be
+decomposed into true characters of M12 [22] (their elliptic genus is half that of K3
+surfaces, so positivity comes from Theorem A and integrality from Theorem B). The
+VOA or string theoretic interpretation of this observation seems quite obscure.
+    [30] made the intriguing proposal that in fact the much larger Conway groups Co0
+or Co1 may act. We prove (Gerald Höhn notified us that he also has a proof):
+Theorem C. All Hn , as well as H00 , are restrictions of virtual representations of
+Co0 .
+    This was a nontrivial obstruction to their suggestion. However, as we explain
+below, the virtual Co0 -representations are much larger than the underlying M24 -
+representations (i.e. in the restriction a large representation with negative multiplicity
+cancels a large representation with positive multiplicity, leaving the small remainder
+Hn ). Indeed, it now seems few people expect Mathieu Moonshine to extend to Co0 .
+Of course Theorem C implies that the same conclusion necessarily holds when Co0 is
+replaced there with any subgroup between M24 and Co0 . In the conclusion, we men-
+tion the other group that should be considered a candidate for enhanced symmetry
+in Mathieu Moonshine.
+    In our paper, and indeed in much work on the subject, no relation involving K3
+is used or obtained. It seems possible to us that the connection with K3 may be
+illusory. This would be very disappointing. We return to this a little more in the
+concluding section.
+    Because a fairly wide range of readers are potentially interested in parts of this
+paper, and may wish to extend it to other Moonshines, we have endeavoured to keep
+it as accessible and as detailed as possible.
+
+
+2     K3-Mathieu Moonshine: Review
+Throughout this paper, write e(x) = exp(2πix). For readability we will often collapse
+a ≡ b (mod m) to a ≡m b. We will write |g| for the order |hgi| of the element g of a
+group. An excellent review of superconformal field theories and their moduli spaces
+and elliptic genera, including N = 4 c = 6, is included in [52].
+   The elliptic genus of a sigma model with Calabi-Yau target is defined to be [54]
+
+                    φ(τ, z) = TrHRR (q L0 −c/24 e(zJ0 )(−1)F q L0 −c/24 ) ,         (2.1)
+
+where q = e(τ ). Here, L0 resp. L0 are the holomorphic resp. antiholomorphic
+Virasoro generators defining the grading, J0 is an operator of N = 2 supersymmetry
+defining the charge, and F is the Fermionic number operator. The central charge c
+equals 3d, where d is the (complex) dimension of the Calabi-Yau target. φ(τ, z) will be
+independent of q, by virtue of the supersymmetry in the Ramond sector, and depends
+only on the topological type (rather than the complex structure) of the target. It is
+
+                                              5
+a weak Jacobi form of index m = d/2 and weight k = 0 for Z2 ×SL2 (Z). This means
+that φ is a holomorphic function of z ∈ C and τ ∈ H, the upper half-plane,      which is
+                                                                            ab
+modular with respect to τ and quasi-periodic with respect to z: for all c d ∈ SL2 (Z)
+and l, l′ ∈ Z,
+                                   
+                    aτ + b     z
+                φ          ,           = (cτ + d)k e(mcz 2 /(cτ + d))φ(τ, z) ,      (2.2)
+                    cτ + d cτ + d
+                φ(τ, z + lτ + l′ ) = e(−im (l2 τ + 2lz))φ(τ, z) ,                   (2.3)
+
+and in addition has Fourier expansion
+                                            X
+                               φ(τ, z) =             c(n, l)q n y l ,                  (2.4)
+                                           n≥0,l∈Z
+
+
+for y = e(z). Consistency of these conditions requires c(n, l) = (−1)k c(n, −l). The
+prefix ‘weak’ denotes that the sum over n is allowed to start at 0, i.e. φ is merely
+holomorphic at the cusp τ = i∞; for historical reasons to be a true Jacobi form
+requires a sum over l2 ≤ 4mn.
+    The theory of Jacobi forms is developed in [25]. The definition extends trivially
+to weak Jacobi forms for other Z2 ×Γ, where Γ is any subgroup of SL2 (Z) of finite
+index. Note that because we have insisted here on the full group Z2 of translations,
+Γ must be a subgroup of SL2 (Z) because it must act on that group of translations.
+This is significant because it means we will lose the genus-0 property which played
+so important a role in Monstrous Moonshine — recall that many of the Monstrous
+Moonshine Fuchsian groups aren’t subgroups of SL2 (Z).
+    Nevertheless, the genus-0 property is what made Monstrous Moonshine special
+(and rather mysterious), so we should seek an analogue for it in MathieuP        Moonshine.
+[6] have an intriguing proposal: that the mock modular form q −1/8 n Hn (g)q n equals
+a certain regularised Rademacher sum. The relation of such a property (in weight-0)
+to the genus-0 property was established in [17].
+    The algebra of weak Jacobi forms for Z2 ×Γ of even weight and integral index, is
+the polynomial algebra mΓ [φ0,1 , φ−2,1], where mΓ is the ring of holomorphic modular
+forms for Γ, and
+                                                     
+                     θ2 (τ, z)2 θ3 (τ, z)2 θ4 (τ, z)2                      θ1 (τ, z)2
+   φ0,1 (τ, z) = 4             +          +             , φ−2,1 (τ, z) = −            , (2.5)
+                     θ2 (τ, 0)2 θ3 (τ, 0)2 θ4 (τ, 0)2                       η(τ )6
+
+for the classical Jacobi theta series θi and Dedekind eta function η. (For Γ = SL2 (Z)
+this is Proposition 9.3 in [25], but the proof for arbitrary finite-index Γ is the same.)
+In particular, every weight-0 index-1 weak Jacobi form F (τ, z) for Z2 ×Γ can be
+expressed as F = hφ0,1 + f φ−2,1 , where h ∈ C and f is a holomorphic weight-2
+modular form for Γ. For nonlinear σ-models on K3, this implies the elliptic genus
+φ(τ, z) must be proportional to φ0,1 and therefore will be constant throughout the
+40-dimensional moduli space of K3 sigma models, something we already knew.
+
+
+                                              6
+    The worldsheet description is of an N = 2 vertex operator super algebra (VOSA).
+The holonomy of K3 surfaces extends the N = 2 to N = 4. Therefore, the space HRR
+in fact carries a representation of the N = 4 superconformal algebra at c = 6, so
+                                                     ∞
+                                                     X
+                φK3(τ, z) = A00 chs1/4,0 (τ, z) +          An chln+1/4,1/2 (τ, z) ,   (2.6)
+                                                     n=0
+
+where ch∗h,j (τ, z) is the elliptic genus of the appropriate level 1 N = 4 representa-
+tion (s = short=massless=BPS, l = long=massive=non-BPS) and chl1/4,1/2 is to be
+interpreted as chs0,0 + 2chs1/4,1/2 . Eguchi, Ooguri & Tachikawa [24] remarked that
+these coefficients An , previously calculated in [23], appear to be dimensions of M24 -
+representations (except for n = 0). More precisely, A00 = 20 is the dimension of the
+virtual representation H00 = ρ1 − 3ρ0 = ρ1 − 3, and An is the dimension of Hn , where
+H0 is the virtual representation −2, and the next few are
+
+     H1 = ρ2 + ρ2 , H2 = ρ3 + ρ3 , H3 = ρ7 + ρ7 , H4 = 2ρ14 , H5 = 2ρ19 ,
+     H6 = 2ρ20 + 2ρ16 , H7 = 2ρ20 + 2ρ19 + 2ρ18 + 2ρ17 + 2ρ13 + 2ρ12 ,
+     H8 = 6ρ20 + 2ρ19 + 2ρ18 + 4ρ17 + 2ρ16 + 2ρ15 + 2ρ14 + 2ρ11 + ρ10 + ρ10 + ρ8 + ρ8 ,
+     H9 = 10ρ20 + 8ρ19 + 8ρ18 + 4ρ17 + 4ρ16 + 4ρ15 + 2ρ14 + 2ρ13 + 2ρ12 + 2ρ10 + 2ρ10
+              +2ρ9 + 2ρ7 + 2ρ7 + 2ρ6 .
+
+ (Incidentally, [21] note that expanding the elliptic genus into N = 2 characters
+(rather than N = 4) seems to carry a representation of PSL2 (Z11 ), a simple group of
+order 660.)
+    This observation of [24] is very reminiscent of the Monstrous Moonshine obser-
+vation of McKay who noted that the expansion coefficients of the Hauptmodul J-
+function seem to be dimensions of Monster group M representations Vn (see e.g. [32]
+for a review and references). Thompson suggested considering what are now called
+the McKay-Thompson series, defined formally for all g ∈ M by
+                                           ∞
+                                           X
+                               Tg (τ ) =          chV n (g) q n ,                     (2.7)
+                                           n=−1
+
+
+where q = e2πiτ . Note that these Tg are constant on each of the 194 conjugacy
+classes of M — they are called class functions. After staring at their first few coef-
+ficients, Conway & Norton [9] conjectured that these Tg are modular functions (in
+fact Hauptmoduls=normalised generators of the field of modular functions) for some
+genus-0 Fuchsian group Γg commensurable with (but not in general a subgroup of)
+SL2 (Z). To make this conjecture more precise, we should turn the logic around and
+associate to each conjugacy class Kg in M a uniquely specified modular function Tg .
+From their Fourier coefficients we obtain a sequence χn of class functions, i.e. linear
+combinations over C of irreducible characters of M. Because the coefficients of the
+Tg are rational (in fact integral), it is immediate that this linear combination can be
+taken over Q, but it is very hard to show they can be taken over Z (i.e. that these
+
+                                             7
+class functions χn are virtual characters) and even harder to show that they are com-
+binations over Z≥0 (i.e. that the χn are actually characters of M-representations Mn ).
+Atkin, Fong & Smith (see [48]) tried to prove with the aid of a computer that these
+χn are indeed true characters, and managed to reduce the proof to a fairly plausible
+statement they called Conjecture 2.3 (it is often claimed in the literature — see e.g.
+[32] — that [48] proves the χn are true characters, but this is false). That Conway-
+Norton conjecture was finally proved in [2], independently of [48]; thanks to this work,
+we now know much more: there is a vertex operator algebra (VOA) V ♮ (constructed
+in [27]) with automorphism group M, whose twining characters TrV ♮ gq L0 −1 equal the
+McKay–Thompson series Tg (the ‘−1’ in the exponent is the usual shift by c/24). In
+other words, the M-modules Vn are the eigenspaces of V ♮ with respect to the Virasoro
+operator L0 . (The adjective ‘twining’ is short for ‘intertwining’, and is used as an
+alternative to the over-used word ‘twisted’.)
+    Thus we are led to test further this Mathieu Moonshine observation of [24], by
+introducing for each g ∈ M24
+                                                     ∞
+                                                     X
+            φg (τ, z) = chH00 (g) ch1/4,0 (τ, z) +         chHn (g) chn+1/4,1/2 (τ, z) .    (2.8)
+                                                     n=0
+
+These should be the twining elliptic genera
+
+                    φg (τ, z) = TrHRR gq L0−c/24 e(zJ0 )(−1)F qL0 −c/24 ,                   (2.9)
+
+although that expression is purely formal as none of these K3 sigma models will have a
+symmetry consisting of all of M24 . In fact [42], the group of symplectic automorphisms
+of any K3 surface will typically be trivial, will never exceed order 960, and will only
+contain elements of order ≤ 8. And no automorphism, symplectic or otherwise, of a
+K3 surface can have order 23. But ignore these subtleties for now. Twining elliptic
+genera should have good modular properties — we would expect them to be weight-0
+index-1 Jacobi forms for Z2 ×Γ0 (|g|) (recall we write |g| for the order of g) though
+possibly with multiplier. This is enough to guess with effort these φg from the first
+few coefficients (just as was done in Monstrous Moonshine by Conway & Norton).
+    Conjectured expressions for φg , for all g ∈ M24 (constant on conjugacy classes of
+course) were obtained in [5, 28, 29, 20]. We have
+                                     wg
+                       φg (τ, z) =      φ0,1 (τ, z) + fg (τ ) φ−2,1 (τ, z) ,               (2.10)
+                                     12
+where wg ∈ Z is the Witten index given in Table 2, and fg (τ ) is some holomorphic
+weight-2 modular form (with trivial multiplier) for Γ0 (|g|hg ) for hg in Table 2. wg
+equals the character value of ρ1 + 1 at g; note that it vanishes iff Kg doesn’t intersect
+M23 — this isn’t deep: ρ1 + 1 is the permutation representation, so Kg intersects
+M23 iff ρ1 + 1 has a fixed point, iff its character value (which equals the number of
+fixed-points) is nonzero. hg is the length of the shortest cycle in the cycle shape of
+g. Note that in all cases, hg |gcd(N, 12) (where N is the order of the element), and
+
+                                                8
+hg = 1 iff the conjugacy class Kg intersects M23 . We include for later use the order
+of the Q
+       centraliser CM 24 (g) of g in M24 , and theQindex of Γ0 (|g|) in SL2 (Z) (the index
+of Γ0 ( i pai i ), where pi are distinct primes, is i (pi + 1)piai −1 ), as well as the bound
+a × 10b obtained by Theorem 3 below. In Table 2 and elsewhere, we write 7AB for
+7A ∪ 7B etc; we collect together conjugacy classes like this when the corresponding
+Jacobi forms φg coincide.
+                               Table 2. Data for M24 conjugacy classes
+
+   Kg   1A     2A    2B 3A       3B     4A 4B 4C 5A 6A                   6B 7AB       8A 10A 11A 12A 12B 14AB 15AB 21AB 23AB
+   hg      1      1    2    1      3      2     1      4     1     1       6    1       1      2     1       2    12       1      1      3     1
+   wg     24      8    0    6      0      0     4      0     4     2       0    3       2      0     2       0      0      1      1      0     1
+|C(g)| |M24 | 21504 7680 1080 504 384 128             96 60 24            24 42        16     20    11      12     12     14     15     21    23
+ index     1      3    3    4      4      6     6      6     6 12        12     8     12     18     12     24     24     24     24     32     24
+a×10b    3 6 5.7 6 2.1 9 4.6 7 2.3 12 2.9 11 2.1 8 5.1 14 6.8 8 2.9 9 1.5 18 7.5 9 2.2 10 3.5 14 2.6 11 1.5 15 5.8 23 1.7 12 2.9 12 8.7 18 8.2 13
+
+
+     Extracting fg from (2.10), we obtain
+                                                                 ∞
+                                                                                  !                 ∞
+                             θ34 + θ44      1                    X q n(n+1)/2                       X
+                                                                                           3 −1/8
+            fg (τ ) = wg        − wg θ3 θ4    +                                       −η q                 Hn (g)q n
+                          12                4 n=1 1 + q n                                            n=0
+                                X∞                    
+                         3 −1/8               wg
+                     = −η q          Hn (g) −    Hn (1) q n .                                                       (2.11)
+                                n=0
+                                              24
+These modular forms fg (τ ) are given explicitly (i.e. independently of knowing the
+Hn (g)) for all g ∈ M24 in [30, 20] (see also Table 2 of [6]). Indeed, recall the Eisenstein
+series E2 (τ ) = 1 − 24q − 72q 2 − · · · , a quasi-modular form for SL2 (Z). Then for each
+integer n > 1,
+                                                               ∞
+           (n)            1                              24 X                       
+        E2 (τ ) :=           (E2 (nτ ) − E2 (τ )) = 1 +           σ1 (k) q k − q nk                                 (2.12)
+                         n−1                            n − 1 k=1
+is a holomorphic modular form of weight 2 for Γ0 (n) with trivial multiplier (σ1 (k) =
+P
+   d|k d). Writing η(n) := η(nτ ) and η = η(τ ), we have: f1A = 0,
+
+             4 (2) 4
+f2A =          E = + 32q + 32q 2 + 128q 3 + 32q 4 + 192q 5 + 128q 6 + 256q 7 + 32q 8 + 416q 9 · · · ,
+             3 2         3
+                 η 8
+f2B =        2         = 2 − 16q + 48q 2 − 64q 3 + 48q 4 − 96q 5 + 192q 6 − 128q 7 + 48q 8 − 208q 9 + · · · ,
+               η(2)4
+             3 (3) 3
+f3A =          E = + 18q + 54q 2 + 18q 3 + 126q 4 + 108q 5 + 54q 6 + 144q 7 + 270q 8 + 18q 9 + · · · ,
+             2 2         2
+                 η6
+f3B =        2         = 2 − 12q + 18q 2 + 24q 3 − 84q 4 + 36q 5 + 72q 6 − 96q 7 + 90q 8 + 24q 9 + · · · ,
+               η(3)2
+               η(2)8
+f4A =        2         = 2 − 16q 2 + 48q 4 − 64q 6 + 48q 8 + 0q 9 + · · · ,
+               η(4)4
+                 (4)    1 (2)    5
+f4B =        2E2 − E2 = + 8q + 40q 2 + 32q 3 + 40q 4 + 48q 5 + 160q 6 + 64q 7 + 40q 8 + 104q 9 + · · · ,
+                        3        3
+               η 4 η(2)2
+f4C =        2            = 2 − 8q + 32q 3 − 16q 4 − 48q 5 + 64q 7 + 48q 8 − 104q 9 + · · · ,
+                η(4)2
+
+                                                             9
+              5 (5)       5
+  f5A =         E2 = + 10q + 30q 2 + 40q 3 + 70q 4 + 10q 5 + 120q 6 + 80q 7 + 150q 8 + 130q 9 + · · · ,
+              3           3
+              5 (6) 1 (3) 1 (2)                11
+  f6A =         E − E2 − E2 =                       + 2q + 14q 2 + 26q 3 + 38q 4 + 12q 5 + 38q 6 + 16q 7 + 86q 8 + 98q 9 + · · · ,
+              2 2         2         6           6
+                η 2 η(2)2 η(3)2
+ f6B =        2                   = 2 − 4q − 6q 2 + 8q 3 + 12q 4 + 12q 5 − 24q 6 − 32q 7 − 6q 8 + 8q 9 + · · · ,
+                     η(6)2
+              7 (7)       7
+f7AB =          E2 = + 7q + 21q 2 + 28q 3 + 49q 4 + 42q 5 + 84q 6 + 7q 7 + 105q 8 + 91q 9 + · · · ,
+              4           4
+              7 (8) 1 (4)            11
+  f8A =         E2 − E2 =               + 4q + 12q 2 + 16q 3 + 44q 4 + 24q 5 + 48q 6 + 32q 7 + 44q 8 + 52q 9 + · · · ,
+              3           2          6
+                η 3 η(2)η(5)
+ f10A =       2                = 2 − 6q − 2q 2 + 16q 3 − 2q 4 − 6q 5 − 8q 6 − 8q 7 − 2q 8 + 2q 9 + · · · ,
+                    η(10)
+              11 (11) 22 2                   11
+ f11A =           E2 − η η(11)2 =                 + 22q 2 + 22q 3 + 22q 4 + 22q 5 + 44q 6 + 44q 7 + 66q 8 + 66q 9 + · · · ,
+               6             5                6
+                 η 3 η(4)2 η(6)3
+ f12A =       2                     = 2 − 6q + 2q 2 + 6q 3 − 6q 4 + 12q 5 − 10q 6 − 6q 8 − 6q 9 + · · · ,
+                η(2)η(3)η(12)2
+                η 4 η(4)η(6)
+ f12B =       2                = 2 − 8q + 6q 2 + 8q 3 − 4q 4 − 24q 6 + 16q 7 − 6q 8 + 16q 9 + · · · ,
+                η(2)η(12)
+              91 (14)        7 (7)       1 (2) 14
+f14AB =           E2 − E2 − E2 − ηη(2)η(7)η(14)
+              36            12          36           3
+              23
+       =           − 3q + 11q + 16q + 11q + 10q 5 + 16q 6 + 25q 7 + 39q 8 + 17q 9 + · · · ,
+                                 2       3        4
+              12
+              35 (15)        5 (5)       1 (3) 15
+f15AB =           E2 − E2 − E2 − ηη(3)η(5)η(15)
+              16            24          16           4
+              23
+       =           − 2q + 9q + 13q + 16q + 13q 5 + 24q 6 + 14q 7 + 15q 8 + 28q 9 + · · · ,
+                               2       3        4
+              12
+              7 η 3 η(7)3         1 η6
+f21AB =                       −            = 2 − 5q − 3q 2 + 10q 3 + 7q 4 − 6q 5 − 12q 6 − 5q 7 + 6q 8 + 10q 9 + · · · ,
+              3 η(3)η(21) 3 η(3)2
+              23 (23)                                                                     η 3 η(23)3
+f23AB =           E2 − 69η 2 η(23)2 + 92η(2)2 η(46)2 + 92ηη(2)η(23)η(46) + 23
+              12                                                                          η(2)η(46)
+              23
+       =           + 23q 3 + 23q 4 + 23q 6 + 46q 8 + 23q 9 + · · · .
+              12
+
+   Equation (7.16) of [13] tells us
+                                    ∞
+                                    X
+                           3 −1/8
+                          η q             Hn (1) q n = 48F (2) (τ ) − 2E2 (τ ) ,                   (2.13)
+                                    n=0
+
+        (2)          P                         n
+where F2 (τ ) =         n>m>0,n6≡2 m (−1)          mq mn/2 . We read off from (2.12) and (2.13) that
+                                                      (2)
+                                                    E2 ≡ 1 (mod 24) ,                              (2.14)
+                                                     (3)
+                                                    E2 ≡ 1    (mod 12) ,                           (2.15)
+                                        ∞
+                                        X
+                           η 3 q −1/8         Hn (1) q n ≡ −2      (mod 48) .                      (2.16)
+                                        n=0
+
+
+                                                        10
+These will be used in the Section 3 proofs. (We thank Thomas Creutzig and Gerald
+Höhn for bringing (2.13) and its consequence (2.16) to our attention.)
+Lemma 1. [29] Let g ∈ M24 have order |g|, with parameter h given in Table 2. Then
+the twining character φg (τ, z) is a Jacobi form of index 1 and weight 0 under Γ0 (|g|)
+with multiplier defined by
+                                   
+                     aτ + b     z                             2
+                φg          ,          = e2πicd/(|g| h) e2πicz /(cτ +d) φg (τ, z) . (2.17)
+                     cτ + d cτ + d
+The function fg (τ )is a holomorphic      modular form of weight 2 for       Γ0 (|g|) with multi-
+        2πicd/(|g| h)           aτ +b           2 2πicd/(|g| h)           ab
+plier e               , i.e. fg cτ +d = (cτ + d) e              fg (τ ) ∀ c d ∈ Γ0 (|g|).
+                                                      
+    Γ0 (n) as usual consists of all matrices ac db ∈ SL2 (Z) with n|c. The appearance
+of both Γ0 (|g|) and the multiplier in Lemma 1 are not at all mysterious, as explained
+in the concluding section.
+    Again, reversing the logic, we can use these conjectured expressions for φg to
+define class functions H00 (g) and Hn (g). It was checked by brute force that these
+class functions are in fact true characters, for all n ≤ 500 (except H0 and H00 which
+are merely virtual). This is our Theorem A.
+    One would certainly want more than weak Moonshine (Theorem A) — e.g. we
+should have an M24 -worth of twisted twining elliptic genera with nice modularity.
+This is now done [31]. Unlike Monstrous Moonshine, where the algebraic content
+comes from the VOA V ♮ , the algebraic (not to mention geometric and physical)
+meaning of K3-Mathieu Moonshine is still unclear. Although we have learned much
+in the two years or so since [24], we still don’t really know the right questions to ask.
+
+
+3     Weak K3-Mathieu Moonshine I: Integrality
+In this section and the next, we prove Theorems A and B, which were stated in
+Section 2. Our proof falls into two independent steps: integrality (this section) and
+positivity (next section).
+     Let G be any finite group. Let PG be the set of all pairs (p, Kg ) where p is a
+prime dividing the order |G|, Kg is a p-regular conjugacy class in G (i.e. the order
+|hgi| of g is coprime to p), and p divides the order |CG (g)| of the centraliser. There
+are precisely 22 pairs in PG for G = M24 , which we list in Table 3. For reasons to
+become clear shortly, we include the highest power pπ of p dividing |CG (g)|, and the
+p′ -section S which we define next paragraph.
+                        Table 3. Data for virtual character proof
+
+ p       2    2    2  2  2  2  3  3  3  3  3    3    3    3   5  5   5                7   7   7  11  23
+Kg     1A 3A 3B 5A 7A 7B 1A 2A 2B 4A 4C 5A 7A 7B 1A 2B 3A                           1A 2A 3B 1A 1A
+ π      10    3    3  2  1  1  3  1  1  1  1    1    1    1   1  1   1                1   1   1   1   1
+ S 1A,2AB 3A 3B 5A 7A 7B 1A 2A 2B 4A 4C 5A 7A 7B 1A 2B 3A                           1A 2A 3B 1A 1A
+    4ABC 6A 6B 10A 14A 14B 3A 6A 6B 12A 12B 15A 21A 21B 5A 10A 15A                  7A 14A 21A 11A 23A
+       8A 12A 12B             3B             15B                   15B              7B 14B 21B      23B
+qn      q4  q 8 q 48 q6 q4 q4 q2 q2 q2 q4 q6  q 4 q 16 q 16 q 1 q3  q4               q1 q4   q5  q2  q4
+
+
+
+                                                11
+    For any h ∈ G of order n = pk m, where gcd(p, m) = 1, find a, b ∈ Z such that
+                                                                     k
+1 = apk + bm. Then h = hp′ hp where the p′ -part hp′ = hap has order m and the
+p-part hp = hbm has order pk . The p′ -section S for the pair (p, Kg ) ∈ PG is defined
+to be S = {h ∈ G | hp′ ∈ Kg }. S is clearly the union of conjugacy classes; in Table 3
+we list those conjugacy classes.
+    Suppose we have an integer-valued class function c : G → Z, i.e. c is constant
+on conjugacy classes. We are interested in H being one of the head characters Hn ,
+and we want to prove it is the character of an M24 -representation. The hard part
+is to prove that A is a virtual character, i.e. a linear combination over Z of irreps.
+The starting point is the following characterisation of virtual characters, attributed
+to Thompson and based on the classical theorem of Brauer. It is a refinement of the
+following basic idea, which the reader can verify for himself: If χ is an integer-valued
+character and g is an element of order a prime power pπ , then χ(g) ≡ χ(e) (mod p).
+    Choose any (p, Kg ) ∈ PG and write the p′ -section S as a disjoint union ∪ki=1 Ki
+of conjugacy classes, for some k depending on (p, S). Let Rp be the tensor product
+b p ⊗Z Z[ξ|G| ], where Z
+Z                      b p are the p-adic integers and ξn = e2πi/n . Rp is introduced to
+make formal sense of the orthogonality relations we’re about to introduce; the ring
+Z[ξ|G| ] arises because all irreducible G-characters take values there. Define M(p,Kg )
+                                                                P
+to be the set of all k-tuples (ℓ1 , . . . , ℓk ) ∈ Rpk such that ki=1 ℓi χ(Ki ) ∈ pπ Rp for all
+irreducible characters χ. If c is a virtual character, then c is likewise orthogonal to
+M(p,S). What is important to us is the converse:
+Lemma 2. [48] Let Rp and M(p,Kg ) be as above. Let c : G → Z be an integer-valued
+class function of G. Then Pck is a virtual character of G, i.e. a linear combination
+                                            π
+over Z of irreducibles, if i=1 ℓi c(Ki ) ∈ p Rp for all (ℓ1 , . . . , ℓk ) ∈ M(p,Kg ) and all
+(p, Kg ) ∈ PG .
+    Of course we want to apply this to c = Hn , for each n > 0. The reason this
+characterisation is helpful is that much is known about reductions of modular forms
+modulo powers of primes,
+                      P      as we will see.
+                                           P∞
+    Suppose f (τ ) = ∞          n
+                         n=0 n q , g(τ ) =
+                            f                        n
+                                             n=0 gn q are holomorphic modular forms of
+weight k ∈ Z for some finite-index subgroup Γ and multiplier µ : Γ → C× , and µ has
+finite order M. If the Fourier coefficients fn , gn are equal for all n ≤ kkSL2 (Z)/Γk/12,
+then f = g. This is an immediate consequence of the classical valence formula for
+Γ applied to (f − g)M . Incidentally, because of this and Lemma 1, the q-expansions
+provided earlier are more than enough to uniquely specify fg (and hence φg ) — in
+fact the coefficients n ≤ 5 suffice. What is much more surprising is that this also
+applies to the modular forms mod prime powers:
+                                P                                      P
+Lemma 3. Suppose f (τ ) = l≥0 fl q l ∈ Q[[q 1/N ]] and g(τ ) = l≥0 gl q l ∈ Q[[q 1/N ]]
+are holomorphic modular forms of rational weight k ∈ Q and with some multiplier µ
+for some subgroup Γ of SL2 (Z). Let m := kSL2 (Z)/Γk be the index. We require that
+µ has finite order, i.e. that all values µ(γ) for γ ∈ Γ are Mth roots of 1 for some M.
+(a) Suppose the Fourier coefficients fl and gl are integral for all l. Suppose we have
+an integer n > 0 such that fl ≡ gl (mod n) for all l ≤ km/12. Then fl ≡ gl (mod p)
+
+                                              12
+for all l.
+(b) Suppose now that the weight k is integral and that the kernel of µ is a congruence
+subgroup, i.e. contains Γ(N ′ ) for some N ′ . If the coefficients fl are integral for all
+0 ≤ l ≤ km/12, then fl ∈ Z for all l.
+Proof. The key result upon which this Lemma rests is Sturm’s Theorem [49], which
+is part (a) in the special case where the multiplier µ is trivial and the weight is
+integral and n is a prime (Sturm however allows the Fourier coefficients to be algebraic
+integers).
+      It suffices to prove the Lemma for g = 0. Start with part (a). Let p be any
+prime dividing n. Choose an integer K > 0 so that Kk ∈ Z and µK is identically
+1. Then F := f K is a holomorphic modular form for Γ of integer weight Kk and
+trivial multiplier, whose Fourier coefficients Fl are multiples of the prime p for all
+l ≤ Kkm/12 (since each Fl will be a sum of monomials in fli ’s at least one of which
+has li ≤ km/12). Then Sturm’s theorem applies, and we find that p divides all
+coefficients Fl . This must imply that p divides all coefficients of f (otherwise, choose
+the smallest l such that p doesn’t divide fl , and note that p would fail to divide FKl ).
+This means that f /p will have integer coefficients, so f /p will obey all hypotheses
+of part (a) with now n replaced with n/p. Repeat with another prime dividing n/p,
+until you’ve reduced n to 1.
+      To see Lemma 3(b), let V be the space of all holomorphic weight k modular
+forms for Γ(N ′ ) with trivial multiplier. V is finite-dimensional
+                                                  P                with an integral basis
+  (i)         1/N ′                                      (i)
+f ∈ Z[[q            ]]. Therefore we can write f = i ai f where ai ∈ Q. This means the
+coefficients of f have denominator bounded by the lcm of all denominators of the ai .
+Let L be the smallest positive integer such that Lf ∈ Z[[q]]. If p is a prime dividing
+L then p will divide the first mk/12 coefficients of Lf by the hypothesis on f , hence
+will divide all coefficients by Lemma 3(a), contradicting the minimality of L. This
+means L = 1, and we’re done.             QED to Lemma 3
+Theorem 1. Each Hn (n ≥ 1) is a virtual character of M24 (i.e. a linear combination
+over Z of irreducible characters of M24 ).
+Proof. First, we need to show the class functions Hn are integer-valued. We will do
+this by studying the fg ’s. One complication is that the coefficients of fg (τ ) are not
+quite integers, as can be seen by the displayed values in Section 2. The problem is
+the constant term 41 in the middle term of (2.11), and the 12 in the denominator
+of its first term. In fact only the constant term of wg (θ34 + θ44 )/12 − wg θ3 θ4 /4 can
+fail to be integral. To see this, it suffices to show that θ3 θ4 ∈ 1 + 4qZ[[q]]      P and  P
+θ34 +θ44 ∈ 2+12qZ[[q]].
+                P      P′That these both  hold modulo   4  follows from    θ3 = 1+2     +2 ′
+and θ4 = 1 + 2 −2 , using obvious notation. That θ34 + θ44 ≡ 1 (modulo 3) follows
+from comparing (θ34 + θ44 )2 and E4 modulo 3, using Lemma 3 with Γ = Γ(2).
+     From Lemma 3(b) and checking the integrality of the first few coefficients of fg
+we learn now that all coefficients of fg − wg (θ34 + θ44 )/12 + wg θ32 θ42 /4 are integral (the
+theta function contribution kills the fractional part of the constant term). This means
+that all coefficients of each fg are integral except possibly for the constant term, and
+
+
+                                              13
+                                                                            P
+also (from the first equality in (2.11)) that all coefficients of η 3 q −1/8 Hn (g)q n are
+integral. Since η 3 q −1/8 is invertible in the ring Z[[q]], we find that Hn (g) ∈ Z for all
+n ≥ 0 and all g ∈ M24 .
+    This invertibility of η 3 q −1/8 directly gives us the useful implication:
+                                                       wg
+                      lfg ∈ mZ[[q]] ⇒ lHn (g) ≡ l         Hn (1) (mod m)                       (3.1)
+                                                       24
+for all n ≥ 0, for any choice of l, m ∈ Z and all g ∈ M24 . P
+     We need to verify, for each pair (p, Kg ) ∈ PM 24 , that ki=1 ℓi Hn (Ki ) ∈ pπ Rp for
+all (ℓ1 , . . . , ℓk ) ∈ M(p,Kg ) .
+     A typical example is the pair (3, 2A). From Table 3 we see that S = K2A ∪ K6A .
+Note that χ(2A) ≡3 χ(6A), for all irreducible χ, so we need to show Hn (2A) ≡3
+Hn (6A) for all n. We claim that f2A − 4f6A ∈ 3Z[[q]]. To see this, first note that
+f2A −4f6A is a modular form for Γ0 (6) with integer q-expansion and trivial multiplier,
+so by Lemma 3(a) it suffices to check that 3 divides the q l -coefficient of f2A − 4f6A
+for all 0 ≤ l ≤ 2, which is trivial to do from the expansions collected in Section
+2. By (3.1) or otherwise, this implies Hn (2A) ≡3 Hn (6A) for all n and we’re done.
+The pairs (2, 5A), (2, 7AB), (3, 2B), (3, 4AC), (5, 1A), (5, 2B), (11, 1A) are all handled
+similarly.
+     The pair (3, 5A) is also easy. Here S = 5A∪15A∪15B, and we find M(3,5A) = R3 -
+span{(0, 1, −1), (1, −1, 0)} using obvious notation. Hn (15A) = Hn (15B) for all n
+follows from f15A = f15B ; Hn (5A) ≡5 Hn (15A) follows from f5A ≡3 4f15A , proved
+in the usual manner using Γ0 (15). The pairs (5, 3A), (7, 1A), (7, 2A), (7, 3B), (23, 1A)
+are done similarly.
+     For (3, 7AB), we need Hn (7AB) ≡3 Hn (21AB) for all n. Using (2.11), as well as
+the congruences (2.16),(2.15), this is equivalent to verifying that 4f7AB − f21AB ≡3
+    (3)
+2E2 , which by Lemma 3 for Γ = Γ0 (63) requires checking up to q 16 . For (2, 3A),
+S = 3A ∪ 6A ∪ 12A and M(2,3A) = R2 -span{(2, −2, 0), (1, 1, 1)}, so we need to verify
+that Hn (3A) ≡2 Hn (6A) and Hn (3A) + Hn (6A) ≡8 2Hn (12A), for all n. Using now
+                                                                                                (2)
+(2.14), this is equivalent to verifying that f3A ≡2 f6A and f3A +9f6A −2f12A ≡8 −2E2 .
+The former requires checking up to q 2 (use Γ0 (6)), while the latter requires checking
+up to q 8 (use Γ0 (24)). The pair (2, 3B) is handled similarly.
+     The pair (3, 1A) has S = 1A∪3A∪3B and M(3,1A) = R3 -span{(1, 1, 1), (0, 9, 3), (0, 0, 9)},
+so we need to establish Hn (1A) ≡3 Hn (3B) and Hn (3A) ≡27 3Hn (3B) − 2Hn (1A) for
+                                               (3)                                (3)
+all n. These are equivalent to f3B ≡3 2E2 and 4f3A − 12f3B ≡27 9E2 .
+     Finally, M(2,1A) is the span of (1, 1, 1, 1, 1, 1, 1), (−22, −6, 2, 2, −2, 2, 0), (44, 12, 28, 4, 4, 0, 0),
+(−24, 8, 24, 8, 0, 0, 0), (−208, −16, 16, 0, 0, 0, 0), (448, 64, 0, 0, 0, 0, 0), using obvious no-
+
+
+
+
+                                                 14
+tation. Therefore we need to verify
+
+Hn (4C) ≡ Hn (8A) (mod 2) ,
+Hn (4B) ≡ 2Hn (8A) − Hn (4C) (mod 4) ,
+Hn (4A) ≡ Hn (4B) + 2Hn (4C) − 2Hn (8A) (mod 8) ,
+Hn (2B) ≡ 3Hn (4A) + 4Hn (4B) + 2Hn (4C) + 8Hn (8A) (mod 16) ,
+Hn (2A) ≡ −Hn (2B) + 4Hn (4A) + 6Hn (4B) − 8Hn (8A) (mod 64) ,
+Hn (1A) ≡ 7Hn (2A) − 6Hn (2B) + 8Hn (4A) + 24Hn (4B) + 32Hn (4C) − 64Hn (8A) (mod 1024)
+
+for all n. These are equivalent to
+                                 (2)
+           2f4C ≡ 2f8A + E2 (mod 4) ,
+           f4B ≡ 2f8A − f4C (mod 4) ,
+           f4A ≡ f4B + 2f4C − 2f8A (mod 8) ,
+                                                              (2)
+           f2B ≡ 3f4A + 4f4B + 2f4C + 8f8A + 8E2 (mod 16) ,
+           f2A ≡ −f2B + 4f4A + 6f4B − 8f8A (mod 64) ,
+           7f2A − 6f2B + 8f4A + 24f4B + 32f4C − 64f8A ≡ 0 (mod 1024) ,
+
+respectively, where all of these are modular forms for Γ0 (16).                    QED
+   Refining this argument slightly gives us the evenness property stated in Theorem
+B. (Theorem B will follow from Theorem 2 and Theorem 3).
+Theorem 2. Each head character Hn is a linear combination over Z of
+
+          {2, 2ρ1 , ρ2 + ρ2 , ρ3 + ρ3 , 2ρ4 , 2ρ5 , 2ρ6 , ρ7 + ρ7 , ρ8 + ρ8 , 2ρ9 ,
+                    ρ10 + ρ10 , 2ρ11 , 2ρ12 , 2ρ13 , 2ρ14 , 2ρ15 , 2ρ16 , 2ρ17 , 2ρ18 , 2ρ19 , 2ρ20 }
+
+Proof. Let χ be any M24 -class function, and ρ ∈ M      d 24 . Write multρ (χ) for the
+multiplicity. Consider first ρ a complex character (i.e. ρ 6∼= ρ). We know that each
+fg (τ ) ∈ Q + qZ[[q]]. The integrality of Hn (g) for each n means that multρ (Hn ) =
+multρ (Hn ).
+    Much more difficult are the real M24 -irreps ρ (i.e. ρ ∼
+                                                           = ρ). Assume ρ 6= 1, ρ1 for
+now. Define
+                   ∞
+                   X                          X
+      Mρ (τ ) :=         multρ (Hn )q n = −         |CM24 (g)|−1ρ(g)fg (τ ) q 1/8 η(τ )−3 ,             (3.2)
+                   n=0                         Kg
+
+
+using (2.11), where the second sum is over all conjugacy classes in M24 . We know
+from Theorem 1 that each Mρ (τ ) ∈ qZ[[q]] (at least for ρ 6= 1, ρ1 ). We want to show
+that in fact Mρ (τ ) ∈ 2qZ[[q]]. Of course we can ignore the constant terms of the fg
+in the following.
+    First note from the M24 character table that ρ(23A) and ρ(23B) will be equal
+and integral. Also, the centraliser CM 24 (23AB) has odd order (namely, 23). Since
+
+                                                    15
+f23AB (τ ) ∈ Q+ qZ[[q]], this means we can ignore the contribution of the classes 23AB
+                                                           2
+to (3.2) — together they will contribute something in 23     qZ[[q]] and thus will not affect
+the value of 23Mi (τ ) modulo 2.
+      Identical arguments apply to the classes 21AB and 15AB. The class 11A can
+likewise be ignored: its centraliser has odd order (namely 11), ρ(11A) ∈ Z, and
+                                                                                  (11)
+f11A (τ ) ∈ Q + 2qZ[[q]] (to see this, apply Lemma 3(a) to 21 (f11A + 16 E2 )). Fi-
+nally, the classes 7AB and 14AB can all be dropped from (3.2): they all have the
+same order (namely 14) of centraliser, ρ(7A) + ρ(7B) + ρ(14A) + ρ(14B) ∈ 4Z
+(since ρ ∼    = ρ), and the q n -coefficients (n > 0) of f7AB and f14AB are inte-
+gers congruent mod 2 (to see this, apply Lemma 3(a) to 3f14AB − f7AB ). Let
+Mfρ (τ ) be 23 · 21 · 5 · 11 times the sum in (3.2) restricted to the remaining classes
+Kg ∈ {1A, 2AB, 3AB, 4ABC, 5A, 6AB, 8A, 10A, 12AB}. Then M                 fρ (τ ) ∈ qZ[[q]]
+and Mρ ≡2 M       fρ and we need to show that M      fρ (τ ) ∈ 2qZ[[q]], or equivalently
+           fρ ∈ 2qZ[[q]].
+η 3 q −1/8 M
+                           fρ is a linear combination (over Q) of fg with ρ(g) 6= 0 and
+      Note that η 3 q −1/8 M
+g ∈ {1A, 2AB, 3AB, 4ABC, 5A, 6AB, 8A, 10A, 12AB}. Let Nρ be the least common
+multiple of hg Ng over those g, where hg is in Table 2 and Ng is the order of g. We know
+from Lemma 1 that fg is a weight-2 modular form for Γ0 (hg Ng ) with trivial multiplier,
+              fρ is a weight-2 modular form for Γ0 (Nρ ) with trivial multiplier. We collect
+so η 3 q −1/8 M
+Nρ in Table 4, together with the quantity mρ /6 where mρ = kSL2 (Z)/Γ0 (Nρ )k. By
+Lemma 3, we need to show that the first mρ /6 coefficients of η 3 q −1/8 M     fρ are even.
+As in (2.11) this is equivalent to showing that the first mρ /6 values of multρ (Hn ) are
+even. The evenness of these multiplicities multρ (Hn ) has been verified for all n ≤ 500
+and all real ρ, by Gaberdiel-Hohenegger-Volpato (private communication; see also
+[29]), which is far more than is necessary.
+      The proof for ρ = 1 and ρ = ρ1 is similar, but (3.2) has to be modified. For those
+ρ define
+                       X                                         1 (2)
+          Fρ (τ ) :=        |CM24 (g)|−1ρ(g)fg (τ ) +              E (τ )
+                       Kg
+                                                                 12 2
+                                     X∞                     
+                        −1/8          3               1            1 (2)
+                 = −q          η(τ )     multρ (Hn ) − Hn (1) q n + E2 (τ )
+                                     n=0
+                                                      24           12
+                                               ∞
+                                               X
+                            −1/8           3
+                 ≡2 − q            η(τ )             multρ (Hn ) q n ,                 (3.3)
+                                               n=0
+
+using (2.16), (2.14), (2.11) and the fact that wg = 1+ρ1 (g). Thus if we can show Fρ (τ )
+has even coefficients, we will be done. The expression (3.3) together with Theorem 1
+tells us Fρ has integral Fourier coefficients. Define Feρ as above by restricting the sum
+to classes Kg ∈ {1A, 2AB, 3AB, 4ABC, 5A, 6AB, 8A, 10A, 12AB} and multiplying
+by 23 · 21 · 5 · 11; as above, it suffices to show the first 288 coefficients are even,
+equivalently that the multiplicities of both 1 and ρ1 are even in all head characters
+
+
+                                                           16
+Hn for n ≤ 288. This has been done in the aforementioned computer checks. QED
+to Theorem 2
+                                       Table 4. Data for Theorem B proof
+
+     ρ      1     ρ1     ρ4      ρ5     ρ6     ρ9 ρ11      ρ12     ρ13     ρ14     ρ15 ρ16     ρ17    ρ18    ρ19 ρ20
+   Nρ 24 32 5 24 32 5 23 3 5 24 32 5 24 3 5 24 32 24 32 24 32 5 23 32 5 24 32 5 22 32 5 2 32 24 3 5 23 3 5 23 3 5 24
+ mρ /6   288     288     48     288     96     48    48    288     144     288      72     6    96     48     48 48
+
+
+
+
+4     Weak Mathieu Moonshine II: Positivity
+In this section we prove that for each n > 0 and each irreducible ρ ∈ M       d 24 , the
+multiplicities multHn (ρ) are nonnegative. The difficult part of this positivity proof
+is effectively bounding a certain series (what we call Zn;h (3/4) below) which does
+not converge absolutely. There are (at least) two approaches for this: interpreting
+this as a Selberg-Kloosterman zeta function as in [47],[33], etc; or interpreting this
+as a sum over equivalence classes of quadratic forms as in Hooley [37]. The former
+method was used by [6] to provePconvergence for the Rademacher sum expressions for
+the mock modular forms q −1/8 ∞              n
+                                  n=0 Hn (g)q ; the latter method (or rather its recent
+reincarnation [4]) was suggested in [19] as a way to prove convergence for g = 1. We
+need much more than convergence: we need an explicit bound, and for this we have
+found the second method more useful.
+    Let’s begin with an elementary observation. By the triangle inequality,
+                               X         Hk (g)           Hk (1)        X |Hk (g)|
+        multHk (ρ) =                               ρ(g) ≥        ρ(1) −                   |ρ(g)|               (4.1)
+                                   g
+                                       |CM 24 (g)|        |M24|         g6=1
+                                                                             |C M 24 (g)|
+
+
+where the sum is over all conjugacy classes of M24 . Since there always is the trivial
+bound ρ(1) ≥ |ρ(g)| (which itself follows immediately from the triangle inequality),
+our strategy to show multHk (ρ) > 0 is to show Hk (1) is much larger in modulus than
+the other character values Hk (g), at least for k sufficiently large.
+    Choose any g ∈ M24 . Then from Lemma 1 we read that the multiplier of fg
+is ρ|g|;hg , where ρn;h sends ac db ∈ Γ0 (n) to e nhcd
+                                                         . The multiplier ǫ of η sends
+  ab
+     
+  cd
+       ∈ SL2 (Z) (with c > 0) to
+                                                   
+                                   1−i         a+d
+                                   √ ω−d,c e            ,                         (4.2)
+                                    2           24c
+where
+             k
+             Y                              
+                                       hµ        µ
+    ωd,c =         exp(πi                            )
+             µ=1
+                                        k        k
+                     −d
+                                 −1
+                                                                                 
+                      c       e   8
+                                     (c − 1) + −1
+                                               24
+                                                  (c − 1c )(2d + d′ − d2 d′ )            if c is odd
+        =        −c            −1                                                                     .        (4.3)
+                 d
+                       e       8
+                                  (2 − cd − d) + −1
+                                                  24
+                                                     (c − 1c )(2d + d′ − d2 d′ )         if c is even
+
+                                                           17
+Here, ((x)) = x − ⌊x⌋ − 1/2 unless    x ∈ Z in which case ((x)) = 0. We write here d′
+for any solution to dd′ ≡c 1. dc denotes the Jacobi symbol. The first expression for
+ωd,c is the most familiar; the second (due to Rademacher [45]) is more useful for us.
+    We learn in eq.(6.1) of [6] (see also [19] for the special case g = 1) that
+                           X∞                              
+                   4π            1           π √
+     Hk (g) =                       I1/2           8k − 1 S(k, |g| c, ǫ−3ρ|g|;hg ) , (4.4)
+              (8k − 1)1/4 c=1 |g| c        2c |g|
+                  q
+                     2
+where I1/2 (x) = πx    sinh(x) and S is (up to a constant) a generalised Kloosterman
+sum for Γ0 (|g|):
+                                          X                      
+                            −3                     −3       −cd     kd
+                  S(k, nc, ǫ ρn;h ) =             ωd,nc e        e                   (4.5)
+                                         0<d≤nc
+                                                             h      nc
+                                           gcd(d,nc)=1
+
+                                             √             √
+   Fix integers n, h, k > 0 and define L = nπ 2k − 1 (so π 2k − 1/(2nc) < 1 if
+c > L). We have the elementary bounds:
+                               r        r
+                                 2x   1 2x5
+                    I1/2 (x) −      ≤           for 0 < x < 1 ;          (4.6)
+                                 π    5   π
+                                   ex
+                    |I1/2 (x)| < √            for all 0 < x ;                       (4.7)
+                                   2πx
+                    |S(k, nc, ǫ−3 ρn;h )| ≤ 1      for all c ∈ Z>0     (4.8)
+                                                                √
+(in fact Lemma 6 below will give us the Weil bound |S| ≤ O( c), but (4.8) is
+adequate). These inequalities immediately imply the crude bounds
+                          ⌊L⌋
+                          X           √       
+                   1          1       π 8k − 1
+                                I1/2             S(k, nc, ǫ−3 ρn;h )
+              (8k − 1)1/4 c=2 c         2nc
+                      √     ⌊L⌋
+                            X
+                        n        1 √               1     √
+                ≤ √             √ eπ 8k−1/(2nc) < √ eπ 8k−1/(4n) ,                  (4.9)
+                   π 8k − 1 c=2 c                   2n
+                          ∞
+                          X           √        
+                   1          1       π 8k − 1
+                                I1/2              S(k, nc, ǫ−3 ρn;h )
+              (8k − 1)1/4    nc         2nc
+                          c=⌈L⌉
+
+                    ∞
+                    X                                                      ∞
+                              −3/2               −3 π 2 (8k − 1) X −7/2
+                ≤       (nc)    S(k, nc, ǫ ρn;h ) +                    c
+                                                       20n7/2
+                   c=⌈L⌉                                         c=⌈L⌉
+                                 √               2
+                                π 8k − 1 7π (8k − 1)
+                ≤ |Zn;h(3/4)| +            +                ,                      (4.10)
+                                   n5/2          80n7/2
+where Zn;h is the Selberg-Kloosterman zeta function
+                                     ∞
+                                     X
+                        Zn;h (s) =         S(k, nc, ǫ−3 ρn;h ) (nc)−2s .           (4.11)
+                                     c=1
+
+
+                                                 18
+    Thus it suffices to find an effective bound for a Selberg-Kloosterman zeta function
+at s = 3/4. We know from [6] that the defining series (4.11) converges there, but it
+follows from Lemma 4 below that this convergence is not absolute, and in any event
+it seems difficult to use the analysis of [6] to obtain an explicit bound (as a function
+in k). The key first step in identifying such an effective bound is to rewrite these
+generalised Kloosterman sums more sparsely. Our calculation resembles that of [51];
+a more elegant approach attributed to Selberg and worked out by Rademacher [46]
+is available but we were unable to generalise it to our context. Incidentally, Lemma
+4 should imply that these S’s have some multiplicative properties (hence their Z’s
+have Euler-like products).
+Lemma 4. Let c ∈ Z>0 , k ∈ Z, h|n. Then
+                                   √                                   X                     m 
+                       −3        −i nc
+             S(k, nc, ǫ ρn;h ) =                                                        e               .                (4.12)
+                                   2                               0≤m<4nc
+                                                                                             4nc
+                                                              m2 ≡8nc 1−8k+8c2 n/h
+
+
+Proof. We will begin with the proof of n = h = 1. Writing m = 2ℓ + 1, define
+             √         4c−1
+                       X                               m  √                                  2c−1
+                                                                                                 X                           
+           −i c                          (m−1)/2          −i c   1                                              ℓ         ℓ
+ Bc (k) :=                        (−1)             e    =      e                                            (−1) e                .
+             2         m=0
+                                                     4c    2     4c                              ℓ=0
+                                                                                                                         2c
+                    m2 ≡8c 1−8k                                                             ℓ2 +ℓ≡2c −2k
+
+
+
+As we manifestly have Bc (k + c) = Bc (k) (i.e. Bc is a class function for Zc ), we can
+formally write it as a combination of irreducible Zc -characters:
+                                                       c−1
+                                                       X                      
+                                                                          dk
+                                     Bc (k) =                Rd,c e                ,                                     (4.13)
+                                                                           c
+                                                       d=0
+
+for coefficients
+                                            X
+                                              c−1                       2c−1
+                                                                          X                              
+                          −i            1           −dj                                      ℓ        ℓ
+                   Rd,c = √ e                     e                                    (−1) e
+                         2 c            4c    j=0
+                                                     c                     ℓ=0
+                                                                                                     2c
+                                                                      ℓ2 +ℓ≡2c −2k
+                                                      2c−1
+                                                        X                            
+                                −i               1               ℓ    d (ℓ2 + ℓ)    ℓ
+                              = √ e                          (−1) e              +      .                                (4.14)
+                               2 c               4c      ℓ=0
+                                                                          2c       2c
+
+It is elementary to show that the sum on the right-side of (4.14) vanishes when
+                                                               P2c−1 P2c/m−1 Pm−1
+gcd(c, d) > 1: write
+                P m = gcd(c, d) and ℓ = s2c/m + r, so ℓ=0 = r=0                   s=0 ,
+and notice that s = 0 for each r (when m > 1).
+                                                                           −3
+    Thus we can restrict to gcd(c, d) = 1. We want to show Rd,c = ωd,c        . Choose
+                      ′           
+                      (dd −1)(c+1)
+d′ ∈ Z so that 1 = e       2c
+                                    ; this permits us to rewrite (4.14) as
+
+                                                 −ie(1/4c)
+                                    Rd,c =           √     G(d, dγ; 2c)                                                  (4.15)
+                                                   2 c
+
+                                                          19
+where
+Pc     γ := d′ c + d′ + 1 and G(a, b; c) is the generalised Gauss sum G(a, b; c) =
+           2                           ′     ′
+  ℓ=0 e((aℓ + bℓ)/c). Note that γ := d c + d + 1 is even iff c is even. When c is even,
+we can complete squares and obtain
+                                                
+                           −i e(1/4c)      −dγ 2
+                    Rd,c =     √      e            G(d, 0; 2c)
+                              2 c           8c
+                                                              
+                            2c       −(d − 1)2 2 − c − dγ 2
+                         =        e              +                 .             (4.16)
+                             d            16            8c
+
+When c is odd, use 2c1 = −1  2
+                                + (c+1)/2
+                                     c
+                                          to write G(d, dγ; 2c) = G(−d, −dγ; 2) G(d(c +
+1)/2, dγ(c + 1)/2; c); the left generalised Gauss sum equals 2, while the right is eval-
+uated by completing squares as usual, and we obtain (for c odd)
+                                                                         
+                 d(c + 1)/2       (c − 1)2 2 − 2c − d(c + 1)3 (d′ + 1)2
+        Rd,c =                 e            +                                 .       (4.17)
+                      c               16                   8c
+                                              2              
+    Now, for m odd we have m2 = (−1)(m −1)/8 and −1         m
+                                                                 = (−1)(m−1)/2 . Consider
+first c even. Then directly from (4.3) and (4.16) we obtain
+   −3                                                                                                 
+ωd,c         −2 − 2c − d − d′ − 2cd + 2dd′ − c2 d + c2 d′ + d2 d′ + dd′2 + 2cdd′2 + c2 dd′2 − c2 d2 d′
+      =e                                                                                                 .
+Rd,c                                                   8c
+                                                                                      (4.18)
+             ′                                                            ′
+Because dd ≡2c 1 when c is even we can define an integer L by dd = 1 + 2cL, and
+we know that d ≡4 d′ . Then (4.18) collapses to
+                               −3                      
+                             ωd,c        dL + d′ L + 2L
+                                  =e                      = 1,                        (4.19)
+                            Rd,c               4
+                                                                                         
+as desired. The proof for c odd is similar: the Jacobi symbol d(c+1)/2  c
+                                                                                equals 2dc
+                                                                                            ;
+define L by dd′ = 1 + cL and use the congruences c3 ≡8c c and 4c2 ≡8c 4c.
+    Replacing c everywhere with nc establishes the h = 1 case of Lemma 4. Arbitrary
+h|n is handled through the elementary observation that S(k, nc, ǫ−3 ρn;h ) = S(k −
+c2 n/h, nc, ǫ−3 ρn;1 ). QED to Lemma 4
+    Hooley’s method is based on the n = 1 case of Lemma 5 below; it was more
+recently modified slightly by [4]. We need a more serious revision. A binary quadratic
+form Q(x, y) = αx2 + βxy + γy 2 =: [α, β, γ] is called integral if α, β, γ ∈ Z, and
+positive-definite if α and γ are both positive. (See e.g. Chapter 12 of [38] for a rather
+complete introduction to the basic theory of quadratic forms, as is relevant here.)
+The discriminant is β 2 − 4αγ. For any C ∈ Z>0 and D ∈ Z<0 , let Q(C, D) denote the
+set of all triples (Q; r, s), where Q is integral and positive-definite with
+                                                                         discriminant
+                                                                              
+                                                                         a b
+D and where r, s are coprime integers satisfying Q(r, s) = C. Any                  ∈ SL2 (Z)
+                                                                         c d
+acts on (Q; r, s) ∈ Q(C, D) by sending Q(x, y) to Q(ax + by, cx + dy) and (r, s) to
+(dr−bs, −cr+as). In particular, it is easy to verify that if (Q; r, s) and (Q′ ; r̃, s̃) are in
+
+                                              20
+the same SL2 (Z)-orbit then Q, Q′ have the same discriminant and Q(r, s) = Q′ (r̃, s̃).
+Then Hooley observes that there is a bijection between the integers 0 ≤ m < 2C
+satisfying m2 ≡4C 1, and SL2 (Z)-orbits in Q(C, D).
+    We need to generalise this in two ways. First, choose any integer n ≥ 1. Write
+Qn (C, D) denote the set of all triples (Q; r, ns), where Q = [nα, β, γ] is positive-
+definite and of discriminant D, α, β, γ, r, s ∈ Z, gcd(r, ns) = 1, and Q(r, ns) = nC.
+For example, Q(C, D) = Qn (C, D). It is elementary to show that the group Γ0 (n)
+acts on Qn (C, D).
+    Secondly, suppose that h divides gcd(n, 24) and that gcd(n/h − 1, h) = 1. Write
+  ′
+n = n/h. Let Qn;h (C, D) denote the set of all triples (Q; r, ns) where Q = [nα, β, γ/h]
+is positive-definite and of discriminant D, α, β, γ, r, s ∈ Z, γ ≡h α, gcd(r, n′ s) = 1,
+and Q(r, ns) = C. Of course Qn;1 (C, D) = Qn (C, D). Recall the group         Γ0 (n|h),
+                                                                    ′     h0
+which can be defined equivalently as either theconjugate
+                                                         of Γ0 (n ) by 0 1 , or as the
+                                                    a b/h
+set of all determinant-1 matrices of the form nc       d
+                                                          for a, b, c, d ∈ Z. Let Γ0 (n; h)
+                              
+                         a b/h
+denote the set of all nc    d
+                                 ∈ Γ0 (n|h) for which ac ≡h bd. Then it is easy to verify
+Γ0 (n; h) is a group, and we see shortly that it acts on Qn;h (C, D).
+    The reason 24 arises here (and elsewhere) is because, for any divisor d of 24, any
+integer ℓ coprime to d satisfies ℓ2 ≡d 1. The defining condition ac ≡h bd of Γ0 (n; h)
+is equivalent to requiring that there is some ℓ (depending on a, b, c, d) coprime to h
+with a ≡h ℓd and b ≡h ℓ. To see this equivalence, run through each prime power pν
+exactly dividing h; the determinant condition ad − n′ bc = 1 tells us that either a and
+d are both coprime to h (in which case require ℓ ≡ ad (mod pν )), or b, c are both
+coprime to h (in which case take ℓ ≡ bc (mod pν )). Then a ≡pν ℓd resp. b ≡pν ℓc, and
+the other congruence comes from ac ≡pν bd. Running through all p, we obtain an ℓ
+defined mod h which has all the desired properties.
+Lemma 5(a) Let D ∈ Z<0 , C ∈ Z>0 . There is a one-to-one correspondence between
+the set of integers m, 0 ≤ m < 2nC, satisfying m2 ≡ D (mod 4nC), and Γ0 (n)-orbits
+in Qn (C, D).
+(b) There is a one-to-one correspondence between the set of integers m, 0 ≤ m <
+2nC, satisfying m2 ≡ D + 4C 2 n′ (mod 4nC), and Γ0 (n; h)-orbits in Qn;h (C, D).
+Proof. Let’s begin with the simpler part (a). First note that there is an obvious bijec-
+tion between each m ∈ Z with m2 ≡4nC D, and each quadratic form Q = [nC, m, γ]
+(necessarily positive-definite) of discriminant D, where γ = (m2 − D)/(4nC).
+ Given   any (Q; r, ns) ∈ Qn (C, D), Q = [nα, β, γ], choose any r̃, s̃ such that
+   r r̃
+             ∈ Γ0 (n) (this is possible since gcd(r, ns) = 1), and define the root
+   ns s̃                                                 
+                                                     r r̃
+m := 2nαrr̃ + β (rs̃ + nsr̃) + 2γnss̃. Then                  ∈ Γ0 (n) sends (Q; r, ns)
+                                                    ns s̃
+to ([nC, m, γ ′ ]; 1, 0) where γ ′ = (m2 − D)/(4nC). The other choices of r̃, s̃ are
+r̃ + Lr, s̃ + Lns for any L ∈ Z, which correspond to roots m + L2nC, and so the
+root taken mod 2nC is a well-defined function m(Q; r, ns) ∈ Z2nC on Qn (C, D). The
+
+
+                                            21
+desired bijection in part (a) is this root map (mod 2nC).
+   Now turn to part (b). Here, there is an elementary bijection between each m ∈ Z
+with m2 ≡4nC D + 4n′ C 2 , and each positive-definite quadratic form Q = [nC, m, γ/h]
+of discriminant
+             D, where γ ≡h C. Choose any ([nα, β, γ/h]; r, ns) ∈ Qn;h (C, D).
+       a b/f
+Then nc   d
+              ∈ Γ0 (n|h) will send (r, ns) to (ra + n′ sb, nrc + nsd) (the desired form),
+and [nα, β, γ/h] to
+
+ [n(αa2 + βac + n′γc2 ), 2n′ αab + β (ad + n′bc) + 2γn′ cd, (n′αb2 + βbd + γd2)/h] . (4.20)
+
+Then (4.20) will lie in Qn;h (C, D) if
+
+                               a2 ≡h d2 , ac ≡h bd , n′ c2 ≡h n′ b2 .                     (4.21)
+
+As explained above, the condition ac ≡h bd is equivalent to the existence of an ℓ
+coprime to h satisfying a ≡h ℓd and b ≡h ℓc, and such an ℓ forces the other two
+congruences to be satisfied. In other words, the matrices in Γ0 (n|h) satisfying (4.21)
+form the group Γ0 (n; h).
+    Since r and n′ s are coprime, we can find integers r̃, s̃ such             ′
+                                                                that rs̃− n sr̃ = 1.
+                                                                 r (Lr+r̃)/h
+We claim there is some L ∈ Z, unique modulo h, such that ns         Ln′ s+s̃
+                                                                             ∈ Γ0 (n; h).
+                                          ν
+To see this, choose any prime power p exactly dividing h. If r is coprime to p
+choose ℓ ≡pν 1 − n′ s2 and L ≡pν r ′ (−r̃ + ℓs) where r ′ r ≡pν 1; otherwise, n′ s will
+be coprime to p, so choose s′ by s′ n′ s ≡pν 1, ℓpν r 2 − n′ , and L ≡pν s′ (−s̃ + ℓr).
+We are using here that 1 − n′ is coprime to h and hence p. Then ℓ and L are
+defined
+      mod h by  running through
+                                    all p. To see uniqueness of L modulo h, note
+                           ′          −1             ′
+         r (Lr+r̃)/h   r (L r+r̃)/h
+that ns     Ln′ s+s̃   ns L′ n′ s+s̃
+                                         = 10 (L−L1 )/h ∈ Γ0 (n; h) forces (L − L′ )/h ∈ Z by
+definition of Γ0 (n; h).             
+                               r r̃/h
+     So we may assume ns           s̃
+                                        ∈ Γ0 (n; h). Define the root m := 2n′ αrr̃ + β (rs̃ +
+                                                   
+                                           r    r̃/h
+n′ sr̃) + 2γn′ ss̃ as before. Then                    sends (Q; r, ns) to ([nC, m, γ ′ ]; 1, 0) ∈
+                                          ns s̃
+Qn;d (C, D) where γ ′ = (m         2
+                                  − D)/(4nC).       From the uniqueness of the previous
+                             r (Lr+r̃)/h
+paragraph, we have that ns      Ln′ s+s̃
+                                         ∈ Γ0 (n; h) iff L ∈ hZ, which corresponds
+to root m + L2nC, and so again the root taken mod 2nC is a well-defined function
+m(Q; r, ns) ∈ Z2nC on Qn;d (C, D).       QED to Lemma 5
+    We are interested in D = 1 − 8k, n = 2ng , h = hg and C = c. Restrict attention
+here to k ≥ 1 (not a problem since we are only interested in large k), so D < 0. In
+fact, to sharpen slightly some of our bounds, we’ll choose k ≥ 5. Continue to write
+n′ = n/h.
+    Note that if both (Q; r, ns), (Q; r̃, ns̃) (same Q) lie in Qn;k (C, D), then there is
+an automorphism g ∈ Γ0 (n; k) of Q sending (r, ns) to (r̃, ns̃). For D < 0 (the case
+we are interested in), each such automorphism g must have finite order (since com-
+pleting squares in α = αa2 + βac + n′ γc2 and γ = n′ αb2 + βbd + γd2 bounds the
+matrix entries a, b, c, d of g). Now, Γ0 (n|h) (which contains Γ0 (n; h)) is conjugate to
+
+                                                22
+Γ0 (n′ ), so all of its elements of finite order have orders 2, 4, 6. In fact for us, the sta-
+biliser stab([nα, β, γ/h]; Γ0(n; h)) of [nα, β, γ/h] in Γ0 (n; h) will always be ±1. To see
+this, first note stab([nα, β, γ/h]; Γ0(n; h)) is a subgroup of stab([nα, β, γ/h]; Γ0 (n|h)),
+which is isomorphic to stab([n′ α, β, γ]; Γ0(n; h)), which is in turn a subgroup of
+stab([n′ α, β, γ]; SL2 (Z)). For a primitive form [n′ α, β, γ] (i.e. when n′ α, β, γ don’t
+have a common factor), nontrivial stabilisers occur only for discriminant D = −3, −4.
+But our discriminant satisfies D ≡ 1 (mod 8), so even if [n′ α, β, γ] is imprimitive, it
+can never have a nontrivial stabiliser in SL2 (Z).
+    We also need a bound on Γ0 (n; h)-equivalence class representatives [nα, β, γ/h].
+ForQthis purpose, observe that Γ0 (n; h) contains Γ0 (nh), which has finite index
+nh p (1 + 1/p) in SL2 (Z). The cosets for Γ0 (N)\SL2 (Z) are in bijection with pairs
+(c, d) ∈ Z2>0 where c|N and 1 ≤ d ≤ N/c satisfies           gcd(d, c, N/c) = 1. To any such
+                                                   a b
+pair (c, d), a representative of that coset is c d′ where d′ is coprime to c and satisfies
+d′ ≡N/c d, and a, b are any integers satisfying ad′ − bc = 1. Now, c = N corre-
+sponds to the identity coset, so for it take c = 0 instead; then in all cases we have
+c ≤ N/2. We can always choose |a| ≤ c/2 by adjusting b appropriately (at least when
+c 6= 0), hence |a| ≤ N/4 (true even for c = 0 unless N < 4). Now, over SL2 (Z), any
+positive-definite discriminant D quadratic form (with coefficients in h−1 Z) is equiv-
+alent p to some [α′ , β ′ , γ ′ ] (namely Gauss’ reduced form) with |β ′| ≤ α′ ≤ γ ′ , where
+  ′
+α ≤ |D|/3 and γ ′ ≤ 11h|D|/39. Combining with                (4.20), and noting that we can
+                                                         11
+always force |β| ≤ nα by applying multiples of 0 1 ∈ Γ0 (nh), we see that any such
+quadratic form is equivalent over Γ0 (nh), hence over Γ0 (n; h), to some [nα, β, γ/h]
+satisfying the (crude but adequate) bounds
+                                        r                  !
+                                n2 h2     |D|                     1
+                  0<α≤                3       + 44h|D|/39 < nh3 |D| ,                   (4.22)
+                                 16n       3                     12
+                    |β| < n2 h3 |D|/12 ,                                                (4.23)
+                                                  
+                                                         |D|/7    if n = 2
+               0 < γ ≤ (|D| + β 2 )/(4n′ α) <          2 4                 .            (4.24)
+                                                      n h |D|/44 otherwise
+(The given bound on α, hence β, is also true for the identity coset c = 0.) Implicit
+in these derivations are 2h ≤ n, n even, and |D| ≥ 39.
+    The point is that the series Zn;h (3/4) can be rewritten as a sum over the finitely
+many Γ0 (n; h)-orbit representatives [nα, β, γ/h], and over integers r, s. Over-counting
+by a factor of 2, we can take this to be a free sum over r, s.
+Theorem 3. Choose any k, n ∈ Z>0 , k ≥ 5, and any h dividing gcd(n, 24) such that
+gcd(n/h − 1, 2h) = 1. Then for n 6= 2,
+                           
+                  Y p+1                             
+ Zn/2;h (3/4) ≤             1 + 2.13|D|1/8 log |D| ×
+                        p
+                    p|(nh)
+
+                (6.124n35/6 h47/6 − 3.09n23/4 h31/4 + 64.32n29/6 h7 − 23n19/4 h7 )|D|
+                                                                                         
+               +(.146n47/6 h65/6 − .114n31/4 h43/4 + 2.51n35/6 h10 − .74n23/4 h10 )|D|3/2 .
+
+                                             23
+where we write D = 1 − 8k. For n = 2, this bound on the right-side should be replaced
+with (3872|D| + 213|D|3/2)(1 + 2.13|D|1/8 log |D|).
+Proof. Note the n in the statement of Theorem 3 agrees with that of Lemma 5, but
+is twice that of Lemma 4. We need to bound the limit as X → ∞ of
+                                          X
+                                          X
+                      Zn/2;h (s; X) =           S(k, nc, ǫ−3 ρn/2;h ) (nc/2)−2s .          (4.25)
+                                          c=1
+
+Thanks to Lemmas 4 and 5, we can write its value at s = 3/4 as
+                                                                        
+      −i X         X
+                       ′  (−1)(m(α,β,γ;r,s)−1)/2      m(α, β, γ; r, s)
+                                                 e                         ,               (4.26)
+      2                     nc(α, β, γ; r, s)        2n c(α, β, γ; r, s)
+           [nα,β,γ/h] c(α,β,γ;r,s)≤X
+
+
+where the first sum is over representatives of the Γ0 (n; h)-orbits of positive-definite
+quadratic forms of discriminant D = 1 − 8k, and the second sum is over all integers
+r, s satisfying gcd(r, n′ s) = 1 and the given inequality (the prime on the sum denotes
+that coprime condition). The quantities m, c are defined by
+
+m(α, β, γ; r, s) = 2n′ αrr̃ + β (rs̃ + n′ sr̃) + 2γn′ss̃ , c(α, β, γ; r, s) = αr 2 + βrs + n′γs2 ,
+                                                       
+                                                 r r̃/h
+where r̃, s̃ are any integers satisfying ns s̃            ∈ Γ0 (n; h) — which pair is chosen
+won’t affect the value of that summand. The factor of 2 in (4.26) comes from the
+aforementioned redundancy   P that different (r, ns) can lie in P     the sameP orbit.
+    Write this inner sum r,s (for each choice of α, β, γ) as > + < , depending on
+whether or not |r| > n|s| (|r| = n|s| would contradict gcd(r, s)P= 1)P. We will bound
+Zn/2;h (3/4; X) by considering
+                         P        separately
+                                    P            the contributions of > , < .
+    The arguments
+                P for > and < are completely analogous, and so we will consider
+in detail only > . Since then r > 0, we can write
+
+   m    2n′ r̃ (αr 2 + βrs + n′ γs2 ) + 2n′ γs + βr      us′         2n′ γs + βr
+      =                                             ≡1 −     +
+  2nc            2nr (αr 2 + βrs + n′ γs2 )              R     2nr (αr 2 + βrs + n′ γs2 )
+                                                                                   (4.27)
+where δ = gcd(s, h), h′ = h/δ, R = rh′ , s′ ∈ Z is any inverse of s/δ mod R, and
+u ∈ Z is defined mod R by u ≡r −δ −1 (n′ )−1 , u ≡h′ 1 − s2 n′ , and (if 3|gcd(r, h))
+u ≡9 −(n′ )−1 (note that gcd(r, h) 6= 1 implies it equals 3, in which case s is coprime
+to 3 and n′ ≡3 −1). Writing
+
+                                            βr 2 Dr 2               βs 2 Ds2
+      αr 2 + βrs + n′ γs2 = n′ γ (s +            ) −       = α (r +    ) −    ,            (4.28)
+                                           2n′ γ     4n′ γ          2α     4α
+the first inequality gives
+                                 s
+                                       X4n′ γ   √
+                         |r| ≤                =C X,          S− ≤ s ≤ S+ ,                 (4.29)
+                                        |D|
+
+                                                    24
+            p
+where C =       4n′ γ/|D| and
+                                                             
+                               |r|     βr    1 p ′
+                  S+ = min         ,− ′ + ′       4n γX + Dr 2 ,                                            (4.30)
+                                n     2n γ 2n γ
+                                                                
+                                  |r|    βr    1 p ′           2
+                  S− = max − , − ′ − ′              4n γX + Dr     .                                        (4.31)
+                                   n    2n γ 2n γ
+     We compute
+                                            ′
+                   (−1)m = (−1)n (αrr̃+βsr̃+γss̃)+(β−1)/2 = (−1)(β−1)/2                                     (4.32)
+
+using the evenness of n′ and the determinant relation rs̃ − n′ sr̃ = 1 (β is odd because
+of the discriminant condition β 2 − 4n′ αγ = 1 − 8k). Now put
+                                                                        
+                           (−1)(β−1)/2              2n′ γs + βr
+             ϕ(r, s) = 2                  e                                ;       (4.33)
+                       αr + βrs + γn′ s2      2nr (αr 2 + βrs + γn′ s2 )
+we need to bound
+X       X X              X                                        X     X             X           
+                             ′            us′                                                 uS ′
+    =                            e                  ϕ(r, s) =                             e              ϕ(r, δS) ,
+ >
+             √        S− ≤s≤S+
+                                         hr/δ                          √                       R
+        |r|≤C X δ|h                                               |r|≤C X δ|h     S /δ≤S≤S /δ
+                                                                                  −        +
+                      gcd(s,h)=δ                                                  gcd(S,R)=1
+
+                                                                                (4.34)
+                                                                              ′     ′
+where we use (4.27), we write R = hr/δ as before and S = s is any inverse of S mod
+R. Rewrite the sum over S in (4.34) (for fixed α, β, γ, r, δ) using partial summation
+(the discrete analogue of integration by parts):
+             X        ′                  X
+                 ′     uS
+                   e         ϕ(r, δS) =          g(σ) (ϕ(r, δσ) − ϕ(r, δσ + δ))
+                        R
+         S− /δ≤S≤S+ /δ                               S− /δ≤σ≤S+ /δ
+
+                             + g(⌊S+ /δ⌋) ϕ(r, δ⌊S+ /δ⌋) ,                                                  (4.35)
+
+where                                                  X
+                                                             ′
+                                         g(σ) =                  e(uS ′ /R)                                 (4.36)
+                                                     S− /δ≤S≤σ
+                                                     gcd(S,R)=1
+
+
+denotes the incomplete Kloosterman sums (R is implicit). We have (for n > 2)
+                            16n′2 γ 2 δ |r| p        ′        2π (4n′ γ)2  2
+ |ϕ(r, s) − ϕ(r, s + δ)| ≤      2  4
+                                              |D| + n  γδ +            2
+                                                                           p
+                               D r       2                  2n|r| |D|r 2|r| |D|
+                                     6 6 p
+                                   nh                       9 9
+                                                           nh 2            n5 h6 p
+                           ≤ .0042 3 δ |D| + .000188 4 δ |D| + .0083 4             |D| ,
+                                    |r|                     r                r
+                                                                                  (4.37)
+        |ϕ(r, δ⌊S+ /δ⌋)| ≤ 4n′ γ/(|D|r 2) ≤ .091n3 h3 r −2 ,                                                (4.38)
+
+where we use repeatedly (4.28), as well as Taylor’s remainder |e(θ) − 1| ≤ 2πθ0 for
+|θ| ≤ θ0 , and the elementary bound x/(x2 + a2 ) ≤ 1/(2|a|2). Thus all that remains is
+
+                                                        25
+to bound g(σ). The order of its growth with |R| is stated (without proof) in Lemma
+3 of [37]; an effective bound is:
+Lemma 6. For any integers k, u, h1, h2 with h1 ≤ h2 , we have
+
+       X                                                         
+           ′           uh′                k + h2 − h1                 √ p
+               e                  <                   + 2 + 2 ln(k)    k gcd(u, k) d(k) ,               (4.39)
+     h1 ≤h≤h2
+                        k                      k
+
+where h′ denotes the inverse of h (mod k) and the prime over the summation means
+to restrict to gcd(h, k) = 1.
+Proof. Assume for now that h2 − h1 < k. For any integer h, h1 ≤ h ≤ h1 + k − 1, the
+map sending h to
+                                                                              
+    h − h2 − 1/2        h − h1 + 1/2       h2 − h1 + 1     h − h1 + 1/2     h − h2 − 1/2
+                   −                     +             =                 −
+         k                    k                 k                k                 k
+
+equals 1 for h1 ≤ h ≤ h2 and 0 otherwise. Now, we claim that for 0 < x < 1,
+                                            k
+                                            X sin(2πjx)                    1
+                                 ((x)) +                        <                    .                  (4.40)
+                                            j=1
+                                                      πj            2k min(x, 1 − x)
+                                                                                            Pk
+To see this, it suffices to consider 0 < x ≤ 1/2. Write K(x) = 1 + 2                           j=1 cos(2πjx) =
+sin(π (2k + 1)x)/sin(πx); then
+               k
+               X                            Z x                            Z 1/2
+                 sin(2πjx)
+    ((x)) +                             =         K(y)dy − 1/2 = −                 K(y)dy               (4.41)
+               j=1
+                             πj              0                              x
+                                                                     Z 1/2
+                −1     cos(π (2k + 1)x)     1                                   cos(π (2k + 1)y)
+          =                             +                                                        dy .   (4.42)
+            π (2k + 1)     sin(πx)        2k + 1                       x            sin2 (πy)
+
+Since sin(πt) ≥ 2t for 0 ≤ t ≤ 1/2, we get
+                                   k
+                                   X sin(2πjx)                       1           1
+                       ((x)) +                             ≤               +                            (4.43)
+                                      j=1
+                                                 πj            2π (2k + 1)x 4 (2k + 1)x
+
+which implies the weaker (4.40).                              P′               ′
+    Write S(v, u; k) for the (complete) Kloosterman sum        1≤h≤k e((vh + uh )/k)
+where the prime denotes restricting the sum to gcd(h, k) = 1. Then e.g. Lemma
+2 of [36] gives an effective bound for it:
+                                          √ p
+                            |S(v, u; k)| ≤ k gcd(u, k) d(k) .                 (4.44)
+
+
+
+
+                                                           26
+                                                 Pk
+Finally, it is elementary that                    j=1 1/j   ≤ 1 + ln(k). Therefore, putting all this
+together, we obtain
+ h2
+ X            ′                              Xk
+       ′      h     h2 − h1 + 1                    e(−(k + 1/2)j/k) − e(−j/(2k))
+           e      ≤             |S(0, u; k)| +                                   S(j, u; k)
+h=h1
+              k          k                     j=1
+                                                                2πj
+                              k/2
+                              X        1         h2 − h1 + 1 √ p
+                        +2                     ≤               k gcd(u, k) d(k)
+                            j=1
+                                2k (j − 1/2)/k        k
+                          1√ p
+                        +     k gcd(u, k) d(k)(1 + ln(k)) + (1 + ln(k)) .                     (4.45)
+                          π
+That the inequality (4.39) also holds when h2 − h1 ≥ k now follows from (4.44).
+QED to Lemma 6
+   Effective bounds for the divisor function d(n) = σ0 (n) are d(n) ≤ Cǫ nǫ , for any
+ǫ > 0, where
+                                   Y             1
+                            Cǫ =                            ,                   (4.46)
+                                     1/ǫ
+                                         ǫ ln(p) e1−ǫ ln(p)
+                                                  p<2
+                                                                             Q
+where the product runs over all primes p < 21/ǫ . To see this, recall d(n) = p (ap + 1)
+            Q                                                    Q
+when n = p pap is the prime decomposition, so d(n)/nǫ = p appǫa+1       p . The primes
+                                                    ap +1
+appearing in (4.46) are precisely those for which pǫap can be > 1; the power ap is
+then chosen to maximise this factor. Any ǫ < 1/2 works for us, e.g. C1/4 ≈ 9.11...
+(in fact a slightly more refined analysis shows C1/4 can be taken to be 8.55). Also,
+from ln y ≤ y − 1 we obtain ln(k) < 12 k 1/12 − 12. Therefore we obtain as a bound
+on (4.35):
+
+       X                         
+                           uS ′
+                   e                  ϕ(r, δS)
+                            R
+ S− /δ≤S≤S+ /δ
+             5/6            3/4
+         rh             rh             n5 h6 p               n8 h9                n4h6 p          .091n3 h3
+ ≤ (103          − 74.8         )(.0084 2     |D| + .000377 3 δ|D| + .0164                  |D| +           )
+          δ              δ              r                     |r|                 δ|r|3              r2
+           n5 h41/6         n5 h27/4 p               n8h59/6 δ 1/6        n8 h39/4 δ 1/4
+ < (1.065 5/6 7/6 − .733 3/4 5/4 ) |D| + (.0389                    − .028                )|D| .
+          δ |r|            δ |r|                       |r|13/6               |r|9/4
+                                                                                       (4.47)
+
+We
+P∞can−µ  now bound the limit of (4.34) as X → ∞, using the inequalities n1−µ /(µ−1) <
+   r=n r   < n−µ + n1−µ /(µ − 1) for µ > 1 which follow by comparing series with
+integral:
+
+              X                                                p
+limX→∞                 ≤ (19.136n29/6 h41/6 − 9.67n19/4 h27/4 ) |D| + (.455n41/6 h59/6 − .359n27/4 h39/4 )|D| .
+               >
+                                                                                              (4.48)
+
+                                                            27
+                                                                                 P               p
+When n = 2 (so h = δ = 1), we get instead the weaker limX→∞ |                       > | < 2136    |D| +
+61|D|.      P
+   Bounding < is completely analogous; (4.27) becomes
+
+                                    m     ur ′           αr + βs
+                                       ≡1      −                          ,                       (4.49)
+                                   2nc     S     2ns (αr + βrs + γn′ s2 )
+                                                        2
+
+
+where δ = gcd(r, h) ∈ {1, 3}, S = ns/δ, r ′ is the inverse of r/δ mod S, and u is
+defined mod S by u ≡S δ −1 (1 + n′ s2 − n′2 s4 ). The other equations and bounds are
+obtained by interchanging r ↔ s and α ↔ n′ γ. In (4.34) and elsewhere it suffices to
+take δ ∈ {1, 3}. Then (4.37),(4.38) become
+
+                               n2 h6 δ p             n3 h9 δ 2           nh6 p
+  |ϕ(r, s) − ϕ(r + δ, s)| ≤ .056         |D| + .0093           |D| + .34       |D| , (4.50)
+                                 |s|3                   s4                s4
+         |ϕ(δ⌊S+ /δ⌋, s)| ≤ nh3 s−2 /3 .                                             (4.51)
+
+Therefore (4.35) becomes
+
+     X                        
+                         uR′                           n29/6 δ 1/6        n19/4 δ 1/4 9
+                 e                 ϕ(δR, s) < (1.916               − 1.26            )h |D|
+                          S                             |s|13/6            |s|9/4
+ S− /δ≤R≤S+ /δ
+
+                              n23/6 h6        n17/6 h6        n15/4 h6     n11/4 h6 p
+                     + (12.98 5/6 7/6 + 70.1 11/6 13/6 − 8.56 3/4 5/4 − 46 7/4 9/4 ) |D| ,
+                             δ |s|          δ |s|            δ |s|        δ |s|
+
+and we obtain
+           X                                                                                  p
+ limX→∞               ≤ (7.832n29/6 h9 − 2.33n19/4 h9 )|D| + (201n23/6 h6 − 72n15/4 h6 )          |D| .
+            <
+
+    All that remains is the sum over the representatives [nα, β, γ/h] of Γ0 (n; h)-
+equivalence classes of quadratic forms of discriminant D. Let h′n;h (D) denote the
+number of those (not necessarily primitive) equivalence classes. Note that our sum
+is now independent
+              P        of
+                        Pα, β, γ, so a bound′ for |Zn/2;h (3/4)| will be the sum of our
+bounds for > and < , multiplied by hn;h (D)/2 (the 2 here compensates for the
+overcounting, as mentioned earlier). Now, since all stabilisers here are ±I, h′n;h (D)
+will equal the number of Γ0 (n′ )-equivalence classes of forms [n′ α, β, γ], times the index
+of Γ0 (n; h) in Γ0 (n|h), and so we obtain the (crude) bound
+
+                                                              SL2 (Z)
+                                         h′n;h (D) ≤ h′ (D)                                       (4.52)
+                                                              Γ(n, h)
+
+where h′ (D) is the total number of SL2 (Z)-equivalence classes of integral forms (not
+necessarily
+           primitive) of discriminant D, and where Γ(n, h) consists of all matrices
+ ab
+      where n divides c and h divides b (this clearly forms a group). In deriving
+ cd                                           
+(4.52), we are conjugating everything by h0 01 ; Γ(n, h) arises as the conjugate of the
+
+                                                       28
+subgroup Γ0 (nh) of Γ0 (n; h). Now, the index of Γ(n, h) in SL2 (Z) equals that of its
+conjugate Γ0 (nh), since indices of Fuchsian groups can be expressed as a ratio of
+areas of fundamental domains and conjugating by SL2 (R) preserves those areas. Let
+h(D) denote the class number of D, i.e. the number of SL2 (Z)-equivalence classes of
+primitive integral quadratic forms of discriminant D. Then we have the bound
+                                     p
+                                        |D|
+                             h(D) <         (2 + log |D|)                      (4.53)
+                                       π
+(see Theorems 12.14.3 and 12.10.1 in [38]). Hence
+                                  p
+       h′ (D)   1 X                  |D| X 2 − log m p log |D| X
+              =        h(D/m2 ) <                   + |D|           1
+          2     2 2                 2π     2
+                                                 m        4π    2
+                  m |D                   m |D                  m |D
+                    p              5/8
+              < 0.32 |D| + .681|D| log |D| ,                          (4.54)
+
+using our earlier bound for the divisor function d(n). Putting this all together, we
+obtain                                                      Y p+1
+                               p
+            h′n;h (D)/2 < (0.32 |D| + .681|D|5/8 log |D|)nh            ,      (4.55)
+                                                                   p
+                                                                p|(nh)
+
+and hence the bound given in the statement of our theorem. QED to Theorem 3
+   We can approximate the 2.13|D|1/8 log |D| with the upper bound 120(|D|1/7 −
+|D|1/8 ) by the usual reasoning. Putting this all together, we obtain the following
+(very crude) bounds for the character values for each g ∈ M24 and k ≥ 150:
+                       4 πK/2 4π πK/4
+              Hk (1) >   e   −√ e       − 2.5 × 104 K 23/7 ,                       (4.56)
+                       K        2
+                         4            √
+             |Hk (g)| < √ eπK/(2ng ) + 8π eπK/(4ng ) + ag × 10bg K 23/7 ,          (4.57)
+                       K ng
+                                          √
+where ng = |g| is the order of g, K = 8k − 1, and the values ag , bg are computed
+from Theorem 3 and are collected in Table 2. We find that when k ≥ 390, the ratio
+(Hk (1)/|M24 |)/(|Hk (g)|/|CM 24(g)|) exceeds 1.6 × 105 for all elements g 6= 1 except for
+g in conjugacy class 12B, where the ratio is > 1.3. In particular we find that
+
+                                Hk (1) X |Hk (g)|
+                                       >                   ,                       (4.58)
+                                |M24 |   g6=1
+                                              |C M 24 (g)|
+
+
+for all k ≥ 390, where the sum is over all conjugacy classes in M24 . As explained
+in (4.1), this is sufficient to deduce positivity of the multiplicities of all M24 -irreps
+in these class functions Hk . Again, positivity (or rather nonnegativity) has been
+obtained experimentally for n up to 500, far more than we need.
+    It is somewhat disappointing that we need to check by hand (or rather, by com-
+puter!) positivity for so many k, when empirically (4.58) is satisfied for k > 30. The
+
+                                            29
+cause of this are the bounds of Theorem 3, which apparently are far looser than they
+could be. But the value gained in tightening these bounds is far less than the effort
+to be spent, since it is so easy to calculate these character multiplicities. The reader
+interested in reducing 390 should focus on improving the bound for the case 12B (i.e.
+fix n = 24, h = 12 from the start, and restrict to k > 100 say; the index of Γ0 (nh) in
+Γ0 (n; h) here is 12, so the Theorem 3 bound can be improved immediately by that
+factor 12).
+    The bounds (4.56),(4.57) imply:
+Theorem 4. Choose any M24 -irrep ρ. Then the multiplicity multρ (Hn ) of ρ in Hn
+tends to ∞ as n → ∞. Moreover, multρ (Hn ) > 0 for all n ≥ 25.
+    Indeed, in this section we proved positivity of the multiplicities for n ≥ 390; the
+values 25 ≤ n < 390 can be checked explicitly. An immediate corollary of Theorem
+4 is the validity of Conjecture 5.11 in Umbral Moonshine [7]. However it should be
+remarked that the proof of this in [12] actually established a much stronger statement.
+Oddness of McKay-Thompson coefficients is far less trivial than strict positivity of
+certain multiplicities, since as we see almost every multiplicity will be strictly positive.
+
+
+5     Is the Conway group the stringy symmetry?
+In beautiful work, [30] followed Kondo’s treatment [39] of Mukai’s classification [42]
+of symplectic automorphisms of K3 surfaces, to obtain the symmetries of K3 sigma
+models. (Similar considerations are considered in [50].) It turns out all these stringy
+symmetries are subgroups of the Conway groups Co0 or Co1 (but not M24 ), where
+they will necessarily generate the full group Co0 (resp. Co1 ). This begs the (perhaps
+naive) question: should the automorphism group of Mathieu Moonshine actually be
+a Conway group?
+    The Conway group Co0 is the automorphism group of the Leech lattice; the simple
+group Co1 is its quotient by its centre ±1. Hence the Co1 -irreps are a subset of those
+of Co0 , consisting of those Co0 -irreps whose kernel contains −1. We call a Co0 -irrep
+a spinor if it is not trivial on −1. M24 is a subgroup of both Co0 and Co1 . In
+this section we give the restrictions of Co0 (hence Co1 ) irreps to M24 , for irreps with
+dimension up to 1 million (there are 32 of these). The notation comes from the
+Atlas of Finite Groups [8]; in a couple places it differs slightly from that of [24] (e.g.
+the dimension-1035 irreps are in a different order: the conjugate ones we write as
+1035′ and 1035′′ ). The first step was identifying the conjugacy classes; once these are
+known, the character multiplicities follow directly from the chararacter table of M24
+together with the orthogonality relations. The arguments are straightforward and
+we’ll avoid the details, giving only the results.
+
+                        Table 5. Matching of conjugacy classes
+
+M24   1A 2A 2B 3A 3B 4A 4B 4C 5A 6A 6B 7A 7B 8A 10A 11A 12A 12B 14A 14B 15A 15B 21A 21B 23A 23B
+Co1   1A 2A 2C 3B 3D 4D 4C 4F 5B 6E 6I 7B 7B 8E 10F 11A 12J 12M 14A 14B 15D 15D 21C 21C 23A 23B
+
+
+                                            30
+                          Table 6. The 32 smallest Conway irreps
+
+  σ
+  e1 σ1 σ2     σ3   σ
+                    e2   σ
+                         e3   σ
+                              e4  σ4    σ5    σ6    σ7    σ
+                                                          e5    σ8    σ9   σ10    σ
+                                                                                  e6     σ
+                                                                                         e7     σ
+                                                                                                e8
+  24 276 299 1771 2024 2576 4576 8855 17250 27300 37674 40480 44275 80730 94875 95680 170016 299000
+              σ11    σ
+                     e9     σ12    σ
+                                   e10    σ13   σ
+                                                e11    σ14    σ15    σ16    σ17    σ
+                                                                                   e12    σ18    σ19
+           313950 315744 345345 351624 376740 388080 483000 644644 673750 673750 789360 822250 871884
+
+    We find that any virtual character ρ = m0 + m1 ρ1 + · · · + m20 ρ20 of M24 , i.e. any
+linear combination with integer coefficients mi of M24 irreps, is the restriction of a
+virtual Co0 -representation involving the first 32 irreps of Co0 , iff the multiplicities
+obey m2 = m2 , m3 = m3̄ , m8 = m8 , m10 = m10 , as well as the relation m9 + m14 ≡2
+m15 . Thus it is hard for an M24 -representation to be a restriction of a virtual Co0 -
+representation (0% will be). Although the restriction map is not surjective, Theorem
+B tells us the Mathieu-Moonshine characters Hn lie in the image of that restriction.
+This is the content of Theorem C given earlier. In particular we have:
+         e1 − 1 ,
+    ρ1 = σ
+    ρ2 + ρ2 = 37σ14 + 39σ13 + 28e
+                                σ10 + σ12 + 12σ11 + 23e
+                                                      σ8 + σ10 + 25σ9 + 2σ5 + 194e
+                                                                                 σ4 + 24e
+                                                                                        σ3 + 18σ3
+        +269e
+            σ1 − 28σ18 − 11e
+                           σ12 − 42e
+                                   σ9 − 44e
+                                          σ6 − 9σ8 − 100e
+                                                        σ5 − 18σ7 − 78σ6 − 144σ2 − 218σ1 − 155 ,
+    ρ3 + ρ3 = 14σ13 + 11e
+                        σ10 + 15σ12 + 4σ11 + 6e
+                                              σ8 + 15σ10 + 8σ9 + 105e
+                                                                    σ4 + 14e
+                                                                           σ3 + 64σ3 + 121e
+                                                                                          σ1
+        −10σ18 − 4e
+                  σ12 − 15e
+                          σ9 − 15e
+                                 σ6 − 20σ8 − 12e
+                                               σ5 − 20σ7 − 13σ6 − 97σ2 − 49σ1 − 27 ,
+    ρ4 = σ2 + 1 − 2e
+                   σ1 ,
+                   e1 ,
+    ρ5 = σ 1 + 1 − σ
+    ρ6 = 8σ14 + 14σ13 + 11e
+                          σ10 + 7σ12 + 4σ11 + 6e
+                                               σ8 + 7σ10 + 8σ9 + 89e
+                                                                   σ4 + 14e
+                                                                          σ3 + 32σ3 + 121e
+                                                                                         σ1
+        −10σ18 − 4e
+                  σ12 − 15e
+                          σ9 − 15e
+                                 σ6 − 12σ8 − 28e
+                                               σ5 − 12σ7 − 21σ6 − 81σ2 − 73σ1 − 51 ,
+    ρ7 = 36σ14 + 41σ13 + 33e
+                           σ10 + 6σ12 + 12σ11 + 25e
+                                                  σ8 + 6σ10 + 25σ9 + 258e
+                                                                        σ4 + 50e
+                                                                               σ3 + 55σ3 + 353e
+                                                                                              σ1
+        −30σ18 − 12e
+                   σ12 − σ17 − 43e
+                                 σ9 − 45e
+                                        σ6 − 29σ8 − 100e
+                                                       σ5 − 32σ7 − 86σ6 − 2σ5 − 226σ2 − 256σ1 − 182 ,
+    ρ7 = σ17 + σ14 + 41σ13 + 39σ12 + 25e
+                                       σ9 + 12σ11 + 23e
+                                                      σ8 + 39σ10 + 27σ9 + 2σ5 + 307e
+                                                                                   σ4 + 40e
+                                                                                          σ3 + 181σ3
+        +343e
+            σ1 − 28σ18 − 12e
+                           σ12 − 41e
+                                   σ9 − 47e
+                                          σ6 − 52σ8 − 31e
+                                                        σ5 − 61σ7 − 49σ6 − 278σ2 − 155σ1 − 85 ,
+    ρ8 + ρ8 = 5σ14 + 6σ13 + 4e
+                             σ10 + 2σ12 + 2σ11 + 2e
+                                                  σ8 + 3σ10 + 4σ9 + σ5 + 44e
+                                                                           σ4 + 7e
+                                                                                 σ3 + 12σ3 + 66e
+                                                                                               σ1
+        −4σ8 − 4σ18 − 2e
+                       σ12 − 6e
+                              σ9 − 7e
+                                    σ6 − 16e
+                                           σ5 − 6σ7 − 13σ6 − 44σ2 − 46σ1 − 33 ,
+    ρ9 + ρ15 = 12σ18 + 5e
+                        σ12 + 17e
+                                σ9 + 20e
+                                       σ6 + 22σ8 + 18e
+                                                     σ5 + 25σ7 + 25σ6 + 125σ2 + 82σ1 + 51
+        −3σ14 − 17σ13 − 12e
+                          σ10 − 14σ12 − 5σ11 − 10e
+                                                 σ8 − 14σ10 − 11σ9 − 133e
+                                                                        σ4 − 23e
+                                                                               σ3 − 69σ3 − 159e
+                                                                                              σ1 ,
+    ρ10 + ρ10 = 22σ18 + 10e
+                          σ12 + 31e
+                                  σ9 + 36e
+                                         σ6 + 53σ8 + 24e
+                                                       σ5 + 55σ7 + 44σ6 + σ5 + 270σ2 + 150σ1 + 87
+        −32σ13 − 22e
+                   σ10 − 33σ12 − 10σ11 − 17e
+                                           σ8 − 34σ10 − 20σ9 − 278e
+                                                                  σ4 − 50e
+                                                                         σ3 − 161σ3 − 321e
+                                                                                         σ1 ,
+    ρ11 = 12σ18 + 5e
+                   σ12 + 17e
+                           σ9 + 19e
+                                  σ6 + 19σ8 + 28e
+                                                σ5 + 20σ7 + σ5 + 30σ6 + 116σ2 + 94σ1 + 63
+        −8σ14 − 17σ13 − 12e
+                          σ10 − 9σ12 − 10e
+                                         σ8 − 5σ11 − 9σ10 − 11σ9 − 125e
+                                                                      σ4 − 23e
+                                                                             σ3 − 51σ3 − 158e
+                                                                                            σ1 ,
+    ρ12 = σ3 ,
+    ρ13 = 14σ13 + 10e
+                    σ10 + 14σ12 + 4σ11 + 8e
+                                          σ8 + 14σ10 + 9σ9 + 110e
+                                                                σ4 + 18e
+                                                                       σ3 + 65σ3 + 124e
+                                                                                      σ1
+        −10σ18 − 4e
+                  σ12 − 14e
+                          σ9 − 16e
+                                 σ6 − 21σ8 − 10e
+                                               σ5 − 22σ7 − 16σ6 − σ5 − 102σ2 − 53σ1 − 30 ,
+    ρ14 + ρ15 = 12σ18 + 5e
+                         σ12 + 18e
+                                 σ9 + 19e
+                                        σ6 + 21σ8 + 16e
+                                                      σ5 + 23σ7 + 21σ6 + 111σ2 + 65σ1 + 38
+        −2σ14 − 17σ13 − 12e
+                          σ10 − 15σ12 − 5σ11 − 10e
+                                                 σ8 − 15σ10 − 11σ9 − 124e
+                                                                        σ4 − 17e
+                                                                               σ3 − 69σ3 − 141e
+                                                                                              σ1 ,
+
+                                              31
+    2ρ15 = 30σ14 + 39σ13 + 28e
+                             σ10 + 11σ12 + 12σ11 + 22e
+                                                     σ8 + 11σ10 + 25σ9 + 244e
+                                                                            σ4 + 40e
+                                                                                   σ3 + 67σ3
+        +326e
+            σ1 − 28σ18 − 12e
+                           σ12 − 40e
+                                   σ9 − 44e
+                                          σ6 − 26σ8 − 90e
+                                                        σ5 − 33σ7 − 76σ6 − 211σ2 − 229σ1 − 158 ,
+          e4 + 4e
+    ρ16 = σ     σ1 − 2σ2 − 2σ1 − 2 ,
+    ρ17 = 5σ18 + 2e
+                  σ12 + 7e
+                         σ9 + 7e
+                               σ6 + 12σ8 + 5e
+                                            σ5 + 11σ7 + 8σ6 + σ5 + 54σ2 + 27σ1 + 15
+        −7σ13 − 5e
+                 σ10 − 7σ12 − 2σ11 − 4e
+                                      σ8 − 7σ10 − 4σ9 − 57e
+                                                          σ4 − 10e
+                                                                 σ3 − 34σ3 − 64e
+                                                                               σ1 ,
+    ρ18 = σ14 + 6σ13 + 4e
+                        σ10 + 6σ12 + 2σ11 + 2e
+                                             σ8 + 6σ10 + 4σ9 + 46e
+                                                                 σ4 + 7e
+                                                                       σ3 + 24σ3 + 58e
+                                                                                     σ1
+        −4σ18 − 2e
+                 σ12 − 6e
+                        σ9 − 7e
+                              σ6 − 7σ8 − 8e
+                                          σ5 − 8σ7 − 8σ6 − 44σ2 − 30σ1 − 19 ,
+    ρ19 = 8σ14 + 10σ13 + 7e
+                          σ10 + 2σ12 + 3σ11 + 6e
+                                               σ8 + 2σ10 + 6σ9 + 68e
+                                                                   σ4 + 14e
+                                                                          σ3 + 18σ3 + 95e
+                                                                                        σ1
+        −7σ18 − 3e
+                 σ12 − 10e
+                         σ9 − 11e
+                                σ6 − 8σ8 − 23e
+                                             σ5 − 9σ7 − 21σ6 − 64σ2 − 67σ1 − 48 ,
+    ρ20 = 41σ13 + 29e
+                    σ10 + 41σ12 + 12σ11 + 24e
+                                            σ8 + 41σ10 + 26σ9 + 318e
+                                                                   σ4 + 45e
+                                                                          σ3 + 191σ3 + 346e
+                                                                                          σ1
+        −29σ18 − 12e
+                   σ12 − 42e
+                           σ9 − 46e
+                                  σ6 − 59σ8 − 29e
+                                                σ5 − 64σ7 − 49σ6 − 287σ2 − 149σ1 − 78 .
+
+ We considered more Co0 -irreps than M24 ones; the additional relations between
+restrictions are:
+    e2 + σ
+    σ    e1 = σ3 + σ1 + 1 ,
+    e5 + σ
+    σ    e4 + σ3 + 1 = σ7 + σ4 + σ2 ,
+    e11 + σ
+    σ     e3 = σ
+               e8 + σ
+                    e5 + σ7 + σ4 + 2e              e1 ,
+                                    σ2 + σ2 + σ1 + σ
+               e8 + σ
+    σ14 + σ8 = σ    e7 + σ7 + 2σ4 + σ
+                                    e2 + σ2 + 2σ1 ,
+    e8 + σ
+    σ    e7 + σ2 = σ12 + σ10 + σ6 + σ3 + σ
+                                         e1 ,
+    σ19 + σ8 = σ18 + 2σ7 + 2σ4 + σ2 + 2σ1 ,
+    e6 + 4e
+    σ     σ4 + 3e
+                σ3 + 24535e
+                          σ2 + 24541e
+                                    σ1 = 2σ8 + 2σ5 + 24533σ3 + 6σ2 + 24537σ1 + 24537 ,
+    85σ14 + 88σ13 + 62e
+                      σ10 + 4σ12 + 26σ11 + 50e
+                                             σ8 + 4σ10 + 56σ9 + 516e
+                                                                   σ4 + 97e
+                                                                          σ3 + 72σ3 + 754e
+                                                                                         σ1
+        = 62σ18 + 26e
+                    σ12 + 90e
+                            σ9 + 99e
+                                   σ6 + 41σ8 + 234e
+                                                  σ5 + 53σ7 + 190σ6 + 453σ2 + 582σ1 + 428 .
+
+
+    Of course we’d prefer true representations to virtual ones, but perhaps we should
+not be too surprised that virtual representations arise here, because the definition
+(2.1) of elliptic genus involves signs, and after all even H00 and H0 were virtual (but
+see Section 6).
+    However, the dimensions of the virtual Co0 -representations needed will be ex-
+tremely large. By the total dimension of a virtual representation ρ+ ⊖ ρ− we mean
+the quantity dim(ρ+ ) + dim(ρ− ). For any M24 representation, if there is any Co0 -
+virtual representation which restricts to it, there will be infinitely many (just add to
+it any of the above relations). For each basic combination of M24 -irreps, we have se-
+lected above the Co0 -virtual representation of smallest total dimension we could find,
+which restricts to it. (This ambiguity would be eliminated by identifying if possible
+the twining elliptic genera φg for all g ∈ Co0 .)
+    For example, of all Co0 -irreps of dimension less than 1 million, only 2 of them
+contain ρ2 or ρ2 as a summand: namely, a Co1 -irrep of dim 313950, and a spinor
+irrep of dim 789360. The smallest virtual Co0 -representation we could find which
+
+                                              32
+restricts to ρ2 + ρ2 (a 90-dimensional representation of M24 ) has total dimension over
+100 billion.
+    In fact more is true. Suppose for contradiction the natural identification of the
+Witten index wg with σ    e1 (the only Co0 -rep which restricts to 1 + ρ1 ). Now, [30]
+compute (among other things) the twining characters for the automorphism of the
+Gepner model (1)6 ; they found two symmetries of order 9 (the bottom two rows
+of their Table 1), both of whose Witten indices equal 3, and whose twining elliptic
+genera are nonetheless different. However, Co0 has only one conjugacy class (namely
+class 9C) of order 9 with σe1 = 3, and this would imply those twining genera should be
+equal. (We thank Roberto Volpato for sharing this observation.) This contradiction
+means that wg cannot equal σ     e1 (g), and so the Witten genus too will be virtual,
+having total dimension much greater than 24. These large total dimensions make the
+proposed extension to the Conway groups seem unlikely.
+
+
+6    Speculations
+Because the phenomena underlying Mathieu Moonshine are still obscure, we conclude
+with assorted questions and speculations. The most obvious challenge suggested by
+this paper is to explicitly construct these representations Hn . The evidence that
+there is some vertex algebra-like object underlying the Mathieu Moonshine obser-
+vations now seems overwhelming; perhaps the most satisfying way to construct the
+Hn would be to construct this vertex (super)algebra. This would provide the alge-
+braic underpinning of Mathieu Moonshine, and it should hint at its still-mysterious
+geometric and physical meanings.
+    We regard this vertex superalgebra construction as the most important challenge
+of Mathieu Moonshine. At c = 24 we have an N = 0 VOA (namely the Moonshine
+Module V ♮ ) with lots of nice properties including an action of M. At c = 12 we
+have an N = 1 VOSA (namely Duncan’s algebra [16]), with lots of nice properties
+including an action of the Conway group. Could there be at c = 6 an N = 2 or
+N = 4 VOSA (namely the algebra underlying our Mathieu Moonshine) with lots of
+nice properties including an action of M24 ? After all, M24 , Co1 , M is the Holy Trinity
+of sporadic finite simple groups (e.g. Griess [35] constructed the Monster by starting
+with M24 , lifting to Conway and then moving on to the Monster). (I thank Gerald
+Höhn and Chongying Dong for informal discussions on this point).
+    Another possible construction, which may also bring K3 into Mathieu Moonshine,
+is through the chiral de Rham complex [40] (a sheaf of vertex superalgebras) asso-
+ciated to a K3 surface. The trace over its global section (which is itself a vertex
+superalgebra) recovers elliptic genus [3]. The orbifold theory, including the construc-
+tion of twisted modules, has also been studied [26].
+    One of the most intriguing aspects of Mathieu Moonshine is the positivity of
+the irrep multiplicities. This discussion is already anticipated in Chapter 7.2 of
+Wendland’s thesis [52]. There we find that the partition function in the Ramond-
+
+
+
+                                           33
+Ramond sector of an N = 4 c = 6 superconformal field theory is
+
+ZRR =|chs0,0 |2 + h|chs1/4,0 |2 + ǫ (chs0,0 chs∗                  l         s∗     ′  s     l∗
+                                              1/4,0 + c.c.) + F ch1/4,1/2 ch0,0 + F ch0,0 ch1/4,1/2
+
+        + Gchl1/4,1/2 chs∗       ′  s       l∗            l        2
+                        1/4,0 + G ch1/4,0 ch1/4,1/2 + H|ch1/4,1/2 | ,                         (6.1)
+
+using the same conventions for N = 4 superconformal characters as (2.6), where h, ǫ
+are nonnegative integers and F, F ′ , G, G′ , H are functions of τ, z with only nonnegative
+integer coefficients in q, q. The elliptic genus is
+
+                 φ = (ǫ − 2)chs0,0 + (h − 2ǫ)chs1/4,0 + (G − 2F )chl1/4,1/2 .                 (6.2)
+
+For the K3 component of moduli space, ǫ = 0 and h = h1,1 = 20. In particular
+note that the function F counts holomorphic fields which exist in that theory but
+which are not contained in the N = 4 vacuum representation. We can think of
+holomorphic fields, very roughly, as additional symmetries of the theory; since we
+would expect that generically the chiral algebra of the K3 sigma model is simply
+N = 4 superconformal, we should have generically F = 0. This would mean the
+non-BPS part of the elliptic genus is (generically) this function G which has only
+non-negative coefficients. From this the conjectured non-negativity would follow.
+This argument also applies to the character-valued elliptic genus, so all multiplicities
+should be nonnegative. A similar argument can be found in Ooguri [44]. (We thank
+Katrin Wendland for discussions on this point.)
+    It is commonly expected that the moduli space of c = 6 N = 4 superconformal
+field theories consists of two components: a toroidal one with vanishing elliptic genus,
+and the K3 sigma models with elliptic genus 2φ0,1 . But if this is true, then there can
+be no c = 6 N = 4 superconformal field theory underlying Mathieu moonshine: the
+work of [30] shows that the corresponding automorphism groups are too small.
+    But N = 4 (more precisely, N = (4, 4)) theories possess more supersymmetry
+than we need. We could deform an N = (4, 4) theory to e.g. an N = (0, 4) heterotic
+(see e.g. [55] for an introduction to similar theories). These theories are geometrical,
+corresponding to bundles over K3, and are also related to chiral de Rham. They
+possess the desired elliptic genus 2φ0,1. The moduli space of these theories is 90-
+dimensional, far larger than that of N = (4, 4), so there is a much greater chance
+for some larger symmetry groups. However, the breaking of the left-moving N = 4
+supersymmetry seems to destroy the justification for decomposing the elliptic genus
+into N = 4 superconformal characters — a step crucial to Mathieu moonshine. It is
+tempting to partially break the supersymmetry, say to N = (4, 1), but such theories
+seem to possess the full N = (4, 4) supersymmetry. (I thank Ilarion Melnikov for
+discussions involving this point.)
+    The difficulty in interpreting Mathieu Moonshine in terms of K3 sigma models
+(e.g. the interesting work of Taormina-Wendland [50] is still far from realising M24 )
+leads one to consider the unhappy possibility that the connection with K3 is perhaps
+accidental. The relevant (twisted) elliptic genera are so heavily constrained that
+there are bound to be empty coincidences. For example, any of the 71 or so c = 24
+
+                                                34
+holomorphic rational VOA — e.g. one associated to the Leech lattice — will have a
+VOA character (a.k.a. partition function) equal to J(τ )+c for some constant c ∈ Z≥0 ,
+again because it is so severely constrained. The coefficients of J (with or without
+c) will have an interpretation as dimensions of Monster representations as we know,
+but conjecturally only one of those VOAs actually carries a nontrivial action of the
+Monster M. It takes a (slightly) deeper analysis to rule out Monster actions on these
+other VOAs. Could this relation of K3 sigma models to our Mathieu Moonshine be
+likewise illusory? After all, it is clear that the Jacobi forms of Umbral Moonshine
+cannot have a direct interpretation as elliptic genera, when the group is not M24 .
+    Similarly, perhaps we shouldn’t regard M24 as sacrosanct. The evenness property
+of Theorem B hints perhaps that the symmetry is somewhat larger. The analysis of
+[30] and our Theorem C hints that the ‘ultimate’ symmetry lies somewhere between
+M24 and Conway. The split extension Z12     2 ×M24 , a maximal subgroup of Co0 , is the
+only such group and seems worth a look. (The evenness property was used in [12]
+to prove one of the Umbral Moonshine conjectures, and together with Theorem A
+proves that the elliptic genus of Enriques surfaces decomposes into a sum of M12
+characters.)
+    The appearance of Γ0 (|g|) in Lemma 1 is what one would expect from the CFT
+orbifold story. Let us quickly review that basic theory, as developed by [14],[15],[1],
+and others. Let V be a (bosonic) rational VOA with automorphisms containing some
+finite group G. By V G we mean the vertex operator subalgebra consisting of all fixed-
+points of G in V. Conjecturally, V G is also rational; in the mathematical literature it
+is called the orbifold of V by G (the orbifold construction means something a little
+different in the physics literature).
+    We are interested here in the simplest case, where V only has a single irreducible
+module (namely itself). The twisted modules M(g) of V are parametrised by (a subset
+of the) conjugacy class representatives g, and (a subgroup of) the centraliser of g in G
+acts on them, so we can define twisted twining characters Zg,h (τ ) = TrMg (hq L0 −c/24 ).
+The special case Z1,h (τ ) are sometimes called McKay-Thompson         series in the math-
+ematics literature. Then for any ac db ∈ SL2 (Z), Zg,h aτ       +b
+                                                             cτ +d
+                                                                     will equal Zga hc ,gb hd (τ )
+up to some phase. For general g, h, Zg,h (τ ) will thus be a modular function with mul-
+tiplier for the group of all matrices ac db ∈ Γ(lcm(|g|, |h|)). However, ac db ∈ Γ0 (|h|)
+will send the McKay-Thompson series Z1,h to another, Z1,hd (up to a phase). The in-
+teger d will be coprime to |h|, and sends a character value of h to a Galois associate.
+When the McKay-Thompson series have integer coefficients (e.g. in Monstrous or
+Mathieu Moonshine), these Galois associates have the same value, and Z1,hd = Z1,h .
+In other words, since we have that integrality, our McKay-Thompson series Z1,h will
+be modular functions (with multiplier) for Γ0 (|h|).
+    To complete the story, we need to consider equivariant cohomology. Let BG be
+a classifying space, then the group cohomology HG∗ (1; N) (often denoted H ∗ (G; N))
+with values in a G-module N is defined by H ∗ (BG ; N). Just as HG2 (1; U(1)) con-
+trols the projective representatives of G, and α ∈ HG3 (G; Z) (G acting on itself by
+conjugation) parametrises the possible orbifold fusion rings (all given by twisted
+
+
+                                               35
+equivariant K-theory α KG0 (G)), the representation theory of V G is controlled by a
+3-cocycle α ∈ HG3 (1; U(1)). In particular, when α is trivial, the modules M of V G
+conjecturally are in natural one-to-one correspondence with pairs (g, ψ), where g is
+a conjugacy class representative in G and ψ is an irrep of the centraliser CG (g).
+Their characters χM (τ ) = TrM q L0 −c/24 form a vector-valued modular function for
+SL2 (Z) with multiplier explicitly defined in terms of G [14]. The twisted modules
+M(g) of V are also (conjecturally) parametrised by all conjugacy class representa-
+tives g, and the     full centraliser of g in G acts on them Then Zgk ,hk (τ ) = Zg,h (τ )
+              aτ +b
+and Zg,h cτ     +d
+                     = Zga hc ,gb hd (τ ). When the cocycle is not trivial — the generic case
+— a subset of these pairs (g, ψ) and (g, h) will not be viable. Again, the charac-
+ters of V G should yield a vector-valued modular form, but the multiplier is more
+complicated   (though known [11]). Similarly, the relations Zgk ,hk (τ ) = Zg,h (τ ) and
+       aτ +b
+Zg,h cτ +d = Zga hc ,gb hd (τ ) have to be adjusted by phases determined by α.
+    We have order-12 phases in Mathieu Moonshine (e.g. the e2πicd/(|g|h) in (2.17)), so
+we would expect (supposing the orbifold theory extends to our N = 4 setting) the
+relevant 3-cocycle α to have order 12. Indeed, [18] computed that HM           3              ∼
+                                                                                 24 (1; U(1)) =
+Z12 , and [31] explicitly verified that a generating cocycle yields the phases appearing
+in Mathieu Moonshine. Moreover, HM             3              ∼
+                                                 23 (1; U(1)) = 1 [41], and so the phases for
+elements lying in M23 should be trivial, and this indeed is what is observed. It is also
+observed that many pairs (g, h) are not viable, as expected since α is nontrivial. If
+some group G larger than M24 (e.g. Co0 or 212 .M24 ) actually acts here, then for this
+reason we’d require HG3 (1; U(1)) to contain an order-24 element. (The cohomology
+of Co0 has not been computed yet). It is observed in [31] that some twisted twining
+elliptic genera vanish even when there is no cohomological obstruction — this would
+be surprising for a bosonic theory but elliptic genera (being a signed trace) often
+vanishes in nontrivial theories so this is not mysterious here.
+    In summary, the perfect formal fit of twisted twining elliptic genera here with the
+general theory of VOA orbifolds, lends strong support to the belief that there is a
+vertex operator superalgebra underlying Mathieu Moonshine.
+    In the case of Monstrous Moonshine, the phases are 24th roots of 1, so we would
+expect the orbifold (V ♮ )M to be governed by an order 24 cocycle. We would also
+expect this α to obstruct certain pairs Zg,h . Indeed, empirical observations encap-
+sulated in Norton’s Generalised Monstrous Moonshine [43] make exactly this point:
+whether a pair is viable or not is captured by Norton’s Fricke dichotomy. This should
+be equivalent to the cohomology condition. This relation between cohomology and
+Norton’s mysterious Fricke condition seems to be new. It would be very interesting
+to make that relation more explicit.
+Acknowledgements. It is my pleasure to thank Matthias Gaberdiel and, more generally, the con-
+ference participants of the Mathieu Moonshine workshop at ETH in July 2011, for discussions. I
+thank Thomas Creutzig, Matthias Gaberdiel, Gerald Höhn, Ilarion Melnikov, Roberto Volpato and
+Katrin Wendland for comments involving an earlier draft of this manuscript.
+
+
+
+
+                                              36
+References
+ [1] P. Bantay: Orbifolds, Hopf algebras and the Moonshine. Lett. Math. Phys. 22 (1991), 187–194.
+ [2] R. E. Borcherds: Monstrous moonshine and monstrous Lie superalgebras. Invent. Math. 109 (1992), 405–444.
+ [3] L. A. Borisov, A. Libgober: Elliptic genera of toric varieties and applications to mirror symmetry. Invent.
+     Math. 140 (2000), 453–485.
+ [4] K. Bringmann, K. Ono: The f (q) mock theta function conjecture and partition ranks. Invent. Math. 165 (2006),
+     243–266.
+ [5] M.C.N. Cheng: K3 Surfaces, N=4 dyons, and the Mathieu group M24. Commun. Number Theory Phys. 4
+     (2010), 623 [arXiv:1005.5415].
+ [6] M.C.N. Cheng, J. F. R. Duncan: On Rademacher sums, the largest Mathieu group, and the holographic
+     modularity of Moonshine. [arXiv:1110.3859].
+ [7] M. C. N. Cheng, J. F. R. Duncan, J. A. Harvey: Umbral moonshine. [arXiv:1204.2779].
+ [8] J.H. Conway, R.T. Curtis, S.P. Norton, R.A. Parker, R.A. Wilson: The Atlas of Finite Groups. (Oxford
+     University Press, Oxford 2003).
+ [9] J.H. Conway, S. Norton: Monstrous moonshine. Bull. Lond. Math. Soc. 11 (1979), 308–339.
+[10] J.H. Conway, N. J. A. Sloane: Sphere Packings, Lattices and Groups. (3rd edition) (Springer, New York 1999).
+[11] A. Coste, T. Gannon, P. Ruelle: Finite group modular data. Nucl. Phys. B581 (2000), 679–717.
+[12] T. Creutzig, G. Höhn, T. Miezaki: The McKay-Thompson series of Mathieu Moonshine modulo two. [arXiv:
+     1211.3703v2].
+[13] A. Dabholkar, S. Murthy, D. Zagier: Quantum black holes, wall crossing, and mock modular forms. [arXiv:
+     1208.4074v1].
+[14] R. Dijkgraaf, C. Vafa, E. Verlinde, H. Verlinde: The operator algebra of orbifold models. Commun. Math.
+     Phys. 123 (1989), 485–526.
+[15] R. Dijkgraaf, E. Witten: Topological gauge theories and group cohomology. Commun. Math. Phys. 129 (1990),
+     393–429.
+[16] J. F. Duncan: Super-Moonshine for Conway’s largest sporadic group. Duke Math. J. 139 (2007), 255–315.
+[17] J. F. R. Duncan, I. B. Frenkel: Rademacher sums, moonshine and gravity. Commun. Number Theor. Phys. 5
+     (2011) no. 4, 1–128; [arXiv:0907.4529].
+[18] M. Dutour Sikirić, G. Ellis: Wythoff polytopes and low-dimensional homology of Mathieu groups. J. Algebra
+     322 (2009), 4143–4150.
+[19] T. Eguchi, K. Hikami: Superconformal algebras and mock theta functions 2. Rademacher expansion for K3
+     surface. Commun. Number Theory Phys. 3 (2009), 531–554; [arXiv: 0904.0911v2]
+[20] T. Eguchi, K. Hikami: Note on twisted elliptic genus of K3 surface. Phys. Lett. B694 446–455 (2011)
+     [arXiv:1008.4924]
+[21] T. Eguchi, K. Hikami: N = 2 moonshine. Phys. Lett. B717 (2012), 266–273; [arXiv:1209.0610].
+[22] T. Eguchi, K. Hikami: Enriques moonshine. [arXiv:1301.5043]
+[23] T. Eguchi, H. Ooguri, A. Taormina, S.-K. Yang: Superconformal algebras and string compactification on
+     manifolds with SU(N) holonomy. Nucl. Phys. B315 (1989), 193–221.
+[24] T. Eguchi, H. Ooguri, Y. Tachikawa: Notes on the K3 surface and the Mathieu group M24. Exper. Math. 20
+     91–96 (2011); [arXiv:1004.0956].
+[25] M. Eichler, D. Zagier: The Theory of Jacobi Forms. (Birkhäuser, Boston, 1985).
+[26] E. Frenkel, M. Szczesny: Chiral de Rham complex and orbifolds. J. Alg. Geom. 16 (2007), 599–624.
+[27] I. Frenkel, J. Lepowsky, A. Meurman: Vertex Operator Algebras and the Monster (Academic Press, San Diego
+     1988).
+[28] M. R. Gaberdiel, S. Hohenegger, R. Volpato: Mathieu twining characters for K3. JHEP 09 (2010) 058;
+     [arXiv:1006.0221].
+[29] M. R. Gaberdiel, S. Hohenegger, R. Volpato: Mathieu Moonshine in the elliptic genus of K3. JHEP 10 (2010)
+     062; [arXiv:1008.3778v3].
+[30] M. R. Gaberdiel, S. Hohenegger, R. Volpato: Symmetries of K3 sigma models. [arXiv:1106.4315v1].
+[31] M. R. Gaberdiel, D. Persson, H. Ronellenfitsch, R. Volpato: Generalised Mathieu Moonshine. [arXiv:
+     1211.7074].
+[32] T. Gannon: Moonshine beyond the Monster: The Bridge connecting Algebra, Modular Forms and Physics.
+     (Cambridge University Press, Cambridge 2006).
+[33] D. Goldfeld, P. Sarnak: Sums of Kloosterman sums. Invent. Math. 71 (1983), 243–250.
+[34] S. Govindarajan: Unravelling Mathieu moonshine. [arXiv: 1106.5715v1].
+[35] R. L. Griess, Jr.: The friendly giant. Invent. Math. 69 (1982), 1–102.
+[36] C. Hooley: An asymptotic formulae in the theory of numbers. Proc. London Math. Soc. 7 (1957), 396–413.
+[37] C. Hooley: On the number of divisors of quadratic polynomials. Acta Math. 110 (1963), 97–114.
+[38] Hua Loo Keng: Introduction to Number Theory. (Springer, Berlin 1982).
+
+
+
+                                                      37
+[39] S. Kondo: Niemeier lattices, Mathieu groups and finite groups of symplectic automorphisms of K3 surfaces.
+     Duke Math. J. 92 (1998), 593–603, appendix by S. Mukai.
+[40] F. Malikov, V. Schechtman, A. Vaintrob: Chiral de Rham complex. Commun. Math. Phys. 204 (1999), 439–473.
+[41] R.J. Milgram: The cohomology of the Mathieu group M23. J. Group Theory 3 (2000), 7–26.
+[42] S. Mukai: Finite groups of automorphisms of K3 surfaces and the Mathieu group. Invent. Math. 94 (1988),
+     183–221.
+[43] S. P. Norton: Generalized moonshine. The Arcata Conference on Representations of Finite Groups (Arcata,
+     1986) Proc. Sympos. Pure Math. 47 (American Mathematical Society, Providence 1987) 208–209.
+[44] H. Ooguri: Superconformal symmetry and geometry of Ricci flat Kahler manifolds. Int. J. Mod. Phys. A4
+     (1989), 4304–4324.
+[45] H. Rademacher: Bestimmung einer gewissen Einheitswurzel in der Theorie der Modulfunktionen. J. London
+     Math. Soc. 7 (1932), 14–19.
+[46] H. Rademacher: On the Selberg formula for Ak (n). J. Indian Math. Soc. 21 (1957), 41–55.
+[47] A. Selberg: On the estimation of Fourier coefficients of modular forms. in: Proc. Sympos. Pure Math., Vol.
+     VIII (American Mathematical Society, Providence 1965), pp. 1–15.
+[48] S.D. Smith: On the head characters of the monster simple group. Finite Groups – Coming of Age (Montreal
+     1982) (American Mathematical Society, Providence 1985) pp. 303–313.
+[49] J. Sturm: On the congruence of modular forms. Number theory (New York, 1984–1985) Lecture Notes in Math.
+     1240 (Springer, Berlin, 1987), 275–280.
+[50] A. Taormina, K. Wendland: The overarching finite symmetry group of Kummer surfaces in the Mathieu group
+     M24 ; [arXiv:1107.3834].
+[51] A. L. Whiteman: A sum connected with the series for the partition function. Pacific J. Math. 6 (1956), 159–176.
+[52] K. Wendland: Moduli spaces of unitary conformal field theories. Ph.D. Thesis, Universität Bonn (2000).
+[53] R. A. Wilson: On the 3-local subgroups of Conway’s group Co1 . J. Alg. 113 (1988), 261–262.
+[54] E. Witten: Elliptic genera and quantum field theory. Commun. Math. Phys. 109 (1987), 525–536.
+[55] E. Witten: Two-dimensional models with (0,2) supersymmetry: perturbative aspects. Adv. Theor. Math. Phys.
+     11 (2007), 1–63.
+
+
+
+
+                                                       38
+

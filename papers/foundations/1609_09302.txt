@@ -1,0 +1,1662 @@
+                                                       Mathieu Moonshine and Symmetry Surfing
+
+                                                 Matthias R. Gaberdiel1 , Christoph A. Keller2 , and Hynek Paul1
+
+                                                          1
+                                                              Institute for Theoretical Physics, ETH Zurich
+arXiv:1609.09302v2 [hep-th] 22 Jan 2018
+
+
+
+
+                                                                      CH-8093 Zurich, Switzerland
+                                                               2
+                                                                   Department of Mathematics, ETH Zurich
+                                                                        CH-8092 Zurich, Switzerland
+
+
+
+                                                                                Abstract
+                                             Mathieu Moonshine, the observation that the Fourier coefficients of the elliptic
+                                          genus on K3 can be interpreted as dimensions of representations of the Mathieu
+                                          group M24 , has been proven abstractly, but a conceptual understanding in terms of
+                                          a representation of the Mathieu group on the BPS states, is missing. Some time
+                                          ago, Taormina and Wendland showed that such an action can be naturally defined
+                                          on the lowest non-trivial BPS states, using the idea of ‘symmetry surfing’, i.e., by
+                                          combining the symmetries of different K3 sigma models. In this paper we find
+                                          non-trivial evidence that this construction can be generalized to all BPS states.
+
+
+
+
+                                                                                    1
+1    Introduction
+Mathieu Moonshine [1] is the observation that the decomposition of the elliptic genus of
+K3 into N = 4 superconformal characters is of the form
+
+           φ(z, τ ) = 20 ch 1 ,0 − 2 ch 1 , 1 + 90 ch1,0 + 462 ch2,0 + 1540 ch3,0 + · · · ,   (1.1)
+                            4          4 2
+
+
+where the coefficients appearing in front of the massive representations chh,0 with h ∈ N
+correspond to the dimensions of representations VhM24 of the Mathieu group M24 . (Sim-
+ilarly, also the coefficients 20 and 2 have an interpretation as virtual representations of
+M24 .) This phenomenon is very similar to the case of Monstrous Moonshine [2], in that it
+connects the Fourier coefficients of a modular object — the elliptic genus of K3 is a weak
+Jacobi form — with the representations of a sporadic group.
+    Initially, this observation was only noted for the first few Fourier coefficients [1], but
+by now it is known to be true for all of them. Indeed, the functional form of the different
+twining genera, involving the insertion of an M24 group element into the elliptic genus,
+have been found indirectly, and they possess the appropriate modular properties [3, 4, 5, 6].
+From this information one can deduce the decomposition of all Fourier coefficients in terms
+of M24 representations, and it was shown in [7] that all Fourier coefficients can be written
+in terms of M24 representations.
+    However, while this solves on a certain level the problem of proving Mathieu Moon-
+shine, the argument is rather indirect and it does not explain the emergence of M24 in
+this context. Indeed, by analogy with Monstrous Moonshine, one would expect that
+there should be something like a vertex operator algebra or conformal field theory with
+automorphism group M24 whose elliptic genus reproduces the elliptic genus of K3.
+    One natural candidate for such a conformal field theory is obviously a sigma model
+on K3 itself. Unfortunately, as was shown in [8], no single sigma model contains M24 as
+an automorphism group. More specifically, it was shown there that a group G can only
+be the symmetry group of a K3 sigma model if it is a subgroup of Co1 < Aut(Λ) whose
+fixed point lattice ΛG has at least rank 4. All such groups and their fixed point lattices
+are listed in table 1 of [9]. The largest such group is Z82 : M20 and has order 245760, and
+the corresponding sigma model was constructed in [10]. In any case, it follows from the
+arguments of [8] that an VOA or conformal field theory with M24 symmetry cannot just
+come form a single K3 sigma model.
+    In [11, 12] it was proposed that one may attempt to circumvent this no-go-theorem by
+combining the symmetries from different points of the moduli space of K3 sigma models.
+In particular, they considered three different T4 /Z2 orbifold points, and showed that the
+M24 action on V1M24 , that is for 90 = 45 ⊕ 45, could be reconstructed from these three
+symmetry groups. In this paper we attempt (and partially succeed) in generalizing their
+construction to all h. Even though we do not actually construct the full representations,
+we find very non-trivial evidence indicating that this procedure will actually work.
+    The basic idea behind this approach is that the elliptic genus only counts supersym-
+metric states, more precisely states that are at least 41 BPS. Since the elliptic genus does
+
+
+                                                  2
+not know about the non-BPS states, it is not necessary that M24 is a symmetry of them;
+it is enough if M24 is a symmetry of the subspace of BPS states
+                                         V BPS ⊂ H .                                     (1.2)
+At a generic point of moduli space M of K3, we expect the coefficients of the elliptic
+genus to agree precisely with the graded dimensions VhBPS (possibly up to some signs and
+multiplicities coming from the right-moving Ramond ground states). However, at such
+a generic point, the automorphism symmetry of the corresponding K3 sigma model is
+typically trivial.
+    We shall therefore consider the torus orbifolds T4 /Z2 , that describe a 16-dimensional
+sub-locus of the full 80-dimensional moduli space M. For every sigma model on this
+moduli space the graded dimensions dim VhBPS (for h > 1) are always bigger than the
+corresponding coefficients in the elliptic genus — the elliptic genus is a partial index
+(effectively the Witten index with respect to the right-movers), and hence contributions
+can (and will in fact) cancel. What is special about the Z2 torus orbifolds is that their
+BPS spectrum is essentially independent of which orbifold one considers: there are BPS
+states from the zero-momentum zero-winding part of the untwisted sector, as well as
+from the 16 twisted sectors. (For special sizes of the torus there may be additional BPS
+states with non-zero momentum and winding, but we shall avoid these special points.)
+Furthermore, one can argue that the cancellation that appears in the calculation of the
+elliptic genus, will only involve the untwisted sector states, as well as one of the 16 twisted
+sectors. In particular, we therefore know on general grounds that the BPS states that
+arise from 15 of the 16 twisted sectors will form a subspace Vh⊥ ⊂ VhM24 . Furthermore,
+there are three special Z2 orbifolds corresponding to the square Kummer surface X0
+with symmetry group G0 := (Z2 )4 ⋊ (Z2 × Z2 ), the tetrahedral Kummer surface X1 with
+symmetry group G1 := (Z2 )4 ⋊A4 , and the triangular Kummer surface X2 with symmetry
+group G2 := (Z2 )4 ⋊ S3 [11, 12]. Thus we can read off the action of the three geometric
+symmetry groups Gi on V ⊥ , and hence construct their representations ρi : Gi → Aut(V ⊥ )
+explicitly.
+    One of the central results of [11, 12] is that the geometric groups can be naturally
+combined into the so-called octad group G = (Z2 )4 ⋊ A8 , which is a maximal subgroup
+of M24 . One should then expect that the octad group G acts naturally on each Vh⊥ , and
+this will indeed turn out to be the case. Indeed, starting from the known decomposition
+of VhM24 in terms of M24 representations, we can consider the branching under the octad
+group G ⊂ M24 , and regard VhM24 as a representation of G. Then there is a simple group
+theoretic rule for which representations of G arise in V ⊥ (and which account for the rest
+of the spectrum V rest — in fact the representations that appear in V rest are precisely those
+that are invariant under the normal factor group T := (Z2 )4 .) This prediction can then be
+tested by explicit comparison with the geometric actions ρi on Vh⊥ , and we find beautiful
+agreement. More explicitly we prove the following theorem:
+Theorem 1 We can decompose the M24 representations VhM24 into representations Vh⊥
+and Vhrest of the octad group G = (Z2 )4 ⋊ A8 ⊂ M24 ,
+                                     VhM24 = Vh⊥ ⊕ Vhrest
+
+                                              3
+                  (Z )4
+where Vhrest := Vh 2 is the subspace invariant under the normal factor group T := (Z2 )4 .
+V ⊥ then has the properties:
+
+    1. The representation ρh : G → Aut(Vh⊥ ) is induced from a representation πh of the
+       subgroup H < G, where H = ((Z2 )6 ⋊ P SL(3, 2)) ⋊ Z2 is the stabilizer subgroup of
+       one of the 16 twisted sectors.
+
+    2. The restriction of ρh to any of the three geometric subgroups Gi , i = 0, 1, 2, is
+       isomorphic to the representations ρih ,
+
+                                           ResGi ρh ∼
+                                                    = ρih .                                (1.3)
+
+Note that for the h = 1 case considered in [11, 12], V1rest = 0; however, for h > 1,
+Vhrest 6= 0. We should mention that the contribution from V ⊥ accounts precisely for the
+contribution from 15 of the 16 twisted sectors; in particular, the dimensions of the octad
+representations add up correctly to the corresponding coefficients.
+    The paper is organized as follows. In section 2 we introduce our notations, and con-
+struct the spaces V M24 and V ⊥ . In section 3 we discuss the action of G and the geometric
+subgroups Gi . In particular we define the stabilizer subgroup H and the geometric rep-
+resentations ρi , and we explain why Theorem 1 gives evidence for the symmetry surfing
+proposal. In section 4 we finally prove Theorem 1, and section 5 contains our conclusions.
+
+
+2     The elliptic genus of T4 /Z2
+2.1    The elliptic genus of K3
+The elliptic genus of K3 is defined as the trace over the RR̃ sector of the sigma model
+                                              1                     1
+                                                                             
+                     φK3 (τ, z) = TrRR̃ q L0 − 4 y J0 (−1)F q̄ L̃0 − 4 (−1)F̃ ,      (2.1)
+
+where we denote the right-movers by a tilde. As usual we take q := exp(2πiτ ) and
+y := exp(2πiz), where τ ∈ H and z ∈ C; furthermore, F and F̃ are the fermion number
+operators. Although also the anti-holomorphic variable q̄ = exp(−2πiτ̄ ) enters its defini-
+tion, the elliptic genus itself is actually independent of τ̄ , since it effectively computes the
+Witten index for the right-moving states. It is therefore a topological quantity and inde-
+pendent of the specific K3 surface chosen. In [13], the elliptic genus of K3 was explicitly
+calculated to be
+                      "           2              2            2 #
+                         ϑ2 (τ, z)        ϑ3 (τ, z)      ϑ4 (τ, z)
+       φK3 (τ, z) = 8                 +               +
+                         ϑ2 (τ, 0)        ϑ3 (τ, 0)      ϑ4 (τ, 0)
+                                                                                          (2.2)
+                                2                               128     20
+                  = 2y + 20 + + q 20y 2 − 128y + 216 −              + 2 + O(q 2 ) ,
+                                y                                y      y
+
+
+                                               4
+where ϑi (τ, z) are the usual Jacobi theta functions. Because of its representation as a
+sum of Jacobi theta functions, the elliptic genus has nice transformation properties under
+the modular group. In particular, φK3 (τ, z) can be identified with a weak Jacobi form of
+weight zero and index one, which also follows from general string theory arguments [14].
+Using the modular properties of Jacobi theta functions one finds
+                                         1 z        2πiz 2
+                         S:       φK3 (− , ) = e τ φK3 (τ, z) ,
+                                         τ τ                                           (2.3)
+                         T :      φK3 (τ + 1, z) = φK3 (τ, z) .
+
+    In what follows, it will be more natural to work in the NSR̃ sector. Because of the
+underlying N = 2 superconformal symmetry, we can go back and forth between the NSR̃
+                                                                              √
+and the RR̃ sector by spectrally flowing the left-movers, i.e., by y 7→ qy. We also want
+to remove the left moving (−1)F insertion, which we can do by replacing y 7→ −y. The
+elliptic genus in the NSR̃ sector is thus defined as
+                                                                         
+                         NS                   L0 − 41 J0 L̃0 − 41      F̃
+                        φK3 (τ, z) = TrNSR̃ q        y q̄         (−1)      ,       (2.4)
+
+which for K3 gives
+                  "                2            2             2 #
+                          ϑ4 (τ, z)      ϑ1 (τ, z)      ϑ 2 (τ, z)
+    φNS
+     K3 (τ, z) = 8 −                  −              +
+                          ϑ2 (τ, 0)      ϑ3 (τ, 0)      ϑ4 (τ, 0)
+                                                                                 (2.5)
+                  − 41         √         20             2             2   3
+               =q        −2 + q 20y +           + q −2y + 128 − 2 + O(q ) .
+                                                                          2
+                                          y                           y
+
+Note that only states whose right-moving part are Ramond ground states contribute to
+the elliptic genus. We can label those right-moving ground states by their SU(2)R spins
+l = 0 and l = 21 . (Here SU(2)R is the R-symmetry, i.e., the SU(2) subalgebra of the N = 4
+superconformal algebra.) Their Witten index is 1 and −2, respectively.
+
+2.2   The elliptic genus of T4 /Z2
+As we have already mentioned before, the elliptic genus is a partial index which is in-
+dependent of the specific point in moduli space of K3 sigma models. We may therefore
+choose the K3 surface limit of a T4 /Z2 orbifold as our target space. In this section we
+want to describe the full space of states W CFT of the corresponding conformal field theory;
+we shall also denote by V CFT the subspace of primary states. Both W CFT and V CFT are
+graded by conformal weight h.
+   Let us begin by introducing some notation. We denote the complex fermions and
+complex bosons of T4 as
+                               Ψi , Ψ̄i ,      ∂X i , ∂ X̄ i ,                         (2.6)
+where i = 1, 2; we also sometimes denote these fields collectively by ΨI and ∂X I with
+I = 1, 2, 3, 4. For the right-movers we use the same convention, except that they are
+
+                                             5
+decorated by a tilde. The N = 4 superconformal algebra can then be constructed in the
+usual way. The symmetry at the torus orbifold group is actually bigger. In particular
+there is an additional SU(2) symmetry which commutes with the N = 4 . Under this
+symmetry the fields transforms as doublets,
+                                                Ψ , ∂X           2
+                                 SU(2) :                                                (2.7)
+                                                Ψ̄ , ∂ X̄        2̄
+The details of this are described in appendix A. This symmetry is crucial in what follows
+since we can think of the M24 action as being associated to group elements in this SU(2).
+    As usual, the Z2 orbifold acts on the fields as
+                     ΨI (z) 7−→ −ΨI (z) ,            ∂X I (z) 7−→ −∂X I (z) ,           (2.8)
+and similarly on the right-movers. In order to specify its action on the Hilbert space, it
+remains to understand the behavior of the ground states. For this it is convenient to work
+in the RR̃ sector, and flow to NSR̃ at the end.
+    Let us start with the untwisted sector. Here both the bosonic ∂X I (z) and fermionic
+fields ΨI (z) have integer-valued modes. We thus have four fermionic zero modes ΨI0 , and
+similarly four right-moving zero modes Ψ e I such that the theory has degenerate charged
+                                           0
+ground states. Let us define the Ψ̄i0 to be the annihilation operators, and the Ψi0 to be
+the creation operators, so that the highest weight state |0iR satisfies
+                                          Ψ̄i0 |0iR = 0 .                               (2.9)
+The four left-moving ground states thus read
+                                   |0iR ,            Ψ10 Ψ20 |0iR ,
+                                                                                       (2.10)
+                                   Ψ10 |0iR ,        Ψ20 |0iR .
+
+They are charged under the SU(2)R current with charges l = 0, 21 , as one can check by
+applying J03 . Therefore, the four ground states decompose into the ground states of l = 0
+and l = 21 representations as
+
+                             2·|l = 0iR :        Ψ10 |0iR , Ψ20 |0iR ,
+                                                                                       (2.11)
+                               |l = 21 iR :     |0iR , Ψ10 Ψ20 |0iR .
+The situation for the right-moving part is completely analogous.
+    Now we need to take the Z2 orbifold projection into account. We choose the highest
+weight state |0iR ⊗ |0iR̃ to be orbifold even. Remember that the N = 4 superconformal
+generators, as stated in equations (A.3) – (A.7), are bilinear in the fields and therefore are
+Z2 invariant. For the different untwisted ground states from equation (2.11) this results
+in |l = 0iR being orbifold odd and |l = 12 iR even.
+    It will be convenient to spectrally flow the left-moving states to the NS sector. Since
+spectral flow maps l = 0 to l = 21 and vice versa, we have
+                                   |l = 21 iR 7−→ |l = 0iNS ,                          (2.12)
+
+                                                 6
+and thus |0iNS ⊗ |l = 21 iR̃ is orbifold even. All in all, the untwisted ground states before
+the Z2 orbifold projection decompose therefore into
+
+                          |0iNS ⊗ |l = 21 iR̃ ⊕ 2 · (|0iNS ⊗ |l = 0iR̃ ) ,                  (2.13)
+
+where the first term is orbifold even, while the second one is orbifold odd. The factor
+of two accounts for the two right-moving l = 0 ground states Ψ           e i |0i , i = 1, 2. Let us
+                                                                           0    R̃
+denote by Ul= 1 (q, y) the partition function of all orbifold even left-moving descendants of
+                 2
+|0iNS ⊗ |l = 21 iR̃ , and by Ul=0 (q, y) the partition function of all orbifold even (left-moving)
+descendants of |0iNS ⊗ |l = 0iR̃ . Explicit expressions for Ul=0 and Ul= 1 are given in
+                                                                                     2
+appendix B.
+    In the twisted sector, the states are localized at fixed points of the T4 /Z2 orbifold.
+There are 24 fixed points and thus we have 16 corresponding ground states which we
+denote by |αi, α ∈ F42 . In the twisted RR̃ sector, there are no fermionic zero modes,
+so that there is indeed just a single ground state, and we have l = 0. We choose those
+ground states to be orbifold even.
+    Once we flow to the left-moving NS sector, the fermions become integer moded, and
+we introduce fermionic zero modes. By the analogous construction as above, the twisted
+ground states are given by
+
+                     |l = 21 iαNS ⊗ |l = 0iαR̃ ⊕ 2 · (|l = 0iαNS ⊗ |l = 0iαR̃ ) ,           (2.14)
+                                                                               α
+where the label α denotes one of the 16 fixed points. We will denote by Tl=0     (τ, z) the
+partition function of all orbifold even descendants. An explicit expression can again be
+found in appendix B.
+   In total, we can thus write the NS elliptic genus of the orbifold theory as
+                                                                     16
+                                                                     X
+                   φNS
+                    K3 (τ, z) = −2 Ul= 12 (τ, z) + Ul=0 (τ, z) +
+                                                                              α
+                                                                            Tl=0 (τ, z) .   (2.15)
+                                                                      α=1
+
+Here Ul= 1 is the contribution of the untwisted states whose right-moving Ramond ground
+          2
+state is in the N = 4 representation with l = 1/2, which explains the factor of −2 coming
+from the specialization z̄ = 0. Ul=0 is the contribution of the untwisted states whose right-
+moving Ramond states are in the l = 0 representation, and Tl=0 is the contribution of a
+single twisted sector. In particular they can all be decomposed into N = 4 representations
+as
+                                                       ∞
+                                                       X
+                    Ul= 1 (τ, z) = chNS
+                                     0,l=0 (τ, z) +          Bn chNS
+                                                                  h=n,l=0 (τ, z) ,          (2.16)
+                        2
+                                                       n=1
+                                                         X∞
+                    Ul=0 (τ, z) = 4 chNS
+                                      0,l= 1
+                                             (τ, z) +          Cn chNS
+                                                                    h=n,l=0 (τ, z) ,        (2.17)
+                                              2
+                                                        n=1
+                                                       ∞
+                                                       X
+                       α
+                     Tl=0 (τ, z) = chNS
+                                     0,l= 1
+                                            (τ, z) +         Dn chNS
+                                                                  h=n,l=0 (τ, z) ,          (2.18)
+                                          2
+                                                       n=1
+
+
+                                                  7
+with
+               Bn = {3, 1, 18, 15, 68, 89, 249, 358, 799, 1236, . . .} ,
+               Cn = {0, 16, 8, 72, 80, 264, 360, 904, 1360, 2808, . . .} ,              (2.19)
+               Dn = {6, 28, 98, 282, 728, 1734, 3864, 8182, 16618, . . .} .
+
+Accordingly, the number of contributing primary states An , and thus the dimensions of
+VhCFT , can be computed at every level by
+                                 
+                      dim VnCFT = An = −2 Bn + Cn + 16 Dn .                     (2.20)
+
+Mathieu Moonshine then means that the An can be written as (simple) combinations of
+dimensions of irreducible representations of M24 .
+
+
+3      Symmetry surfing for torus orbifolds
+3.1    The geometric groups
+In the analysis of Taormina and Wendland the 24-dimensional even self-dual Niemeier
+lattice N that is uniquely characterised by the property to contain the root lattice A24 1
+plays a preferred role. The reason for this is that the symmetry groups of Kummer
+surfaces, i.e., orbifolds T4 /Z2 , can all be described as subgroups of the automorphism
+group of N. All relevant automorphisms are permutations in S24 (permuting the 24 A1
+factors of the root sublattice). Since they must furthermore preserve the Golay code G24
+(that describes the additional ‘glue’ vectors that are present in the self-dual lattice N),
+they are automatically elements of M24 . (Indeed, M24 can be defined as the subgroup of
+S24 that leaves the Golay code invariant.)
+    Any Kummer surface will always have at least the translational subgroup T := Z42 as
+a symmetry group. As elements of S24 , its generators are given by
+
+               ι1 = (1, 11)(2, 22)(4, 20)(7, 12)(8, 17)(10, 18)(13, 21)(14, 16) ,
+               ι2 = (1, 13)(2, 12)(4, 14)(7, 22)(8, 10)(11, 21)(16, 20)(17, 18) ,
+                                                                                         (3.1)
+               ι3 = (1, 14)(2, 17)(4, 13)(7, 10)(8, 22)(11, 16)(12, 18)(20, 21) ,
+               ι4 = (1, 17)(2, 14)(4, 12)(7, 20)(8, 11)(10, 21)(13, 18)(16, 22) .
+
+Depending on the shape of the torus, the symmetry group can be bigger than that. There
+are three particular Kummer surfaces with larger symmetry groups that we are interested
+in. These are the square Kummer surface X0 with symmetry group G0 := (Z2 )4 ⋊(Z2 ×Z2 ),
+the tetrahedral Kummer surface X1 with symmetry group G1 := (Z2 )4 ⋊ A4 , and the
+triangular Kummer surface X2 with symmetry group G2 := (Z2 )4 ⋊S3 [11, 12]. We denote
+the generators for the non-translational part of the symmetry groups, following [11, 12]
+as follows: α1 , α2 for G0 ; γ1 , γ2, γ3 for G1 ; and β1 , β2 for G2 . In terms of permutations
+
+
+                                               8
+they are given by
+
+            α1 = (4, 8)(6, 19)(10, 20)(11, 13)(12, 22)(14, 17)(16, 18)(23, 24) ,
+            α2 = (2, 21)(3, 9)(4, 8)(10, 12)(11, 14)(13, 17)(20, 22)(23, 24) ,
+            β1 = (2, 17, 14)(4, 7, 8)(10, 16, 12)(11, 13, 21)(18, 20, 22)(5, 24, 23) ,
+            β2 = (2, 21)(3, 9)(4, 8)(10, 12)(11, 14)(13, 17)(20, 22)(23, 24) ,           (3.2)
+            γ1 = (2, 8)(7, 18)(9, 24)(10, 22)(11, 13)(12, 17)(14, 20)(15, 19) ,
+            γ2 = (2, 18)(7, 8)(9, 19)(10, 17)(11, 14)(12, 22)(13, 20)(15, 24) ,
+            γ3 = (2, 12, 13)(4, 16, 21)(7, 17, 20)(8, 22, 14)(9, 19, 24)(10, 11, 18) .
+
+    This presentation of the symmetry groups Gi is particularly well-adapted for the sym-
+metry surfing philosophy. In particular it is straightforward to combine them into an
+overarching symmetry group G by combining all the generators. The resulting group is
+the so-called octad group G = (Z2 )4 ⋊ A8 . It can be described as a maximal subgroup of
+M24 obtained by the setwise stabilizer of a particular “reference octad” in the Golay code,
+which we take to be O9 = {3, 5, 6, 9, 15, 19, 23, 24} ∈ G24 . The octad subgroup is of order
+322560, and its index in M24 is 759, which is precisely the number of different reference
+octads one can choose. Note in particular that it is too big to fit in the no-go theorem
+of [8], and that we could not have gotten this group from the symmetries of a single K3
+sigma model.
+
+3.2   Marginal deformations and V ⊥ and V rest
+For theorem 1 we decomposed V M24 into V ⊥ and V rest . Let us here motivate this decom-
+position from a physical point of view, and argue that it is natural from the point of view
+of symmetry surfing.
+    It is obvious from the discussion of the orbifold spectrum that the BPS spectrum (for
+generic tori) comes from the zero-momentum zero-winding part of the untwisted sector,
+as well as from the 16 twisted sectors. However, since all Bn > 0, see eq. (2.19), it follows
+from eq. (2.20) that there are always (i.e., for generic Z2 torus orbifolds) non-trivial
+cancellations in the elliptic genus. The space of BPS states V BP S of a tours orbifold is
+thus too big for V M24 , and we need a way to pick out a subspace of V BP S , which we can
+then try to identify with V M24 .
+    At a generic point in the moduli space, we should expect there to be no non-trivial
+cancellations, i.e., the Fourier coefficients of the elliptic genus should agree with the di-
+mensions of the corresponding space of BPS states. We can try to move away from the
+special Kummer surfaces to a more generic point in the moduli space by perturbing the
+conformal field theory by an exactly marginal operator Φ. This will lift a subset of the
+BPS states in V BP S . In fact, if Φ is generic enough, we would expect that all BPS states
+that can be lifted, will be lifted. We can then try to define V M24 as the subspace of states
+in V BP S at the original torus orbifold point that are not lifted under the perturbation Φ.
+    As we will explain in section 3.3, for any torus orbifold the translation group T = Z42
+is a symmetry of the theory that permutes the 16 twisted sectors. More precisely, the 16-
+
+                                                9
+dimensional space of twisted sector ground states decomposes into a trivial representation
+and a 15-dimensional representation — the 15-dimensional representation is obviously not
+irreducible since all irreducible representations of T = Z42 are one-dimensional, but it only
+contains non-trivial representations of T = Z42 . (In fact, it contains each such represen-
+tation exactly once.) In the notation of section 3.3, the invariant linear combination of
+twisted sectors is given by N0CFT , and we choose Φ to be a marginal operator coming
+from N0CFT . This choice implies that the BPS states coming from the 15-dimensional
+space of twisted sectors orthogonal to Φ — these are the states that transform in the 15-
+dimensional representation of T = Z42 mentioned above — will be unaffected. To see this,
+we note that that twisted sectors only have right-moving l = 0 BPS states, see eq. (2.14).
+To lift them, we thus need to combine them with right-moving l = 1/2 BPS states, which
+necessarily come from the untwisted sector, see eq. (2.13). On the other hand, because
+of the representation theory of the translation group T = Z42 , the perturbation by the
+singlet state from N0CFT cannot mix a BPS state from the untwisted sector (that also
+transforms trivially under the translation group) with a twisted sector state transform-
+ing in the 15-dimensional representation of T = Z42 from above. Indeed, the correlation
+functions, where φut is from the zero-momentum and zero-winding part of the untwisted
+sector and φtw is a twisted sector state in the 15-dimensional representation of T = Z42
+
+                                    hφut φtw |Φ .{z
+                                                  . . Φ}i = 0                           (3.3)
+                                                 n
+
+vanish for all n, and hence to arbitrary order in perturbation theory, no such mixing can
+occur. Thus we expect that the 15-dimensional space orthogonal to Φ (that defines the
+15-dimensional representation of T = Z42 ) will form a subspace of surviving BPS states
+which we will call V ⊥ . In the untwisted sector and the remaining twisted sector, we
+expect all non-generic BPS states to be lifted, so that there are no more cancellations in
+the elliptic genus; we will call the space of BPS states that survive V rest . In particular
+this requires that the linear combination of coefficients
+
+                           dim(Vnrest ) ≡ −2Bn + Cn + Dn ≥ 0 .                          (3.4)
+
+This physical argument thus motivates us to define
+
+                                    V24M = V rest ⊕ V ⊥ ,                               (3.5)
+
+where V rest is indeed the subspace invariant under T = Z42 , and V ⊥ is the orthogonal
+complement. Note that we know V ⊥ explicitly, as it is simply the direct sum of 15 twisted
+sectors. To describe V rest explicitly, on the other hand, we would have to compute which
+states are lifted. We will not do this here, and instead concentrate on V ⊥ .
+
+3.3   Action of the geometric groups Gi on V ⊥
+Let us now discuss the action of the Gi on V ⊥ . We first discuss how the geometric groups
+Gi act at their respective points in moduli space and construct their representations ρi .
+
+                                               10
+For concreteness, we fix the ground state |αi such that
+                                            Ψ̄i0 |αi = 0 .                                      (3.6)
+From the discussion around eqs. (2.10) and (2.14), we know that there are two ground
+states |αi and Ψ10 Ψ20 |αi which survive the orbifold projection, which in fact form the
+l = 1/2 doublet of the R-symmetry SU(2)R . Since the group action is supposed to
+commute with the N = 4 superconformal algebra, both these states transform the same
+way under G. We can thus concentrate on the state |αi only. Following the construction
+in [11], we introduce linear combinations of these twisted ground states, given by
+                                        1X
+                               NαCFT :=        (−1)hα,βi |βi ,                      (3.7)
+                                        4    4 β∈F2
+
+where h·, ·i is the standard scalar product on F42 . The translational subgroup T = Z42 of
+the Gi acts on NαCFT via the map
+                         ιβ (NαCFT ) = (−1)hβ,αi NαCF T ,        ∀ β ∈ F42 .                    (3.8)
+                                                                                 CFT
+It is clear from the definition (3.7) that the perturbing field Φ sits in the N0000  sector;
+the 15-dimensional space of twisted sector (ground) states that are unaffected by the per-
+turbation is then spanned by the remaining 15 NαCFT (α 6= 0). These ground states carry
+a faithful representation of G, which we identify with the 15-dimensional representation
+A of Aff(F42 ). In [11], an isomorphism of T -representations between A and Margolin’s
+base B = {NA , . . . , NO } is given by identifying the remaining NαCFT with the translation
+generators ι1 , . . . , ι4 on the set {NA , . . . , NO }
+             CFT          CFT          CFT          CFT          CFT
+       NA = N0011 , NB = N0001 , NC = N0010 , ND = N1001 , NE = N1010 ,
+             CFT          CFT          CFT          CFT          CFT
+       NF = N1110 , NG = N1101 , NH = N1000 , NI = N1011 , NJ = N0111 ,                         (3.9)
+             CFT             CFT              CFT                  CFT               CFT
+       NK = N0100 ,    NL = N0110 ,     NM = N0101 ,         NN = N1111 ,      NO = N1100 .
+The induced action of A8 on this basis is shown to be given by
+                   M(α1 ) = (B, C)(D, L)(E, M)(F, G)(H, K)(I, J) ,
+          M(α2 ) = M(β2 ) = (A, O)(B, K)(C, H)(D, L)(F, I)(G, J) ,
+                   M(γ1 ) = (A, C)(D, J)(E, M)(G, O)(H, L)(I, K) ,
+                                                                                               (3.10)
+                   M(γ2 ) = (A, G)(C, O)(D, L)(E, I)(H, J)(K, M) ,
+                   M(γ3 ) = (A, H, I)(B, N, F )(C, J, M)(D, K, G)(E, O, L) ,
+                   M(β1 ) = (A, C, B)(D, N, L)(E, G, J)(F, M, I)(H, O, K) ,
+whereas T acts as ±1 on the ground states as in (3.8), and thus automatically stabilizes
+NA , . . . , NO . Taken together this then defines a representation of Gi on these 15 twisted
+sector ground states. It is in fact a monomial representation.1
+   1
+    A monomial representation has the property that the representation matrices have the same non-zero
+patterns as permutation matrices. In our case, the non-zero entries are all ±1.
+
+                                                 11
+                                        CFT
+    Note that T acts trivially on N0000     , and that there are no states invariant under
+it in any of the other 15 sectors. This motivates an alternative definition of V ⊥ and its
+complement V rest . Namely, we can define V rest := V T , that is the states that are invariant
+under T ; the projector onto V rest is thus
+                                               1 X
+                                       Pr :=         h,                                  (3.11)
+                                              16 h∈T
+
+while for the projector onto V ⊥ we find
+                                        P⊥ = 1 − Pr .                                   (3.12)
+This gives indeed
+                                   Pr NαCFT = δα,0 NαCFT .                              (3.13)
+  Let us now discuss the action on the Fock space of oscillator modes. The full space
+ ⊥
+V is of the form
+                                        MO
+                                    ⊥
+                                  V =       VX ,                               (3.14)
+                                               X=A
+
+where VX are the orbifold-invariant (left-moving) descendants of the ground state NX . For
+each geometric subgroup, we can choose a basis of the oscillators in the twisted sectors
+such that the action of g ∈ Gi factorizes into an action on the oscillators, and an action
+on the ground states, giving a tensor product representation
+                                       ρi = ρiosc ⊗ ρigr ,                              (3.15)
+where ρigr is the action on the ground states defined at the beginning of this section. In
+particular, for every g, ρi defines a permutation
+                                           σgi ∈ S15                                    (3.16)
+such that
+                                     ρi (g)VX ⊂ Vσg (X) .                               (3.17)
+σgi is of course the permutation generated by (3.10).
+     The representation ρiosc on the other hand can be embedded in the SU(2) representation
+(2.7) acting on the doublets Ψi and ∂X i . The representation matrices of the generators
+for the 2 are given by
+                                                        
+                                                  i 0
+                                   α1 = γ 1 =                                        (3.18)
+                                                  0 −i
+                                                        
+                                                  0 −1
+                             α2 = β2 = γ2 =                                          (3.19)
+                                                  1 0
+                                                         
+                                                  ζ 0
+                                        β1 =                                         (3.20)
+                                                  0 ζ −1
+                                                 −1+i 1−i 
+                                        γ3 =        2      2     ,                   (3.21)
+                                                  −1−i
+                                                    2
+                                                         − 1+i
+                                                             2
+
+
+                                               12
+where ζ = e2πi/3 — see Proposition 3.4 in [11]. For the 2̄ we take, of course, the complex
+conjugate matrices. Note that this does not define a representation of the Gi , but rather
+a projective representation, whose phases are given by ±1. ρi however is a proper rep-
+resentation due to the fact that the Z2 orbifold ensures that only bilinear modes of the
+oscillators survive, for which the sign is then always +1. This ties in with the fact that
+the orbifold should be crucial, as we do not expect any interesting moonshine for the T4
+theory, see however [15].
+    In principle we could describe ρi explicitly in terms of the tensor product of sums of
+tensor products of 2 and 2̄ with the monomial representation of the ground states. In
+section 4 we will instead simply give the (graded) characters of the ρi , which is of course
+enough to uniquely identify them.
+    In summary, the action of the geometric group Gi factorizes as in (3.15), where ρosc   i
+acts on the oscillator modes as in (3.18) – (3.21), and ρigr is a monomial matrix given by
+(3.8) and (3.10). This is the analogue of the statement in [11] that for the 45, for each
+geometric subgroup individually one can find a basis such that there is no ‘twist’, i.e. that
+                              (X,τ (X))
+the induced permutations mτ             are independent of the sector X.
+
+3.4   Representations of G
+As we saw in Section 3.1, by embedding the different symmetry groups into the per-
+mutation group S24 , there is a natural way of combining them into the octad group G.
+However, it is not immediately clear how to combine the actions of the geometric groups
+into an action of the full octad group G. In particular, the fact that the geometric repre-
+sentations can be written as tensor products (3.15) depended on a specific choice of basis
+for each Gi . These choices of basis are in general not compatible with each other. What
+we can do is to try to translate the different group actions by parallel transporting the
+BPS states between the three special points. This will, in general, lead to a non-trivial
+change of basis, i.e., the different group actions will be ‘twisted’ relative to one another.
+    More specifically, let us denote by ρipi the action of the group Gi at the point pi in the
+moduli space where the Kummer surface actually has the enhanced symmetry Gi . We
+can then define the action ρipj of the group Gi at another point pj by parallel transport,
+that is
+                                       ρipj := γji ρipi γji
+                                                         −1
+                                                            ,                           (3.22)
+where γji is the matrix that implements the parallel transport from pi to pj . (Since we
+may connect the three different points in moduli space within the Kummer moduli space,
+we do not expect that this will mix the 15 surviving twisted sectors with the rest, in
+particular, the untwisted sector. Thus it makes sense to analyse this on the subspace
+V ⊥ .) We expect γij to be block-diagonal with 15 blocks; however, the different blocks will
+not be in general identical — this is what [11] call the ‘twist’. Using this definition, we
+can then define a representation ρ of the full octad group G. We define it for instance at
+the point p0 by combining the ρip0 for i = 0, 1, 2, that is
+
+                               ρ(g) := ρip0 (g)    if g ∈ Gi .                         (3.23)
+
+                                              13
+Let us now discuss what properties ρ has to satisfy so that this proposal is consistent.
+First, clearly the restriction to the geometric groups has to satisfy
+
+                                     ResGi ρ = ρip0 ∼
+                                                    = ρi ,                              (3.24)
+
+since ρip0 and ρi only differ by a change of basis. This explains why we want to prove the
+second statement of Theorem 1. Before we get to this, let us first explain the origin of
+the induced representations, see the first statement of Theorem 1.
+
+3.4.1   Induced representations
+To start with, we concentrate on the ground states again. The discussion in section 3.3
+carries over directly, so that we again get a monomial representation. In fact we can
+describe this representation in a slightly different manner, namely as an induced repre-
+sentation.
+    Let us chose one of the twisted sectors X, and consider the setwise stabilizer subgroup
+H ⊂ G of X. By the orbit-stabilizer theorem, H has index 15. Note that the conjugacy
+class of H is independent of the choice of X, which is why we will write H rather than
+H X . With gi , i = 1, . . . , 15 a set of representatives of G/H, we can then write the
+representation as
+                                              M15
+                                        15 =      Cgi .                               (3.25)
+                                              i=1
+
+Since gi ∈ G/H there is a natural action from the left of G which defines the representation
+ρ(G). In fact it is easy to check that this is precisely the 15 representation of the octad
+group G.
+    Next we want to describe the group action on a general element of V ⊥ . We could
+of course construct the full representation ρ if we knew the transport matrices γij . In
+principle we could obtain them through conformal perturbation theory. We have not
+attempted to do this, and will instead just use some of their general properties. In
+particular we do not expect parallel transport to mix different twist sectors, but rather
+only transform states within a given sector. This means that the transport matrices γij
+are block diagonal, so that the representation matrices ρ still have the same form as (3.17),
+
+                          ρ(g)VX ⊂ Vσg (X)         X = A, B, . . . , O ,                (3.26)
+
+where σg can again be obtained from (3.10). Note however that because of the γij , ρ is no
+longer simply a tensor product of a monomial representation with another representation.
+However, (3.26) does mean that ρ is a so-called imprimitive representation, see, e.g.,
+[16]. The system of imprimitivity is VA , . . . , VO . It is straightforward to see that G acts
+transitively on it. From a general theorem of representation theory, see again, e.g., [16],
+it follows that ρ can be written as an induced representation of the stabilizer subgroup
+H.
+
+
+
+                                              14
+   More explicitly, let ρN be the representation of H on VN . We can then write the
+representation V ⊥ as the induced representation
+                                                      15
+                                                      M
+                                V   ⊥
+                                        = IndG N
+                                             Hρ =            g i VN .                (3.27)
+                                                       i=1
+
+Conversely, note that the permutations σg of the induced representation is fixed by H and
+the action of G on the cosets G/H, and is therefore independent of ρN . This means, in
+particular, that representations induced from any representation ρN of H will be permuted
+in the correct way to be compatible with our proposal. The prediction is thus that all
+representations of G that appear in V ⊥ are in fact induced from representations ρN of the
+stabilizer group H.
+    The sector NN which we have chosen is mapped to itself by T and the generators α1 , α2 ,
+γ1 and γ2 . The vector-space stabilizer Stab(NN ), is given by H := ((Z2 )6 ⋊P SL(3, 2))⋊Z2
+and, as expected, is an index 15 subgroup of G. It is generated by the T generators
+together with
+
+                               η1 := α1 · γ1 · α1 ,
+                               η2 := γ3 · α2 · α1 · γ1 · β1 · α1 ,                   (3.28)
+                               η3 := α1 .
+
+If the proposal of symmetry surfing is correct, we thus expect that all representations in
+V ⊥ are induced from representations of H. This explains the motivation behind the first
+statement in Theorem 1.
+
+
+4     Results
+4.1   Induced representations
+In section 3.4 we motivated the statements of Theorem 1. Let us now prove them. We
+first prove the first statement by checking that V ⊥ is indeed an induced representation of
+H. As mentioned above, we define the projector Pr as
+                                                1 X
+                                         Pr =          h,                              (4.1)
+                                                16 h∈T
+
+and P⊥ as the projector on the orthogonal complement
+
+                                          P⊥ = 1 − Pr .                                (4.2)
+
+This allows us to define V ⊥ and V rest as
+
+                              V ⊥ = P⊥ V ,           V rest = Pr V .                   (4.3)
+
+
+                                                15
+Since T is a normal subgroup of G, Pr commutes with the action of G. The irreducible
+representations of G thus fall into two sets,
+                                              ′
+      V⊥ :         Rtw ≡ {15, 45′ , 45 , 90, 1051 , 1052 , 1053 , 120, 210, 3151 , 3152 } ,       (4.4)
+
+and
+                                                                  ′
+             V rest :       R0 ≡ {1, 7, 14, 20, 21, 21′ , 21 , 28, 35, 45, 45, 56, 64, 70} .      (4.5)
+This is easily shown using the character table of G in appendix E: all 15 non-trivial
+elements of T are in the conjugacy class 2a, so that indeed
+
+                                   TrV rest Pr = dim V rest      for V rest ∈ R0                  (4.6)
+
+and
+                                     dim V ⊥
+                        TrV ⊥ Pr = dim V ⊥ −  · 15 = 0     for V ⊥ ∈ Rtw .           (4.7)
+                                        15
+We then check using GAP [17] that all representations of G in Rtw are induced representa-
+tions, which proves the statement. Note that R0 also contains two induced representations,
+namely 45 and 45; the complete set of induced representations is given in Table 1.
+                               ′
+  G     15       45′      45       45   45        90   1051    1052   1053   120   210   3151   3152
+                                          ′
+  H     1′        3        3       3′   3         6′    74      72     75     8′   142   212    213
+
+Table 1: The G representations that are induced from H, and the H representations from
+which they are induced. For the character tables of the H representations see table 5 in
+appendix E.
+
+    Since we know the decomposition of the elliptic genus in terms of M24 representations,
+and since the octad group G is a subgroup of M24 , G ⊂ M24 , we can unambiguously
+decompose all M24 representations in terms of G representations. Then we divide these
+representations into the contributions coming from V ⊥ and V rest , respectively, using the
+division coming from Rtw and R0 . This analysis can be done once and for all for each
+M24 representation, and the result of this analysis is summarised in Table 2. With this
+knowledge at hand, we can now take the known decomposition of the elliptic genus in
+terms of M24 representations, and deduce from it the decomposition in terms of V ⊥ and
+V rest ; for the first few levels this is done explicitly in Table 3, see appendix D.
+
+4.2    Geometric representations
+The first consistency check is then that this reproduces correctly the graded dimensions of
+Vh⊥ . In particular, the sums of dimensions that appear in the second column of Table 3 in
+appendix D must add up to 15Dn , see eq. (2.19), and this indeed turns out to be correct.
+    In this section we prove the second statement of Theorem 1, that is that the restriction
+of Vh⊥ to any of the three geometric subgroups Gi , i = 0, 1, 2, is isomorphic to the
+representations ρGi ,
+                                      ResGi Vh⊥ ∼
+                                                = ρGh .
+                                                     i
+
+
+
+
+                                                          16
+ M24                                   V⊥                                   V rest
+   1                                     ·                                     1
+  23                                    15                                 1⊕7
+  45                                   45′                                      ·
+                                             ′
+  45                                   45                                       ·
+  231                                  210                                     21′
+                                                                                    ′
+  231                                  210                                     21
+  252                             15 ⊕ 90 ⊕ 1053                      1 ⊕ 7 ⊕ 14 ⊕ 20
+  253                         15 ⊕ 1051 ⊕ 1053                             7 ⊕ 21
+  483                       15 ⊕ 90 ⊕ 1053 ⊕ 210                     1 ⊕ 14 ⊕ 20 ⊕ 28
+  770                        1052 ⊕ 3151 ⊕ 3152                                35
+  770                        1052 ⊕ 3151 ⊕ 3152                                35
+  990                             2 · 3151 ⊕ 3152                              45
+  990                             2 · 3151 ⊕ 3152                              45
+ 1035           90 ⊕ 1052 ⊕ 1053 ⊕ 120 ⊕ 210 ⊕ 3152                    14 ⊕ 20 ⊕ 56
+ 1035′                      45′ ⊕ 2 · 3151 ⊕ 3152                              45
+        ′                     ′
+ 1035                       45 ⊕ 2 · 3151 ⊕ 3152                               45
+ 1265         15 ⊕ 2 · 90 ⊕ 1051 ⊕ 1053 ⊕ 2 · 210 ⊕ 3152             7 ⊕ 20 ⊕ 28 ⊕ 70
+ 1771         1051 ⊕ 2 · 1052 ⊕ 1053 ⊕ 2 · 3151 ⊕ 2 · 3152               21 ⊕ 2 · 35
+                          90 ⊕ 1052 ⊕ 1053 ⊕ 120
+ 2024                                                                  14 ⊕ 56 ⊕ 64
+                         ⊕ 210 ⊕ 2 · 3151 ⊕ 2 · 3152
+                        15 ⊕ 90 ⊕ 1051 ⊕ 1053 ⊕ 120
+ 2277                                                                  28 ⊕ 64 ⊕ 70
+                        ⊕ 2 · 210 ⊕ 2 · 3151 ⊕ 2 · 3152
+                 15 ⊕ 2 · 90 ⊕ 1051 ⊕ 1052 ⊕ 2 · 1053
+ 3312                                                          14 ⊕ 20 ⊕ 28 ⊕ 56 ⊕ 64 ⊕ 70
+                ⊕ 2 · 120 ⊕ 3 · 210 ⊕ 2 · 3151 ⊕ 3 · 3152
+                15 ⊕ 3 · 90 ⊕ 2 · 1051 ⊕ 1052 ⊕ 3 · 1053           7 ⊕ 14 ⊕ 20 ⊕ 21 ⊕ 28
+ 3520
+                 ⊕ 120 ⊕ 3 · 210 ⊕ 2 · 3151 ⊕ 3 · 3152                ⊕ 56 ⊕ 64 ⊕ 70
+                                                                                        ′
+                    3 · 90 ⊕ 1051 ⊕ 1052 ⊕ 2 · 1053                20 ⊕ 21′ ⊕ 21 ⊕ 2 · 56
+ 5313
+                ⊕ 3 · 120 ⊕ 5 · 210 ⊕ 4 · 3151 ⊕ 5 · 3152              ⊕ 64 ⊕ 2 · 70
+                                  ′
+              2 · 45′ ⊕ 2 · 45 ⊕ 2 · 1051 ⊕ 3 · 1052 ⊕ 1053
+ 5544                                                            2 · 35 ⊕ 45 ⊕ 45 ⊕ 64 ⊕ 70
+                ⊕ 2 · 120 ⊕ 2 · 210 ⊕ 6 · 3151 ⊕ 6 · 3152
+                              ′
+             2 · 45′ ⊕ 2 · 45 ⊕ 90 ⊕ 1051 ⊕ 2 · 1052 ⊕ 1053
+ 5796                                                            45 ⊕ 45 ⊕ 2 · 56 ⊕ 64 ⊕ 70
+                 ⊕ 3 · 120 ⊕ 3 · 210 ⊕ 6 · 3151 ⊕ 6 · 3152
+                    ′                                                      ′
+            45′ ⊕ 45 ⊕ 2 · 90 ⊕ 4 · 1051 ⊕ 3 · 1052 ⊕ 3 · 1053 21 ⊕ 21′ ⊕ 21 ⊕ 28 ⊕ 35 ⊕ 2 · 45
+10395
+                ⊕ 3 · 120 ⊕ 7 · 210 ⊕ 11 · 3151 ⊕ 10 · 3152     ⊕ 2 · 45 ⊕ 56 ⊕ 2 · 64 ⊕ 2 · 70
+
+Table 2: Decomposition of M24 irreducible representations into Octad irreps and their
+splitting into the subspaces V ⊥ and V rest .
+
+
+                                                    17
+We will establish this by comparing characters.
+    In order to do this calculation efficiently, it is much easier to evaluate the full character
+including the N = 4 descendants, rather than restrict to the N = 4 primary states (that
+are counted by Vh⊥ ). Let us denote the full space (including descendants) by W ⊥ . For
+the purposes of the representation theory of G, Wh⊥ is then simply a direct sum of Vh⊥
+and the lower lying Vh⊥ , the multiplicities given by the number of descendants, which we
+can read off from the known N = 4 characters. For the first few cases we have
+                   ⊥       ⊥
+                  W1/2 = V1/2                                                              (4.8)
+                   W1⊥ = V1/2
+                           ⊥
+                              ⊕ V1⊥                                                        (4.9)
+                   W2⊥ = 5 · V1/2
+                               ⊥
+                                  ⊕ 7 · V1⊥ ⊕ V2⊥                                         (4.10)
+                   W3⊥ = 14 · V1/2
+                                ⊥
+                                   ⊕ 25 · V1⊥ ⊕ 7 · V2⊥ ⊕ V3⊥                             (4.11)
+                   W4⊥   =          ⊥
+                             36 · V1/2 ⊕ 70 · V1⊥ ⊕ 25 · V2⊥ ⊕ 7 · V3⊥ ⊕ V4⊥ ,            (4.12)
+
+etc. From the triangular form of this, it is clear that if the characters agree on the Wh⊥ ,
+they will also agree on the Vh⊥ , and vice versa. The only slight subtlety here is that we
+                                                ⊥
+also need to know the representation of V1/2      , which contributes to the massless N = 4
+representations, i.e., to the coefficient of 20 in (1.1). As was explained in section 3.3, this
+representation is simply
+                                      ⊥       ⊥
+                                   V1/2 = W1/2    = 15 ⊕ 15 .                           (4.13)
+Note that this is compatible with 20 = 23 − 3 · 1, using the fact that the V ⊥ part of 23
+is precisely 15.
+    We define the specialized graded character as
+                                                            
+                               φ⊥
+                                g (τ ) := Tr W ⊥ g q
+                                                     L0 −1/4
+                                                               .                   (4.14)
+
+If g is a geometric element, i.e. if g is in one of the geometric groups Gi , we can evaluate
+φ⊥g (τ ), since we know W
+                          ⊥
+                            explicitly, and in this case we also know the action of g. For
+the details of this computation, see appendix C.
+     As expected, the result shows that for all geometric g, φ⊥    g only depends on the G-
+conjugacy class of g. In fact all geometric elements fall into 5 out of the 25 conjugacy
+classes of G, which are denoted by 1a, 2a, 3a, 2b, 4a, with 1 ∈ 1a. The result is
+                                          
+                                          
+                                            15φ̂1 (τ ) : g = e
+                                          
+                                          
+                                          
+                                           −φ̂1 (τ ) : g ∈ 2a
+                                 ⊥
+                               φg (τ ) =           0      : g ∈ 3a                     (4.15)
+                                          
+                                          
+                                          
+                                             3 φ̂ i (τ ) : g ∈ 2b
+                                          
+                                           −φ̂ (τ ) : g ∈ 4a
+                                                    i
+
+
+where
+                                                         1 ϑ2 (τ )2
+                                φ̂1 (τ ) = Tl=0 (τ, 0) =                                  (4.16)
+                                                         2 ϑ4 (τ )2
+
+                                                18
+and
+                                                       ϑ2 (2τ )
+                                          φ̂i (τ ) =            .                         (4.17)
+                                                       ϑ3 (2τ )
+Knowing φ̂(τ ) fixes the ρG
+                          h . In principle we could of course construct them explicitly
+                            i
+
+
+from the Fock space of the torus orbifold, but we will be satisfied by computing their
+characters.
+   It remains to compute the characters of the left-hand side of (1.3). To this end we use
+the fact that the M24 twining genera are known; they are defined as
+                                          X
+                                χg (τ ) =   χn (g)q n−1/4 ,                         (4.18)
+                                                 n
+
+where χn (g) is the character of the M24 representation Wn . To obtain the analogue for
+W ⊥ , we use the fact that the projector P⊥ can be written as (4.1). This leads us to define
+                                                           1 X
+                               χ⊥
+                                g (τ ) := χg (τ ) −              χhg (τ ) ,               (4.19)
+                                                          16 h∈T
+
+which we can determine from the knowledge of the twining genera χg̃ (τ ), which were all
+obtained in [3, 4, 5, 6]. We will follow the conventions and notation of [4], except for an
+overall factor of −2 in the definition of the χg (τ ). We will denote the conjugacy classes of
+M24 by uppercase letters, whereas we denote conjugacy classes of G by lowercase letters,
+taking their labeling from the character table 4. They are then related by
+
+               1a = 1A ,      2a ⊂ 2A ,       3a ⊂ 3A ,         2b ⊂ 2A ,     4a ⊂ 4B .   (4.20)
+
+We can then evaluate (4.19) by using the expressions
+
+                                            ϑ4 (τ )2     ϑ2 (τ )2
+                              χ1A (τ ) = −8          + 8          ,                       (4.21)
+                                            ϑ2 (τ )2     ϑ4 (τ )2
+                                            ϑ4 (τ )2
+                              χ2A (τ ) = −8          ,                                    (4.22)
+                                            ϑ2 (τ )2
+                                                     3
+                                               η(τ )     ϑ3 (3τ )
+                              χ3A (τ ) = −2                                               (4.23)
+                                              η(3τ )      ϑ3 (τ )
+                                            ϑ3 (2τ )
+                              χ4B (τ ) = −4          .                                    (4.24)
+                                            ϑ2 (2τ )
+
+For g = e we get
+                                       15           15
+                        χ⊥
+                         g (τ ) =         χ1A (τ ) − χ2A (τ ) = 15T (τ ) ,                (4.25)
+                                       16           16
+while for g ∈ 2a we find
+                                        1                    
+                           χ⊥
+                            g (τ ) =      χ2A (τ ) − χ1A (τ ) = −T (τ ) .                 (4.26)
+                                       16
+
+                                                     19
+For 3a, we pick the representative γ3 ∈ 3a. We find that hγ3 ∈ 3A for all h ∈ (Z2 )4 , so
+that
+                            χ⊥g (τ ) = χ3A (τ ) − χ3A (τ ) = 0 .                 (4.27)
+For 2b, we pick γ1 ∈ 2b. We find that 3 of the nontrivial elements of (Z2 )4 are mapped to
+2A, and the other 12 to 4B, giving in total
+                                           3                    
+                               χ⊥
+                                g (τ ) =     χ2A (τ ) − χ4B (τ ) .                     (4.28)
+                                           4
+For 4a, picking ι1 γ1 ∈ 4a we find that 4 of the nontrivial elements of (Z2 )4 are mapped
+to 2A, and the other 11 to 4B, giving
+                                            1                    
+                              χ⊥
+                               g (τ ) = −     χ2A (τ ) − χ4B (τ ) .                    (4.29)
+                                            4
+Using the identity
+                   1          1           ϑ3 (2τ )    ϑ4 (τ )2    ϑ2 (2τ )
+                  − χ4B (τ ) + χ2A (τ ) =          −2         2
+                                                                =          ,           (4.30)
+                   4          4           ϑ2 (2τ )    ϑ2 (τ )     ϑ3 (2τ )
+which follows directly from [18] eqs. (8.199) 3. and 6., we find in all cases
+
+                                      φ⊥         ⊥
+                                       g (τ ) = χg (τ ) .                              (4.31)
+
+   Finally let us show that the geometric action on V rest is compatible with the M24
+representation theory. In appendix C, see in particular section C.3, we compute the
+geometric characters φrg (τ ) for V rest . We find
+                                           ϑ4 (τ )2
+                                     −8 ϑ2 (τ )2 + φ̂1 (τ ) g ∈ 1a, 2a
+                                    
+                         φrg (τ ) =       φut
+                                           ζ (τ ) + φ̂ζ (τ )   g ∈ 3a           (4.32)
+                                    
+                                     −4 ϑ3 (2τ ) + φ̂ (τ ) g ∈ 2b, 4a
+                                            ϑ2 (2τ )    i
+
+
+Together with (4.15) and (C.7) it then follows that
+
+                                  φrg (τ ) + φ⊥
+                                              g (τ ) = χg (τ ) ,                       (4.33)
+
+at least for g ∈ 1a, 2a and g ∈ 2b, 4a; for g ∈ 3a we have only verified this identity to high
+order — but because of the modular properties of the functions in question, this is then
+also sufficient to show the result. Taken together this therefore proves Theorem 1. 
+
+
+5    Conclusions
+In this paper we have subjected the symmetry surfing idea of Taormina and Wendland [11,
+12] to a stringent consistency check. In particular, their idea predicts that the surviving
+contribution from the twisted sector (after performing some deformation to move off the
+
+                                                20
+orbifold moduli space) should furnish a representation of the octad group. The octad
+group is not the symmetry group of an individual K3 sigma model, but arises upon
+putting the symmetries of three special sigma models together. The fact that we find
+very convincing evidence for the presence of this octad symmetry is therefore a non-trivial
+confirmation of their philosophy.
+    The octad approach also seems promising from another viewpoint. As we have ex-
+plained in the paper, there is a simple division of octad representations according to
+whether they arise in the orthogonal part of the twisted sector V ⊥ , or in the rest, V rest ,
+see eqs. (4.4) and (4.5). Since the representations in R0 are precisely those representa-
+tions that are invariant under T , while Rtw contains the remaining representations, the
+tensor products of representations in R0 close among themselves, while those involving a
+representation in R0 and one in Rtw lie in Rtw , i.e.,
+                          R0 ⊗ R0 ⊆ R0 ,            R0 ⊗ Rtw ⊆ Rtw ;                     (5.1)
+incidentally, this property can also be checked directly. (The tensor products of represen-
+tations in Rtw with themselves lead to representations both in R0 and Rtw .)
+    This observation is nicely compatible with the idea of an underlying algebra structure.
+One interpretation is that V rest is associated to an T invariant subspace of a VOA-like
+structure, and that V ⊥ is a Z42 -twisted module; this is also compatible with the S modular
+transformation properties of φrg (τ ) and φ⊥
+                                           g (τ ). It would be very interesting to explore this
+idea further.
+                                   Acknowledgements
+    This paper is based on the Master thesis of one of us (H.P.). We thank Jeff Harvey
+and Greg Moore for initial collaboration on this project. It is a pleasure to thank Simeon
+Hellerman, Geoff Mason, Anne Taormina, Roberto Volpato, Katrin Wendland for helpful
+discussions. CAK thanks the Harvard University High Energy Theory Group for hospi-
+tality. CAK is supported by the Swiss National Science Foundation through the NCCR
+SwissMAP. The research of MRG is also supported partly by the NCCR SwissMAP,
+funded by the Swiss National Science Foundation.
+
+
+A    The N = 4 algebra at the orbifold point
+We denote the complex fermions and complex bosons of T4 as
+                               Ψi ,    Ψ̄i ,    ∂X i ,    ∂ X̄ i ,                       (A.1)
+where i = 1, 2. In what follows we will only discuss the left-movers. The right-movers,
+which we denote by tilde, are completely analogous. The modes of the left-moving fields
+obey the standard (anti-)commutation relations
+                                    i
+                                 [∂Xm    ¯ j ] = m δ ij δm,−n ,
+                                      , ∂X
+                                    i jn                                                (A.2)
+                                    Ψr , Ψ̄s = δ ij δr,−s .
+
+                                               21
+Sometimes we will also use uppercase indices to write ΨI , I = 1, 2, 3, 4 with the under-
+standing that Ψ3 := Ψ̄1 etc. In terms of these free fields, the su(2)
+                                                                 ˆ R R-currents of the
+N = 4 superconformal algebra are given by
+
+                       +,3      1 1 1                1
+                     J      =                2 2
+                                   Ψ Ψ̄ + Ψ Ψ̄ = δij Ψi Ψ̄j ,                       (A.3)
+                               2i                     2i
+                                           1
+                     J ++ = −Ψ1 Ψ2 = − ǫij Ψi Ψj ,                                  (A.4)
+                                           2
+                                       1
+                     J +− = Ψ̄1 Ψ̄2 = ǫij Ψ̄i Ψ̄j ,                                 (A.5)
+                                       2
+where we work in the usual Cartan-Weyl basis for su(2). The N = 4 supercurrents are
+then given by
+
+                          G+ = δij Ψi ∂ X̄ j ,        G− = ǫij Ψ̄i ∂ X̄ j ,            (A.6)
+                           ′                           ′
+                          G + = ǫij Ψi ∂X j ,         G − = δij Ψ̄i ∂X j .             (A.7)
+                            ′      ′
+The pairs (G+ , G− ) and (G + , G − ) form indeed doublets under the zero modes of su(2)
+                                                                                    ˆ R.
+   The symmetry group for the torus orbifold is actually bigger. In particular there is an
+additional SU(2) symmetry which commutes with the N = 4 superconformal generators.
+The corresponding currents are given as
+                                         1                 
+                            J −,3 =         −Ψ1 Ψ̄1 + Ψ2 Ψ̄2 ,                       (A.8)
+                                         2i
+                            J −+ = −Ψ1 Ψ̄2 ,                                         (A.9)
+                                J −− = Ψ̄1 Ψ2 .                                       (A.10)
+
+With respect to this symmetry Ψi and ∂X i then transform in the 2, while Ψ̄ and ∂ X̄
+transform in the 2̄ (which is equivalent). In particular, the N = 4 superconformal fields
+J and G± are invariant under these SU(2) transformations.
+
+
+B     Elliptic genus and characters
+B.1   The untwisted sector
+As a partial partition function, the elliptic genus in the RR̃ sector counts left-moving
+states with statistics signs due to the (−1)F factor in the trace. However, after spectral
+flow to the left-moving NS sector, we choose not to insert (−1)F so that all states are
+counted with the same sign. Furthermore, we choose the convention that positive charges
+are counted by positive powers of y, whereas negative charges give powers of y −1. It is well
+known that bosonic states created Q by a single bosonic oscillator an from the vacuum are
+                                           n −1
+counted by the infinite product n (1 − q ) . Similarly, the states of a single positively
+                                                                           Q             1
+charged fermion (with half-integer modes) are counted by the product n (1 + q n− 2 y),
+                                                                         Q            1
+and, accordingly, a negatively charged fermion results in the product n (1 + q n− 2 y −1 ).
+
+                                                 22
+In our K3 sigma model, we have four bosonic fields ∂X I together with two positively and
+two negatively charged fermions Ψi and Ψ̄i , respectively. Putting everything together,
+this then gives rise to a partition function of the form
+                                     ∞
+                                     Y           1              1
+                                       (1 + q n− 2 y)2(1 + q n− 2 y −1 )2
+                                                                            .                          (B.1)
+                                     n=1
+                                                    (1 − q n )4
+
+However, we have neglected the Z2 orbifold projection so far. For the orbifold even ground
+state with right-moving l = 12 , only the states with an even number of modes contribute
+since all other states are projected out. In terms of partition functions, this can be done
+by adding a second term to the contribution (B.1). If we revers the sign in front of the
+q-monomials in the above expression, states with an odd number of modes will pick up
+a minus sign and therefore they cancel when both terms are added together. This yields
+the untwisted l = 12 partition function
+                          ∞                                  ∞
+                                                                                             !
+              1 − 1 Y (1 + q n− 2 y)2 (1 + q n− 2 y −1)2 Y (1 − q n− 2 y)2(1 − q n− 2 y −1)2
+                                   1               1                  1             1
+
+Ul= 1 (τ, z) = q 4                                       +
+    2         2          n=1
+                                    (1 − q n )4             n=1
+                                                                       (1 + q n )4
+                                                                                      
+                − 14           2      1         3       8       2   2        4            5
+             =q        1 + q y + 4 + 2 + q 2 8y +           + q 4y + 19 + 2 + O(q 2 ) ,
+                                     y                  y                   y
+                                                                                          (B.2)
+                          1                                                                1
+where the shift by q − 4 is due to the NS-vacuum, coming from the q L0 − 4 insertion in the
+definition of φNS
+                K3 , see (2.4).
+    On the other hand, the ground state with right-moving l = 0 is orbifold odd, therefore
+only states with an odd number of modes created from this vacuum contribute to the
+elliptic genus. In that case, we have to cancel the even combinations and we find the
+untwisted l = 0 partition function to take the form
+                        ∞                                            ∞
+                                                                                                            !
+                    1
+                       Y   (1 + q n− 21
+                                        y) 2
+                                             (1 +   q n− 21 −1 2
+                                                           y  )     Y   (1 − q n− 21
+                                                                                     y) 2
+                                                                                          (1 − q n− 21 −1 2
+                                                                                                      y  )
+  Ul=0 (τ, z) = q − 4                            n )4
+                                                                 −
+                       n=1
+                                       (1  −   q                    n=1
+                                                                                    (1 + q n )4
+                                                                                                     
+                  − 14 √          4                   3         8       2     2              8           5
+              =q         q 4y +         + 8q + q 2 8y +             + q 8y + 40 + 2 + O(q 2 ) ,
+                                  y                             y                           y
+                                                                                                         (B.3)
+
+where the factor of two from (2.13) is already included in this expression.
+In order to find the number of primary fields in each sector, we decompose the given
+partition functions into N = 4 characters. One finds
+                                                            ∞
+                                                            X
+                      U l= 21   (τ, z) = chNS
+                                           0,l=0 (τ, z) +       Bn chNS
+                                                                     h=n,l=0 (τ, z) ,
+                                                            n=1
+                                                               ∞                                       (B.4)
+                                                              X
+                       Ul=0 (τ, z) = 4 chNS
+                                         0,l= 21
+                                                 (τ, z) +          Cn chNS
+                                                                        h=n,l=0 (τ, z) ,
+                                                             n=1
+
+
+                                                      23
+where the coefficients Bn and Cn count the number of primary fields in each sector.
+They can be computed by a series expansion of the partition functions, using the explicit
+formulae for the N = 4 characters from [19, 20], and one finds
+
+                Bn = {3, 1, 18, 15, 68, 89, 249, 358, 799, 1236, . . .} ,
+                                                                                          (B.5)
+                Cn = {0, 16, 8, 72, 80, 264, 360, 904, 1360, 2808, . . .} .
+
+B.2   The twisted sector
+In the twisted sector, the states are localized at fixed points of the T4 /Z2 orbifold. There
+are 24 fixed points and thus we have 16 corresponding ground states which we denote by
+|αi, α ∈ F42 . Since the orbifold projection exchanges the periodicity condition of fields,
+there are no fermionic zero modes in the twisted RR̃ sector. Therefore, the vacuum state
+is orbifold even and has quantum numbers h = h̃ = 41 and l = ˜l = 0.
+    However, we work in the NSR̃ sector, where due to spectral flow on the left-moving
+part one has integer fermionic modes and half-integer bosonic modes. This reintroduces
+left-moving fermionic zero modes such that the twisted ground states are given by
+
+                |αi := (|l = 12 iαNS ⊗ |l = 0iαR̃ ) ⊕ 2 · (|l = 0iαNS ⊗ |l = 0iαR̃ ) ,    (B.6)
+
+where the label α denotes one of the 16 fixed points. In order to account for these
+ground states, we simply multiply the partition function by a factor of (y + 2 + y −1 ).
+Note that the left term of (B.6) is orbifold even and the right one orbifold odd. As in
+the untwisted sector, we account for the orbifold projection by subtracting respectively
+adding a corresponding term in the partition function. The partition function for one
+twisted ground state |αi is then given by
+                                            ∞
+                                            Y
+  α          1 1                        1     (1 + q n y)2 (1 + q n y −1 )2
+Tl=0 (τ, z) = q − 4   (y + 2 + y −1) q 2                              1        −
+             2                              n=1            (1 − q n− 2 )4
+                                                    ∞
+                                                                                      !
+                                                1
+                                                    Y (1 − q n y)2 (1 − q n y −1 )2
+                       −(−y + 2 − y −1) q       2
+                                                     n− 12 4
+                                                                        (B.7)
+                                       n=1    (1 + q      )
+                                                                    
+              1
+             −4  √      1            3       14       2      2  8       5
+          =q       q y+     + 8q + q 2 14y +      + q 8y + 64 + 2 + O(q 2 ) .
+                        y                    y                 y
+                              α
+Similarly, we can decompose Tl=0 (τ, z) into N = 4 characters [19, 20] according to
+                                                           ∞
+                                                           X
+                        α
+                      Tl=0 (τ, z) = chNS
+                                      0,l= 1
+                                             (τ, z) +            Dn chNS
+                                                                      h=n,l=0 (τ, z) ,    (B.8)
+                                            2
+                                                           n=1
+
+where the coefficients Dn give the number of twisted primary fields at level h = n, namely
+
+               Dn = {6, 28, 98, 282, 728, 1734, 3864, 8182, 16618, . . .} .               (B.9)
+
+
+                                                      24
+B.3   Elliptic genus
+Finally, let us examine how the untwisted and twisted partition functions contribute to the
+elliptic genus. According to equation (2.15) the untwisted and twisted sectors, expressed
+in terms of Jacobi theta functions, contribute as
+                                                                              2
+                  NS                                                 ϑ4 (τ, z)
+                 φuntw (τ, z) = −2 Ul= 1 (τ, z) + Ul=0 (τ, z) = −8                ,
+                                        2                            ϑ2 (τ, 0)
+                                                            2               2   (B.10)
+                                                   ϑ2 (τ, z)         ϑ1 (τ, z)
+                 φNS               α
+                  tw (τ, z) = 16 Tl=0 (τ, z) = 8                −8                ,
+                                                   ϑ4 (τ, 0)         ϑ3 (τ, 0)
+
+such that their sum φNS             NS
+                     untw (τ, z) + φtw (τ, z) correctly reproduces (2.5).
+
+
+
+
+C     Geometric Characters
+C.1   Geometric Characters
+In this appendix we compute the geometric characters. For simplicity we will set z = 0.
+We do not lose any information that way, since the charges of states are essentially fixed
+by the N = 4 representation theory. We therefor need to determine
+                                                         
+                               tw                 L0 −1/4
+                              φg (τ ) = TrW ⊥ g q                                   (C.1)
+
+and                                                                       
+                                  φrg (τ ) = TrW rest       gq   L0 −1/4
+                                                                                         (C.2)
+for all geometric elements g. As usual, it is enough to do this for one representative per
+conjugacy class of a geometric group.
+    An element g acts as a permutation (3.10) on the twisted sectors, and as an element
+of SU(2) (3.18) – (3.21) on the oscillator modes. Since we are computing the character,
+the result only depends on the eigenvalues λ and λ̄ of the 2 × 2 matrix M(g), and the
+trace of the monomial representation, i.e. the number of fixed points with signs of the
+permutation.
+    If g has eigenvalues λ = e2πiu and λ̄ = e−2πiu , the character of its action on a single
+twisted sector is
+
+                            q4 
+                             1
+                                              Y∞
+                                                     (1 + λq n )2 (1 + λ̄q n )2
+                 φ̂λ (τ ) =      (2 + λ + λ̄)             n− 21 2              1         (C.3)
+                            2                 n=1 (1 − λq      ) (1 − λ̄q n− 2 )2
+                                              ∞
+                                              Y         (1 − λq n )2 (1 − λ̄q n )2   
+                             + (2 − λ − λ̄)           n− 2 2          1          1       (C.4)
+                                          n=1 (1 + λq     ) (1 + λ̄q n− 2 )2
+                                     2               2
+                          1 ϑ2 (τ, u)      1 ϑ1 (τ, u)
+                        =                +                   .                           (C.5)
+                          2 ϑ4 (τ, u)      2 ϑ3 (τ, u)
+
+                                                 25
+The form of the products follows from the action of g on the oscillators. The prefactors
+come from the fact that the left-moving ground states Ψ10 |0iNS and Ψ20 |0iNS are orbifold
+odd and have eigenvalues λ and λ̄, whereas |0iNS and Ψ10 Ψ20 |0iNS are orbifold even and
+invariant under g. The right-moving Ramond ground state |0iR̃ is also invariant under g.
+The total result in the twisted sector is thus
+                                       φtw
+                                        g (τ ) = Nfp (g) φ̂λ (τ ) ,                                 (C.6)
+where Nfp (g) is the number of fixed points with signs. In what follows, the eigenvalues λ
+will always be 1, i or ζ = e2πi/3 . For the first two cases we have
+                                      2
+                             1 ϑ2 (τ )                                 ϑ2 (2τ )
+                  φ̂1 (τ ) =              = Tl=0 (τ, 0) ,   φ̂i (τ ) =          ,    (C.7)
+                             2 ϑ4 (τ )                                 ϑ3 (2τ )
+while we have not managed to find a simple formula for the case λ = ζ = e2πi/3 .
+    In the untwisted sector, the permutation part of the action acts trivially. The character
+for the states in the right-moving l = 21 representation is
+                         ∞                                         ∞
+                                                                                                      !
+     l= 1       q −1/4  Y   (1 + λq    n− 21 2
+                                            ) (1 + λ̄q n− 21 2
+                                                            )     Y   (1 − λq n− 21 2
+                                                                                   ) (1 − λ̄q n− 21 2
+                                                                                                   )
+    φλ 2 (τ ) =                           n  2         n 2
+                                                               +                 n  2         n 2
+                   2    n=1
+                                (1 − λq ) (1 − λ̄q )              n=1
+                                                                         (1 + λq ) (1 + λ̄q )
+                                                                                                      (C.8)
+                                     2                           2
+                           ϑ3 (τ, u)                   ϑ4 (τ, u)
+              = 2 sin(πu)2           2
+                                       + 2 cos(πu)2                .                                  (C.9)
+                           ϑ1 (τ, u)                   ϑ2 (τ, u)2
+Note that from (2.11) the right-moving l = 12 representation in the Ramond sector is
+invariant under g and is orbifold even. For the right-moving l = 0 representation we get
+                         ∞                                        ∞
+                                                                                                      !
+           λ + λ̄ −1/4 Y (1 + λq n− 2 )2 (1 + λ̄q n− 2 )2 Y (1 − λq n− 2 )2 (1 − λ̄q n− 2 )2
+                                        1                1                        1                 1
+  l=0
+ φλ (τ ) =       q                                            −
+              2         n=1
+                               (1 − λq n )2 (1 − λ̄q n )2        n=1
+                                                                          (1 + λq n )2 (1 + λ̄q n )2
+                                                                                                   (C.10)
+                                                                       
+                                 ϑ3 (τ, u)2               2 ϑ4 (τ, u)
+                                                                      2
+         = 4 cos(2πu) sin(πu)2              −  cos(πu)                     .                       (C.11)
+                                 ϑ1 (τ, u)2                 ϑ2 (τ, u)2
+The prefactor comes from the eigenvalues of the right-moving Ramond ground states
+Ψ10 |0iR̃ and Ψ20 |0iR̃ . The untwisted contribution is thus
+                                                                                  
+      ut            l= 12       l=0             4   ϑ3 (τ, u)2      4   ϑ4 (τ, u)2
+     φλ (τ ) = −2φλ (τ ) + φλ (τ ) = −8 sin πu                 + cos πu              , (C.12)
+                                                    ϑ1 (τ, u)2          ϑ2 (τ, u)2
+and in total we therefore get
+                                      φrg (τ ) = φut
+                                                  λ (τ ) + φ̂λ (τ ) ,                              (C.13)
+where we included the contribution of the G-invariant twisted sector. Again, there are
+simple formulae for the cases
+                                         ϑ4 (τ )2                         ϑ3 (2τ )
+                          φut
+                           1 (τ ) = −8            ,        φut
+                                                            i (τ ) = −4            ,               (C.14)
+                                         ϑ2 (τ )2                         ϑ2 (2τ )
+while the expression for λ = ζ = e2πi/3 is more complicated.
+
+                                                      26
+C.2     The geometric groups
+Let us denote by Cn the conjugacy classes of G. We take the GAP labelling. With respect
+to the geometric subgroups, the classes containing geometric elements will decompose into
+conjugacy classes of the Gi .
+
+C.2.1    G0 = (Z42 ) ⋊ (Z2 × Z2 )
+The group order is |G0 | = 64, and the generators are α1 , α2 , ι1 , ι2 , ι3 , ι4 . Their conjugacy
+classes sit in those of the octad group as
+                1a   =   {[1]}                                                                           (C.15)
+                2a   ⊃   {[ι2 ι1 ], [ι3 ι2 ], [ι4 ι3 ι2 ι1 ], [ι4 ι2 ι1 ], [ι1 ], [ι3 ι1 ]}              (C.16)
+                2b   ⊃   {[α1 ], [α2 ], [α2 α1 ]}                                                        (C.17)
+                4a   ⊃   {[ι2 ι1 α2 ], [ι2 ι1 α2 α1 ], [ι4 ι1 α1 ], [ι1 α2 ], [ι2 α2 α1 ], [ι1 α1 ]} .   (C.18)
+From (3.8) we see that all elements in 2a have Nfp = −1. (3.18) and (3.19) on the other
+hand show that α1 , α2 , and α2 α1 all have eigenvalues ±i. (3.10) shows that their fixed
+points are A, N, O and E, M, N and D, L, N respectively. For 2b we thus have Nfp = 3.
+For 4a on the other hand we find from the action of the ιi that Nfp = −1. The character
+for all the conjugacy classes is thus
+                                          
+                                          
+                                           15φ̂1(τ ) g ∈ 1a
+                                          
+                                          
+                                            −φ̂1 (τ ) g ∈ 2a
+                               φtw
+                                 g (τ ) =                                         (C.19)
+                                          
+                                            3φ̂i (τ ) g ∈ 2b
+                                          
+                                           −φ̂ (τ ) g ∈ 4a
+                                                 i
+
+
+C.2.2    G1 = (Z42 ) ⋊ A4
+The group order is now |G1 | = 192, and the generators are γ1 , γ2 , γ3 , ι1 , ι2 , ι3 , ι4 . Their
+conjugacy classes now sit inside those of G as
+                                   1a    =     {[1]}                                                     (C.20)
+                                   2a    =     {[ι1 ], [ι2 ι1 ]}                                         (C.21)
+                                   3a    =     {[γ3 ], [γ3−1 ]}                                          (C.22)
+                                   2b    =     {[γ1 ]}                                                   (C.23)
+                                   4a    =     {[ι1 γ1 ], [ι4 γ2 ], [ι1 γ2 ]} .                          (C.24)
+Noting again that γ1 and γ2 have eigenvalues ±i and that γ3 and γ3−1 have no fixed points,
+we get                                  
+                                        
+                                         15φ̂1(τ ) g ∈ 1a
+                                        
+                                        
+                                        
+                                         −φ̂1 (τ ) g ∈ 2a
+                             φtw
+                               g (τ ) =       0      g ∈ 3a                        (C.25)
+                                        
+                                        
+                                        
+                                          3φ̂i (τ ) g ∈ 2b
+                                        
+                                         −φ̂ (τ ) g ∈ 4a
+                                               i
+
+
+                                                       27
+C.2.3    G2 = (Z42 ) ⋊ S3
+The group order of G2 is |G2 | = 96, and the group is generated by β1 , β2 , ι1 , ι2 , ι3 , and
+ι4 . The conjugacy classes of G2 sit in those of the octad group as
+
+                              1a   =   {[1]}                                            (C.26)
+                              2a   =   {[ι1 ], [ι3 ι2 ], [ι3 ι1 ], [ι4 ι2 ]}            (C.27)
+                              3a   =   {[β1 ]}                                          (C.28)
+                              2b   =   {[β2 ]}                                          (C.29)
+                              4a   =   {[ι2 ι1 β2 ], [ι1 β2 ], [ι2 β2 ]} .              (C.30)
+
+Again, β2 has eigenvalues ±i, and β1 has no fixed point, so that
+                                        
+                                        
+                                         15φ̂1(τ ) g ∈ 1a
+                                        
+                                        
+                                        
+                                         −φ̂1 (τ ) g ∈ 2a
+                             φtw
+                               g (τ ) =       0      g ∈ 3a                             (C.31)
+                                        
+                                        
+                                        
+                                          3φ̂i (τ ) g ∈ 2b
+                                        
+                                         −φ̂ (τ ) g ∈ 4a
+                                               i
+
+
+C.3     Geometric action on W rest
+Since the result only depends on the eigenvalues of g, it is straightforward to compute the
+character of W rest in eq. (C.13), using (C.6) and (C.12). We find
+                                    
+                                              (τ )2   1 ϑ2 (τ )2
+                                    
+                                     −8 ϑϑ42 (τ  2 + 2 ϑ (τ )2  g ∈ 1a, 2a
+                                                )       4
+
+                         φrg (τ ) =    φut
+                                         ζ (τ ) + φ̂ζ (τ )         g ∈ 3a            (C.32)
+                                    
+                                    
+                                     −4 ϑ3 (2τ ) + ϑ2 (2τ ) g ∈ 2b, 4a
+                                         ϑ2 (2τ )     ϑ3 (2τ )
+
+
+
+
+                                                 28
+     D    The explicit decomposition for the first few levels
+
+      h         VhM24                                      Vh⊥                                                      Vhrest
+                                                          ′    ′
+      1        45 ⊕ 45                                  45 ⊕ 45                                                       0
+                                                                                                                    ′      ′
+      2       231 ⊕ 231                                      210 ⊕ 210                                            21 ⊕ 21
+      3       770 ⊕ 770                             2 · (1052 ⊕ 3151 ⊕ 3152 )                                     35 ⊕ 35
+                                         2 · (15 ⊕ 90 ⊕ 1051 ⊕ 1053 ⊕ 120 ⊕ 2 · 210
+      4     2277 ⊕ 2277                                                                                      2 · (28 ⊕ 64 ⊕ 70)
+                                                       ⊕ 2 · 3151 ⊕ 2 · 3152 )
+                                          ′          ′
+                               2 · (2 · 45 ⊕ 2 · 45 ⊕ 90 ⊕ 1051 ⊕ 2 · 1052 ⊕ 1053 ⊕ 3 · 120
+      5        2 · 5796                                                                                2 · (45 ⊕ 45 ⊕ 2 · 56 ⊕ 64 ⊕ 70)
+                                                 ⊕ 3 · 210 ⊕ 6 · 3151 ⊕ 6 · 3152 )
+                                               ′      ′                                                                           ′
+                                2 · (15 ⊕ 45 ⊕ 45 ⊕ 5 · 90 ⊕ 6 · 1051 ⊕ 4 · 1052 ⊕ 6 · 1053   2 · (7 ⊕ 14 ⊕ 20 ⊕ 2 · 21 ⊕ 21′ ⊕ 21 ⊕ 2 · 28 ⊕ 35
+      6   2 · (3520 ⊕ 10395)
+                                         ⊕ 4 · 120 ⊕ 10 · 210 ⊕ 13 · 3151 ⊕ 13 · 3152 )            ⊕ 2 · 45 ⊕ 2 · 45 ⊕ 2 · 56 ⊕ 3 · 64 ⊕ 3 · 70)
+
+     Table 3: On the left side, we show the decomposition of the coefficients Ah into M24 representations for h = 1, . . . , 6. The
+     two right columns display how these representations split into Vh⊥ and Vhrest over the Octad subgroup G.
+29
+     E       Character Tables
+
+              1a    2a    3a   5a   15a   15b   2b   4a   4b   8a   6a    2c   2d   4c   4d   4e   4f   3b   6b   6c   12a   7a   14a    7b   14b
+       1       1     1     1    1    1     1     1    1    1    1    1    1     1   1     1    1    1    1    1    1     1    1     1     1     1
+       7       7     7     4    2    -1    -1    3    3    1    1    .    -1   -1   -1   -1   -1   -1    1    1   -1    -1    .     .     .     .
+      14      14    14    -1   -1    -1    -1    2    2    .    .   -1    6     6   6     2    2    2    2    2    .     .    .     .     .     .
+      15      15     -1    .    .     .     .    3   -1    1   -1    .     7   -1   -1    3   -1   -1    3   -1    1    -1    1    -1     1    -1
+      20      20    20     5    .     .     .    4    4    .    .    1    4     4   4     .    .    .   -1   -1    1     1   -1    -1    -1    -1
+      21      21    21     6    1    1     1     1    1   -1   -1   -2    -3   -3   -3    1    1    1    .    .    .     .    .     .     .     .
+      21′     21    21    -3    1    A    A∗     1    1   -1   -1    1    -3   -3   -3    1    1    1    .    .    .     .    .     .     .     .
+         ′
+      21      21    21    -3    1   A∗     A     1    1   -1   -1    1    -3   -3   -3    1    1    1    .    .    .     .    .     .     .     .
+      28      28    28     1   -2    1     1     4    4    .    .    1    -4   -4   -4    .    .    .    1    1   -1    -1    .     .     .     .
+      35      35    35     5    .     .     .   -5   -5   -1   -1    1    3     3   3    -1   -1   -1    2    2    .     .    .     .     .     .
+      45      45    45     .    .     .     .   -3   -3    1    1    .    -3   -3   -3    1    1    1    .    .    .     .   B     B     B∗   B∗
+      45      45    45     .    .     .     .   -3   -3    1    1    .    -3   -3   -3    1    1    1    .    .    .     .   B∗   B∗     B     B
+      45′     45     -3    .    .     .     .   -3    1    1   -1    .    -3    5   -3    1   -3    1    .    .    .     .   B    −B     B∗   −B ∗
+         ′
+      45      45     -3    .    .     .     .   -3    1    1   -1    .    -3    5   -3    1   -3    1    .    .    .     .   B∗   −B ∗   B    −B
+      56      56    56    -4    1    1     1     .    .    .    .    .    8     8   8     .    .    .   -1   -1   -1    -1    .     .     .     .
+      64      64    64     4   -1    -1    -1    .    .    .    .    .     .    .    .    .    .    .   -2   -2    .     .    1     1     1     1
+      70      70    70    -5    .     .     .    2    2    .    .   -1    -2   -2   -2   -2   -2   -2    1    1    1     1    .     .     .     .
+      90      90     -6    .    .     .     .    6   -2    .    .    .   18     2   -6    2    2   -2    .    .    .     .   -1     1    -1     1
+30
+
+
+
+
+     1051     105    -7    .    .     .     .   -3    1   -1    1    .   17    -7   1     1   -3    1    3   -1   -1     1    .     .     .     .
+     1052     105    -7    .    .     .     .   -3    1   -1    1    .    1     9   -7   -3    1    1    3   -1    1    -1    .     .     .     .
+     1053     105    -7    .    .     .     .    9   -3    1   -1    .    -7    1    1   -3    1    1    3   -1   -1     1    .     .     .     .
+     120      120    -8    .    .     .     .    .    .    .    .    .    8     8   -8    .    .    .   -3    1   -1     1    1    -1     1    -1
+     210      210   -14    .    .     .     .    6   -2    .    .    .   10    -6    2   -2   -2    2   -3    1    1    -1    .     .     .     .
+     3151     315   -21    .    .     .     .   -9    3    1   -1    .     3   -5    3   -1    3   -1    .    .    .     .    .     .     .     .
+     3152     315   -21    .    .     .     .    3   -1   -1    1    .   -21    3    3    3   -1   -1    .    .    .     .    .     .     .     .
+                                                                                √                  √
+                               Table 4: Character table of G. A = −1−i2 15 , B = −1−i
+                                                                                   2
+                                                                                      7
+                                                                                        .. The dots represent 0.
+             1a   2a    2b    2c   2d    4a   2e   4b   2f   4c   2g   4d   4e   4f   4g   4h   2h   6a   3a   6b   12a   6c   4i   4j   4k   8a   4l   4m    7a   14a    7b   14b
+       1      1    1     1     1    1     1    1    1   1     1    1    1    1   1     1    1    1    1    1    1     1    1   1     1    1    1   1      1    1    1      1     1
+       1′     1    1     1     1    -1   -1    1    1    1    1    1    1    1   -1   -1   -1   -1    1    1    1    -1   -1   1     1    1   -1   -1    -1    1    -1     1    -1
+       3      3    3     3     3    -3   -3   -1   -1   -1   -1   -1   -1   -1   1     1    1    1    .    .    .     .    .   1     1    1   -1   -1    -1   B∗   −B ∗   B    −B
+       3      3    3     3     3    -3   -3   -1   -1   -1   -1   -1   -1   -1   1     1    1    1    .    .    .     .    .   1     1    1   -1   -1    -1   B    −B     B∗   −B ∗
+       3′     3    3     3     3    3     3   -1   -1   -1   -1   -1   -1   -1   -1   -1   -1   -1    .    .    .     .    .   1     1    1    1   1      1   B∗    B∗    B     B
+         ′
+       3      3    3     3     3    3     3   -1   -1   -1   -1   -1   -1   -1   -1   -1   -1   -1    .    .    .     .    .   1     1    1    1   1      1   B     B     B∗    B∗
+       6      6    6     6     6    6     6    2    2   2     2    2    2    2   2     2    2    2    .    .    .     .    .    .    .    .    .    .     .   -1    -1    -1    -1
+       6′     6    6     6     6    -6   -6    2    2    2    2    2    2    2   -2   -2   -2   -2    .    .    .     .    .    .    .    .    .    .     .   -1    1     -1     1
+      71      7    7     7     7    7     7   -1   -1   -1   -1   -1   -1   -1   -1   -1   -1   -1    1    1    1     1    1   -1   -1   -1   -1   -1    -1    .     .     .     .
+      72      7    7     7     7    -7   -7   -1   -1   -1   -1   -1   -1   -1    1    1    1    1    1    1    1    -1   -1   -1   -1   -1    1   1      1    .     .     .     .
+      73      7    -1    7    -1    7    -1   -1   -1    3   -1    3   -1    3   -1   -1    3    3   -1    1    1    -1    1   -1    1    1   -1    1     1    .     .     .     .
+      74      7    -1    7    -1    -7    1   -1   -1    3   -1    3   -1    3    1    1   -3   -3   -1    1    1     1   -1   -1    1    1    1   -1    -1    .     .     .     .
+      75      7    -1    7    -1    -7    1    3   -1   -1   -1   -1    3   -1   -3    1    1    1   -1    1    1     1   -1   1    -1   -1   -1    1     1    .     .     .     .
+      76      7    -1    7    -1    7    -1    3   -1   -1   -1   -1    3   -1    3   -1   -1   -1   -1    1    1    -1    1   1    -1   -1    1   -1    -1    .     .     .     .
+       8      8    8     8     8    8     8    .    .    .    .    .    .    .    .    .    .    .   -1   -1   -1    -1   -1    .    .    .    .    .     .    1    1      1     1
+       8′     8    8     8     8    -8   -8    .    .    .    .    .    .    .    .    .    .    .   -1   -1   -1     1    1    .    .    .    .    .     .    1    -1     1    -1
+      141    14    -2   14    -2   14    -2    2   -2    2   -2    2    2    2    2   -2    2    2    1   -1   -1     1   -1    .    .    .    .    .     .    .     .     .     .
+      142    14    -2   14    -2   -14    2    2   -2    2   -2    2    2    2   -2    2   -2   -2    1   -1   -1    -1    1    .    .    .    .    .     .    .     .     .     .
+31
+
+
+
+
+      143    14    6     -2   -2     .    .    2   -2   -2    2    6   -2   -2    .    .    .    .    .    2   -2     .    .    .   -2    2    .    .     .    .     .     .     .
+      144    14    6     -2   -2     .    .    2    2   6    -2   -2   -2   -2    .    .    .    .    .    2   -2     .    .    .   2    -2    .    .     .    .     .     .     .
+      211    21    -3   21    -3   21    -3   -3    1    1    1    1   -3    1   -3    1    1    1    .    .    .     .    .   1    -1   -1    1   -1    -1    .     .     .     .
+      212    21    -3   21    -3   -21    3   -3    1    1    1    1   -3    1    3   -1   -1   -1    .    .    .     .    .   1    -1   -1   -1    1     1    .     .     .     .
+      213    21    -3   21    -3   -21    3    1    1   -3    1   -3    1   -3   -1   -1    3    3    .    .    .     .    .   -1    1    1    1   -1    -1    .     .     .     .
+      214    21    -3   21    -3   21    -3    1    1   -3    1   -3    1   -3    1    1   -3   -3    .    .    .     .    .   -1    1    1   -1    1     1    .     .     .     .
+      28     28   12     -4   -4     .    .    4    .    4    .    4   -4   -4    .    .    .    .    .   -2    2     .    .    .    .    .    .    .     .    .     .     .     .
+      421    42   18     -6   -6     .    .   -2   -2   -6    2    2    2    2    .    .    .    .    .    .    .     .    .    .    2   -2    .    .     .    .     .     .     .
+      422    42    -6    -6    2     .    .   -2    2   -2   -2    6    2   -2    .    .   -4    4    .    .    .     .    .    .    .    .    .   -2     2    .     .     .     .
+      423    42    -6    -6    2     .    .   -2    2   -2   -2    6    2   -2    .    .    4   -4    .    .    .     .    .    .    .    .    .    2    -2    .     .     .     .
+      424    42   18     -6   -6     .    .   -2    2    2   -2   -6    2    2    .    .    .    .    .    .    .     .    .    .   -2    2    .    .     .    .     .     .     .
+      425    42    -6    -6    2     .    .   -2   -2    6    2   -2    2   -2    .    .   -4    4    .    .    .     .    .    .    .    .    .    2    -2    .     .     .     .
+      426    42    -6    -6    2     .    .   -2   -2    6    2   -2    2   -2    .    .    4   -4    .    .    .     .    .    .    .    .    .   -2     2    .     .     .     .
+      84     84   -12   -12    4     .    .    4    .   -4    .   -4   -4    4    .    .    .    .    .    .    .     .    .    .    .    .    .    .     .    .     .     .     .
+             1a   2c    2a    2d   2a    4c   2b   4d   2c   4e   2d   4a   4c   4a   4f   4c   2d   6c   3b   6b   12a   6b   4b   4d   4f   8a   4e   4f    7b   14b    7a   14a
+
+     Table 5: Character table of H = ((Z2 )6 ⋊ P SL(3, 2)) ⋊ Z2 . H is a subgroup of G of order 21504. The bottom row indicates
+     which conjugacy class of G the classes of H belong to.
+References
+ [1] T. Eguchi, H. Ooguri, and Y. Tachikawa, “Notes on the K3 Surface and the Mathieu
+     group M24 ,” Exper.Math., vol. 20, pp. 91–96, 2011.
+
+ [2] R. E. Borcherds, “Monstrous moonshine and monstrous Lie superalgebras,” Invent.
+     Math., vol. 109, no. 2, pp. 405–444, 1992.
+
+ [3] M. C. N. Cheng, “K3 Surfaces, N=4 Dyons, and the Mathieu Group M24,” Commun.
+     Num. Theor. Phys., vol. 4, pp. 623–658, 2010.
+
+ [4] M. R. Gaberdiel, S. Hohenegger, and R. Volpato, “Mathieu twining characters for
+     K3,” JHEP, vol. 09, p. 058, 2010.
+
+ [5] M. R. Gaberdiel, S. Hohenegger, and R. Volpato, “Mathieu Moonshine in the elliptic
+     genus of K3,” JHEP, vol. 10, p. 062, 2010.
+
+ [6] T. Eguchi and K. Hikami, “Note on twisted elliptic genus of K3 surface,” Phys. Lett.,
+     vol. B694, pp. 446–455, 2011.
+
+ [7] T. Gannon, “Much ado about Mathieu,” Adv. Math., vol. 301, pp. 322–358, 2016.
+
+ [8] M. R. Gaberdiel, S. Hohenegger, and R. Volpato, “Symmetries of K3 sigma models,”
+     Commun. Num. Theor. Phys., vol. 6, pp. 1–50, 2012.
+
+ [9] G. Höhn and G. Mason, “The 290 fixed-point sublattices of the Leech lattice,” J.
+     Algebra, vol. 448, pp. 618–637, 2016.
+
+[10] M. R. Gaberdiel, A. Taormina, R. Volpato, and K. Wendland, “A K3 sigma model
+     with Z82 : M20 symmetry,” JHEP, vol. 02, p. 022, 2014.
+
+[11] A. Taormina and K. Wendland, “A twist in the M24 Moonshine story,” Confluentes
+     Math., vol. 7, no. 1, pp. 83–113, 2015.
+
+[12] A. Taormina and K. Wendland, “Symmetry-surfing the moduli space of Kummer
+     K3s,” in Proceedings, String-Math 2012, Bonn, Germany, July 16-21, 2012, pp. 129–
+     154, 2013.
+
+[13] T. Eguchi, H. Ooguri, A. Taormina, and S. K. Yang, “Superconformal algebras and
+     string compactification on manifolds with SU(n) holonomy,” Nucl. Phys. B, vol. 315,
+     pp. 193–221. 30 p, Aug 1988.
+
+[14] T. Kawai, Y. Yamada, and S.-K. Yang, “Elliptic genera and N=2 superconformal
+     field theory,” Nucl.Phys., vol. B414, pp. 191–212, 1994.
+
+[15] R. Volpato, “On symmetries of N = (4, 4) sigma models on T 4 ,” JHEP, vol. 08,
+     p. 094, 2014.
+
+
+                                           32
+[16] N. Vil’yams and V. Popov,         Encyclopedia of Mathematics,    2011,
+     http://www.encyclopediaofmath.org/index.php?title=Imprimitive_group&oldid=13570.
+
+[17] The GAP Group, GAP – Groups, Algorithms, and Programming, Version 4.8.7,
+     2017.
+
+[18] I. Gradshteyn and I. Ryzhik, Table of Integrals, Series, and Products. Academic
+     Press, 2000.
+
+[19] T. Eguchi and A. Taormina, “Character Formulas for the N = 4 Superconformal
+     Algebra,” Phys. Lett., vol. B200, p. 315, 1988.
+
+[20] T. Eguchi and A. Taormina, “On the Unitary Representations of N = 2 and N = 4
+     Superconformal Algebras,” Phys. Lett., vol. B210, pp. 125–132, 1988.
+
+
+
+
+                                        33
+
