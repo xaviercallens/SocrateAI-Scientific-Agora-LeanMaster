@@ -549,6 +549,23 @@ If you use this work, the Dual-Scale string theory formalization, or the Lean 5 
 }
 ```
 
+### Archived versions (Zenodo, CC-BY-4.0, release `v3.5.0`)
+The book and the eight papers are archived with DOIs; each record holds the PDF and its LaTeX source.
+Cite the record you use. Papers 1–6 carry a scope note in their record: their Lean results are arithmetic
+instances of literature results, and "formal resolution" in their titles refers to those instances.
+
+| Work | Title | DOI |
+|---|---|---|
+| Book (711 pp.) | The Dual-Scale String: T-Duality, K3 × T², and Their Formalization in Lean 4 — A Student's Companion | [10.5281/zenodo.22823716](https://doi.org/10.5281/zenodo.22823716) |
+| Paper 1 | Dual-Scale Generalized Geometry and Non-Perturbative Moduli Stabilization on K3 × T² | [10.5281/zenodo.22823718](https://doi.org/10.5281/zenodo.22823718) |
+| Paper 2 | Mathieu M24 Moonshine Rigidity, Mukai Lattices, and Holographic BPS Dyons on K3 × T² | [10.5281/zenodo.22823720](https://doi.org/10.5281/zenodo.22823720) |
+| Paper 3 | The Frontier Triad: Swampland Distance Bounds, Tachyon Condensation, and Non-Perturbative Vacuum Decay on K3 × T² | [10.5281/zenodo.22823722](https://doi.org/10.5281/zenodo.22823722) |
+| Paper 4 | Formal Resolution of Three Conjectures in the Lean 5 Agora Corpus: Navier-Stokes Helicity Dissipation, Mathieu Frobenius Rigidity, and Dual-Scale Horizon Censorship | [10.5281/zenodo.22823724](https://doi.org/10.5281/zenodo.22823724) |
+| Paper 5 | Formal Resolution of Five Frontier Problems in the Lean 5 Agora Corpus: Mukai Monodromy, Kolmogorov Turbulence, Flux Swampland, Courant Torsion, and Golay Holography | [10.5281/zenodo.22823726](https://doi.org/10.5281/zenodo.22823726) |
+| Paper 6 | Formal Resolution of Three Advanced Frontier Problems in the Lean 5 Agora Corpus: Kummer Surface Modularity, Non-Perturbative SYM Instantons, and Holographic Entanglement Strong Subadditivity | [10.5281/zenodo.22823729](https://doi.org/10.5281/zenodo.22823729) |
+| Paper 7 | The Dual-Scale String Theory: Mechanized Foundations, Singularity Resolution, Mathieu Moonshine, and a Zero-Free-Parameter Cosmological Conjecture on K3 × T² | [10.5281/zenodo.22823731](https://doi.org/10.5281/zenodo.22823731) |
+| Paper 8 | Lattices, T-Duality, and Double Field Theory on K3 × T²: A Lean 4 Companion Formalization | [10.5281/zenodo.22823733](https://doi.org/10.5281/zenodo.22823733) |
+
 ### Acknowledgements & Foundations
 This work builds upon and synthesizes foundational open-source formalizations:
 - **Anthropic Research**: *Fermat's Last Theorem & Prove2Me DAG Architecture*.
