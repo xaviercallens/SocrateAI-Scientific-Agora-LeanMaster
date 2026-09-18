@@ -25,6 +25,8 @@ Every PDF here is hash-pinned at fetch time. `.txt` files are `pdftotext` extrac
 | becker_becker_eightfolds_hep-th_9605053.pdf | hep-th/9605053 | M-Theory on Eight-Manifolds | Katrin Becker, Melanie Becker | 1996 | 414dd416631e7aa3a396028ddfdc1dd3f33cb071039379f5e9d32814ec209717 | yes | master-book source (added 2026-09-17) |
 | giddings_kachru_polchinski_hep-th_0105097.pdf | hep-th/0105097 | Hierarchies from Fluxes in String Compactifications | Steven B. Giddings, Shamit Kachru, Joseph Polchinski | 2001 | 20e700c52c65ece28595aa0bac443f0293c9ee191377314fb3557526181d6e23 | yes | master-book source (added 2026-09-17) |
 | alvarez_alvarezgaume_lozano_tduality_hep-th_9410237.pdf | hep-th/9410237 | An Introduction to T-Duality in String Theory | E. Alvarez, L. Alvarez-Gaume, Y. Lozano | 1994 | 546f643e850802142292d7214bf8aa436186674a17a99f55aca4966281b28d87 | yes | master-book source (added 2026-09-17) |
+| hep-th_9211021.pdf | hep-th/9211021 | Pre-Big-Bang in String Cosmology | M. Gasperini, G. Veneziano | 1992 | c6fc4395a07f97d43ba5d9203fc2a6c8015f630e5b1cabb423209fe77a12a717 | yes | Stream 3 pilot (added 2026-09-18): scale-factor duality `a ↦ a⁻¹`, `H → −H` (ll. 372–373, 639–640), source for `DualScaleCosmology.ScaleFactorDuality` |
+| hep-th_9803132.pdf | hep-th/9803132 | Effective Field Theory, Black Holes, and the Cosmological Constant | A.G. Cohen, D.B. Kaplan, A.E. Nelson | 1998 | 269c572c32dedaf6de21b25b7ca12345e72721addb54b79199475f4b3480963a | yes | Stream 3 pilot (added 2026-09-18): CKN UV/IR bound `L³Λ⁴ ≤ M_P²` (eq. (2), l. 78), source for `DualScaleCosmology.CKNBound` |
 
 ## Not downloaded (journal-only, cite by reference)
 

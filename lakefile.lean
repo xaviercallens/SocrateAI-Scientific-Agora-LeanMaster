@@ -51,3 +51,10 @@ lean_lib «StringTheoryFormalization» where
 
 lean_lib «DualScaleStream2» where
   roots := #[`DualScaleStream2]
+
+-- === Stream 3: micro/macro dual-scale cosmology pilot ===
+-- Separate `lean_lib` so a Stream 3 failure never turns Streams 1/2 red; imports neither.
+-- Not a default_target until it builds clean; build with `lake build DualScaleCosmology`.
+
+lean_lib «DualScaleCosmology» where
+  roots := #[`DualScaleCosmology]
