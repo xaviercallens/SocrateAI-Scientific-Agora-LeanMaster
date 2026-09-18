@@ -43,13 +43,22 @@ existing files unchanged and only the two new files unlocked); no file of the ot
 changed. Counts are those of `v3.8.1`, which adds `eta_lambda_agree_2B/4A` (CDH's two forms printed both as
 `Λ`-combinations and as eta quotients agree through `q⁹`); `v3.8.0` had 66 / 523. Total audited: **525**.
 
+**`v3.9.0` (2026-09-18): Stream 4 phase P4.4 — the arithmetic skeleton of the shadow.** `Shadow.lean`
+computes the K3 elliptic genus from theta products (`Z(τ,0) = 24`), and proves that its polar/finite
+decomposition `Ψ₁,₁Z = 24·Av⁽²⁾[(y+1)/(y−1)] + H·θ̂₁` (CDH §2.3, cleared of denominators) holds through `q⁹`
+with the independently computed `H`, and fails for polar multiplicity `23` or `25`; the shadow theta
+series `S₁⁽²⁾` equals `η³`; the twined shadow multiplicities are traces on `1 ⊕ 23`. The shadow property
+itself (completion, modularity) remains Tier L. Gates: nine-library build 3790 jobs, 0 errors;
+`DualScaleMoonshine` 76 theorems, 0 failing (axioms: `propext` only); statement lock 190 declarations in
+7 files (pre-update check: only `Shadow.lean` new). Total audited: **533**.
+
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |
 |---|---|---|---|---|---|
-| `lake build <lib>` | 3670 jobs, 0 errors | 3296 jobs, 0 errors | 61 jobs, 0 errors | built with all nine: 3789 jobs, 0 errors | built with all nine: 3789 jobs, 0 errors |
+| `lake build <lib>` | 3670 jobs, 0 errors | 3296 jobs, 0 errors | 61 jobs, 0 errors | built with all nine: 3790 jobs, 0 errors | built with all nine: 3790 jobs, 0 errors |
 | `sorry` in source | 0 | 0 | 0 | 0 (also no `admit`, `native_decide`, `axiom`) | 0 (also no `admit`, `native_decide`, `axiom`) |
-| `tools/axiom_audit.py` | 100 theorems, 0 failing | 89 theorems, 0 failing | 23 + 53 + 44 + 56 + 61 = 237 theorems, 0 failing | 31 theorems, 0 failing | 68 theorems, 0 failing (`propext` only) |
-| `tools/statement_lock.py --check` | OK (151 declarations) | locked 2026-09-17 (205 declarations) | not locked | OK (44 declarations, 7 files) | OK (153 declarations, 6 files) |
+| `tools/axiom_audit.py` | 100 theorems, 0 failing | 89 theorems, 0 failing | 23 + 53 + 44 + 56 + 61 = 237 theorems, 0 failing | 31 theorems, 0 failing | 76 theorems, 0 failing (`propext` only) |
+| `tools/statement_lock.py --check` | OK (151 declarations) | locked 2026-09-17 (205 declarations) | not locked | OK (44 declarations, 7 files) | OK (190 declarations, 7 files) |
 
 "0 failing" means: every theorem depends on no axioms beyond `propext`, `Classical.choice`, `Quot.sound`
 (no `sorryAx`, no `native_decide`/`Lean.ofReduceBool`). Total audited: 100 + 326 + 31 = 457 theorems.
@@ -399,6 +408,17 @@ package, imports `DualScaleStream2` and `StringTheoryFormalization`, and proves 
   axioms: propext
 * **`DualScaleMoonshine.ratio_fails_at_every_class`**  
   `∀ (j : Fin 26), ↑j ≠ 0 → ¬ratioTwines (List.map (fun x => 24 * x) (computedSeries.getD ↑j []))`  
+  axioms: propext
+
+### `DualScaleMoonshine.Shadow` (probe on the `v3.9.0` tree)
+* **`DualScaleMoonshine.ellipticGenus_z0`**  
+  `List.map LP.eval1 (ellipticGenus 9) = [24, 0, 0, 0, 0, 0, 0, 0, 0, 0]`  — `Z_K3(τ, 0) = 24`  
+  axioms: propext
+* **`DualScaleMoonshine.decomposition`**  
+  `(starLHS 9).eqB (starRHS 9 24 (hComputed 9)) = true`  — polar multiplicity 24, finite part the computed `H`  
+  axioms: propext
+* **`DualScaleMoonshine.shadow_coeff_eq_perm_trace`**  
+  `List.map (fun j => traceQ j ([1, 1] ++ List.replicate 24 0)) (List.range 26) = List.map (fun x => (x, 0)) chiShadow`  
   axioms: propext
 
 ## 4. How to re-confirm (10 commands)

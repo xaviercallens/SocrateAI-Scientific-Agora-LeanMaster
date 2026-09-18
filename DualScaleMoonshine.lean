@@ -7,3 +7,4 @@ import DualScaleMoonshine.Characters
 import DualScaleMoonshine.ForgerTest
 import DualScaleMoonshine.TwiningAll
 import DualScaleMoonshine.CharactersAll
+import DualScaleMoonshine.Shadow

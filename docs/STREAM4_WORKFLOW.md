@@ -1,8 +1,9 @@
 # Stream 4 Workflow — Mathieu Moonshine, Computed Rather Than Typed
 
-**Status (2026-09-18, release `v3.8.1`):** P4.1, P4.2, P4.3 (all 21 columns of CDH Table 20, i.e. all
-26 conjugacy classes), P4.3b (all classes) and P4.5 (all classes) closed; P4.4 and P4.6 open. Library
-`DualScaleMoonshine` (6 files, 153 declarations, 68 theorems, 0 failing). Rules are those of Stream 2 §2 and Stream 3 §2 (kernel is
+**Status (2026-09-18, release `v3.9.0`):** P4.1, P4.2, P4.3 (all 21 columns of CDH Table 20, i.e. all
+26 conjugacy classes), P4.3b (all classes), P4.4 (arithmetic skeleton of the shadow; mock modularity
+itself still Tier L) and P4.5 (all classes) closed; P4.6 open. Library `DualScaleMoonshine` (7 files,
+190 declarations, 76 theorems, 0 failing). Rules are those of Stream 2 §2 and Stream 3 §2 (kernel is
 the only accept gate; no citation from memory; ASCII identifiers; separate `lean_lib`).
 
 ## 1. Why this stream exists
@@ -49,7 +50,7 @@ shaped the plan; none is a result.
 | **P4.2 Compute `H⁽²⁾`** | `(−2E₂ + 48F₂⁽²⁾)/η³` as exact truncated series over ℤ; equals EOT's `A₁ … A₉` (`hComputed_eq_table`); `F₂` transcription check; Jacobi's series checked (not proved) through `q⁹` | CH eq. (3.5)–(3.6) ll. 800–813; HMN eq. (2.37) l. 736; CDH App. A.1 | ✅ `QSeries.lean` |
 | **P4.3 Twining** | `H_g = (χ_g/24)H + F_g/η³` computed for `g = 2A, 3A, 5A, 7AB`; equals CDH Table 20 through `q⁹`; divisibility by 24 proved; negative controls | CDH eq. (4.18), Table 3, (A.3), Table 14, Table 20 | ✅ all 21 columns: `2A, 3A, 5A, 7AB` in `Twining.lean`; the other 16 (eta quotients, newforms `f₁₁, f₁₄, f₁₅, f₂₃,ₐ, f₂₃,ᵦ`, prefactors `1/D`) in `TwiningAll.lean` |
 | **P4.3b Group side** | Traces of **every** class on EOT's representations (levels 1–7), from CDH Table 8 over `ℤ[b₇], ℤ[b₁₅], ℤ[b₂₃]`, equal the **computed** twined coefficients; transcription guarded by centralizer orders from column norms, the class equation and full row orthogonality | CDH Table 8; EOT (1.14)–(1.15) | ✅ `Characters.lean` (`2A, 3A`), `CharactersAll.lean` (all 26) |
-| P4.4 Shadow | the shadow `24·η³` of `H⁽²⁾`: needs a notion of mock modularity or at least of the completion; a non-vacuous arithmetic target has not been identified | CDH §4 | ⬜ open |
+| **P4.4 Shadow** | where the `24` of the shadow `24·η³` comes from: the K3 elliptic genus computed from theta functions has `Z(τ,0) = 24`; its polar/finite decomposition `Ψ₁,₁Z = 24·Av⁽²⁾[(y+1)/(y−1)] + H·θ̂₁` holds with the **computed** `H` and fails for `23`, `25`; the shadow's theta series is `η³`; twined multiplicities `χ_g` are traces on `1 ⊕ 23`. The shadow property itself (completion, modular transformation) stays Tier L | CDH (2.15)–(2.30), (2.49), (2.62), (A.2), Table 14; HMN ll. 246–270 | ✅ `Shadow.lean` (arithmetic skeleton) |
 | **P4.5 Forger's test** | does paper 7's "27720 lock" survive twining? **No** — at all 25 non-identity classes | `DualScaleValidation.UseCase2` | ✅ `ForgerTest.lean`, `CharactersAll.lean` |
 | P4.6 HMN bridge | relate HMN's double-scaled LST counting to Stream 2's `(−2)`-reflections, or show no such formal relation is available | HMN §2–3 | ⬜ open |
 
@@ -89,6 +90,32 @@ independent choices found 128 readings passing orthogonality — exactly the orb
 guard rejects a reading outside that orbit. Then `trace_eq_twined_coeff_all`: at **every** class and
 levels 1–7, the trace is a rational integer and equals the computed coefficient.
 
+**P4.4 — the `24` of the shadow, located (`v3.9.0`).** HMN state (Tier L) that `H⁽²⁾` has shadow `24·η³`
+and that `η³Ĥ` is, up to `−½`, the second helicity supertrace of the double-scaled little string theory
+at `k = 2`. `Shadow.lean` does not prove a shadow — it has no completion and no modular transformation —
+but it checks the arithmetic on which that statement rests (CDH §2.3, Zwegers' decomposition):
+
+* The K3 elliptic genus `Z = 8(f₂² + f₃² + f₄²)`, computed from the theta products, starts
+  `2y + 20 + 2y⁻¹ + q(20y² − 128y + 216 − 128y⁻¹ + 20y⁻²)` and satisfies `Z(τ,0) = 24`, with every higher
+  coefficient zero (`ellipticGenus_z0`).
+* Multiplying by `Ψ₁,₁` and clearing denominators, the decomposition into a polar part with
+  multiplicity `χ` and a finite part `H·θ̂₁` holds with `χ = 24` and `H` the series computed from
+  Cheng–Harrison's closed formula (`decomposition`). It fails with `χ = 23`, `25`
+  (`decomposition_pins_chi`), and with `H` replaced by `H_2A` (`decomposition_needs_H`). This removes
+  one former Tier L item: through `q⁹`, the `H⁽²⁾` of the closed formula *is* the mock modular form
+  extracted from the K3 elliptic genus.
+* The theta series `S₁⁽²⁾` whose multiple is the shadow equals `η³` (`shadowTheta_eq_eta3`), and the
+  twined multiplicities `χ_g` of CDH Table 14 are the traces of `g` on the permutation representation
+  `1 ⊕ 23` (`shadow_coeff_eq_perm_trace`).
+
+So two independent computations meet at `24`: the Witten index `Z(τ,0) = χ(K3)` and the multiplicity of
+the polar (massless) part. That this multiplicity is the shadow's coefficient is Zwegers' theorem
+(Tier L). The reading of the polar part as a "macro" or continuum sector and of `H` as the "micro"
+bound-state sector, with `24` as the coupling between them, is Tier C (§2, thought experiment 1).
+Atlas-lean (Meta, `lean4basesource/atlas-lean`) was searched for reusable material: it has no Jacobi
+forms, Appell–Lerch sums or mock modular forms (its only modular content is the `jacobiTheta`
+S-transform, a Mathlib re-export) and its toolchain is Lean v4.29.0, so it was not used.
+
 **P4.5 — the lock is numerology.** Paper 7's Theorem 6.1, `𝒜₂/(N_Q·𝒜₁) = 462/360 = 77/60` with product
 `27720`, holds at the identity, now from the computed series (`lock_at_identity`). Its twined version —
 the same ratio relation with each series' own coefficients — **fails at `2A`, `3A`, `5A`, `7AB`**
@@ -98,7 +125,8 @@ twining criterion gives, and it should be applied to every integer coincidence b
 is proposed. It does not rule out other relations between BPS counts and `M₂₄`.
 
 ## 5. What is not proved
-That `H⁽²⁾` is the K3 elliptic genus's mock modular form, or mock modular at all (Tier L); anything past
+That `H⁽²⁾` is mock modular at all, or that its shadow is `24·η³` (Tier L; `Shadow.lean` proves only
+the decomposition through `q⁹`); anything past
 `q⁹`; the group side at levels 8–9 (EOT give no decomposition there); that the forms `F_g` are modular
 for `Γ₀(N_g)`; that an `M₂₄`-module with these graded traces exists (Gannon,
 Tier L); Jacobi's identity (checked for ten coefficients only). Every computation is exact integer
@@ -108,7 +136,7 @@ arithmetic on finite truncations, decided by the kernel.
 Every row of §3 is ✅ with Tier A theorems (zero `sorry`/`admit`/`native_decide`/`axiom`, audited, locked)
 or ⛔ closed with a written reason; the full build, the axiom audit of all libraries and the statement
 locks pass on the release tag; `docs/VERIFIED_FOUNDATION.md` and `README.md` state the results with tiers.
-**Not yet met:** P4.4 and P4.6 are open.
+**Not yet met:** P4.6 is open.
 
 ## 7. Gates at `v3.7.0`
 Nine-library build 3787 jobs, 0 errors. `tools/axiom_audit.py DualScaleMoonshine`: 28 theorems, 0 failing
@@ -123,3 +151,11 @@ update the check reported the four `v3.7.0` files unchanged and the two new file
 153 declarations in 6 files (`v3.8.1` adds `eta_lambda_agree_2B/4A`: CDH's two printed
 `Λ`-forms equal their eta quotients through `q⁹`). Every goal closed by `decide`; the formulas and the overline search were
 prototyped in Python first. Kernel time: `TwiningAll.lean` about 45 s, `CharactersAll.lean` about 55 s.
+
+## 9. Gates at `v3.9.0`
+Nine-library build 3790 jobs, 0 errors. `tools/axiom_audit.py DualScaleMoonshine`: 76 theorems, 0 failing
+(each depends only on `propext`). Repository total 533 theorems, 0 failing. Statement lock: the
+pre-update check showed the six `v3.8.1` files unchanged and only `Shadow.lean` unlocked; after review,
+190 declarations in 7 files. `Shadow.lean` takes about 105 s of kernel time; the Laurent polynomials in
+`y` are exact (offset + coefficient list), so no truncation in `y` occurs, and the Appell–Lerch
+geometric series were checked (Python) to be unchanged when the summation ranges are doubled.
