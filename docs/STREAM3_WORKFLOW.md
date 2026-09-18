@@ -26,7 +26,8 @@ from:
    the *early-universe* string effective action, not a statement relating today's Hubble
    scale to the Planck scale.
 2. **The Cohen–Kaplan–Nelson bound** (`papers/foundations/hep-th_9803132.txt`, eq. (2),
-   l. 78): `L³Λ⁴ ≤ M_P²` for a UV cutoff `Λ` and IR box size `L`, i.e. an actual inequality
+   l. 77–78): `L³Λ⁴ ≲ L·M_P²`, i.e. `L²Λ⁴ ≲ M_P²`, for a UV cutoff `Λ` and IR box size `L`
+   (corrected 2026-09-18 from a dimensionally wrong first transcription — see §5), i.e. an actual inequality
    —not a duality— that ties a micro (UV) scale to a macro (IR/cosmological) scale, and
    which CKN themselves (l. 113–117) instantiate with `L` at "the current horizon size". If
    any published result deserves the name "micro/macro dual scale", this is it — and it
@@ -36,10 +37,9 @@ from:
 involution, its fixed point, the induced bound `a + a⁻¹ ≥ 2`, and (as of the 2026-09-18
 update below) the genuine calculus fact that the Hubble parameter `H(t) = a'(t)/a(t)` is odd
 under the duality, `H(a⁻¹) = −H(a)` — and the algebra of (2) — the bound solved for each
-variable. **What it does not do**: connect (1) and (2) into a single statement, or
-substitute `ℓ_P` and `H₀⁻¹` for the free variables and claim anything about their numeric
-relationship. That combination is exactly the open part of the Stream 3 hypothesis; see §6
-roadmap.
+variable. Later work packages (P3.3, P3.5, P3.6-partial, §4–§6) test the numbers and connect
+(1) and (2) at the pair's self-dual length; what remains open is whether the identifications
+used to connect them are physics or only algebra — see the conclusion at the end of §6.
 
 ### Update, 2026-09-18: `H → −H` upgraded from Tier L to Tier A
 The pilot originally left "the Hubble parameter is odd under duality" as Tier L, reasoning
@@ -73,7 +73,7 @@ comments and docstrings, never in a `theorem`/`lemma`/`def` name.
 ## 3. Model tiers and pipeline
 
 Same T0–T3 tiers and S0–S9 pipeline as Stream 2 (§3–§4). The pilot below was small enough
-(2 files, 8 declarations) that T0 (orchestrator) wrote and closed every goal directly rather
+(5 files, 29 declarations by 2026-09-18) that T0 (orchestrator) wrote and closed every goal directly rather
 than routing through T3→T2→T1; that is a pilot-scale shortcut, not a change to the routing
 rule for future Stream 3 work packages, which should route through the local provers first
 exactly as Stream 2 does.
@@ -88,16 +88,16 @@ under `import Mathlib`) before any proof work began.
 
 | Phase | Content | Pinned sources |
 |---|---|---|
-| **P3.1 Scale-factor duality** (pilot, this session) | `a ↦ a⁻¹` involution; unique positive fixed point `a = 1`; log-scale-factor oddness `ln(a⁻¹) = −ln a` (algebraic shadow of `H → −H`); transferred dual-scale bound `a + a⁻¹ ≥ 2` | Gasperini–Veneziano hep-th/9211021 ll. 372–373, 639–640 |
-| **P3.2 CKN micro/macro bound** (pilot, this session) | `L³Λ⁴ ≤ M_P²` solved for `L` and for `Λ` via `Real.rpow` monotonicity | Cohen–Kaplan–Nelson hep-th/9803132 eq. (2) l. 78, l. 80 |
+| **P3.1 Scale-factor duality** (pilot) | `a ↦ a⁻¹` involution; unique positive fixed point `a = 1`; `ln(a⁻¹) = −ln a`; `H(a⁻¹) = −H(a)` via `HasDerivAt` (`hubble_dual`); transferred dual-scale bound `a + a⁻¹ ≥ 2` | Gasperini–Veneziano hep-th/9211021 ll. 372–373, 639–640 |
+| **P3.2 CKN micro/macro bound** (pilot; corrected 2026-09-18) | `L³Λ⁴ ≲ L·M_P²` → `L²Λ⁴ ≤ M_P²` → `LΛ² ≤ M_P`, solved for `L` and for `Λ²` (no `rpow` needed once the exponent was right) | Cohen–Kaplan–Nelson hep-th/9803132 eq. (2) l. 77–78, l. 80 |
 | **P3.3 Numeric instantiation** (closed 2026-09-18) | used CKN's own l. 113–114 horizon-scale worked example (`Λ ~ 10⁻²·⁵ eV`) directly, rather than re-deriving `H₀⁻¹` in Planck units from scratch — avoids re-doing a unit conversion this project's own incident history warns against; compared to the CODATA Planck energy: a ≥`10^30` gap, Tier A (`CKNInstance.planckEnergy_gt_ckn_horizon_cutoff`) | CKN ll. 113–114; CODATA 2018 Planck mass energy equivalent |
 | P3.4 (open) Cosmic strings / domain walls | topological-defect route to a macro scale, as named in the hypothesis | not yet sourced — candidates: Vilenkin–Shellard review, Kibble mechanism papers |
-| P3.5 (open) Swampland distance bound as a third route | `Palti hep-th/1903.06239` (already pinned) gives `m(Δφ) ~ e^{-αΔφ}`; whether this is a third, independent micro/macro relation or a restatement of P3.1/P3.2 is open | palti_swampland_1903_06239.txt (already in repo) |
-| P3.6 (open, informed by P3.3) Statement review of whether P3.1–P3.2 can be *combined* | the actual test of the Stream 3 hypothesis: is there a single duality/bound relating `ℓ_micro` and `ℓ_macro`, or are (1) and (2) genuinely disjoint pieces of physics that only share the word "duality" in casual English? P3.3's result is evidence *against* a naive combination via the CKN route specifically — the numbers don't fit — but does not settle whether the scale-factor-duality route (P3.1) fares any better | — (this is a statement-review question, not a source-pinning one) |
+| **P3.5 Dual towers / swampland distance** (closed 2026-09-18) | eq. (2.100) itself is asymptotic with unspecified `α` — not formalizable without vacuity, so *not* formalized. Formalized instead: Palti's motivating remark (dual towers, constant product) under an explicit Tier C model `M₁M₂ = M₀²`; result: the dual-tower structure is **the same involution as P3.1** (`dualTower_sum_ge` is proved by invoking `cosmoDualScale_ge_two` unchanged), with kernel-checked negative controls showing each statement fails without the model hypothesis (`DualTower.lean`) | Ooguri–Vafa (SDC), quoted at `palti_swampland_1903_06239.txt` ll. 2156–2181 |
+| **P3.6 Combination of P3.1 and P3.2** (partially closed 2026-09-18) | under two explicit Tier C identifications (`ℓ_micro`, `ℓ_macro` a T-dual pair with `α' = ℓ_micro ℓ_macro`; CKN's `M = 1/ℓ_micro`), the CKN bound holds **iff** the UV length is at least the pair's self-dual length `√(ℓ_micro ℓ_macro)` (`SelfDualCutoff.ckn_iff_uvLength_ge_selfDual`), saturated exactly there. Numerically `√(ℓ_P · c/H₀) ≈ 47 μm` and CKN's own horizon cutoff length ≈ 62 μm lie in the same `[40, 70] μm` bracket (kernel-checked). Open: whether the two identifications are physics or only algebra | CKN l. 77–78, 113–114; Planck 2018 VI Table 2 (via astropy); CODATA 2018 |
 
 ## 5. Pilot results — measured
 
-**P3.1 + P3.2 + P3.3 (15 declarations, 3 files) — 15/15 closed, gate G3 passed.**
+**P3.1 – P3.3, P3.5, P3.6-partial (29 declarations, 5 files) — 29/29 closed, gate G3 passed.**
 
 | Declaration | Kind | Closed by |
 |---|---|---|
@@ -116,6 +116,17 @@ under `import Mathlib`) before any proof work began.
 | `CKNInstance.cknLambdaHorizon_eV` | def | T0 (added 2026-09-18), CKN's own l. 113–114 number |
 | `CKNInstance.planckEnergy_eV` | def | T0 (added 2026-09-18), CODATA 2018 |
 | `CKNInstance.planckEnergy_gt_ckn_horizon_cutoff` | theorem | T0, `norm_num` |
+| `DualTower.dualTower_invol` | theorem | T0, `field_simp` |
+| `DualTower.dualTower_sum_ge` | theorem | T0 — proved *by invoking* `ScaleFactorDuality.cosmoDualScale_ge_two` after rescaling `a = M₁/M₀` |
+| `DualTower.dualTower_min_le` | theorem | T0, `nlinarith` by contradiction |
+| `DualTower.dualTower_sum_ge_needs_product` | theorem (negative control) | T0, explicit counterexample |
+| `DualTower.dualTower_min_le_needs_product` | theorem (negative control) | T0, explicit counterexample |
+| `DualTower.expTowerPair_product` | theorem (bridge, a fact about `exp`) | T0, `Real.exp_add` |
+| `SelfDualCutoff.selfDual_pair_is_scaleFactorDual` | theorem | T0, `field_simp` + `nlinarith` |
+| `SelfDualCutoff.ckn_iff_uvLength_ge_selfDual` | theorem | T0, `div_le_div_iff₀` + `pow_le_pow_iff_left₀` |
+| `SelfDualCutoff.ckn_saturated_at_selfDual` | theorem | T0, `field_simp` |
+| `SelfDualCutoff.planckLength_m`, `hubbleRadius_m`, `hbarC_eVm` | defs | cited constants, read from `astropy` |
+| `SelfDualCutoff.selfDual_length_sq_bracket`, `cknHorizon_length_bracket` | theorems | T0, `norm_num` |
 
 ### Correction, 2026-09-18: `CKNBound.lean`'s original equation was dimensionally wrong
 While doing P3.3's numeric instantiation, re-reading CKN's eq. (2) with `pdftotext -layout`
@@ -130,11 +141,11 @@ citation-transcription-error precedent this matches in a sibling project
 (`SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal`, errors E-007/E-010).
 
 Gate G3: `lake build DualScaleCosmology` green, 0 `sorry`/`admit` (source grep);
-`tools/axiom_audit.py DualScaleCosmology`: 10 theorems, 0 failing, standard axioms only
+`tools/axiom_audit.py DualScaleCosmology`: 21 theorems, 0 failing, standard axioms only
 (`propext`, `Classical.choice`, `Quot.sound`); full 8-library rebuild
 (`DualScaleStream2 StringTheoryFormalization StringTheoryFoundation DualScaleM24Formalization
-DoubleFieldTheory DualScaleValidation Lean5Corpus DualScaleCosmology`) green, 3770 jobs — no
-regression to Streams 1–2; `tools/statement_lock.py --update` locked all 15 declarations.
+DoubleFieldTheory DualScaleValidation Lean5Corpus DualScaleCosmology`) green, 3772 jobs — no
+regression to Streams 1–2; `tools/statement_lock.py --update` locked all 29 declarations.
 
 **Tiering conclusion so far**: every work package here was small, self-contained algebra or
 arithmetic from a single pinned equation or citation — exactly the shape Stream 2 found T2
@@ -155,15 +166,15 @@ honest-progress convention as Stream 2 §5.1.
 | P3.2 | CKN bound (corrected exponent) solved for `L` and for `Λ²` | ✅ closed 2026-09-18 |
 | P3.3 | numeric instantiation at CKN's own horizon example vs. the Planck energy | ✅ closed 2026-09-18 — **result: a ≥`10³⁰` gap, not a match**; the CKN route does not support `ℓ_micro ~ ℓ_P` at `ℓ_macro ~ H₀⁻¹` |
 | P3.4 | cosmic-string / domain-wall route to a macro scale | ⬜ open — needs a pinned source |
-| P3.5 | swampland distance bound as a third route | ⬜ open — source already pinned, statement not yet drafted |
-| P3.6 | statement review: do P3.1/P3.2 combine into one micro/macro relation, or are they disjoint? | ⬜ open — P3.3 is negative evidence for the CKN half of this question, not a full answer |
+| P3.5 | dual towers behind the swampland distance conjecture | ✅ closed 2026-09-18 — **not an independent third route at the level of algebra**: the same involution as P3.1, under an explicit Tier C model; eq. (2.100) itself deliberately not formalized |
+| P3.6 | statement review: do P3.1/P3.2 combine into one micro/macro relation, or are they disjoint? | 🟡 partial 2026-09-18 — they combine at the **self-dual length** `√(ℓ_micro ℓ_macro)`, not at `ℓ_micro` (iff theorem + numeric bracket); open: whether the T-dual-pair and `M = 1/ℓ_micro` identifications are physics |
 
-Until P3.6 closes with a "yes, and here is the combined statement", the honest project-level
-claim is: *two independent, literature-anchored formal results exist that are each
-individually relevant to a micro/macro dual-scale programme; the CKN route, tested
-numerically (P3.3), does not support the specific pairing `ℓ_micro ~ ℓ_P`, `ℓ_macro ~ H₀⁻¹`
-the hypothesis names; whether the scale-factor-duality route fares differently is untested.*
-That sentence, not "formalized the dual-scale cosmology hypothesis" and not "the hypothesis
-is false" (only one of its two candidate mechanisms was tested, and only at one macro
-scale), is what belongs in any README/paper text citing this stream until P3.4–P3.6 change
-it.
+The honest project-level claim, until P3.4 and the open half of P3.6 change it: *scale-factor
+duality (P3.1) and the CKN bound (P3.2) are each formalized from pinned sources; the dual-tower
+structure behind the swampland distance conjecture is the same involution as P3.1 (P3.5). Read
+literally — `ℓ_micro ~ ℓ_P` as the micro cutoff at `ℓ_macro ~ H₀⁻¹` — the hypothesis fails the
+CKN test by ≥10³⁰ (P3.3). Read as a T-dual pair, the CKN bound holds exactly when the UV cutoff
+length is at least the pair's self-dual length `√(ℓ_P · H₀⁻¹) ≈ 47 μm`, which agrees with CKN's
+own horizon-scale cutoff (≈ 62 μm) to a factor ~1.3 (P3.6, partial). Whether that pairing is
+physics or only algebra is open.* Not "formalized the dual-scale cosmology hypothesis", and not
+"the hypothesis is false".

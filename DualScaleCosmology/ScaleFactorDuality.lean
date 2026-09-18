@@ -30,7 +30,7 @@ earlier revision of this file marked this Tier L / "not re-derived here", on the
 that a real differentiation argument was out of scope for this project's arithmetic-shadow
 style. That assumption was wrong: `SocrateAI-Scientific-Agora-K3-DarkMatter`'s
 `lean4_formal_proofs/Agora/Discovery/HubbleTension.lean` (sibling project, confirmed
-sorry-free, independently re-verified per that repo's own `README.md` correction log)
+no unfinished proofs, independently re-verified per that repo's own `README.md` correction log)
 already proves harder Mathlib `HasDerivAt`/chain-rule calculus in this same physics style
 (an Early Dark Energy potential's derivative); porting that file's technique here —
 `HasDerivAt.inv` composed with `DifferentiableAt.hasDerivAt` — closes `hubble_dual` in four
@@ -76,13 +76,10 @@ theorem scaleFactorDual_fixed_iff {a : ℝ} (ha : 0 < a) :
     nlinarith [sq_nonneg (a - 1)]
   · rintro rfl; simp [scaleFactorDual]
 
-/-- **The log-scale-factor is odd under scale-factor duality**: `ln(a⁻¹) = −ln a`. This is
-the algebraic shadow of "`H` is odd under duality" (Gasperini–Veneziano l. 372): the Hubble
-parameter is `H = d(ln a)/dt`, and differentiating an odd function's argument transformation
-carries the sign; the differential statement about `H` itself is Tier L (not re-derived
-here, exactly as `TraceBound`'s module comment treats the un-formalized derivative content
-behind `R_eff`), but its purely algebraic content — that the log-radius itself flips sign —
-is Tier A. -/
+/-- **The log-scale-factor is odd under scale-factor duality**: `ln(a⁻¹) = −ln a` — the
+algebraic counterpart of "`H` is odd under duality" (Gasperini–Veneziano l. 372), since
+`H = d(ln a)/dt`. The differential statement about `H` itself is proved separately, as
+`hubble_dual` below. -/
 theorem log_scaleFactorDual {a : ℝ} (_ha : 0 < a) :
     Real.log (scaleFactorDual a) = -Real.log a := by
   simp [scaleFactorDual, Real.log_inv]
