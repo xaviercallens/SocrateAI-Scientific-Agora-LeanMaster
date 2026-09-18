@@ -133,7 +133,15 @@ quartic's form. `DualScaleDyons` 49 theorems, 0 failing. Total audited: **626**.
 massless gauge bosons — circle at the self-dual radius 2, T² at `(i, i)` 4 + 4, T² at `(ω, ω)` 6 + 6 (completeness by a
 sum-of-squares bound); the `(ω, ω)` roots span `A₂`, isometric to `T(X₃)` of the most attractive K3. With moduli
 trapping (hep-th/0403001, Tier L) this selects `(ω, ω)` for T². `DualScaleDyons` 56 theorems, 0 failing. Total
-audited: **633**. `v3.16.1`: two C-B
+audited: **633**.
+
+**`v3.20.0` (2026-09-18): Stream 8 E3.** `DualScaleDyons/KummerE3.lean` (7 theorems): the Kummer glue code on `𝔽₂⁴`
+(30 affine hyperplanes, rank 5, weights `0/8/16` with multiplicities `1/30/1`, `disc Π = 2⁶`); **every** root of the
+Kummer lattice is one of the 32 vectors `±E_a` (`A₁¹⁶`, proof for all integer vectors, not a search); the extended
+Golay code built from quadratic residues mod 23 (rank 12, weights `1/759/2576/759/1`); for an explicit octad, the 32
+Golay words disjoint from it are, through an explicit bijection of the complement with `𝔽₂⁴`, exactly the Kummer
+glue code — the Kummer split `24 = 8 + 16` is the octad split (Taormina–Wendland 1107.3834, Tier L for the lattice
+embedding). `DualScaleDyons` 63 theorems, 0 failing. Total audited: **640**. `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
