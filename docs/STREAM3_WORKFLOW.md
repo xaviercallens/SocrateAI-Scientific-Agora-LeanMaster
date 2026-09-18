@@ -33,11 +33,26 @@ from:
    predates this project's hypothesis by 28 years.
 
 **What this pilot formalizes** (Tier A, `DualScaleCosmology/`): the algebra of (1) — the
-involution, its fixed point, the induced bound `a + a⁻¹ ≥ 2` — and the algebra of (2) — the
-bound solved for each variable. **What it does not do**: connect (1) and (2) into a single
-statement, or substitute `ℓ_P` and `H₀⁻¹` for the free variables and claim anything about
-their numeric relationship. That combination is exactly the open part of the Stream 3
-hypothesis; see §6 roadmap.
+involution, its fixed point, the induced bound `a + a⁻¹ ≥ 2`, and (as of the 2026-09-18
+update below) the genuine calculus fact that the Hubble parameter `H(t) = a'(t)/a(t)` is odd
+under the duality, `H(a⁻¹) = −H(a)` — and the algebra of (2) — the bound solved for each
+variable. **What it does not do**: connect (1) and (2) into a single statement, or
+substitute `ℓ_P` and `H₀⁻¹` for the free variables and claim anything about their numeric
+relationship. That combination is exactly the open part of the Stream 3 hypothesis; see §6
+roadmap.
+
+### Update, 2026-09-18: `H → −H` upgraded from Tier L to Tier A
+The pilot originally left "the Hubble parameter is odd under duality" as Tier L, reasoning
+that a real differentiation argument was out of scope for this project's usual
+arithmetic-shadow style. That reasoning was checked against confirmed, sorry-free proof
+work already sitting in a sibling project on the same disk —
+`SocrateAI-Scientific-Agora-K3-DarkMatter/lean4_formal_proofs/Agora/Discovery/HubbleTension.lean`
+— which proves a harder Mathlib `HasDerivAt`/chain-rule calculation in the same physics
+style (an Early Dark Energy potential's derivative). That file was recompiled from scratch
+against *this* project's own Mathlib v4.33.1 pin (not trusted from its own v4.33.0-rc1 pin)
+before anything was ported, confirming the technique transfers. `hubble_dual` in
+`ScaleFactorDuality.lean` now proves `H(a⁻¹) = −H(a)` directly, in four lines
+(`HasDerivAt.inv` + `field_simp`), closing the gap the original pilot had left open.
 
 ## 2. Hard constraints
 
@@ -82,7 +97,7 @@ under `import Mathlib`) before any proof work began.
 
 ## 5. Pilot results — measured
 
-**P3.1 + P3.2 (8 declarations, 2 files) — 8/8 closed, gate G3 passed.**
+**P3.1 + P3.2 (10 declarations, 2 files) — 10/10 closed, gate G3 passed.**
 
 | Declaration | Kind | Closed by |
 |---|---|---|
@@ -90,6 +105,8 @@ under `import Mathlib`) before any proof work began.
 | `ScaleFactorDuality.scaleFactorDual_invol` | theorem | T0, `simp [inv_inv]` |
 | `ScaleFactorDuality.scaleFactorDual_fixed_iff` | theorem | T0, `field_simp` + `nlinarith` |
 | `ScaleFactorDuality.log_scaleFactorDual` | theorem | T0, `simp [Real.log_inv]` |
+| `ScaleFactorDuality.hubble` | def | T0 (added 2026-09-18) |
+| `ScaleFactorDuality.hubble_dual` | theorem | T0 (added 2026-09-18), `HasDerivAt.inv` + `field_simp`; technique confirmed working under this project's Mathlib pin by first recompiling `SocrateAI-Scientific-Agora-K3-DarkMatter`'s `HubbleTension.lean` standalone |
 | `ScaleFactorDuality.cosmoDualScale` | def | T0 |
 | `ScaleFactorDuality.cosmoDualScale_ge_two` | theorem | T0, same algebraic identity as Stream 2 `TraceBound.circle_effective_scale_ge_two` |
 | `CKNBound.ckn_L_le` | theorem | T0, `Real.rpow_le_rpow` + `Real.rpow_mul`; needed 4 interactive fixes (`le_div_iff₀` argument shape, `Real.rpow_natCast` normal form, final `inv_pow` mismatch) before compiling — kept here as a record that this is genuinely T1-level work, not mechanical |

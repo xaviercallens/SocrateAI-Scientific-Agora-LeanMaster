@@ -24,22 +24,30 @@ now applied to the scale factor `a(t)` instead of a compactification radius.
 Tier A: `a ↦ a⁻¹` is an involution on `ℝ \ {0}` (`scaleFactorDual_invol`); its unique
 positive fixed point is `a = 1`, matching the self-dual condition above at `t = 0`
 (`scaleFactorDual_fixed_iff`); the log-scale-factor `x = ln a` is odd under the duality
-(`log_scaleFactorDual`, the algebraic shadow of "`H` is odd", since `H = d(ln a)/dt` and
-differentiating an odd function gives an odd-in-the-transformed-variable statement — the
-differential-geometric statement about `H` itself is Tier L, not re-derived here, exactly as
-the module comment on `DualScaleStream2.DualScale.TraceBound` treats `R_eff`); and the same
-"dual scale ≥ minimum" bound already proved for the torus radius
-(`TraceBound.circle_effective_scale_ge_two`) transfers verbatim to `a + a⁻¹`
-(`cosmoDualScale_ge_two`), since the underlying algebra is identical.
+(`log_scaleFactorDual`); **the Hubble parameter itself is odd under scale-factor duality**,
+`H(a⁻¹) = −H(a)` pointwise in `t` (`hubble_dual`), literally Gasperini–Veneziano l. 372 — an
+earlier revision of this file marked this Tier L / "not re-derived here", on the assumption
+that a real differentiation argument was out of scope for this project's arithmetic-shadow
+style. That assumption was wrong: `SocrateAI-Scientific-Agora-K3-DarkMatter`'s
+`lean4_formal_proofs/Agora/Discovery/HubbleTension.lean` (sibling project, confirmed
+sorry-free, independently re-verified per that repo's own `README.md` correction log)
+already proves harder Mathlib `HasDerivAt`/chain-rule calculus in this same physics style
+(an Early Dark Energy potential's derivative); porting that file's technique here —
+`HasDerivAt.inv` composed with `DifferentiableAt.hasDerivAt` — closes `hubble_dual` in four
+lines. (Confirmed independently: that sibling file was recompiled from scratch against
+*this* project's own Mathlib v4.33.1 pin before anything was ported, not trusted from its
+own toolchain pin of v4.33.0-rc1.) And the same "dual scale ≥ minimum" bound already proved
+for the torus radius (`TraceBound.circle_effective_scale_ge_two`) transfers verbatim to
+`a + a⁻¹` (`cosmoDualScale_ge_two`), since the underlying algebra is identical.
 
 **Not proved, and not claimed as anything beyond Tier C:** that `a + a⁻¹` (or any duality
 invariant built from it) is a physically preferred measure relating `ℓ_micro` and
-`ℓ_macro`; that the Hubble parameter itself (as opposed to its algebraic shadow `ln a`) is
-odd under any transformation proved here; and, above all, that this file says anything about
-`H₀` or the present cosmological horizon — that identification is exactly the Stream 3
-hypothesis under study, stated as Tier C in `docs/STREAM3_WORKFLOW.md`, not asserted here.
+`ℓ_macro`; and, above all, that this file says anything about `H₀` or the present
+cosmological horizon — that identification is exactly the Stream 3 hypothesis under study,
+stated as Tier C in `docs/STREAM3_WORKFLOW.md`, not asserted here.
 -/
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import Mathlib.Analysis.Calculus.Deriv.Inv
 
 namespace DualScaleCosmology.ScaleFactorDuality
 
@@ -78,6 +86,23 @@ is Tier A. -/
 theorem log_scaleFactorDual {a : ℝ} (_ha : 0 < a) :
     Real.log (scaleFactorDual a) = -Real.log a := by
   simp [scaleFactorDual, Real.log_inv]
+
+/-- Hubble parameter of a scale-factor trajectory `a : ℝ → ℝ`, `H(t) = a'(t)/a(t)`. -/
+noncomputable def hubble (a : ℝ → ℝ) (t : ℝ) : ℝ := deriv a t / a t
+
+/-- **The Hubble parameter is odd under scale-factor duality**: applying `scaleFactorDual`
+pointwise to a trajectory `a` negates its Hubble parameter, `H(a⁻¹) = −H(a)`
+(Gasperini–Veneziano l. 372, "the Hubble parameter is odd under scale factor duality,
+`H → −H`"). Proved via `HasDerivAt.inv`, following the differentiation technique confirmed
+working in this project's own Mathlib pin by `SocrateAI-Scientific-Agora-K3-DarkMatter`'s
+`Agora.Discovery.HubbleTension` (see the module docstring above). -/
+theorem hubble_dual (a : ℝ → ℝ) (t : ℝ) (ha : a t ≠ 0) (hd : DifferentiableAt ℝ a t) :
+    hubble (fun s => scaleFactorDual (a s)) t = - hubble a t := by
+  unfold hubble scaleFactorDual
+  have h1 : HasDerivAt a (deriv a t) t := hd.hasDerivAt
+  have h2 : HasDerivAt (fun s => (a s)⁻¹) (-(deriv a t) / (a t) ^ 2) t := h1.inv ha
+  rw [h2.deriv]
+  field_simp
 
 /-- The dual-scale invariant built from the log-scale-factor's duality partner
 `x = ln a` and its own image under negation, in the same algebraic shape as Stream 2's
