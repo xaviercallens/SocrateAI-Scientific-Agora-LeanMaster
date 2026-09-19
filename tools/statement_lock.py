@@ -33,7 +33,10 @@ from pathlib import Path
 ROOT = Path(os.environ.get("LEAN_PROJECT_ROOT") or Path(__file__).resolve().parent.parent).resolve()
 LOCK = ROOT / "docs" / "statement_lock.json"
 HEAD = re.compile(
-    r"^(?P<kind>theorem|lemma|def|abbrev|structure|noncomputable def)\s+(?P<name>[A-Za-z0-9_'.]+)",
+    # The attribute prefix is outside the named groups, so every head that matched before 2026-09-19 hashes the
+    # same text; `@[simp] theorem` and `inductive` heads are newly locked (they were silently skipped).
+    r"^(?:@\[[^\]]*\]\s*)*(?P<kind>theorem|lemma|def|abbrev|structure|inductive|noncomputable def)"
+    r"\s+(?P<name>[A-Za-z0-9_'.]+)",
     re.MULTILINE,
 )
 NEXT = re.compile(

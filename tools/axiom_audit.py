@@ -23,7 +23,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 # Reusable from any Lake project: set LEAN_PROJECT_ROOT=/path/to/project (default: this repository).
 ROOT = Path(os.environ.get("LEAN_PROJECT_ROOT") or Path(__file__).resolve().parent.parent).resolve()
 STANDARD = {"propext", "Classical.choice", "Quot.sound"}
-DECL = re.compile(r"^(?:theorem|lemma)\s+([A-Za-z0-9_'.]+)", re.MULTILINE)
+# Attribute-prefixed heads (`@[simp] theorem ...`) and `protected` ones are theorems too; before 2026-09-19 the
+# pattern required `theorem` at column 0 and silently skipped two `@[simp]` theorems of DualScaleStream2.
+DECL = re.compile(r"^(?:@\[[^\]]*\]\s*)*(?:protected\s+)?(?:theorem|lemma)\s+([A-Za-z0-9_'.]+)", re.MULTILINE)
 NAMESPACE = re.compile(r"^(namespace|end)\s+([A-Za-z0-9_.]+)\s*$", re.MULTILINE)
 
 

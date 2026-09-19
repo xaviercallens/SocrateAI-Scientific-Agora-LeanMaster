@@ -1,11 +1,12 @@
 # Stream 8 — Which K3? (convergence, thought experiments, open questions)
 
-**Status (2026-09-19, release `v3.26.0`):** eight Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
+**Status (2026-09-19, release `v3.27.0`):** nine Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
 `DualScaleDyons/SelfDualT2.lean`, 7 theorems — E2, §5; `DualScaleDyons/KummerE3.lean`, 7 theorems — E3, §6;
 `DualScaleDyons/ForgerE4.lean`, 6 theorems — E4, §7; `DualScaleDyons/KummerD4.lean`, 8 theorems — G2, §9;
 `DualScaleDyons/KummerOmegaE4.lean`, 6 theorems — E4 on the `D = 12` surface, §10;
 `DualScaleDyons/AttractorCharges.lean`, 7 theorems — P8.2 and G3, §11; `DualScaleDyons/K3Enhancement.lean` with
-`K3EnhancementSO40.lean` and `K3EnhancementSO44.lean`, 9 theorems — P8.4c, §12); the rest is a research plan.
+`K3EnhancementSO40.lean` and `K3EnhancementSO44.lean`, 9 theorems — P8.4c, §12; `DualScaleDyons/FormAutomorphs.lean`,
+7 theorems — open question 2, §13); the rest is a research plan.
 Thought experiments are **Tier C** and each is tied to a formalizable target.
 
 ## 0. The question, made precise
@@ -71,9 +72,9 @@ the twined genera of its elements are among the 26 computed ones.
 1. **Is `D` forced?** Within K3 × T² black holes, no: `D` is set by charges. For the *vacuum*, nothing in the
    programme fixes a point of moduli space. E2 is the best candidate principle ("maximal self-duality"), but it
    must be derived, not chosen — the same test `α'` failed.
-2. **What does the `6`/`8` correction mean?** The immortal index uses `H` (weighted), Moore's count uses `N`
-   (unweighted). Why the black-hole index weights self-dual attractor points by their automorphisms is a precise,
-   probably known, question — to be checked against DMZ §9–10 and Moore §3 before any claim.
+2. **What does the `6`/`8` correction mean?** *Answered at the level of arithmetic (§13):* `12H(D)` is the
+   automorphism-weighted count `Σ 24/|Aut(Q)|`, `N(D)` the unweighted one, and `|Aut(Q)| > 2` only on the two
+   self-dual rays. Why the index is orbifold-weighted (mock modularity, DMZ) stays Tier L.
 3. **Chirality.** None of this cures `N = 4` non-chirality (Stream 7). A realistic model needs a different
    geometry (K3-fibred CY3; `docs/COMMUNITY_ROADMAP.md` P-1).
 
@@ -427,4 +428,32 @@ trapped torus, E2's `T²` and §10's `T₁₉₂` surface are one geometry.
 - Negative control: five mutations caught (a basis without the half-integer glue vector, roots shifted into `Π`, a
   wrong `E₈` root count in the table, and, after the certificate rewrite, a wrong sign in a certificate and a shifted
   root block).
+
+## 13. Open question 2 — the `6`/`8` correction is an orbifold weight (`v3.27.0`, `DualScaleDyons/FormAutomorphs.lean`)
+
+**The question.** `moore_vs_hurwitz` (§1) gave `12·N(D) = 12·H(D) + 6·[D = 4f²] + 8·[D = 3f²]`. Moore's count of
+attractor backgrounds and the class-number coefficient of the immortal index differ only on the rays of `τ = i` and
+`τ = ω`. What is the difference?
+
+**The answer (Tier A).**
+- `reduced_value_bound`, `automorph_bound`: an automorph `(p, q; r, s)` of a reduced form has `|p|, |r| ≤ 1` and
+  `a(q² + s²) ≤ 2c`.
+- `automorphs_complete`: every determinant-1 automorph lies in the finite list `autList`, so counting the list
+  counts the whole group.
+- `automorph_table`: for every reduced form with `3 ≤ D ≤ 100`, `|Aut(Q)| = 6` for `a(1, 1, 1)`, `4` for
+  `a(1, 0, 1)`, and `2` otherwise.
+- `mass_formula`: for `3 ≤ D ≤ 100`, `12·H(D) = Σ_Q 24/|Aut(Q)|`.
+
+So `N` counts each class once, and `H` counts it with weight `2/|Aut(Q)|`, i.e. `1/|PSL(2, ℤ)` stabiliser of `τ_Q|`.
+The two self-dual rays are exactly the orbifold points of `SL(2, ℤ)\ℍ`: weight `1/2` at `i`, `1/3` at `ω`.
+
+**Reading (Tier C).** The immortal index counts attractor backgrounds as points of the orbifold `SL(2, ℤ)\ℍ`, with
+their orbifold weights; Moore's `N` counts points of the coarse moduli space. The smallest black hole (§11) sits
+at the order-6 point, and the `−648 H(3) = −216` part of its coefficient `C(3) = 528` is that orbifold weight. This
+is a consequence of G1 (only duality invariants are physical): the index sees the self-dual points as orbifold
+points, not as ordinary ones. Why the index is orbifold-weighted (the mock modularity of `ψ₁^F`, DMZ) is Tier L
+and is not formalized.
+
+**Scope.** Checked for `D ≤ 100` (the completeness bound is general; the table is finite). Negative control: two
+mutations caught (dropping the cross-term condition, a wrong order at `a(1, 1, 1)`).
 

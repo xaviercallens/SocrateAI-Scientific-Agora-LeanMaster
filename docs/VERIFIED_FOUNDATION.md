@@ -229,7 +229,18 @@ because the kernel needs about 11 and 14 GB for them).
 Tier L inputs (pinned): Aspinwall ll. 2455–2485, 2551–2559, 2838–2858; GHV ll. 370–386; Huybrechts ll. 12744–12768,
 12906–12910. That the 760/924 roots are pairwise distinct is by construction, not kernel-checked (`Nodup` exceeded
 14 GB). Negative control: five mutations caught. `DualScaleDyons` 99 theorems, total **684**, 0 failing (other nine
-libraries unchanged). `v3.16.1`: two C-B
+libraries unchanged).
+
+**`v3.27.0` (2026-09-19): Stream 8 open question 2, and a gate fix.** `DualScaleDyons/FormAutomorphs.lean`
+(7 theorems): every determinant-1 automorph of a reduced binary form lies in an explicit finite list (a general
+bound, `automorphs_complete`); for `D ≤ 100`, `|Aut(Q)|` is 6 on `a(1,1,1)`, 4 on `a(1,0,1)`, 2 otherwise, and
+`12H(D) = Σ 24/|Aut(Q)|`. The `6`/`8` difference between Moore's `N` and Hurwitz's `H` is the orbifold weight of the
+self-dual points. **Gate fix:** `tools/axiom_audit.py` and `tools/statement_lock.py` matched declaration heads only
+at column 0, so attribute-prefixed theorems were never audited or locked. Found by the `leanstack` inventory
+(`docs/LEAN_SCALE_ARCHITECTURE.md` §11). The two affected theorems (`DualScaleStream2.Lattice.Signature.add_pos`,
+`add_neg`, both `@[simp]`) are now audited (OK, no axioms) and locked, as are three `inductive` types; no existing
+lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `DualScaleDyons` 106, total **693**,
+0 failing (other eight libraries unchanged). Negative control: two mutations caught. `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
