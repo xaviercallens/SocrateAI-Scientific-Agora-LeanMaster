@@ -12,7 +12,7 @@ Two directives arrived for this repository and for the data/phenomenology reposi
 | "Create `MinimalBlackHole.lean`: charges `p² = q² = 2`, `p·q = 1`, Moore discriminant `D = −3`, attractor root `τ = ω` in the upper half plane, docstring pointing at `X₃ × E_ω`, `T(A) = A₂`" | **Done** in `DualScaleDyons/AttractorCharges.lean` (v3.25.0): `smallest_black_hole` (`D = −3`, `T_S = A₂`), `attractor_tau` (the root of Moore (4.5) with `Im τ > 0`, for every `D < 0`), `tau_minimal` (`τ = (1+i√3)/2 = ω + 1 ≅ ω`; `D = −4` gives `i`), plus `every_form_is_charged`, `discriminant_gap`, `smallest_black_hole_index`. §11 of `docs/STREAM8_WHICH_K3.md` is the write-up. A second file would duplicate locked statements. |
 | "Push tags `v3.24.0`, `v3.25.0`" | **Done** (and `v3.26.0`, `v3.27.0`, `v3.28.0`; releases published). |
 | "`audit/k3t2_rigidity_v2/REPORT.md`", branch `loop/k3t2-rigidity`, `.claude/workflows/k3t2-rigidity-loop-v3.js` (`6e09699`) | **Not in this repository** — no `audit/`, no such branch, no such workflow. They belong to the sibling (data/phenomenology) repository or to another working copy. |
-| TDA / DESI / Eöt-Wash verdicts, `PRE_REGISTRATION.md` addendum, `reverse-to-zero` report, TDA Mapper lens | **Other repository.** LeanMaster holds no data pipeline. The Stream 6–7 verdicts recorded here are `docs/STREAM6_PREDICTION_P1.md`, `docs/STREAM7_*`; any new verdict must be entered there, not restated from memory. |
+| TDA / DESI / Eöt-Wash verdicts, `PRE_REGISTRATION.md` addendum, `reverse-to-zero` report, TDA Mapper lens, `loop/tda-simple` bug fixes | **Other repository (LeanFlow).** LeanMaster holds no data pipeline. What LeanMaster can hand that search, and what it must not be used to claim, is `docs/CMB_CRYSTALLOGRAPHY_SPEC.md`. **Label collision:** here P1 is the ≈ 47 μm extra dimension and it is *excluded*; the LeanFlow directive calls that P2 and uses P1 for a dark-energy fit. Fix one numbering before writing any addendum. |
 
 ## 2. Mis-specified as given — restate before formalizing
 
@@ -36,8 +36,12 @@ Two problems.
   `≤ 766 < 924`; and if in addition the `T²` factor sits at `(ω, ω)` its contribution is exactly 6. Half of this is
   `product_points_not_maximal`; the rest is the same DP table plus the `SelfDualT2` root count.
 * *(B, harder)* No positive 6-plane whose orthogonal complement has 924 roots contains a rank-2 sublattice
-  isometric to `A₂` **primitively with the right signature split**. Note `D₆ ⊃ A₂` primitively (checked
-  numerically), so the honest version of this must quantify over the *split*, not merely over `A₂ ⊂ Π`.
+  isometric to `A₂` **primitively with the right signature split**. Note `D₆ ⊃ A₂` primitively, so the honest
+  version must quantify over the *split*, not merely over `A₂ ⊂ Π`. **Drafted**:
+  `DualScaleDyons/TrappingObstruction.lean` proves the positive half — both smallest-black-hole charge lattices
+  (`A₂`, `D = −3`, and `A₁ ⊕ A₁`, `D = −4`) embed primitively in the `SO(44)` plane lattice `D₆` — so the proposed
+  no-go is false as phrased, and restates the true content (`766 < 924`). Not yet compiled (the machine is busy
+  with the toolchain migration).
 
 Until one of them is proved, the "frustration" between the IR trapping point and the UV attractor stays Tier C and
 lives in §12 and §14 of `docs/STREAM8_WHICH_K3.md`.
@@ -50,6 +54,7 @@ lives in §12 and §14 of `docs/STREAM8_WHICH_K3.md`.
 | D2 | **Tadpole uniqueness** | v3.21.0 corrected the `T²/ℤ₂` orientifold budget after a peer note. Uniqueness of `16 × (+1) + 4 × (−4) = 0` under the geometric constraints is finite arithmetic. | Extend `StringTheoryFoundation/StringTheory/TadpoleCancellation.lean`. |
 | D3 | **Stream 8 closure** | §14 (GTVW) is the last open piece; then Stream 8 is complete and can be written up. | Compile `GTVWPoint.lean`, gates, release. |
 | D4 | **`M₂₄` realization of `T₁₉₂` at `D = 12`** | §10 left it open: the group is abstractly `T₁₉₂`, but its embedding through TW's map `Θ` is unverified. | Follow TW §3–4 with the octad census tooling. |
+| D4b | **Hand-off to the CMB search** | LeanFlow is reorienting its TDA to discrete `D₄`/`T₁₉₂` anisotropy. | `docs/CMB_CRYSTALLOGRAPHY_SPEC.md`: the verified objects, the missing derivation, and the freeze-first protocol. |
 | D5 | **Migrate the other projects to `v4.34.0-rc2`** | Cross-project integration (user's request). LeanMaster's own migration is on `toolchain/v4.34.0-rc2`. | After the LeanMaster merge: same four steps per project, one module at a time. |
 
 ## 4. Workflows
