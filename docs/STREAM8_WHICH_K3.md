@@ -235,9 +235,17 @@ most light states in rank 4 is `D₄`, with 24 roots.
   Consistency with the `T²` factor picks `ω`, and that consistency is an assumption.
 - *Caveats:* the ESP carries a `B`-field; orbifold CFT points have `B = ½` and no type II enhancement (Aspinwall
   ll. 2540–2544); vector-multiplet couplings are blind to the K3 point (Henningson–Moore, §8).
-- *Target (Tier A):* exhibit two integral 2-forms on the Hurwitz lattice, in the span of the Kähler forms `ω_v`,
-  `v ⊥ (1,1,1)`, with Gram `[[2,1],[1,2]]` and spanning a primitive sublattice. This is finite rational arithmetic,
-  suitable for `decide`.
+- **Done, Tier A (`v3.23.0`, `DualScaleDyons/KummerD4.lean`):**
+  - `trapping_rank_table`: `D₄` is the unique rank-4 maximum.
+  - `hurwitz_units`: the Hurwitz lattice has 24 units.
+  - `omega_symmetry`: `ω` is an order-3 lattice symmetry commuting with `u`.
+  - `sigma_plane`: the holomorphic plane is orthogonal to the Kähler direction in `Σ`.
+  - `transcendental_omega` and `transcendental_omega_saturated`: `T(A) = ℤt₁ ⊕ ℤt₂ ≅ A₂`, proved for every
+    integral 2-form in the plane.
+  - `kummer_d4_omega`: `A₂(2)`, `D = −12`.
+  - `sanity_standard_structure`: reproduces TW's `diag(4,4)` for `ℤ⁴` and `D₄` with `u = i`.
+  - Remaining Tier L inputs: the hyperkähler `S²` and the `Σ = Ω ⊕ J` split (Aspinwall ll. 474–482, 864–874),
+    and GPR's maximal enhancement (ll. 1843–1847).
 
 **G3 — The smallest black hole.** Drop dyons of ever smaller charge into K3 × T². The horizon area grows like `√|D|`
 (Moore ll. 1150–1160), and `|D| ≥ 3` for every definite binary form, with equality only for the class `(1,1,1)`

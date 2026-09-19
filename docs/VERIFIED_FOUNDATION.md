@@ -169,7 +169,21 @@ translations are explicit Golay automorphisms of class `2A`. They fix the octad 
 `𝔽₂⁴`. An explicit element of order 14 in the stabilizer of an octad and one of its points (Taormina–Wendland's
 `(ℤ₂)⁴⋊A₇`) has only four orbits: by Mukai's theorem it is not a symmetry of any single K3. Group orders (322560,
 40320) and the class census come from `tools/e4_octad_census.py`, a computation that is not kernel-checked.
-`DualScaleDyons` 68 theorems, 0 failing. Total audited: **653**. `v3.22.1`: `frame_classes_up_to_pairs` (the 26 Frame shapes take 21 values; the coincidences are exactly the five A/B pairs); `M₂₄ = Aut(Golay)` and the conjugacy with TW's group pinned (Huybrechts ll. 14623–14633, TW l. 2500). All ten libraries re-audited: `DualScaleDyons` 69, total **654**, 0 failing. `v3.16.1`: two C-B
+`DualScaleDyons` 68 theorems, 0 failing. Total audited: **653**. `v3.22.1`: `frame_classes_up_to_pairs` (the 26 Frame shapes take 21 values; the coincidences are exactly the five A/B pairs); `M₂₄ = Aut(Golay)` and the conjugacy with TW's group pinned (Huybrechts ll. 14623–14633, TW l. 2500). All ten libraries re-audited: `DualScaleDyons` 69, total **654**, 0 failing.
+
+**`v3.23.0` (2026-09-19): Stream 8 G2, trapping in four dimensions.** `DualScaleDyons/KummerD4.lean` (8 theorems).
+- In rank `d ≤ 8`, the largest ADE root system has 2, 6, 12, 24, 40, 72, 126, 240 roots. In rank 4 this is `D₄`
+  alone.
+- The Hurwitz lattice has 24 units, and `ω = (−1+i+j+k)/2` is an order-3 lattice symmetry commuting with the complex
+  structure `u = (i+j+k)/√3`.
+- On that torus the holomorphic plane is orthogonal to the Kähler direction inside the round 3-plane `Σ`.
+- The integral forms in it are exactly `ℤt₁ ⊕ ℤt₂` (a saturation proof over all integer 2-forms), with Gram
+  `[[2,1],[1,2]] = A₂ = T(X₃)`.
+- The Kummer surface over it has `A₂(2)`, `D = −12`.
+- Sanity check: the same construction with `u = i` reproduces TW's `diag(4,4)` for `ℤ⁴` and for `D₄`.
+
+Tier L inputs (pinned): GPR ll. 1843–1847, 2510–2514; Aspinwall ll. 474–482, 864–874, 1866–1868. `DualScaleDyons`
+77 theorems, total **662**, 0 failing. `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 

@@ -11,3 +11,4 @@ import DualScaleDyons.WhichK3
 import DualScaleDyons.SelfDualT2
 import DualScaleDyons.KummerE3
 import DualScaleDyons.ForgerE4
+import DualScaleDyons.KummerD4
