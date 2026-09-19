@@ -141,7 +141,25 @@ Kummer lattice is one of the 32 vectors `±E_a` (`A₁¹⁶`, proof for all inte
 Golay code built from quadratic residues mod 23 (rank 12, weights `1/759/2576/759/1`); for an explicit octad, the 32
 Golay words disjoint from it are, through an explicit bijection of the complement with `𝔽₂⁴`, exactly the Kummer
 glue code — the Kummer split `24 = 8 + 16` is the octad split (Taormina–Wendland 1107.3834, Tier L for the lattice
-embedding). `DualScaleDyons` 63 theorems, 0 failing. Total audited: **640**. `v3.16.1`: two C-B
+embedding). `DualScaleDyons` 63 theorems, 0 failing. Total audited: **640**.
+
+**`v3.21.0` (2026-09-19): tadpole correction (review correction, documented).** A literature check from the
+DualScaleSimulator project (recorded with a per-claim validation in
+`docs/reviews/2026-09-18_dualscalesimulator_orientifold_note.md`) was verified against newly pinned sources
+(Tripathy–Trivedi hep-th/0301139, Sen hep-th/9605150, Gimon–Polchinski hep-th/9601038). The file
+`StringTheoryFoundation/StringTheory/TadpoleCancellation.lean` had put 16 O7-planes at the fixed points of
+`T⁴/ℤ₂`, a combination that matches no orientifold, and gave the D3 target as `χ(K3)/24 = 1`. It now states the
+`K3 × T²/ℤ₂` configuration (4 O7 at `−4`, 16 D7 at `+1`), Polchinski's table for `3 ≤ p ≤ 9`, and the D3 target
+`χ(K3 × K3)/24 = 24 = 4·2 + 16·1`. Removed: `total_O7_charge_is_minus_64`, `total_D7_charge_is_64`,
+`d3_tadpole_target_is_one`; the statements of `d7_tadpole_cancellation` and of its re-export
+`flux_tadpole_quantization_exact` are unchanged in form, with new values underneath. `KummerTadpole.lean` and
+`UseCase3_FrontierTriad.lean` keep their statements (a legitimate ×4 rescaling, ratio `−4`, new `o7_d7_ratio`);
+their docstrings no longer cite Gimon–Polchinski (3.12), which is a Chan–Paton projection, not a charge. The three
+files are now in the statement lock (they were not before). `StringTheoryFoundation` 63 theorems,
+`DualScaleM24Formalization` 62, total audited **648**, 0 failing. Book chapters 25 and 36 and paper 3 (wording
+only) updated. `tools/check_book_lean_names.py` had a second latent gap: it accepted names from the stale
+dependency dump even after they were removed from the sources; a negative control now shows removed names are
+caught. `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 

@@ -1,0 +1,1124 @@
+                                                                                               NSF-ITP-96-01
+                                                                                               hep-th/9601038
+
+
+
+                                     Consistency Conditions for Orientifolds and D-Manifolds
+
+                                                                   Eric G. Gimon
+arXiv:hep-th/9601038v3 27 Jun 1996
+
+
+
+
+                                                               Department of Physics
+                                                       University of California Santa Barbara
+                                                            Santa Barbara, CA 93106
+                                                         e-mail: egimon@physics.ucsb.edu
+
+                                                                 Joseph Polchinski
+                                                          Institute for Theoretical Physics
+                                                               University of California
+                                                          Santa Barbara, CA 93106-4030
+                                                             e-mail: joep@itp.ucsb.edu
+
+
+
+                                                                       Abstract
+
+                                             We study superstrings with orientifold projections and with gener-
+                                         alized open string boundary conditions (D-branes). We find two types
+                                         of consistency condition, one related to the algebra of Chan-Paton fac-
+                                         tors and the other to cancellation of divergences. One consequence is
+                                         that the Dirichlet 5-branes of the Type I theory carry a symplectic
+                                         gauge group, as required by string duality. As another application
+                                         we study the Type I theory on a K3 Z2 orbifold, finding a family of
+                                         consistent theories with various unitary and symplectic subgroups of
+                                         U (16) × U (16). We argue that the K3 orbifold with spin connection
+                                         embedded in gauge connection corresponds to an interacting confor-
+                                         mal field theory in the Type I theory.
+
+
+
+
+                                                                           1
+1    Introduction
+One of the notable features of string duality has been the convergence of
+many previously disjoint lines of development. For example, certain once-
+obscure string backgrounds, namely orientifolds [1-3] and D-manifolds [3],
+have proven to be dual to more familiar backgrounds [4-8]. In order to find
+the nonperturbative structure underlying string duality it is important to
+understand as fully as possible all limits of the theory. The purpose of the
+present paper is to develop the consistency conditions for orientifolds and
+D-manifolds.
+  Orientifolds are generalized orbifolds. In the orbifold construction, dis-
+crete internal symmetries of the world-sheet theory are gauged. In the orien-
+tifold, products of internal symmetries with world-sheet parity reversal are
+also gauged. D-manifolds are manifolds with special submanifolds (D-branes)
+on which strings are allowed to end. These are labeled by a generalized
+Chan-Paton index, each value of which corresponds to restricting the string
+endpoint to a given submanifold of spacetime.
+   We will discuss consistency conditions of two types. The first comes
+from closure of the operator product expansion, which restricts the action of
+the discrete gauge symmetries on the Chan-Paton index. One consequence
+is that D 5-branes in Type I string theory must have a symplectic rather
+than orthogonal gauge projection: this is a world-sheet derivation of a result
+previously found from string duality [7]. Also, D 3-branes and 7-branes are
+inconsistent in the Type I superstring, while D 1-branes have an orthogonal
+gauge projection.
+   The second condition is cancellation of divergences and anomalies at one
+loop [9], which can be recast in terms of consistency of the field equations [10].
+Here we focus on a simple example, the Type I theory on a K3 orbifold.
+We find all solutions to the consistency conditions, leading to gauge groups
+which are various unitary and symplectic subgroups of U(16)×U(16). Rather
+surprisingly, we do not find a solution with the spin connection embedded in
+
+                                        2
+the gauge connection. We argue that this theory, while it must exist, does
+not correspond to a free conformal field theory. Finally, we discuss various
+related work.
+
+2   Orientifolds and Chan-Paton Factors
+The orientifold group contains elements of two kinds. The first are purely
+internal symmetries g of the world-sheet theory, forming a subgroup G1 .
+For the purposes of the present paper we will think of these as spacetime
+symmetries, though more generally (as in asymmetric orbifolds) one could
+consider symmetries whose spacetime interpretation is less clear. The second
+are elements of the form Ωh, where Ω is the world-sheet parity transformation
+and h is again a spacetime symmetry, now chosen from a set G2 . Closure
+implies that ΩhΩh′ ∈ G1 for h, h′ ∈ G2 , and if all elements of G2 commute
+with Ω this is simply G2 G2 = G1 . The full orientifold group is G = G1 +ΩG2 .
+   In the orientifold construction this group is gauged, meaning that one
+sums over all group elements around any nontrivial path on the world-sheet.
+This projects onto states invariant under G1 and ΩG2 . Elements of G1 also
+lead to twisted closed strings, from a gauge transformation in going around
+a closed string. The factor ΩG2 means that orientation-reversal (combined
+with a G2 action on the fields) is now part of the local symmetry group,
+so that unoriented world-sheets are included. The elements of ΩG2 do not
+give rise directly to new (twisted) sectors of the string Hilbert space; we will
+discuss later the extent to which it is useful to think of the open strings as
+being these twisted states.
+   The Chan-Paton index i labels a set of a submanifolds (D-branes) Mi ,
+with a string end-point in state i constrained to lie on Mi . Some of the
+Mi may be coincident. Each element of the discrete gauge group will have
+some action on the Chan-Paton index. Denote a general open string state
+by |ψ, iji, where ψ is the state of the world-sheet fields and i and j are the
+Chan-Paton states of the left and right endpoints; the boundary conditions
+
+                                       3
+on the fields in ψ are of course i, j-dependent. The elements g act on this as
+
+                   g:       |ψ, iji → (γg )ii′ |g · ψ, i′ j ′ i(γg−1 )j ′ j .      (2.1)
+
+for some matrix γg associated with g.1 This form is determined by the
+requirement that a general trace of products of wavefunctions be invariant.
+The action on the Chan-Paton factors must also be consistent with the action
+on the fields. That is, for each D-brane Mi , the spacetime-transformed D-
+brane g · Mi must appear, and the only nonzero elements of γg are those
+connecting Mi and g · Mi . If Mi is left fixed by g then diagonal elements are
+allowed. Similarly,
+
+                Ωh :       |ψ, iji → (γΩh )ii′ |Ωh · ψ, j ′ i′ i(γΩh
+                                                                  −1
+                                                                     )j ′ j .      (2.2)
+
+Note that the orientation reversal transposes the two endpoints. The γg and
+γΩh are unitary.
+   To derive further constraints on the matrices γg and γΩh , let us first
+demonstrate that the discrete gauge group may not include pure gauge twists,
+those with g = 1 ∈ G1 with γ1 nontrivial. The point is that the allowed
+Chan-Paton wavefunctions must form a complete set: the set of string wave-
+functions |ψ, iji must include nontrivial states for all pairs ij. One can see
+this heuristically by noting that if there are states ik and jl for some k and
+l (and therefore also lj by CPT), then by a splitting-joining interaction one
+obtains also ij and lk. This interaction occurs in the interior of the string
+and so by locality cannot depend on the values of the endpoints. One can
+make this precise by requiring that the annulus factorize correctly on the
+closed string poles, so this is actually a one-loop condition—at tree-level it
+would be consistent to truncate to block-diagonal wavefunctions. Now, if the
+identity appears in G1 , we have the projection
+
+                          |ψ, iji = (γ1 )ii′ |ψ, i′ j ′ i(γ1−1 )j ′j .             (2.3)
+   1
+    Some time after the completion of this paper, we learned that much of the following
+formalism was developed for Z2 orientifolds of the bosonic string by Pradisi and Sagnotti
+in the early paper [11].
+
+                                               4
+Since this holds for a complete set, Schur’s lemma implies that γ1 ∝ 1; we
+may as well set γ1 = 1 because the overall phase is irrelevant.
+   This implies a further restriction on the γg and γΩh : they must satisfy
+the algebra of the corresponding symmetries, up to a phase. For example,
+γg1 γg2 γg−1 g−1 ∝ 1, else we would contradict the result in the previous section.
+          2   1
+As another example, suppose that G1 includes an element of order 2, g 2 = 1.
+Then on a string state,
+
+                    g2 :        |ψ, iji → (γg2 )ii′ |ψ, i′ j ′ i(γg−2 )j ′ j ,       (2.4)
+
+and so (by choice of phase)
+                                           γg2 = 1.                                  (2.5)
+
+Similarly, if G2 includes an element of order 2, then (Ωh)2 acts as
+
+          (Ωh)2 :                           T −1
+                           |ψ, iji → (γΩh (γΩh                     T
+                                               ) )ii′ |ψ, i′j ′ i(γΩh  −1
+                                                                      γΩh )j ′ j ,   (2.6)
+
+implying that
+                                        T
+                                       γΩh = ±γΩh .                                  (2.7)
+
+   Let us apply this to the Type I theory. The Type I theory is an orientifold
+of the Type IIB theory with the single nontrivial element Ω; that is, h = h2 =
+1. Tadpole cancellation, to be reviewed in the next section, requires that the
+orientifolding be accompanied by the inclusion of n 9-branes, corresponding
+to purely Neumann boundary conditions. If γΩ is symmetric, we can choose
+a basis such that γΩ = I. If γΩ is antisymmetric, we can choose a basis such
+that γΩ is the symplectic matrix
+                                           "              #
+                                                0 iI
+                                   M=                         ,                      (2.8)
+                                               −iI 0
+
+where n must be even. For the massless open string vector, the Ω eigenvalue
+of the oscillator state is −1. For γΩ symmetric, the Chan-Paton wavefunction
+of the vector is then antisymmetric, giving the gauge group SO(n). For γΩ
+
+
+                                               5
+antisymmetric, the massless vectors form the adjoint of USp(n). Tadpole
+cancellation requires SO(32).
+   Now let us consider adding 5-branes. The Chan-Paton index runs over
+both 9-branes and 5-branes. The only freedom in eq. (2.7) is the overall sign.
+Since we are required to take the SO projection on the 9-branes it appears
+that we are required to take the same projection on the 5-branes. This is in
+contradiction with ref. [7], where it was found that string duality requires a
+symplectic gauge group on the Type I 5-brane. To understand this we need
+to be somewhat more careful.
+   The point is that, although Ω2 acts trivially on the world-sheet fields,
+it may be a nontrivial phase in various sectors of the Hilbert space. The
+phase of Ω is determined by the requirement that it be conserved by the
+operator product of the corresponding vertex operators. Thus, the massless
+vector state, with vertex operator ∂t X µ , necessarily has Ω = −1 because
+Ω changes the orientation of the tangent derivative ∂t ; we have used this
+fact two paragraphs previously. In the 55 sector (that is, strings with both
+ends on a 5-brane), for the massless vertex operator is ∂t X µ (Ω = −1) for µ
+parallel to the 5-brane, and ∂n X µ (Ω = +1) for µ perpendicular. On these
+states, Ω2 = 1, and the same is true for the rest of the 99 and 55 Hilbert
+spaces. To see this, use the fact that Ω multiplies any mode operator ψr
+by ±eiπr . (Details of the mode expansions are given in section 3.3.) In the
+Neveu-Schwarz sector this is ±i, but the GSO projection requires that these
+modes operators act in pairs.2 So Ω = ±1, and this holds in the R sector as
+well by supersymmetry.
+   Now consider the Neveu-Schwarz 59 sector. The four X µ with mixed
+Neumann-Dirichlet boundary conditions, say µ = 6, 7, 8, 9, have a half-
+integer mode expansion. Their superconformal partners ψ µ then have an
+integer mode expansion and the ground state is a representation of the cor-
+responding Clifford algebra. The vertex operator is thus a spin field: the
+  2
+      The OPE is single-valued only for GSO-projected vertex operators.
+
+
+                                            6
+periodic ψ µ contribute a factor V = ei(H3 +H4 )/2 , where H3,4 are from the
+bosonization of the four periodic ψ 6,7,8,9 [12]. We need only consider this part
+of the vertex operator, as the rest is the same as in the 99 string and so has
+Ω2 = +1. Now, the operator product of V with itself (which is in the 55 or 99
+sector) involves ei(H3 +H4 ) , which is the bosonization of (ψ 6 + iψ 7 )(ψ 8 + iψ 9 ).
+This in turn is the vertex operator for the state (ψ 6 +iψ 7 )−1/2 (ψ 8 +iψ 9 )−1/2 |0i.
+Finally we can deduce the Ω eigenvalue. For |0i it is +1, because its ver-
+tex operator is the identity, while each ψ−1/2 contributes either −i (for a 99
+string) or +i (for a 55 string), for an overall −1. That is, the Ω eigenvalue
+of V · V is −1, so therefore is the Ω2 eigenvalue of V .
+    Returning to eq. (2.6), in the 59 sector there is an extra −1 from the above
+argument. Separate γΩ into a block γΩ,9 which acts on the 9-branes and a
+                                                T
+block γΩ,5 which acts on the 5-branes. We have γΩ,9 = +γΩ,9 from tadpole
+                                                                  T
+cancellation. To cancel the sign in the 59 sector we then need γΩ,5  = −γΩ,5 ,
+giving symplectic groups on the 5-brane as found in ref. [7]. This argument
+seems roundabout, but it is faithful to the logic that the actions of Ω in the
+55 and 99 sectors are related because they are both contained in the 59 · 95
+product. Further, there does not appear to be any arbitrariness in the result.
+   Let us briefly review the consequences of this projection [7]. Consider
+a pair of coincident 5-branes, since the symplectic projection requires an
+even number. The world-brane vectors ∂t X µ (µ parallel to the 5-brane)
+have Chan-Paton wavefunctions σija , gauge group USp(2) = SU(2). The
+world-brane scalars ∂n X µ (µ perpendicular to the 5-brane) have Chan-Paton
+wavefunction δij . Since these are the collective coordinates for 5-branes [3],
+the wavefunction δij means that the two 5-branes move together as a unit.
+The need for this can also be seen in another way [13]. In the Type I theory
+the force between 5-branes, and between 1-branes, is half of that calculated in
+ref. [5] because of the orientation projection. The product of the charges of a
+single 1-brane and single 5-brane would then be only half a Dirac-Teitelboim-
+Nepomechie unit; but since the 5-branes are always paired the quantization
+
+
+                                           7
+condition is respected.
+   The IIB theory also contains p = 1, 3, and 7-branes. The above argument
+gives Ω2 = (±i)(9−p)/2 . This requires an SO projection on the 1-brane,
+consistent with Type I-heterotic duality. On the 3- and 7-branes it leads to
+an inconsistency. This is a satisfying result, as there is no conserved charge
+in the Type I theory to give rise to such p-branes.
+    We do not know that we have found the complete set of consistency
+conditions of this type, but no others are evident to us.
+
+3    Tadpoles
+Modular invariance on the torus is one of the central consistency requirements
+for closed oriented strings. For open and unoriented one-loop graphs there
+is no corresponding modular group, but cancellation of divergences plays an
+analogous role in constraining the theory [9]. In refs. [14, 10] these divergences
+were obtained in the ten-dimensional Type I theory from one-loop vacuum
+amplitudes. In ref. [10] they were reinterpreted in terms of an inconsistency
+in the field equation for a Ramond-Ramond (RR) 10-form potential. It is
+useful to recall the latter interpretation, now generalized to all RR forms.
+D-branes and orientifold fixed-planes are electric and magnetic sources for
+the RR fields [5]. The n-form field strength Hn thus satisfies
+
+                      dHn = ∗J9−n ,          d ∗ Hn = ∗Jn−1                 (3.1)
+
+where J9−n and Jn−1 are sources of the indicated rank. The field equations
+are consistent only if       Z
+                                       ∗J10−k = 0                           (3.2)
+                                  Ck
+for all closed curves Ck . In flat d = 10 the only nontrivial closed curves are
+the points C0 , and the corresponding constraint on J10 requires the gauge
+group SO(32). In a compact theory there will be more constraints.
+   More generally, the right-hand side of the field equations (3.1) will include
+additional terms from Chern-Simons couplings of the RR fields to curvature
+
+                                         8
+and gauge field strengths. In the present work we consider only orientifolds
+of flat backgrounds, but the more general case will also be interesting.
+  The tadpole constraints were applied to orientifolds in refs. [2, 16, 17, 18].
+Many of the results in the present section can be found in ref. [2], except that
+our treatment of the Chan-Paton factors will be more general.
+
+3.1    General Framework
+
+The divergences can be determined from the vacuum amplitudes on the Klein
+bottle (KB), Möbius strip (MS), and cylinder (C). In fig. 1 these surfaces
+are all depicted as cylinders of length 2πl and circumference 2π, with the
+ends being either boundaries or crosscaps. Taking coordinates 0 ≤ σ 1 ≤ 2πl,
+0 ≤ σ 2 ≤ 2π, the periodicity and boundary conditions on generic world-sheet
+fields φ (and their derivatives) are as follows:
+
+      KB:   φ(0, π + σ 2 ) = Ωh̃1 φ(0, σ 2),        φ(2πl, π + σ 2 ) = Ωh̃2 φ(2πl, σ 2 )
+            φ(σ 1 , 2π + σ 2 ) = g̃φ(σ 1 , σ 2 )
+
+      MS:   φ(0, σ 2) ∈ M̃i ,     φ(2πl, π + σ 2 ) = Ωh̃φ(2πl, σ 2 )
+            φ(σ 1 , 2π + σ 2 ) = g̃φ(σ 1 , σ 2 )
+
+       C:   φ(0, σ 2) ∈ M̃i ,     φ(2π, σ 2) ∈ M̃j ,
+            φ(σ 1 , 2π + σ 2 ) = g̃φ(σ 1 , σ 2 ).                                     (3.3)
+
+It is convenient to include in the periodicity or boundary conditions g, h,
+and Mi , besides the spacetime part discussed earlier, a ±1 on the world-sheet
+fermions from the GSO projection; the tilde is a reminder of this additional
+information. The respective definitions (3.3) are consistent only if
+
+                        KB:        (Ωh̃1 )2 = (Ωh̃2 )2 = g̃
+                        MS:        (Ωh̃)2 = g̃,      g̃ M̃i = M̃i
+                           C:      g̃ M̃i = M̃i ,    g̃ M̃j = M̃j ;                   (3.4)
+
+else the corresponding path integral vanishes.
+
+                                              9
+                       Ωh1                                 Ωh2
+                                          g
+              a)
+
+
+
+
+                   i                                          Ωh
+                                          g
+              b)
+
+
+
+
+                   i                                      j
+                                          g
+              c)
+
+
+Figure 1: Riemann surfaces described by eq. (3.3). a) Klein bottle. b) Möbius
+strip. c) Cylinder.
+
+
+
+
+                                     10
+                                                                i
+                                     g                                           g
+                  a)         Ωh                            b)
+
+
+Figure 2: Tadpoles in the g-twisted sector. a) Crosscap: fields at opposite
+points differ by an Ωh transformation, where g = (Ωh)2 . b) Boundary in
+state i. The manifold Mi must be fixed under g.
+
+   These graphs will have divergences from the tadpoles shown in fig. 2. If
+there are m non-compact dimensions, the dangerous tadpoles will be from
+those massless RR states which are m-forms in the non-compact directions.
+In general there are several such tadpoles, coming from twisted and untwisted
+sectors.
+    To write the Klein bottle and Möbius strips in terms of traces, take the
+alternate coordinate region 0 ≤ σ 1 ≤ 4πl, 0 ≤ σ 2 ≤ π with periodicities3
+
+       KB:    φ(σ 1 , π + σ 2 ) = Ωh̃2 φ(4πl − σ 1 , σ 2 ),         φ(4πl, σ 2 ) = g̃ ′ φ(0, σ 2)
+       MS:    φ(σ 1 , π + σ 2 ) = Ωh̃φ(4πl − σ 1 , σ 2 ),       φ(0, σ 2) ∈ M̃i ,
+                         φ(4πl, σ 2) ∈ M̃i                                                     (3.5)
+
+where g̃ ′ = Ωh̃2 (Ωh̃1 )−1 . Rescaling the coordinates to standard length (π for
+open strings and 2π for closed), the respective amplitudes are
+                                                                           
+                       KB:        Trc,g′ Ωh̃2 (−1)F +F̃ eπ(L0 +L̃0 )/2l
+                                                              
+                       MS:        Tro,ii Ωh̃(−1)F eπL0 /4l
+                                                          
+                        C:        Tro,ij g̃(−1)F eπL0 /l                                       (3.6)
+   3
+     This is done by taking the upper strip π ≤ σ 2 ≤ 2π, inverting it from right to left and
+multiplying the fields by (Ωh̃2 )−1 , and gluing it to the right side of the lower strip: with
+this construction the fields are smooth at σ 1 = 2πl.
+
+
+                                               11
+The closed string trace is labeled by the spacelike twist g ′ and the open string
+traces are labeled by the Chan-Paton states.
+   The full one-loop amplitude is
+          dt n
+     Z ∞                                                  o
+              Trc P(−1)F e−2πt(L0 +L̃0 ) + Tro P(−1)F e−2πtL0 ,       (3.7)
+      0   2t
+where P includes the GSO and G-projections, and F is the spacetime fermion
+number. The traces are over the transverse oscillator states and include a
+spacetime momentum sum. The sums in the projection operators and over
+twisted sectors and Chan-Paton states are equivalent to summing the surfaces
+in fig. 1 over all tadpole types. Evaluating the traces, the t → 0 limit produces
+the divergences of interest. Note that the loop modulus t is related to the
+cylinder length l differently for each surface,
+                           1                 1                1
+               KB: t = ,           MS: t = ,         C: t =      .          (3.8)
+                          4l                 8l               2l
+
+3.2   Type I Theory on a K3 Orbifold
+
+We will evaluate the tadpoles and solve the consistency conditions for one
+particular example. This is the Type I theory on a K3 Z2 orbifold. The Type
+I theory includes a projection on Ω. The orbifold is formed from the theory
+on a torus by projecting with R6789 , reflection of X 6,7,8,9 ; we will abbreviate
+this as R. Closure gives also the element ΩR. To define R we have to make
+a specific choice of its action on the fermions; we choose R = eiπ(J67 +J89 ) .
+    This example is of interest for a number of reasons. It is related by
+T -duality to many similar theories. A T -duality transformation on X µ for
+given µ (abbreviated Tµ ) is a spacetime reflection, but only on the world-
+sheet right-movers. It transforms Ω to ΩRµ [3, 15]. Thus, T6 -duality takes
+the above orientifold group to {1, R6789 , ΩR6 , ΩR789 }, T4567 -duality takes it
+to {1, R6789 , ΩR4567 , ΩR4589 }, and so on. This is the simplest orientifold that
+is not just the T -dual of a toroidal theory.
+   We can anticipate some of the tadpole calculation. The Ω projection will
+require 9-branes as in the non-compact case [10]. Similarly the ΩR projection,
+
+                                       12
+being T6789 -dual to Ω, will require 5-branes with fixed X 6,7,8,9 . There is also
+the possibility of twisted sector tadpoles, and these will indeed appear. In all
+there are three tadpole types, the 10-form, 6-form, and twisted-sector 6-form
+(actually 16 of these last, one for each fixed point) and each receives two
+contributions. The 10-form receives contributions from the crosscap with
+h = 1 and the 9-brane boundary with g = 1, the 6-form from the crosscap
+with h = R and the 5-brane boundary with g = 1, and the twisted-sector
+6-forms from 5-brane and 9-brane boundaries with g = R.
+    The IIB theory has d = 10, N = 2 → d = 6, N = 4 spacetime supersym-
+metry. The Ω projection leaves only the sum of the left- and right-moving
+supersymmetries, Qα + Q̃α . Similarly the ΩR projection leaves the linear
+combinations Qα + RQ̃α . The supersymmetries unbroken by both projec-
+tions correspond to the +1 eigenvalues of R; this is half the eigenvalues of R
+or a quarter of the original supersymmetries, d = 6, N = 1.
+    Let us work out the massless spectrum of this theory. We focus on the
+bosons, since the fermions will have the same partition function by super-
+symmetry. The massless spectrum for the right- or left-moving half of the
+closed string is
+             Sector                                  R SO(4) rep.
+                             µ
+       Untwisted NS:       ψ−1/2   |0i               +      (2, 2)
+                             m
+                           ψ−1/2 |0i                 −     4(1, 1)
+                      R:   |s1 s2 s3 s4 i                                   (3.9)
+                              s1 = +s2 , s3 = −s4    +     2(2, 1)
+                              s1 = −s2 , s3 = +s4    −     2(1, 2)
+         Twisted NS:       |s3 s4 i, s3 = −s4        +     2(1, 1)
+                  R:       |s1 s2 i, s1 = −s2        +      (1, 2)
+Here, µ ∈ 2, 3, 4, 5, m ∈ 6, 7, 8, 9, and SO(4) = SU(2) × SU(2) is the mass-
+less little group in 6 dimensions. We have imposed the GSO projection: all
+states listed have (−1)F = (−1)F̃ = 1. This is most easily determined by
+requiring that the vertex operators be local with respect to the supercharge
+e−φ/2 ei(H0 +H1 +H2 +H3 −H4 )/2 (the minus sign in the exponent is necessary be-
+
+                                       13
+cause this must have R = +); the ghost times longitudinal part contributes
+a net Z2 branch cut in the NS sector and none in the R sector. The bosonic
+spectrum is given by the product a left-moving state with a right-moving
+state from the same sector and with the same R. In the NSNS sectors this is
+symmetrized by the Ω projection, and in the RR sectors it is antisymmetrized
+because each side is a fermion. Thus, including the degeneracy from the 16
+fixed points, the massless closed string spectrum is
+
+                         Sector               SO(4) rep.
+                 Untwisted NSNS:            (3, 3) + 11(1, 1)
+                             RR:        (3, 1) + (1, 3) + 6(1, 1)        (3.10)
+                  Twisted NSNS:                  48(1, 1)
+                             RR:                 16(1, 1)
+
+This is the d = 6, N = 1 supergravity multiplet, plus one tensor multiplet,
+plus 20 (1, 1) hypermultiplets.
+   For the open strings consider first the 99 states, with massless bosonic
+(NS) spectrum
+
+                      R=+               Ω=+                 SO(4) rep.
+    µ                                                T
+   ψ−1/2 |0, ijiλji              −1
+                      λ = γR,9 λγR,9                  −1
+                                        λ = −γΩ,9 λ γΩ,9       (2, 2)    (3.11)
+    m
+   ψ−1/2 |0, ijiλji                −1
+                      λ = −γR,9 λγR,9   λ = −γΩ,9 λT γΩ,9
+                                                      −1
+                                                              4(1, 1).
+
+We have indicated the conditions imposed by the R and Ω projections on the
+Chan-Paton wavefunctions λ. The subscript 9 indicates the block of γR or
+γΩ which acts on the 9-branes. For the 55 open strings, let us first consider
+nI 5-branes at the I’th fixed point of R. The massless spectrum is
+
+                      R=+               Ω=+                 SO(4) rep.
+    µ                                                T
+   ψ−1/2 |0, ijiλji              −1
+                      λ = γR,I λγR,I                   −1
+                                        λ = −γΩ,I λ γΩ,I       (2, 2)    (3.12)
+    m
+   ψ−1/2 |0, ijiλji                −1
+                      λ = −γR,I λγR,I   λ = γΩ,I λT γΩ,I
+                                                     −1
+                                                              4(1, 1),
+
+where now γR,I and γΩ,I are the blocks acting on this set of 5-branes. The
+extra sign in the Ω projection follows from the form of the vertex operator,
+as discussed earlier. Now consider n′J 5-branes at a non-fixed point X, which
+
+                                        14
+requires also n′J at −X. The massless bosonic strings with both ends at X
+are
+                               Ω=+                SO(4) rep.
+                 µ                         T ′−1
+              ψ−1/2 |0, ijiλji λ = −γΩ,J λ γΩ,J
+                                      ′
+                                                     (2, 2)         (3.13)
+                 m                       T ′−1
+              ψ−1/2 |0, ijiλji λ = γΩ,J λ γΩ,J
+                                    ′
+                                                    4(1, 1).
+The R projection relates these wavefunctions to those of the strings with
+ends at −X, but does not otherwise constrain them. For the 59 strings, we
+have in the two cases above
+                                     R=+                SO(4) rep.
+                                                −1
+                                                                         (3.14)
+        |s3 s4 , ijiλji, s3 = −s4    λ = γR,I λγR,9       2(1, 1)
+
+and
+                                                 SO(4) rep.
+                                                                         (3.15)
+                   |s3 s4 , ijiλji, s3 = −s4          2(1, 1).
+The Ω projection does not constrain these but determines the 95 state in
+terms of the 59 states.
+
+3.3   Tadpole Calculation
+
+We may now evaluate the sums (3.6) over the closed and open string spectra.
+The amplitudes are 0∞ dt/2t times
+                  R
+
+
+                                 Ω 1 + R 1 + (−1)F −2πt(L0 +L̃0 )
+                                (                                    )
+           KB:      TrU+T
+                      NSNS+RR                       e
+                                  2 2         2
+                              Ω 1 + R 1 + (−1)F −2πtL0
+                            (                           )
+                      99+55
+           MS:      TrNS−R                       e
+                              2 2          2
+                                    1 1 + R 1 + (−1)F −2πtL0
+                                  (                          )
+                      99+95+59+55
+             C:     TrNS−R                            e         .        (3.16)
+                                    2 2          2
+
+Here U (T) refers to the untwisted (twisted) closed string sector. On the
+Klein bottle we omit the 21 (1 + (−1)F̃ ) projector because the left- and right-
+moving states are identical in the trace. The open-string traces include a
+sum over Chan-Paton states.
+
+
+                                        15
+   The signs of the operators appearing in the traces, in the various sectors,
+were given implicitly in the previous section. For completeness we give the
+action of Ω on the various mode operators; the action of R is obvious. In the
+closed string,
+
+        Ωαr Ω−1 = α̃r ,         Ωψr Ω−1 = ψ̃r ,         Ωψ̃r Ω−1 = −ψr         (3.17)
+
+for integer and half-integer r. The minus sign is included in the last equation
+to give the convenient result ΩψM ψ̃M Ω−1 = ψM ψ̃M for any product ψM of
+mode operators. Alternately this sign can be omitted: this just corresponds
+to Ω → (−1)F Ω, which has the same action on physical states. In open
+string, the mode expansions are
+                                    s
+                                           ∞
+                                        α′ X   αm imσ
+                X(σ, 0) = x + i                  (e   ± e−imσ )                (3.18)
+                                        2 m=−∞ m
+                                            m6=0
+
+
+with the upper sign for NN boundaries conditions and lower for DD (N=Neu-
+mann, D=Dirichlet). World-sheet parity, X(σ, 0) → X(π − σ, 0), takes
+
+                                  αm → ±eiπm αm .                              (3.19)
+
+There is no corresponding result for the ND sector, since Ω takes this into a
+different, DN, sector. For fermions, the mode expansions are
+
+                                eirσ ψr ,
+                            X                                 X
+                ψ(σ, 0) =                        ψ̃(σ, 0) =       e−irσ ψr .   (3.20)
+                            r                                 r
+
+Parity, ψ(σ, 0) → ±ψ̃(π − σ, 0), takes
+
+                                   ψr → ±eiπr ψr                               (3.21)
+
+for integer and half-integer r. As in the closed string there is some physically
+irrelevant sign freedom. In evaluating the traces, note that Ω and R act
+on the compact momenta pm and windings δX m = X m (2π) − X m (0) of the
+closed string as
+
+                  Ωpm Ω−1 = pm ,            Rpm R−1 = −pm
+                  ΩδX m Ω−1 = −δX m ,               RδX m R−1 = −δX m          (3.22)
+
+                                            16
+and that only diagonal elements contribute in the traces. Similarly in the
+open string 99 sector there is an internal momentum, while in the 55 sector
+with fixed endpoints there is a winding δX m = X m (π) − X m (0).
+   It is useful to define4
+
+                         1/12
+                                ∞ 
+                                              2n
+                                                   
+                                                                               1/12
+                                                                                      √ Y∞           
+                                                                                             1 + q 2n
+                                Y
+            f1 (q) = q                  1−q            ,        f2 (q) = q             2
+                                n=1                                                      n=1
+                          ∞                                                          ∞
+                                                                                       Y                      
+                                 1 + q 2n−1 ,                                                     1 − q 2n−1 . (3.23)
+                          Y
+   f3 (q) = q −1/24                                             f4 (q) = q −1/24
+                          n=1                                                          n=1
+
+These functions satisfy the ‘abstruse identity’
+
+                                        f38 (q) = f28 (q) + f48 (q)                                                (3.24)
+
+and have the modular transformations
+                    √
+  f1 (e−π/s ) =          s f1 (e−πs ),       f3 (e−π/s ) = f3 (e−πs ),                 f2 (e−π/s ) = f4 (e−πs ).
+                                                                                                           (3.25)
+  The amplitudes (3.16), including the integrals over non-compact mo-
+                                     v6 R ∞ dt
+menta, are then found to be (1 − 1) 128  0 t4 times
+                                                                   !4                                !4 
+                    f 8 (e−2πt )  X ∞
+                                             2
+                                                                                   ∞
+                                                                                            −πtρw 2
+                                                                                                         
+                   8 48 −2πt            e−πtn /ρ
+                                                                                   X
+      KB:                                                                 +               e
+                    f1 (e      )  n=−∞                                        w=−∞
+                                                                                                        
+                                                                                                         !4
+                    f 8 (e−2πt )f 8 (e−2πt )                                        ∞
+                                                                                              −2πtn2 /ρ
+                   − 28 −2πt 48 −2πt Tr(γΩ,9  −1 T
+                                                                                     X
+      MS:                                        γΩ,9 )                                       e
+                    f1 (e      )f3 (e      )                                       n=−∞
+                                                                ∞
+                                                                                     !4 
+                                                                                        
+                                      T                                   −2πtρw 2
+                                                                X
+                                −1
+                           +Tr(γΩR,5 γΩR,5 )                          e
+                                                               w=−∞
+                                                                                       
+                                                                                    !4
+                    f48 (e−πt )                                ∞
+                                                                      −2πtn2 /ρ
+                                 (Tr(γ1,9))2
+                                                                X
+        C:                                                            e
+                    f18 (e−πt )                               n=−∞
+                                                                                                                   
+                                                                9     ∞
+                                                                                −t(2πwr+Xim −Xjm )2 /2πα′
+                                 X                              Y     X                                            
+                           +          (γ1,5 )ii (γ1,5 )jj                      e
+                                                                m=6 w=−∞
+                                                                                                                   
+                                i,j∈5
+  4
+            √
+      The    2 in f2 corrects a typographical error in ref. [10].
+
+                                                               17
+             f 4 (e−πt )f 4 (e−πt )
+          − 2 24 −πt 44 −πt Tr(γR,5 )Tr(γR,9 )
+             f1 (e )f3 (e )
+                                        16
+             f34 (e−πt )f44 (e−πt )
+                                     (                                                   )
+          + 4 4 −πt 4 −πt (Tr(γR,9 )) + (Tr(γR,I ))2 .
+                                     2
+                                       X
+                                                                                                      (3.26)
+             f1 (e )f2 (e )            I=1
+
+We have defined v6 = V6 /(4π 2 α′ )3 where V6 is the (regulated) volume of
+the non-compact dimensions. Also, 2πr is the periodicity of X m (assumed
+for convenience to be independent of m), ρ = r 2 /α′ , and we will later use
+v4 = ρ2 = V4 /(4π 2 α′ )2 with V4 the volume of the torus before the orientifold.
+The second term in the first brace of the cylinder amplitude includes a sum
+over 5-brane pairs Mi Mj and over all ways for an open string to wind from
+one to the other. In the second term in the second brace of the cylinder, the
+only diagonal elements of R are those where the open string begins and ends
+on the same 5-brane without winding—hence the sum over fixed points I.
+   Using the modular transformation (3.25) and the Poisson resummation
+formula          ∞
+                             2    √ X  ∞
+                                                2
+                     e−π(n−b) /a = a       e−πas +2πisb ,
+                 X
+                                                                 (3.27)
+                    n=−∞                             s=−∞
+                                    R ∞ dt
+the amplitude becomes (1 − 1) 0          t2
+                                               times
+                                                        !4                                  !4 
+            f28 (e−π/2t )          ∞
+                                    X
+                                              −πρs2 /t           v6        ∞
+                                                                           X
+                                                                                  −πs2 /tρ
+                                                                                                
+  KB:                       v6 v4          e                   +                 e
+            f18 (e−π/2t )          s=−∞                         v4   s=−∞
+                                                                                                 
+                                                                                                !4
+             f 8 (e−π/2t )f 8 (e−π/2t )  v6 v4                             ∞
+                                                                                     −πρs2 /2t
+            − 28 −π/2t 48 −π/2t                     −1 T
+                                                                            X
+  MS:                                           Tr(γΩ,9 γΩ,9 )                       e
+             f1 (e       )f3 (e       )  32                               s=−∞
+                                                    ∞
+                                                                          !4 
+                    v6      −1    T
+                                                    X
+                                                              −πs2 /2tρ
+                                                                             
+                 +      Tr(γΩR,5 γΩR,5 )                   e
+                   32v4                             s=−∞
+                                                                            
+                                                                          !4
+            f28 (e−π/t )  v6 v4                     ∞
+                                                               −πρs2 /2t
+                                 (Tr(γ1,9 ))2
+                                                     X
+   C:                                                         e
+            f18 (e−π/t )  512                      s=−∞
+                                                                                                       
+                                                   9    ∞
+                    v6 X                                       2         m   m
+                                                                                   
+                                                           e−πs /2tρ+is(Xi −Xj )/r 
+                                                  Y    X
+                 +            (γ1,5 )ii (γ1,5 )jj
+                   512v4 i,j∈5                    m=6 s=−∞
+
+
+
+                                               18
+            f24 (e−π/t )f44 (e−π/t ) v6
+        −                               Tr(γR,5 )Tr(γR,9 )
+            f14 (e−π/t )f34 (e−π/t ) 64
+                                                     16
+          f 4 (e−π/t )f 4 (e−π/t ) v6
+                                      (                             )
+        + 34 −π/t 24 −π/t             (Tr(γR,9 ))2 + (Tr(γR,I ))2 .
+                                                    X
+                                                                        (3.28)
+          f1 (e      )f4 (e      ) 32               I=1
+
+The asymptotics are
+                                          v6
+              KB:         16v6 v4 + 16
+                                          v4
+                       v6 v4      −1 T         v6      −1     T
+              MS:         −  Tr(γΩ,9 γΩ,9 ) −      Tr(γΩR,5  γΩR,5 )
+                         2                     2v4
+                     v6 v4                  v6
+                C:         (Tr(γ1,9 ))2 +       (Tr(γ1,5 ))2
+                      32                   32v4
+                     v6
+                   −    Tr(γR,5 )Tr(γR,9 )
+                     16 (
+                                            16
+                                                            )
+                     v6               2
+                                           X              2
+                   +       (Tr(γR,9 )) + (Tr(γR,I )) .                  (3.29)
+                     8                     I=1
+
+   Finally, the total amplitude for large l (noting the relations (3.8) between
+t and l) is (1 − 1) 0∞ dl times
+                    R
+
+
+                  v6 v4 n 2             −1 T
+                                                                 o
+                          32 − 64Tr(γΩ,9   γΩ,9 ) + (Tr(γ1,9 ))2
+                   16 n
+                   v6                                               o
+                +         322 − 64Tr(γΩR,5
+                                        −1    T
+                                            γΩR,5  ) + (Tr(γ1,5 ))2
+                  16v4
+                       16
+                  v6 X
+                +         (Tr(γR,9 ) − 4Tr(γR,I ))2 .                   (3.30)
+                  64 I=1
+
+The (1 − 1) represents the contributions of NSNS and RR exchange. These
+l → ∞ divergences are equal and opposite by supersymmetry, but must van-
+ish separately in a consistent theory [10]. The divergences have the expected
+form. The RR part of the first line, proportional to the total spacetime
+volume, is from exchange of the 10-form; in the second line, proportional
+to the T -dual spacetime volume, it is from exchange of the 6-form; in the
+third line, independent of the volume of the internal spacetime, it is from ex-
+change of twisted-sector 6-forms, one for each fixed point. Note that γ1 = 1
+
+                                           19
+and so Tr(γ1,9 ) = n9 , Tr(γ1,5 ) = n5 , the numbers of 9-branes and 5-branes
+respectively.
+
+4    Solutions
+Now let use solve the consistency conditions we have found, from the al-
+gebra of Chan-Paton matrices and the cancellation of divergences. From
+                                         T                 T
+the algebra we have eq. (2.7), implying γΩ,9 = ±γΩ,9 and γΩR,5  = ±′ γΩR,5 .
+The 10-form and 6-form divergences are thus proportional to (32 ∓ n9 )2 and
+(32 ∓′ n5 )2 , and so
+
+                                 T                  T
+                  n9 = 32,      γΩ,9 = γΩ,9 ,      γΩ,5 = −γΩ,5
+                                 T                     T
+                  n5 = 32,      γΩR,5 = γΩR,5 ,       γΩR,9 = −γΩR,9 .     (4.1)
+
+The last equality in each line follows from the discussion at the end of sec-
+tion 2. By a unitary change of basis, γΩh → UγΩh U T , one can take
+
+                             γΩ,9 = I,        γΩR,5 = I.                   (4.2)
+
+The remaining constraints from the algebra are
+
+                              γR,9 = γΩ,9 γΩR,9 = γΩR,9
+                              γR,5 = γΩ,5 γΩR,5 = γΩ,5
+                               2      2
+                              γR,5 = γR,9 = 1,                             (4.3)
+
+where all phases have been set to one by choice of the irrelevant overall
+phases of γR,9 , γR,5 , γΩR,9 , and γΩ,5 . Together with the unitarity of these
+matrices, this implies that they are Hermitean, as well as antisymmetric.
+The choice (4.2) leaves the freedom to make real orthogonal transformations.
+With this, we can take
+                                                      "            #
+                                                            0 iI
+               γR,9 = γR,5 = γΩR,9 = γΩ,5 = M =                        ,   (4.4)
+                                                           −iI 0
+
+
+                                         20
+the blocks being 16 × 16. Finally, the twisted sector tadpoles vanish. Thus
+we have found a unique consistent solution for the action of the symmetries
+on the Chan-Paton factors.
+   Returning to the massless spectra in section 3.2, we can now solve for the
+Chan-Paton wavefunctions. For the 99 open strings, eq. (3.11) implies the
+wavefunctions
+                                           "          #
+                                               A S
+                        vectors:    λ=
+                                               −S A
+                                           "              #
+                                               A1 A2
+                        scalars:    λ=                                    (4.5)
+                                               A2 −A1
+
+where S and A refer to symmetric and antisymmetric blocks respectively. The
+vectors form the adjoint of U(16), with the Chan-Paton index transforming
+as 16 + 16. The scalars transform as the antisymmetric tensor 120 + 120
+of U(16). The scalars are in sets of four, from m = 6, 7, 8, 9, which is the
+content of a hypermultiplet. Thus the 99 sector contains a vector multiplet
+in the adjoint of U(16) and hypermultiplets in the 120+120 (or equivalently,
+two hypermultiplets in the 120).
+   For 55 open strings, consider first nI D-branes at fixed point I; nI ≡ 2mI
+must be even in order for the matrices (4.4) to have a sensible action. For
+open strings with both ends at I, eq. (3.12) gives the same wavefunctions (4.5)
+as for the 99 strings, a vector multiplet in the adjoint of U(mI ) and two hy-
+permultiplets in the antisymmetric 21 mI (mI −1) of this group. Now consider
+n′J D-branes at a non-fixed point X, where again n′J ≡ 2m′J must be even.
+Eq. (3.13) implies that the vector multiplets are in the adjoint representation
+of USp(n′J ) and the hypermultiplets are in one antisymmetric 12 n′J (n′J −1)
+(which is reducible in USp(n′J ), containing one singlet state).
+   For 59 open strings with the 5-brane at a fixed point, eq. (3.14) implies
+the wavefunctions
+                                         "                #
+                                                X 1 X2
+                        scalars:   λ=                                     (4.6)
+                                               −X2 X1
+
+                                      21
+with X1 and X2 general 16 × mI matrices. These states transform as the
+(16, mI ) + (16, mI ) of U(16) × U(mI ), but because there are only two scalar
+states (3.14) in this sector, this is a single hypermultiplet in the (16, mI ).
+Similarly, for 59 strings with 5-brane not at a fixed point, eq. (3.15) gives a
+hypermultiplet in the (16, n′J ).
+   The total gauge group is
+                   16
+                   Y               Y                       16
+                                                           X           X
+        U(16) ×         U(mI ) ×       USp(n′J ),               mI +       n′J = 16,           (4.7)
+                  I=1              J                      I=1          J
+
+with hypermultiplets in the representations
+                                 16 n 
+                                 X                                                        o
+             2 (120, 1, 1) +            2 1, 12 mI (mI −1), 1          + (16, mI , 1)I
+                                                                   I
+                                 I=1
+                 X n                                                                 o
+             +          1, 1, 21 n′J (n′J −1)−1        + (1, 1, 1) + (16, 1, n′J )J .          (4.8)
+                                                   J
+                  J
+
+We have checked that the R4 and F 4 anomalies cancel for this spectrum.5
+Much of this space of theories is connected. A multiple of four 5-branes can
+move away from a fixed point. A single pair forms the basic dynamical 5-
+brane and must move together as discussed in section 2, and in the orientifold
+an image pair must move in the opposite direction. If 4k 5-branes move away
+from fixed point I, U(mI ) breaks to U(mI − 2k) × USp(2k). The collective
+coordinate for this motion is one of the antisymmetric tensors of U(mI ),
+which can indeed break U(mI ) in this way. Because mI can change only
+mod 2, there are disconnected sectors of moduli space according to whether
+each of the mI is odd or even. The largest group is U(16) × U(16) with all
+5-branes on a single fixed point. Incidentally, we implicitly began with a
+torus with no Wilson lines, but these Wilson lines (transforming again as the
+antisymmetric tensor of U(16)) can break the 99 U(16) in the same pattern
+as the 55.
+    The spacetime anomalies of this model will be discussed further in a
+future publication [20]. The spectrum above has U(1) anomalies, which are
+  5
+      Though these are not among the anomaly-free theories recently found in ref. [19].
+
+                                              22
+cancelled by a generalization of the Green-Schwarz mechanism. This also
+generates masses of order gs1/2 for up to 16 U(1) multiplets, so the above
+spectrum is only correct in the formal gs → 0 limit.
+
+5   Discussion
+The surprise is that we have not found the theory that we most expected,
+the K3 orbifold with spin connection embedded in the gauge connection.
+This has gauge group SO(28) × SU(2), possibly enhanced at special points.
+This theory must exist because it exists for Type I on a smooth K3, where
+the spectrum is the same as for the heterotic string because the low energy
+supergravities are the same. The question is the nature of the orbifold limit.
+We believe that what is happening is as follows. For Type I on a smooth K3,
+there is only one kind of endpoint, with Neumann boundary conditions. As
+we approach the orbifold limit, some wavefunctions become localized at the
+fixed point while others remain extended. In the limit, endpoints in localized
+states become Dirichlet endpoints, while endpoints in the extended states
+remain Neumann. But there is no reason for a transition from one type
+of state to the other to be forbidden, particularly as we have neglected the
+coupling of the endpoint to the rest of the string. This would correspond to
+a term in the world-sheet action which changes the boundary condition from
+5-brane to 9-brane, which is just a 59 open string vertex operator. So we
+conjecture that the orbifold limit is a theory with nontrivial 59 backgrounds.
+This is no longer a free world-sheet theory. In fact, it is rather complicated,
+similar to an orbifold with a twisted-state background.
+   Let us pursue this a bit further. Embedding the spin connection in the
+gauge connection means that γR,9 = diag(+128 , −14 ). Section 2 then implies
+that γR,5 is antisymmetric. This makes it impossible to cancel the 6-form tad-
+pole in the theories we consider, but if we ignore this for now we might guess
+that we still need 32 5-branes, two at each fixed point. This gives an SU(2)
+at each fixed point, for total gauge group SO(28) × SO(4) × SU(2)16 . Now,
+
+                                      23
+we have noted in the beginning of section 3 that open string field strengths
+are also sources for RR fields. So it may be that it is possible to cancel
+the tadpoles with an appropriate 59 background. Moreover, some 59 strings
+are in (2, 2)’s of SO(4) and 2’s of one of the fixed point SU(2)’s making it
+possible to break down to a diagonal SU(2) and obtain the expected gauge
+group with hypermultiplet 2’s (which exist on the smooth K3 but cannot be
+obtained directly from the 32 of SO(32)).6
+   There has been a substantial literature on this and related models. Ref. [21]
+considered the Type I theory on K3 with spin connection embedded in gauge
+connection and did not find an anomaly-free theory based on a free CFT.
+This is consistent with the discussion above. Further, they were led to ar-
+gue for Dirichlet open strings with SU(2) Chan-Paton factors at each fixed
+point, as above, and that these SU(2)’s should be identified with an SU(2)
+in SO(32), again consistent with the discussion of the 59 background. How-
+ever, we do not see much hope for making this more precise, because of the
+complicated nature of the world-sheet theory.
+   Refs. [2, 16] also considered Type I on K3, but without embedding the
+spin connection in the gauge connection. Both implicitly assumed diagonal
+γ’s, and neither observed the need [7] for a symplectic projection on the 5-
+branes. Ref. [16] found it impossible to cancel all tadpoles, though we do not
+understand their calculation in detail. Ref. [15] found a model with group
+SO(32) × SO(2)16 . However, because of the orthogonal projection on the
+5-branes, this suffers from the problem observed in ref. [7]: there are half-
+hypermultiplets in real (not pseudoreal) representations. Also, it is not clear
+that the twisted tadpoles cancel for this model: they are discussed but the
+relative normalization does not seem to agree with our result (3.30). Refs. [18]
+find anomaly-free orientifold models with gauge groups such as USp(8)4 that
+   6
+     It is interesting to ask whether the theories we have found are in the same moduli
+space as the spin=gauge orbifold, with a different gauge background; we have not answered
+this.
+
+
+
+                                           24
+also arise in our construction, though the matter content is different (no an-
+tisymmetric tensors of the gauge group, but additional antisymmetric tensor
+supergravity multiplets). These models are constructed from more abstract
+CFT’s, and the description is rather inexplicit, so we have not been able to
+make a detailed comparison. Also, refs. [17] construct similar models using
+free fermions. Curiously the gauge groups are smaller than those found else-
+where (e.g. USp(8) in d = 6); again we have not been able to make detailed
+comparisons.
+   As an aside, there is a strong temptation to regard the Dirichlet open
+strings as the twisted sector that is otherwise absent for the orientifold [21,
+1, 2]. This is true in a number of formal senses, but we find it somewhat
+dangerous to think this way, in that it might lead one only to a subset of
+the consistent theories. Note, too, that it is not always true: a D-brane
+in a non-compact space need not be accompanied by an orientifold—there
+is no inconsistency in the RR field equation because the flux can escape to
+infinity. Conversely an orientifold of a non-compact space does not require
+the introduction of D-branes.
+   In conclusion, we have developed some of the necessary technology of
+orientifolds and D-manifolds, as a step toward trying to uncover the struc-
+ture underlying string duality. It will be interesting to analyze the duality
+symmetries of these theories [20].
+
+Acknowledgments
+We are grateful to Tom Banks, Shyamoli Chaudhuri, Michael Douglas, Rob
+Leigh, Nati Seiberg, Andrew Strominger, and Edward Witten for helpful dis-
+cussions. This work is supported by NSF grants PHY91-16964 and PHY94-
+07194.
+
+
+
+
+                                      25
+References
+ [1] A. Sagnotti, in Cargese ’87, “Non-perturbative Quantum Field Theory,”
+     ed. G. Mack et. al. (Pergamon Press, 1988) p. 521;
+    V. Periwal, unpublished.
+
+ [2] P. Horava, Nucl. Phys. B327 (1989) 461.
+
+ [3] J. Dai, R. G. Leigh, and J. Polchinski, Mod. Phys. Lett. A4 (1989) 2073;
+     R. G. Leigh, Mod. Phys. Lett. A4 (1989) 2767.
+
+ [4] C. Vafa and E. Witten, Dual String Pairs with N = 1 and N = 2
+    Supersymmetry in Four Dimensions, preprint HUTP-95-A023, hep-
+    th/9507050.
+
+ [5] J. Polchinski, Dirichlet Branes and Ramond-Ramond Charges, to appear
+    in Phys. Rev. Lett., preprint hepth/9510017.
+
+ [6] M. Bershadsky, C. Vafa, and V. Sadov, D-Strings on D-Manifolds,
+     preprint HUTP-95-A035, hep-th/9510225.
+
+ [7] E. Witten, Small Instantons in String Theory, preprint IASSNS-HEP-
+    95-87, hep-th/9511030.
+
+ [8] T. Banks. M. Douglas, J. Polchinski and N. Seiberg, unpublished.
+
+ [9] M. B. Green and J. H. Schwarz, Phys. Lett. B149 (1984) 117; 151B
+     (1985) 21.
+
+[10] J. Polchinski and Y. Cai, Nucl. Phys. B296, 91 (1988);
+    C. G. Callan, C. Lovelace, C. R. Nappi and S.A. Yost, Nucl. Phys. B308,
+    221 (1988).
+
+[11] G. Pradisi and A. Sagnotti, Phys. Lett. B216 (1989) 59.
+
+[12] D. Friedan, E. Martinec, and S. Shenker, Nucl. Phys. B271 (1986) 93.
+
+                                     26
+[13] E. Witten, private communication.
+
+[14] C. G. Callan, C. Lovelace, C. R. Nappi and S.A. Yost, Nucl. Phys. B293,
+    83 (1987).
+
+[15] P. Horava, Phys. Lett. B231, 251 (1989).
+
+[16] N. Ishibashi and T. Onogi, Nucl. Phys. B318 (1989) 239.
+
+[17] Z. Bern, and D. C. Dunbar, Phys. Lett. B242 (1990) 175; Phys. Rev.
+    Lett. 64 (1990) 827; Nucl. Phys. B319 (1989) 104; Phys. Lett. 203B
+    (1988) 109.
+
+[18] M. Bianchi and A. Sagnotti, Phys. Lett. B247 (1990) 517; Nucl. Phys.
+    B361 (1991) 519;
+    A. Sagnotti, Phys. Lett. B294 (1992) 196;
+    A. Sagnotti, Some Properties of Open-String Theories, preprint
+    ROM2F-95/18, hep-th/9509080.
+
+[19] J. Schwarz, Anomaly-Free Supersymmetric Models in Six Dimensions,
+     preprint CALT-68-2030, hep-th/9512053.
+
+[20] M. Berkooz, R. Leigh, J. Polchinski, J. Schwarz, N. Seiberg, and E.
+     Witten, Anomalies, Topology and Dualities of D = 6 N = 1 Superstring
+     Vacua, hep-th/9605184.
+
+[21] J. A. Harvey and J. A. Minahan, Phys. Lett. 188B, 44 (1987).
+
+
+
+
+                                    27
+

@@ -399,19 +399,19 @@ The RR tadpole cancellation of \cref{ch:tadpole} is proved as an integer identit
 places, and the encodings do not even agree on the accounting. In
 \lean{rr\_tadpole\_cancellation} of \texttt{SocrateAI.Moonshine} and of
 \texttt{DualScaleValidation.UseCase3} the count is $16$ D7 stacks of charge $+4$ against
-$4$ O7-planes of charge $-16$ \source{Moonshine/KummerTadpole.lean, ll.~100--124}; in
-\lean{d7\_tadpole\_cancellation} of the Foundation library it is $32$ D7-branes of charge
-$+2$ against $16$ O7$^-$ fixed points of charge $-4$
-\source{StringTheory/TadpoleCancellation.lean, ll.~33--61}. Both give $64-64=0$; the
-second is the accounting of the $T^4/\Z_2$ orientifold with its $2^4=16$ fixed points
-\source{StringTheory/TadpoleCancellation.lean, l.~30}, the first a different bookkeeping
-of the same total. The fourth, \lean{tadpole\_cancellation} of
+$4$ O7-planes of charge $-16$ \source{Moonshine/KummerTadpole.lean, ll.~96--126}; in
+\lean{d7\_tadpole\_cancellation} of the Foundation library it was, in the snapshot the atlas
+was computed from (2026-09-17), $32$ D7-branes of charge $+2$ against $16$ O7$^-$ fixed points
+of charge $-4$. Both gave $64-64=0$, but the second took the count of the $T^4/\Z_2$ fixed
+points and the charge of an O7-plane, a combination that matches no orientifold; it was
+corrected on 2026-09-18 to the $4$ O7-planes and $16$ D7-branes of \eqref{eq:tadpole:d7}
+(\cref{sec:tadpole:lean}). The first is a rescaling by~$4$ of the same total. The fourth, \lean{tadpole\_cancellation} of
 \texttt{StringTheory.StringDynamics}, is not an identity but a rearrangement: from the
 hypothesis \lean{totalTadpole ... = 0} it derives
 $\sum_i\text{charge}_i+\text{fluxTadpole}=24$ by \lean{linarith}
-\source{StringDynamics/TadpoleConstraint.lean, ll.~86--93}. A reader trusting docstrings
+\source{StringDynamics/TadpoleConstraint.lean, ll.~92--99}. A reader trusting docstrings
 alone would count four proofs of tadpole cancellation; the atlas plus the source reveal
-two unrelated integer bookkeepings and one rearrangement of an assumption. The physics,
+two integer bookkeepings (after the correction, related by a factor~$4$) and one rearrangement of an assumption. The physics,
 that RR charge on a compact space sums to zero, is Tier L in all four files and proved in
 none.
 
@@ -421,8 +421,8 @@ The repair is mechanical and the atlas says where to apply it. For each cluster 
 one canonical definition, the one closest to the mathematics: for the Euler characteristic
 the table \lean{k3HodgeNumber} with the functional \lean{eulerFromHodge}, the only version
 in which the Hodge diamond rather than a precomputed sum is the input; for the Mukai
-lattice a Gram matrix in \texttt{Lattice.Mukai}; for the tadpole the $T^4/\Z_2$ count of
-the Foundation library. Then replace each duplicate by a corollary that \emph{states its
+lattice a Gram matrix in \texttt{Lattice.Mukai}; for the tadpole the corrected Foundation file,
+which contains Polchinski's whole table (\lean{oplane\_total\_independent}). Then replace each duplicate by a corollary that \emph{states its
 old form and proves it from the canonical one}, for instance
 \begin{leancode}
 theorem k3_euler_eq_24 :

@@ -12,7 +12,44 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-full = {json.loads(l)["name"] for l in (ROOT / ".leancache/depgraph.jsonl").read_text().splitlines() if l.startswith("{")}
+FIRST_PARTY = ("DualScaleStream2", "StringTheoryFormalization", "StringTheoryFoundation", "DualScaleM24Formalization",
+               "DoubleFieldTheory", "DualScaleValidation", "Lean5Corpus", "DualScaleCosmology", "DualScaleMoonshine",
+               "DualScaleDyons")
+_dump = [json.loads(l) for l in (ROOT / ".leancache/depgraph.jsonl").read_text().splitlines() if l.startswith("{")]
+# The dump is a snapshot. A first-party declaration that has since been removed or renamed in the sources
+# must not be accepted from it (a removed theorem passed silently until 2026-09-18): keep a first-party
+# dump entry only if its name, or its parent (structure fields, auto-generated lemmas), is still declared.
+_DECL_ANY = re.compile(r"^(?:@\[[^\]]*\]\s*)?(?:(?:private|protected|noncomputable|partial|unsafe)\s+)*"
+                       r"(?:theorem|lemma|def|abbrev|structure|inductive|class|instance)\s+([A-Za-z0-9_'.₀-₉]+)", re.M)
+_NS = re.compile(r"^(namespace|end)\s+([A-Za-z0-9_.]+)\s*$", re.M)
+def _source_names():
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from statement_lock import strip_comments
+    out = set()
+    for lib in FIRST_PARTY:
+        for f in (ROOT / lib).rglob("*.lean"):
+            text = strip_comments(f.read_text(encoding="utf-8"))
+            ev = sorted([(m.start(), "ns", m.group(1), m.group(2)) for m in _NS.finditer(text)]
+                        + [(m.start(), "decl", m.group(1), None) for m in _DECL_ANY.finditer(text)])
+            stack = []
+            for _, kind, x, y in ev:
+                if kind == "ns":
+                    if x == "namespace":
+                        stack.append(y)
+                    elif stack and stack[-1] == y:
+                        stack.pop()
+                else:
+                    out.add(".".join(stack + [x]))
+    return out
+_src = _source_names()
+def _alive(e):
+    if not str(e.get("module", "")).startswith(FIRST_PARTY):
+        return True
+    n = e["name"]
+    parts = n.split(".")
+    return any(".".join(parts[:k]) in _src for k in range(1, len(parts) + 1))
+STALE = sorted(e["name"] for e in _dump if not _alive(e))
+full = {e["name"] for e in _dump if _alive(e)}
 tails = {}
 for n in full:
     parts = n.split(".")
@@ -60,8 +97,8 @@ for line in (ROOT / "papers/book/generated/lean_name_allowlist.tsv").read_text()
 # declaration, and each one actually cited is then verified by Lean under its fully qualified name.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from axiom_audit import qualified_names
-SRC_LIBS = ["DualScaleStream2", "StringTheoryFormalization", "DualScaleCosmology", "DualScaleM24Formalization",
-            "DualScaleMoonshine", "DualScaleDyons"]
+SRC_LIBS = ["DualScaleStream2", "StringTheoryFormalization", "StringTheoryFoundation", "DualScaleCosmology",
+            "DualScaleM24Formalization", "DualScaleValidation", "DualScaleMoonshine", "DualScaleDyons"]
 src_tails = {}
 for lib in SRC_LIBS:
     for f in (ROOT / lib).rglob("*.lean"):
@@ -74,12 +111,22 @@ mentions = {n for s_ in per_file.values() for n in s_}
 SRC_VERIFY = sorted({q for n in mentions if n in src_tails and n not in full and n not in tails for q in src_tails[n]})
 unresolved = sorted({n for n in mentions if n not in full and n not in tails and n not in ALLOW and n not in src_tails})
 unresolved += [q for q in SRC_VERIFY if q not in unresolved]
+# mentions that only the stale part of the dump knows: verify each candidate under its full name
+stale_tails = {}
+for q in STALE:
+    parts = q.split(".")
+    for i in range(len(parts)):
+        stale_tails.setdefault(".".join(parts[i:]), set()).add(q)
+STALE_CITED = {n: sorted(stale_tails[n]) for n in mentions
+               if n in stale_tails and n not in full and n not in tails and n not in ALLOW and n not in src_tails}
+unresolved = [n for n in unresolved if n not in STALE_CITED]
+unresolved += sorted({q for qs in STALE_CITED.values() for q in qs} - set(unresolved))
 # allowlisted names that claim a real target must have that target exist
 unresolved += sorted({t for t in ALLOW.values() if t != "-"} - set(unresolved))
 # Everything not in the project's own dump goes to Lean itself (Mathlib and core names, namespaces).
 import subprocess, tempfile
-IMPORTS = ["Mathlib", "DualScaleStream2", "StringTheoryFormalization", "DualScaleCosmology", "DualScaleM24Formalization",
-           "DualScaleMoonshine", "DualScaleDyons"]
+IMPORTS = ["Mathlib", "DualScaleStream2", "StringTheoryFormalization", "StringTheoryFoundation", "DualScaleCosmology",
+           "DualScaleM24Formalization", "DualScaleValidation", "DualScaleMoonshine", "DualScaleDyons"]
 PRELUDE = "".join(f"import {m}\n" for m in IMPORTS) + "open Matrix\nopen DualScaleCosmology DualScaleMoonshine DualScaleDyons\nopen DualScaleCosmology.Stream6Verdict DualScaleCosmology.Stream7CA DualScaleCosmology.Stream7CB\n"  # quoted code uses `open Matrix`; chapters 39-41 cite names relative to these namespaces
 probe = PRELUDE + "".join(
     f"#check @{n}\n" for n in unresolved)
@@ -94,6 +141,9 @@ Path(fh.name).unlink()
 bad_lines = {int(m.group(1)) for m in re.finditer(r":(\d+):\d+: error", out)}
 unknown = {n for i, n in enumerate(unresolved, start=PRELUDE.count("\n") + 1) if i in bad_lines}
 bad_targets = sorted(t for t in unknown if t in set(ALLOW.values()) or t in set(SRC_VERIFY))
+# a mention known only to the stale dump is unknown when none of its candidates exists any more
+unknown |= {n for n, qs in STALE_CITED.items() if all(q in unknown for q in qs)}
+unknown -= {q for qs in STALE_CITED.values() for q in qs}
 # a namespace or module path is not a constant: accept prefixes of known names
 prefixes = {".".join(n.split(".")[:k]) for n in full for k in range(1, len(n.split(".")))}
 # a module path (file under a first-party library) is a legitimate thing to name in prose

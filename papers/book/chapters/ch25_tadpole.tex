@@ -138,9 +138,11 @@ In the covering torus every D-brane away from a fixed point has a mirror image u
 reflection. Some authors count the brane and its image separately (``32 D-branes''), assign
 each half the charge, and double the orientifold charge accordingly; others rescale all
 charges by a common factor. Only the \emph{ratio} of plane charge to brane charge,
-$-2^{p-5}$, and the vanishing of the total are convention independent. The Lean libraries contain
-three different bookkeepings of this cancellation (\cref{sec:tadpole:lean}); none is wrong
-as arithmetic, but they cannot be compared digit by digit.
+$-2^{p-5}$, and the vanishing of the total are convention independent. The Lean libraries use
+two bookkeepings of this cancellation (\cref{sec:tadpole:lean}): the units of
+\cref{tab:tadpole:oplanes}, and the same with all charges multiplied by~$4$. Both have the ratio
+$-4$ at $p=7$. A third bookkeeping, with sixteen ``O7-planes'' at the fixed points of $T^4/\Z_2$
+and ratio $-2$, matched no row of the table; it was corrected on 2026-09-18.
 \end{pitfallbox}
 
 \section{Curvature as a charge: the origin of \texorpdfstring{$\chi/24$}{chi/24}}
@@ -705,8 +707,12 @@ in F-theory the total background charge of all seven-branes is
 $Q_3^{\rm D7}=-\chi(X)/24$ \source{GKP §2.1, eqs.~(2.20), (2.22), ll.~428--474}; SVW make the
 same observation, the induced charge of a worldvolume $K$ being $c_2(K)/24$
 \source{SVW §2.2, ll.~387--399}. Note $\chi(K3)/24=1$. Sixteen D7-branes account for $-16$
-of the $-24$. The remaining $-8$ must be carried by the four O7-planes, $-2$ each; this last
-division is standard but has not been checked against a source in this book's library.
+of the $-24$. The remaining $-8$ is carried by the four O7-planes, $-2$ each: TT state that
+``2 units of D3 brane charge are induced on the world volume of each O7-plane and one units of
+D3 brane charge in each D7-brane, giving rise to a total of 24 units'', cancelled as
+$\frac12N_{\rm flux}+N_{D3}=24$ \source{TT §2.2, eq.~(2.3), ll.~164--171} (their sign
+convention is opposite to GKP's). The two routes to $24$, $4\cdot2+16\cdot1$ and
+$\chi(K3\times K3)/24$, agree; the arithmetic is \lean{induced\_d3\_charge\_matches\_target}.
 \end{remark}
 
 \subsection{A chain of dualities as a consistency check}
@@ -827,9 +833,14 @@ theorem tadpole_cancellation (braneStacks : Fin 4 → BraneStack) (H₃ F₃ : �
     (h : totalTadpole braneStacks H₃ F₃ = 0) :
     (∑ i, (braneStacks i).charge) + fluxTadpole H₃ F₃ = 24 := by ...
 
--- StringTheory.Foundation.StringTheory.TadpoleCancellation
+-- StringTheory.Foundation.StringTheory.TadpoleCancellation (corrected 2026-09-18)
 theorem d7_tadpole_cancellation : totalD7Charge + totalO7Charge = 0 := by rfl
-theorem d3_tadpole_target_is_one : d3TadpoleTarget = 1 := by rfl
+theorem plane_brane_ratio : chargeO7Minus = -(2 ^ (7 - 5) : Int) * chargeD7Brane := by rfl
+theorem oplane_total_independent :
+    ∀ k < 7, (planes (k + 3) : Int) * planeCharge (k + 3) + 16 * 4 = 0 := by decide
+theorem induced_d3_charge_matches_target :
+    (numO7Planes : Int) * d3ChargePerO7 + (numD7Branes : Int) * d3ChargePerD7
+      = d3TadpoleTarget := by rfl
 
 -- SocrateAI.Moonshine (KummerTadpole.lean)
 theorem rr_tadpole_cancellation : net_tadpole_charge = 0 := by rfl
@@ -841,19 +852,24 @@ theorem rr_tadpole_cancellation :
 product of two integers; \lean{tadpole\_cancellation} says that if
 $\sum_i q_i+H_3F_3-24=0$ then $\sum_iq_i+H_3F_3=24$, a rearrangement of its own hypothesis
 (the \lean{euler} field of \lean{BraneStack} is never used).
-\lean{d7\_tadpole\_cancellation} unfolds to $32\cdot2+16\cdot(-4)=0$ and
-both \lean{rr\_tadpole\_cancellation} to $16\cdot4+4\cdot(-16)=0$; all are proved by
-\lean{rfl}.
-Compare with \eqref{eq:tadpole:d7}: the second is the $p=7$ row of
-\cref{tab:tadpole:oplanes} ($4$ planes, $16$ branes, ratio $-4$) with all charges multiplied
-by $4$. The first has $16$ planes; by \eqref{eq:tadpole:oplane} sixteen planes belong to
-$p=5$, where the ratio of plane to brane charge is $-1$, and $32\cdot2$ against $16\cdot(-4)$
-is that row with branes and images counted separately and charges again multiplied by $4$, so
-the label ``O7'' in that file does not match its numbers. This is the convention issue of the
-pitfall box in \cref{sec:tadpole:gauss}; the Lean statements themselves are correct
-arithmetic and carry no information about which convention is meant.
-\lean{d3\_tadpole\_target\_is\_one} is $24/24=1$, the number that appears in
-\cref{rem:tadpole:where}. Finally,
+\lean{d7\_tadpole\_cancellation} unfolds to $16\cdot1+4\cdot(-4)=0$, exactly
+\eqref{eq:tadpole:d7}, and both \lean{rr\_tadpole\_cancellation} to $16\cdot4+4\cdot(-16)=0$,
+the same row with all charges multiplied by~$4$ (\lean{o7\_d7\_ratio} checks that the ratio is
+still $-4$); all are proved by \lean{rfl}. \lean{oplane\_total\_independent} is the whole of
+\cref{tab:tadpole:oplanes} in units of $\mu_p/4$, for $p=3,\dots,9$, checked by \lean{decide}.
+\lean{induced\_d3\_charge\_matches\_target} is the arithmetic of \cref{rem:tadpole:where}:
+$4\cdot2+16\cdot1=24\cdot24/24$.
+
+\emph{A correction.} Until 2026-09-18 the Foundation file placed sixteen O7$^-$-planes at the
+fixed points of $T^4/\Z_2$, with $32$ D7-branes of charge $+2$, and stated the D3 target as
+$\chi(K3)/24=1$. Sixteen planes belong to $p=5$ in \cref{tab:tadpole:oplanes}, the ratio $-2$
+matched no row, and the orientifold of $\KT/\Z_2$ acts on the $T^2$, with four fixed points
+\source{TT §2.2, ll.~160--163; Sen l.~242}; the sixteen fixed points of $T^4/\Z_2$ are the
+Kummer limit of the K3 factor (\cref{ch:kummer}). The D3 target is $\chi(K3\times K3)/24=24$;
+$\chi(K3)/24=1$ is the charge of a single wrapped D7-brane. A literature check by a sibling
+project flagged both points; they were verified against the pinned sources before the file
+was changed. The first edition of this chapter already noted that ``the label `O7' in that
+file does not match its numbers''. Finally,
 \begin{leancode}
 theorem flux_tadpole_quantization_exact
     (s : StringTheory.Foundation.StringTheory.VafaSwampland.GVWFluxState) :
@@ -898,8 +914,8 @@ $\mathit{flux}+n=24$ in $\N$ $\Rightarrow$ $n\le24$, and $n=24$ if $\mathit{flux
 $L_1$ even-diagonal, $L_1,L_2$ symmetric $\Rightarrow$ $x^{\mathsf T}(L_1\otimes L_2)x$ even
  for all $x$ & \TA & \lean{kronForm\_even},\newline
  \lean{flux\_half\_selfIntersection\_integral}\\
-$64-64=0$ in two bookkeepings; $24/24=1$ & \TA & \lean{rr\_tadpole\_cancellation},
- \lean{d7\_tadpole\_cancellation}, \lean{d3\_tadpole\_target\_is\_one}\\
+$16-16=0$ and $64-64=0$ (ratio $-4$); Polchinski's table for $3\le p\le9$; $4\cdot2+16\cdot1=24$ & \TA & \lean{d7\_tadpole\_cancellation}, \lean{rr\_tadpole\_cancellation},\newline
+ \lean{oplane\_total\_independent}, \lean{induced\_d3\_charge\_matches\_target}\\
 Betti and Hodge numbers of $K3\times K3$, \eqref{eq:tadpole:div6}, $2610$, $972$, $-192$,
  signature $(371,115)$, table of \cref{sec:tadpole:worked} & --- & symbolic checks (sympy), not
  Tier~A\\
@@ -998,12 +1014,12 @@ and\\ \lean{Finset.sum\_mul\_sum}.)
 \end{exercise}
 
 \begin{exercise}[$\star\star\star$, Lean]\label{exe:tadpole:leanoplane}
-Replace the integer literals of \lean{d7\_tadpole\_cancellation} by a statement with content.
-Work in units of a quarter of $\mu_p$ so that all charges are integers for $3\le p\le9$:
-define \lean{planes p := 2 \^{} (9 - p)} and \lean{planeCharge p := -(2 \^{} (p - 3) : ℤ)} and prove
-that \lean{(planes p : ℤ) * planeCharge p + 16 * 4 = 0} for every \lean{p} with
-\lean{3 ≤ p} and \lean{p ≤ 9}. Identify which of the two older bookkeepings
-($16\cdot4-4\cdot16$ and $32\cdot2-16\cdot4$) your statement reproduces at $p=7$ and at $p=5$.
+The library proves \lean{oplane\_total\_independent} by \lean{decide}, one \lean{p} at a time.
+Prove instead, for all \lean{p} with \lean{3 ≤ p} and \lean{p ≤ 9} and without case analysis,
+that \lean{(planes p : ℤ) * planeCharge p = -64}, using
+\lean{planes p := 2 \^{} (9 - p)}, \lean{planeCharge p := -(2 \^{} (p - 3) : ℤ)} and
+\lean{pow\_add}. Which of the two bookkeepings of \cref{sec:tadpole:lean} does the $p=7$ case
+reproduce, and which row would the withdrawn ``sixteen O7-planes'' bookkeeping have needed?
 \end{exercise}
 
 \section*{Further reading}

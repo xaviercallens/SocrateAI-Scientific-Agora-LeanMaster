@@ -313,7 +313,7 @@ String compactification on $M_{10} = M_4 \times (K3 \times T^2)$ requires unifyi
 - Hitchin's Generalized Complex Geometry and T-duality on $K3 \times T^2$ require the doubled $O(D,D;\mathbb{Z})$ split-signature metric $\eta = \begin{pmatrix} 0 & I \\ I & 0 \end{pmatrix}$.
 - In [`ODDMetric.lean`](file:///home/xavkal/SocrateAI-Scientific-Agora-LeanMaster/StringTheoryFormalization/StringDynamics/ODDMetric.lean), we verified $\eta^T = \eta$ and $\eta_{D=1} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$.
 - In [`TDualityGysin.lean`](file:///home/xavkal/SocrateAI-Scientific-Agora-LeanMaster/StringTheoryFormalization/StringDynamics/TDualityGysin.lean), T-duality is proved as an involution $s \mapsto s$ swapping momentum $n$ and winding $w$, coupled with the Gysin pushforward $\pi_*: H^*(K3 \times S^1) \to H^*(K3)$.
-- Gukov-Vafa-Witten superpotential $W = \int_{K3 \times T^2} (F_3 - \tau H_3) \wedge \Omega$ and Tadpole cancellation $\sum Q + \chi(K3)/24 = 0$ bridge the discrete Euler characteristic ($\chi = 24$) with continuous flux integrals.
+- Gukov-Vafa-Witten superpotential $W = \int_{K3 \times T^2} (F_3 - \tau H_3) \wedge \Omega$ and Tadpole cancellation $\sum Q + \text{flux} = \chi(K3\times K3)/24 = 24$ (corrected 2026-09-18: an earlier version wrote $\chi(K3)/24$, which is the D3 charge of one wrapped D7-brane; see `TadpoleCancellation.lean`, Tripathy–Trivedi (2.3), DRS l. 640) bridge the discrete Euler characteristic ($\chi = 24$) with continuous flux integrals.
 
 ---
 

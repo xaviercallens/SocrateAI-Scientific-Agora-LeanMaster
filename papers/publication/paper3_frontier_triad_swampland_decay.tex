@@ -33,8 +33,11 @@
 \maketitle
 
 \begin{abstract}
-We formulate and formally verify the **Frontier Triad**: an interlocking triple of non-perturbative constraints guaranteeing the quantum gravitational consistency and stability of string vacua on $K3 \times T^2$. First, in accordance with the Swampland Distance Conjecture (SDC), traversing geodesic distances in moduli space induces an exponential tower of light states whose mass satisfies $m(\Delta\phi) \le m_0$, delineating the boundary of effective field theories. Second, unstable open-string configurations undergo Sen tachyon condensation, driving the tachyon potential to zero ($V(\infty) = 0$) and canceling negative brane tensions. Third, Ramond-Ramond (RR) Tadpole cancellation is verified as an exact Diophantine screening identity between 16 positive $D7$-branes and 4 negative $O7$-planes: $16 \times (+4) + 4 \times (-16) = 64 - 64 = 0$. In tandem with the strict positivity of the Coleman-De Luccia bounce action $B > 0$, false vacuum decay rates $\Gamma/V \sim e^{-B}$ remain exponentially suppressed. Every theorem in this triad has been mechanized with no axioms beyond Lean's three standard axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}) in Lean 4.
+We formulate and formally verify the **Frontier Triad**: an interlocking triple of non-perturbative constraints guaranteeing the quantum gravitational consistency and stability of string vacua on $K3 \times T^2$. First, in accordance with the Swampland Distance Conjecture (SDC), traversing geodesic distances in moduli space induces an exponential tower of light states whose mass satisfies $m(\Delta\phi) \le m_0$, delineating the boundary of effective field theories. Second, unstable open-string configurations undergo Sen tachyon condensation, driving the tachyon potential to zero ($V(\infty) = 0$) and canceling negative brane tensions. Third, Ramond-Ramond (RR) Tadpole cancellation is verified as an exact Diophantine screening identity between 16 positive $D7$-branes and 4 negative $O7$-planes of the orientifold $K3 \times T^2/\mathbb{Z}_2$: $16 \times (+4) + 4 \times (-16) = 64 - 64 = 0$ in units of $\mu_7/4$ (charges $+1$ and $-4$ in D7 units~\cite{Sen1996,TripathyTrivedi2003}). In tandem with the strict positivity of the Coleman-De Luccia bounce action $B > 0$, false vacuum decay rates $\Gamma/V \sim e^{-B}$ remain exponentially suppressed. Every theorem in this triad has been mechanized with no axioms beyond Lean's three standard axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}) in Lean 4.
 \end{abstract}
+
+\section*{Revision Note (2026-09-18): orientifold bookkeeping}
+\textit{Earlier versions located the tadpole configuration ``in the $T^4/\mathbb{Z}_2$ orientifold'' and did not state the charge units. The IIB orientifold relevant here is $K3 \times T^2/\mathbb{Z}_2$: it acts on the $T^2$, whose reflection has 4 fixed points, each carrying an O7-plane of charge $-4$ in D7 units, cancelled by 16 D7-branes of charge $+1$ (Sen~\cite{Sen1996}, l.~242 of the pinned text; Tripathy--Trivedi~\cite{TripathyTrivedi2003}, \S2.2). The 16 fixed points of $T^4/\mathbb{Z}_2$ belong to the orbifold (Kummer) limit of the K3 factor. The identity $16 \times 4 + 4 \times (-16) = 0$ proved in Lean is this configuration with all charges multiplied by 4; the ratio $-4$ of plane to brane charge is the convention-independent content. No Lean statement of this paper changed; the correction is to the wording of the abstract and of Definition~\ref{def:charges}. The check was prompted by a literature audit in a sibling project and verified against the sources.}
 
 \section*{Revision Note (2026-09-17)}
 \textit{Wording on axioms has been corrected to specify no axioms beyond Lean's three standard axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}). Claims are labeled by epistemic tier: Tier A (kernel-checked theorems), Tier L (literature citations), and Tier C (conjectures). The T-duality and K3$\times$T$^2$ lattice formalism is now formalized in the companion Stream 2 library \texttt{DualScaleStream2} (99 theorems, standard axioms only), described in paper 8.}
@@ -71,8 +74,8 @@ The Frontier Triad asserts that these three conditions are not independent pheno
 \section{Formal Lean 4 Theorems and Verification}
 The theorems below are mechanized in Lean 4 with no axioms beyond the three standard axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}) in the module \texttt{DualScaleValidation.UseCase3\_FrontierTriad}.
 
-\begin{definition}[D7/O7 Charge Parameters]
-In the $T^4/\mathbb{Z}_2$ orientifold, $N_{D7} = 16$ branes contribute $+4$ charge each, and $N_{O7} = 4$ orientifold planes contribute $-16$ charge each.
+\begin{definition}[D7/O7 Charge Parameters]\label{def:charges}
+In the orientifold $K3 \times T^2/\mathbb{Z}_2$, with the 4 O7-planes at the fixed points of $T^2/\mathbb{Z}_2$ and in units of $\mu_7/4$, $N_{D7} = 16$ branes contribute $+4$ charge each, and $N_{O7} = 4$ orientifold planes contribute $-16$ charge each (i.e.\ $+1$ and $-4$ in D7 units~\cite{Sen1996,TripathyTrivedi2003}).
 \end{definition}
 
 \begin{theorem}[Exact Diophantine RR Tadpole Cancellation]
@@ -128,6 +131,8 @@ We have formalized and certified the Frontier Triad in Lean 4. The combination o
 \bibitem{Sen2005} A.~Sen, \emph{Tachyon Dynamics in Open String Theory}, Int. J. Mod. Phys. A \textbf{20} (2005) 5513--5620.
 \bibitem{ColemanDeLuccia1980} S.~Coleman and F.~De Luccia, \emph{Gravitational effects on and of vacuum decay}, Phys. Rev. D \textbf{21} (1980) 3305.
 \bibitem{Callens2026} X.~Callens, \emph{The Frontier Triad: Non-Perturbative Dynamics, SDC, and Vacuum Stability on $K3 \times T^2$}, SocrateAI Research (2026).
+\bibitem{Sen1996} A.~Sen, \emph{F-theory and Orientifolds}, Nucl. Phys. B \textbf{475} (1996) 562, hep-th/9605150.
+\bibitem{TripathyTrivedi2003} P.~K.~Tripathy and S.~P.~Trivedi, \emph{Compactification with Flux on K3 and Tori}, JHEP \textbf{03} (2003) 028, hep-th/0301139.
 \end{thebibliography}
 
 \end{document}

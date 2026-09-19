@@ -40,7 +40,7 @@ literature (Tier L) versus this project's own conjectures (Tier C, not yet deriv
 
 Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
 invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
-every theorem and lemma (**640 audited theorems across the ten first-party libraries** depend on
+every theorem and lemma (**648 audited theorems across the ten first-party libraries** depend on
 nothing beyond the three standard Lean axioms — see §10 and
 [`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md), which is the authoritative,
 gate-by-gate status document that this README summarizes).
@@ -142,10 +142,11 @@ continuous parameter survives.
 - **Formal Verification:** [`DualScaleValidation/UseCase2_MoonshineBPS.lean`](DualScaleValidation/UseCase2_MoonshineBPS.lean#L65-L85) & [`Lean5Corpus/Problems/Problem2_MathieuFrobeniusRigidity.lean`](Lean5Corpus/Problems/Problem2_MathieuFrobeniusRigidity.lean#L55-L95).
 
 ### Lock 3: Diophantine Kummer Ramond-Ramond Tadpole Cancellation
-- **Mathematical Statement:** In the $\mathbb{Z}_2$ orientifold of $K3 \times T^2$, D7-branes with positive RR charge $+4$ wrap the 16 Kummer fixed 2-cycles, while 4 O7-planes carry negative RR charge $-16$:
+- **Mathematical Statement:** In the orientifold $K3 \times T^2/\mathbb{Z}_2$, 4 O7-planes sit at the fixed points of $T^2/\mathbb{Z}_2$ and 16 D7-branes cancel their charge; all of them wrap the K3 (Tripathy–Trivedi hep-th/0301139 §2.2; Sen hep-th/9605150). In units of $\mu_7/4$ (D7 $+4$, O7 $-16$; i.e. $+1$ and $-4$ in D7 units):
   $$\sum Q_{\mathrm{RR}} = 16 \times (+4) + 4 \times (-16) = 64 - 64 = 0$$
+  (Corrected 2026-09-19: an earlier wording had the D7-branes wrap "the 16 Kummer fixed 2-cycles"; the 16 fixed points of $T^4/\mathbb{Z}_2$ belong to the K3 factor's orbifold limit, not to the orientifold. The unrescaled statement, Polchinski's table and the D3 budget $4\cdot2+16\cdot1=\chi(K3\times K3)/24=24$ are in `StringTheoryFoundation/StringTheory/TadpoleCancellation.lean`.)
 - **Rigidity:** The cancellation is an exact Diophantine integer equation in $\mathbb{Z}$. If the number of branes or orientifolds deviates by even $\pm 1$, the vacuum develops an anomalous RR tadpole divergence violating Gauss's law. Hence, the brane number is strictly locked.
-- **Formal Verification:** [`DualScaleValidation/UseCase3_FrontierTriad.lean`](DualScaleValidation/UseCase3_FrontierTriad.lean#L60-L75).
+- **Formal Verification:** [`DualScaleValidation/UseCase3_FrontierTriad.lean`](DualScaleValidation/UseCase3_FrontierTriad.lean#L55-L78).
 
 ### Lock 4: Mukai Lattice Unimodular Monodromy ($\Gamma^{4,20}$)
 - **Mathematical Statement:** The Mukai lattice of D-brane charges on $K3$ is the unique even unimodular lattice of signature $(4, 20)$ and rank:
@@ -169,7 +170,7 @@ continuous parameter survives.
 | **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
 | **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
 | **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
-| **Kernel Verification** | None (paper only) | 640/640 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
+| **Kernel Verification** | None (paper only) | 648/648 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
 
 The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
 (Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
@@ -475,21 +476,21 @@ bare keyword — and it also catches `native_decide` (`Lean.ofReduceBool`), whic
 ```bash
 lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 ```
-Last full run (2026-09-18), **640 theorems audited across all ten libraries, 0 failing**:
+Last full run (2026-09-19), **648 theorems audited across all ten libraries, 0 failing**:
 
 | Library | Theorems audited | Failing |
 |---|:---:|:---:|
 | `DualScaleStream2` | 100 | 0 |
 | `StringTheoryFormalization` | 89 | 0 |
-| `DualScaleM24Formalization` | 61 | 0 |
-| `StringTheoryFoundation` | 56 | 0 |
+| `DualScaleM24Formalization` | 62 | 0 |
+| `StringTheoryFoundation` | 63 | 0 |
 | `Lean5Corpus` | 53 | 0 |
 | `DoubleFieldTheory` | 44 | 0 |
 | `DualScaleValidation` | 23 | 0 |
 | `DualScaleCosmology` (Stream 3, with the verdicts of Streams 6–7) | 50 | 0 |
 | `DualScaleMoonshine` (Stream 4) | 101 | 0 |
 | `DualScaleDyons` (Streams 5, 8) | 63 | 0 |
-| **Total** | **640** | **0** |
+| **Total** | **648** | **0** |
 
 "0 failing" means every theorem depends on nothing beyond `propext`, `Classical.choice` and
 `Quot.sound`.

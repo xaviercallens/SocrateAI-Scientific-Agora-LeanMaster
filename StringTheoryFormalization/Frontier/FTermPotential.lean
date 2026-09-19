@@ -70,7 +70,7 @@ of its own.
   `.totalD7Charge`, `.totalO7Charge` (bridges, per the atlas) are what
   `flux_tadpole_quantization_exact` literally re-exports; that file's own docstring
   (not this one) is the authority on what is actually proved about D7/O7 charge
-  cancellation (`32` D7-branes of charge `2`, `16` O7 fixed points of charge `-4`).
+  cancellation (since the 2026-09-18 correction: `16` D7-branes of charge `+1`, `4` O7-planes of charge `-4`).
 * `StringTheoryFoundation.StringTheory.VafaSwampland.GVWFluxState` (bridge) is the
   structure `flux_tadpole_quantization_exact` takes as an unused argument; see that
   module for what `GVWFluxState` actually models.
@@ -139,7 +139,8 @@ noncomputable def fTermCondition (W : GVWSuperpotential) (τ : ℂ) : ℂ :=
     imported `TadpoleCancellation.d7_tadpole_cancellation` — this theorem only
     re-exports that D7/O7 charge-cancellation fact under a different name. See
     `StringTheoryFoundation.StringTheory.TadpoleCancellation` for what is
-    actually proved (32 D7-branes of charge 2 cancel 16 O7-planes of charge -4). -/
+    actually proved (16 D7-branes of charge +1 cancel 4 O7-planes of charge -4, since the
+    2026-09-18 correction). -/
 theorem flux_tadpole_quantization_exact (s : StringTheory.Foundation.StringTheory.VafaSwampland.GVWFluxState) :
     StringTheory.Foundation.StringTheory.TadpoleCancellation.totalD7Charge +
     StringTheory.Foundation.StringTheory.TadpoleCancellation.totalO7Charge = 0 :=

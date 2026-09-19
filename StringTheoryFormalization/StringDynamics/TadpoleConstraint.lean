@@ -16,7 +16,9 @@ Calabi–Yau fourfold `M`, Dasgupta–Rajesh–Sethi state the total D3-brane ta
 tadpole is χ(M)/24"); Giddings–Kachru–Polchinski derive and use the same normalization for a
 concrete example, `χ = −8·24` cancelled by `16` D3-branes and `64` O3-planes
 (`papers/foundations/giddings_kachru_polchinski_hep-th_0105097.txt`, l. 421). For K3 alone,
-`χ(K3) = 24`. Sethi–Vafa–Witten (`papers/foundations/sethi_vafa_witten_hep-th_9606122.txt`,
+`χ(K3) = 24`, and for the fourfold `K3 × K3` dual to the IIB orientifold `K3 × T²/ℤ₂`,
+`χ/24 = 24` (DRS l. 640; Tripathy–Trivedi `hep-th_0301139.txt` eq. (2.3), l. 171:
+`½ N_flux + N_D3 = 24`). Sethi–Vafa–Witten (`papers/foundations/sethi_vafa_witten_hep-th_9606122.txt`,
 ll. 16–91, 514) discuss the sign and integrality obstructions to solving this constraint at all.
 
 ## Mathematical content
@@ -26,7 +28,11 @@ tadpole as `(branes) + (flux) = χ(M)/24`, but `totalTadpole` below is defined a
 own note on this file writes the constraint a third way, `∑Q + χ(K3)/24 = 0`. All three of the
 pinned literature, the project's own note, and this file's code disagree on where the `/24`
 belongs; this documentation pass records the discrepancy rather than resolving it, since the
-statements and code are not to be changed here. Read literally: `BraneStack` bundles an integer
+statements and code are not to be changed here. **Resolution (2026-09-18):** for `K3 × T²/ℤ₂` the
+bare `24` is `χ(K3 × K3)/24 = 24²/24`, the value of DRS l. 640 and TT (2.3); it coincides numerically
+with `χ(K3)` only because `χ(K3)²/24 = χ(K3)` when `χ(K3) = 24`. So the code's `24` is the right number
+for this compactification; the note "`∑Q + χ(K3)/24 = 0`" in LL.md was the wrong one (`χ(K3)/24 = 1` is
+the D3 charge of one D7-brane wrapped on K3, `TadpoleCancellation.d3_charge_per_D7_is_one`). Read literally: `BraneStack` bundles an integer
 `charge` and an integer `euler` field that no declaration in this file ever uses. `fluxTadpole`
 is the bare product `H₃_quanta * F₃_quanta`. `totalTadpole` sums the `charge` fields of 4 brane
 stacks, adds `fluxTadpole H₃ F₃`, and subtracts the literal `24`. `tadpole_cancellation` is a

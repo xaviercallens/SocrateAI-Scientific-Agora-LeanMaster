@@ -3,8 +3,8 @@
 
 **Module:** `DualScaleM24Formalization.Moonshine.KummerTadpole`  
 **Foundational Sources:**
-- Gimon, E. G. & Polchinski, J. *Consistency Conditions for Orientifolds and D-Manifolds*, Phys. Rev. D 54 (1996) 1667–1676 [`arXiv:hep-th/9601038`](https://arxiv.org/abs/hep-th/9601038).
-- Sen, A. *F-theory and Orientifolds*, Nucl. Phys. B 475 (1996) 562–578 [`arXiv:hep-th/9605150`](https://arxiv.org/abs/hep-th/9605150).
+- Tripathy, P. K. & Trivedi, S. P. *Compactification with flux on K3 and tori*, JHEP 03 (2003) 028 [`arXiv:hep-th/0301139`](https://arxiv.org/abs/hep-th/0301139) (`papers/foundations/hep-th_0301139.txt`, §2.2, ll. 160–163).
+- Sen, A. *F-theory and Orientifolds*, Nucl. Phys. B 475 (1996) 562–578 [`arXiv:hep-th/9605150`](https://arxiv.org/abs/hep-th/9605150) (`papers/foundations/hep-th_9605150.txt`, ll. 238–250).
 - Morrison, D. R. & Vafa, C. *Compactifications of F-Theory on Calabi--Yau Threefolds -- II*, Nucl. Phys. B 476 (1996) 437–469 [`arXiv:hep-th/9603161`](https://arxiv.org/abs/hep-th/9603161).
 - Callens, X. *Mechanized T-Duality and Frontier String Dynamics on K3 × T²*, SocrateAI Research (2026).
 
@@ -13,24 +13,22 @@ The Kummer surface $\mathrm{Km}(T^4)$ is constructed by taking the quotient of t
 
 Resolving each singular node $\mathbb{C}^2 / \mathbb{Z}_2$ introduces an exceptional divisor $E_i \cong \mathbb{P}^1$ with Cartan self-intersection matrix:
 $$E_i \cdot E_j = -2 \, \delta_{ij}$$
-The resulting smooth 4-manifold is a Calabi-Yau $K3$ surface. The 16 exceptional spheres span a 16-dimensional subspace of the algebraic cohomology, producing the maximal Kummer Picard rank $\rho(K3) = 20$.
+The resulting smooth 4-manifold is a Calabi-Yau $K3$ surface. The 16 exceptional spheres span a 16-dimensional subspace of the algebraic cohomology, so a projective Kummer surface has $\rho \ge 17$; the maximal value $\rho = 20$ is reached only when the transcendental lattice has rank 2 (Huybrechts Remark 3.24; `DualScaleDyons.WhichK3.kummer_iff_even`).
 
 On the Calabi-Yau threefold product $X = K3 \times T^2$, the Künneth theorem determines the middle Betti number:
 $$b_3(K3 \times T^2) = b_3(K3) b_0(T^2) + b_2(K3) b_1(T^2) + b_1(K3) b_2(T^2) + b_0(K3) b_3(T^2) = 0 + 22 \times 2 + 0 + 0 = 44$$
 and vanishing Euler characteristic $\chi(K3 \times T^2) = \chi(K3) \cdot \chi(T^2) = 24 \cdot 0 = 0$.
 
 ### Exact Ramond-Ramond (RR) Tadpole Cancellation
-In orientifold compactifications of Type IIB string theory, the background carries non-zero Ramond-Ramond charges under the 8-form potential $C_8$. Because the internal space $K3$ is compact and boundaryless, Gauss's law for the RR field strength $F_9 = dC_8$ forces the net charge to vanish identically:
-$$\int_{K3} dF_9 = 0 \implies \sum Q_{\mathrm{D7}} + \sum Q_{\mathrm{O7}} = 0$$
-Each of the 16 localized D7-brane stacks contributes charge $+4$, while the 4 global orientifold O7-planes contribute negative tension and negative charge $-16$:
-$$\sum Q_{\mathrm{RR}} = 16 \times (+4) + 4 \times (-16) = 64 - 64 = 0$$
+The type IIB orientifold $K3 \times T^2/\mathbb{Z}_2$ acts on the $T^2$, **not** on the Kummer $T^4/\mathbb{Z}_2$ above: its 4 O7-planes sit at the $2^2 = 4$ fixed points of the reflection of $T^2$ and wrap the K3, together with 16 D7-branes (TT ll. 160–163; Sen l. 242). Seven-branes are points of the compact $T^2/\mathbb{Z}_2$, and Gauss's law for $F_9 = dC_8$ there forces the net charge to vanish (Tier L). In units of the D7 charge the O7 charge is $-4$ and a D7 carries $+1$ (Sen l. 242); **this file multiplies all charges by 4** (D7 $+4$, O7 $-16$), which keeps the convention-independent ratio $-4$ (`o7_d7_ratio`):
+$$\sum Q_{\mathrm{RR}} = 16 \times (+4) + 4 \times (-16) = 64 - 64 = 0 \quad (\text{units of } \mu_7/4).$$
+The unrescaled statement is `StringTheory.Foundation.StringTheory.TadpoleCancellation.d7_tadpole_cancellation`. (An earlier revision cited Gimon–Polchinski eq. (3.12) here; that equation is a Chan–Paton projection for 5-branes in type I on $T^4/\mathbb{Z}_2$, not a seven-brane charge — corrected 2026-09-18.)
 
 ### Impact on Theoretical Physics
 - **Quantum Consistency:** Failure of tadpole cancellation leads to catastrophic gauge anomalies and unphysical divergences in the string worldsheet path integral.
 - **F-Theory / Heterotic Duality:** Explains the 24 singular fibers of elliptic F-theory fibrations over $\mathbb{P}^1$ and heterotic $E_8 \times E_8$ / $SO(32)$ anomaly cancellation.
 - **Moduli Stabilization:** Tadpole-screened orientifold vacua provide the topological platform for stabilizing complex structure and Kähler moduli without breaking supersymmetry.
 
-**Kernel Certified:** 0 sorry, 0 admit.
 -/
 
 namespace SocrateAI.Moonshine
@@ -97,11 +95,11 @@ theorem hodge_h11_eq_20 : k3_b2 - 2 * hodge_h20 = 20 := by rfl
 
 /-! ## 3. Ramond-Ramond Tadpole Cancellation Master Theorem -/
 
-/-- Charge carried by each of the 16 localized D7-brane stacks: $Q_{\mathrm{D7}} = +4$. -/
+/-- Charge of each of the 16 D7-branes in units of $\mu_7/4$: $+4$ (i.e. $+1$ in D7 units). -/
 def d7_charge : Int := 4
 def d7_count : Nat := 16
 
-/-- Charge carried by each of the 4 global orientifold O7-planes: $Q_{\mathrm{O7}} = -16$. -/
+/-- Charge of each of the 4 O7-planes in units of $\mu_7/4$: $-16$ (i.e. $-4$ in D7 units, Sen l. 242). -/
 def o7_charge : Int := -16
 def o7_count : Nat := 4
 
@@ -112,11 +110,9 @@ def net_tadpole_charge : Int := total_d7_charge + total_o7_charge
 
 /--
 ### Master Theorem: Exact Diophantine RR Tadpole Cancellation
-The positive D7-brane RR flux is identically screened by the negative O7-plane orientifold projection:
-$$\sum Q_{\mathrm{RR}} = 16 \times 4 + 4 \times (-16) = 64 - 64 = 0$$
-proving complete anomaly freedom and non-perturbative consistency of the vacuum.
+Integer identity $16 \times 4 + 4 \times (-16) = 64 - 64 = 0$ (units of $\mu_7/4$). That the net charge must vanish is Tier L; this theorem checks the arithmetic of the configuration, nothing about anomalies or vacuum consistency.
 
-- **Foundational Source:** Gimon & Polchinski (1996), Eq. (3.12); Sen (1996).
+- **Foundational Source:** Tripathy–Trivedi (2003) §2.2, ll. 160–163; Sen (1996) l. 242.
 - `@concept: RRTadpoleCancellation, DBraneChargeConservation`
 - `@paper: GimonPolchinski1996, Sen1996`
 - `@impact: QuantumAnomalyCancellation, ModuliStabilization`
@@ -125,5 +121,8 @@ theorem rr_tadpole_cancellation : net_tadpole_charge = 0 := by rfl
 
 theorem d7_positive_charge : total_d7_charge = 64 := by decide
 theorem o7_negative_charge : total_o7_charge = -64 := by decide
+
+/-- The convention-independent ratio of plane to brane charge for `p = 7`: `−2^{7−5} = −4`. -/
+theorem o7_d7_ratio : o7_charge = -4 * d7_charge := by decide
 
 end SocrateAI.Moonshine

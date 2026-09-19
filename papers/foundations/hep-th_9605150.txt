@@ -1,0 +1,832 @@
+                                                                                                                 hep-th/9605150
+                                                                                                                 MRI-PHY/96-14
+arXiv:hep-th/9605150v2 30 May 1996
+
+
+
+
+                                                                 F -theory and Orientifolds
+
+
+                                                                           Ashoke Sen1 2
+                                                      Mehta Research Institute of Mathematics
+                                                             and Mathematical Physics
+                                                 10 Kasturba Gandhi Marg, Allahabad 211002, INDIA
+
+                                                                             Abstract
+                                         By analyzing F -theory on K3 near the orbifold limit of K3 we establish the equivalence
+                                     between F -theory on K3 and an orientifold of type IIB on T 2 , which in turn, is related by a
+                                     T-duality transformation to type I theory on T 2 . By analyzing the F -theory background
+                                     away from the orbifold limit, we show that non-perturbative effects in the orientifold
+                                     theory splits an orientifold plane into two planes, with non-trivial SL(2,Z) monodromy
+                                     around each of them. The mathematical description of this phenomenon is identical to
+                                     the Seiberg-Witten result for N=2 supersymmetric SU(2) gauge theory with four quark
+                                     flavors. Points of enhanced gauge symmetry in the orientifold / F -theory are in one to
+                                     one correspondence with the points of enhanced global symmetry in the Seiberg-Witten
+                                     theory.
+
+
+
+
+                                       1
+                                          On leave of absence from Tata Institute of Fundamental Research, Homi Bhabha Road, Bombay
+                                     400005, INDIA
+                                        2
+                                          E-mail: sen@mri.ernet.in, sen@theory.tifr.res.in
+
+                                                                                   1
+1         Introduction and Summary
+Besides establishing connections between apparently different string theories, recent de-
+velopments in string theory have also provided us with some novel ways of compactifying
+string theory. One such procedure, now known as F -theory[1, 2, 3, 4, 5, 6, 7], involves type
+IIB string compactification where the dilaton and the scalar from the Ramond-Ramond
+(RR) sector (which we shall refer to as the axion) are not constant, but vary on the in-
+ternal manifold. Given a manifold M that admits elliptic fibration, i.e. has the structure
+of a fiber bundle whose fiber is a two dimensional torus and base is some manifold B, one
+defines F -theory on M as the type IIB theory on B, with the axion-dilaton modulus of
+the type IIB theory being set equal to the complex structure modulus of the fiber. Since
+in general this modulus varies as we move on B, the axion-dilaton modulus of the type
+IIB theory will vary as we move on B. In particular as we travel along non-trivial closed
+cycles on B the fiber can undergo non-trivial SL(2,Z) transformation. This would imply
+that the axion-dilaton modulus of the type IIB theory will undergo non-trivial SL(2,Z)
+transformation as we move along closed cycles of B.
+   Many of the F -theory compactifications have been conjectured to be equivalent to
+more conventional compactifications of heterotic string theory. In particular, F -theory
+on an elliptically fibered K3 surface has been conjectured to be dual to heterotic string
+theory on a two dimensional torus[1]. One of the purposes of this paper is to establish
+this equivalence. Like many of the dualities in string theory and M-theory which can
+be established by working at the orbifold limit of the compact manifolds[8], the duality
+between F -theory on K3 and heterotic string theory on T 2 is established by going to a
+special point in the K3 moduli space where it can be identified to a Z2 orbifold of a four
+torus. We show that in this limit the F -theory background reduces to a conventional
+background where the axion-dilaton modulus remains constant as we move in the internal
+space. More specifically this background can be identified to that of an orientifold[9, 10,
+11] of type IIB theory which can be analyzed by the conventional conformal field theory
+techniques and is in fact related by T -duality to type I string theory on T 2 .3 Thus at
+this special point in the moduli space F -theory on K3 is identical to type I theory on
+T 2 , which, in turn has been conjectured to be equivalent to heterotic string theory on
+T 2 [12, 13, 14, 15]. Once we have established the equivalence between the heterotic string
+    3
+        We have been informed by C. Vafa that he has independently made a similar observation.
+
+
+
+                                                     2
+theory on T 2 and F -theory on K3 at a special point in the moduli space, we can argue
+that the equivalence must hold at all points in the moduli space since we can deform both
+theories away from this specific point by switching on appropriate background fields.
+    We also explicitly study deformations of the F -theory, as well as the orientifold the-
+ory, away from this special point in the moduli space. The moduli space of the orientifold
+theory is characterized by the vacuum expectation value of the Higgs field in the adjoint
+representation of the gauge group, or equivalently, locations of the sixteen seven-branes
+on the internal two dimensional manifold. On the other hand the F -theory moduli space
+is characterized by the moduli of elliptically fibered K3 surfaces. Both theories are de-
+scribed by background field configurations which consist of dilaton-axion modulus with
+non-trivial dependence on the coordinates of the internal two dimensional manifold. Ex-
+plicit comparison of the two sets of field configuration reveals that they are identical in
+the two theories at weak coupling, but differ for finite coupling. This difference is non-
+perturbative in the coupling constant of the orientifold theory. If we focus on the physics
+near one of the four orientifold planes, then the mathematical description of the field
+configuration turns out to be identical to the Seiberg-Witten solution of the N=2 super-
+symmetric SU(2) gauge theory with four quark flavors[16]. In the analysis of ref.[16] the
+moduli space of N=2 supersymmetric SU(2) gauge theory was characterized by a gauge
+invariant quantity u, and the complex ‘coupling constant’ τ varies as we move in the u
+plane. The F -theory background is identical to this configuration, with u labelling the
+coordinate of the base B and τ denoting the axion-dilaton modulus. On the other hand
+the orientifold background corresponds to the classical limit of this configuration. As is
+well known from the analysis of ref.[16], the classical limit of this background is singular
+as Im(τ ) becomes negative in some regions. Thus we expect the F -theory background to
+describe the quantum corrected version of the orientifold background.
+   The SU(2) gauge theory with four quark flavors is characterized by five parameters,
+− the asymptotic value of τ , and the four quark masses in the Yang-Mills theory. In the
+orientifold theory, these four mass parameters denote the locations of the four seven branes
+around an orientifold plane. (These in turn can be related to the vacuum expectation
+value of a scalar field belonging to the adjoint representation of the gauge group SO(8).)
+As was discussed in ref.[16], at special points in the space of the parameters mi the N=2
+supersymmetric Yang-Mills theory has enhanced global symmetry group G. It turns out
+that precisely at these special points the orientifold / F -theory develops enhanced gauge
+
+
+                                             3
+symmetry G.
+   It was also noted in ref.[16] that the SL(2,Z) action on τ has to be accompanied by a
+triality action on the representations of the global symmetry group SO(8) which transform
+the parameters mi in a non-trivial manner. Thus we would expect that in the orientifold
+/ F -theory, the SL(2,Z) action on the axion-dilaton modulus will have to be accompanied
+by triality action on the representations of the gauge group SO(8), and in particular
+on the Higgs vacuum expectation values (locations of seven branes) represented by the
+parameters mi . We explicitly verify this triality action of SL(2,Z) in the dual heterotic
+string theory on T 2 where SL(2,Z) is part of the T-duality group of the theory.
+   Finally, by comparing the masses of BPS states in the F -theory and in the orientifold
+theory, we show that in F -theory the masses of BPS states can be expressed in terms of
+period integrals of the holomorphic two form on the (complex) surface on which F -theory
+is compactified. Whenever one or more of the period integrals vanish, the corresponding
+BPS state(s) become massless, and at the same time the surface becomes singular. This
+is a reflection of the relationship between singularities of the surface and the appearance
+of enhanced gauge symmetries in the corresponding F -theory compactification.
+    The paper is organized as follows. Section 2 is devoted to studing the F -theory on K3
+at the orbifold limit of K3 and comparing the background field configuration describing
+this F -theory compactification with the background of an orientifold of type IIB theory
+on T 2 . In section 3 we study deformation of both, the F -theory and the orientifold
+backgrounds away from this special point in the moduli space.
+
+
+2    F -theory on K3 in the Orbifold Limit
+Let us begin with the following elliptically fibered K3 surface
+
+                                  y 2 = x3 + f (z)x + g(z)                             (2.1)
+
+where x, y, z ∈ CP 1 , f (z) is a polynomial of degree eight, and g(z) is a polynomial of
+degree twelve in z. This describes a torus for each point on CP 1 labelled by the coordinate
+z. The modular parameter τ (z) of the torus is determined in terms of the ratio f 3 /g 2
+through the relation
+                                                4 · (24f )3
+                                  j(τ (z)) =                ,                          (2.2)
+                                               27g 2 + 4f 3
+
+
+                                               4
+where
+                                            (θ18 (τ ) + θ28 (τ ) + θ38 (τ ))3
+                                  j(τ ) =                                     .              (2.3)
+                                                        η(τ )24
+By definition, compactification of F -theory on this particular K3 corresponds to com-
+pactification of type IIB theory on CP 1 labelled by z, with
+
+                                       a(z) + ie−Φ(z)/2 = τ (z) .                            (2.4)
+
+Here a denotes the RR scalar field and Φ denotes the dilaton field. Physically such a
+background corresponds to a configuration of twenty four seven branes of the type IIB
+theory transverse to CP 1 and situated at the zeroes of
+
+                                            ∆ ≡ 4f 3 + 27g 2 .                               (2.5)
+
+In the generic case, the twenty four zeroes of ∆ are distinct from each other and neither
+f nor g vanishes at the zeroes of ∆. If zi denotes such a zero of ∆ then from eq.(2.2) and
+(2.5) we see that near such a point
+                                                             1
+                                            j(τ (z)) ∼            .                          (2.6)
+                                                           z − zi
+This gives
+                                                    1
+                                        τ (z) ≃        ln(z − zi ) ,                         (2.7)
+                                                   2πi
+up to SL(2,Z) transformation.
+   We shall consider a special point in the moduli space of this compactification where
+τ (z) is independent of z. From eq.(2.2) we see that this requires
+
+                                            f 3 /g 2 = constant .                            (2.8)
+
+Since g and f are polynomials in z of order twelve and eight respectively, the solution to
+eq.(2.8) is given by
+                                      g = φ3 ,               f = αφ2 ,                       (2.9)
+where α is a constant and φ is a polynomial in z of degree four. By a rescaling of y and
+x we can set the coefficient of z 4 in φ to be one. Thus φ has the form4
+                                                    4
+                                                    Y
+                                             φ=         (z − zi )                           (2.10)
+                                                   i=1
+  4
+      A special case of this where z1 = z2 = 0 and z3 = z4 = ∞ has been discussed in [3].
+
+                                                       5
+where zi are constants. From eqs.(2.2), (2.5), (2.9) and (2.10) we get
+                                                      4
+                                                      Y
+                                         3
+                               ∆ = (4α + 27)               (z − zi )6 ,                (2.11)
+                                                      i=1
+
+and
+                                          4 · (24α)3
+                                     j(τ ) =         .                            (2.12)
+                                          27 + 4α3
+Thus this particular compactification corresponds to a configuration where the twenty
+four seven-branes are grouped into four sets of six coincident seven-branes, situated at
+the points z1 , · · · z4 . τ is constant over CP 1 ; however there is an SL(2,Z) monodromy
+                                                          
+                                             −1
+                                                               ,                       (2.13)
+                                                      −1
+around each of the points zi . This can be seen by noting that as z moves once around
+the point zi , y changes sign. This corresponds to the hyperelliptic involution of the torus,
+represented by the SL(2,Z) matrix given in eq.(2.13).
+   The metric on the base can be read out from the formulae derived in ref.[17]. Up to
+an overall multiplicative constant, it is given by
+                                                dzdz̄
+                              ds2 = Q              1/2 (z̄ − z̄ )1/2
+                                                                     .                 (2.14)
+                                       i (z − zi )             i
+
+Thus there is a deficit angle of π at each of the points zi . Thus the base has the geometry
+of T 2 /I2 , where I2 acts on the torus by inverting the sign of both the coordinates of the
+torus. The modular parameter λ of the torus is determined in terms of the cross ratio
+                                     (z1 − z2 )(z3 − z4 )
+                                                          ,                            (2.15)
+                                     (z1 − z3 )(z2 − z4 )
+
+which is invariant under an SL(2,C) transformation of the base CP 1 .
+   This background can now be given an orientifold interpretation as follows. By study-
+ing the action of various symmetry transformations on the massless fields of the theory
+it is easy to verify that the SL(2,Z) transformation (2.13) can be identified to the trans-
+formation (−1)FL · Ω of the type IIB theory, where Ω denotes the orientation reversal
+transformation (exchange of left and right moving modes on the world sheet) and (−1)FL
+changes the sign of all the Ramond sector states on the left. Thus we have type IIB
+compactification on T 2 /I2 such that as we go once around each fixed point on T 2 /I2 the
+theory comes back to itself transformed by the symmetry (−1)FL · Ω. In other words,
+
+                                                  6
+the theory can be identified to type IIB on T 2 , modded out by the Z2 transformation
+(−1)FL · Ω · I2 . This is an orientifold[11], and, as we shall see, is related to type I the-
+ory on T 2 by a T -duality transformation. We shall denote this theory as type IIB on
+T 2 /(−1)FL · Ω · I2 . In this case, each of the four orientifold planes carry −4 units of seven-
+brane charge, which need to be neutralized by putting sixteen seven branes transverse to
+T 2 /I2 [11]. At a generic point in the moduli space, where the seven-branes are located at
+arbitrary positions on T 2 /I2 , the seven brane charges are not neutralized locally and as
+a result τ (z) varies on T 2 /I2 . On the other hand, in order that the field configuration
+matches with the one obtained from F -theory, τ (z) must be constant on T 2 /I2 . Thus
+the seven-brane charges must be neutralized pointwise on T 2 /I2 . This happens if the
+sixteen seven branes are grouped into four sets of four coincident seven-branes, and these
+four sets are placed at the four orientifold planes. This would give a field configuration
+identical to the one obtained from the F -theory configuration.
+   This establishes the equivalence between F -theory compactification on K3 and an
+orientifold of type IIB theory at a special point of the moduli space. By making an R →
+(1/R) duality transformation on both the circles of T 2 we can map the Z2 transformation
+(−1)FL · Ω · I2 to the transformation Ω.5 Since modding out the type IIB theory by Ω
+produces type I theory, we see that the orientifold is related by T -duality to type I theory
+on T 2 . This in turn has been conjectured to be equivalent to heterotic string theory on
+T 2 [12, 13, 14, 15]. Thus through this chain of arguments we have been able to establish the
+conjectured duality between F -theory compactification on K3 and heterotic string theory
+on T 2 . Although this duality was established only at one point in the moduli space,
+we can deform both theories away from this special point by switching on appropriate
+background fields, and hence the duality must hold at all points in the moduli space.
+   We can also study the enhanced non-abelian gauge symmetries at this special point in
+the moduli space, both from the orientifold view point as well as the F -theory viewpoint.
+From the orientifold viewpoint we have an SO(8) gauge symmetry associated with each
+orientifold plane, since four seven-branes and their images meet there. Thus we get an
+(SO(8))4 non-abelian gauge symmetry at this special point. On the other hand, in order
+to study the enhancement of gauge symmetry from the F -theory viewpoint, we need
+to study what kind of singularities appear at the points zi (1 ≤ i ≤ 4) at this special
+point in the moduli space. To see this note that after a suitable rescaling of the various
+  5
+      This fact has been independently observed in ref.[18].
+
+
+                                                     7
+coordinates, eq.(2.1) near the point z = z1 takes the form:
+
+                                          ye2 ≃ xe3 + αxeze2 + ze3 ,                      (2.16)
+
+where,
+               4
+               Y                                     4
+                                                     Y
+                                3/2
+      ye = y       (z1 − zi )         ,     xe = x       (z1 − zi ),   ze = (z − z1 ) .   (2.17)
+               i=2                                   i=2
+
+This corresponds to a D4 type singularity of the K3 surface and hence corresponds to
+an enhanced SO(8) gauge symmetry. Since there are four such singular points, we get a
+net non-abelian gauge group (SO(8))4 , in agreement with the answer obtained from the
+orientifold analysis.
+
+
+3    Deforming away from the Orbifold Limit of K3
+In this section we shall discuss deforming both the F -theory and the orientifold theory
+away from the special point in the moduli space considered in the previous section and
+compare the results. In the F -theory such a deformation would correspond to splitting the
+six coincident zeroes of ∆ away from each other. On the other hand, for the orientifold,
+this corresponds to moving the four coincident seven-branes away from the orientifold
+plane. In order to learn the physics of the situation we can focus our attention on one
+of the four orientifold planes. Equivalently, instead of studying F theory on the orbifold
+T 4 /I4 (where I4 denotes changing the sign of all the four coordinates on T 4 ) and the
+type IIB on T 2 /(−1)FL · Ω · I2 , we consider F -theory on T 2 × R2 /I4 and type IIB on
+R2 /(−1)FL · Ω · I2 . Let z denote the complex coordinate on R2 /I2 , and z = 0 denote the
+fixed point, so that at the special point in the moduli space condsidered in the previous
+section the metric takes the form:
+
+                                          ds2 = dzdz̄/z 1/2 z̄ 1/2 .                       (3.1)
+
+Also let τ0 be the constant value of τ away from the singular point. We shall study the
+deformation of this background keeping the asymptotic metric fixed to be of the form
+(3.1) and asymptotic τ fixed at τ0 . The collective coordinates of this theory describe
+an N=1 supersymmetric SO(8) gauge theory in eight dimensions. The moduli space of
+this theory is characterized by the vacuum expectation value of the complex scalar field
+
+                                                      8
+φ belonging to the adjoint representation of the gauge group. At a generic point in the
+moduli space this vacuum expectation value takes the form:
+                                                               
+                          iσ2 c1
+                                                                                       
+                                  iσ2 c2                                         0 −i
+              hφi =                                            ,      σ2 =                  ,      (3.2)
+                                           iσ2 c3                                i 0
+                                                       iσ2 c4
+where ci are complex parameters.
+   First let us describe this deformation in the orientifold theory. In this case the de-
+formed configuration will correspond to an orientifold plane carrying −4 units of seven-
+brane charge (which we shall take to be fixed at z = 0) and four seven branes at arbitrary
+coordinates zi . Note that if we use the freedom of rescaling z we can eliminate one of the
+zi ’s from the set of independent parameters, but we do not use this freedom as this will
+change the asymptotic form of the metric. These four complex parameters can be related
+to the parameters ci introduced earlier by working in the cordinate
+
+                                                 w = z 1/2 ,                                         (3.3)
+
+which is the natural coordinate on R2 (as opposed to z which is the natural coordinate
+on R2 /I2 ). In this coordinate system the orientifold plane carries −8 units of seven brane
+charge, and there are eight seven branes on R2 distributed in an I2 invariant fashion. ±ci
+are the locations of these eight seven branes in R2 [11]. Thus we have
+
+                                                     zi = c2i .                                      (3.4)
+
+    Since the seven-brane charge is no longer neutralized locally, τ is no longer a constant
+in the z plane. Naively, we would expect it to be of the form:
+                                                  4
+                                              1 X                       
+                              τ (z) = τ0 +           ln(z − zi ) − 4 ln z ,                          (3.5)
+                                             2πi i=1
+since there is +1 unit of seven brane charge at each zi , and −4 unit of seven brane charge
+at z = 0. This solution is characterized by five parameters, − τ0 and the four zi ’s. A
+closer examination of the solution reveals however that the solution does not make sense
+everywhere in the z plane. In particular, close to z = 0, Im(τ ) becomes large and negative,
+violating the bound Im(τ ) ≥ 0.6 Thus we would expect that strong coupling effects will
+   6
+    The situation is similar to the result of ref.[15] in one compact dimension, where the supergravity
+solution broke down for a sufficiently large separation between the orientifold plane and the eight branes.
+In the present case the solution breaks down for arbitrarily small but finite separation between the
+orientifold plane and the seven branes due to stronger short distance divergence in two dimensions.
+
+                                                         9
+modify the solution near the z = 0 point. We shall now see that the F -theory description
+of the background provides us with precisely such a modification. Note however that
+due to the high degree of supersymmetry present in the problem, we expect the moduli
+space of the theory to remain unmodified by quantum corrections, at least locally. Thus
+ci (or equivalently zi ) should continue to label the moduli space of the theory, but the
+background field configuration describing the theory will no longer be of the form (3.5).
+   From the F -theory viewpoint, the deformation of T 2 × R2 /I4 away from the orbifold
+limit is described by a surface of the form
+
+                                     y 2 = x3 + fe(z)x + ge(z) ,                             (3.6)
+
+where fe and ge are now polynomials in z of degree two and three respectively. This gives a
+total of seven complex parameters to begin with. Of this one parameter can be removed
+by an overall shift of z and another can be removed by a rescaling of x and y. This again
+leaves us with five complex parameters. In order to relate these five parameters to those
+obtained in the orientifold description it is convenient to choose these five parameters in
+a specific manner. In the analysis of N=2 supersymmetric SU(2) gauge theory with four
+quark flavors[16] Seiberg and Witten were led to a similar surface parametrized by four
+quark masses mi (1 ≤ i ≤ 4) and the complex coupling constant τ0 ≡ (θ/π + 8πi/g 2).
+The surface was given by
+
+   y 2 = W1 W2 W3 + A(W1 T1 (e2 − e3 ) + W2 T2 (e3 − e1 ) + W3 T3 (e1 − e2 )) − A2 N ,       (3.7)
+
+where
+               Wi = x − ei ze − e2i R,           A = (e1 − e2 )(e2 − e3 )(e3 − e1 ) ,        (3.8)
+
+ e1 − e2 = θ34 (τ0 ),     e3 − e2 = θ14 (τ0 ),    e1 − e3 = θ24 (τ0 ),    e1 + e2 + e3 = 0 , (3.9)
+                                                   1
+                                           ze = z − e1 R ,                                 (3.10)
+                                                   2
+
+                            1X 2
+                        R =      m ,
+                            2 i i
+                             1 X 2 2         1 X 4
+                    T1    =        mi mj −         mi ,
+                            12 i>j          24 i
+                              1Y          1 X 2 2        1 X 4
+                    T2    = −      mi −         mi mj +     m ,
+                              2 i        24 i>j         48 i i
+
+
+                                                 10
+                             1Y       1 X 2 2        1 X 4
+                   T3 =          mi −        mi mj +      mi ,
+                             2 i      24 i>j         48 i
+                              3 X 2 2 2          1 X 2 4          1 X 6
+                    N =               mi mj mk −         mi mj +      mi .                       (3.11)
+                             16 i>j>k            96 i6=j         96 i
+
+The surface described by eq.(3.7) is not exactly of the form (3.6) since the coefficient of
+the x2 term does not vanish, but this can be removed by an overall z independent shift
+in the coordinate x. We shall use the same set of parameters {mi } and τ0 to label the
+F -theory background, and show that we get a consistent map between the orientifold
+and the F -theory by postulating the following simple relation between the parameters mi
+labelling the F -theory and the parameters ci labelling the orientifold:
+
+                                    mi = ci ,             1 ≤ i ≤ 4.                             (3.12)
+
+This would imply that up to an SO(8) gauge transformation, the vacuum expectation
+value of the adjoint scalar φ is given by
+                                                        
+                  iσ2 m1
+                                                                                      
+                          iσ2 m2                                                0 −i
+                                                        ,            σ2 =                  .   (3.13)
+                                     iσ2 m3                                     i 0
+                                                iσ2 m4
+   In the analysis of Seiberg and Witten the coordinate z on the base represented the
+gauge invariant modulus representing the square of the Higgs expectation value. There
+are six singularities in the z plane, which, in ref[16], signalled the appearance of massless
+charged particles at these points in the moduli space. In the weak coupling (large Im(τ0 ))
+limit, four of these singularities are located at z ≃ m2i representing points where the four
+quarks become massless. The two other singularities are located close to the origin within
+a distance of order exp(iπτ0 /2), and represent points where massless monopoles and dyons
+appear in the spectrum. Thus in the τ0 → i∞ limit, these two singularities coalesce, and
+we recover the semiclassical picture where the SU(2) gauge symmetry is restored at the
+origin and the W ± states become massless. Indeed, for large Im(τ0 ) and |z| >> |eiπτ0 /2 |
+the solution described in (3.8) can be rewritten as
+                                               4
+                                           1 X                        
+                           τ (z) ≃ τ0 +           ln(z − m2i ) − 4 ln z .                        (3.14)
+                                          2πi i=1
+
+The coefficient 4 in front of ln z is due to the fact that the W ± bosons carry twice the
+electric charge of a quark, and the relative − sign between the two terms is due to the
+
+                                                  11
+fact that the W ± belong to a vector multiplet whose contribution to the β-function has
+sign opposite to that of a hypermultiplet. This configuation is identical to the one given
+in eq.(3.5) describing the orientifold configuration, provided we identify zi with m2i , i.e.
+ci with mi . This shows that in the weak coupling limit the background field configura-
+tion corresponding to an orientifold is identical to the one described by F -theory even
+away from the special point in the moduli space described in the last section. However,
+the background field configuration describing the orientifold breaks down close to the
+orientifold point where the coupling constant becomes strong. On the other hand the
+F -theory background makes sense everywhere in the z plane. This leads us to conclude
+that the F -theory provides the correct description of the background field configuration
+of this theory, and the orientifold background must be modified by quantum correction
+so as to coincide with the F -theory background. This would imply in particular that the
+orientifold plane z = 0 is split into two planes due to quantum corrections, in a manner
+analogous to the splitting of the z = 0 point in the moduli space of N=2 supersymmetric
+SU(2) gauge theories into two points. The splitting, being of order exp(iπτ0 /2), is non-
+perturbative in the orientifold coupling constant, and is not visible in the perturbation
+theory.
+   The above analysis shows the equality of the parameters mi and ci in the weak cou-
+pling limit where we can directly compare the orientifold background with the F -theory
+background. We shall now show that eq.(3.12) gives the correct map between the points
+of enhanced gauge symmetry in the orientifold and the F -theory descriptions even away
+from the weak coupling region. In subsection 3.3 we shall trace the origin of this simple
+relation between mi and ci to the fact that mi ± mj are related to the period integrals of
+the holomorphic two form on the surface described by eq.(3.7).
+
+3.1    Unbroken Gauge Symmetries
+For a Higgs vacuum expectation value of the form (3.2) the unbroken gauge symmetry
+is the subgroup of SO(8) that commutes with this matrix. In particular, if n of the ci ’s
+are equal and non-zero, then we recover an SU(n) gauge symmetry, whereas if n of them
+are equal and zero, we recover an SO(2n) gauge symmetry. In the orientifold description
+these enlarged gauge symmetries are associated with coincident seven branes[19]. We
+shall now show that with the identification of mi with ci , we get the same enhanced
+gauge symmetries in the F -theory at these special points. In the F -theory background
+
+                                             12
+described by eq.(3.7), when n of the mi ’s are equal and non-zero, n of the zeroes of ∆,
+representing the point where these n quarks become massless in the corresponding SU(2)
+gauge theory, coincide. Thus ∆ has an nth order zero, but typically, neither f (z) nor g(z)
+vanish there. According to the table in ref.[3] this corresponds to an An−1 type singularity
+and hence an enhanced SU(n) gauge symmetry. The case where n of the mi ’s vanish is
+somewhat more complicated, and we need to carry out the analysis separately for each n.
+The relevant values of n are 2, 3 and 4. For n = 4 all mi ’s vanish, and the equation of the
+surface reduces to the form (2.16). This corresponds to a D4 type singularity and hence
+the F -theory on such a surface has an enhanced SO(8) gauge symmetry. For n = 3 the
+singularity structure near the origin is that of N=2 supersymmetric Yang-Mills theory
+with three massless quarks. According to the analysis of Seiberg and Witten, there are
+two singularities near the origin. Using the results of ref.[16] one can easily verify that
+near one of the singular points ∆ has a fourth order zero with f and g being finite at
+that point. According to ref.[3] this corresponds to an A3 type singularity, and hence an
+enhanced SU(4) ≡ SO(6) gauge symmetry. Finally, for n = 2, the singularity structure
+near the origin is that of an N=2 supersymmetric SU(2) gauge theory with two flavors of
+massless quarks. According to the analysis of Seiberg and Witten this theory again has
+two singular points near the origin, and at each of these singular points ∆ has a second
+order zero where f and g remain finite. Using the table of ref.[3] we see that each of these
+singularities is of A1 type, and hence we expect an enhanced SU(2) × SU(2) ≡ SO(4)
+gauge symmetry at this point. This shows that the identification of the parameters mi
+with ci gives us enhanced gauge symmetries in the F -theory at correct points in the
+moduli space.
+    In the parameter space of N=2 supersymmetric SU(2) gauge theories with four flavors
+of quarks, there are special points of enhanced global symmetry. In particular, when n of
+the quark masses are equal but non-zero, we have a global SU(n) symmetry, whereas if n
+of the quarks are massless, we have an enhanced global SO(2n) symmetry. The analysis of
+the previous paragraph shows that whenever the N=2 supersymmetric SU(2) gauge theory
+develops an enhanced global symmetry, the corresponding F -theory develops the same
+enhanced gauge symmetry. This has a simple interpretation in view of the identification
+of mi with the parameters ci . In the N=2 supersymmetric Yang-Mills theory, the quark
+mass matrix is exactly of the form given in (3.13), and the unbroken global symmetry
+group at any point in the parameter space is the subgroup of SO(8) that commutes with
+
+
+                                            13
+this matrix. But this is precisely the subgroup of SO(8) that remains unbroken in the
+corresponding orientifold / F -theory compactification, since (3.13) represents the vacuum
+expectation value of the adjoint Higgs field in this theory. Thus we see that there is a one
+to one correspondence between the points of enhanced global symmetries arising in the
+supersymmetric Yang-Mills theory and the points of enhanced gauge symmetries arising
+in the orientifold / F -theory.
+
+3.2    Triality
+We shall now discuss the observation of ref.[16] that SL(2,Z) transformations have a
+triality action on the representations of the global symmetry group SO(8). In particular,
+the transformation τ → −1/τ acts by exchanging the vector and the spinor representations
+of SO(8) and acts on the mass parameters mi as
+                                    1
+                             m1 →     (m1 + m2 + m3 + m4 ) ,
+                                    2
+                                    1
+                             m2   →   (m1 + m2 − m3 − m4 ) ,
+                                    2
+                                    1
+                             m3   →   (m1 − m2 + m3 − m4 ) ,
+                                    2
+                                    1
+                             m4   →   (m1 − m2 − m3 + m4 ) .                           (3.15)
+                                    2
+This would imply, in particular, that in the specific orientifold compactification that we are
+considering, the action τ0 → −1/τ0 on the asymptotic τ by itself is not a symmetry of the
+theory, but it must also act on the locations ci (mi ) of the seven branes (or, equivalently,
+on the vacuum expectation values of the adjoint Higgs field) according to eq.(3.15).
+    Is there a way to verify this independently? From the point of view of the type IIB
+orientifold, the symmetry τ → −1/τ is a non-perturbative symmetry, and hence the action
+of this transformation on the representation of the gauge group will be difficult to study
+explicitly. However, by using the type I − heterotic equivalence in ten dimensions, or
+equivalently, the F -theory − heterotic duality in eight dimensions, one can map the non-
+perturbative S-duality transformation of the orientifold theory to a perturbative T-duality
+transformation in the heterotic string theory, where the action of this transformation on
+the representations of the gauge group can be studied explicitly. To do this we need to
+first patch together four copies of the solution we have been discussing so as to describe
+type IIB compactification on T 2 /(−1)FL ·Ω·I2 . This can easily be done when the distance
+
+                                             14
+between the fixed points is large compared to the distance between any given fixed point
+and the four seven-branes around it. For this we rewrite eq.(3.7) (after a constant shift
+of x and a suitable rescaling of x and y) as
+
+                     y 2 = x3 + xα(τ0 )fe(z, {mi }, τ0 ) + ge(z, {mi }, τ0 ) ,                   (3.16)
+
+where α(τ0 ) is given by eq.(2.12), and fe and ge are polynomials in z of degree two and
+three respectively, with the coefficients of the leading power in z set equal to one in both
+of them. Then the equation of the full K3 surface, obtained by patching together four of
+these solutions will be given by
+                             4
+                             Y                                 4
+                                                               Y
+                                                 (s)                               (s)
+        y 2 = x3 + xα(τ0 )         fe(z − zs , {mi }, τ0 ) +         ge(z − zs , {mi }, τ0 ) ,   (3.17)
+                             s=1                               s=1
+
+where fe and ge are the same functions that appear in eq.(3.16). With the help of an
+SL(2,C) transformation on z, we can set (z1 , z2 , z3 ) = (0, 1, −1). The solution is then
+                                      (s)
+characterized by the set of sixteen {mi } (1 ≤ i ≤ 4, 1 ≤ s ≤ 4), τ0 and z4 . When all the
+mi ’s associated with all the four orbifold points vanish, this K3 surface is described by
+eq.(2.1) with g and f given by eqs.(2.9), (2.10). The unbroken symmetry group in this
+theory is (SO(8))4 . Since the same τ0 represents the value of τ away from each of the
+four fixed points on T 2 /I2 , the τ0 → −1/τ0 transformation must exchange the vector and
+the spinor representation of each SO(8).
+   We shall now verify this explicitly by mapping this to the dual heterotic description.
+For this we regard this as an orientifold, and make R → (1/R) T-duality transformation
+in each of the compact directions (which we shall denote by the coordinates x8 and x9 )
+to map this into type I theory on T 2 . In this process the RR scalar, that forms the
+                                 ′
+real part of τ , gets mapped to B89 where B ′ denotes the rank two anti-symmetric tensor
+in the RR sector. Under the type I - heterotic duality, this gets mapped to B89 where
+B denotes the rank two anti-symmetric tensor in the heterotic string theory. Thus τ
+gets mapped to the Kahler modulus of the heterotic string theory on T 2 , and hence the
+S-duality group SL(2,Z) of the orientifold theory gets mapped to the SL(2,Z) T-duality
+symmetry of the SO(32) heterotic string theory compactified on T 2 . In particular the
+transformation τ → −1/τ will correspond to R → 1/R duality on both the circles in the
+heterotic string theory, together with an exchange of the coordinates x8 and x9 . We shall
+denote this transformation by σ and show that it induces a triality transformation on the
+representations on (SO(8))4 ⊂ SO(32).
+
+                                                       15
+   We need to study the SO(32) heterotic string theory near a point in the moduli space
+where the SO(32) gauge group has been broken down to (SO(8))4 . This corresponds to
+introducing SO(32) Wilson lines U8 and U9 along x8 and x9 given by
+                                                                              
+                 −I8                                       −I8
+                      −I8                                     I8              
+                                                                              
+       U8 =                            ,        U9 =                           ,   (3.18)
+                            I8                                     −I8        
+                                  I8                                        I8
+where In denotes n × n identity matrix. We shall analyze this theory using the fermionic
+description of the heterotic string theory. Without the Wilson lines, the SO(32) heterotic
+string contains a conformal field theory of 32 free left-moving Majorana fermions, and this
+conformal field theory is modded out by a Z2 transformation that changes the sign of all
+the thirty two fermions[20]. This Z2 modding out is responsible for the GSO projection on
+the left, and the existence of twisted sector states belonging to the spinor representation
+of SO(32). We shall group the 32 fermions into four groups of eight each and denote this
+Z2 transformation as (− − −−) in order to denote that is acts as −I8 on all four groups
+of fermions. Introduction of the Wilson lines (3.18) corresponds to further modding out
+the theory by a Z2 × Z2 transformation, generated by
+
+                                  (− − ++)(x8 → x8 + π) ,                              (3.19)
+
+and
+                                  (− + −+)(x9 → x9 + π) .                              (3.20)
+We shall use the convention in which the transformation −I8 of SO(8) changes the sign of
+the vector (v) and the conjugate spinor (c) representations of SO(8) but leaves the spinor
+(s) representations of SO(8) invariant. Let us now consider an untwisted sector state
+that transforms in the vector representations of the first two SO(8). We shall denote such
+a state by (v1 v2 ). This state is even under (− − ++) and odd under (− + −+). Thus
+invariance under (3.19) and (3.20) requires that the state carries even unit of momentum
+along x8 and odd unit of momentum along x9 . The duality transformation σ converts this
+to a state carrying odd unit of winding along x8 and even unit of winding along x9 . In
+other words, this would correspond to a state in the twisted sector of (3.19). Such a state
+belongs to the conjugacy class (s1 s2 ). Similar analysis shows that the transformation
+σ takes a state in the conjugacy class (vi vj ) to the conjugacy class (si sj ) for all i, j.
+(Due to the twisting by the (− − −−) transformation that commutes with σ, we do not
+
+                                             16
+distinguish between conjugacy classes (si sj ) and (sk sl ) if (i, j, k, l) is a permutation of the
+set (1, 2, 3, 4).) This shows that σ does exchange the vector and spinor representations of
+each of the four SO(8)’s as expected from the F -theory description.
+   From the analysis of ref.[16] we also know that the transformation τ → τ +1 induces an
+SO(8) parity transformation. Thus we would expect that in type IIB on T 2 /(−1)FL ·Ω·I2 ,
+τ → τ + 1 must be accompanied by a parity transformation in all four SO(8)’s. This
+however corresponds to the SO(32) gauge transformation
+                                                                      
+                              I7
+                                                                      
+                                  −1                                  
+                                                                      
+                                       I7                             
+                                                                      
+                                            −1                        
+                                                                      
+                                                                       .                  (3.21)
+                          
+                                                  I7                  
+                                                                       
+                                                       −1             
+                                                                      
+                                                                      
+                                                            I7        
+                                                                  −1
+Since (3.21) by itself is a symmetry of the theory, in this theory τ → τ + 1 is also a
+symmetry by itself without being accompanied by any action on the Higgs field. As
+a result we do not expect to see any non-trivial action of this transformation on the
+representations of (SO(8))4 in the dual heterotic string theory.
+
+3.3     BPS States
+At a generic point in the moduli space, type IIB on R2 /(−1)FL · Ω · I2 has BPS states
+representing the SO(8) gauge bosons and their superpartners that have become massive
+due to Higgs vacuum expectation value of the form (3.2). In the orientifold description
+these correspond to elementary strings starting on one of the four seven branes and end-
+ing on another seven brane. Due to the presence of the orientifold plane there are two
+topologically distinct ways an open string can stretch between two seven branes. We shall
+call one of them the direct route, and the other one, differing from the direct route by one
+unit of winding around the orientifold plane, the indirect route. In the natural coordinate
+system w on R2 defined in (3.3) the direct route is a straight line joining the points mi
+and mj and the indirect route is a straight line joining the points mi and −mj . With
+suitable convention for the sign of {mi }, the mass of a BPS state represented by an open
+string stretched between the ith seven brane and the jth seven-brane along the direct
+route is given by mi − mj . On the other hand the BPS state corresponding to an open
+
+                                                  17
+string stretched between the ith and the jth seven brane along the indirect route has a
+mass given by mi + mj .
+    From our previous discussion about the relationship between the orientifold and the
+F -theory background, it is clear how to represent these BPS states in the corresponding
+F -theory description. The description is in fact identical to the one given in the orientifold
+theory, except that winding around the orientifold plane will correspond to winding around
+the two seven-branes (which we shall label as the fifth and the sixth seven brane) into
+which the orientifold plane splits. We would now like to ask if the masses of these BPS
+states can be expressed in terms of some natural objects in the F -theory. This is important
+since the parameters mi were introduced via eq.(3.7)-(3.11) in an ad hoc fashion in order
+to parametrize the F -theory background and hence one would like to know if there is
+any reason why the masses of BPS states should have simple expression in terms of these
+parameters. We shall now see that these masses can in fact be expressed in terms of
+natural objects in the F -theory.
+    For a given open string BPS state starting at the ith seven brane and ending at the
+j-th seven brane, let us introduced a closed curve C in the z plane that travels around
+the ith seven brane in anti-clockwise direction, goes to the jth seven brane following the
+contour of the open string, travels it in the clockwise direction, and comes back to the ith
+seven-brane by following the contour of the open string in the opposite direction. Then
+the mass of the open string state can be written as
+                                            I
+                                                ∂z aD ,                                 (3.22)
+                                            C
+
+with aD as defined in ref.[16]. (Note that we have renamed the variable u in ref.[16] as
+z). To test the validity of eq.(3.22) we simply use the fact[16] that as we move around
+the ith seven brane in the anti-clockwise direction
+                                                    
+                                  aD       aD + a + mi
+                                       →                 .                              (3.23)
+                                   a             a
+With the help of this equation, (3.22) reproduces the mass formula (mi − mj ) for the
+open string state stretched between the ith and the jth string along the direct route. On
+the other hand, along
+                    aclosed curve that winds once around the fifth and the sixth seven
+                    aD
+branes, the vector       suffers a monodromy represented by the matrix[16]
+                     a
+                                                     
+                                            −1 4
+                                                          .                             (3.24)
+                                             0 −1
+
+                                                18
+Thus the shift aD → aD − a − mj , when transported along such a curve, corresponds to a
+shift aD → aD − a + mj . As a result, (3.22) evaluated along the curve C associated with
+the indirect route between the ith and the jth seven brane gives an answer mi + mj . This
+agrees with the mass formula obtained from the orientifold theory.
+   We shall now try to reexpress (3.22) in terms of integral of the holomorphic two form
+on the surface (3.7) along a closed two cycle. For this we note that[16]
+                                                  I
+                                        aD =          λ,                            (3.25)
+                                                  b
+
+where λ is the one form introduced in section 17 of ref.[16], and b denotes the b cycle of
+the torus represented by eq.(3.7) for fixed z. We can then reexpress (3.22) as
+                                    I        I        I
+                                        ∂z       λ=        ω,                       (3.26)
+                                    C        b        S
+
+where
+                                            dx ∧ dz
+                                   ω ≡ dλ ∝         ,                             (3.27)
+                                               y
+is the holomorphic two form on the surface described by eq.(3.7) and S is the two (real)
+dimensional surface swept out by the b cycle of the torus as we move along the closed
+curve C in the z plane. Since aD comes back to aD up to a constant shift on being
+transported around the curve C, the b-cycle of the torus comes back to the b cycle on
+being transported around C, and hence S is a closed surface. Note that in defining the
+surface S we had to choose a specific cycle on the torus which we defined as the b-cycle,
+and hence broke manifest SL(2, Z) symmetry of the mass formula. But this is expected
+since we are analyzing states that arise from elementary strings stretched between two
+seven-branes, and elementary strings are not invariant under SL(2,Z) transformation[21].
+In particular, the mass formula given in eq.(3.26) is to be multiplied by the square root
+of the string tension of the elementary string.
+    Eq.(3.26) gives an expression for the masses of BPS states in F -theory on a (complex)
+surface in terms of period integrals of the holomorphic two form on this surface. When
+one or more of these period integrals vanish, the surface becomes singular, and at the
+same time the corresponding BPS states become massless, signalling the appearance of
+enhanced gauge symmetries in the theory.
+Acknowledgement: I wish to thank J. Blum, R. Gopakumar, A. Hanany, K. Intrilli-
+gator, S. Mukhi, C. Vafa and especially E. Witten for many useful discussions. I would
+
+                                                 19
+also like to acknowledge the hospitality of the Institute for Advanced Study, Princeton,
+during the course of the work. This work was partially supported by a grant from Monell
+Foundation.
+
+
+References
+ [1] C. Vafa, hep-th/9602022.
+
+ [2] D. Morrison and C. Vafa, hep-th/9602114.
+
+ [3] D. Morrison and C. Vafa, hep-th/9603161.
+
+ [4] N. Seiberg and E. Witten, hep-th/9603003.
+
+ [5] E. Witten, hep-th/9603150; hep-th/9604030.
+
+ [6] S. Ferrara, R. Minasian and A. Sagnotti, hep-th/9604097.
+
+ [7] P. Aspinwall and M. Gross, hep-th/9605131.
+
+ [8] A. Sen, hep-th/9603113; hep-th/9604070.
+
+ [9] A. Sagnotti, ‘Open Strings and their Symmetry Groups’, Talk at Cargese Summer
+    Inst., 1987;
+    G. Pradisi and A. Sagnotti, Phys. Lett. B216 (1989) 59;
+    M. Bianchi, G. Pradisi and A. Sagnotti, Nucl. Phys. B376 (1992) 365.
+
+[10] P. Horava, Nucl. Phys. B327 (1989) 461, Phys. Lett. B231 (1989) 251.
+
+[11] E. Gimon and J. Polchinski, hep-th/9601038;
+     J. Polchinski, S. Choudhuri and C. Johnson, hep-th/9602052;
+     and references therein.
+
+[12] E. Witten, Nucl. Phys. B443 (1995) 85 [hep-th/9503124].
+
+[13] A. Dabholkar, Phys. Lett.B357 (1995) 307 [hep-th/9506160].
+
+[14] C. Hull, Phys. Lett. B357 (1995) 545 [hep-th/9506194].
+
+[15] J. Polchinski and E. Witten, hep-th/9510169.
+
+                                          20
+[16] N. Seiberg and E. Witten, Nucl. Phys. B431 (1994) 484 [hep-th/9408099].
+
+[17] B. Greene, A. Shapere, C. Vafa and S.-T. Yau, Nucl. Phys. B337 (1990) 1.
+
+[18] A. Dabholkar and J. Park, hep-th/9604178.
+
+[19] E. Witten, Nucl. Phys. B460 (1996) 335 [hep-th/9510135].
+
+[20] D. Gross, J. Harvey, E. Martinec and R. Rohm, Phys. Rev. Lett.54 (1985) 502; Nucl.
+     Phys. B256 (1985) 253; Nucl. Phys. B267 (1986) 75.
+
+[21] J. Schwarz, Phys. Lett. B360 (1995) 13 [hep-th/9508143].
+
+
+
+
+                                          21
+

@@ -36,9 +36,10 @@ Consistent quantum gravitational theories are distinguished from pathological ef
    leaving no residual physical open-string states.
 
 3. **Exact Diophantine RR Tadpole Cancellation & Non-Perturbative Vacuum Decay:**
-   Type IIB orientifold compactifications on $K3 \times T^2$ require complete screening of positive Ramond-Ramond (RR)
-   charges from 16 $D7$-branes by the negative charge of 4 $O7$-planes:
-   $$\sum Q_{\mathrm{RR}} = 16 \times (+4) + 4 \times (-16) = 64 - 64 = 0$$
+   In the type IIB orientifold $K3 \times T^2/\mathbb{Z}_2$, 4 O7-planes at the fixed points of $T^2/\mathbb{Z}_2$ are
+   cancelled by 16 D7-branes (Tripathy–Trivedi hep-th/0301139 ll. 160–163; Sen hep-th/9605150 l. 242; charges
+   $-4$ and $+1$ in D7 units). Below all charges are multiplied by 4, as in `SocrateAI.Moonshine`:
+   $$\sum Q_{\mathrm{RR}} = 16 \times (+4) + 4 \times (-16) = 64 - 64 = 0 \quad (\text{units of } \mu_7/4)$$
    The non-perturbative decay rate of any metastable false vacuum through Coleman-De Luccia bubble nucleation is:
    $$\frac{\Gamma}{V} \sim e^{-B}, \quad B = \frac{27 \pi^2 T_b^4}{2 \epsilon^3} > 0$$
    where $T_b$ is the bubble wall tension and $\epsilon$ is the vacuum energy density step.
@@ -51,16 +52,17 @@ Consistent quantum gravitational theories are distinguished from pathological ef
 
 namespace DualScaleValidation.UseCase3
 
-/-- Positive RR charge contributed by each D7-brane: $+4$. -/
+/-- Charge of each D7-brane in units of $\mu_7/4$: $+4$. -/
 def d7_charge_per_brane : Int := 4
 
-/-- Total number of D7-branes in consistent $T^4/\mathbb{Z}_2$ orientifold: 16. -/
+/-- Number of D7-branes in the $K3 \times T^2/\mathbb{Z}_2$ orientifold: 16 (an earlier docstring said
+    "$T^4/\mathbb{Z}_2$ orientifold"; the orientifold acts on the $T^2$). -/
 def d7_brane_count : Nat := 16
 
-/-- Negative RR charge contributed by each O7-plane: $-16$. -/
+/-- Charge of each O7-plane in units of $\mu_7/4$: $-16$. -/
 def o7_charge_per_plane : Int := -16
 
-/-- Total number of O7-planes: 4. -/
+/-- Number of O7-planes: 4, the fixed points of the reflection of $T^2$. -/
 def o7_plane_count : Nat := 4
 
 /-- Total D7-brane positive RR flux: $16 \times 4 = 64$. -/
