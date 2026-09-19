@@ -341,7 +341,8 @@ none (`N = 4`).
 - `charge_classes_small`: an independent enumeration (all pairs in `{−1, 0, 1}⁴`, primitive, positive definite,
   Gauss-reduced) returns only reduced forms of the right discriminant, all of them for `D = 3, 4, 7`, and the
   minimum `|D|` is 3. `tools/p82_charge_enumeration.py` (box `[−2, 2]⁴`, not kernel) finds all classes for
-  `D = 3, 4, 7, 8, 11, 12, 15, 16, 20, 23, 24` and no wrong one. `D = 19` is not reached in that box.
+  `D = 3, 4, 7, 8, 11, 12, 15, 16, 20, 23, 24` and no wrong one. Classes that need larger entries (the first is
+  `(1, 1, 5)`, `D = 19`) lie outside that box; `every_form_is_charged` covers them all.
 
 **The smallest black hole (Tier A).**
 - `discriminant_gap`: a positive definite form has `4ac − b² ≥ 3`, and `3` needs odd `b`.
@@ -351,8 +352,9 @@ none (`N = 4`).
   `τ = i`.
 - `smallest_black_hole_index`: from Stream 5's `∆ψ₁^F = 3E₄A − 648H` and `1/η²⁴`, the coefficient of `ψ₁^F` at
   `(n, ℓ, m) = (1, 1, 1)` is **25353**, and at `(1, 0, 1)` (`D = −4`) it is **−50064**. DMZ read these coefficients
-  as single-centred counts ((1.6), ll. 426–443). Sign conventions for degeneracies are not asserted, and the values
-  are not compared with a printed table here.
+  as single-centred counts ((1.6), ll. 426–443). External anchor: Sen (`0708_1270.txt`, l. 6788) prints
+  `d = 50064` for `Q² = P² = 2`, `Q·P = 0`, which matches the second value and fixes the sign convention
+  `d = (−1)^{ℓ+1} c`. In that convention the smallest black hole has `d = 25353` (Sen's table does not list it).
 
 **The chain (Tier L links, Tier A pieces).** The smallest black hole has attractor variety `X₃ × E_ω`
 (Moore (4.27), l. 1585). `X₃` is the Shioda–Inose double cover of `Km(E_ω × E_{ω+1}) = Km(E_ω × E_ω)`

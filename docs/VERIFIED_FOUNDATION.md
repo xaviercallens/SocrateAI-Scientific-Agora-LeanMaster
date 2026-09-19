@@ -208,9 +208,10 @@ libraries are unchanged since their last audit).
 - A positive definite form has `4ac − b² ≥ 3`. The minimum is the class `(1, 1, 1)`, `T_S = A₂`.
 - For every charge with `D < 0`, `τ(p, q) = (p·q + i√−D)/p²` solves Moore (4.5). The smallest black hole has
   `τ = ω + 1 ≅ ω`, and `D = −4` has `τ = i`.
-- From Stream 5's series, the `ψ₁^F` coefficient at `(1, 1, 1)` is 25353, and at `(1, 0, 1)` it is −50064.
+- From Stream 5's series, the `ψ₁^F` coefficient at `(1, 1, 1)` is 25353, and at `(1, 0, 1)` it is −50064. The
+  second matches Sen's printed `d = 50064` (`0708_1270.txt` l. 6788) up to the sign convention `(−1)^{ℓ+1}`.
 
-Tier L inputs (pinned): Moore ll. 1104–1116, 1189, 1254–1257, 1351–1376, 1503–1507, 1585–1600; DMZ ll. 426–443.
+Tier L inputs (pinned): Moore ll. 1104–1116, 1189, 1254–1257, 1351–1376, 1503–1507, 1585–1600; DMZ ll. 426–443; Sen l. 6788.
 `tools/p82_charge_enumeration.py` (not kernel) covers the box `[−2, 2]⁴`. Negative control: three mutations caught.
 `DualScaleDyons` 90 theorems, total **675**, 0 failing (other nine libraries unchanged). `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported

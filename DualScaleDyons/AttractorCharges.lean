@@ -18,8 +18,9 @@ the charges: the K3 becomes the attractive surface with `T(S) = ⟨p, q⟩` and 
   - ll. 1480–1507: the abelian surfaces `A_Q = E_{τ₁} × E_{τ₂}` (4.15) with `ρ = 4` correspond one-to-one to
     `PSL(2, ℤ)` classes of `Q` (Shioda–Mitani); (4.27)–(4.29), ll. 1580–1600: the attractor variety is
     `S_{2Q} × E_{τ(p,q)}`, with `S_{2Q}` a double cover of `Km(E_τ × E_{τ'})`, `τ' = (−p·q + i√−D)/2`.
-* DMZ (`1208_4074.txt`) (1.6), ll. 424–443: the Fourier coefficients of `ψ_m^F` count single-centred black holes
+* DMZ (`1208_4074.txt`) (1.6), ll. 426–443: the Fourier coefficients of `ψ_m^F` count single-centred black holes
   (with the Stream 5 identity `∆ψ₁^F = 3E₄A − 648H`, `Immortal.immortal_m1`).
+* Sen (`0708_1270.txt`) l. 6788: `d(Q, P) = 50064` for `Q² = P² = 2`, `Q·P = 0` (heterotic on `T⁶`).
 
 ### Conventions
 Charges live in `U ⊕ U ⊂ U³ ⊕ E₈(−1)² = H²(K3, ℤ)` (a direct summand, so primitivity in `U ⊕ U` is primitivity in
@@ -41,7 +42,9 @@ Charges live in `U ⊕ U ⊂ U³ ⊕ E₈(−1)² = H²(K3, ℤ)` (a direct summ
   (`p·q = 0`), `τ = i`.
 * `smallest_black_hole_index`: the Fourier coefficient of `ψ₁^F` at `(n, ℓ) = (1, 1)`, i.e. charges
   `(q²/2, p·q, p²/2) = (1, 1, 1)`, is `25353`; at `(1, 0)` (the `D = −4` black hole) it is `−50064`. Computed from
-  Stream 5's series through `q³` and `1/η²⁴`; sign conventions for degeneracies are not asserted here.
+  Stream 5's series through `q³` and `1/η²⁴`. External anchor: Sen (`0708_1270.txt`, l. 6788) prints
+  `d(Q, P) = 50064` for `Q² = P² = 2`, `Q·P = 0`, which matches the second value and fixes the sign convention
+  `d = (−1)^{ℓ+1} c`; in that convention the `D = −3` black hole has `d = 25353` (not in Sen's table).
 
 ### Reading (Tier C) and scope
 The smallest black hole with a horizon has near-horizon geometry `X₃ × E_ω`: the K3 of E2 ∩ G2, with the `T²` at
