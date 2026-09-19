@@ -67,10 +67,18 @@ forbidden" it is false.
    (`w = −1/3` for strings, `−2/3` for walls); neither is `−1`. And viscous dark energy produces entropy, which is
    constrained. Until a `ζ` is derived from the core physics, "dark energy is topological friction" is a Tier C
    analogy with no decision rule.
-4. **The quantum-fluid corpus must be pinned before it can be cited.** "51 theorems accepted by the Comparator" is
-   not verifiable from this repository: no such library, no commit, no audit output here. LeanMaster can cite it
-   only as `repo@commit`, with its own gate results. Until then it is hearsay, exactly like the aggregate counts
-   LL.md's preamble warns about.
+4. **The quantum-fluid corpus is recorded but not verified here.** The report is in
+   `docs/reviews/2026-09-19_quantumfluids_dual_scale_report.md` (verbatim). Its source path
+   (`/home/xavkal/xdev/SocrateAI-Scientific-QuantumFluids`) does not exist on this VM, so no gate was run against
+   it. Two things in it change how this pivot should be argued:
+   * the `R + α'/R` shape is an **identity** for the Bogoliubov dispersion (`R = 1/k`, `α' = 1/k*²`), not an
+     analogy — that is real support for the algebraic structure;
+   * but the measurement **refutes** the hypothesis for ⁴He (the roton sits 21–51× below the envelope). What
+     survives is the restricted claim that the structure belongs to the *weakly interacting* regime, and the
+     report states that this is **untested**.
+   So "validated by fluid physics" overstates it; "the shape is exact in a weakly interacting microscopic system,
+   and fails in a strongly correlated one" is what was shown. Citing it as Tier L needs `repo@commit` plus gate
+   outputs.
 
 ## 4. Formalizable targets, if the pivot is pursued (all Tier A, none yet written)
 
