@@ -186,3 +186,18 @@ fixed point is Taormina–Wendland's overarching group `(ℤ₂)⁴ ⋊ A₇` (T
 `T = diag(4, 4)`, `D = 16`, on the `τ = i` ray (TW (3.3), ll. 1044–1055). The symplectic group of the Kummer surface
 on the `τ = ω` ray (`T = A₂(2)`, `D = 12`) is not in TW. TW remark that their `ℤ₃`-symmetric example needs `M₂₄`
 rather than `M₂₃` (ll. 2735–2742). Determining that group, and its classes, is the next step.
+
+## 8. A constraint from Henningson–Moore (hep-th/9608145, Tier L)
+
+For the heterotic string on K3 × T², the four orbifold K3s `T⁴/ℤ_n` (`n = 2, 3, 4, 6`, ll. 189–195) "only differ by
+being at different points in the moduli space of the K3-surface". Those moduli sit in hypermultiplets, which "do not
+mix with the vector multiplet moduli", so the one-loop threshold corrections do not depend on `n` (ll. 1371–1375).
+**Consequence for Stream 8:** no coupling of the vector-multiplet sector can choose the K3. E2's `T²` selection and
+the K3 choice (P8.4c) are separate problems, and the `A₂ = T(X₃)` match of §5 gets no support from this side; it
+stays Tier C. The one K3-selecting handle is the Wilson line of the gauge factor that exists only in the orbifold
+limit (`SU(2)` for `n = 2`, `U(1)` for `n = 3, 4, 6`, ll. 1359–1367). Turning it on "freez[es] the hypermultiplet
+moduli at that particular point" (ll. 1376–1379). In type II language, orbifold CFT points carry `B = ½` and no gauge
+enhancement (Aspinwall ll. 2530–2545: enhancement needs `B = 0` along the vanishing cycle, CFT orbifolds give `B = ½`, ll. 2540–2544). P8.4c must therefore state its duality frame. Possible Tier A targets: the 240
+`E₈` roots with the split `1 + 56 + 126 + 56 + 1` along a root (ll. 1510–1519), and the crystallographic list
+`n ∈ {1, 2, 3, 4, 6}` (`φ(n) ≤ 2`).
+

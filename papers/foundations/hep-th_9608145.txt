@@ -1,0 +1,1708 @@
+                                                                                                                hep-th/9608145
+                                                                                                                YCTP-P12/96
+
+
+
+
+                                                   Threshold Corrections in K3 × T 2
+                                                   Heterotic String Compactifications
+arXiv:hep-th/9608145v1 21 Aug 1996
+
+
+
+
+                                                                Måns Henningson and Gregory Moore
+
+
+
+                                                                         Department of Physics
+                                                                            Yale University
+                                                                           P. O. Box 208120
+                                                                   New Haven, CT 06520-8120, USA
+
+                                                                    mans@genesis5.physics.yale.edu
+                                                                     moore@castalia.physics.yale.edu
+
+
+                                                                               Abstract
+                                         We consider compactifications of the heterotic string on K3 × T 2 so that the resulting
+                                     theory in d = 4 space-time dimensions has N = 2 supersymmetry. The gravitational and
+                                     gauge coupling constants of the low-energy effective theory receive threshold corrections
+                                     from loops of super-heavy string states. We calculate these corrections for the case when
+                                     the K3-surface is a Zn orbifold of a four torus T 4. The results are used to determine the
+                                                             (1)                                                            (1)
+                                     one-loop prepotential F0      for the vector multiplets and the gravitational coupling F1 .
+
+
+
+
+                                     August 20,1996.
+1. Introduction
+
+     Theories in d = 4 space-time dimensions with N = 2 supersymmetry have proven
+to possess a rich structure while still being simple enough to be tractable with present
+methods. In the case of string theory, the gravitational and gauge coupling constants of
+the low-energy effective supergravity theory have received a lot of interest. Their one-loop
+dependence on the momentum scale and the moduli is given by
+                                                                 2
+                                                              Mstring
+                                              
+           1                       1      univ      bgrav                  1
+         2     2
+                  = 24Re −iS +        2
+                                        ∆        +      2
+                                                          log      2
+                                                                      +       ∆grav ,
+       ggrav (p )                16π               16π           p      16π 2
+                                                               2
+                                                                                                  (1.1)
+                                                            Mstring
+                                           
+           1                     1     univ      bgauge                  1
+       2       2
+                  = Re   −iS +     2
+                                     ∆         +      2
+                                                        log      2
+                                                                     +       ∆gauge ,
+      ggauge (p )              16π               16π          p        16π 2
+
+where S is the dilaton and ∆univ is a certain universal contribution related to the Green-
+Schwarz anomaly cancellation term. The coefficients bgrav and bgauge are related to the
+one-loop beta-functions and are thus determined by the spectrum of massless N = 2
+multiplets [1][2]:
+                                  bgrav = 46 + 2(nH − nV )
+                                                                                                  (1.2)
+                                 bgauge = 2TrH (Q2 ) − 2TrV (Q2 ).
+Here nH and nV denote the number of massless hyper multiplets and vector multiplets
+respectively, and Q is some generator of the simple factor in the gauge group under con-
+sideration. The effect of integrating out super-heavy string states is summarized by the
+threshold corrections ∆grav and ∆gauge [1][2][3][4]. They are given at one-loop in terms of
+the fundamental domain integrals
+                     "                                                                        #
+                d2 τ
+                                                                                  
+                         −i                                                      3
+              Z
+                                       iπJ0 L0 −c/24 L̄0 −c̄/24
+    ∆grav =                     Tr J0 e     q          q̄             E2 (τ )−         −bgrav
+              F τ2     η 2 (τ )                                                 πτ2
+                     "                                                                        #   (1.3)
+                d2 τ     −i
+                                                                                
+                                                                              1
+            Z
+   ∆gauge =              2 (τ )
+                                Tr J0 eiπJ0 q L0 −c/24 q̄ L̄0 −c̄/24 Q2 −            − bgauge
+              F  τ 2   η                                                    8πτ2
+
+respectively. The traces are over the Ramond sector of the internal conformal field theory,
+and J0 denotes the U (1) generator of the N = 2 superconformal algebra. The functions η
+and E2 are the Dedekind eta function and the Eisenstein series respectively. Throughout
+this paper, subscripts 1 and 2 on a complex quantity such as the modular parameter
+τ are used to denote its real and imaginary parts respectively. Given these threshold
+                                              (1)
+corrections, the one-loop prepotential F0           for the vector multiplets and the gravitational
+
+                                                    1
+           (1)
+coupling F1       can be determined by comparing the string theory expressions (1.1) and (1.3)
+with equations arising from considerations of holomorphicity and duality transformation
+properties in N = 2 supersymmetric field theories [4][5] [6].
+    We will be considering compactifications of the ten-dimensional heterotic string to four
+space-time dimensions with N = 2 extended space-time supersymmetry. This means that
+the right-moving internal c̄ = 9 conformal field theory must decompose into a c̄ = 3 piece
+and a c̄ = 6 piece with N = 2 and N = 4 world-sheet supersymmetry respectively [7]. The
+geometrical interpretation is that the six-dimensional internal space is a direct product of a
+two-torus T 2 and a K3-surface. Suppose the gauge bundle on the K3 surface leaves a rank
+s subgroup of E8 × E8 unbroken. Wilson line and toroidal moduli then lead to a Narain
+moduli space N s+2,2 for vectormultiplets. Here N s+2,2 = O(Γs+2,2 )\O(s + 2, 2; R)/K,
+where O(Γs+2,2 ) is a discrete automorphism group of the lattice and K is the maximal
+compact subgroup. Our main object will be to calculate the threshold corrections ∆gauge
+and ∆grav as functions of these moduli. Such calculations are feasible essentially because
+the threshold corrections only depend on the elliptic genus of the c̄ = 6 theory and therefore
+can be performed in some convenient limit where this theory becomes free, such as an
+orbifold limit.
+    The standard embedding of the spin connection in the gauge group generically breaks
+E8 × E8 → E7 × E8 . The E7 can be completely Higgsed leaving a rank 12 group. The
+                                                                                            (1)
+vectormultiplet moduli space is then N s+2,2 with s = 8. The calculation of ∆gauge and F0
+was performed recently in this case for a Z2 orbifold in [8] by generalizing techniques for
+performing fundamental domain integrals introduced in [9]. Ref. [8] also studied in detail
+the subspace with unbroken E8 corresponding to s = 0. The first gravitational coupling
+was evaluated using the same methods for a special case s = 0 in [10]. The methods used
+in [8] apply to a wider class of backgrounds than the special cases examined in [8][10], and
+in this paper we carry out the calculations for a class of Zn orbifolds. The results of [8][10]
+left room for generalization even for the standard embedding. In this case one can begin
+with the group E7 × SU (2) × E8 in the orbifold limit and consider turning on Wilson lines
+going to a Coulomb branch of E7 × E8 but leaving the SU (2) unbroken. We compute
+the prepotential on the resulting vectormultiplet moduli space N 17,2 by computing the
+threshhold correction to the SU (2) coupling. We can then Higgs the SU (2) by turning on
+K3 moduli. From the calculations below we can also find the prepotential and gravitational
+coupling for other topologies of the gauge group.
+
+                                                2
+      It should be noted that these methods apply in principle to an even larger class of
+backgrounds. 1 For example, suppose that the lattice Γs+2,2 ∈ N s+2,2 is SO(s + 2, 2)-
+related to a lattice of the form Γs+2,2 = ∐[Γ̃+δi ], where Γ̃ ∼
+                                                          0
+                                                                 s,0
+                                                              = Γ ⊕II 2,2 for some even rank
+                s,0                              2,2
+(s, 0) lattice Γ0 and the δi are orthogonal to II . The modular invariant integrands of
+(1.3) take the form                    (                           )
+                                  X        X        1 2 1 2
+                                                  q 2 pL q̄ 2 pR   fi (q)                     (1.4)
+                                   i    p∈Γ̃+δi
+
+where fi (q) form a representation of the modular group of weight −s/2. Under such
+conditions the method of [9] continues to apply with the result that the threshold correction
+∆ can be decomposed into four distinct contributions:
+                             ∆ = ∆log + ∆const + ∆rat + ∆transc .                             (1.5)
+Here ∆log and ∆const are related to the Kähler potential of the moduli space in a simple
+way. ∆transc is an interesting sum of polylogarithms of exponentials of the moduli, weighted
+by the Fourier coefficients ci (x) of fi (q). The most subtle term is ∆rat , which is a rational
+function of the moduli. In order to obtain ‘nice’ automorphic forms (for example, infinite
+products with a Weyl vector) in the threshhold corrections it is necessary that the rational
+terms obey certain non-trivial identities. It is far from obvious that this will happen
+in general, but we show in section four that these identities indeed follow from N = 2
+supersymmetry. Our main results are the formulas (4.1) - (4.6) for the running coupling
+constants and the expressions (4.13) and (4.14) for the prepotential and the gravitational
+coupling respectively.
+      The outline of this paper is as follows: In section two, we present the calculation of
+the threshold corrections in the case of Zn orbifolds. In section three, we specialize the
+results to the fundamental chamber of the moduli space. The one-loop prepotential for
+the vector multiplets and the gravitational coupling are calculated in section four. The
+details of the calculation in section two are discussed in Appendix A. In Appendix B, we
+consider the case of the standard embedding of the spin connection in the gauge group in
+somewhat more detail.
+      While this manuscript was being typed, a paper by T. Kawai appeared [15] which has
+some overlap with the present paper.
+  1
+     In an intriguing set of papers [11] [12] the same methods were applied to obtain interesting
+product formulae for automorphic forms, such as the product formula for the Siegel automorphic
+form ∆5 , due to [13]. Unfortunately, the relevance of the expressions in [11][12] to physical
+threshhold corrections is unclear. Nevertheless, the results have been applied in a very interesting
+way to black hole physics [14].
+
+                                                    3
+2. The threshold corrections for Zn orbifolds
+     We consider K3-surfaces which can be obtained as Zn orbifolds of some four-torus
+T 4. Introducing complex coordinates z 1 , z 2 for T 4, we let the group Zn act as
+                                              z 1 → e2πia/n z 1
+                                                                                               (2.1)
+                                              z 2 → e−2πia/n z 2
+for a ∈ Z mod n. Tori which admit such a Zn symmetry exist for n = 2, 3, 4, 6. As usual,
+the Hilbert space of the theory decomposes into different twist sectors labeled by a =
+0, . . . , n − 1. We will also have to project onto Zn invariant states in the partition function,
+which is equivalent to inserting a group element indexed by b in the ‘time’ direction,
+summing over b = 0, . . . , n − 1 and dividing by n.
+     In the bosonized formulation of the heterotic string, the gauge degrees of freedom are
+described by sixteen left-moving bosons. Together with the two left-moving and two right-
+moving bosons from the two-torus T 2, these fields take their values on a torus given by an
+even self-dual lattice Γ18,2 of the indicated signature. To cancel the space-time anomaly,
+we let Zn act by a shift na γ on the momentum, where γ ∈ Γ18,2 . The contribution to the
+integrands in (1.3) in the (a, b) sector from these degrees of freedom is then
+                                       ab 2            X         b       1 2     1 2
+                torus
+              Za,b    (τ, τ̄) = 2e−2πi n2 γ η −18 (τ )      e2πi n p·γ q 2 pL q̄ 2 pR          (2.2)
+                                                                    a
+                                                          p∈Γ18,2 + n γ
+
+for ∆grav and
+                                     ab   2
+                torus
+              Ẑa,b   (τ, τ̄) =e−2πi n2 γ η −18 (τ )
+                                                                           (p · Q)2
+                                                                                          
+                                      X
+                                                2πi nb
+                                                       p·γ 21 p2L 12 p2R               1       (2.3)
+                               ×              e           q      q̄                 −
+                                           a
+                                                                            Q·Q       4πτ2
+                                 p∈Γ  18,2+nγ
+
+for ∆gauge . Notice that there are no right-moving oscillator contributions because of a
+cancellation between bosons and fermions. It is easy to check that
+                                      torus            torus
+                                     Za,b+n (τ, τ̄) = Za,b   (τ, τ̄)
+                                                                                               (2.4)
+                                       torus             torus
+                                     Ẑa,b+n (τ, τ̄) = Ẑa,b   (τ, τ̄)
+and that
+                                                1 a2 2 3
+                                                          
+                torus                                           torus
+               Za,b   (τ + 1, τ̄ + 1) = exp 2πi      γ −      Za,a+b   (τ, τ̄)
+                                                2 n2     4
+                                                     
+                torus                           ab 2
+              Za,b (−1/τ, −1/τ̄) = exp 2πi         γ (iτ̄ )1/2 Zb,−a
+                                                                 torus
+                                                                       (τ, τ̄)
+                                                n2
+                                               2                                             (2.5)
+                torus                           1a 2 3          torus
+              Ẑa,b (τ + 1, τ̄ + 1) = exp 2πi      2
+                                                     γ −      Ẑa,a+b  (τ, τ̄)
+                                                2n       4
+                                                     
+                torus                           ab 2
+              Ẑa,b (−1/τ, −1/τ̄) = exp 2πi        γ (−iτ )(iτ̄ )1/2 Ẑb,−a
+                                                                        torus
+                                                                               (τ, τ̄).
+                                                n2
+
+                                                      4
+                                      torus
+The modular transformation laws for Ẑa,b   (τ, τ̄) require that the charge Q be purely left-
+moving. Physically, this means that the unbroken gauge group contains at least an SU (2)
+factor.
+      Next, we consider the contributions to the integrands in (1.3) from the degrees of
+freedom associated with the K3 surface. We begin with untwisted sector, where a = 0.
+The contributions from the non-zero modes of the right-moving bosons and fermions cancel
+against each other, so we only get a factor 16 sin2 π nb from the fermionic zero-modes. This is
+the well known holomorphicity of the elliptic genus. The contribution from the left-movers
+is
+                               ∞                −2                  −2
+                           1               b                     b
+                               Y
+                        q− 6      1 − e2πi n q j       1 − e−2πi n q j     .              (2.6)
+                               j=1
+
+The contributions in the twisted sectors, where a 6= 0, are now determined by the require-
+ment that the integrands
+                                                                        
+                  −iτ2            iπJ0 L0 −c/24 L̄0 −c̄/24             3
+                           Tr J0 e    q        q̄            E2 (q) −
+                  η 2 (τ )                                            πτ2
+                               τ2 X 1 K3
+                                                                 
+                                                                            3
+                                                                                         (2.7)
+                                                     torus
+                           = 2            Z (τ )Za,b (τ, τ̄) E2 (q) −
+                             η (τ )     n a,b                              πτ2
+                                     a,b
+
+and
+                     −iτ2
+                                                                         
+                                     iπJ0 L0 −c/24 L̄0 −c̄/24       2  1
+                              Tr J0 e    q         q̄            Q −
+                     η 2 (τ )                                         8πτ2
+                                  τ2   X   1 K3                                           (2.8)
+                                                        torus
+                              = 2            Za,b (τ )Ẑa,b   (τ, τ̄)
+                                η (τ )     n
+                                           a,b
+
+be modular invariants. In general, we can write
+                                                                         
+                                                   2                  a b
+                            (τ ) = ka,b q −( n ) η 2 (τ )Θ−2
+                                             a
+                        K3
+                       Za,b                               1          τ + τ ,              (2.9)
+                                                                      n n
+
+where η(τ ) and Θ1 (ν|τ ) are the Dedekind eta function and the Jacobi theta function
+respectively and ka,b are some constants. From the above, it follows that in the untwisted
+sector
+                                                    b
+                                    k0,b = 64 sin4 π .                             (2.10)
+                                                    n
+The ka,b for a 6= 0 are now determined by modular invariance through the relations
+
+                                      ka,b                 a2
+                                                 = eiπ n2 (2−γ )
+                                                                2
+
+                                     ka,a+b
+                                                                                        (2.11)
+                                       ka,b
+                                            = e−2πi n2 (2−γ ) .
+                                                    ab     2
+
+                                      kb,−a
+
+                                                       5
+These relations are only consistent provided that the level matching condition
+
+                                               γ 2 − 2 ∈ 2nZ                            (2.12)
+
+is fulfilled.
+       The Γ18,2 lattice is obtained by an SO(18, 2) rotation of some standard lattice, which
+we take to be of the form II 16,0 ⊕ II 1,1 ⊕ II 1,1 . Here II 16,0 is a sixteen-dimensional,
+even self dual Euclidean lattice, i.e. either the E8 × E8 root lattice or the Spin(32)/Z2
+weight lattice. The shift γ and the charge Q transform as vectors under SO(18, 2). In
+the standard lattice, we take γ to be given by a lattice vector γ̄ in the II 16,0 factor. 2
+The unbroken gauge group is then generated by the root vectors r̄ of II 16,0 which fulfil
+1
+n r̄ · γ̄ ∈ Z.   In the standard lattice, Q equals one of these root vectors, which we denote
+by Q̄.
+       The subgroup SO(18) × SO(2) gives rise to equivalent lattices, so the moduli space is
+the quotient by the discrete T -duality group of
+
+                                   SO(18, 2)/(SO(18) × SO(2)),                          (2.13)
+
+which may be parametrized by complex moduli y = (ȳ, y + , y − ) subject to the restrictions
+y2− > 0 and (y2 , y2 ) < 0 [5][16]. Here the inner product is given by
+
+                                  (y, y ′ ) = ȳ · ȳ ′ − y + y −′ − y − y +′ ,         (2.14)
+
+where ȳ · ȳ ′ denotes the standard Euclidean product between two sixteen dimensional
+vectors. The moduli space is a Kähler space with Kähler potential
+                                                              
+                                         K = − log −(y2 , y2 ) .                        (2.15)
+
+In these coordinates, the left- and right-moving components of p ∈ Γ18,2 + na γ are given by
+
+          1 2   1      1
+            pL − p2R = R̄ · R̄ − m+ n− + m0 n0
+          2     2      2
+                                                                              2         (2.16)
+                1 2        1                                        1
+                  pR =              R̄ · ȳ + m+ y − + n− y + + m0 + n0 (y, y) ,
+                2      −2(y2 , y2 )                                 2
+
+where R̄ = r̄ + na γ̄ and r̄ ∈ II 16,0 and m+ , n− , m0 , n0 ∈ Z label a vector in the standard
+lattice. We see that the requirement that the charge Q be purely left-moving is equivalent
+   2
+       A bar over a vector, as in γ̄ indicates the component in the II 16,0 factor.
+
+                                                       6
+to demanding that ȳ · Q̄ = 0. This means that the Q gauge boson is massless so that the
+unbroken gauge group is at least SU (2).
+     The constants bgrav and bgauge are determined by the requirement that ∆grav and
+∆gauge be finite at a generic point in the moduli space and are thus given by the coefficients
+of τ2 q 0 q̄ 0 in the integrands. Introducing the Fourier coefficients ca,b (h) and c̃a,b (h) through
+                                       ab 2                       X
+                                 e−2πi n2 γ η −20 (τ )Za,b
+                                                       K3
+                                                           (τ ) =   ca,b (h)q h
+                                                                      h≥−1
+                                                                                              (2.17)
+                        −2πi ab2 γ 2
+                                                                      X
+                                                         K3
+                       e     n         η −20 (τ )E2 (τ )Za,b (τ ) =          c̃a,b (h)q h .
+                                                                      h≥−1
+
+we get                                                           
+                               X X0 1                b    1
+                                                 2πi n R̄·γ̄
+                     bgrav =          e            c̃a,b − R̄ · R̄ 2
+                             r̄ a,b
+                                    n                     2
+                                                                                              (2.18)
+                                                                    (R̄ · Q̄)2
+                             X X0 1                              
+                                           b
+                                       2πi n R̄·γ̄        1
+                    bgauge =          e            ca,b − R̄ · R̄              .
+                             r̄ a,b
+                                    n                     2           Q̄ · Q̄
+
+The superscript 0 on the summation signs indicate that, for a given r̄, the sum is only over
+a such that R̄ · ȳ = 0 for generic values of the moduli ȳ in the moduli space. In terms of
+the massless spectrum, we get (1.2). The sums in (2.17) should be regarded as sums over
+the real numbers, with ca,b (x) only taking nonzero values on the discrete spectrum of the
+model.
+     To write the final answer for ∆grav and ∆gauge , we make the following definitions:
+First we introduce a notion of positivity of the vectors R̄ = r̄ + na γ̄. (In the case of γ̄
+being a root vector, corresponding to the standard embedding of the spin connection in
+the gauge group, this can be done by first defining a positivity condition on lattice vectors
+r̄ ∈ II 16,0 such that γ̄ is the smallest positive root. We then define R̄ to be positive if
+r̄ > 0 or r̄ = 0 and a > 0.) We now say that the triplet R = (R̄, −k, −l) is positive if
+
+                                               k > 0 or
+                                               k = 0, l > 0 or                                (2.19)
+                                               k = l = 0, R̄ > 0.
+
+It is convenient to introduce the functions
+                                  X1                             
+                                            b
+                                        2πi n R̄·γ̄        1
+                          d(R) ≡       e            ca,b − (R, R)
+                                     n                     2
+                                   b
+                                  X1                                                        (2.20)
+                          ˜                 b
+                                        2πi n R̄·γ̄        1
+                          d(R) ≡       e            c̃a,b − (R, R) .
+                                     n                     2
+                                           b
+
+                                                          7
+We will also use these functions with argument R̄ instead of R, meaning that k = l = 0.
+We define the product (R; y) as
+               R̄ · ȳ1 + ly1− +hky1+ i+ i R̄ · ȳ2 + ly2− + ky2+            for k > 0
+            
+            
+            
+                           −     R̄·ȳ2  −
+            
+   (R; y) = R̄ · ȳ + ly − h y2− yi                                          for k = 0, R̄ ≥ 0     (2.21)
+            
+             R̄ · ȳ + ly − + − R̄·ȳ2 y −
+            
+                                                                             for k = 0, R̄ < 0 ,
+                                           y2−
+
+where [x] is the greatest integer less than or equal to x. Finally, we introduce the functions
+                                                       ∞      2πix p
+                                                                  
+                                                      X     e
+                             lim (x) = Lim (e2πix ) =
+                                                               pm
+                                                      p=1                               (2.22)
+                                                    1
+                               P(x) = x2 li2 (x) +    li3 (x).
+                                                   2π
+    The calculation of ∆grav and ∆gauge is performed in Appendix A. The result is
+                             ∆grav = ∆log     const   rat     transc
+                                      grav + ∆grav + ∆grav + ∆grav
+                                                                                                   (2.23)
+                            ∆gauge = ∆log      const    rat      transc
+                                      gauge + ∆gauge + ∆gauge + ∆gauge ,
+
+where
+           ∆log
+                                              
+            grav = bgrav − log −(y2 , y2 ) − K
+                    96ζ(3)χ
+           ∆const
+            grav =
+                   π 2 (y2 , y2 )
+                                  4y2−          R̄ · ȳ2
+                                                        
+                           ˜
+                   X
+             rat
+           ∆grav =        d(R̄)        Re li2
+                   r̄,a
+                                   π              y2−                                              (2.24)
+                                                                                       !
+                                                         24(y2− )3            R̄ · ȳ2
+                                                                           
+                                        π(y2 , y2 )
+                         + d(R̄) −                  + 3              Re li4
+                                           5y2−         π (y2 , y2 )            y2−
+                                                                                          !
+                   X′
+                             ˜                                     48
+          ∆transc
+                                                                                        
+           grav =            d(R)8Re    li1 (R; y) + d(R)                  Re P (R; y)
+                                                               π(y2 , y2 )
+                      R>0
+and
+        ∆log
+                                             
+         gauge = bgauge − log −(y2 , y2 ) − K
+                     4ζ(3)χ
+        ∆const
+         gauge =
+                   π 2 (y2 , y2 )
+                              (R̄ · Q̄)2        −π(y2 , y2 ) 2y2−               R̄ · ȳ2
+                   X                                                                   
+        ∆rat
+         gauge =        d(R̄)                               +        Re li2
+                   r̄,a
+                                Q̄ · Q̄            6y2−           π               y2−              (2.25)
+                                                                                   !
+                                                      (y2− )3             R̄ · ȳ2
+                                                                        
+                                      π(y2 , y2 )
+                                    +             + 3            Re li4
+                                       120y2−       π (y2 , y2 )            y2−
+                                                                                !
+                                     2
+                   X′     ( R̄ · Q̄)                       2
+        ∆transc
+                                                                              
+         gauge =     d(R)              4Re li1 (R; y) +             Re P (R; y) .
+                 R>0
+                             Q̄ · Q̄                    π(y2 , y2 )
+
+                                                         8
+Here K = 1 − γE + log 34π
+                       √ and
+                         3
+                                                      1 X0
+                                               χ=            d(R̄).                        (2.26)
+                                                      4 r̄,a
+
+The prime on the sums over R > 0 in ∆transc
+                                     grav   and ∆transc
+                                                 gauge indicates that terms with
+k = l = 0 and R̄ · ȳ = 0 for generic values of the moduli are omitted. These are exactly
+the terms which are included in the sum with the superscript zero in χ.
+
+
+3. The fundamental chamber
+
+    The above formulas can be simplified in the (generalized) fundamental chamber of the
+moduli space defined by the conditions
+
+                                      R̄ · ȳ2
+                                0<             <1     for R̄ > 0, R̄ · R̄ ≤ 2;
+                                        y2−                                                 (3.1)
+                                0 < y2− < y2+ .
+
+This means that (R; y) = (R, y) for all R such that − 12 (R, R) ≥ −1. Furthermore, using
+the identities                                                
+                                              2 1            2
+                             Re li2 (x) = π        − |x| + x
+                                                6
+                                                                                          (3.2)
+                                            4    1     1 2 2 3 1 4
+                             Re li4 (x) = π         − x + |x| − x ,
+                                                90 3           3 3
+which are valid for −1 ≤ x ≤ 1, the rational terms can now be written as
+                                                                             
+        rat       24π                    A B C      1 ˆ            A B C D
+      ∆grav =               (dgrav )ABC y2 y2 y2 + − (dgrav )ABCD y2 y2 y2 y2
+                (y2 , y2 )                         y2
+                                                                                          (3.3)
+       rat         π                      A B C      1 ˆ              A B C D
+     ∆gauge =               (dgauge )ABC y2 y2 y2 + − (dgauge )ABCD y2 y2 y2 y2 ,
+                (y2 , y2 )                          y2
+
+where
+                 (dgrav )ABC y2A y2B y2C
+
+                              ˜ R̄) − 1 |R̄ · ȳ2 |ȳ2 · ȳ2 + 1 |R̄ · ȳ2 |y + y −
+                        X           
+                     =        d(                                             2 2
+                         r̄,a
+                                         6                     3
+                                        1                  1                1          
+                                      − (R̄ · ȳ2 )2 y2+ + ȳ2 · ȳ2 y2− − y2+ y2− y2−      (3.4)
+                                        3                  36              18
+                                       2                1              1
+                                                                 +
+                                + d(R̄) |R̄ · ȳ2 | + ȳ2 · ȳ2 y2 − (R̄ · ȳ2 )2 y2−
+                                                   3
+                                        3               30              3 !
+                                           1                1            
+                                        − y2+ y2+ y2− + y2− y2− y2− ,
+                                          30                90
+
+                                                         9
+   (dgauge )ABC y2A y2B y2C
+          X                  (R̄ · Q̄)2                                               2
+      =          d(R̄)                   −2|R̄ · ȳ2 |ȳ2 · ȳ2 + 4|R̄ · ȳ2 |y2+ y2− + ȳ2 · ȳ2 y2+
+          r̄,a
+                               Q̄ · Q̄                                                 3
+                                                           1               2            2            
+                                     − 4(R̄ · ȳ2 )2 y2+ + ȳ2 · ȳ2 y2− − y2+ y2− y2− − y2+ y2+ y2−      (3.5)
+                                                           3               3            3
+                              2               1               1                   1
+                             + |R̄ · ȳ2 |3 − ȳ2 · ȳ2 y2+ − (R̄ · ȳ2 )2 y2− + y2+ y2+ y2−
+                              3              !30              3                  30
+                               1
+                             + y2− y2− y2− ,
+                              90
+
+      (dˆgrav )ABCD y2A y2B y2C y2D
+                                                                                                     !
+                                                                                                          (3.6)
+                                                                 
+                     X            1
+                             ˜ R̄) (R̄ · ȳ2 )2 ȳ2 · ȳ2 + d(R̄) −  1                 1
+                 =           d(                                         (ȳ2 · ȳ2 )2 − (R̄ · ȳ2 )4
+                     r̄,a
+                                  6                                 120                3
+
+and
+                            (dˆgauge )ABCD y2A y2B y2C y2D
+                                            (R̄ · Q̄)2
+                                                                                                 
+                                X
+                                                                      2           1             2
+                             =        d(R̄)               2(R̄ · ȳ2 ) ȳ2 · ȳ2 − (ȳ2 · ȳ2 )
+                                 r̄,a
+                                              Q̄ · Q̄                             6                       (3.7)
+                                                                                  !
+                                                 1                   1
+                                            +        (ȳ2 · ȳ2 )2 − (R̄ · ȳ2 )4 .
+                                                120                  3
+
+In fact, as we will see in the next section, these tensors obey the following identites on the
+subspace where ȳ · Q̄ = 0:
+
+                                              (dˆgrav )ABCD y2A y2B y2C y2D = 0
+                                                                                                          (3.8)
+                                            (dˆgauge )ABCD y2A y2B y2C y2D = 0
+
+and
+                             (dgrav − dgauge )ABC y2A y2B y2C = 0 mod (y2 , y2 )d˜A y2A                   (3.9)
+
+for some real d˜A . The last equation obviously implies that the tensor (dgauge )ABC y2A y2B y2C
+is independent of the factor of the gauge group under consideration up to terms of the form
+(y2 , y2 )d˜A y A . As we show in the next section, it follows from N = 2 supersymmetry that
+                 2
+
+these conditions are obeyed in general, although this is far from obvious in our calculation.
+In Appendix B, we check that they are indeed fulfilled in the case of the standard embedding
+of the spin connection in the gauge group.
+
+                                                              10
+      We have thus found that, in the fundamental chamber and on the subspace where
+ȳ · Q̄ = 0, the threshold corrections are
+                                                    96ζ(3)χ
+       ∆grav = bgrav (− log (−(y2 , y2 )) − K) +
+                                                   π 2 (y2 , y2 )
+                     24π
+                 +            (dgrav )ABC y2A y2B y2C
+                   (y2 , y2 )
+                                                                                    !
+                   X′
+                            ˜
+                                                              48                  
+                 +         d(R)8Re     li1 (R, y) + d(R)               Re P (R, y)
+                                                            π(y2, y2 )
+                     R>0
+                                                                                              (3.10)
+                                                       4ζ(3)χ
+      ∆gauge = bgauge (− log (−(y2 , y2 )) − K) + 2
+                                                      π (y2 , y2 )
+                      π
+                +            (dgauge )ABC y2A y2B y2C
+                  (y2 , y2 )
+                                                                                        !
+                  X′              (R̄ · Q̄)2                      2                   
+                +       d(R) 4               Re li1 (R, y) +                Re P (R, y) .
+                     R>0
+                                    Q̄ · Q̄                     π(y2 , y2 )
+
+
+4. The prepotential and the gravitational coupling
+                                                                                             (1)
+      In this section, we will compute the prepotential for the vector multiplets F0               and
+                            (1)
+the gravitational coupling F1 and show that the effective (non-Wilsonian) coefficients of
+                   2           ∗
+the operators TrF and R ∧ R may be written in the form
+                                                    2
+                    1                  bgrav     Mstr   3
+                 2      2
+                           = 24Im S̃ +     2
+                                             log   2
+                                                      − 2 log ||Ψgrav ||2
+                ggrav (p )             16π        p    4π
+                                                   2
+                                                                                               (4.1)
+                     1               bgauge     Mstr        1
+                2       2
+                           = Im S̃ +     2
+                                            log   2
+                                                     −             log ||Ψgauge ||2 ,
+               ggauge (p )           16π         p     (s + 4)4π 2
+
+where S̃ is the pseudo-invariant dilaton defined below 1 and the holomorphic functions
+Ψgrav and Ψgauge are automorphic forms of the T -duality group. In particular, the invariant
+norm squares are                                          wgrav
+                              ||Ψgrav ||2 = −(y2 , y2 )            |Ψgrav |2
+                                                          wgauge                              (4.2)
+                             ||Ψgauge ||2 = −(y2 , y2 )             |Ψgauge |2
+with the weights
+                                                1
+                                        wgrav =    bgrav
+                                               12                                              (4.3)
+                                               s+4
+                                      wgauge =        bgauge .
+                                                  4
+  1
+      S̃ differs from the dilaton S by the addition of a holomorphic function such that S̃ transforms
+with a real shift under duality transformations [5][8]. Note that this is slightly different from the
+invariant dilaton of [5].
+
+                                                  11
+Furthermore, these holomorphic functions may be written in the form
+                                           A Y ′
+                                                               lgrav (R)
+                   Ψgrav = e2πi(ρgrav )A y        1 − e2πi(R,y)
+                                                   R>0
+                                                       Y′             lgauge (R)      (4.4)
+                                                   A
+                                 2πi(ρgauge )A y              2πi(R,y)
+                     Ψgauge = e                            1−e                     ,
+                                                       R>0
+
+where the Weyl vectors and exponents are given by
+                                                576
+                                   (ρgrav )A =      (dgrav )B BA
+                                               s+4                                      (4.5)
+                                  (ρgauge )A = 3(dgauge )B BA
+
+and
+                                       96                   ˜
+                          lgrav (R) =      d(R) (R, R) − 8d(R)
+                                      s+4
+                                                                                        (4.6)
+                                                        s + 4 (R̄ · Q̄)2
+                                                                        
+                                             1
+                         lgauge (R) = d(R)     (R, R) −
+                                             2            2     Q̄ · Q̄
+respectively.
+      The proof is based on a comparison of the string theory expressions (1.1) for the gauge
+and gravitational coupling constants with the following field theoretical expressions [4][5]:
+                                                      2
+                                                                
+        1                 heterotic
+                                     bgrav         MPlanck
+      2
+                = Re log F1           +         log         +K
+    ggrav (p2 )                         16π 2         p2
+                                                                     2
+                                                                                      (4.7)
+        1                           1                     bgauge       MPlanck
+    2
+                = Re −iS̃ −               log Ψgauge +             log         +K ,
+   ggauge (p2 )              2(s + 4)π 2                  16π 2         p2
+where the Kähler potential is
+                                                             
+                         K = − log Re (−iS) − log −(y2 , y2 ) + const                   (4.8)
+                                                 2         2
+and the Planck and string scales are related as MPlanck = Mstring Re (−iS). The functions
+log F1heterotic and Ψgauge are holomorphic and transform under duality in such a way that
+ −2
+ggrav (p2 ) and ggauge
+                 −2
+                       (p2 ) are invariant.
+                                       −2
+      We start with the equations for ggauge (p2 ). From the above, it follows that
+                             1                      bgauge                   
+                                    Re log Ψgauge +        log −(y 2 , y 2 )            (4.9)
+                        2(s + 4)π 2                 16π 2
+should be invariant
+                   under the
+                           duality group. We take this quantity to equal the manifestly
+            1      1
+invariant 16π 2   s+4
+                      ∇2 − 1    ∆gauge , where
+                                                                           
+                                                                2
+                         ∇ = −2(y2 , y2 ) η AB −
+                           2                                            A B
+                                                                       y y    ∂A ∂B̄   (4.10)
+                                                             (y2 , y2 ) 2 2
+
+                                                       12
+is the Laplacian for the metric following from the Kähler potential (2.15) restricted to
+the subspace where ȳ · Q̄ = 0. (The tensor η AB is the inverse of ηAB defined through
+ηAB y A y ′B = (y, y ′ ); note that the indices A and B take 17 different values on this sub-
+space.) It is now a straightforward computation to verify the above expression for Ψgauge .
+This is in fact the unique solution with the correct singularity structure [8]. Note that if
+the quartic tensors (3.6) and (3.7) in the rational terms had not vanished, this procedure
+to construct a holomorphic function with the right transformation properties would not
+                                                −2
+have worked. Comparing the two expressions for ggauge (p2 ) and using
+                                                                        
+                         1     univ      1            (1)   A ∂      (1)
+                             ∆      =             Re F0 − iy2      F
+                       16π 2          −(y2 , y2 )              ∂y A 0
+                                                                                            (4.11)
+                                                 1 ∂     ∂ (1)
+                              −iS̃ = −iS −            ·   F ,
+                                              s + 4 ∂y ∂y 0
+                                                                                      (1)
+we get the following differential equation for the vector multiplet prepotential F0 :
+                                                               
+            1 ∂      ∂ (1)         1          (1)   A ∂      (1)
+   Re −            ·   F +                   F0 − iy2      F
+         s + 4 ∂y ∂y 0          (y2 , y2 )            ∂y A 0
+                                                                                       (4.12)
+           1                  1                        bgauge                
+       =       ∆gauge +               Re log Ψgauge +         log −(y2 , y2 ) + const.
+         16π 2           2(s + 4)π 2                   16π 2
+
+By direct substitution, one checks that a solution is
+
+                            (1)       i                             ζ(3)χ
+                          F0      =−     (dgauge )ABC y A y B y C +
+                                     32π                             4π 4
+                                       1   X  ′                                            (4.13)
+                                   +     4
+                                                d(R)li3 (R, y) .
+                                     16π
+                                           R>0
+
+Note that this form of the prepotential as a sum of a cubic tensor, a constant and an
+infinite sum of polylogarithms is what one expects when the heterotic theory has a type
+II dual. On the type II side, the coefficients of the cubic tensor, the constant χ and the
+coefficients of the polylogarithms are then interpreted as the intersection form, the Euler
+characteristic and the number of rational curves of the Calabi-Yau space respectively.
+       In fact, it is not difficult to see that (4.12) would not be satisfied by any holomorphic
+ (1)
+F0     and Ψgauge if the quartic tensor (3.7) had not vanished. (After multiplication by
+(y2 , y2 ), all other terms in (4.12) can be written as a sum of holomorphic functions in the
+moduli y A times at most quadratic polynomials in their complex conjugates y ∗A plus the
+complex conjugate terms. The term in ∆gauge involving the quartic tensor is not of this
+form and must therefore vanish.) Furthermore, the prepotential should be independent
+
+                                                 13
+of the factor in the gauge group that we are considering up to physically irrelevant terms
+of the form (y2 , y2 )d˜A y A for some real d˜A . (Indeed, on can show that all solutions to
+(4.12) are physically equivalent in this sense [8].) Together with analogous arguments for
+the gravitational corrections, these observations show that the conditions (3.8) and (3.9)
+indeed follow from N = 2 supersymmetry.
+                                      −2
+    We now turn to the equations for ggrav (p2 ). Comparing the two expressions, we get
+                                   (1)
+log F1heterotic = 24(−iS) + log F1       with
+
+                                     (1)        1 X′ ˜             
+                              log F1       =      2
+                                                    d(R)li1 (R, y)                            (4.14)
+                                               2π
+                                                  R>0
+
+
+modulo terms linear in y.          Here we have used the condition (3.9).               Finally, we
+should check that F1heterotic transforms in the correct way.               Writing log F1heterotic =
+                        
+            1
+24 −iS̃ − 16π 2 log Ψgrav , this is equivalent to
+
+
+                              1                  bgrav                 
+                                2
+                                  Re log Ψgrav +     2
+                                                       log −(y2 , y2 )                        (4.15)
+                            16π                  16π
+
+being invariant. It is straightforward to check that this equals the manifestly invariant
+                         
+           1     1   2
+quantity 16π 2 s+4 ∇ − 1 ∆grav , and one verifies the expression for Ψgrav .
+
+                                       Acknowledgements
+    We would like to thank J. Harvey for participation at the beginning of this project
+and for discussions. We would also like to thank I. Antoniadis and T. Taylor for a useful
+discussion and J. Louis, for some useful corresondence. M. H. thanks Argonne National
+Laboratory for hospitality. G.M. would like to thank the organizers of Strings ’96 for the
+opportunity to present these results. He also thanks the CERN theory group, the ITP at
+Santa Barbara, and the Aspen Center for Physics for hospitality during the preparation of
+the manuscript. This research is supported by DOE grant DE-FG02-92ER40704, and by
+a Presidential Young Investigator Award.
+
+
+
+Appendix A. Poisson resummation and the orbit method
+
+    In this appendix, we will prove that the threshold corrections can be written as in
+(2.23) with (2.24) and (2.25), following the methods introduced in appendix B of [9] and
+further developed in [8].
+
+                                                   14
+     The first step is to perform a Poisson resummation of the sums over m+ and m0 [8]:
+                  X          X              1   2   1   2       X X −(y2 , y2 )             1
+                                         q 2 pL q̄ 2 pR =                                 q 2 R̄·R̄ exp G.       (A.1)
+                   r̄                                            r̄   A
+                                                                              2τ2 y2−
+                        m+ ,n− ,m0 ,n0
+
+Here
+                                                                n−
+                                                                         
+                                                                      j
+                                                    A=                                                           (A.2)
+                                                                n0    p
+is summed over all integer 2 × 2 matrices and
+
+                π(y2 , y2 )     2        +           π                        ∗
+                                                                                   
+               G=           |A|   − 2πiy   det  A +       R̄ · ȳ Ã − R̄ · ȳ   A
+                2(y2− )2 τ2                         y2−
+                                                   iπ ȳ · ȳ                                                   (A.3)
+                     π       
+                                                          2     2
+                − − n0 ȳ · ȳ Ã − ȳ ∗ · ȳ ∗ A +                  n− + n0 y −∗ A,
+                                                                                     
+                                                          − 2
+                   2y2                                  (y2 )
+                                                   
+              −        τ                     −∗        τ
+with A = ( 1 y ) A           and Ã = ( 1 y ) A            . We can now write
+                       1                               1
+
+                   d2 τ       XXXX 1                                                            
+                                                                                       3ca,b (h)
+                  Z
+                                                                b
+                                                            2πi n R̄·γ̄
+         ∆grav =     2                                      e              c̃a,b (h) −
+                 F τ2           r̄    a,b   A       h
+                                                        n                                πτ2
+                                                                            !
+                        −(y2 , y2 ) h+ 1 R̄·R̄
+                  ×2               q 2         exp G − τ2 bgrav
+                          2y2−
+                                                                                                                 (A.4)
+                  d2 τ                                                                   (R̄ · Q̄)2
+                              XXXX 1                                                                        
+                                                                                                       1
+                  Z
+                                                                b
+                                                            2πi n R̄·γ̄
+       ∆gauge =     2                                       e             ca,b (h)                  −
+                F τ2            r̄    a,b   A       h
+                                                        n                                  Q̄ · Q̄    4πτ2
+                                                                              !
+                    −(y2 , y2 ) h+ 1 R̄·R̄
+                  ×            q 2         exp G − τ2 bgauge
+                      2y2−
+
+with the Fourier coefficients ca,b (h) and c̃a,b (h) defined in (2.17).
+     A key property is the behavior of the sum over A under
+                                                               modular
+                                                                        transformations:
+                                                           a b
+The contributions from the matrix A′ = AV −1 for V =               ∈ SL(2, Z) is given by
+                                                           c d
+the contribution from the matrix A if we change τ to τ ′ = aτ +b
+                                                           cτ +d
+                                                                 . We can therefore apply
+the method of orbits [9]: Rather than integrating the contributions of all integer 2 × 2
+matrices over the fundamental region, we pick a representative matrix A from each orbit
+of SL(2, Z) and integrate over the image of the fundamental region under all SL(2, Z)
+transformations V that yield distinct matrices AV −1 . In this way we get
+
+                                     ∆grav = ∆zero    reg     deg
+                                              grav + ∆grav + ∆grav
+                                                                                                                 (A.5)
+                                ∆gauge = ∆zero     reg      deg
+                                          gauge + ∆gauge + ∆gauge ,
+
+
+                                                                15
+where the three terms correspond to contributions from the zero matrix, matrices with
+non-zero determinant and non-zero matrices with zero determinant respectively, and the
+b-terms are included in the last term.
+     To get the contribution from the zero orbit, we take A = 0 and integrate over the
+fundamental region F = {τ | − 1/2 < τ1 < 1/2, τ2 > 0, |τ | > 1}. We thus get
+        R d2 τ                   R d2 τ
+∆zero                     zero
+  grav = F τ 2 Jgrav and ∆gauge = F τ 2 Jgauge , where
+              2                                        2
+
+
+
+                                                                   −(y2 , y2 ) h+ 1 R̄·R̄
+              XXX 1                                           
+                                          b
+                                      2πi n R̄·γ̄    3ca,b (h)
+     Jgrav =            e              c̃a,b (h) −               2      −     q 2
+             r̄ a,b h
+                      n                                 πτ 2         2y 2
+                                                                                                  (A.6)
+                                                 (R̄ · Q̄)2            −(y2 , y2 ) h+ 1 R̄·R̄
+             XXX 1                                                  
+                             b
+                         2πi n R̄·γ̄                             1
+    Jgauge =            e            ca,b (h)                −                −    q 2        .
+             r̄ a,b h
+                      n                            Q̄ · Q̄     4πτ 2       2y 2
+
+
+It follows from modular invariance that Jgrav and Jgauge can be written as linear com-
+binations of (E2 (τ ) − πτ3 2 )E4 (τ )E6 (τ )η −24 (τ ), J(τ ) and 1 with coefficients that can be
+determined by considering the coefficients of q −1 , q 0 τ2−1 and q 0 :
+
+                                                                  −(y2 , y2 )
+                   XX 1                                        
+                                       b
+                                   2πi n R̄·γ̄         1
+         Jgrav =                  e              ca,b − R̄ · R̄
+                   r̄   a,b
+                              n                        2            2y2−
+                          
+                        1                   3
+                × −           (E2 (τ ) −       )E4 (τ )E6 (τ )η −24 (τ )
+                       120                 πτ2
+                                                                                                  (A.7)
+                                                         −(y2 , y2 )            (R̄ · Q̄)2
+                XX 1                                               
+                               b
+                           2πi n R̄·γ̄         1                           7
+       Jgauge =           e            ca,b − R̄ · R̄                   −    +
+                 r̄ a,b
+                        n                      2            2y2−          20      Q̄ · Q̄
+                                                                                          
+                            1                 3                   −24          1
+                       −        (E2 (τ ) −       )E4 (τ )E6 (τ )η     (τ ) +       J(τ )
+                          2880               πτ2                             2880
+
+The formula
+                                                k
+                           d2 τ
+                                      
+                                             3            π
+                        Z
+                                                                 (k+1)
+                             2         E2 −        W =          E2     W ,                        (A.8)
+                         F τ2               πτ2        3(k + 1)         q0
+
+which is valid for an arbitrary meromorphic modular form W of weight −2k [17], now gives
+
+                                                     −(y2 , y2 ) 2π
+                  XX 1                            
+                                      b   1
+      ∆zero
+       grav =          e          2πi n R̄·γ̄
+                                    ca,b − R̄ · R̄
+              r̄ a,b
+                     n                    2            2y2−       5
+                                                                                                  (A.9)
+                                                     −(y2 , y2 ) π (R̄ · Q̄)2
+              XX 1                                                              
+      zero                  b
+                        2πi n R̄·γ̄       1                                      1
+     ∆gauge =          e            ca,b − R̄ · R̄                            −      .
+              r̄ a,b
+                     n                    2            2y2− 3         Q̄ · Q̄   20
+
+                                                            16
+                                                            
+                                                    k    j
+    For the regular orbits, we take A =                          with 0 ≤ j < k and p 6= 0 so that
+                                                    0    p
+
+
+                         π(y2 , y2 )              2
+                 G=          − 2     kτ + j + py − − 2πiy + kp
+                         2(y2 ) τ2
+                             π
+                         + − R̄ · ȳ(kτ + j + py −∗ ) − R̄ · ȳ ∗ (kτ + j + py − )
+                                                                                   
+                                                                                                 (A.10)
+                            y2
+                              iπ
+                         + − 2 ȳ2 · ȳ2 k(kτ + j + py − )
+                            (y2 )
+
+
+and integrate over the double cover of the upper half-plane H = {τ | τ2 > 0}. We thus get
+
+
+                               XX 1                                
+                                               b              3
+                     ∆reg
+                      grav =        e      2πi n R̄·γ̄
+                                                 2 S̃1/2 − S3/2
+                           r̄ a,b
+                                  n                           π
+                                                                                                 (A.11)
+                                                   (R̄ · Q̄)2
+                           XX 1                                            
+                   reg                   b
+                                     2πi n R̄·γ̄                      1
+                  ∆gauge =          e                         S1/2 −    S3/2 ,
+                           r̄
+                                  n                  Q̄ · Q̄         4π
+                                    a,b
+
+
+
+where
+
+
+                     d2 τ X X X X                  −(y2 , y2 ) h+ 1 R̄·R̄
+                     Z
+         S̃1/2 = 2     2                 c̃a,b (h)            q 2         exp G
+                   H τ2 k>0 0≤j<k p6=0 h             2y2−
+                     d2 τ X X X X                  −(y2 , y2 ) h+ 1 R̄·R̄
+                  Z
+         S1/2 = 2      2                 ca,b (h)             q 2         exp G                  (A.12)
+                   H τ2 k>0 0≤j<k p6=0 h             2y2−
+                     d2 τ X X X X                  −(y2 , y2 ) h+ 1 R̄·R̄
+                  Z
+         S3/2 = 2      3                 ca,b (h)             q 2         exp G.
+                   H τ2 k>0 0≤j<k p6=0 h             2y2−
+
+
+After performing the Gaussian integral over τ1 , the only j-dependence of these quantities is
+
+through the factor exp −2πi(h + 12 R̄ · R̄) kj . It follows from the invariance under τ → τ +1
+                                              
+
+
+that we only need to consider the case where h+ 21 R̄ · R̄ is integral, and the sum over j then
+
+amounts to replacing h by kl − 21 R̄· R̄ and summing over all integers l. The τ2 integrals give
+
+rise to the Bessel functions K1/2 and K3/2 , which may be expressed in terms of elementary
+
+functions. Finally, the sums over p may be expressed in terms of the functions li1 and P
+
+                                                    17
+defined in (2.22). In this way we get
+
+                                                          
+                             XX                   1
+                 S̃1/2 =Re             4c̃a,b kl − R̄ · R̄
+                                                  2
+                             k>0 l∈Z
+
+                       × li1 R̄ · ȳ1 + ly1− + ky1+ + i R̄ · ȳ2 + ly2− + ky2+
+                                                                                          
+                                                      
+                          XX                    1
+                 S1/2 =Re          4ca,b kl − R̄ · R̄
+                                                2                                                     (A.13)
+                             k>0 l∈Z
+
+                       × li1 R̄ · ȳ1 + ly1− + ky1+ + i R̄ · ȳ2 + ly2− + ky2          +
+                                                                                         
+                                                                 
+                          XX            8                1
+                 S3/2 =Re                      ca,b kl − R̄ · R̄
+                                   −(y2 , y2 )           2
+                             k>0 l∈Z
+
+                         × P R̄ · ȳ1 + ly1− + ky1+ + i R̄ · ȳ2 + ly2− + ky2+
+                                                                                         
+                                                                                             .
+
+                                                                 
+                                                            0 j
+    For the degenerate orbits, we take A =                            with (j, p) 6= (0, 0) so that
+                                                            0 p
+
+
+              π(y2 , y2 )         − 2    π                 −∗             ∗         −
+                                                                                        
+         G=               |j + py  |  +     R̄ · ȳ(j + py    ) − R̄ · ȳ   (j + py   )               (A.14)
+              2(y2− )2 τ2               y2−
+
+
+and integrate over the strip S = {τ | − 1/2 < τ1 < 1/2, τ2 > 0}. The integral over τ1
+
+amounts to putting h = − 21 R̄ · R̄ and we are left with
+
+                             X X0 1                              
+                                              b              1
+                  ∆deg
+                   grav =            e    2πi n
+                                                  c̃a,b − R̄ · R̄ 2U 0
+                                                R̄·γ̄
+
+                           r̄ a,b
+                                   n                         2
+                             X X′ 1                                 
+                                         2πi nb
+                                                R̄·γ̄          1
+                          +            e              c̃a,b − R̄ · R̄ 2U ′
+                              r̄ a,b
+                                     n                         2
+                             XX 1                                           
+                                        2πi nb
+                                               R̄·γ̄           1             6
+                          +            e             ca,b − R̄ · R̄      −        V
+                              r̄ a,b
+                                     n                         2            π
+                                                                                                      (A.15)
+                                                                     (R̄ · Q̄)2 0
+                          X X0 1                                 
+                  deg                     b
+                                      2πi n R̄·γ̄            1
+                 ∆gauge =            e            ca,b − R̄ · R̄                U
+                           r̄ a,b
+                                   n                         2         Q̄ · Q̄
+                                                                        (R̄ · Q̄)2 ′
+                             X X′ 1                                 
+                                         2πi nb
+                                                R̄·γ̄          1
+                          +            e              ca,b − R̄ · R̄                U
+                              r̄ a,b
+                                     n                         2          Q̄ · Q̄
+                             XX 1                                            
+                                        2πi nb
+                                               R̄·γ̄           1              1
+                          +            e             ca,b − R̄ · R̄      −         V,
+                              r̄
+                                     n                         2            4π
+                                    a,b
+
+
+                                                    18
+where
+               Z ∞
+                                        −(y2 , y2 )                                                     d2 τ
+                                                                                         
+                     dτ2                                       π(y2 , y2 )
+                              X                                                                   Z
+         0
+        U =                                         exp                    |j + py − |2       −
+               0     τ22                  2y −
+                                             2                 2(y2− )2 τ2                            F τ2
+                           (j,p)6=(0,0)
+               Z ∞
+                     dτ2      X         −(y2 , y2 )
+        U′ =                                        exp G                                                      (A.16)
+               0     τ22                  2y −
+                                             2
+                           (j,p)6=(0,0)
+               Z ∞
+                     dτ2      X         −(y2 , y2 )
+        V =                                         exp G.
+               0     τ23                  2y −
+                                             2
+                           (j,p)6=(0,0)
+
+
+The sums in the first two terms in ∆grav and ∆gauge are over a such that R̄ · ȳ = 0
+and R̄ · ȳ 6= 0 for generic values of ȳ respectively, whereas the sum in the third term is
+unrestricted. The contributions from bgrav and bgauge have been included in the first term.
+The calculation of U 0 has been performed in [9]. To calculate U ′ and V , one first integrates
+over τ2 . The sum over j for p = 0 then directly gives rise to li2 and li4 functions, whereas
+for p 6= 0 we can perform the j-sum by means of a Sommerfeld-Watson transformation
+and get li1 and P functions. In this manner one finds
+
+             π                                     X
+        U0 =                                           Re li1 (y − l)
+                                     
+               − log −(y2 , y2 ) − K + 4
+             3
+                                                   l>0
+               −
+                             R̄ · ȳ2                                       R̄ · ȳ2 −
+                                                                                 
+          ′  2y2                               X
+                                                                        −
+         U =     Re li2                  +4        Re li1 R̄ · ȳ + ly −             y
+              π                y2−             l≥0
+                                                                              y −
+                                                                                2
+                   − 3
+                                                                                                               (A.17)
+             −4(y )                   R̄ · ȳ2
+                                              
+         V = 2 2 Re li4
+             π (y2 , y2 )               y2−
+                                                              R̄ · ȳ2 −
+                                                                     
+                    8      X
+                                                       −
+             −                  Re P R̄ · ȳ + ly −               −    y  ,
+                (y2 , y2 )                                      y 2
+                           l≥0
+
+
+where [x] denotes the largest integer less than or equal to x.
+    In order to compare with (2.23), we separate the P terms with l = 0 in ∆deg
+                                                                            grav and
+
+∆deg
+ gauge according to whether R̄ · ȳ = 0 or R̄ · ȳ 6= 0 for generic value of the moduli and
+
+note that P(0) = ζ(3)
+                  2π . We also separate the li1 and P terms according to whether R̄ is
+negative or not and use that
+                                         P            
+        X                     R̄ · ȳ2 −        f (R; y) for R̄ ≥ 0;
+                             
+                          −                  l≥0
+            f R̄ · ȳ + ly −       −    y = P                                                                 (A.18)
+                                 y 2         l>0 f (R; y) for R̄ < 0;
+        l≥0
+
+
+for an arbitrary function f .
+
+                                                          19
+Appendix B. The standard embedding
+
+       In this appendix, we will consider the case of the standard embedding of the spin
+connection in the gauge group in somewhat more detail. This means that the shift vector
+γ̄ is a root vector of the E8 × E8 lattice, i.e. γ̄ · γ̄ = 2, which we take to belong to the first
+E8 factor. This is consistent with the level matching condition (2.12) for n = 2, 3, 4, 6, and
+the constants ka,b are given in the table below:
+
+        b      0   1     2     3   4      5   6          7   8    9    10   11
+        n =   12   12    12   12   12    12   12        12   12   12   12   12
+a
+n
+  =
+   0
+  12           0          4   16   36         64             36   16    4
+  1
+  12
+  2
+  12           4          4         4          4              4         4
+  3
+  12          16              16              16                  16
+  4
+  12
+              36          4        36          4             36         4
+  5
+  12
+  6
+  12
+              64          4   16    4         64              4   16    4
+  7
+  12
+  8
+  12          36          4        36          4             36         4
+  9
+  12
+              16              16              16                  16
+  10
+  12           4          4         4          4              4         4
+  11
+  12
+
+
+       The unbroken gauge group is generated by the root vectors b̄ of the E8 × E8 lattice
+which fulfil n1 b̄ · γ̄ ∈ Z. For n = 3, 4, 6, this means that b̄ is one of the 240 + 126 roots
+which are orthogonal to γ̄, and the gauge group in this case is U (1) × E7 × E8 × U (1)4 .
+For n = 2 there is the additional posibility that b̄ = ±γ̄, and the gauge group is enhanced
+to SU (2) × E7 × E8 × U (1)4 . The first U (1) factor for n = 3, 4, 6 or the SU (2) factor
+for n = 2 arise only in the orbifold limit, so for a smooth K3-surface the gauge group is
+E7 × E8 × U (1)4 . This can then be broken down further by turning on the Wilson line
+moduli ȳ. To calculate the threshold correction to the gauge coupling constant, there must
+be at least an unbroken SU (2) factor generated by some Q̄, which is either a root vector in
+the first E8 factor such that γ̄ · Q̄ = 0 or an arbitrary root vector in the second E8 factor.
+       In fact, these four orbifold models only differ by being at different points in the moduli
+space of the K3-surface. Since these moduli belong to N = 2 hypermultiplets, which do
+
+                                                   20
+not mix with the vector multiplet moduli, the threshold corrections should be independent
+of n. One must be careful at this point, since the answers are in fact different when
+ȳ · γ̄ 6= 0. The reason is that in this case, we turn on the Wilson modulus corresponding
+to the extra U (1) or SU (2) factor which only exists in the orbifold limit, thus freezing the
+hypermultiplet moduli at that particular point in the moduli space of the K3-surface and
+we are exploring inequivalent branches of the total moduli space. It is worthwhile checking
+that we do get equivalent answers for different n when ȳ · γ̄ = 0. To this end, we note that
+the threshold corrections are of the form
+     XXX 1                                       
+                       b
+                   2πi n R̄·γ̄       1
+                               ca,b − R̄ · R̄ + kl g R̄ · ȳ, ky + , ly −
+                                                                          
+                  e
+      r̄
+                n                    2
+          k,l a,b
+         XXX 1                                                                                                                    (B.1)
+                                  b
+                              2πi n R̄·γ̄       1
+                                                2 R̄·R̄
+                                                          −2πi ab2 γ 2 −20         K3                            +        −
+                                                                                                                              
+     =                        e             q             e    n       η      (τ )Za,b (τ )          g R̄ · ȳ, ky , ly
+         r̄
+                         n                                                                    q kl
+              k,l a,b
+
+
+for some function g. Furthermore the quantity R̄ · ȳ is invariant under shifts of r̄ by γ̄.
+Altogether, this means that the equivalence would follow from the n-independence of the
+functions
+                XX 1                   b                      1                         ab    2
+                                  e2πi n (R̄+j γ̄)·γ̄ q 2 (R̄+j γ̄)·(R̄+j γ̄) e−2πi n2 γ η −20 (τ )Za,b
+                                                                                                    K3
+                                                                                                        (τ )                      (B.2)
+                    j
+                              n
+                        a,b
+
+for any r̄. Performing the sum over j by means of the Jacobi triple product identity, using
+                   K3
+the form (2.9) of Za,b (τ ) and dropping some manifestly n-independent factors, we get
+
+                X1                   b   a
+                                            (r̄·γ̄+1)        a      b
+                                                                        −2
+                            ka,b e2πi n q n              1 − q n e2πi n
+                        n
+                 a,b
+                             ∞                                   −2                  −2
+                                                   a     b                    a       b
+                                                                                                                                  (B.3)
+                             Y
+                                                j+ n 2πi n                 j− n  −2πi n
+                        ×             1−q             e                1−q      e
+                            j=1
+                                                        a     b
+                                                                                             a       b
+                                                                                                         
+                                            2j−1+r̄·γ̄+2 n 4πi n                  2j−1−r̄·γ̄−2 n  −4πi n
+                             × 1+q                                 e          1+q                e         .
+
+By expanding out the first few terms, one may check that, for integer r̄ · γ̄, we indeed get
+the same result for n = 2, 3, 4, 6, although this is not manifest in (B.3).
+     For n = 2, it is now straightforward to calculate
+                           X1                                
+                                       b
+                                   2πi n R̄·γ̄        1
+                                  e            ca,b − R̄ · R̄ = 128
+                                n                     2
+                             b
+                           X1                                                                                                   (B.4)
+                                       b
+                                   2πi n R̄·γ̄        1
+                                  e            c̃a,b − R̄ · R̄ = −64
+                                n                     2
+                                        b
+
+                                                                       21
+for r̄ = a = 0 and
+              X1                                     X                      
+                             b
+                         2πi n R̄·γ̄         1           1 2πi b R̄·γ̄   1
+                       e               ca,b − R̄ · R̄ =    e n c̃a,b − R̄ · R̄
+                   n                         2           n               2
+               b                                                   b
+
+
+
+                             8               for a = 0, r̄ · r̄ = 2, r̄ · γ̄ = 0
+                           
+                           
+                           
+                           
+                           
+                           
+                             −8              for a = 0, r̄ · r̄ = 2, r̄ · γ̄ = ±1
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                                                                                                   (B.5)
+                           8                for a = 0, r̄ = ±γ̄
+                           
+                           
+                     =
+                             −256            for a = 1, r̄ = 0 or a = 1, r̄ = −γ̄
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                             −64             for a = 1, r̄ · r̄ = 2, r̄ · γ̄ = −1
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                             0               otherwise .
+The constant χ receives contributions from r̄ and a such that R̄ is parallell to γ, i.e.
+                                             1
+                                   χ=          (128 + 8 + 8 − 256 − 256) = −92.                     (B.6)
+                                             4
+This agrees with the expected result 2 × (19 − 65) = −92 from 19 vector multiplets and
+20 + 45 = 65 hypermultiplet moduli for the K3-surface and the gauge bundle.
+     To calculate the rational terms in the threshold corrections, we also need some infor-
+mation about the E8 × E8 root lattice. Let v̄ be an arbitrary vector in the vector space
+of the E8 root lattice. Using the rotational symmetry to fourth order of this lattice [18],
+we can calculate the following sums over root vectors b̄ with the indicated inner products
+with γ̄:                            X
+                                             1 = 126
+                                   b̄·γ̄=0
+                                    X
+                                             1 = 56
+                                   b̄·γ̄=1
+                           X
+                                   (b̄ · v̄)2 = 36v̄ · v̄ − 18(v̄ · γ̄)2
+                         b̄·γ̄=0
+                           X                                                                        (B.7)
+                                   (b̄ · v̄)2 = 12v̄ · v̄ + 8(v̄ · γ̄)2
+                         b̄·γ̄=1
+                           X
+                                   (b̄ · v̄)4 = 24(v̄ · v̄)2 − 24v̄ · v̄(v̄ · γ̄)2 + 6(v̄ · γ̄)4
+                         b̄·γ̄=0
+                           X
+                                   (b̄ · v̄)4 = 6(v̄ · v̄)2 + 12v̄ · v̄(v̄ · γ̄)2 − 4(v̄ · γ̄)4 .
+                         b̄·γ̄=1
+
+
+                                                              22
+       We may now calculate (Again using n = 2 for simplicity, although the result would
+be the same with n = 3, 4, 5 by the above argument):
+                     XX 1                                   
+                                      b
+                                  2πi n R̄·γ̄        1
+                                 e            ca,b − R̄ · R̄ = −1920
+                       r̄ a,b
+                               n                     2
+                      XX 1                                                                                                        (B.8)
+                                      b
+                                  2πi n R̄·γ̄        1
+                                 e            c̃a,b − R̄ · R̄ = −2112.
+                       r̄
+                               n                     2
+                                                a,b
+
+In the following formulas, we have decomposed ȳ2 = ȳ21 + ȳ22 , where the terms refer to the
+first and second E8 factor. We also introduce the sets r01 and r11 of positive roots of the
+first E8 factor whose inner product with γ̄ equal 0 and 1 and the set r 2 of positive roots
+of the second E8 factor. The symbol ča,b stands for either of the functions ca,b or c̃a,b .
+     XX 1                                 
+                    b
+                2πi n R̄·γ̄        1                          X                      X
+               e            ča,b − R̄ · R̄ |R̄ · ȳ2 | = 16        r̄ · ȳ21 − 160        r̄ · ȳ21
+      r̄ a,b
+             n                     2
+                                                             r̄∈r01                 r̄∈r11
+                                                                 X
+                                                          + 16          r̄ · ȳ22
+                                                                                      r̄∈r2
+      XX 1                                 
+                     b
+                 2πi n R̄·γ̄         1
+                e            ča,b − R̄ · R̄ (R̄ · ȳ2 )2 = −672ȳ21 · ȳ21 + 480ȳ22 · ȳ22
+      r̄ a,b
+              n                      2
+      XX 1                                                                                                                        (B.9)
+                      b
+                  2πi n R̄·γ̄        1                           X                          X
+                e             ča,b − R̄ · R̄ |R̄ · ȳ2 |3 = 16        (r̄ · ȳ21 )3 − 160        (r̄ · ȳ21 )3
+       r̄ a,b
+              n                      2
+                                                                r̄∈r01                     r̄∈r11
+                                                                    X
+                                                             + 16          (r̄ · ȳ22 )3
+                                                                                      r̄∈r2
+      XX 1                            
+                b
+            2πi n R̄·γ̄        1
+           e            ča,b − R̄ · R̄ (R̄ · ȳ2 )4 = −288(ȳ21 · ȳ21 )2 + 288(ȳ22 · ȳ22 )2 .
+      r̄
+         n                     2
+            a,b
+
+The sums involving the charge Q̄ depend on which E8 factor Q̄ belongs to. In the case
+where Q̄ belongs to the first E8 factor, we must have Q̄ · γ̄ = ȳ 1 · Q̄ = ȳ 1 · γ̄ = 0. We then
+get
+                                                         (R̄ · Q̄)2
+                  XX 1                               
+                                         b
+                                     2πi n   1
+                                           R̄·γ̄
+                         e          ča,b − R̄ · R̄                    = −672
+              r̄ a,b
+                       n                     2             Q̄ · Q̄
+                                               (R̄ · Q̄)2                   X (r̄ · Q̄)2
+       XX 1                                 
+                     b
+                 2πi n R̄·γ̄         1
+                e            ča,b − R̄ · R̄               |R̄ · ȳ2 | = 16              r̄ · ȳ21
+       r̄ a,b
+              n                      2           Q̄ · Q̄                      1
+                                                                                Q̄ · Q̄
+                                                                                              r̄∈r0
+                                                                                                   X (r̄ · Q̄)2                    (B.10)
+                                                                                           − 160                       r̄ · ȳ21
+                                                                                                             Q̄ · Q̄
+                                                                                                   r̄∈r11
+
+                                                                (R̄ · Q̄)2
+   XX 1                                                    
+                          b
+                      2πi n R̄·γ̄                1
+                      e             ča,b       − R̄ · R̄                  (R̄ · ȳ2 )2 = −96ȳ21 · ȳ21 .
+       r̄   a,b
+                  n                              2                Q̄ · Q̄
+
+                                                                        23
+In the case where Q̄ belongs to the second E8 factor, we must have ȳ 1 · Q̄ = ȳ 2 · γ̄ = 0.
+The sums are then
+
+                                                            (R̄ · Q̄)2
+               XX 1                                    
+                                 b
+                             2πi n R̄·γ̄       1
+                           e          ča,b − R̄ · R̄                     = 480
+             r̄ a,b
+                        n                      2              Q̄ · Q̄
+                                                  (R̄ · Q̄)2                    X (r̄ · Q̄)2
+     XX 1                                    
+                 2πi nb
+                        R̄·γ̄          1
+                e             ča,b − R̄ · R̄                 |R̄ · ȳ2 | = 16                  r̄ · ȳ22   (B.11)
+      r̄ a,b
+             n                         2            Q̄ · Q̄                             Q̄ · Q̄
+                                                                               r̄∈r2
+
+                                                (R̄ · Q̄)2
+    XX 1                                    
+                   b
+               2πi n R̄·γ̄           1
+             e             ča,b − R̄ · R̄                  (R̄ · ȳ2 )2 = 96ȳ22 · ȳ22 .
+    r̄ a,b
+           n                         2            Q̄ · Q̄
+
+    With this information, one may calculate the rational terms in the threshold cor-
+rections explicitly and in particular verify that the conditions (3.8) and (3.9) are indeed
+obeyed in the case of the standard embedding.
+
+
+
+
+                                                         24
+                                        References
+
+ [1] I. Antoniadis, E. Gava and K. S. Narain, ‘Moduli corrections to gravitational cou-
+     plings from string loops’, Phys. Lett. B283 (1992) 209, hep-th/9203071 ;
+     I. Antoniadis, E. Gava and K. S. Narain, ‘Moduli corrections to gauge and grav-
+     itational couplings in four-dimensional superstrings’, Nucl. Phys. B383 (1992) 93,
+     hep-th/9204030.
+ [2] I. Antoniadis, E. Gava, K. Narain and T. Taylor, ‘Topological amplitudes in string
+     theory’, Nucl. Phys. B413 (1994) 162.
+ [3] V. Kaplunovsky, ’One-loop threshold effects in string unification’, Nucl. Phys. B307
+     (1988) 145.
+ [4] V. Kaplunovsky and J. Louis, ‘On gauge couplings in string theory’, Nucl. Phys. B444
+     (1995) 191, hep-th/9502077.
+ [5] B. de Wit, V. Kaplunovsky, J. Louis and D. Lüst, ‘Perturbative couplings of vec-
+     tor multiplets in N = 2 heterotic string vacua’, Nucl. Phys. B451 (1995) 53, hep-
+     th/9504006.
+ [6] I. Antoniadis, S. Ferrara, E. Gava, K. Narain and T. Taylor, ‘Perturbative prepotential
+     and monodromies in N = 2 heterotic superstring’, Nucl. Phys. B447 (1995) 35, hep-
+     th/9504034.
+ [7] T. Banks and L. Dixon, ‘Constraints on string vacua with space-time supersymmetry’,
+     Nucl. Phys. B307 (1988) 93.
+ [8] J. Harvey and G. Moore, ‘Algebras, BPS states and strings’, Nucl. Phys. B463 (1996)
+     315, hep-th/9510182.
+ [9] L. Dixon, V. Kaplunovsky and J. Louis, ‘Moduli dependence of string loop corrections
+     to gauge coupling constants’, Nucl. Phys. B355 (1991) 649.
+[10] G. L. Cardoso, G. Curio, D. Lüst, T. Mohaupt and S.-J. Rey, ‘BPS spectra and non-
+     perturbative gravitational couplings in N = 2, 4 supersymmetric string theories’, Nucl.
+     Phys. B464 (1996) 18, hep-th/9512129.
+[11] T. Kawai, ‘N = 2 heterotic string threshold correction, K3-surface and generalized
+     Kac-Moody superalgebra’, Phys. Lett. B372 (1996) 59, hep-th/9512046.
+[12] C.D.D Neumann, ‘The elliptic genus of Calabi-Yau 3- and 4-folds, product formulae
+     and generalized Kac-Moody algebras’, hep-th/9607029.
+[13] V.A. Gritsenko and V. V. Nikulin, ‘Siegel automorphic form corrections of some
+     Lorentzian Kac-Moody algebras’, hep-th/9504006.
+[14] R. Dijkgraaf, E. Verlinde, and H. Verlinde, ‘Counting Dyons in N=4 String Theory’,
+     hep-th/9607026.
+[15] T. Kawai, ‘String duality and modular forms’, hep-th/9607078.
+[16] A. Ceresole, R. D’Auria, S. Ferrara and A. van Proeyen, ‘On electromagnetic duality
+     in locally supersymmetric N = 2 Yang-Mills theory’, hep-th/9412200.
+
+                                             25
+[17] W. Lerche, A. N. Schellekens and N. P. Warner, ‘Lattices and strings’, Phys. Rep. 177
+     (1989) 1.
+[18] J. Patera, R. T. Sharp and P. Winternitz, ‘Higher indices of group representations’,
+     J. Math. Phys. 17 (1976) 1972.
+
+
+
+
+                                            26
+
