@@ -52,8 +52,10 @@ was running it. Match on the real binary (`pgrep -f "^lean .*file.lean"`) or kil
 
 ## S8.5 Verify an advisor's cross-check before adopting it — and keep a refuted one refuted
 The advisor twice proposed "|U₂(ℤ[i])| = 96 and |U₂(ℤ[ω])| = 72" as a classical confirmation of the exhaustive
-holomorphic-isometry count. It is false: unit vectors over ℤ[i] or ℤ[ω] are monomial, so the standard U₂(ℤ[i]) has
-order 32, and U₂(ℤ[ω]) has SU₂ of order 12, not 24. The Hurwitz D₄ lattice is not the standard hermitian ℤ[w]².
+holomorphic-isometry count. It is false: a unit vector (x, y) of the standard hermitian form has |x|² + |y|² = 1
+with integer norms, so one entry is a unit and the other is 0; unitary matrices are monomial, the standard U₂(ℤ[i])
+has order 2·4² = 32, and U₂(ℤ[ω]) (order 2·6² = 72) has SU₂ of order 12, not 24. The counts 96 and 72 themselves
+stand (exhaustive search, 24 symplectic = Fujiki's maximum). The Hurwitz D₄ lattice is not the standard hermitian ℤ[w]².
 The advisor's other points (chirality convention, parity argument, Sen anchor) were right and were adopted.
 **Rule**: a suggested cross-check is a claim like any other — derive it before writing it into a docstring.
 
