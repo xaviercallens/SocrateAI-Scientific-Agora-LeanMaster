@@ -33,7 +33,8 @@ deprecation is not a breakage, and changing a proof that compiles adds risk with
 `push_cast; rw [hk]; ring` failed under rc2 with "No goals to be solved": `rw` now closes the goal by `rfl`
 before `ring` runs. Dropping the `ring` is the whole fix. When a migration reports "No goals to be solved",
 read it as *the preceding tactic got stronger*, and delete the trailing tactic rather than hunting for a
-renamed lemma. (The file, `DualScaleDyons/TrappingObstruction.lean`, arrived on `main` mid-migration and is
+renamed lemma. Not verified against v4.33.1: the file arrived on `main` after the migration run had started,
+so "rc2 changed this" is the plausible reading, not a measurement. (The file, `DualScaleDyons/TrappingObstruction.lean`, arrived on `main` mid-migration and is
 not imported by the `DualScaleDyons` root, so `axiom_audit.py <Lib>` cannot see it — a module outside the
 root's import closure is outside the gate; audit it by file until the root imports it.)
 

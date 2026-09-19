@@ -253,7 +253,9 @@ Moved from `leanprover/lean4:v4.33.1` + Mathlib tag `v4.33.1` (`0df444a3…`) to
 `lake exe cache get` clean). **One proof line changed in one `.lean` file**, and no statement anywhere:
 in `DualScaleDyons/TrappingObstruction.lean` (added on `main` at `5ff4697`, after the migration run started)
 two proofs ended `push_cast; rw [hk]; ring`, and under rc2 the `rw` closes the goal by `rfl`, so `ring` fails
-with "No goals to be solved"; the redundant `ring` was removed (lines 80 and 117). Every other proof,
+with "No goals to be solved"; the redundant `ring` was removed (lines 80 and 117). This was not checked against v4.33.1 — the file arrived
+after the migration run started — so the rc2 attribution is a reading, not a measurement. The `DualScaleDyons`
+root does not import that module, so no library target builds it and the library audit cannot see it. Every other proof,
 definition and statement in the ten libraries compiles unchanged under rc2.
 
 Gate results of that run, on the migration branch (from `main` at `64f905f`):
