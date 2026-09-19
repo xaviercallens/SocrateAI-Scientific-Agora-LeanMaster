@@ -33,7 +33,9 @@ cd /mnt/disks/disk-socrateai-local-1/<your_project> && lake build
 * Same machine: keep the `packagesDir` line — it reuses LeanMaster's built Mathlib (no download, no rebuild).
   Keep large build trees on the data disk, not in `$HOME`.
 * Other machine: use the `require … from git … @ "v2.1.0"` form, then `lake exe cache get`.
-* Toolchain must be `leanprover/lean4:v4.33.1`; do not require a different Mathlib revision.
+* Toolchain must equal LeanMaster's `lean-toolchain` at the revision you require: `leanprover/lean4:v4.34.0-rc2`
+  (Mathlib `v4.34.0-rc2`) from the toolchain migration on, `leanprover/lean4:v4.33.1` (Mathlib `v4.33.1`) for
+  release tags up to v3.28.0 (including v2.1.0). Do not require a different Mathlib revision.
 * Import what you need (`import DualScaleStream2.DFT.GeneralizedMetric`), not the whole root, to keep
   rebuilds short.
 

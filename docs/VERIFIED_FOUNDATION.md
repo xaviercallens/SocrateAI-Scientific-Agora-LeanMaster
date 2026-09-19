@@ -2,7 +2,9 @@
 
 **Status as of 2026-09-17.** Release tag `v2.1.0` (commit `46af79b`) passed the full gate; the key-theorem
 probe below was re-run on the working tree at `0b8215b` + documentation-only edits (statement lock OK).
-Toolchain `leanprover/lean4:v4.33.1`, Mathlib tag `v4.33.1` (`0df444a3…`).
+Toolchain `leanprover/lean4:v4.33.1`, Mathlib tag `v4.33.1` (`0df444a3…`) for that release and every tag up to v3.28.0.
+**Toolchain migration (2026-09-19, branch `toolchain/v4.34.0-rc2`):** `leanprover/lean4:v4.34.0-rc2`, Mathlib tag
+`v4.34.0-rc2` (`85e3a25e…`); gate results of the migration run are recorded below under "Toolchain migration".
 
 **Re-gated 2026-09-17 after the documentation pass** (40 `.lean` files, docstrings and comments only):
 comment-stripped code byte-identical to the gated version for all 40 files; `lake build DualScaleStream2
@@ -243,6 +245,32 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 0 failing (other eight libraries unchanged). Negative control: two mutations caught. `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
+
+## 0b. Toolchain migration to `v4.34.0-rc2` (2026-09-19, branch `toolchain/v4.34.0-rc2`)
+
+Moved from `leanprover/lean4:v4.33.1` + Mathlib tag `v4.33.1` (`0df444a3…`) to
+`leanprover/lean4:v4.34.0-rc2` + Mathlib tag `v4.34.0-rc2` (`85e3a25e…`; the manifest of that tag,
+`lake exe cache get` clean). **One proof line changed in one `.lean` file**, and no statement anywhere:
+in `DualScaleDyons/TrappingObstruction.lean` (added on `main` at `5ff4697`, after the migration run started)
+two proofs ended `push_cast; rw [hk]; ring`, and under rc2 the `rw` closes the goal by `rfl`, so `ring` fails
+with "No goals to be solved"; the redundant `ring` was removed (lines 80 and 117). Every other proof,
+definition and statement in the ten libraries compiles unchanged under rc2.
+
+Gate results of that run, on the migration branch (from `main` at `64f905f`):
+
+| Gate | Result |
+|---|---|
+| Build (150 first-party modules, one `lake build <Module>` at a time under the leanstack RSS guard, then `lake build <Lib>` for all ten) | 0 errors |
+| `sorry` / `admit` / `native_decide` in the ten libraries | none added or removed (the `.lean` tree is byte-identical to `main`) |
+| `tools/axiom_audit.py` per library | 63 + 89 + 44 + 53 + 23 + 62 + 102 + 50 + 101 + 106 = **693 theorems, 0 failing** (same per-library counts as `main`'s table). `DualScaleDyons/TrappingObstruction.lean` is not imported by the `DualScaleDyons` root, so the library probe cannot see it and the file was audited on its own: 4 theorems, 0 failing |
+| `tools/statement_lock.py --check` (93 locked files, 1053 declarations) | OK, no CHANGED |
+| Negative control | a wrong numeral in `k3_euler_characteristic` fails the build (`decide` proves the proposition false) and turns the audit into `AUDIT ERROR`; weakening `0 < L` to `0 ≤ L` in the locked `ckn_bound` is reported `CHANGED`; both reverted |
+
+New deprecation warnings under rc2 (left as warnings, no statement or proof touched):
+`if_pos`/`if_neg` → `ite_eq_left`/`ite_eq_right` (`DualScaleStream2/Lattice/Basic.lean:136,139,145`,
+`DualScaleMoonshine/HMNBridge.lean:140,156`), `dif_pos` → `dite_eq_left`
+(`StringTheoryFormalization/Frontier/SL2CSymmetry.lean:187`), `push_neg` → `push Not`
+(`DualScaleStream2/Lattice/E8PosDef.lean:203`).
 
 ## 1. Gate results (run by the orchestrator, not reported by a subagent)
 | Gate | `DualScaleStream2` | `StringTheoryFormalization` | Mathlib-free core (5 libraries) | `DualScaleCosmology` (Stream 3) | `DualScaleMoonshine` (Stream 4) |

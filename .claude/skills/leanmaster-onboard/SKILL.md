@@ -6,7 +6,8 @@ description: Start here when a task involves the LeanMaster repository (SocrateA
 # LeanMaster: orientation for a new Claude session
 
 **Repo**: `xaviercallens/SocrateAI-Scientific-Agora-LeanMaster` — on the main VM at
-`~/SocrateAI-Scientific-Agora-LeanMaster` (symlink to the data disk). Lean `v4.33.1`, Mathlib `v4.33.1`.
+`~/SocrateAI-Scientific-Agora-LeanMaster` (symlink to the data disk). Lean `v4.34.0-rc2`, Mathlib `v4.34.0-rc2`
+(release tags up to v3.28.0: v4.33.1).
 It is NOT "Stream 1" of the K3 DarkMatter programme and its internal "Stream 2" is not that
 programme's Stream 2; do not mix ledgers.
 

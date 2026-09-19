@@ -398,7 +398,7 @@ def usage_guide() -> str:
     head = f"""# LeanMaster usage guide (served by the leanmaster MCP server)
 
 Repository: {ROOT}
-Toolchain: leanprover/lean4:v4.33.1, Mathlib v4.33.1 (do not require a different revision).
+Toolchain: leanprover/lean4:v4.34.0-rc2, Mathlib v4.34.0-rc2 (do not require a different revision).
 
 ## Tier rules (binding for anything you write on top of LeanMaster)
 * {TIER_RULES}
@@ -588,7 +588,7 @@ def check_lean_snippet(code: str, imports: list[str] | None = None, timeout_s: f
 
 
 # ---- server ------------------------------------------------------------------------------------
-INSTRUCTIONS = f"""LeanMaster: Lean 4 (v4.33.1) + Mathlib formalization of T-duality, K3 x T^2 lattices, double field
+INSTRUCTIONS = f"""LeanMaster: Lean 4 (v4.34.0-rc2) + Mathlib formalization of T-duality, K3 x T^2 lattices, double field
 theory, the dual-scale bound, moonshine and dyon counting. Use search_theorems before stating a new theorem,
 get_declaration for the exact statement/location/status, verified_status for the recorded gate numbers,
 usage_guide for how to depend on and cite it. {TIER_RULES} {NOT_A_GATE}"""

@@ -1,6 +1,7 @@
 # Lessons Learned (LL)
 
-**Most recent session first** — read §S8 (Stream 8, 2026-09-19), then §S2 and §S2-I (Stream 2 run + improvements,
+**Most recent session first** — read §S9 (toolchain migration to v4.34.0-rc2, 2026-09-19) and §S8 (Stream 8,
+2026-09-19), then §S2 and §S2-I (Stream 2 run + improvements,
 2026-09-16/17) and §0 (2026-09-16) before anything below them.
 Everything from §1 onward is the original "Phase 0" document and is kept for record, but
 **its headline metrics are a known overclaim, not a mistake to repeat**: "125,790 files",
@@ -11,6 +12,54 @@ foundation-theory coverage. Treat every number below the divider as unverified u
 independently re-checked (the pattern is the same one `FOUNDATIONS.md`'s own correction
 note and the root `README.md`'s "note on this revision" already flag elsewhere in this
 repo) rather than as ground truth to build the next session's narrative on.
+
+---
+
+# §S9. Toolchain migration to Lean/Mathlib `v4.34.0-rc2` (2026-09-19)
+
+**Scope**: branch `toolchain/v4.34.0-rc2` in a worktree on the data disk; `lean-toolchain`, `lakefile.lean`,
+`lake-manifest.json` and version strings only — **no `.lean` file changed**. Gate numbers in
+`docs/VERIFIED_FOUNDATION.md` §0b.
+
+## S9.1 A minor Lean release cost nothing in proofs here, and the reason is the proof style
+All 150 first-party modules, 693 audited theorems and 1053 locked declarations went from `v4.33.1` to
+`v4.34.0-rc2` with zero source edits. What broke elsewhere in such migrations — `simp` set drift, renamed
+lemmas — barely touches this corpus because most of it is `decide`/`decide +kernel` over own `def`s and only a
+thin layer uses Mathlib lemmas by name. Four Mathlib deprecations appeared as warnings (`if_pos`/`if_neg` →
+`ite_eq_left`/`ite_eq_right`, `dif_pos` → `dite_eq_left`, `push_neg` → `push Not`) and were left alone: a
+deprecation is not a breakage, and changing a proof that compiles adds risk with no gate benefit.
+
+## S9.1b The one real breakage was a tactic that became redundant, not a renamed lemma
+`push_cast; rw [hk]; ring` failed under rc2 with "No goals to be solved": `rw` now closes the goal by `rfl`
+before `ring` runs. Dropping the `ring` is the whole fix. When a migration reports "No goals to be solved",
+read it as *the preceding tactic got stronger*, and delete the trailing tactic rather than hunting for a
+renamed lemma. (The file, `DualScaleDyons/TrappingObstruction.lean`, arrived on `main` mid-migration and is
+not imported by the `DualScaleDyons` root, so `axiom_audit.py <Lib>` cannot see it — a module outside the
+root's import closure is outside the gate; audit it by file until the root imports it.)
+
+## S9.2 Migrate in a worktree, with its own `.lake` and its own LeanMemory
+`git worktree add` on the data disk gives a second, independent `.lake` (7.9 GB after `lake update` +
+`lake exe cache get`, 7 min) while another session keeps committing on `main`. `leanstack` resolves its repo
+root from its own file location, so running it inside the worktree builds the worktree; `--home` pointed at a
+separate LeanMemory keeps the main store's measured peaks clean. `main` moved twice during the run; because the
+branch had no commits yet, `git stash && git reset --hard main && git stash pop` re-based the three real
+changes in seconds.
+
+## S9.3 The `MemAvailable` floor is a machine-wide condition, not a measurement of your build
+`DualScaleMoonshine.HMNBridge` was killed three times: twice by leanstack's `MemAvailable < 2 GB` floor
+(peaks 17.1 and 17.5 GB anon, the second at a moment when Lean itself was back down to ~3 GB and a peer
+session's jobs had grown to 10–12 GB), once by the kernel OOM killer at only 7.5 GB anon (same cause,
+`dmesg` 18:34:49). Raising `--budget-gb`/`--module-gb` cannot help: the floor is `min_available_kb`, hardcoded
+in `scheduler.execute` with no CLI flag. On a shared VM, a 19 GB module is not schedulable while a neighbour
+holds 10 GB — the fix is to run it when the machine is quiet (it then built in 1689 s, peak 21.0 GB RSS /
+17.4 GB anon), not to tune the guard. Under `v4.33.1` the same module was killed at 18.1 GB, so rc2 did not
+regress its cost.
+
+## S9.4 Warm the page cache *before* the heavy module, not during it
+After an OOM the cache is empty and Lean loads its imports at 2 MB/s at ~2% CPU for ten minutes; a sequential
+read of the same files (`leanstack warm`) runs at 10–50 MB/s. 1.9 GB of `.olean` plus 3.7 GB of
+`.olean.private` is the working set of the Mathlib-dependent libraries here; warming it costs under a minute
+when the machine is idle and is wasted effort once Lean has already started reading.
 
 ---
 

@@ -77,7 +77,7 @@ theorem a2_saturated_in_D6 (x : Fin 6 → ℤ) (α β : ℚ) (hx : ∀ k, (x k :
   intro k
   have hk := hx k
   rw [hα, hβ] at hk
-  have : ((x k : ℤ) : ℚ) = ((x 0 * aVec k + (-x 2) * bVec k : ℤ) : ℚ) := by push_cast; rw [hk]; ring
+  have : ((x k : ℤ) : ℚ) = ((x 0 * aVec k + (-x 2) * bVec k : ℤ) : ℚ) := by push_cast; rw [hk]
   exact_mod_cast this
 
 /-- **`A₁ ⊕ A₁` is primitive in `D₆`** (though not in `ℤ⁶`): a vector of `D₆` in the span has `x₀ + x₁` even, so
@@ -114,7 +114,7 @@ theorem a1a1_saturated_in_D6 (x : Fin 6 → ℤ) (γ δ : ℚ) (hx : ∀ k, (x k
   refine ⟨m, n, fun k => ?_⟩
   have hk := hx k
   rw [hγ, hδ] at hk
-  have : ((x k : ℤ) : ℚ) = ((m * cVec k + n * dVec k : ℤ) : ℚ) := by push_cast; rw [hk]; ring
+  have : ((x k : ℤ) : ℚ) = ((m * cVec k + n * dVec k : ℤ) : ℚ) := by push_cast; rw [hk]
   exact_mod_cast this
 
 /-- **The obstruction is quantitative.** A factorised `K3 × T²` point carries at most `766` roots; the global

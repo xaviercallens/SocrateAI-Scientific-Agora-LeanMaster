@@ -1,6 +1,6 @@
 # LeanMaster — instructions for Claude sessions
 
-Lean 4 (v4.33.1) + Mathlib (v4.33.1) formalization of the mathematics around T-duality, K3 × T² lattices,
+Lean 4 (v4.34.0-rc2) + Mathlib (v4.34.0-rc2) formalization of the mathematics around T-duality, K3 × T² lattices,
 double field theory and the dual-scale bound. Skills in `.claude/skills/` load automatically:
 start with `/leanmaster-onboard`.
 

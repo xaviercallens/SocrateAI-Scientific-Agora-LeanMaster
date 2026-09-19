@@ -9,12 +9,12 @@ package «SocrateAI-Scientific-Agora-LeanMaster» where
     ⟨`maxRecDepth, (8000 : Nat)⟩
   ]
 
--- Mathlib pinned at tag v4.33.1 (commit 0df444a360eaa60ab8c11dca51a86af692955474).
--- Verified 2026-09-15: that tag's `lean-toolchain` is `leanprover/lean4:v4.33.1`, an exact
--- match for this project's `lean-toolchain`, so the upstream olean cache is usable.
--- NOTE: earlier docs pinned `db584cd6d46...`; that is the `v4.33.0` tag (toolchain v4.33.0)
--- and would have produced a toolchain-mismatched, unusable cache. See docs/INFRA_SETUP.md.
-require "leanprover-community" / "mathlib" @ git "v4.33.1"
+-- Mathlib pinned at tag v4.34.0-rc2 (commit 85e3a25e006c35636f0e53b0e9296caca2685bc0).
+-- That tag's `lean-toolchain` must match this project's `lean-toolchain` exactly
+-- (`leanprover/lean4:v4.34.0-rc2`), otherwise the upstream olean cache is unusable.
+-- rc2 (not v4.34.0 final) was chosen deliberately, for alignment with other projects.
+-- History: v4.33.1 (commit 0df444a3…) until the 2026-09-19 migration. See docs/INFRA_SETUP.md.
+require "leanprover-community" / "mathlib" @ git "v4.34.0-rc2"
 
 -- === Mathlib-free libraries (the verified Tier A core; build with zero packages) ===
 

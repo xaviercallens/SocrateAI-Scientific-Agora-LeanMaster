@@ -1,7 +1,7 @@
 # SocrateAI Scientific Agora: LeanMaster Engine
 ### A Lean 4 Companion Formalization for Double Field Theory, Mathieu Moonshine Arithmetic & the Dual-Scale String Cosmology Proposal
 
-[![Lean 4](https://img.shields.io/badge/Lean_4-v4.33.1-blue.svg)](https://leanprover.github.io/)
+[![Lean 4](https://img.shields.io/badge/Lean_4-v4.34.0--rc2-blue.svg)](https://leanprover.github.io/)
 [![Zero Sorry](https://img.shields.io/badge/Kernel_Soundness-Strict_0_Sorry_(Certified)-success.svg)](https://github.com/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster)
 [![Free Parameters](https://img.shields.io/badge/Free_Parameters-0_(Conjecture%2C_Tier_C)-yellow.svg)](#3-a-zero-free-parameter-conjecture-what-is-and-isnt-mechanically-locked)
 [![Solved Problems](https://img.shields.io/badge/Frontier_Problems-11_Certified-purple.svg)](#5-the-lean-5-scientific-agora-corpus-11-certified-frontier-problems)
@@ -244,7 +244,7 @@ theorem odd_inversion_generator : IsODD InversionGen := by
 ```
 `Mat2` is a plain 4-field `structure` over `Int` defined earlier in the same file: `DoubleFieldTheory`
 is one of the five **Mathlib-free** libraries, so it cannot use Mathlib's `Matrix` type. The project as
-a whole *does* depend on Mathlib (pinned at tag `v4.33.1`, see `lakefile.lean` and
+a whole *does* depend on Mathlib (pinned at tag `v4.34.0-rc2`, see `lakefile.lean` and
 `lake-manifest.json`), and the two Mathlib-backed libraries state the same structures over genuine
 matrices — see Example 5.
 
@@ -418,7 +418,7 @@ python3 tools/build_blueprint.py
 ```
 
 ### 4. 1-Click Verification in GitHub Codespaces
-No local installation required! Open directly in your browser via [GitHub Codespaces](https://codespaces.new/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster) — pre-configured with Lean 4 `v4.33.1`, the VS Code Lean extension, and automated `lake build` verification.
+No local installation required! Open directly in your browser via [GitHub Codespaces](https://codespaces.new/xaviercallens/SocrateAI-Scientific-Agora-LeanMaster) — pre-configured with Lean 4 `v4.34.0-rc2`, the VS Code Lean extension, and automated `lake build` verification.
 
 ### 5. Physicist & RAG-Graph Comments Workflow (`tools/commentsworkflow.py`)
 Automated audit and quality control enforcing the [Physicist & RAG-Graph Documentation Template](templates/LEAN4_PHYSICS_RAG_GRAPH_TEMPLATE.md):
@@ -453,7 +453,7 @@ python3 tools/antigravity_agent_swarm.py run --dry-run
 ## 10. Replication & Getting Started
 
 ### Prerequisites
-- [Lean 4](https://leanprover.github.io/) toolchain `v4.33.1` via `elan`.
+- [Lean 4](https://leanprover.github.io/) toolchain `v4.34.0-rc2` via `elan`.
 - Python 3.10+ (for LeanGraph and LeanAutoResearch).
 - `texlive` with `pdflatex` (optional, for compiling LaTeX papers).
 

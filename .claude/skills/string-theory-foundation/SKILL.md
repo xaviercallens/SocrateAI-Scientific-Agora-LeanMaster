@@ -30,7 +30,8 @@ Find anything else with the skill `leanmaster-theorem-search` (catalogue: `paper
 ## Depend on it
 Copy `examples/consumer_demo/` (lakefile shows both options): same-machine path dependency reusing the
 built Mathlib (`packagesDir`), or `require … from git … @ "v2.1.0"`. Your `lean-toolchain` must be
-`leanprover/lean4:v4.33.1` and you must not pull a different Mathlib revision.
+LeanMaster's at the revision you require (`leanprover/lean4:v4.34.0-rc2` from the toolchain migration on;
+`v4.33.1` for tags up to v3.28.0, including v2.1.0) and you must not pull a different Mathlib revision.
 
 ## Scope limits you must carry into your own text
 * Tier A = the Lean statement as written. Physical interpretation = Tier L (pin the source) or Tier C.

@@ -11,8 +11,9 @@ A. Same machine as a LeanMaster checkout (fast: reuses its built Mathlib, downlo
    Set `packagesDir` to LeanMaster's package directory and require it by path.
 
 B. Any machine: require it from git at a release tag, then `lake exe cache get` for Mathlib.
-   Your `lean-toolchain` MUST be the same as LeanMaster's (leanprover/lean4:v4.33.1), and you must
-   not require a different Mathlib revision (LeanMaster pins Mathlib v4.33.1).
+   Your `lean-toolchain` MUST be the same as LeanMaster's (leanprover/lean4:v4.34.0-rc2), and you must
+   not require a different Mathlib revision (LeanMaster pins Mathlib v4.34.0-rc2 since the
+   2026-09-19 toolchain migration; tags up to v3.28.0 pin v4.33.1).
 -/
 
 package «consumer-demo» where
