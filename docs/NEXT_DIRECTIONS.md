@@ -55,6 +55,7 @@ lives in §12 and §14 of `docs/STREAM8_WHICH_K3.md`.
 | D3 | **Stream 8 closure** | §14 (GTVW) is the last open piece; then Stream 8 is complete and can be written up. | Compile `GTVWPoint.lean`, gates, release. |
 | D4 | **`M₂₄` realization of `T₁₉₂` at `D = 12`** | §10 left it open: the group is abstractly `T₁₉₂`, but its embedding through TW's map `Θ` is unverified. | Follow TW §3–4 with the octad census tooling. |
 | D4b | **Hand-off to the CMB search** | LeanFlow is reorienting its TDA to discrete `D₄`/`T₁₉₂` anisotropy. | `docs/CMB_CRYSTALLOGRAPHY_SPEC.md`: the verified objects, the missing derivation, and the freeze-first protocol. |
+| D6 | **Vortex-core pivot (assessed, not adopted)** | The proposal to read `√α'` as a defect core rather than a macroscopic dimension removes the conflict that refuted P1, but drops `α' = ℓ_P c/H₀` and needs a dynamical postulate. | `docs/THOUGHT_EXPERIMENT_VORTEX_CORE.md`: the bound does **not** forbid collapse (it is a lower bound, and collapse sends `𝒟 → ∞`); the usable statement is `dualScale_eq_iff` (unique minimiser). Targets V1–V4 there; V3 (the `w(z)` decision rule) first. |
 | D5 | **Migrate the other projects to `v4.34.0-rc2`** | Cross-project integration (user's request). LeanMaster's own migration is on `toolchain/v4.34.0-rc2`. | After the LeanMaster merge: same four steps per project, one module at a time. |
 
 ## 4. Workflows
