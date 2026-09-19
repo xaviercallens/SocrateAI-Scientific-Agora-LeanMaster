@@ -221,7 +221,11 @@ def declarations(text: str, code: str | None = None) -> list[dict]:
             continue
         short = m.group("name").strip("«»")
         dkind = "theorem" if m.group("kind") == "lemma" else m.group("kind")
-        d = DOCSTRING_BEFORE.search(text[max(0, pos - 20000):pos].rstrip())  # bounded: O(n) per file
+        before = text[max(0, pos - 20000):pos].rstrip()  # bounded: O(n) per file
+        # Only the last `/--` can open this declaration's docstring; searching from the window start let the
+        # non-greedy match begin at an earlier declaration's docstring and swallow the code in between.
+        start = before.rfind("/--")
+        d = DOCSTRING_BEFORE.search(before[start:]) if start >= 0 else None
         doc = " ".join(d.group(1).split()) if d else ""
         out.append({
             "name": ".".join(stack + [short]) if stack else short,

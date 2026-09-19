@@ -350,11 +350,39 @@ five libraries). Chapter 36 of the book works through the refactor; chapter 38 l
 
 ---
 
-## 8. Lean Cache Optimization & LeanAutoResearch
+## 8. Scaling the Lean Toolchain: `leanstack` (LeanCache, LeanMemory, LeanDatastore, LeanGraph, LeanRAG)
 
-- **Compilation Acceleration:** [`tools/lean_cache_manager.py`](tools/lean_cache_manager.py) manages SHA-256 AST hashes and precompiled `.olean` binaries.
-  - Full corpus warm build: **1.569 seconds** (51 compilation jobs).
-  - Isolated `Lean5Corpus` build: **0.701 seconds** (2.2x speedup).
+[`docs/LEAN_SCALE_ARCHITECTURE.md`](docs/LEAN_SCALE_ARCHITECTURE.md) is the design for generating and maintaining
+much larger Lean code bases. It starts from an audit of the existing tools, recording what works and what is a
+mock, and is implemented in [`leanstack/`](leanstack/) (29 tests, no Lean needed to run them). This is a design
+plus a first implementation, not a demonstrated capability at millions of lines: the scaling section is
+labelled as projection.
+
+- **LeanMemory:** one SQLite (WAL) store plus a content-addressed blob store on the data disk. It holds modules,
+  declarations, kernel edges, build runs with peak memory, prover attempts and failure patterns.
+- **LeanCache:**
+  - Lake already caches builds by content; LeanCache adds what Lake lacks.
+  - Pre-build fingerprints and impact analysis.
+  - A result cache for single-file checks.
+  - A sequential scheduler whose memory guard kills a runaway `lean` before the kernel OOM killer can flush the
+    page cache.
+  - Page-cache warming, and a registry of heavy `decide +kernel` proofs.
+  - Measured on this VM (LL.md §S8): single kernel checks peak at 11.9–19 GB, and cold `.olean` reads run at
+    2–6 MB/s.
+- **LeanDatastore / LeanGraph / LeanRAG:** ingest the statement lock, axiom audits, the kernel dependency graph
+  and prover attempts. Retrieval is BM25 plus graph neighbours. `kernel_status` is `A` only for a locked,
+  unchanged, audited theorem.
+
+```bash
+python3 -m leanstack ingest --all
+python3 -m leanstack search "dual-scale bound" --theorems
+python3 -m leanstack plan DualScaleDyons --dry-run   # without --dry-run: sequential, memory-guarded builds
+```
+
+The older `tools/lean_cache_manager.py` and `LEAN_CACHE_OPTIMIZATION.md` are superseded. Their benchmark figures
+(a "cold" full build in 1.6 s over 51 jobs) could not be reproduced for a 3800-job build; see
+`docs/LEAN_SCALE_ARCHITECTURE.md` §11.
+
 ---
 
 ## 9. Bridging the Semantic Gap: Literate Physics, DSL & The SocrateAI Oracle
@@ -547,6 +575,45 @@ Five reusable Claude skills live in `.claude/skills/` and install into any proje
 | `lean-proof-gate` | before calling anything "proved", in *any* Lake project |
 | `lean-tiered-proving` | closing a batch of `sorry`s with AI provers, cheaply and safely |
 | `leanmaster-theorem-search` | before stating a new theorem: find what already exists |
+
+### LeanMaster as an MCP server (for other Claude sessions and projects)
+
+[`leanstack/mcp_server.py`](leanstack/mcp_server.py) exposes LeanMaster over MCP (stdio). Full description,
+examples and limits: [`docs/MCP_SERVER.md`](docs/MCP_SERVER.md).
+
+| Tool | Returns | Runs Lean? |
+|---|---|---|
+| `search_theorems` | theorems matching a query, with statement, `file:line`, `kernel_status`, tiers and paper pins | no |
+| `get_declaration` | full record: statement, lock hash, axioms from the last ingested audit, dependencies and dependents | no |
+| `verified_status` | the gate numbers as last recorded in this README and `docs/VERIFIED_FOUNDATION.md` | no |
+| `impact` | the modules a change to a module can invalidate | no |
+| `check_statement_lock` | the output of `tools/statement_lock.py --check` | no |
+| `usage_guide` | how to depend on and cite LeanMaster, with the tier rules | no |
+| `check_lean_snippet` | compiles a snippet against the library under a memory guard, one compile at a time; a successful compile is **not** a gate pass | yes |
+
+Setup, once per machine (the venv lives on the data disk):
+
+```bash
+python3 -m venv /mnt/disks/disk-socrateai-local-1/leanmaster/mcp-venv
+/mnt/disks/disk-socrateai-local-1/leanmaster/mcp-venv/bin/pip install "mcp>=1.2,<2"
+python3 -m leanstack ingest --all          # fill LeanMemory (no Lean needed)
+```
+
+Register it from any project:
+
+```bash
+claude mcp add leanmaster -- /mnt/disks/disk-socrateai-local-1/callensxavier_home_data/SocrateAI-Scientific-Agora-LeanMaster/tools/leanmaster_mcp.sh
+```
+
+Inside this repository, `.mcp.json` registers it at project scope, and Claude Code asks for approval on first use.
+
+Limits:
+- Status is only as fresh as the last `leanstack ingest`. No axiom audit has been ingested yet, so every theorem
+  currently reads `audit not run` rather than `A`. Run `tools/axiom_audit.py <Lib> > out.txt` and
+  `python3 -m leanstack ingest --audit out.txt` to load one.
+- The kernel dependency graph covers 7 of the 10 libraries.
+- `check_lean_snippet` refuses to start when free memory is below its budget. So far it has been tested only with
+  a mocked runner.
 
 ---
 
