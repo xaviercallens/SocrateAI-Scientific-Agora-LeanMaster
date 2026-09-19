@@ -277,8 +277,9 @@ of couplings to the K3 point (§8); and moonshine symmetry living on moduli spac
 with the complex structure `u = (i+j+k)/√3`. What is its symmetry group, and does it pass the forger's test?
 
 **The group (Tier A + Tier L).**
-- `right_units_fix_sigma`: right multiplication by each of the 24 Hurwitz units (`units_complete`) maps `D₄` onto
-  itself and fixes the three Kähler forms `ω_I, ω_J, ω_K`, hence the whole positive 3-plane `Σ`, including
+- `right_units_fix_sigma`: right multiplication by each of the 24 Hurwitz units (`units_complete`) maps `D₄` into
+  itself (onto, since right multiplication by `b̄` inverts it) and fixes the three Kähler forms `ω_I, ω_J, ω_K`,
+  hence the whole positive 3-plane `Σ`, including
   `T(A) = ℤt₁ ⊕ ℤt₂`. So it is holomorphic, symplectic and Kähler for **every** complex structure on the twistor
   sphere, `u = i` and `u = ω` alike. That these 24 exist at `ω` is forced by construction.
 - `holomorphic_isometries` makes the result exact. An exhaustive search over all `ℂ_u`-linear lattice isometries
@@ -316,10 +317,12 @@ translation part).
 - *Non-symplectic symmetry points the other way.* At `u = i` the torus has an automorphism acting on `H^{2,0}` with
   order 4. At `u = ω` the largest order is 3. A "maximal symmetry" principle would pick `i`, not `ω`. This is a
   counterweight to the synthesis of §9, recorded as found.
-- *What trapping selects.* `D₄` enters through the Narain metric (24 light vectors), not through the complex
-  geometry. For attractive abelian surfaces `T(A)` fixes `A` up to isomorphism (Shioda–Mitani, standard; not
-  pinned here), so the `ω` torus is the product of two copies of `E_ω`. "`D₄`" carries the weight of the enhanced
-  symmetry point, not of a new complex torus. This mildly weakens G2.
+- *What trapping selects: the polarization.* `D₄` enters through the Narain metric (24 light vectors), i.e. through
+  the Kähler class, not the complex structure. For attractive abelian surfaces `T(A)` fixes `A` up to isomorphism
+  (Shioda–Mitani, standard; not pinned here), so the `ω` torus is `E_ω × E_ω` whichever lattice one starts from.
+  The polarization is what carries the symmetry: TW's `X₀` (square torus) and `X_{D₄}` have the **same** complex
+  structure (TW ll. 1966–1970) but symmetry groups `T₆₄` and `T₁₉₂` (TW l. 114). Trapping acts on exactly this
+  datum, so G2 is not weakened; its lever is the Kähler class, not the complex torus.
 
 **Not settled.** (i) The realisation of this `T₁₉₂` inside `M₂₄` through TW's map `Θ` (TW realise `T₁₉₂` only at
 `D = 16`; at `ℤ₃`-symmetric points they expect `M₂₄` rather than `M₂₃`, ll. 2735–2742). (ii) Symmetries that do not

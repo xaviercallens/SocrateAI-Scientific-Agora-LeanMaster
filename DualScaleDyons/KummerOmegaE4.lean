@@ -24,7 +24,8 @@ pull-back on 2-forms. The 16 nodes are `D₄/2D₄ = 𝔽₂⁴` (bit masks `0 �
 
 ### What is proved (Tier A)
 * `units_complete`: the 24 doubled Hurwitz units are all vectors of `D₄` of norm 1.
-* `right_units_fix_sigma`: right multiplication by each unit maps `D₄` onto itself and fixes `ω_I, ω_J, ω_K`,
+* `right_units_fix_sigma`: right multiplication by each unit maps `D₄` into itself (onto: `b̄` is again a unit)
+  and fixes `ω_I, ω_J, ω_K`,
   hence the whole positive 3-plane `Σ`, and `t₁, t₂` (`T(A) = A₂`). It is holomorphic, symplectic and Kähler for
   **every** complex structure of the hyperkähler `S²`, in particular `u = i` (TW's tetrahedral Kummer, `D = 16`)
   and the `ω` structure (`D = 12`).
@@ -41,7 +42,9 @@ Kummer surface (`D = 16`). It passes the forger's test: every element lies in a 
 computed twined genus. The group is the same, acting on `H*` in the same way, for every complex structure on the
 twistor sphere of the `D₄` torus, so symplectic symmetry does not choose between `i` and `ω`. The holomorphic but
 non-symplectic symmetry is larger at `u = i` (order 4 on `H^{2,0}`) than at `u = ω` (order 3). Not established
-here: the embedding of this `T₁₉₂` into `M₂₄` through TW's map `Θ` (TW realise `T₁₉₂` only for `D = 16`).
+here: the embedding of this `T₁₉₂` into `M₂₄` through TW's map `Θ` (TW realise `T₁₉₂` only for `D = 16`). Trapping
+selects the polarization of the torus, which is what carries the symmetry: TW's `X₀` and `X_{D₄}` share their complex
+structure but have groups `T₆₄` and `T₁₉₂` (TW ll. 114, 1966–1970).
 -/
 import DualScaleDyons.KummerD4
 import DualScaleDyons.ForgerE4
