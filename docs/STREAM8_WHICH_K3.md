@@ -1,10 +1,11 @@
 # Stream 8 — Which K3? (convergence, thought experiments, open questions)
 
-**Status (2026-09-19, release `v3.25.0`):** seven Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
+**Status (2026-09-19, release `v3.26.0`):** eight Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
 `DualScaleDyons/SelfDualT2.lean`, 7 theorems — E2, §5; `DualScaleDyons/KummerE3.lean`, 7 theorems — E3, §6;
 `DualScaleDyons/ForgerE4.lean`, 6 theorems — E4, §7; `DualScaleDyons/KummerD4.lean`, 8 theorems — G2, §9;
 `DualScaleDyons/KummerOmegaE4.lean`, 6 theorems — E4 on the `D = 12` surface, §10;
-`DualScaleDyons/AttractorCharges.lean`, 7 theorems — P8.2 and G3, §11); the rest is a research plan.
+`DualScaleDyons/AttractorCharges.lean`, 7 theorems — P8.2 and G3, §11; `DualScaleDyons/K3Enhancement.lean` with
+`K3EnhancementSO40.lean` and `K3EnhancementSO44.lean`, 9 theorems — P8.4c, §12); the rest is a research plan.
 Thought experiments are **Tier C** and each is tied to a formalizable target.
 
 ## 0. The question, made precise
@@ -83,7 +84,7 @@ the twined genera of its elements are among the 26 computed ones.
 | P8.1 | convergence and `N` vs `H` relation, Kummer criterion, Fermat quartic | A — **done** (`WhichK3.lean`) |
 | P8.2 | attractor form of explicit charges `(Q, P)` in `Γ_{6,22}`; `N(D)` by enumeration for small `D` | A — **done** (§11, `AttractorCharges.lean`) |
 | P8.3 | Kummer lattice from `𝔽₂⁴`: rank 16, discriminant `2⁶`, the `8 + 16` split of 24 | A — **done** (§6, `KummerE3.lean`) |
-| P8.4 | E2: derive (or refute) a "maximal self-duality" selection principle; freeze any consequence before testing | C → A — **T² part done** (§5); K3 part open (P8.4c) |
+| P8.4 | E2: derive (or refute) a "maximal self-duality" selection principle; freeze any consequence before testing | C → A — **T² part done** (§5); **K3 part done** (P8.4c, §12): `SO(40)`; globally `SO(44)`, not a product point |
 | P8.5 | E4: symmetry groups of the candidate K3s vs the 26 twined genera | L + A — **done** for the Kummer structure (§7) and for the `τ = ω` Kummer, `T₁₉₂` (§10); its `M₂₄` embedding via TW's `Θ` open |
 
 ## 5. E2 — results (`v3.19.0`, `DualScaleDyons/SelfDualT2.lean`)
@@ -98,7 +99,8 @@ Hubble friction and the potential. This is the circle's `κ = 1` (Stream 6) prom
 circle at the self-dual radius: 2 (`SU(2)`, `roots_circle`); T² at `(i, i)`: 4 + 4 (`roots_ii`); T² at
 `(ω, ω)`: **6 + 6** (`SU(3)_L × SU(3)_R`, `roots_ww`). The counts are complete, not box searches: a sum-of-squares
 identity bounds every root's entries (`h3w_sos`, `h3w_bound`, `qI_bound`). Six is the most a rank-2 root system can
-have (the kissing number of the plane, standard). So **under trapping, T² comes to rest at `(ω, ω)`**, not `(i, i)`.
+have (the kissing number of the plane, standard). So **under trapping, T² comes to rest at `(ω, ω)`**, not `(i, i)`. (The `6 + 6` counts both chiralities; in the
+heterotic frame of §12 only one side is gauge, `6` vs `4`, with the same conclusion.)
 
 **The K3 over it (Tier A + Tier C).** The left roots at `(ω, ω)` span the `A₂` lattice (Gram `[[2, −1], [−1, 2]]`),
 and the transcendental lattice of the most attractive K3, `T(X₃) = [[2, 1], [1, 2]]` (form `(1,1,1)`, `τ = ω`), is
@@ -373,4 +375,56 @@ trapped torus, E2's `T²` and §10's `T₁₉₂` surface are one geometry.
   (`moore_vs_hurwitz`). The `−648 H(3) = −216` part of `C(3) = 528` is the `1/3` weight of the `ω` point.
 - Observables: none (`N = 4`). Negative control: three mutations caught (a wrong index value, no `SL(2, ℤ)`
   reduction, a wrong sign in the pairing).
+
+## 12. P8.4c — trapping on the K3 factor (`v3.26.0`, `DualScaleDyons/K3Enhancement*.lean`)
+
+**The rule (Tier L).**
+- Aspinwall (95), ll. 2464–2485: for IIA on K3 (dual to heterotic on `T⁴`), the non-abelian gauge roots are the
+  vectors `α ∈ Γ₄,₂₀ ∩ Π^⊥` with `α² = −2`; the group is ADE.
+- Aspinwall ll. 2856–2858: the same rule holds in four dimensions for a positive 6-plane in `Γ₆,₂₂`.
+- Trapping selects the point with the most roots (§5). The duality frame is the one §8 asked for: IIA on K3,
+  i.e. heterotic on `T⁴`, where the enhancement needs `B = 0` along the vanishing cycles.
+
+**The maximum (Tier A).**
+- `trapping_rank_table_22`: in rank 20 the largest root system is `D₂₀` alone (760 roots). `A₂₀` has 420, and any
+  split has at most 686. In rank 22 it is `D₂₂` alone (924).
+- `gamma4_unimodular`: an explicit even unimodular lattice of signature `(4, 20)` (so `Γ₄,₂₀`, by Milnor,
+  Huybrechts ll. 12906–12910), with Gram determinant 1 computed by fraction-free elimination.
+- `so40_point` (own file: the kernel needs 11 GB): with `Π` the first four coordinates, the 760 roots `±eᵢ ± eⱼ` of `D₂₀` are in the lattice
+  (each written as an integer combination of basis vectors), orthogonal to `Π`, of norm `−2`. That the 760 are
+  pairwise distinct is by construction, one per `(i < j, signs)`; a kernel `Nodup` was tried and needs more than 14 GB. With the rank table and the ADE rule (Aspinwall l. 2484), the gauge group is
+  exactly `SO(40)`, the largest possible for the K3 factor. By `uniform_parity`, `Π^⊥ ∩ Γ = D₂₀(−1)`, and
+  `Π ∩ Γ ⊇ D₄` (equal: standard, both have a discriminant group of order 4 in a unimodular lattice).
+- `gamma6_unimodular`, `so44_point` (own file, 14 GB): for K3 × T² as a whole (`Γ₆,₂₂`), the maximum is `SO(44)` (924 roots), with
+  `Π ∩ Γ = D₆`.
+- `product_points_not_maximal`: if the 6-plane splits as `Π₄ ⊕ Π₂` along `Γ₄,₂₀ ⊕ Γ₂,₂`, there are at most
+  `760 + 6 = 766 < 924` roots. The arithmetic is kernel-checked. That roots cannot mix is a short argument: the two
+  components have even norms `≤ 0` adding to `−2`, so one of them vanishes.
+- `agrees_with_rank8_table`: on ranks `≤ 8` the table agrees with G2's `KummerD4.bestTable`.
+
+**Reading (Tier C).**
+- *The K3 factor lands on `D₄` again, but for a generic reason.* At the `SO(40)` point the positive 4-plane is
+  spanned by the Hurwitz lattice `D₄`, the lattice of G2's trapped torus. Its 24 norm-2 vectors are states of the
+  other chirality, which the heterotic GSO projection removes (Aspinwall ll. 2455–2462), like E2's second
+  `SU(3)`. And the discriminant forms of `D_{16+d}` and `D_d` agree, so `D_{16+d} ⊕ D_d` glues to `Γ_{d,16+d}` for
+  every `d`; `d = 4` is one case. The recurrence of `D₄` carries little independent weight.
+- *Chirality convention.* E2 counted `6 + 6` (`SU(3)_L × SU(3)_R`, both chiralities, GPR's convention). In the
+  heterotic/IIA frame of this section only one side gives gauge bosons, so a `T²` at `(ω, ω)` contributes 6 roots,
+  the number used in `product_points_not_maximal`. E2's conclusion survives (6 > 4, `(ω, ω)` over `(i, i)`), with the
+  count halved.
+- *Trapping and moonshine select disjoint loci.* At the `SO(40)` point the sigma model is singular (GHV ll. 370–386:
+  D-branes become massless), and the K3 is very small and singular (rank 20 > 19; Aspinwall ll. 2551–2559). E4's
+  forger test and the symmetry groups `G_Π ⊂ Co₀` apply only at points without roots. The two principles of
+  Stream 8, "most light states" and "most (moonshine) symmetry", therefore point to different places.
+- *Factor-wise trapping is not global trapping.* E2 (`T²` at `(ω, ω)`), G2 and the K3 factor were each maximised
+  separately. On the full K3 × T² moduli space the maximum is `SO(44)`, which does not split into a K3 point and a
+  `T²` point, and its 6-plane lattice is `D₆`, not a lattice built from `A₂`. Also, in IIA the `T²` area modulus is
+  the heterotic axion-dilaton (Aspinwall ll. 2838–2845) and carries no gauge roots, so E2's `ρ = ω` is not a
+  trapping statement in this frame.
+- *What survives.* The `ω` convergence of §9–§11 stands **for black holes** (G3/P8.2, the attractor mechanism). As a
+  selection principle for the vacuum, trapping chooses `SO(44)`, not `ω`. This is recorded as a negative result for
+  the "maximal self-duality selects `X₃ × E_ω`" reading of E2.
+- Negative control: five mutations caught (a basis without the half-integer glue vector, roots shifted into `Π`, a
+  wrong `E₈` root count in the table, and, after the certificate rewrite, a wrong sign in a certificate and a shifted
+  root block).
 

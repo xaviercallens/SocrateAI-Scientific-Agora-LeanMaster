@@ -1,7 +1,7 @@
 # Lessons Learned (LL)
 
-**Most recent session first** — read §S2 and §S2-I (Stream 2 run + improvements, 2026-09-16/17) and §0
-(2026-09-16) before anything below them.
+**Most recent session first** — read §S8 (Stream 8, 2026-09-19), then §S2 and §S2-I (Stream 2 run + improvements,
+2026-09-16/17) and §0 (2026-09-16) before anything below them.
 Everything from §1 onward is the original "Phase 0" document and is kept for record, but
 **its headline metrics are a known overclaim, not a mistake to repeat**: "125,790 files",
 "961,898 theorems", "96.9% coverage" are aggregate counts across every vendored
@@ -11,6 +11,73 @@ foundation-theory coverage. Treat every number below the divider as unverified u
 independently re-checked (the pattern is the same one `FOUNDATIONS.md`'s own correction
 note and the root `README.md`'s "note on this revision" already flag elsewhere in this
 repo) rather than as ground truth to build the next session's narrative on.
+
+---
+
+# §S8. Stream 8 "which K3?" (2026-09-19): E4 on the D = 12 Kummer, P8.2, P8.4c
+
+**Scope**: `DualScaleDyons/KummerOmegaE4.lean` (v3.24.0), `AttractorCharges.lean` (v3.25.0),
+`K3Enhancement*.lean` (P8.4c). Full reading in `docs/STREAM8_WHICH_K3.md` §10–§12. These are the lessons that cost
+time or nearly let a wrong claim through.
+
+## S8.1 `decide +kernel` memory is the binding constraint, not time — and it accumulates per file
+`so40_point` (760 root vectors, each reconstructed from a 24-vector basis by `decode`) reached **28 GB RSS** and was
+OOM-killed on the 29 GB VM; `so44_point` alone needs ~14 GB even after a lighter rewrite. The kernel keeps every
+intermediate term of a declaration's evaluation, and the memory of all `decide +kernel` calls in one file adds up.
+**Do**: (i) measure peak RSS per theorem (`/usr/bin/time -f %M`, or poll `/proc/<pid>/status`) before assembling a
+file; (ii) prefer sparse *certificates* (an explicit short integer combination per item) over full reconstruction;
+(iii) put each heavy check in its own module (`K3EnhancementSO40.lean`, `...SO44.lean`) and build heavy modules
+sequentially with `lake build <Module>`; (iv) drop checks whose cost is out of proportion — `Nodup` on 760 integer
+lists exceeded 14 GB, so distinctness is stated as "by construction" and the docstring says it is not kernel-checked.
+The first version of the file compiled once (5.5 min) and then OOM'd after a docstring-only edit: a borderline
+file is not a passing file.
+
+## S8.2 An OOM kill flushes the page cache, and on this disk that costs 20–40 minutes per compile
+After each OOM the OS page cache was empty, and every `lake env lean` then re-read Mathlib's `.olean` files from the
+persistent disk at **2–6 MB/s with ~1% CPU** (vmstat `wa` ≈ 12%). A single-theorem test file "timed out" at 900 s
+without ever finishing its imports. **Diagnose before blaming the code**: low CPU + slowly growing RSS + high I/O
+wait means cold-cache loading, not a hard proof. Keep a guard that kills a runaway `lean` at a budget below the
+machine total (so the kernel OOM killer never fires and the cache survives), and warm the cache by reading the
+`.olean` files sequentially before a batch of compiles.
+
+## S8.3 Parallel compiles multiply memory; timeouts on a shared VM are not verdicts
+Three mutants compiled in parallel all produced "no errors" — they had been killed by timeouts/OOM, which prints
+nothing matching `error`. **A mutation that is "not caught" must show a real compile result**: log the exit code
+(124 = timeout, 137 = SIGKILL) and the error count, and rerun sequentially. Peer sessions on the same VM
+(DualScaleSimulator TDA jobs) also consume RAM and disk bandwidth.
+
+## S8.4 `pkill -f <pattern>` kills your own shell when the pattern is in your command line
+Twice a background command died with exit 144 because `pkill -f "scratchpad/k3b.lean"` matched the bash process that
+was running it. Match on the real binary (`pgrep -f "^lean .*file.lean"`) or kill by PID.
+
+## S8.5 Verify an advisor's cross-check before adopting it — and keep a refuted one refuted
+The advisor twice proposed "|U₂(ℤ[i])| = 96 and |U₂(ℤ[ω])| = 72" as a classical confirmation of the exhaustive
+holomorphic-isometry count. It is false: unit vectors over ℤ[i] or ℤ[ω] are monomial, so the standard U₂(ℤ[i]) has
+order 32, and U₂(ℤ[ω]) has SU₂ of order 12, not 24. The Hurwitz D₄ lattice is not the standard hermitian ℤ[w]².
+The advisor's other points (chirality convention, parity argument, Sen anchor) were right and were adopted.
+**Rule**: a suggested cross-check is a claim like any other — derive it before writing it into a docstring.
+
+## S8.6 Anchor computed physics numbers to a printed table before calling them counts
+The ψ₁^F coefficients 25353 and −50064 came from our own Stream 5 series. Sen's lecture notes (`0708_1270.txt`
+l. 6788) print d = 50064 for Q² = P² = 2, Q·P = 0, which matches the second and fixes the sign convention
+d = (−1)^{ℓ+1}c; 25353 is not in that table and is stated as computed, not as a checked count.
+
+## S8.7 Check chirality and frame conventions when comparing counts across sections
+E2 counted 6 + 6 roots (SU(3)_L × SU(3)_R, GPR's convention); Aspinwall's heterotic/IIA rule counts one side only
+(the GSO projection kills the other). Comparing E2's 12 with P8.4c's numbers would have been inconsistent. In the
+IIA frame the T² area modulus is the heterotic axion-dilaton (Aspinwall ll. 2838–2845), so E2's ρ = ω is not a
+trapping statement there. Write the frame next to every count.
+
+## S8.8 Negative results belong in the synthesis
+P8.4c found that trapping on the whole K3 × T² moduli space selects SO(44) (D₂₂, 924 roots), which does not split
+into a K3 point and a T² point, and that the maximal-enhancement point is a singular CFT where moonshine symmetry
+(E4) does not apply. Both weaken the "maximal self-duality selects X₃ × E_ω" reading of E2; they are recorded in
+§12 and the synthesis, not softened. The ω convergence survives for black holes (P8.2), not for the vacuum.
+
+## S8.9 Check what a literature example actually is before calling your case "not in the literature"
+Taormina–Wendland's "ℤ₃-symmetric torus" sounded like the ω torus. Computing its transcendental lattice
+(`tools/e4_omega_kummer.py` part 4) gave diag(2, 2), not A₂, so the D = 12 surface really is outside their examples.
+One short computation turned an assumption into a pinned statement.
 
 ---
 

@@ -14,3 +14,6 @@ import DualScaleDyons.ForgerE4
 import DualScaleDyons.KummerD4
 import DualScaleDyons.KummerOmegaE4
 import DualScaleDyons.AttractorCharges
+import DualScaleDyons.K3Enhancement
+import DualScaleDyons.K3EnhancementSO40
+import DualScaleDyons.K3EnhancementSO44

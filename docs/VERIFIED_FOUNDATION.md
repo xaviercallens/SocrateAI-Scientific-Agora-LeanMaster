@@ -213,7 +213,23 @@ libraries are unchanged since their last audit).
 
 Tier L inputs (pinned): Moore ll. 1104–1116, 1189, 1254–1257, 1351–1376, 1503–1507, 1585–1600; DMZ ll. 426–443; Sen l. 6788.
 `tools/p82_charge_enumeration.py` (not kernel) covers the box `[−2, 2]⁴`. Negative control: three mutations caught.
-`DualScaleDyons` 90 theorems, total **675**, 0 failing (other nine libraries unchanged). `v3.16.1`: two C-B
+`DualScaleDyons` 90 theorems, total **675**, 0 failing (other nine libraries unchanged).
+
+**`v3.26.0` (2026-09-19): Stream 8 P8.4c, trapping on the K3 factor.** `DualScaleDyons/K3Enhancement.lean`,
+`K3EnhancementSO40.lean`, `K3EnhancementSO44.lean` (9 theorems; the two heavy root checks have their own files
+because the kernel needs about 11 and 14 GB for them).
+- The largest simply-laced root system of rank 20 is `D₂₀` alone (760 roots); of rank 22, `D₂₂` alone (924).
+- Explicit even unimodular lattices of signatures `(4, 20)` and `(6, 22)` (Gram determinant 1 by fraction-free
+  elimination; `Γ₄,₂₀`, `Γ₆,₂₂` by Milnor).
+- With `Π` the positive coordinates, all roots `±eᵢ ± eⱼ` of `D₂₀`, resp. `D₂₂`, are lattice vectors (explicit
+  integer certificates), orthogonal to `Π`, of norm `−2`: the `SO(40)` and `SO(44)` points. `Π ∩ Γ ⊇ D₄`, resp. `D₆`.
+- Points that split along `Γ₄,₂₀ ⊕ Γ₂,₂` have at most `766 < 924` roots.
+- Every lattice vector has doubled coordinates of one parity, so `Π^⊥ ∩ Γ = D_{16+d}(−1)` exactly.
+
+Tier L inputs (pinned): Aspinwall ll. 2455–2485, 2551–2559, 2838–2858; GHV ll. 370–386; Huybrechts ll. 12744–12768,
+12906–12910. That the 760/924 roots are pairwise distinct is by construction, not kernel-checked (`Nodup` exceeded
+14 GB). Negative control: five mutations caught. `DualScaleDyons` 99 theorems, total **684**, 0 failing (other nine
+libraries unchanged). `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
