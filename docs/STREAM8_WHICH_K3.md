@@ -201,3 +201,61 @@ enhancement (Aspinwall ll. 2530–2545: enhancement needs `B = 0` along the vani
 `E₈` roots with the split `1 + 56 + 126 + 56 + 1` along a root (ll. 1510–1519), and the crystallographic list
 `n ∈ {1, 2, 3, 4, 6}` (`φ(n) ≤ 2`).
 
+
+## 9. Thought experiments in Einstein's manner (2026-09-19; Tier C unless marked)
+
+The method: take a principle that already worked once, apply it somewhere new, look for the paradox, then resolve
+it. Each experiment is tied to a check.
+
+**G1 — The duality elevator (principle of scale equivalence).** An observer inside a circle cannot tell `R` from
+`α'/R`. The spectrum is identical, and only at `R = √α'` do extra massless states appear. Einstein turned an
+indistinguishability (acceleration vs gravity) into a principle. The analogue here: *only duality invariants are
+physical*. So "which K3?" must be answered by an invariant (a discriminant `D`, a class, an enhanced symmetry
+point), never by coordinates. This rules out selection principles that are not duality-invariant. Trapping at ESPs
+passes the test. *Target (Tier A arithmetic, ADE list Tier L):* the maximum number of roots of a simply-laced root
+system of rank `d` is `2, 6, 12, 24, 40, 72, 126, 240` for `d = 1 … 8`, attained by `A₁, A₂, A₃, D₄, D₅, E₆, E₇, E₈`.
+
+**G2 — Trapping in four dimensions (computed).** Apply E2's principle to the `T⁴` inside a Kummer K3. The ESP with the
+most light states in rank 4 is `D₄`, with 24 roots.
+- *Paradox:* TW's "tetrahedral" Kummer surface over the `D₄` torus has the complex structure of the square one,
+  `T = diag(4,4)`, `D = 16`, the `τ = i` ray (TW ll. 1961–1970). The `T²` of E2, by contrast, sits at `ω`.
+- *Resolution (computation, `tools/gedanken_d4_torus.py`, exact arithmetic, not kernel-checked):* the `D₄` lattice is
+  the Hurwitz order, which contains both `i` and `ω = (−1+i+j+k)/2`, so it carries both complex structures.
+
+| Torus lattice | Complex structure | `T(A)` | Kummer `T = T(A)(2)` | `D` |
+|---|---|---|---|---|
+| `ℤ⁴` | `i` | `diag(2,2)` | `diag(4,4)` (TW (3.3), sanity check) | 16 |
+| `ℤ⁴` | `ω` | `A₂(2)` | `A₂(4)` | 48 |
+| `D₄` | `i` | `diag(2,2)` | `diag(4,4)` (TW, sanity check) | 16 |
+| `D₄` | `ω` | `A₂` | `A₂(2)` | **12** |
+
+- With the `ω` structure, the torus selected by trapping in 4 dimensions has `T(A) = A₂ = T(X₃)`. Its Kummer surface
+  is exactly the E2 ∩ E3 candidate (`D = 12`, `first_kummer_attractive`). The paradox dissolves into agreement, but
+  one choice remains open: trapping does not choose between `i` and `ω` on `D₄` (a hyperkähler rotation).
+  Consistency with the `T²` factor picks `ω`, and that consistency is an assumption.
+- *Caveats:* the ESP carries a `B`-field; orbifold CFT points have `B = ½` and no type II enhancement (Aspinwall
+  ll. 2540–2544); vector-multiplet couplings are blind to the K3 point (Henningson–Moore, §8).
+- *Target (Tier A):* exhibit two integral 2-forms on the Hurwitz lattice, in the span of the Kähler forms `ω_v`,
+  `v ⊥ (1,1,1)`, with Gram `[[2,1],[1,2]]` and spanning a primitive sublattice. This is finite rational arithmetic,
+  suitable for `decide`.
+
+**G3 — The smallest black hole.** Drop dyons of ever smaller charge into K3 × T². The horizon area grows like `√|D|`
+(Moore ll. 1150–1160), and `|D| ≥ 3` for every definite binary form, with equality only for the class `(1,1,1)`
+(`WhichK3.most_attractive`). So the smallest black hole with a horizon forces its near-horizon K3 to be `X₃`, the
+`ω` point again. *Lesson:* like the metric in general relativity, the K3 is local (attractor values vary from black
+hole to black hole). "Which K3?" is relational: the minimal black hole gives a canonical answer for black holes, not
+for the vacuum (E1's limit stands). *Target:* P8.2, explicit charges `(Q, P)` with `Q² = P² = 2`, `Q·P = 1` in
+`Γ^{6,22}`.
+
+**G4 — The twined light clock.** Einstein's light clock measures time in a moving frame. The twined genus `Z_g(τ, z)`
+is a clock carried by an observer who applies a symmetry `g` before counting states. At `z = 0` it reads `χ_g`. E4
+showed that for geometric `g` the reading is Nikulin's fixed-point number. The order-14 clock ticks too, though no
+single K3 carries that symmetry. *Lesson (Mach's principle for K3):* part of the moonshine symmetry belongs to the
+space of K3s (paths in moduli, TW), not to one surface. So a selection principle based on moonshine symmetry alone
+cannot pick a point. *Target:* identify the Kummer surfaces whose symplectic groups generate an order-14 element
+along a path (TW §4).
+
+**Synthesis.** Three independent routes point to `ω`: `T²` trapping (E2), `T⁴` trapping with the `ω` complex
+structure (G2), and the smallest black hole (G3). Three counterweights: the choice of complex structure on `D₄`
+(G2), the blindness of couplings to the K3 point (§8), and moonshine symmetry living on moduli space (G4). No
+observable follows (`N = 4`). Anything that becomes a prediction would be frozen first (paper 11 protocol).
