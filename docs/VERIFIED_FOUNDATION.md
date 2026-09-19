@@ -183,7 +183,22 @@ translations are explicit Golay automorphisms of class `2A`. They fix the octad 
 - Sanity check: the same construction with `u = i` reproduces TW's `diag(4,4)` for `ℤ⁴` and for `D₄`.
 
 Tier L inputs (pinned): GPR ll. 1843–1847, 2510–2514; Aspinwall ll. 474–482, 864–874, 1866–1868. `DualScaleDyons`
-77 theorems, total **662**, 0 failing. `v3.16.1`: two C-B
+77 theorems, total **662**, 0 failing.
+
+**`v3.24.0` (2026-09-19): Stream 8, E4 on the `D = 12` Kummer surface.** `DualScaleDyons/KummerOmegaE4.lean`
+(6 theorems).
+- Right multiplication by the 24 Hurwitz units maps `D₄` onto itself and fixes `ω_I, ω_J, ω_K`. It is therefore
+  symplectic and Kähler for every complex structure on the twistor sphere, the `ω` structure included.
+- An exhaustive search gives all holomorphic isometries of the `D₄` torus fixing `0`: 72 for `u = ω` (24 symplectic,
+  48 of order 3 on `H^{2,0}`) and 96 for `u = i` (24 symplectic, 24 of order 2, 48 of order 4).
+- The 192 elements of `(ℤ₂)⁴ ⋊ A₄` act as distinct automorphisms of `H²(Km A, ℚ)`. Their Frame shapes, from Lefschetz
+  numbers of powers, are `1²⁴, 1⁸2⁸, 1⁶3⁶, 1⁴2²4⁴` (1, 27, 128, 36 elements): classes `1A, 2A, 3A, 4B`, all geometric.
+- Tier L inputs (pinned): Taormina–Wendland Prop. 3.3.4 (ll. 1396–1407) and Prop. 4.2.2 (ll. 1899–1904).
+  `tools/e4_omega_kummer.py` (computation, not kernel) shows that TW's `ℤ₃`-symmetric torus has
+  `T(A) = diag(2, 2)`, so the `D = 12` surface is not one of TW's examples.
+
+Negative control: three mutations caught. `DualScaleDyons` 83 theorems, total **668**, 0 failing (the other nine
+libraries are unchanged since their last audit). `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 

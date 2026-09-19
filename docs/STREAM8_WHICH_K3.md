@@ -1,8 +1,10 @@
 # Stream 8 — Which K3? (convergence, thought experiments, open questions)
 
-**Status (2026-09-19, release `v3.22.0`):** four Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
+**Status (2026-09-19, release `v3.24.0`):** six Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
 `DualScaleDyons/SelfDualT2.lean`, 7 theorems — E2, §5; `DualScaleDyons/KummerE3.lean`, 7 theorems — E3, §6;
-`DualScaleDyons/ForgerE4.lean`, 5 theorems — E4, §7); the rest is a research plan. Thought experiments are **Tier C** and each is tied to a formalizable target.
+`DualScaleDyons/ForgerE4.lean`, 6 theorems — E4, §7; `DualScaleDyons/KummerD4.lean`, 8 theorems — G2, §9;
+`DualScaleDyons/KummerOmegaE4.lean`, 6 theorems — E4 on the `D = 12` surface, §10); the rest is a research plan.
+Thought experiments are **Tier C** and each is tied to a formalizable target.
 
 ## 0. The question, made precise
 
@@ -81,7 +83,7 @@ the twined genera of its elements are among the 26 computed ones.
 | P8.2 | attractor form of explicit charges `(Q, P)` in `Γ_{6,22}`; `N(D)` by enumeration for small `D` | A |
 | P8.3 | Kummer lattice from `𝔽₂⁴`: rank 16, discriminant `2⁶`, the `8 + 16` split of 24 | A — **done** (§6, `KummerE3.lean`) |
 | P8.4 | E2: derive (or refute) a "maximal self-duality" selection principle; freeze any consequence before testing | C → A — **T² part done** (§5); K3 part open (P8.4c) |
-| P8.5 | E4: symmetry groups of the candidate K3s vs the 26 twined genera | L + A — **done for the Kummer structure** (§7); the `τ = ω` Kummer's own group open |
+| P8.5 | E4: symmetry groups of the candidate K3s vs the 26 twined genera | L + A — **done** for the Kummer structure (§7) and for the `τ = ω` Kummer, `T₁₉₂` (§10); its `M₂₄` embedding via TW's `Θ` open |
 
 ## 5. E2 — results (`v3.19.0`, `DualScaleDyons/SelfDualT2.lean`)
 
@@ -182,10 +184,10 @@ fixed point is Taormina–Wendland's overarching group `(ℤ₂)⁴ ⋊ A₇` (T
 - For "which K3?" this weakens E2's selection. The moonshine symmetry does not single out one K3; it lives on paths
   through moduli space.
 
-**Open (E4 on the E2 candidate).** TW's worked examples, the square and tetrahedral Kummer surfaces, have
-`T = diag(4, 4)`, `D = 16`, on the `τ = i` ray (TW (3.3), ll. 1044–1055). The symplectic group of the Kummer surface
-on the `τ = ω` ray (`T = A₂(2)`, `D = 12`) is not in TW. TW remark that their `ℤ₃`-symmetric example needs `M₂₄`
-rather than `M₂₃` (ll. 2735–2742). Determining that group, and its classes, is the next step.
+**E4 on the E2 candidate: done in §10.** TW's worked examples, the square and tetrahedral Kummer surfaces, have
+`T = diag(4, 4)`, `D = 16`, on the `τ = i` ray (TW (3.3), ll. 1044–1055). Their `ℤ₃`-symmetric torus `T(3)` (§5,
+ll. 2716–2742) has `T(A) = diag(2, 2)` as well (`tools/e4_omega_kummer.py`), so the `τ = ω` Kummer surface
+(`T = A₂(2)`, `D = 12`) is not among TW's examples. §10 determines its group.
 
 ## 8. A constraint from Henningson–Moore (hep-th/9608145, Tier L)
 
@@ -265,5 +267,61 @@ along a path (TW §4).
 
 **Synthesis.** Three independent routes point to `ω`: `T²` trapping (E2), `T⁴` trapping with the `ω` complex
 structure (G2), and the smallest black hole (G3). Three counterweights: the choice of complex structure on `D₄`
-(G2), the blindness of couplings to the K3 point (§8), and moonshine symmetry living on moduli space (G4). No
-observable follows (`N = 4`). Anything that becomes a prediction would be frozen first (paper 11 protocol).
+(G2), which symplectic symmetry does not break and non-symplectic symmetry breaks towards `i` (§10); the blindness
+of couplings to the K3 point (§8); and moonshine symmetry living on moduli space (G4, §10). No observable follows
+(`N = 4`). Anything that becomes a prediction would be frozen first (paper 11 protocol).
+
+## 10. E4 on the `D = 12` Kummer surface (`v3.24.0`, `DualScaleDyons/KummerOmegaE4.lean`)
+
+**The question.** G2 realised the E2 ∩ E3 candidate (`T = A₂(2)`, `D = 12`) as the Kummer surface of the `D₄` torus
+with the complex structure `u = (i+j+k)/√3`. What is its symmetry group, and does it pass the forger's test?
+
+**The group (Tier A + Tier L).**
+- `right_units_fix_sigma`: right multiplication by each of the 24 Hurwitz units (`units_complete`) maps `D₄` onto
+  itself and fixes the three Kähler forms `ω_I, ω_J, ω_K`, hence the whole positive 3-plane `Σ`, including
+  `T(A) = ℤt₁ ⊕ ℤt₂`. So it is holomorphic, symplectic and Kähler for **every** complex structure on the twistor
+  sphere, `u = i` and `u = ω` alike. That these 24 exist at `ω` is forced by construction.
+- `holomorphic_isometries` makes the result exact. An exhaustive search over all `ℂ_u`-linear lattice isometries
+  (576 candidates, via a `ℤ[w]`-basis of `D₄`) finds:
+
+| Complex structure | Holomorphic isometries fixing 0 | Symplectic | Order on `H^{2,0}` |
+|---|---|---|---|
+| `u = i` (TW tetrahedral, `D = 16`) | 96 | 24 | 1 (24), 2 (24), 4 (48) |
+| `u = ω` (E2 ∩ E3, `D = 12`) | 72 | 24 | 1 (24), 3 (48) |
+
+  The symplectic part is exactly the binary tetrahedral group (order 24, Fujiki's maximum; TW Prop. 4.2.2,
+  ll. 1899–1904). By TW Prop. 3.3.4 (ll. 1396–1407), the Kummer surface with the induced Kähler class has
+  `G = (ℤ₂)⁴ ⋊ A₄ = T₁₉₂`, the same abstract group as TW's tetrahedral Kummer surface.
+
+**The forger's test (Tier A, `kummer_group_frames`).** The 192 elements `x ↦ x b + t/2` act on
+`H²(Km A, ℚ) = π_*H²(A) ⊕ ℚ¹⁶` as 192 distinct automorphisms. Their Frame shapes are read off from the Lefschetz
+numbers of their powers (Möbius inversion):
+
+| Frame shape | `1²⁴` | `1⁸2⁸` | `1⁶3⁶` | `1⁴2²4⁴` |
+|---|---|---|---|---|
+| Class | 1A | 2A | 3A | 4B |
+| Elements | 1 | 27 | 128 | 36 |
+
+All four are among Mukai's geometric classes (`ForgerE4.mukai_classes`), and their fixed points `24, 8, 6, 4` are
+Nikulin's numbers. The surface passes the forger's test. The Frame shapes are distinct from one another and
+outside the five `A/B` pairs, so they fix the classes (`frame_classes_up_to_pairs`). Negative control: three
+mutations were each caught (left instead of right multiplication, a wrong holomorphic count, and dropping the
+translation part).
+
+**Reading (Tier C).**
+- *The group does not select the point.* `T₁₉₂` acts in the same way on `H*` for every complex structure on the
+  `D₄` twistor sphere. Symplectic symmetry therefore does not choose between the `i` Kummer (`D = 16`) and the `ω`
+  Kummer (`D = 12`), so G2's open choice stays open. This is G4's lesson again: the symmetry belongs to a family
+  (here the twistor line), not to a point.
+- *Non-symplectic symmetry points the other way.* At `u = i` the torus has an automorphism acting on `H^{2,0}` with
+  order 4. At `u = ω` the largest order is 3. A "maximal symmetry" principle would pick `i`, not `ω`. This is a
+  counterweight to the synthesis of §9, recorded as found.
+- *What trapping selects.* `D₄` enters through the Narain metric (24 light vectors), not through the complex
+  geometry. For attractive abelian surfaces `T(A)` fixes `A` up to isomorphism (Shioda–Mitani, standard; not
+  pinned here), so the `ω` torus is the product of two copies of `E_ω`. "`D₄`" carries the weight of the enhanced
+  symmetry point, not of a new complex torus. This mildly weakens G2.
+
+**Not settled.** (i) The realisation of this `T₁₉₂` inside `M₂₄` through TW's map `Θ` (TW realise `T₁₉₂` only at
+`D = 16`; at `ℤ₃`-symmetric points they expect `M₂₄` rather than `M₂₃`, ll. 2735–2742). (ii) Symmetries that do not
+preserve the induced Kähler class (the full automorphism group is infinite, TW footnote 13). (iii) Observables:
+none (`N = 4`).

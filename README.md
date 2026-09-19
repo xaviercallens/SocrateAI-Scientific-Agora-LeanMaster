@@ -40,7 +40,7 @@ literature (Tier L) versus this project's own conjectures (Tier C, not yet deriv
 
 Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
 invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
-every theorem and lemma (**662 audited theorems across the ten first-party libraries** depend on
+every theorem and lemma (**668 audited theorems across the ten first-party libraries** depend on
 nothing beyond the three standard Lean axioms — see §10 and
 [`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md), which is the authoritative,
 gate-by-gate status document that this README summarizes).
@@ -170,7 +170,7 @@ continuous parameter survives.
 | **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
 | **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
 | **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
-| **Kernel Verification** | None (paper only) | 662/662 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
+| **Kernel Verification** | None (paper only) | 668/668 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
 
 The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
 (Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
@@ -476,7 +476,7 @@ bare keyword — and it also catches `native_decide` (`Lean.ofReduceBool`), whic
 ```bash
 lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 ```
-Last full run (2026-09-19, all ten libraries re-audited after v3.22.0), **662 theorems audited across all ten libraries, 0 failing**:
+Last full run (2026-09-19, all ten libraries re-audited after v3.22.0; `DualScaleDyons` re-audited after v3.24.0, the other nine unchanged since), **668 theorems audited across all ten libraries, 0 failing**:
 
 | Library | Theorems audited | Failing |
 |---|:---:|:---:|
@@ -489,8 +489,8 @@ Last full run (2026-09-19, all ten libraries re-audited after v3.22.0), **662 th
 | `DualScaleValidation` | 23 | 0 |
 | `DualScaleCosmology` (Stream 3, with the verdicts of Streams 6–7) | 50 | 0 |
 | `DualScaleMoonshine` (Stream 4) | 101 | 0 |
-| `DualScaleDyons` (Streams 5, 8) | 77 | 0 |
-| **Total** | **662** | **0** |
+| `DualScaleDyons` (Streams 5, 8) | 83 | 0 |
+| **Total** | **668** | **0** |
 
 "0 failing" means every theorem depends on nothing beyond `propext`, `Classical.choice` and
 `Quot.sound`.
