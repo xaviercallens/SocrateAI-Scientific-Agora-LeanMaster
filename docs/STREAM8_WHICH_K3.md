@@ -1,9 +1,10 @@
 # Stream 8 — Which K3? (convergence, thought experiments, open questions)
 
-**Status (2026-09-19, release `v3.24.0`):** six Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
+**Status (2026-09-19, release `v3.25.0`):** seven Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
 `DualScaleDyons/SelfDualT2.lean`, 7 theorems — E2, §5; `DualScaleDyons/KummerE3.lean`, 7 theorems — E3, §6;
 `DualScaleDyons/ForgerE4.lean`, 6 theorems — E4, §7; `DualScaleDyons/KummerD4.lean`, 8 theorems — G2, §9;
-`DualScaleDyons/KummerOmegaE4.lean`, 6 theorems — E4 on the `D = 12` surface, §10); the rest is a research plan.
+`DualScaleDyons/KummerOmegaE4.lean`, 6 theorems — E4 on the `D = 12` surface, §10;
+`DualScaleDyons/AttractorCharges.lean`, 7 theorems — P8.2 and G3, §11); the rest is a research plan.
 Thought experiments are **Tier C** and each is tied to a formalizable target.
 
 ## 0. The question, made precise
@@ -80,7 +81,7 @@ the twined genera of its elements are among the 26 computed ones.
 | Phase | Content | Tier |
 |---|---|---|
 | P8.1 | convergence and `N` vs `H` relation, Kummer criterion, Fermat quartic | A — **done** (`WhichK3.lean`) |
-| P8.2 | attractor form of explicit charges `(Q, P)` in `Γ_{6,22}`; `N(D)` by enumeration for small `D` | A |
+| P8.2 | attractor form of explicit charges `(Q, P)` in `Γ_{6,22}`; `N(D)` by enumeration for small `D` | A — **done** (§11, `AttractorCharges.lean`) |
 | P8.3 | Kummer lattice from `𝔽₂⁴`: rank 16, discriminant `2⁶`, the `8 + 16` split of 24 | A — **done** (§6, `KummerE3.lean`) |
 | P8.4 | E2: derive (or refute) a "maximal self-duality" selection principle; freeze any consequence before testing | C → A — **T² part done** (§5); K3 part open (P8.4c) |
 | P8.5 | E4: symmetry groups of the candidate K3s vs the 26 twined genera | L + A — **done** for the Kummer structure (§7) and for the `τ = ω` Kummer, `T₁₉₂` (§10); its `M₂₄` embedding via TW's `Θ` open |
@@ -254,8 +255,8 @@ most light states in rank 4 is `D₄`, with 24 roots.
 (`WhichK3.most_attractive`). So the smallest black hole with a horizon forces its near-horizon K3 to be `X₃`, the
 `ω` point again. *Lesson:* like the metric in general relativity, the K3 is local (attractor values vary from black
 hole to black hole). "Which K3?" is relational: the minimal black hole gives a canonical answer for black holes, not
-for the vacuum (E1's limit stands). *Target:* P8.2, explicit charges `(Q, P)` with `Q² = P² = 2`, `Q·P = 1` in
-`Γ^{6,22}`.
+for the vacuum (E1's limit stands). **Done (P8.2, §11):** the charges are explicit, the attractor also puts the `T²`
+at `τ = ω`, and this black hole carries 25353 single-centred states.
 
 **G4 — The twined light clock.** Einstein's light clock measures time in a moving frame. The twined genus `Z_g(τ, z)`
 is a clock carried by an observer who applies a symmetry `g` before counting states. At `z = 0` it reads `χ_g`. E4
@@ -319,7 +320,7 @@ translation part).
   counterweight to the synthesis of §9, recorded as found.
 - *What trapping selects: the polarization.* `D₄` enters through the Narain metric (24 light vectors), i.e. through
   the Kähler class, not the complex structure. For attractive abelian surfaces `T(A)` fixes `A` up to isomorphism
-  (Shioda–Mitani, standard; not pinned here), so the `ω` torus is `E_ω × E_ω` whichever lattice one starts from.
+  (Shioda–Mitani, via Moore ll. 1503–1507), so the `ω` torus is `E_ω × E_ω` whichever lattice one starts from.
   The polarization is what carries the symmetry: TW's `X₀` (square torus) and `X_{D₄}` have the **same** complex
   structure (TW ll. 1966–1970) but symmetry groups `T₆₄` and `T₁₉₂` (TW l. 114). Trapping acts on exactly this
   datum, so G2 is not weakened; its lever is the Kähler class, not the complex torus.
@@ -328,3 +329,46 @@ translation part).
 `D = 16`; at `ℤ₃`-symmetric points they expect `M₂₄` rather than `M₂₃`, ll. 2735–2742). (ii) Symmetries that do not
 preserve the induced Kähler class (the full automorphism group is infinite, TW footnote 13). (iii) Observables:
 none (`N = 4`).
+
+## 11. P8.2 — explicit charges and the smallest black hole (`v3.25.0`, `DualScaleDyons/AttractorCharges.lean`)
+
+**Charges to forms (Tier A + Tier L).** Moore (3.4)–(3.5) (ll. 1104–1116) attaches to a charge pair `(p, q)` the form
+`Q_{p,q}` with `D = (p·q)² − p²q²`. For primitive `L_{p,q}`, U-duality classes are `SL(2, ℤ)` classes of forms
+((3.11), l. 1189, via Nikulin), and `N(D) = Σ_m h(D/m²)` counts all form classes ((3.18), ll. 1254–1257).
+- `every_form_is_charged`: for **every** `(a, b, c)`, the charges `p = e₁ + a f₁`, `q = e₂ + b f₁ + c f₂` in
+  `U ⊕ U ⊂ H²(K3, ℤ)` have Gram `[[2a, b], [b, 2c]]` and span a primitive sublattice. This proves Moore's claim that
+  every form, imprimitive ones included, is realised.
+- `charge_classes_small`: an independent enumeration (all pairs in `{−1, 0, 1}⁴`, primitive, positive definite,
+  Gauss-reduced) returns only reduced forms of the right discriminant, all of them for `D = 3, 4, 7`, and the
+  minimum `|D|` is 3. `tools/p82_charge_enumeration.py` (box `[−2, 2]⁴`, not kernel) finds all classes for
+  `D = 3, 4, 7, 8, 11, 12, 15, 16, 20, 23, 24` and no wrong one. `D = 19` is not reached in that box.
+
+**The smallest black hole (Tier A).**
+- `discriminant_gap`: a positive definite form has `4ac − b² ≥ 3`, and `3` needs odd `b`.
+- `smallest_black_hole`: `p² = q² = 2`, `p·q = 1`, `T_S = A₂ = T(X₃)`, `D = −3`, class `(1, 1, 1)`.
+- `attractor_tau`: for every charge with `D < 0`, `τ(p, q) = (p·q + i√−D)/p²` solves Moore (4.5) (l. 1370) with
+  `Im τ > 0`. `tau_minimal`: for the smallest black hole `τ = (1 + i√3)/2 = ω + 1`, so `E_τ ≅ E_ω`; for `D = −4`,
+  `τ = i`.
+- `smallest_black_hole_index`: from Stream 5's `∆ψ₁^F = 3E₄A − 648H` and `1/η²⁴`, the coefficient of `ψ₁^F` at
+  `(n, ℓ, m) = (1, 1, 1)` is **25353**, and at `(1, 0, 1)` (`D = −4`) it is **−50064**. DMZ read these coefficients
+  as single-centred counts ((1.6), ll. 426–443). Sign conventions for degeneracies are not asserted, and the values
+  are not compared with a printed table here.
+
+**The chain (Tier L links, Tier A pieces).** The smallest black hole has attractor variety `X₃ × E_ω`
+(Moore (4.27), l. 1585). `X₃` is the Shioda–Inose double cover of `Km(E_ω × E_{ω+1}) = Km(E_ω × E_ω)`
+((4.15), (4.29)). By Shioda–Mitani (Moore ll. 1503–1507), `E_ω × E_ω` is the `D₄` torus with the `ω` structure
+(`T(A) = A₂`, `KummerD4`). So its Kummer surface is the `D = 12` surface of §10. G3's minimal black hole, G2's
+trapped torus, E2's `T²` and §10's `T₁₉₂` surface are one geometry.
+
+**Reading (Tier C).**
+- *For black holes, the tie is broken.* The smallest horizon selects `ω` for both the K3 (`X₃`) and the `T²`
+  complex structure; `i` comes next (`D = −4`). This is the tie-breaker that G2 and §10 lacked. It holds only
+  near a horizon.
+- *Not for the vacuum.* The attractor fixes the near-horizon moduli of one black hole. It leaves the asymptotic
+  moduli free, and even at the horizon it leaves 88 directions free (Moore (4.3), ll. 1351–1353), including the
+  `T²` Kähler modulus that E2's trapping fixes at `ρ = ω`. E1's limit stands.
+- *The self-dual point is where the counts differ.* `D = 3` is exactly where `N(D)` and `12H(D)` disagree
+  (`moore_vs_hurwitz`). The `−648 H(3) = −216` part of `C(3) = 528` is the `1/3` weight of the `ω` point.
+- Observables: none (`N = 4`). Negative control: three mutations caught (a wrong index value, no `SL(2, ℤ)`
+  reduction, a wrong sign in the pairing).
+

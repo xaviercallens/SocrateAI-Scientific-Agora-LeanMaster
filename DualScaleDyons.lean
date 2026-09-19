@@ -13,3 +13,4 @@ import DualScaleDyons.KummerE3
 import DualScaleDyons.ForgerE4
 import DualScaleDyons.KummerD4
 import DualScaleDyons.KummerOmegaE4
+import DualScaleDyons.AttractorCharges
