@@ -162,7 +162,7 @@ reproduces Nikulin's numbers 8, 6, 4, 4, 2, 3, 2 (`nikulin_from_moonshine`). The
 geometry of K3 symmetries.
 
 **The symmetries of the E3 structure (Tier A + computation).** The stabilizer, inside `M₂₃`, of an octad through the
-fixed point is Taormina–Wendland's overarching group `(ℤ₂)⁴ ⋊ A₇` (TW ll. 2084–2090, 2491–2507).
+fixed point is Taormina–Wendland's overarching group `(ℤ₂)⁴ ⋊ A₇` (TW ll. 2084–2090, 2491–2507). Ours is conjugate to theirs in `M₂₄`, because `M₂₄ = Aut(Golay)` is 5-transitive (Huybrechts ll. 14623–14633) and hence transitive on (octad, point) pairs. Conjugate groups have the same classes. A Frame shape fixes the class except within the five pairs `7A/B, 14A/B, 15A/B, 21A/B, 23A/B` (`frame_classes_up_to_pairs`).
 - The half-period translations are explicit Golay automorphisms of class `2A` (`kummer_translations`). They fix the
   octad pointwise, act as `x ↦ x + eᵢ` on `𝔽₂⁴`, and have 8 fixed points, as a Nikulin involution must.
 - `tw_generators` gives two more generators. `tools/e4_octad_census.py` computes the group's order, 40320, and its

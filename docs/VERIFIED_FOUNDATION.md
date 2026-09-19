@@ -169,7 +169,7 @@ translations are explicit Golay automorphisms of class `2A`. They fix the octad 
 `𝔽₂⁴`. An explicit element of order 14 in the stabilizer of an octad and one of its points (Taormina–Wendland's
 `(ℤ₂)⁴⋊A₇`) has only four orbits: by Mukai's theorem it is not a symmetry of any single K3. Group orders (322560,
 40320) and the class census come from `tools/e4_octad_census.py`, a computation that is not kernel-checked.
-`DualScaleDyons` 68 theorems, 0 failing. Total audited: **653**. `v3.16.1`: two C-B
+`DualScaleDyons` 68 theorems, 0 failing. Total audited: **653**. `v3.22.1`: `frame_classes_up_to_pairs` (the 26 Frame shapes take 21 values; the coincidences are exactly the five A/B pairs); `M₂₄ = Aut(Golay)` and the conjugacy with TW's group pinned (Huybrechts ll. 14623–14633, TW l. 2500). All ten libraries re-audited: `DualScaleDyons` 69, total **654**, 0 failing. `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 

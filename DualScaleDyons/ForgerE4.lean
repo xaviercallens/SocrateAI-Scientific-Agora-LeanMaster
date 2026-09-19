@@ -17,6 +17,12 @@ as genuine elements of `M₂₄`, and do their twined genera match what K3 geome
   points. It contains the symplectic automorphism group of every Kummer surface with induced Kähler class
   (Thm. 4.4.1).
 * CDH Table 14 (via `TwinedHilbert.frameShape`): the Frame shapes of the 26 classes of `M₂₄`.
+* Huybrechts ll. 14623–14633: the extended Golay code `W ⊂ 𝔽₂²⁴` (dimension 12, minimum weight 8) is unique up to
+  coordinate permutation, `M₂₄ := {σ ∈ S₂₄ | σ(W) = W}`, and `M₂₄` is 5-transitive. So a permutation preserving
+  `KummerE3.golay` (dimension 12, minimum weight 8 by `golay_code`) is an element of `M₂₄` in these coordinates.
+  By 5-transitivity every 5-set lies in a unique octad and `M₂₄` is transitive on pairs (octad, point of it), so the
+  stabilizer of our (octad, position 0) is conjugate in `M₂₄` to TW's group (TW l. 2500). Conjugate groups have the
+  same class census.
 
 ### What is proved (Tier A)
 * `mukai_classes`: among the 26 classes, those with a fixed point (i.e. in `M₂₃`) whose cyclic group has at least
@@ -33,6 +39,9 @@ as genuine elements of `M₂₄`, and do their twined genera match what K3 geome
 * `tw_generators`: two further Golay automorphisms that fix position 0 and the octad setwise. Together with the
   translations they generate the octad-and-point stabilizer; that the generated group has order 40320 is a
   computation (`tools/e4_octad_census.py`), not a kernel check.
+* `frame_classes_up_to_pairs`: the 26 Frame shapes take 21 values; the only coincidences are the five pairs
+  `7A/7B`, `14A/14B`, `15A/15B`, `21A/21B`, `23A/23B`. A Frame shape therefore fixes the class except within
+  these pairs, which is exactly how far the census below can go.
 * `order14_not_geometric`: a Golay automorphism fixing position 0 and the octad has Frame shape `1·2·7·14`
   (class `14A` or `14B`), hence only four orbits. By Mukai's theorem no K3 surface has it as a symplectic
   automorphism, although its twined genus is one of the 26 computed.
@@ -87,6 +96,15 @@ theorem nikulin_from_moonshine :
       ((List.range 26).filter geometric).map (fun j => chiShadow.getD j 0) = [24, 8, 6, 4, 4, 2, 3, 3, 2] ∧
       (List.range 26).all (fun j => (zTw j 4).map LP.eval1 == [chiShadow.getD j 0, 0, 0, 0, 0]) = true :=
   ⟨by decide +kernel, by decide +kernel, twined_genus_z0⟩
+
+/-- **What a Frame shape determines.** 21 distinct shapes; the repeated ones are exactly the five `A/B` pairs. -/
+theorem frame_classes_up_to_pairs :
+    frameShape.dedup.length = 21 ∧
+      (List.range 26).filter (fun j => 2 ≤ (frameShape.filter (· == frameShape.getD j [])).length) =
+        [11, 12, 18, 19, 20, 21, 22, 23, 24, 25] ∧
+      [(11, 12), (18, 19), (20, 21), (22, 23), (24, 25)].all (fun ab =>
+        frameShape.getD ab.1 [] == frameShape.getD ab.2 []) = true := by
+  decide +kernel
 
 /-! ### Explicit Golay automorphisms (permutations of the 24 positions of `KummerE3.golay`) -/
 
