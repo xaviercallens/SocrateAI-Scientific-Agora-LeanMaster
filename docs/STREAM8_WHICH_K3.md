@@ -1,8 +1,8 @@
 # Stream 8 — Which K3? (convergence, thought experiments, open questions)
 
-**Status (2026-09-18, release `v3.20.0`):** three Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
-`DualScaleDyons/SelfDualT2.lean`, 7 theorems — E2, §5; `DualScaleDyons/KummerE3.lean`, 7 theorems — E3, §6); the rest
-is a research plan. Thought experiments are **Tier C** and each is tied to a formalizable target.
+**Status (2026-09-19, release `v3.22.0`):** four Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
+`DualScaleDyons/SelfDualT2.lean`, 7 theorems — E2, §5; `DualScaleDyons/KummerE3.lean`, 7 theorems — E3, §6;
+`DualScaleDyons/ForgerE4.lean`, 5 theorems — E4, §7); the rest is a research plan. Thought experiments are **Tier C** and each is tied to a formalizable target.
 
 ## 0. The question, made precise
 
@@ -81,7 +81,7 @@ the twined genera of its elements are among the 26 computed ones.
 | P8.2 | attractor form of explicit charges `(Q, P)` in `Γ_{6,22}`; `N(D)` by enumeration for small `D` | A |
 | P8.3 | Kummer lattice from `𝔽₂⁴`: rank 16, discriminant `2⁶`, the `8 + 16` split of 24 | A — **done** (§6, `KummerE3.lean`) |
 | P8.4 | E2: derive (or refute) a "maximal self-duality" selection principle; freeze any consequence before testing | C → A — **T² part done** (§5); K3 part open (P8.4c) |
-| P8.5 | E4: symmetry groups of the candidate K3s vs the 26 twined genera | L + A |
+| P8.5 | E4: symmetry groups of the candidate K3s vs the 26 twined genera | L + A — **done for the Kummer structure** (§7); the `τ = ω` Kummer's own group open |
 
 ## 5. E2 — results (`v3.19.0`, `DualScaleDyons/SelfDualT2.lean`)
 
@@ -150,3 +150,39 @@ macro/micro split of the dual-scale picture is the one `M₂₄` itself singles 
 of moduli space beyond E2 — E3 is structural, not dynamical. (iii) Observables: none (`N = 4`, non-chiral). Next:
 P8.5 (E4) — check that the elements of `(ℤ₂)⁴ ⋊ A₇` have twined genera among the 26 computed in Stream 4 (their `M₂₄`
 classes are in TW), and P8.4c (maximal enhancement of the K3 factor).
+
+## 7. E4 — results (`v3.22.0`, `DualScaleDyons/ForgerE4.lean`)
+
+**The geometric classes, from the moonshine side (Tier A + Tier L).** A symplectic automorphism of order `n` of a
+K3 has `24/(n∏_{p|n}(1+1/p))` fixed points and `n ≤ 8` (Huybrechts Cor. 15.1.5, 15.1.8, ll. 14030–14135). A finite
+group acts symplectically on some K3 iff it embeds in `M₂₃` with at least five orbits on 24 points (Mukai, Thm.
+15.3.1, ll. 14545–14556). Read on the 26 Frame shapes (`mukai_classes`), the criterion picks out exactly `1A, 2A,
+3A, 4B, 5A, 6A, 7A, 7B, 8A`. On these, `χ_g = Z_g(τ, 0)` from Stream 4's twined genera (`twined_genus_z0`)
+reproduces Nikulin's numbers 8, 6, 4, 4, 2, 3, 2 (`nikulin_from_moonshine`). The moonshine data know the fixed-point
+geometry of K3 symmetries.
+
+**The symmetries of the E3 structure (Tier A + computation).** The stabilizer, inside `M₂₃`, of an octad through the
+fixed point is Taormina–Wendland's overarching group `(ℤ₂)⁴ ⋊ A₇` (TW ll. 2084–2090, 2491–2507).
+- The half-period translations are explicit Golay automorphisms of class `2A` (`kummer_translations`). They fix the
+  octad pointwise, act as `x ↦ x + eᵢ` on `𝔽₂⁴`, and have 8 fixed points, as a Nikulin involution must.
+- `tw_generators` gives two more generators. `tools/e4_octad_census.py` computes the group's order, 40320, and its
+  classes:
+  - 34560 elements in Mukai's classes.
+  - 5760 elements of order 14 (`1·2·7·14`, four orbits).
+- `order14_not_geometric` exhibits one of these order-14 elements explicitly. By Mukai, no single K3 has it as a
+  symplectic automorphism, although its twined genus is one of the 26 (`14A` or `14B`; the Frame shape does not
+  decide which).
+
+**Reading (Tier C).**
+- The Kummer symmetries pass the forger's test that the 27720 lock failed. Every element is a genuine `M₂₄` element
+  with a computed twined genus, and on the geometric classes the genus gives the right fixed points.
+- The group is larger than any single K3 allows. Its order-14 elements act on the family of Kummer surfaces, not on
+  one surface, in line with TW's reading that `M₂₄` symmetry is a symmetry of the moduli space rather than of a point
+  in it.
+- For "which K3?" this weakens E2's selection. The moonshine symmetry does not single out one K3; it lives on paths
+  through moduli space.
+
+**Open (E4 on the E2 candidate).** TW's worked examples, the square and tetrahedral Kummer surfaces, have
+`T = diag(4, 4)`, `D = 16`, on the `τ = i` ray (TW (3.3), ll. 1044–1055). The symplectic group of the Kummer surface
+on the `τ = ω` ray (`T = A₂(2)`, `D = 12`) is not in TW. TW remark that their `ℤ₃`-symmetric example needs `M₂₄`
+rather than `M₂₃` (ll. 2735–2742). Determining that group, and its classes, is the next step.

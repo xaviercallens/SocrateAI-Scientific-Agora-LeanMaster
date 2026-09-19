@@ -112,7 +112,10 @@ theorem k3t2_euler_zero :
   <;> rfl
 
 /-- DRS tadpole budget `½∫G∧G + n = 24` with non-negative flux contribution: at most 24
-    D3-branes, and exactly 24 when there is no flux (the unfluxed 24-brane case, line 1275). -/
+    D3-branes, and exactly 24 when there is no flux (the unfluxed 24-brane case, line 1275). The same
+    budget in the type IIB orientifold `K3 × T²/ℤ₂` is Tripathy–Trivedi eq. (2.3), `½ N_flux + N_D3 = 24`
+    (`papers/foundations/hep-th_0301139.txt`, l. 171), with `flux := ½ N_flux`; the 24 is the D3 charge
+    induced on the 4 O7-planes and 16 D7-branes (`TadpoleCancellation.induced_d3_charge_matches_target`). -/
 theorem tadpole_budget (flux n : ℕ) (h : flux + n = 24) : n ≤ 24 ∧ (flux = 0 → n = 24) := by
   refine' ⟨by omega, _⟩
   intro h₀

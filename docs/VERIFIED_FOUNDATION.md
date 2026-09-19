@@ -159,7 +159,17 @@ files are now in the statement lock (they were not before). `StringTheoryFoundat
 `DualScaleM24Formalization` 62, total audited **648**, 0 failing. Book chapters 25 and 36 and paper 3 (wording
 only) updated. `tools/check_book_lean_names.py` had a second latent gap: it accepted names from the stale
 dependency dump even after they were removed from the sources; a negative control now shows removed names are
-caught. `v3.16.1`: two C-B
+caught.
+
+**`v3.22.0` (2026-09-19): Stream 8 E4, the forger's test for the Kummer symmetries.** `DualScaleDyons/ForgerE4.lean`
+(5 theorems). Among the 26 Frame shapes (CDH Table 14), the classes with a fixed point and at least five cycles are
+exactly Mukai's `1A, 2A, 3A, 4B, 5A, 6A, 7A, 7B, 8A`, all of order `≤ 8`. On them the twined genus at `z = 0` equals
+Nikulin's fixed-point number `24/(n∏(1+1/p))` (Huybrechts Cor. 15.1.5): 8, 6, 4, 4, 2, 3, 2. The four half-period
+translations are explicit Golay automorphisms of class `2A`. They fix the octad pointwise and act as `x ↦ x + eᵢ` on
+`𝔽₂⁴`. An explicit element of order 14 in the stabilizer of an octad and one of its points (Taormina–Wendland's
+`(ℤ₂)⁴⋊A₇`) has only four orbits: by Mukai's theorem it is not a symmetry of any single K3. Group orders (322560,
+40320) and the class census come from `tools/e4_octad_census.py`, a computation that is not kernel-checked.
+`DualScaleDyons` 68 theorems, 0 failing. Total audited: **653**. `v3.16.1`: two C-B
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
