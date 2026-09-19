@@ -18,3 +18,5 @@ import DualScaleDyons.K3Enhancement
 import DualScaleDyons.K3EnhancementSO40
 import DualScaleDyons.K3EnhancementSO44
 import DualScaleDyons.FormAutomorphs
+import DualScaleDyons.TrappingObstruction
+import DualScaleDyons.GTVWPoint

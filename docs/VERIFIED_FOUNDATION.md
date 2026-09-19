@@ -246,6 +246,34 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0a. `v3.29.0` (2026-09-19): Stream 8 §14 (GTVW) and the IR/UV obstruction, on Lean v4.34.0-rc2
+
+`DualScaleDyons/GTVWPoint.lean` (5 theorems) and `DualScaleDyons/TrappingObstruction.lean` (4 theorems), the first
+modules added after the toolchain migration.
+
+**G5, the maximal-symmetry principle (§14 of `docs/STREAM8_WHICH_K3.md`).** GTVW's K3 sigma model has the maximal
+symmetry group `ℤ₂⁸ : M₂₀` and is the `ℤ₂` orbifold of the `D₄`-torus model at its `so(8)₁` point (1309.4127,
+pinned).
+- `gtvw_so8_point`: with GTVW's `B`-field each of the 24 roots gives a charge `(m, l) = ((B+1)l, l) ∈ L* ⊕ L`;
+  with `B = 0` the condition fails, so the `B`-field is what produces the enhancement.
+- `gtvw_B_is_I`: that `B`-field is left multiplication by `i`, i.e. the Kähler form `ω_I`.
+- `gtvw_complex_structures`: on the same torus `u = i` gives `T(A) = diag(2,2)` (tetrahedral Kummer, `D = 16`) and
+  `u = (i+j+k)/√3` gives `T(A) = A₂` (`D = 12`); both primitive.
+- `gtvw_B_type`: `B` is of type `(1,1)` only for `u = i` (explicit non-zero pairings ±4 for the four `ω` axes).
+- `gtvw_group_orders`: `2⁸ · 960 = 245760`, GHV's other cases 500 / 29160 / ≤ 1944, `2¹⁴ ∤ |M₂₄|`, `c = 6`.
+
+**The IR/UV obstruction, corrected.** A proposed "no-go" (the `SO(44)` root lattice admits no orthogonal
+decomposition preserving `(3,19) ⊕ (2,2)` with `T(A) = A₂`) is false as phrased:
+- `uv_charges_in_so44_plane`, `a2_saturated_in_D6`, `a1a1_saturated_in_D6`: both smallest-black-hole charge
+  lattices — `A₂` (`D = −3`) and `A₁ ⊕ A₁` (`D = −4`) — embed **primitively** in `D₆`, the positive-plane lattice of
+  the `SO(44)` point.
+- `obstruction_is_quantitative`: the true statement is `766 < 924` — a factorised `K3 × T²` point is not the
+  trapping maximum.
+
+Gates on `v4.34.0-rc2`: build OK; `sorry`/`admit`/`native_decide` grep empty; axiom audit `DualScaleDyons` 115,
+total **702**, 0 failing; statement lock additions only; negative control: four mutations caught (a wrong `B`-field
+entry, a wrong `A₂` Gram value, a wrong charge vector, a wrong root count).
+
 ## 0b. Toolchain migration to `v4.34.0-rc2` (2026-09-19, branch `toolchain/v4.34.0-rc2`)
 
 Moved from `leanprover/lean4:v4.33.1` + Mathlib tag `v4.33.1` (`0df444a3…`) to

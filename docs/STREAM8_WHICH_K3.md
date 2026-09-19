@@ -1,12 +1,14 @@
 # Stream 8 — Which K3? (convergence, thought experiments, open questions)
 
-**Status (2026-09-19, release `v3.27.0`):** nine Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
+**Status (2026-09-19, release `v3.29.0`, Lean v4.34.0-rc2):** eleven Tier A files (`DualScaleDyons/WhichK3.lean`, 5 theorems;
 `DualScaleDyons/SelfDualT2.lean`, 7 theorems — E2, §5; `DualScaleDyons/KummerE3.lean`, 7 theorems — E3, §6;
 `DualScaleDyons/ForgerE4.lean`, 6 theorems — E4, §7; `DualScaleDyons/KummerD4.lean`, 8 theorems — G2, §9;
 `DualScaleDyons/KummerOmegaE4.lean`, 6 theorems — E4 on the `D = 12` surface, §10;
 `DualScaleDyons/AttractorCharges.lean`, 7 theorems — P8.2 and G3, §11; `DualScaleDyons/K3Enhancement.lean` with
 `K3EnhancementSO40.lean` and `K3EnhancementSO44.lean`, 9 theorems — P8.4c, §12; `DualScaleDyons/FormAutomorphs.lean`,
-7 theorems — open question 2, §13); the rest is a research plan.
+7 theorems — open question 2, §13; `DualScaleDyons/GTVWPoint.lean`, 5 theorems — G5, §14;
+`DualScaleDyons/TrappingObstruction.lean`, 4 theorems — the IR/UV obstruction corrected, §14); the rest is a
+research plan.
 Thought experiments are **Tier C** and each is tied to a formalizable target.
 
 ## 0. The question, made precise
@@ -456,4 +458,66 @@ and is not formalized.
 
 **Scope.** Checked for `D ≤ 100` (the completeness bound is general; the table is finite). Negative control: two
 mutations caught (dropping the cross-term condition, a wrong order at `a(1, 1, 1)`).
+
+## 14. G5 — the maximal-symmetry principle: the GTVW model (`v3.29.0`, `DualScaleDyons/GTVWPoint.lean`)
+
+**The thought experiment.** Trapping (§12) chose singular points, where the sigma model is not defined. Ask
+instead for the most symmetric *non-singular* K3 model, the vacuum a "symmetry-maximising" universe would pick.
+
+**The literature (Tier L).**
+- GHV list the possible symmetry groups of non-singular K3 models (1106.4315 ll. 144–159). GTVW (1309.4127,
+  abstract, ll. 138–149, 1509–1514) realise the group `ℤ₂⁸ : M₂₀`: it is maximal (no larger symmetry group contains
+  it) and "one of the largest".
+- The model is the `ℤ₂` orbifold of the `D₄`-torus theory at its `so(8)₁` point, geometrically a sigma model on the
+  tetrahedral Kummer surface.
+- Harvey–Moore (2003.13700 ll. 735–742): the target torus is the Spin(8) maximal torus, and the model is
+  equivalently six circles at the **T-duality self-dual radius** `R = 1`.
+
+**The checks (Tier A).**
+- `gtvw_so8_point`: GTVW's `B`-field is exactly what the `so(8)₁` enhancement needs. With it, every root `l` gives
+  a charge `(m, l) = ((B+1)l, l) ∈ L* ⊕ L`; with `B = 0` the condition fails.
+- `gtvw_B_is_I`: the `B`-field is left multiplication by `i`, i.e. the Kähler form `ω_I`.
+- `gtvw_complex_structures`: on the same torus, `u = i` gives `T(A) = diag(2, 2)` (the tetrahedral Kummer surface,
+  `D = 16`) and `u = (i+j+k)/√3` gives `T(A) = A₂` (the `D = 12` surface of §10 and E2 ∩ E3). Both lattices are
+  primitive.
+- `gtvw_B_type`: `B` is of type `(1, 1)` for `u = i`. For each of the four `ω`-type structures, its pairings with
+  the holomorphic plane are explicitly non-zero (±4, where `ω_I ∧ ω_I = 4`).
+- `gtvw_group_orders`: the group orders, `2¹⁴ ∤ |M₂₄|`, `c = 6 = 6 × c(su(2)₁)`, and `A₁⁴ ⊂ D₄`.
+
+**Reading (Tier C).**
+- *A vacuum-level convergence for the K3 factor.* The parent theory of the most symmetric known non-singular K3
+  model is exactly the enhanced symmetry point that trapping selects on `T⁴` (G2). It is the rank-4 maximum, with
+  24 left `so(8)₁` roots (`gtvw_so8_point`), at the self-dual radius (the programme's `κ = 1`, Stream 6).
+  - This is not §12's `D₄ = Π ∩ Γ₄,₂₀`. That one concerned roots orthogonal to `Π` in the K3 lattice, a singular
+    K3 model, and was an instance of the generic `D_{16+d} ⊕ D_d` pattern.
+  - Here the coincidence is at the level of the torus theory, and the `ℤ₂`-orbifold is a well-defined K3 CFT.
+  - This is the strongest vacuum-level selection in Stream 8.
+- *But the complex structure it favours is `i`, not `ω`.* The complex structure is not a CFT datum: the twistor
+  sphere of the `D₄` torus contains both the tetrahedral (`i`) and the `ω` Kummer surfaces, and `T₁₉₂` acts on both
+  (§10). The model's `B`-field, however, is the Kähler form of `i` and is of type `(1, 1)` only there. So its natural
+  geometric interpretation is the tetrahedral surface (`D = 16`), as GTVW state. This is a second counterweight to
+  `ω`, after the non-symplectic symmetry of §10.
+- *Updated synthesis.* `ω` is selected for black holes (the smallest horizon, §11). For the vacuum, the K3 factor
+  is best described as the GTVW model: the `D₄` torus at the self-dual point, orbifolded. Its geometric reading
+  prefers `i`, and none of the principles tried fixes the `T²` factor together with it (§12). "Which K3?" therefore
+  has a sharp answer at the level of the CFT (GTVW) and none yet at the level of a single complex structure.
+- `ℤ₂⁸ : M₂₀` is maximal and "one of the largest" (GTVW's words); that it is the largest group is not claimed.
+
+### 14.1 The IR/UV obstruction, corrected (`DualScaleDyons/TrappingObstruction.lean`)
+
+A directive proposed formalising "the `SO(44)` root lattice admits no orthogonal decomposition preserving the
+signature split `(3,19) ⊕ (2,2)` while keeping `T(A) = A₂`", read as "a factorised static `K3 × T²` vacuum is
+mathematically forbidden". **That is false as phrased**, and the file says why:
+
+- `Γ₆,₂₂ ⊃ Γ₄,₂₀ ⊕ Γ₂,₂`, and `D₂₂` embeds in `Γ₆,₂₂` (`so44_point`): nothing forbids the decomposition.
+- `uv_charges_in_so44_plane`, `a2_saturated_in_D6`, `a1a1_saturated_in_D6`: the charge lattices of **both**
+  smallest black holes — `A₂` (`D = −3`, the `ω` point) and `A₁ ⊕ A₁` (`D = −4`, the `i` point) — embed
+  **primitively** in `D₆`, the positive-plane lattice at the `SO(44)` point. The UV attractor charges are
+  compatible with the globally trapped 6-plane.
+- `obstruction_is_quantitative`: what is true is quantitative — a factorised point carries at most `766` roots
+  against `924` at the maximum, so trapping does not *select* a factorised point (§12).
+
+The frustration between the IR trapping point and the UV attractor is therefore real but softer than
+"forbidden": what fails is maximality, not existence. A stronger no-go would have to quantify over the signature
+split of the 6-plane, and is not proved here.
 
