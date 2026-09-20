@@ -21,3 +21,4 @@ import DualScaleStream2.DualScale.TraceBound
 import DualScaleStream2.Flux.Tadpole
 import DualScaleStream2.Flux.Integrality
 import DualScaleStream2.Moonshine.EOT
+import DualScaleStream2.Orientifold.NarainT6

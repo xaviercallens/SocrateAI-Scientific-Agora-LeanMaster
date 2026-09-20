@@ -246,6 +246,24 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0-. `v3.31.0` (2026-09-20): Stream 9 opens — the lattice layer of a `T⁶/Γ` orientifold
+
+`DualScaleStream2/Orientifold/NarainT6.lean` (12 theorems). Full reading: `docs/STREAM9_ORIENTIFOLD.md`.
+- `Γ₆,₆ = U⁶` is symmetric, even-diagonal and unimodular (by an exhibited integer inverse), with an explicit
+  signature `(6, 6)` certificate: six vectors of norm `+2` and six of norm `−2`.
+- The three non-trivial elements of the `ℤ₂ × ℤ₂` that a `T⁶/(ℤ₂×ℤ₂)` orientifold uses are isometries of `Γ₆,₆`,
+  are involutions, and compose as `θ₁θ₂ = θ₃`.
+- **Worldsheet parity is an anti-isometry**: `Ωᵀ G Ω = −G`. An orientifold group is therefore not a subgroup of
+  `O(6,6;ℤ)`. Each `Ω θᵢ` is an involution and an anti-isometry.
+- Charge budget: `2^{9−p}` planes of charge `−2^{p−5}` total `−16` for `p = 3, 5, 7, 9` (64 `O3` of charge `−1/4`;
+  4 `O7` of charge `−4`), consistent with the `T²/ℤ₂` frame already formalized.
+
+Not claimed: `N = 1`, any spectrum, any vacuum; the arithmetic is the tadpole budget, not a solution. Tier L
+inputs pinned: GPR ll. 260–300, 470–520; Polchinski TASI ll. 1968–1984; Sen ll. 238–250.
+
+Gates: build OK; grep empty; axiom audit `DualScaleStream2` 114, total **723**, 0 failing; lock additions only;
+negative control: three mutations caught.
+
 ## 0. `v3.30.0` (2026-09-20): the decision rule for viscous dark energy, and an external result verified
 
 `DualScaleCosmology/ViscousDefectNetwork.lean` (9 theorems). The vortex-core proposal
