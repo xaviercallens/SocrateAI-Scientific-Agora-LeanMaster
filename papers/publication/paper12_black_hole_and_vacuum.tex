@@ -69,11 +69,756 @@ $^{1}$\textit{SocrateAI Research Laboratory for Mathematical Physics \& Formal V
 \maketitle
 
 \begin{abstract}
-PLACEHOLDER-ABSTRACT
+
+Two questions about a string compactification are routinely run together: \emph{which} $K3$ surface does the
+theory pick, and \emph{how many} vacua does it admit. We show, in Lean~4, that the same kind of lattice
+arithmetic answers the first uniquely and the second not at all, and we locate exactly what has to be added
+before the second can be answered. On the black-hole side, the attractor mechanism on $K3\times T^2$ is made
+fully explicit: every integral binary quadratic form is realised by a primitive charge pair; a positive-definite
+charge form has discriminant $4ac-b^2\ge 3$, so there is a \emph{smallest} black hole; it has
+$p^2=q^2=2$, $p\cdot q=1$, transcendental lattice $A_2$, discriminant $D=-3$ and attractor modulus
+$\tau=\omega+1$ with $\omega^3=1$; and its single-centred index is $25353$, computed from a series whose
+neighbouring value $-50064$ matches the $50064$ printed by Sen for $Q^2=P^2=2$, $Q\cdot P=0$. Uniqueness, from
+arithmetic alone. On the vacuum side, in a $T^6/\Gamma$ orientifold opened as a control, the $O3$ tadpole budget
+$N_{D3}+\tfrac12 N_{\rm flux}=16$ has $17$ integer solutions and bounds \emph{no} flux: $H^3(T^6,\mathbb{Z})$ is
+unimodular symplectic of rank~$20$, and for every value of the flux contribution infinitely many flux vectors
+realise it. The $\mathbb{Z}_2\times\mathbb{Z}_2$ projection cuts the rank to~$8$ but leaves a unimodular
+symplectic lattice, and requiring the quanta to lie in $M\mathbb{Z}$ changes nothing for any $M$, since rescaling
+a lattice gives a lattice. What does change it is positivity: the imaginary-self-duality condition replaces the
+indefinite pairing by a positive-definite form --- here, forced by $J_8\cdot J_8=-1$, exactly the Euclidean one
+--- whose balls are finite, and the infinite family collapses to eleven members at an illustrative ceiling.
+Finiteness comes from supersymmetry, never from the budget. We report the programme's experimental status
+without softening it: of four derivable observables, three were frozen by git tag with their decision rules
+before the verdict, and two are excluded (a $47\,\mu$m extra dimension by torsion-balance and neutron-star
+bounds; Hubble-scale holographic dark energy, which forces $q=+1/2$ at every epoch) while two are unreachable and
+share a premise already excluded by collider searches. An independent superfluid group refuted the associated
+dual-length hypothesis in $^4$He and withdrew its string-theoretic framing. We re-analyse that group's
+topological-data-analysis result and find that its measured vortex-line floor, $F=0.943\,\xi$, equals
+$\sqrt2\,\Delta x$ to fourteen significant figures with a tenfold degenerate minimum --- a lattice distance, not
+yet a physical length. Finally, and methodologically, we report two claims of our own that this apparatus
+\emph{failed} to catch and that reading did: a false statement of the crystallographic restriction
+($\varphi(n)\le d$, refuted here by four matrices in $SL(6,\mathbb{Z})$ of orders $15,20,24,30$), and a theorem
+whose statement was vacuous while its docstring claimed a nerve theorem. Kernel-checked verification certifies
+what a proof \emph{depends on}; it is blind to prose nothing depends on and to a statement that says nothing.
+All results are checked by the Lean~4 kernel at \texttt{v4.34.0-rc2}; the repository audits $785$ declarations,
+$0$ failing, of which $782$ carry mathematical content. The axioms are \texttt{propext},
+\texttt{Classical.choice} and \texttt{Quot.sound}.
+
 \end{abstract}
 
 \tableofcontents
 
-PLACEHOLDER-BODY
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+``Which $K3$?'' and ``how many vacua?'' sound like two instances of one question. They are not, and the
+difference is arithmetic rather than philosophical. This paper makes the difference precise by formalizing both
+sides in the same language --- integral lattices and their automorphisms, checked by the Lean~4 kernel --- and
+observing that they behave in opposite ways.
+
+On the black-hole side the attractor mechanism converts a choice of charge into a choice of surface. The moduli
+at the horizon are not free: they are fixed by the charges~\cite{Moore1998}. Once one asks for the \emph{smallest}
+black hole with a horizon, the arithmetic returns a single answer, and \cref{sec:bh} derives it from the charge
+lattice with no input beyond the definitions.
+
+On the vacuum side the corresponding question is a counting question, and the object usually invoked to make the
+count finite is the tadpole budget. \Cref{sec:vac} shows that the budget does no such thing. It bounds one
+integer. It never bounds the flux quanta --- not before the orbifold projection, not after it, and not under any
+quantisation convention. The lattice that carries the fluxes is unimodular and symplectic, hence indefinite, and
+an indefinite form has infinitely many vectors of any given pairing with a fixed partner. That is the whole
+mechanism, and no amount of arithmetic removes it.
+
+\begin{headlinebox}
+The smallest black hole is unique and computable from the charge lattice: $D=-3$, transcendental lattice $A_2$,
+$\tau=\omega+1$. The vacuum count is not determined by the same arithmetic at any stage. Finiteness enters
+exactly once, when imaginary self-duality replaces the indefinite pairing by a positive-definite form.
+\end{headlinebox}
+
+The hinge is worth stating as a limitation rather than a slogan. The attractor fixes the near-horizon moduli of
+\emph{one} black hole. It says nothing about the asymptotic surface, and it leaves the $T^2$ K\"ahler modulus
+free~\cite{Moore1998}. So the determinacy of \cref{sec:bh} does not propagate to \cref{sec:vac}; the two sections
+are answers to different questions, and the paper's claim is precisely that conflating them is what produces the
+appearance of a selection principle where there is none.
+
+Three further sections serve that claim rather than extending it. \Cref{sec:exp} records what the surrounding
+research programme has already been made to answer for, because a paper about a programme's mathematics should
+state the programme's empirical standing rather than leave a reader to discover it. \Cref{sec:tda} reports the
+one empirical datum that bears on a structural ingredient of a current conjecture, together with an independent
+re-analysis of it that we performed for this paper and that weakens it. \Cref{sec:method} reports two claims of
+our own that the verification apparatus did not catch.
+
+That last section is the one we would ask a sceptical reader to start with. A repository that checks every proof
+with a kernel can still carry a false sentence for five tagged releases, and can still count a theorem whose
+statement is \texttt{True}. Neither is a failure of the kernel. Both are failures of what the kernel was asked,
+and both were caught by reading. We report them because a methodology paper that reports only its successes is
+evidence of nothing.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The black hole side: the smallest horizon fixes one surface}\label{sec:bh}
+
+A dyon of the $K3\times T^2$ compactification carries a pair of charges $(p,q)$ valued in the K3 lattice, and at the horizon the attractor mechanism drives the moduli to values determined by $(p,q)$ alone \tierL\ \cite[(4.4a)--(4.6), ll.~1356--1376]{Moore1998}. Moore's reading of this is arithmetic: the charge pair determines a binary quadratic form, the attractive K3 is the surface whose transcendental lattice is $T_S=\langle p,q\rangle$ and whose N\'eron--Severi lattice is $\langle p,q\rangle^{\perp}$ \tierL\ \cite[(4.8), ll.~1404--1409]{Moore1998}, and the $T^2$ acquires a complex structure $\tau(p,q)$. In the formalisation the charges live in a $U+U$ summand of $U^3+E_8(-1)^2=H^2(K3,\mathbb{Z})$, with coordinates $(e_1,f_1,e_2,f_2)$ satisfying $e_i\cdot f_i=1$ and $e_i^2=f_i^2=0$; a form $(a,b,c)$ denotes the Gram matrix $\bigl(\begin{smallmatrix}2a&b\\b&2c\end{smallmatrix}\bigr)$, of discriminant $b^2-4ac$ \tierA\ \lean{DualScaleDyons/AttractorCharges.lean}.
+
+\begin{headlinebox}
+Under the positivity that supergravity imposes on the charge form \tierL\ \cite[(3.4)--(3.5), ll.~1104--1112]{Moore1998}, the arithmetic has a floor, $D\le-3$ \tierA\ \lean{discriminant\_gap}, and the floor is attained by the single reduced class $(1,1,1)$, with $T_S=A_2$ \tierA\ \lean{smallest\_black\_hole} and $\tau=(1+i\sqrt3)/2$ \tierA\ \lean{tau\_minimal}. On this side of the paper the answer is unique.
+\end{headlinebox}
+
+
+\begin{remark}[Two labels, one torus]
+\label{rem:tau}
+The kernel statement gives $\tau=\omega+1$ \tierA\ \lean{tau\_minimal}, while the reading below, and Moore's
+discussion, speak of the $T^2$ ``at $\tau=\omega$''. The two are the same object and not merely isomorphic ones:
+$\mathbb{Z}+\mathbb{Z}(\omega+1)=\mathbb{Z}+\mathbb{Z}\omega$ as subsets of $\mathbb{C}$, since each generator of
+either lattice is an integral combination of the generators of the other. Equivalently, $\tau\mapsto\tau+1$ is
+the modular transformation $T=\bigl(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\bigr)\in SL(2,\mathbb{Z})$. We
+keep the label $\omega+1$ wherever a theorem is quoted and $\omega$ wherever the geometry is described, and note
+the identification here once rather than silently switching between them.
+\end{remark}
+
+\paragraph{Every form is a charge, primitively.} The first link is a realisation statement. For all integers $a,b,c$, the charges $p=e_1+a\,f_1$ and $q=e_2+b\,f_1+c\,f_2$ have Gram matrix $\bigl(\begin{smallmatrix}2a&b\\b&2c\end{smallmatrix}\bigr)$, and they span a \emph{primitive} sublattice: every integral vector in their rational span is an integer combination of $p$ and $q$ \tierA\ \lean{every\_form\_is\_charged}. This is Moore's realisation claim, and it is proved for every form rather than checked on a sample. Primitivity is not decoration: it is exactly the hypothesis under which Moore's classification applies, namely that for primitive $\langle p,q\rangle$ two charge pairs are U-dual if and only if their forms are $SL(2,\mathbb{Z})$-equivalent, by Nikulin's uniqueness of the primitive embedding \tierL\ \cite[(3.11), ll.~1178--1190]{Moore1998}. Taken together: every form occurs as a primitive charge pair \tierA, and on such pairs U-duality acts as $SL(2,\mathbb{Z})$ acts on forms \tierL.
+
+\paragraph{The arithmetic has a floor.} Moore's charge form is $Q_{p,q}=\tfrac12\bigl(\begin{smallmatrix}p^2&-p\cdot q\\-p\cdot q&q^2\end{smallmatrix}\bigr)$, with $D=(p\cdot q)^2-p^2q^2$, and supergravity requires $p^2>0$ and $Q_{p,q}>0$ \tierL\ \cite[(3.4)--(3.5), ll.~1104--1112]{Moore1998}. The formalised results carry the arithmetic form of that condition, $0<4ac-b^2$, as an explicit hypothesis.
+
+\begin{proposition}[\tierA\ \lean{discriminant\_gap}]
+For integers $a,b,c$ with $0<4ac-b^2$ one has $3\le 4ac-b^2$, and $4ac-b^2=3$ forces $b$ odd. Equivalently, the discriminant satisfies $D\le-3$.
+\end{proposition}
+
+\noindent Read through the supergravity condition \tierL\ \cite[(3.4)--(3.5), ll.~1104--1112]{Moore1998}, the gap says that charge pairs with a horizon have $D\le-3$: there is a smallest black hole. For context, the number of U-duality orbits at fixed $D$ is $N(D)=\sum_m h(D/m^2)$ \tierL\ \cite[(3.17)--(3.18), ll.~1250--1262]{Moore1998}; we do not use it to establish uniqueness.
+
+\begin{theorem}[\tierA\ \lean{smallest\_black\_hole}]
+The bound is saturated by $p^2=q^2=2$, $p\cdot q=1$, giving $T_S=\bigl(\begin{smallmatrix}2&1\\1&2\end{smallmatrix}\bigr)=A_2$ and $D=-3$. The reduced class is $(1,1,1)$ and it is the only one; primitivity is confirmed for this pair, and $\mathrm{reduce}(1,-1,1)=(1,1,1)$.
+\end{theorem}
+
+\noindent The last equality is bookkeeping between two labels this section needs. Moore's $Q_{p,q}$ is half the Gram matrix with the off-diagonal sign reversed \tierL\ \cite[(3.4)--(3.5), ll.~1104--1112]{Moore1998}, and the attractor variety is stated in terms of the doubled form, $S_{2Q}\times E_{\tau(p,q)}$ \tierL\ \cite[(4.27)--(4.29), ll.~1580--1600]{Moore1998}; at the floor the two labels are $(1,-1,1)$ and $(1,1,1)$, and reduction identifies them \tierA\ \lean{smallest\_black\_hole}. Moore also records that the abelian surfaces $A_Q=E_{\tau_1}\times E_{\tau_2}$ with $\rho=4$ correspond one-to-one to $PSL(2,\mathbb{Z})$ classes of $Q$, by Shioda--Mitani \tierL\ \cite[(4.15), ll.~1480--1507]{Moore1998}.
+
+\paragraph{The attractor then fixes the torus.} For every charge with $D<0$, $\tau(p,q)=\bigl(p\cdot q+i\sqrt{-D}\bigr)/p^2$ solves Moore's equation $p^2\tau^2-2(p\cdot q)\tau+q^2=0$ and lies in the upper half plane \tierA\ \lean{attractor\_tau}, matching $\tau=(p\cdot q+\sqrt D)/p^2$ \tierL\ \cite[(4.4a)--(4.6), ll.~1356--1376]{Moore1998}. At the floor this gives $\tau=(1+i\sqrt3)/2=\omega+1$ with $\omega^3=1$, $\omega\neq1$; at $D=-4$, that is $p\cdot q=0$, it gives $\tau=i$ \tierA\ \lean{tau\_minimal}.
+
+\paragraph{Degeneracies, and one external anchor.} The Fourier coefficients of $\psi_m^F$ count single-centred black holes \tierL\ \cite[(1.6), ll.~426--443]{DMZ2012}. Computed from the Stream~5 series through $q^3$ and $1/\eta^{24}$, the coefficient $c$ of $\psi_1^F$ at $(n,l)=(1,1)$, i.e.\ at charges $(q^2/2,\,p\cdot q,\,p^2/2)=(1,1,1)$, is $25353$, and at $(1,0)$ it is $-50064$ \tierA\ \lean{smallest\_black\_hole\_index}. Sen prints $d(Q,P)=50064$ for $Q^2=P^2=2$, $Q\cdot P=0$, for the heterotic string on $T^6$ \tierL\ \cite[l.~6788]{Sen2007}. That entry is the $D=-4$ black hole, and matching it fixes the sign convention $d=(-1)^{l+1}c$. In that convention the $D=-3$ black hole has $d=25353$: the same kernel-checked series one step over. It does not appear in Sen's table, and we claim no more for it than that.
+
+\begin{center}
+\begin{tabular}{lccccl}
+\hline
+ & $(q^2/2,\,p\cdot q,\,p^2/2)$ & $D$ & $\tau$ & $c$ & source \\
+\hline
+floor & $(1,1,1)$ & $-3$ & $(1+i\sqrt3)/2$ & $25353$ & \tierA\ \lean{smallest\_black\_hole}, \lean{tau\_minimal}, \lean{smallest\_black\_hole\_index} \\
+$p\cdot q=0$ & $(1,0,1)$ & $-4$ & $i$ & $-50064$ & \tierA\ \lean{tau\_minimal}, \lean{smallest\_black\_hole\_index}; \tierL\ $d=50064$ \cite{Sen2007} \\
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph{A companion negative control.} The single-centred (``immortal'') dyon counting function at $m=1$ satisfies $\Delta\psi_1^F=3E_4A-648H$ through $q^3$, with $H$ the Hurwitz--Kronecker class numbers obtained by counting reduced forms rather than transcribed \tierA\ \lean{immortal\_m1}, \lean{hurwitz\_values} in \lean{DualScaleDyons/Immortal.lean}. The same identity without the class-number term is false \tierA\ \lean{immortal\_m1\_needs\_H}, so the theorem set carries its own check that the arithmetic input is doing work.
+
+\paragraph{The reading.} \tierC\ The smallest black hole with a horizon has near-horizon geometry $X_3\times E_\omega$: the Kummer-type K3 whose transcendental lattice is $A_2$, with the $T^2$ at $\tau=\omega$. This breaks an earlier $i/\omega$ tie \emph{for black holes}.
+
+\begin{scopebox}
+The smallest black hole selects $\omega$. The theory does not. It says nothing about the vacuum: the attractor fixes the near-horizon moduli of one black hole, not the asymptotic K3, and it leaves the $T^2$ K\"ahler modulus free --- the attractor variety is $88$-dimensional \tierL\ \cite[(4.3), ll.~1351--1353]{Moore1998}. The repository's standing conclusion is that there is no single preferred K3, and that the question is ill-posed until one says which physics is doing the selecting. Here the selector is named: one charge configuration, at its own horizon.
+\end{scopebox}
+
+Uniqueness on this side is therefore a statement about a selector, not about the theory; the vacuum side, treated next, supplies a different selector and gets infinitely many answers.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The vacuum side: the same arithmetic decides nothing}\label{sec:vac}
+
+This section runs lattice arithmetic of the same kind used on the black-hole side of this paper over a different
+compactification, and finds that it fixes nothing: the number of integer solutions is infinite, and stays
+infinite under the one strengthening of the integrality hypothesis formalised here, namely an overall
+normalisation factor. Finiteness appears once a positivity condition is added by hand. \tierC\ That positivity
+is the \emph{only} ingredient with that effect, and that the contrast says anything about physical vacua, are
+readings and not theorems. The $T^6/\Gamma$ orientifold is opened here as a \emph{control}: it is there to show
+what kind of input fixes an answer. It is not a continuation of the dual-scale hypothesis, and no conclusion
+drawn here transfers to $K3 \times T^2$. All Lean files named below sit under \lean{DualScaleStream2/}.
+
+\subsection{The lattice and the parity anti-isometry}
+
+\tierA\ In \lean{Orientifold/NarainT6.lean} the Narain lattice of $T^6$ is built as $\Gamma_{6,6} = U^{6}$: the
+Gram matrix is symmetric with even diagonal, unimodular via an exhibited integer inverse, and of signature
+$(6,6)$, certified by six explicit vectors of norm $+2$ and six of norm $-2$.
+
+\tierA\ \lean{parity\_antiisometry} records the structural point that governs everything downstream: worldsheet
+parity $\Omega$ satisfies $\Omega^{T} G\, \Omega = -G$. It is an \emph{anti}-isometry, because exchanging left-
+and right-movers reverses the sign of $p_L^2 - p_R^2$. Consequently an orientifold group is not a subgroup of
+$O(6,6;\mathbb{Z})$; it is generated by the isometries $\theta_i$ together with one element that negates the form.
+
+\tierA\ The general consequence is isolated in \lean{Orientifold/InvariantSublattice.lean} as
+\lean{antiisometry\_fixed\_isotropic}: if $P^{T} G P = -G$ and $Pv = v$ then $Q(v) = 0$. Applied to
+$P = \Omega\theta_1$, the fixed sublattice is spanned by six explicit vectors and all $36$ pairings among them
+vanish --- the sublattice is totally isotropic, not merely null on the diagonal --- and rank $6$ is maximal for
+signature $(6,6)$.
+
+\tierA\ \lean{plane\_charge\_total} closes the charge bookkeeping: $2^{9-p}\cdot(-2^{p-5}) = -16$ for
+$p = 3,5,7,9$, so for $p = 3$ there are $64$ planes of charge $-1/4$. \tierL\ As a cross-check in the O7 frame,
+and for nothing else, we record the statement $4\cdot(-4) + 16\cdot 1 = 0$ of \cite{Sen1996}, ll.~238--250.
+
+\subsection{A budget that looks finite, in the wrong variable}
+
+\tierA\ \lean{Flux/T6TadpoleFiniteness.lean} shows that the budget $N_{D3} + \tfrac{1}{2}N_{\mathrm{flux}} = 16$
+has exactly $17$ integer solutions, $\{(16-k,k) : k \le 16\}$. The file states the caveat itself, and we repeat
+it: these are not vacua. One value of $\tfrac12 N_{\mathrm{flux}}$ corresponds to many flux quanta, and once
+anti-branes are admitted there are infinitely many integer solutions. \tierC\ Read against the theorems that
+follow, the apparent finiteness sits in the budget variable rather than in the data a vacuum would be built from.
+
+\subsection{The flux lattice: integrality gives infinity}
+
+\tierA\ \lean{Flux/FluxLattice.lean} turns that caveat into a theorem. The rank of $H^3(T^6,\mathbb{Z})$ is
+$\binom{6}{3} = 20$; its intersection form $J$ satisfies $J\!\cdot\!J = -1$ and $J^{T} = -J$, hence is
+unimodular. Then \lean{flux\_pairing\_family} and \lean{flux\_family\_injective}: for every $k$, the family
+$F(m) = k f_0 + m e_1$ has $\langle e_0, F(m)\rangle = k$ for \emph{every} $m$, injectively in $m$. For every
+value of the flux contribution there are infinitely many flux vectors realising it.
+
+\tierA\ \lean{Flux/FluxQuantisation.lean} shows that this survives a rescaling of the quantum. Parametrically in
+a normalisation factor $M$: if every quantum of $H$ and $F$ lies in $M\mathbb{Z}$ then
+$\langle H,F\rangle \in M^2\mathbb{Z}$ (\lean{pairing\_dvd}); every multiple of $M^2$ is attained
+(\lean{pairing\_attains}); and for every $M$ and every attainable value, infinitely many quantised pairs realise
+it. Rescaling a lattice gives a lattice.
+
+\tierL\ \cite{GKP2001}, ll.~534--547, eq.~(2.25), requires $(1/2\pi\alpha')\int_C F_3 \in 2\pi\mathbb{Z}$ and
+likewise for $H_3$, over every 3-cycle $C$. That is period integrality. \tierC\ On our reading, the hypothesis
+formalised above is the lattice counterpart of that condition and asserts no more than it does.
+
+\subsection{Projecting changes the rank, not the conclusion}
+
+\tierA\ \lean{Flux/InvariantH3.lean} implements the $\mathbb{Z}_2\times\mathbb{Z}_2$ with $\theta_1 = -1$ on
+$x_1,\dots,x_4$ and $\theta_2 = -1$ on $x_3,\dots,x_6$. A basis 3-form $dx_S$ is invariant iff
+$|S \cap \{1,2,3,4\}|$ and $|S \cap \{3,4,5,6\}|$ are both even; the invariant triples are exactly the $8$ with
+one index from each 2-torus. Rank $20 \to 8$ is a real reduction. The set is closed under complement, so the
+wedge pairing restricts, and \lean{symJ8\_is\_wedge} verifies all $64$ entries of the restricted $8\times 8$
+matrix --- the zeros included --- against the wedge sign of the corresponding pair of triples; the literal is
+computed in the kernel, not asserted. $J_8^{T} = -J_8$, $J_8\!\cdot\!J_8 = -1$, unimodular. The invariant
+sublattice is again a unimodular symplectic lattice, and the infinite family runs inside it.
+
+\begin{table}[h]\centering
+\begin{tabular}{lccc}
+\hline
+lattice & rank / signature & form & source \\
+\hline
+$\Gamma_{6,6} = U^6$ & signature $(6,6)$ & even, unimodular & \lean{Orientifold/NarainT6.lean} \\
+$H^3(T^6,\mathbb{Z})$ & $20$ & $J^T=-J$, $J\!\cdot\!J=-1$ & \lean{Flux/FluxLattice.lean} \\
+invariant $H^3$ & $8$ & $J_8^T=-J_8$, $J_8\!\cdot\!J_8=-1$ & \lean{Flux/InvariantH3.lean} \\
+\hline
+\end{tabular}
+\caption{\tierA. Unimodular and symplectic before and after the orbifold projection.}
+\end{table}
+
+\subsection{Positivity is what cuts it down}
+
+\tierA\ \lean{Flux/ISDFiniteness.lean}. Because $J_8\!\cdot\!J_8 = -1$, the map $J_c = -J_8$ is a complex
+structure, $J_c^2 = -1$, compatible with the symplectic form, $J_c^{T} J_8 J_c = J_8$. The associated form
+$g(v,w) = \omega(v, J_c w)$, where $\omega$ is the symplectic form of $J_8$, is then, by \lean{gForm\_eq\_dot},
+exactly the Euclidean dot product on $\mathbb{Z}^8$ --- forced by $J_8\!\cdot\!J_8 = -1$, not chosen. It is
+positive definite, and every ball $\{v : g(v,v) \le B\}$ is finite, with the explicit coordinate bound
+$v_i^2 \le B$. The family satisfies $g(F(m),F(m)) = k^2 + m^2$, so at the ceiling $32$ with $k = 1$ it is cut to
+exactly eleven members, at an illustrative ceiling ($-5 \le m \le 5$).
+
+\tierL\ \cite{GKP2001} supplies the physical precedent for adding a positivity condition, not the source of $g$:
+the imaginary self-duality condition $*_6 G_3 = i G_3$ (ll.~629--631, eq.~(2.31)) and the decomposition
+$G = G^{+} + G^{-}$ with $*_6 G^{\pm} = \mp\, i G^{\pm}$ (ll.~1801--1812, eq.~(A.13)), in which the flux action
+splits into a positive-definite norm $G^{+}_{mnp}G^{+\,mnp}$ plus a topological term. \tierC\ The separation we
+draw from this --- integrality is the hypothesis that yields infinity, positivity the separate ingredient that
+yields finiteness --- is a reading of the two sides, not a theorem relating them. The form $g$ above is a Tier~A
+fact about $\mathbb{Z}^8$ with the canonical $J_c$ and is not the GKP norm; GKP's positivity comes from a
+dynamical condition, whereas ours is added to a lattice by hand.
+
+\begin{scopebox}
+\textbf{(a)} The number eleven is obtained at a \emph{carried-over} ceiling of $32$, not a derived one: eleven,
+at an illustrative ceiling. It illustrates a mechanism; it is not a count.
+\textbf{(b)} Nothing here connects the lattice pairing $\langle H,F\rangle$ to the physical
+$N_{\mathrm{flux}}$. That bridge requires the D3-charge normalisation on the quotient, for which this
+repository has no pinned source. The link is absent, not assumed.
+\textbf{(c)} $J_c = -J_8$ is the canonical compatible complex structure, available with no extra data; the
+physical one is fixed by the complex-structure moduli. The mechanism --- replacing an indefinite pairing by a
+positive-definite form makes balls finite --- is independent of that choice. The count of eleven, at an
+illustrative ceiling, is not.
+\textbf{(d)} None of this counts vacua: no moduli stabilisation, no equations of motion, no quotient by the
+duality group. Eleven flux vectors, at an illustrative ceiling, are not a count of vacua.
+\textbf{(e)} The orientifold projection on top of the orbifold is not modelled.
+\end{scopebox}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{What the programme has already been made to answer for}\label{sec:exp}
+
+The arithmetic of this paper belongs to a wider programme, and that programme carries a
+physical identification which has been confronted with data and has failed. This section
+reports the confrontation, because a reader who has followed the lattices to this point will
+ask what the identification predicts. The mathematics developed here --- lattices, moonshine,
+dyon counting, attractor arithmetic --- is logically independent of that identification and is
+unaffected by the verdicts below.
+
+The identification, \tierC{} a conjecture and the premise on which every number in this
+section depends, sets the string scale by the geometric mean of the Planck length and the
+Hubble radius, $\alpha' = \ell_P c / H_0$, so that the self-dual length is
+$s = \sqrt{\ell_P c/H_0}$. The inputs are literature values: \tierL{}
+$\ell_P = 1.616255\times 10^{-35}\,\mathrm{m}$ (CODATA 2018) and \tierL{}
+$c/H_0 = 1.3672\times10^{26}\,\mathrm{m}$ from $H_0 = 67.66\,\mathrm{km\,s^{-1}Mpc^{-1}}$
+\cite{Planck2018VI}. Under the identification, \tierC{} $s \approx 47.0\,\mu\mathrm{m}$. Four
+observables follow from this number alone, without passing through a compactification that has
+not been constructed.
+
+\begin{correctionbox}
+Three of the four were frozen by a git tag, together with their decision rule, before the
+verdict was computed: P1 (\texttt{stream6-p1-frozen}), C-A (\texttt{stream7-ca-frozen}) and
+C-B (\texttt{stream7-cb-frozen}). The fourth, C-C, was \emph{never} frozen: there is no tag and
+no prediction document for it, and it exists only as a candidate in the hypothesis inventory.
+Of the three freezes, only C-B is a forward prediction, frozen before any detector sensitivity
+was pinned. P1 and C-A are retrodictions, and are so declared in the repository's own frozen
+documents, which state that the experimental bounds had already been read by the authors before
+the freeze. Recording that is the purpose of the protocol.
+\end{correctionbox}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{llll}
+\hline
+ & Frozen (tag) & Status at freeze & Verdict \\
+\hline
+P1 & yes, \texttt{stream6-p1-frozen} & retrodiction (disclosed) & excluded \\
+C-A & yes, \texttt{stream7-ca-frozen} & retrodiction (disclosed) & excluded \\
+C-B & yes, \texttt{stream7-cb-frozen} & forward prediction & not falsifiable in practice; \\
+ & & & premise excluded (LHC) \\
+C-C & \textbf{no tag, no document} & inventory candidate only & out of reach; \\
+ & & & premise excluded (LHC) \\
+\hline
+\end{tabular}
+\caption{The four observables and the pre-registration status of each. C-B and C-C carry a
+second, independent verdict: their shared assumption $\alpha' = s^2$ is itself excluded by LHC
+resonance searches, so neither fails merely for want of sensitivity.}
+\end{table}
+
+\paragraph{(P1) One large extra dimension.}
+Take $s$ as the radius of a single large extra dimension with the Kaluza--Klein convention
+$m \sim 1/R$ and $R = s$, with no additional factor. Three tests were pre-registered. \tierL{}
+T1: the largest extra dimension must have toroidal radius below $30\,\mu\mathrm{m}$
+\cite{LeeAdelberger2020}. \tierL{} T2: a gravitational-strength Yukawa interaction must have
+range below $38.6\,\mu\mathrm{m}$ at $2\sigma$ (95\% CL) \cite{LeeAdelberger2020}. \tierL{} T3:
+neutron-star heating requires $\ell < 44\,\mu\mathrm{m}$ for one extra dimension
+\cite{MVV2023}. All three fail in the kernel: \tierA{} \lean{p1\_fails\_T1},
+\lean{p1\_fails\_T2}, \lean{p1\_fails\_T3} in
+\lean{DualScaleCosmology/Stream6Verdict.lean}. The decision rule fixed in advance was
+``excluded if T1 fails'', so the verdict is exclusion, \tierA{} \lean{p1\_verdict\_excluded}, with
+recorded margins \tierA{} $R > 1.5\times 30\,\mu\mathrm{m}$ and $R > 1.06\times 44\,\mu\mathrm{m}$
+(\lean{p1\_margin}).
+
+The usual escape --- an order-one convention factor $\kappa$ in $R = \kappa s$ --- is closed
+from inside the programme. Under the T-duality $R \mapsto \alpha'/R$ with $\alpha' = s^2$, the
+self-dual radius is the unique positive fixed point $R = s$, \tierA{}
+\lean{p62\_selfdual\_fixed\_point}, so $\kappa = 1$ is forced. P1 is therefore the programme's
+prediction and not one convention among several. Passing T1 would require \tierC{}
+$\kappa < 0.64$, which the programme cannot supply. Two extra dimensions do not help: the
+corresponding bound is missed by more than a factor $10^5$, \tierA{}
+\lean{p62\_two\_dims\_excluded}.
+
+\paragraph{(C-A) Vacuum energy at the Cohen--Kaplan--Nelson bound.}
+Saturating the CKN bound \cite{CKN1999} with infrared length $c/H(t)$ gives
+$\rho_\Lambda(t) = \epsilon\,3H(t)^2/(8\pi G)$ with matter separately conserved, hence
+$H^2 = C/a^3$ and a deceleration parameter $q = +1/2$ at every epoch and for every $\epsilon$:
+a parameter-free prediction of no acceleration, \tierA{} \lean{ca\_deceleration} in
+\lean{DualScaleCosmology/Stream7CA.lean}. The observable frozen in advance was the sign of
+$q_0$. With the Planck 2018 flat $\Lambda$CDM fit, \tierL{} $\Omega_\Lambda = 0.68885$
+\cite{Planck2018VI}, one has $q_0 = \Omega_m/2 - \Omega_\Lambda < 0$, and the prediction is
+excluded, \tierA{} \lean{ca\_verdict\_excluded}.
+
+\begin{scopebox}
+A caveat recorded before the verdict, and repeated here: the input $q_0$ is model-dependent,
+being read off a $\Lambda$CDM fit rather than measured convention-free.
+\end{scopebox}
+
+\paragraph{(C-B) Pre-big-bang relic gravitons.}
+The programme's own frozen numbers, computed in the pre-big-bang scenario of
+\cite{GasperiniVeneziano2002} and fixed at the tag \texttt{stream7-cb-frozen}, are \tierC{}
+$g_1^2 = \ell_P H_0/c \approx 1.18\times10^{-61}$, a peak frequency
+$\omega_1 \approx 6\times10^{-5}\,\mathrm{Hz}$ with no relic gravitons above it, a peak amplitude
+$\Omega_{\rm GW}(\omega_1) \approx 1.2\times10^{-65}$ and a low-frequency slope
+$\Omega \sim \omega^3$. LISA's stochastic band is \tierL{} $f > 0.1\,\mathrm{mHz}$ with best
+sensitivity $\approx 6.5\times10^{-13}$ in the band $0.1$--$2\,\mathrm{mHz}$ \cite{LISA2017}. The
+predicted peak lies below LISA's band in frequency and more than fifty orders of magnitude below
+it in amplitude; the kernel statement is stronger, namely that the peak multiplied by $10^{50}$
+is still below LISA's best, \tierA{} \lean{cb\_peak\_amplitude\_unreachable}. By the pre-registered
+rule the verdict is that C-B is not falsifiable in practice, neither confirmed nor excluded,
+\tierA{} \lean{cb\_not\_testable} in \lean{DualScaleCosmology/Stream7CB.lean}.
+
+\paragraph{(C-C) Cosmic F-strings.}
+C-C takes cosmic F-strings at $\alpha' = s^2$ \cite{CMP2004}. It was never frozen: no tag, no
+prediction document, a candidate in the hypothesis inventory only. The inventory's estimate is
+\tierC{} $G\mu \sim 10^{-62}$; what is actually proved is the bound \tierA{}
+$G\mu \le 10^{-61}$, more than fifty orders below the lower end of the brane-inflation window,
+whose value \tierL{} $10^{-11}$ is taken from \cite{CMP2004}; the comparison is
+\tierA{} \lean{selfDual\_Gmu\_below\_cmp\_window} in
+\lean{DualScaleCosmology/CosmicString.lean}. This is out of reach of any foreseeable
+observation.
+
+\paragraph{The shared premise fails on its own.}
+C-B and C-C both assume $\alpha' = s^2$ as the string's Regge slope, that is, string resonances
+at \tierC{} $\hbar c/s \approx 4\,\mathrm{meV}$. LHC searches exclude such resonances below
+\tierL{} $7.9\,\mathrm{TeV}$ \cite{CMS2020}, exceeding the required $\alpha'$ by a factor of at
+least $10^{30}$, \tierA{} \lean{selfDual\_alphaPrime\_exceeds\_cms\_ceiling}. C-B and C-C therefore
+fail at the level of their assumption, not only for want of sensitivity.
+
+\paragraph{An independent external confrontation.}
+\tierL{} An outside group working on superfluid physics tested a dual-length reading against
+helium-4 data; their report is recorded verbatim in
+\lean{docs/reviews/2026-09-19\_quantumfluids\_dual\_scale\_report.md} \cite{QuantumFluids2026}. Two
+outcomes were returned. The first survives: the $R + \alpha'/R$ shape is a genuine identity for
+the Bogoliubov dispersion relation, their theorem \lean{dualLength\_bogoliubov} --- checked in
+that group's own development, not in this repository's kernel. The second is a
+refutation: at saturated vapour pressure there is no interior minimum, the roton sits $4.6$
+times below the envelope in energy, a duality error of $132\%$, and across pressure the
+shortfall deepens monotonically from $21\times$ at $0\,\mathrm{bar}$ to $51\times$ at
+$24\,\mathrm{bar}$. Helium-4 thus fails the bound by a factor of $21$ to $51$ and the dual-scale
+structure does not describe it. The authors withdrew the string-theoretic framing and retitled
+their paper, which now states that ``No string-theoretic content is claimed or used anywhere
+below, and an earlier framing of this programme, which leaned on that language, has been
+withdrawn.'' The surviving identity is not support for the programme, and the narrow citation is
+the correct one.
+
+\begin{headlinebox}
+All four negative verdicts trace back to the identification $\alpha' = \ell_P c/H_0$ itself.
+Either it conflicts with data, as in P1 and C-A, or it places every stringy signal below any
+foreseeable sensitivity, as in C-B and C-C --- and for C-B and C-C the premise $\alpha' = s^2$
+is independently excluded.
+\end{headlinebox}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{A topological-data-analysis datum, and exactly what it does and does not support}\label{sec:tda}
+
+One direction explored in this programme replaces the ``extra dimension'' reading of the self-dual length with a ``defect core'' reading: the self-dual length as the core size of primordial defects, with dark energy as the bulk viscosity of a stretched defect network. That pivot is a conjecture (\tierC) and nothing below derives it.
+
+\subsection*{The measurement}
+
+A sibling superfluid repository applied topological data analysis to a simulated vortex tangle and measured a floor: the minimum separation between distinct vortex lines. The result (\tierL, an outside group; recorded verbatim at \lean{docs/reviews/2026-09-19\_quantumfluids\_dual\_scale\_report.md}, \cite{QuantumFluids2026}) is $F = 0.943\,\xi$, where $\xi$ is the healing length: the minimum separation between distinct vortex lines sits essentially \emph{at} the healing length. The significance is recorded as $6.1$ times the null model's $95$th percentile. A control passed: their recovered sound speed is $238.8$~m/s against a literature value of $238.3$~m/s. The companion criterion failed: $f_<$ gives $0.402$ against $0.381$ in the null, indistinguishable.
+
+\begin{correctionbox}
+An earlier attempt assigned line identity by a proximity threshold, and the floor it produced was an artefact of it. The method was replaced by a threshold-free one: line identity from cube adjacency, where a vortex line enters a grid cube through one face and leaves by another, so no parameter remains for the floor to track. Validation: $0$ ambiguous cubes out of $46{,}762$ pierced. The new method also found $175$ distinct lines where the proximity method had found $67$, so the latter had been merging distinct lines (\tierL, \cite{QuantumFluids2026}).
+\end{correctionbox}
+
+\subsection*{What the accompanying Lean library proves, and what it does not}
+
+The following is theirs as recorded (\tierL, \lean{docs/reviews/2026-09-19\_quantumfluids\_dual\_scale\_report.md}, \cite{QuantumFluids2026}). Their \lean{RipsFloor} file contains four results and does \emph{not} formalise persistent homology. Its own header says so, and that disclosure is theirs before it is ours: no simplicial complex, no homology functor, no persistence module, no stability theorem. What is proved concerns the Vietoris--Rips \emph{graph}, the $1$-skeleton, with $\mathrm{Adj}\,X\,t\,i\,j := (i \neq j \wedge \mathrm{dist}(X_i,X_j) \le t)$ and $\mathrm{Separated}\,X\,d := (\forall i \neq j,\ d \le \mathrm{dist}(X_i,X_j))$: \lean{no\_adj\_of\_lt} (below the separation the Rips graph is edgeless), \lean{le\_of\_adj} (every scale carrying an edge is at least the separation --- the floor), \lean{isLeast\_edge\_scale} (the floor is attained, not merely a bound), and a non-vacuity remark. The step licensing ``floor'' as ``$H_0$ persistence floor'' --- that an $H_0$ class can die only at a scale where an edge appears --- is not formalised; their memo carries it as a stated assumption. Their gates are in Table~\ref{tab:tdagates}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\hline
+Gate (\tierL, \cite{QuantumFluids2026}) & Recorded outcome \\
+\hline
+\texttt{lake build}, seven default targets & $8776$ jobs, $0$ errors \\
+\texttt{sorry}/\texttt{admit}/\texttt{native\_decide} & none in any default-target module \\
+the $65$ hits in their tree & confined to \texttt{ComparatorChallenges}, marked not a default \\
+ & target, with a comment that they contain \texttt{sorry} by design \\
+\texttt{\#print axioms}, $67$ theorems & only \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; no \texttt{sorryAx} \\
+\hline
+\end{tabular}
+\caption{Verification gates recorded by the sibling repository for its seven default-target modules.}
+\label{tab:tdagates}
+\end{table}
+
+\subsection*{An independent re-analysis performed for this paper}
+
+The following is ours, not theirs: arithmetic on their published results file \lean{exploration/tda/results\_polanco\_traced.json}, badged \tierA\ only in the weak sense of arithmetic on a fixed published artefact, not as a kernel-checked theorem. That file records $\xi = 0.03681553890925539$ and $\Delta x = 0.02454369260617026$, so $\xi = 1.5\,\Delta x$ exactly, and $F = 0.9428090415820601\,\xi$. Therefore $F = 1.4142135623730903\,\Delta x$, which agrees with $\sqrt{2} = 1.4142135623730951$ to fourteen significant figures. The same file lists the ten smallest inter-line distances and they are bit-identical, all equal to $0.9428090415820601$: the minimum is tenfold degenerate.
+
+A reading, and stated as one (\tierC): $\sqrt{2}\,\Delta x$ is the face diagonal of one grid cell, so the measured floor is a discrete distance on the lattice of face centres carrying a tenfold degeneracy, not a continuously measured physical length. Their memo notes only that discretisation leaves ``a factor 2 of margin''; it does not say the reported value \emph{is} a lattice constant. This does not make the result wrong; it makes the resolution caveat load-bearing rather than decorative.
+
+Two further items, from the same file. Their own numbers settle the failed companion criterion: $f_< = 0.40230$ against a null of mean $0.38132$ with 5th--95th percentile band $[0.33305,0.43764]$, so the measured value lies inside the null band. Their README calls this a refutation of the hypothesis as written; a statistic inside the null band fails to support the hypothesis, which is not the same as refuting it, and we report their word and their number together. And one internal inconsistency, reported neutrally: their memo describes the mean minimum-spanning-tree edge as ``$1.75\,\xi$ / $1.78\,\xi$, indistinguishable'', while their results file gives the null mean as $2.4135\,\xi$ against a data value of $1.7487\,\xi$. We report both and reconcile neither.
+
+\subsection*{Provenance and publication status}
+
+The data (\tierL) are one instantaneous snapshot from a published $256^3$ Gross--Pitaevskii turbulence simulation \cite{Polanco2021} (Nat.\ Commun.\ \textbf{12}, 7090 (2021); Zenodo record 5510351). Two caveats: $\xi = 1.5\,\Delta x$ is the original authors' convention, adopted unchanged rather than derived; and the simulation is a generalised, nonlocal, roton-bearing Gross--Pitaevskii model, not a plain weakly interacting Bose--Einstein condensate. As recorded in \lean{docs/reviews/2026-09-19\_quantumfluids\_dual\_scale\_report.md} (\tierL, \cite{QuantumFluids2026}), the number $F = 0.943\,\xi$ appears in the sibling repository's design memo, README and ledger but not in its published paper, whose committed text still carries a superseded earlier run, $F = 1.491\,\xi$, and calls that measurement inconclusive and confounded by its own threshold. We cite the repository artefacts, not the paper, and say so.
+
+\begin{scopebox}
+\textbf{(a) Split verdict, and it is the authors' own} (\tierL, \cite{QuantumFluids2026}). Their README records the TDA workstream as ``partial, split verdict --- floor $F = 0.943\,\xi$ at $6.1\times$ the null, but the $f_<$ criterion refutes the hypothesis as written.'' The companion criterion failed against the null. Claim and refutation travel together in their own repository, and both are reported here.
+
+\textbf{(b) This is not evidence that the core is self-dual.} A healing-length floor existing in a real tangle is the structural ingredient the pivot borrows. It is not the pivot.
+
+\textbf{(b2) The floor sits at a lattice distance.} This is the strongest of the four caveats. By the re-analysis above, $F$ matches $\sqrt{2}\,\Delta x$ to fourteen significant figures with a tenfold degenerate minimum. Until a run at finer resolution separates the physical floor from the grid, the measurement cannot distinguish ``the healing length sets a floor'' from ``the grid does''.
+
+\textbf{(c) Resolution caveat} (\tierL, \cite{QuantumFluids2026}). $\xi = 1.5\,\Delta x$ leaves only a factor of about $2$ over the grid spacing, while the authors state that $\xi/\Delta x \gtrsim 5$ is needed. Any sentence leaning on the floor must carry this.
+\end{scopebox}
+
+\subsection*{The LeanMaster side: arithmetic the proposal must meet}
+
+The file \lean{DualScaleCosmology/ViscousDefectNetwork.lean} (\tierA, $9$ theorems) does not derive the pivot. It fixes the arithmetic any such proposal must satisfy, so the claim becomes falsifiable rather than an analogy (Table~\ref{tab:visc}).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\hline
+Theorem (\tierA) & Content \\
+\hline
+\lean{wEff\_of\_visc} & $p_{\rm eff} = p - 3\zeta H$ in FLRW, $w_{\rm eff} = p_{\rm eff}/\rho$ $\Rightarrow$ $w_{\rm eff} = w - 3\zeta H/\rho$ \\
+\lean{visc\_for\_wEff\_neg\_one} & $w_{\rm eff} = -1$ exactly when $3\zeta H = \rho(1+w)$, i.e.\ $\zeta = \rho(1+w)/(3H)$ \\
+\lean{frozen\_network\_w} & a frozen network of $n$-dimensional defects has $w = -n/3$ \\
+\lean{network\_gap} & $w_{\rm eff} = -1$ requires $3\zeta H/\rho = 2/3$ (strings), $1/3$ (walls) \\
+\lean{wEff\_monotone} & $w_{\rm eff}$ decreases as $\zeta$ grows \\
+\hline
+\end{tabular}
+\caption{Five of the nine theorems of \lean{DualScaleCosmology/ViscousDefectNetwork.lean}.}
+\label{tab:visc}
+\end{table}
+
+Three consequences follow. A \emph{constant} bulk viscosity cannot give $w_{\rm eff} = -1$ through an epoch in which $\rho/H$ changes; the required $\zeta$ must track $\rho(1+w)/H$. Strings ($n=1$) give $w = -1/3$ and walls ($n=2$) give $-2/3$, so neither is $-1$; the gap dissipation must close is $2/3$ and $1/3$ respectively, so the dissipative term is not a small correction but has to carry most of the effect. And viscosity can only push $w_{\rm eff}$ down.
+
+The setup is textbook (\tierL): bulk viscosity in FLRW shifts the pressure to $p_{\rm eff} = p - 3\zeta H$ in the Eckart/Landau first-order form, and frozen-network scaling $\rho \sim a^{-(3-n)}$ gives $w = -n/3$.
+
+The rest is conjecture (\tierC) and the file claims none of it: not that the defect network exists, not that its $\zeta$ has this form, not that any of this describes dark energy. There $\zeta$ is a free function, and entropy production by a viscous fluid is a further constraint not modelled. Should a derivation appear, the resulting $w(z)$ must be frozen by git tag before comparison with data, per the pre-registration protocol of the previous section.
+
+The honest status is one measured floor consistent with a structural ingredient, one failed companion criterion, and a decision rule prepared in advance of any fit. Nothing more.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Method, and a claim of ours that the method refuted}\label{sec:method}
+
+The apparatus is described at the end of the section; a failure introduces it
+better than a design does. The most instructive event of these releases was not a
+theorem proved but a sentence this project had written down, carried through five
+tagged releases and every gate, and found false as soon as someone tried to prove
+it.
+
+\begin{correctionbox}
+\textbf{The claim we made, and retract.} For five releases a file header and two
+documentation paragraphs stated the crystallographic restriction in the form: a
+finite-order integer matrix of size $d$ and order $n$ exists only if
+$\varphi(n) \le d$, with $\varphi$ Euler's totient. It was listed as
+``the next formalization target''. On attempting the proof it turned out to be
+\emph{false}. \tierA{} The counterexamples that are kernel-checked are at $d = 6$;
+\tierC{} the corresponding failure for every $d \ge 5$ is asserted here and is not
+formalized.
+\end{correctionbox}
+
+\subsection*{Where the standard argument breaks}
+
+The tempting route looks safe. If $A^n = 1$ then the minimal
+polynomial of $A$ divides $X^n - 1 = \prod_{e \mid n} \Phi_e$; some eigenvalue must
+be a \emph{primitive} $n$-th root of unity; hence $\Phi_n$ divides the characteristic
+polynomial, and $\deg \Phi_n = \varphi(n) \le d$. The middle step is false. The order
+of a matrix is the \emph{least common multiple} of the orders of its eigenvalues, not
+the largest of them. The matrix $\mathrm{diag}(C_{\Phi_3}, C_{\Phi_5})$, built from the companion
+matrices of $\Phi_3$ and $\Phi_5$, has order
+$\mathrm{lcm}(3,5) = 15$ and has no eigenvalue of order $15$ at all: every eigenvalue
+has order $3$ or $5$. Nothing forces $\Phi_n$ into the characteristic polynomial.
+
+\subsection*{What is now proved, and what is not}
+
+\tierA{} Four explicit $6 \times 6$ integer matrices, each of determinant $1$ --- so
+genuine lattice automorphisms in $\mathrm{SL}(6,\mathbb{Z})$, not merely integer
+matrices --- of order exactly $15$, $20$, $24$ and $30$. ``Exactly'' is proved in the
+strong form: $A^n = 1$ together with $A^{n/p} \ne 1$ for every prime $p \mid n$. The
+file is \lean{DualScaleStream2/Orientifold/CrystallographicOrders.lean}, ten
+theorems.
+
+\tierA{} $\varphi(15) = \varphi(20) = \varphi(24) = \varphi(30) = 8 > 6$, same file.
+So $\varphi(n) \le d$ is not a necessary condition, and none of the four orders
+appears in the $\varphi$-list for $d = 6$. That list is correct as arithmetic about
+$\varphi$; it is simply not the list of orders available on a rank-$6$ lattice.
+
+\tierA{} The corrected criterion replaces $\varphi$ by
+$\psi(n) = \sum \varphi(p^a)$, summed over the prime powers $p^a$ exactly dividing
+$n$ with $p^a \ne 2$. The factor $2$ is skipped because $-1$ acting on a block that
+is already present realises it at no cost in dimension. For $d = 6$ the two lists
+are those of Table~\ref{tab:orders}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\hline
+$\varphi(n) \le 6$, the thirteen previously listed & $1$--$10$, $12$, $14$, $18$ \\
+$\psi(n) \le 6$ \tierA{} & $1$--$10$, $12$, $14$, $15$, $18$, $20$, $24$, $30$ \\
+\hline
+\end{tabular}
+\caption{The old and corrected order lists at $d = 6$. The second row is the list
+proved in \lean{DualScaleStream2/Orientifold/CrystallographicOrders.lean}: the
+thirteen orders of the first row, which are the project's earlier list, plus exactly
+the four orders exhibited as matrices above.}
+\label{tab:orders}
+\end{table}
+
+\tierL{} That $\psi(n) \le d$ is \emph{necessary} --- the actual crystallographic
+restriction theorem --- is not formalized here. It requires cyclotomic field theory
+and the rational canonical form; we state it as literature, not as kernel output.
+
+\tierA{} Blast radius. The rank-$2$ list $\{1,2,3,4,6\}$ used elsewhere is
+unaffected: at $d = 2$ the conditions $\psi(n) \le 2$ and $\varphi(n) \le 2$ select
+the same set. This is itself a theorem, \lean{rank\_two\_unaffected}.
+
+\subsection*{A second instance, and therefore a pattern}
+
+Found in the same session. The file
+\lean{StringTheoryFormalization/StringDynamics/TDAMapper.lean} carried a theorem
+named \lean{mapper\_nerve\_theorem} whose docstring read ``The Mapper construction
+preserves connected components in the limit of fine covers (nerve theorem analog)''
+and whose statement was: for every Mapper graph $G$, \lean{G.nodes.card} $\ge 0$.
+That is vacuous --- it holds of every finite set --- and it neither proves
+nor mentions the claim in its docstring. The old file header read ``Status: VERIFIED
+(0 sorry axioms)'' and a scorecard recorded the block at $100\%$; both statements
+were literally true and both were beside the point. A companion definition,
+\lean{mapperComponents}, returned the node count, which is not the number of
+connected components. The file has been corrected: the vacuous theorem is replaced by
+\lean{mapper\_edge\_bound}, which is about the structure it names --- the edge count is
+at most the square of the node count, a bound attained by the complete graph with
+loops --- the misnamed definition is renamed, and the header now records what is not
+proved. \tierA{} The library still audits at $89$ theorems, $0$ failing
+(\lean{tools/axiom\_audit.py}). That is the point: the count did not move, because a
+vacuous theorem counts exactly as much as a real one.
+
+\subsection*{The methodological point}
+
+Two instances make a general form. An automated apparatus certifies what a proof
+\emph{depends on}. It is therefore structurally blind to (i) prose that nothing
+depends on, including prose naming the project's own next goal, and (ii) a theorem
+whose statement is vacuous, or weaker than its docstring. Neither is a gap in the
+kernel; both are gaps in what the kernel was asked. No theorem depended on the false
+crystallographic statement, so the build passed, the \texttt{sorry}-grep passed, the
+axiom audit passed and the statement lock passed, through five tagged releases, with
+the false sentence in place the whole time. What caught it was attempting the proof.
+The rule adopted: a statement written as ``not proved here; the next target is $X$''
+is an unverified \emph{claim}, and must be checked on a small case before it is
+written down at all.
+
+\subsection*{The apparatus}
+
+Lean 4 v4.34.0-rc2 with Mathlib at the same revision. Five gates precede any claim
+that something is proved: build the library target; grep for \texttt{sorry},
+\texttt{admit} and \texttt{native\_decide}; the axiom audit
+\lean{tools/axiom\_audit.py}; the statement lock \lean{tools/statement\_lock.py --check};
+and independent recompilation of any delegated output.
+
+\tierA{} The current state is $785$ theorems audited across ten first-party
+libraries, $0$ failing (\lean{tools/axiom\_audit.py}): DualScaleStream2 $176$,
+DualScaleDyons $115$, DualScaleMoonshine $101$, StringTheoryFormalization $89$,
+StringTheoryFoundation $63$, DualScaleM24Formalization $62$, DualScaleCosmology $59$,
+Lean5Corpus $53$, DoubleFieldTheory $44$, DualScaleValidation $23$. The statement
+lock covers $1135$ declarations across $102$ files
+(\lean{tools/statement\_lock.py --check}). ``$0$ failing'' means that every theorem
+depends on nothing beyond the three axioms \texttt{propext},
+\texttt{Classical.choice} and \texttt{Quot.sound}.
+
+Negative controls run on every release: a deliberately wrong variant of a theorem
+must fail to compile. From the releases reported here --- a non-invariant triple
+added to an invariant list; a sign flipped in the $8 \times 8$ pairing matrix; a zero
+entry of that matrix made nonzero; the family norm $k^2 + m^2$ weakened to
+$k^2 + m$; the cut $|m| \le 5$ widened to $|m| \le 6$; $\mathrm{mat}_{15}^{15}$
+weakened to $\mathrm{mat}_{15}^{14}$; the order $15$ dropped from the corrected
+crystallographic list --- all were caught. Mutation testing, however, catches a
+\emph{wrong} theorem and not a \emph{vacuous} one: the mutants of a vacuous statement
+are frequently still true. Both instances above had to be caught by reading, not by
+a gate.
+
+One provenance rule learned in these releases: a hand-computed matrix literal is not
+kernel-verified content until a lemma derives every entry, zeros included, from the
+definition. \tierA{} The $8 \times 8$ pairing matrix of the vacuum section is covered
+by \lean{symJ8\_is\_wedge}, which checks all $64$ entries against the wedge sign.
+Without it the kernel would be certifying internal consistency, not provenance.
+
+\section{Conclusion, and what would move it}
+\label{sec:concl}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{The separation}
+
+The same arithmetic, asked two questions, behaves in two ways. Asked for the smallest black hole with a horizon,
+it returns one surface, one discriminant and one modulus, and pins the answer to an externally printed
+degeneracy. Asked how many flux configurations a budget permits, it returns infinitely many, and keeps returning
+infinitely many after every refinement one might hope would help: the orbifold projection, which genuinely cuts
+the rank from $20$ to $8$ but leaves the lattice unimodular and symplectic; and the quantisation convention,
+which for any factor $M$ rescales a lattice into a lattice.
+
+The asymmetry has a one-line cause. The attractor problem is posed on a \emph{definite} form --- a charge form
+must be positive definite for a horizon to exist, and definiteness is what makes ``smallest'' meaningful and
+makes the minimiser unique. The flux problem is posed on an \emph{indefinite} one, and an indefinite unimodular
+lattice has no smallest anything. When imaginary self-duality is imposed, it supplies precisely the missing
+definiteness, and the count becomes finite immediately. Finiteness in flux compactifications is a consequence of
+supersymmetry, not of topology; \cref{sec:vac} is a formal statement of how little topology contributes.
+
+\subsection*{What is not settled, stated as work}
+
+\begin{scopebox}
+\textbf{(i) The normalisation bridge.} Nothing in this paper connects the lattice pairing $\langle H,F\rangle$ to
+the physical $N_{\rm flux}$. That needs the $D3$-charge normalisation on the quotient, from a source. Until it is
+pinned, the ceiling $32$ is carried over and the count \emph{eleven} is an illustration of a mechanism, not a
+number about vacua. \textbf{(ii) The crystallographic restriction} in its correct form $\psi(n)\le d$ remains
+unproved here; only its failure in the $\varphi$ form, and the realisability of the four extra orders, are
+established. \textbf{(iii) Which complex structure.} The positive-definite form used in \cref{sec:vac} comes from
+the canonical compatible complex structure the lattice already carries; the physical one is fixed by moduli. The
+mechanism is choice-independent, the count is not. \textbf{(iv) No vacua are counted anywhere.} No moduli
+stabilisation, no equations of motion, no quotient by the duality group. \textbf{(v) The TDA floor} sits at a
+lattice distance to fourteen significant figures; a run at finer resolution is required before it can be read as
+a physical length.
+\end{scopebox}
+
+\subsection*{What would move it}
+
+Three things, in increasing order of difficulty. First, a pinned source for the $D3$-charge normalisation on the
+quotient: that single input converts the mechanism of \cref{sec:vac} into a statement with a number in it, and it
+is a matter of finding the convention, not of proving anything. Second, the imaginary-self-duality condition
+imposed as a condition on the rank-$8$ lattice rather than represented by a compatible complex structure chosen
+for convenience. Third, a superfluid dataset with $\xi/\Delta x\gtrsim5$, which is the only thing that can
+distinguish a healing-length floor from a grid constant.
+
+\subsection*{A remark on method}
+
+We have reported two defects of our own: a false claim about the crystallographic restriction that survived five
+tagged releases, and a theorem whose statement was vacuous under a header reading \texttt{VERIFIED}. Both passed
+every gate, because every gate is a dependency check. The corollary for anyone reading a formalization headline
+is worth stating plainly: a count of ``theorems verified'' counts declarations whose axiom dependencies were
+checked. It does not count mathematical content, it does not audit statements against their documentation, and it
+cannot distinguish a deep theorem from \texttt{True}. In this repository the difference is currently three
+declarations out of $785$; we say so because the number is only useful if what it excludes is stated.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Reproducibility}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+All Lean sources are in the repository \texttt{SocrateAI-Scientific-Agora-LeanMaster} at tag \texttt{v3.38.0},
+built with \texttt{leanprover/lean4:v4.34.0-rc2} and Mathlib at revision \texttt{85e3a25e}. Every theorem named in
+this paper can be located by its name; the release notes in \texttt{docs/VERIFIED\_FOUNDATION.md} record, per
+release, the build result, the \texttt{sorry} grep, the axiom audit, the statement lock and the mutation tests.
+Literature is pinned by file and line range under \texttt{papers/foundations/}, each PDF hash-pinned at fetch
+time. The external superfluid results are from \texttt{SocrateAI-Scientific-QuantumFluids} at tag
+\texttt{v1.1.0}; the simulation snapshot re-analysed in \cref{sec:tda} is Zenodo record \texttt{5510351}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{99}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibitem{Moore1998} G.~Moore, ``Arithmetic and Attractors,'' \textit{arXiv:hep-th/9807087} (1998).
+\bibitem{Sen2007} A.~Sen, ``Black Hole Entropy Function, Attractors and Precision Counting of Microstates,''
+  \textit{Gen. Rel. Grav.} 40 (2008) 2249, \textit{arXiv:0708.1270}.
+\bibitem{DMZ2012} A.~Dabholkar, S.~Murthy, and D.~Zagier, ``Quantum Black Holes, Wall Crossing, and Mock Modular
+  Forms,'' \textit{arXiv:1208.4074} (2012).
+\bibitem{GKP2001} S.~B.~Giddings, S.~Kachru, and J.~Polchinski, ``Hierarchies from Fluxes in String
+  Compactifications,'' \textit{Phys. Rev. D} 66 (2002) 106006, \textit{arXiv:hep-th/0105097}.
+\bibitem{Sen1996} A.~Sen, ``F-theory and Orientifolds,'' \textit{Nucl. Phys. B} 475 (1996) 562,
+  \textit{arXiv:hep-th/9605150}.
+\bibitem{Aspinwall1996} P.~S.~Aspinwall, ``K3 Surfaces and String Duality,'' \textit{arXiv:hep-th/9611137} (1996).
+\bibitem{CKN1999} A.~G.~Cohen, D.~B.~Kaplan, and A.~E.~Nelson, ``Effective Field Theory, Black Holes, and the
+  Cosmological Constant,'' \textit{Phys. Rev. Lett.} 82 (1999) 4971, \textit{arXiv:hep-th/9803132}.
+\bibitem{Planck2018VI} Planck Collaboration, ``Planck 2018 results. VI. Cosmological parameters,''
+  \textit{Astron. Astrophys.} 641 (2020) A6, \textit{arXiv:1807.06209}.
+\bibitem{LeeAdelberger2020} J.~G.~Lee, E.~G.~Adelberger, T.~S.~Cook, S.~M.~Fleischer, and B.~R.~Heckel,
+  ``New Test of the Gravitational $1/r^2$ Law at Separations down to $52\,\mu$m,''
+  \textit{Phys. Rev. Lett.} 124 (2020) 101101, \textit{arXiv:2002.11761}.
+\bibitem{MVV2023} M.~Montero, C.~Vafa, and I.~Valenzuela, ``The Dark Dimension and the Swampland,''
+  \textit{JHEP} 02 (2023) 022, \textit{arXiv:2205.12293}.
+\bibitem{GasperiniVeneziano2002} M.~Gasperini and G.~Veneziano, ``The Pre-Big Bang Scenario in String
+  Cosmology,'' \textit{Phys. Rept.} 373 (2003) 1, \textit{arXiv:hep-th/0207130}.
+\bibitem{LISA2017} P.~Amaro-Seoane et al., ``Laser Interferometer Space Antenna,'' \textit{arXiv:1702.00786} (2017).
+\bibitem{CMP2004} E.~J.~Copeland, R.~C.~Myers, and J.~Polchinski, ``Cosmic F- and D-strings,''
+  \textit{JHEP} 06 (2004) 013, \textit{arXiv:hep-th/0312067}.
+\bibitem{CMS2020} CMS Collaboration, ``Search for high mass dijet resonances with a new background prediction
+  method in proton-proton collisions at $\sqrt{s}=13$~TeV,'' \textit{JHEP} 05 (2020) 033, \textit{arXiv:1911.03947}.
+\bibitem{Polanco2021} J.~I.~Polanco, N.~P.~M\"uller, and G.~Krstulovic, ``Vortex clustering, polarisation and
+  circulation intermittency in classical and quantum turbulence,'' \textit{Nat. Commun.} 12 (2021) 7090;
+  dataset Zenodo record 5510351.
+\bibitem{QuantumFluids2026} SocrateAI Scientific Agora Collaboration, \textit{SocrateAI-Scientific-QuantumFluids},
+  tag \texttt{v1.1.0} (2026).
+\bibitem{Callens2026Paper11} X.~Callens and the SocrateAI Agora Collaboration, ``Pre-Registered Confrontation of a
+  $K3\times T^2$ Dual-Scale Hypothesis with Data: Four Observables, Four Negative Verdicts, and a Common Cause''
+  (2026).
+\end{thebibliography}
+
 
 \end{document}
