@@ -1,11 +1,11 @@
 # Received report — dual scale in quantum fluids (2026-09-19)
 
-**Source as given:** `/home/xavkal/xdev/SocrateAI-Scientific-QuantumFluids`, consolidated in that repository's
-`docs/DUAL_SCALE_PROPOSAL.md`. **Not reachable from this VM** (no such path here, nor any `*QuantumFluid*`
-directory on either disk), so **nothing below has been re-checked by this repository**. It is recorded verbatim, as
-`docs/reviews/` requires for anything arriving from outside, and then assessed. Recording is not endorsement: in
-LeanMaster's tier system this is Tier X (another repository's claim) until it is pinned as `repo@commit` with its
-own gate outputs, at which point the parts LeanMaster relies on become Tier L.
+**Source:** https://github.com/xaviercallens/SocrateAI-Scientific-QuantumFluids at commit
+`11a39a80caabf4b5774758744e5125a29a4cb0c4`, consolidated in that repository's `docs/DUAL_SCALE_PROPOSAL.md`.
+The local path first given (`/home/xavkal/xdev/...`) does not exist on this VM; the clone does.
+**Verified here on 2026-09-20 — see §1b**, which is what promotes the parts LeanMaster relies on from Tier X
+(another repository's claim) to Tier L (pinned literature/artefact). The report itself is recorded verbatim in
+§1, as `docs/reviews/` requires. Recording is not endorsement; §2–§3 say what may and may not be claimed.
 
 ---
 
@@ -49,6 +49,35 @@ own gate outputs, at which point the parts LeanMaster relies on become Tier L.
 
 ---
 
+## 1b. Independent verification in this repository (2026-09-20)
+
+Clone at `/mnt/disks/disk-socrateai-local-1/leanmaster/SocrateAI-Scientific-QuantumFluids`, commit `11a39a8`.
+
+| Gate | Result |
+|---|---|
+| Toolchain | `leanprover/lean4:v4.34.0-rc2` — **identical to LeanMaster's** after our migration |
+| Mathlib pin | `85e3a25e006c35636f0e53b0e9296caca2685bc0` (tag v4.34.0-rc2) — **the same revision LeanMaster uses** |
+| Build | `lake build` (their seven default targets): **8776 jobs, 0 errors**, `exit=0` |
+| `sorry` / `admit` / `native_decide` | **0 in every default-target module** (`DualLength`, `Duality`, `ShellHamiltonian`, `QuantumFluidsShell`, `MadelungSplit`, `GPGalerkin`, `RipsFloor`). The 65 hits in the tree are all in `ComparatorChallenges/`, which their `lakefile.lean` marks as *not* a default target, with the comment that those statements "contain `sorry` by design and must never count as built theorems" |
+| Axioms | Probe with `#print axioms` over every theorem of the seven modules: **67 of 68 reported, all with only `propext`, `Classical.choice`, `Quot.sound`; no `sorryAx`**. The 68th (`hasDerivAt_line`) is `private`, so my generated probe could not name it — a limitation of the probe, not of their file |
+| Theorem count | `DualLength.lean` has **13** theorems, not the 12 the report states; the other six modules give 11, 9, 12, 6, 13, 4, so 68 in total across default targets |
+
+**Conclusion of the check.** The Lean side of the report holds up: it builds under our own toolchain, contains no
+`sorry` in anything it counts, and depends on nothing beyond the three standard axioms. The one numerical
+discrepancy (12 vs 13 theorems in `DualLength`) is in the report's favour to correct, not to keep.
+
+**Two findings to send back.**
+
+1. **A committed `.lake` symlink breaks the clone.** `lean_src/.lake` is a symlink to
+   `/media/xavkal/3ada43de-.../qf-lake`, i.e. to the author's other machine; on any other machine `lake` stops
+   with "already exists (error code: 17)". `.lake` belongs in `.gitignore`.
+2. **Their own file already refuses the reading the directives put on it.** `DualLength.lean`'s header says, in
+   its "NOT claimed" section: *"anything about string theory or T-duality (the shape is AM-GM on two positive
+   terms)"*. So the repository that proves the result explicitly declines to call it evidence for T-duality. Any
+   LeanMaster document that cites it must respect that.
+
+---
+
 ## 2. What this is, read carefully
 
 The report is **a refutation with a surviving weaker successor**, and it says so itself. The headline that matters
@@ -67,17 +96,16 @@ failures recorded rather than smoothed. That is the same discipline as Streams 6
 
 | Use | Allowed? |
 |---|---|
-| Cite "the `R + α'/R` shape is an identity for Bogoliubov, kernel-checked elsewhere" as **Tier L**, with `repo@commit` and the theorem name | Only once the repository is reachable and pinned; not today |
+| Cite "the `R + α'/R` shape is an identity for Bogoliubov, kernel-checked elsewhere" as **Tier L**, with `repo@commit` and the theorem name | **Yes**, as `SocrateAI-Scientific-QuantumFluids@11a39a8`, `QuantumFluids.DualLength.dualLength_bogoliubov` (verified §1b) |
 | Say "the dual-scale principle is validated by fluid physics" | **No.** The measurement refutes it for ⁴He; what survives is a restricted, untested claim (DS-QF′) |
-| Use it to support the vortex-core pivot (`docs/THOUGHT_EXPERIMENT_VORTEX_CORE.md`) | Partly: it supports that the `R + α'/R` structure is a real feature of a *microscopic, weakly interacting* system, which is consistent with a defect-core reading. It says nothing about gravity, about `τ = ω`, or about dark energy |
+| Use it to support the vortex-core pivot (`docs/THOUGHT_EXPERIMENT_VORTEX_CORE.md`) | Partly, and with their own caveat: the structure is a real feature of a *microscopic, weakly interacting* system, but `DualLength.lean` states that it claims nothing about string theory or T-duality, "the shape is AM-GM on two positive terms". It says nothing about gravity, about `τ = ω`, or about dark energy |
 | Count its 51 theorems in this repository's totals | **No.** LeanMaster's counts are its own libraries only (702 audited theorems, `docs/VERIFIED_FOUNDATION.md`) |
 
-## 4. To make it citable here (one step)
+## 4. Citable as of 2026-09-20
 
-Give this repository a reachable path or a clone URL plus a commit hash; then a session can run the same five gates
-against it (build, `sorry` grep, axiom audit, statement lock, producer ≠ verifier), record the outputs in this file,
-and only then may `docs/` cite it as Tier L. Until then, every LeanMaster document that mentions it must say
-"reported, not verified here" — as `docs/THOUGHT_EXPERIMENT_VORTEX_CORE.md` §3.4 already does.
+Done: §1b. Cite as `SocrateAI-Scientific-QuantumFluids@11a39a8` with the theorem name. Two gates of LeanMaster's
+five do not transfer: that repository has no statement lock, and the producer ≠ verifier rule was met here only in
+the weak sense that this session re-ran the build and the axiom probe without touching the proofs.
 
 ## 5. Two questions the report raises for this repository
 
@@ -88,3 +116,62 @@ and only then may `docs/` cite it as Tier L. Until then, every LeanMaster docume
 2. **The report's `ℓ/(√2 ξ)` ratio is a dimensionless "distance from self-duality".** The analogue here is
    `𝒟(G)/2d ≥ 1`. Whether that ratio has any use in the gravity setting is exactly the open question of the
    vortex-core pivot (target V3 there): it needs a dynamics, not just a functional.
+
+---
+
+## 6. Addendum: release `v1.1.0` (received 2026-09-20)
+
+### 6.1 Verbatim
+
+> Done — README and paper updated, work continued, committed, pushed, released.
+>
+> https://github.com/xaviercallens/SocrateAI-Scientific-QuantumFluids/releases/tag/v1.1.0
+>
+> The continuation produced a real result
+>
+> I implemented the threshold-free fix I'd identified: line identity from cube adjacency — a vortex line enters a grid cube through one face and leaves by another — so there is no parameter for the floor to track. It validated cleanly: 0 ambiguous cubes out of 46,762 pierced. It also found 175 lines where the proximity method found 67, so that method had been merging distinct lines.
+>
+> The verdict splits, and I reported it split rather than picking the convenient half:
+> - The floor supports the hypothesis. F = 0.943 ξ — the minimum separation between distinct vortex lines sits essentially at the healing length — 6.1× the null's 95th percentile. With no threshold in the method, this can't be the artifact that killed the first attempt.
+> - The f_< criterion refutes it as written. 0.402 vs 0.381 in the null: indistinguishable. T[…] conditions I fixed in the pre-registration, so prediction T2 is wrong.
+>
+> Net: partially supported, not established. ξ = 1.5 Δx leaves only a 2× margin over the grid; ξ/Δx ≳ 5 is still needed.
+>
+> Paper: 10 → 14 pages, compiles clean, all refs resolved
+> - Retitled off T-duality, with a provenance paragraph stating plainly that no string-theoretic [content is claimed] and that the earlier framing was withdrawn. What survives is arithmetic on two positive terms — plus the fact that [the shape occurs exactly in] a standard dispersion relation, where it becomes measurable and can therefore be wrong.
+> - New section: the Ham[iltonian structure] and the σ-rule.
+> - New section: the dual length and its failure in ⁴He (21× → 51×).
+> - Status table gains [the in]conclusive TDA run and the demotion of the dual-scale claim from universal to weak-coupling.
+
+*(The message arrived with several lines truncated in transit; the bracketed text is my reconstruction from the
+repository, and the repository is authoritative.)*
+
+### 6.2 Verified here (2026-09-20), tag `v1.1.0` = commit `10f74daf1b39d2ac51a785452329fff0003cfc83`
+
+| Gate | Result |
+|---|---|
+| Build | `lake build`, all seven default targets: **8776 jobs, 0 errors** |
+| `sorry` / `admit` / `native_decide` | **0** in every default-target module (again confined to `ComparatorChallenges/`, not a default target) |
+| Axioms | `#print axioms` over **all 67** theorems of the seven modules: only `propext`, `Classical.choice`, `Quot.sound`; **no `sorryAx`** |
+| Module counts | `DualLength` 13, `Duality` 11, `ShellHamiltonian` 9, `QuantumFluidsShell` 12, `MadelungSplit` 5, `GPGalerkin` 13, `RipsFloor` 4 |
+| Provenance paragraph | present in `paper/quantumfluids_tdual.tex` ll. 126–132: "**No string-theoretic content is claimed or used anywhere below**, and an earlier framing of this programme, which leaned on that language, has been withdrawn." |
+| Status table | `README.md` l. 36 records the TDA workstream as "**partial, split verdict** — floor `F = 0.943 ξ` at 6.1× the null, but the `f_<` criterion refutes the hypothesis as written" |
+
+The split verdict is reported in their own README, not only in the message — the claim and its refutation travel
+together.
+
+### 6.3 What this changes for LeanMaster
+
+1. **The withdrawal is theirs, and it is now in their paper.** Any LeanMaster text that cited "validated by fluid
+   physics" would now contradict the source repository. The correct citation remains the narrow one of §3: the
+   `R + α'/R` shape is an identity for the Bogoliubov dispersion (`dualLength_bogoliubov`), and the ⁴He
+   measurement refutes the hypothesis there.
+2. **A measured floor at the healing length is the first empirical datum that bears on the vortex-core pivot.**
+   `F = 0.943 ξ` is a *minimum separation between distinct vortex lines*, measured with a threshold-free method,
+   at 6.1× the null's 95th percentile. It is evidence that a healing-length floor exists in a real tangle — the
+   structural ingredient the pivot borrows. It is **not** evidence that the core is self-dual, and the companion
+   criterion (`f_<`) failed against the null, so the authors call the workstream partially supported, not
+   established. `docs/THOUGHT_EXPERIMENT_VORTEX_CORE.md` §2 is updated accordingly.
+3. **Resolution caveat travels with it.** `ξ = 1.5 Δx` leaves a factor ~2 over the grid; they state `ξ/Δx ≳ 5` is
+   needed. Any LeanMaster sentence that leans on the floor must carry that caveat.
+

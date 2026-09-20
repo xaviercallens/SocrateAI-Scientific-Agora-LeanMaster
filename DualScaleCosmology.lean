@@ -11,3 +11,4 @@ import DualScaleCosmology.DarkEnergyScale
 import DualScaleCosmology.Stream6Verdict
 import DualScaleCosmology.Stream7CA
 import DualScaleCosmology.Stream7CB
+import DualScaleCosmology.ViscousDefectNetwork

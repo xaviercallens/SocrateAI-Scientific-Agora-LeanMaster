@@ -49,6 +49,12 @@ forbidden" it is false.
   cores removes the conflict, because nothing in the laboratory probes that regime.
 * **String theory already expects small cores to be stringy.** Winding modes becoming light at small radius is
   standard; a core of order `√α'` is the conventional expectation, not an exotic claim.
+* **A healing-length floor is now measured in a real tangle.** The QuantumFluids repository (v1.1.0, verified in
+  `docs/reviews/2026-09-19_quantumfluids_dual_scale_report.md` §6) finds a minimum separation between distinct
+  vortex lines of `F = 0.943 ξ`, at 6.1× the null's 95th percentile, with a threshold-free method. That supports
+  the *structural* ingredient the pivot borrows — a floor at the healing length — but not that the core is
+  self-dual, and their companion criterion failed against the null (`f_< = 0.402` vs `0.381`), so they report the
+  workstream as partially supported. Their grid resolution (`ξ = 1.5 Δx`) leaves only a factor ~2 of margin.
 
 ## 3. What the pivot costs, and what it must supply
 
@@ -77,8 +83,11 @@ forbidden" it is false.
      survives is the restricted claim that the structure belongs to the *weakly interacting* regime, and the
      report states that this is **untested**.
    So "validated by fluid physics" overstates it; "the shape is exact in a weakly interacting microscopic system,
-   and fails in a strongly correlated one" is what was shown. Citing it as Tier L needs `repo@commit` plus gate
-   outputs.
+   and fails in a strongly correlated one" is what was shown. **Verified here** at `@11a39a8` and at tag `v1.1.0`
+   (`@10f74da`): builds under our toolchain, no `sorry` in any default target, all 67 theorems on the three
+   standard axioms. In v1.1.0 that repository **withdrew the string-theoretic framing in its own paper** ("No
+   string-theoretic content is claimed or used anywhere below"), so LeanMaster must not cite it as support for
+   T-duality — only for the arithmetic identity.
 
 ## 4. Formalizable targets, if the pivot is pursued (all Tier A, none yet written)
 

@@ -246,6 +246,34 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0. `v3.30.0` (2026-09-20): the decision rule for viscous dark energy, and an external result verified
+
+`DualScaleCosmology/ViscousDefectNetwork.lean` (9 theorems). The vortex-core proposal
+(`docs/THOUGHT_EXPERIMENT_VORTEX_CORE.md`) claims dark energy is the bulk viscosity of a stretched network of
+defect cores. This file does not derive that; it fixes the arithmetic any such claim must meet, so that it can be
+refused by data:
+- `wEff_of_visc`: with `p_eff = p − 3ζH`, `w_eff = w − 3ζH/ρ`.
+- `visc_for_wEff_neg_one`, `visc_value`: `w_eff = −1` **iff** `3ζH = ρ(1+w)`, i.e. `ζ = ρ(1+w)/(3H)` — a tracking
+  relation, not a constant.
+- `frozen_network_w`, `string_wall_w`: a frozen network of `n`-dimensional defects has `w = −n/3`; strings `−1/3`,
+  walls `−2/3`, neither `−1`.
+- `network_gap`, `network_gap_values`: the dissipative term must supply `2/3` (strings) or `1/3` (walls) of the
+  effect; `wEff_monotone`: viscosity can only lower `w_eff`.
+
+Not claimed: that such a network exists, or that `ζ` takes this form. Any `w(z)` derived later must be frozen by
+git tag before comparison (Stream 6–7 protocol).
+
+**External result verified, not adopted.** `docs/reviews/2026-09-19_quantumfluids_dual_scale_report.md` records the
+QuantumFluids repository's dual-scale report verbatim and the checks run here at `@11a39a8` and tag `v1.1.0`
+(`@10f74da`): their seven default-target libraries build under our own toolchain (8776 jobs, 0 errors), contain no
+`sorry`, and all 67 theorems depend only on `propext`, `Classical.choice`, `Quot.sound`. Their measurement
+**refutes** the dual-scale hypothesis for ⁴He (21–51× below the envelope), and in v1.1.0 they withdrew the
+string-theoretic framing in their own paper. LeanMaster therefore cites only the arithmetic identity
+(`dualLength_bogoliubov`), never "validated by fluid physics", and does not add their theorems to its counts.
+
+Gates: build OK; grep empty; axiom audit `DualScaleCosmology` 59, total **711**, 0 failing; lock additions only;
+negative control: two mutations caught.
+
 ## 0a. `v3.29.0` (2026-09-19): Stream 8 §14 (GTVW) and the IR/UV obstruction, on Lean v4.34.0-rc2
 
 `DualScaleDyons/GTVWPoint.lean` (5 theorems) and `DualScaleDyons/TrappingObstruction.lean` (4 theorems), the first
