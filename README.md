@@ -515,7 +515,7 @@ Last full run (2026-09-19, all ten libraries re-audited on Lean v4.34.0-rc2 duri
 | `Lean5Corpus` | 53 | 0 |
 | `DoubleFieldTheory` | 44 | 0 |
 | `DualScaleValidation` | 23 | 0 |
-| `DualScaleCosmology` (Stream 3, with the verdicts of Streams 6–7) | 50 | 0 |
+| `DualScaleCosmology` (Stream 3, with the verdicts of Streams 6–7) | 59 | 0 |
 | `DualScaleMoonshine` (Stream 4) | 101 | 0 |
 | `DualScaleDyons` (Streams 5, 8) | 115 | 0 |
 | **Total** | **711** | **0** |
