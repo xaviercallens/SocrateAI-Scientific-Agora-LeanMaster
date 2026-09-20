@@ -58,6 +58,33 @@ Roughly ten `until`-loop watchers and one foreign `lake build` were still spinni
 A concurrent Lean build is the documented OOM / page-cache-flush failure of §S8. Stop them (`TaskStop`) before
 the release commit, not after.
 
+## S10.5 The gates cannot see a vacuous statement, and mutation testing cannot either
+
+Two instances, one week apart, same blind spot from the other side. §S10.1 was prose no theorem depended on.
+This one is a *theorem* that depends on nothing because it says nothing.
+
+`StringTheoryFormalization/StringDynamics/TDAMapper.lean` carried `mapper_nerve_theorem`, docstring "The Mapper
+construction preserves connected components in the limit of fine covers (nerve theorem analog)", statement
+`∀ (G : MapperGraph), G.nodes.card ≥ 0`, proof `Nat.zero_le`. True of every `Finset`. The file header said
+"Status: VERIFIED (0 sorry axioms)" and a scorecard said 100%. Both true, both beside the point. Its companion
+`mapperComponents` returned the node count, which is not a component count. A repo-wide scan then turned up three
+more declarations whose statement is literally `True` — `ward_identity_translation`, `ward_identity_dilatation`,
+`fm_squared_is_shift` — all in the same library, all *already* labelled vacuous in their own docstrings by an
+earlier session, and all still counted in the headline number.
+
+**Why no gate catches it.** The build compiles a vacuous theorem happily. The `sorry` grep finds nothing —
+`True := trivial` is strictly better at evading it than `sorry` would be. The axiom audit reports
+`propext, Classical.choice, Quot.sound`, because that is what a trivial proof uses. The statement lock locks the
+vacuous statement and reports no change. And **mutation testing does not help**: a mutant of `card ≥ 0` is
+usually still true, so nothing fails to compile. Every gate is a dependency check; none is a content check.
+
+**Rules adopted.**
+1. A count of "theorems audited" is a count of *declarations whose dependencies were checked*. Say so wherever
+   the number appears, and state how many carry content (`README.md` now says 785 audited, 782 with content).
+2. A placeholder must never be written as `True := trivial`. It evades every gate. If a result is not proved,
+   leave it out and say so in prose, or use `sorry` — which at least trips a gate.
+3. When a docstring claims more than the statement, the docstring is the defect. Read them against each other.
+
 # §S9. Toolchain migration to Lean/Mathlib `v4.34.0-rc2` (2026-09-19)
 
 **Scope**: branch `toolchain/v4.34.0-rc2` in a worktree on the data disk; `lean-toolchain`, `lakefile.lean`,

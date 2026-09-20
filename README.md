@@ -522,6 +522,17 @@ Last full run (2026-09-19, all ten libraries re-audited on Lean v4.34.0-rc2 duri
 | `DualScaleDyons` (Streams 5, 8) | 115 | 0 |
 | **Total** | **785** | **0** |
 
+**What the number 785 does and does not count (disclosure added 2026-09-20).** It counts *declarations whose
+axiom dependencies were checked*. Three of them, all in `StringTheoryFormalization`, have the statement `True`
+and are placeholders recording an intent rather than results: `ward_identity_translation`,
+`ward_identity_dilatation` (`Frontier/SL2CSymmetry.lean`) and `fm_squared_is_shift`
+(`StringDynamics/FourierMukai.lean`). Each is labelled vacuous in its own docstring, but the headline count did
+not say so until now. **Excluding them, 782 declarations carry mathematical content.** A fourth vacuous statement,
+`mapper_nerve_theorem` in `StringDynamics/TDAMapper.lean`, was *not* labelled — its docstring claimed a nerve
+theorem while its statement was `Finset.card ≥ 0` — and was corrected on 2026-09-20; the library still audits at
+89, because a vacuous theorem counts exactly as much as a real one. No library other than
+`StringTheoryFormalization` contains a `True` statement, and the Stream 2–9 work is clean.
+
 "0 failing" means every theorem depends on nothing beyond `propext`, `Classical.choice` and
 `Quot.sound`.
 

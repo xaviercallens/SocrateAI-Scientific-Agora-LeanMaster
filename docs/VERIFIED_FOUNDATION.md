@@ -246,6 +246,38 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0--------. `v3.38.0` (2026-09-20): two vacuous statements, one undisclosed, and what the count really counts
+
+Found while gathering material for paper 12, not by any gate.
+
+**The undisclosed one, now corrected.** `StringTheoryFormalization/StringDynamics/TDAMapper.lean` carried
+`mapper_nerve_theorem` with the docstring "The Mapper construction preserves connected components in the limit of
+fine covers (nerve theorem analog)" and the statement `∀ (G : MapperGraph), G.nodes.card ≥ 0`, proved by
+`Nat.zero_le`. The statement is vacuous — true of every `Finset` — and does not mention the docstring's claim.
+The file header read "Status: VERIFIED (0 sorry axioms)" and a scorecard recorded the block at 100%; both were
+true and both were beside the point. A companion definition `mapperComponents` returned the **node count**, which
+is not the number of connected components. Replaced by `mapper_edge_bound` (`edges.card ≤ nodes.card²`, attained
+by the complete graph with loops, enforced by a new `edges_mem` field), the definition renamed
+`mapperNodeCount`, and the header now records that the nerve theorem is **not** proved.
+`StringTheoryFormalization` still audits at **89**, because a vacuous theorem counts exactly as much as a real
+one — which is the finding.
+
+**The disclosed ones, now disclosed where it matters.** Three declarations have the literal statement `True`:
+`ward_identity_translation`, `ward_identity_dilatation` (`Frontier/SL2CSymmetry.lean`) and `fm_squared_is_shift`
+(`StringDynamics/FourierMukai.lean`). Each *is* labelled vacuous in its own docstring by an earlier session — but
+the headline count never said so. `README.md` now states it: of 785 audited declarations, **782 carry
+mathematical content**. A repository-wide scan confirms no other library contains a `True` statement; Streams 2–9
+are clean.
+
+**The lesson, and it is the second instance of the same one** (the first: the `φ(n) ≤ d` claim refuted at
+`v3.36.0`). The five gates certify what a proof *depends on*. They are structurally blind to (i) prose that no
+theorem depends on and (ii) a statement that is vacuous or weaker than its docstring. Mutation testing does not
+help either: the mutants of a vacuous statement are often still true. Both classes have to be caught by reading.
+Recorded in `LL.md` §S10.5.
+
+Gates: build OK (`lake build StringTheoryFormalization`, 3312 jobs); axiom audit 89, total **785**, 0 failing;
+`statement_lock.py --check` OK (1135 declarations, 102 files).
+
 ## 0-------. `v3.37.0` (2026-09-20): Stream 9 S9.6b — one positivity condition kills the infinite family
 
 `DualScaleStream2/Flux/ISDFiniteness.lean` (10 theorems). Reading: `docs/STREAM9_ORIENTIFOLD.md` §6d.
