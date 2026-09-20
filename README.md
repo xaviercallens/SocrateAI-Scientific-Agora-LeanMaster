@@ -40,7 +40,7 @@ literature (Tier L) versus this project's own conjectures (Tier C, not yet deriv
 
 Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
 invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
-every theorem and lemma (**785 audited theorems across the ten first-party libraries** depend on
+every theorem and lemma (**795 audited theorems across the ten first-party libraries** depend on
 nothing beyond the three standard Lean axioms — see §10 and
 [`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md), which is the authoritative,
 gate-by-gate status document that this README summarizes).
@@ -172,7 +172,7 @@ continuous parameter survives.
 | **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
 | **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
 | **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
-| **Kernel Verification** | None (paper only) | 785/785 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
+| **Kernel Verification** | None (paper only) | 795/795 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
 
 The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
 (Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
@@ -506,7 +506,7 @@ bare keyword — and it also catches `native_decide` (`Lean.ofReduceBool`), whic
 ```bash
 lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 ```
-Last full run (2026-09-19, all ten libraries re-audited on Lean v4.34.0-rc2 during the toolchain migration (§0b of `docs/VERIFIED_FOUNDATION.md`); `DualScaleStream2` re-audited 2026-09-20 after v3.37.0), **785 theorems audited across all ten libraries, 0 failing**:
+Last full run (2026-09-19, all ten libraries re-audited on Lean v4.34.0-rc2 during the toolchain migration (§0b of `docs/VERIFIED_FOUNDATION.md`); `DualScaleStream2` re-audited 2026-09-20 after v3.37.0, `DualScaleDyons` after v3.40.0), **795 theorems audited across all ten libraries, 0 failing**:
 
 | Library | Theorems audited | Failing |
 |---|:---:|:---:|
@@ -519,15 +519,15 @@ Last full run (2026-09-19, all ten libraries re-audited on Lean v4.34.0-rc2 duri
 | `DualScaleValidation` | 23 | 0 |
 | `DualScaleCosmology` (Stream 3, with the verdicts of Streams 6–7) | 59 | 0 |
 | `DualScaleMoonshine` (Stream 4) | 101 | 0 |
-| `DualScaleDyons` (Streams 5, 8) | 115 | 0 |
-| **Total** | **785** | **0** |
+| `DualScaleDyons` (Streams 5, 8, 9 bridge) | 125 | 0 |
+| **Total** | **795** | **0** |
 
 **What the number 785 does and does not count (disclosure added 2026-09-20).** It counts *declarations whose
 axiom dependencies were checked*. Three of them, all in `StringTheoryFormalization`, have the statement `True`
 and are placeholders recording an intent rather than results: `ward_identity_translation`,
 `ward_identity_dilatation` (`Frontier/SL2CSymmetry.lean`) and `fm_squared_is_shift`
 (`StringDynamics/FourierMukai.lean`). Each is labelled vacuous in its own docstring, but the headline count did
-not say so until now. **Excluding them, 782 declarations carry mathematical content.** A fourth vacuous statement,
+not say so until now. **Excluding them, 792 declarations carry mathematical content.** A fourth vacuous statement,
 `mapper_nerve_theorem` in `StringDynamics/TDAMapper.lean`, was *not* labelled — its docstring claimed a nerve
 theorem while its statement was `Finset.card ≥ 0` — and was corrected on 2026-09-20; the library still audits at
 89, because a vacuous theorem counts exactly as much as a real one. No library other than

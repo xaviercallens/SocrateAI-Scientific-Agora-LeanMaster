@@ -271,6 +271,59 @@ space of K3s (paths in moduli, TW), not to one surface. So a selection principle
 cannot pick a point. *Target:* identify the Kummer surfaces whose symplectic groups generate an order-14 element
 along a path (TW §4).
 
+**G6 — Why one question answers and the other does not (2026-09-20; `v3.40.0`,
+`DualScaleDyons/DefiniteAndIndefinite.lean`).** Two questions in this programme are posed in the same language
+and behave in opposite ways. *Which surface does the smallest black hole pick?* has one answer (G3). *How many
+flux configurations does the budget permit?* has infinitely many, and keeps having infinitely many after the
+orbifold projection and under every quantisation factor (`docs/STREAM9_ORIENTIFOLD.md` §6–§6c). Both are
+questions about integer vectors in a lattice. Why does one decide?
+
+- *The tempting answer is wrong.* "The black hole problem has more structure" — no. **The very lattice in which
+  the black hole charges live already contains infinitely many vectors of the same norm.** In `U ⊕ U` the family
+  `v(n) = (n, 1, 1 − n, 1)` has norm exactly `2` for every integer `n`, injectively
+  (`roots_norm_two`, `roots_injective`, Tier A). The charge lattice is indefinite (`ambient_is_indefinite`), and
+  it has as little determinacy as the flux lattice does.
+- *Resolution.* **Definiteness is not a property of the ambient lattice; it is a condition the physics imposes on
+  the object being counted.** A black hole with a horizon requires its charge *form* `Q_{p,q}` to be positive
+  definite (Moore (3.4)–(3.5), Tier L), and a definite form has a floor — `D ≤ −3`
+  (`definite_pair_has_a_floor`, Tier A). The flux problem imposes no such condition, until supersymmetry does
+  through imaginary self-duality, which is exactly where §6d of Stream 9 finds its finiteness.
+- *Lesson (Tier C).* "How many vacua?" is not a hard question waiting to be cracked. It is a question whose
+  arithmetic **cannot** have a finite answer until something makes the relevant form definite. Stated once:
+  arithmetic decides when, and only when, the physics hands it a definite form. That also predicts where to look
+  next for determinacy anywhere in this programme: find the definiteness condition, or expect none.
+- *What it does not say.* That every selection question here is of one of these two types; and nothing about
+  vacua.
+
+**G7 — The grid that measures itself (2026-09-20; Tier C, target stated, not yet formalized).** Einstein's method
+insists that a measurement distinguish its object from its instrument — clocks and rods enter the theory, they are
+not outside it. Apply that to the one empirical datum bearing on the vortex-core pivot.
+
+- *The datum.* An external group measured a floor on the separation between distinct vortex lines in a simulated
+  superfluid tangle: `F = 0.943 ξ`, at `6.1×` the null's 95th percentile, by a threshold-free method
+  (`docs/reviews/2026-09-19_quantumfluids_dual_scale_report.md`).
+- *The paradox, found by re-analysing their own results file for paper 12.* With their `ξ = 1.5 Δx`, the value
+  `F = 0.943 ξ` is `1.4142135623730903 Δx`, which agrees with `√2` to **fourteen significant figures**; and the
+  ten smallest inter-line distances in that file are **bit-identical**. Either the healing length happens to equal
+  the face diagonal of the simulation grid — absurd, since `ξ` was *set* to `1.5 Δx` by convention — or the
+  measurement is reading the instrument.
+- *Resolution.* The traced lines live on face centres of the grid, so inter-line distances are quantised on a
+  sub-lattice. The minimum of a quantised set is a lattice distance whatever the physics does. A floor can only be
+  *measured* when the physical scale stands well above the instrument's quantum — which is why the authors
+  themselves require `ξ/Δx ≳ 5`, and why their split verdict is the honest one.
+- *Lesson (Tier C, and general).* Any "minimum separation" statistic computed on a discretised field measures
+  `max(physical floor, instrument quantum)`. The instrument quantum must be reported beside the result, always.
+  A degenerate minimum — the same value attained many times to the last bit — is the tell.
+- *The arithmetic, checked.* Face centres of a cubic grid of spacing `Δ` come in three families,
+  `(i+½, j, k)`, `(i, j+½, k)`, `(i, j, k+½)`. Their squared separations are **exactly the positive half-integer
+  multiples of `Δ²`**: `½, 1, 3/2, 2, 5/2, …`. The smallest is `Δ²/2`, i.e. `Δ/√2 ≈ 0.707 Δ` — the value the
+  authors quote as what discretisation alone permits — and `2Δ²`, i.e. the measured `√2 Δ`, is a member. So the
+  reported floor is a lattice distance, the fourth one up. (First written here as "multiples of `Δ²/4`"; the
+  enumeration says `Δ²/2`, and the sentence was corrected rather than left. G7 applied to G7.)
+- *Target (Tier A, small).* Formalize that enumeration in doubled integer coordinates, where the squared
+  separations become the positive even integers, the minimum is `2` and the measured value `8` occurs. That turns
+  "this is a lattice constant" from a numerical coincidence into a statement.
+
 **Synthesis.** Three independent routes point to `ω`: `T²` trapping (E2), `T⁴` trapping with the `ω` complex
 structure (G2), and the smallest black hole (G3). Three counterweights: the choice of complex structure on `D₄`
 (G2), which symplectic symmetry does not break and non-symplectic symmetry breaks towards `i` (§10); the blindness

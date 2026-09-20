@@ -246,6 +246,44 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0---------. `v3.40.0` (2026-09-20): G6 and G7 — why one question decides, and a grid that measured itself
+
+Two thought experiments in the Einsteinian manner of `docs/STREAM8_WHICH_K3.md` §9, each tied to a check, and
+each now kernel-checked.
+
+**G6** (`DualScaleDyons/DefiniteAndIndefinite.lean`, 5 theorems). Two questions in this programme are posed in the
+same language and behave oppositely: the smallest black hole has one answer, the flux budget has infinitely many.
+The tempting explanation — "the black hole problem has more structure" — is **false**, and the file refutes it in
+the sharpest place: the charge lattice `U ⊕ U` itself contains infinitely many vectors of the same norm, the
+family `v(n) = (n, 1, 1 − n, 1)` of norm `2` for every `n`, injectively (`roots_norm_two`, `roots_injective`); it
+is indefinite (`ambient_is_indefinite`). What makes the black hole question decide is that the **physics**
+requires the charge *form* to be positive definite, and a definite form has a floor, `D ≤ −3`
+(`definite_pair_has_a_floor`). Reading (Tier C): arithmetic decides when, and only when, the physics hands it a
+definite form; "how many vacua" cannot have a finite answer until something supplies definiteness, which is
+exactly what `Flux/ISDFiniteness.lean` found.
+
+**G7** (`DualScaleDyons/GridQuantum.lean`, 5 theorems). The external vortex-line floor `F = 0.943 ξ` equals
+`√2 Δx` to fourteen significant figures, with the ten smallest inter-line distances bit-identical in the source
+results file (re-analysis performed for paper 12). Their traced lines sit at **face centres**, so the available
+separations are quantised. Proved on a `3 × 3 × 3` block in doubled coordinates: every nonzero squared separation
+is **even** (`separations_even`) — so half-integer multiples of `Δ²` in physical units; the minimum is `2`, i.e.
+`Δ/√2 ≈ 0.707 Δ`, the figure the authors themselves quote as the discretisation limit (`min_separation_two`); and
+the measured value `8`, i.e. `√2 Δ`, occurs and is the fourth available separation (`measured_value_occurs`,
+`first_four_available`). Reading (Tier C): any minimum-separation statistic on a discretised field measures
+`max(physical floor, instrument quantum)`, and a degenerate minimum is the tell that the second term is winning.
+This does not make their result wrong; it makes their own resolution caveat `ξ/Δx ≳ 5` load-bearing.
+
+A correction made in passing and left visible in `docs/STREAM8_WHICH_K3.md` §9: the first draft of G7 said the
+squared separations are multiples of `Δ²/4`; the enumeration says `Δ²/2`. The sentence was corrected rather than
+quietly dropped.
+
+Gates: build OK (`lake build DualScaleDyons`, 8796 jobs); `sorry`/`admit`/`native_decide` grep empty; axiom audit
+`DualScaleDyons` 125, total **795**, 0 failing (of which 792 carry mathematical content — three `True` statements
+remain, disclosed at `v3.38.0`); `statement_lock.py --check` OK (1152 declarations, 104 files); negative control:
+four mutations caught (norm `2 → 3`; the floor `≤ −3 → ≤ −4`; the grid minimum `2 → 1`; the measured value
+`8 → 7`, which is odd and so unattainable). The audit itself caught the file-not-imported regression before the
+commit, as it did once before this session.
+
 ## 0--------. `v3.38.0` (2026-09-20): two vacuous statements, one undisclosed, and what the count really counts
 
 Found while gathering material for paper 12, not by any gate.

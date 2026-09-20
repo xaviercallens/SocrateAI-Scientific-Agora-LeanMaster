@@ -20,3 +20,5 @@ import DualScaleDyons.K3EnhancementSO44
 import DualScaleDyons.FormAutomorphs
 import DualScaleDyons.TrappingObstruction
 import DualScaleDyons.GTVWPoint
+import DualScaleDyons.DefiniteAndIndefinite
+import DualScaleDyons.GridQuantum
