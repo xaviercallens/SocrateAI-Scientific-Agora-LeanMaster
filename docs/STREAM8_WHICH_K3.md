@@ -349,6 +349,44 @@ come out wrong. Applied to the other selection principles here, the pattern hold
 - *What it buys (Tier C).* A cheap first question for any new selection principle in this programme: **name the
   definite form, or expect no answer.**
 
+**G9 — the criterion used *before* the computation, on a proposal from outside (2026-09-20; `v3.42.0`,
+`DualScaleDyons/FrickeCriterion.lean`).** G8 tested the criterion where the answers were already known. That is
+confirmation, not a test. G9 is its first use **in advance**, on a proposal that arrived from outside this
+repository and that could have refuted it.
+
+*The proposal, as received.* The modular group lifts through `Sym²` from `SL(2)` on the worldsheet to integer
+`3 × 3` isometries of a signature-`(2,1)` lattice; the Fricke involution `W_N` of a flux `N` acts there by integer
+matrices; and therefore — it concludes — the K3 of our universe is the **unique** surface whose transcendental
+lattice aligns with `U ⊕ ⟨2N⟩`, "crystallised by number theory, not by dynamics".
+
+*The prediction, recorded before checking.* Signature `(2,1)` is **indefinite**. By the criterion, expect no
+unique answer.
+
+*What survives (Tier A).* The algebra is right and is now formalised. `sym2_isometry`:
+`(Sym² M)ᵀ G₀ (Sym² M) = (det M)² G₀` for every integer `2 × 2` matrix, a polynomial identity, so `SL(2,ℤ)` acts
+by isometries of the discriminant form `b² − 4ac` (`sym2_isometry_of_sl2`), with `det(Sym² M) = (det M)³`.
+`fricke_involution`, `fricke_isometry`, `fricke_det`: on `Γ₀(N)`-forms the Fricke involution is
+`(a, b, c) ↦ (c, −b, a)`, an **integer** matrix of determinant `1`, squaring to the identity, an exact isometry of
+`b² − 4Nac`, for every `N`. The proposal's central algebraic claim is therefore true.
+
+*What is refuted (Tier A).* The lattice is **not** `U ⊕ ⟨2N⟩`. Its determinant is `−4N²`; that of `U ⊕ ⟨2N⟩` is
+`−2N`; they differ for every `N ≥ 1`, so no change of basis relates them
+(`det_gramN`, `det_uPlus2N`, `fricke_lattice_is_not_U_plus_2N`). The correct lattice is `⟨1⟩ ⊕ U(2N)`, exhibited
+by an explicit basis change of determinant `1` (`fricke_lattice_is_one_plus_U2N`), and it is indefinite,
+representing `+1` and `−4N` (`gramN_indefinite`).
+
+*The verdict, and the prediction held.* Indefinite, so no selection — and the geometry says exactly that. A
+rank-`3` transcendental lattice means `ρ = 19`, not `20`; the surfaces classified by their transcendental lattice,
+which physics calls *attractive*, are precisely the case this construction does not reach (Huybrechts
+`huybrechts_K3Global.txt` ll. 16325–16332, Tier L). What it picks out is a one-parameter family — a modular curve
+— not a surface.
+
+*What would repair it, and where it lands.* By the criterion: add a definiteness condition. Demanding `ρ = 20`
+makes the transcendental lattice rank `2` and **positive definite**, and the classification becomes one of
+positive definite binary forms — finite at each discriminant, with a smallest. That is `discriminant_gap`:
+`D ≤ −3`, attained only by `(1,1,1)`, `T_S = A₂`. **The repaired proposal reproduces G3's answer, reached from the
+modular side.** That is the useful content of the proposal, and it is not the content it claimed.
+
 **Synthesis.** Three independent routes point to `ω`: `T²` trapping (E2), `T⁴` trapping with the `ω` complex
 structure (G2), and the smallest black hole (G3). Three counterweights: the choice of complex structure on `D₄`
 (G2), which symplectic symmetry does not break and non-symplectic symmetry breaks towards `i` (§10); the blindness

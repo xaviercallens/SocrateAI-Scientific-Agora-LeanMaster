@@ -246,6 +246,48 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0-----------. `v3.42.0` (2026-09-20): G9 — the criterion used before the computation, and a proposal corrected
+
+`DualScaleDyons/FrickeCriterion.lean` (16 theorems). Reading: `docs/STREAM8_WHICH_K3.md` §9, G9.
+
+A proposal arrived from outside the repository: the modular group lifts through `Sym²` from `SL(2)` to integer
+`3 × 3` isometries of a signature-`(2,1)` lattice, the Fricke involution `W_N` acts there by integer matrices, and
+therefore the K3 of our universe is the **unique** surface whose transcendental lattice aligns with `U ⊕ ⟨2N⟩`.
+The criterion of `v3.40.0`/`v3.41.0` was applied **before** checking: signature `(2,1)` is indefinite, so expect
+no unique answer. The prediction held.
+
+**What survives, and is now Tier A.** `sym2_isometry`: `(Sym² M)ᵀ G₀ (Sym² M) = (det M)² G₀` for every integer
+`2 × 2` matrix — a polynomial identity — so `SL(2,ℤ)` acts by isometries of the discriminant form `b² − 4ac`
+(`sym2_isometry_of_sl2`), with `det(Sym² M) = (det M)³`. `fricke_involution`, `fricke_isometry`, `fricke_det`: on
+`Γ₀(N)`-forms the Fricke involution is `(a,b,c) ↦ (c,−b,a)`, an integer matrix of determinant `1`, squaring to the
+identity, an exact isometry of `b² − 4Nac` for every `N`. The proposal's algebra is correct.
+
+**What is refuted, in the kernel.** The lattice is **not** `U ⊕ ⟨2N⟩`: determinant `−4N²` against `−2N`, which
+differ for every `N ≥ 1`, so no change of basis relates them (`fricke_lattice_is_not_U_plus_2N`). The correct
+lattice is `⟨1⟩ ⊕ U(2N)`, exhibited by a basis change of determinant `1`
+(`fricke_lattice_is_one_plus_U2N`), and it is indefinite (`gramN_indefinite`).
+
+**The verdict.** Indefinite, so no selection, and the geometry agrees: a rank-`3` transcendental lattice means
+`ρ = 19`, not `20`, so the construction does not reach the surfaces classified by their transcendental lattice —
+the *attractive* ones (Huybrechts `huybrechts_K3Global.txt` ll. 16325–16332, Tier L). What it picks out is a
+one-parameter family, a modular curve, not a surface.
+
+**The repair, and where it lands.** Add the definiteness condition the criterion asks for: `ρ = 20` makes the
+transcendental lattice rank `2` and positive definite, the classification becomes one of positive definite binary
+forms, and `AttractorCharges.discriminant_gap` gives `D ≤ −3` attained only by `(1,1,1)`, `T_S = A₂`. The repaired
+proposal **reproduces Stream 8's answer from the modular side** — which is the proposal's real value, and not
+what it claimed.
+
+Deviation from the directive as received, recorded: it asked for these files under `StringTheoryFoundation/`;
+they are lattice-and-K3 material and must sit beside the criterion they test, in `DualScaleDyons`. It also asked
+to prove `Wᵀ G_N W = G_N` with `G_N = U ⊕ ⟨2N⟩`, which is false as written; the same identity is proved for the
+lattice that actually carries the action.
+
+Gates: build OK (`lake build DualScaleDyons`, 8798 jobs); `sorry`/`admit`/`native_decide` grep empty; axiom audit
+`DualScaleDyons` 146, total **816**, 0 failing (813 carry mathematical content); `statement_lock.py --check` OK
+(1182 declarations, 106 files); negative control: two mutations caught — the `Sym²` scaling `(det M)² → (det M)³`,
+and `det(gramN) = −4N² → −2N`, which is precisely the refuted claim and does not compile.
+
 ## 0----------. `v3.41.0` (2026-09-20): G8 — the criterion of G6, tested where the answer was already known
 
 `DualScaleDyons/DefinitenessCriterion.lean` (5 theorems). Reading: `docs/STREAM8_WHICH_K3.md` §9, G8.
