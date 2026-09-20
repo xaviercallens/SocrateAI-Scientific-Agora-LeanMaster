@@ -22,3 +22,4 @@ import DualScaleDyons.TrappingObstruction
 import DualScaleDyons.GTVWPoint
 import DualScaleDyons.DefiniteAndIndefinite
 import DualScaleDyons.GridQuantum
+import DualScaleDyons.DefinitenessCriterion

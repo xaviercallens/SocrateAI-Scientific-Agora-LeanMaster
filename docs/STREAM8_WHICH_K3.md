@@ -324,6 +324,31 @@ not outside it. Apply that to the one empirical datum bearing on the vortex-core
   separations become the positive even integers, the minimum is `2` and the measured value `8` occurs. That turns
   "this is a lattice constant" from a numerical coincidence into a statement.
 
+**G8 — the criterion of G6, applied where the answer is already known (2026-09-20; `v3.41.0`,
+`DualScaleDyons/DefinitenessCriterion.lean`).** G6 proposed a *criterion*, not a result: arithmetic decides when,
+and only when, the physics hands it a definite form. A criterion earns its keep by being applied where it could
+come out wrong. Applied to the other selection principles here, the pattern holds four times:
+
+| Selection principle | Ambient lattice | Physical cut | What survives | Decides? |
+|---|---|---|---|---|
+| Smallest black hole (G3) | `U ⊕ U`, indefinite | horizon: `Q_{p,q} > 0` | a definite binary form | yes: `D = −3`, unique |
+| Moduli trapping (E2, G2, §12) | `Γ_{4,20}`, `Γ_{6,22}`, indefinite | masslessness: `α ⊥ Π` | `D₂₀(−1)`, `D₂₂(−1)`, definite | yes: `760`, `924` |
+| Flux budget alone (Stream 9 §6–§6c) | `H³(T⁶,ℤ)`, symplectic | *none* | still indefinite | **no**: infinitely many |
+| Flux with supersymmetry (§6d) | the same | ISD: `∗₆G₃ = iG₃` | a positive definite form | yes: balls are finite |
+
+- *The third row is the control.* It is the only case with no cut, and the only one that does not decide. That is
+  what makes this a criterion rather than a restatement of four separate results.
+- *Tier A additions.* `infinitely_many_roots_before_the_cut`: in `U ⊕ U` the family `w(n) = (n, 1, −n−1, 1)` has
+  norm `−2` for every `n`, injectively — before masslessness is imposed, "how many roots?" already answers
+  *infinitely many*. `dn_root_count`: a definite `D_n` has `4·C(n,2) = 2n(n−1)` roots, giving `760` and `924` for
+  `n = 20, 22` — the same two numbers §12's ADE enumeration reaches by a completely different route, now checked
+  against a counting argument (`agrees_with_trapping_table`).
+- *Where it does not apply, and this matters.* Moonshine symmetry (G4) also fails to decide, and the criterion
+  says **nothing** about why: a symmetry constraint is not a quadratic form, so there is no definite form to look
+  for. Stating that limit is part of stating the criterion.
+- *What it buys (Tier C).* A cheap first question for any new selection principle in this programme: **name the
+  definite form, or expect no answer.**
+
 **Synthesis.** Three independent routes point to `ω`: `T²` trapping (E2), `T⁴` trapping with the `ω` complex
 structure (G2), and the smallest black hole (G3). Three counterweights: the choice of complex structure on `D₄`
 (G2), which symplectic symmetry does not break and non-symplectic symmetry breaks towards `i` (§10); the blindness

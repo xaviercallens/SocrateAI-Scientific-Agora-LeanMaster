@@ -246,6 +246,32 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0----------. `v3.41.0` (2026-09-20): G8 — the criterion of G6, tested where the answer was already known
+
+`DualScaleDyons/DefinitenessCriterion.lean` (5 theorems). Reading: `docs/STREAM8_WHICH_K3.md` §9, G8.
+
+`v3.40.0` proposed a criterion rather than a result — *arithmetic decides when, and only when, the physics hands
+it a definite form*. This release applies it to the remaining selection principles, where it could have come out
+wrong. It does not: the smallest black hole (charges `U ⊕ U`, cut by the horizon condition `Q_{p,q} > 0`), moduli
+trapping (`Γ_{4,20}`, `Γ_{6,22}`, cut by masslessness `α ⊥ Π`, leaving `D₂₀(−1)` and `D₂₂(−1)` by
+`K3Enhancement.uniform_parity`), and flux with supersymmetry (cut by ISD) all decide; the flux budget alone,
+the one case with **no** cut, is the one that does not. The third row is the control that makes this a criterion
+and not a restatement.
+
+Tier A: `infinitely_many_roots_before_the_cut` — in `U ⊕ U` the family `w(n) = (n, 1, −n−1, 1)` has norm `−2` for
+every `n`, injectively, so "how many roots?" answers *infinitely many* before masslessness is imposed;
+`dn_root_count` and `agrees_with_trapping_table` — a definite `D_n` has `4·C(n,2) = 2n(n−1)` roots, giving `760`
+and `924` for `n = 20, 22`, the same two entries `trapping_rank_table_22` reaches by ADE enumeration, now
+confirmed by an independent counting argument.
+
+Stated limit, in the file and in the doc: the criterion says **nothing** about the moonshine case (G4), which
+also fails to decide — a symmetry constraint is not a quadratic form, so there is no definite form to look for.
+
+Gates: build OK (`lake build DualScaleDyons`, 8797 jobs); `sorry`/`admit`/`native_decide` grep empty; axiom audit
+`DualScaleDyons` 130, total **800**, 0 failing (797 carry mathematical content); `statement_lock.py --check` OK
+(1158 declarations, 105 files); negative control: two mutations caught (the root norm `−2 → −4`; the `D₂₂` count
+`924 → 922`).
+
 ## 0---------. `v3.40.0` (2026-09-20): G6 and G7 — why one question decides, and a grid that measured itself
 
 Two thought experiments in the Einsteinian manner of `docs/STREAM8_WHICH_K3.md` §9, each tied to a check, and
