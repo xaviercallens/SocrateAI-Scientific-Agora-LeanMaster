@@ -1,6 +1,6 @@
 # Stream 9 — orientifolds of `T⁶`: the lattice layer (2026-09-20)
 
-**Status (`v3.32.0`):** four Tier A files — `Orientifold/NarainT6.lean` (12 theorems), `Orientifold/InvariantSublattice.lean` (8, S9.1), `Flux/T6TadpoleFiniteness.lean` (5, S9.2), `Orientifold/Crystallography.lean` (4, S9.3). Everything
+**Status (`v3.33.0`):** five Tier A files — `Orientifold/NarainT6.lean` (12 theorems), `Orientifold/InvariantSublattice.lean` (8, S9.1), `Flux/T6TadpoleFiniteness.lean` (5, S9.2), `Orientifold/Crystallography.lean` (4, S9.3), `Flux/FluxLattice.lean` (7, S9.5). Everything
 else below is a plan. Nothing here claims a vacuum, a spectrum, or `N = 1`.
 
 ## 0. Why this stream exists
@@ -86,12 +86,31 @@ order exactly 2.
 `d` forces `φ(n) ≤ d`. That needs cyclotomic polynomials and the rational canonical form; Mathlib has the
 ingredients and it is the natural next formalization target. Asserting it here would claim what was not checked.
 
-## 6. Next steps, in order
+## 6. S9.5 — the tadpole alone bounds nothing (`FluxLattice.lean`)
+
+S9.2 warned that its 17 pairs are not vacua, because one value of `½N_flux` corresponds to many flux quanta. That
+warning is now a theorem.
+
+- `h3_rank`: `rank H³(T⁶, ℤ) = C(6,3) = 20`.
+- `symplectic_sq`, `symplectic_antisymm`, `symplectic_unimodular`: the intersection form `J` on `H³` satisfies
+  `J·J = −1` and `Jᵀ = −J`, hence is unimodular.
+- `flux_pairing_family`, `flux_family_injective`: for every `k`, the family `F(m) = k f₀ + m e₁` gives
+  `⟨e₀, F(m)⟩ = k` for all `m`, and `m ↦ F(m)` is injective.
+
+So for every value of the flux contribution there are **infinitely many** flux vectors realising it: the tadpole
+bounds the integer `½N_flux`, never the quanta. A finiteness statement about flux vacua therefore has to come
+from the supersymmetry/imaginary-self-duality conditions and from quotienting by the duality group — never from
+the budget alone. Any count citing only a tadpole is counting the wrong set.
+
+Scope: this file does not model the `ℤ₂ × ℤ₂`-invariant sublattice of `H³`, nor the quantisation conditions. It
+isolates one mechanism and proves it.
+
+## 7. Next steps, in order
 
 | # | Step | Why it is the next one |
 |---|---|---|
 | S9.4 | Prove the crystallographic restriction theorem itself (`φ(n) ≤ d` for a finite-order integer matrix) | it is the only Tier L gap in §5, and Mathlib has the cyclotomic machinery |
-| S9.5 | The flux lattice: the orientifold-invariant part of `H³(T⁶, ℤ)`, its rank, and how a flux vector contributes to `½N_flux` | this is what turns the 17 pairs into an actual count, and it is still finite arithmetic |
+| S9.5b | The `ℤ₂ × ℤ₂`-invariant sublattice of `H³(T⁶, ℤ)` and the quantisation conditions on it | §6 shows the budget alone is empty; the invariant sublattice is where a real count would start |
 | S9.6 | Only then: the massless spectrum, and whether a chiral one is reachable | Tier L input dominates; it needs its own pinned sources |
 
 Anything that becomes a physical prediction is frozen by git tag before comparison, as in Streams 6–7.

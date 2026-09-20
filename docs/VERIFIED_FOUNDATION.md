@@ -246,6 +246,19 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0---. `v3.33.0` (2026-09-20): Stream 9 S9.5 — the tadpole alone bounds nothing
+
+`DualScaleStream2/Flux/FluxLattice.lean` (7 theorems). `rank H³(T⁶, ℤ) = C(6,3) = 20`; its intersection form `J`
+satisfies `J·J = −1` and `Jᵀ = −J`, hence unimodular; and for every value `k` of the flux contribution there are
+**infinitely many** flux vectors realising it (`F(m) = k f₀ + m e₁`, with `m ↦ F(m)` injective). S9.2's caveat is
+therefore a theorem: the tadpole bounds the integer `½N_flux`, never the quanta, so finiteness of a flux landscape
+must come from the supersymmetry conditions and the duality quotient, not from the budget.
+
+Scope: the `ℤ₂ × ℤ₂`-invariant sublattice of `H³` and the quantisation conditions are not modelled.
+
+Gates: build OK; grep empty; axiom audit `DualScaleStream2` 137, total **746**, 0 failing; lock additions only;
+negative control: two mutations caught (a wrong sign in `J·J`, a flux direction that changes the pairing).
+
 ## 0--. `v3.32.0` (2026-09-20): Stream 9 steps S9.1–S9.3
 
 `DualScaleStream2/Orientifold/InvariantSublattice.lean` (8), `Flux/T6TadpoleFiniteness.lean` (5),
