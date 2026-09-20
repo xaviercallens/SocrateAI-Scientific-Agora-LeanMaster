@@ -246,6 +246,24 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0--. `v3.32.0` (2026-09-20): Stream 9 steps S9.1–S9.3
+
+`DualScaleStream2/Orientifold/InvariantSublattice.lean` (8), `Flux/T6TadpoleFiniteness.lean` (5),
+`Orientifold/Crystallography.lean` (4). Reading: `docs/STREAM9_ORIENTIFOLD.md` §3–§5.
+- **S9.1.** General lemma: if `Pᵀ G P = −G` and `P v = v` then `Q(v) = 0`. For `P = Ω θ₁`, `P v = v` **iff** six
+  named components vanish, so the fixed sublattice has rank 6, and all 36 pairings among its basis vectors
+  vanish: it is totally isotropic, hence maximal for signature `(6, 6)`.
+- **S9.2.** `N_D3 + ½N_flux = 16`: unique solution without flux (`N_D3 = 16`), 17 solutions in `ℕ²`, each entry
+  `≤ 16`; with anti-branes there are infinitely many, so the finiteness is conditional. **17 is a count of pairs,
+  not of vacua** — no supersymmetry, equations of motion, moduli stabilisation or flux quanta enter.
+- **S9.3.** The orders with `φ(n) ≤ 6` are `1–10, 12, 14, 18` (checked to 200); `φ(n) ≤ 2` gives `1, 2, 3, 4, 6`
+  (the list Stream 8 §8 uses); the three `θᵢ` have order 2. The crystallographic restriction theorem itself is
+  **not** formalized and is marked as the next target.
+
+Gates: build OK; grep empty; axiom audit `DualScaleStream2` 130, total **739**, 0 failing; lock additions only;
+negative control: three mutations caught (a wrong invariant index, a truncated solution list, an extra allowed
+order).
+
 ## 0-. `v3.31.0` (2026-09-20): Stream 9 opens — the lattice layer of a `T⁶/Γ` orientifold
 
 `DualScaleStream2/Orientifold/NarainT6.lean` (12 theorems). Full reading: `docs/STREAM9_ORIENTIFOLD.md`.

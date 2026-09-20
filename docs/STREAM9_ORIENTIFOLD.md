@@ -1,6 +1,6 @@
 # Stream 9 — orientifolds of `T⁶`: the lattice layer (2026-09-20)
 
-**Status (`v3.31.0`):** one Tier A file, `DualScaleStream2/Orientifold/NarainT6.lean` (12 theorems). Everything
+**Status (`v3.32.0`):** four Tier A files — `Orientifold/NarainT6.lean` (12 theorems), `Orientifold/InvariantSublattice.lean` (8, S9.1), `Flux/T6TadpoleFiniteness.lean` (5, S9.2), `Orientifold/Crystallography.lean` (4, S9.3). Everything
 else below is a plan. Nothing here claims a vacuum, a spectrum, or `N = 1`.
 
 ## 0. Why this stream exists
@@ -46,13 +46,52 @@ Negative control: three mutations caught (a broken `U` block, parity stated as a
 * Any connection to the dual-scale proposal. Stream 9 is a change of compactification, not a continuation of the
   `K3 × T²` hypothesis; Stream 8's conclusions do not transfer to it.
 
-## 3. Next steps, in order
+## 3. S9.1 — the invariant sublattice is totally isotropic, of rank 6 (`InvariantSublattice.lean`)
+
+The general lemma first, because it needs nothing about `Γ₆,₆`:
+
+> `antiisometry_fixed_isotropic`: if `Pᵀ G P = −G` and `P v = v`, then `Q(v) = 0`.
+
+(`Q(v) = (Pv)ᵀG(Pv) = vᵀ(PᵀGP)v = −Q(v)`, and `2Q(v) = 0` over `ℤ` gives `Q(v) = 0`.) Applied to `P = Ω θ₁`:
+
+- `invariant_iff`: `P v = v` **iff** the components `e₁, e₂, f₃, f₄, f₅, f₆` vanish — so the fixed sublattice is
+  spanned by `f₁, f₂, e₃, e₄, e₅, e₆`, of rank 6;
+- `invBasis_totally_isotropic`: all 36 pairings among those vanish, so the sublattice is totally isotropic, not
+  merely null on the diagonal;
+- rank 6 is maximal for signature `(6, 6)` (standard linear algebra, Tier L).
+
+*Reading (Tier C), weaker than the slogan.* Rank 6 of 12 is half the lattice, and an isotropic lattice carries no
+Narain norm. Calling that "half the degrees of freedom are frozen" is a reading: the file says nothing about which
+states survive, about moduli, or about the spectrum.
+
+## 4. S9.2 — the tadpole budget has 17 integer solutions (`T6TadpoleFiniteness.lean`)
+
+`N_D3 + ½N_flux = 16` (the 64 `O3` planes of charge `−1/4`). Proved: with no flux the solution is unique
+(`N_D3 = 16`); the solution set is `{(16−k, k) : k ≤ 16}`, of cardinality **17**; each entry is `≤ 16`.
+
+**What 17 is not.** It is not a count of `N = 1` vacua, and this is not a landscape-finiteness theorem. One value
+of `½N_flux` corresponds to many flux quanta (the flux is a vector in the invariant part of `H³(T⁶, ℤ)`), and
+supersymmetry, the equations of motion, moduli stabilisation, quantisation and physical equivalence are all
+absent. With anti-branes the equation has infinitely many integer solutions (`tadpole_antibrane_note`), so even
+the finiteness is conditional on excluding them. What the file gives is the arithmetic frame any real count must
+satisfy.
+
+## 5. S9.3 — the crystallographic restriction (`Crystallography.lean`)
+
+Proved: the orders `n` with `φ(n) ≤ 6` are exactly `1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 18` (checked to
+`n ≤ 200`); the rank-2 case `φ(n) ≤ 2` gives `1, 2, 3, 4, 6`, the list Stream 8 §8 uses; and the three `θᵢ` have
+order exactly 2.
+
+**Not proved here:** the crystallographic restriction theorem itself — that a finite-order integer matrix of size
+`d` forces `φ(n) ≤ d`. That needs cyclotomic polynomials and the rational canonical form; Mathlib has the
+ingredients and it is the natural next formalization target. Asserting it here would claim what was not checked.
+
+## 6. Next steps, in order
 
 | # | Step | Why it is the next one |
 |---|---|---|
-| S9.1 | The orientifold projection on the lattice: the invariant sublattice of `Ω θᵢ` and its rank | the first place where the anti-isometry matters, and it is finite linear algebra |
-| S9.2 | Tadpole uniqueness for the `T⁶/(ℤ₂×ℤ₂)` budget (`.claude/workflows/tadpole-uniqueness.js`) | the same integer-solution question already answered for `T²/ℤ₂`, now with 64 `O3` planes |
-| S9.3 | Which `Γ` are crystallographic on `Γ₆,₆` (the `φ(n) ≤ 2` list already used in Stream 8 §8) | bounds the search before any spectrum work |
-| S9.4 | Only then: the massless spectrum, and whether a chiral one is reachable | this is where Tier L input dominates, and it needs its own pinned sources |
+| S9.4 | Prove the crystallographic restriction theorem itself (`φ(n) ≤ d` for a finite-order integer matrix) | it is the only Tier L gap in §5, and Mathlib has the cyclotomic machinery |
+| S9.5 | The flux lattice: the orientifold-invariant part of `H³(T⁶, ℤ)`, its rank, and how a flux vector contributes to `½N_flux` | this is what turns the 17 pairs into an actual count, and it is still finite arithmetic |
+| S9.6 | Only then: the massless spectrum, and whether a chiral one is reachable | Tier L input dominates; it needs its own pinned sources |
 
 Anything that becomes a physical prediction is frozen by git tag before comparison, as in Streams 6–7.
