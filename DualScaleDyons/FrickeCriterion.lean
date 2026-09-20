@@ -23,6 +23,10 @@ The algebra of the proposal is correct, and is formalised:
   discriminant form `b² − 4ac` on binary quadratic forms. So `det M = 1` gives an exact isometry
   (`sym2_isometry_of_sl2`), and `sym2_det` gives `det(Sym² M) = (det M)³`. This is the classical
   `SL(2) → SO(2,1)` lift, and it is a polynomial identity.
+* `sym2_lifts_rank_two`: **the bridge `L₃ = Sym²(L₂)` stated as one theorem**, and built on
+  `DualScaleStream2.TDuality.mul_jMat_mul_transpose` (`A J Aᵀ = det A · J`), which this repository already had.
+  The rank-2 form is rescaled by `det A`, the rank-3 form by `(det A)²`, and the lift itself has determinant
+  `(det A)³`: the exponents `1, 2, 3` are the whole content of the claim, and each is now checked.
 * `fricke_involution`, `fricke_isometry`, `fricke_det`: on `Γ₀(N)`-forms `N a x² + b x y + c y²`, the Fricke
   involution acts on the coefficients by `(a, b, c) ↦ (c, −b, a)`, an **integer** matrix of determinant `1` which
   squares to the identity and is an exact isometry of the discriminant form `b² − 4Nac`, for every `N`.
@@ -56,6 +60,7 @@ directive also asked to prove `Wᵀ G_N W = G_N` with `G_N = U ⊕ ⟨2N⟩`; th
 is proved instead is the same identity for the lattice that actually carries the action.
 -/
 import DualScaleDyons.AttractorCharges
+import DualScaleStream2.TDuality.SL2Product
 
 namespace DualScaleDyons.FrickeCriterion
 
@@ -94,6 +99,21 @@ theorem sym2_isometry_of_sl2 (p q r s : ℤ) (h : p * s - q * r = 1) :
 theorem sym2_det (p q r s : ℤ) : (sym2 p q r s).det = (p * s - q * r) ^ 3 := by
   simp [sym2, Matrix.det_fin_three]
   ring
+
+/-- **The bridge `L₃ = Sym²(L₂)`, made literal, by reusing what this repository already proved.**
+At rank 2 an integer matrix rescales the symplectic form by `det A` — that is
+`DualScaleStream2.TDuality.mul_jMat_mul_transpose`, **reused here, not reproved**. Its symmetric square
+rescales the signature-`(2,1)` discriminant form by `(det A)²`, and has determinant `(det A)³`. The three
+exponents `1, 2, 3` are the entire content of the lift, and each is now a theorem. -/
+theorem sym2_lifts_rank_two (p q r s : ℤ) :
+    (!![p, q; r, s] : Matrix (Fin 2) (Fin 2) ℤ) * DualScaleStream2.TDuality.jMat *
+        (!![p, q; r, s] : Matrix (Fin 2) (Fin 2) ℤ)ᵀ
+        = (p * s - q * r) • DualScaleStream2.TDuality.jMat ∧
+      (sym2 p q r s)ᵀ * G0 * (sym2 p q r s) = ((p * s - q * r) ^ 2) • G0 ∧
+      (sym2 p q r s).det = (p * s - q * r) ^ 3 := by
+  refine ⟨?_, sym2_isometry p q r s, sym2_det p q r s⟩
+  have h := DualScaleStream2.TDuality.mul_jMat_mul_transpose (!![p, q; r, s])
+  simpa [Matrix.det_fin_two_of] using h
 
 /-! ### The Fricke involution on `Γ₀(N)`-forms -/
 
