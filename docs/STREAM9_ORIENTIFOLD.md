@@ -103,14 +103,43 @@ from the supersymmetry/imaginary-self-duality conditions and from quotienting by
 the budget alone. Any count citing only a tadpole is counting the wrong set.
 
 Scope: this file does not model the `ℤ₂ × ℤ₂`-invariant sublattice of `H³`, nor the quantisation conditions. It
-isolates one mechanism and proves it.
+isolates one mechanism and proves it. §6b takes up the first of the two.
+
+## 6b. S9.5b — the projection does not restore finiteness either (`InvariantH3.lean`)
+
+The natural objection to §6 is that an orbifold keeps only the invariant fluxes, so perhaps it is the projection
+that bounds them. It is not. Writing `T⁶` as three 2-tori `{x₁,x₂}`, `{x₃,x₄}`, `{x₅,x₆}`, with `θ₁ = −1` on
+`x₁ … x₄` and `θ₂ = −1` on `x₃ … x₆` (the generators of `NarainT6.lean`), a basis 3-form `dx_S` is invariant iff
+`|S ∩ {1,2,3,4}|` and `|S ∩ {3,4,5,6}|` are both even.
+
+- `invariant_triples_eq`, `invariant_mem_iff`: the invariant triples are **exactly** the `8` with one index from
+  each 2-torus, `{1,2} × {3,4} × {5,6}` — so the projection cuts rank `20` down to rank `8`. That is a real
+  reduction.
+- `invariant_closed_under_complement`: the complement of an invariant triple is invariant, which is what lets the
+  wedge pairing restrict to the invariant part at all.
+- `symJ8_is_wedge`: the `8 × 8` matrix is **not an assertion** — all `64` entries, the zeros included, are checked
+  against `wedgeSign`, the definition of the pairing (`0` when an index repeats, otherwise the signature of the
+  permutation `S ++ T` of `1 … 6`). That is what makes the next line Tier A rather than a transcribed table.
+- `restricted_antisymm`, `restricted_sq`, `restricted_unimodular`: the restricted pairing `J₈` satisfies
+  `J₈ᵀ = −J₈` and `J₈ · J₈ = −1`, hence is unimodular. The invariant sublattice is again a **unimodular symplectic
+  lattice**, of rank 8.
+- `invariant_flux_family`, `invariant_family_injective`: therefore the family of §6 runs again inside it — for
+  every `k` an infinite family of invariant fluxes with the same pairing.
+
+*Reading.* Rank drops from 20 to 8, but the structure that made §6 work — unimodular, symplectic — survives
+intact, so the conclusion survives with it: **the tadpole bounds an integer, not a set of fluxes, before or after
+the orbifold projection.** Finiteness must come from the supersymmetry conditions and from the duality quotient.
+
+*Not modelled:* the orientifold projection on top of the orbifold, the quantisation conditions (integral versus
+half-integral flux in a given convention), the `D3`-charge normalisation. Those are the next Tier L inputs, and
+until they are pinned no count is possible here.
 
 ## 7. Next steps, in order
 
 | # | Step | Why it is the next one |
 |---|---|---|
 | S9.4 | Prove the crystallographic restriction theorem itself (`φ(n) ≤ d` for a finite-order integer matrix) | it is the only Tier L gap in §5, and Mathlib has the cyclotomic machinery |
-| S9.5b | The `ℤ₂ × ℤ₂`-invariant sublattice of `H³(T⁶, ℤ)` and the quantisation conditions on it | §6 shows the budget alone is empty; the invariant sublattice is where a real count would start |
+| S9.5c | Pin the quantisation conventions (integral vs half-integral flux, `D3`-charge normalisation) from a source, then state the tadpole *inside* the rank-8 invariant lattice | §6b shows the geometry is settled and the remaining gap is a Tier L convention, not a computation |
 | S9.6 | Only then: the massless spectrum, and whether a chiral one is reachable | Tier L input dominates; it needs its own pinned sources |
 
 Anything that becomes a physical prediction is frozen by git tag before comparison, as in Streams 6–7.

@@ -246,6 +246,32 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0----. `v3.34.0` (2026-09-20): Stream 9 S9.5b — the orbifold projection does not restore finiteness
+
+`DualScaleStream2/Flux/InvariantH3.lean` (10 theorems). Reading: `docs/STREAM9_ORIENTIFOLD.md` §6b.
+The objection to `v3.33.0` is that an orbifold keeps only invariant fluxes. Under the `ℤ₂ × ℤ₂` of `NarainT6.lean`
+(`θ₁ = −1` on `x₁ … x₄`, `θ₂ = −1` on `x₃ … x₆`), a basis 3-form `dx_S` is invariant iff `|S ∩ {1,2,3,4}|` and
+`|S ∩ {3,4,5,6}|` are both even. Proved: the invariant triples are **exactly** the `8` with one index per 2-torus
+(`invariant_triples_eq`, `invariant_mem_iff`), so rank `20 → 8`; the set is closed under complement
+(`invariant_closed_under_complement`), so the wedge pairing restricts; the restricted `8 × 8` pairing `J₈` is
+verified entry by entry against the wedge sign (`symJ8_is_wedge`) and has
+`J₈ᵀ = −J₈`, `J₈ · J₈ = −1` and is unimodular — the invariant sublattice is **again a unimodular symplectic
+lattice**; and the infinite family of `v3.33.0` therefore runs inside it (`invariant_flux_family`,
+`invariant_family_injective`). The tadpole bounds an integer, not a set of fluxes, before or after projection.
+
+Scope: the orientifold projection on top of the orbifold, the quantisation conventions (integral vs half-integral
+flux) and the `D3`-charge normalisation are **not** modelled; they are the next Tier L inputs.
+
+Gates: build OK (`lake build DualScaleStream2`, 3700 jobs); `sorry`/`admit`/`native_decide` grep empty;
+axiom audit `DualScaleStream2` 147, total **756**, 0 failing (`propext`, `Classical.choice`, `Quot.sound` only);
+`statement_lock.py --check` OK (1094 declarations, 99 files), additions only;
+negative control: three mutations caught (a non-invariant triple added to the list; a sign flipped in `J₈`; a zero
+entry of `J₈` made nonzero).
+
+Provenance of the `8 × 8` literal: `symJ8_is_wedge` checks all `64` entries — the zeros included — against
+`wedgeSign`, i.e. against the definition of the wedge pairing (`0` when an index repeats, otherwise the signature
+of the permutation `S ++ T` of `1 … 6`). The matrix is therefore computed inside the kernel, not asserted.
+
 ## 0---. `v3.33.0` (2026-09-20): Stream 9 S9.5 — the tadpole alone bounds nothing
 
 `DualScaleStream2/Flux/FluxLattice.lean` (7 theorems). `rank H³(T⁶, ℤ) = C(6,3) = 20`; its intersection form `J`
