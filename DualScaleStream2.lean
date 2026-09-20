@@ -29,3 +29,4 @@ import DualScaleStream2.Flux.FluxLattice
 import DualScaleStream2.Flux.InvariantH3
 import DualScaleStream2.Flux.FluxQuantisation
 import DualScaleStream2.Orientifold.CrystallographicOrders
+import DualScaleStream2.Flux.ISDFiniteness

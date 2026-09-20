@@ -246,6 +246,39 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0-------. `v3.37.0` (2026-09-20): Stream 9 S9.6b — one positivity condition kills the infinite family
+
+`DualScaleStream2/Flux/ISDFiniteness.lean` (10 theorems). Reading: `docs/STREAM9_ORIENTIFOLD.md` §6d.
+`v3.33.0`–`v3.36.0` proved the same negative three times: the tadpole bounds an integer and never the quanta —
+not through the budget, not after the orbifold projection, not under any quantisation factor — and each ended by
+saying finiteness must come from the supersymmetry / imaginary-self-duality condition. This release shows that,
+on the same rank-8 lattice, and exhibits the exact point where the infinite family dies.
+
+Tier L, pinned: GKP `papers/foundations/giddings_kachru_polchinski_hep-th_0105097.txt` l. 629–631 eq. (2.31)
+(`∗₆G₍₃₎ = iG₍₃₎`) and ll. 1801–1812 eq. (A.13) (the `G = G⁺ + G⁻` split, in which the flux action carries a
+**positive-definite** norm plus a topological term). For a lattice, that pair says: ISD replaces the indefinite
+symplectic pairing by a positive-definite form.
+
+Tier A: `Jc = −J₈` is a complex structure (`Jc² = −1`) compatible with the symplectic form
+(`Jcᵀ J₈ Jc = J₈`), available because `J₈ · J₈ = −1` was already proved; the associated form `g(v,w) = ω(v, Jc w)`
+is **exactly the Euclidean dot product** — forced by `J₈ · J₈ = −1`, not chosen (`gForm_eq_dot`); `g` is positive
+definite (`gForm_nonneg`, `gForm_eq_zero_iff`); every ball `{v : g(v,v) ≤ B}` is **finite** with the explicit
+coordinate bound `(v i)² ≤ B` (`coord_bound`, `isd_ball_finite`); the family of `v3.34.0` has
+`g(F(m), F(m)) = k² + m²` (`family_norm`); and at the ceiling `32` with `k = 1` it is cut to **exactly eleven**
+members, `−5 ≤ m ≤ 5` (`family_cut_to_eleven`).
+
+Same lattice, same family: **infinitely many under the tadpole pairing, eleven under one positive-definite form.**
+
+Explicitly **not** claimed: that `g` *is* the physical flux norm (that needs the `D3`-charge normalisation
+isolated as the missing bridge at `v3.35.0`; the `32` is carried over as a ceiling to make the contrast concrete,
+not derived); that `Jc = −J₈` is the physical complex structure (the moduli fix that — the *mechanism* is
+choice-independent, the count `11` is not); and that any of this counts vacua.
+
+Gates: build OK (`lake build DualScaleStream2`, 3703 jobs); `sorry`/`admit`/`native_decide` grep empty;
+axiom audit `DualScaleStream2` 176, total **785**, 0 failing; `statement_lock.py --check` OK (1135 declarations,
+102 files); negative control: two mutations caught (the cut widened to `|m| ≤ 6`; the family norm `k² + m²`
+weakened to `k² + m`).
+
 ## 0------. `v3.36.0` (2026-09-20): Stream 9 S9.4 — a claim this repository made is refuted in the kernel
 
 `DualScaleStream2/Orientifold/CrystallographicOrders.lean` (10 theorems). Reading:

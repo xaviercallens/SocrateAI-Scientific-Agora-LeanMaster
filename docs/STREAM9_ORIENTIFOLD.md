@@ -196,13 +196,45 @@ the orbifold projection (§6b), nor by any quantisation factor (§6c). Each step
 count would still need: the orientifold projection on top of the orbifold, the normalisation constants, the
 supersymmetry/imaginary-self-duality conditions, and the quotient by the duality group.
 
+## 6d. S9.6b — one positivity condition, and the infinite family becomes eleven (`ISDFiniteness.lean`)
+
+§6, §6b and §6c each ended by saying that finiteness has to come from the supersymmetry / imaginary-self-duality
+condition. This section shows that on the same lattice, and points at the exact place the infinite family dies.
+
+*Tier L, pinned.* GKP `papers/foundations/giddings_kachru_polchinski_hep-th_0105097.txt` l. 629–631 eq. (2.31):
+the 3-form field strength is **imaginary self-dual**, `∗₆G₍₃₎ = i G₍₃₎`; and ll. 1801–1812 eq. (A.13): the
+decomposition `G = G⁺ + G⁻` with `∗₆G^± = ∓i G^±`, in which the flux action splits into a **positive-definite**
+norm `G⁺_{mnp}G⁺^{mnp}` plus a topological term. For a lattice, that pair says one thing: ISD replaces the
+indefinite symplectic pairing — everything §6–§6c worked with — by a positive-definite form.
+
+*Tier A.*
+- `compStruct_sq`, `compStruct_compatible`: `Jc = −J₈` is a complex structure compatible with the symplectic
+  form. It exists precisely because `J₈ · J₈ = −1`, proved in §6b.
+- `gForm_eq_dot`: the associated form `g(v, w) = ω(v, Jc w)` is **exactly the Euclidean dot product** on `ℤ⁸`.
+  Not a convenient modelling choice — it is forced by `J₈ · J₈ = −1`.
+- `gForm_nonneg`, `gForm_eq_zero_iff`, `coord_bound`, `isd_ball_finite`: `g` is positive definite and **every
+  ball `{v : g(v,v) ≤ B}` is finite**, with the explicit coordinate bound `(v i)² ≤ B`.
+- `family_norm`, `family_cut_to_eleven`: the family of §6b has `g(F(m), F(m)) = k² + m²`, so at the ceiling `32`
+  with `k = 1` it is cut to **exactly eleven** members, `−5 ≤ m ≤ 5`.
+
+*The arc.* Same lattice, same family. Under the tadpole pairing, `⟨H, F(m)⟩ = k` for every one of infinitely many
+`m`. Under one positive-definite form, eleven. The finiteness was never going to come from the budget (§6), the
+projection (§6b) or the quantisation (§6c); it comes from positivity, and this is the smallest honest
+demonstration of that.
+
+*Not claimed.* That `g` **is** the physical flux norm — that needs the `D3`-charge normalisation §6c isolated as
+the missing bridge, which is still missing; the `32` is carried over as a ceiling to make the contrast concrete,
+not derived. That `Jc = −J₈` is the physical complex structure — the moduli fix that; the *mechanism* is
+independent of the choice, the count `11` is not. And that any of this counts vacua: no moduli stabilisation, no
+equations of motion, no quotient by the duality group. Eleven flux vectors are not eleven vacua.
+
 ## 7. Next steps, in order
 
 | # | Step | Why it is the next one |
 |---|---|---|
 | S9.4b | Prove the crystallographic restriction theorem itself, in its **correct** form `ψ(n) ≤ d` | §5b refuted the `φ` form and pinned the right one; the proof needs cyclotomics and the rational canonical form, which Mathlib has |
 | S9.5d | Pin the `D3`-charge normalisation on the quotient from a source, so that the lattice pairing can legitimately be called `N_flux` | §6c isolates this as the single missing bridge; everything above it is already arithmetic |
-| S9.6b | The supersymmetry / imaginary-self-duality condition `∗₆G₃ = iG₃` as a condition on the rank-8 lattice | §6c shows finiteness cannot come from the lattice, so it has to come from here |
+| S9.6c | Replace the carried-over ceiling `32` in §6d by one derived from a pinned normalisation, turning the count `11` from an illustration into a statement | §6d shows the mechanism; only the normalisation stands between it and a real number |
 | S9.6 | Only then: the massless spectrum, and whether a chiral one is reachable | Tier L input dominates; it needs its own pinned sources |
 
 Anything that becomes a physical prediction is frozen by git tag before comparison, as in Streams 6–7.
