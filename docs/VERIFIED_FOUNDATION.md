@@ -246,6 +246,32 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0-----. `v3.35.0` (2026-09-20): Stream 9 S9.5c — quantisation does not bound the fluxes either
+
+`DualScaleStream2/Flux/FluxQuantisation.lean` (9 theorems). Reading: `docs/STREAM9_ORIENTIFOLD.md` §6c.
+S9.5 and S9.5b assumed only that the flux quanta are integers. The remaining objection is normalisation: on an
+orientifold the surviving periods are often required to be multiples of some factor (the familiar "fluxes must be
+even on `T⁶/ℤ₂`"). Proved, parametrically in that factor `M`: if every quantum of `H` and `F` lies in `M·ℤ` then
+`⟨H, F⟩ ∈ M²·ℤ` (`pairing_dvd`), every multiple of `M²` is attained (`pairing_attains`), and for every `M` and
+every attainable value **infinitely many** quantised pairs realise it (`quantised_family`,
+`quantised_family_injective`). Rescaling a lattice gives a lattice: the mechanism of S9.5 is untouched.
+
+Tier L, pinned: Giddings–Kachru–Polchinski `papers/foundations/giddings_kachru_polchinski_hep-th_0105097.txt`
+ll. 534–547, eq. (2.25) — `(1/2πα′)∫_C F₃ ∈ 2πℤ` and likewise for `H₃`, over every 3-cycle. That is period
+**integrality** and no more.
+
+Explicitly **not** established: the orientifold normalisation (whether the surviving periods are all of `ℤ⁸` or a
+proper sublattice) and the `D3`-charge normalisation that would identify the lattice pairing with the physical
+`N_flux`. `convention_factor_bounded` / `convention_hypothesis_tight` are labelled in the file as a **conditional
+remark, not a result**: they assume that bridge and use an isotropic model `M·ℤ⁸` which is not the shape an
+orientifold projection takes (the physically cited case is `M = 2`, where nothing is obstructed). They are kept to
+show where the remaining freedom lives, not to bound anything.
+
+Gates: build OK (`lake build DualScaleStream2`, 3701 jobs); `sorry`/`admit`/`native_decide` grep empty;
+axiom audit `DualScaleStream2` 156, total **765**, 0 failing; `statement_lock.py --check` OK (1106 declarations,
+100 files); negative control: three mutations caught (`M ≥ 6` weakened to `M ≥ 5`; the family's value `k` swapped
+for `m`; `M² ∣` strengthened to `M³ ∣` in the load-bearing divisibility lemma).
+
 ## 0----. `v3.34.0` (2026-09-20): Stream 9 S9.5b — the orbifold projection does not restore finiteness
 
 `DualScaleStream2/Flux/InvariantH3.lean` (10 theorems). Reading: `docs/STREAM9_ORIENTIFOLD.md` §6b.

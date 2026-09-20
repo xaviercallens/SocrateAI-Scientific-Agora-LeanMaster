@@ -134,12 +134,44 @@ the orbifold projection.** Finiteness must come from the supersymmetry condition
 half-integral flux in a given convention), the `D3`-charge normalisation. Those are the next Tier L inputs, and
 until they are pinned no count is possible here.
 
+## 6c. S9.5c — quantisation does not bound them either, for any normalisation (`FluxQuantisation.lean`)
+
+§6 and §6b assumed only that the flux quanta are integers. The last objection is about **normalisation**: on an
+orientifold the surviving periods are often required to be multiples of some factor (the familiar "fluxes must be
+even on `T⁶/ℤ₂`"). The answer is parametric in that factor, so no guess is needed.
+
+*Tier L, pinned.* Giddings–Kachru–Polchinski `papers/foundations/giddings_kachru_polchinski_hep-th_0105097.txt`
+ll. 534–547, eq. (2.25): `(1/2πα′)∫_C F₃ ∈ 2πℤ` and likewise for `H₃`, over every 3-cycle `C`. That is period
+**integrality** — exactly the modelling of §6/§6b, and no more.
+
+*Tier A.*
+- `pairing_dvd`: if every quantum of `H` and `F` lies in `M·ℤ`, then `⟨H, F⟩ ∈ M²·ℤ`.
+- `pairing_attains`: every multiple of `M²` is attained, so the divisibility is exact.
+- `quantised_family`, `quantised_family_injective`: **the conclusion** — for every `M` and every attainable
+  value, infinitely many quantised pairs realise it. Rescaling a lattice gives a lattice.
+- `tadpole_range`: `N_D3 + ½N_flux = 16` with `N_D3 ≥ 0`, `N_flux ≥ 0` gives `0 ≤ N_flux ≤ 32`. This is
+  arithmetic about integers and is **not** connected to the lattice pairing anywhere in the file.
+
+*A conditional remark, deliberately not a result.* `convention_factor_bounded` and
+`convention_hypothesis_tight` say: *if* one worked in a normalisation where the lattice pairing **is** `N_flux`
+— which the file does not establish, and which needs the `D3`-charge normalisation on the quotient from a source
+— then an isotropic quantisation with `M ≥ 6` would give `M² ≥ 36 > 32` and force `N_flux = 0`, and `M ≥ 6` is
+tight for that argument. Two reasons it stays a remark: the bridge to `N_flux` is assumed rather than derived,
+and `M·ℤ⁸` is not the shape an orientifold projection actually takes — the physically cited case is `M = 2`,
+where `N_flux ∈ 4ℤ ∩ [0, 32]` leaves eight values and obstructs nothing.
+
+*What §6–§6c amount to.* The lattice never produces finiteness. It cannot be produced by the budget (§6), nor by
+the orbifold projection (§6b), nor by any quantisation factor (§6c). Each step also names the Tier L input a real
+count would still need: the orientifold projection on top of the orbifold, the normalisation constants, the
+supersymmetry/imaginary-self-duality conditions, and the quotient by the duality group.
+
 ## 7. Next steps, in order
 
 | # | Step | Why it is the next one |
 |---|---|---|
 | S9.4 | Prove the crystallographic restriction theorem itself (`φ(n) ≤ d` for a finite-order integer matrix) | it is the only Tier L gap in §5, and Mathlib has the cyclotomic machinery |
-| S9.5c | Pin the quantisation conventions (integral vs half-integral flux, `D3`-charge normalisation) from a source, then state the tadpole *inside* the rank-8 invariant lattice | §6b shows the geometry is settled and the remaining gap is a Tier L convention, not a computation |
+| S9.5d | Pin the `D3`-charge normalisation on the quotient from a source, so that the lattice pairing can legitimately be called `N_flux` | §6c isolates this as the single missing bridge; everything above it is already arithmetic |
+| S9.6b | The supersymmetry / imaginary-self-duality condition `∗₆G₃ = iG₃` as a condition on the rank-8 lattice | §6c shows finiteness cannot come from the lattice, so it has to come from here |
 | S9.6 | Only then: the massless spectrum, and whether a chiral one is reachable | Tier L input dominates; it needs its own pinned sources |
 
 Anything that becomes a physical prediction is frozen by git tag before comparison, as in Streams 6–7.

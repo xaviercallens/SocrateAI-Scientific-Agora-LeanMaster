@@ -40,7 +40,7 @@ literature (Tier L) versus this project's own conjectures (Tier C, not yet deriv
 
 Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
 invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
-every theorem and lemma (**756 audited theorems across the ten first-party libraries** depend on
+every theorem and lemma (**765 audited theorems across the ten first-party libraries** depend on
 nothing beyond the three standard Lean axioms — see §10 and
 [`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md), which is the authoritative,
 gate-by-gate status document that this README summarizes).
@@ -65,7 +65,7 @@ worth:
 10. **(Tier A arithmetic on Tier L data) Stream 6 — the experimental verdict** ([`docs/STREAM6_EXPERIMENT_PLAN.md`](docs/STREAM6_EXPERIMENT_PLAN.md), frozen prediction [`docs/STREAM6_PREDICTION_P1.md`](docs/STREAM6_PREDICTION_P1.md), tag `stream6-p1-frozen`): the programme's only experimental prediction — its self-dual length `≈ 47 μm` as the radius of one large extra dimension — is **excluded** by Eöt-Wash 2020 (`< 30 μm`) and fails the neutron-star bound (`< 44 μm`); the programme's own T-duality fixes the `O(1)` factor at 1, so no convention rescues it. The freeze was made after the bounds were known (disclosed). **Stream 7** ([`docs/STREAM7_HYPOTHESIS_INVENTORY.md`](docs/STREAM7_HYPOTHESIS_INVENTORY.md)) inventories what else the programme can derive without an unconstructed compactification; its candidate C-A (CKN saturation with infrared length `c/H`) was frozen (tag `stream7-ca-frozen`), derived in Lean (`q = 1/2` for every `ε`: no acceleration) and **excluded** by the observed acceleration (retrodiction, disclosed); its candidate C-B (pre-big-bang relic gravitons at the programme's string scale) was frozen before any detector sensitivity was pinned (tag `stream7-cb-frozen`) and is **not falsifiable in practice** (peak `Ω ≈ 10⁻⁶⁵` at `≈ 6 × 10⁻⁵ Hz`, below LISA's band and fifty orders below its sensitivity). The common cause: the dual-scale identification `α' = ℓ_P c/H₀` either conflicts with data or hides every stringy signal.
 9. **(Tier A computation + Tier L physics) Stream 5 — dyons on K3 × T²** (`DualScaleDyons`, [`docs/STREAM5_WORKFLOW.md`](docs/STREAM5_WORKFLOW.md)): the dyon partition function `1/Φ₁₀` is built from the computed K3 elliptic genus (the DMVV/Borcherds product); it reproduces Göttsche's Euler numbers `1, 24, 324, 3200, 25650, 176256` and the six printed identities (5.16) of Dabholkar–Murthy–Zagier; the two-centred (wall-crossing) part `p₂₄(m+1)A₂,ₘ` removes the double pole with exactly that coefficient; and the single-centred ("immortal") counting function at `m = 1` equals `3E₄A − 648H`, with `H` the Hurwitz class numbers counted independently. At `m = 2, 3` the same holds with the Hecke-like operators `H|V₂`, `H|V₃` (DMZ (9.11), (9.13) checked, not cited). The `24` of this sector and the Göttsche numbers pass the twining test that the 27720 lock failed: for `k ≤ 4` the traces of `M₂₄` on `H*(Hilbᵏ K3)` are genuine characters. The `M₂₄`-twisted dyon partition functions `1/Φ_g` (Cheng), built from Stream 4's twisted elliptic genera and CDH's power maps, have virtual-character coefficients, including the twisted single-centred counts at `m = 1`; and the first ten graded pieces of the Mathieu moonshine module decompose, from computed data, exactly as in CDH's Table 48 (levels 8 and 9 included).
 11. **(Tier A computation + Tier C readings) Stream 8 — which K3?** (`DualScaleDyons`, [`docs/STREAM8_WHICH_K3.md`](docs/STREAM8_WHICH_K3.md)): three independent criteria are made arithmetic and they do **not** agree. Black holes select the Kummer surface of the hexagonal torus (`ω`): its transcendental lattice `A₂` carries the minimal attractor discriminant `D = −3`, and the holomorphic isometry group has order 72 with Frame-shape multiplicities `1A:1, 2A:27, 3A:128, 4B:36`. Enhanced-symmetry ("trapping") points select instead the singular `SO(40)` / `SO(44)` points of the rank-22 table, and no product point reaches maximality (`766 < 924`); the obstruction is quantitative, not a slogan (`obstruction_is_quantitative`). The GTVW `ℤ₂⁸:M₂₀` model's `B`-field is the identity, favouring `i` over `ω`. **Conclusion (Tier C): there is no single preferred K3 — the question "which K3?" is ill-posed until one says which physics is doing the selecting.**
-12. **(Tier A lattice arithmetic) Stream 9 — a `T⁶/Γ` orientifold, opened as a control** ([`docs/STREAM9_ORIENTIFOLD.md`](docs/STREAM9_ORIENTIFOLD.md)): a change of compactification, **not** a continuation of the dual-scale hypothesis. Worldsheet parity is an **anti**-isometry of `Γ₆,₆ = U⁶` (`Ωᵀ G Ω = −G`), so an orientifold group is not a subgroup of `O(6,6;ℤ)`; what `Ω θᵢ` fixes is a maximal totally isotropic sublattice of rank 6. The `O3` budget `N_D3 + ½N_flux = 16` has exactly 17 integer solutions — **which are not vacua**: `H³(T⁶, ℤ)` has rank 20 with unimodular symplectic intersection form, and for every value of the flux contribution there are **infinitely many** flux vectors realising it. The `ℤ₂ × ℤ₂` projection cuts rank `20 → 8` but leaves a unimodular symplectic lattice, so the same infinite family survives: **the tadpole bounds an integer, never the quanta**, before or after projection. Finiteness has to come from supersymmetry and the duality quotient.
+12. **(Tier A lattice arithmetic) Stream 9 — a `T⁶/Γ` orientifold, opened as a control** ([`docs/STREAM9_ORIENTIFOLD.md`](docs/STREAM9_ORIENTIFOLD.md)): a change of compactification, **not** a continuation of the dual-scale hypothesis. Worldsheet parity is an **anti**-isometry of `Γ₆,₆ = U⁶` (`Ωᵀ G Ω = −G`), so an orientifold group is not a subgroup of `O(6,6;ℤ)`; what `Ω θᵢ` fixes is a maximal totally isotropic sublattice of rank 6. The `O3` budget `N_D3 + ½N_flux = 16` has exactly 17 integer solutions — **which are not vacua**: `H³(T⁶, ℤ)` has rank 20 with unimodular symplectic intersection form, and for every value of the flux contribution there are **infinitely many** flux vectors realising it. The `ℤ₂ × ℤ₂` projection cuts rank `20 → 8` but leaves a unimodular symplectic lattice, so the same infinite family survives; and requiring the quanta to be multiples of any factor `M` changes nothing, because rescaling a lattice gives a lattice. **The tadpole bounds an integer, never the quanta** — before or after projection, and for every normalisation. Finiteness has to come from supersymmetry and the duality quotient, and Stream 9 names each Tier L input a real count would still need.
 
 ---
 
@@ -172,7 +172,7 @@ continuous parameter survives.
 | **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
 | **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
 | **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
-| **Kernel Verification** | None (paper only) | 756/756 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
+| **Kernel Verification** | None (paper only) | 765/765 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
 
 The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
 (Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
@@ -506,11 +506,11 @@ bare keyword — and it also catches `native_decide` (`Lean.ofReduceBool`), whic
 ```bash
 lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 ```
-Last full run (2026-09-19, all ten libraries re-audited on Lean v4.34.0-rc2 during the toolchain migration (§0b of `docs/VERIFIED_FOUNDATION.md`); `DualScaleStream2` re-audited 2026-09-20 after v3.34.0), **756 theorems audited across all ten libraries, 0 failing**:
+Last full run (2026-09-19, all ten libraries re-audited on Lean v4.34.0-rc2 during the toolchain migration (§0b of `docs/VERIFIED_FOUNDATION.md`); `DualScaleStream2` re-audited 2026-09-20 after v3.35.0), **765 theorems audited across all ten libraries, 0 failing**:
 
 | Library | Theorems audited | Failing |
 |---|:---:|:---:|
-| `DualScaleStream2` | 147 | 0 |
+| `DualScaleStream2` | 156 | 0 |
 | `StringTheoryFormalization` | 89 | 0 |
 | `DualScaleM24Formalization` | 62 | 0 |
 | `StringTheoryFoundation` | 63 | 0 |
@@ -520,7 +520,7 @@ Last full run (2026-09-19, all ten libraries re-audited on Lean v4.34.0-rc2 duri
 | `DualScaleCosmology` (Stream 3, with the verdicts of Streams 6–7) | 59 | 0 |
 | `DualScaleMoonshine` (Stream 4) | 101 | 0 |
 | `DualScaleDyons` (Streams 5, 8) | 115 | 0 |
-| **Total** | **756** | **0** |
+| **Total** | **765** | **0** |
 
 "0 failing" means every theorem depends on nothing beyond `propext`, `Classical.choice` and
 `Quot.sound`.
