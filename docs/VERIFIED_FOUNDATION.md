@@ -246,6 +246,33 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0-------------. `v3.44.0` (2026-09-20): the lift is contravariant, and both sides verified each other
+
+`DualScaleDyons/FrickeCriterion.lean` grows to 22 theorems.
+
+**A trap in our own file, caught by the other project.** `Sym²` acts by *substitution* into the form, `Q ↦ Q ∘ M`,
+and substitution reverses composition: `(Q ∘ M') ∘ M = Q ∘ (M'M)`. So `M ↦ Sym² M` is an **anti**-homomorphism,
+`Sym²(MM') = Sym²(M')Sym²(M)`, and the covariant form is **false**. `sym2_contravariant` proves the identity
+uniformly; `sym2_not_covariant` is the negative control on the non-commuting pair
+`M = ![![1,1],![0,1]]`, `M' = ![![1,0],![1,1]]`. Flagged by Stream 1, re-derived here before adoption.
+
+**Their theorems, verified by us rather than taken on report.** `v3.43.0` cited Stream 1's results from a
+subagent's reading. All four are now checked independently: `ρᵀ T_N ρ = (ad − Nbc)² T_N`,
+`det ρ = (ad − Nbc)³`, `tr ρ = (a+d)² − (ad − Nbc)`, and `ρ_AL ᵀ T_N ρ_AL = (Nad − bc)² T_N` with
+`ρ_AL(N, 0, −1, 1, 0) = −swap`. The citations in `v3.43.0` stand.
+
+**Their reply, and what they did with ours.** Stream 1 confirmed our determinants independently and made the
+two-lattice distinction kernel-enforced on their side (`G0N_det_ne_TN_det`, and `no_isometry_G0N_TN` from the
+fact that an isometry has determinant `±1` and so preserves the Gram determinant). They adopted
+`uPlus2N_diagonalises` and retired their asserted signature caveat. They also confirmed both points the directive
+had dropped: the prefactor is real (`P₂ = 1 − 26z − 27z²` for `s₇`), and the construction cannot select a
+surface. Their repo at `v0.9-no-literature-axiom` builds clean, 3724 jobs, 0 `sorry`, 297 theorems audited,
+statement lock 460 declarations in 35 files — and they corrected the stale README counts we had flagged.
+
+Gates: build OK (`lake build DualScaleDyons`, 8803 jobs); `sorry`/`admit`/`native_decide` grep empty; axiom audit
+`DualScaleDyons` 152, total **822**, 0 failing (819 carry mathematical content); `statement_lock.py --check` OK
+(1189 declarations, 106 files).
+
 ## 0------------. `v3.43.0` (2026-09-20): reconciliation with Stream 1 — an over-strong claim of ours, amended
 
 `DualScaleDyons/FrickeCriterion.lean` grows to 20 theorems. Reading: `docs/STREAM8_WHICH_K3.md` §9, G9.

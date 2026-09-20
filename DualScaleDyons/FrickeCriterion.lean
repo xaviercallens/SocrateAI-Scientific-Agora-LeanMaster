@@ -23,6 +23,10 @@ The algebra of the proposal is correct, and is formalised:
   discriminant form `b² − 4ac` on binary quadratic forms. So `det M = 1` gives an exact isometry
   (`sym2_isometry_of_sl2`), and `sym2_det` gives `det(Sym² M) = (det M)³`. This is the classical
   `SL(2) → SO(2,1)` lift, and it is a polynomial identity.
+* `sym2_contravariant`, `sym2_not_covariant`: the lift is an **anti**-homomorphism,
+  `Sym²(MM') = Sym²(M')Sym²(M)`, because `Sym²` acts by substitution into the form and substitution reverses
+  composition. The covariant form is false, and the negative control exhibits a pair where it fails. This trap
+  was flagged by the Stream 1 project and verified here before being adopted.
 * `sym2_lifts_rank_two`: **the bridge `L₃ = Sym²(L₂)` stated as one theorem**, and built on
   `DualScaleStream2.TDuality.mul_jMat_mul_transpose` (`A J Aᵀ = det A · J`), which this repository already had.
   The rank-2 form is rescaled by `det A`, the rank-3 form by `(det A)²`, and the lift itself has determinant
@@ -114,6 +118,25 @@ theorem sym2_isometry (p q r s : ℤ) :
 theorem sym2_isometry_of_sl2 (p q r s : ℤ) (h : p * s - q * r = 1) :
     (sym2 p q r s)ᵀ * G0 * (sym2 p q r s) = G0 := by
   rw [sym2_isometry, h]; simp
+
+/-- **The lift is contravariant, and the covariant form is false.** `Sym²` acts by *substitution* into the form,
+`Q ↦ Q ∘ M`, and substitution reverses composition: `(Q ∘ M') ∘ M = Q ∘ (M' M)`. So `M ↦ Sym² M` is an
+**anti**-homomorphism — a right action — and any statement of the form `Sym²(MM') = Sym²(M)Sym²(M')` is wrong.
+Flagged by the Stream 1 project; verified here before adopting. -/
+theorem sym2_contravariant (p q r s p' q' r' s' : ℤ) :
+    sym2 (p * p' + q * r') (p * q' + q * s') (r * p' + s * r') (r * q' + s * s')
+      = sym2 p' q' r' s' * sym2 p q r s := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [sym2, Matrix.mul_apply, Fin.sum_univ_succ] <;> ring
+
+/-- The negative control for the previous theorem, on an explicit non-commuting pair: with
+`M = ![![1,1],![0,1]]` and `M' = ![![1,0],![1,1]]`, so that `M M' = ![![2,1],![1,1]]`, the contravariant identity
+holds and the covariant one fails. Without this, the docstring above would be an assertion. -/
+theorem sym2_not_covariant :
+    sym2 2 1 1 1 = sym2 1 0 1 1 * sym2 1 1 0 1 ∧
+      sym2 2 1 1 1 ≠ sym2 1 1 0 1 * sym2 1 0 1 1 := by
+  refine ⟨by decide +kernel, by decide +kernel⟩
 
 theorem sym2_det (p q r s : ℤ) : (sym2 p q r s).det = (p * s - q * r) ^ 3 := by
   simp [sym2, Matrix.det_fin_three]
