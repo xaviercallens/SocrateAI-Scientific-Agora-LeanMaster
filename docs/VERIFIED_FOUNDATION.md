@@ -246,6 +246,39 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0------. `v3.36.0` (2026-09-20): Stream 9 S9.4 — a claim this repository made is refuted in the kernel
+
+`DualScaleStream2/Orientifold/CrystallographicOrders.lean` (10 theorems). Reading:
+`docs/STREAM9_ORIENTIFOLD.md` §5b. S9.3 motivated its arithmetic with "a finite-order integer matrix of size `d`
+and order `n` exists only if `φ(n) ≤ d`" and listed that theorem as the next formalization target. On attempting
+it, **the statement is false for every `d ≥ 5`.**
+
+The tempting argument — minimal polynomial divides `X^n − 1`, so some eigenvalue is a primitive `n`-th root of
+unity, so `Φ_n` divides the characteristic polynomial and `φ(n) ≤ d` — fails at the middle step. The order of a
+matrix is the `lcm` of its eigenvalue orders, not the largest of them.
+
+Proved (Tier A): four explicit `6 × 6` integer matrices, each of determinant `1` (so in `SL(6, ℤ)`), of order
+exactly `15`, `20`, `24`, `30` — `A^n = 1` and `A^{n/p} ≠ 1` for every prime `p ∣ n` — while `φ(n) = 8 > 6` for all
+four (`mat15_order_15` … `mat30_order_30`, `the_four_are_unimodular`, `phi_of_the_four`,
+`phi_criterion_refuted`). None of the four is in the `φ`-list (`phi_list_incomplete`), so that list is **not** the
+list of orders available on a rank-6 lattice. The corrected criterion `ψ(n) = Σ_{p^a ‖ n, p^a ≠ 2} φ(p^a) ≤ 6`
+gives exactly `1–10, 12, 14, 15, 18, 20, 24, 30` (`psi_le_six_list`): the thirteen of S9.3 plus precisely the four
+exhibited. The `2` is skipped because `−1` on a block already present realises it at no cost in dimension.
+
+**Blast radius, checked:** the false statement was header prose in `Crystallography.lean` and two doc paragraphs;
+**no theorem depended on it.** S9.3's lemmas are arithmetic about `φ` and stand unchanged. Stream 8 §8 uses only
+the rank-2 list, and `rank_two_unaffected` proves `ψ(n) ≤ 2` and `φ(n) ≤ 2` give the same `{1, 2, 3, 4, 6}`. The
+`ℤ₂ × ℤ₂` of `NarainT6.lean` uses order 2 only.
+
+Still Tier L: that `ψ(n) ≤ d` is *necessary* — the actual theorem — is not formalized. What is now Tier A is the
+other direction for the cases at issue, which is what makes the `φ`-based enumeration provably incomplete.
+
+Gates: build OK (`lake build DualScaleStream2`, 3702 jobs); `sorry`/`admit`/`native_decide` grep empty;
+axiom audit `DualScaleStream2` 166, total **775**, 0 failing; `statement_lock.py --check` OK (1123 declarations,
+101 files); negative control: two mutations caught (`mat15 ^ 15` weakened to `mat15 ^ 14`; `15` dropped from the
+corrected list). The `ψ` implementation was cross-checked by `#eval` against `φ(p^a)` sums for
+`1, 2, 3, 4, 8, 12, 15, 16, 24, 30, 36, 60, 128, 200` before the list theorem was accepted.
+
 ## 0-----. `v3.35.0` (2026-09-20): Stream 9 S9.5c — quantisation does not bound the fluxes either
 
 `DualScaleStream2/Flux/FluxQuantisation.lean` (9 theorems). Reading: `docs/STREAM9_ORIENTIFOLD.md` §6c.
@@ -323,7 +356,9 @@ negative control: two mutations caught (a wrong sign in `J·J`, a flux direction
   not of vacua** — no supersymmetry, equations of motion, moduli stabilisation or flux quanta enter.
 - **S9.3.** The orders with `φ(n) ≤ 6` are `1–10, 12, 14, 18` (checked to 200); `φ(n) ≤ 2` gives `1, 2, 3, 4, 6`
   (the list Stream 8 §8 uses); the three `θᵢ` have order 2. The crystallographic restriction theorem itself is
-  **not** formalized and is marked as the next target.
+  **not** formalized. **Corrected at `v3.36.0`:** the header of that file said the restriction *is* `φ(n) ≤ d`.
+  It is not — see the `v3.36.0` entry. The `φ`-lists proved in S9.3 stand as arithmetic about `φ`; what was wrong
+  was the claim that the rank-6 one lists the available orders.
 
 Gates: build OK; grep empty; axiom audit `DualScaleStream2` 130, total **739**, 0 failing; lock additions only;
 negative control: three mutations caught (a wrong invariant index, a truncated solution list, an extra allowed

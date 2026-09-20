@@ -2,9 +2,17 @@
 Stream 9 · S9.3 — the crystallographic restriction on an orientifold group, stated honestly.
 
 An orbifold/orientifold group must act on `T⁶ = ℝ⁶/Λ` by isometries **preserving the lattice**, hence by integer
-matrices in a lattice basis. That restricts the possible finite orders: a matrix of finite order `n` over `ℤ` of
-size `d` exists only if `φ(n) ≤ d`, because its minimal polynomial is a product of cyclotomics and
-`deg Φ_n = φ(n)`. For `d = 6` (the geometric action on `T⁶`) this leaves the orders below.
+matrices in a lattice basis. That restricts the possible finite orders. This file computes the arithmetic of `φ`;
+it is **not** the crystallographic restriction, and the two must not be confused.
+
+> **Correction (S9.4, `CrystallographicOrders.lean`).** An earlier version of this header claimed that a matrix of
+> finite order `n` over `ℤ` of size `d` exists only if `φ(n) ≤ d`. **That is false for every `d ≥ 5`**, and S9.4
+> refutes it in the kernel: `diag(C_{Φ₃}, C_{Φ₅}) ∈ SL(6, ℤ)` has order `15` while `φ(15) = 8 > 6`. The order of a
+> matrix is the `lcm` of its eigenvalue orders, not the largest of them, so no eigenvalue need be a primitive
+> `n`-th root of unity. The correct criterion is `ψ(n) = Σ_{p^a ‖ n, p^a ≠ 2} φ(p^a) ≤ d`; for `d = 6` it adds
+> exactly `15, 20, 24, 30` to the list below. **The `φ`-list proved here is correct arithmetic about `φ` and
+> nothing more** — for the orders available on a rank-6 lattice, read `CrystallographicOrders.psi_le_six_list`.
+> The rank-2 list is unaffected: `ψ(n) ≤ 2` and `φ(n) ≤ 2` agree (`rank_two_unaffected`).
 
 ### What is proved here (Tier A)
 * `phi_le_six_list`: the `n ≥ 1` with `φ(n) ≤ 6` are exactly `1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 18`
@@ -15,11 +23,10 @@ size `d` exists only if `φ(n) ≤ d`, because its minimal polynomial is a produ
   statement one dimension at a time, recomputed here so the two streams share one lemma.
 
 ### What is NOT proved here (Tier L)
-**The crystallographic restriction theorem itself** — that a finite-order integer matrix of size `d` forces
-`φ(n) ≤ d` — is *not* formalized in this file. It needs the theory of cyclotomic polynomials and the rational
-canonical form; Mathlib has the ingredients, and this is the natural next target, but asserting the theorem here
-would be claiming what has not been checked. What this file provides is the arithmetic side (the list of orders)
-and the concrete check for the orders actually used. The physics statement — that an orientifold group must act
+**The crystallographic restriction theorem itself** — that a finite-order integer matrix of size `d` and order
+`n` forces `ψ(n) ≤ d` — is *not* formalized. What S9.4 does establish is the converse direction for the cases at
+issue: the four orders `ψ` admits beyond the `φ`-list are realised by explicit matrices in `SL(6, ℤ)`, so an
+enumeration built on `φ(n) ≤ 6` provably misses cases. The physics statement — that an orientifold group must act
 crystallographically — is the standard one, cited from the references pinned in `NarainT6.lean`.
 -/
 import DualScaleStream2.Orientifold.NarainT6
@@ -28,7 +35,8 @@ namespace DualScaleStream2.Orientifold.Crystallography
 
 open Nat
 
-/-- The orders allowed on a rank-6 lattice by `φ(n) ≤ 6`, and the fact that nothing above 18 qualifies up to 200. -/
+/-- The `n ≤ 200` with `φ(n) ≤ 6`. **This is arithmetic about `φ`, not the list of orders available on a rank-6
+lattice** — see the correction in the header and `CrystallographicOrders.psi_le_six_list`. -/
 theorem phi_le_six_list :
     ((List.range 201).filter fun n => 1 ≤ n && Nat.totient n ≤ 6) =
       [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 18] := by
@@ -55,7 +63,7 @@ theorem theta_orders :
     have := congrFun (congrFun h 0) 0
     simp [theta3, Matrix.one_apply] at this
 
-/-- `2` is in the allowed list, as it must be. -/
+/-- `2` is in the `φ`-list, as it must be — and in the corrected `ψ`-list too, since `ψ(2) = 0`. -/
 theorem order_two_allowed : (2 : ℕ) ∈ ((List.range 201).filter fun n => 1 ≤ n && Nat.totient n ≤ 6) := by
   decide +kernel
 

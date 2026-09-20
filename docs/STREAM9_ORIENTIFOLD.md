@@ -82,9 +82,40 @@ Proved: the orders `n` with `φ(n) ≤ 6` are exactly `1, 2, 3, 4, 5, 6, 7, 8, 9
 `n ≤ 200`); the rank-2 case `φ(n) ≤ 2` gives `1, 2, 3, 4, 6`, the list Stream 8 §8 uses; and the three `θᵢ` have
 order exactly 2.
 
-**Not proved here:** the crystallographic restriction theorem itself — that a finite-order integer matrix of size
-`d` forces `φ(n) ≤ d`. That needs cyclotomic polynomials and the rational canonical form; Mathlib has the
-ingredients and it is the natural next formalization target. Asserting it here would claim what was not checked.
+**Not proved here:** the crystallographic restriction theorem itself. It was originally stated in this section as
+"`φ(n) ≤ d`" — **that is false**, and §5b below refutes it.
+
+## 5b. S9.4 — the restriction is not `φ(n) ≤ d`, and here are the counterexamples (`CrystallographicOrders.lean`)
+
+§5 listed "prove `φ(n) ≤ d`" as the next target. On attempting it the statement turned out to be **false for
+every `d ≥ 5`**, so S9.4 is a refutation rather than a proof.
+
+*Where the standard argument breaks.* The tempting route: `A^n = 1`, so the minimal polynomial divides
+`X^n − 1 = ∏_{e ∣ n} Φ_e`; some eigenvalue must be a *primitive* `n`-th root of unity; hence `Φ_n` divides the
+characteristic polynomial and `deg Φ_n = φ(n) ≤ d`. **The middle step is false.** A matrix's order is the `lcm`
+of its eigenvalue orders, not the largest of them. `diag(C_{Φ₃}, C_{Φ₅})` has order `lcm(3,5) = 15` with every
+eigenvalue of order 3 or 5, and no eigenvalue of order 15.
+
+*Tier A.* Four explicit `6 × 6` integer matrices, each of determinant `1` — so genuine lattice automorphisms in
+`SL(6, ℤ)`, not merely integer matrices — of order exactly `15`, `20`, `24`, `30` (`A^n = 1` and `A^{n/p} ≠ 1`
+for every prime `p ∣ n`), while `φ(n) = 8 > 6` for all four. None of the four appears in §5's `φ`-list
+(`phi_list_incomplete`), so **that list is not the list of orders available on a rank-6 lattice.**
+
+*The corrected criterion.* `ψ(n) = Σ_{p^a ‖ n, p^a ≠ 2} φ(p^a)`; the factor `2` of an `n ≡ 2 mod 4` costs no
+dimension because `−1` on a block already present realises it. `ψ(n) ≤ 6` gives exactly
+
+`1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 18, 20, 24, 30`
+
+— the thirteen of §5 plus precisely the four exhibited (`psi_le_six_list`).
+
+*Blast radius, checked.* The false statement lived in header prose and in two doc paragraphs; **no theorem
+depended on it.** §5's lemmas are arithmetic about `φ` and stand. Stream 8 §8 uses only the rank-2 list, and
+`rank_two_unaffected` proves `ψ(n) ≤ 2` and `φ(n) ≤ 2` give the same `{1, 2, 3, 4, 6}`. The `ℤ₂ × ℤ₂` of
+`NarainT6.lean` uses order 2 only.
+
+*Still Tier L.* That `ψ(n) ≤ d` is **necessary** — the actual crystallographic restriction theorem — is not
+formalized. It needs cyclotomics and the rational canonical form. What is now Tier A is the other direction for
+the four cases at issue, and that is what makes any `φ`-based enumeration provably incomplete.
 
 ## 6. S9.5 — the tadpole alone bounds nothing (`FluxLattice.lean`)
 
@@ -169,7 +200,7 @@ supersymmetry/imaginary-self-duality conditions, and the quotient by the duality
 
 | # | Step | Why it is the next one |
 |---|---|---|
-| S9.4 | Prove the crystallographic restriction theorem itself (`φ(n) ≤ d` for a finite-order integer matrix) | it is the only Tier L gap in §5, and Mathlib has the cyclotomic machinery |
+| S9.4b | Prove the crystallographic restriction theorem itself, in its **correct** form `ψ(n) ≤ d` | §5b refuted the `φ` form and pinned the right one; the proof needs cyclotomics and the rational canonical form, which Mathlib has |
 | S9.5d | Pin the `D3`-charge normalisation on the quotient from a source, so that the lattice pairing can legitimately be called `N_flux` | §6c isolates this as the single missing bridge; everything above it is already arithmetic |
 | S9.6b | The supersymmetry / imaginary-self-duality condition `∗₆G₃ = iG₃` as a condition on the rank-8 lattice | §6c shows finiteness cannot come from the lattice, so it has to come from here |
 | S9.6 | Only then: the massless spectrum, and whether a chiral one is reachable | Tier L input dominates; it needs its own pinned sources |

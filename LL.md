@@ -1,6 +1,7 @@
 # Lessons Learned (LL)
 
-**Most recent session first** — read §S9 (toolchain migration to v4.34.0-rc2, 2026-09-19) and §S8 (Stream 8,
+**Most recent session first** — read §S10 (Stream 9, the orientifold control, 2026-09-20), then §S9
+(toolchain migration to v4.34.0-rc2, 2026-09-19) and §S8 (Stream 8,
 2026-09-19), then §S2 and §S2-I (Stream 2 run + improvements,
 2026-09-16/17) and §0 (2026-09-16) before anything below them.
 Everything from §1 onward is the original "Phase 0" document and is kept for record, but
@@ -14,6 +15,48 @@ note and the root `README.md`'s "note on this revision" already flag elsewhere i
 repo) rather than as ground truth to build the next session's narrative on.
 
 ---
+
+# §S10. Stream 9, the orientifold control (2026-09-20)
+
+**Scope**: `DualScaleStream2/Orientifold/` and `DualScaleStream2/Flux/`, releases `v3.31.0` … `v3.36.0`.
+
+## S10.1 A statement listed as "the next formalization target" is an unverified claim, and it cost the repo a false sentence
+
+S9.3 wrote, as *motivation* for a file of arithmetic about `φ`, that a finite-order integer matrix of size `d`
+and order `n` requires `φ(n) ≤ d`, and listed "prove it" as the next target. It sat in the header, in
+`docs/STREAM9_ORIENTIFOLD.md` §5 and in `docs/VERIFIED_FOUNDATION.md` for five releases. **It is false for every
+`d ≥ 5`**: `diag(C_{Φ₃}, C_{Φ₅}) ∈ SL(6, ℤ)` has order 15 and `φ(15) = 8 > 6`. The argument everyone reaches for
+— minimal polynomial divides `X^n − 1`, so some eigenvalue is a primitive `n`-th root — fails because a matrix's
+order is the **lcm** of its eigenvalue orders, not the largest.
+
+The gates could not catch it: no theorem depended on it, so the build, the `sorry` grep, the axiom audit and the
+statement lock were all green the whole time. What caught it was *starting the proof* — three minutes of
+`sympy` before writing any Lean.
+
+**Rule.** Before writing "not proved here; the next target is X", spend the five minutes to check X on a small
+case. A target is a claim. If it is wrong, listing it propagates it into every doc that summarises the file, and
+the repository's own verification machinery is structurally blind to it.
+
+## S10.2 A hand-computed matrix literal is not Tier A until a lemma derives every entry
+
+S9.5b's `8 × 8` pairing matrix came from a Python script. `J₈ᵀ = −J₈` and `J₈·J₈ = −1` are kernel-checked — but
+they are true of *any* such matrix, so the kernel was certifying internal consistency, not provenance. The fix
+(`symJ8_is_wedge`) checks all 64 entries, **zeros included**, against `wedgeSign`, i.e. against the definition of
+the pairing. Twelve lines. Any transcribed table deserves the same.
+
+## S10.3 Do not let a conditional bound be written up as the result
+
+S9.5c proved "if the lattice pairing *is* `N_flux`, a coarse quantisation `M ≥ 6` forces zero flux". The bridge
+to `N_flux` needs a `D3`-charge normalisation this repo has no source for, and the isotropic model `M·ℤ⁸` is not
+the shape an orientifold projection takes — the case anyone cites is `M = 2`, where nothing is obstructed. The
+theorems stayed; the framing changed to **"a conditional remark, not a result"**, with both reasons written down.
+The tell: a headline whose hypotheses are supplied by hand rather than derived.
+
+## S10.4 Kill background shells before a release build
+
+Roughly ten `until`-loop watchers and one foreign `lake build` were still spinning from earlier in the session.
+A concurrent Lean build is the documented OOM / page-cache-flush failure of §S8. Stop them (`TaskStop`) before
+the release commit, not after.
 
 # §S9. Toolchain migration to Lean/Mathlib `v4.34.0-rc2` (2026-09-19)
 
