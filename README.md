@@ -664,6 +664,7 @@ instances of literature results, and "formal resolution" in their titles refers 
 | Paper 9 | Testing a Micro/Macro Dual-Scale Hypothesis on K3 × T²: Scale-Factor Duality, the Cohen–Kaplan–Nelson Bound, and the Dark-Energy Length in Lean 4 | [10.5281/zenodo.22837833](https://doi.org/10.5281/zenodo.22837833) |
 | Paper 10 | Mathieu Moonshine Computed, the Double-Scaled Little String Bridge, and Dyons on K3 × T² in Lean 4 | [10.5281/zenodo.22837835](https://doi.org/10.5281/zenodo.22837835) |
 | Paper 11 | Pre-Registered Confrontation of a K3 × T² Dual-Scale Hypothesis with Data: Four Observables, Four Negative Verdicts, and a Common Cause | [10.5281/zenodo.22837837](https://doi.org/10.5281/zenodo.22837837) |
+| Paper 12 | The Smallest Black Hole Picks a Surface, the Vacuum Does Not: An Arithmetic Separation on K3 × T² and T⁶/Γ, Formalized in Lean 4 | [10.5281/zenodo.22854868](https://doi.org/10.5281/zenodo.22854868) |
 
 ### Acknowledgements & Foundations
 This work builds upon and synthesizes foundational open-source formalizations:
