@@ -31,13 +31,32 @@ The algebra of the proposal is correct, and is formalised:
   involution acts on the coefficients by `(a, b, c) ↦ (c, −b, a)`, an **integer** matrix of determinant `1` which
   squares to the identity and is an exact isometry of the discriminant form `b² − 4Nac`, for every `N`.
 
-One step of the proposal is **false**, and is refuted here:
-* `det_gramN`, `det_uPlus2N`, `fricke_lattice_is_not_U_plus_2N`: the lattice carrying that action has
-  determinant `−4N²`, while `U ⊕ ⟨2N⟩` has determinant `−2N`. They differ for every `N ≥ 1`, so the two lattices
-  are **not isomorphic** and the identification asserted in the proposal cannot hold.
-* `fricke_lattice_is_one_plus_U2N`: the correct identification is `⟨1⟩ ⊕ U(2N)`, exhibited by an explicit change
-  of basis of determinant `1`. Same signature, same determinant, and the Fricke involution is an isometry of it.
-* `gramN_indefinite`: that lattice represents `+1` and `−4N`, so it is indefinite — the criterion's hypothesis.
+**Amendment (recorded after reconciling with the source project, and it weakens what this file first said).**
+An earlier version of this header stated flatly that "the lattice carrying that action is not `U ⊕ ⟨2N⟩`". That
+is **too strong, and wrong as a general claim**. There are *two* rank-3 lattices in this story, both of signature
+`(2,1)`, both carrying integer symmetric-square actions of `Γ₀(N)⁺`, and they are **not isomorphic**:
+
+| lattice | determinant | where it comes from |
+|---|---|---|
+| `⟨1⟩ ⊕ U(2N)` | `−4N²` | the discriminant form `b² − 4Nac` on the coefficients of `Γ₀(N)`-forms — the coordinates used in this file |
+| `U ⊕ ⟨2N⟩` | `−2N` | the transcendental lattice of an `Mₙ`-polarized K3 (Dolgachev) — the coordinates the source project uses |
+
+The source project (`SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal`, "Stream 1") builds its integer
+representation `ρ` **on `U ⊕ ⟨2N⟩` directly**, and proves `ρᵀ T_N ρ = T_N` for `(ad − Nbc)² = 1`. That is
+correct, and this file does not contradict it. What is refuted is the **conflation** in the directive as it
+reached this repository, which named the discriminant form `b² − 4ac` *and* `U ⊕ ⟨2N⟩` as one lattice.
+
+What is proved here, then, is a **distinctness** statement and not a refutation of anyone's construction:
+* `det_gramN`, `det_uPlus2N`, `fricke_lattice_is_not_U_plus_2N`: determinants `−4N²` and `−2N` differ for every
+  `N ≥ 1`, so the two lattices are not isomorphic. Two constructions, two objects, one name in the directive.
+* `fricke_lattice_is_one_plus_U2N`: the lattice of *this* file's coordinates is `⟨1⟩ ⊕ U(2N)`, exhibited by an
+  explicit basis change of determinant `1`.
+* `gramN_indefinite`: it represents `+1` and `−4N`, so it is indefinite — the criterion's hypothesis.
+
+**A caveat closed, in the other direction.** The source project records that its signature `(2,1)` is *asserted*,
+not proved, and says it inherits that Tier L caveat from this repository. `uPlus2N_signature` and
+`uPlus2N_diagonalises` close it: an explicit basis of index `2` diagonalises `U ⊕ ⟨2N⟩` as
+`diag(2, 2N, −2)`, so for `N > 0` the signature is `(2,1)` — now Tier A, on both sides.
 
 ### The verdict (Tier C, and the prediction was right)
 Indefinite, so no selection, and the geometry says exactly that. A rank-`3` transcendental lattice means Picard
@@ -155,8 +174,9 @@ theorem det_uPlus2N (N : ℤ) : (uPlus2N N).det = -2 * N := by
 theorem det_onePlusU2N (N : ℤ) : (onePlusU2N N).det = -4 * N ^ 2 := by
   simp [onePlusU2N, Matrix.det_fin_three]; ring
 
-/-- **The identification in the proposal is refuted.** The determinants differ for every `N ≥ 1`, so no change of
-basis can take one lattice to the other. -/
+/-- **The two lattices are distinct.** Determinants `−4N²` and `−2N` differ for every `N ≥ 1`, so no change of
+basis takes one to the other. This refutes the *conflation* of the two under one name, not either construction:
+each carries its own integer `Γ₀(N)⁺` action. -/
 theorem fricke_lattice_is_not_U_plus_2N (N : ℤ) (hN : 1 ≤ N) :
     (gramN N).det ≠ (uPlus2N N).det := by
   rw [det_gramN, det_uPlus2N]
@@ -175,6 +195,27 @@ theorem fricke_lattice_is_one_plus_U2N (N : ℤ) :
   fin_cases i <;> fin_cases j <;>
     simp [toOnePlusU2N, gramN, onePlusU2N, Matrix.mul_apply, Matrix.transpose_apply,
       Fin.sum_univ_succ]
+
+/-- A basis of index `2` diagonalising `U ⊕ ⟨2N⟩`: the columns are `e + f`, `w`, `e − f`. -/
+def diagBasis : Matrix (Fin 3) (Fin 3) ℤ := !![1, 0, 1; 1, 0, -1; 0, 1, 0]
+
+theorem diagBasis_det : diagBasis.det = 2 := by decide +kernel
+
+/-- **`U ⊕ ⟨2N⟩` diagonalises as `diag(2, 2N, −2)`** on a sublattice of index `2`. -/
+theorem uPlus2N_diagonalises (N : ℤ) :
+    diagBasisᵀ * uPlus2N N * diagBasis = !![2, 0, 0; 0, 2 * N, 0; 0, 0, -2] := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [diagBasis, uPlus2N, Matrix.mul_apply, Matrix.transpose_apply, Fin.sum_univ_succ]
+
+/-- **Signature `(2,1)` for `U ⊕ ⟨2N⟩`, `N > 0` — now proved, not asserted.** Two independent directions of
+positive norm and one of negative norm, pairwise orthogonal. The source project records this signature as an
+assertion inherited from this repository's Tier L caveat; this closes it. -/
+theorem uPlus2N_signature (N : ℤ) (hN : 0 < N) :
+    qform (uPlus2N N) ![1, 1, 0] = 2 ∧ qform (uPlus2N N) ![0, 0, 1] = 2 * N ∧
+      qform (uPlus2N N) ![1, -1, 0] = -2 ∧ 0 < 2 * N := by
+  refine ⟨?_, ?_, ?_, by linarith⟩ <;>
+    · simp [qform, uPlus2N, Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
 
 /-- **The criterion's hypothesis, checked**: the lattice is indefinite, representing `+1` and `−4N`. -/
 theorem gramN_indefinite (N : ℤ) (hN : 0 < N) :

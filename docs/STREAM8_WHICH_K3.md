@@ -369,13 +369,37 @@ by isometries of the discriminant form `b² − 4ac` (`sym2_isometry_of_sl2`), w
 `(a, b, c) ↦ (c, −b, a)`, an **integer** matrix of determinant `1`, squaring to the identity, an exact isometry of
 `b² − 4Nac`, for every `N`. The proposal's central algebraic claim is therefore true.
 
-*What is refuted (Tier A).* The lattice is **not** `U ⊕ ⟨2N⟩`. Its determinant is `−4N²`; that of `U ⊕ ⟨2N⟩` is
-`−2N`; they differ for every `N ≥ 1`, so no change of basis relates them
-(`det_gramN`, `det_uPlus2N`, `fricke_lattice_is_not_U_plus_2N`). The correct lattice is `⟨1⟩ ⊕ U(2N)`, exhibited
-by an explicit basis change of determinant `1` (`fricke_lattice_is_one_plus_U2N`), and it is indefinite,
-representing `+1` and `−4N` (`gramN_indefinite`).
+*What is refuted, and what is not — amended after reconciling with the source project (`v3.43.0`).* The first
+version of this section said flatly that "the lattice is **not** `U ⊕ ⟨2N⟩`". **That was too strong.** There are
+*two* rank-3 lattices here, both of signature `(2,1)`, both carrying integer symmetric-square actions of
+`Γ₀(N)⁺`, and they are not isomorphic:
 
-*The verdict, and the prediction held.* Indefinite, so no selection — and the geometry says exactly that. A
+| lattice | determinant | origin |
+|---|---|---|
+| `⟨1⟩ ⊕ U(2N)` | `−4N²` | the discriminant form `b² − 4Nac` on `Γ₀(N)`-form coefficients — the coordinates used here |
+| `U ⊕ ⟨2N⟩` | `−2N` | the transcendental lattice of an `Mₙ`-polarized K3 (Dolgachev) — the source project's coordinates |
+
+The source project (`SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal`, "Stream 1", Zenodo
+`10.5281/zenodo.22853239`) builds its integer representation `ρ` **on `U ⊕ ⟨2N⟩` directly** and proves
+`ρᵀ T_N ρ = T_N` for `(ad − Nbc)² = 1`, together with `det ρ = (ad − Nbc)³` and the Sym² character
+`tr ρ = (a+d)² − (ad − Nbc)`. That is correct and is not contradicted here. What is refuted is the
+**conflation** in the directive as it reached this repository, which named the discriminant form `b² − 4ac` *and*
+`U ⊕ ⟨2N⟩` as one lattice. `det_gramN`, `det_uPlus2N` and `fricke_lattice_is_not_U_plus_2N` prove they are
+distinct; `fricke_lattice_is_one_plus_U2N` identifies the one used here; `gramN_indefinite` gives its
+indefiniteness.
+
+*A caveat closed in the other direction.* The source project records its signature `(2,1)` as **asserted**, and
+says it inherits that Tier L caveat from this repository. `uPlus2N_diagonalises` and `uPlus2N_signature` close
+it: the basis `(e+f, w, e−f)`, of index `2`, diagonalises `U ⊕ ⟨2N⟩` as `diag(2, 2N, −2)`, so for `N > 0` the
+signature is `(2,1)` — Tier A now, on both sides.
+
+*Two further points the directive dropped, recorded for accuracy.* The source repository's own operator identity
+is `L₃ = P₂ · Sym²(L₂)`, **with a `P₂` prefactor**, not `L₃ = Sym²(L₂)`; and its `IsSymSquareOf` predicate is
+defined but never instantiated, so the operator-level equality is not a theorem there either. What *is* proved
+on both sides is the lattice-level statement.
+
+*The verdict, and the prediction held.* Both lattices are indefinite, so neither selects — and the geometry says
+exactly that. A
 rank-`3` transcendental lattice means `ρ = 19`, not `20`; the surfaces classified by their transcendental lattice,
 which physics calls *attractive*, are precisely the case this construction does not reach (Huybrechts
 `huybrechts_K3Global.txt` ll. 16325–16332, Tier L). What it picks out is a one-parameter family — a modular curve

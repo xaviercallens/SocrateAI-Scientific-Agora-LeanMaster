@@ -246,6 +246,41 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0------------. `v3.43.0` (2026-09-20): reconciliation with Stream 1 — an over-strong claim of ours, amended
+
+`DualScaleDyons/FrickeCriterion.lean` grows to 20 theorems. Reading: `docs/STREAM8_WHICH_K3.md` §9, G9.
+
+`v3.42.0` said flatly that "the lattice carrying that action is not `U ⊕ ⟨2N⟩`". **Too strong, and wrong as a
+general claim.** Reconciling with the source project — `SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal`
+("Stream 1", Zenodo `10.5281/zenodo.22853239`, which pins this repository at tag `v3.33.0`) — shows there are
+*two* rank-3 lattices, both signature `(2,1)`, both carrying integer symmetric-square actions of `Γ₀(N)⁺`, and
+not isomorphic: `⟨1⟩ ⊕ U(2N)` of determinant `−4N²` (the discriminant form on `Γ₀(N)`-form coefficients, our
+coordinates) and `U ⊕ ⟨2N⟩` of determinant `−2N` (the transcendental lattice of an `Mₙ`-polarized K3 after
+Dolgachev, their coordinates). Their `Agora/Geometry/ModularAction.lean` proves `ρᵀ T_N ρ = T_N`,
+`det ρ = (ad − Nbc)³` and the Sym² character `tr ρ = (a+d)² − (ad − Nbc)` on `U ⊕ ⟨2N⟩` directly. **That is
+correct and we do not contradict it.** What our theorems refute is the *conflation* of the two lattices under one
+name, which is how the claim reached us.
+
+**A caveat of ours, closed in their favour.** Their `MnLattice.lean` records the signature `(2,1)` as *asserted*,
+explicitly inheriting this repository's Tier L caveat. Now Tier A on both sides: `uPlus2N_diagonalises` exhibits
+the index-`2` basis `(e+f, w, e−f)` diagonalising `U ⊕ ⟨2N⟩` as `diag(2, 2N, −2)`, and `uPlus2N_signature` gives
+the three norms with `0 < 2N`, so the signature is `(2,1)` for `N > 0`.
+
+**Reuse rather than duplication** (`v3.42.0` follow-up commit): `sym2_lifts_rank_two` states the bridge
+`L₃ = Sym²(L₂)` as one theorem built on `DualScaleStream2.TDuality.mul_jMat_mul_transpose`
+(`A J Aᵀ = det A · J`), which this repository already had — rank-2 rescales by `det A`, rank-3 by `(det A)²`, the
+lift has determinant `(det A)³`. `DualScaleDyons` now imports `DualScaleStream2` for the first time; no cycle.
+
+**Two points the directive dropped, recorded.** The source repository's own operator identity is
+`L₃ = P₂ · Sym²(L₂)`, **with a `P₂` prefactor**; and its `IsSymSquareOf` predicate is defined but never
+instantiated, so the operator-level equality is not a theorem there either. The lattice-level statement is what
+is proved, on both sides.
+
+Gates: build OK (`lake build DualScaleDyons`, 8803 jobs); `sorry`/`admit`/`native_decide` grep empty; axiom audit
+`DualScaleDyons` 150, total **820**, 0 failing (817 carry mathematical content); `statement_lock.py --check` OK
+(1187 declarations, 106 files); negative control: two further mutations caught (the rank-2 scaling `det → det²`;
+the diagonalisation `diag(2, 2N, −2) → diag(2, 2N, 2)`, i.e. claiming the lattice is definite).
+
 ## 0-----------. `v3.42.0` (2026-09-20): G9 — the criterion used before the computation, and a proposal corrected
 
 `DualScaleDyons/FrickeCriterion.lean` (16 theorems). Reading: `docs/STREAM8_WHICH_K3.md` §9, G9.
