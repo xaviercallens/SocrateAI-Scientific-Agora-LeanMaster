@@ -146,6 +146,44 @@ counted one library's theorems, the true ratio being 208/312) and corrected it a
 denominator must name the same population; this is the same failure as carrying a repository total forward and
 incrementing it instead of re-measuring (§S11.4's cousin).
 
+## S11.8 Ask where the disclosure IS, not only whether the claim is carried
+
+§S11.7's triage asks "does the statement match the name". Stream 1's companion check asks the question that one
+structurally cannot: **"does the disclosure reach whoever meets the declaration?"** Method (a dozen lines,
+`disclosure_reaches_source.py` in this session's scratchpad): extract declaration identifiers occurring near
+vacuity language (`vacuou|vacuit|disclos|placeholder|content-free|carries no|says nothing|⚠`) in the **prose**
+— `README.md`, `LL.md`, `docs/**`, `papers/book/chapters/*.tex` — then check whether that declaration's **own
+docstring** carries the same language. A hit means the disclosure exists and does not travel.
+
+Tune the window: ±4 lines gave 39 candidates, ±1 line gave 13, and most of those are still prose *near*
+vacuity language rather than *about* that declaration — `dmvv_unreachable_example` is cited in the book as
+showing a guard **is not** vacuous, the opposite of a disclosure. Read the sentence, do not trust the match.
+
+**What it found: `Lean5Corpus/Problems/Problem3_DualScaleTCC.lean`, and it is the sharpest instance yet.** The
+module docstring asserted *"the Trans-Planckian Censorship Conjecture is satisfied unconditionally without
+fine-tuning cosmological parameters"*. Meanwhile `papers/book/chapters/ch27_swampland.tex` says, in terms:
+*"None of these mentions a scale factor, a horizon or a mode crossing it; [the TCC inequality] is not
+formalized. The docstring's claim that TCC is 'satisfied unconditionally' is the Tier C identification of the
+box, not a theorem."* **The book was criticising that exact docstring, by name, and the docstring still said
+it.** Everything in the file is over `ℕ`, with `planck_length := 1` and
+`effective_wavelength_num R λ₀ := (R²+1)λ₀` both *definitions*, so the theorems are: a product of two naturals
+one of which is `≥ 2` is `≥ 2`, and such a product is not `≤ 1`. True, arithmetic, and not the TCC.
+`desitter_swampland_master_contract` (Problem 6) is the same shape — the book notes the `volume` field is
+declared and never read, so the "gradient" is a second copy of the "potential" and the steepness bound is
+reflexivity. Both disclosed in place; statements unchanged, nothing deleted.
+
+**The general lesson, and it is uncomfortable.** This repository's book is *excellent* at this — ch27's tier
+table lists the module's real content as `(R²+1)λ₀ ≥ 2; M/H ≥ 1 (ℕ)`, and ch32 does the same for
+`bdf2_order_bound`. The honest reading existed, was detailed, and was ours. **Writing the critique is not the
+same as landing it.** A critique that lives only in the document that discusses the code leaves the code
+asserting the thing the critique denies, and every downstream consumer — `lean_catalogue.md`, a RAG index (these
+files carry `@rag_query` metadata), a reader opening the file — meets the assertion, never the critique.
+
+**Rule:** when a review concludes that a declaration claims more than it proves, the *first* edit is to that
+declaration's docstring. Writing it up elsewhere is the second edit, not the first. And when auditing, grep the
+prose for what it says about the code, then check the code says the same about itself — disagreement between
+the two is a defect even when the prose is the correct half.
+
 ## S11.5 Two Lean sessions on this VM contend for page cache, not CPU
 
 A single-file `lake env lean` here sat at ~1% CPU for six minutes while the sibling repository elaborated: both

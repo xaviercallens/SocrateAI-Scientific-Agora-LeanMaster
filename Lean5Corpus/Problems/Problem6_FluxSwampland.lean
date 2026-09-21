@@ -82,7 +82,20 @@ theorem no_flat_desitter_vacuum (s : FluxVacuumState) :
   omega
 
 /-- Master Theorem 4: Unified de Sitter Swampland Contract.
-    Simultaneous formal verification of flux positivity, steepness bound, and no-flat-vacuum theorem. -/
+    Simultaneous formal verification of flux positivity, steepness bound, and no-flat-vacuum theorem.
+
+    **Correction (2026-09-21) — what this is, moved here from the book.**
+    `papers/book/chapters/ch27_swampland.tex` reads it as: *"The field `volume` is never used, so the
+    'potential' has no volume dependence and the 'gradient' is a second copy of the numerator. The physics
+    behind the file is sound and elementary … But `ln V` is not a canonically normalized field, so the
+    coefficient `2` is not the `c` of the de Sitter conjecture, and the Lean statement is the integer identity
+    only."* That reading is correct and was not stated here.
+
+    Concretely, over `ℕ`, the three conjuncts are `N² > 0`, `2N² ≥ 2N²` and `2N² ≠ 0`. The `volume` field of
+    `FluxVacuumState` is declared and never read, so no volume dependence enters; the "steepness bound" is
+    reflexivity. The statement is Tier A as an integer identity and carries no de Sitter swampland content:
+    the identification of the coefficient `2` with the conjecture's `c` is Tier C and is made nowhere in the
+    kernel. Disclosed in place; statement unchanged, nothing deleted. -/
 theorem desitter_swampland_master_contract (s : FluxVacuumState) :
     flux_potential_numerator s > 0 ∧
     flux_gradient_numerator s ≥ 2 * flux_potential_numerator s ∧

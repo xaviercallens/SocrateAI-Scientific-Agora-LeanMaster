@@ -43,6 +43,28 @@ $$\lambda_{\mathrm{phys}} = R_{\mathrm{eff}}(R) \cdot \lambda_0 \ge 2 l_{\mathrm
 The initial singularity is replaced by a smooth self-dual bounce at $R = \sqrt{\alpha'}$, and the Trans-Planckian
 Censorship Conjecture is satisfied unconditionally without fine-tuning cosmological parameters.
 
+**Correction (2026-09-21) — the paragraph above is a Tier C identification, not a theorem, and the book
+already says so.** `papers/book/chapters/ch27_swampland.tex` reads this module as follows, and it is right:
+*"None of these mentions a scale factor, a horizon or a mode crossing it; [the TCC inequality] is not
+formalized. The docstring's claim that TCC is 'satisfied unconditionally' is the Tier C identification of the
+box, not a theorem."* That criticism names **this** docstring, and it had not been applied here — the correct
+reading lived in the book while the source still read as a physics result. Disclosed in place: the sentence
+above is left standing so the record is legible, and what follows is what the Lean actually proves.
+
+**What the declarations below establish.** Everything in this file is over `ℕ`. `planck_length` is *defined* as
+`1` (l. 65) and `effective_wavelength_num R λ₀` is *defined* as `(R²+1)λ₀` (l. 88). Hence
+`wavelength_strictly_super_planckian` is: a product of two naturals, one of them `≥ 2`, is `≥ 2`; and
+`sub_planckian_modes_impossible` is: such a product is not `≤ 1`. Both are true and both are arithmetic. **No
+scale factor, horizon, mode, or mode-crossing appears anywhere in this file**, and the third conjunct
+`p.planck_mass / p.hubble_scale ≥ 1` is natural-number division — the book's "only the remark that the bound
+is not empty". The step from `(R²+1)λ₀` to a physical wavelength, and from `planck_length = 1` to the Planck
+length, is the Tier C identification; it is where every physical claim in this module resides, and it is not
+kernel-checked. The book's tier table lists this module's content as exactly
+`(R²+1)λ₀ ≥ 2; M/H ≥ 1 (ℕ)`.
+
+The `Kernel Verification: 100% Certified` lines below are the repository's older house style; `CLAUDE.md`
+forbids that phrasing, and it certifies the Lean statement, never its physical meaning.
+
 ### Epistemic Metadata & RAG Indexing
 - `@concept: TransPlanckianCensorship, SwamplandBounds, DualScaleBounce, CosmologicalSingularityResolution, TCC`
 - `@rag_query: "Trans-Planckian Censorship Conjecture in string cosmology", "Why are sub-Planckian modes impossible in dual-scale theory?", "TCC horizon protection contract"`
@@ -190,7 +212,12 @@ theorem tcc_expansion_factor_positive
 
 /--
 ### THEOREM: The Unified TCC Cosmic Protection Contract
-**Physical Meaning:** Formal master contract guaranteeing the simultaneous satisfaction of:
+**Read the module-level correction of 2026-09-21 first.** This is the conjunction of the three arithmetic
+facts below over `ℕ`; it is not the trans-Planckian censorship conjecture, which is not formalized in this
+file. "Guaranteeing" below means "conjoining".
+
+**Physical Meaning (as originally written, and Tier C):** Formal master contract guaranteeing the simultaneous
+satisfaction of:
 1. Super-Planckian effective wavelength ($\lambda_{\mathrm{num}} \ge 2$).
 2. Impossibility of sub-Planckian modes ($\neg(\lambda_{\mathrm{num}} \le \ell_{\mathrm{Pl}})$).
 3. Positive and bounded cosmological expansion ratio ($M_{\mathrm{Pl}} / H_{\mathrm{inf}} \ge 1$).

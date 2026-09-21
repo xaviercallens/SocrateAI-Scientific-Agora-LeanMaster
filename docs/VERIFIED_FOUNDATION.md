@@ -298,6 +298,35 @@ load-bearing for the entire repair and not provable here; (2) definiteness ⇒ f
 (3) the minimum is `D = −3`, uniquely `(1,1,1) = A₂` — Tier A; (4) the rank-2 lattice *is* CM data — Tier L,
 ll. 3093–3102.
 
+**Follow-on 2: where the disclosure *is* — and the book was already right (same release).** Stream 1's
+companion check asks what name-vs-statement triage cannot: extract declarations named near vacuity language in
+the **prose** (`README.md`, `LL.md`, `docs/**`, `papers/book/chapters/*.tex`), then ask whether that
+declaration's **own docstring** says the same. 13 candidates at a ±1-line window, most of them prose merely
+*near* such language (the book cites `dmvv_unreachable_example` for a guard that **is not** vacuous — the
+opposite of a disclosure), so the sentence must be read, not the match trusted.
+
+**The find: `Lean5Corpus/Problems/Problem3_DualScaleTCC.lean`.** Its module docstring asserted *"the
+Trans-Planckian Censorship Conjecture is satisfied unconditionally without fine-tuning cosmological
+parameters"*, while `papers/book/chapters/ch27_swampland.tex` says: *"None of these mentions a scale factor, a
+horizon or a mode crossing it; [the TCC inequality] is not formalized. The docstring's claim that TCC is
+'satisfied unconditionally' is the Tier C identification of the box, not a theorem."* **The book was
+criticising that exact docstring, by name, and the docstring still said it.** Verified here before acting:
+everything in the file is over `ℕ`, with `planck_length := 1` and `effective_wavelength_num R λ₀ := (R²+1)λ₀`
+both *definitions*, so the theorems are "a product of two naturals, one `≥ 2`, is `≥ 2`" and "such a product is
+not `≤ 1`" — true, arithmetic, and not the TCC. `desitter_swampland_master_contract` (Problem 6) is the same
+shape: the `volume` field is declared and never read, so the "gradient" is a second copy of the "potential" and
+the "steepness bound" is reflexivity (`N² > 0`, `2N² ≥ 2N²`, `2N² ≠ 0` over `ℕ`). Both **disclosed in place**,
+statements unchanged, nothing deleted; `lake build Lean5Corpus` exit 0. Those two files carry no statement-lock
+entry and were deliberately left unlocked — locking them is a statement-review decision, not part of this fix.
+
+**The uncomfortable half.** The book is *very good* at this: ch27's tier table already lists the module's real
+content as `(R²+1)λ₀ ≥ 2; M/H ≥ 1 (ℕ)`, and ch32 does the same for `bdf2_order_bound`. The honest reading
+existed, was detailed, and was ours. **Writing the critique is not the same as landing it** — a critique that
+lives only in the prose leaves the code asserting what the critique denies, and every downstream consumer
+(`papers/book/generated/lean_catalogue.md`, the `@rag_query` metadata these files carry, anyone opening the
+file) meets the assertion and never the critique. When a review finds that a declaration claims more than it
+proves, the **first** edit is that declaration's docstring. `LL.md` §S11.8.
+
 **Follow-on: the defect class mechanised, and one find (same release).** Stream 1 turned §S11.1 into a
 thirty-line triage (`scripts/name_vs_statement.py`, their repo) whose whole trick is to **strip docstrings and
 comments before asking whether the statement mentions the name's tokens** — otherwise the docstring supplies the
