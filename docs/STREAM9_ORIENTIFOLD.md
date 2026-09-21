@@ -182,23 +182,41 @@ is pinned in the kernel**: `Nat.factorization` is a `Finsupp` and does not reduc
 `psiM n = psi n` is **not proved** — the obvious next small step, which would let each file's strength cover
 the other's gap.
 
-### 5d. S9.4b — what still remains (the linear-algebra half)
+### 5d. S9.4b — the degree bound, and a correction to how this was scoped
 
 The crystallographic restriction in its correct form — **`ψ(n) ≤ d` is *necessary* for an order-`n` automorphism
 of a rank-`d` lattice** — is still not formalized. It splits cleanly, and the split is the useful part of this
 entry:
 
-* **The linear-algebra half (Tier L, the harder one).** For `A ∈ GL(d, ℤ)` of order exactly `n`, view `ℚ^d` as a
-  `ℚ[X]/(Xⁿ − 1)`-module and decompose into `Φ_e`-isotypic parts. Then `d ≥ Σ_{e ∈ S} φ(e)` where
-  `S = {e : Φ_e ∣ minpoly A}`, and **`n = lcm S`**. Mathlib has the cyclotomic polynomials; wiring
-  `Aⁿ = 1` → module → isotypic dimensions is a multi-session job and should not be started as a tail-end item.
+* **The dimension bound — DONE, and it never needed module theory.** `sum_totient_le_dim`: if
+  `minpoly ℚ A = ∏_{e∈S} Φ_e` then `Σ_{e∈S} φ(e) ≤ d`. Three Mathlib facts and nothing else —
+  `deg Φ_e = φ(e)` (`natDegree_cyclotomic`), degrees add over a product of nonzero polynomials
+  (`natDegree_prod`), and `minpoly ∣ charpoly` with `deg charpoly = d` (`minpoly_dvd_charpoly`,
+  `charpoly_natDegree_eq_dim`).
+
+  > **This corrects the scoping recorded here earlier**, which said the remaining half required the
+  > `Φ_e`-isotypic decomposition of `ℚ^d` as a `ℚ[X]/(Xⁿ−1)`-module and was a multi-session job not to be
+  > started as a tail-end item. **The minimal polynomial suffices**, Mathlib carries every piece, and the whole
+  > thing compiled first try. The earlier estimate was wrong, and wrong in the direction that discourages
+  > attempting it — worth remembering next time a step is written off as needing heavy machinery.
+
+* **`psiM_le_dim`: `ψ(n) ≤ d`, modulo exactly two named hypotheses**, both standard and neither needing module
+  theory:
+  1. `minpoly ℚ A = ∏_{e∈S} Φ_e` — true for any `A` with `Aⁿ = 1`, since `Xⁿ − 1 = ∏_{e∣n} Φ_e` is
+     squarefree in characteristic `0` and the `Φ_e` are irreducible over `ℚ`. **Not proved here.**
+  2. `lcm S = n` — the order of `A` is the `lcm` of the orders of its eigenvalues, **not the largest**; that
+     confusion is exactly what made the `φ(n) ≤ d` form false (§5b). **Not proved here.**
+
+  What is left for a fully unconditional `ψ(n) ≤ d` is therefore *discharging those two*, which is polynomial
+  algebra over `ℚ` — extracting the subset `S` from a monic divisor of a squarefree product of irreducibles,
+  and reading the order off it.
 * **The arithmetic half — DONE, §5c above** (`psiM_le_sum_totient`). For a finite set `S` of positive integers
   with `lcm S = n`, `Σ_{e ∈ S} φ(e) ≥ ψ(n)`. The sketch that was recorded here, and which the proof follows: for each prime power `p^a ‖ n` with `p^a ≠ 2` some
   `e ∈ S` has `p^a ∣ e`; group the prime powers by the `e` they were assigned to; for an `e` carrying `k ≥ 2`
   of them, multiplicativity gives `φ(e) ≥ ∏ φ(p_i^{a_i})`, and `∏ xᵢ ≥ Σ xᵢ` when every `xᵢ ≥ 2` — which holds
   because `ψ` excludes exactly the `p^a = 2` term, the only one with `φ(p^a) = 1`.
 
-Composing the two gives `d ≥ ψ(n)`. **Only the first is now missing.** The dependency order mattered: the
+Composing the two gives `d ≥ ψ(n)`, and `psiM_le_dim` does exactly that. The dependency order mattered: the
 arithmetic half had to be stated against a `ψ` correct for every `n`, which is why §5b-bis came first — stating
 a theorem quantified over all `n` against a definition only right below `2⁹` would have been the same defect one
 level up.

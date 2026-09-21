@@ -36,6 +36,9 @@ import Mathlib.Tactic.Positivity
 import Mathlib.Data.Nat.GCD.BigOperators
 import Mathlib.Data.Nat.Log
 import DualScaleStream2.Orientifold.CrystallographicOrders
+import Mathlib.RingTheory.Polynomial.Cyclotomic.Basic
+import Mathlib.LinearAlgebra.Matrix.Charpoly.Minpoly
+import Mathlib.Algebra.Polynomial.BigOperators
 
 namespace DualScaleStream2.Orientifold.CrystallographicArithmetic
 
@@ -387,5 +390,42 @@ theorem psiM_le_six_list :
     ∀ n, 1 ≤ n → n ≤ 200 → (psiM n ≤ 6 ↔ psi n ≤ 6) := by
   refine ⟨psi_le_six_list, fun n hn _ => ?_⟩
   rw [psiM_eq_psi (by omega)]
+
+/-! ### 9. Towards `ψ(n) ≤ d`: the degree bound, and a better route than the one first scoped -/
+
+/-- **The dimension bound, from the minimal polynomial.** If the minimal polynomial of an integer (here
+rational) matrix factors as a product of distinct cyclotomics indexed by `S`, then `Σ_{e ∈ S} φ(e) ≤ d`.
+
+`deg Φ_e = φ(e)`, degrees add over a product of nonzero polynomials, and `minpoly ∣ charpoly` with
+`deg charpoly = d`. No module theory, no isotypic decomposition. -/
+theorem sum_totient_le_dim {d : ℕ} (A : Matrix (Fin d) (Fin d) ℚ) (S : Finset ℕ)
+    (hmin : minpoly ℚ A = ∏ e ∈ S, Polynomial.cyclotomic e ℚ) :
+    ∑ e ∈ S, Nat.totient e ≤ d := by
+  have hdeg : (minpoly ℚ A).natDegree = ∑ e ∈ S, Nat.totient e := by
+    rw [hmin, Polynomial.natDegree_prod _ _ (fun e _ => Polynomial.cyclotomic_ne_zero e ℚ)]
+    exact Finset.sum_congr rfl fun e _ => Polynomial.natDegree_cyclotomic e ℚ
+  have hle : (minpoly ℚ A).natDegree ≤ A.charpoly.natDegree :=
+    Polynomial.Monic.natDegree_le_of_dvd (minpoly.monic (Matrix.isIntegral A))
+      A.charpoly_monic.ne_zero (Matrix.minpoly_dvd_charpoly A)
+  rw [Matrix.charpoly_natDegree_eq_dim, Fintype.card_fin] at hle
+  omega
+
+/-- **The crystallographic restriction, modulo two named hypotheses.** `ψ(n) ≤ d` for a rank-`d` lattice
+carrying an automorphism of order `n`, given:
+
+* `hmin` — the minimal polynomial is a product of distinct cyclotomics indexed by `S` (true for any matrix with
+  `A ^ n = 1`, since `X ^ n − 1 = ∏_{e ∣ n} Φ_e` is squarefree in characteristic `0` and the `Φ_e` are
+  irreducible over `ℚ`; **not proved here**);
+* `hlcm` — `lcm S = n` (the order of `A` is the `lcm` of the orders of its eigenvalues, **not** the largest;
+  that confusion is what made the `φ(n) ≤ d` form false, §5b; **not proved here**).
+
+Both are standard and neither needs module theory. **This corrects the scoping recorded earlier**, which said
+the remaining half required the `Φ_e`-isotypic decomposition of `ℚ^d` as a `ℚ[X]/(Xⁿ−1)`-module and was
+multi-session: the minimal polynomial suffices, and Mathlib carries every piece of it. -/
+theorem psiM_le_dim {d n : ℕ} (A : Matrix (Fin d) (Fin d) ℚ) (S : Finset ℕ)
+    (hS : ∀ e ∈ S, e ≠ 0) (hlcm : S.lcm id = n)
+    (hmin : minpoly ℚ A = ∏ e ∈ S, Polynomial.cyclotomic e ℚ) :
+    psiM n ≤ d :=
+  le_trans (psiM_le_sum_totient hS hlcm) (sum_totient_le_dim A S hmin)
 
 end DualScaleStream2.Orientifold.CrystallographicArithmetic
