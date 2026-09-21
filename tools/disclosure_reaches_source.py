@@ -20,12 +20,16 @@ LIBS = ["DualScaleDyons","StringTheoryFoundation","DualScaleStream2","DualScaleM
 # --- build declaration -> (file, own docstring) ---
 DECL = re.compile(r'(?:/--(?P<doc>.*?)-/\s*)?^\s*(?:@\[[^\]]*\]\s*)?(?:theorem|lemma)\s+(?P<name>[A-Za-z_][\w\'.]*)',
                   re.M | re.S)
-decls = {}
+# A base name can be shared by several declarations in different namespaces -- this repo has
+# three `k3_euler_characteristic`. Keep ALL homonyms: binding the name to whichever file was
+# read first produced a false positive against a declaration that *is* correctly disclosed,
+# while the book distinguished them by fully-qualified name and this tool could not.
+decls = collections.defaultdict(list)
 for lib in LIBS:
     for p in pathlib.Path(lib).rglob('*.lean'):
         src = p.read_text(encoding='utf-8')
         for m in DECL.finditer(src):
-            decls.setdefault(m.group('name'), (str(p), m.group('doc') or ''))
+            decls[m.group('name')].append((str(p), m.group('doc') or ''))
 
 # --- scan prose ---
 prose = []
@@ -45,10 +49,17 @@ for q in prose:
             name = (m.group(1) or m.group(2) or '').replace('\\_','_').replace('\\','')
             if name in decls: near[name].add(str(q))
 
+# Flag only when NO homonym carries the language: when the prose does not disambiguate,
+# a disclosure on any declaration of that name is the honest benefit of the doubt.
 missing, ok = [], []
 for name, srcs in sorted(near.items()):
-    f, doc = decls[name]
-    (ok if VAC.search(doc) else missing).append((name, f, sorted(srcs)))
+    cands = decls[name]
+    files = ', '.join(f for f, _ in cands)
+    if any(VAC.search(doc) for _, doc in cands):
+        ok.append((name, files, sorted(srcs)))
+    else:
+        missing.append((name, files + (f"   [{len(cands)} homonyms]" if len(cands) > 1 else ''),
+                        sorted(srcs)))
 
 print("=== DISCLOSED IN PROSE BUT NOT AT THE DECLARATION ===")
 for name, f, srcs in missing:

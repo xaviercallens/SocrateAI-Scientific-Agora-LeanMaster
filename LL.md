@@ -184,6 +184,34 @@ declaration's docstring. Writing it up elsewhere is the second edit, not the fir
 prose for what it says about the code, then check the code says the same about itself — disagreement between
 the two is a defect even when the prose is the correct half.
 
+**Third instance, and the sharpest on retrieval:** `DualScaleM24Formalization/DualScale/EffectiveMetric.lean`.
+`genesis_no_singularity` carries `@rag_query: "Does string theory eliminate the Big Bang singularity?",
+"Why can spacetime not reach zero size?"` while its statement is
+`0 < (effectiveRadius …).num ∧ 0 < (effectiveRadius …).den` — and `PosScale` carries `h_num`/`h_den` as
+*fields*, so the proof projects the structure's own positivity out in both branches. ch31 had already written
+"Literally: a positive rational is positive". `self_dual_symmetric` is `α'/α' = 1`. Disclosed in place. **The
+consumer of a docstring is increasingly not a person who could go and read the chapter** — these files carry
+retrieval metadata, so the misleading half is the half that gets served.
+
+**Two limitations of the tooling, both found by running it on my own fixes.**
+1. *Homonyms.* Binding a base name to the first file read produced a **false positive** against
+   `k3_euler_characteristic` — this repo has three, the book distinguishes them by fully-qualified name, and
+   the tool could not. Fixed: keep all homonyms, flag only when none carries the language. Match on the
+   fully-qualified name where the prose supplies one.
+2. *Keyword blindness.* After disclosing `tcc_cosmic_protection_contract`, the tool still flagged it — the
+   disclosure says "not formalized", which is not in the keyword list. **The tool cannot confirm a disclosure
+   exists, only that its vocabulary appears.** Hence the convention adopted here: every in-place disclosure
+   opens with the literal word **`Disclosure`**, so the audit and the reader look for the same token.
+
+**Open items decay into assumed-closed** (Stream 1's generalisation, and the quieter failure): an *unanswered*
+review item leaves no trace in **any** gate — not a `sorry`, not an axiom, not a failing build, and the
+statement lock is silent. It reads as done because nothing says it is not. Their case ran two months on their
+headline result. Checked here and this repo is in better shape: the analogous scan over `docs/reviews/` and the
+revision brief found **0 unrecorded of 3**, and Stream 9's own conditional status *is* carried at the
+declaration (`convention_factor_bounded`: "**Conditional remark, not a result**… not established here"). That
+is the pattern working, and it is why the finds concentrated in the legacy Phase-0 libraries instead.
+
+
 ## S11.5 Two Lean sessions on this VM contend for page cache, not CPU
 
 A single-file `lake env lean` here sat at ~1% CPU for six minutes while the sibling repository elaborated: both

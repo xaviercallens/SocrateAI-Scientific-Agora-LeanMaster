@@ -10,7 +10,13 @@ namespace StringTheory.StringDynamics
 def picardSpectralRadius : ℕ := 18
 
 /-- Contraction factor of the Picard iteration on the OPE algebra:
-    Rescaled Picard spectral radius satisfies ρ⁻¹ < 1. -/
+    Rescaled Picard spectral radius satisfies ρ⁻¹ < 1.
+
+    **Disclosure (2026-09-21).** The statement is `1/18 < 1`, a fact about two numerals, closed by `norm_num`.
+    `picardSpectralRadius := 18` is an *assigned definition*, not a computed spectral radius, and no operator,
+    iteration, fixed point or norm appears anywhere in this file — so this is not a contraction estimate for
+    the OPE algebra or for anything else. See `picard_convergence` below, which is this same statement under a
+    second name. Statement unchanged, nothing deleted. -/
 theorem picard_spectral_contraction :
     (1 : ℝ) / (picardSpectralRadius : ℝ) < 1 := by
   dsimp [picardSpectralRadius]

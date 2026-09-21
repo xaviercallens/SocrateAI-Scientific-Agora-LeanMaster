@@ -140,6 +140,20 @@ $$\forall R > 0, \quad \mathrm{num}(R_{\mathrm{eff}}(R)) > 0 \land \mathrm{den}(
 - `@rag_query: "Does string theory eliminate the Big Bang singularity?", "Genesis no singularity proof", "Why can spacetime not reach zero size?"`
 - `@graph_node: genesis_no_singularity`
 - `@graph_edge: [effectiveRadius, buscherDual]`
+
+**Disclosure (2026-09-21) — what this theorem says, moved here from the book.** The statement is
+`0 < (effectiveRadius …).num ∧ 0 < (effectiveRadius …).den`, and `PosScale` carries `h_num` and `h_den` as
+*fields*, so the proof projects the structure's own positivity out in both branches of `effectiveRadius`.
+`papers/book/chapters/ch31_dualscale.tex` reads it exactly: *"Literally: a positive rational is positive, in
+both branches of the definition. It does not state the bound `R_eff ≥ 2√α'`, nor that any function is bounded
+away from zero uniformly — for a cutoff `c`, the value `α'/R` with `R` just below `c` can be as small as
+`α'/c` … and it says nothing about spacetime, curvature or a bounce."*
+
+**The `@rag_query` entries above are therefore misleading and are left standing only for the record.** A
+retrieval system asked "Does string theory eliminate the Big Bang singularity?" would return this declaration,
+which is a fact about a positive rational. The bound `R_eff ≥ 2√α'` that the name gestures at is
+`DualScaleStream2`'s `circle_effective_scale_ge_two`, over an ordered field — not this. Statement unchanged,
+nothing deleted.
 -/
 theorem genesis_no_singularity (cutoff : PosScale) (alpha : PosScale) (R : PosScale) :
     0 < (effectiveRadius cutoff alpha R).num ∧ 0 < (effectiveRadius cutoff alpha R).den := by
@@ -160,6 +174,11 @@ marking the maximal symmetry locus where winding and momentum modes condense con
 - `@concept: SelfDualScaleInvariance`
 - `@graph_node: self_dual_symmetric`
 - `@graph_edge: [buscherDual, scaleEq]`
+
+**Disclosure (2026-09-21).** The statement is `α'/α' = 1` as rationals, by `ac_rfl`
+(`papers/book/chapters/ch31_dualscale.tex`: *"`self_dual_symmetric` says `α'/α' = 1`"*). It records that the
+self-dual radius is a fixed point of `buscherDual`, which is true and is arithmetic; it is not a statement
+about a self-dual point of any moduli space. Statement unchanged, nothing deleted.
 -/
 theorem self_dual_symmetric (alpha : PosScale) :
     scaleEq (buscherDual alpha alpha) ⟨1, 1, by decide, by decide⟩ := by
