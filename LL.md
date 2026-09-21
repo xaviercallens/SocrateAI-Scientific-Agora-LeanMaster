@@ -361,6 +361,49 @@ of the banned claim inside artifacts already published to Zenodo, and editing a 
 reports clean is the same move as force-updating a released tag to hide an error in it (§S11.8). Run it
 deliberately when revising one; never silence it.
 
+## S11.11 The book-vs-source sweep: one real find in 147 boxes, and what the tuning cost
+
+§S11.8's highest-yield follow-up was to check the book's other `leanbox` readings against their sources, since
+all three finds that day were "the book is right, the source is wrong". Done: `tools/book_vs_source.py`,
+147 boxes across 41 chapters.
+
+**The result is mostly good news, and the good news is the point.** One genuine find, and the rest of the
+strong candidates turned out to be **already disclosed at the declaration** — `FTermPotential.lean` carries
+three precise ones ("Not a statement about flux quantization… despite the name", "`s` is never used",
+"not a derivation of the SUSY minimum"), which my `LANDED` pattern simply failed to recognise. The practice is
+in better shape than the §S11.8 finds suggested; those were concentrated in the legacy Phase-0 libraries.
+
+**The find: `mathlib_version` (`StringTheoryFormalization/Foundations/MathlibCore.lean`).** Its docstring read
+"Re-export summary: all Mathlib primitives used by the pipeline. This namespace is `open`ed in every downstream
+block." Checked here rather than taken from the book:
+
+* It re-exports nothing — a `String` constant, a label, not a proposition; the `import` lines do that work.
+* `grep -rl mathlib_version --include=*.lean` finds **one** file: itself. Not opened downstream at all.
+* Its **value was false**: `"Mathlib4 @ v4.33.1"` while `lakefile.lean` has required `v4.34.0-rc2` since the
+  toolchain migration (`e9a7162`). Corrected, with `statement_lock --update` showing exactly one CHANGED
+  declaration and the reason recorded — the only CHANGED entry of the day.
+
+And the durable half: **it will go stale again, because nothing checks it.** No kernel obligation ties a
+`String` to the toolchain, so the disclosure says `lakefile.lean` and `lake-manifest.json` are authoritative
+and this constant is not. A constant that cannot be wrong in a way Lean can detect is documentation, and should
+say so.
+
+**What the tuning cost, and the rule it produced.** Granularity was wrong twice, in opposite directions:
+box-level attributed one sentence's criticism to every name in the box (**121 candidates**), and pure
+same-sentence matching **lost three of the four positive controls**, because the book's idiom is
+"NAME: *what it states*. *Why that is less than the name*" — the limit lands in the *next* sentence, and
+sometimes the previous one. A symmetric ±2-sentence window keeps all controls and reports 86.
+
+> **Tune against the controls, never against the count.** A narrowing that produces a tidier list while
+> dropping a case you already know about is not a narrowing, it is a regression — and it will read as an
+> improvement, because the number went down.
+
+Two detector bugs it exposed, both the day's recurring shape: **negated limits** ("shows the guard *is not*
+vacuous") were counted as criticisms and supplied four of the ten strongest-looking first-sweep candidates;
+and **`LANDED` was too narrow**, so real in-place disclosures were reported as missing — a false negative on the
+"already fixed" side manufacturing false positives in the report. The remaining **86 candidates are a reading
+list handed forward, not a defect count**, and that distinction is the whole discipline of this tool.
+
 ## S11.5 Two Lean sessions on this VM contend for page cache, not CPU
 
 A single-file `lake env lean` here sat at ~1% CPU for six minutes while the sibling repository elaborated: both
