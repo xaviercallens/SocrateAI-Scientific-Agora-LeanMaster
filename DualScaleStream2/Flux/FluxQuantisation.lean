@@ -94,8 +94,26 @@ theorem tadpole_range (nD3 nflux : ℤ) (h : 2 * nD3 + nflux = 32) (h0 : 0 ≤ n
     0 ≤ nflux ∧ nflux ≤ 32 := ⟨h1, by omega⟩
 
 /-- **Conditional remark, not a result** (see the header). Assuming a normalisation in which the lattice pairing
-is `N_flux` — not established here — an isotropic quantisation with `M ≥ 6` gives `M² ≥ 36 > 32` and the budget
-leaves only `N_flux = 0`. The hypothesis on the pairing's range is supplied by hand, not derived. -/
+is `N_flux`, an isotropic quantisation with `M ≥ 6` gives `M² ≥ 36 > 32` and the budget leaves only
+`N_flux = 0`. The hypothesis on the pairing's range is supplied by hand, not derived.
+
+**Update (2026-09-21) — the hypothesis is now sourced, and that is why this stays a remark.**
+`docs/STREAM9_ORIENTIFOLD.md` §6e settles where it holds:
+
+* **On the covering `T⁶` it is a theorem of the constants, not a convention.** Giddings–Kachru–Polchinski
+  (`papers/foundations/giddings_kachru_polchinski_hep-th_0105097.txt`) fix `2κ₁₀² = (2π)⁷α'⁴` and
+  `T₃ = μ₃ = (2π)⁻³α'⁻²` (l. 511), quantise each period into `(2π)²α'ℤ` (eq. 2.25, ll. 538–544), and give
+  `N_flux = (1/2κ₁₀²T₃)∫H₃∧F₃` (eq. 4.4, ll. 1306–1320). Composing, the factors cancel exactly:
+  **`N_flux = ⟨h,f⟩`**, no leftover constant.
+* **On the orientifold quotient it fails.** Tripathy–Trivedi (`papers/foundations/hep-th_0301139.txt`,
+  ll. 1834–1841): a *half* cycle of `T²` — closed in `T²/ℤ₂`, not in `T²` — gives a **half-integer** period, and
+  Dirac quantisation then demands fluxes from **exotic orientifold planes** (Frey–Polchinski). They avoid it by
+  restricting to lattice vectors with **even** coefficients — which is exactly the `M = 2` case this file's
+  header already identified as the physically cited one, now sourced rather than asserted.
+
+So the periods on the quotient are not in `ℤ`, which is why no amount of lattice arithmetic here could ever
+have determined the factor — `quantised_family_injective` and `pairing_dvd` are about `ℤ`-quanta and remain
+exactly as strong as before. The remark stays a remark. -/
 theorem convention_factor_bounded (M : ℤ) (hM : 6 ≤ M) (H F : Fin 8 → ℤ)
     (hH : Quantised M H) (hF : Quantised M F) (h0 : 0 ≤ invPairing H F)
     (h32 : invPairing H F ≤ 32) : invPairing H F = 0 := by

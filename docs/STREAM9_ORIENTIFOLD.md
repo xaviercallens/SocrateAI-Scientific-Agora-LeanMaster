@@ -319,10 +319,51 @@ equations of motion, no quotient by the duality group. Eleven flux vectors are n
 
 ## 7. Next steps, in order
 
+### 6e. S9.5d — the `⟨H,F⟩ = N_flux` bridge: **established on the cover, obstructed on the quotient** (2026-09-21)
+
+The question carried for five releases was *"which source fixes the `D3`-charge normalisation on the `T⁶/Γ`
+quotient, and at what line?"* It has an answer, and the answer is in two halves that point opposite ways.
+
+**On the covering torus the factor is exactly `1`, and every constant is pinned.** Tier L, all from
+`papers/foundations/giddings_kachru_polchinski_hep-th_0105097.txt`:
+
+| input | line | content |
+|---|---|---|
+| constants | **l. 511** | `2κ₁₀² = (2π)⁷α'⁴`, `μ₃ = (2π)⁻³α'⁻²`, and in Einstein frame `T₃ = μ₃` |
+| quantisation (2.25) | **ll. 538–544** | `(1/2πα')∫F₍₃₎ ∈ 2πℤ` and `(1/2πα')∫H₍₃₎ ∈ 2πℤ`, so each period lies in `(2π)²α'ℤ` |
+| the charge (4.4) | **ll. 1306–1320** | `χ(X)/24 = N_D3 + (1/2κ₁₀²T₃) ∫_M H₃ ∧ F₃` |
+
+Composing: `2κ₁₀²T₃ = (2π)⁴α'²`, each period contributes a factor `(2π)²α'`, so
+`∫H₃∧F₃ = (2π)⁴α'²·⟨h,f⟩` and **`N_flux = ⟨h,f⟩`, the integral pairing, with no leftover factor.**
+Checked symbolically before being written down. So on `T⁶` the bridge `⟨H,F⟩ = N_flux` is *not* a convention —
+it is a consequence of GKP's stated constants.
+
+**On the quotient it fails, for a reason that is also sourced.** Tripathy–Trivedi
+`papers/foundations/hep-th_0301139.txt` **ll. 1834–1841**: integrating over `γ₂ × γ₁` gives an integer when
+`γ₁` is a *full* cycle of `T²`, but **a half-integer when `γ₁` is a half cycle** — closed in `T²/ℤ₂` and not in
+`T²`. They note (citing Frey–Polchinski) that Dirac quantisation then requires **fluxes from exotic orientifold
+planes**, and say plainly that they *avoid* this by "choosing the fluxes corresponding to the lattice vectors
+with **even** coefficients".
+
+**What that settles, and what it changes.**
+* The bridge was never going to follow from the lattice alone, and §6c was right to refuse it: on the quotient
+  the periods are not in `ℤ` at all.
+* The repository's `M = 2` case — §6c's "the physically cited case is `M = 2`" — is **exactly Tripathy–Trivedi's
+  working convention**, and is now *sourced* rather than asserted.
+* `convention_factor_bounded` stays a conditional remark, but its hypothesis is no longer free-floating: it
+  holds on the cover by GKP, and on the quotient only under the even-coefficient restriction, whose price
+  (exotic O-planes otherwise) is named in the source.
+* S9.6c's carried-over ceiling `32` is unchanged by this: it comes from the tadpole budget, not the
+  normalisation.
+
+*Tier.* The composition above is **Tier L arithmetic from pinned constants**, not a Lean theorem — it is a
+computation with `α'` and `κ₁₀`, and nothing about it belongs in the kernel. The Lean content remains what it
+was: `invPairing` is an integer pairing, and `FluxQuantisation`'s results hold for any quantisation factor.
+
 | # | Step | Why it is the next one |
 |---|---|---|
 | S9.4b | Prove the crystallographic restriction theorem itself, in its **correct** form `ψ(n) ≤ d` — **now scoped into two halves in §5c**: the arithmetic half (`Σ_{e∈S} φ(e) ≥ ψ(n)` for `lcm S = n`) is self-contained and is the next thing to prove; the linear-algebra half (isotypic decomposition) is multi-session | §5b refuted the `φ` form; §5b-bis corrected `psi` itself, which the arithmetic half must be stated against |
-| S9.5d | Pin the `D3`-charge normalisation on the quotient from a source, so that the lattice pairing can legitimately be called `N_flux` | §6c isolates this as the single missing bridge; everything above it is already arithmetic |
+| S9.5d | **DONE — §6e.** Pin the `D3`-charge normalisation so the lattice pairing may be called `N_flux`: it **is** `N_flux` exactly on the covering `T⁶` (GKP ll. 511, 538–544, 1306–1320), and on the quotient the periods are **half-integral** on half cycles (Tripathy–Trivedi ll. 1834–1841, citing Frey–Polchinski) — which is why the lattice alone never determined it | §6c isolated it as the single missing bridge; the answer is that the bridge holds upstairs and is obstructed downstairs |
 | S9.6c | Replace the carried-over ceiling `32` in §6d by one derived from a pinned normalisation, turning the count `11` from an illustration into a statement | §6d shows the mechanism; only the normalisation stands between it and a real number |
 | S9.6 | Only then: the massless spectrum, and whether a chiral one is reachable | Tier L input dominates; it needs its own pinned sources |
 
