@@ -62,7 +62,7 @@ length, is the Tier C identification; it is where every physical claim in this m
 kernel-checked. The book's tier table lists this module's content as exactly
 `(R²+1)λ₀ ≥ 2; M/H ≥ 1 (ℕ)`.
 
-The `Kernel Verification: 100% Certified` lines this module used to carry were the repository's older house
+The "Kernel Verification: 100% Certified" lines this module used to carry were the repository's older house
 style; `CLAUDE.md` forbids that phrasing, and they were replaced repo-wide on 2026-09-21 with a statement of
 what Tier A actually certifies — the Lean statement, never its physical meaning.
 

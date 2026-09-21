@@ -101,10 +101,22 @@ peer, cite the artefact they actually ran, at the width they actually ran it.
 ## S11.7 Mechanise §S11.1: strip the docstring, then ask whether the statement mentions the name
 
 Stream 1 turned §S11.1 into a thirty-line triage and contributed it
-(`scripts/name_vs_statement.py` in their repo). The whole trick is two `re.sub` lines: **strip block comments,
-docstrings and line comments BEFORE asking whether the statement contains the name's tokens.** Without that
-everything looks clean, because the docstring supplies the very words being tested for — which is exactly how
-these declarations survive review.
+(`scripts/name_vs_statement.py` in their repo). Strip block comments, docstrings and line comments **before**
+asking whether the statement contains the name's tokens, or the comment supplies the very words being tested
+for.
+
+> **Narrowed 2026-09-21, by the author of the original claim.** The first version of this entry said "the whole
+> trick is two `re.sub` lines" and that the docstring would otherwise supply the words. **That is
+> implementation-dependent and was overstated**, and Stream 1 sent the correction after checking their own
+> code. Both their extractor and ours capture the statement **from after the declaration's name**, so a
+> *preceding* docstring is never in range and stripping it changes nothing; only comments **inside the
+> statement range** leak. The strong version holds only for a tool that grabs a *window of text around* a
+> declaration. Checked here: `tools/name_vs_statement.py` is range-based, so the narrow version applies; and
+> `tools/disclosure_reaches_source.py` captures the preceding docstring **deliberately**, since whether the
+> docstring carries the disclosure is the whole question it asks — stripping there would delete the object
+> under examination. So the sentence was true of neither tool. **A lesson adopted from a sibling project is
+> still an unverified claim until checked against your own code**, and this one was repeated in a release
+> before anyone checked.
 
 **Positive-control it first; this repository's history demands it.** Run it where the answer is known. Ours
 flagged all three surviving disclosed-vacuous declarations, each with every name token missing and conclusion
@@ -260,7 +272,7 @@ The first run of this very control reported `0` matches for that reason.)
 `axiom_audit.py Agora` **exits 1 permanently** on their side — it returns non-zero whenever any theorem depends
 on a *registered, disclosed* axiom, and their steady state is three. They had read it through `| tail` all day
 and called it green from the counts. Same tool, same code: **its exit code is a usable CI signal here (we
-register no axioms, so 0 means clean) and permanently red there.** Before wiring any gate to CI, ask not only
+register no axioms beyond the standard three, so 0 means clean) and permanently red there.** Before wiring any gate to CI, ask not only
 "have I seen it go red" but "can it go green in this repository's steady state" — a signal engineered to be
 ignored is worse than no signal.
 
@@ -303,25 +315,51 @@ is the pattern working, and it is why the finds concentrated in the legacy Phase
 
 `CLAUDE.md` has forbidden "zero axioms" and "100% verified" since the repository's rigour reset, yet **39
 occurrences survived in Lean docstrings** across seven files, in two house-style forms:
-`**Kernel Verification:** 100% Certified (0 sorry, 0 admit)` (×32) and
-`` - `@kernel_status: 100% Certified (0 sorry, 0 admit)` `` (×7). Replaced 2026-09-21 with a statement of what
+"**Kernel Verification:** 100% Certified (0 sorry, 0 admit)" (×32) and
+"- @kernel_status: 100% Certified (0 sorry, 0 admit)" (×7). Replaced 2026-09-21 with a statement of what
 Tier A actually certifies: *no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`; and it
 certifies the Lean **statement**, never its physical meaning.*
 
 **Why this was not cosmetic.** One of the seven files was `Lean5Corpus/Problems/Problem3_DualScaleTCC.lean`
 (§S11.8), whose module docstring asserted that the trans-Planckian censorship conjecture "is satisfied
-unconditionally" over theorems that say a product of two naturals is `≥ 2`. **"100% Certified" sat directly
-beneath that sentence**, and the second phrase is what makes the first read as established. The forbidden
+unconditionally" over theorems that say a product of two naturals is `≥ 2`.
+**The banned certification banner sat directly beneath that sentence**, and the second phrase is what makes the first read as established. The forbidden
 wording and the overclaimed docstring were the same failure wearing two faces, in one file, and the ban exists
 because that combination is what it produces.
 
 **The `@kernel_status` form is the worse of the two**, because it is retrieval metadata: it is machine-read,
 carries no surrounding prose to qualify it, and reaches consumers who never open the file.
 
-**Rule:** a phrasing ban in `CLAUDE.md` is a lint, and a lint nobody runs is a preference. The check is one
-grep — `grep -rE "100% Certified|100% verified|zero axioms" --include=*.lean` — and it belongs beside the
-gates, not in a document. Same disease as §S11.9: the v3.17.0 anchoring fix repaired two files instead of
-becoming a convention; this ban was written as a convention and never became a check.
+**Rule:** a phrasing ban in `CLAUDE.md` is a lint, and a lint nobody runs is a preference. It now is one —
+`tools/phrasing_lint.py`, with a two-directional `--self-test` negative-controlled in both directions. Same
+disease as §S11.9: the v3.17.0 anchoring fix repaired two files instead of becoming a convention; this ban was
+written as a convention and never became a check.
+
+**Writing the lint reproduced the day's failure three more times, which is the part worth keeping.**
+
+1. *Backticks are not quotation.* To spare prose that *discusses* the ban, the first version stripped quoted
+   spans — including single-backtick spans. **That hid the exact form the lint exists to catch**, because all
+   39 violations were backtick-wrapped ("@kernel_status: 100% Certified …"). Caught only because the
+   self-test asserts on both *historical forms*; a test of "does it catch an unquoted claim" would have shipped
+   green. In Lean and Markdown a backtick is code formatting, and code formatting is where the violation lives.
+2. *The typesetting layer underneath the quoting layer.* Stream 1 hit the same class in their own `PASS(N)`
+   check — `PASS(\texorpdfstring{$N$}{N})` does not match `PASS\([0-9N]` — and warned that a `.tex` lint has
+   it worse. Tested rather than assumed: the lint **missed six of seven** LaTeX encodings
+   ("100\% verified", "\emph{zero} axioms", "100\,\% certified", "Zero ax\-ioms", "\textbf{100\%} verified",
+   "100 \% certified") while reporting *"clean across fourteen paths"* — clean in the encodings its author
+   happened to think of. A `detex` normalisation layer and one fixture per form fixed it; disabling the layer
+   makes all six fixtures fail. **Third costume of the `= True` signature problem in one day.**
+3. *A lint may not be more severe than its source.* The first version also banned bare "no axioms". But
+   `CLAUDE.md` bans "zero axioms" and "100% verified", not an accurate per-theorem fact — and a `decide`-proved
+   theorem genuinely prints an **empty** axiom list (16 of them in `DualScaleDyons` alone). The lint was
+   flagging true statements under a rule its author had invented while enforcing someone else's. **Check what
+   the rule actually says before mechanising it**; a mechanised rule is harder to argue with than a written
+   one, which is exactly why it must not be stricter.
+
+**Scope, deliberately:** `papers/publication/` is outside the default. Its remaining hits are *quoted criticism*
+of the banned claim inside artifacts already published to Zenodo, and editing a published paper so a lint
+reports clean is the same move as force-updating a released tag to hide an error in it (§S11.8). Run it
+deliberately when revising one; never silence it.
 
 ## S11.5 Two Lean sessions on this VM contend for page cache, not CPU
 

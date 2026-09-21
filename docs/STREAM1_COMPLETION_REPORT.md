@@ -8,7 +8,9 @@
 
 ## Executive Summary
 
-**Stream 1** (StringTheoryFormalization) is now **integrated with Mathlib v4.33.1** and **80% compilation clean**. The 5 core Mathlib-free libraries (StringTheoryFoundation, DualScaleM24Formalization, DoubleFieldTheory, DualScaleValidation, Lean5Corpus) remain **100% verified** with zero sorry/admit.
+**Stream 1** (StringTheoryFormalization) is now **integrated with Mathlib v4.33.1** and **80% compilation clean**. The 5 core Mathlib-free libraries (StringTheoryFoundation, DualScaleM24Formalization, DoubleFieldTheory, DualScaleValidation, Lean5Corpus) remain free of `sorry`/`admit`, with every theorem depending on no axioms beyond `propext`,
+`Classical.choice` and `Quot.sound`. *(Wording corrected 2026-09-21: the original read "100% verified", which
+`CLAUDE.md` bans — a compile certifies the Lean statement, never its physical meaning. `LL.md` §S11.10.)*
 
 **Key Achievement**: Completed the largest single bottleneck in RIGOR_ROADMAP Phase A — brought 30 previously-unreachable modules into a real Mathlib environment and fixed all import/API drift issues except for 4 frontier modules marked "IN_PROGRESS" in the original code.
 

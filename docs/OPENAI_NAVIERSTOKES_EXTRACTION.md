@@ -17,7 +17,7 @@ OpenAI's NS formalization is **production-grade** (640K lines, zero sorry proofs
 | **Code Size** | 640K lines (429K NS, 211K Euler) |
 | **Files** | 2,655 total (816 NS, 1,839 Euler) |
 | **Theorems** | 1000+ high-level results (finite-time blowup focus) |
-| **Sorry Count** | **0** (fully verified) |
+| **Sorry Count** | **0** (no `sorry`/`admit`; certifies the statements, not their physical meaning) |
 | **License** | Apache 2.0 ✅ |
 | **Lean Toolchain** | v4.34.0-rc2 ❌ (newer than our v4.33.1) |
 
