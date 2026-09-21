@@ -48,7 +48,7 @@ strictly enforce ongoing viscous dissipation, bounding the lifetime of knotted c
 - `@rag_query: "Navier-Stokes helicity dissipation inequality", "Can knotted vortex flows have zero dissipation?", "Cauchy-Schwarz bound on hydrodynamic helicity"`
 - `@graph_cluster: "NavierStokesTopologicalHydrodynamics"`
 - `@impact: TurbulenceEnergyCascade, VortexLifetimeBounds`
-- `@kernel_status: 100% Certified (0 sorry, 0 admit)`
+- `@kernel_status: Tier A (no sorry/admit; axioms propext, Classical.choice, Quot.sound; certifies the statement, not its meaning)`
 -/
 
 namespace Lean5Corpus.Problems.NavierStokes
@@ -104,7 +104,8 @@ def satisfies_cauchy_schwarz (s : ViscousFluidState) : Prop :=
 $$2 \cdot (2\nu\Omega) \cdot E = \nu \cdot (4E\Omega)$$
 linking the dissipation rate $\mathcal{D}$ directly to the Cauchy-Schwarz enstrophy envelope.
 
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: DissipationReordering`
@@ -133,7 +134,8 @@ cannot degenerate into trivial irrotational potential flows.
 $$\mathcal{H} \ge 1 \land \mathcal{H}^2 \le 4 E \Omega \implies \Omega > 0$$
 
 **Foundational Source:** Moffatt (1969); Arnold & Khesin (1998).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: KnottedVorticity, EnstrophyPositivity`
@@ -166,7 +168,8 @@ Topological knots in the vorticity field strictly forbid dissipationless steady 
 $$\nu \ge 1 \land \mathcal{H} \ge 1 \implies \mathcal{D} = 2\nu\Omega > 0$$
 
 **Foundational Source:** Callens (2026), Section 2.
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: MandatoryViscousDissipation, KnottedFlowDecay`
@@ -197,7 +200,8 @@ of the vortex field.
 $$2 \mathcal{D}(t) E(t) \ge \nu \mathcal{H}(t)^2$$
 
 **Foundational Source:** Callens (2026); Moffatt (1969).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: HelicityDissipationInequality, EnstrophyTopologicalBound`
@@ -220,7 +224,8 @@ theorem helicity_dissipation_inequality
 **Physical Meaning:** Joint contract verifying both that energy dissipation is strictly non-zero ($\mathcal{D} > 0$)
 and satisfies the helicity-dissipation inequality ($2\mathcal{D}E \ge \nu\mathcal{H}^2$).
 
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: NavierStokesProtectionContract`

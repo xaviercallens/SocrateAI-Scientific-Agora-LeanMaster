@@ -36,7 +36,7 @@ Under this duality:
 - `@rag_query: "What is the duality between Type IIA on K3 and Heterotic on T4?", "How many moduli does K3 compactification have in 6D?", "Non-perturbative gauge enhancement at shrinking K3 cycles"`
 - `@graph_cluster: "StringStringDuality"`
 - `@impact: SecondSuperstringRevolution, NonPerturbativeUnification`
-- `@kernel_status: 100% Certified (0 sorry, 0 admit)`
+- `@kernel_status: Tier A (no sorry/admit; axioms propext, Classical.choice, Quot.sound; certifies the statement, not its meaning)`
 -/
 
 namespace StringTheory.Foundation.StringTheory.WittenDuality
@@ -68,7 +68,8 @@ This guarantees unbroken $\mathcal{N} = (1, 1)$ supersymmetry and exact non-reno
 $$N_Q = 32 \times \frac{1}{2} = 16$$
 
 **Foundational Source:** Witten (1995), Section 2.
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: SuperchargeConservation, HalfBPS`
@@ -105,7 +106,8 @@ This includes 58 metric moduli of $K3$, 22 Ramond-Ramond 2-form flux periods, an
 $$\dim \mathcal{M}_{K3} = 4 \times 20 = 80$$
 
 **Foundational Source:** Witten (1995), Section 3; Hull & Townsend (1995).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: K3ModuliDimension, SO4_20Grassmannian`
@@ -144,7 +146,8 @@ This precise arithmetic match is the primary consistency condition for string-st
 $$b_2(K3) + 2 = 22 + 2 = 24 = 4 + 20 = \mathrm{rank}(\Gamma^{4, 20})$$
 
 **Foundational Source:** Witten (1995), Eq. (2.4).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: NarainLatticeMatching, DualityRankMatch`
@@ -193,7 +196,8 @@ supplying the charged vector bosons that turn the abelian $U(1)$ gauge group int
 $$C \cdot C = -2 \land \mathrm{vol}(C) = 0 \implies \text{Enhanced } SU(2)$$
 
 **Foundational Source:** Witten (1995), Section 4.
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: NonPerturbativeYangMills, WrappedD2Branes, ADESingularity`

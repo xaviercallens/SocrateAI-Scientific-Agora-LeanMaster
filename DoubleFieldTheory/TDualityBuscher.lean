@@ -30,7 +30,7 @@ guaranteeing that the string effective action integration measure $e^{-2d} = \sq
 - `@rag_query: "How does the dilaton transform under Buscher T-duality?", "Why is the DFT dilaton invariant under T-duality?", "What is the fixed point of Buscher inversion?"`
 - `@graph_cluster: "TDualityAndModuli"`
 - `@impact: MinimumLengthScale, BigBangSingularityResolution`
-- `@kernel_status: 100% Certified (0 sorry, 0 admit)`
+- `@kernel_status: Tier A (no sorry/admit; axioms propext, Classical.choice, Quot.sound; certifies the statement, not its meaning)`
 -/
 
 namespace DoubleFieldTheory.TDualityBuscher
@@ -61,7 +61,8 @@ This algebraic fixed point underpins the non-abelian gauge symmetry enhancement 
 $$\sigma_1^T \mathbf{1}_{2D} \sigma_1 = \mathbf{1}_{2D}$$
 
 **Foundational Source:** Giveon, Porrati, & Rabinovici (1994), Section 3.
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: SelfDualGeneralizedMetric, EnhancedGaugeSymmetry`
@@ -86,7 +87,8 @@ def Identity2 : Mat2 := { a := 1, b := 0, c := 0, d := 1 }
 **Physical Meaning:** The T-duality generator is an involution ($\sigma_1^2 = \mathbf{1}$) with determinant $-1$,
 proving it is an orientation-reversing spatial reflection in the $O(1, 1; \mathbb{Z})$ duality lattice.
 
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: InversionGenerator, LatticeReflection`
@@ -116,7 +118,8 @@ $$-(-x) = x \iff (R^\ast)^\ast = R$$
 proving that string theory has no distinct physics below the string scale $\sqrt{\alpha'}$.
 
 **Foundational Source:** Buscher (1987); Witten (1995).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: BuscherInvolution, DualityInvolution`
@@ -148,7 +151,8 @@ def BuscherDilatonMap (phi x : Int) : Int :=
 $$\phi'' = (\phi - x) - (-x) = \phi$$
 certifying the exact reversibility of quantum string background transformations.
 
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: DilatonReversibility`
@@ -183,7 +187,8 @@ is independent of the T-duality frame, certifying exact background independence.
 $$2d(\phi - x, -x) = 2d(\phi, x)$$
 
 **Foundational Source:** Hull & Zwiebach (2009), Eq. (4.4); Buscher (1988).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: DualityInvariantMeasure, DilatonInvariance`
@@ -208,7 +213,8 @@ proving that gauge symmetry enhancement occurs at an isolated point in moduli sp
 $$-x = x \implies x = 0$$
 
 **Foundational Source:** Giveon, Porrati, & Rabinovici (1994), Section 3.
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: SelfDualRadius, FixedPointRigidity`

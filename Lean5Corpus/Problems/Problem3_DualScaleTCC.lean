@@ -62,15 +62,16 @@ length, is the Tier C identification; it is where every physical claim in this m
 kernel-checked. The book's tier table lists this module's content as exactly
 `(R²+1)λ₀ ≥ 2; M/H ≥ 1 (ℕ)`.
 
-The `Kernel Verification: 100% Certified` lines below are the repository's older house style; `CLAUDE.md`
-forbids that phrasing, and it certifies the Lean statement, never its physical meaning.
+The `Kernel Verification: 100% Certified` lines this module used to carry were the repository's older house
+style; `CLAUDE.md` forbids that phrasing, and they were replaced repo-wide on 2026-09-21 with a statement of
+what Tier A actually certifies — the Lean statement, never its physical meaning.
 
 ### Epistemic Metadata & RAG Indexing
 - `@concept: TransPlanckianCensorship, SwamplandBounds, DualScaleBounce, CosmologicalSingularityResolution, TCC`
 - `@rag_query: "Trans-Planckian Censorship Conjecture in string cosmology", "Why are sub-Planckian modes impossible in dual-scale theory?", "TCC horizon protection contract"`
 - `@graph_cluster: "TCCAndSwampland"`
 - `@impact: EarlyUniverseCosmology, InflationaryLifespan, QuantumGravityHorizon`
-- `@kernel_status: 100% Certified (0 sorry, 0 admit)`
+- `@kernel_status: Tier A (no sorry/admit; axioms propext, Classical.choice, Quot.sound; certifies the statement, not its meaning)`
 -/
 
 namespace Lean5Corpus.Problems.DualScaleTCC
@@ -121,7 +122,8 @@ This mechanically proves that physical modes can never cross into the sub-Planck
 $$R \ge 1 \land \lambda_0 \ge 1 \implies (R^2 + 1) \lambda_0 \ge 2$$
 
 **Foundational Source:** Bedroya & Vafa (2020); Callens (2026).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: SuperPlanckianWavelength, TransPlanckianProtection`
@@ -150,7 +152,8 @@ absent from the physical Hilbert space, satisfying the TCC conjecture identicall
 $$\neg \big( \lambda_{\mathrm{num}}(R, \lambda_0) \le \ell_{\mathrm{Pl}} \big)$$
 
 **Foundational Source:** Bedroya & Vafa (2020), Eq. (1.1).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: TCCSatisfaction, AbsenceOfSubPlanckianModes`
@@ -194,7 +197,8 @@ guaranteeing a non-empty, causally viable window for cosmic expansion.
 $$H_{\mathrm{inf}} < M_{\mathrm{Pl}} \implies \frac{M_{\mathrm{Pl}}}{H_{\mathrm{inf}}} \ge 1$$
 
 **Foundational Source:** Brandenberger (2021).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: TCCExpansionFactor, CosmicInflationBound`
@@ -223,7 +227,8 @@ satisfaction of:
 2. Impossibility of sub-Planckian modes ($\neg(\lambda_{\mathrm{num}} \le \ell_{\mathrm{Pl}})$).
 3. Positive and bounded cosmological expansion ratio ($M_{\mathrm{Pl}} / H_{\mathrm{inf}} \ge 1$).
 
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: TCCCosmicProtectionContract, HorizonCensorship`

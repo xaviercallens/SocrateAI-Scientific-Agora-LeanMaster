@@ -35,7 +35,7 @@ As the coordinate scale $R \to 0$ collapses towards the classical Big Bang, the 
 - `@rag_query: "How does string theory resolve the Big Bang singularity?", "Genesis no-singularity proof in Lean 4", "Buscher effective radius minimum"`
 - `@graph_cluster: "DualScaleCosmology"`
 - `@impact: QuantumCosmology, BlackHoleThermodynamics, SingularityResolution`
-- `@kernel_status: 100% Certified (0 sorry, 0 admit)`
+- `@kernel_status: Tier A (no sorry/admit; axioms propext, Classical.choice, Quot.sound; certifies the statement, not its meaning)`
 -/
 
 namespace SocrateAI.DualScale
@@ -94,7 +94,8 @@ $$\frac{\alpha'}{\alpha' / R} = R$$
 proving that the quantum spectrum of closed strings possesses an exact $\mathbb{Z}_2$ reflection symmetry.
 
 **Foundational Source:** Buscher (1987).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: BuscherInvolution, RationalDuality`
@@ -133,7 +134,8 @@ The Big Bang is replaced by an exact quantum bounce into an expanding dual regim
 $$\forall R > 0, \quad \mathrm{num}(R_{\mathrm{eff}}(R)) > 0 \land \mathrm{den}(R_{\mathrm{eff}}(R)) > 0$$
 
 **Foundational Source:** Callens (2026), Section 3; Brandenberger & Vafa (1989); Hayward (2006).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: GenesisNoSingularity, CosmicBounce, SingularityResolution`
@@ -168,7 +170,8 @@ theorem genesis_no_singularity (cutoff : PosScale) (alpha : PosScale) (R : PosSc
 $$\frac{\alpha'}{\alpha'} = 1$$
 marking the maximal symmetry locus where winding and momentum modes condense concurrently.
 
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: SelfDualScaleInvariance`

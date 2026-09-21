@@ -36,7 +36,7 @@ rigorous quantum consistency criteria:
 - `@rag_query: "Swampland Distance Conjecture 4D decay rate", "GVW superpotential flux pairing", "Magnetic Weak Gravity Conjecture UV cutoff"`
 - `@graph_cluster: "SwamplandAndDuality"`
 - `@impact: QuantumGravityUVCompleteness, ModuliStabilization`
-- `@kernel_status: 100% Certified (0 sorry, 0 admit)`
+- `@kernel_status: Tier A (no sorry/admit; axioms propext, Classical.choice, Quot.sound; certifies the statement, not its meaning)`
 -/
 
 namespace StringTheory.Foundation.StringTheory.VafaSwampland
@@ -72,7 +72,8 @@ rate governs the exponential mass drop of non-perturbative towers near boundary 
 $$\alpha^2_{\mathrm{min}} = \frac{1}{4 - 2} = \frac{1}{2}$$
 
 **Foundational Source:** Ooguri & Vafa (2007), Eq. (1.2).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: SwamplandDistanceConjecture, OoguriVafaBound`
@@ -125,7 +126,8 @@ originates from the absence of flux-induced $F$-term scalar potentials.
 $$W(f=0, h=0) = 0$$
 
 **Foundational Source:** Gukov, Vafa, & Witten (2000), Section 3.
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: GVWFluxVacuum, UnfluxedGeometry`
@@ -178,7 +180,8 @@ symmetries in consistent quantum gravity.
 $$g_1 \le g_2 \implies \Lambda_{\mathrm{UV}}(g_1) \le \Lambda_{\mathrm{UV}}(g_2)$$
 
 **Foundational Source:** Vafa (2005), Section 2; Arkani-Hamed et al. (2007).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: WeakGravityConjecture, CutoffMonotonicity, NoGlobalSymmetries`
@@ -233,7 +236,8 @@ gauge fields ($\mathrm{isGauged} = \mathrm{true}$).
 $$\dim U(1) = 1 \land \mathrm{isGauged} = \mathrm{true} \implies \mathrm{satisfiesNoGlobalSymmetries}$$
 
 **Foundational Source:** Banks & Dixon (1988); Vafa (2005).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: GaugedU1Symmetry, SwamplandConsistency`

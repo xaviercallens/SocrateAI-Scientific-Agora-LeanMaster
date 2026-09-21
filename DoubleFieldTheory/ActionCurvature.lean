@@ -31,7 +31,7 @@ where $H = dB$ is the field strength 3-form of the Kalb-Ramond 2-form.
 - `@rag_query: "How does the DFT action reduce to the NS-NS action?", "What is the generalized Ricci scalar in double field theory?", "Why is the Einstein tensor traceless in 2D?"`
 - `@graph_cluster: "DoubleFieldTheoryGeometry"`
 - `@impact: SupergravityActionReduction, QuantumConformalInvariance`
-- `@kernel_status: 100% Certified (0 sorry, 0 admit)`
+- `@kernel_status: Tier A (no sorry/admit; axioms propext, Classical.choice, Quot.sound; certifies the statement, not its meaning)`
 -/
 
 namespace DoubleFieldTheory.ActionCurvature
@@ -58,7 +58,8 @@ $$\sqrt{g} \cdot e^{-2\phi} = e^{-2\phi} \cdot \sqrt{g}$$
 guaranteeing well-defined integration order over the Riemannian metric volume and dilaton weight.
 
 **Foundational Source:** Siegel (1993).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: MeasureSymmetry`
@@ -78,7 +79,8 @@ $$\nabla_M \mathcal{H}^{MN} = 0$$
 ensuring metric-compatibility across the doubled manifold and absence of unphysical metric divergence.
 
 **Foundational Source:** Hohm, Hull, & Zwiebach (2010), Eq. (3.8).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: MetricCompatibility, ConnectionTrace`
@@ -111,7 +113,8 @@ def DFTRicciComponents (R_geom kin_phi H_sq : Int) : Int :=
 $$(\mathcal{R}_{\text{DFT}} + H^2) = R_{\text{geom}} + 4(\nabla\phi)^2$$
 demonstrating that the Kalb-Ramond field contributes with negative definite sign to the generalized scalar curvature.
 
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: KalbRamondContribution, CurvatureIdentity`
@@ -135,7 +138,8 @@ proving that standard general relativity is an exact physical sub-sector of Doub
 $$\mathcal{R}_{\text{DFT}}(R_{\text{geom}}, 0, 0) = R_{\text{geom}}$$
 
 **Foundational Source:** Hull & Zwiebach (2009), Section 4.
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: EinsteinHilbertReduction, GeneralRelativityRecovery`
@@ -167,7 +171,8 @@ def ActionLagrangian (density ricci : Int) : Int :=
 $$e^{-2d} \mathcal{R} = \mathcal{R} e^{-2d}$$
 certifying the mathematical equivalence of the dilaton-weighted Einstein-Hilbert-Kalb-Ramond action.
 
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: ActionCommutativity`
@@ -204,7 +209,8 @@ and why string theory possesses 2D worldsheet conformal invariance.
 $$\mathrm{Tr}(G)\big|_{D=2} = (2 - 2) R = 0$$
 
 **Foundational Source:** Polchinski (1998) *String Theory*, Vol. 1, Eq. (3.1.5).
-**Kernel Verification:** 100% Certified (0 sorry, 0 admit)
+**Kernel status:** Tier A — no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`.
+Tier A certifies the Lean **statement**, never its physical meaning.
 
 **RAG & Graph Indexing:**
 - `@concept: WorldsheetConformalInvariance, TracelessEinstein2D`

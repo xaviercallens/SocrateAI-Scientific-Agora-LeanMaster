@@ -299,6 +299,30 @@ declaration (`convention_factor_bounded`: "**Conditional remark, not a result**�
 is the pattern working, and it is why the finds concentrated in the legacy Phase-0 libraries instead.
 
 
+## S11.10 "100% Certified" is not a style preference — it is the claim the tiers exist to prevent
+
+`CLAUDE.md` has forbidden "zero axioms" and "100% verified" since the repository's rigour reset, yet **39
+occurrences survived in Lean docstrings** across seven files, in two house-style forms:
+`**Kernel Verification:** 100% Certified (0 sorry, 0 admit)` (×32) and
+`` - `@kernel_status: 100% Certified (0 sorry, 0 admit)` `` (×7). Replaced 2026-09-21 with a statement of what
+Tier A actually certifies: *no `sorry` or `admit`; axioms `propext`, `Classical.choice`, `Quot.sound`; and it
+certifies the Lean **statement**, never its physical meaning.*
+
+**Why this was not cosmetic.** One of the seven files was `Lean5Corpus/Problems/Problem3_DualScaleTCC.lean`
+(§S11.8), whose module docstring asserted that the trans-Planckian censorship conjecture "is satisfied
+unconditionally" over theorems that say a product of two naturals is `≥ 2`. **"100% Certified" sat directly
+beneath that sentence**, and the second phrase is what makes the first read as established. The forbidden
+wording and the overclaimed docstring were the same failure wearing two faces, in one file, and the ban exists
+because that combination is what it produces.
+
+**The `@kernel_status` form is the worse of the two**, because it is retrieval metadata: it is machine-read,
+carries no surrounding prose to qualify it, and reaches consumers who never open the file.
+
+**Rule:** a phrasing ban in `CLAUDE.md` is a lint, and a lint nobody runs is a preference. The check is one
+grep — `grep -rE "100% Certified|100% verified|zero axioms" --include=*.lean` — and it belongs beside the
+gates, not in a document. Same disease as §S11.9: the v3.17.0 anchoring fix repaired two files instead of
+becoming a convention; this ban was written as a convention and never became a check.
+
 ## S11.5 Two Lean sessions on this VM contend for page cache, not CPU
 
 A single-file `lake env lean` here sat at ~1% CPU for six minutes while the sibling repository elaborated: both
