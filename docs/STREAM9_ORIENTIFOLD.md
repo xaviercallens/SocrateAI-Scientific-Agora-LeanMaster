@@ -143,7 +143,32 @@ All three disagree and none is right. `psi` never reaches it, so `psi 0 = 0` in 
 cross-checking two candidate corrections against each other and against an independent reference, rather than
 reasoning about which was right.
 
-### 5c. S9.4b — what remains, scoped (still open)
+### 5c. S9.4b — the arithmetic half, **proved** (`CrystallographicArithmetic.lean`)
+
+**`psiM_le_sum_totient`: for any finite set `S` of nonzero naturals with `lcm S = n`, `ψ(n) ≤ Σ_{e∈S} φ(e)`.**
+Tier A, 9 theorems + `psiM`. The proof is the one sketched below and needed three pieces Mathlib does not
+carry: `sum_le_prod` (a product of naturals each `≥ 2` dominates their sum — the hypothesis is sharp, and it is
+exactly why `ψ` omits the `p^a = 2` term, the only prime power with `φ = 1`), and Finset versions of totient
+multiplicativity and of "pairwise-coprime divisors have their product dividing" (`totient_prod_of_pairwise_coprime`,
+`prod_dvd_of_pairwise_coprime`). `exists_dvd_of_lcm` is where the `lcm` hypothesis does its work, via
+`Finset.factorization_lcm`: the `p`-adic valuation of a `lcm` is the `sup` of the valuations and a `sup` over a
+finite set is attained. **That is precisely the step the `φ(n) ≤ d` form got wrong** (§5b): the order is the
+`lcm` of the eigenvalue orders, not the largest of them.
+
+*`ψ` here is `psiM`, defined with Mathlib's `Nat.factorization`*, so it is correct for every `n` — unlike the
+computable `psi` of §5b before §5b-bis. Stating the general theorem against the capped definition is the trap
+that §5b-bis exists to prevent.
+
+*Non-vacuity, and what it does not cover.* `psiM_fifteen_le_six` and `psiM_twentyfour_le_six` instantiate the
+theorem at `S = {3,5}` and `S = {8,3}`, giving `ψ(15) ≤ 6` and `ψ(24) ≤ 6` — exactly the rank at which §5b
+exhibits `mat15` and `mat24`, so the arithmetic does not exclude what those matrices realise (while
+`φ(15) = φ(24) = 8 > 6` would have). **Both are upper bounds**, so on their own they are consistent with `psiM`
+being identically `0`; `totient_le_psiM` supplies the other direction in general. **No numeric value of `psiM`
+is pinned in the kernel**: `Nat.factorization` is a `Finsupp` and does not reduce under `decide`, and
+`psiM n = psi n` is **not proved** — the obvious next small step, which would let each file's strength cover
+the other's gap.
+
+### 5d. S9.4b — what still remains (the linear-algebra half)
 
 The crystallographic restriction in its correct form — **`ψ(n) ≤ d` is *necessary* for an order-`n` automorphism
 of a rank-`d` lattice** — is still not formalized. It splits cleanly, and the split is the useful part of this
@@ -153,16 +178,16 @@ entry:
   `ℚ[X]/(Xⁿ − 1)`-module and decompose into `Φ_e`-isotypic parts. Then `d ≥ Σ_{e ∈ S} φ(e)` where
   `S = {e : Φ_e ∣ minpoly A}`, and **`n = lcm S`**. Mathlib has the cyclotomic polynomials; wiring
   `Aⁿ = 1` → module → isotypic dimensions is a multi-session job and should not be started as a tail-end item.
-* **The arithmetic half (formalizable without any of that).** For a finite set `S` of positive integers with
-  `lcm S = n`, prove `Σ_{e ∈ S} φ(e) ≥ ψ(n)`. Sketch: for each prime power `p^a ‖ n` with `p^a ≠ 2` some
+* **The arithmetic half — DONE, §5c above** (`psiM_le_sum_totient`). For a finite set `S` of positive integers
+  with `lcm S = n`, `Σ_{e ∈ S} φ(e) ≥ ψ(n)`. The sketch that was recorded here, and which the proof follows: for each prime power `p^a ‖ n` with `p^a ≠ 2` some
   `e ∈ S` has `p^a ∣ e`; group the prime powers by the `e` they were assigned to; for an `e` carrying `k ≥ 2`
   of them, multiplicativity gives `φ(e) ≥ ∏ φ(p_i^{a_i})`, and `∏ xᵢ ≥ Σ xᵢ` when every `xᵢ ≥ 2` — which holds
   because `ψ` excludes exactly the `p^a = 2` term, the only one with `φ(p^a) = 1`.
 
-The second half is what makes the criterion *sharp*, and it is self-contained number theory. **Note the
-dependency order: it must be stated against the corrected `psi` of §5b-bis, not the capped one** — stating a
-theorem quantified over all `n` against a definition that was only right below `2⁹` would have been the same
-defect one level up.
+Composing the two gives `d ≥ ψ(n)`. **Only the first is now missing.** The dependency order mattered: the
+arithmetic half had to be stated against a `ψ` correct for every `n`, which is why §5b-bis came first — stating
+a theorem quantified over all `n` against a definition only right below `2⁹` would have been the same defect one
+level up.
 
 *Why the `φ`-refutation of §5b is unaffected by all of this.* It exhibits four explicit matrices and computes
 `φ(n) = 8 > 6` for each; `psi` enters only through `psi_le_six_list`, inside the safe range.
