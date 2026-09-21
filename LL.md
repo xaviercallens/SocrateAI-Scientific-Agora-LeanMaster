@@ -1,6 +1,6 @@
 # Lessons Learned (LL)
 
-**Most recent session first** — read §S11 (G10, the two-repository exchange and the audit-the-auditor pass, 2026-09-21), then
+**Most recent session first** — read §S12 (closing Stream 9: the estimate nobody examined, 2026-09-21), then §S11 (G10, the two-repository exchange and the audit-the-auditor pass, 2026-09-21), then
 §S10 (Stream 9, the orientifold control, 2026-09-20), then §S9
 (toolchain migration to v4.34.0-rc2, 2026-09-19) and §S8 (Stream 8,
 2026-09-19), then §S2 and §S2-I (Stream 2 run + improvements,
@@ -14,6 +14,63 @@ foundation-theory coverage. Treat every number below the divider as unverified u
 independently re-checked (the pattern is the same one `FOUNDATIONS.md`'s own correction
 note and the root `README.md`'s "note on this revision" already flag elsewhere in this
 repo) rather than as ground truth to build the next session's narrative on.
+
+---
+
+# §S12. Closing Stream 9: the estimate nobody examined (2026-09-21)
+
+## S12.1 An over-estimate of difficulty is the dangerous direction, because it prevents the attempt that would correct it
+
+Two steps of Stream 9 were deferred, repeatedly, on an assessment of what they needed. Neither assessment was
+ever checked, and both were wrong by an order of magnitude.
+
+* **S9.4b, the crystallographic restriction `ψ(n) ≤ d`.** Recorded in the stream doc, in session memory and in
+  three status reports as: *"needs the `Φ_e`-isotypic decomposition of `ℚ^d` as a `ℚ[X]/(Xⁿ−1)`-module; Mathlib
+  has only the cyclotomics; multi-session — do not start it as a tail-end item."* What it needed: the **degree**
+  of the minimal polynomial. `natDegree_cyclotomic`, `natDegree_prod`, `minpoly_dvd_charpoly`,
+  `charpoly_natDegree_eq_dim`. It compiled first try. The two hypotheses left over then fell the same way —
+  the factorisation *equality* was never needed (divisibility sufficed, and `cyclotomic.isCoprime_rat` was
+  already in Mathlib), and `lcm S = n` was twenty lines of polynomial divisibility.
+* **S9.6c, the ceiling `32`.** Recorded as *"needs a pinned `D3`-charge normalisation"*, and when §6e pinned one I
+  wrote that §6e *"does not settle it"*. The link was the ISD condition — **already pinned two sections
+  earlier** — which forces `H = ∗F`, so that `⟨H,F⟩ = g(F,F)` is a one-line `simp; ring`.
+
+**Why this failure mode persists where others get caught.** An *under*-estimate corrects itself: you start, it
+is harder than you thought, you find out. An **over-estimate silently prevents the attempt**, so nothing ever
+contradicts it, and it gets copied from the doc into memory into the next session's plan with growing
+authority. Each repetition of "multi-session" made the next deferral more reasonable. It is §S10.1 again — a
+sentence no theorem depends on is an unverified claim — applied to a sentence about *effort* instead of a
+sentence about mathematics.
+
+**The question that dissolved all three, each time:** *what does the proof actually use?* Not what the textbook
+statement asserts, not what the natural generalisation would need. The restriction's textbook proof goes
+through the module decomposition; the *inequality* only needs a degree count. The degree count's natural
+hypothesis is a factorisation; the *bound* only needs a divisor.
+
+**Rules.**
+1. Before deferring a step as "needs heavy machinery", spend fifteen minutes finding the *weakest* statement
+   that would do, and grep Mathlib for it. Record what was tried, not just the verdict.
+2. A difficulty estimate in a doc or in memory is a claim like any other. Date it, and say what it rests on;
+   "multi-session" with no basis named is a guess wearing a hard hat.
+3. When a hypothesis is left in a theorem, **name it in the statement** (`psiM_le_dim` carried `hmin` and `hlcm`
+   explicitly). That is what made the next step obvious — the open work was two named propositions, not a
+   paragraph.
+
+## S12.2 Non-vacuity is strongest as an exclusion
+
+`psiM_le_sum_totient` was first controlled by upper bounds (`ψ(15) ≤ 6`), which are consistent with `ψ ≡ 0`.
+Then by equalities through the `psi` bridge (`ψ(15) = 6`). The control that actually shows the theorem *bites* is
+the exclusion: `no_order_fifteen_in_rank_five` — there is **no** `5 × 5` rational matrix of order 15 — paired
+with the explicit `mat15 ∈ SL(6,ℤ)` that realises it one rank up. A restriction theorem should be shown to
+forbid something that a nearby true statement permits. Likewise `family_isd_iff`: of an infinite family,
+*exactly one* member survives — an iff, not a bound.
+
+## S12.3 A shared VM has other tenants you cannot see from your own process list
+
+A single-file `lake env lean` sat for ten minutes at 1.5% CPU and 3 GB RSS. Nothing was wrong with it: another
+project's full `lake build` (not the sibling session I had been coordinating with — a third one) had the load
+average at 25. `ps -eo pid,etime,pcpu,rss,args | grep lean` plus `uptime` told the story in one command.
+**Check the machine before debugging the proof**, and do not kill what is not yours.
 
 ---
 

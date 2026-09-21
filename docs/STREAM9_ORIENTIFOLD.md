@@ -1,7 +1,9 @@
 # Stream 9 — orientifolds of `T⁶`: the lattice layer (2026-09-20)
 
-**Status (`v3.33.0`):** five Tier A files — `Orientifold/NarainT6.lean` (12 theorems), `Orientifold/InvariantSublattice.lean` (8, S9.1), `Flux/T6TadpoleFiniteness.lean` (5, S9.2), `Orientifold/Crystallography.lean` (4, S9.3), `Flux/FluxLattice.lean` (7, S9.5). Everything
-else below is a plan. Nothing here claims a vacuum, a spectrum, or `N = 1`.
+**Status (`v3.46.0`, 2026-09-21): the lattice layer is COMPLETE.** Ten Tier A files (106 theorems) under
+`DualScaleStream2/Orientifold/` and `DualScaleStream2/Flux/`; every step S9.1–S9.6c of §7 is closed. What is
+left (S9.6, the massless spectrum) is not lattice arithmetic and is out of this stream's scope by design.
+Nothing here claims a vacuum, a spectrum, or `N = 1`. One-page summary: `docs/STREAM9_COMPLETION_REPORT.md`.
 
 ## 0. Why this stream exists
 
@@ -357,9 +359,7 @@ not derived. That `Jc = −J₈` is the physical complex structure — the modul
 independent of the choice, the count `11` is not. And that any of this counts vacua: no moduli stabilisation, no
 equations of motion, no quotient by the duality group. Eleven flux vectors are not eleven vacua.
 
-## 7. Next steps, in order
-
-### 6e. S9.5d — the `⟨H,F⟩ = N_flux` bridge: **established on the cover, obstructed on the quotient** (2026-09-21)
+## 6e. S9.5d — the `⟨H,F⟩ = N_flux` bridge: **established on the cover, obstructed on the quotient** (2026-09-21)
 
 The question carried for five releases was *"which source fixes the `D3`-charge normalisation on the `T⁶/Γ`
 quotient, and at what line?"* It has an answer, and the answer is in two halves that point opposite ways.
@@ -400,11 +400,44 @@ with **even** coefficients".
 computation with `α'` and `κ₁₀`, and nothing about it belongs in the kernel. The Lean content remains what it
 was: `invPairing` is an integer pairing, and `FluxQuantisation`'s results hold for any quantisation factor.
 
+## 6f. S9.6c — the ceiling, derived: at an ISD point `H` is not free (`ISDFiniteness.lean`)
+
+§6d carried the ceiling `32` over from the tadpole budget and applied it to `g(F,F)` by fiat, and said so. The
+connection between the two is the ISD condition itself, and it was sitting one line of algebra away.
+
+*Tier L.* GKP eq. (2.31), already pinned in §6d: `∗₆G₍₃₎ = iG₍₃₎`, with `G₍₃₎ = F₍₃₎ − τH₍₃₎` (same file, **l. 169**). At `τ = i` the real and
+imaginary parts read `∗F = H` and `∗H = −F`. **`H` is determined by `F`.** The pair is not two free lattice
+vectors; it is one.
+
+*Tier A.* On this lattice `∗` is the complex structure of §6d, so the ISD partner of `F` is `J₈F`, and:
+
+- `isd_pairing_eq_norm`: **`⟨J₈F, F⟩ = g(F,F) = F·F`.** The indefinite tadpole pairing of §6–§6c, restricted to ISD
+  pairs, *is* the positive-definite norm. That is why the budget bounds the quanta here when it provably could
+  not in §6, §6b or §6c.
+- `isd_budget_bounds_quanta`: with the budget `N_flux ≤ 32`, every flux quantum satisfies `|Fᵢ| ≤ 5`.
+  **The ceiling is now derived, not carried over.**
+- `isd_budget_finite`: finitely many ISD fluxes fit the budget.
+- `family_isd_iff`: **of §6b's infinite family, exactly one member is an ISD pair** — `H = J₈F(k,m)` holds iff
+  `k = 1, m = 0`. The family kept `H` fixed and let `F(m)` run, and ISD does not allow that. So the honest count
+  for that family is **one**; §6d's `eleven` bounded `F` alone and remains what its text always said it was, an
+  illustration of the mechanism.
+
+*With §6e.* On the covering torus `⟨H,F⟩ = N_flux` exactly (GKP constants), so the chain
+`budget ⇒ N_flux ≤ 32 ⇒ g(F,F) ≤ 32 ⇒ |Fᵢ| ≤ 5` has no free normalisation left in it.
+
+*Tier C, named rather than hidden.* `τ = i`; the square torus; and that `Jc = −J₈` is the physical Hodge star on
+the invariant lattice. Away from that point `∗` and `τ` move, the form `g` moves with them, and the ball
+changes shape — it stays a ball. The *mechanism* (ISD ⇒ pairing = norm ⇒ finiteness) is independent of the
+point; the numbers `32` and `5` are not. And none of it counts vacua: no moduli stabilisation, no equations of
+motion, no quotient by the duality group, and on the quotient the even-coefficient restriction of §6e applies.
+
+## 7. The steps, all closed except the one that is not lattice arithmetic
+
 | # | Step | Why it is the next one |
 |---|---|---|
-| S9.4b | Prove the crystallographic restriction theorem itself, in its **correct** form `ψ(n) ≤ d` — **now scoped into two halves in §5c**: the arithmetic half (`Σ_{e∈S} φ(e) ≥ ψ(n)` for `lcm S = n`) is self-contained and is the next thing to prove; the linear-algebra half (isotypic decomposition) is multi-session | §5b refuted the `φ` form; §5b-bis corrected `psi` itself, which the arithmetic half must be stated against |
+| S9.4b | **DONE — §5c, §5d.** `crystallographic_restriction`: `ψ(n) ≤ d`, unconditional; exclusion corollaries in rank 5 | the `φ` form was false for `d ≥ 5` (§5b); the minimal polynomial sufficed, no module theory |
 | S9.5d | **DONE — §6e.** Pin the `D3`-charge normalisation so the lattice pairing may be called `N_flux`: it **is** `N_flux` exactly on the covering `T⁶` (GKP ll. 511, 538–544, 1306–1320), and on the quotient the periods are **half-integral** on half cycles (Tripathy–Trivedi ll. 1834–1841, citing Frey–Polchinski) — which is why the lattice alone never determined it | §6c isolated it as the single missing bridge; the answer is that the bridge holds upstairs and is obstructed downstairs |
-| S9.6c | Replace the carried-over ceiling `32` in §6d by one derived from a pinned normalisation, turning the count `11` from an illustration into a statement | §6d shows the mechanism; only the normalisation stands between it and a real number |
-| S9.6 | Only then: the massless spectrum, and whether a chiral one is reachable | Tier L input dominates; it needs its own pinned sources |
+| S9.6c | **DONE — §6f.** The ceiling is derived: ISD forces `H = J₈F`, so `N_flux = g(F,F)` and the budget bounds every quantum (`|Fᵢ| ≤ 5`); of §6b's infinite family exactly one member is ISD | §6d showed the mechanism; §6e removed the normalisation; ISD itself supplied the link |
+| S9.6 | The massless spectrum, and whether a chiral one is reachable — **out of scope for this stream** | not lattice arithmetic: Tier L input dominates and it needs its own pinned sources and its own stream |
 
 Anything that becomes a physical prediction is frozen by git tag before comparison, as in Streams 6–7.

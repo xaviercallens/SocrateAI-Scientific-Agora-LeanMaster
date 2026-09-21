@@ -125,4 +125,49 @@ theorem family_cut_to_eleven (m : ℤ) :
   · rintro ⟨h1, h2⟩
     nlinarith [h1, h2]
 
+/-! ### S9.6c — the ceiling, derived: at an ISD point `H` is not free
+
+Above, the ceiling `32` was *carried over* from the tadpole budget and applied to `g(F,F)` by fiat. The two are
+connected by the ISD condition itself. With `G = F − τH` and `∗G = iG` at `τ = i`, separating real and
+imaginary parts gives `∗F = H`: **`H` is determined by `F`**. On this lattice `∗` is the complex structure, so
+the ISD partner of `F` is `J₈ F`, and the tadpole pairing of an ISD pair *is* the positive-definite norm.
+(Tier L for the ISD condition, GKP eq. (2.31); Tier C for `τ = i`, the square torus and `Jc` being the physical
+`∗` — see `docs/STREAM9_ORIENTIFOLD.md` §6f.) -/
+
+/-- **For an ISD pair the tadpole pairing is the norm.** `⟨J₈F, F⟩ = g(F, F) = F · F`. The indefinite pairing
+of §6–§6c, restricted to ISD pairs, is positive definite — which is why the budget suddenly bounds the quanta
+when it never could before. -/
+theorem isd_pairing_eq_norm (F : Fin 8 → ℤ) : invPairing (symJ8 *ᵥ F) F = gForm F F := by
+  rw [gForm_self]
+  simp [invPairing, symJ8, Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
+  ring
+
+/-- **The ceiling is now derived, not carried over.** For an ISD pair the budget `0 ≤ N_flux ≤ 32`
+(`FluxQuantisation.tadpole_range`) bounds every flux quantum: `(F i)² ≤ 32`, i.e. `|F i| ≤ 5`. -/
+theorem isd_budget_bounds_quanta (F : Fin 8 → ℤ) (h : invPairing (symJ8 *ᵥ F) F ≤ 32) (i : Fin 8) :
+    -5 ≤ F i ∧ F i ≤ 5 := by
+  have hb : F i * F i ≤ 32 := coord_bound F 32 (by rw [← isd_pairing_eq_norm]; exact h) i
+  constructor <;> nlinarith [hb, mul_self_nonneg (F i + 6), mul_self_nonneg (F i - 6)]
+
+/-- Hence finitely many ISD fluxes fit the budget — the finiteness §6, §6b and §6c each failed to obtain. -/
+theorem isd_budget_finite : {F : Fin 8 → ℤ | invPairing (symJ8 *ᵥ F) F ≤ 32}.Finite := by
+  have : {F : Fin 8 → ℤ | invPairing (symJ8 *ᵥ F) F ≤ 32} = {F | gForm F F ≤ 32} := by
+    ext F; simp [isd_pairing_eq_norm]
+  rw [this]; exact isd_ball_finite 32
+
+/-- **Of §6b's infinite family, exactly one member is an ISD pair.** The family kept `H = hInv` fixed and let
+`F(m)` run; ISD forces `H = J₈ F`, which holds only at `k = 1, m = 0`. So the honest count for that family is
+**one**, not eleven: `family_cut_to_eleven` bounded `F` alone and remains an illustration of the mechanism,
+which is what its docstring always said it was. -/
+theorem family_isd_iff (k m : ℤ) : symJ8 *ᵥ fInv k m = hInv ↔ k = 1 ∧ m = 0 := by
+  constructor
+  · intro h
+    have h7 := congrFun h 7
+    have h6 := congrFun h 6
+    simp [symJ8, fInv, hInv, Matrix.mulVec, dotProduct, Fin.sum_univ_succ] at h7 h6
+    omega
+  · rintro ⟨rfl, rfl⟩
+    funext i
+    fin_cases i <;> simp [symJ8, fInv, hInv, Matrix.mulVec, dotProduct]
+
 end DualScaleStream2.Flux.ISDFiniteness
