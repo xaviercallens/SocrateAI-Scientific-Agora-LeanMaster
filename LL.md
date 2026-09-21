@@ -1,6 +1,6 @@
 # Lessons Learned (LL)
 
-**Most recent session first** — read §S11 (G10 and the two-repository exchange, 2026-09-21), then
+**Most recent session first** — read §S11 (G10, the two-repository exchange and the audit-the-auditor pass, 2026-09-21), then
 §S10 (Stream 9, the orientifold control, 2026-09-20), then §S9
 (toolchain migration to v4.34.0-rc2, 2026-09-19) and §S8 (Stream 8,
 2026-09-19), then §S2 and §S2-I (Stream 2 run + improvements,
@@ -192,6 +192,44 @@ the two is a defect even when the prose is the correct half.
 "Literally: a positive rational is positive". `self_dual_symmetric` is `α'/α' = 1`. Disclosed in place. **The
 consumer of a docstring is increasingly not a person who could go and read the chapter** — these files carry
 retrieval metadata, so the misleading half is the half that gets served.
+
+## S11.9 The same two theorems have now been invisible to three tools for the same reason
+
+Stream 1 audited their scanners with their scanners and found **modifier blindness**: anchoring on
+`^(theorem|lemma)` misses every `noncomputable` / `private` / `protected` declaration — **41 of 465 on their
+side, 9%, including `cooperC3`**, the source-of-record for their headline result. Checked here immediately.
+
+**This repository has no modifier-prefixed theorems at all, so the cost was 2, not 41 — and the 2 are the
+punchline.** They are `add_pos` and `add_neg`, both `@[simp]`, in `DualScaleStream2/Lattice/K3T2Signature.lean`:
+**the exact pair that `tools/axiom_audit.py` and `tools/statement_lock.py` could not see until the `v3.17.0`
+gate fix** (`VERIFIED_FOUNDATION.md`: "matched declaration heads only at column 0, so attribute-prefixed
+theorems were never audited or locked"). Three tools, one anchoring bug, the same two theorems. The v3.17.0 fix
+repaired two files and never became a convention, so the next tool reintroduced it.
+
+**A scan that cannot see a declaration reports it as clean.** That is §S10.5's lesson one level lower: not
+"the scan looked for the wrong signature" but "the scan never saw the object". Stream 1 found A1 by *reading*
+the brief; had they trusted the tool over the reading they would have called that file clean and said so.
+
+**The durable fix is a self-test, not a fixed regex.** Both tools now take `--self-test`, which asserts the
+attribute-prefixed controls are visible and exits non-zero otherwise, with the history in the comment beside
+it. A regex fix repairs one tool; a self-test makes the *next* tool fail loudly instead of quietly. Any future
+audit script over this repository should assert `add_pos`/`add_neg` are in its parse before reporting anything.
+
+**Corrected count: 666 of 836**, not `666 of 834` as first reported — our denominator was the narrow anchor's.
+Small here only because of the structural accident that we have no `noncomputable` theorems, which is exactly
+why the bug would have gone unnoticed on this side. Stream 1's moved twice: `208/481` (wrong population) →
+`208/312` → `226/333` (population the tool could not see). Two different errors behind one number, and both
+are this audit's own failure mode in miniature.
+
+**The `Disclosure` convention, now load-bearing.** §S11.8 recorded that the tool cannot confirm a disclosure
+exists, only that its vocabulary appears. Adopted on both sides: every in-place disclosure opens with the
+literal word **`Disclosure`**. Retrofitted to the four written earlier that lacked it, which moved the
+candidate list from 13 to 10 and stopped the tool re-flagging our own corrections. The point is not the word;
+it is that **the audit and the reader now look for the same token.** Stream 1's deeper catch on the same
+sweep: their fix was still flagged because they had landed A1's resolution on `cooperC3`, the declaration where
+the *substance* lives, and not on `partner_res0`, the declaration the review actually **named**. The rule gains
+a clause: *the disclosure goes on the declaration the criticism names, which is not always the one where the
+substance lives.*
 
 **Two limitations of the tooling, both found by running it on my own fixes.**
 1. *Homonyms.* Binding a base name to the first file read produced a **false positive** against

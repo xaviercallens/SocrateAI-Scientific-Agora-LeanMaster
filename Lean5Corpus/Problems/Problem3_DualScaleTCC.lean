@@ -43,8 +43,8 @@ $$\lambda_{\mathrm{phys}} = R_{\mathrm{eff}}(R) \cdot \lambda_0 \ge 2 l_{\mathrm
 The initial singularity is replaced by a smooth self-dual bounce at $R = \sqrt{\alpha'}$, and the Trans-Planckian
 Censorship Conjecture is satisfied unconditionally without fine-tuning cosmological parameters.
 
-**Correction (2026-09-21) — the paragraph above is a Tier C identification, not a theorem, and the book
-already says so.** `papers/book/chapters/ch27_swampland.tex` reads this module as follows, and it is right:
+**Disclosure / correction (2026-09-21) — the paragraph above is a Tier C identification, not a theorem, and
+the book already says so.** `papers/book/chapters/ch27_swampland.tex` reads this module as follows, and it is right:
 *"None of these mentions a scale factor, a horizon or a mode crossing it; [the TCC inequality] is not
 formalized. The docstring's claim that TCC is 'satisfied unconditionally' is the Tier C identification of the
 box, not a theorem."* That criticism names **this** docstring, and it had not been applied here — the correct
@@ -212,9 +212,10 @@ theorem tcc_expansion_factor_positive
 
 /--
 ### THEOREM: The Unified TCC Cosmic Protection Contract
-**Read the module-level correction of 2026-09-21 first.** This is the conjunction of the three arithmetic
-facts below over `ℕ`; it is not the trans-Planckian censorship conjecture, which is not formalized in this
-file. "Guaranteeing" below means "conjoining".
+**Disclosure (2026-09-21) — read the module-level correction first.** This is the conjunction of the three
+arithmetic facts below over `ℕ`; it is **not** the trans-Planckian censorship conjecture, which is not
+formalized in this file. "Guaranteeing" below means "conjoining". `papers/book/chapters/ch27_swampland.tex`
+states the gap in full.
 
 **Physical Meaning (as originally written, and Tier C):** Formal master contract guaranteeing the simultaneous
 satisfaction of:

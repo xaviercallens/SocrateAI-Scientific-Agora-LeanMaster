@@ -84,7 +84,7 @@ theorem no_flat_desitter_vacuum (s : FluxVacuumState) :
 /-- Master Theorem 4: Unified de Sitter Swampland Contract.
     Simultaneous formal verification of flux positivity, steepness bound, and no-flat-vacuum theorem.
 
-    **Correction (2026-09-21) — what this is, moved here from the book.**
+    **Disclosure (2026-09-21) — what this is, moved here from the book.**
     `papers/book/chapters/ch27_swampland.tex` reads it as: *"The field `volume` is never used, so the
     'potential' has no volume dependence and the 'gradient' is a second copy of the numerator. The physics
     behind the file is sound and elementary … But `ln V` is not a canonically normalized field, so the

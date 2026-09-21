@@ -28,7 +28,7 @@ theorem picard_spectral_radius_pos :
   dsimp [picardSpectralRadius]
   norm_num
 
-/-- **The same statement as `picard_spectral_contraction`, under a second name** — the proof is that theorem,
+/-- **Disclosure (2026-09-21) — the same statement as `picard_spectral_contraction`, under a second name** — the proof is that theorem,
 by `rfl` of the term. It is `1/18 < 1`, a fact about two numerals. No operator, no iteration, no fixed point
 and no norm appears in this file, so neither declaration is a convergence criterion for anything: a
 contraction-mapping argument would need the Picard map on a function space, a Lipschitz constant `L` of the

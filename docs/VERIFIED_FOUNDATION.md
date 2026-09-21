@@ -319,6 +319,18 @@ the "steepness bound" is reflexivity (`N² > 0`, `2N² ≥ 2N²`, `2N² ≠ 0` o
 statements unchanged, nothing deleted; `lake build Lean5Corpus` exit 0. Those two files carry no statement-lock
 entry and were deliberately left unlocked — locking them is a statement-review decision, not part of this fix.
 
+**Audit the auditor (same release).** Stream 1 ran their scanners over their scanners and found **modifier
+blindness** — anchoring on `^(theorem|lemma)` misses every `noncomputable`/`private`/`protected` declaration
+(41 of 465 on their side, including the source-of-record for their headline result). Checked here: this
+repository has **no** modifier-prefixed theorems, so the cost was 2 — and the 2 are `add_pos` and `add_neg`,
+both `@[simp]`, **the exact pair `axiom_audit.py` and `statement_lock.py` could not see until the `v3.17.0`
+gate fix**. Three tools, one anchoring bug, the same two theorems; the v3.17.0 fix repaired two files and never
+became a convention. Corrected count: **666 of 836** theorem/lemma declarations flagged, not `666 of 834` as
+first reported. Both tools now take `--self-test`, asserting those controls are visible before any run is
+trusted — a regex fix repairs one tool, a self-test makes the next one fail loudly. The `Disclosure` token
+convention was adopted on both sides and retrofitted to the five written earlier, which moved this repository's
+candidate list from 13 to 10 and stopped the tool re-flagging our own corrections. `LL.md` §S11.9.
+
 **The uncomfortable half.** The book is *very good* at this: ch27's tier table already lists the module's real
 content as `(R²+1)λ₀ ≥ 2; M/H ≥ 1 (ℕ)`, and ch32 does the same for `bdf2_order_bound`. The honest reading
 existed, was detailed, and was ours. **Writing the critique is not the same as landing it** — a critique that

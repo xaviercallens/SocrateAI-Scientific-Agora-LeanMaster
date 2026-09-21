@@ -24,7 +24,7 @@ theorem implicit_euler_denominator_lower_bound (sys : StiffODESystem) (h : ℝ) 
     1 ≤ 1 - h * eig := by
   nlinarith
 
-/-- **The name promises an order bound; the statement contains none.** `dim : ℕ`, so `0 ≤ sys.dim` is
+/-- **Disclosure (2026-09-21) — the name promises an order bound; the statement contains none.** `dim : ℕ`, so `0 ≤ sys.dim` is
 `Nat.zero_le` — true of every natural number, and therefore of every `StiffODESystem`; the hypothesis `sys` is
 not used in substance and nothing about the second-order backward differentiation formula, its order of
 accuracy or its stability region appears anywhere in this file.

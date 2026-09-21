@@ -18,8 +18,9 @@ LIBS = ["DualScaleDyons","StringTheoryFoundation","DualScaleStream2","DualScaleM
         "DualScaleM24Formalization","DualScaleValidation","Lean5Corpus"]
 
 # --- build declaration -> (file, own docstring) ---
-DECL = re.compile(r'(?:/--(?P<doc>.*?)-/\s*)?^\s*(?:@\[[^\]]*\]\s*)?(?:theorem|lemma)\s+(?P<name>[A-Za-z_][\w\'.]*)',
-                  re.M | re.S)
+DECL = re.compile(r'(?:/--(?P<doc>.*?)-/\s*)?^\s*(?:@\[[^\]]*\]\s*)?'
+                  r'(?:(?:private|protected|noncomputable|partial|unsafe|scoped|local)\s+)*'
+                  r'(?:theorem|lemma)\s+(?P<name>[A-Za-z_][\w\'.]*)', re.M | re.S)
 # A base name can be shared by several declarations in different namespaces -- this repo has
 # three `k3_euler_characteristic`. Keep ALL homonyms: binding the name to whichever file was
 # read first produced a false positive against a declaration that *is* correctly disclosed,
@@ -60,6 +61,18 @@ for name, srcs in sorted(near.items()):
     else:
         missing.append((name, files + (f"   [{len(cands)} homonyms]" if len(cands) > 1 else ''),
                         sorted(srcs)))
+
+
+# --- self-test: a scan that cannot SEE a declaration reports it as clean -----------------
+# `add_pos`/`add_neg` (both `@[simp]`) were invisible to axiom_audit.py and statement_lock.py
+# until the v3.17.0 gate fix, and invisible again to the first version of these tools: three
+# tools, one anchoring bug, the same two theorems. Stream 1 found 41 of 465 invisible on their
+# side (modifier-prefixed). An empty report is NOT a clean bill.
+if '--self-test' in sys.argv:
+    _missing = [n for n in ('add_pos', 'add_neg') if n not in decls]
+    print('SELF-TEST ' + ('FAIL -- parser cannot see: ' + ', '.join(_missing) if _missing
+                          else 'ok -- attribute-prefixed controls visible'), file=sys.stderr)
+    sys.exit(1 if _missing else 0)
 
 print("=== DISCLOSED IN PROSE BUT NOT AT THE DECLARATION ===")
 for name, f, srcs in missing:
