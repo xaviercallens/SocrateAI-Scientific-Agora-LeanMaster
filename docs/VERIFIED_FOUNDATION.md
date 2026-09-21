@@ -265,11 +265,30 @@ block comments, line comments **and string literals** before matching, and carri
 `--self-test` (comments and strings hidden; a real `sorry` and a `native_decide` still visible). All three audit
 tools ship with `--self-test`, each verified to exit non-zero when its bug is reinstated.
 
-**G5, stated exactly.** Producer = verifier for the bulk of `FrickeRepair.lean`: no subagent was used, and
-sympy-before-Lean is one author with two tools. It **is** satisfied externally for the two theorems carrying
-the weight — `sym2_is_substitution` (Stream 1 checked the convention two independent ways, generalised it to an
-arbitrary `CommRing` and put it through their own kernel) and `repair_selects` (independent enumerator,
-validated against the known class numbers at `−3, −4, −7, −8, −15, −20, −23, −24` before being trusted).
+**G5, stated exactly — corrected 2026-09-21, after release, at Stream 1's insistence.** Producer = verifier for
+the bulk of `FrickeRepair.lean`: no subagent was used, and sympy-before-Lean is one author with two tools.
+Externally:
+
+* `sym2_is_substitution` — **independently re-derived and kernel-checked** by the Stream 1 session, which
+  checked the convention two ways, reimplemented it generalised to an arbitrary `CommRing` with the matrix as
+  argument, and put it through their own kernel. A genuine second party reaching the same result.
+* `repair_selects` — **its three asserted values were confirmed**, not the theorem. Their independent
+  enumerator (validated against the known class numbers at `−3, −4, −7, −8, −15, −20, −23, −24` *before*
+  being trusted) gives `reducedForms 1 = []`, `2 = []`, `3 = [(1,1,1)]`. **They have never read our
+  `reducedForms`.** Our `decide +kernel` shows our definition produces those values; theirs shows the values
+  are right; together: our definition returns the right answer at `1, 2, 3` — **and nothing about it being
+  correct in general**.
+* Everything else in the file: producer = verifier, not externally checked.
+
+> **Correction, and why it is recorded rather than quietly patched.** The `v3.45.0` release notes and this
+> paragraph first read "satisfied externally for `sym2_is_substitution` **and `repair_selects`**". That
+> overstates a **G5** claim — the gate that says *someone else checked* — and it does so about `reducedForms`,
+> the very declaration whose reliance on its own name is why `reducedForms_counts_imprimitive` exists. The
+> correct width had been stated to Stream 1 two messages earlier and did not survive compression into a table
+> row; they read the published notes and sent it back. The GitHub release notes are corrected. **The annotated
+> tag `v3.45.0` still carries the superseded wording** and is deliberately not rewritten: a published artefact
+> is not edited to hide an error in it. This is `LL.md` §S11.8 applied to our own release — a summary that drops
+> a limiting clause is the same defect as a docstring that drops one.
 
 
 `DualScaleDyons/FrickeRepair.lean` (new, 14 theorems). Reading: `docs/STREAM8_WHICH_K3.md` §9, G10; lessons in
