@@ -159,6 +159,14 @@ finite set is attained. **That is precisely the step the `φ(n) ≤ d` form got 
 computable `psi` of §5b before §5b-bis. Stating the general theorem against the capped definition is the trap
 that §5b-bis exists to prevent.
 
+*The bridge to the computable side, half of it closed.* `primePart_eq_ord_proj` proves
+`primePart n p = p ^ v_p(n)` for prime `p` and `n ≠ 0` — **the identification `primePart`'s name asserts, now a
+theorem instead of a docstring claim, and *false* before §5b-bis**. What remains for `psiM n = psi n` is
+`isPrimeB p = true ↔ p.Prime` plus the `List.range`-filter / `Nat.primeFactors` and `foldl` / `Finset.sum`
+correspondences. The obvious shortcut does not work and was tried: `Nat.primeFactors 15 = {3,5}` does not
+reduce under `decide` (the `Multiset` permutation instance sticks) and `simp` makes no progress, so `psiM`'s
+values cannot be pinned pointwise either.
+
 *Non-vacuity, and what it does not cover.* `psiM_fifteen_le_six` and `psiM_twentyfour_le_six` instantiate the
 theorem at `S = {3,5}` and `S = {8,3}`, giving `ψ(15) ≤ 6` and `ψ(24) ≤ 6` — exactly the rank at which §5b
 exhibits `mat15` and `mat24`, so the arithmetic does not exclude what those matrices realise (while

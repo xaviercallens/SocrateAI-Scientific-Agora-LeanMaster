@@ -34,6 +34,8 @@ import Mathlib.Algebra.Order.BigOperators.Group.Finset
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Positivity
 import Mathlib.Data.Nat.GCD.BigOperators
+import Mathlib.Data.Nat.Log
+import DualScaleStream2.Orientifold.CrystallographicOrders
 
 namespace DualScaleStream2.Orientifold.CrystallographicArithmetic
 
@@ -223,10 +225,17 @@ and `φ(15) = 8 > 6` would have. A bound that could not be attained would be evi
 
 **What these two corollaries do NOT establish.** They are upper bounds, so on their own they are consistent
 with `psiM` being identically `0`. `totient_le_psiM` gives the other direction in general, but **no numeric
-value of `psiM` is pinned in the kernel here**: `Nat.factorization` is a `Finsupp` and does not reduce under
-`decide`, and the bridge to the computable `psi` of `CrystallographicOrders.lean` — which *is* pinned
-numerically, and which `psi_le_six_list` evaluates — is **not proved**. Proving `psiM n = psi n` for
-`0 < n` is the obvious next small step and would let each file's strength cover the other's gap. -/
+value of `psiM` is pinned in the kernel here**, and that gap is narrower than it was but still real:
+
+* **Closed (§7):** `primePart_eq_ord_proj` proves `primePart n p = p ^ n.factorization p` for prime `p` and
+  `n ≠ 0` — the identification `primePart`'s name asserts, now a theorem rather than a docstring claim, and
+  *false* before the 2026-09-21 correction.
+* **Still open:** `psiM n = psi n`. It needs two more bridges — `isPrimeB p = true ↔ p.Prime`, and the
+  `List.range` filter of `psi` against `Nat.primeFactors` as a `Finset`, with `foldl` against `Finset.sum`.
+  Without it, `psi_le_six_list`'s numeric content does not transfer to `psiM`.
+* **Why the obvious shortcut fails:** `Nat.primeFactors 15 = {3, 5}` does **not** reduce under `decide` (the
+  `Multiset` permutation instance gets stuck) and `simp` makes no progress on it, so `psiM`'s values cannot be
+  pinned pointwise either. Tried and recorded rather than assumed. -/
 theorem psiM_fifteen_le_six : psiM 15 ≤ 6 := by
   have h : psiM 15 ≤ ∑ e ∈ ({3, 5} : Finset ℕ), Nat.totient e :=
     psiM_le_sum_totient (S := ({3, 5} : Finset ℕ)) (by decide)
@@ -242,5 +251,56 @@ theorem psiM_twentyfour_le_six : psiM 24 ≤ 6 := by
       (show ({8, 3} : Finset ℕ).lcm id = 24 by decide)
   have hsum : ∑ e ∈ ({8, 3} : Finset ℕ), Nat.totient e = 6 := by decide
   omega
+
+/-! ### 7. The bridge to the computable `primePart` / `psi` -/
+
+open DualScaleStream2.Orientifold.CrystallographicOrders in
+/-- The defining fold of `primePart`, as a one-step recursion. -/
+private theorem foldPow_succ (n p m : ℕ) :
+    (List.range (m + 1)).foldl (fun acc a => if n % p ^ a == 0 then p ^ a else acc) 1
+      = if n % p ^ m == 0 then p ^ m else
+          (List.range m).foldl (fun acc a => if n % p ^ a == 0 then p ^ a else acc) 1 := by
+  rw [List.range_succ, List.foldl_append]
+  simp
+
+open DualScaleStream2.Orientifold.CrystallographicOrders in
+/-- Past the exact valuation the fold is constant: no larger power of `p` divides `n`. -/
+private theorem foldPow_stable (n p : ℕ) (hn : n ≠ 0) (hp : p.Prime) :
+    ∀ m, n.factorization p + 1 ≤ m →
+      (List.range m).foldl (fun acc a => if n % p ^ a == 0 then p ^ a else acc) 1
+        = p ^ n.factorization p := by
+  intro m hm
+  induction m with
+  | zero => omega
+  | succ k ih =>
+    rw [foldPow_succ]
+    rcases Nat.lt_or_ge (n.factorization p) k with hk | hk
+    · -- `k > v`, so `p ^ k ∤ n` and the fold does not update
+      have hnd : ¬ p ^ k ∣ n := fun hdvd =>
+        Nat.pow_succ_factorization_not_dvd hn hp
+          (dvd_trans (pow_dvd_pow p (by omega)) hdvd)
+      have hb : (n % p ^ k == 0) = false := by
+        simpa [Nat.dvd_iff_mod_eq_zero] using hnd
+      rw [hb]
+      simpa using ih (by omega)
+    · -- `k ≤ v` and `v + 1 ≤ k + 1` force `k = v`; here the fold updates to `p ^ v`
+      have hkv : k = n.factorization p := by omega
+      have hdvd : p ^ k ∣ n :=
+        hkv ▸ (Nat.Prime.pow_dvd_iff_le_factorization hp hn).mpr le_rfl
+      have hb : (n % p ^ k == 0) = true := by simpa [Nat.dvd_iff_mod_eq_zero] using hdvd
+      rw [hb, hkv]
+      simp
+
+open DualScaleStream2.Orientifold.CrystallographicOrders in
+/-- **`primePart` is the exact `p`-part of `n`** — the identification its name asserts, now in the kernel
+rather than in its docstring. Before 2026-09-21 this statement was *false* (`primePart 512 2 = 256`), and
+nothing in the file could see that, because every use sat inside `List.range 201`; `LL.md` §S11.1. -/
+theorem primePart_eq_ord_proj {n p : ℕ} (hn : n ≠ 0) (hp : p.Prime) :
+    primePart n p = p ^ n.factorization p := by
+  have hle : n.factorization p ≤ Nat.log p n := by
+    refine Nat.le_log_of_pow_le hp.one_lt ?_
+    exact Nat.le_of_dvd (Nat.pos_of_ne_zero hn)
+      ((Nat.Prime.pow_dvd_iff_le_factorization hp hn).mpr le_rfl)
+  exact foldPow_stable n p hn hp (Nat.log p n + 2) (by omega)
 
 end DualScaleStream2.Orientifold.CrystallographicArithmetic
