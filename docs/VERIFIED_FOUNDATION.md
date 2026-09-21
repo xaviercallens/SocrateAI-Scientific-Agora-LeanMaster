@@ -248,6 +248,30 @@ exactly these two CHANGED plus the two new definitions ADDED; C-B's premise note
 
 ## 0--------------. `v3.45.0` (2026-09-21): G10 — the repair proved, and the independence it does not have
 
+**Release gates, `v3.45.0`, all five run at the released tree with exit codes read unpiped.**
+
+| gate | command | result |
+|---|---|---|
+| G1 build | `lake build` × 10 libraries | **exit 0**, `Build completed successfully (8939 jobs)`, 0 errors |
+| G2 `sorry` | `tools/sorry_grep.py` (**new**) | **exit 0**, clean across ten libraries |
+| G3 axioms | `tools/axiom_audit.py` × 10 | **exit 0** each; **836 audited, 0 failing** |
+| G4 lock | `tools/statement_lock.py --check` | **exit 0**, OK; **1277 declarations in 110 files** |
+| G5 producer ≠ verifier | — | **partial, and disclosed** (below) |
+
+`tools/sorry_grep.py` is new because the previous G2 was a shell grep that returned ~20 docstring false
+positives and one *string-literal* hit (`s!"{totalSorryCount} sorry axioms remaining"`), making its exit code
+permanently `1`. A gate that is always red is a signal engineered to be ignored (`LL.md` §S11.9). It strips
+block comments, line comments **and string literals** before matching, and carries a two-directional
+`--self-test` (comments and strings hidden; a real `sorry` and a `native_decide` still visible). All three audit
+tools ship with `--self-test`, each verified to exit non-zero when its bug is reinstated.
+
+**G5, stated exactly.** Producer = verifier for the bulk of `FrickeRepair.lean`: no subagent was used, and
+sympy-before-Lean is one author with two tools. It **is** satisfied externally for the two theorems carrying
+the weight — `sym2_is_substitution` (Stream 1 checked the convention two independent ways, generalised it to an
+arbitrary `CommRing` and put it through their own kernel) and `repair_selects` (independent enumerator,
+validated against the known class numbers at `−3, −4, −7, −8, −15, −20, −23, −24` before being trusted).
+
+
 `DualScaleDyons/FrickeRepair.lean` (new, 14 theorems). Reading: `docs/STREAM8_WHICH_K3.md` §9, G10; lessons in
 `LL.md` §S11.
 

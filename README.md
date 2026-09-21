@@ -40,7 +40,7 @@ literature (Tier L) versus this project's own conjectures (Tier C, not yet deriv
 
 Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
 invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
-every theorem and lemma (**822 audited theorems across the ten first-party libraries** depend on
+every theorem and lemma (**836 audited theorems across the ten first-party libraries** depend on
 nothing beyond the three standard Lean axioms — see §10 and
 [`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md), which is the authoritative,
 gate-by-gate status document that this README summarizes).
@@ -172,7 +172,7 @@ continuous parameter survives.
 | **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
 | **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
 | **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
-| **Kernel Verification** | None (paper only) | 822/822 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
+| **Kernel Verification** | None (paper only) | 836/836 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
 
 The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
 (Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
@@ -506,7 +506,10 @@ bare keyword — and it also catches `native_decide` (`Lean.ofReduceBool`), whic
 ```bash
 lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 ```
-Last full run (2026-09-19, all ten libraries re-audited on Lean v4.34.0-rc2 during the toolchain migration (§0b of `docs/VERIFIED_FOUNDATION.md`); `DualScaleStream2` re-audited 2026-09-20 after v3.37.0, `DualScaleDyons` after v3.42.0), **822 theorems audited across all ten libraries, 0 failing**:
+Last full run (**2026-09-21, `v3.45.0`** — all ten libraries re-audited in one session rather than a total
+carried forward and incremented, which is itself a lesson of that release; `LL.md` §S11.9),
+**836 theorems audited across all ten libraries, 0 failing**. The exit code was read unpiped: piping the tool
+through `| tail` discards it, and it *does* return `1` on failure:
 
 | Library | Theorems audited | Failing |
 |---|:---:|:---:|
@@ -519,19 +522,36 @@ Last full run (2026-09-19, all ten libraries re-audited on Lean v4.34.0-rc2 duri
 | `DualScaleValidation` | 23 | 0 |
 | `DualScaleCosmology` (Stream 3, with the verdicts of Streams 6–7) | 59 | 0 |
 | `DualScaleMoonshine` (Stream 4) | 101 | 0 |
-| `DualScaleDyons` (Streams 5, 8, 9 bridge) | 152 | 0 |
-| **Total** | **822** | **0** |
+| `DualScaleDyons` (Streams 5, 8, 9 bridge) | 166 | 0 |
+| **Total** | **836** | **0** |
 
-**What the number 785 does and does not count (disclosure added 2026-09-20).** It counts *declarations whose
-axiom dependencies were checked*. Three of them, all in `StringTheoryFormalization`, have the statement `True`
-and are placeholders recording an intent rather than results: `ward_identity_translation`,
-`ward_identity_dilatation` (`Frontier/SL2CSymmetry.lean`) and `fm_squared_is_shift`
-(`StringDynamics/FourierMukai.lean`). Each is labelled vacuous in its own docstring, but the headline count did
-not say so until now. **Excluding them, 819 declarations carry mathematical content.** A fourth vacuous statement,
-`mapper_nerve_theorem` in `StringDynamics/TDAMapper.lean`, was *not* labelled — its docstring claimed a nerve
-theorem while its statement was `Finset.card ≥ 0` — and was corrected on 2026-09-20; the library still audits at
-89, because a vacuous theorem counts exactly as much as a real one. No library other than
-`StringTheoryFormalization` contains a `True` statement, and the Stream 2–9 work is clean.
+**What the number 836 does and does not count (disclosure of 2026-09-20, extended 2026-09-21).** It counts
+*declarations whose axiom dependencies were checked*. **A vacuous theorem counts exactly as much as a real
+one**, so the number is a measure of coverage, not of content.
+
+*Statement literally `True`* — three, all in `StringTheoryFormalization`, each labelled in its own docstring:
+`ward_identity_translation`, `ward_identity_dilatation` (`Frontier/SL2CSymmetry.lean`) and
+`fm_squared_is_shift` (`StringDynamics/FourierMukai.lean`). A fourth, `mapper_nerve_theorem`
+(`StringDynamics/TDAMapper.lean`), claimed a nerve theorem while stating `Finset.card ≥ 0`; corrected
+2026-09-20.
+
+*Statement true but far weaker than the name — found 2026-09-21 and **disclosed in place**, statements
+unchanged.* A vacuous statement need not be `True`; it need only be implied by nothing, which is why the
+2026-09-20 sweep (keyed on `= True`) could not see these:
+
+| declaration | what it actually states |
+|---|---|
+| `bdf2_order_bound` (`StringDynamics/StiffIntegrators.lean`) | `0 ≤ sys.dim` with `dim : ℕ` — `Nat.zero_le`; nothing about BDF2 |
+| `picard_spectral_contraction`, `picard_convergence` (`StringDynamics/PicardSpectral.lean`) | `1/18 < 1`; the second is the first under another name, and `picardSpectralRadius := 18` is assigned, not computed |
+| `tcc_cosmic_protection_contract` (`Lean5Corpus/Problems/Problem3_DualScaleTCC.lean`) | over `ℕ`, with `planck_length := 1`: a product of two naturals one of which is `≥ 2` is `≥ 2`, and is not `≤ 1`. Not the trans-Planckian censorship conjecture |
+| `desitter_swampland_master_contract` (`Problem6_FluxSwampland.lean`) | `N² > 0`, `2N² ≥ 2N²`, `2N² ≠ 0`; the `volume` field is declared and never read |
+| `genesis_no_singularity`, `self_dual_symmetric` (`DualScaleM24Formalization/DualScale/EffectiveMetric.lean`) | a positive rational is positive (both are structure *fields*); and `α'/α' = 1` |
+
+In every one of these cases **the honest reading already existed in `papers/book/`** and had simply not been
+written at the declaration, so it did not travel with it — including into these files' own `@rag_query`
+metadata. `LL.md` §S11.7–S11.9. All of them sit in the legacy Phase-0 libraries
+(`StringTheoryFormalization`, `Lean5Corpus`, `DualScaleM24Formalization`); **the Stream 2–9 work is clean by
+the same tests**, and Stream 9 already carries its conditional status at the declaration.
 
 "0 failing" means every theorem depends on nothing beyond `propext`, `Classical.choice` and
 `Quot.sound`.
