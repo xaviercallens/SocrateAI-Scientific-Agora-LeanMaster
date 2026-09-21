@@ -224,7 +224,23 @@ demonstrably fires.
 *One more slip, in the control itself, worth recording because it is the same shape a third time.* The first
 run reported `exit=0` for the buggy copies — the harness was `python3 ... | tail -1` and `$?` was **`tail`'s**
 exit code, not Python's. The measurement measured the wrong object while printing the right words. Verifying a
-verification is not exempt: check what the number you are reading is actually a number *of*.
+verification is not exempt: check what the number you are reading is actually a number *of*. Stream 1 then
+turned this on their own day's work and found every build they had reported was piped through `grep`, so every
+exit code they read was grep's; the claims held, but *by habit of reading the text rather than the number*.
+Their demonstration of the live trap is the one to remember:
+`lake build NoSuchTarget 2>&1 | grep "Build completed"; echo $?` → **0**, reading as success.
+
+**Audited here in the same pass, and the gate tools are fine but the reading was not.** Every `lake build` in
+this session was unpiped (`> log 2>&1; echo $?`) or used `${PIPESTATUS[0]}`, so those numbers were real. But
+**`axiom_audit.py` and `statement_lock.py` were both read through `| tail`** — and both *do* return `1` on
+failure (`return 1 if bad else 0`, `sys.exit(main())`), so a meaningful signal was discarded and the text read
+instead. Re-run unpiped: `axiom_audit DualScaleDyons` **exit 0**, 166 audited / 0 failing; `statement_lock
+--check` over all ten libraries **exit 0**, OK.
+
+**And the lock is now mutation-verified, not merely green.** Changing `sym2_S_det`'s statement from `= 1` to
+`= 2` makes `--check` print `CHANGED DualScaleDyons/FrickeRepair.lean :: sym2_S_det` and **exit 1**; reverted,
+it returns to exit 0. A gate that has never been seen go red is a gate you are trusting, not running — the same
+rule as the self-test, one layer down. **Read the exit code, and make sure the exit code is the tool's.**
 
 **Corrected count: 666 of 836**, not `666 of 834` as first reported — our denominator was the narrow anchor's.
 Small here only because of the structural accident that we have no `noncomputable` theorems, which is exactly

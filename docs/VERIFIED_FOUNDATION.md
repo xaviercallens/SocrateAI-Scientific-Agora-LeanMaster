@@ -330,7 +330,15 @@ first reported. Both tools now take `--self-test`, asserting those controls are 
 trusted — a regex fix repairs one tool, a self-test makes the next one fail loudly. **The self-test is itself
 negative-controlled:** reintroducing the `v3.17.0` anchoring bug into scratch copies makes both print
 `SELF-TEST FAIL -- parser cannot see: add_pos, add_neg` and exit 1, so the guard is verified to fire rather
-than asserted to. The `Disclosure` token
+than asserted to.
+
+**Gate exit codes, re-read.** Every `lake build` this session was unpiped or used `${PIPESTATUS[0]}`, so those
+numbers were the compiler's. But `axiom_audit.py` and `statement_lock.py` had been read through `| tail`, which
+discards their exit code — and both return `1` on failure. Re-run unpiped: **`axiom_audit DualScaleDyons`
+exit 0** (166 audited, 0 failing) and **`statement_lock --check` over all ten libraries exit 0** (OK). The lock
+is also **mutation-verified**: altering `sym2_S_det` from `= 1` to `= 2` produces
+`CHANGED … :: sym2_S_det` and **exit 1**, reverting restores exit 0. A gate never seen go red is a gate being
+trusted, not run. The `Disclosure` token
 convention was adopted on both sides and retrofitted to the five written earlier, which moved this repository's
 candidate list from 13 to 10 and stopped the tool re-flagging our own corrections. `LL.md` §S11.9.
 
