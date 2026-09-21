@@ -298,6 +298,31 @@ load-bearing for the entire repair and not provable here; (2) definiteness ⇒ f
 (3) the minimum is `D = −3`, uniquely `(1,1,1) = A₂` — Tier A; (4) the rank-2 lattice *is* CM data — Tier L,
 ll. 3093–3102.
 
+**Follow-on: the defect class mechanised, and one find (same release).** Stream 1 turned §S11.1 into a
+thirty-line triage (`scripts/name_vs_statement.py`, their repo) whose whole trick is to **strip docstrings and
+comments before asking whether the statement mentions the name's tokens** — otherwise the docstring supplies the
+words being tested for. Positive-controlled here first: it flagged all three surviving disclosed-vacuous
+declarations (`ward_identity_translation`, `ward_identity_dilatation`, `fm_squared_is_shift`), each with every
+name token absent and conclusion `True`. Run over the ten libraries it flags **666 of 834 `theorem`/`lemma`
+declarations** — 80%, so the raw list is a reading list and not a verdict; Lean states properties symbolically
+and the English word is legitimately absent. Filtering to a weak-statement signature cut it to 26.
+
+The genuine find is **`bdf2_order_bound`** (`StringTheoryFormalization/StringDynamics/StiffIntegrators.lean`):
+`dim : ℕ`, so `0 ≤ sys.dim` is `Nat.zero_le` — true of every natural number — while the name promises an order
+bound for the second-order backward differentiation formula, of which the file contains nothing. It is the
+`mapper_nerve_theorem` shape and **it survived `LL.md` §S10.5's repo-wide scan because that scan looked for
+statements literally equal to `True`**; a vacuous statement need not be `True`. `picard_convergence`
+(`PicardSpectral.lean`) is the adjacent case: `picard_spectral_contraction` under a second name, `1/18 < 1`,
+with no operator, iteration, fixed point or norm in the file.
+
+**Both were already disclosed — in the book.** `papers/book/chapters/ch32_cosmology.tex` reads them exactly
+right ("the name promises an order bound … the statement contains none"). The disclosure existed and was
+correct; it was simply **not at the source**, so it did not travel with the declaration into
+`papers/book/generated/lean_catalogue.md` or to anyone reading the Lean file. Both are now disclosed in place —
+**statements unchanged, nothing deleted**, per the practice used for `mapper_nerve_theorem`.
+`lake build StringTheoryFormalization` exit 0, statement lock unchanged (docstrings only). The remaining 264
+lower-signal flags are a reading list handed forward, not a defect count. `LL.md` §S11.7.
+
 **Scope.** Nothing here says which K3 is ours. `N = 4` gives no observable (Stream 7); G2's `i`/`ω` choice stays
 open.
 

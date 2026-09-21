@@ -98,6 +98,54 @@ nothing here, because the failure mode is not carelessness — it is near-certai
 (producer ≠ verifier) seen from the other side: **being right is not the same as having checked.** When citing a
 peer, cite the artefact they actually ran, at the width they actually ran it.
 
+## S11.7 Mechanise §S11.1: strip the docstring, then ask whether the statement mentions the name
+
+Stream 1 turned §S11.1 into a thirty-line triage and contributed it
+(`scripts/name_vs_statement.py` in their repo). The whole trick is two `re.sub` lines: **strip block comments,
+docstrings and line comments BEFORE asking whether the statement contains the name's tokens.** Without that
+everything looks clean, because the docstring supplies the very words being tested for — which is exactly how
+these declarations survive review.
+
+**Positive-control it first; this repository's history demands it.** Run it where the answer is known. Ours
+flagged all three surviving disclosed-vacuous declarations, each with every name token missing and conclusion
+`True`: `ward_identity_translation`, `ward_identity_dilatation`, `fm_squared_is_shift`. Only then was the rest
+of the output worth reading.
+
+**It is a reading list, not a verdict, and the raw output is useless.** 666 of 834 `theorem`/`lemma`
+declarations flagged across the ten libraries — 80%, because Lean states properties symbolically and the English
+word is legitimately absent (`isometry` is `Mᵀ G M = G`, `nonneg` is `0 ≤ x`, `involution` is `M * M = 1`).
+False negatives are the dangerous direction and the tool cannot establish that anything is clean. Two filters
+make it usable: **(a)** a weak-statement signature — conclusion `True`, `∨ True`, `∃ _, True`, or a trivial
+`0 ≤ n` — which cut 666 to 26; **(b)** the highest-signal flag is a missing **object** name (`fricke`, `glue`,
+`primitive`), not a missing property word, since an absent object usually means the identification is happening
+in prose.
+
+**What it found here, and the lesson is not the one expected.** Of the 26, four were already disclosed in place
+by the earlier campaign — the mechanism working. The genuine find was **`bdf2_order_bound`**
+(`StringTheoryFormalization/StringDynamics/StiffIntegrators.lean`): `dim : ℕ`, so `0 ≤ sys.dim` is
+`Nat.zero_le`, true of every natural number, while the name promises an order bound for the second-order
+backward differentiation formula. It is the `mapper_nerve_theorem` shape and **it survived §S10.5's scan because
+that scan looked for statements literally equal to `True`.** A vacuous statement need not be `True`; it only
+needs to be implied by nothing. `picard_convergence` is the adjacent case — `picard_spectral_contraction` under
+a second name, `1/18 < 1`, with no operator, iteration, fixed point or norm in the file.
+
+**The twist worth keeping.** Both were *already disclosed*, correctly and in detail, in
+`papers/book/chapters/ch32_cosmology.tex` — "the name promises an order bound … the statement contains none".
+The disclosure existed and was right; it was simply **not at the source**, so it did not travel with the
+declaration into `papers/book/generated/lean_catalogue.md` or to anyone reading the Lean file. Both are now
+disclosed in place, statements unchanged, nothing deleted.
+
+**Rule:** a disclosure belongs on the declaration, not only in the prose that discusses it. Prose is read by
+whoever reads that prose; a docstring is read by everyone who meets the theorem. And when a scan is written for
+one signature (`= True`), record what it *cannot* see, because the next instance will take the other shape.
+
+**Denominator discipline, learned twice in one day.** Report `666 of 834 theorem/lemma declarations`, not
+`of 1203` — 1203 is the statement lock's count of *all* declarations including `def`s, a different population.
+Stream 1 made the mirror-image slip (`208 of 481` where 481 counted three libraries' declarations and 208
+counted one library's theorems, the true ratio being 208/312) and corrected it at source. Numerator and
+denominator must name the same population; this is the same failure as carrying a repository total forward and
+incrementing it instead of re-measuring (§S11.4's cousin).
+
 ## S11.5 Two Lean sessions on this VM contend for page cache, not CPU
 
 A single-file `lake env lean` here sat at ~1% CPU for six minutes while the sibling repository elaborated: both
