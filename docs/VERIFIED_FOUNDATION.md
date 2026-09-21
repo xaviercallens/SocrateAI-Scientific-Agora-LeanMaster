@@ -327,7 +327,10 @@ both `@[simp]`, **the exact pair `axiom_audit.py` and `statement_lock.py` could 
 gate fix**. Three tools, one anchoring bug, the same two theorems; the v3.17.0 fix repaired two files and never
 became a convention. Corrected count: **666 of 836** theorem/lemma declarations flagged, not `666 of 834` as
 first reported. Both tools now take `--self-test`, asserting those controls are visible before any run is
-trusted — a regex fix repairs one tool, a self-test makes the next one fail loudly. The `Disclosure` token
+trusted — a regex fix repairs one tool, a self-test makes the next one fail loudly. **The self-test is itself
+negative-controlled:** reintroducing the `v3.17.0` anchoring bug into scratch copies makes both print
+`SELF-TEST FAIL -- parser cannot see: add_pos, add_neg` and exit 1, so the guard is verified to fire rather
+than asserted to. The `Disclosure` token
 convention was adopted on both sides and retrofitted to the five written earlier, which moved this repository's
 candidate list from 13 to 10 and stopped the tool re-flagging our own corrections. `LL.md` §S11.9.
 

@@ -215,6 +215,17 @@ attribute-prefixed controls are visible and exits non-zero otherwise, with the h
 it. A regex fix repairs one tool; a self-test makes the *next* tool fail loudly instead of quietly. Any future
 audit script over this repository should assert `add_pos`/`add_neg` are in its parse before reporting anything.
 
+**And negative-control the self-test — a self-test that cannot fail is this same trap one level up.** Stream 1
+insisted on it and was right; we had shipped a green self-test never seen go red. Done: the `v3.17.0` anchoring
+bug (`^(theorem|lemma)` at column 0) was reintroduced into scratch copies of both tools, and both then print
+`SELF-TEST FAIL -- parser cannot see: add_pos, add_neg` and **exit 1**; the real tools exit 0. The guard
+demonstrably fires.
+
+*One more slip, in the control itself, worth recording because it is the same shape a third time.* The first
+run reported `exit=0` for the buggy copies — the harness was `python3 ... | tail -1` and `$?` was **`tail`'s**
+exit code, not Python's. The measurement measured the wrong object while printing the right words. Verifying a
+verification is not exempt: check what the number you are reading is actually a number *of*.
+
 **Corrected count: 666 of 836**, not `666 of 834` as first reported — our denominator was the narrow anchor's.
 Small here only because of the structural accident that we have no `noncomputable` theorems, which is exactly
 why the bug would have gone unnoticed on this side. Stream 1's moved twice: `208/481` (wrong population) →
