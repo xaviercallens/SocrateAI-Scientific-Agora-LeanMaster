@@ -182,11 +182,34 @@ is pinned in the kernel**: `Nat.factorization` is a `Finsupp` and does not reduc
 `psiM n = psi n` is **not proved** — the obvious next small step, which would let each file's strength cover
 the other's gap.
 
-### 5d. S9.4b — the degree bound, and a correction to how this was scoped
+### 5d. S9.4b — **the crystallographic restriction, proved** (`CrystallographicArithmetic.lean`)
 
 The crystallographic restriction in its correct form — **`ψ(n) ≤ d` is *necessary* for an order-`n` automorphism
 of a rank-`d` lattice** — is still not formalized. It splits cleanly, and the split is the useful part of this
 entry:
+
+**`crystallographic_restriction`: a rank-`d` lattice carries an automorphism of order `n` only if
+`ψ(n) ≤ d`.** Unconditional — the only hypotheses are what "order `n`" means (`Aⁿ = 1`, and `n ∣ m` for every
+`m > 0` with `Aᵐ = 1`). This is the theorem §5b refuted in its `φ(n) ≤ d` form and §5c scoped; the `φ` form is
+false for every `d ≥ 5`, and this one is not.
+
+**Non-vacuity, as an exclusion rather than a bound.** `no_order_fifteen_in_rank_five` and
+`no_order_twentyfour_in_rank_five`: since `ψ(15) = ψ(24) = 6`, **no rank-`5` lattice has an automorphism of
+order `15` or `24`** — while rank `6` does, and §5b exhibits `mat15` and `mat24`. The restriction cuts exactly
+where it should, and the pair is sharp on both sides. The `φ` form would have excluded order `15` from rank `6`
+too (`φ(15) = 8 > 6`), contradicting `mat15`: §5b's refutation seen from the other direction.
+
+**How the two hypotheses of the first version were discharged — both by asking what the proof actually uses.**
+
+1. *The factorisation.* `sum_totient_le_dim` needed only a **degree** bound, so **divisibility suffices and the
+   equality was never required** (`sum_totient_le_dim_of_dvd`). Distinct cyclotomics over `ℚ` are coprime
+   (`cyclotomic.isCoprime_rat`, ready-made in Mathlib), so `∏_{e∈S} Φ_e ∣ minpoly` follows from each factor
+   dividing it — which holds *by construction* when `S` is defined as the set of such `e`.
+2. *The `lcm`.* `minpoly_dvd_prod`: splitting `Xⁿ − 1 = ∏_{e∣n} Φ_e` at `S` and using
+   `Irreducible.coprime_iff_not_dvd` on the complement shows the minimal polynomial has **no cyclotomic factors
+   outside `S`**. Then `lcm_eq_of_order`: each `e ∈ S` divides `lcm S`, so `∏_{e∈S} Φ_e ∣ X^{lcm S} − 1`, hence
+   `A^{lcm S} = 1`, hence `n ∣ lcm S`; with `S ⊆ n.divisors` giving the converse. **The order of `A` is the
+   `lcm` of its eigenvalue orders and not the largest** — the sentence the whole restriction turns on.
 
 * **The dimension bound — DONE, and it never needed module theory.** `sum_totient_le_dim`: if
   `minpoly ℚ A = ∏_{e∈S} Φ_e` then `Σ_{e∈S} φ(e) ≤ d`. Three Mathlib facts and nothing else —
@@ -207,9 +230,8 @@ entry:
   2. `lcm S = n` — the order of `A` is the `lcm` of the orders of its eigenvalues, **not the largest**; that
      confusion is exactly what made the `φ(n) ≤ d` form false (§5b). **Not proved here.**
 
-  What is left for a fully unconditional `ψ(n) ≤ d` is therefore *discharging those two*, which is polynomial
-  algebra over `ℚ` — extracting the subset `S` from a monic divisor of a squarefree product of irreducibles,
-  and reading the order off it.
+  *(Both were discharged the same day — see the top of this section. `psiM_le_dim` is kept as the intermediate
+  statement; `crystallographic_restriction` supersedes it.)*
 * **The arithmetic half — DONE, §5c above** (`psiM_le_sum_totient`). For a finite set `S` of positive integers
   with `lcm S = n`, `Σ_{e ∈ S} φ(e) ≥ ψ(n)`. The sketch that was recorded here, and which the proof follows: for each prime power `p^a ‖ n` with `p^a ≠ 2` some
   `e ∈ S` has `p^a ∣ e`; group the prime powers by the `e` they were assigned to; for an `e` carrying `k ≥ 2`

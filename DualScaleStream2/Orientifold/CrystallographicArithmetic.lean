@@ -39,6 +39,8 @@ import DualScaleStream2.Orientifold.CrystallographicOrders
 import Mathlib.RingTheory.Polynomial.Cyclotomic.Basic
 import Mathlib.LinearAlgebra.Matrix.Charpoly.Minpoly
 import Mathlib.Algebra.Polynomial.BigOperators
+import Mathlib.RingTheory.Polynomial.Cyclotomic.Roots
+import Mathlib.RingTheory.Coprime.Lemmas
 
 namespace DualScaleStream2.Orientifold.CrystallographicArithmetic
 
@@ -427,5 +429,136 @@ theorem psiM_le_dim {d n : ℕ} (A : Matrix (Fin d) (Fin d) ℚ) (S : Finset ℕ
     (hmin : minpoly ℚ A = ∏ e ∈ S, Polynomial.cyclotomic e ℚ) :
     psiM n ≤ d :=
   le_trans (psiM_le_sum_totient hS hlcm) (sum_totient_le_dim A S hmin)
+
+/-- **Hypothesis 1 discharged: divisibility is enough, and it comes for free.** Distinct cyclotomics over `ℚ`
+are coprime (`cyclotomic.isCoprime_rat`), so if each `Φ_e` for `e ∈ S` divides the minimal polynomial then so
+does their product — and a divisor's degree bounds it, which is all `sum_totient_le_dim` ever used. The
+equality hypothesis was stronger than necessary. -/
+theorem sum_totient_le_dim_of_dvd {d : ℕ} (A : Matrix (Fin d) (Fin d) ℚ) (S : Finset ℕ)
+    (hdvd : ∀ e ∈ S, Polynomial.cyclotomic e ℚ ∣ minpoly ℚ A) :
+    ∑ e ∈ S, Nat.totient e ≤ d := by
+  classical
+  have hprod : (∏ e ∈ S, Polynomial.cyclotomic e ℚ) ∣ minpoly ℚ A :=
+    Finset.prod_dvd_of_coprime
+      (fun a _ b _ hab => Polynomial.cyclotomic.isCoprime_rat hab) hdvd
+  have hmonic : (∏ e ∈ S, Polynomial.cyclotomic e ℚ).Monic :=
+    Polynomial.monic_prod_of_monic _ _ fun e _ => Polynomial.cyclotomic.monic e ℚ
+  have hdeg : (∏ e ∈ S, Polynomial.cyclotomic e ℚ).natDegree = ∑ e ∈ S, Nat.totient e := by
+    rw [Polynomial.natDegree_prod _ _ (fun e _ => Polynomial.cyclotomic_ne_zero e ℚ)]
+    exact Finset.sum_congr rfl fun e _ => Polynomial.natDegree_cyclotomic e ℚ
+  have h1 : (∏ e ∈ S, Polynomial.cyclotomic e ℚ).natDegree ≤ (minpoly ℚ A).natDegree :=
+    Polynomial.Monic.natDegree_le_of_dvd hmonic (minpoly.ne_zero (Matrix.isIntegral A)) hprod
+  have h2 : (minpoly ℚ A).natDegree ≤ A.charpoly.natDegree :=
+    Polynomial.Monic.natDegree_le_of_dvd (minpoly.monic (Matrix.isIntegral A))
+      A.charpoly_monic.ne_zero (Matrix.minpoly_dvd_charpoly A)
+  rw [Matrix.charpoly_natDegree_eq_dim, Fintype.card_fin] at h2
+  omega
+
+/-- **`ψ(n) ≤ d`, now modulo ONE hypothesis instead of two.** `hdvd` is discharged automatically whenever `S`
+is *defined* as the set of `e` whose cyclotomic divides the minimal polynomial, so the only thing still assumed
+is `lcm S = n` — the fact that the order of `A` is the `lcm` of its eigenvalue orders and **not the largest**,
+which is precisely what made the `φ(n) ≤ d` form false (§5b). -/
+theorem psiM_le_dim_of_dvd {d n : ℕ} (A : Matrix (Fin d) (Fin d) ℚ) (S : Finset ℕ)
+    (hS : ∀ e ∈ S, e ≠ 0) (hlcm : S.lcm id = n)
+    (hdvd : ∀ e ∈ S, Polynomial.cyclotomic e ℚ ∣ minpoly ℚ A) :
+    psiM n ≤ d :=
+  le_trans (psiM_le_sum_totient hS hlcm) (sum_totient_le_dim_of_dvd A S hdvd)
+
+/-- **Hypothesis 2, first half: the minimal polynomial has no cyclotomic factors outside `S`.** Split
+`X ^ n − 1 = ∏_{e ∣ n} Φ_e` at `S`; the minimal polynomial is coprime to every `Φ_e` it is not divisible by
+(`Irreducible.coprime_iff_not_dvd`), hence to the whole complementary product, hence divides the `S`-part.
+
+`S` is taken abstractly with `hcomp` rather than as a `Finset.filter`, so no `DecidablePred` instance for
+`Φ_e ∣ minpoly` is needed in the statement. -/
+theorem minpoly_dvd_prod {d n : ℕ} (hn : 0 < n) (A : Matrix (Fin d) (Fin d) ℚ)
+    (hA : A ^ n = 1) (S : Finset ℕ) (hsub : S ⊆ n.divisors)
+    (hcomp : ∀ e ∈ n.divisors, e ∉ S → ¬ Polynomial.cyclotomic e ℚ ∣ minpoly ℚ A) :
+    minpoly ℚ A ∣ ∏ e ∈ S, Polynomial.cyclotomic e ℚ := by
+  have hdvdX : minpoly ℚ A ∣ Polynomial.X ^ n - 1 := by
+    refine minpoly.dvd ℚ A ?_
+    simp [Polynomial.aeval_def, hA]
+  rw [← Polynomial.prod_cyclotomic_eq_X_pow_sub_one hn ℚ, ← Finset.prod_sdiff hsub] at hdvdX
+  refine IsCoprime.dvd_of_dvd_mul_left ?_ hdvdX
+  refine IsCoprime.prod_right fun e he => ?_
+  obtain ⟨hmem, hnot⟩ := Finset.mem_sdiff.mp he
+  have hpos : 0 < e := Nat.pos_of_mem_divisors hmem
+  exact (((Polynomial.cyclotomic.irreducible_rat hpos).coprime_iff_not_dvd).mpr
+    (hcomp e hmem hnot)).symm
+
+/-- **Hypothesis 2 discharged: `lcm S = n`.** One direction is `S ⊆ n.divisors`. The other is the sentence
+that makes the whole restriction work: since the minimal polynomial divides `∏_{e∈S} Φ_e` and every `e ∈ S`
+divides `lcm S`, that product divides `X^{lcm S} − 1`, so `A ^ lcm S = 1` and the order `n` divides `lcm S`.
+
+**The order of `A` is the `lcm` of the orders of its eigenvalues, not the largest of them** — and that is
+exactly what the `φ(n) ≤ d` form of the restriction got wrong (§5b). -/
+theorem lcm_eq_of_order {d n : ℕ} (hn : 0 < n) (A : Matrix (Fin d) (Fin d) ℚ)
+    (hA : A ^ n = 1) (hord : ∀ m, 0 < m → A ^ m = 1 → n ∣ m)
+    (S : Finset ℕ) (hsub : S ⊆ n.divisors)
+    (hcomp : ∀ e ∈ n.divisors, e ∉ S → ¬ Polynomial.cyclotomic e ℚ ∣ minpoly ℚ A) :
+    S.lcm id = n := by
+  have hdvdn : S.lcm id ∣ n := Finset.lcm_dvd fun e he => Nat.dvd_of_mem_divisors (hsub he)
+  set m := S.lcm id with hm
+  have hmpos : 0 < m := Nat.pos_of_ne_zero fun h => by
+    rw [h] at hdvdn; exact absurd (Nat.eq_zero_of_zero_dvd hdvdn) hn.ne'
+  -- each Φ_e for e ∈ S divides X^m - 1, and they are coprime, so their product does
+  have hprod : (∏ e ∈ S, Polynomial.cyclotomic e ℚ) ∣ Polynomial.X ^ m - 1 := by
+    refine Finset.prod_dvd_of_coprime
+      (fun a _ b _ hab => Polynomial.cyclotomic.isCoprime_rat hab) fun e he => ?_
+    have hedvd : e ∣ m := Finset.dvd_lcm he
+    have hepos : 0 < e := Nat.pos_of_mem_divisors (hsub he)
+    rw [← Polynomial.prod_cyclotomic_eq_X_pow_sub_one hmpos ℚ]
+    exact Finset.dvd_prod_of_mem _ (Nat.mem_divisors.mpr ⟨hedvd, hmpos.ne'⟩)
+  -- hence minpoly divides X^m - 1, hence A ^ m = 1
+  have hmin : minpoly ℚ A ∣ Polynomial.X ^ m - 1 :=
+    dvd_trans (minpoly_dvd_prod hn A hA S hsub hcomp) hprod
+  have hAm : A ^ m = 1 := by
+    have := Polynomial.aeval_eq_zero_of_dvd_aeval_eq_zero hmin (minpoly.aeval ℚ A)
+    simpa [Polynomial.aeval_def, sub_eq_zero] using this
+  exact Nat.dvd_antisymm hdvdn (hord m hmpos hAm)
+
+/-- **The crystallographic restriction, unconditional.** A rank-`d` lattice carries an automorphism of order
+`n` only if `ψ(n) ≤ d`, where `ψ(n) = Σ_{p^a ‖ n, p^a ≠ 2} φ(p^a)`.
+
+Both hypotheses of the earlier `psiM_le_dim` are now discharged: `S` is the set of `e ∣ n` whose cyclotomic
+divides the minimal polynomial, so the divisibility holds by construction, and `lcm S = n` is
+`lcm_eq_of_order`. What remains assumed is only what "order `n`" means: `A ^ n = 1`, and `n ∣ m` for every
+`m > 0` with `A ^ m = 1`.
+
+This is the theorem §5b refuted in its `φ(n) ≤ d` form and §5c scoped; the `φ` form fails for every `d ≥ 5`,
+and this one does not. -/
+theorem crystallographic_restriction {d n : ℕ} (hn : 0 < n) (A : Matrix (Fin d) (Fin d) ℚ)
+    (hA : A ^ n = 1) (hord : ∀ m, 0 < m → A ^ m = 1 → n ∣ m) :
+    psiM n ≤ d := by
+  classical
+  set S := n.divisors.filter fun e => Polynomial.cyclotomic e ℚ ∣ minpoly ℚ A with hS
+  have hsub : S ⊆ n.divisors := Finset.filter_subset _ _
+  have hcomp : ∀ e ∈ n.divisors, e ∉ S → ¬ Polynomial.cyclotomic e ℚ ∣ minpoly ℚ A := by
+    intro e he hnot hdvd
+    exact hnot (Finset.mem_filter.mpr ⟨he, hdvd⟩)
+  refine psiM_le_dim_of_dvd A S (fun e he => (Nat.pos_of_mem_divisors (hsub he)).ne')
+    (lcm_eq_of_order hn A hA hord S hsub hcomp) ?_
+  intro e he
+  exact (Finset.mem_filter.mp he).2
+
+/-- **Non-vacuity, in the strongest form available: an exclusion.** `ψ(15) = 6`, so no rank-`5` lattice
+carries an automorphism of order `15` — while rank `6` does, and §5b exhibits it (`mat15`). The restriction
+therefore cuts exactly where it should, and the pair of facts is sharp on both sides.
+
+Note that the `φ` form would have excluded order `15` from rank `6` as well (`φ(15) = 8 > 6`), contradicting
+`mat15`. That is §5b's refutation, seen from the other direction. -/
+theorem no_order_fifteen_in_rank_five :
+    ¬ ∃ A : Matrix (Fin 5) (Fin 5) ℚ, A ^ 15 = 1 ∧ ∀ m, 0 < m → A ^ m = 1 → 15 ∣ m := by
+  rintro ⟨A, hA, hord⟩
+  have h := crystallographic_restriction (by norm_num) A hA hord
+  rw [psiM_values.1] at h
+  omega
+
+/-- The same at order `24`: `ψ(24) = 6`, so rank `5` excludes it, and `mat24` realises it in rank `6`. -/
+theorem no_order_twentyfour_in_rank_five :
+    ¬ ∃ A : Matrix (Fin 5) (Fin 5) ℚ, A ^ 24 = 1 ∧ ∀ m, 0 < m → A ^ m = 1 → 24 ∣ m := by
+  rintro ⟨A, hA, hord⟩
+  have h := crystallographic_restriction (by norm_num) A hA hord
+  rw [psiM_values.2.1] at h
+  omega
 
 end DualScaleStream2.Orientifold.CrystallographicArithmetic
