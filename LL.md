@@ -1,6 +1,7 @@
 # Lessons Learned (LL)
 
-**Most recent session first** — read §S10 (Stream 9, the orientifold control, 2026-09-20), then §S9
+**Most recent session first** — read §S11 (G10 and the two-repository exchange, 2026-09-21), then
+§S10 (Stream 9, the orientifold control, 2026-09-20), then §S9
 (toolchain migration to v4.34.0-rc2, 2026-09-19) and §S8 (Stream 8,
 2026-09-19), then §S2 and §S2-I (Stream 2 run + improvements,
 2026-09-16/17) and §0 (2026-09-16) before anything below them.
@@ -13,6 +14,109 @@ foundation-theory coverage. Treat every number below the divider as unverified u
 independently re-checked (the pattern is the same one `FOUNDATIONS.md`'s own correction
 note and the root `README.md`'s "note on this revision" already flag elsewhere in this
 repo) rather than as ground truth to build the next session's narrative on.
+
+---
+
+# §S11. G10, and what a sibling repository caught that our gates could not (2026-09-21)
+
+Session context: `DualScaleDyons/FrickeRepair.lean` (G10), run alongside a live session of
+`SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal` ("Stream 1") on the same VM, with messages going both
+ways throughout. Every lesson below came out of that exchange and none of them would have come out of a solo run.
+
+## S11.1 A theorem can constrain an object completely and still never say what it is
+
+The defect, and it appeared **independently in both repositories in the same hour**:
+
+* Here: `fricke_is_proper_equivalence` was first stated as
+  `c*x^2 + -b*(x*y) + a*y^2 = a*(-y)^2 + b*((-y)*x) + c*x^2`. True; `ring` closes it. But the statement never
+  mentions `fricke`, `sym2` or `SL(2,ℤ)` — both sides are the same polynomial in five free variables. The claim
+  "the left-hand side is the Fricke transform of `(a,b,c)`" lived in the **docstring**.
+* There: `EmbeddingAssembly.lean` CONTROL 2, docstring "replacing `C` by `B` destroys orthogonality", statement
+  `Phi_Tᵀ * Lambda * (fromRows B 0) ≠ 0` — but `fromRows B 0` *is* `Phi_T`, definitionally, two lines up. The
+  theorem said only that `Φ_T` is not orthogonal to itself. The substitution the name advertised lived in the
+  **docstring**.
+
+Both files had every gate green. The common shape: the surrounding theorems *characterise* the object by its
+behaviour (`sym2_isometry`, `sym2_contravariant` constrain what `Sym²` does to the Gram form; the orthogonality
+controls constrain what the embedding does) and **none of them identifies it**. When nothing states what the
+object *is*, the name in the docstring silently does the identifying, and a reader — human or peer — supplies the
+missing step without noticing.
+
+**The fix, both times, was the same:** state what the object *is*, not only how it behaves. Here that meant
+`sym2_is_substitution` — general in nine variables, `sym2 p q r s *ᵥ ![a,b,c]` is the coefficient triple of
+`(x,y) ↦ Q(px+qy, rx+sy)` — plus `fricke_coeffs`, after which `fricke_is_proper_equivalence` is
+`rw [fricke_eq_sym2_S]; exact sym2_is_substitution 0 (-1) 1 0 a b c x y`, with `fricke` itself in the statement.
+There it meant restating the control with `Φ_M`'s own shape so the theorem is about the sign.
+
+**Test to apply to any new file:** for each named object, point at the theorem that would be *false* if the name
+were wrong. If the only thing that would change is a docstring, the identification is not in the kernel.
+
+## S11.2 Name where the kernel stops, and do not let a bounded check be demoted past its job
+
+`Q ∘ S` with `det S = 1` is a proper equivalence, hence fixes every class. That last step is the **definition**
+of the class relation — and this repository formalizes no class relation. So it is outside the kernel.
+
+The first draft got this wrong in both directions within one session. It first let a `PASS(box)` enumeration do
+the general theorem's work; corrected that (rightly) by proving the general theorem; and then **demoted the box
+check to "a control carrying no weight"** — which was wrong, because with the last step outside the kernel the box
+run is the only kernel-level evidence that our `reduce` implements the relation the theorems exhibit. It is back
+to evidence status, quoted as `PASS(box: 1 ≤ a,c ≤ 4, |b| ≤ 6)` in its own docstring.
+
+**Rule:** before demoting an enumeration as redundant, check that the theorem replacing it is complete *in Lean*,
+not complete in the write-up. And always tier the theorem separately from the inference drawn from it — here
+"fixes every class" is Tier A, "therefore selects nothing" is an inference, and the two must not be quoted as one.
+
+## S11.3 Agreement between two routes is worth nothing until someone shows they are two routes
+
+G9 published: "the repaired proposal reproduces G3's answer, **reached from the modular side**". G10 was written
+to prove it and instead refuted the clause — on an objection raised by the sibling project and then confirmed in
+**this repository's own pinned source**. For `ρ = 20` the rank-2 transcendental lattice *is* the CM datum
+(Huybrechts `huybrechts_K3Global.txt` ll. 3093–3102, "their rational period can be read off directly from the
+lattice of rank two `T(X)`"; ll. 16324–16328), so the binary-form enumeration and the "modular side" are one
+computation in two languages. The agreement was forced, not corroborative.
+
+Two further corrections fell out of the same objection: **absence of one morphism is weak evidence of no
+influence** when a classical correspondence connects the two sides by other means (so "the modular structure is
+inert" was too wide — what is inert is the Fricke involution); and the selection is **two steps, not one** — the
+cut `ρ = 20` lands you on the CM locus, the discriminant bound selects within it, and `ρ = 20` alone does *not*
+imply `T_S = A₂`.
+
+**Rule:** when two derivations agree, the first question is not "which is more rigorous" but "are these the same
+computation?" Name the dictionary that would make them the same, and say whether it applies.
+
+## S11.4 A peer's fenced transcript is a claim about a run, not the run — and the danger signature is near-certainty
+
+The sibling session sent four `#print axioms` output lines, then retracted them unprompted: it had not executed
+the run. It had the structural argument (no axiom module in the import graph) and a whole-namespace audit, and
+**the values it wrote out turned out to be exactly right** when the real run followed. Nothing was published in
+between, and the episode is recorded in `docs/VERIFIED_FOUNDATION.md` as a lesson rather than a black mark,
+because the handling was correct.
+
+The useful form of the rule is theirs, and it is sharper than "don't fabricate": *a fenced transcript must be
+pasted from a run in this session, and "pending" is always available.* A gate phrased "don't fabricate" catches
+nothing here, because the failure mode is not carelessness — it is near-certainty. This is gate G5
+(producer ≠ verifier) seen from the other side: **being right is not the same as having checked.** When citing a
+peer, cite the artefact they actually ran, at the width they actually ran it.
+
+## S11.5 Two Lean sessions on this VM contend for page cache, not CPU
+
+A single-file `lake env lean` here sat at ~1% CPU for six minutes while the sibling repository elaborated: both
+were I/O-bound on olean loading, with ~16 GB RAM free the whole time. `§S8.2`'s warning generalises — it applies
+**across repositories and across Claude sessions**, not just within one build. Also worth knowing before starting
+a long run next to one: a `lake env lean` on a full-library import can hold the Lake lock for ~10 minutes.
+**Ask the other session before starting, and say when you are clear.** That exchange cost two messages and saved
+an unknown number of 20–40 minute stalls.
+
+## S11.6 Ported code must match Lean's integer division, or the port invents failures
+
+Porting `AttractorCharges.reduceStep` to Python to pre-check a theorem produced **56 spurious class mismatches**.
+Cause: the port used truncation toward zero; Lean 4's `Int./` is `ediv` (floor for a positive divisor).
+`#eval ((-1 : Int) / 4)` gives `-1`, not `0`. With floor division there were zero mismatches. Had the port been
+trusted, the conclusion would have been the opposite of the truth.
+
+**Rule:** when pre-checking a Lean definition outside Lean, verify the division and modulus semantics with
+`#eval` on a negative operand *first*. `%` is `emod` and is always non-negative; the repo's own
+`discriminant_gap` relies on that.
 
 ---
 

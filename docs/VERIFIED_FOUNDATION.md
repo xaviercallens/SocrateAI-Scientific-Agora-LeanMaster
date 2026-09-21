@@ -246,6 +246,100 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0--------------. `v3.45.0` (2026-09-21): G10 — the repair proved, and the independence it does not have
+
+`DualScaleDyons/FrickeRepair.lean` (new, 14 theorems). Reading: `docs/STREAM8_WHICH_K3.md` §9, G10; lessons in
+`LL.md` §S11.
+
+**A prose paragraph of ours, closed and partly refuted.** G9 (`v3.42.0`) ended with an unproved sentence:
+demanding `ρ = 20` makes the transcendental lattice rank `2` and positive definite, so "the repaired proposal
+reproduces G3's answer, **reached from the modular side**". A paragraph no theorem depends on is the failure
+mode `LL.md` §S10.1 records. **The repair holds and is now proved; the struck clause is wrong.**
+
+**The cut does the selecting (Tier A).** `posdef_of_disc_neg` (`a > 0`, `4ac − b² > 0` ⇒ positive definite, from
+`4a·Q = (2ax+by)² + (4ac−b²)y²`); `reduced_bound` (`|b| ≤ a ≤ c` ⇒ `3a² ≤ 4ac − b²`, the finiteness
+`reducedForms` enumerates); `repair_selects` (with `discriminant_gap`: `reducedForms 1 = reducedForms 2 = []`,
+`reducedForms 3 = [(1,1,1)]`). The minimum is `D = −3` and the class is unique: `A₂`, G3's answer. No hypothesis
+in that statement mentions `N`, `Γ₀(N)` or the Fricke involution.
+
+**The Fricke involution is substitution by `S ∈ SL(2,ℤ)` (Tier A).** `sym2_is_substitution` — general in nine
+variables, and the theorem that was missing on *both* sides of this exchange: `sym2 p q r s *ᵥ ![a,b,c]` is the
+coefficient triple of `(x,y) ↦ Q(px+qy, rx+sy)`. With `fricke_coeffs` and `fricke_eq_sym2_S`
+(`fricke = sym2 0 (-1) 1 0`, no `N` anywhere in it) and `sym2_S_det` (`det S = 1`),
+`fricke_is_proper_equivalence` exhibits Fricke as a proper equivalence of forms — with `fricke` itself in the
+statement. `forms_pointwise_imp_coeffs` closes the pointwise-vs-coefficients question (one direction, and
+the name says so: `LL.md` §S2.13 records what happens when a one-directional theorem acquires an `iff` name).
+**Where the kernel stops:** proper equivalence ⇒ same class is the *definition* of the class relation, which
+this repository does not formalize; so `fricke_class_trivial_box` — `PASS(box: 1 ≤ a,c ≤ 4, |b| ≤ 6)` — is the
+kernel-level evidence that our own `reduce` implements it, not decoration. "Fixes every class" is the theorem;
+"therefore selects nothing" is the inference, and the two are not to be quoted as one.
+
+**What was refuted, and by whom.** The first draft read the above as "the modular structure is a passenger".
+**Wrong.** Stream 1 (`SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal`, tag `v0.10-two-lattices`) was
+asked to attack the claim and did, and the attack is confirmed in *our own* pinned source: for `ρ = 20` the
+rank-2 transcendental lattice **is** the CM datum — Huybrechts `papers/foundations/huybrechts_K3Global.txt`
+ll. 3093–3102 ("their rational period can be read off directly from the lattice of rank two `T(X)`") and
+ll. 16324–16328 (Tier L). So the binary-form enumeration and the "modular side" are one computation in two
+languages: **agreement forced, not corroborative.** Two further corrections of theirs are adopted: absence of a
+morphism between the rank-3 lattices is weak evidence of no influence when Shioda–Inose connects the sides by
+other means (so what is inert is the *Fricke involution*, not "the modular structure"); and the selection is
+**two steps, not one** — the cut lands on the CM locus, the discriminant bound selects within it, and `ρ = 20`
+alone does not imply `T_S = A₂`.
+
+**A defect of ours that their reading exposed, and the same defect in their file.** The first
+`fricke_is_proper_equivalence` was a five-variable polynomial identity closed by `ring` that never mentioned
+`fricke`, `sym2` or `SL(2,ℤ)` — the identification lived in the docstring. Independently, their
+`EmbeddingAssembly.lean` CONTROL 2 asserted "replacing `C` by `B` destroys orthogonality" with a statement whose
+`fromRows B 0` *is* `Phi_T` definitionally, so it said only that `Φ_T` is not orthogonal to itself. Both files
+had green gates. Both were fixed by stating what the object *is*, not only how it behaves. `LL.md` §S11.1.
+
+**Tier boundary.** (1) `ρ = 20 ⇒ rank T(X) = 2`, positive definite — **Tier L**, Huybrechts ll. 16324–16332,
+load-bearing for the entire repair and not provable here; (2) definiteness ⇒ finiteness with a minimum — Tier A;
+(3) the minimum is `D = −3`, uniquely `(1,1,1) = A₂` — Tier A; (4) the rank-2 lattice *is* CM data — Tier L,
+ll. 3093–3102.
+
+**Scope.** Nothing here says which K3 is ours. `N = 4` gives no observable (Stream 7); G2's `i`/`ω` choice stays
+open.
+
+**Independent verification, and what it does not cover.** The central new theorem `sym2_is_substitution` has a
+genuine producer ≠ verifier pass: Stream 1 checked our convention two ways (matrix entries against theirs, *and*
+by substituting `S(x,y) = (−y,x)` into `a x² + b x y + c y²` independently), then generalised it to an arbitrary
+`CommRing` with the matrix as argument and put it through their own kernel — `sym2_is_substitution`,
+`sym2_S_coeffs` in `Agora/Geometry/SymSquareForms.lean`, on `[propext, Classical.choice, Quot.sound]`. Their
+generalisation is better than ours and is recorded as a follow-up here rather than adopted now, because our
+`sym2` is in the statement lock and changing its signature would report CHANGED rather than ADDED.
+`repair_selects` has a full producer ≠ verifier pass: Stream 1 wrote an independent exhaustive enumerator from
+the definition of a reduced form, **validated it against the known class numbers** at
+`−3, −4, −7, −8, −15, −20, −23, −24` before trusting it, and confirmed all three values; the same three were
+re-enumerated here as well. They also supplied the sharper route to the bound — `4ac − b² ≡ −b² ≡ 0` or
+`3 (mod 4)`, so `1` and `2` are impossible — which is the same case split our `discriminant_gap` already runs.
+**And they found the gap that mattered:** at `D = 12` the two readings of "reduced forms" first diverge
+(`h(−12) = 1` primitive class, but two reduced forms, `(2,2,2)` of content `2`), while at `1, 2, 3` no
+imprimitive form occurs — so a `decide` there could not distinguish them and the *name* `reducedForms` was
+doing the work. `reducedForms_counts_imprimitive` (`reducedForms 12 = [(1,0,3), (2,2,2)]`) now pins the
+convention in the kernel: all reduced forms, not only the primitive ones. That is `LL.md` §S11.1's defect one
+level below the defect that started this release, found by the same method. Their check establishes that the
+asserted values are mathematically right; it does not verify our Lean `reducedForms`, which they have not read.
+The two together establish that our definition returns the right answer at `1, 2, 3` — not that it is correct in
+general. **G5 is otherwise not satisfied for this file and
+that is disclosed, not papered over:** no subagent was involved, so producer = verifier for the remaining
+theorems. What partially covers it is that every identity was re-derived in sympy before the Lean was written,
+and the `reduce` behaviour was pre-checked in a Python port — which is how the `ediv` trap of `LL.md` §S11.6
+surfaced.
+
+**Gates.** `lake build DualScaleDyons` exit 0, 8803/8804 jobs, 0 errors. `sorry`/`admit`/`native_decide` grep
+clean in code (the single apparent hit across ten libraries is the string literal
+`s!"{totalSorryCount} sorry axioms remaining"` in `StringTheoryFormalization/Pipeline/DAGOrchestrator.lean`;
+scanned with block and line comments stripped, since a naive grep returns ~20 docstring false positives).
+`tools/axiom_audit.py`: `DualScaleDyons` **166**, **0 failing** (was 152 at `v3.44.0`; `+14` is exactly the new
+file). Repository total **836**, 0 failing — the sum of ten per-library audits all run in this session
+(`StringTheoryFoundation` 63, `DualScaleM24Formalization` 62, `DoubleFieldTheory` 44, `DualScaleValidation` 23,
+`Lean5Corpus` 53, `StringTheoryFormalization` 89, `DualScaleStream2` 176, `DualScaleCosmology` 59,
+`DualScaleMoonshine` 101, `DualScaleDyons` 166), not a figure carried forward and incremented.
+`tools/statement_lock.py`: `--check` OK; the new file had no entry, so `--update` on that file alone locked
+**14 declarations, 0 CHANGED, 0 REMOVED**,
+verified by diffing the JSON before and after rather than by trusting the tool's summary line.
+
 ## 0-------------. `v3.44.0` (2026-09-20): the lift is contravariant, and both sides verified each other
 
 `DualScaleDyons/FrickeCriterion.lean` grows to 22 theorems.
@@ -256,10 +350,39 @@ and substitution reverses composition: `(Q ∘ M') ∘ M = Q ∘ (M'M)`. So `M �
 uniformly; `sym2_not_covariant` is the negative control on the non-commuting pair
 `M = ![![1,1],![0,1]]`, `M' = ![![1,0],![1,1]]`. Flagged by Stream 1, re-derived here before adoption.
 
-**Their theorems, verified by us rather than taken on report.** `v3.43.0` cited Stream 1's results from a
-subagent's reading. All four are now checked independently: `ρᵀ T_N ρ = (ad − Nbc)² T_N`,
+**Their theorems, verified by us rather than taken on report** — *attribution corrected at `v3.45.0`; see the
+note below.* `v3.43.0` cited Stream 1's results from a subagent's reading. The polynomial identities re-derived
+here with sympy are the **scaled** ones, which hold for every `(a, b, c, d)`: `ρᵀ T_N ρ = (ad − Nbc)² T_N`,
 `det ρ = (ad − Nbc)³`, `tr ρ = (a+d)² − (ad − Nbc)`, and `ρ_AL ᵀ T_N ρ_AL = (Nad − bc)² T_N` with
-`ρ_AL(N, 0, −1, 1, 0) = −swap`. The citations in `v3.43.0` stand.
+`ρ_AL(N, 0, −1, 1, 0) = −swap`. Those identities are correct.
+
+> **Correction (`v3.45.0`, 2026-09-21).** The sentence above attributed all four to Stream 1. Two of the four are
+> not their statements, as they confirmed on request at their tag `v0.10-two-lattices` (all line numbers in
+> `Agora/Geometry/ModularAction.lean`): `rho_isometry` (l. 87) is **conditional** — `(ad − Nbc)² = 1` implies
+> `ρᵀ T_N ρ = T_N` — not the scaled identity; `rho_det` (l. 133) and `rho_trace` (l. 122) are unconditional and
+> are as cited; and **Stream 1 has no theorem `ρ_AL ᵀ T_N ρ_AL = (Nad − bc)² T_N`** — what exists is
+> `rhoAL_isometry` (l. 194), again conditional, `(Nad − bc)² = 1` implying `ρ_ALᵀ T_N ρ_AL = T_N`. **The scaled
+> forms are ours; the conditional specialisations are theirs.** All four are stated over the ring-valued `TNR N`,
+> bridged to the integer lattice by `TNR_int` (l. 68); a claim about the integral lattice must cite the bridge.
+> Their `IsSymSquareOf` is still defined and never instantiated, so the wording on the operator identity stands.
+>
+> **Axiom status of the four, stated precisely.** Stream 1 has now run `#print axioms` on all four at their
+> `main = 2196261` and reports each on `[propext, Classical.choice, Quot.sound]`, no `sorryAx`, no
+> `Lean.ofReduceBool`. With the hypothesis caveats above intact, the four are **Tier A on their side**; by this
+> repository's producer ≠ verifier rule we record that as *their* certification, not ours — our own tier for
+> anything we build on them stays at what we have re-derived here. It is corroborated by a **whole-namespace
+> audit**: `axiom_audit.py Agora` reports 311 theorems audited, 3 failing, and
+> none of the three is a `ModularAction` declaration (the three are `pipeline_ensures_perturbative`,
+> `master_moduli_stabilization` — both on the disclosed-vacuous `pipeline_upper_bound` — and the legacy
+> `s7_partner_integral` on `obrien2016_theorem6_2`). *Recorded because it matters for how these exchanges are
+> run:* an earlier message from that session contained the same four `#print axioms` lines **before the run had
+> been executed**, and that session retracted them unprompted, saying so in those words; the real run followed
+> and matched. Nothing was published in between. The lesson is the one they stated — **being right is not the
+> same as having checked** — and it is exactly gate G5 (producer ≠ verifier) seen from the other side: a peer's
+> fenced transcript is a claim about a run, not the run. Separately certified by verbatim
+> `#print axioms` output on their side, and cited as plain Tier A: `Agora.Sequences.S7Mod4.four_dvd_s7` and
+> `s7_partner_integral_axiom_free`, both on `[propext, Classical.choice, Quot.sound]`. We cite `s₇` in one
+> place only (the `P₂ = 1 − 26z − 27z²` prefactor), which is not a tier claim, so nothing needed relabelling.
 
 **Their reply, and what they did with ours.** Stream 1 confirmed our determinants independently and made the
 two-lattice distinction kernel-enforced on their side (`G0N_det_ne_TN_det`, and `no_isometry_G0N_TN` from the
@@ -283,7 +406,8 @@ general claim.** Reconciling with the source project — `SocrateAI-DualScaleTop
 *two* rank-3 lattices, both signature `(2,1)`, both carrying integer symmetric-square actions of `Γ₀(N)⁺`, and
 not isomorphic: `⟨1⟩ ⊕ U(2N)` of determinant `−4N²` (the discriminant form on `Γ₀(N)`-form coefficients, our
 coordinates) and `U ⊕ ⟨2N⟩` of determinant `−2N` (the transcendental lattice of an `Mₙ`-polarized K3 after
-Dolgachev, their coordinates). Their `Agora/Geometry/ModularAction.lean` proves `ρᵀ T_N ρ = T_N`,
+Dolgachev, their coordinates). Their `Agora/Geometry/ModularAction.lean` proves `ρᵀ T_N ρ = T_N`
+**under the hypothesis `(ad − Nbc)² = 1`** (hypothesis restored at `v3.45.0`),
 `det ρ = (ad − Nbc)³` and the Sym² character `tr ρ = (a+d)² − (ad − Nbc)` on `U ⊕ ⟨2N⟩` directly. **That is
 correct and we do not contradict it.** What our theorems refute is the *conflation* of the two lattices under one
 name, which is how the claim reached us.

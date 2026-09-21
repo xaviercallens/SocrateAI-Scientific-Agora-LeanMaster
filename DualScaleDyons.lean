@@ -24,3 +24,4 @@ import DualScaleDyons.DefiniteAndIndefinite
 import DualScaleDyons.GridQuantum
 import DualScaleDyons.DefinitenessCriterion
 import DualScaleDyons.FrickeCriterion
+import DualScaleDyons.FrickeRepair

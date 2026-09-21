@@ -40,8 +40,9 @@ Two problems.
   version must quantify over the *split*, not merely over `A₂ ⊂ Π`. **Drafted**:
   `DualScaleDyons/TrappingObstruction.lean` proves the positive half — both smallest-black-hole charge lattices
   (`A₂`, `D = −3`, and `A₁ ⊕ A₁`, `D = −4`) embed primitively in the `SO(44)` plane lattice `D₆` — so the proposed
-  no-go is false as phrased, and restates the true content (`766 < 924`). Not yet compiled (the machine is busy
-  with the toolchain migration).
+  no-go is false as phrased, and restates the true content (`766 < 924`). **Compiled and gated since `v3.30.0`**
+  (it is in `DualScaleDyons.lean`'s import list, so it is covered by every `lake build DualScaleDyons` gate run);
+  the "not yet compiled" note here was stale and is corrected at `v3.45.0`.
 
 Until one of them is proved, the "frustration" between the IR trapping point and the UV attractor stays Tier C and
 lives in §12 and §14 of `docs/STREAM8_WHICH_K3.md`.
@@ -72,4 +73,24 @@ producer ≠ verifier) and reports honestly if a step fails.
 | `toolchain-migrate-project.js` | D5: migrate one Lake project to a target toolchain, with the memory-guarded build. |
 
 Running them costs many agent-hours of compute; start them explicitly, one at a time, and never two Lean builds at
-once on this VM (LL.md §S8.2: a second build halves the page cache and both crawl at 2–6 MB/s).
+once on this VM (LL.md §S8.2: a second build halves the page cache and both crawl at 2–6 MB/s). **This applies
+across repositories and across Claude sessions on this VM**, not just within LeanMaster: on 2026-09-21 a
+single-file `lake env lean` here sat at ~1% CPU for minutes while a sibling repository elaborated, because the
+two were competing for page cache, not for CPU. Ask the other session before starting, and say when you are
+clear.
+
+## 5. Stale-target hygiene
+
+Two entries in this file described work that was already done, and a third in `docs/STREAM8_WHICH_K3.md` did the
+same. `LL.md` §S10 lesson (1) is the general form: **a sentence naming "the next formalization target" is an
+unverified claim, and green gates never touch it, because no theorem depends on it.** Audited 2026-09-21:
+
+| Sentence | Status |
+|---|---|
+| §2 "`TrappingObstruction.lean` … not yet compiled" | **Stale** — compiled and gated since `v3.30.0`; corrected above. |
+| §9 G7 "*Target (Tier A, small).* Formalize that enumeration in doubled integer coordinates…" | **Done** — `DualScaleDyons/GridQuantum.lean` (`separations_even`, `min_separation_two`, `measured_value_occurs`). |
+| §9 G9 "the repaired proposal reproduces G3's answer, reached from the modular side" | **Closed and corrected** — `DualScaleDyons/FrickeRepair.lean` (G10, `v3.45.0`): the repair holds, the "from the modular side" clause does not. |
+
+Still genuinely open, and still unproved: `docs/STREAM9_ORIENTIFOLD.md` S9.4b (`ψ(n) ≤ d` in its correct form),
+S9.5d (pin the `D3`-charge normalisation from a source), S9.6c (derive §6d's ceiling rather than carry it over);
+and §9's §12 successor (A) and (B) above.

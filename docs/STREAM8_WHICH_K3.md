@@ -405,11 +405,133 @@ which physics calls *attractive*, are precisely the case this construction does 
 `huybrechts_K3Global.txt` ll. 16325–16332, Tier L). What it picks out is a one-parameter family — a modular curve
 — not a surface.
 
-*What would repair it, and where it lands.* By the criterion: add a definiteness condition. Demanding `ρ = 20`
-makes the transcendental lattice rank `2` and **positive definite**, and the classification becomes one of
-positive definite binary forms — finite at each discriminant, with a smallest. That is `discriminant_gap`:
-`D ≤ −3`, attained only by `(1,1,1)`, `T_S = A₂`. **The repaired proposal reproduces G3's answer, reached from the
-modular side.** That is the useful content of the proposal, and it is not the content it claimed.
+*What would repair it, and where it lands — carried out and partly refuted at `v3.45.0`, see G10.* By the
+criterion: add a definiteness condition. Demanding `ρ = 20` makes the transcendental lattice rank `2` and
+**positive definite**, and the classification becomes one of positive definite binary forms — finite at each
+discriminant, with a smallest. That is `discriminant_gap`: `D ≤ −3`, attained only by `(1,1,1)`, `T_S = A₂`.
+~~**The repaired proposal reproduces G3's answer, reached from the modular side.**~~ **The struck clause is
+wrong.** The repair itself holds and is now proved (`DualScaleDyons/FrickeRepair.lean`), but "reached from the
+modular side" advertises an independence that Shioda–Inose forbids: for `ρ = 20` the rank-2 transcendental
+lattice **is** the CM datum, so the two routes are one computation in two languages and their agreement is
+forced. See **G10** below for the proof, the source pins, and what survives.
+
+
+**G10 — the repair carried out, and an independence it does not have (2026-09-21; `v3.45.0`,
+`DualScaleDyons/FrickeRepair.lean`).** G9 ended with a paragraph that was **prose only**: demanding `ρ = 20`
+makes the transcendental lattice rank `2` and positive definite, the classification becomes one of positive
+definite binary forms, and "the repaired proposal reproduces G3's answer, **reached from the modular side**."
+An unproved paragraph that no theorem depends on is the failure mode `LL.md` §S10 records — the `φ(n) ≤ d`
+sentence survived five releases of green gates for exactly that reason. G10 closes it. The repair holds; **the
+last clause does not**, and it fails for a reason that was not visible when it was written.
+
+*The cut does the selecting (Tier A).* `posdef_of_disc_neg`: a form with `a > 0` and `4ac − b² > 0` is positive
+definite, from `4a·Q(x,y) = (2ax + by)² + (4ac − b²)y²`. `reduced_bound`: a reduced form (`|b| ≤ a ≤ c`)
+satisfies `3a² ≤ 4ac − b²`, so only finitely many `a` occur at a fixed discriminant.
+
+`repair_selects` is **a bound plus three evaluations, and it is worth saying so exactly**: `discriminant_gap`
+gives `3 ≤ 4ac − b²` for every definite form, and `reducedForms 1 = []`, `reducedForms 2 = []`,
+`reducedForms 3 = [(1,1,1)]`. Read with the standard meaning of `reducedForms` those four say the smallest
+discriminant is `−3` with the single class `A₂` — **G3's answer, so the repair does reach it** — but that
+sentence leans on `reducedForms` enumerating what its name says, which is a property of a definition and not one
+of the four conjuncts. Two things close that gap. (i) Stream 1 re-derived the three values from an independent
+enumerator written from the definition, validated against the known class numbers at
+`−3, −4, −7, −8, −15, −20, −23, −24` before being trusted, and confirmed all three; the same three were
+re-enumerated here independently as well. (ii) `reducedForms_counts_imprimitive`:
+`reducedForms 12 = [(1,0,3), (2,2,2)]`. That one matters — `D = 12` is the smallest discriminant where "reduced
+forms" splits into two readings (`h(−12) = 1` primitive class, but two reduced forms, `(2,2,2)` having content
+`2`), and at `1, 2, 3` **no imprimitive form occurs**, so a `decide` there could not tell the readings apart and
+the name was doing the work. Now the kernel says which one `reducedForms` implements: all reduced forms, not
+only the primitive ones. The divergence point was Stream 1's; it is §S11.1's defect one level below the defect
+that started this section. No hypothesis in `repair_selects` mentions `N`, `Γ₀(N)` or the Fricke involution.
+
+*The Fricke involution, specifically, selects nothing (Tier A).*
+
+- `fricke_eq_sym2_S`: the Fricke matrix on form coefficients **is** the `Sym²` lift of
+  `S = ![![0,−1],![1,0]] ∈ SL(2,ℤ)` — `fricke = sym2 0 (-1) 1 0`, `det S = 1` (`sym2_S_det`). Note what is
+  absent: **no `N`**. In the `Γ₀(N)` convention `(a,b,c) ↦ N a x² + b x y + c y²`, substituting
+  `W_N = ![![0,−1],![N,0]]` gives `(N²c, −Nb, Na)`; dividing by the overall `N` returns the same `N`-free map
+  `(c, −b, a)`. The integrality of `W_N` on coefficients is `S`'s integrality, not a fact about the flux.
+- `sym2_is_substitution` — **what `Sym²` actually does**, general in all nine variables: `sym2 p q r s *ᵥ ![a,b,c]`
+  is the coefficient triple of `(x,y) ↦ Q(px + qy, rx + sy)`. This is the property the name asserts, and it is
+  what turns G9's matrix identities into statements about forms.
+- `fricke_coeffs` and `fricke_is_proper_equivalence` — **the chain, with every link in the kernel.**
+  `fricke *ᵥ ![a,b,c] = ![c,−b,a]`; and `fricke_is_proper_equivalence` states, with `fricke` itself on the
+  left-hand side rather than a hand-written triple, that the form whose coefficients the Fricke matrix produces
+  takes at `(x,y)` the value the original takes at `S(x,y) = (−y, x)`. It is the instance of
+  `sym2_is_substitution` at `(0,−1,1,0)` transported along `fricke_eq_sym2_S`. With `det S = 1` this exhibits
+  Fricke as a **proper equivalence** of binary forms. *(An earlier version stated only the bare polynomial
+  identity in `a, b, c, x, y`. That is true, and Stream 1 checked it by hand and endorsed it — but the statement
+  never mentioned `fricke`, `sym2` or `SL(2,ℤ)`, so the identification was done in the docstring rather than in
+  the kernel. Caught in review here and tightened; the mathematics did not change, the Lean statement did.)*
+- `forms_pointwise_imp_coeffs` — pointwise equality of binary forms implies coefficient equality (evaluate at
+  `(1,0)`, `(0,1)`, `(1,1)`), so nothing is lost by the value formulation. Raised by Stream 1.
+
+  **Where the kernel stops, and nothing closes it.** `Q ∘ S` with `det S = 1` *is* proper equivalence, hence
+  Fricke fixes every class. That last step is the **definition** of the class relation, and this repository
+  formalizes no class relation — so it is taken outside the kernel, and no theorem below closes it. "Fixes every
+  class" is then the theorem; "therefore it selects nothing" is an inference from it; and the two must not be
+  quoted as one (Stream 1's caution, adopted).
+- `fricke_is_first_reduction_step`: it is literally the opening branch of Gauss reduction,
+  `reduceStep (a,b,c) = (c,−b,a)` when `c < a` — which is why the enumeration cannot disagree with the theorem.
+- `fricke_preserves_disc`: it fixes `b² − 4Nac` for every `N`, because the form is symmetric in `a ↔ c`.
+- `fricke_class_trivial_box` — `PASS(box: 1 ≤ a,c ≤ 4, |b| ≤ 6)`: on every positive definite form in that box
+  this repository's own `reduce` sends `(c,−b,a)` and `(a,b,c)` to the same reduced form. **Be precise about
+  what that is:** a bounded fact about `reduce`, our reduction *implementation*. It does **not** bridge the step
+  from proper equivalence to same class — that step is a definition, and no computation bridges a definition;
+  `reduce` is a procedure, not a class relation. So it neither adds to nor substitutes for
+  `fricke_is_proper_equivalence`; it is a third thing, about the code. Always quoted with its bound. (The first
+  draft had the box doing the general theorem's job; Stream 1 pointed out the two were doing each other's work.
+  The general theorem then carried the argument — and a second pass here found that "the box covers the
+  definitional gap" was itself too strong. It does not. Nothing here does.)
+
+*The objection that changed the verdict.* The first draft of G10 read the above as "the modular structure is a
+passenger". **That reading is wrong.** Stream 1 was asked to attack the claim and did, and the attack is
+confirmed in this repository's own pinned source. `ρ = 20` surfaces are the *singular* — in the physics
+literature *attractive* — K3s, and by Shioda–Inose their rank-2 positive definite transcendental lattice is not
+merely analogous to CM data, it **is** that data. Huybrechts, `papers/foundations/huybrechts_K3Global.txt`,
+Tier L: ll. 16324–16328, `ρ = 20` surfaces "can be classified in terms of their transcendental lattice"; and
+ll. 3093–3102, for `ρ(X) = 20` the associated elliptic curves `E ∼ E'` "have complex multiplication and their
+rational period **can be read off directly from the lattice of rank two `T(X)`**". The `ρ = 20` locus of an
+`Mₙ`-polarized family is the CM locus of the modular curve.
+
+So the binary-form enumeration and the "modular side" are **the same computation in two languages**, and their
+agreement is forced, not corroborative. G9's clause is wrong in a second and worse way than being merely
+unproved: **it advertises an independence that Shioda–Inose forbids.** Struck on those grounds.
+
+*What survives, stated at the width the theorems support.* **(i)** The Fricke involution is substitution by
+`S ∈ SL(2,ℤ)` and so fixes every class — Tier A for the substitution identity, with "therefore it selects
+nothing" recorded as the inference it is, not as part of the theorem. **(ii)** The selection happens in *two*
+steps, not one: the cut `ρ = 20` lands the problem on the CM locus, and the discriminant bound then selects
+within that locus. **`ρ = 20` alone does not imply `T_S = A₂`** — that distinction is Stream 1's, and it is kept
+because the one-step phrasing invites exactly the wrong reading. Neither (i) nor (ii) says the modular structure
+is absent from the rank-2 object. It is not absent; it is the same object, reached by a different route.
+
+*The tier boundary, which is where the whole thing could be mis-sold.* Four links, three tiers. **(1)**
+`ρ = 20 ⇒ rank T(X) = 2`, positive definite (Hodge index and the signature of `H²`) — **Tier L**, Huybrechts
+ll. 16324–16332; nothing here proves it and nothing here can, and it is load-bearing for the entire repair,
+since it is what turns the problem into one about positive definite binary forms. **(2)** definiteness ⇒
+finiteness with a minimum — Tier A. **(3)** the minimum is `D = −3`, uniquely `(1,1,1) = A₂` — Tier A.
+**(4)** the rank-2 lattice *is* CM data, so the two routes are one — Tier L, Huybrechts ll. 3093–3102.
+Blurring (1) into (2) and (3) would publish "the modular construction selects our K3" on the back of a quoted
+assumption; blurring (4) away would publish forced agreement as corroboration. G10 does neither.
+
+*The bridge, and why it is not the load-bearing one.* Stream 1 also pointed at their `no_isometry_G0N_TN`
+(`Agora/Geometry/SymSquareForms.lean` l. 185): the two rank-3 lattices are not isometric, so a step moving a
+statement between binary-form classes and `T_N` is not a lattice isometry. G10 makes no such step — it lives on
+form coefficients, and the selecting object is the **rank-2** transcendental lattice, a third object. But the
+right conclusion is *not* "therefore the modular structure cannot reach it": Shioda–Inose reaches it by other
+means. Absence of one particular morphism is weak evidence of no influence when a classical correspondence
+connects the two sides. That correction is theirs, and it is the reason this section says less than the draft
+did.
+
+*Reading (Tier C).* The G6/G8 criterion still holds — the definite form is what decides — but G10 sharpens what
+"decides" buys you. A selection argument owes two things, not one: **name the definite form, and name the cut
+that produced it**; and then check whether the structure you are crediting is independent of that form or merely
+another description of it. Here it was another description. An agreement between two routes is worth nothing
+until someone shows the routes are not the same route.
+
+*Scope.* Nothing here says which K3 is ours. `N = 4` gives no observable (Stream 7), and G2's `i`/`ω` choice
+stays open.
 
 **Synthesis.** Three independent routes point to `ω`: `T²` trapping (E2), `T⁴` trapping with the `ω` complex
 structure (G2), and the smallest black hole (G3). Three counterweights: the choice of complex structure on `D₄`
