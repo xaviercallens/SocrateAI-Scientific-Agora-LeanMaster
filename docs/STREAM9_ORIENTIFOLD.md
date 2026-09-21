@@ -159,13 +159,19 @@ finite set is attained. **That is precisely the step the `φ(n) ≤ d` form got 
 computable `psi` of §5b before §5b-bis. Stating the general theorem against the capped definition is the trap
 that §5b-bis exists to prevent.
 
-*The bridge to the computable side, half of it closed.* `primePart_eq_ord_proj` proves
-`primePart n p = p ^ v_p(n)` for prime `p` and `n ≠ 0` — **the identification `primePart`'s name asserts, now a
-theorem instead of a docstring claim, and *false* before §5b-bis**. What remains for `psiM n = psi n` is
-`isPrimeB p = true ↔ p.Prime` plus the `List.range`-filter / `Nat.primeFactors` and `foldl` / `Finset.sum`
-correspondences. The obvious shortcut does not work and was tried: `Nat.primeFactors 15 = {3,5}` does not
-reduce under `decide` (the `Multiset` permutation instance sticks) and `simp` makes no progress, so `psiM`'s
-values cannot be pinned pointwise either.
+*The bridge to the computable side, closed.* `primePart_eq_ord_proj`: `primePart n p = p ^ v_p(n)` for prime
+`p`, `n ≠ 0` — **the identification `primePart`'s name asserts, now a theorem instead of a docstring claim,
+and *false* before §5b-bis**. Then `psiM_eq_psi`: `psiM n = psi n` for `n ≠ 0`, through `isPrimeB_iff`
+(`Nat.prime_def_lt'` verbatim), `psiList_toFinset` (the folded list is exactly `n.primeFactors`) and
+`foldl_add_eq`.
+
+**Each file's strength now covers the other's gap.** `psi` is computable and its values reduce; `psiM` is
+correct for every `n` and is what `psiM_le_sum_totient` is about. So `psiM_values` pins
+`ψ(15) = ψ(20) = ψ(24) = ψ(30) = 6` — **equalities**, not the upper bounds the corollaries give alone, and
+exactly the rank at which §5b exhibits `mat15, mat20, mat24, mat30` — and `psi_le_six_list`'s seventeen-order
+enumeration transfers (`psiM_le_six_list`). The direct route remains closed and is recorded so it is not
+retried: `Nat.primeFactors 15 = {3,5}` does not reduce under `decide` (the `Multiset` permutation instance
+sticks) and `simp` makes no progress; the values are reachable only *through* `psi`.
 
 *Non-vacuity, and what it does not cover.* `psiM_fifteen_le_six` and `psiM_twentyfour_le_six` instantiate the
 theorem at `S = {3,5}` and `S = {8,3}`, giving `ψ(15) ≤ 6` and `ψ(24) ≤ 6` — exactly the rank at which §5b

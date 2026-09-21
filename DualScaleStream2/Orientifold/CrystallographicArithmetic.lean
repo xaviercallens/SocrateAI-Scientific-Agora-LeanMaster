@@ -230,12 +230,13 @@ value of `psiM` is pinned in the kernel here**, and that gap is narrower than it
 * **Closed (§7):** `primePart_eq_ord_proj` proves `primePart n p = p ^ n.factorization p` for prime `p` and
   `n ≠ 0` — the identification `primePart`'s name asserts, now a theorem rather than a docstring claim, and
   *false* before the 2026-09-21 correction.
-* **Still open:** `psiM n = psi n`. It needs two more bridges — `isPrimeB p = true ↔ p.Prime`, and the
-  `List.range` filter of `psi` against `Nat.primeFactors` as a `Finset`, with `foldl` against `Finset.sum`.
-  Without it, `psi_le_six_list`'s numeric content does not transfer to `psiM`.
-* **Why the obvious shortcut fails:** `Nat.primeFactors 15 = {3, 5}` does **not** reduce under `decide` (the
-  `Multiset` permutation instance gets stuck) and `simp` makes no progress on it, so `psiM`'s values cannot be
-  pinned pointwise either. Tried and recorded rather than assumed. -/
+* **Also closed (§8), and this paragraph is corrected accordingly:** `psiM_eq_psi` proves `psiM n = psi n`
+  for `n ≠ 0`, via `isPrimeB_iff`, `psiList_toFinset` and `foldl_add_eq`. So `psiM`'s values **are** pinned
+  after all — `psiM_values` gives `ψ(15) = ψ(20) = ψ(24) = ψ(30) = 6`, *equalities*, not the upper bounds the
+  corollaries below give on their own — and `psi_le_six_list`'s enumeration transfers (`psiM_le_six_list`).
+* **Why the direct route still fails, recorded so it is not retried:** `Nat.primeFactors 15 = {3, 5}` does
+  **not** reduce under `decide` (the `Multiset` permutation instance gets stuck) and `simp` makes no progress.
+  The values are reachable only *through* the computable `psi`, which is what the bridge is for. -/
 theorem psiM_fifteen_le_six : psiM 15 ≤ 6 := by
   have h : psiM 15 ≤ ∑ e ∈ ({3, 5} : Finset ℕ), Nat.totient e :=
     psiM_le_sum_totient (S := ({3, 5} : Finset ℕ)) (by decide)
@@ -302,5 +303,89 @@ theorem primePart_eq_ord_proj {n p : ℕ} (hn : n ≠ 0) (hp : p.Prime) :
     exact Nat.le_of_dvd (Nat.pos_of_ne_zero hn)
       ((Nat.Prime.pow_dvd_iff_le_factorization hp hn).mpr le_rfl)
   exact foldPow_stable n p hn hp (Nat.log p n + 2) (by omega)
+
+/-! ### 8. `psiM = psi`: the numeric content of the computable side, transferred -/
+
+open DualScaleStream2.Orientifold.CrystallographicOrders in
+/-- `isPrimeB` decides primality. It is `2 ≤ p` together with "no `k` in `[2, p)` divides `p`", which is
+`Nat.prime_def_lt'` verbatim. -/
+theorem isPrimeB_iff (p : ℕ) : isPrimeB p = true ↔ p.Prime := by
+  rw [Nat.prime_def_lt']
+  simp only [isPrimeB, Bool.and_eq_true, decide_eq_true_eq, List.all_eq_true, Bool.or_eq_true,
+    List.mem_range, bne_iff_ne, ne_eq]
+  constructor
+  · rintro ⟨h2, hall⟩
+    refine ⟨h2, fun m hm2 hmp hdvd => ?_⟩
+    rcases hall m hmp with h | h
+    · omega
+    · exact h (Nat.mod_eq_zero_of_dvd hdvd)
+  · rintro ⟨h2, hall⟩
+    refine ⟨h2, fun k hk => ?_⟩
+    by_cases hk2 : k < 2
+    · exact Or.inl (by simpa using hk2)
+    · exact Or.inr fun hmod => hall k (by omega) hk (Nat.dvd_of_mod_eq_zero hmod)
+
+open DualScaleStream2.Orientifold.CrystallographicOrders in
+/-- The list `psi` folds over is exactly `n.primeFactors`. -/
+theorem psiList_toFinset {n : ℕ} (hn : n ≠ 0) :
+    ((List.range (n + 1)).filter fun p => isPrimeB p && n % p == 0).toFinset = n.primeFactors := by
+  ext p
+  simp only [List.mem_toFinset, List.mem_filter, List.mem_range, Bool.and_eq_true,
+    beq_iff_eq, Nat.mem_primeFactors]
+  constructor
+  · rintro ⟨_, hpb, hmod⟩
+    exact ⟨(isPrimeB_iff p).mp hpb, Nat.dvd_of_mod_eq_zero hmod, hn⟩
+  · rintro ⟨hp, hdvd, -⟩
+    exact ⟨Nat.lt_succ_of_le (Nat.le_of_dvd (Nat.pos_of_ne_zero hn) hdvd),
+      (isPrimeB_iff p).mpr hp, Nat.mod_eq_zero_of_dvd hdvd⟩
+
+/-- An additive `foldl` is the sum of the mapped list. -/
+theorem foldl_add_eq (l : List ℕ) (g : ℕ → ℕ) (init : ℕ) :
+    l.foldl (fun s p => s + g p) init = init + (l.map g).sum := by
+  induction l generalizing init with
+  | nil => simp
+  | cons a t ih => simp [ih, Nat.add_assoc]
+
+open DualScaleStream2.Orientifold.CrystallographicOrders in
+/-- **The two `ψ`s agree.** The computable `psi` of `CrystallographicOrders.lean` — the one
+`psi_le_six_list` and `rank_two_unaffected` evaluate — equals the `Nat.factorization`-based `psiM` proved
+about here. Each file's strength now covers the other's gap: `psi` supplies numeric values, `psiM` supplies
+correctness for every `n` and the theorem `psiM_le_sum_totient`. -/
+theorem psiM_eq_psi {n : ℕ} (hn : n ≠ 0) : psiM n = psi n := by
+  classical
+  set L := (List.range (n + 1)).filter fun p => isPrimeB p && n % p == 0 with hL
+  have hnodup : L.Nodup := List.Nodup.filter _ (List.nodup_range)
+  have hstep : psi n = (L.map fun p => if primePart n p == 2 then 0 else
+      Nat.totient (primePart n p)).sum := by
+    rw [psi, ← hL, show (fun (s p : ℕ) => if primePart n p == 2 then s else s + Nat.totient (primePart n p))
+      = (fun (s p : ℕ) => s + if primePart n p == 2 then 0 else Nat.totient (primePart n p)) from by
+        funext s p; by_cases h : primePart n p == 2 <;> simp [h]]
+    simpa using foldl_add_eq L _ 0
+  rw [hstep, ← List.sum_toFinset _ hnodup, psiList_toFinset hn, psiM, Finset.sum_filter]
+  refine Finset.sum_congr rfl fun p hp => ?_
+  obtain ⟨hprime, -, -⟩ := Nat.mem_primeFactors.mp hp
+  rw [primePart_eq_ord_proj hn hprime]
+  by_cases h : p ^ n.factorization p = 2 <;> simp [h]
+
+open DualScaleStream2.Orientifold.CrystallographicOrders in
+/-- **Numeric values of `psiM`, now reachable through the bridge.** `psiM` itself does not reduce
+(`Nat.factorization` is a `Finsupp`); `psi` does. `psiM_eq_psi` transfers the one to the other, so the
+corollaries above are not merely upper bounds — the values are pinned, and `ψ(15) = ψ(24) = 6` is *equality*
+with the rank at which §5b exhibits `mat15` and `mat24`. -/
+theorem psiM_values : psiM 15 = 6 ∧ psiM 24 = 6 ∧ psiM 30 = 6 ∧ psiM 20 = 6 := by
+  refine ⟨?_, ?_, ?_, ?_⟩ <;>
+    · rw [psiM_eq_psi (by norm_num)]
+      decide +kernel
+
+open DualScaleStream2.Orientifold.CrystallographicOrders in
+/-- **`psi_le_six_list` transferred.** The seventeen orders available on a rank-`6` lattice, now stated for the
+`Nat.factorization`-based `ψ` that `psiM_le_sum_totient` is about. This is what the bridge buys: the
+computable side supplies the enumeration, the `Finsupp` side supplies the theorem. -/
+theorem psiM_le_six_list :
+    ((List.range 201).filter fun n => 1 ≤ n && psi n ≤ 6) =
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 18, 20, 24, 30] ∧
+    ∀ n, 1 ≤ n → n ≤ 200 → (psiM n ≤ 6 ↔ psi n ≤ 6) := by
+  refine ⟨psi_le_six_list, fun n hn _ => ?_⟩
+  rw [psiM_eq_psi (by omega)]
 
 end DualScaleStream2.Orientifold.CrystallographicArithmetic
