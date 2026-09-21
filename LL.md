@@ -82,6 +82,20 @@ There it meant restating the control with `Φ_M`'s own shape so the theorem is a
 **Test to apply to any new file:** for each named object, point at the theorem that would be *false* if the name
 were wrong. If the only thing that would change is a docstring, the identification is not in the kernel.
 
+**Applied to our own Stream 9 the next day, and it found one.** `primePart n p` (§5b of
+`docs/STREAM9_ORIENTIFOLD.md`) folded over `List.range 9` — an exponent cap of `8` — so `primePart 512 2 = 256`
+and **`psi 512 = 128` where `φ(512) = 256`**. `psi` did not compute `ψ` for any `n` divisible by `2⁹`, while its
+name and docstring said it did. Every theorem in the file stood, because all of them quantify over
+`List.range 201` and the cap cannot be reached below `256` — **the exact shape of this section: no theorem would
+have failed if the name had been wrong.** Fixed (`Nat.log p n + 2`, which cannot truncate) and pinned by
+`psi_correct_past_the_old_cap` at `n = 512, 1024`, the first two points where the readings diverge.
+
+*And the fix needed the same discipline as the defect.* Two candidate corrections — a `range (n+1)` fold and the
+`Nat.log` one — **disagreed on `n ≤ 200`**. Rather than reason about which was right, both were checked against
+an independent reference: the disagreement is real and confined to `n = 0`, where "the largest power of `p`
+dividing `0`" does not exist and all three implementations return different junk. `psi` never reaches it.
+Recorded in the docstring rather than resolved by picking the one that looked right.
+
 ## S11.2 Name where the kernel stops, and do not let a bounded check be demoted past its job
 
 `Q ∘ S` with `det S = 1` is a proper equivalence, hence fixes every class. That last step is the **definition**

@@ -116,15 +116,44 @@ theorem phi_list_incomplete :
 /-- Primality, structurally, so the kernel can reduce it. -/
 def isPrimeB (p : ℕ) : Bool := 2 ≤ p && ((List.range p).all fun k => k < 2 || p % k != 0)
 
-/-- The exact `p`-part of `n`: the largest power of `p` dividing `n` (`1` when `p ∤ n`). -/
+/-- The exact `p`-part of `n`: the largest power of `p` dividing `n` (`1` when `p ∤ n`).
+
+**Disclosure (2026-09-21) — this definition was wrong above `p^8`, and its name did not say so.** It read
+`(List.range 9).foldl …`, capping the exponent at `8`, so `primePart 512 2` returned `256` and
+`primePart 1024 2` returned `256` — and hence `psi 512 = 128` where `φ(512) = 256`. The bound is now
+`Nat.log p n + 2`, which cannot truncate: `p ^ a ∣ n` with `0 < n` forces `p ^ a ≤ n`, hence `a ≤ Nat.log p n`.
+
+**Every existing result stands, and that is exactly why this survived.** `psi_le_six_list` and
+`rank_two_unaffected` quantify over `List.range 201`, and the two definitions agree on every `n ≤ 200`
+(checked before the change); the first divergences are `n = 512` and `n = 1024`. So no theorem would have
+failed if the name had been wrong — `LL.md` §S11.1, found in this repository's own Stream 9 work by the rule
+that section states. `psi_correct_past_the_old_cap` below pins the fix in the kernel at the first point where
+the two readings diverge, rather than leaving it in this docstring.
+
+**Domain: `0 < n`.** At `n = 0` every power of `p` divides `0`, so "the largest" does not exist and this
+function returns junk — `p` here, `1` for a `range (n+1)` fold, `p^8` for the old capped one. All three
+disagree and none is right. `psi` never reaches it (its prime filter ranges over `List.range (n+1)`, which is
+`[0]` at `n = 0`, and `0` is not prime), so `psi 0 = 0` in every version. Found by cross-checking two candidate
+corrections against each other and against an independent reference rather than reasoning about which was
+right; the disagreement was real and confined to this one degenerate input. -/
 def primePart (n p : ℕ) : ℕ :=
-  (List.range 9).foldl (fun acc a => if n % p ^ a == 0 then p ^ a else acc) 1
+  (List.range (Nat.log p n + 2)).foldl (fun acc a => if n % p ^ a == 0 then p ^ a else acc) 1
 
 /-- `ψ(n) = Σ_{p^a ‖ n, p^a ≠ 2} φ(p^a)`: the dimension a lattice automorphism of order `n` needs. The factor
 `2` is skipped because `−1` on a block already present realises it at no cost. -/
 def psi (n : ℕ) : ℕ :=
   ((List.range (n + 1)).filter fun p => isPrimeB p && n % p == 0).foldl
     (fun s p => let q := primePart n p; if q == 2 then s else s + Nat.totient q) 0
+
+/-- **The fix of `primePart`, pinned where it matters.** `512 = 2^9` and `1024 = 2^10` are the first two
+arguments at which the old exponent cap of `8` changed the answer: it gave `psi 512 = 128`, and `φ(512) = 256`.
+A `decide` over `List.range 201` — which is what every other theorem here runs — cannot distinguish the two
+definitions, so this is the analogue of `reducedForms_counts_imprimitive`: test at the first discriminating
+point, not inside the range the rest of the file happens to use. -/
+theorem psi_correct_past_the_old_cap :
+    psi 512 = Nat.totient 512 ∧ psi 1024 = Nat.totient 1024 ∧
+      primePart 512 2 = 512 ∧ primePart 1024 2 = 1024 := by
+  decide +kernel
 
 /-- **The corrected list for a rank-6 lattice:** the thirteen orders of S9.3 plus exactly `15, 20, 24, 30`. -/
 theorem psi_le_six_list :

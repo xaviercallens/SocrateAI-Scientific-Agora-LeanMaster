@@ -117,6 +117,56 @@ depended on it.** §5's lemmas are arithmetic about `φ` and stand. Stream 8 §8
 formalized. It needs cyclotomics and the rational canonical form. What is now Tier A is the other direction for
 the four cases at issue, and that is what makes any `φ`-based enumeration provably incomplete.
 
+### 5b-bis. S9.4a — `psi` itself was wrong above `p^8`, and no theorem could see it (2026-09-21)
+
+The `psi` of §5b is computed through `primePart n p`, which folded over `List.range 9` — an exponent cap of
+`8`. So `primePart 512 2 = 256`, `primePart 1024 2 = 256`, and hence **`psi 512 = 128` where `φ(512) = 256`**.
+The definition did not compute `ψ` for any `n` divisible by `2⁹`, `3⁹`, … while its name and docstring said it
+did.
+
+*Every result of §5b stands.* `psi_le_six_list` and `rank_two_unaffected` quantify over `List.range 201`, and
+the corrected and original definitions agree on every `n ≤ 200` — checked before the change. The first
+divergences are exactly `n = 512` and `n = 1024`. **That is why it survived: no theorem would have failed if
+the name had been wrong**, because every use sat inside a range the cap could not reach. `LL.md` §S11.1,
+found in this repository's own work by the rule that section states.
+
+*Fixed and pinned.* The bound is now `Nat.log p n + 2`, which cannot truncate (`p^a ∣ n` with `0 < n` forces
+`p^a ≤ n`, hence `a ≤ Nat.log p n`). `psi_correct_past_the_old_cap` states
+`psi 512 = φ(512) ∧ psi 1024 = φ(1024) ∧ primePart 512 2 = 512 ∧ primePart 1024 2 = 1024` — true now, false
+before, and untestable by a `decide` over `List.range 201`. This is the `reducedForms_counts_imprimitive`
+pattern: **test at the first point where the plausible readings diverge, not inside the range the rest of the
+file happens to use.**
+
+*Domain, recorded rather than papered over.* At `n = 0` every power of `p` divides `0`, so "the largest" does
+not exist; the corrected fold returns `p`, a `range (n+1)` fold returns `1`, the old capped one returned `p^8`.
+All three disagree and none is right. `psi` never reaches it, so `psi 0 = 0` in every version. Found by
+cross-checking two candidate corrections against each other and against an independent reference, rather than
+reasoning about which was right.
+
+### 5c. S9.4b — what remains, scoped (still open)
+
+The crystallographic restriction in its correct form — **`ψ(n) ≤ d` is *necessary* for an order-`n` automorphism
+of a rank-`d` lattice** — is still not formalized. It splits cleanly, and the split is the useful part of this
+entry:
+
+* **The linear-algebra half (Tier L, the harder one).** For `A ∈ GL(d, ℤ)` of order exactly `n`, view `ℚ^d` as a
+  `ℚ[X]/(Xⁿ − 1)`-module and decompose into `Φ_e`-isotypic parts. Then `d ≥ Σ_{e ∈ S} φ(e)` where
+  `S = {e : Φ_e ∣ minpoly A}`, and **`n = lcm S`**. Mathlib has the cyclotomic polynomials; wiring
+  `Aⁿ = 1` → module → isotypic dimensions is a multi-session job and should not be started as a tail-end item.
+* **The arithmetic half (formalizable without any of that).** For a finite set `S` of positive integers with
+  `lcm S = n`, prove `Σ_{e ∈ S} φ(e) ≥ ψ(n)`. Sketch: for each prime power `p^a ‖ n` with `p^a ≠ 2` some
+  `e ∈ S` has `p^a ∣ e`; group the prime powers by the `e` they were assigned to; for an `e` carrying `k ≥ 2`
+  of them, multiplicativity gives `φ(e) ≥ ∏ φ(p_i^{a_i})`, and `∏ xᵢ ≥ Σ xᵢ` when every `xᵢ ≥ 2` — which holds
+  because `ψ` excludes exactly the `p^a = 2` term, the only one with `φ(p^a) = 1`.
+
+The second half is what makes the criterion *sharp*, and it is self-contained number theory. **Note the
+dependency order: it must be stated against the corrected `psi` of §5b-bis, not the capped one** — stating a
+theorem quantified over all `n` against a definition that was only right below `2⁹` would have been the same
+defect one level up.
+
+*Why the `φ`-refutation of §5b is unaffected by all of this.* It exhibits four explicit matrices and computes
+`φ(n) = 8 > 6` for each; `psi` enters only through `psi_le_six_list`, inside the safe range.
+
 ## 6. S9.5 — the tadpole alone bounds nothing (`FluxLattice.lean`)
 
 S9.2 warned that its 17 pairs are not vacua, because one value of `½N_flux` corresponds to many flux quanta. That
@@ -232,7 +282,7 @@ equations of motion, no quotient by the duality group. Eleven flux vectors are n
 
 | # | Step | Why it is the next one |
 |---|---|---|
-| S9.4b | Prove the crystallographic restriction theorem itself, in its **correct** form `ψ(n) ≤ d` | §5b refuted the `φ` form and pinned the right one; the proof needs cyclotomics and the rational canonical form, which Mathlib has |
+| S9.4b | Prove the crystallographic restriction theorem itself, in its **correct** form `ψ(n) ≤ d` — **now scoped into two halves in §5c**: the arithmetic half (`Σ_{e∈S} φ(e) ≥ ψ(n)` for `lcm S = n`) is self-contained and is the next thing to prove; the linear-algebra half (isotypic decomposition) is multi-session | §5b refuted the `φ` form; §5b-bis corrected `psi` itself, which the arithmetic half must be stated against |
 | S9.5d | Pin the `D3`-charge normalisation on the quotient from a source, so that the lattice pairing can legitimately be called `N_flux` | §6c isolates this as the single missing bridge; everything above it is already arithmetic |
 | S9.6c | Replace the carried-over ceiling `32` in §6d by one derived from a pinned normalisation, turning the count `11` from an illustration into a statement | §6d shows the mechanism; only the normalisation stands between it and a real number |
 | S9.6 | Only then: the massless spectrum, and whether a chiral one is reachable | Tier L input dominates; it needs its own pinned sources |
