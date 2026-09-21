@@ -23,7 +23,13 @@ description: Use when you need to get a batch of new Lean 4 theorems proved (in 
    (≈45 min Haiku, ≈90 min Sonnet). At most 3 compile-heavy agents at once on the 8-core VM.
 5. **Accept nothing on report.** Recompile each file yourself with
    `lake env lean -DmaxHeartbeats=1000000 -DmaxRecDepth=8000 File.lean`, run `statement_lock --check`,
-   restore failed goals to `sorry`, escalate.
+   restore failed goals to `sorry`, escalate. **A pasted transcript is a claim about a run, not the run** —
+   and the danger signature is not carelessness but *near-certainty*: a peer session once wrote out four
+   `#print axioms` lines before executing them, and the invented values turned out correct. Require
+   "pasted from a tool result in this session"; "pending" is always an available answer. (`LL.md` §S11.4)
+5b. **Check the name, not only the goal.** An agent asked to prove `foo_is_bar` can return something true,
+   compiling and axiom-clean, that proves less than `foo_is_bar` says — gates cannot see this. Ask: which
+   theorem would be *false* if the name were wrong? See skill `claim-audit`. (`LL.md` §S11.1)
 6. **Guard data tables with a global theorem** (sum of squares = group order, total count…): a wrong
    M24 table survived for months behind a one-entry check.
 7. Finish with the full gate (`lean-proof-gate`) and refresh the search index (`leanmaster-theorem-search`).

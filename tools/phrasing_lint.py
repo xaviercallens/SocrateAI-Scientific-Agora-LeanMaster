@@ -38,7 +38,7 @@ LIBS = ["DualScaleDyons", "StringTheoryFoundation", "DualScaleStream2", "DualSca
 # of ``100\% certified''"), inside artifacts already published to Zenodo. Editing a published
 # paper so a lint reports clean is the same move as force-updating a released tag to hide an
 # error in it. Run `phrasing_lint.py papers` deliberately when revising one; do not silence it.
-DEFAULT = LIBS + ["docs", "README.md", "LL.md", "papers/book/chapters"]
+DEFAULT = LIBS + ["docs", "README.md", "LL.md", "papers/book/chapters", ".claude/skills"]
 SUFFIXES = {".lean", ".md", ".tex"}
 
 # A banned phrase inside QUOTES is being discussed, not asserted -- the same principle as

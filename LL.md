@@ -17,11 +17,42 @@ repo) rather than as ground truth to build the next session's narrative on.
 
 ---
 
-# §S11. G10, and what a sibling repository caught that our gates could not (2026-09-21)
+# §S11. The two-repository audit day: what the gates could not see (2026-09-21)
 
-Session context: `DualScaleDyons/FrickeRepair.lean` (G10), run alongside a live session of
-`SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal` ("Stream 1") on the same VM, with messages going both
-ways throughout. Every lesson below came out of that exchange and none of them would have come out of a solo run.
+Session: G10 (`DualScaleDyons/FrickeRepair.lean`, released as `v3.45.0`), run alongside a live session of the
+sibling repository `SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal` ("Stream 1") on the same VM, with
+messages going both ways all day.
+
+**Nine defects were found between the two repositories. Not one of them was found by a gate** — every gate on
+both sides was green through all of them. Each was found by one session asking a question about the *other's*
+work and then turning it around. Neither session audited itself unprompted; both found their worst defects only
+after being handed someone else's. Gate **G5** ("producer ≠ verifier") is written for subagent output; the
+evidence here says it wants to be much broader — a second party with different priors, working on their own
+code, prompted by a question about yours. **When a sibling-repo session is live, trade audit questions rather
+than results.**
+
+**Read by theme, not in order.**
+
+| Theme | Sections |
+|---|---|
+| A theorem that proves less than its name | **S11.1** (the defect), **S11.7** (mechanised), **S11.10** (banned phrasing is the same claim) |
+| A critique that never reached the code | **S11.8** (disclosure belongs on the declaration), **S11.11** (the book-vs-source sweep) |
+| A check that could not see, or could not fail | **S11.9** (three tools, one blind spot), **S11.2** (where the kernel stops) |
+| Evidence and its width | **S11.3** (two routes or one?), **S11.4** (a peer's transcript is a claim about a run) |
+| Environment traps | **S11.5** (page cache), **S11.6** (`Int./` is `ediv`) |
+
+**The four rules that would have caught the most, soonest:**
+
+1. **State what an object *is*, not only how it behaves.** For each named declaration, point at the theorem that
+   would be *false* if the name were wrong. If only a docstring would change, the identification is not in the
+   kernel. (S11.1)
+2. **A disclosure belongs on the declaration**, not only in the prose that discusses it. Prose is read by
+   whoever reads that prose; a docstring is read by everyone who meets the theorem — including retrieval, which
+   answers from the docstring and never from the chapter. (S11.8)
+3. **A scan that cannot see a declaration reports it as clean**, and a gate never seen go red is a gate you are
+   trusting, not running. Negative-control every check, including the self-test. (S11.9)
+4. **Tune a detector against its positive controls, never against its candidate count.** A narrowing that drops
+   a known case reads as an improvement, because the number goes down. (S11.11)
 
 ## S11.1 A theorem can constrain an object completely and still never say what it is
 
@@ -97,6 +128,26 @@ pasted from a run in this session, and "pending" is always available.* A gate ph
 nothing here, because the failure mode is not carelessness — it is near-certainty. This is gate G5
 (producer ≠ verifier) seen from the other side: **being right is not the same as having checked.** When citing a
 peer, cite the artefact they actually ran, at the width they actually ran it.
+
+## S11.5 Two Lean sessions on this VM contend for page cache, not CPU
+
+A single-file `lake env lean` here sat at ~1% CPU for six minutes while the sibling repository elaborated: both
+were I/O-bound on olean loading, with ~16 GB RAM free the whole time. `§S8.2`'s warning generalises — it applies
+**across repositories and across Claude sessions**, not just within one build. Also worth knowing before starting
+a long run next to one: a `lake env lean` on a full-library import can hold the Lake lock for ~10 minutes.
+**Ask the other session before starting, and say when you are clear.** That exchange cost two messages and saved
+an unknown number of 20–40 minute stalls.
+
+## S11.6 Ported code must match Lean's integer division, or the port invents failures
+
+Porting `AttractorCharges.reduceStep` to Python to pre-check a theorem produced **56 spurious class mismatches**.
+Cause: the port used truncation toward zero; Lean 4's `Int./` is `ediv` (floor for a positive divisor).
+`#eval ((-1 : Int) / 4)` gives `-1`, not `0`. With floor division there were zero mismatches. Had the port been
+trusted, the conclusion would have been the opposite of the truth.
+
+**Rule:** when pre-checking a Lean definition outside Lean, verify the division and modulus semantics with
+`#eval` on a negative operand *first*. `%` is `emod` and is always non-negative; the repo's own
+`discriminant_gap` relies on that.
 
 ## S11.7 Mechanise §S11.1: strip the docstring, then ask whether the statement mentions the name
 
@@ -310,7 +361,6 @@ revision brief found **0 unrecorded of 3**, and Stream 9's own conditional statu
 declaration (`convention_factor_bounded`: "**Conditional remark, not a result**… not established here"). That
 is the pattern working, and it is why the finds concentrated in the legacy Phase-0 libraries instead.
 
-
 ## S11.10 "100% Certified" is not a style preference — it is the claim the tiers exist to prevent
 
 `CLAUDE.md` has forbidden "zero axioms" and "100% verified" since the repository's rigour reset, yet **39
@@ -403,26 +453,6 @@ vacuous") were counted as criticisms and supplied four of the ten strongest-look
 and **`LANDED` was too narrow**, so real in-place disclosures were reported as missing — a false negative on the
 "already fixed" side manufacturing false positives in the report. The remaining **86 candidates are a reading
 list handed forward, not a defect count**, and that distinction is the whole discipline of this tool.
-
-## S11.5 Two Lean sessions on this VM contend for page cache, not CPU
-
-A single-file `lake env lean` here sat at ~1% CPU for six minutes while the sibling repository elaborated: both
-were I/O-bound on olean loading, with ~16 GB RAM free the whole time. `§S8.2`'s warning generalises — it applies
-**across repositories and across Claude sessions**, not just within one build. Also worth knowing before starting
-a long run next to one: a `lake env lean` on a full-library import can hold the Lake lock for ~10 minutes.
-**Ask the other session before starting, and say when you are clear.** That exchange cost two messages and saved
-an unknown number of 20–40 minute stalls.
-
-## S11.6 Ported code must match Lean's integer division, or the port invents failures
-
-Porting `AttractorCharges.reduceStep` to Python to pre-check a theorem produced **56 spurious class mismatches**.
-Cause: the port used truncation toward zero; Lean 4's `Int./` is `ediv` (floor for a positive divisor).
-`#eval ((-1 : Int) / 4)` gives `-1`, not `0`. With floor division there were zero mismatches. Had the port been
-trusted, the conclusion would have been the opposite of the truth.
-
-**Rule:** when pre-checking a Lean definition outside Lean, verify the division and modulus semantics with
-`#eval` on a negative operand *first*. `%` is `emod` and is always non-negative; the repo's own
-`discriminant_gap` relies on that.
 
 ---
 
