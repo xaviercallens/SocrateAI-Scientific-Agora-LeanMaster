@@ -242,6 +242,28 @@ instead. Re-run unpiped: `axiom_audit DualScaleDyons` **exit 0**, 166 audited / 
 it returns to exit 0. A gate that has never been seen go red is a gate you are trusting, not running — the same
 rule as the self-test, one layer down. **Read the exit code, and make sure the exit code is the tool's.**
 
+**G2 and G3 too, with one mutation that also demonstrates why G1 cannot substitute for either.** Appending
+`theorem g3_negative_control : (0 : Nat) = 1 := by sorry` to `DualScaleValidation/Observables.lean`:
+
+| gate | result |
+|---|---|
+| G1 `lake build DualScaleValidation` | **exit 0** — `Build completed successfully`, with only `warning: … declaration uses ‘sorry’` |
+| G2 comment-stripped grep | **exit 1**, names the line |
+| G3 `axiom_audit.py` (unpiped) | **exit 1**, `FAIL g3_negative_control ['sorryAx']`, 24 audited / 1 failing |
+
+Reverted: build exit 0, audit exit 0, 23 audited / 0 failing. **A `sorry` does not fail the build** — that is
+the whole reason G2 and G3 exist, and it is now demonstrated here rather than asserted. (Note also that the
+warning text uses a typographic backtick: a grep for `'sorry'` with straight quotes finds nothing in the log.
+The first run of this very control reported `0` matches for that reason.)
+
+**A gate's exit code can be structurally uninformative, and that is worth checking separately.** Stream 1 found
+`axiom_audit.py Agora` **exits 1 permanently** on their side — it returns non-zero whenever any theorem depends
+on a *registered, disclosed* axiom, and their steady state is three. They had read it through `| tail` all day
+and called it green from the counts. Same tool, same code: **its exit code is a usable CI signal here (we
+register no axioms, so 0 means clean) and permanently red there.** Before wiring any gate to CI, ask not only
+"have I seen it go red" but "can it go green in this repository's steady state" — a signal engineered to be
+ignored is worse than no signal.
+
 **Corrected count: 666 of 836**, not `666 of 834` as first reported — our denominator was the narrow anchor's.
 Small here only because of the structural accident that we have no `noncomputable` theorems, which is exactly
 why the bug would have gone unnoticed on this side. Stream 1's moved twice: `208/481` (wrong population) →

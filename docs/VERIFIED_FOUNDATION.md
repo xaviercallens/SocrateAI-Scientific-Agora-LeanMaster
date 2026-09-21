@@ -338,7 +338,14 @@ discards their exit code — and both return `1` on failure. Re-run unpiped: **`
 exit 0** (166 audited, 0 failing) and **`statement_lock --check` over all ten libraries exit 0** (OK). The lock
 is also **mutation-verified**: altering `sym2_S_det` from `= 1` to `= 2` produces
 `CHANGED … :: sym2_S_det` and **exit 1**, reverting restores exit 0. A gate never seen go red is a gate being
-trusted, not run. The `Disclosure` token
+trusted, not run. **G2 and G3 likewise:** appending `theorem g3_negative_control : (0 : Nat) = 1 := by sorry`
+to `DualScaleValidation/Observables.lean` leaves **G1 at exit 0** (`Build completed successfully`, a `sorry` is
+only a warning) while **G2 exits 1** naming the line and **G3 exits 1** with
+`FAIL g3_negative_control ['sorryAx']`, 24 audited / 1 failing; reverted, both return to 0 and 23 / 0 failing.
+That a `sorry` does not fail the build is exactly why G2 and G3 exist, now demonstrated rather than asserted.
+**One caveat on G3's exit code:** it returns non-zero whenever a theorem depends on *any* non-standard axiom,
+including registered and disclosed ones — so it is a usable pass/fail signal in this repository only because we
+register none. Stream 1, with three, found theirs permanently red. The `Disclosure` token
 convention was adopted on both sides and retrofitted to the five written earlier, which moved this repository's
 candidate list from 13 to 10 and stopped the tool re-flagging our own corrections. `LL.md` §S11.9.
 
