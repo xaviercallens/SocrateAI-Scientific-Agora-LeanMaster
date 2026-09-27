@@ -272,7 +272,21 @@ statement level, **not built here**). The two files were written without either 
 and reach the same vector `(2, −4, 1)`, the same reduced basis `(2, −3, 1), (1, 2, 0)` and the same Gram
 `[[2,1],[1,4]]`; their frame determinants `2` and `−1` are consistent with our `orth_det_identity`. The `A₂`
 row, the three s10 rows, the general identity and the arithmetic instances are **single-source, not externally
-checked**. Stream 2 will re-run the gates on at least one of the two files before citing either.
+checked** — *as of commit `73f6fb1`.*
+
+> **G5 update, same day (Stream 2's report, received by message; not re-run by me).** Stream 2 re-ran the five
+> gates on this worktree at `f0697bd` (`RankJump.lean` byte-identical to `73f6fb1`, sha256 `d9c3e5f3…`), with
+> `LEAN_PROJECT_ROOT` set to the worktree, exit codes read unpiped: build 0 (8805 jobs), `sorry_grep` 0,
+> `axiom_audit` 0 (184 / 0, 18 `RankJump` lines), `statement_lock --check` 0, and `#print axioms` on eleven named
+> theorems giving the standard three each. A first run of theirs without `LEAN_PROJECT_ROOT` audited the main
+> checkout (166 theorems, no `RankJump`) and was discarded and recorded. So **producer ≠ verifier now holds for
+> all six rows** on their side. K3-DarkMatter `main` @ `8caf31e` (PR #63) carries the overlay
+> `data/certificates/CM_POINTS_RHO20_LATTICE_TIER.json` (sha256 `2aa6dd40…`) and the attestation
+> `data refs/lean_attestations_rankjump_2026_09_27.json` (sha256 `8bf825ac…`), citing `73f6fb1` + the file hash;
+> the two `N = 7` wall rows cite Stream 1 §3b as well, the other four cite this file alone and say so; s10 rows
+> carry `advisory_family: true`. Their checker recomputed each row's norm, orthogonality, Gram, Gauss reduction
+> and the determinant identity before granting the label (14 controls). These are their numbers and hashes,
+> quoted; a no-fast-forward merge of this branch keeps the cited commit exact.
 
 **How G1 was run, disclosed.** This session's Bash allowlist admits `lake env *` and `python3 *` but not
 `lake build`, `ln` or a `cd` into the main checkout; a fresh worktree has no `.lake`. The build cache was linked
