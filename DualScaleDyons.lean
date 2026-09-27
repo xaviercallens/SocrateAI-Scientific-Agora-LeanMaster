@@ -25,3 +25,4 @@ import DualScaleDyons.GridQuantum
 import DualScaleDyons.DefinitenessCriterion
 import DualScaleDyons.FrickeCriterion
 import DualScaleDyons.FrickeRepair
+import DualScaleDyons.RankJump

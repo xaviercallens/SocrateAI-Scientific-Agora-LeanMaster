@@ -533,6 +533,52 @@ until someone shows the routes are not the same route.
 *Scope.* Nothing here says which K3 is ours. `N = 4` gives no observable (Stream 7), and G2's `i`/`ω` choice
 stays open.
 
+**G11 — the rank-jump rows, kernel-checked (2026-09-27, `DualScaleDyons/RankJump.lean`).** G10 said the cut
+`ρ = 20` lands on the CM locus and the discriminant bound selects within it. Stream 2's certificate
+`CM_POINTS_RHO20.json` (Tier B) lists *where* on each family's modular curve the Picard number jumps and which
+class `v ∈ U ⊕ ⟨2N⟩` becomes algebraic there, with `T = v^⊥`. On 2026-09-27 Stream 2 asked for the lattice
+arithmetic of its six locus rows in the kernel, so that the lattice half of each row can be re-labelled Tier A
+in a re-emitted certificate (after reading our gate output themselves, producer ≠ verifier).
+
+*What is proved (Tier A).* `orth_det_identity`, general in `N` and in all three vectors: if `w₁, w₂ ⊥ v` then
+`det Gram(w₁,w₂) · v² = −2N · det(w₁|w₂|v)²` — `det(RGRᵀ) = det(R)² det(G)` read on the block form that
+orthogonality forces. `wall_general`, for every `N`: `v = e − f` has `v² = −2` and `(e+f, w)` is a saturated
+ℤ-basis of `v^⊥` with Gram `⟨2⟩ ⊕ ⟨2N⟩`. Then the six rows, each as `v²`, an explicit ℤ-basis of `v^⊥` (both
+orthogonal to `v` **and** every lattice vector orthogonal to `v` an integer combination — `IsOrthBasis`), the
+Gram matrix `[[2a,b],[b,2c]]` of the certificate's reduced form `(a,b,c)`, and `(a,b,c) ∈ reducedForms (4ac−b²)`:
+
+| family | `z` | `v` | `v²` | `T` | `D` |
+|---|---|---|---|---|---|
+| s7 (`N = 7`) | `1/27` | `(1,−1,0)` | `−2` | `⟨2⟩ ⊕ ⟨14⟩` | `−28` |
+| s7 | `−1` | `(2,−4,1)` | `−2` | `[[2,1],[1,4]]` | `−7` |
+| s7 | `∞` | `(14,−14,−5)` | `−42` | `A₂` | `−3` |
+| s10 (`N = 10`, ADVISORY) | `1/16` | `(1,−1,0)` | `−2` | `⟨2⟩ ⊕ ⟨20⟩` | `−40` |
+| s10 | `−1/4` | `(2,−6,1)` | `−4` | `[[4,2],[2,6]]` | `−20` |
+| s10 | `∞` | `(10,−10,−3)` | `−20` | `⟨2⟩ ⊕ ⟨2⟩` | `−4` |
+
+The `A₂` row is G10's minimum `(1,1,1)`, sitting at the order-3 elliptic point of `X₀(7)⁺`; the s10 `z = ∞` row is
+the `τ = i` lattice `⟨2⟩ ⊕ ⟨2⟩` of §1. Two arithmetic instances of Stream 2's occurrence criterion are decided:
+`−3 ≡ 5² (mod 28)` and `−3` is not a square mod `40` — the criterion itself ("`D` occurs iff `D` is a square mod
+`4N`") is Stream 2's R3, Tier B here.
+
+*Where the kernel stops.* (1) `v^⊥ = T_X` at the jump is Dolgachev 1996 §7 / Doran 1998 Thm 5.13, Tier L.
+(2) The `z` column is Stream 2's numerical recognition, Tier B; nothing in the file mentions `z`. (3) The
+determinant formula `det(v^⊥) = 2N(−v²)/d²` needs, beyond `orth_det_identity`, the index step
+`|det(w₁|w₂|v)| = |v²|/d` for a saturated basis; that step is not proved here — observed on the `A₂` row
+(`det = 3 = 42/14`, `s7_z_infinity_index`), not derived. Stream 1 records the general theorem as closed in its
+own tree (commit `8bb3d41`); read from its reflog, not built here. (4) No ranking: six rows are six lattices,
+D7′ adopts no selector, and a Tier A row does not promote the s10 lattice certificate (D6′).
+
+*The control that fixed the convention (`basis_mismatch_control`).* The request first placed `(2,−4,1)` in the
+Gram `[[0,0,−1],[0,14,0],[−1,0,0]]`; there its norm is `220`, not `−2`. One norm computation, sent back as a
+question, and Stream 2 re-read its certificate's self-test (`2xy + 2Nz²`, our `uPlus2N`) and withdrew the
+attribution. Kept in the kernel so the rows cannot be read back into the wrong lattice (`LL.md` §S13.1).
+
+*Reading (Tier C).* G11 changes no verdict. It makes the two selection principles of Stream 2's GE-14 fork
+concrete as lattices: the `(−2)`-walls (`z = 1/27, −1`; `D = −28, −7`) and the minimal discriminant (`z = ∞`,
+`D = −3`) are now three explicit `v^⊥` in the same `U ⊕ ⟨14⟩`, and a future selection argument must say which
+mechanism picks its row and why the other does not apply. That question is open, and it is T0's (AM-6).
+
 **Synthesis.** Three independent routes point to `ω`: `T²` trapping (E2), `T⁴` trapping with the `ω` complex
 structure (G2), and the smallest black hole (G3). Three counterweights: the choice of complex structure on `D₄`
 (G2), which symplectic symmetry does not break and non-symplectic symmetry breaks towards `i` (§10); the blindness
