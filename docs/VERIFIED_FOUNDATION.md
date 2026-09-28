@@ -313,6 +313,45 @@ column — Tier B, Stream 2's numeric recognition; the file never mentions `z`. 
 so the general occurrence criterion `det(v^⊥) = 2N(−v²)/d²`, `D ≡ (2Nz/d)² (mod 4N)` stays Tier B here. No
 ranking of rows; a Tier A row does not promote the s10 lattice certificate (T0 D6′).
 
+## 0---------------. Addendum, 2026-09-28: G11 merged to `main`; the ten-library re-audit, seven of ten measured
+
+**Still not a release.** `v3.46.0` remains untagged. What changed since the section above: `worktree-rank-jump-lemma`
+was merged into `main` with `--no-ff` (merge commit `43256ec`, preserving `73f6fb1` exact — verified via
+`git merge-base main worktree-rank-jump-lemma` = `dcfe944`, the prior tip, so the merge is a clean fast-forward-safe
+union with no conflicts), and `main` was pushed: `origin/main` confirmed `dcfe944` before push, `dcfe944..43256ec`
+after. Sibling sessions that had been citing `73f6fb1` second-hand (statement level, "not verified here until we
+pull") can now build it themselves.
+
+**Gates re-run on the merged tree `43256ec`, exit codes read unpiped.**
+
+| gate | command | result |
+|---|---|---|
+| G1 build | `lake build` × 10 libraries (via `subprocess`, `.lake` symlinked to the shared cache — same route as 2026-09-27, disclosed there) | **exit 0, all ten**, every one incremental (nothing recompiled from scratch: `DualScaleStream2` 3704 jobs, `StringTheoryFoundation` 19, `DualScaleM24Formalization` 14, `DoubleFieldTheory` 10, `DualScaleValidation` 15, `Lean5Corpus` 30, `StringTheoryFormalization` 3312, `DualScaleCosmology` 8775, `DualScaleMoonshine` 3031, `DualScaleDyons` 8805) |
+| G2 `sorry_grep.py` | default (all ten libraries) | **exit 0**, clean; `--self-test` exit 0 first |
+| G3 axioms | `tools/axiom_audit.py` × 10 | **7 of 10 measured, all exit 0, 0 failing**: `DualScaleStream2` 206, `StringTheoryFoundation` 63, `DualScaleM24Formalization` 62, `DoubleFieldTheory` 44, `DualScaleValidation` 23, `Lean5Corpus` 53, `StringTheoryFormalization` 89 — **sum 540, 0 failing so far**. `DualScaleCosmology`, `DualScaleMoonshine`, `DualScaleDyons` **not yet measured this session** — see below |
+| G4 lock | `tools/statement_lock.py --check` over all 160 `*.lean` files of the ten libraries | **exit 0**; no CHANGED, no REMOVED, 0 ADDED (`RankJump`'s 21 declarations were already locked by the branch's own `--update`); several pre-existing files report `UNLOCKED` (never locked to begin with — not caused by this merge, does not affect the exit code) |
+| G5 | — | unchanged from the section above; see Stream 1's and Stream 2's cross-checks there |
+
+**Why G3 stopped at seven of ten, disclosed rather than hidden.** This VM was under severe multi-tenant RAM
+contention today: 0 GB free, swap full, another tenant's Ollama process holding ~23 GB, and at least one more
+tenant's job starting mid-session. `DualScaleCosmology`'s audit (59 of its own theorems, but an 8775-job import
+closure) was left running for 53 minutes and accumulated only 25 seconds of CPU time in that span — genuine
+starvation, confirmed by checking wall-clock (`date`) against `ps -o time` twice, five minutes apart, not a
+hung process misread as slow. Killing another tenant's process to free RAM was not an option (`LL.md`,
+standing rule). Rather than force a tag on an unmeasured total — the exact mistake `dcfe944`'s commit message
+warned against ("the ten-library total of 866 came from the killed run and is not asserted here") — this
+session stopped and recorded the true state.
+
+**What is NOT claimed here.** No ten-library axiom-audit total. No `v3.46.0` tag. `DualScaleCosmology`,
+`DualScaleMoonshine` and `DualScaleDyons` are unaudited *this session* (each passed G1 build and, for
+`DualScaleDyons`, G3 with 184 theorems on 2026-09-27 per the section above — but that was `DualScaleDyons`
+alone, before today's merge, and is not carried forward as today's number).
+
+**Next step, exact commands** (from a worktree with `.lake` symlinked to
+`/mnt/disks/disk-socrateai-local-1/leanmaster/lake-v434`): `python3 tools/axiom_audit.py DualScaleCosmology`,
+then `DualScaleMoonshine`, then `DualScaleDyons`. If all three come back 0 failing, write the `v3.46.0` entry
+(folding in Stream 9's completion, `docs/STREAM9_COMPLETION_REPORT.md`) and tag.
+
 ## 0--------------. `v3.45.0` (2026-09-21): G10 — the repair proved, and the independence it does not have
 
 **Release gates, `v3.45.0`, all five run at the released tree with exit codes read unpiped.**
