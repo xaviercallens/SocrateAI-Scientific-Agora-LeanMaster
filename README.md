@@ -40,7 +40,7 @@ literature (Tier L) versus this project's own conjectures (Tier C, not yet deriv
 
 Every declaration across all built packages is checked by the **Lean 4 kernel** with a **strict
 invariant of zero `sorry` and zero `admit`**, verified both by source grep and by `#print axioms` on
-every theorem and lemma (**836 audited theorems across the ten first-party libraries** depend on
+every theorem and lemma (**884 audited theorems across the ten first-party libraries** depend on
 nothing beyond the three standard Lean axioms — see §10 and
 [`docs/VERIFIED_FOUNDATION.md`](docs/VERIFIED_FOUNDATION.md), which is the authoritative,
 gate-by-gate status document that this README summarizes).
@@ -172,7 +172,7 @@ continuous parameter survives.
 | **Free Parameters** | Many continuous ($\sim 10^2 - 10^3$) | Conjectured zero, motivated by 5 integer facts | Tier C (conjecture, not a theorem) |
 | **BPS Multiplicities** | Unconstrained integers | $462 \times 60 = 360 \times 77 = 27720$ (exact arithmetic; physical interpretation is Tier C) | Tier A (arithmetic) |
 | **RR Tadpole Cancel.** | Numerical balance | $16(+4) + 4(-16) = 0$ in $\mathbb{Z}$ | Tier A (arithmetic) |
-| **Kernel Verification** | None (paper only) | 836/836 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
+| **Kernel Verification** | None (paper only) | 884/884 audited theorems across ten libraries: 0 sorry, standard axioms only | Tier A |
 
 The middle column is the honest summary: this project mechanizes exact **arithmetic** rigorously
 (Tier A) and reports the **physics** built on top of it by tier, rather than certifying the physics
@@ -506,14 +506,14 @@ bare keyword — and it also catches `native_decide` (`Lean.ofReduceBool`), whic
 ```bash
 lake build DualScaleStream2 && python3 tools/axiom_audit.py DualScaleStream2
 ```
-Last full run (**2026-09-21, `v3.45.0`** — all ten libraries re-audited in one session rather than a total
-carried forward and incremented, which is itself a lesson of that release; `LL.md` §S11.9),
-**836 theorems audited across all ten libraries, 0 failing**. The exit code was read unpiped: piping the tool
+Last full run (**2026-09-29, `v3.46.0`** — all ten libraries re-audited in one release rather than a total
+carried forward and incremented, which is itself a lesson of `v3.45.0`; `LL.md` §S11.9),
+**884 theorems audited across all ten libraries, 0 failing**. The exit code was read unpiped: piping the tool
 through `| tail` discards it, and it *does* return `1` on failure:
 
 | Library | Theorems audited | Failing |
 |---|:---:|:---:|
-| `DualScaleStream2` | 176 | 0 |
+| `DualScaleStream2` (now includes Stream 9, `T⁶/Γ` orientifold) | 206 | 0 |
 | `StringTheoryFormalization` | 89 | 0 |
 | `DualScaleM24Formalization` | 62 | 0 |
 | `StringTheoryFoundation` | 63 | 0 |
@@ -522,10 +522,12 @@ through `| tail` discards it, and it *does* return `1` on failure:
 | `DualScaleValidation` | 23 | 0 |
 | `DualScaleCosmology` (Stream 3, with the verdicts of Streams 6–7) | 59 | 0 |
 | `DualScaleMoonshine` (Stream 4) | 101 | 0 |
-| `DualScaleDyons` (Streams 5, 8, 9 bridge) | 166 | 0 |
-| **Total** | **836** | **0** |
+| `DualScaleDyons` (Streams 5, 8, 9 bridge; now includes G11's `RankJump.lean`) | 184 | 0 |
+| **Total** | **884** | **0** |
 
-**What the number 836 does and does not count (disclosure of 2026-09-20, extended 2026-09-21).** It counts
+**What the number 884 does and does not count (disclosure of 2026-09-20, extended 2026-09-21, count updated
+2026-09-29 — the disclosure itself was not re-measured at `v3.46.0`, only the raw audited/failing totals
+above).** It counts
 *declarations whose axiom dependencies were checked*. **A vacuous theorem counts exactly as much as a real
 one**, so the number is a measure of coverage, not of content.
 

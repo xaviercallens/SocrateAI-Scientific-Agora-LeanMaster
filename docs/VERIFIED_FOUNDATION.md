@@ -246,6 +246,56 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0----------------. `v3.46.0` (2026-09-29): released — Stream 9 complete, G11 merged, all ten libraries re-audited
+
+**Release gates, `v3.46.0`, all run on the tagged tree `main` @ `5c08a5e`, exit codes read unpiped.**
+
+| gate | command | result |
+|---|---|---|
+| G1 build | `lake build` × 10 libraries | **exit 0, all ten**, every one incremental against the shared cache (job counts: `DualScaleStream2` 3704, `StringTheoryFoundation` 19, `DualScaleM24Formalization` 14, `DoubleFieldTheory` 10, `DualScaleValidation` 15, `Lean5Corpus` 30, `StringTheoryFormalization` 3312, `DualScaleCosmology` 8775, `DualScaleMoonshine` 3031, `DualScaleDyons` 8805) |
+| G2 `sorry_grep.py` | default (all ten libraries) | **exit 0**, clean; `--self-test` exit 0 first |
+| G3 axioms | `tools/axiom_audit.py` × 10 | **exit 0, all ten; 884 theorems audited, 0 failing**: `DualScaleStream2` 206, `StringTheoryFoundation` 63, `DualScaleM24Formalization` 62, `DoubleFieldTheory` 44, `DualScaleValidation` 23, `Lean5Corpus` 53, `StringTheoryFormalization` 89, `DualScaleCosmology` 59, `DualScaleMoonshine` 101, `DualScaleDyons` 184 |
+| G4 lock | `tools/statement_lock.py --check` over all 160 `*.lean` files of the ten libraries | **exit 0**; no CHANGED, no REMOVED, 0 ADDED against the merged tree's lock file |
+| G5 producer ≠ verifier | — | **partial, disclosed below**, unchanged in substance from the two sections that follow |
+
+**Why this took two sessions.** The addendum immediately below (2026-09-28) records that this VM's severe
+multi-tenant RAM contention (0 GB free, swap full, another tenant's ~23 GB Ollama process) stalled
+`DualScaleCosmology`'s audit at essentially zero CPU progress for the better part of an hour. Rather than
+force a tag on an unmeasured total, that session pushed the merge alone and stopped, disclosed. Contention
+eased (confirmed: 22 GB available, Ollama down to ~4 GB) and the remaining three libraries
+(`DualScaleCosmology` 59, `DualScaleMoonshine` 101, `DualScaleDyons` 184, all 0 failing) were measured without
+incident. No number here was carried forward from a killed or partial run.
+
+**What this release contains.** Two independent bodies of work, both already fully described elsewhere in this
+file and not repeated here: **Stream 9** (`docs/STREAM9_COMPLETION_REPORT.md`, `DualScaleStream2/Orientifold/`
+and `/Flux/`, 10 files / 106 theorems) — the `T⁶/ℤ₂×ℤ₂` orientifold, opened as a control on a different
+compactification: the tadpole bounds an integer, never the flux quanta, through the budget, the orbifold
+projection or any quantisation factor; finiteness comes only from supersymmetry (the ISD condition, `H = ∗F`,
+turns the indefinite tadpole pairing into the positive-definite norm `⟨J₈F,F⟩ = F·F`, and of an infinite family
+exactly one member is ISD); and separately, lattice-automorphism orders are governed by `ψ(n) ≤ d`, not the
+often-quoted `φ(n) ≤ d` (false for every `d ≥ 5`). **G11** (`DualScaleDyons/RankJump.lean`, the section
+immediately below) — the six ρ = 20 rank-jump rows of Stream 2's `CM_POINTS_RHO20.json`, now merged to `main`
+(`--no-ff`, commit `43256ec`, preserving `73f6fb1` exact).
+
+**G5, stated exactly, for the whole release.** Both bodies of work are producer = verifier at the point of
+writing: no subagent, one author with the Lean kernel as the only judge. External checks obtained since: for
+G11, Stream 1 (`SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal`) cross-checked the `s7` wall rows
+(`MnLattice.lean` §3b, commit `fd76a49`) and, on 2026-09-28, the two `z = ∞` rows (`§3c`, commit `2f665dd` /
+`4bab4b6`, tag `v0.24-am8-rows-lattice-half`) against the statements of `RankJump.lean` — **statement-level
+both ways** (neither session built the other's file), and every overlapping statement agreed exactly: signs,
+bases, Gram matrices, the index relabelings, and both frame determinants. Stream 2 (`K3-DarkMatter`) built and
+gated the branch itself independently (`LEAN_PROJECT_ROOT` set correctly the second time, after a first run
+silently audited the wrong tree and was discarded and disclosed) and issued
+`CM_POINTS_RHO20_LATTICE_TIER.json` citing `73f6fb1` plus the file hash. Stream 9 has no external kernel check
+as of this tag.
+
+**What is NOT claimed.** No vacuum, no `N=1` spectrum, no chirality, no vacuum count (Stream 9); no ranking of
+G11's six rows, and a Tier A row does not promote the s10 (ADVISORY) lattice certificate; Stream 9 is a
+different compactification and its conclusions do not transfer to Stream 8's "which K3?" question. Both
+streams' own Tier L/Tier B boundaries (named in their respective sections) stand unchanged.
+
+Tagged `v3.46.0` on `main` @ `5c08a5e`, pushed together with the tag.
+
 ## 0---------------. Unreleased, branch `worktree-rank-jump-lemma` (2026-09-27): G11 — the rank-jump rows of the `ρ = 20` locus
 
 **Not a release.** `v3.46.0` (Stream 9 completion, `docs/STREAM9_COMPLETION_REPORT.md`) is still untagged and its
