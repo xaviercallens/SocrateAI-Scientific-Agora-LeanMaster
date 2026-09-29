@@ -246,6 +246,42 @@ lock hash changed. `DualScaleStream2` 102 theorems (was 100 audited of 102), `Du
 statements restated with named quantities (`omegaPeak`, `omegaLisaBest`) after review — the statement lock reported
 exactly these two CHANGED plus the two new definitions ADDED; C-B's premise noted as already excluded (Stream 3 P3.7).
 
+## 0-----------------. `v3.46.1` (2026-09-29): a week-old vacuous-theorem triage, closed
+
+**Not new mathematics — a disclosure fix.** On 2026-09-21 Stream 3 flagged, and Stream 2 independently
+confirmed, that `cooper_s10_swampland_safe` and `kummer_m24_swampland_safe`
+(`DualScaleM24Formalization/FrontierTriad/SwamplandDistance.lean`) are vacuous: `ModuliGeometry`'s
+`moduli_stabilization_positive` and `tau_im_positive` fields are set to `true` by construction in
+`CooperS10`/`KummerM24`, not derived from any moduli-stabilization or period computation, so
+`isSwamplandSafe` reduces to a Picard-number bounds check `∧ true ∧ true`. Recorded as "triage still open"
+in `docs/STREAM2_TO_STREAMS1_3_LEANMASTER_RESULTS_AND_DIRECTIONS_2026_09_21.md` and
+`communications/STREAM3_TO_STREAMS1_2_T0_RULING_RHO20_ADOPTED_2026_09_21.md`, and never acted on until now.
+
+**Fix.** The two original theorems are **kept, not deleted or renamed** — both are cited by name in
+`papers/book/generated/lean_catalogue.md` and in the 2026-09-21 cross-repo briefs, and this repo's own
+`statement_lock.py` strips comments before hashing specifically so documentation can be corrected without
+touching a lock, so a docstring fix carries no lock risk here regardless. Each now carries a docstring stating
+plainly what it does and does not prove, and naming who flagged it and when. Two new theorems isolate the real
+content: `cooper_s10_picard_in_range` and `kummer_m24_picard_in_range`, each `min_picard_ds ≤ … ≤
+max_picard_uv` — the one conjunct of `isSwamplandSafe` not asserted by fiat.
+
+**Gates, `DualScaleM24Formalization` only (the only library touched).**
+
+| gate | result |
+|---|---|
+| G1 build | exit 0, 14 jobs |
+| G2 `sorry_grep.py` | exit 0, clean |
+| G3 axiom audit | exit 0; **64 theorems, 0 failing** (was 62 — the two new ones) |
+| G4 lock | exit 0; this library was never statement-locked to begin with (all its files report `UNLOCKED`, not a
+regression introduced here) |
+
+**Updated repository total: 886 theorems audited across all ten libraries, 0 failing** (884 at `v3.46.0`, +2
+here). README's headline counts and audit table updated accordingly.
+
+**What is NOT claimed.** This does not make `cooper_s10_swampland_safe`/`kummer_m24_swampland_safe`
+non-vacuous — they remain exactly as vacuous as before, now disclosed instead of silent. Neither new theorem
+says anything about moduli stabilization or `τ`'s imaginary part; they state only the Picard-number bounds.
+
 ## 0----------------. `v3.46.0` (2026-09-29): released — Stream 9 complete, G11 merged, all ten libraries re-audited
 
 **Release gates, `v3.46.0`, all run on the tagged tree `main` @ `5c08a5e`, exit codes read unpiped.**

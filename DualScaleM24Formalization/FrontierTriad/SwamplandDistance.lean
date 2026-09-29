@@ -82,8 +82,28 @@ def KummerM24 : ModuliGeometry := {
   tau_im_positive := true
 }
 
+/-- **Vacuous, disclosed (triaged 2026-09-29, flagged by Stream 3 and independently by Stream 2 on
+2026-09-21).** `moduli_stabilization_positive` and `tau_im_positive` are literal `Bool` fields of
+`CooperS10`, set to `true` in its definition above — nothing here derives them from an actual moduli
+stabilization or period computation. `isSwamplandSafe CooperS10` therefore reduces to
+`19 ≤ 20 ∧ 19 ≥ 10 ∧ true ∧ true`: only the Picard-number bounds carry content. Kept (not deleted or
+renamed) because it is cited by name elsewhere (`papers/book/generated/lean_catalogue.md`,
+cross-repo briefs of 2026-09-21); `cooper_s10_picard_in_range` below states the real content alone.
+Do not cite this theorem as evidence of moduli stabilization or of `τ`'s imaginary part. -/
 theorem cooper_s10_swampland_safe : isSwamplandSafe CooperS10 = true := by decide
+
+/-- **Vacuous, disclosed** — same defect as `cooper_s10_swampland_safe` above, for `KummerM24`. -/
 theorem kummer_m24_swampland_safe : isSwamplandSafe KummerM24 = true := by decide
+
+/-- **The real content of `cooper_s10_swampland_safe`, isolated.** Picard rank `19` sits in the
+window `[10, 20]` — the only conjunct of `isSwamplandSafe` that is not asserted by fiat. -/
+theorem cooper_s10_picard_in_range :
+    min_picard_ds ≤ CooperS10.picard_number ∧ CooperS10.picard_number ≤ max_picard_uv := by decide
+
+/-- **The real content of `kummer_m24_swampland_safe`, isolated.** Picard rank `20` sits in the
+window `[10, 20]`, at the upper (Kummer) boundary. -/
+theorem kummer_m24_picard_in_range :
+    min_picard_ds ≤ KummerM24.picard_number ∧ KummerM24.picard_number ≤ max_picard_uv := by decide
 
 /-- Fricke modular involution level: $N = 1$. -/
 def fricke_N : Int := 1
