@@ -72,11 +72,24 @@ Strategy documents: `docs/`.
 Unmodified Apache-2.0 copy of the openai/math files these results depend on, at the latest upstream commit
 `fd4aeeb2` (2026-10-07). See `upstream/NOTICE.md`. Reference only; build from upstream.
 
-## 6. Pending: D3 (not included)
+## 6. D3: universal optimality in CKMRV's sense, and non-uniqueness (`lean/Triangular/UniversalOptimality.lean`)
 
-`TriangularUniversalOptimality` (CKMRV Definition 1.3 at every density; the vacancy configuration A \ {0} as a second,
-non-isometric minimiser, showing the minimiser is not unique) is written and preregistered in AutoevolveAI but not yet
-compiled. It will be added only after it compiles with a clean axiom audit and independent re-verification.
+| Name | Statement (informal) |
+|---|---|
+| `UniversallyOptimal ρ C` | CKMRV Def 1.3 in upstream's notions: density ρ, and minimal lower g-energy among locally finite density-ρ configurations for every admissible g. **Strictly weaker** than CKMRV: their definition also requires the energy of C to exist as a limit. |
+| `triangular_universally_optimal` | ρ^{-1/2}A is universally optimal (in this sense) for every ρ > 0 |
+| `vacancy_energy`, `vacancy_universally_optimal` | A \ {0} (one vacancy) has the same lower energy for every admissible g, so it is also universally optimal |
+| `vacancy_not_isometric_image`, `universal_optimum_not_unique` | A \ {0} is not an isometric image of A: universal optima are not unique up to isometry among all configurations |
+
+This formalises CKMRV's remark after their Theorem 1.4 ("removing a single particle changes neither the density nor
+the energy"). It shows that "particles always arrange into a triangular lattice" is false as a statement about all
+configurations. Uniqueness among *periodic* configurations, the form CKMRV prove in dimensions 8 and 24, is open in
+dimension 2 and not addressed. Upstream's `universal_energy_minimum` has a kernel-checked, axiom-clean proof; what
+remains conditional is the fidelity of its definitions. Preregistration, verification report (CONFIRMED_WITH_CORRECTIONS,
+corrections applied, including non-degeneracy checks at Riesz s = 4) in `audit/triangular/D3/`.
+
+History, checked against CKMRV's text: universal optimality was proved in dimension 1 before dimensions 8 and 24
+(Ventevogel–Nijboer; Cohn–Kumar gave another proof); before CKMRV no universal optimum in dimension > 1 was proved.
 
 ## Provenance
 
