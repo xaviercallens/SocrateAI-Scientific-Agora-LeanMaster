@@ -597,6 +597,7 @@ python3 tools/leangraph_corpus_analyzer.py
 | [`CLAUDE.md`](CLAUDE.md) | Working rules for AI sessions in this repo (tiers, gates, where large data goes). |
 | [`LL.md`](LL.md) | Lessons learned, newest first — including the ones that cost a day to discover. |
 | [`docs/STREAM2_WORKFLOW.md`](docs/STREAM2_WORKFLOW.md) | The tiered proving pipeline as actually run, with measured per-tier results. |
+| [`contrib/openai_math_corollaries/`](contrib/openai_math_corollaries/README.md) | External contribution on a **separate toolchain** (Lean 4.34.1 + openai/math), outside this repo's gates: kernel-checked Riesz/every-density corollaries of openai/math's planar universal-optimality theorem (conditional on it) and certified DESI DR2 BAO / H₀ bounds. Not LeanMaster Tier A. |
 
 [`examples/consumer_demo/`](examples/consumer_demo/) is a working downstream Lake project that
 `require`s this package and proves a new theorem from the exported ones (tested: 3709 jobs, 0 errors,
