@@ -45,6 +45,39 @@ certificates closed by `decide +kernel`, no `native_decide`.
 
 These are certified versions of numerically known results; no new physics. Audit: `audit/certified_numerics/`.
 
+## 3. Papers (`papers/`)
+
+Sources and PDFs as published on Zenodo (each directory has `zenodo_doi.txt`):
+
+| Directory | Paper | DOI |
+|---|---|---|
+| `triangular_riesz/` | Riesz-energy, finiteness and every-density corollaries of the openai/math planar universal-optimality theorem | [10.5281/zenodo.23285631](https://doi.org/10.5281/zenodo.23285631) |
+| `certified_desi_h0/` | Kernel-checked constraints from DESI DR2 BAO in Lean 4 (P2 + P3) | [10.5281/zenodo.23284020](https://doi.org/10.5281/zenodo.23284020) |
+| `certified_bao/` | Kernel-checked enclosures of DESI DR2 BAO distances (P1) | [10.5281/zenodo.23247730](https://doi.org/10.5281/zenodo.23247730) |
+| `lt_matrix_audit/` | Matrix Lieb–Thirring audit: a null result (Tier X), scalar theorem Comparator-accepted | [10.5281/zenodo.23245266](https://doi.org/10.5281/zenodo.23245266) |
+| `dyadic_triangular_hilbert/` | Dyadic triangular Hilbert form: lower bound C* ≥ 3 for the absolute sum | [10.5281/zenodo.23232389](https://doi.org/10.5281/zenodo.23232389) |
+
+## 4. Verification of openai/math claims (`verification/openai_math/`)
+
+The full record of the openai/math discovery sub-project (corpus index, preregistrations, controls, results), including
+our Comparator runs under the pinned toolchain: `hypotheses/night_2026-10-08/TRI_CMP/` (triangular universal
+optimality) and `LT_CMP/` (sharp 1D Lieb–Thirring), both COMPARATOR_ACCEPTS with whitelisted axioms and with planted
+positive/negative controls (`LT_CMP/controls/`). Comparator certifies that a solution matches the challenge statement
+and uses only allowed axioms; it does not audit whether the statement is the intended mathematics (see
+`audit/triangular/statement_fidelity.md` for that audit, done for the triangular theorem only).
+Strategy documents: `docs/`.
+
+## 5. Upstream snapshot (`upstream/`)
+
+Unmodified Apache-2.0 copy of the openai/math files these results depend on, at the latest upstream commit
+`fd4aeeb2` (2026-10-07). See `upstream/NOTICE.md`. Reference only; build from upstream.
+
+## 6. Pending: D3 (not included)
+
+`TriangularUniversalOptimality` (CKMRV Definition 1.3 at every density; the vacancy configuration A \ {0} as a second,
+non-isometric minimiser, showing the minimiser is not unique) is written and preregistered in AutoevolveAI but not yet
+compiled. It will be added only after it compiles with a clean axiom audit and independent re-verification.
+
 ## Provenance
 
 Lean proofs, audits and drafting were produced by AI agents (Claude) under the author's direction; verification runs
