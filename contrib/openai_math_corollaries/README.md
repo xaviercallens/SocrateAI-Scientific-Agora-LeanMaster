@@ -91,6 +91,37 @@ corrections applied, including non-degeneracy checks at Riesz s = 4) in `audit/t
 History, checked against CKMRV's text: universal optimality was proved in dimension 1 before dimensions 8 and 24
 (Ventevogel–Nijboer; Cohn–Kumar gave another proof); before CKMRV no universal optimum in dimension > 1 was proved.
 
+## 7. D4: open versus closed disks (`lean/Triangular/OpenDisk.lean`, `OpenDiskAny.lean`)
+
+`energy_eq_openEnergy` and `densityOne_iff_open` show that upstream's liminf energy and density-one condition are
+unchanged with open disks, so `universal_energy_minimum_open` holds. The `_any` versions need no local finiteness, and
+`ctl_open`/`ctl_closed` show the identity is not definitional. This is Tier A for density one and the lower energy. The
+scope is upstream's observables only. The independent verification is in `audit/triangular/D4/`.
+
+## 8. Autoresearch round 2026-10-25 (`lean/Autoresearch/`, `audit/autoresearch_2026-10-25/`, `papers/ar_*/`)
+
+Thirteen hypotheses were preregistered before any attempt, then run as a Karpathy-style keep/discard loop with the
+Lean kernel as judge (`audit/autoresearch_2026-10-25/{program.md,preregistration.json,results.tsv,SUMMARY.md}`). Five
+of them were developed into Elenchus-tiered preprints, each with a step-by-step human proof, rusty-SUNDIALS numerics
+and an independent audit:
+
+| Contribution | Preprint | Lean |
+|---|---|---|
+| Bilayer dipolar excitons: 2(1/r − 1/√(r²+d²)) completely monotone, triangular optimal at every density | doi:10.5281/zenodo.23646103 | `DipolarExciton*.lean` |
+| Planar Yukawa e^{−κr}/r: admissible, optimal at every density, mixtures of screening lengths | doi:10.5281/zenodo.23646105 | `Yukawa*.lean` |
+| Rytova–Keldysh (TMD) interaction: a positive Gaussian mixture; Laplace-mixture admissibility in Lean, Struve link Tier C | doi:10.5281/zenodo.23646107 | `KeldyshCM*.lean` |
+| σ = 3 dyadic shell model: cutoff-independent enstrophy bound | doi:10.5281/zenodo.23646111 | QuantumFluids env, `audit/.../H7/` |
+| Bogoliubov structure factor under the √(k/2k*) envelope | doi:10.5281/zenodo.23646117 | QuantumFluids env, `audit/.../H8/` |
+
+Also included:
+- the dyadic triangular Hilbert bound C* ≥ 3 (`DyadicHilbert*.lean`);
+- population genetics (`PopGen*.lean`: formalizations of known results);
+- tadpole uniqueness (`audit/.../H13/`).
+
+Planted controls live only in `*Controls.lean`. The triangular-lattice corollaries are conditional on upstream's
+`universal_energy_minimum`. The H7 and H8 files build in the QuantumFluids v4.34.0-rc2 environment, not the pinned
+openai/math one. No human has audited the statements, and the Elenchus ledgers keep their LEDGER_UNAUDITED_TIER_A flags open.
+
 ## Provenance
 
 Lean proofs, audits and drafting were produced by AI agents (Claude) under the author's direction; verification runs
