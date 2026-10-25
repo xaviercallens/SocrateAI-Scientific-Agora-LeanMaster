@@ -53,6 +53,35 @@ def verify_xdev_safety() -> bool:
         print(f"  [SAFETY] /home/xavkal/xdev verified intact (T_duality_Alone.tex size: {size} bytes).")
     return True
 
+# Lean escape hatches that COMPILE and so pass an exit-code gate. A `sorry` is only
+# a warning (`lake build` exits 0), but so is every other route to an unproved
+# statement: `admit` is a sorry by another name, a top-level `axiom` asserts
+# whatever it states, and `native_decide` / `implemented_by` / `extern` trust
+# compiled code instead of the kernel. The kernel's `#print axioms` is the
+# authority (it would report sorryAx or the custom axiom); this text scan is the
+# cheap fail-closed floor, the same set GWAYA's Lean oracle rejects.
+ESCAPE_HATCHES = {
+    "sorry": r"\bsorry\b",
+    "admit": r"\badmit\b",
+    "axiom": r"^\s*(?:private\s+|protected\s+)?axiom\s",
+    "native_decide": r"\bnative_decide\b",
+    "implemented_by": r"\bimplemented_by\b",
+    "extern": r"@\[\s*extern\b",
+}
+
+
+def strip_lean_comments(content: str) -> str:
+    """Remove block and line comments, so prose that NAMES an escape hatch is not flagged."""
+    code = re.sub(r"/-[\s\S]*?-/", "", content)
+    return re.sub(r"--.*$", "", code, flags=re.MULTILINE)
+
+
+def count_escape_hatches(content: str) -> dict:
+    """Occurrences of each escape hatch in the code (comments excluded)."""
+    code = strip_lean_comments(content)
+    return {name: len(re.findall(pat, code, flags=re.MULTILINE)) for name, pat in ESCAPE_HATCHES.items()}
+
+
 def run_lean_build() -> dict:
     """Compiles the DualScaleM24Formalization package via Lake."""
     log_header("Phase A: Lean 4 Kernel Compilation & AST Verification")
@@ -76,6 +105,7 @@ def run_lean_build() -> dict:
     modules_audited = []
     total_theorems = 0
     total_sorry = 0
+    total_other_hatches = 0
     total_lines = 0
     
     for lean_file in sorted(DUAL_SCALE_LIB_DIR.rglob("*.lean")):
@@ -86,10 +116,11 @@ def run_lean_build() -> dict:
         lines_cnt = len(content.splitlines())
         total_lines += lines_cnt
         
-        code = re.sub(r'/-[\s\S]*?-/', '', content)
-        code = re.sub(r'--.*$', '', code, flags=re.MULTILINE)
-        sorry_cnt = len(re.findall(r'\bsorry\b', code))
+        hatches = count_escape_hatches(content)
+        sorry_cnt = hatches["sorry"]
         total_sorry += sorry_cnt
+        other_hatches = {k: v for k, v in hatches.items() if k != "sorry" and v}
+        total_other_hatches += sum(other_hatches.values())
         
         thms = len(re.findall(r'^\s*(?:theorem|lemma)\s', content, flags=re.MULTILINE))
         total_theorems += thms
@@ -98,17 +129,21 @@ def run_lean_build() -> dict:
             "module": rel_path,
             "lines": lines_cnt,
             "theorems": thms,
-            "sorry_count": sorry_cnt
+            "sorry_count": sorry_cnt,
+            "other_escape_hatches": other_hatches,
         })
-        print(f"  - {rel_path:60s} | {thms:2d} thms | {sorry_cnt} sorry")
+        extra = (" | " + ", ".join(f"{v} {k}" for k, v in other_hatches.items())) if other_hatches else ""
+        print(f"  - {rel_path:60s} | {thms:2d} thms | {sorry_cnt} sorry{extra}")
         
     print(f"\n  Total Lean 4 Modules Audited: {len(modules_audited)}")
     print(f"  Total Lines of Lean Code   : {total_lines}")
     print(f"  Total Verified Theorems    : {total_theorems}")
     print(f"  Remaining Sorries          : {total_sorry} (Zero-sorry invariant: {total_sorry == 0})")
+    print(f"  Other escape hatches       : {total_other_hatches} (admit / axiom / native_decide / implemented_by / extern)")
     
     return {
-        "success": build_success and (total_sorry == 0),
+        "success": build_success and (total_sorry == 0) and (total_other_hatches == 0),
+        "total_other_escape_hatches": total_other_hatches,
         "modules_count": len(modules_audited),
         "total_lines": total_lines,
         "total_theorems": total_theorems,
